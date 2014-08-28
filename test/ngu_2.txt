@@ -1,0 +1,21110 @@
+QoS-Aware	NNP
+Middleware	NNP
+for	IN
+Web	NN
+Services	NNP
+Composition	NNP
+
+
+Liangzhao	NNP
+Zeng1	NN
+,	,
+Boualem	NNP
+Benatallah2	NNP
+,	,
+Anne	NNP
+H.H.	NNP
+Ngu3	NNP
+,	,
+
+
+Marlon	NNP
+Dumas4	NNP
+,	,
+Jayant	NNP
+Kalagnanam1	NNP
+,	,
+Henry	NNP
+Chang1	NNP
+
+
+1	CD
+
+
+IBM	NNP
+T.J.	NNP
+Watson	NNP
+Research	NNP
+Center	NNP
+,	,
+Yorktown	NNP
+Heights	NNP
+NY	NNP
+,	,
+USA	NNP
+
+
+flzeng,jayant,hychangg@us.ibm.com	NNP
+
+
+2	CD
+
+
+School	NNP
+of	IN
+Computer	NNP
+Science	NNP
+&	CC
+Engineering	NNP
+,	,
+University	NNP
+of	IN
+New	NNP
+South	NNP
+Wales	NNP
+,	,
+Sydney	NNP
+,	,
+Australia	NNP
+
+
+boualem@cse.unsw.edu.au	NN
+
+
+3	CD
+
+
+Department	NNP
+of	IN
+Computer	NNP
+Science	NNP
+,	,
+Southwest	NNP
+Texas	NNP
+State	NNP
+University	NNP
+,	,
+San	NNP
+Marcos	NNP
+TX	NNP
+,	,
+USA	NNP
+
+
+angu@swt.edu	NN
+
+
+4	CD
+
+
+Centre	NNP
+for	IN
+IT	PRP
+Innovation	NN
+,	,
+Queensland	NNP
+University	NNP
+of	IN
+Technology	NNP
+,	,
+Brisbane	NNP
+,	,
+Australia	NNP
+
+
+m.dumas@qut.edu.au	NN
+
+
+Abstract	JJ
+
+
+The	DT
+paradigmatic	JJ
+shift	NN
+from	IN
+a	DT
+Web	NN
+of	IN
+manual	JJ
+interactions	NNS
+to	TO
+a	DT
+Web	NN
+of	IN
+programmatic	JJ
+interac	NN
+-	:
+tions	NNS
+driven	VBN
+by	IN
+Web	NN
+services	NNS
+is	VBZ
+creating	VBG
+unprecedented	JJ
+opportunities	NNS
+for	IN
+the	DT
+formation	NN
+of	IN
+online	JJ
+Business-to-Business	NN
+-LRB-	-LRB-
+B2B	NN
+-RRB-	-RRB-
+collaborations	NNS
+.	.
+
+In	IN
+particular	JJ
+,	,
+the	DT
+creation	NN
+of	IN
+value-added	JJ
+services	NNS
+by	IN
+composition	NN
+of	IN
+existing	VBG
+ones	NNS
+is	VBZ
+gaining	VBG
+a	DT
+signi	NN
+momentum	NN
+.	.
+
+Since	IN
+many	JJ
+available	JJ
+Web	NN
+services	NNS
+provide	VBP
+overlapping	VBG
+or	CC
+identical	JJ
+functionality	NN
+,	,
+albeit	IN
+with	IN
+different	JJ
+Quality	NNP
+of	IN
+Service	NNP
+-LRB-	-LRB-
+QoS	NN
+-RRB-	-RRB-
+,	,
+a	DT
+choice	NN
+needs	VBZ
+to	TO
+be	VB
+made	VBN
+to	TO
+determine	VB
+which	WDT
+services	NNS
+are	VBP
+to	TO
+participate	VB
+in	IN
+a	DT
+given	VBN
+com	NN
+-	:
+posite	JJ
+service	NN
+.	.
+
+This	DT
+paper	NN
+presents	VBZ
+a	DT
+middleware	JJ
+platform	NN
+which	WDT
+addresses	VBZ
+the	DT
+issue	NN
+of	IN
+selecting	VBG
+Web	NN
+services	NNS
+for	IN
+the	DT
+purpose	NN
+of	IN
+their	PRP$
+composition	NN
+in	IN
+a	DT
+way	NN
+that	IN
+maximizes	VBZ
+user	NN
+satisfaction	NN
+ex	FW
+-	:
+pressed	VBN
+as	IN
+utility	NN
+functions	NNS
+over	IN
+QoS	NN
+attributes	NNS
+,	,
+while	IN
+satisfying	VBG
+the	DT
+constraints	NNS
+set	VBN
+by	IN
+the	DT
+user	NN
+and	CC
+by	IN
+the	DT
+structure	NN
+of	IN
+the	DT
+composite	JJ
+service	NN
+.	.
+
+Two	CD
+selection	NN
+approaches	NNS
+are	VBP
+described	VBN
+and	CC
+compared	VBN
+:	:
+one	CD
+based	VBN
+on	IN
+local	JJ
+-LRB-	-LRB-
+task-level	JJ
+-RRB-	-RRB-
+selection	NN
+of	IN
+services	NNS
+,	,
+and	CC
+the	DT
+other	JJ
+based	VBN
+on	IN
+global	JJ
+allocation	NN
+of	IN
+tasks	NNS
+to	TO
+services	NNS
+using	VBG
+integer	NN
+programming	NN
+.	.
+
+
+Keywords	NNS
+:	:
+D.2.2.c	NN
+Distributed/Internet	NN
+based	VBN
+software	NN
+engineering	NN
+tools	NNS
+and	CC
+techniques	NNS
+,	,
+H.	NNP
+3.5	CD
+Web-based	JJ
+services	NNS
+
+
+This	DT
+
+
+paper	NN
+is	VBZ
+an	DT
+extended	JJ
+and	CC
+revised	VBN
+version	NN
+of	IN
+reference	NN
+-LSB-	-LRB-
+36	CD
+-RSB-	-RRB-
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+1	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+1	CD
+
+
+Introduction	NN
+
+
+Web	NN
+services	NNS
+are	VBP
+self-described	JJ
+software	NN
+entities	NNS
+which	WDT
+can	MD
+be	VB
+advertised	VBN
+,	,
+located	JJ
+,	,
+and	CC
+used	VBN
+across	IN
+the	DT
+Internet	NN
+using	VBG
+a	DT
+set	NN
+of	IN
+standards	NNS
+such	JJ
+as	IN
+SOAP	NN
+,	,
+WSDL	NN
+,	,
+and	CC
+UDDI	NNP
+-LSB-	-LRB-
+10	CD
+-RSB-	-RRB-
+.	.
+
+Web	NN
+services	NNS
+encapsulate	VBP
+application	NN
+functionality	NN
+and	CC
+information	NN
+resources	NNS
+,	,
+and	CC
+make	VB
+them	PRP
+available	JJ
+through	IN
+programmatic	JJ
+interfaces	NNS
+,	,
+as	IN
+opposed	VBN
+to	TO
+the	DT
+interfaces	NNS
+typically	RB
+provided	VBN
+by	IN
+traditional	JJ
+Web	NN
+applications	NNS
+which	WDT
+are	VBP
+intended	VBN
+for	IN
+manual	JJ
+interactions	NNS
+.	.
+
+
+The	DT
+emergence	NN
+of	IN
+Web	NN
+services	NNS
+-LRB-	-LRB-
+e.g.	FW
+,	,
+for	IN
+order	NN
+procurement	NN
+,	,
+customer	NN
+relationship	NN
+management	NN
+,	,
+accounting	NN
+,	,
+human	JJ
+resources	NNS
+,	,
+supply	NN
+chain	NN
+and	CC
+manufacturing	NN
+-RRB-	-RRB-
+has	VBZ
+created	VBN
+unprecedented	JJ
+opportunities	NNS
+for	IN
+organizations	NNS
+to	TO
+establish	VB
+more	JJR
+agile	JJ
+and	CC
+versatile	JJ
+collaborations	NNS
+with	IN
+other	JJ
+orga	NN
+-	:
+nizations	NNS
+.	.
+
+Widely	RB
+available	JJ
+and	CC
+standardized	JJ
+Web	NN
+services	NNS
+make	VBP
+it	PRP
+possible	JJ
+to	TO
+realize	VB
+Business-to	NN
+-	:
+Business	NN
+Interoperability	NN
+-LRB-	-LRB-
+B2Bi	NN
+-RRB-	-RRB-
+by	IN
+inter-connecting	JJ
+Web	NN
+services	NNS
+provided	VBN
+by	IN
+multiple	JJ
+business	NN
+partners	NNS
+according	VBG
+to	TO
+some	DT
+business	NN
+process	NN
+:	:
+a	DT
+practice	NN
+known	VBN
+as	IN
+Web	NN
+Services	NNPS
+Composition	NN
+-LSB-	-LRB-
+8	CD
+,	,
+4	CD
+-RSB-	-RRB-
+.	.
+
+For	IN
+example	NN
+,	,
+a	DT
+high	JJ
+level	NN
+management	NN
+Web	NN
+service	NN
+can	MD
+be	VB
+created	VBN
+by	IN
+composing	VBG
+more	JJR
+specialized	JJ
+Web	NN
+services	NNS
+for	IN
+payroll	NN
+,	,
+tax	NN
+preparation	NN
+,	,
+and	CC
+cash	NN
+management	NN
+.	.
+
+
+Our	PRP$
+work	NN
+aims	VBZ
+at	IN
+advancing	VBG
+the	DT
+current	JJ
+state	NN
+of	IN
+the	DT
+art	NN
+in	IN
+technologies	NNS
+for	IN
+Web	NN
+service	NN
+composi	NN
+-	:
+tion	NN
+,	,
+by	IN
+addressing	VBG
+the	DT
+following	VBG
+key	JJ
+issues	NNS
+:	:
+
+
+Quality	NNP
+of	IN
+Service	NNP
+-LRB-	-LRB-
+QoS	NN
+-RRB-	-RRB-
+modeling	NN
+.	.
+
+In	IN
+the	DT
+presence	NN
+of	IN
+multipleWeb	JJ
+services	NNS
+with	IN
+overlapping	VBG
+or	CC
+identical	JJ
+functionality	NN
+,	,
+users	NNS
+unavoidably	RB
+discriminate	VBP
+Web	NN
+service	NN
+offerings	NNS
+based	VBN
+on	IN
+their	PRP$
+QoS	NN
+.	.
+
+QoS	NN
+is	VBZ
+a	DT
+broad	JJ
+concept	NN
+that	IN
+encompasses	VBZ
+a	DT
+number	NN
+of	IN
+non-functional	JJ
+properties	NNS
+such	JJ
+as	IN
+price	NN
+,	,
+availability	NN
+,	,
+reliability	NN
+,	,
+and	CC
+reputation	NN
+-LSB-	-LRB-
+26	CD
+-RSB-	-RRB-
+.	.
+
+These	DT
+properties	NNS
+apply	VBP
+both	DT
+to	TO
+stand-alone	JJ
+Web	NN
+services	NNS
+and	CC
+to	TO
+Web	NN
+services	NNS
+composed	VBN
+of	IN
+other	JJ
+Web	NN
+services	NNS
+-LRB-	-LRB-
+i.e.	FW
+,	,
+composite	JJ
+Web	NN
+ser	SYM
+-	:
+vices	NNS
+-RRB-	-RRB-
+.	.
+
+In	IN
+order	NN
+to	TO
+reason	NN
+about	IN
+Web	NN
+services	NNS
+,	,
+a	DT
+framework	NN
+is	VBZ
+needed	VBN
+which	WDT
+captures	VBZ
+their	PRP$
+QoS	NN
+from	IN
+a	DT
+userâ	JJ
+$	$
+™	CD
+s	NNS
+perspective	NN
+.	.
+
+Such	JJ
+framework	NN
+must	MD
+take	VB
+into	IN
+account	NN
+the	DT
+fact	NN
+that	IN
+QoS	NN
+involves	VBZ
+multiple	JJ
+dimensions	NNS
+,	,
+and	CC
+the	DT
+fact	NN
+that	IN
+the	DT
+QoS	NN
+of	IN
+composite	JJ
+services	NNS
+is	VBZ
+determined	VBN
+by	IN
+the	DT
+QoS	NN
+of	IN
+its	PRP$
+underlying	VBG
+component	NN
+services	NNS
+.	.
+
+
+QoS-driven	JJ
+composition	NN
+of	IN
+Web	NN
+services	NNS
+.	.
+
+When	WRB
+creating	VBG
+a	DT
+composite	JJ
+service	NN
+,	,
+and	CC
+subse	NN
+-	:
+quently	RB
+when	WRB
+executing	VBG
+it	PRP
+following	VBG
+a	DT
+user	NN
+request	NN
+,	,
+the	DT
+number	NN
+of	IN
+component	NN
+services	NNS
+involved	VBN
+in	IN
+this	DT
+composite	JJ
+service	NN
+may	MD
+be	VB
+large	JJ
+,	,
+and	CC
+the	DT
+number	NN
+of	IN
+Web	NN
+services	NNS
+from	IN
+which	WDT
+these	DT
+component	NN
+services	NNS
+are	VBP
+selected	VBN
+is	VBZ
+likely	JJ
+to	TO
+be	VB
+even	RB
+larger	JJR
+.	.
+
+On	IN
+the	DT
+other	JJ
+hand	NN
+,	,
+the	DT
+QoS	NN
+of	IN
+the	DT
+resulting	VBG
+composite	JJ
+service	NN
+executions	NNS
+is	VBZ
+a	DT
+determinant	NN
+factor	NN
+to	TO
+ensure	VB
+customer	NN
+satisfaction	NN
+,	,
+and	CC
+different	JJ
+users	NNS
+may	MD
+have	VB
+different	JJ
+requirements	NNS
+and	CC
+preferences	NNS
+regarding	VBG
+this	DT
+QoS	NN
+.	.
+
+For	IN
+example	NN
+,	,
+a	DT
+user	NN
+may	MD
+require	VB
+to	TO
+minimize	VB
+the	DT
+execution	NN
+duration	NN
+while	IN
+satisfying	VBG
+certain	JJ
+con	NN
+-	:
+straints	NNS
+in	IN
+terms	NNS
+of	IN
+price	NN
+and	CC
+reliability	NN
+,	,
+while	IN
+another	DT
+user	NN
+may	MD
+give	VB
+more	RBR
+importance	NN
+to	TO
+the	DT
+price	NN
+than	IN
+to	TO
+the	DT
+execution	NN
+duration	NN
+.	.
+
+A	DT
+QoS-aware	JJ
+approach	NN
+to	TO
+service	NN
+composition	NN
+is	VBZ
+therefore	RB
+
+
+2	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+2	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+needed	VBN
+,	,
+which	WDT
+maximizes	VBZ
+the	DT
+QoS	NN
+of	IN
+composite	JJ
+service	NN
+executions	NNS
+by	IN
+taking	VBG
+into	IN
+account	NN
+the	DT
+constraints	NNS
+and	CC
+preferences	NNS
+set	VBN
+by	IN
+the	DT
+users	NNS
+.	.
+
+
+Composite	NNP
+service	NN
+execution	NN
+in	IN
+a	DT
+dynamic	JJ
+environment	NN
+.	.
+
+Web	NN
+services	NNS
+operate	VBP
+autonomously	RB
+within	IN
+a	DT
+rapidly	RB
+changing	VBG
+environment	NN
+.	.
+
+As	IN
+a	DT
+result	NN
+,	,
+their	PRP$
+QoS	NN
+may	MD
+evolve	VB
+relatively	RB
+frequently	RB
+,	,
+either	CC
+because	IN
+of	IN
+internal	JJ
+changes	NNS
+or	CC
+because	IN
+of	IN
+changes	NNS
+in	IN
+their	PRP$
+environment	NN
+-LRB-	-LRB-
+i.e.	FW
+,	,
+higher	JJR
+sys	SYM
+-	:
+tem	NN
+loads	NNS
+-RRB-	-RRB-
+.	.
+
+In	IN
+particular	JJ
+,	,
+during	IN
+the	DT
+execution	NN
+of	IN
+a	DT
+composite	JJ
+service	NN
+,	,
+some	DT
+component	NN
+services	NNS
+mayupdatetheirQoS	NN
+propertieson-the	NN
+-	:
+,	,
+othersmaybecome	NN
+unavailable	JJ
+,	,
+andstillothersmay	JJ
+emerge	VBP
+.	.
+
+Consequently	RB
+,	,
+approaches	NNS
+where	WRB
+Web	NN
+services	NNS
+are	VBP
+statically	RB
+composed	VBN
+are	VBP
+inappropri	NN
+-	:
+ate	VBD
+.	.
+
+Instead	RB
+,	,
+a	DT
+dynamic	JJ
+composition	NN
+approach	NN
+is	VBZ
+needed	VBN
+,	,
+in	IN
+which	WDT
+runtime	NN
+changes	NNS
+in	IN
+the	DT
+QoS	NN
+of	IN
+the	DT
+component	NN
+services	NNS
+are	VBP
+taken	VBN
+into	IN
+account	NN
+.	.
+
+
+In	IN
+this	DT
+paper	NN
+,	,
+we	PRP
+present	VBP
+AgFlow	NNP
+-LSB-	-LRB-
+37	CD
+,	,
+36	CD
+,	,
+35	CD
+-RSB-	-RRB-
+:	:
+a	DT
+middleware	JJ
+platform	NN
+that	WDT
+enables	VBZ
+the	DT
+quality	NN
+-	:
+driven	VBN
+composition	NN
+of	IN
+Web	NN
+services	NNS
+.	.
+
+In	IN
+AgFlow	NNP
+,	,
+the	DT
+QoS	NN
+of	IN
+Web	NN
+services	NNS
+is	VBZ
+evaluated	VBN
+by	IN
+means	NNS
+of	IN
+an	DT
+extensible	JJ
+multi-dimensional	JJ
+QoS	NN
+model	NN
+,	,
+and	CC
+the	DT
+selection	NN
+of	IN
+component	NN
+services	NNS
+is	VBZ
+performed	VBN
+in	IN
+such	JJ
+a	DT
+way	NN
+as	IN
+to	TO
+optimize	VB
+the	DT
+QoS	NN
+of	IN
+the	DT
+composite	JJ
+service	NN
+executions	NNS
+.	.
+
+Furthermore	RB
+,	,
+the	DT
+AgFlow	NNP
+adapts	NNS
+to	TO
+changes	NNS
+that	WDT
+occur	VBP
+during	IN
+the	DT
+execution	NN
+of	IN
+a	DT
+composite	JJ
+service	NN
+,	,
+by	IN
+revising	VBG
+the	DT
+execution	NN
+plan	NN
+in	IN
+order	NN
+to	TO
+optimize	VB
+the	DT
+QoS	NN
+given	VBN
+a	DT
+set	NN
+of	IN
+user	NN
+requirements	NNS
+and	CC
+a	DT
+set	NN
+of	IN
+candidate	NN
+component	NN
+services	NNS
+.	.
+
+The	DT
+salient	JJ
+features	NNS
+AgFlow	NNP
+are	VBP
+:	:
+
+
+A	DT
+multi-dimensional	JJ
+QoS	NN
+model	NN
+which	WDT
+captures	VBZ
+non-functional	JJ
+properties	NNS
+that	WDT
+are	VBP
+inherent	JJ
+to	TO
+Web	NN
+services	NNS
+in	IN
+general	JJ
+,	,
+e.g.	FW
+availability	NN
+and	CC
+reliability	NN
+.	.
+
+This	DT
+model	NN
+de	IN
+a	DT
+number	NN
+of	IN
+QoS	NN
+properties	NNS
+and	CC
+methods	NNS
+for	IN
+attaching	VBG
+values	NNS
+for	IN
+these	DT
+properties	NNS
+in	IN
+the	DT
+context	NN
+of	IN
+both	DT
+stand	NN
+-	:
+alone	RB
+and	CC
+composite	JJ
+Web	NN
+services	NNS
+.	.
+
+The	DT
+model	NN
+is	VBZ
+intended	VBN
+to	TO
+be	VB
+extended	VBN
+in	IN
+order	NN
+to	TO
+the	DT
+purposes	NNS
+of	IN
+speci	NN
+application	NN
+domains	NNS
+.	.
+
+
+Two	CD
+alternative	JJ
+QoS	NN
+driven	VBN
+service	NN
+selection	NN
+approaches	NNS
+for	IN
+composite	JJ
+service	NN
+execution	NN
+:	:
+one	CD
+based	VBN
+on	IN
+local	JJ
+optimization	NN
+and	CC
+the	DT
+other	JJ
+on	IN
+global	JJ
+planning	NN
+.	.
+
+The	DT
+local	JJ
+optimization	NN
+approach	NN
+performs	VBZ
+optimal	JJ
+service	NN
+selection	NN
+for	IN
+each	DT
+individual	JJ
+task	NN
+in	IN
+a	DT
+composite	JJ
+service	NN
+without	IN
+con	NN
+-	:
+sidering	VBG
+QoS	NN
+constraints	NNS
+spanning	VBG
+multiple	JJ
+tasks	NNS
+and	CC
+without	IN
+necessarily	RB
+leading	VBG
+to	TO
+optimal	JJ
+overall	JJ
+QoS	NN
+.	.
+
+The	DT
+global	JJ
+planning	NN
+approach	NN
+on	IN
+the	DT
+other	JJ
+hand	NN
+considers	VBZ
+QoS	NN
+constraints	NNS
+and	CC
+preferences	NNS
+assigned	VBN
+to	TO
+a	DT
+composite	JJ
+service	NN
+as	IN
+a	DT
+whole	JJ
+rather	RB
+than	IN
+to	TO
+individual	JJ
+tasks	NNS
+,	,
+and	CC
+uses	VBZ
+integer	NN
+programming	NN
+to	TO
+compute	VB
+optimal	JJ
+plans	NNS
+for	IN
+composite	JJ
+service	NN
+executions	NNS
+.	.
+
+
+An	DT
+adaptive	JJ
+execution	NN
+engine	NN
+which	WDT
+reacts	VBZ
+to	TO
+changes	NNS
+occurring	VBG
+during	IN
+the	DT
+execution	NN
+of	IN
+a	DT
+composite	JJ
+service	NN
+-LRB-	-LRB-
+e.g.	FW
+,	,
+component	NN
+services	NNS
+that	WDT
+become	VBP
+unavailable	JJ
+or	CC
+change	VB
+their	PRP$
+predicted	VBN
+QoS	NN
+-RRB-	-RRB-
+,	,
+by	IN
+re-planning	VBG
+the	DT
+execution	NN
+in	IN
+order	NN
+to	TO
+ensure	VB
+that	IN
+the	DT
+QoS	NN
+is	VBZ
+optimal	JJ
+giventhe	NN
+available	JJ
+information	NN
+about	IN
+the	DT
+component	NN
+services	NNS
+.	.
+
+
+3	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+3	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+The	DT
+remainder	NN
+of	IN
+the	DT
+paper	NN
+is	VBZ
+organized	VBN
+as	IN
+follows	VBZ
+.	.
+
+Section	NN
+2	CD
+provides	VBZ
+an	DT
+overview	NN
+of	IN
+the	DT
+AgFlow	NNP
+system	NN
+and	CC
+basic	JJ
+concepts	NNS
+of	IN
+the	DT
+underlying	JJ
+service	NN
+composition	NN
+model	NN
+.	.
+
+Section	NN
+3	CD
+describes	VBZ
+the	DT
+pro-	JJ
+posed	VBD
+service	NN
+quality	NN
+model	NN
+.	.
+
+In	IN
+Section	NN
+4	CD
+,	,
+two	CD
+alternative	JJ
+service	NN
+selection	NN
+approaches	NNS
+are	VBP
+presented	VBN
+and	CC
+compared	VBN
+.	.
+
+An	DT
+implementation	NN
+of	IN
+the	DT
+service	NN
+composition	NN
+and	CC
+service	NN
+selection	NN
+model	NN
+is	VBZ
+then	RB
+presented	VBN
+in	IN
+Section	NN
+5	CD
+,	,
+and	CC
+experimental	JJ
+results	NNS
+are	VBP
+documented	VBN
+in	IN
+Section	NN
+6	CD
+.	.
+
+Finally	RB
+,	,
+Section	NN
+7	CD
+discusses	VBZ
+related	JJ
+work	NN
+and	CC
+Section	NN
+8	CD
+concludes	VBZ
+the	DT
+paper	NN
+.	.
+
+
+2	CD
+
+
+Preliminaries	NNS
+
+
+In	IN
+this	DT
+section	NN
+,	,
+the	DT
+AgFlowâ	NNP
+$	$
+™	CD
+s	NNS
+system	NN
+architecture	NN
+is	VBZ
+presented	VBN
+then	RB
+some	DT
+basic	JJ
+concepts	NNS
+and	CC
+de	FW
+are	VBP
+explained	VBN
+.	.
+
+
+2.1	CD
+System	NNP
+Architecture	NNP
+
+
+The	DT
+architectural	JJ
+diagram	NN
+of	IN
+the	DT
+AgFlow	NNP
+system	NN
+is	VBZ
+presented	VBN
+in	IN
+Figure	NNP
+1	CD
+.	.
+
+There	EX
+are	VBP
+three	CD
+distinct	JJ
+components	NNS
+in	IN
+the	DT
+AgFlow	NNP
+system	NN
+,	,
+namely	RB
+,	,
+Web	NN
+services	NNS
+,	,
+service	NN
+broker	NN
+,	,
+and	CC
+service	NN
+composition	NN
+manager	NN
+.	.
+
+
+77	CD
+
+
+Service	NNP
+Composition	NNP
+Manager	NNP
+
+
+UDDI	NNP
+Registry	NNP
+
+
+Execution	NN
+Engine	NNP
+
+
+Execution	NN
+Planner	NN
+
+
+Service	NNP
+Broker	NNP
+
+
+55	CD
+
+
+66	CD
+
+
+Communication	NN
+Bus	NN
+
+
+Web	NN
+Service	NN
+
+
+Web	NN
+Service	NN
+
+
+Web	NN
+Service	NN
+
+
+Figure	NNP
+1	CD
+:	:
+AgFlowâ	NNP
+$	$
+™	CD
+s	NNS
+architecture	NN
+
+
+The	DT
+service	NN
+broker	NN
+allows	VBZ
+providers	NNS
+to	TO
+register	VB
+their	PRP$
+service	NN
+descriptions	NNS
+in	IN
+an	DT
+UDDI	NNP
+registry	NN
+.	.
+
+A	DT
+service	NN
+description	NN
+contains	VBZ
+meta-data	JJ
+that	IN
+describe	VBP
+,	,
+among	IN
+others	NNS
+,	,
+the	DT
+meaning	NN
+,	,
+type	NN
+,	,
+content	NN
+,	,
+capa	NN
+-	:
+bility	NN
+,	,
+QoS	NN
+and	CC
+location	NN
+of	IN
+a	DT
+Web	NN
+service	NN
+.	.
+
+By	IN
+searching	VBG
+the	DT
+repository	NN
+,	,
+the	DT
+service	NN
+broker	NN
+can	MD
+answer	VB
+queries	NNS
+about	IN
+which	WDT
+Web	NN
+services	NNS
+can	MD
+execute	VB
+a	DT
+given	VBN
+task	NN
+.	.
+
+The	DT
+UDDI	NNP
+registry	NN
+also	RB
+contains	VBZ
+service	NN
+ontologies	NNS
+that	WDT
+specify	VBP
+a	DT
+common	JJ
+language	NN
+for	IN
+communications	NNS
+among	IN
+Web	NN
+services	NNS
+providers	NNS
+and	CC
+requesters	NNS
+.1	CD
+
+
+The	DT
+service	NN
+composition	NN
+manager	NN
+contains	VBZ
+an	DT
+execution	NN
+engine	NN
+.	.
+
+It	PRP
+contacts	NNS
+the	DT
+service	NN
+broker	NN
+to	TO
+locate	VB
+appropriate	JJ
+Web	NN
+services	NNS
+,	,
+selects	VBZ
+and	CC
+integrates	VBZ
+Web	NN
+services	NNS
+to	TO
+execute	VB
+composite	JJ
+services	NNS
+.	.
+
+The	DT
+service	NN
+composition	NN
+manager	NN
+also	RB
+provides	VBZ
+an	DT
+interface	NN
+which	WDT
+allows	VBZ
+users	NNS
+to	TO
+access	VB
+the	DT
+AgFlow	NNP
+
+
+1Note	NN
+
+
+that	IN
+our	PRP$
+proposal	NN
+does	VBZ
+not	RB
+deal	VB
+with	IN
+the	DT
+issue	NN
+of	IN
+searching	VBG
+multiple	JJ
+federated	JJ
+UDDI	NNP
+registries	NNS
+.	.
+
+For	IN
+a	DT
+discussion	NN
+on	IN
+the	DT
+issues	NNS
+raised	VBN
+by	IN
+federated	JJ
+UDDI	NNP
+registries	NNS
+,	,
+the	DT
+reader	NN
+is	VBZ
+referred	VBN
+to	TO
+-LSB-	-LRB-
+32	CD
+-RSB-	-RRB-
+.	.
+
+
+4	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+4	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+system	NN
+.	.
+
+There	EX
+are	VBP
+two	CD
+types	NNS
+of	IN
+users	NNS
+in	IN
+AgFlow	NNP
+:	:
+composite	JJ
+service	NN
+designers	NNS
+and	CC
+end	VB
+users	NNS
+.	.
+
+Design	NN
+-	:
+ers	NNPS
+can	MD
+de	FW
+templates	NNS
+of	IN
+composite	JJ
+services	NNS
+using	VBG
+a	DT
+graphical	JJ
+design	NN
+tool	NN
+.	.
+
+End	NN
+users	NNS
+can	MD
+create	VB
+,	,
+control	VB
+and	CC
+monitor	VB
+composite	JJ
+services	NNS
+.	.
+
+
+2.2	CD
+Service	NNP
+Ontologies	NNPS
+and	CC
+Service	NNP
+Description	NN
+
+
+A	DT
+service	NN
+ontology	NN
+-LRB-	-LRB-
+see	VB
+Figure	NN
+2	CD
+-RRB-	-RRB-
+speci	VBP
+a	DT
+common	JJ
+language	NN
+agreed	VBN
+by	IN
+a	DT
+community	NN
+-LRB-	-LRB-
+e.g.	FW
+,	,
+auto	NN
+-	:
+mobile	JJ
+industry	NN
+-RRB-	-RRB-
+.	.
+
+It	PRP
+de	IN
+a	DT
+terminology	NN
+that	WDT
+is	VBZ
+used	VBN
+by	IN
+all	DT
+participants	NNS
+in	IN
+that	DT
+community	NN
+.	.
+
+Within	IN
+a	DT
+community	NN
+,	,
+service	NN
+providers	NNS
+describe	VBP
+their	PRP$
+services	NNS
+using	VBG
+the	DT
+terms	NNS
+of	IN
+the	DT
+communityâ	NN
+$	$
+™	CD
+s	NNS
+ontology	NN
+,	,
+while	IN
+service	NN
+requesters	NNS
+use	VBP
+the	DT
+terms	NNS
+of	IN
+the	DT
+ontology	NN
+to	TO
+formulate	VB
+queries	NNS
+over	IN
+the	DT
+registry	NN
+-LRB-	-LRB-
+ies	NNS
+-RRB-	-RRB-
+of	IN
+the	DT
+community	NN
+.	.
+
+
+Concretely	RB
+,	,
+a	DT
+service	NN
+ontology	JJ
+speci	NN
+a	DT
+domain	NN
+-LRB-	-LRB-
+e.g.	FW
+,	,
+Automobile	NNP
+,	,
+Healthcare	NNP
+,	,
+Insurance	NNP
+-RRB-	-RRB-
+,	,
+a	DT
+set	NN
+of	IN
+synonyms	NNS
+,	,
+used	VBN
+to	TO
+facilitate	VB
+xible	JJ
+search	NN
+for	IN
+the	DT
+domain	NN
+-LRB-	-LRB-
+e.g	NN
+,	,
+the	DT
+domain	NN
+Automobile	NNP
+may	MD
+have	VB
+synonyms	NNS
+like	IN
+Car	NN
+-RRB-	-RRB-
+,	,
+and	CC
+a	DT
+set	NN
+of	IN
+service	NN
+classes	NNS
+that	WDT
+are	VBP
+used	VBN
+to	TO
+de	IN
+the	DT
+properties	NNS
+of	IN
+services	NNS
+.	.
+
+A	DT
+service	NN
+class	NN
+is	VBZ
+further	JJ
+speci	NN
+by	IN
+its	PRP$
+attributes	NNS
+and	CC
+operations	NNS
+.	.
+
+For	IN
+ex	FW
+-	:
+ample	JJ
+,	,
+the	DT
+attributes	NNS
+of	IN
+a	DT
+service	NN
+class	NN
+may	MD
+include	VB
+access	NN
+information	NN
+such	JJ
+as	IN
+URL	NN
+.	.
+
+Each	DT
+operation	NN
+is	VBZ
+speci	NN
+by	IN
+its	PRP$
+name	NN
+and	CC
+signature	NN
+-LRB-	-LRB-
+i.e.	FW
+,	,
+inputs	NNS
+and	CC
+outputs	NNS
+-RRB-	-RRB-
+.	.
+
+A	DT
+service	NN
+ontology	NN
+also	RB
+speci	VBP
+a	DT
+service	NN
+quality	NN
+model	NN
+that	WDT
+is	VBZ
+used	VBN
+to	TO
+describe	VB
+non-functional	JJ
+properties	NNS
+of	IN
+services	NNS
+,	,
+e.g.	FW
+,	,
+execution	NN
+duration	NN
+of	IN
+an	DT
+operation	NN
+.	.
+
+The	DT
+service	NN
+quality	NN
+model	NN
+consists	VBZ
+of	IN
+a	DT
+set	NN
+of	IN
+quality	NN
+dimensions	NNS
+-LRB-	-LRB-
+or	CC
+cri	SYM
+-	:
+teria	NN
+-RRB-	-RRB-
+.	.
+
+For	IN
+each	DT
+quality	NN
+criterion	NN
+,	,
+there	EX
+are	VBP
+three	CD
+basic	JJ
+elements	NNS
+:	:
+its	PRP$
+de	IN
+the	DT
+service	NN
+elements	NNS
+-LRB-	-LRB-
+e.g.	FW
+,	,
+services	NNS
+or	CC
+operations	NNS
+-RRB-	-RRB-
+to	TO
+which	WDT
+it	PRP
+is	VBZ
+related	JJ
+,	,
+and	CC
+how	WRB
+to	TO
+compute	VB
+or	CC
+measure	VB
+the	DT
+value	NN
+of	IN
+the	DT
+criteria	NNS
+.	.
+
+The	DT
+service	NN
+quality	NN
+model	NN
+is	VBZ
+presented	VBN
+in	IN
+section	NN
+3	CD
+.	.
+
+
+Service	NNP
+Ontology	NNP
+
+
+1	CD
+
+
+1	CD
+
+
+*	SYM
+
+
+Domain	NN
+
+
+1	CD
+
+
+Service	NNP
+Quality	NNP
+Model	NNP
+
+
+Service	NNP
+Class	NNP
+
+
+1	CD
+
+
+1	CD
+
+
+*	SYM
+
+
+*	SYM
+
+
+*	SYM
+
+
+*	SYM
+
+
+Synonyms	NNS
+
+
+Quality	NNP
+Criteria	NNP
+
+
+Attribute	VB
+
+
+Operation	NN
+
+
+1	CD
+
+
+1	CD
+
+
+Operation	NN
+Name	VB
+
+
+Legend	NNP
+:	:
+
+
+class	NN
+
+
+associations	NNS
+
+
+*	SYM
+1	CD
+to	TO
+many	JJ
+associations	NNS
+
+
+input	NN
+
+
+1	CD
+*	SYM
+
+
+1	CD
+*	SYM
+
+
+output	NN
+
+
+ParameterSpecification	NN
+
+
+Figure	NN
+2	CD
+:	:
+UML	NNP
+class	NN
+diagram	NN
+for	IN
+service	NN
+ontologies	NNS
+
+
+Service	NNP
+ontologies	NNS
+are	VBP
+organized	VBN
+in	IN
+a	DT
+tree	NN
+structure	NN
+.	.
+
+The	DT
+root	NN
+service	NN
+ontology	NN
+can	MD
+be	VB
+used	VBN
+by	IN
+all	PDT
+the	DT
+communities	NNS
+.	.
+
+Child	NN
+nodes	NNS
+automatically	RB
+inherit	VBP
+the	DT
+elements	NNS
+of	IN
+their	PRP$
+parents	NNS
+including	VBG
+service	NN
+classes	NNS
+,	,
+and	CC
+can	MD
+extend	VB
+service	NN
+classes	NNS
+that	WDT
+are	VBP
+used	VBN
+in	IN
+their	PRP$
+own	JJ
+communities	NNS
+.	.
+
+Service	NNP
+ontologies	NNS
+can	MD
+be	VB
+used	VBN
+to	TO
+facilitate	VB
+the	DT
+speci	NN
+of	IN
+composite	JJ
+services	NNS
+.	.
+
+Speci	NNP
+,	,
+in	IN
+order	NN
+to	TO
+participate	VB
+in	IN
+a	DT
+composite	JJ
+service	NN
+,	,
+providers	NNS
+need	VBP
+to	TO
+publish	VB
+their	PRP$
+Web	NN
+services	NNS
+as	IN
+advertisements	NNS
+in	IN
+the	DT
+ser	NN
+-	:
+vice	NN
+repository	NN
+associated	VBN
+to	TO
+the	DT
+composite	JJ
+service	NN
+.	.
+
+There	EX
+are	VBP
+two	CD
+important	JJ
+elements	NNS
+in	IN
+a	DT
+service	NN
+
+
+5	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+5	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+description	NN
+:	:
+
+
+Service	NNP
+ontology	NN
+and	CC
+service	NN
+class	NN
+.	.
+
+A	DT
+Web	NN
+service	NN
+provider	NN
+needs	VBZ
+to	TO
+specify	VB
+which	WDT
+ser	SYM
+-	:
+vice	NN
+ontology	NN
+is	VBZ
+used	VBN
+and	CC
+which	WDT
+service	NN
+classes	NNS
+are	VBP
+supported	VBN
+.	.
+
+For	IN
+example	NN
+,	,
+a	DT
+travel	NN
+service	NN
+provider	NN
+may	MD
+specify	VB
+that	IN
+it	PRP
+supports	VBZ
+the	DT
+service	NN
+ontology	NN
+Trip-planning	NN
+and	CC
+the	DT
+service	NN
+class	NN
+FlightTicketBooking	NN
+.	.
+
+The	DT
+service	NN
+ontology	JJ
+speci	NN
+the	DT
+concepts	NNS
+and	CC
+terminol	NN
+-	:
+ogy	NN
+used	VBN
+in	IN
+the	DT
+service	NN
+description	NN
+,	,
+and	CC
+service	NN
+class	NN
+describes	VBZ
+the	DT
+capabilities	NNS
+-LRB-	-LRB-
+e.g.	FW
+,	,
+operations	NNS
+-RRB-	-RRB-
+of	IN
+Web	NN
+services	NNS
+and	CC
+how	WRB
+to	TO
+access	VB
+them	PRP
+.	.
+
+
+Service	NNP
+Level	NNP
+Agreements	NNP
+-LRB-	-LRB-
+SLA	NNP
+-RRB-	-RRB-
+.	.
+
+An	DT
+SLA	NNP
+de	IN
+the	DT
+terms	NNS
+and	CC
+conditions	NNS
+of	IN
+service	NN
+quality	NN
+that	IN
+a	DT
+Web	NN
+service	NN
+delivers	VBZ
+to	TO
+service	NN
+requesters	NNS
+.	.
+
+The	DT
+major	JJ
+constituent	NN
+of	IN
+an	DT
+SLA	NN
+is	VBZ
+the	DT
+QoS	NN
+information	NN
+.	.
+
+There	EX
+are	VBP
+a	DT
+number	NN
+of	IN
+criteria	NNS
+-LRB-	-LRB-
+e.g.	FW
+,	,
+execution	NN
+duration	NN
+,	,
+reliability	NN
+-RRB-	-RRB-
+that	WDT
+contribute	VBP
+to	TO
+a	DT
+Web	NN
+serviceâ	NN
+$	$
+™	CD
+s	NNS
+QoS	NN
+in	IN
+a	DT
+SLA	NN
+as	IN
+discussed	VBN
+later	RB
+in	IN
+the	DT
+paper	NN
+.	.
+
+Some	DT
+Web	NN
+service	NN
+providers	NNS
+publish	VB
+QoS	NN
+information	NN
+in	IN
+SLAs	NNS
+.	.
+
+Other	JJ
+Web	NN
+service	NN
+providers	NNS
+may	MD
+not	RB
+publish	VB
+their	PRP$
+QoS	NN
+information	NN
+in	IN
+their	PRP$
+service	NN
+descriptions	NNS
+for	IN
+con	NN
+reasons	NNS
+.	.
+
+In	IN
+this	DT
+case	NN
+,	,
+service	NN
+providers	NNS
+need	VBP
+to	TO
+provide	VB
+interfaces	NNS
+that	WDT
+only	RB
+authorized	VBD
+requesters	NNS
+can	MD
+use	VB
+to	TO
+query	VB
+the	DT
+QoS	NN
+information	NN
+.	.
+
+
+2.3	CD
+
+
+Composite	NNP
+Service	NNP
+Speci	NNP
+
+
+A	DT
+composite	JJ
+service	NN
+is	VBZ
+speci	NN
+as	IN
+a	DT
+collection	NN
+of	IN
+generic	JJ
+service	NN
+tasks	NNS
+described	VBN
+in	IN
+terms	NNS
+of	IN
+service	NN
+ontologies	NNS
+and	CC
+combined	VBN
+according	VBG
+to	TO
+a	DT
+set	NN
+of	IN
+control-w	NN
+and	CC
+data-w	JJ
+dependencies	NNS
+.	.
+
+AgFlow	NNP
+uses	VBZ
+statecharts	NNS
+-LSB-	-LRB-
+16	CD
+-RSB-	-RRB-
+to	TO
+represent	VB
+these	DT
+dependencies	NNS
+.2	NN
+This	DT
+choice	NN
+is	VBZ
+motivated	VBN
+by	IN
+several	JJ
+reasons	NNS
+.	.
+
+First	RB
+,	,
+statecharts	NNS
+possess	VBP
+a	DT
+formal	JJ
+semantics	NNS
+,	,
+which	WDT
+is	VBZ
+essential	JJ
+for	IN
+analysing	VBG
+composite	JJ
+service	NN
+speci	NN
+tions	NNS
+.	.
+
+Second	RB
+,	,
+statecharts	NNS
+are	VBP
+a	DT
+well-known	JJ
+and	CC
+well-supported	JJ
+behavior	NN
+modeling	NN
+notation	NN
+,	,
+follow	VB
+-	:
+ing	VBG
+their	PRP$
+integration	NN
+into	IN
+the	DT
+Uni	NNP
+Modeling	NNP
+Language	NN
+-LRB-	-LRB-
+UML	NN
+-RRB-	-RRB-
+.	.
+
+Finally	RB
+,	,
+statecharts	NNS
+offer	VBP
+most	JJS
+of	IN
+the	DT
+control-w	JJ
+constructs	NNS
+found	VBN
+in	IN
+existing	VBG
+process	NN
+modeling	NN
+languages	NNS
+-LRB-	-LRB-
+branching	VBG
+,	,
+concurrent	JJ
+threads	NNS
+,	,
+structured	VBN
+loops	NNS
+-RRB-	-RRB-
+and	CC
+they	PRP
+have	VBP
+been	VBN
+shown	VBN
+to	TO
+be	VB
+suitable	JJ
+for	IN
+expressing	VBG
+typical	JJ
+control-w	JJ
+depen	NN
+-	:
+dencies	NNS
+-LSB-	-LRB-
+11	CD
+-RSB-	-RRB-
+.	.
+
+Hence	RB
+,	,
+it	PRP
+is	VBZ
+possible	JJ
+to	TO
+adapt	VB
+the	DT
+QoS-driven	JJ
+service	NN
+selection	NN
+mechanisms	NNS
+developed	VBD
+using	VBG
+statecharts	NNS
+,	,
+to	TO
+other	JJ
+alternative	JJ
+languages	NNS
+such	JJ
+as	IN
+the	DT
+Business	NN
+Process	VB
+Execution	NNP
+Language	NNP
+for	IN
+Web	NN
+Services	NNP
+-LRB-	-LRB-
+BPEL4WS	NN
+-RRB-	-RRB-
+-LSB-	-LRB-
+2	CD
+-RSB-	-RRB-
+.	.
+
+
+A	DT
+statechart	NN
+is	VBZ
+made	VBN
+up	RP
+of	IN
+states	NNS
+and	CC
+transitions	NNS
+.	.
+
+Transitionsof	FW
+a	DT
+statechart	NN
+are	VBP
+labeled	VBN
+with	IN
+events	NNS
+,	,
+conditions	NNS
+,	,
+and	CC
+operations	NNS
+.	.
+
+States	NNPS
+can	MD
+be	VB
+basic	JJ
+or	CC
+compound	NN
+.	.
+
+Basic	JJ
+states	NNS
+-LRB-	-LRB-
+also	RB
+called	VBN
+tasks	NNS
+in	IN
+the	DT
+sequel	NN
+-RRB-	-RRB-
+are	VBP
+labeled	VBN
+with	IN
+an	DT
+operation	NN
+name	NN
+of	IN
+a	DT
+given	VBN
+service	NN
+class	NN
+-LRB-	-LRB-
+which	WDT
+is	VBZ
+de	IN
+in	IN
+a	DT
+service	NN
+ontology	NN
+-RRB-	-RRB-
+.	.
+
+Intuitively	RB
+,	,
+when	WRB
+the	DT
+basic	JJ
+state	NN
+is	VBZ
+entered	VBN
+,	,
+the	DT
+operation	NN
+that	WDT
+labels	VBZ
+this	DT
+state	NN
+is	VBZ
+invoked	VBN
+over	IN
+one	CD
+of	IN
+the	DT
+services	NNS
+belonging	VBG
+to	TO
+the	DT
+designated	VBN
+service	NN
+class	NN
+.	.
+
+
+2In	NN
+
+
+the	DT
+remainder	NN
+the	DT
+paper	NN
+,	,
+we	PRP
+use	VBP
+the	DT
+terms	NNS
+composite	JJ
+service	NN
+speci	NNS
+and	CC
+statechart	NN
+of	IN
+a	DT
+composite	JJ
+service	NN
+interchangeably	RB
+.	.
+
+
+6	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+6	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+Compound	NN
+states	NNS
+on	IN
+the	DT
+other	JJ
+hand	NN
+provide	VBP
+means	VBZ
+to	TO
+structure	VB
+the	DT
+statechart	NN
+into	IN
+regions	NNS
+,	,
+and	CC
+to	TO
+express	VB
+concurrent	JJ
+execution	NN
+of	IN
+regions	NNS
+.	.
+
+Compound	NN
+states	NNS
+come	VBN
+in	IN
+two	CD
+vors	NNS
+:	:
+OR-states	NNS
+and	CC
+AND-states	NNS
+.	.
+
+An	DT
+OR-state	NN
+contains	VBZ
+a	DT
+single	JJ
+region	NN
+whereas	IN
+an	DT
+AND-state	NN
+contains	VBZ
+several	JJ
+regions	NNS
+PSfrag	NN
+-LRB-	-LRB-
+separatedreplacementsby	NN
+
+
+dashed	VBN
+lines	NNS
+-RRB-	-RRB-
+which	WDT
+are	VBP
+intended	VBN
+to	TO
+be	VB
+executed	VBN
+concurrently	RB
+.	.
+
+Accordingly	RB
+,	,
+OR-states	NNS
+are	VBP
+used	VBN
+as	IN
+a	DT
+grouping	VBG
+mechanism	NN
+for	IN
+modularity	NN
+purposes	NNS
+,	,
+while	IN
+AND-states	NNS
+are	VBP
+used	VBN
+to	TO
+express	VB
+concurrency	NN
+:	:
+they	PRP
+encode	VBP
+a	DT
+fork/join	NN
+pair	NN
+.	.
+
+The	DT
+initial	JJ
+state	NN
+of	IN
+a	DT
+statechart	NN
+is	VBZ
+denoted	VBN
+by	IN
+a	DT
+circle	NN
+,	,
+while	IN
+the	DT
+state	NN
+is	VBZ
+denoted	VBN
+by	IN
+two	CD
+concentric	JJ
+circles	NNS
+:	:
+one	CD
+and	CC
+one	CD
+un	NN
+
+
+A	DT
+simpli	JJ
+statechart	NN
+W	NN
+specifying	VBG
+a	DT
+ravel	NN
+Planner	NN
+composite	JJ
+Web	NN
+service	NN
+is	VBZ
+depicted	VBN
+in	IN
+Figure	NNP
+3	CD
+.	.
+
+In	IN
+this	DT
+composite	JJ
+service	NN
+,	,
+a	DT
+search	NN
+for	IN
+attractions	NNS
+is	VBZ
+performed	VBN
+in	IN
+parallel	NN
+with	IN
+a	DT
+and	CC
+an	DT
+accommodation	NN
+booking	NN
+.	.
+
+After	IN
+these	DT
+searching	VBG
+and	CC
+booking	VBG
+operations	NNS
+are	VBP
+completed	VBN
+,	,
+the	DT
+distance	NN
+from	IN
+the	DT
+hotel	NN
+to	TO
+the	DT
+accommodation	NN
+is	VBZ
+computed	VBN
+,	,
+and	CC
+either	CC
+a	DT
+car	NN
+or	CC
+a	DT
+bike	NN
+rental	JJ
+service	NN
+is	VBZ
+invoked	VBN
+.	.
+
+Note	VB
+that	DT
+when	WRB
+two	CD
+transitions	NNS
+stem	VBP
+from	IN
+the	DT
+same	JJ
+state	NN
+-LRB-	-LRB-
+e.g.	FW
+,	,
+t4	NN
+-RRB-	-RRB-
+,	,
+they	PRP
+denote	VBP
+a	DT
+conditional	JJ
+
+
+branching	VBG
+,	,
+and	CC
+theW	NN
+transitions	NNS
+should	MD
+therefore	RB
+be	VB
+labeled	VBN
+with	IN
+disjoint	NN
+conditions.s1	NN
+
+
+Ws2	NN
+
+
+Ws	NNS
+
+
+3	CD
+ti	NN
+
+
+t1	NN
+AttractionSearching	NN
+
+
+t5	NN
+
+
+t2	NN
+FlightTicketBooking	NN
+
+
+t3	NN
+HotelBooking	NN
+
+
+t4	NN
+DrivingTimeCalculation	NN
+
+
+BikeRental	JJ
+
+
+tf	NN
+
+
+Ws4	NN
+
+
+Ws5	NN
+
+
+t6	NN
+CarRental	NN
+
+
+-LRB-	-LRB-
+-RRB-	-RRB-
+
+
+Legend	NNP
+
+
+State	NN
+
+
+Andâˆ	NNP
+'s	POS
+tate	NN
+
+
+Transition	NN
+
+
+Initial	JJ
+State	NN
+
+
+Final	JJ
+State	NN
+
+
+Figure	NNP
+3	CD
+:	:
+Statechart	NNP
+of	IN
+a	DT
+ravel	NN
+Planner	NN
+composite	JJ
+service	NN
+.	.
+
+
+Instance	NN
+variables	NNS
+can	MD
+be	VB
+associated	VBN
+to	TO
+a	DT
+composite	JJ
+service	NN
+speci	NNS
+to	TO
+capture	VB
+data-w	RB
+as	IN
+-	:
+pects	NNS
+.	.
+
+These	DT
+variables	NNS
+can	MD
+be	VB
+used	VBN
+to	TO
+express	VB
+branching	VBG
+conditions	NNS
+and	CC
+to	TO
+provide	VB
+-LRB-	-LRB-
+store	NN
+-RRB-	-RRB-
+input	NN
+-LRB-	-LRB-
+out	IN
+-	:
+put	VBN
+-RRB-	-RRB-
+parameters	NNS
+to	TO
+-LRB-	-LRB-
+from	IN
+-RRB-	-RRB-
+the	DT
+service	NN
+operations	NNS
+invoked	VBD
+in	IN
+each	DT
+task	NN
+.	.
+
+They	PRP
+can	MD
+also	RB
+be	VB
+manipulated	VBN
+in	IN
+the	DT
+actions	NNS
+attached	VBN
+to	TO
+the	DT
+transitions	NNS
+of	IN
+the	DT
+statechart	NN
+.	.
+
+Note	VB
+that	IN
+the	DT
+data-w	JJ
+perspective	NN
+is	VBZ
+not	RB
+relevant	JJ
+for	IN
+the	DT
+purposes	NNS
+of	IN
+AgFlow	NNP
+since	IN
+the	DT
+methods	NNS
+for	IN
+allocating	VBG
+services	NNS
+to	TO
+tasks	NNS
+only	RB
+need	VBP
+to	TO
+consider	VB
+the	DT
+control-w	JJ
+dependencies	NNS
+and	CC
+the	DT
+QoS	NN
+of	IN
+the	DT
+component	NN
+services	NNS
+.	.
+
+Data-w	NN
+is	VBZ
+relevant	JJ
+for	IN
+the	DT
+execution	NN
+of	IN
+composite	JJ
+services	NNS
+by	IN
+orchestration	NN
+engines	NNS
+such	JJ
+as	IN
+Self-Serv	NNP
+-LSB-	-LRB-
+4	CD
+-RSB-	-RRB-
+.	.
+
+
+2.4	CD
+Execution	NN
+paths	NNS
+and	CC
+plans	NNS
+
+
+In	IN
+this	DT
+section	NN
+,	,
+we	PRP
+de	FW
+two	CD
+concepts	NNS
+used	VBN
+in	IN
+the	DT
+remainder	NN
+of	IN
+the	DT
+paper	NN
+:	:
+execution	NN
+path	NN
+and	CC
+execu	NN
+-	:
+tion	NN
+plan	NN
+.	.
+
+To	TO
+simplify	VB
+the	DT
+discussion	NN
+,	,
+we	PRP
+initially	RB
+assume	VBP
+that	IN
+all	PDT
+the	DT
+statecharts	NNS
+that	IN
+we	PRP
+deal	VBP
+with	IN
+are	VBP
+acyclic	JJ
+.	.
+
+If	IN
+a	DT
+statechart	NN
+contains	VBZ
+cycles	NNS
+,	,
+a	DT
+technique	NN
+for	IN
+it	PRP
+into	IN
+an	DT
+acyclic	JJ
+statechart	NN
+needs	VBZ
+to	TO
+be	VB
+applied	VBN
+beforehand	RB
+.	.
+
+Details	NNS
+of	IN
+the	DT
+unfolding	VBG
+process	NN
+are	VBP
+given	VBN
+in	IN
+Section	NN
+4.2.3	CD
+.	.
+
+
+De	NNP
+1	CD
+-LRB-	-LRB-
+Execution	NN
+path	NN
+-RRB-	-RRB-
+.	.
+
+An	DT
+execution	NN
+path	NN
+of	IN
+a	DT
+statechart	NN
+is	VBZ
+a	DT
+sequence	NN
+of	IN
+states	NNS
+-LSB-	-LRB-
+t1	NN
+,	,
+t2	NN
+,	,
+.	.
+.	.
+
+tn	NN
+-RSB-	-RRB-
+,	,
+such	JJ
+that	IN
+t1	NN
+is	VBZ
+the	DT
+initial	JJ
+state	NN
+,	,
+tn	NN
+is	VBZ
+the	DT
+state	NN
+,	,
+and	CC
+for	IN
+every	DT
+state	NN
+ti	NN
+-LRB-	-LRB-
+1	CD
+<	JJR
+i	FW
+<	JJR
+n	NN
+-RRB-	-RRB-
+:	:
+
+
+7	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+7	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+ti	NN
+is	VBZ
+a	DT
+direct	JJ
+successor	NN
+of	IN
+one	CD
+of	IN
+the	DT
+states	NNS
+in	IN
+-LSB-	-LRB-
+t1	NN
+,	,
+...	:
+,	,
+ti	IN
+
+
+1	CD
+-RSB-	-RRB-
+
+
+ti	NN
+is	VBZ
+not	RB
+a	DT
+direct	JJ
+successor	NN
+of	IN
+any	DT
+of	IN
+the	DT
+states	NNS
+in	IN
+-LSB-	-LRB-
+ti	NN
++1	CD
+,	,
+...	:
+,	,
+tn	NN
+-RSB-	-RRB-
+
+
+There	EX
+is	VBZ
+no	DT
+state	NN
+tj	NN
+in	IN
+-LSB-	-LRB-
+t1	NN
+,	,
+...	:
+,	,
+ti	IN
+
+
+1	CD
+-RSB-	-RRB-
+
+
+such	JJ
+that	IN
+tj	NN
+and	CC
+ti	NN
+belong	VBP
+to	TO
+two	CD
+alternative	JJ
+branches	NNS
+of	IN
+the	DT
+statechart	NN
+.	.
+
+
+If	IN
+ti	NN
+is	VBZ
+the	DT
+initial	JJ
+state	NN
+of	IN
+one	CD
+of	IN
+the	DT
+concurrent	JJ
+regions	NNS
+of	IN
+an	DT
+AND-state	JJ
+AST	NNP
+,	,
+then	RB
+for	IN
+every	DT
+other	JJ
+concurrent	JJ
+region	NN
+C	NN
+in	IN
+AST	NNP
+,	,
+one	CD
+of	IN
+the	DT
+initial	JJ
+states	NNS
+of	IN
+C	NN
+belongs	VBZ
+to	TO
+the	DT
+set	NN
+ft1	NN
+,	,
+...	:
+,	,
+ti	IN
+
+
+1	CD
+,	,
+ti	NN
++1	NN
+,	,
+...	:
+,	,
+tng	NN
+.	.
+
+In	IN
+other	JJ
+words	NNS
+,	,
+when	WRB
+an	DT
+AND-state	NN
+is	VBZ
+entered	VBN
+,	,
+all	PDT
+the	DT
+concurrent	JJ
+branches	NNS
+of	IN
+this	DT
+AND-state	NN
+are	VBP
+executed	VBN
+.	.
+
+
+
+This	DT
+de	FW
+relies	VBZ
+on	IN
+the	DT
+concept	NN
+of	IN
+a	DT
+direct	JJ
+successor	NN
+of	IN
+a	DT
+state	NN
+.	.
+
+Roughly	RB
+stated	VBN
+,	,
+a	DT
+basic	JJ
+state	NN
+tb	NN
+in	IN
+a	DT
+statechart	NN
+is	VBZ
+a	DT
+direct	JJ
+successor	NN
+of	IN
+another	DT
+basic	JJ
+state	NN
+ta	NN
+if	IN
+there	EX
+is	VBZ
+a	DT
+sequence	NN
+of	IN
+adjacent	JJ
+transitions3	NN
+going	VBG
+from	IN
+ta	NN
+to	TO
+tb	NN
+without	IN
+traversing	VBG
+any	DT
+other	JJ
+basic	JJ
+state	NN
+.	.
+
+In	IN
+other	JJ
+words	NNS
+,	,
+the	DT
+transition	NN
+in	IN
+the	DT
+sequence	NN
+stems	VBZ
+from	IN
+ta	NN
+,	,
+the	DT
+last	JJ
+transition	NN
+leads	VBZ
+to	TO
+tb	NN
+,	,
+and	CC
+all	DT
+intermediate	JJ
+transitions	NNS
+stem	VBP
+from	IN
+and	CC
+lead	VB
+to	TO
+either	CC
+compound	NN
+,	,
+initial	JJ
+,	,
+or	CC
+states	NNS
+-LRB-	-LRB-
+but	CC
+are	VBP
+not	RB
+incident	NN
+to	TO
+a	DT
+basic	JJ
+state	NN
+-RRB-	-RRB-
+.	.
+
+
+Since	IN
+it	PRP
+is	VBZ
+assumed	VBN
+that	IN
+the	DT
+underlying	VBG
+statechart	NN
+is	VBZ
+acyclic	JJ
+,	,
+it	PRP
+is	VBZ
+possible	JJ
+to	TO
+represent	VB
+an	DT
+execution	NN
+path	NN
+as	IN
+a	DT
+Directed	NNP
+Acyclic	NNP
+Graph	NN
+-LRB-	-LRB-
+DAG	NN
+-RRB-	-RRB-
+as	IN
+follows	VBZ
+.	.
+
+
+De	NNP
+2	CD
+-LRB-	-LRB-
+DAG	NN
+representation	NN
+of	IN
+an	DT
+execution	NN
+path	NN
+-RRB-	-RRB-
+.	.
+
+Given	VBN
+an	DT
+execution	NN
+path	NN
+-LSB-	-LRB-
+t1	NN
+,	,
+t2	NN
+,	,
+.	.
+.	.
+
+tn	NN
+-RSB-	-RRB-
+of	IN
+a	DT
+statechart	JJ
+ST	JJ
+,	,
+the	DT
+DAG	NN
+representation	NN
+of	IN
+this	DT
+execution	NN
+path	NN
+is	VBZ
+a	DT
+graph	NN
+obtained	VBN
+as	IN
+follows	VBZ
+:	:
+
+
+The	DT
+DAG	NNP
+has	VBZ
+one	CD
+node	NN
+for	IN
+each	DT
+task	NN
+ft1	NN
+,	,
+t2	NN
+,	,
+.	.
+.	.
+
+tng	NN
+.	.
+
+
+The	DT
+DAG	NN
+contains	VBZ
+an	DT
+edge	NN
+from	IN
+task	NN
+ti	NN
+to	TO
+task	NN
+tj	NN
+iff	NN
+tj	NN
+is	VBZ
+a	DT
+direct	JJ
+successor	NN
+of	IN
+ti	NN
+in	IN
+the	DT
+statechart	JJ
+ST.	NN
+
+
+
+If	IN
+a	DT
+statechart	NN
+contains	VBZ
+conditional	JJ
+branchings	NNS
+,	,
+it	PRP
+has	VBZ
+multiple	JJ
+execution	NN
+paths	NNS
+.	.
+
+Each	DT
+execution	NN
+path	NN
+represents	VBZ
+a	DT
+sequence	NN
+of	IN
+tasks	NNS
+to	TO
+complete	VB
+a	DT
+composite	JJ
+service	NN
+execution	NN
+.	.
+
+Figure	NNP
+4	CD
+gives	VBZ
+an	DT
+example	NN
+of	IN
+statechartâ	JJ
+$	$
+™	CD
+s	NNS
+execution	NN
+paths	NNS
+.	.
+
+In	IN
+this	DT
+example	NN
+,	,
+since	IN
+there	EX
+is	VBZ
+one	CD
+conditional	JJ
+branching	VBG
+
+
+after	IN
+task	NN
+t4	NN
+,	,
+there	EX
+are	VBP
+two	CD
+paths	NNS
+,	,
+called	VBN
+We1	NN
+and	CC
+We2	NN
+respectively	RB
+.	.
+
+In	IN
+the	DT
+execution	NN
+path	NN
+We1	NN
+,	,
+task	NN
+t5	NN
+is	VBZ
+executed	VBN
+after	IN
+task	NN
+t4	NN
+,	,
+while	IN
+in	IN
+the	DT
+execution	NN
+path	NN
+We2	NN
+,	,
+task	NN
+t6	NN
+is	VBZ
+executed	VBN
+after	IN
+task	NN
+t4	NN
+.	.
+
+
+As	IN
+stated	VBN
+earlier	RBR
+,	,
+each	DT
+basic	JJ
+state	NN
+of	IN
+a	DT
+statechart	JJ
+describing	VBG
+a	DT
+composite	JJ
+service	NN
+is	VBZ
+labeled	VBN
+with	IN
+
+
+an	DT
+invocation	NN
+to	TO
+an	DT
+operation	NN
+provided	VBN
+by	IN
+a	DT
+given	VBN
+service	NN
+class	NN
+.	.
+
+Actual	JJ
+Web	NN
+services	NNS
+belonging	VBG
+to	TO
+the	DT
+required	JJ
+service	NN
+classes	NNS
+are	VBP
+selected	VBN
+during	IN
+the	DT
+execution	NN
+of	IN
+the	DT
+composite	JJ
+service	NN
+.	.
+
+Hence	RB
+,	,
+it	PRP
+is	VBZ
+possible	JJ
+to	TO
+execute	VB
+an	DT
+execution	NN
+path	NN
+of	IN
+a	DT
+statechart	NN
+in	IN
+different	JJ
+ways	NNS
+by	IN
+allocating	VBG
+different	JJ
+Web	NN
+
+
+3Two	NN
+
+
+transitions	NNS
+are	VBP
+adjacent	JJ
+if	IN
+the	DT
+target	NN
+state	NN
+of	IN
+one	CD
+is	VBZ
+the	DT
+source	NN
+state	NN
+of	IN
+the	DT
+other	JJ
+.	.
+
+
+8	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+8	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+PSfrag	NN
+replacements	NNS
+
+
+Ws1	NN
+
+
+Ws2	NN
+
+
+Ws3	NN
+
+
+Ws4	NN
+
+
+Ws5	NN
+
+
+t1	NN
+
+
+t1	NN
+
+
+ti	NN
+
+
+t4	NN
+
+
+t5	NN
+
+
+tf	NN
+
+
+ti	NN
+
+
+t4	NN
+
+
+tf	NN
+
+
+t2	NN
+
+
+t3	NN
+
+
+t2	NN
+
+
+t3	NN
+
+
+t6	NN
+
+
+-LRB-	-LRB-
+-RRB-	-RRB-
+
+
+Execution	NN
+Path	NN
+1	CD
+-LRB-	-LRB-
+We1	NN
+-RRB-	-RRB-
+
+
+Execution	NN
+Path	NN
+2	CD
+-LRB-	-LRB-
+We2	NN
+-RRB-	-RRB-
+
+
+Figure	NNP
+4	CD
+:	:
+DAG	NN
+representation	NN
+of	IN
+the	DT
+execution	NN
+paths	NNS
+of	IN
+the	DT
+statechart	NN
+of	IN
+Figure	NNP
+3	CD
+.	.
+
+
+services	NNS
+to	TO
+the	DT
+basic	JJ
+states	NNS
+in	IN
+the	DT
+path	NN
+.	.
+
+The	DT
+concept	NN
+of	IN
+execution	NN
+plan	NN
+de	IN
+below	IN
+captures	VBZ
+the	DT
+various	JJ
+ways	NNS
+of	IN
+executing	VBG
+a	DT
+given	VBN
+execution	NN
+path	NN
+.	.
+
+
+De	NNP
+3	CD
+-LRB-	-LRB-
+Execution	NN
+plan	NN
+-RRB-	-RRB-
+.	.
+
+A	DT
+set	NN
+of	IN
+pairs	NNS
+p	NN
+=	JJ
+f	FW
+<	JJR
+t1	CD
+;	:
+s1	NN
+>	JJR
+;	:
+<	JJR
+t2	CD
+;	:
+s2	NN
+>	JJR
+;	:
+:	:
+:	:
+:	:
+;	:
+<	JJR
+tn	NN
+;	:
+sn	NN
+>	JJR
+g	NN
+is	VBZ
+an	DT
+execution	NN
+plan	NN
+of	IN
+an	DT
+execution	NN
+path	NN
+We	PRP
+iff	VBP
+:	:
+
+
+ft1	NN
+,	,
+t2	NN
+,	,
+...	:
+tng	NN
+is	VBZ
+the	DT
+set	NN
+of	IN
+tasks	NNS
+in	IN
+We	PRP
+.	.
+
+
+For	IN
+each	DT
+pair	NN
+<	JJR
+ti	CD
+;	:
+si	FW
+>	JJR
+in	IN
+p	NN
+,	,
+service	NN
+si	NN
+belongs	VBZ
+to	TO
+the	DT
+service	NN
+class	NN
+associated	VBN
+with	IN
+task	NN
+ti	NN
+.	.
+
+In	IN
+other	JJ
+words	NNS
+,	,
+service	NN
+si	NN
+provides	VBZ
+the	DT
+operation	NN
+required	VBN
+by	IN
+task	NN
+ti	NN
+.	.
+
+
+
+3	CD
+
+
+Web	NN
+Service	NNP
+Quality	NNP
+Model	NNP
+
+
+In	IN
+a	DT
+Web	NN
+environment	NN
+,	,
+several	JJ
+Web	NN
+services	NNS
+may	MD
+provide	VB
+similar	JJ
+functionality	NN
+with	IN
+different	JJ
+non	JJ
+-	:
+functional	JJ
+property	NN
+values	NNS
+-LRB-	-LRB-
+e.g.	FW
+,	,
+different	JJ
+prices	NNS
+-RRB-	-RRB-
+.	.
+
+In	IN
+the	DT
+composition	NN
+model	NN
+presented	VBN
+in	IN
+the	DT
+previous	JJ
+section	NN
+,	,
+such	JJ
+Web	NN
+services	NNS
+will	MD
+typically	RB
+be	VB
+grouped	VBN
+together	RB
+in	IN
+a	DT
+single	JJ
+community	NN
+.	.
+
+To	TO
+differentiate	VB
+the	DT
+members	NNS
+of	IN
+a	DT
+community	NN
+during	IN
+service	NN
+selection	NN
+,	,
+their	PRP$
+non-functional	JJ
+properties	NNS
+need	VBP
+to	TO
+be	VB
+considered	VBN
+.	.
+
+For	IN
+this	DT
+purpose	NN
+,	,
+we	PRP
+adopt	VBP
+a	DT
+Web	NN
+service	NN
+quality	NN
+model	NN
+based	VBN
+on	IN
+a	DT
+set	NN
+of	IN
+quality	NN
+criteria	NNS
+-LRB-	-LRB-
+i.e.	FW
+,	,
+non-functional	JJ
+properties	NNS
+-RRB-	-RRB-
+that	WDT
+are	VBP
+applicable	JJ
+to	TO
+all	DT
+Web	NN
+services	NNS
+,	,
+for	IN
+example	NN
+,	,
+their	PRP$
+pricing	NN
+and	CC
+reliability	NN
+.	.
+
+Although	IN
+the	DT
+adopted	VBN
+quality	NN
+model	NN
+has	VBZ
+a	DT
+limited	JJ
+number	NN
+of	IN
+criteria	NNS
+-LRB-	-LRB-
+for	IN
+the	DT
+sake	NN
+of	IN
+illustration	NN
+-RRB-	-RRB-
+,	,
+it	PRP
+is	VBZ
+extensible	JJ
+:	:
+new	JJ
+criteria	NNS
+can	MD
+be	VB
+added	VBN
+without	IN
+fundamentally	RB
+altering	VBG
+the	DT
+service	NN
+selectiontechniquesbuiltontopofthemodel	NN
+.	.
+
+Inparticular	NNP
+,	,
+itispossibletoextendthequalitymodelto	NN
+integrate	VBP
+non-functional	JJ
+service	NN
+characteristics	NNS
+such	JJ
+as	IN
+those	DT
+proposed	VBN
+in	IN
+-LSB-	-LRB-
+26	CD
+-RSB-	-RRB-
+,	,
+or	CC
+to	TO
+integrate	VB
+service	NN
+QoS	NN
+metrics	NNS
+such	JJ
+as	IN
+those	DT
+proposed	VBN
+by	IN
+-LSB-	-LRB-
+31	CD
+-RSB-	-RRB-
+.	.
+
+
+In	IN
+this	DT
+section	NN
+,	,
+we	PRP
+present	VBP
+the	DT
+quality	NN
+criteria	NNS
+in	IN
+the	DT
+context	NN
+of	IN
+elementary	JJ
+-LRB-	-LRB-
+i.e.	FW
+stand-alone	JJ
+-RRB-	-RRB-
+services	NNS
+,	,
+before	IN
+turning	VBG
+our	PRP$
+attention	NN
+to	TO
+composite	JJ
+services	NNS
+.	.
+
+For	IN
+each	DT
+criterion	NN
+,	,
+we	PRP
+provide	VBP
+a	DT
+de	FW
+tion	FW
+,	,
+indicate	VBP
+its	PRP$
+granularity	NN
+-LRB-	-LRB-
+i.e.	FW
+,	,
+whether	IN
+it	PRP
+is	VBZ
+de	IN
+for	IN
+an	DT
+entire	JJ
+service	NN
+or	CC
+for	IN
+individual	JJ
+service	NN
+operations	NNS
+-RRB-	-RRB-
+,	,
+and	CC
+provide	VB
+rules	NNS
+to	TO
+compute	VB
+its	PRP$
+value	NN
+for	IN
+a	DT
+given	VBN
+service	NN
+.	.
+
+
+9	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+9	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+3.1	CD
+
+
+Quality	NNP
+Criteria	NNP
+for	IN
+Elementary	NNP
+Services	NNPS
+
+
+We	PRP
+consider	VBP
+ve	FW
+generic	JJ
+quality	NN
+criteria	NNS
+for	IN
+elementary	JJ
+services	NNS
+:	:
+-LRB-	-LRB-
+1	LS
+-RRB-	-RRB-
+execution	NN
+price	NN
+,	,
+-LRB-	-LRB-
+2	LS
+-RRB-	-RRB-
+execution	NN
+duration	NN
+,	,
+-LRB-	-LRB-
+3	LS
+-RRB-	-RRB-
+reputation	NN
+,	,
+-LRB-	-LRB-
+4	LS
+-RRB-	-RRB-
+reliability	NN
+,	,
+and	CC
+-LRB-	-LRB-
+5	LS
+-RRB-	-RRB-
+availability	NN
+.	.
+
+
+Execution	NN
+price	NN
+.	.
+
+Given	VBN
+an	DT
+operation	NN
+op	NN
+of	IN
+a	DT
+service	NN
+s	NNS
+,	,
+the	DT
+execution	NN
+price	NN
+qpr	NN
+-LRB-	-LRB-
+s	NNS
+;op	VBP
+-RRB-	-RRB-
+is	VBZ
+the	DT
+fee	NN
+that	IN
+a	DT
+service	NN
+requester	NN
+has	VBZ
+to	TO
+pay	VB
+for	IN
+invoking	VBG
+the	DT
+operation	NN
+op	NN
+.	.
+
+Web	NN
+service	NN
+providers	NNS
+either	CC
+directly	RB
+advertise	VB
+the	DT
+execution	NN
+price	NN
+of	IN
+their	PRP$
+operations	NNS
+,	,
+or	CC
+they	PRP
+provide	VBP
+means	NNS
+for	IN
+potential	JJ
+requesters	NNS
+to	TO
+inquire	VB
+about	IN
+it	PRP
+.	.
+
+
+Execution	NN
+duration	NN
+.	.
+
+Given	VBN
+an	DT
+operation	NN
+op	NN
+of	IN
+a	DT
+service	NN
+s	NNS
+,	,
+the	DT
+execution	NN
+duration	NN
+qdu	NN
+-LRB-	-LRB-
+s	NNS
+;op	VBP
+-RRB-	-RRB-
+measures	VBZ
+the	DT
+expected	VBN
+delay	NN
+in	IN
+seconds	NNS
+between	IN
+the	DT
+moment	NN
+when	WRB
+a	DT
+request	NN
+is	VBZ
+sent	VBN
+and	CC
+the	DT
+momentwhen	NN
+the	DT
+results	NNS
+are	VBP
+received	VBN
+.	.
+
+The	DT
+execution	NN
+durationis	NN
+computedusing	VBG
+the	DT
+expression	NN
+qdu	NN
+-LRB-	-LRB-
+s	NNS
+;op	VBP
+-RRB-	-RRB-
+=	JJ
+Tprocess	NN
+-LRB-	-LRB-
+s	NNS
+;op	VBP
+-RRB-	-RRB-
++	CC
+Ttrans	NN
+-LRB-	-LRB-
+s	NNS
+;op	VBP
+-RRB-	-RRB-
+,	,
+meaning	VBG
+that	IN
+the	DT
+execution	NN
+duration	NN
+is	VBZ
+the	DT
+sum	NN
+of	IN
+the	DT
+processing	NN
+time	NN
+Tprocess	NN
+-LRB-	-LRB-
+s	NNS
+;op	VBP
+-RRB-	-RRB-
+and	CC
+the	DT
+transmission	NN
+time	NN
+Ttrans	NNS
+-LRB-	-LRB-
+s	NNS
+;op	VBP
+-RRB-	-RRB-
+.	.
+
+Services	NNP
+advertise	VB
+their	PRP$
+processing	NN
+time	NN
+or	CC
+provide	VB
+methods	NNS
+to	TO
+inquire	VB
+about	IN
+it	PRP
+.	.
+
+The	DT
+transmission	NN
+time	NN
+is	VBZ
+estimatedP	NN
+
+
+based	VBN
+on	IN
+past	JJ
+executions	NNS
+of	IN
+the	DT
+service	NN
+operations	NNS
+,	,
+i.e.	FW
+,	,
+Ttrans	NNS
+-LRB-	-LRB-
+s	NNS
+;op	VBP
+-RRB-	-RRB-
+=	JJ
+
+
+n	NN
+
+
+i	LS
+=	SYM
+1	CD
+
+
+Ti	NNP
+-LRB-	-LRB-
+s	NNS
+;op	VBP
+-RRB-	-RRB-
+
+
+n	NN
+
+
+,	,
+where	WRB
+Ti	NNP
+-LRB-	-LRB-
+s	NNS
+;op	VBP
+-RRB-	-RRB-
+is	VBZ
+a	DT
+past	JJ
+observation	NN
+of	IN
+the	DT
+transmission	NN
+time	NN
+,	,
+and	CC
+n	NN
+is	VBZ
+the	DT
+number	NN
+of	IN
+execution	NN
+times	NNS
+observed	VBN
+in	IN
+the	DT
+past	NN
+.	.
+
+
+Reliability	NN
+.	.
+
+The	DT
+reliability	NN
+qrel	NN
+-LRB-	-LRB-
+s	NNS
+-RRB-	-RRB-
+of	IN
+a	DT
+service	NN
+s	NNS
+is	VBZ
+the	DT
+probability	NN
+that	IN
+a	DT
+request	NN
+is	VBZ
+correctly	RB
+responded	VBN
+within	IN
+the	DT
+maximum	NN
+expected	VBN
+time	NN
+frame	NN
+indicated	VBD
+in	IN
+the	DT
+Web	NN
+service	NN
+description	NN
+.	.
+
+Reliability	NN
+is	VBZ
+a	DT
+measure	NN
+related	JJ
+to	TO
+hardware	NN
+and/or	CC
+software	NN
+con	NN
+of	IN
+Web	NN
+services	NNS
+and	CC
+the	DT
+network	NN
+connections	NNS
+between	IN
+the	DT
+service	NN
+requesters	NNS
+and	CC
+providers	NNS
+.	.
+
+The	DT
+value	NN
+of	IN
+the	DT
+re	NN
+-	:
+liability	NN
+is	VBZ
+computed	VBN
+from	IN
+data	NNS
+of	IN
+past	JJ
+invocations	NNS
+using	VBG
+the	DT
+expression	NN
+qrel	NN
+-LRB-	-LRB-
+s	NNS
+-RRB-	-RRB-
+=	JJ
+Nc	NN
+-LRB-	-LRB-
+s	NNS
+-RRB-	-RRB-
+=	JJ
+K	NN
+,	,
+where	WRB
+Nc	NN
+-LRB-	-LRB-
+s	NNS
+-RRB-	-RRB-
+is	VBZ
+the	DT
+number	NN
+of	IN
+times	NNS
+that	IN
+the	DT
+service	NN
+s	NNS
+has	VBZ
+been	VBN
+successfully	RB
+delivered	VBN
+within	IN
+the	DT
+maximum	NN
+expected	VBN
+time	NN
+frame	NN
+,	,
+and	CC
+K	NN
+is	VBZ
+the	DT
+total	JJ
+number	NN
+of	IN
+invocations	NNS
+.	.
+
+
+Availability	NN
+.	.
+
+Theavailabilityqav	NNP
+-LRB-	-LRB-
+s	NNS
+-RRB-	-RRB-
+of	IN
+aservice	NN
+sistheprobabilitythattheservice	NN
+isaccessible	NN
+.	.
+
+The	DT
+value	NN
+of	IN
+the	DT
+availability	NN
+of	IN
+a	DT
+service	NN
+s	NNS
+is	VBZ
+computed	VBN
+using	VBG
+the	DT
+following	VBG
+expression	NN
+qav	NN
+-LRB-	-LRB-
+s	NNS
+-RRB-	-RRB-
+=	JJ
+Ta	NN
+-LRB-	-LRB-
+s	NNS
+-RRB-	-RRB-
+=	JJ
+,	,
+where	WRB
+Ta	NNP
+is	VBZ
+the	DT
+total	JJ
+amount	NN
+of	IN
+time	NN
+-LRB-	-LRB-
+in	IN
+seconds	NNS
+-RRB-	-RRB-
+in	IN
+which	WDT
+service	NN
+s	NNS
+is	VBZ
+available	JJ
+during	IN
+the	DT
+last	JJ
+seconds	NNS
+-LRB-	-LRB-
+is	VBZ
+a	DT
+constant	JJ
+set	VBN
+by	IN
+an	DT
+administrator	NN
+of	IN
+the	DT
+service	NN
+community	NN
+-RRB-	-RRB-
+.	.
+
+The	DT
+value	NN
+of	IN
+may	MD
+vary	VB
+depending	VBG
+on	IN
+a	DT
+particular	JJ
+application	NN
+.	.
+
+For	IN
+example	NN
+,	,
+in	IN
+applications	NNS
+where	WRB
+services	NNS
+are	VBP
+more	RBR
+frequently	RB
+accessed	VBN
+-LRB-	-LRB-
+e.g.	FW
+,	,
+stock	NN
+exchange	NN
+-RRB-	-RRB-
+,	,
+a	DT
+small	JJ
+value	NN
+of	IN
+gives	VBZ
+a	DT
+more	RBR
+accurate	JJ
+approximation	NN
+for	IN
+the	DT
+availability	NN
+of	IN
+services	NNS
+.	.
+
+If	IN
+the	DT
+service	NN
+is	VBZ
+less	RBR
+frequently	RB
+accessed	VBN
+-LRB-	-LRB-
+e.g.	FW
+,	,
+online	JJ
+bookstore	NN
+-RRB-	-RRB-
+,	,
+using	VBG
+a	DT
+larger	JJR
+value	NN
+is	VBZ
+more	RBR
+appropriate	JJ
+.	.
+
+Here	RB
+,	,
+we	PRP
+assume	VBP
+that	IN
+Web	NN
+services	NNS
+send	VBP
+noti	NNS
+to	TO
+the	DT
+system	NN
+about	IN
+their	PRP$
+running	VBG
+states	NNS
+-LRB-	-LRB-
+i.e.	FW
+,	,
+available	JJ
+,	,
+unavailable	JJ
+-RRB-	-RRB-
+.	.
+
+
+10	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+10	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+Reputation	NN
+.	.
+
+The	DT
+reputation	NN
+qrep	NN
+-LRB-	-LRB-
+s	NNS
+-RRB-	-RRB-
+of	IN
+a	DT
+service	NN
+s	NNS
+is	VBZ
+a	DT
+measure	NN
+of	IN
+its	PRP$
+trustworthiness	NN
+.	.
+
+It	PRP
+mainly	RB
+depends	VBZ
+on	IN
+end	NN
+userâ	NN
+$	$
+™	CD
+s	NNS
+experiences	NNS
+of	IN
+using	VBG
+the	DT
+service	NN
+s.	VBP
+Different	JJ
+end	NN
+users	NNS
+may	MD
+have	VB
+different	JJ
+
+
+opinionson	NN
+the	DT
+same	JJ
+service	NN
+.	.
+
+The	DT
+valueof	NN
+the	DT
+reputationis	FW
+de	FW
+as	IN
+the	DT
+average	JJ
+ranking	JJ
+givenP	NN
+
+
+to	TO
+the	DT
+service	NN
+by	IN
+end	NN
+users	NNS
+,	,
+i.e.	FW
+,	,
+qrep	NN
+=	JJ
+
+
+n	NN
+
+
+i	LS
+=	SYM
+1	CD
+
+
+Ri	NNP
+
+
+n	NN
+
+
+,	,
+where	WRB
+Ri	NNP
+is	VBZ
+the	DT
+end	NN
+userâ	NN
+$	$
+™	CD
+s	NNS
+ranking	VBG
+on	IN
+a	DT
+serviceâ	NN
+$	$
+™	CD
+s	NNS
+reputation	NN
+,	,
+n	NN
+is	VBZ
+the	DT
+number	NN
+of	IN
+times	NNS
+the	DT
+service	NN
+has	VBZ
+been	VBN
+graded	VBN
+.	.
+
+Usually	RB
+,	,
+end	NN
+users	NNS
+are	VBP
+given	VBN
+a	DT
+range	NN
+to	TO
+rank	VB
+Web	NN
+services	NNS
+.	.
+
+For	IN
+example	NN
+,	,
+in	IN
+Amazon.com	NNP
+,	,
+the	DT
+range	NN
+is	VBZ
+-LSB-	-LRB-
+0	CD
+;	:
+5	CD
+-RSB-	-RRB-
+.	.
+
+
+The	DT
+quality	NN
+vector	NN
+of	IN
+an	DT
+operation	NN
+op	NN
+of	IN
+a	DT
+service	NN
+s	NNS
+is	VBZ
+de	IN
+by	IN
+the	DT
+following	VBG
+expression	NN
+:	:
+
+
+q	NN
+-LRB-	-LRB-
+s	NNS
+;op	VBP
+-RRB-	-RRB-
+=	JJ
+-LRB-	-LRB-
+qpr	NN
+-LRB-	-LRB-
+s	NNS
+;op	VBP
+-RRB-	-RRB-
+;	:
+qdu	NN
+-LRB-	-LRB-
+s	NNS
+;op	VBP
+-RRB-	-RRB-
+;	:
+qav	NN
+-LRB-	-LRB-
+s	NNS
+-RRB-	-RRB-
+;	:
+qre	NN
+-LRB-	-LRB-
+s	NNS
+-RRB-	-RRB-
+;	:
+qrep	NN
+-LRB-	-LRB-
+s	NNS
+-RRB-	-RRB-
+-RRB-	-RRB-
+
+
+-LRB-	-LRB-
+1	LS
+-RRB-	-RRB-
+
+
+Note	VB
+that	IN
+the	DT
+method	NN
+for	IN
+computing	VBG
+the	DT
+value	NN
+of	IN
+the	DT
+quality	NN
+criteria	NNS
+is	VBZ
+not	RB
+unique	JJ
+.	.
+
+Other	JJ
+com	NN
+-	:
+putation	NN
+methods	NNS
+can	MD
+be	VB
+designed	VBN
+to	TO
+the	DT
+needs	NNS
+of	IN
+speci	NN
+applications	NNS
+.	.
+
+The	DT
+service	NN
+selection	NN
+approaches	NNS
+presented	VBN
+in	IN
+Section	NN
+4	CD
+are	VBP
+independent	JJ
+of	IN
+these	DT
+computation	NN
+methods	NNS
+.	.
+
+
+3.2	CD
+Quality	NNP
+Criteria	NNP
+for	IN
+Composite	NNP
+Services	NNPS
+
+
+The	DT
+quality	NN
+criteria	NNS
+de	IN
+above	IN
+in	IN
+the	DT
+context	NN
+of	IN
+elementary	JJ
+Web	NN
+services	NNS
+,	,
+are	VBP
+also	RB
+used	VBN
+to	TO
+evaluate	VB
+the	DT
+QoS	NN
+of	IN
+compositeservices	NNS
+.	.
+
+Table	NNP
+1	CD
+providesaggregationfunctionsfor	NN
+the	DT
+computationof	NN
+the	DT
+QoS	NN
+of	IN
+a	DT
+composite	JJ
+service	NN
+CS	NN
+when	WRB
+executed	VBN
+using	VBG
+plan	NN
+p	NN
+=	JJ
+f	FW
+<	JJR
+t1	CD
+;	:
+s1	NN
+>	JJR
+;	:
+<	JJR
+t2	CD
+;	:
+s2	NN
+>	JJR
+;	:
+:	:
+:	:
+:	:
+;	:
+<	JJR
+tn	NN
+;	:
+sn	NN
+>	JJR
+g	NN
+.	.
+
+A	DT
+brief	JJ
+explanation	NN
+of	IN
+each	DT
+criterionâ	NN
+$	$
+™	CD
+s	NNS
+aggregation	NN
+function	NN
+follows	VBZ
+.	.
+
+
+Table	NNP
+1	CD
+:	:
+Aggregation	NN
+functions	NNS
+for	IN
+computing	VBG
+the	DT
+QoS	NN
+of	IN
+execution	NN
+plans	NNS
+
+
+Criteria	NNS
+
+
+Price	NNP
+Duration	NNP
+Reputation	NNP
+Reliability	NNP
+Availability	NNP
+
+
+Aggregation	NN
+function	NN
+qpr	NN
+-LRB-	-LRB-
+p	NN
+-RRB-	-RRB-
+=	JJ
+
+
+PN	NN
+
+
+i	LS
+=	SYM
+1	CD
+
+
+qpr	NN
+-LRB-	-LRB-
+si	FW
+;op	FW
+-LRB-	-LRB-
+ti	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+qdu	NN
+-LRB-	-LRB-
+p	NN
+-RRB-	-RRB-
+=	JJ
+CPA	NN
+-LRB-	-LRB-
+p	NN
+;	:
+qdu	NN
+-RRB-	-RRB-
+P	NN
+
+
+qrep	NN
+-LRB-	-LRB-
+p	NN
+-RRB-	-RRB-
+=	JJ
+
+
+1	CD
+
+
+N	NN
+
+
+N	NN
+i	FW
+=	JJ
+1	CD
+
+
+qrep	NN
+-LRB-	-LRB-
+si	NN
+-RRB-	-RRB-
+qrel	NN
+-LRB-	-LRB-
+p	NN
+-RRB-	-RRB-
+=	JJ
+Ni	NN
+=	JJ
+1	CD
+-LRB-	-LRB-
+eq	NN
+
+
+rel	NN
+-LRB-	-LRB-
+si	NN
+-RRB-	-RRB-
+zi	NN
+-RRB-	-RRB-
+qav	NN
+-LRB-	-LRB-
+p	NN
+-RRB-	-RRB-
+=	JJ
+Ni	NN
+=	JJ
+1	CD
+-LRB-	-LRB-
+eq	NN
+
+
+av	NN
+-LRB-	-LRB-
+si	NN
+-RRB-	-RRB-
+zi	NN
+-RRB-	-RRB-
+
+
+Execution	NN
+price	NN
+:	:
+The	DT
+execution	NN
+price	NN
+qpr	NN
+-LRB-	-LRB-
+p	NN
+-RRB-	-RRB-
+of	IN
+an	DT
+execution	NN
+plan	NN
+p	NN
+is	VBZ
+a	DT
+sum	NN
+of	IN
+the	DT
+execution	NN
+prices	NNS
+of	IN
+the	DT
+operations	NNS
+invoked	VBD
+over	IN
+the	DT
+services	NNS
+that	WDT
+participate	VBP
+in	IN
+p	NN
+.	.
+
+In	IN
+the	DT
+equation	NN
+for	IN
+the	DT
+execution	NN
+price	NN
+given	VBN
+in	IN
+Table	NNP
+1	CD
+,	,
+op	NN
+-LRB-	-LRB-
+ti	NN
+-RRB-	-RRB-
+denotes	VBZ
+the	DT
+operation	NN
+invoked	VBN
+by	IN
+task	NN
+ti	NN
+.	.
+
+
+Execution	NN
+duration	NN
+:	:
+The	DT
+execution	NN
+duration	NN
+qdu	NN
+-LRB-	-LRB-
+p	NN
+-RRB-	-RRB-
+of	IN
+an	DT
+execution	NN
+plan	NN
+p	NN
+is	VBZ
+computed	VBN
+using	VBG
+the	DT
+Critical	JJ
+Path	NN
+Algorithm	NN
+-LRB-	-LRB-
+CPA	NN
+-RRB-	-RRB-
+-LSB-	-LRB-
+28	CD
+-RSB-	-RRB-
+.	.
+
+Speci	NNP
+,	,
+the	DT
+CPA	NNP
+is	VBZ
+applied	VBN
+to	TO
+the	DT
+the	DT
+execution	NN
+path	NN
+We	PRP
+of	IN
+execution	NN
+plan	NN
+p	NN
+,	,
+seen	VBN
+as	IN
+a	DT
+project	NN
+digraph	NN
+.	.
+
+The	DT
+critical	JJ
+path	NN
+of	IN
+a	DT
+project	NN
+digraph	NN
+is	VBZ
+a	DT
+path	NN
+from	IN
+the	DT
+initialstate	NN
+to	TO
+the	DT
+state	NN
+which	WDT
+has	VBZ
+the	DT
+longest	JJS
+total	JJ
+sum	NN
+of	IN
+weights	NNS
+labeling	VBG
+its	PRP$
+
+
+11	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+11	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+nodes	NNS
+.	.
+
+In	IN
+the	DT
+case	NN
+at	IN
+hand	NN
+,	,
+a	DT
+node	NN
+corresponds	VBZ
+to	TO
+a	DT
+task	NN
+t	NN
+in	IN
+We	PRP
+,	,
+and	CC
+its	PRP$
+weight	NN
+is	VBZ
+the	DT
+execution	NN
+duration	NN
+of	IN
+the	DT
+service	NN
+operation	NN
+invoked	VBN
+by	IN
+t	NN
+,	,
+that	WDT
+is	VBZ
+:	:
+qdu	NN
+-LRB-	-LRB-
+svp	NN
+-LRB-	-LRB-
+t	NN
+-RRB-	-RRB-
+;op	NN
+-LRB-	-LRB-
+t	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+,	,
+where	WRB
+svp	NN
+-LRB-	-LRB-
+t	NN
+-RRB-	-RRB-
+is	VBZ
+the	DT
+service	NN
+assigned	VBN
+to	TO
+task	NN
+t	NN
+in	IN
+plan	NN
+p	NN
+,	,
+and	CC
+op	NN
+-LRB-	-LRB-
+t	NN
+-RRB-	-RRB-
+denotes	VBZ
+the	DT
+operation	NN
+invoked	VBN
+by	IN
+task	NN
+t	NN
+.	.
+
+A	DT
+task	NN
+that	WDT
+belongs	VBZ
+to	TO
+the	DT
+critical	JJ
+path	NN
+is	VBZ
+called	VBN
+a	DT
+critical	JJ
+task	NN
+,	,
+while	IN
+a	DT
+service	NN
+assigned	VBN
+to	TO
+a	DT
+task	NN
+that	WDT
+belongs	VBZ
+to	TO
+the	DT
+critical	JJ
+path	NN
+is	VBZ
+called	VBN
+a	DT
+critical	JJ
+service	NN
+.	.
+
+
+FigurePSfrag	NNP
+5replacementsprovidesan	JJ
+exampleof	NN
+a	DT
+criticalpath	NN
+.	.
+
+This	DT
+depicts	VBZ
+an	DT
+executionpathas	FW
+a	DT
+project	NN
+digraph	NN
+,	,
+and	CC
+an	DT
+associated	JJ
+execution	NN
+plan	NN
+p	NN
+,	,
+where	WRB
+p	NN
+=	JJ
+f	FW
+<	JJR
+t1	CD
+;	:
+s1	NN
+>	JJR
+,	,
+<	JJR
+t2	CD
+;	:
+s2	NN
+>	JJR
+,	,
+<	JJR
+t3	CD
+;	:
+s3	CD
+>	JJR
+,	,
+<	JJR
+t4	CD
+;	:
+s4	NN
+>	JJR
+,	,
+<	JJR
+t5	CD
+;	:
+s5	CD
+>	JJR
+g.	NN
+For	IN
+each	DT
+service	NN
+,	,
+its	PRP$
+execution	NN
+duration	NN
+is	VBZ
+shown	VBN
+next	IN
+to	TO
+it	PRP
+.	.
+
+There	EX
+are	VBP
+two	CD
+project	NN
+paths	NNS
+in	IN
+this	DT
+project	NN
+digraph	NN
+,	,
+where	WRB
+project	NN
+path	NN
+1	CD
+is	VBZ
+<	JJR
+t1	NN
+;	:
+t4	NN
+;	:
+t5	NN
+>	JJR
+and	CC
+project	NN
+path	NN
+2	CD
+is	VBZ
+<	JJR
+t2	NN
+;	:
+t3	NN
+;	:
+t4	NN
+;	:
+t5	NN
+>	JJR
+.	.
+
+The	DT
+execution	NN
+time	NN
+of	IN
+project	NN
+path	NN
+1	CD
+-LRB-	-LRB-
+project	NN
+path	NN
+2	CD
+-RRB-	-RRB-
+is	VBZ
+37	CD
+seconds	NNS
+-LRB-	-LRB-
+62	CD
+seconds	NNS
+-RRB-	-RRB-
+.	.
+
+The	DT
+critical	JJ
+path	NN
+is	VBZ
+therefore	RB
+path	NN
+2	CD
+and	CC
+the	DT
+execution	NN
+duration	NN
+of	IN
+the	DT
+plan	NN
+is	VBZ
+62	CD
+seconds	NNS
+.	.
+
+Task	NNP
+t2	NN
+,	,
+t3	NN
+,	,
+t4	NN
+and	CC
+t5	NN
+are	VBP
+critical	JJ
+tasks	NNS
+while	IN
+services	NNS
+s2	NN
+,	,
+s3	NN
+,	,
+s4	NN
+and	CC
+s5	NN
+are	VBP
+critical	JJ
+services	NNS
+.	.
+
+
+t6	NN
+t1	NN
+
+
+s1	NN
+,	,
+20	CD
+sec	NN
+.	.
+
+
+t5	NN
+
+
+s5	NN
+,	,
+15	CD
+sec	NN
+.	.
+
+
+ti	NN
+
+
+t4	NN
+
+
+tf	NN
+
+
+t2	NN
+
+
+t3	NN
+
+
+s4	NN
+,	,
+2	CD
+sec	NN
+.	.
+
+
+s2	NN
+,	,
+25	CD
+sec	NN
+.	.
+
+s3	NN
+,	,
+20	CD
+sec	NN
+.	.
+
+
+Legend	NNP
+:	:
+
+
+critical	JJ
+path	NN
+of	IN
+project	NN
+digraph	NN
+
+
+critical	JJ
+task	NN
+
+
+critical	JJ
+service	NN
+
+
+Figure	NNP
+5	CD
+:	:
+Example	NN
+of	IN
+a	DT
+Critical	JJ
+Path	NN
+
+
+Reputation	NN
+:	:
+The	DT
+reputation	NN
+qrep	NN
+-LRB-	-LRB-
+p	NN
+-RRB-	-RRB-
+of	IN
+an	DT
+execution	NN
+plan	NN
+p	NN
+is	VBZ
+the	DT
+average	NN
+of	IN
+the	DT
+reputations	NNS
+of	IN
+the	DT
+services	NNS
+that	WDT
+participate	VBP
+in	IN
+p.	NN
+
+
+Reliability	NN
+:	:
+The	DT
+reliability	NN
+qrel	NN
+-LRB-	-LRB-
+p	NN
+-RRB-	-RRB-
+of	IN
+an	DT
+execution	NN
+plan	NN
+p	NN
+is	VBZ
+the	DT
+product	NN
+of	IN
+the	DT
+factors	NNS
+eq	NN
+
+
+rel	NN
+-LRB-	-LRB-
+si	NN
+-RRB-	-RRB-
+zi	NN
+,	,
+where	WRB
+zi	NN
+is	VBZ
+equal	JJ
+to	TO
+1	CD
+if	IN
+service	NN
+si	NNS
+is	VBZ
+a	DT
+critical	JJ
+service	NN
+in	IN
+the	DT
+execution	NN
+plan	NN
+p	NN
+,	,
+or	CC
+0	CD
+otherwise	RB
+.	.
+
+If	IN
+zi	NN
+=	JJ
+0	CD
+,	,
+i.e.	FW
+,	,
+service	NN
+si	NNS
+is	VBZ
+not	RB
+a	DT
+critical	JJ
+service	NN
+,	,
+then	RB
+eq	NN
+
+
+rel	NN
+-LRB-	-LRB-
+si	NN
+-RRB-	-RRB-
+zi	NN
+
+
+=	JJ
+1	CD
+,	,
+and	CC
+hence	RB
+,	,
+the	DT
+reliability	NN
+of	IN
+service	NN
+si	NNS
+will	MD
+not	RB
+affect	VB
+the	DT
+overall	JJ
+planâ	NN
+$	$
+™	CD
+s	NNS
+reliability	NN
+.	.
+
+
+Availability	NN
+:	:
+The	DT
+availability	NN
+qav	NN
+-LRB-	-LRB-
+p	NN
+-RRB-	-RRB-
+of	IN
+an	DT
+execution	NN
+plan	NN
+p	NN
+is	VBZ
+given	VBN
+by	IN
+the	DT
+function	NN
+eq	NN
+
+
+av	NN
+-LRB-	-LRB-
+si	NN
+-RRB-	-RRB-
+zi	NN
+,	,
+where	WRB
+qav	NN
+-LRB-	-LRB-
+si	NN
+-RRB-	-RRB-
+is	VBZ
+the	DT
+availability	NN
+of	IN
+service	NN
+si	NNS
+.	.
+
+
+Given	VBN
+these	DT
+functions	NNS
+,	,
+the	DT
+quality	NN
+vector	NN
+of	IN
+a	DT
+composite	JJ
+serviceâ	NN
+$	$
+™	CD
+s	NNS
+execution	NN
+plan	NN
+is	VBZ
+de	IN
+as	IN
+:	:
+
+
+q	NN
+-LRB-	-LRB-
+p	NN
+-RRB-	-RRB-
+=	JJ
+-LRB-	-LRB-
+qpr	NN
+-LRB-	-LRB-
+p	NN
+-RRB-	-RRB-
+;	:
+qdu	NN
+-LRB-	-LRB-
+p	NN
+-RRB-	-RRB-
+;	:
+qav	NN
+-LRB-	-LRB-
+p	NN
+-RRB-	-RRB-
+;	:
+qre	NN
+-LRB-	-LRB-
+p	NN
+-RRB-	-RRB-
+;	:
+qrep	NN
+-LRB-	-LRB-
+p	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+
+
+-LRB-	-LRB-
+2	LS
+-RRB-	-RRB-
+
+
+12	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+12	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+4	CD
+
+
+QoS-Driven	NNP
+Service	NNP
+Selection	NN
+for	IN
+Web	NN
+Service	NN
+Composition	NN
+
+
+In	IN
+this	DT
+section	NN
+,	,
+we	PRP
+present	VBP
+two	CD
+service	NN
+selection	NN
+approaches	NNS
+,	,
+namely	RB
+local	JJ
+optimization	NN
+and	CC
+global	JJ
+planning	NN
+.	.
+
+
+4.1	CD
+
+
+Service	NNP
+Selection	NN
+by	IN
+Local	JJ
+Optimization	NN
+
+
+In	IN
+this	DT
+approach	NN
+,	,
+the	DT
+selection	NN
+of	IN
+the	DT
+Web	NN
+service	NN
+that	WDT
+will	MD
+execute	VB
+a	DT
+given	VBN
+task	NN
+of	IN
+a	DT
+composite	JJ
+service	NN
+speci	NN
+is	VBZ
+done	VBN
+at	IN
+the	DT
+last	JJ
+possible	JJ
+moment	NN
+and	CC
+without	IN
+taking	VBG
+into	IN
+account	NN
+the	DT
+other	JJ
+tasks	NNS
+involved	VBN
+in	IN
+the	DT
+composite	JJ
+service	NN
+.	.
+
+When	WRB
+a	DT
+task	NN
+actually	RB
+needs	VBZ
+to	TO
+be	VB
+executed	VBN
+,	,
+the	DT
+system	NN
+collects	VBZ
+informationabouttheQoSofeachof	NN
+theWebservicesthatcanexecutethistask	NN
+-LRB-	-LRB-
+namelythecandidate	NN
+Web	NN
+services	NNS
+for	IN
+this	DT
+task	NN
+-RRB-	-RRB-
+.	.
+
+After	IN
+collecting	VBG
+this	DT
+QoS	NN
+information	NN
+,	,
+a	DT
+quality	NN
+vector	NN
+is	VBZ
+computed	VBN
+for	IN
+each	DT
+of	IN
+the	DT
+candidate	NN
+Web	NN
+services	NNS
+,	,
+and	CC
+based	VBN
+on	IN
+these	DT
+quality	NN
+vectors	NNS
+,	,
+the	DT
+system	NN
+selects	VBZ
+one	CD
+of	IN
+the	DT
+candidate	NN
+Web	NN
+services	NNS
+by	IN
+applying	VBG
+a	DT
+Multiple	JJ
+Criteria	NNP
+Decision	NNP
+Making	VBG
+-LRB-	-LRB-
+MCDM	NN
+-RRB-	-RRB-
+-LSB-	-LRB-
+6	CD
+-RSB-	-RRB-
+technique	NN
+.	.
+
+This	DT
+selection	NN
+process	NN
+is	VBZ
+based	VBN
+on	IN
+the	DT
+weight	NN
+assigned	VBN
+by	IN
+the	DT
+user	NN
+to	TO
+each	DT
+criterion	NN
+,	,
+and	CC
+a	DT
+set	NN
+of	IN
+user-de	JJ
+constraints	NNS
+expressed	VBN
+using	VBG
+a	DT
+simple	JJ
+expression	NN
+language	NN
+.	.
+
+Examples	NNS
+of	IN
+constraints	NNS
+that	WDT
+can	MD
+be	VB
+expressed	VBN
+include	VBP
+duration	NN
+constraints	NNS
+and	CC
+price	NN
+constraints	NNS
+.	.
+
+However	RB
+,	,
+constraints	NNS
+can	MD
+only	RB
+be	VB
+expressed	VBN
+on	IN
+individual	JJ
+tasks	NNS
+,	,
+and	CC
+not	RB
+on	IN
+combinations	NNS
+of	IN
+tasks	NNS
+.	.
+
+In	IN
+other	JJ
+words	NNS
+,	,
+it	PRP
+is	VBZ
+not	RB
+possible	JJ
+to	TO
+express	VB
+the	DT
+fact	NN
+that	IN
+the	DT
+sum	NN
+of	IN
+the	DT
+durations	NNS
+for	IN
+two	CD
+or	CC
+more	JJR
+tasks	NNS
+should	MD
+not	RB
+exceed	VB
+a	DT
+given	VBN
+threshold	NN
+.	.
+
+
+To	TO
+illustratethe	VB
+local	JJ
+optimizationapproach	NN
+,	,
+we	PRP
+usethe	VBP
+5	CD
+qualitydimensionsdiscussedearlier	NN
+,	,
+but	CC
+other	JJ
+quality	NN
+dimensions	NNS
+can	MD
+be	VB
+used	VBN
+instead	RB
+without	IN
+any	DT
+fundamental	JJ
+changes	NNS
+.	.
+
+The	DT
+dimensions	NNS
+are	VBP
+numbered	VBN
+from	IN
+1	CD
+to	TO
+5	CD
+,	,
+with	IN
+1	CD
+=	JJ
+price	NN
+,	,
+2	CD
+=	JJ
+duration	NN
+,	,
+3	CD
+=	JJ
+availability	NN
+,	,
+4	CD
+=	JJ
+reliability	NN
+,	,
+and	CC
+5	CD
+=	JJ
+reputation	NN
+.	.
+
+Givena	NNP
+task	NN
+tj	NN
+in	IN
+a	DT
+composite	JJ
+service	NN
+,	,
+there	EX
+is	VBZ
+a	DT
+set	NN
+of	IN
+candidate	NN
+Web	NN
+services	NNS
+Sj	NN
+=	JJ
+fs1j	NN
+;	:
+s2j	NN
+;	:
+:	:
+:	:
+:	:
+;	:
+snjg	NN
+that	WDT
+can	MD
+be	VB
+used	VBN
+to	TO
+execute	VB
+this	DT
+task	NN
+.	.
+
+By	IN
+merging	VBG
+the	DT
+quality	NN
+vectors	NNS
+of	IN
+all	PDT
+these	DT
+candidate	NN
+Web	NN
+services	NNS
+,	,
+a	DT
+matrix	NN
+Q	NNP
+=	JJ
+-LRB-	-LRB-
+Qi	NN
+;	:
+j	NN
+;	:
+1	CD
+i	FW
+n	NN
+;	:
+1	CD
+j	NN
+5	CD
+-RRB-	-RRB-
+is	VBZ
+built	VBN
+,	,
+in	IN
+which	WDT
+each	DT
+row	NN
+Qj	NN
+corresponds	VBZ
+to	TO
+a	DT
+Web	NN
+service	NN
+sij	NN
+while	IN
+each	DT
+column	NN
+corresponds	VBZ
+to	TO
+a	DT
+quality	NN
+dimension	NN
+.	.
+
+
+A	DT
+Simple	JJ
+AdditiveWeighting	NN
+-LRB-	-LRB-
+SAW	NN
+-RRB-	-RRB-
+-LSB-	-LRB-
+6	CD
+-RSB-	-RRB-
+techniqueisused	VBN
+toselect	NN
+an	DT
+optimalWeb	NN
+service	NN
+.	.
+
+There	EX
+are	VBP
+two	CD
+phases	NNS
+in	IN
+applying	VBG
+SAW	NNP
+:	:
+
+
+Scaling	VBG
+Phase	NN
+
+
+Some	DT
+of	IN
+the	DT
+criteria	NNS
+could	MD
+be	VB
+negative	JJ
+,	,
+i.e.	FW
+,	,
+the	DT
+higher	JJR
+the	DT
+value	NN
+,	,
+the	DT
+lower	JJR
+the	DT
+quality	NN
+.	.
+
+This	DT
+includes	VBZ
+criteria	NNS
+such	JJ
+as	IN
+execution	NN
+time	NN
+and	CC
+execution	NN
+price	NN
+.	.
+
+Other	JJ
+criteria	NNS
+are	VBP
+positive	JJ
+,	,
+i.e.	FW
+,	,
+the	DT
+higher	JJR
+the	DT
+value	NN
+,	,
+the	DT
+higher	JJR
+the	DT
+quality	NN
+.	.
+
+For	IN
+negative	JJ
+criteria	NNS
+,	,
+values	NNS
+are	VBP
+scaled	VBN
+according	VBG
+to	TO
+equation	NN
+3	CD
+.	.
+
+For	IN
+positive	JJ
+criteria	NNS
+,	,
+values	NNS
+are	VBP
+scaled	VBN
+according	VBG
+to	TO
+equation	NN
+4	CD
+.	.
+
+
+8	CD
+<	JJR
+
+
+Qmaxj	NNP
+Qi	NNP
+;	:
+j	NN
+
+
+Vi	NNP
+;	:
+j	NN
+
+
+Qminj	NNP
+
+
+if	IN
+Qmaxj	NNP
+Qminj	NNP
+=	JJ
+6	CD
+0	CD
+
+
+=	JJ
+
+
+Qmaxj	NNP
+
+
+:	:
+
+
+-LRB-	-LRB-
+3	LS
+-RRB-	-RRB-
+
+
+1	CD
+if	IN
+Qmaxj	NNP
+Qminj	NNP
+=	JJ
+0	CD
+
+
+13	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+13	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+8	CD
+<	JJR
+
+
+Qi	NNP
+;	:
+j	NN
+Qminj	NNP
+Vi	NNP
+;	:
+j	NN
+=	JJ
+
+
+Qmaxj	NNP
+Qminj	NNP
+
+
+:	:
+
+
+1	CD
+
+
+if	IN
+Qmaxj	NNP
+
+
+if	IN
+Qmaxj	NNP
+
+
+Qminj	NN
+=	JJ
+6	CD
+0	CD
+Qminj	NN
+=	JJ
+0	CD
+
+
+-LRB-	-LRB-
+4	LS
+-RRB-	-RRB-
+
+
+In	IN
+the	DT
+above	JJ
+equations	NNS
+,	,
+Qmaxj	NNP
+is	VBZ
+the	DT
+maximal	JJ
+value	NN
+of	IN
+a	DT
+quality	NN
+criteria	NNS
+in	IN
+matrix	NN
+Q	NNP
+,	,
+i.e.	FW
+,	,
+Qmaxj	NN
+=	JJ
+Max	NN
+-LRB-	-LRB-
+Qi	NN
+;	:
+j	NN
+-RRB-	-RRB-
+;	:
+1	CD
+i	FW
+n	NN
+.	.
+
+While	IN
+Qminj	NN
+is	VBZ
+the	DT
+minimal	JJ
+value	NN
+of	IN
+a	DT
+quality	NN
+criteria	NNS
+in	IN
+matrix	NN
+Q	NNP
+,	,
+i.e.	FW
+,	,
+Qminj	NN
+=	JJ
+Min	NN
+-LRB-	-LRB-
+Qi	NN
+;	:
+j	NN
+-RRB-	-RRB-
+;	:
+1	CD
+i	FW
+n.	FW
+By	IN
+applying	VBG
+these	DT
+two	CD
+equations	NNS
+on	IN
+Q	NNP
+,	,
+we	PRP
+obtain	VBP
+a	DT
+matrix	NN
+V	NN
+=	JJ
+-LRB-	-LRB-
+Vi	NN
+;	:
+j	NN
+;	:
+1	CD
+i	FW
+n	NN
+;	:
+1	CD
+j	NN
+5	CD
+-RRB-	-RRB-
+,	,
+in	IN
+which	WDT
+each	DT
+row	NN
+Vj	NN
+corresponds	VBZ
+to	TO
+a	DT
+Web	NN
+service	NN
+sij	NN
+while	IN
+each	DT
+column	NN
+corresponds	VBZ
+to	TO
+a	DT
+quality	NN
+dimension	NN
+.	.
+
+
+As	IN
+an	DT
+example	NN
+,	,
+assume	VB
+that	IN
+there	EX
+are	VBP
+eight	CD
+Web	NN
+services	NNS
+in	IN
+S5	NN
+for	IN
+task	NN
+t5	NN
+and	CC
+that	IN
+their	PRP$
+values	NNS
+for	IN
+service	NN
+reputation	NN
+are	VBP
+given	VBN
+by	IN
+the	DT
+vector	NN
+Q5	NN
+=	JJ
+-LRB-	-LRB-
+7.5,8.4,9,8.3,8.7,9.1,9.4,9.2,9.5	CD
+-RRB-	-RRB-
+.	.
+
+Since	IN
+reputation	NN
+is	VBZ
+a	DT
+positive	JJ
+criteria	NNS
+,	,
+equation	NN
+4	CD
+is	VBZ
+used	VBN
+for	IN
+scaling	VBG
+and	CC
+thus	RB
+Qmax5	NN
+=	JJ
+9.5	CD
+,	,
+Qmin5	NN
+=	JJ
+7.5	CD
+,	,
+and	CC
+V5	NN
+=	JJ
+-LRB-	-LRB-
+0	CD
+,	,
+0.55	CD
+,	,
+0.45	CD
+,	,
+0.75	CD
+,	,
+0.4,0.6	CD
+,	,
+0.8	CD
+,	,
+0.95,1	CD
+-RRB-	-RRB-
+.	.
+
+
+Weighting	NN
+Phase	NN
+
+
+The	DT
+following	VBG
+formula	NN
+is	VBZ
+used	VBN
+to	TO
+compute	VB
+the	DT
+overall	JJ
+quality	NN
+score	NN
+for	IN
+each	DT
+Web	NN
+service	NN
+:	:
+
+
+X	NN
+
+
+5	CD
+
+
+Score	NN
+-LRB-	-LRB-
+si	NN
+-RRB-	-RRB-
+=	JJ
+-LRB-	-LRB-
+Vi	NN
+;	:
+j	NN
+Wj	NN
+-RRB-	-RRB-
+-LRB-	-LRB-
+5	CD
+-RRB-	-RRB-
+
+
+j	NN
+=	JJ
+1	CD
+
+
+where	WRB
+Wj	NN
+2	CD
+-LSB-	-LRB-
+0	CD
+;	:
+1	CD
+-RSB-	-RRB-
+and	CC
+
+
+P5	NN
+
+
+j	NN
+=	JJ
+1	CD
+
+
+Wj	NN
+=	JJ
+1	CD
+.	.
+
+Wj	NN
+represents	VBZ
+the	DT
+weight	NN
+of	IN
+criterion	NN
+j	NN
+.	.
+
+As	IN
+stated	VBN
+before	RB
+,	,
+end	NN
+users	NNS
+express	VBP
+their	PRP$
+preferences	NNS
+regarding	VBG
+QoS	NN
+by	IN
+providing	VBG
+values	NNS
+for	IN
+the	DT
+weights	NNS
+Wj	NN
+.	.
+
+
+For	IN
+a	DT
+given	VBN
+task	NN
+,	,
+the	DT
+system	NN
+will	MD
+choose	VB
+the	DT
+Web	NN
+service	NN
+which	WDT
+satis	VBZ
+all	PDT
+the	DT
+user	NN
+constraints	NNS
+for	IN
+that	DT
+task	NN
+,	,
+and	CC
+which	WDT
+has	VBZ
+the	DT
+maximal	JJ
+score	NN
+.	.
+
+If	IN
+there	EX
+are	VBP
+several	JJ
+services	NNS
+with	IN
+maximal	JJ
+score	NN
+,	,
+one	CD
+of	IN
+them	PRP
+is	VBZ
+selected	VBN
+randomly	RB
+.	.
+
+If	IN
+no	DT
+service	NN
+satis	VBZ
+the	DT
+user	NN
+constraints	NNS
+for	IN
+a	DT
+given	VBN
+task	NN
+,	,
+an	DT
+execution	NN
+exception	NN
+will	MD
+be	VB
+raised	VBN
+and	CC
+the	DT
+system	NN
+will	MD
+propose	VB
+the	DT
+user	NN
+to	TO
+relax	VB
+these	DT
+constraints	NNS
+.	.
+
+
+4.2	CD
+
+
+Service	NNP
+Selection	NN
+by	IN
+Global	JJ
+Planning	NNP
+
+
+In	IN
+the	DT
+local	JJ
+optimization	NN
+approach	NN
+,	,
+service	NN
+selection	NN
+is	VBZ
+done	VBN
+for	IN
+each	DT
+task	NN
+individually	RB
+.	.
+
+Although	IN
+service	NN
+selection	NN
+is	VBZ
+locally	RB
+optimized	VBN
+,	,
+the	DT
+global	JJ
+quality	NN
+of	IN
+the	DT
+execution	NN
+may	MD
+be	VB
+sub-optimal	JJ
+.	.
+
+For	IN
+example	NN
+,	,
+if	IN
+two	CD
+tasks	NNS
+A	DT
+and	CC
+B	NN
+are	VBP
+executed	VBN
+in	IN
+parallel	NN
+and	CC
+need	VB
+to	TO
+synchronize	VB
+upon	IN
+completion	NN
+,	,
+then	RB
+it	PRP
+is	VBZ
+not	RB
+worth	JJ
+optimizing	VBG
+the	DT
+duration	NN
+of	IN
+A	NN
+,	,
+if	IN
+it	PRP
+is	VBZ
+known	VBN
+that	IN
+B	NN
+takes	VBZ
+considerably	RB
+more	JJR
+time	NN
+to	TO
+execute	VB
+.	.
+
+Instead	RB
+,	,
+it	PRP
+is	VBZ
+preferable	JJ
+to	TO
+optimize	VB
+-LRB-	-LRB-
+for	IN
+example	NN
+-RRB-	-RRB-
+the	DT
+price	NN
+of	IN
+A	NN
+,	,
+while	IN
+optimizing	VBG
+the	DT
+duration	NN
+of	IN
+B.	NNP
+Furthermore	RB
+,	,
+as	IN
+explained	VBN
+above	IN
+,	,
+when	WRB
+applying	VBG
+local	JJ
+optimization	NN
+it	PRP
+is	VBZ
+not	RB
+possible	JJ
+to	TO
+enforce	VB
+inter-task	JJ
+constraints	NNS
+over	IN
+the	DT
+composite	JJ
+service	NN
+execution	NN
+such	JJ
+as	IN
+:	:
+total	JJ
+price	NN
+of	IN
+the	DT
+composite	JJ
+service	NN
+execution	NN
+should	MD
+be	VB
+at	IN
+most	JJS
+$	$
+500	CD
+
+
+In	IN
+thissection	NN
+,	,
+we	PRP
+present	VBP
+a	DT
+global	JJ
+planningapproach	NN
+for	IN
+Web	NN
+services	NNS
+selection	NN
+which	WDT
+overcomes	VBZ
+these	DT
+limitations	NNS
+.	.
+
+We	PRP
+present	VBP
+a	DT
+naive	JJ
+approach	NN
+for	IN
+global	JJ
+planning	NN
+,	,
+and	CC
+then	RB
+present	VB
+a	DT
+novel	NN
+
+
+14	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+14	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+integer	NN
+programming	NN
+approach	NN
+that	WDT
+avoids	VBZ
+some	DT
+obvious	JJ
+computational	JJ
+problems	NNS
+associated	VBN
+with	IN
+the	DT
+naive	JJ
+approach	NN
+.	.
+
+
+4.2.1	CD
+
+
+Optimal	JJ
+Execution	NN
+Plan	NN
+of	IN
+an	DT
+Execution	NN
+Path	NN
+
+
+For	IN
+each	DT
+task	NN
+tj	NN
+in	IN
+an	DT
+execution	NN
+path	NN
+,	,
+there	EX
+is	VBZ
+a	DT
+set	NN
+of	IN
+candidate	NN
+Web	NN
+services	NNS
+Sj	NN
+=	JJ
+fs1j	NN
+;	:
+s2j	NN
+;	:
+:	:
+:	:
+:	:
+;	:
+snjg	NN
+that	WDT
+can	MD
+execute	VB
+task	NN
+tj	NN
+.	.
+
+Assigning	VBG
+a	DT
+candidate	NN
+Web	NN
+service	NN
+sij	NN
+to	TO
+each	DT
+task	NN
+tj	NN
+in	IN
+an	DT
+execution	NN
+path	NN
+leads	VBZ
+to	TO
+a	DT
+possible	JJ
+execution	NN
+plan	NN
+.	.
+
+In	IN
+the	DT
+global	JJ
+planning	NN
+approach	NN
+,	,
+all	DT
+possible	JJ
+plans	NNS
+asso	SYM
+-	:
+ciated	VBN
+to	TO
+a	DT
+given	VBN
+execution	NN
+path	NN
+are	VBP
+generated	VBN
+-LRB-	-LRB-
+at	IN
+least	JJS
+conceptually	RB
+speaking	VBG
+-RRB-	-RRB-
+and	CC
+the	DT
+one	CD
+which	WDT
+maximizes	VBZ
+the	DT
+userâ	JJ
+$	$
+™	CD
+s	NNS
+preferences	NNS
+while	IN
+satisfying	VBG
+the	DT
+imposed	VBN
+constraints	NNS
+is	VBZ
+then	RB
+selected	VBN
+.	.
+
+The	DT
+se	FW
+-	:
+lection	NN
+of	IN
+an	DT
+execution	NN
+plan	NN
+relies	VBZ
+on	IN
+the	DT
+application	NN
+of	IN
+a	DT
+MCDM	NNP
+approach	NN
+to	TO
+the	DT
+quality	NN
+matrix	NN
+Q	NNP
+=	JJ
+-LRB-	-LRB-
+Qi	NN
+;	:
+j	NN
+;	:
+1	CD
+i	FW
+n	NN
+;	:
+1	CD
+j	NN
+5	CD
+-RRB-	-RRB-
+of	IN
+the	DT
+execution	NN
+path	NN
+.	.
+
+In	IN
+this	DT
+matrix	NN
+,	,
+each	DT
+row	NN
+corresponds	VBZ
+to	TO
+the	DT
+quality	NN
+vector	NN
+of	IN
+one	CD
+possible	JJ
+execution	NN
+plan	NN
+for	IN
+the	DT
+execution	NN
+path	NN
+.	.
+
+
+As	IN
+in	IN
+the	DT
+local	JJ
+selection	NN
+approach	NN
+,	,
+a	DT
+SAW	NN
+technique	NN
+is	VBZ
+used	VBN
+to	TO
+select	VB
+an	DT
+optimal	JJ
+execution	NN
+plan	NN
+.	.
+
+The	DT
+two	CD
+phases	NNS
+of	IN
+applying	VBG
+SAW	NNP
+are	VBP
+:	:
+
+
+Scaling	VBG
+Phase	NN
+
+
+As	IN
+in	IN
+the	DT
+previous	JJ
+section	NN
+,	,
+we	PRP
+scale	VBP
+the	DT
+values	NNS
+of	IN
+each	DT
+quality	NN
+criterion	NN
+.	.
+
+For	IN
+negative	JJ
+crite	NN
+-	:
+ria	NN
+,	,
+values	NNS
+are	VBP
+scaled	VBN
+according	VBG
+to	TO
+equation	NN
+3	CD
+.	.
+
+For	IN
+positive	JJ
+criteria	NNS
+,	,
+values	NNS
+are	VBP
+scaled	VBN
+according	VBG
+to	TO
+equation	NN
+4	CD
+.	.
+
+Note	VB
+that	IN
+we	PRP
+can	MD
+compute	VB
+the	DT
+value	NN
+of	IN
+Qmaxj	NNP
+and	CC
+Qminj	NNP
+in	IN
+these	DT
+equations	NNS
+without	IN
+generating	VBG
+all	DT
+possible	JJ
+execution	NN
+plans	NNS
+.	.
+
+For	IN
+example	NN
+,	,
+in	IN
+order	NN
+to	TO
+compute	VB
+the	DT
+maximum	NN
+exe	SYM
+-	:
+cution	NN
+price	NN
+-LRB-	-LRB-
+i.e.	FW
+,	,
+Qmaxpr	NNP
+-RRB-	-RRB-
+of	IN
+all	PDT
+the	DT
+execution	NN
+plans	NNS
+,	,
+we	PRP
+select	VBP
+the	DT
+most	RBS
+expensive	JJ
+Web	NN
+service	NN
+for	IN
+each	DT
+task	NN
+and	CC
+sum	NN
+up	IN
+all	DT
+these	DT
+execution	NN
+prices	NNS
+to	TO
+compute	VB
+Qmaxpr	NNP
+.	.
+
+In	IN
+order	NN
+to	TO
+compute	VB
+the	DT
+minimum	JJ
+execution	NN
+duration	NN
+-LRB-	-LRB-
+i.e.	FW
+,	,
+Qmindu	NNP
+-RRB-	-RRB-
+of	IN
+all	PDT
+the	DT
+execution	NN
+plans	NNS
+,	,
+we	PRP
+select	VBP
+the	DT
+service	NN
+with	IN
+the	DT
+shortest	JJS
+execution	NN
+duration	NN
+for	IN
+each	DT
+task	NN
+and	CC
+use	NN
+CPA	NN
+to	TO
+compute	VB
+Qmindu	NNP
+.	.
+
+The	DT
+computa	NN
+-	:
+tion	NN
+cost	NN
+of	IN
+Qmaxj	NNP
+and	CC
+Qminj	NNP
+is	VBZ
+thus	RB
+polynomial	JJ
+.	.
+
+After	IN
+the	DT
+scaling	VBG
+phase	NN
+,	,
+we	PRP
+obtain	VBP
+the	DT
+matrix	NN
+V	NN
+=	JJ
+-LRB-	-LRB-
+Vi	NN
+;	:
+j	NN
+;	:
+1	CD
+i	FW
+n	NN
+;	:
+1	CD
+j	NN
+5	CD
+-RRB-	-RRB-
+.	.
+
+
+Weighting	NN
+Phase	NN
+
+
+The	DT
+following	VBG
+formula	NN
+is	VBZ
+used	VBN
+to	TO
+compute	VB
+the	DT
+overall	JJ
+quality	NN
+score	NN
+for	IN
+each	DT
+execution	NN
+plan	NN
+:	:
+
+
+X	NN
+
+
+5	CD
+
+
+Score	NN
+-LRB-	-LRB-
+pi	NN
+-RRB-	-RRB-
+=	JJ
+-LRB-	-LRB-
+Vi	NN
+;	:
+j	NN
+Wj	NN
+-RRB-	-RRB-
+-LRB-	-LRB-
+6	CD
+-RRB-	-RRB-
+
+
+j	NN
+=	JJ
+1	CD
+
+
+where	WRB
+Wj	NN
+2	CD
+-LSB-	-LRB-
+0	CD
+;	:
+1	CD
+-RSB-	-RRB-
+and	CC
+
+
+P5	NN
+
+
+j	NN
+=	JJ
+1	CD
+
+
+Wj	NN
+=	JJ
+1	CD
+.	.
+
+Wj	NN
+represents	VBZ
+the	DT
+weight	NN
+of	IN
+each	DT
+criterion	NN
+.	.
+
+End	NN
+users	NNS
+can	MD
+givetheir	VB
+preferences	NNS
+on	IN
+QoS	NN
+-LRB-	-LRB-
+i.e.	FW
+,	,
+balance	VB
+the	DT
+impactof	NN
+the	DT
+differentcriteria	NN
+-RRB-	-RRB-
+toselecta	NN
+desired	VBN
+execution	NN
+plan	NN
+by	IN
+adjusting	VBG
+the	DT
+value	NN
+of	IN
+Wj	NN
+.	.
+
+The	DT
+global	JJ
+planner	NN
+will	MD
+choose	VB
+the	DT
+execution	NN
+path	NN
+which	WDT
+has	VBZ
+the	DT
+maximal	JJ
+value	NN
+of	IN
+Score	NN
+-LRB-	-LRB-
+pi	NN
+-RRB-	-RRB-
+-LRB-	-LRB-
+i.e.	FW
+,	,
+max	NN
+-LRB-	-LRB-
+Score	NN
+-LRB-	-LRB-
+pi	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+-RRB-	-RRB-
+.	.
+
+If	IN
+there	EX
+is	VBZ
+more	JJR
+than	IN
+one	CD
+
+
+15	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+15	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+execution	NN
+plan	NN
+which	WDT
+has	VBZ
+the	DT
+same	JJ
+maximal	JJ
+value	NN
+of	IN
+Score	NN
+-LRB-	-LRB-
+pi	NN
+-RRB-	-RRB-
+,	,
+then	RB
+an	DT
+execution	NN
+plan	NN
+will	MD
+be	VB
+selected	VBN
+from	IN
+them	PRP
+randomly	RB
+.	.
+
+
+4.2.2	CD
+
+
+Handling	VBG
+Multiple	JJ
+Execution	NN
+Paths	NNS
+
+
+Assume	VB
+that	IN
+a	DT
+statechart	NN
+has	VBZ
+multiple	JJ
+execution	NN
+paths	NNS
+.	.
+
+For	IN
+each	DT
+of	IN
+these	DT
+paths	NNS
+,	,
+an	DT
+optimal	JJ
+execution	NN
+plan	NN
+can	MD
+be	VB
+selected	VBN
+using	VBG
+the	DT
+method	NN
+described	VBN
+above	IN
+.	.
+
+Since	IN
+each	DT
+of	IN
+the	DT
+selected	VBN
+plans	NNS
+only	RB
+covers	VBZ
+a	DT
+subset	NN
+of	IN
+the	DT
+statechart	NN
+,	,
+the	DT
+global	JJ
+planner	NN
+needs	VBZ
+to	TO
+aggregate	JJ
+these	DT
+execution	NN
+plans	VBZ
+into	IN
+an	DT
+overall	JJ
+execution	NN
+plan	NN
+.	.
+
+For	IN
+example	NN
+,	,
+for	IN
+the	DT
+Travel	NN
+Planner	NN
+statechart	NN
+W	NN
+-LRB-	-LRB-
+see	VB
+Figure	NNP
+3	LS
+-RRB-	-RRB-
+,	,
+there	EX
+are	VBP
+two	CD
+execution	NN
+paths	NNS
+We1	NN
+and	CC
+We2	NN
+,	,
+each	DT
+of	IN
+which	WDT
+has	VBZ
+its	PRP$
+own	JJ
+optimal	JJ
+execution	NN
+plan	NN
+,	,
+say	VBP
+p1	NN
+and	CC
+p2	NN
+.	.
+
+Neither	DT
+p1	NN
+nor	CC
+p2	NN
+covers	VBZ
+all	DT
+tasks	NNS
+in	IN
+W	NN
+,	,
+so	IN
+they	PRP
+need	VBP
+to	TO
+be	VB
+merged	VBN
+somehow	RB
+.	.
+
+
+Assume	VB
+that	DT
+statechart	NN
+W	NN
+has	VBZ
+n	NN
+tasks	NNS
+-LRB-	-LRB-
+i.e.	FW
+,	,
+t1	NN
+,	,
+t2	NN
+,	,
+...	:
+,	,
+tk	NN
+-RRB-	-RRB-
+and	CC
+m	NN
+execution	NN
+paths	NNS
+-LRB-	-LRB-
+i.e.	FW
+,	,
+We1	NN
+,	,
+We2	NN
+,	,
+...	:
+,	,
+Wem	NNP
+-RRB-	-RRB-
+.	.
+
+For	IN
+each	DT
+execution	NN
+path	NN
+,	,
+the	DT
+global	JJ
+planner	NN
+selects	VBZ
+an	DT
+optimal	JJ
+execution	NN
+plan	NN
+.	.
+
+Consequently	RB
+,	,
+we	PRP
+obtain	VBP
+m	NN
+optimal	JJ
+execution	NN
+plans	NNS
+-LRB-	-LRB-
+i.e.	FW
+,	,
+p1	NN
+;	:
+p2	NN
+;	:
+:	:
+:	:
+:	:
+;	:
+pm	NN
+-RRB-	-RRB-
+for	IN
+these	DT
+execution	NN
+paths	NNS
+.	.
+
+The	DT
+global	JJ
+planner	NN
+adopts	VBZ
+the	DT
+following	VBG
+approach	NN
+to	TO
+aggregate	JJ
+multiple	JJ
+execution	NN
+plans	NNS
+into	IN
+an	DT
+overall	JJ
+execution	NN
+plan	NN
+.	.
+
+
+1	LS
+.	.
+
+Given	VBN
+a	DT
+task	NN
+ti	NN
+,	,
+if	IN
+ti	NN
+only	RB
+belongs	VBZ
+to	TO
+one	CD
+execution	NN
+path	NN
+-LRB-	-LRB-
+e.g.	FW
+,	,
+Wej	NN
+-RRB-	-RRB-
+,	,
+then	RB
+the	DT
+global	JJ
+planner	NN
+
+
+selects	VBZ
+Wejâ	NNP
+$	$
+™	CD
+s	NNS
+execution	NN
+plan	NN
+pj	NN
+to	TO
+execute	VB
+the	DT
+task	NN
+ti	NN
+.	.
+
+We	PRP
+denote	VBP
+this	DT
+as	IN
+<	JJR
+ti	NN
+;	:
+pj	NN
+>	JJR
+.	.
+
+For	IN
+example	NN
+,	,
+
+
+in	IN
+the	DT
+Travel	NN
+Planner	NN
+example	NN
+,	,
+task	NN
+t5	NN
+-LRB-	-LRB-
+i.e.	FW
+,	,
+BikeRental	JJ
+-RRB-	-RRB-
+only	RB
+belongs	VBZ
+to	TO
+execution	NN
+
+
+path	NN
+We2	NN
+.	.
+
+In	IN
+this	DT
+case	NN
+,	,
+We2â	NN
+$	$
+™	CD
+s	NNS
+execution	NN
+plan	NN
+p2	NN
+is	VBZ
+used	VBN
+to	TO
+determine	VB
+the	DT
+service	NN
+that	WDT
+will	MD
+execute	VB
+
+
+t5	NN
+.	.
+
+This	DT
+fact	NN
+is	VBZ
+denoted	VBN
+by	IN
+<	JJR
+t5	CD
+;	:
+p2	NN
+>	JJR
+.	.
+
+
+2	LS
+.	.
+
+Given	VBN
+a	DT
+task	NN
+ti	NN
+,	,
+if	IN
+ti	NN
+belongs	VBZ
+to	TO
+more	JJR
+than	IN
+one	CD
+execution	NN
+paths	NNS
+-LRB-	-LRB-
+e.g.	FW
+,	,
+Wej	NNP
+,	,
+Wej	NNP
++1	CD
+,	,
+...	:
+,	,
+Wem	NNP
+-RRB-	-RRB-
+,	,
+then	RB
+
+
+there	EX
+is	VBZ
+a	DT
+set	NN
+of	IN
+executionplans	NNS
+-LRB-	-LRB-
+i.e.	FW
+,	,
+pj	NN
+,	,
+pj	NN
++1	NN
+,	,
+...	:
+,	,
+pm	NN
+-RRB-	-RRB-
+thatcan	NN
+be	VB
+used	VBN
+toexecute	JJ
+Wsi	NNS
+.	.
+
+Hence	RB
+,	,
+the	DT
+
+
+global	JJ
+planner	NN
+needs	VBZ
+to	TO
+select	VB
+one	CD
+of	IN
+these	DT
+execution	NN
+plans	NNS
+.	.
+
+The	DT
+selection	NN
+can	MD
+be	VB
+done	VBN
+by	IN
+iden	NN
+-	:
+
+
+tifying	VBG
+the	DT
+hot	JJ
+path	NN
+for	IN
+task	NN
+ti	NN
+.	.
+
+Here	RB
+,	,
+the	DT
+hot	JJ
+path	NN
+of	IN
+a	DT
+task	NN
+ti	NN
+is	VBZ
+de	IN
+as	IN
+the	DT
+execution	NN
+path	NN
+that	WDT
+
+
+has	VBZ
+been	VBN
+most	RBS
+frequently	RB
+used	VBN
+to	TO
+execute	VB
+the	DT
+task	NN
+ti	NN
+in	IN
+past	JJ
+instances	NNS
+of	IN
+the	DT
+composite	JJ
+service	NN
+.	.
+
+
+For	IN
+example	NN
+,	,
+inthe	NNP
+Travel	NNP
+Plannerstatechart	NNP
+,	,
+taskt4	NN
+-LRB-	-LRB-
+DrivingTimeCalcultation	NN
+-RRB-	-RRB-
+
+
+belongs	VBZ
+to	TO
+both	DT
+execution	NN
+paths	NNS
+We1	NN
+and	CC
+We2	NN
+.	.
+
+Assume	VB
+that	IN
+the	DT
+composite	JJ
+service	NN
+has	VBZ
+been	VBN
+exe	SYM
+-	:
+
+
+cuted	VBN
+25	CD
+times	NNS
+,	,
+20	CD
+of	IN
+which	WDT
+have	VBP
+followed	VBN
+execution	NN
+path	NN
+We1	NN
+,	,
+while	IN
+the	DT
+other	JJ
+5	CD
+have	VBP
+followed	VBN
+
+
+We2	NN
+.	.
+
+Since	IN
+the	DT
+executionpath	NN
+We1	NN
+is	VBZ
+used	VBN
+more	RBR
+frequently	RB
+to	TO
+execute	VB
+task	NN
+t4	NN
+-LRB-	-LRB-
+i.e.	FW
+,	,
+We1	NN
+is	VBZ
+the	DT
+hot	JJ
+
+
+path	NN
+for	IN
+t2	NN
+-RRB-	-RRB-
+,	,
+We1â	NN
+$	$
+™	CD
+s	NNS
+optimal	JJ
+execution	NN
+plan	NN
+p1	NN
+is	VBZ
+used	VBN
+to	TO
+determine	VB
+the	DT
+service	NN
+that	WDT
+will	MD
+execute	VB
+
+
+t4	NN
+.	.
+
+This	DT
+is	VBZ
+denoted	VBN
+by	IN
+<	JJR
+t4	NN
+;	:
+p1	NN
+>	JJR
+.	.
+
+
+The	DT
+system	NN
+keeps	VBZ
+the	DT
+execution	NN
+traces	NNS
+of	IN
+the	DT
+composite	JJ
+service	NN
+using	VBG
+the	DT
+methods	NNS
+described	VBN
+in	IN
+-LSB-	-LRB-
+13	CD
+-RSB-	-RRB-
+.	.
+
+These	DT
+traces	NNS
+allow	VBP
+the	DT
+global	JJ
+planner	NN
+to	TO
+identify	VB
+the	DT
+hot	JJ
+path	NN
+for	IN
+each	DT
+task	NN
+.	.
+
+In	IN
+the	DT
+absence	NN
+of	IN
+-LRB-	-LRB-
+enough	JJ
+-RRB-	-RRB-
+traces	NNS
+,	,
+a	DT
+human	JJ
+expert	NN
+must	MD
+indicate	VB
+the	DT
+hot	JJ
+path	NN
+
+
+16	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+16	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+4.2.3	CD
+
+
+Unfolding	VBG
+Cyclic	JJ
+Statecharts	NNS
+
+
+Hitherto	NNP
+,	,
+we	PRP
+have	VBP
+assumed	VBN
+that	IN
+the	DT
+statecharts	NNS
+are	VBP
+acyclic	JJ
+.	.
+
+If	IN
+a	DT
+statechart	NN
+contains	VBZ
+cycles	NNS
+,	,
+these	DT
+need	NN
+to	TO
+be	VB
+so	RB
+that	IN
+the	DT
+resulting	VBG
+statechart	NN
+has	VBZ
+a	DT
+number	NN
+of	IN
+execution	NN
+paths	NNS
+.	.
+
+The	DT
+method	NN
+used	VBN
+to	TO
+unfold	VB
+the	DT
+cycles	NNS
+of	IN
+a	DT
+statechart	NN
+is	VBZ
+to	TO
+examine	VB
+the	DT
+logs	NNS
+of	IN
+past	JJ
+executions	NNS
+in	IN
+order	NN
+to	TO
+determine	VB
+the	DT
+maximum	NN
+number	NN
+of	IN
+times	NNS
+that	WDT
+each	DT
+cycle	NN
+is	VBZ
+taken	VBN
+.	.
+
+The	DT
+states	NNS
+appearing	VBG
+between	IN
+the	DT
+beginning	NN
+and	CC
+the	DT
+end	NN
+ofPSfragthe	NN
+creplacementsycle	NN
+are	VBP
+then	RB
+cloned	VBN
+as	IN
+many	JJ
+times	NNS
+as	IN
+the	DT
+transition	NN
+causing	VBG
+the	DT
+cycle	NN
+is	VBZ
+taken	VBN
+.4	CD
+
+
+This	DT
+unfolding	VBG
+method	NN
+worksti	NN
+only	RB
+if	IN
+the	DT
+ginning	NN
+and	CC
+the	DT
+of	IN
+each	DT
+cycle	NN
+in	IN
+the	DT
+statechartt	NN
+
+
+can	MD
+be	VB
+clearly	RB
+identi	JJ
+It	PRP
+does	VBZ
+
+
+f	SYM
+
+
+not	RB
+work	VB
+,	,
+for	IN
+example	NN
+,	,
+if	IN
+the	DT
+transitions	NNS
+causing	VBG
+the	DT
+cycle	NN
+are	VBP
+located	JJ
+in	IN
+two	CD
+different	JJ
+conditional	JJ
+branchestc	NN
+as	IN
+in	IN
+Figure	NNP
+6	CD
+.	.
+
+In	IN
+this	DT
+case	NN
+,	,
+it	PRP
+is	VBZ
+not	RB
+possible	JJ
+to	TO
+determine	VB
+whicht	NN
+
+
+is	VBZ
+the	DT
+state	NN
+and	CC
+which	WDT
+is	VBZ
+
+
+d	NN
+
+
+the	DT
+last	JJ
+state	NN
+in	IN
+the	DT
+cycle	NN
+-LRB-	-LRB-
+is	VBZ
+it	PRP
+t2	NN
+or	CC
+t3	NN
+?	.
+-RRB-	-RRB-
+.	.
+
+An	DT
+equivalent	JJ
+statechart	NN
+which	WDT
+can	MD
+be	VB
+unfolded	VBN
+using	VBG
+the	DT
+above	JJ
+method	NN
+is	VBZ
+shown	VBN
+in	IN
+Figure	NN
+7	CD
+.	.
+
+In	IN
+this	DT
+equivalent	JJ
+statechart	NN
+,	,
+the	DT
+transitionPSfragcausingreplacementsthe	NN
+cycle	NN
+does	VBZ
+not	RB
+crosses	VBZ
+the	DT
+boundaries	NNS
+of	IN
+any	DT
+conditional	JJ
+branch	NN
+.	.
+
+It	PRP
+can	MD
+
+
+ti	NN
+ttf5	NN
+TSt61	NN
+Wtd0	NN
+
+
+-LSB-	-LRB-
+C1	NN
+-RSB-	-RRB-
+
+
+t2	NN
+
+
+-LSB-	-LRB-
+C3	NN
+-RSB-	-RRB-
+
+
+t1	NN
+
+
+-LSB-	-LRB-
+C2	NN
+-RSB-	-RRB-
+
+
+-LSB-	-LRB-
+C1	NN
+-RSB-	-RRB-
+
+
+t4	NN
+
+
+-LSB-	-LRB-
+C2	NN
+-RSB-	-RRB-
+
+
+t3	NN
+
+
+-LSB-	-LRB-
+C4	NN
+-RSB-	-RRB-
+
+
+Figure	NNP
+6	CD
+:	:
+statechart	NN
+
+
+t5	NN
+
+
+t2	NN
+
+
+W	NN
+
+
+-LSB-	-LRB-
+not	RB
+E	NN
+-RSB-	-RRB-
+
+
+-LSB-	-LRB-
+C1	NN
+-RSB-	-RRB-
+
+
+/	:
+E	NN
+:	:
+=	JJ
+C3	NN
+
+
+t6	NN
+
+
+t1	NN
+
+
+-LSB-	-LRB-
+E	NN
+-RSB-	-RRB-
+
+
+t4	NN
+
+
+-LSB-	-LRB-
+C2	NN
+-RSB-	-RRB-
+
+
+t3	NN
+
+
+/	:
+E	NN
+:	:
+=	JJ
+C4	NN
+
+
+W0	NN
+
+
+Figure	NNP
+7	CD
+:	:
+Foldable	JJ
+statechart	NN
+equivalent	NN
+to	TO
+that	DT
+in	IN
+Figure	NNP
+6	CD
+
+
+be	VB
+proved	VBN
+that	IN
+any	DT
+arbitrary	JJ
+statechart	NN
+can	MD
+be	VB
+transformed	VBN
+into	IN
+an	DT
+equivalent	JJ
+statechart	NN
+in	IN
+which	WDT
+the	DT
+cycles	NNS
+do	VBP
+not	RB
+cross	VB
+the	DT
+boundaries	NNS
+of	IN
+conditional	JJ
+branches	NNS
+-LRB-	-LRB-
+as	IN
+illustrated	JJ
+above	IN
+-RRB-	-RRB-
+.	.
+
+This	DT
+proof	NN
+is	VBZ
+similar	JJ
+to	TO
+that	DT
+of	IN
+the	DT
+theorem	NN
+stating	VBG
+that	IN
+any	DT
+program	NN
+written	VBN
+using	VBG
+statements	NNS
+,	,
+can	MD
+be	VB
+transformed	VBN
+into	IN
+an	DT
+equivalent	JJ
+program	NN
+which	WDT
+only	RB
+uses	VBZ
+structured	JJ
+loops	NNS
+-LRB-	-LRB-
+i.e.	FW
+,	,
+statements	NNS
+-RRB-	-RRB-
+.	.
+
+-LSB-	-LRB-
+27	CD
+-RSB-	-RRB-
+,	,
+for	IN
+example	NN
+,	,
+describes	VBZ
+an	DT
+algorithm	NN
+for	IN
+performing	VBG
+this	DT
+kind	NN
+of	IN
+transformation	NN
+with	IN
+minimal	JJ
+number	NN
+of	IN
+auxiliary	JJ
+boolean	JJ
+variables	NNS
+.	.
+
+-LSB-	-LRB-
+19	CD
+-RSB-	-RRB-
+points	VBZ
+out	RP
+to	TO
+the	DT
+fact	NN
+that	IN
+the	DT
+algorithms	NNS
+for	IN
+transforming	VBG
+cycles	NNS
+into	IN
+ones	NNS
+do	VBP
+not	RB
+always	RB
+apply	VB
+in	IN
+the	DT
+presence	NN
+of	IN
+parallel	JJ
+branches	NNS
+.	.
+
+However	RB
+,	,
+
+
+4The	NN
+
+
+idea	NN
+of	IN
+cloning	VBG
+the	DT
+states	NNS
+in	IN
+a	DT
+loop	NN
+for	IN
+the	DT
+purpose	NN
+of	IN
+transforminga	NN
+cyclic	JJ
+statechart	NN
+into	IN
+an	DT
+acyclic	JJ
+one	NN
+has	VBZ
+been	VBN
+proposed	VBN
+in	IN
+-LSB-	-LRB-
+15	CD
+-RSB-	-RRB-
+,	,
+where	WRB
+probabilistic	JJ
+models	NNS
+are	VBP
+used	VBN
+to	TO
+determine	VB
+how	WRB
+many	JJ
+times	NNS
+the	DT
+states	NNS
+should	MD
+be	VB
+duplicated	JJ
+.	.
+
+
+17	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+17	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+they	PRP
+do	VBP
+apply	VB
+for	IN
+statecharts	NNS
+since	IN
+in	IN
+statecharts	NNS
+it	PRP
+is	VBZ
+not	RB
+possible	JJ
+to	TO
+have	VB
+arbitrary	JJ
+transitions	NNS
+going	VBG
+from	IN
+a	DT
+parallel	JJ
+branch	NN
+to	TO
+another	DT
+such	JJ
+as	IN
+those	DT
+put	VBN
+forward	RB
+by	IN
+-LSB-	-LRB-
+19	CD
+-RSB-	-RRB-
+.	.
+
+
+Given	VBN
+the	DT
+statechart	NN
+with	IN
+structured	JJ
+cycles	NNS
+of	IN
+Figure	NN
+7	CD
+,	,
+the	DT
+unfolding	VBG
+process	NN
+proceeds	NNS
+by	IN
+deter	VBP
+-	:
+mining	VBG
+the	DT
+maximum	NN
+number	NN
+of	IN
+times	NNS
+that	IN
+the	DT
+transition	NN
+causing	VBG
+the	DT
+cycle	NN
+is	VBZ
+taken	VBN
+-LRB-	-LRB-
+i.e.	FW
+the	DT
+transition	NN
+labeled	VBN
+with	IN
+condition	NN
+E	NN
+If	IN
+for	IN
+example	NN
+thistransitionhas	NNS
+been	VBN
+taken	VBN
+a	DT
+maximumof	JJ
+two	CD
+times	NNS
+,	,
+then	RB
+three	CD
+copies	NNS
+of	IN
+the	DT
+compound	NN
+state	NN
+W	NN
+will	MD
+appear	VB
+in	IN
+the	DT
+resulting	VBG
+acyclic	JJ
+statechart	NN
+.	.
+
+From	IN
+this	DT
+acyclic	JJ
+statechart	NN
+,	,
+we	PRP
+can	MD
+then	RB
+generate	VB
+all	PDT
+the	DT
+possible	JJ
+execution	NN
+paths	NNS
+.	.
+
+
+4.2.4	CD
+
+
+Integer	NNP
+Programming	NNP
+Solution	NN
+
+
+The	DT
+global	JJ
+planning	NN
+approach	NN
+by	IN
+exhaustive	JJ
+seaching	NN
+for	IN
+selecting	VBG
+an	DT
+optimal	JJ
+execution	NN
+plan	NN
+de	IN
+-	:
+scribed	VBN
+above	IN
+,	,
+requires	VBZ
+the	DT
+generation	NN
+of	IN
+all	DT
+possible	JJ
+execution	NN
+plans	NNS
+.	.
+
+Assuming	VBG
+that	IN
+there	EX
+are	VBP
+n	NN
+tasks	NNS
+in	IN
+a	DT
+statechart	NN
+and	CC
+m	NN
+candidate	NN
+Web	NN
+services	NNS
+for	IN
+each	DT
+task	NN
+,	,
+the	DT
+total	JJ
+number	NN
+of	IN
+execution	NN
+plans	NNS
+is	VBZ
+mn	NN
+,	,
+making	VBG
+this	DT
+exhaustive	JJ
+searching	VBG
+approach	NN
+impractical	JJ
+.	.
+
+Accordingly	RB
+,	,
+we	PRP
+propose	VBP
+a	DT
+method	NN
+based	VBN
+on	IN
+Integer	NNP
+Programming	NNP
+-LRB-	-LRB-
+IP	NNP
+-RRB-	-RRB-
+-LSB-	-LRB-
+17	CD
+-RSB-	-RRB-
+for	IN
+selecting	VBG
+an	DT
+optimal	JJ
+execution	NN
+plan	NN
+without	IN
+generating	VBG
+all	PDT
+the	DT
+possible	JJ
+execution	NN
+plans	NNS
+.	.
+
+
+There	EX
+are	VBP
+three	CD
+inputs	NNS
+in	IN
+an	DT
+IP	NNP
+problem	NN
+:	:
+a	DT
+set	NN
+of	IN
+variables	NNS
+,	,
+an	DT
+objective	JJ
+function	NN
+and	CC
+a	DT
+set	NN
+of	IN
+constraints	NNS
+,	,
+where	WRB
+both	CC
+the	DT
+objective	JJ
+function	NN
+and	CC
+the	DT
+constraints	NNS
+must	MD
+be	VB
+linear	JJ
+.	.
+
+IP	NNP
+attempts	VBZ
+to	TO
+maximize	VB
+or	CC
+minimize	VB
+the	DT
+value	NN
+of	IN
+the	DT
+objective	JJ
+function	NN
+by	IN
+adjusting	VBG
+the	DT
+values	NNS
+of	IN
+the	DT
+variables	NNS
+while	IN
+enforcing	VBG
+the	DT
+constraints	NNS
+.	.
+
+The	DT
+output	NN
+of	IN
+an	DT
+IP	NNP
+problem	NN
+is	VBZ
+the	DT
+maximum	NN
+-LRB-	-LRB-
+or	CC
+minimum	NN
+-RRB-	-RRB-
+value	NN
+of	IN
+the	DT
+objective	JJ
+function	NN
+and	CC
+the	DT
+values	NNS
+of	IN
+variables	NNS
+at	IN
+this	DT
+maximum	NN
+-LRB-	-LRB-
+minimum	NN
+-RRB-	-RRB-
+.	.
+
+
+The	DT
+problem	NN
+of	IN
+selecting	VBG
+an	DT
+optimal	JJ
+execution	NN
+plan	NN
+is	VBZ
+mapped	VBN
+into	IN
+an	DT
+IP	NNP
+problem	NN
+as	IN
+follows	VBZ
+.	.
+
+First	RB
+,	,
+for	IN
+every	DT
+Web	NN
+service	NN
+sij	NN
+that	WDT
+can	MD
+be	VB
+used	VBN
+to	TO
+execute	VB
+a	DT
+task	NN
+tj	NN
+,	,
+we	PRP
+include	VBP
+in	IN
+the	DT
+IP	NNP
+problem	NN
+an	DT
+integer	NN
+variable	JJ
+yij	NN
+,	,
+such	JJ
+that	IN
+by	IN
+convention	NN
+yij	NN
+is	VBZ
+1	CD
+if	IN
+service	NN
+sij	NN
+is	VBZ
+selected	VBN
+for	IN
+executing	VBG
+task	NN
+tj	NN
+,	,
+0	CD
+otherwise	RB
+.	.
+
+We	PRP
+also	RB
+introduce	VB
+a	DT
+set	NN
+of	IN
+integer	NN
+variables	NNS
+xj	VBP
+,	,
+such	JJ
+that	IN
+xj	NN
+denotes	VBZ
+the	DT
+expected	VBN
+start	NN
+time	NN
+of	IN
+task	NN
+tj	NN
+-LRB-	-LRB-
+if	IN
+tj	NN
+is	VBZ
+executed	VBN
+at	IN
+all	DT
+-RRB-	-RRB-
+.	.
+
+This	DT
+set	NN
+of	IN
+variables	NNS
+are	VBP
+used	VBN
+to	TO
+express	VB
+the	DT
+constraints	NNS
+on	IN
+the	DT
+execution	NN
+duration	NN
+.	.
+
+
+Next	RB
+,	,
+since	IN
+we	PRP
+rely	VBP
+on	IN
+MCDM	NN
+and	CC
+SAW	VBD
+to	TO
+determine	VB
+the	DT
+desirability	NN
+of	IN
+an	DT
+execution	NN
+plan	NN
+,	,
+we	PRP
+use	VBP
+the	DT
+following	VBG
+objective	NN
+function	NN
+,	,
+which	WDT
+is	VBZ
+based	VBN
+on	IN
+equations	NNS
+3,4	CD
+,	,
+and	CC
+6	CD
+:	:
+
+
+X2	NN
+
+
+i	LS
+;	:
+l	NN
+
+
+X	NN
+
+
+5	CD
+
+
+!	.
+
+
+Max	NNP
+
+
+Qmaxl	NNP
+Q	NNP
+
+
++	CC
+
+
+l	NN
+=	JJ
+1	CD
+
+
+Qmaxl	NNP
+Qminl	NNP
+
+
+Wl	NN
+
+
+Qi	NNP
+;	:
+l	NN
+Qminl	NN
+
+
+-LRB-	-LRB-
+7	CD
+-RRB-	-RRB-
+
+
+l	NN
+=	JJ
+3	CD
+
+
+Qmaxl	NNP
+Qmin	NNP
+
+
+Wl	NN
+
+
+l	NN
+
+
+where	WRB
+Wl	NN
+2	CD
+-LSB-	-LRB-
+0	CD
+;	:
+1	CD
+-RSB-	-RRB-
+and	CC
+
+
+P5	NN
+
+
+j	NN
+=	JJ
+1	CD
+
+
+Wj	NN
+=	JJ
+1	CD
+.	.
+
+Wl	NN
+is	VBZ
+the	DT
+weight	NN
+assigned	VBN
+to	TO
+the	DT
+quality	NN
+criteria	NNS
+.	.
+
+The	DT
+remainder	NN
+of	IN
+this	DT
+subsection	NN
+describes	VBZ
+the	DT
+constraints	NNS
+of	IN
+the	DT
+IP	NNP
+problem	NN
+.	.
+
+
+Allocation	NN
+constraint	NN
+For	IN
+each	DT
+task	NN
+tj	NN
+,	,
+there	EX
+is	VBZ
+a	DT
+set	NN
+of	IN
+Web	NN
+services	NNS
+Sj	NN
+that	WDT
+can	MD
+be	VB
+assigned	VBN
+-LRB-	-LRB-
+al	NNP
+-	:
+located	JJ
+-RRB-	-RRB-
+to	TO
+it	PRP
+.	.
+
+However	RB
+,	,
+for	IN
+each	DT
+task	NN
+tj	NN
+,	,
+we	PRP
+should	MD
+only	RB
+select	VB
+one	CD
+Web	NN
+service	NN
+to	TO
+execute	VB
+this	DT
+task	NN
+.	.
+
+
+18	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+18	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+Given	VBN
+that	IN
+yij	NN
+denotes	VBZ
+the	DT
+selection	NN
+of	IN
+Web	NN
+service	NN
+sij	NN
+to	TO
+execute	VB
+task	NN
+tj	NN
+,	,
+the	DT
+followingconstraint	NN
+must	MD
+be	VB
+satis	JJ
+
+
+X	NN
+
+
+yij	NN
+=	JJ
+1	CD
+;	:
+8j	NN
+2	CD
+A	NN
+-LRB-	-LRB-
+8	CD
+-RRB-	-RRB-
+
+
+i2Sj	NN
+
+
+where	WRB
+A	DT
+is	VBZ
+the	DT
+set	NN
+of	IN
+tasks	NNS
+in	IN
+the	DT
+statechart	NN
+.	.
+
+For	IN
+example	NN
+,	,
+assume	VB
+that	IN
+there	EX
+are	VBP
+100	CD
+potential	JJ
+Web	NN
+
+
+servicesP	NN
+that	WDT
+can	MD
+execute	VB
+task	NN
+j	NN
+.	.
+
+Since	IN
+only	RB
+one	CD
+of	IN
+them	PRP
+will	MD
+be	VB
+selected	VBN
+to	TO
+execute	VB
+task	NN
+j	NN
+,	,
+we	PRP
+have	VBP
+that	IN
+
+
+100	CD
+
+
+i	LS
+=	SYM
+1	CD
+
+
+yij	NN
+=	JJ
+1	CD
+.	.
+
+
+Constraints	NNS
+on	IN
+Execution	NNP
+Duration	NNP
+,	,
+Price	NNP
+,	,
+and	CC
+Reputation	NNP
+Let	VB
+xj	NN
+denote	VBP
+the	DT
+expected	VBN
+start	NN
+time	NN
+of	IN
+task	NN
+tj	NN
+,	,
+pij	NN
+denote	VBP
+the	DT
+execution	NN
+duration	NN
+of	IN
+task	NN
+tj	NN
+when	WRB
+assigned	VBN
+to	TO
+service	NN
+sij	NN
+,	,
+and	CC
+pj	NN
+denote	VBP
+the	DT
+expected	VBN
+duration	NN
+of	IN
+task	NN
+tj	NN
+knowing	VBG
+which	WDT
+service	NN
+has	VBZ
+been	VBN
+assigned	VBN
+to	TO
+it	PRP
+.	.
+
+Also	RB
+,	,
+let	VB
+tj	NN
+!	.
+
+tk	NN
+denote	VBP
+the	DT
+fact	NN
+that	IN
+task	NN
+tk	NN
+is	VBZ
+a	DT
+direct	JJ
+successor	NN
+of	IN
+task	NN
+tj	NN
+.	.
+
+We	PRP
+have	VBP
+the	DT
+following	VBG
+constraints	NNS
+:	:
+
+
+X	NN
+
+
+pij	NN
+yij	NN
+=	JJ
+pj	NN
+;	:
+8j	NN
+2	CD
+A	NN
+-LRB-	-LRB-
+9	CD
+-RRB-	-RRB-
+
+
+i2Sj	NN
+
+
+xk	NN
+-LRB-	-LRB-
+pj	NN
++	CC
+xj	NN
+-RRB-	-RRB-
+0	CD
+;	:
+8tj	CD
+!	.
+
+tk	NN
+;	:
+j	NN
+;	:
+k	NN
+2	CD
+A	NN
+-LRB-	-LRB-
+10	CD
+-RRB-	-RRB-
+
+
+qdu	NN
+-LRB-	-LRB-
+xj	NN
++	CC
+pj	NN
+-RRB-	-RRB-
+0	CD
+;	:
+8j	NN
+2	CD
+A	NN
+-LRB-	-LRB-
+11	CD
+-RRB-	-RRB-
+
+
+Constraint	NN
+9	CD
+indicates	VBZ
+that	IN
+the	DT
+execution	NN
+duration	NN
+of	IN
+a	DT
+given	VBN
+task	NN
+tj	NN
+must	MD
+be	VB
+the	DT
+execution	NN
+duration	NN
+of	IN
+one	CD
+of	IN
+the	DT
+Web	NN
+services	NNS
+in	IN
+A	NN
+,	,
+since	IN
+one	CD
+and	CC
+only	RB
+one	CD
+of	IN
+these	DT
+services	NNS
+will	MD
+be	VB
+selected	VBN
+to	TO
+execute	VB
+
+
+task	NN
+tj	NN
+.	.
+
+Constraint	NN
+10	CD
+indicates	VBZ
+that	IN
+if	IN
+task	NN
+tk	NN
+is	VBZ
+a	DT
+direct	JJ
+successor	NN
+of	IN
+task	NN
+tj	NN
+,	,
+then	RB
+the	DT
+execution	NN
+of	IN
+tk	NN
+must	MD
+start	VB
+after	IN
+task	NN
+tj	NN
+has	VBZ
+been	VBN
+completed	VBN
+.	.
+
+Constraint	NN
+11	CD
+indicates	VBZ
+that	IN
+the	DT
+execution	NN
+of	IN
+a	DT
+composite	JJ
+service	NN
+plan	NN
+is	VBZ
+completed	VBN
+only	RB
+when	WRB
+all	PDT
+the	DT
+tasks	NNS
+in	IN
+the	DT
+plan	NN
+are	VBP
+completed	VBN
+.	.
+
+
+Now	RB
+,	,
+let	VB
+zij	NN
+be	VB
+an	DT
+integer	NN
+variable	NN
+that	WDT
+has	VBZ
+value	NN
+1	CD
+or	CC
+0	CD
+:	:
+1	CD
+indicates	VBZ
+that	IN
+Web	NN
+service	NN
+sij	NN
+is	VBZ
+a	DT
+critical	JJ
+service	NN
+and	CC
+0	CD
+indicates	VBZ
+otherwise	RB
+.	.
+
+The	DT
+relationship	NN
+between	IN
+the	DT
+duration	NN
+of	IN
+an	DT
+execution	NN
+plan	NN
+and	CC
+the	DT
+duration	NN
+of	IN
+the	DT
+critical	JJ
+services	NNS
+of	IN
+the	DT
+plan	NN
+is	VBZ
+captured	VBN
+by	IN
+the	DT
+following	JJ
+equation	NN
+.	.
+
+
+XX	NN
+
+
+qdu	NN
+=	JJ
+pijzij	NN
+-LRB-	-LRB-
+12	CD
+-RRB-	-RRB-
+
+
+j2A	NN
+i2Sj	NN
+
+
+Similarly	RB
+,	,
+assuming	VBG
+that	IN
+variable	JJ
+cij	NN
+represents	VBZ
+the	DT
+execution	NN
+price	NN
+of	IN
+Web	NN
+service	NN
+sij	NN
+,	,
+we	PRP
+impose	VBP
+the	DT
+following	VBG
+constraint	NN
+to	TO
+capture	VB
+the	DT
+total	JJ
+execution	NN
+price	NN
+of	IN
+a	DT
+composite	JJ
+service	NN
+:	:
+
+
+X	NN
+X	NN
+
+
+qpr	NN
+=	JJ
+cij	NN
+yij	NN
+-LRB-	-LRB-
+13	CD
+-RRB-	-RRB-
+
+
+j2A	NN
+j2Sj	NN
+
+
+An	DT
+alternative	JJ
+constraint	NN
+13	CD
+is	VBZ
+the	DT
+following	NN
+:	:
+
+
+X	NN
+X	NN
+
+
+cijyij	NN
+B	NN
+;	:
+B	NN
+>	JJR
+0	CD
+
+
+j2A	NN
+j2Sj	NN
+
+
+-LRB-	-LRB-
+14	CD
+-RRB-	-RRB-
+
+
+19	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+19	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+where	WRB
+B	NN
+is	VBZ
+the	DT
+budget	NN
+set	VBN
+by	IN
+the	DT
+user	NN
+.	.
+
+This	DT
+constraint	NN
+indicates	VBZ
+that	IN
+the	DT
+execution	NN
+price	NN
+of	IN
+the	DT
+com	NN
+-	:
+posite	JJ
+service	NN
+should	MD
+not	RB
+be	VB
+greater	JJR
+than	IN
+B.	NNP
+By	IN
+introducing	VBG
+a	DT
+budget	NN
+constraint	NN
+the	DT
+problem	NN
+needs	VBZ
+to	TO
+be	VB
+explicitly	RB
+solved	VBN
+as	IN
+an	DT
+integer	NN
+programming	NN
+problem	NN
+,	,
+as	IN
+opposed	VBN
+to	TO
+linear	JJ
+programming	NN
+.	.
+
+This	DT
+problem	NN
+is	VBZ
+a	DT
+special	JJ
+case	NN
+of	IN
+the	DT
+knapsack	NN
+problem	NN
+and	CC
+hence	RB
+NP-hard	JJ
+-LSB-	-LRB-
+22	CD
+-RSB-	-RRB-
+.	.
+
+
+Finally	RB
+,	,
+assuming	VBG
+that	IN
+variable	JJ
+rij	NN
+represents	VBZ
+the	DT
+reputation	NN
+of	IN
+Web	NN
+service	NN
+sij	NN
+,	,
+we	PRP
+impose	VBP
+the	DT
+following	VBG
+constraint	NN
+to	TO
+capture	VB
+the	DT
+overall	JJ
+reputation	NN
+of	IN
+an	DT
+execution	NN
+plan	NN
+:	:
+
+
+X	NN
+X	NN
+
+
+qrep	NN
+=	JJ
+rijyij	NN
+-LRB-	-LRB-
+15	CD
+-RRB-	-RRB-
+
+
+j2A	NN
+j2Sj	NN
+
+
+Note	VB
+that	IN
+other	JJ
+criteria	NNS
+with	IN
+a	DT
+simple	JJ
+linear	JJ
+aggregation	NN
+function	NN
+could	MD
+be	VB
+integrated	VBN
+in	IN
+the	DT
+same	JJ
+way	NN
+as	IN
+the	DT
+reputation	NN
+.	.
+
+
+Constraints	NNS
+on	IN
+Reliability	NN
+and	CC
+Availability	NN
+Among	IN
+the	DT
+criteria	NNS
+used	VBN
+to	TO
+select	VB
+Web	NN
+services	NNS
+,	,
+the	DT
+availability	NN
+and	CC
+the	DT
+reliability	NN
+are	VBP
+associated	VBN
+with	IN
+nonlinear	JJ
+aggregation	NN
+functions	NNS
+-LRB-	-LRB-
+see	VB
+Table	NNP
+1	LS
+-RRB-	-RRB-
+.	.
+
+In	IN
+order	NN
+to	TO
+capture	VB
+them	PRP
+in	IN
+the	DT
+IP	NNP
+problem	NN
+,	,
+we	PRP
+need	VBP
+to	TO
+linearize	VB
+them	PRP
+using	VBG
+a	DT
+logarithmic	JJ
+function	NN
+.	.
+
+Assume	VB
+that	DT
+variable	JJ
+aij	NN
+represents	VBZ
+the	DT
+reliability	NN
+of	IN
+Web	NN
+service	NN
+sij	NN
+.	.
+
+Since	IN
+zij	NN
+indicates	VBZ
+whether	IN
+Web	NN
+service	NN
+sij	NN
+is	VBZ
+a	DT
+critical	JJ
+service	NN
+or	CC
+not	RB
+,	,
+the	DT
+reliability	NN
+of	IN
+the	DT
+execution	NN
+plan	NN
+is	VBZ
+:	:
+
+
+0	CD
+1	CD
+
+
+@	SYM
+
+
+X	NN
+
+
+qrel	NN
+=	JJ
+j2A	NN
+ea	NN
+
+
+ijzij	NN
+
+
+A	DT
+
+
+j2Sj	NN
+
+
+By	IN
+applying	VBG
+the	DT
+logarithm	NN
+function	NN
+ln	NN
+,	,
+we	PRP
+obtain	VBP
+:	:
+
+
+0	CD
+1	CD
+
+
+X	NN
+X	NN
+
+
+ln	NN
+-LRB-	-LRB-
+qrel	NN
+-RRB-	-RRB-
+=	JJ
+ln	NN
+@	IN
+ea	NN
+
+
+ijzij	NN
+
+
+A	DT
+
+
+j2A	NN
+j2Sj	NN
+
+
+Since	IN
+
+
+P	NN
+
+
+j2A	NN
+
+
+zij	NN
+=	JJ
+1	CD
+and	CC
+zij	NN
+=	JJ
+0	CD
+or	CC
+1	CD
+,	,
+we	PRP
+have	VBP
+that	DT
+:	:
+
+
+0	CD
+1	CD
+
+
+X	NN
+
+
+ln	NN
+-LRB-	-LRB-
+qrel	NN
+-RRB-	-RRB-
+=	JJ
+
+
+@X	NN
+
+
+aijzijA	NN
+
+
+j2A	NN
+j2Sj	NN
+
+
+Let	VB
+q	SYM
+
+
+0	CD
+
+
+rel	NN
+
+
+=	JJ
+ln	NN
+-LRB-	-LRB-
+qrel	NN
+-RRB-	-RRB-
+,	,
+we	PRP
+introduce	VBP
+the	DT
+following	VBG
+constraint	NN
+into	IN
+the	DT
+IP	NNP
+problem	NN
+in	IN
+order	NN
+to	TO
+capture	VB
+the	DT
+reliability	NN
+criterion	NN
+:	:
+X	NN
+
+
+q	SYM
+
+
+0	CD
+
+
+X	NN
+
+
+rel	NN
+
+
+=	JJ
+aijzij	NN
+-LRB-	-LRB-
+16	CD
+-RRB-	-RRB-
+
+
+j2A	NN
+j2Sj	NN
+
+
+Similarly	RB
+,	,
+assumethatbij	NN
+representsthe	NN
+availabilityof	NN
+theWeb	NN
+servicesij	NN
+.	.
+
+We	PRP
+introducethefollowing	VBG
+constraint	NN
+:	:
+X	NN
+
+
+q	SYM
+
+
+0	CD
+
+
+X	NN
+
+
+av	IN
+
+
+=	JJ
+bijzij	NN
+-LRB-	-LRB-
+17	CD
+-RRB-	-RRB-
+
+
+j2A	NN
+i2Sj	NN
+
+
+where	WRB
+q	SYM
+
+
+0	CD
+
+
+av	IN
+
+
+=	JJ
+ln	NN
+-LRB-	-LRB-
+qav	NN
+-RRB-	-RRB-
+.	.
+
+
+20	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+20	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+Constraints	NNS
+on	IN
+the	DT
+Uncertainty	NN
+of	IN
+Execution	NNP
+Duration	NNP
+Hitherto	NNP
+,	,
+we	PRP
+have	VBP
+assumed	VBN
+that	IN
+the	DT
+exe	NN
+-	:
+cution	NN
+duration	NN
+pij	NN
+of	IN
+a	DT
+Web	NN
+service	NN
+is	VBZ
+deterministic	JJ
+.	.
+
+In	IN
+reality	NN
+,	,
+the	DT
+execution	NN
+duration	NN
+pij	NN
+of	IN
+a	DT
+Web	NN
+service	NN
+sij	NN
+is	VBZ
+uncertain	JJ
+,	,
+in	IN
+the	DT
+sense	NN
+that	IN
+some	DT
+deviationsbetween	VBN
+the	DT
+actual	JJ
+duration	NN
+and	CC
+pij	NN
+are	VBP
+likely	JJ
+to	TO
+occur	VB
+.	.
+
+In	IN
+order	NN
+to	TO
+capture	VB
+this	DT
+uncertainty	NN
+,	,
+we	PRP
+assume	VBP
+that	IN
+pij	NN
+is	VBZ
+a	DT
+random	JJ
+variable	NN
+that	WDT
+follows	VBZ
+a	DT
+normal	JJ
+distributionwith	NN
+mean	VB
+ij	NN
+and	CC
+standard	JJ
+deviationij	NN
+,	,
+which	WDT
+can	MD
+be	VB
+computed	VBN
+from	IN
+the	DT
+history	NN
+of	IN
+past	JJ
+executions.P	NN
+
+
+Since	IN
+qdu	NN
+=	JJ
+
+
+P	NN
+
+
+i2A	NN
+i2S	NN
+
+
+p	NN
+
+
+ijzij	NN
+
+
+is	VBZ
+a	DT
+linear	JJ
+combination	NN
+of	IN
+random	JJ
+variables	NNS
+with	IN
+normal	JJ
+distribu	NN
+-	:
+
+
+j	NN
+
+
+tion	NN
+,	,
+qdu	FW
+itself	PRP
+is	VBZ
+a	DT
+random	JJ
+variable	NN
+with	IN
+normal	JJ
+distribution	NN
+-LSB-	-LRB-
+33	CD
+-RSB-	-RRB-
+and	CC
+its	PRP$
+deviation	NN
+du	NNP
+is	VBZ
+:	:
+
+
+XX	NN
+
+
+2du	NN
+=	JJ
+2ijzij	NN
+-LRB-	-LRB-
+18	CD
+-RRB-	-RRB-
+
+
+j2A	NN
+i2Sj	NN
+
+
+With	IN
+this	DT
+equation	NN
+at	IN
+hand	NN
+,	,
+it	PRP
+is	VBZ
+possible	JJ
+to	TO
+extend	VB
+the	DT
+objective	JJ
+function	NN
+in	IN
+order	NN
+to	TO
+incorporate	VB
+the	DT
+deviation	NN
+from	IN
+the	DT
+expected	JJ
+execution	NN
+duration	NN
+as	IN
+one	CD
+of	IN
+the	DT
+optimization	NN
+criteria	NNS
+.	.
+
+The	DT
+extended	JJ
+objective	JJ
+function	NN
+is	VBZ
+:	:
+
+
+X2	NN
+
+
+
+Qmaxl	NNP
+Q	NNP
+
+
+i	LS
+;	:
+l	NN
+
+
+X	NN
+
+
+5	CD
+
+
+Qi	NNP
+;	:
+l	NN
+
+
+Qmaxl	NNP
+Qminl	NNP
+
+
+Wl	NN
++	CC
+
+
+Qminl	NNP
+
+
+!	.
+
+
+Max	NNP
+
+
+l	NN
+=	JJ
+0	CD
+l	NN
+=	JJ
+3	CD
+
+
+Qmaxl	NNP
+Qmin	NNP
+
+
+Wl	NN
+-LRB-	-LRB-
+19	CD
+-RRB-	-RRB-
+
+
+l	NN
+
+
+where	WRB
+Q0	NN
+=	JJ
+2du	JJ
+and	CC
+W0	NN
+2	CD
+-LSB-	-LRB-
+0	CD
+;	:
+1	CD
+-RSB-	-RRB-
+are	VBP
+the	DT
+values	NNS
+assigned	VBN
+by	IN
+the	DT
+user	NN
+to	TO
+the	DT
+criterion	NN
+viation	NN
+from	IN
+expected	VBN
+execution	NN
+duration	NN
+
+
+Given	VBN
+the	DT
+above	JJ
+variables	NNS
+,	,
+objective	JJ
+function	NN
+,	,
+and	CC
+constraints	NNS
+,	,
+an	DT
+IP	NNP
+solver	NN
+is	VBZ
+able	JJ
+to	TO
+compute	VB
+the	DT
+values	NNS
+of	IN
+yij	NN
+corresponding	VBG
+to	TO
+an	DT
+optimal	JJ
+execution	NN
+plan	NN
+.	.
+
+As	IN
+a	DT
+side	JJ
+effect	NN
+,	,
+the	DT
+IP	NNP
+solver	NN
+will	MD
+also	RB
+provide	VB
+a	DT
+tentative	JJ
+schedule	NN
+for	IN
+the	DT
+tasks	NNS
+in	IN
+the	DT
+statechart	NN
+by	IN
+assigning	VBG
+values	NNS
+to	TO
+the	DT
+variables	NNS
+xj	NN
+.	.
+
+This	DT
+assignment	NN
+of	IN
+variables	NNS
+can	MD
+be	VB
+used	VBN
+by	IN
+the	DT
+execution	NN
+engine	NN
+,	,
+but	CC
+they	PRP
+are	VBP
+not	RB
+strictly	RB
+necessary	JJ
+,	,
+since	IN
+the	DT
+execution	NN
+engine	NN
+can	MD
+schedule	VB
+the	DT
+tasks	NNS
+using	VBG
+its	PRP$
+own	JJ
+scheduling	NN
+mechanisms	NNS
+.	.
+
+
+Note	VB
+that	IN
+the	DT
+proposed	VBN
+method	NN
+for	IN
+translating	VBG
+the	DT
+problem	NN
+of	IN
+selecting	VBG
+an	DT
+optimal	JJ
+execution	NN
+plan	NN
+into	IN
+an	DT
+IP	NNP
+problem	NN
+is	VBZ
+generic	JJ
+,	,
+and	CC
+although	IN
+it	PRP
+has	VBZ
+been	VBN
+illustrated	VBN
+with	IN
+the	DT
+5	CD
+criteria	NNS
+introduced	VBN
+in	IN
+Section	NN
+3	CD
+-LRB-	-LRB-
+plus	CC
+the	DT
+deviation	NN
+criterion	NN
+-RRB-	-RRB-
+,	,
+other	JJ
+criteria	NNS
+can	MD
+be	VB
+accommodated	VBN
+.	.
+
+
+4.2.5	CD
+
+
+Replanning	VBG
+the	DT
+Execution	NN
+of	IN
+Composite	NNP
+Services	NNPS
+
+
+When	WRB
+using	VBG
+the	DT
+global	JJ
+planning	NN
+approach	NN
+,	,
+an	DT
+execution	NN
+plan	NN
+is	VBZ
+built	VBN
+at	IN
+the	DT
+beginning	NN
+of	IN
+the	DT
+execution	NN
+of	IN
+the	DT
+composite	JJ
+service	NN
+.	.
+
+Once	RB
+the	DT
+execution	NN
+has	VBZ
+started	VBN
+,	,
+several	JJ
+contingencies	NNS
+may	MD
+occur	VB
+,	,
+e.g.	FW
+,	,
+a	DT
+component	NN
+service	NN
+becomes	VBZ
+unavailable	JJ
+or	CC
+the	DT
+QoS	NN
+of	IN
+one	CD
+of	IN
+the	DT
+component	NN
+services	NNS
+changes	NNS
+signi	NNS
+.	.
+
+In	IN
+these	DT
+situations	NNS
+,	,
+a	DT
+replanning	NN
+procedure	NN
+may	MD
+be	VB
+triggered	VBN
+in	IN
+order	NN
+to	TO
+ensure	VB
+that	IN
+the	DT
+QoS	NN
+of	IN
+the	DT
+composite	JJ
+service	NN
+execution	NN
+remains	VBZ
+optimal	JJ
+.	.
+
+In	IN
+this	DT
+section	NN
+,	,
+we	PRP
+discuss	VBP
+how	WRB
+this	DT
+replanning	NN
+procedure	NN
+is	VBZ
+conducted	VBN
+.	.
+
+
+Consider	VB
+a	DT
+composite	JJ
+service	NN
+consists	VBZ
+of	IN
+a	DT
+set	NN
+of	IN
+task	NN
+T	NN
+=	JJ
+ft1	NN
+;	:
+t2	NN
+;	:
+:	:
+:	:
+:	:
+;	:
+tng	NN
+.	.
+
+Based	VBN
+on	IN
+the	DT
+execution	NN
+status	NN
+,	,
+T	NN
+can	MD
+be	VB
+partitionedinto	JJ
+four	CD
+regions	NNS
+:	:
+-LRB-	-LRB-
+i	LS
+-RRB-	-RRB-
+region	NN
+R	NN
+containingtasks	NNS
+that	WDT
+have	VBP
+been	VBN
+completed	VBN
+;	:
+
+
+21	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+21	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+PSfrag	NN
+replacements	NNS
+
+
+Region	NN
+R	NN
+
+
+t1	NN
+
+
+t2	NN
+
+
+Region	NN
+t	NN
+
+
+R3	NN
+
+
+
+t4	NN
+
+
+Region	NN
+R	NN
+t9	NN
+
+
+t5	NN
+
+
+t6	NN
+
+
+t7	NN
+
+
+t8	NN
+
+
+Legend	NNP
+
+
+Task	NNP
+has	VBZ
+sucessfully	RB
+beencompleted	VBN
+by	IN
+a	DT
+service	NN
+
+
+Task	NNP
+is	VBZ
+being	VBG
+executed	VBN
+
+
+Task	NNP
+is	VBZ
+waiting	VBG
+to	TO
+be	VB
+assigned	VBN
+to	TO
+a	DT
+service	NN
+
+
+Figure	NNP
+8	CD
+:	:
+Partition	NN
+of	IN
+a	DT
+composite	JJ
+service	NN
+into	IN
+regions	NNS
+for	IN
+replanning	VBG
+
+
+region	NN
+R	NN
+containing	VBG
+tasks	NNS
+that	WDT
+are	VBP
+currently	RB
+being	VBG
+executed	VBN
+;	:
+-LRB-	-LRB-
+iii	LS
+-RRB-	-RRB-
+region	NN
+R	NN
+containingtasks	NNS
+that	WDT
+have	VBP
+not	RB
+yet	RB
+started	VBN
+;	:
+and	CC
+-LRB-	-LRB-
+iv	LS
+-RRB-	-RRB-
+region	NN
+R	NN
+containing	VBG
+tasks	NNS
+which	WDT
+belong	VBP
+to	TO
+a	DT
+conditional	JJ
+branch	NN
+that	WDT
+is	VBZ
+no	RB
+longer	RB
+accessible	JJ
+from	IN
+any	DT
+of	IN
+the	DT
+tasks	NNS
+in	IN
+R	NN
+-LRB-	-LRB-
+i.e.	FW
+tasks	NNS
+that	WDT
+have	VBP
+not	RB
+been	VBN
+executed	VBN
+and	CC
+will	MD
+not	RB
+be	VB
+executed	VBN
+-RRB-	-RRB-
+.	.
+
+An	DT
+example	NN
+of	IN
+a	DT
+partitioning	NN
+of	IN
+a	DT
+composite	JJ
+service	NN
+is	VBZ
+given	VBN
+in	IN
+Figure	NNP
+8	CD
+.	.
+
+Note	VB
+that	IN
+this	DT
+composite	JJ
+service	NN
+has	VBZ
+no	DT
+conditional	JJ
+branches	NNS
+,	,
+so	RB
+R	NN
+=	JJ
+;	:
+.	.
+
+
+When	WRB
+using	VBG
+the	DT
+global	JJ
+planning	NN
+approach	NN
+,	,
+the	DT
+composite	JJ
+service	NN
+execution	NN
+needs	VBZ
+to	TO
+be	VB
+replanned	VBN
+in	IN
+the	DT
+following	VBG
+cases	NNS
+:	:
+
+
+1	LS
+.	.
+
+One	CD
+or	CC
+several	JJ
+exceptions	NNS
+have	VBP
+occurred	VBN
+during	IN
+the	DT
+execution/invocationof	JJ
+component	NN
+services	NNS
+
+
+in	IN
+region	NN
+R.	NNP
+Execution	NNP
+exceptions	NNS
+include	VBP
+-LRB-	-LRB-
+i	LS
+-RRB-	-RRB-
+component	NN
+services	NNS
+failing	VBG
+to	TO
+execute	VB
+tasks	NNS
+;	:
+and	CC
+
+
+-LRB-	-LRB-
+ii	LS
+-RRB-	-RRB-
+a	DT
+service	NN
+not	RB
+being	VBG
+able	JJ
+to	TO
+attain	VB
+its	PRP$
+expected	VBN
+QoS	NN
+.	.
+
+
+2	LS
+.	.
+
+Changes	NNS
+have	VBP
+been	VBN
+reported	VBN
+in	IN
+the	DT
+expected	VBN
+QoS	NN
+of	IN
+candidate	NN
+services	NNS
+for	IN
+tasks	NNS
+in	IN
+region	NN
+R.	NNP
+
+
+Relevantchangesinclude	NNP
+:	:
+-LRB-	-LRB-
+i	LS
+-RRB-	-RRB-
+services	NNS
+selectedduringthe	NN
+globalplanningbecomingunavailable	JJ
+
+
+or	CC
+changing	VBG
+their	PRP$
+QoS	NN
+properties	NNS
+;	:
+-LRB-	-LRB-
+ii	LS
+-RRB-	-RRB-
+new	JJ
+candidate	NN
+services	NNS
+offering	VBG
+better	JJR
+QoS	NN
+than	IN
+existing	VBG
+
+
+services	NNS
+appearing	VBG
+;	:
+and	CC
+-LRB-	-LRB-
+iii	LS
+-RRB-	-RRB-
+existing	VBG
+services	NNS
+raising	VBG
+their	PRP$
+advertised	VBN
+QoS	NN
+.	.
+
+
+As	IN
+discussed	VBN
+in	IN
+Section	NN
+4.2.4	CD
+,	,
+there	EX
+are	VBP
+three	CD
+inputs	NNS
+in	IN
+an	DT
+IP	NNP
+problem	NN
+:	:
+a	DT
+set	NN
+of	IN
+variables	NNS
+,	,
+an	DT
+ob	NN
+-	:
+jective	JJ
+function	NN
+and	CC
+a	DT
+set	NN
+of	IN
+constraints	NNS
+.	.
+
+When	WRB
+an	DT
+execution	NN
+plan	NN
+is	VBZ
+revised	VBN
+at	IN
+runtime	NN
+,	,
+the	DT
+variables	NNS
+and	CC
+the	DT
+objective	JJ
+function	NN
+remain	VBP
+the	DT
+same	JJ
+as	IN
+at	IN
+beginning	NN
+of	IN
+the	DT
+execution	NN
+.	.
+
+However	RB
+,	,
+additional	JJ
+constraints	NNS
+need	VBP
+to	TO
+be	VB
+introduced	VBN
+in	IN
+order	NN
+to	TO
+capture	VB
+the	DT
+current	JJ
+execution	NN
+status	NN
+.	.
+
+Speci	NNP
+,	,
+the	DT
+actual	JJ
+QoS	NN
+delivered	VBN
+by	IN
+the	DT
+tasks	NNS
+in	IN
+region	NN
+R	NN
+,	,
+and	CC
+the	DT
+fact	NN
+that	IN
+the	DT
+tasks	NNS
+in	IN
+region	NN
+R	NN
+and	CC
+R	NN
+can	MD
+not	RB
+be	VB
+reassigned	VBN
+to	TO
+new	JJ
+candidate	NN
+services	NNS
+,	,
+need	VBP
+to	TO
+be	VB
+encoded	VBN
+in	IN
+the	DT
+constraints	NNS
+of	IN
+the	DT
+IP	NNP
+problem	NN
+.	.
+
+For	IN
+example	NN
+,	,
+assuming	VBG
+that	IN
+task	NN
+t1	NN
+has	VBZ
+been	VBN
+successfully	RB
+completed	VBN
+by	IN
+service	NN
+s41	NN
+,	,
+that	IN
+the	DT
+actual	JJ
+exe	NN
+-	:
+cution	NN
+duration	NN
+was	VBD
+20	CD
+seconds	NNS
+,	,
+and	CC
+that	IN
+the	DT
+actual	JJ
+execution	NN
+cost	NN
+was	VBD
+$	$
+10	CD
+,	,
+the	DT
+following	VBG
+constraints	NNS
+will	MD
+be	VB
+added	VBN
+to	TO
+the	DT
+IP	NNP
+problem	NN
+by	IN
+the	DT
+global	JJ
+planner	NN
+:	:
+
+
+y41	NN
+=	JJ
+1	CD
+;	:
+
+
+-LRB-	-LRB-
+20	CD
+-RRB-	-RRB-
+
+
+a41	NN
+=	JJ
+1	CD
+;	:
+b41	NN
+=	JJ
+1	CD
+;	:
+p41	NN
+=	JJ
+20	CD
+;	:
+c41	NN
+=	JJ
+10	CD
+
+
+-LRB-	-LRB-
+21	CD
+-RRB-	-RRB-
+
+
+-LRB-	-LRB-
+22	CD
+-RRB-	-RRB-
+
+
+22	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+22	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+Constraint	NN
+20	CD
+indicates	VBZ
+that	IN
+service	NN
+s41	NN
+executed	VBD
+task	NN
+t1	NN
+.	.
+
+Constraint	NN
+21	CD
+indicates	VBZ
+that	IN
+service	NN
+s41	NN
+was	VBD
+available	JJ
+and	CC
+reliable	JJ
+when	WRB
+invoked	VBN
+.	.
+
+Finally	RB
+,	,
+constraint	NN
+22	CD
+encodes	VBZ
+the	DT
+actual	JJ
+execution	NN
+duration	NN
+and	CC
+cost	NN
+of	IN
+t1	NN
+.	.
+
+The	DT
+introduction	NN
+of	IN
+these	DT
+constraints	NNS
+force	VBP
+the	DT
+IP	NNP
+solver	NN
+to	TO
+select	VB
+an	DT
+execution	NN
+plan	NN
+which	WDT
+takes	VBZ
+into	IN
+account	NN
+what	WDT
+has	VBZ
+already	RB
+been	VBN
+accomplished	VBN
+during	IN
+the	DT
+execution	NN
+of	IN
+the	DT
+composite	JJ
+service	NN
+.	.
+
+With	IN
+these	DT
+constraints	NNS
+,	,
+the	DT
+IP	NNP
+solver	NN
+can	MD
+compute	VB
+an	DT
+optimal	JJ
+plan	NN
+for	IN
+region	NN
+R.	NNP
+
+
+4.3	CD
+
+
+Comparison	NN
+of	IN
+Service	NNP
+Selection	NN
+Approaches	NNS
+
+
+In	IN
+the	DT
+following	VBG
+,	,
+we	PRP
+compare	VBP
+the	DT
+local	JJ
+and	CC
+the	DT
+global	JJ
+service	NN
+selection	NN
+approaches	VBZ
+based	VBN
+on	IN
+the	DT
+following	VBG
+metrics	NNS
+:	:
+
+
+QoS	NN
+of	IN
+Composite	NNP
+Service	NNP
+.	.
+
+This	DT
+is	VBZ
+measured	VBN
+along	IN
+two	CD
+perspectives	NNS
+:	:
+
+
+Quality	NNP
+Criteria	NNP
+.	.
+
+As	IN
+we	PRP
+discussed	VBD
+in	IN
+earlier	JJR
+section	NN
+,	,
+QoS	NN
+of	IN
+composite	JJ
+service	NN
+is	VBZ
+mea	SYM
+-	:
+sured	VBN
+by	IN
+a	DT
+set	NN
+of	IN
+quality	NN
+criteria	NNS
+.	.
+
+And	CC
+since	IN
+there	EX
+are	VBP
+often	RB
+tradeoffs	NNS
+among	IN
+different	JJ
+quality	NN
+criterion	NN
+-LRB-	-LRB-
+e.g.	FW
+,	,
+execution	NN
+time	NN
+and	CC
+cost	NN
+-RRB-	-RRB-
+,	,
+it	PRP
+is	VBZ
+important	JJ
+that	IN
+the	DT
+system	NN
+is	VBZ
+able	JJ
+to	TO
+a	DT
+combination	NN
+of	IN
+these	DT
+dimensions	NNS
+that	IN
+the	DT
+userâ	JJ
+$	$
+™	CD
+s	NNS
+preferences	NNS
+.	.
+
+
+Ability	NN
+to	TO
+satisfy	VB
+userâ	JJ
+$	$
+™	CD
+s	NNS
+requirements	NNS
+.	.
+
+Although	IN
+good	JJ
+quality	NN
+composite	JJ
+service	NN
+execu	NN
+-	:
+tion	NN
+requires	VBZ
+achieving	VBG
+optimal	JJ
+QoS	NN
+of	IN
+services	NNS
+,	,
+the	DT
+satisfaction	NN
+of	IN
+end	NN
+usersâ	NN
+$	$
+™	CD
+constraints	NNS
+is	VBZ
+an	DT
+equally	RB
+important	JJ
+aspect	NN
+.	.
+
+There	EX
+are	VBP
+two	CD
+kinds	NNS
+of	IN
+constraints	NNS
+:	:
+constraints	NNS
+on	IN
+a	DT
+single	JJ
+task	NN
+and	CC
+constraints	NNS
+on	IN
+multiple	JJ
+tasks	NNS
+.	.
+
+The	DT
+systemâ	NN
+$	$
+™	CD
+s	NNS
+ability	NN
+to	TO
+accept	VB
+both	CC
+kinds	NNS
+of	IN
+end	NN
+usersâ	NN
+$	$
+™	CD
+constraints	NNS
+is	VBZ
+key	JJ
+to	TO
+satisfying	VBG
+end	NN
+userâ	NN
+$	$
+™	CD
+s	NNS
+requirements	NNS
+.	.
+
+
+System	NNP
+Cost	NN
+.	.
+
+When	WRB
+the	DT
+system	NN
+receives	VBZ
+a	DT
+request	NN
+to	TO
+execute	VB
+a	DT
+composite	JJ
+service	NN
+from	IN
+an	DT
+end	NN
+user	NN
+,	,
+the	DT
+system	NN
+utilizesresources	VBZ
+to	TO
+locate	VB
+candidate	NN
+Web	NN
+services	NNS
+for	IN
+the	DT
+required	VBN
+tasks	NNS
+,	,
+and	CC
+to	TO
+selectamongthem	NN
+.	.
+
+More	JJR
+speci	NN
+,	,
+the	DT
+systemconsumesnetworkresources	NNS
+-LRB-	-LRB-
+bandwidthcost	NN
+-RRB-	-RRB-
+to	TO
+contact	VB
+the	DT
+service	NN
+broker	NN
+-LRB-	-LRB-
+s	NNS
+-RRB-	-RRB-
+in	IN
+order	NN
+to	TO
+identify	VB
+candidate	NN
+Web	NN
+services	NNS
+.	.
+
+It	PRP
+then	RB
+consumes	VBZ
+computational	JJ
+resources	NNS
+-LRB-	-LRB-
+computational	JJ
+cost	NN
+-RRB-	-RRB-
+in	IN
+order	NN
+to	TO
+process	VB
+the	DT
+results	NNS
+of	IN
+this	DT
+search	NN
+and	CC
+select	JJ
+one	CD
+among	IN
+the	DT
+candidate	NN
+Web	NN
+services	NNS
+.	.
+
+Note	VB
+that	IN
+,	,
+when	WRB
+the	DT
+composite	JJ
+service	NN
+is	VBZ
+being	VBG
+executed	VBN
+,	,
+the	DT
+system	NN
+also	RB
+interacts	VBZ
+with	IN
+the	DT
+Web	NN
+services	NNS
+in	IN
+order	NN
+to	TO
+orchestrate	VB
+them	PRP
+,	,
+which	WDT
+also	RB
+consumes	VBZ
+bandwidth	NN
+and	CC
+some	DT
+computational	JJ
+resources	NNS
+.	.
+
+
+The	DT
+computational	JJ
+cost	NN
+of	IN
+the	DT
+local	JJ
+optimization	NN
+approach	NN
+is	VBZ
+polynomial	JJ
+.	.
+
+The	DT
+bandwidth	NN
+cost	NN
+is	VBZ
+very	RB
+limited	JJ
+:	:
+for	IN
+each	DT
+task	NN
+,	,
+there	EX
+are	VBP
+two	CD
+messages	NNS
+that	WDT
+w	VBP
+between	IN
+the	DT
+composite	JJ
+service	NN
+execution	NN
+engine	NN
+and	CC
+the	DT
+service	NN
+broker	NN
+-LRB-	-LRB-
+queryand	NN
+result	NN
+-RRB-	-RRB-
+and	CC
+three	CD
+that	WDT
+w	VBD
+between	IN
+the	DT
+executionengine	NN
+and	CC
+the	DT
+selected	VBN
+Web	NN
+services	NNS
+-LRB-	-LRB-
+enable	VB
+,	,
+start	VB
+,	,
+and	CC
+completed	VBN
+-RRB-	-RRB-
+.	.
+
+
+On	IN
+the	DT
+negative	JJ
+side	NN
+,	,
+the	DT
+local	JJ
+optimization	NN
+approach	NN
+has	VBZ
+two	CD
+shortcomings	NNS
+:	:
+
+
+23	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+23	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+It	PRP
+can	MD
+not	RB
+consider	VB
+global	JJ
+tradeoffs	NNS
+between	IN
+quality	NN
+dimensions	NNS
+,	,
+especially	RB
+in	IN
+the	DT
+case	NN
+of	IN
+com	NN
+-	:
+posite	JJ
+services	NNS
+involving	VBG
+concurrent	JJ
+threads	NNS
+.	.
+
+For	IN
+example	NN
+,	,
+in	IN
+the	DT
+Travel	NN
+Planner	NN
+state	NN
+-	:
+chart	NN
+,	,
+task	NN
+t2	NN
+-LRB-	-LRB-
+AttractionSearching	NN
+-RRB-	-RRB-
+and	CC
+task	NN
+t3	NN
+-LRB-	-LRB-
+FlightTicketBooking	NN
+-RRB-	-RRB-
+are	VBP
+exe	SYM
+-	:
+cuted	VBN
+concurrently	RB
+.	.
+
+If	IN
+the	DT
+execution	NN
+duration	NN
+of	IN
+task	NN
+t3	NN
+is	VBZ
+always	RB
+longer	JJR
+than	IN
+that	DT
+of	IN
+task	NN
+t2	NN
+,	,
+the	DT
+system	NN
+should	MD
+select	VB
+for	IN
+task	NN
+t2	NN
+the	DT
+candidate	NN
+service	NN
+that	WDT
+offers	VBZ
+the	DT
+lowest	JJS
+price	NN
+,	,
+regardless	RB
+of	IN
+the	DT
+duration	NN
+.	.
+
+In	IN
+the	DT
+local	JJ
+selection	NN
+approach	NN
+however	RB
+,	,
+the	DT
+system	NN
+does	VBZ
+not	RB
+take	VB
+advantage	NN
+of	IN
+this	DT
+fact	NN
+.	.
+
+
+When	WRB
+selecting	VBG
+Web	NN
+services	NNS
+,	,
+the	DT
+local	JJ
+optimization	NN
+approach	NN
+can	MD
+consider	VB
+constraints	NNS
+on	IN
+in	IN
+-	:
+dividual	JJ
+tasks	NNS
+,	,
+but	CC
+it	PRP
+can	MD
+not	RB
+consider	VB
+global	JJ
+constraints	NNS
+,	,
+i.e.	FW
+,	,
+constraints	NNS
+that	WDT
+cover	VBP
+multiple	JJ
+-LRB-	-LRB-
+or	CC
+all	DT
+-RRB-	-RRB-
+tasks	NNS
+in	IN
+the	DT
+composite	JJ
+service	NN
+.	.
+
+Also	RB
+,	,
+although	IN
+it	PRP
+is	VBZ
+always	RB
+able	JJ
+to	TO
+select	VB
+a	DT
+Web	NN
+service	NN
+with	IN
+minimal	JJ
+execution	NN
+price	NN
+or	CC
+minimal	JJ
+execution	NN
+duration	NN
+for	IN
+each	DT
+task	NN
+,	,
+it	PRP
+fails	VBZ
+when	WRB
+both	CC
+the	DT
+execution	NN
+price	NN
+and	CC
+execution	NN
+duration	NN
+need	VBP
+to	TO
+be	VB
+considered	VBN
+at	IN
+a	DT
+global	JJ
+level	NN
+.	.
+
+For	IN
+example	NN
+,	,
+it	PRP
+can	MD
+not	RB
+enforce	VB
+a	DT
+constraint	NN
+stating	VBG
+that	IN
+the	DT
+composite	JJ
+serviceâ	NN
+$	$
+™	CD
+s	NNS
+execution	NN
+price	NN
+can	MD
+not	RB
+exceed	VB
+$	$
+500	CD
+and	CC
+the	DT
+execution	NN
+duration	NN
+can	MD
+not	RB
+exceed	VB
+3	CD
+days	NNS
+.	.
+
+
+The	DT
+global	JJ
+planning	NN
+approach	NN
+overcomes	VBZ
+these	DT
+shortcomings	NNS
+,	,
+but	CC
+at	IN
+the	DT
+price	NN
+of	IN
+higher	JJR
+computa	NN
+-	:
+tional	JJ
+and	CC
+bandwidth	NN
+cost	NN
+.	.
+
+Indeed	RB
+,	,
+the	DT
+global	JJ
+planner	NN
+needs	VBZ
+to	TO
+select	VB
+an	DT
+optimal	JJ
+execution	NN
+plan	NN
+using	VBG
+an	DT
+expensive	JJ
+algorithm	NN
+-LRB-	-LRB-
+exponential	NN
+in	IN
+some	DT
+cases	NNS
+-RRB-	-RRB-
+.	.
+
+It	PRP
+then	RB
+needs	VBZ
+to	TO
+monitor	VB
+all	PDT
+the	DT
+candidate	NN
+Web	NN
+services	NNS
+-LRB-	-LRB-
+whether	IN
+they	PRP
+are	VBP
+included	VBN
+in	IN
+the	DT
+plan	NN
+or	CC
+not	RB
+-RRB-	-RRB-
+thereby	RB
+consuming	VBG
+considerable	JJ
+band	NN
+-	:
+width	NN
+resources	NNS
+.	.
+
+Finally	RB
+,	,
+when	WRB
+it	PRP
+detects	VBZ
+exceptions	NNS
+or	CC
+changes	NNS
+,	,
+it	PRP
+may	MD
+need	VB
+to	TO
+revise	VB
+the	DT
+execution	NN
+plan	NN
+at	IN
+runtime	NN
+,	,
+again	RB
+using	VBG
+an	DT
+expensive	JJ
+algorithm	NN
+.	.
+
+Another	DT
+issue	NN
+with	IN
+the	DT
+global	JJ
+planning	NN
+approach	NN
+is	VBZ
+that	IN
+users	NNS
+are	VBP
+required	VBN
+to	TO
+provide	VB
+relatively	RB
+complex	JJ
+input	NN
+-LRB-	-LRB-
+i.e.	FW
+global	JJ
+constraints	NNS
+and	CC
+tradeoffs	NNS
+-RRB-	-RRB-
+,	,
+which	WDT
+some	DT
+users	NNS
+might	MD
+have	VB
+problems	NNS
+formulating	VBG
+.	.
+
+
+A	DT
+quantitative	JJ
+comparison	NN
+between	IN
+local	JJ
+optimization	NN
+and	CC
+global	JJ
+planning	NN
+based	VBN
+on	IN
+experimental	JJ
+results	NNS
+is	VBZ
+given	VBN
+in	IN
+Section	NN
+6	CD
+.	.
+
+
+5	CD
+
+
+Implementation	NN
+
+
+In	IN
+this	DT
+section	NN
+,	,
+we	PRP
+describe	VBP
+the	DT
+implementation	NN
+of	IN
+two	CD
+major	JJ
+components	NNS
+of	IN
+the	DT
+AgFlow	NNP
+system	NN
+architecture	NN
+-LRB-	-LRB-
+shown	VBN
+in	IN
+Figure	NN
+1	CD
+-RRB-	-RRB-
+:	:
+the	DT
+service	NN
+broker	NN
+and	CC
+the	DT
+service	NN
+composition	NN
+manager	NN
+.	.
+
+5.1	CD
+Implementing	VBG
+the	DT
+Service	NNP
+Broker	NNP
+
+
+There	EX
+are	VBP
+two	CD
+meta-data	JJ
+repositories	NNS
+in	IN
+the	DT
+AgFlow	NNP
+system	NN
+,	,
+namely	RB
+service	NN
+ontology	JJ
+repository	NN
+and	CC
+Web	NN
+service	NN
+repository	NN
+.	.
+
+We	PRP
+adopt	VBP
+the	DT
+UDDI	NNP
+registry	NN
+to	TO
+implement	VB
+both	CC
+meta-data	JJ
+repositories	NNS
+-LRB-	-LRB-
+see	VB
+Figure	NNP
+9	CD
+-RRB-	-RRB-
+.	.
+
+The	DT
+UDDI	NNP
+speci	NN
+provides	VBZ
+a	DT
+platform	NN
+independent	JJ
+way	NN
+of	IN
+describing	VBG
+services	NNS
+and	CC
+discovering	VBG
+businesses	NNS
+.	.
+
+The	DT
+UDDI	NNP
+data	NNS
+structures	NNS
+provide	VBP
+a	DT
+framework	NN
+for	IN
+the	DT
+description	NN
+of	IN
+ba	NN
+-	:
+sic	JJ
+business	NN
+and	CC
+service	NN
+information	NN
+,	,
+and	CC
+provide	VBP
+an	DT
+architecture	NN
+for	IN
+an	DT
+extensible	JJ
+mechanism	NN
+-LRB-	-LRB-
+i.e.	FW
+,	,
+
+
+24	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+24	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+tModel	NN
+-RRB-	-RRB-
+to	TO
+provide	VB
+detailed	JJ
+service	NN
+information	NN
+using	VBG
+any	DT
+description	NN
+language	NN
+.	.
+
+We	PRP
+de	IN
+an	DT
+XML	NN
+
+
+Business	NN
+Entry	NN
+âˆ	NN
+'	''
+âˆ	NN
+'	''
+Service	NNP
+Ontology	NNP
+Name	VB
+âˆ	NN
+'	''
+âˆ	NN
+'	''
+Service	NNP
+Ontology	NNP
+Name	VB
+
+
+Description	NN
+
+
+Business	NNP
+Services	NNPS
+
+
+Business	NN
+Entry	NN
+âˆ	NN
+'	''
+âˆ	NN
+'	''
+Web	NN
+service	NN
+Name	VB
+âˆ	NN
+'	''
+âˆ	NN
+'	''
+Web	NN
+service	NN
+Name	VB
+
+
+Description	NN
+
+
+Business	NNP
+Services	NNPS
+
+
+Business	NNP
+Service	NNP
+
+
+Name	VB
+
+
+Description	NN
+
+
+Binding	NN
+Templates	NNS
+
+
+tModel	NN
+
+
+Name	VB
+
+
+Description	NN
+
+
+OverviewDoc	NNP
+
+
+IndentifierBag	NNP
+
+
+CategoryBag	NNP
+
+
+Service	NNP
+Ontology	NNP
+tModels	NNS
+
+
+Business	NNP
+Service	NNP
+
+
+Name	VB
+
+
+Description	NN
+
+
+Binding	NN
+Templates	NNS
+
+
+tModel	NN
+
+
+Name	VB
+
+
+Description	NN
+
+
+OverviewDoc	NNP
+
+
+IndentifierBag	NNP
+
+
+CategoryBag	NNP
+
+
+Web	NN
+service	NN
+tModels	NNS
+
+
+Binding	NN
+Template	NN
+
+
+Description	NN
+
+
+AccessPoint	NNP
+
+
+tModelInstance	NN
+Details	NNS
+
+
+tModelInstanceInfo	NN
+
+
+tModelKey	NN
+
+
+Description	NN
+
+
+InstanceDetail	NNP
+
+
+Binding	NN
+Template	NN
+
+
+Description	NN
+
+
+AccessPoint	NNP
+
+
+tModelInstance	NN
+Details	NNS
+
+
+tModelInstanceInfo	NN
+
+
+tModelKey	NN
+
+
+Description	NN
+
+
+InstanceDetail	NNP
+
+
+UDDI	NNP
+:	:
+Service	NNP
+Ontology	NNP
+Repository	NNP
+
+
+UDDI	NNP
+:	:
+Web	NN
+Service	NNP
+Repository	NNP
+
+
+Legend	NNP
+:	:
+
+
+reference	NN
+
+
+parent	NN
+service	NN
+ontology	NN
+'s	POS
+tModel	NN
+
+
+service	NN
+ontology	NN
+'s	POS
+tModel	NN
+
+
+Figure	NNP
+9	CD
+:	:
+Service	NNP
+ontology	NN
+repository	NN
+and	CC
+Web	NN
+service	NN
+repository	NN
+
+
+schema	NN
+for	IN
+service	NN
+ontologies	NNS
+.	.
+
+Each	DT
+service	NN
+ontology	NN
+is	VBZ
+represented	VBN
+as	IN
+an	DT
+XML	NN
+document	NN
+.	.
+
+Table	NNP
+4	CD
+in	IN
+Appendix	NN
+shows	VBZ
+an	DT
+example	NN
+of	IN
+a	DT
+Trip-planning	JJ
+service	NN
+ontology	NN
+for	IN
+the	DT
+domain	NN
+tourism	NN
+.	.
+
+A	DT
+separate	JJ
+tModel	NN
+of	IN
+type	NN
+serviceOntologySpec	NN
+is	VBZ
+created	VBN
+for	IN
+each	DT
+service	NN
+ontology	NN
+.	.
+
+The	DT
+infor	NN
+-	:
+mation	NN
+that	WDT
+makes	VBZ
+up	RP
+a	DT
+serviceOntologySpec	NN
+tModel	NN
+is	VBZ
+quite	RB
+simple	JJ
+.	.
+
+There	EX
+is	VBZ
+a	DT
+tModel	NN
+key	NN
+,	,
+a	DT
+name	NN
+-LRB-	-LRB-
+i.e.	FW
+,	,
+service	NN
+ontologyâ	NN
+$	$
+™	CD
+s	NNS
+name	NN
+-RRB-	-RRB-
+,	,
+an	DT
+optional	JJ
+description	NN
+,	,
+and	CC
+a	DT
+URL	NN
+that	WDT
+points	VBZ
+to	TO
+the	DT
+loca	NN
+-	:
+tion	NN
+of	IN
+the	DT
+service	NN
+ontology	NN
+description	NN
+document	NN
+.	.
+
+Table	NNP
+5	CD
+in	IN
+Appendix	NNP
+give	VBP
+an	DT
+example	NN
+of	IN
+service	NN
+ontologyâ	JJ
+$	$
+™	CD
+s	NNS
+tModel	NN
+in	IN
+UDDI	NNP
+registry	NN
+.	.
+
+
+In	IN
+the	DT
+Web	NN
+service	NN
+repository	NN
+,	,
+we	PRP
+adopt	VBP
+WSDL	NN
+-LRB-	-LRB-
+Web	NN
+service	NN
+description	NN
+language	NN
+-RRB-	-RRB-
+-LSB-	-LRB-
+34	CD
+-RSB-	-RRB-
+to	TO
+specify	VB
+services	NNS
+.	.
+
+An	DT
+example	NN
+of	IN
+a	DT
+WSDL	NN
+document	NN
+can	MD
+be	VB
+found	VBN
+in	IN
+Appendix	NNP
+,	,
+Table	NNP
+6	CD
+.	.
+
+It	PRP
+should	MD
+be	VB
+noted	VBN
+that	IN
+the	DT
+Web	NN
+serviceâ	NN
+$	$
+™	CD
+s	NNS
+tModel	NN
+contains	VBZ
+the	DT
+key	NN
+of	IN
+a	DT
+service	NN
+ontologyâ	JJ
+$	$
+™	CD
+s	NNS
+tModel	NN
+in	IN
+categoryBag	NN
+,	,
+the	DT
+keyValue	NN
+is	VBZ
+serviceOntologySpec	NN
+.	.
+
+In	IN
+Appendix	NN
+,	,
+Table	NNP
+7	CD
+,	,
+an	DT
+example	NN
+of	IN
+Web	NN
+service	NN
+tModel	NN
+for	IN
+UDDI	NNP
+registry	NN
+is	VBZ
+given	VBN
+.	.
+
+
+Using	VBG
+the	DT
+UDDI	NNP
+API	NNP
+,	,
+the	DT
+service	NN
+broker	NN
+provides	VBZ
+two	CD
+kinds	NNS
+of	IN
+interfaces	NNS
+for	IN
+both	DT
+repositories	NNS
+:	:
+the	DT
+publish	VB
+interface	NN
+and	CC
+the	DT
+search	NN
+interface	NN
+.	.
+
+For	IN
+the	DT
+service	NN
+ontology	NN
+repository	NN
+,	,
+the	DT
+publish	VB
+interface	NN
+allows	VBZ
+an	DT
+ontology	JJ
+engineer	NN
+to	TO
+create	VB
+a	DT
+new	JJ
+service	NN
+ontology	NN
+.	.
+
+It	PRP
+also	RB
+provides	VBZ
+methods	NNS
+to	TO
+modify	VB
+the	DT
+service	NN
+ontology	NN
+such	JJ
+as	IN
+add	VB
+a	DT
+new	JJ
+service	NN
+class	NN
+,	,
+delete	VB
+an	DT
+existing	VBG
+service	NN
+class	NN
+,	,
+etc.	FW
+.	.
+
+The	DT
+search	NN
+interface	NN
+allows	VBZ
+service	NN
+providers	NNS
+and	CC
+end	VB
+users	NNS
+to	TO
+search	VB
+and	CC
+browse	VB
+the	DT
+existing	VBG
+service	NN
+ontologies	NNS
+.	.
+
+The	DT
+search	NN
+can	MD
+be	VB
+based	VBN
+on	IN
+a	DT
+service	NN
+ontologyâ	JJ
+$	$
+™	CD
+s	NNS
+domain	NN
+name	NN
+,	,
+synonyms	NNS
+,	,
+service	NN
+class	NN
+,	,
+etc.	FW
+.	.
+
+For	IN
+the	DT
+Web	NN
+service	NN
+repository	NN
+,	,
+the	DT
+publish	VB
+interface	NN
+allows	VBZ
+service	NN
+providers	NNS
+to	TO
+publish	VB
+or	CC
+advertise	VB
+their	PRP$
+service	NN
+descriptions	NNS
+.	.
+
+While	IN
+the	DT
+search	NN
+interface	NN
+allows	VBZ
+the	DT
+user	NN
+to	TO
+discover	VB
+services	NNS
+by	IN
+service	NN
+class	NN
+name	NN
+,	,
+operation	NN
+name	NN
+,	,
+input	NN
+and	CC
+output	NN
+data	NNS
+.	.
+
+
+5.2	CD
+Implementation	NN
+of	IN
+the	DT
+Service	NNP
+Composition	NNP
+Manager	NNP
+
+
+The	DT
+service	NN
+composition	NN
+manager	NN
+consists	VBZ
+of	IN
+two	CD
+modules	NNS
+,	,
+namely	RB
+the	DT
+Execution	NNP
+Planner	NNP
+,	,
+and	CC
+Exe	NN
+-	:
+cution	NN
+Engine	NNP
+.	.
+
+
+25	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+25	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+Execution	NN
+Planner	NN
+is	VBZ
+the	DT
+module	NN
+that	WDT
+selects	VBZ
+a	DT
+Web	NN
+service	NN
+for	IN
+each	DT
+task	NN
+in	IN
+a	DT
+composite	JJ
+ser	SYM
+-	:
+vice	NN
+using	VBG
+either	CC
+local	JJ
+optimization	NN
+or	CC
+global	JJ
+planning	NN
+.	.
+
+It	PRP
+provides	VBZ
+a	DT
+speci	NN
+method	NN
+called	VBN
+select	JJ
+-LRB-	-LRB-
+-RRB-	-RRB-
+that	WDT
+can	MD
+be	VB
+used	VBN
+by	IN
+composite	JJ
+services	NNS
+to	TO
+perform	VB
+local	JJ
+optimization	NN
+or	CC
+IP	NNP
+based	VBN
+global	JJ
+planning	NN
+.	.
+
+The	DT
+IP	NNP
+based	VBN
+global	JJ
+planning	NN
+approach	NN
+is	VBZ
+implemented	VBN
+as	IN
+an	DT
+integer	NN
+program	NN
+-	:
+ming	NN
+solver	NN
+based	VBN
+on	IN
+IBMâ	NNP
+$	$
+™	CD
+s	NNS
+Optimization	NNP
+Solutions	NNPS
+and	CC
+Library	NNP
+-LRB-	-LRB-
+OSL	NNP
+-RRB-	-RRB-
+.5	CD
+The	DT
+advantage	NN
+of	IN
+using	VBG
+integer	NN
+programming	NN
+is	VBZ
+that	IN
+it	PRP
+can	MD
+select	VB
+an	DT
+optimal	JJ
+execution	NN
+planning	NN
+without	IN
+enumer	NN
+-	:
+ating	VBG
+all	DT
+possible	JJ
+execution	NN
+plans	NNS
+.	.
+
+
+Execution	NN
+Engine	NNP
+is	VBZ
+the	DT
+heart	NN
+of	IN
+the	DT
+service	NN
+composition	NN
+manager	NN
+.	.
+
+It	PRP
+manages	VBZ
+composite	JJ
+service	NN
+executions	NNS
+from	IN
+beginning	VBG
+to	TO
+the	DT
+end	NN
+.	.
+
+It	PRP
+determines	VBZ
+which	WDT
+tasks	NNS
+need	VBP
+to	TO
+be	VB
+executed	VBN
+based	VBN
+on	IN
+the	DT
+control	NN
+and	CC
+data	NNS
+dependencies	NNS
+.	.
+
+It	PRP
+also	RB
+maintains	VBZ
+the	DT
+state	NN
+of	IN
+the	DT
+composite	JJ
+service	NN
+,	,
+including	VBG
+the	DT
+execution	NN
+state	NN
+and	CC
+the	DT
+events/messagestriggered	VBN
+by	IN
+Web	NN
+services	NNS
+.	.
+
+The	DT
+prototype	NN
+uses	VBZ
+the	DT
+execution	NN
+engine	NN
+of	IN
+the	DT
+Self-Serv	NNP
+system	NN
+-LSB-	-LRB-
+4	CD
+-RSB-	-RRB-
+.	.
+
+
+6	CD
+
+
+Experimentation	NN
+
+
+In	IN
+order	NN
+to	TO
+evaluate	VB
+the	DT
+proposed	JJ
+service	NN
+selection	NN
+approaches	NNS
+,	,
+we	PRP
+developed	VBD
+a	DT
+travel	NN
+planning	NN
+appli	NN
+-	:
+cation	NN
+based	VBN
+on	IN
+the	DT
+one	CD
+presented	VBN
+in	IN
+-LSB-	-LRB-
+38	CD
+-RSB-	-RRB-
+,	,
+and	CC
+conducted	VBN
+experiments	NNS
+using	VBG
+the	DT
+implemented	VBN
+proto	NN
+-	:
+type	NN
+system	NN
+.	.
+
+Services	NNPS
+were	VBD
+created	VBN
+using	VBG
+IBMâ	NNP
+$	$
+™	CD
+s	NNS
+Web	NN
+Services	NNPS
+Toolkit	NNP
+-LRB-	-LRB-
+WSTK	NNP
+-RRB-	-RRB-
+.6	CD
+and	CC
+deployed	VBN
+on	IN
+a	DT
+cluster	NN
+of	IN
+PCs	NNS
+.	.
+
+All	DT
+PCs	NNS
+had	VBD
+the	DT
+same	JJ
+con	NN
+Pentium	NNP
+III	NNP
+933MHz	NN
+with	IN
+512M	NN
+RAM	NNP
+,	,
+Windows	NNP
+2000	CD
+,	,
+Java	NNP
+2	CD
+Enterprise	NNP
+Edition	NNP
+V1	NN
+.3.0	CD
+,	,
+and	CC
+Oracle	NNP
+XML	NN
+Developer	NNP
+Kit	NN
+.	.
+
+The	DT
+PCs	NNS
+are	VBP
+connected	VBN
+to	TO
+a	DT
+LAN	NN
+through	IN
+100Mbits/sec	NNP
+Ethernet	NNP
+cards	NNS
+.	.
+
+
+QoS	NN
+data	NNS
+is	VBZ
+retrieved	VBN
+by	IN
+the	DT
+service	NN
+execution	NN
+engine	NN
+in	IN
+different	JJ
+ways	NNS
+depending	VBG
+on	IN
+the	DT
+QoS	NN
+dimension	NN
+.	.
+
+The	DT
+execution	NN
+duration	NN
+and	CC
+the	DT
+execution	NN
+cost	NN
+are	VBP
+retrieved	VBN
+via	IN
+two	CD
+operations	NNS
+:	:
+getExe	NN
+-	:
+cutionDuration	NN
+-LRB-	-LRB-
+-RRB-	-RRB-
+and	CC
+getExecutionDuration	NN
+-LRB-	-LRB-
+-RRB-	-RRB-
+respectively	RB
+.	.
+
+These	DT
+operations	NNS
+are	VBP
+de	IN
+in	IN
+the	DT
+under	IN
+-	:
+lying	VBG
+service	NN
+ontology	NN
+.	.
+
+The	DT
+reliability	NN
+and	CC
+reputation	NN
+on	IN
+the	DT
+other	JJ
+hand	NN
+are	VBP
+calculated	VBN
+by	IN
+the	DT
+service	NN
+composition	NN
+manager	NN
+using	VBG
+the	DT
+formulas	NNS
+presented	VBN
+in	IN
+Section	NN
+3.1	CD
+.	.
+
+For	IN
+this	DT
+purpose	NN
+,	,
+the	DT
+service	NN
+com	NN
+-	:
+position	NN
+manager	NN
+logs	NNS
+appropriate	JJ
+QoS	NN
+information	NN
+during	IN
+task	NN
+executions	NNS
+.	.
+
+Finally	RB
+,	,
+the	DT
+availability	NN
+is	VBZ
+calculated	VBN
+by	IN
+the	DT
+service	NN
+broker	NN
+based	VBN
+on	IN
+the	DT
+information	NN
+that	IN
+it	PRP
+records	VBZ
+about	IN
+the	DT
+up	RB
+and	CC
+down	RB
+time	NN
+of	IN
+each	DT
+service	NN
+.	.
+
+
+Experiments	NNS
+were	VBD
+conducted	VBN
+in	IN
+two	CD
+types	NNS
+of	IN
+environment	NN
+:	:
+static	JJ
+and	CC
+dynamic	JJ
+.	.
+
+In	IN
+a	DT
+static	JJ
+envi	NN
+-	:
+ronment	NN
+,	,
+there	EX
+is	VBZ
+no	DT
+change	NN
+in	IN
+the	DT
+QoS	NN
+of	IN
+any	DT
+component	NN
+service	NN
+during	IN
+a	DT
+given	VBN
+composite	JJ
+service	NN
+execution	NN
+.	.
+
+In	IN
+addition	NN
+,	,
+all	DT
+component	NN
+services	NNS
+are	VBP
+able	JJ
+to	TO
+execute	VB
+the	DT
+tasks	NNS
+successfully	RB
+and	CC
+in	IN
+confor	NN
+-	:
+mance	NN
+with	IN
+their	PRP$
+expected	VBN
+QoS	NN
+.	.
+
+In	IN
+a	DT
+dynamic	JJ
+environment	NN
+on	IN
+the	DT
+other	JJ
+hand	NN
+,	,
+the	DT
+QoS	NN
+of	IN
+component	NN
+
+
+5http	NN
+:	:
+/	:
+/	:
+www-3	NN
+.	.
+
+ibm.com/software/data/bi/osl/index.html	NN
+6http	CD
+:	:
+/	:
+/	:
+alphaworks.ibm.com/tech/webservicestoolkit	NN
+
+
+26	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+26	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+services	NNS
+may	MD
+undergo	VB
+changes	NNS
+during	IN
+the	DT
+execution	NN
+of	IN
+a	DT
+composite	JJ
+service	NN
+.	.
+
+Speci	NNP
+,	,
+existing	VBG
+component	NN
+services	NNS
+may	MD
+become	VB
+unavailable	JJ
+,	,
+new	JJ
+component	NN
+services	NNS
+with	IN
+better	JJR
+QoS	NN
+properties	NNS
+may	MD
+become	VB
+available	JJ
+,	,
+component	NN
+services	NNS
+may	MD
+not	RB
+be	VB
+able	JJ
+to	TO
+complete	VB
+the	DT
+execution	NN
+of	IN
+tasks	NNS
+,	,
+or	CC
+they	PRP
+may	MD
+complete	VB
+them	PRP
+but	CC
+without	IN
+meeting	VBG
+their	PRP$
+expected	VBN
+QoS	NN
+.	.
+
+
+The	DT
+experimentsinvolvedcompositeserviceswithvaryingnumbersofbasicstates	NNS
+.	.
+
+The	DT
+composite	JJ
+services	NNS
+were	VBD
+created	VBN
+by	IN
+randomly	RB
+adding	VBG
+states	NNS
+to	TO
+the	DT
+composite	JJ
+service	NN
+shown	VBN
+in	IN
+Figure	NNP
+3	CD
+.	.
+
+The	DT
+number	NN
+of	IN
+states	NNS
+varied	VBD
+from	IN
+10	CD
+to	TO
+80	CD
+with	IN
+steps	NNS
+of	IN
+10	CD
+-LRB-	-LRB-
+e.g.	FW
+10	CD
+,	,
+20	CD
+,	,
+...	:
+80	CD
+-RRB-	-RRB-
+.	.
+
+Also	RB
+,	,
+we	PRP
+varied	VBD
+the	DT
+number	NN
+of	IN
+candidate	NN
+component	NN
+services	NNS
+per	IN
+task	NN
+from	IN
+10	CD
+to	TO
+40	CD
+with	IN
+steps	NNS
+of	IN
+10	CD
+.	.
+
+
+6.1	CD
+Measuring	VBG
+Computation	NNP
+Cost	NN
+
+
+The	DT
+seriesofexperimentsaimedat	NN
+comparingthethreeselectionapproachespreviouslydescribed	VBN
+-LRB-	-LRB-
+local	JJ
+optimization	NN
+,	,
+global	JJ
+planning	NN
+by	IN
+exhaustive	JJ
+searching	VBG
+,	,
+and	CC
+global	JJ
+planning	NN
+by	IN
+linear	JJ
+program	NN
+-	:
+ming	NN
+-RRB-	-RRB-
+with	IN
+respect	NN
+to	TO
+the	DT
+computational	JJ
+overhead	NN
+involved	VBN
+by	IN
+their	PRP$
+planning	NN
+phase	NN
+.	.
+
+In	IN
+other	JJ
+words	NNS
+,	,
+we	PRP
+measured	VBD
+the	DT
+computation	NN
+cost	NN
+-LRB-	-LRB-
+in	IN
+seconds	NNS
+-RRB-	-RRB-
+of	IN
+selecting	VBG
+component	NN
+services	NNS
+and	CC
+computing	VBG
+the	DT
+expected	VBN
+QoS	NN
+of	IN
+compositeservice	NN
+executions	NNS
+.	.
+
+The	DT
+experimentsfocused	VBN
+speci	NN
+on	IN
+the	DT
+execution	NN
+price	NN
+and	CC
+duration	NN
+.	.
+
+For	IN
+each	DT
+test	NN
+case	NN
+,	,
+we	PRP
+executed	VBD
+the	DT
+composite	JJ
+service	NN
+10	CD
+times	NNS
+and	CC
+computed	VBD
+the	DT
+average	JJ
+computation	NN
+cost	NN
+.	.
+
+
+6.1.1	CD
+Static	JJ
+Environments	NNS
+
+
+In	IN
+a	DT
+static	JJ
+environment	NN
+and	CC
+when	WRB
+using	VBG
+a	DT
+global	JJ
+planning	NN
+approach	NN
+,	,
+once	RB
+a	DT
+process	NN
+execution	NN
+plan	NN
+is	VBZ
+created	VBN
+the	DT
+execution	NN
+planner	NN
+does	VBZ
+not	RB
+need	VB
+to	TO
+replan	VB
+the	DT
+process	NN
+execution	NN
+.	.
+
+So	IN
+the	DT
+global	JJ
+planner	NN
+is	VBZ
+invoked	VBN
+only	RB
+once	RB
+during	IN
+a	DT
+composite	JJ
+service	NN
+execution	NN
+.	.
+
+In	IN
+the	DT
+case	NN
+of	IN
+local	JJ
+optimization	NN
+on	IN
+the	DT
+other	JJ
+hand	NN
+,	,
+if	IN
+we	PRP
+assume	VBP
+that	IN
+the	DT
+number	NN
+of	IN
+tasks	NNS
+that	WDT
+are	VBP
+executed	VBN
+is	VBZ
+N	NN
+,	,
+then	RB
+the	DT
+service	NN
+selector	NN
+in	IN
+the	DT
+execution	NN
+planner	NN
+is	VBZ
+invoked	VBN
+N	NN
+times	NNS
+to	TO
+select	VB
+a	DT
+component	NN
+service	NN
+for	IN
+each	DT
+task	NN
+.	.
+
+
+Process	VB
+schema	NN
+has	VBZ
+one	CD
+execution	NN
+path	NN
+
+
+Process	VB
+schema	NN
+has	VBZ
+one	CD
+execution	NN
+path	NN
+
+
+4	CD
+
+
+8	CD
+
+
+3.5	CD
+
+
+Global	JJ
+Planning	NNP
+Using	VBG
+IPGlobal	NNP
+Planning	NNP
+Using	VBG
+Exhaustive	JJ
+Search	VB
+
+
+Local	JJ
+Optimization	NN
+Selection	NN
+
+
+7	CD
+
+
+Global	JJ
+Planning	NNP
+Using	VBG
+IPGlobal	NNP
+Planning	NNP
+Using	VBG
+Exhaustive	JJ
+Searching	NN
+
+
+Local	JJ
+Optimization	NN
+Selection	NN
+
+
+3	CD
+
+
+6	CD
+
+
+2.5	CD
+
+
+5	CD
+
+
+2	CD
+
+
+4	CD
+
+
+1.5	CD
+
+
+3	CD
+
+
+Computation	NNP
+Cost	NN
+-LRB-	-LRB-
+in	IN
+seconds	NNS
+-RRB-	-RRB-
+
+
+Computation	NNP
+Cost	NN
+-LRB-	-LRB-
+in	IN
+seconds	NNS
+-RRB-	-RRB-
+
+
+1	CD
+
+
+2	CD
+
+
+0.5	CD
+
+
+1	CD
+
+
+0	CD
+
+
+0	CD
+
+
+10	CD
+
+
+20	CD
+
+
+30	CD
+40	CD
+50	CD
+Number	NN
+of	IN
+Tasks	NNS
+in	IN
+Process	VBP
+Schemas	NNS
+
+
+60	CD
+
+
+70	CD
+
+
+80	CD
+
+
+10	CD
+
+
+20	CD
+
+
+30	CD
+40	CD
+50	CD
+Number	NN
+of	IN
+Tasks	NNS
+in	IN
+Process	VBP
+
+
+60	CD
+
+
+70	CD
+
+
+80	CD
+
+
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+Each	DT
+Task	NNP
+has	VBZ
+10	CD
+candidate	NN
+services	NNS
+
+
+-LRB-	-LRB-
+b	NN
+-RRB-	-RRB-
+Each	DT
+Task	NNP
+has	VBZ
+40	CD
+candidate	NN
+services	NNS
+
+
+Figure	NNP
+10	CD
+:	:
+Experimental	JJ
+results	NNS
+-LRB-	-LRB-
+computation	NN
+cost	NN
+-RRB-	-RRB-
+in	IN
+a	DT
+static	JJ
+environment	NN
+,	,
+varying	VBG
+the	DT
+number	NN
+of	IN
+tasks	NNS
+in	IN
+the	DT
+statechart	NN
+and	CC
+the	DT
+number	NN
+of	IN
+candidate	NN
+services	NNS
+per	IN
+task	NN
+.	.
+
+
+27	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+27	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+Figure	NNP
+10	CD
+plots	NNS
+computation	NN
+cost	NN
+-LRB-	-LRB-
+in	IN
+seconds	NNS
+-RRB-	-RRB-
+of	IN
+selecting	VBG
+services	NNS
+for	IN
+composite	JJ
+services	NNS
+with	IN
+only	RB
+one	CD
+execution	NN
+path	NN
+.	.
+
+In	IN
+this	DT
+experiment	NN
+,	,
+we	PRP
+varied	VBD
+the	DT
+number	NN
+of	IN
+tasks	NNS
+and	CC
+the	DT
+number	NN
+of	IN
+candi	NN
+-	:
+date	NN
+services	NNS
+per	IN
+task	NN
+.	.
+
+In	IN
+all	PDT
+the	DT
+approaches	NNS
+,	,
+the	DT
+computation	NN
+cost	NN
+increases	NNS
+when	WRB
+the	DT
+number	NN
+of	IN
+tasks	NNS
+increases	NNS
+and	CC
+the	DT
+number	NN
+of	IN
+candidate	NN
+services	NNS
+increases	NNS
+.	.
+
+The	DT
+computation	NN
+cost	NN
+of	IN
+global	JJ
+planning	NN
+by	IN
+exhaustive	JJ
+searching	VBG
+is	VBZ
+very	RB
+high	JJ
+.	.
+
+The	DT
+computation	NN
+cost	NN
+of	IN
+global	JJ
+planning	NN
+by	IN
+IP	NNP
+is	VBZ
+higher	JJR
+than	IN
+that	DT
+of	IN
+local	JJ
+optimization	NN
+selection	NN
+.	.
+
+When	WRB
+there	EX
+are	VBP
+80	CD
+tasks	NNS
+and	CC
+40	CD
+candidate	NN
+Web	NN
+services	NNS
+for	IN
+each	DT
+task	NN
+,	,
+the	DT
+computation	NN
+cost	NN
+of	IN
+the	DT
+global	JJ
+planning	NN
+by	IN
+IP	NNP
+-LRB-	-LRB-
+1.6	CD
+seconds	NNS
+-RRB-	-RRB-
+is	VBZ
+almost	RB
+1.5	CD
+times	NNS
+higher	JJR
+than	IN
+the	DT
+local	JJ
+optimization	NN
+approach	NN
+-LRB-	-LRB-
+0.7	CD
+seconds	NNS
+-RRB-	-RRB-
+.	.
+
+
+6.1.2	CD
+Dynamic	NNP
+Environments	NNS
+
+
+Dynamic	NNP
+environments	NNS
+were	VBD
+simulated	JJ
+by	IN
+randomly	RB
+changing	VBG
+the	DT
+QoS	NN
+of	IN
+the	DT
+component	NN
+services	NNS
+during	IN
+a	DT
+composite	JJ
+service	NN
+execution	NN
+according	VBG
+to	TO
+three	CD
+QoS	NN
+properties	NNS
+:	:
+execution	NN
+price	NN
+,	,
+duration	NN
+,	,
+and	CC
+availability	NN
+.	.
+
+Changes	NNS
+are	VBP
+done	VBN
+so	IN
+that	IN
+,	,
+if	IN
+the	DT
+global	JJ
+planning	NN
+approach	NN
+is	VBZ
+used	VBN
+,	,
+the	DT
+execution	NN
+of	IN
+a	DT
+composite	JJ
+service	NN
+needs	VBZ
+to	TO
+be	VB
+replanned	VBN
+whenever	WRB
+a	DT
+task	NN
+is	VBZ
+completed	VBN
+.	.
+
+Hence	RB
+,	,
+the	DT
+global	JJ
+planner	NN
+needs	VBZ
+to	TO
+be	VB
+invoked	VBN
+as	IN
+many	JJ
+times	NNS
+as	IN
+there	EX
+are	VBP
+tasks	NNS
+in	IN
+the	DT
+composite	JJ
+service	NN
+.	.
+
+
+Process	VB
+schema	NN
+has	VBZ
+one	CD
+execution	NN
+path	NN
+
+
+Process	VB
+schema	NN
+has	VBZ
+one	CD
+execution	NN
+path	NN
+
+
+90	CD
+
+
+200	CD
+
+
+Global	JJ
+Planning	NNP
+Using	VBG
+IP	NNP
+in	IN
+Dynamic	NNP
+EnvironmentGlobal	NNP
+Planning	NNP
+Uing	NNP
+IP	NNP
+in	IN
+Static	NNP
+Environment	NNP
+
+
+Global	JJ
+Planning	NNP
+Using	VBG
+IP	NNP
+in	IN
+Dynamic	NNP
+Environment	NNP
+Global	NNP
+Planning	NNP
+Using	VBG
+IP	NNP
+in	IN
+Static	NNP
+Environment	NNP
+
+
+80	CD
+
+
+70	CD
+
+
+150	CD
+
+
+60	CD
+
+
+50	CD
+
+
+100	CD
+
+
+40	CD
+
+
+30	CD
+
+
+Computation	NNP
+Cost	NN
+-LRB-	-LRB-
+in	IN
+seconds	NNS
+-RRB-	-RRB-
+
+
+Computation	NNP
+Cost	NN
+-LRB-	-LRB-
+in	IN
+seconds	NNS
+-RRB-	-RRB-
+
+
+50	CD
+
+
+20	CD
+
+
+10	CD
+
+
+0	CD
+
+
+0	CD
+
+
+10	CD
+
+
+20	CD
+
+
+30	CD
+40	CD
+50	CD
+Number	NN
+of	IN
+Tasks	NNS
+in	IN
+Process	VBP
+Schemas	NNS
+
+
+60	CD
+
+
+70	CD
+
+
+80	CD
+
+
+10	CD
+
+
+20	CD
+
+
+30	CD
+40	CD
+50	CD
+Number	NN
+of	IN
+Tasks	NNS
+in	IN
+Process	VBP
+Schemas	NNS
+
+
+60	CD
+
+
+70	CD
+
+
+80	CD
+
+
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+Each	DT
+Task	NNP
+has	VBZ
+10	CD
+candidate	NN
+services	NNS
+
+
+-LRB-	-LRB-
+b	NN
+-RRB-	-RRB-
+Each	DT
+Task	NNP
+has	VBZ
+40	CD
+candidate	NN
+services	NNS
+
+
+Figure	NNP
+11	CD
+:	:
+Experimental	JJ
+results	NNS
+-LRB-	-LRB-
+computation	NN
+cost	NN
+-RRB-	-RRB-
+in	IN
+a	DT
+dynamic	JJ
+environment	NN
+and	CC
+static	JJ
+environment	NN
+,	,
+varying	VBG
+the	DT
+number	NN
+of	IN
+tasks	NNS
+and	CC
+the	DT
+number	NN
+of	IN
+candidate	NN
+services	NNS
+per	IN
+task	NN
+.	.
+
+
+Figure	NN
+11	CD
+presents	VBZ
+computation	NN
+cost	NN
+-LRB-	-LRB-
+in	IN
+seconds	NNS
+-RRB-	-RRB-
+of	IN
+service	NN
+selection	NN
+for	IN
+composite	JJ
+services	NNS
+with	IN
+only	RB
+one	CD
+execution	NN
+path	NN
+,	,
+where	WRB
+we	PRP
+vary	VBP
+the	DT
+number	NN
+of	IN
+tasks	NNS
+and	CC
+the	DT
+number	NN
+of	IN
+candidate	NN
+services	NNS
+per	IN
+task	NN
+.	.
+
+In	IN
+both	DT
+selection	NN
+approaches	NNS
+,	,
+the	DT
+computation	NN
+cost	NN
+increases	NNS
+with	IN
+the	DT
+number	NN
+of	IN
+tasks	NNS
+and	CC
+the	DT
+number	NN
+of	IN
+candidate	NN
+services	NNS
+.	.
+
+The	DT
+computation	NN
+cost	NN
+of	IN
+global	JJ
+planning	NN
+using	VBG
+IP	NNP
+is	VBZ
+much	RB
+higher	JJR
+than	IN
+in	IN
+a	DT
+static	JJ
+one	CD
+.	.
+
+For	IN
+80	CD
+tasks	NNS
+and	CC
+40	CD
+candidate	NN
+services	NNS
+per	IN
+task	NN
+,	,
+the	DT
+computation	NN
+cost	NN
+of	IN
+the	DT
+global	JJ
+planning	NN
+using	VBG
+IP	NNP
+in	IN
+a	DT
+dynamic	JJ
+environment	NN
+-LRB-	-LRB-
+190	CD
+seconds	NNS
+-RRB-	-RRB-
+is	VBZ
+almost	RB
+25	CD
+times	NNS
+higher	JJR
+than	IN
+in	IN
+a	DT
+static	JJ
+one	CD
+-LRB-	-LRB-
+7.8	CD
+seconds	NNS
+-RRB-	-RRB-
+.	.
+
+However	RB
+,	,
+this	DT
+may	MD
+be	VB
+considered	VBN
+to	TO
+be	VB
+an	DT
+extreme	JJ
+case	NN
+,	,
+and	CC
+for	IN
+reasonably	RB
+sized	VBN
+cases	NNS
+,	,
+global	JJ
+planning	NN
+delivers	VBZ
+acceptable	JJ
+computation	NN
+cost	NN
+.	.
+
+Furthermore	RB
+,	,
+the	DT
+computation	NN
+cost	NN
+in	IN
+a	DT
+dynamic	JJ
+environment	NN
+is	VBZ
+spread	VBN
+across	IN
+the	DT
+lifespan	NN
+of	IN
+the	DT
+composite	JJ
+service	NN
+execution	NN
+.	.
+
+
+28	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+28	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+6.2	CD
+
+
+Measuring	VBG
+QoS	NN
+of	IN
+Composite	NNP
+Services	NNPS
+
+
+The	DT
+second	JJ
+series	NN
+of	IN
+experiments	NNS
+aimed	VBN
+at	IN
+evaluating	VBG
+the	DT
+QoS	NN
+of	IN
+composite	JJ
+service	NN
+executions	NNS
+in	IN
+both	DT
+static	JJ
+and	CC
+dynamic	JJ
+environments	NNS
+.	.
+
+Table	NNP
+2	CD
+presents	NNS
+experiment	NN
+results	VBZ
+on	IN
+compositesâ	NN
+$	$
+™	CD
+execu	NN
+-	:
+tion	NN
+duration	NN
+-LRB-	-LRB-
+i.e.	FW
+,	,
+Qdu	NN
+-LRB-	-LRB-
+CS	NN
+-RRB-	-RRB-
+,	,
+in	IN
+seconds	NNS
+-RRB-	-RRB-
+and	CC
+execution	NN
+price	NN
+-LRB-	-LRB-
+i.e.	FW
+,	,
+Qprice	NNP
+-LRB-	-LRB-
+CS	NNP
+-RRB-	-RRB-
+,	,
+in	IN
+dollars	NNS
+-RRB-	-RRB-
+in	IN
+static	JJ
+environment	NN
+,	,
+where	WRB
+we	PRP
+vary	VBP
+the	DT
+number	NN
+of	IN
+tasks	NNS
+.	.
+
+The	DT
+experiment	NN
+results	VBZ
+show	NN
+that	IN
+the	DT
+global	JJ
+plan	NN
+-	:
+ning	JJ
+approach	NN
+yields	NNS
+signi	VBP
+better	JJR
+QoS	NN
+than	IN
+the	DT
+local	JJ
+optimization	NN
+approach	NN
+.	.
+
+For	IN
+example	NN
+,	,
+the	DT
+execution	NN
+duration	NN
+is	VBZ
+consistently	RB
+shorter	JJR
+when	WRB
+using	VBG
+global	JJ
+planning	NN
+approach	NN
+than	IN
+that	DT
+of	IN
+local	JJ
+optimization	NN
+approach	NN
+.	.
+
+
+Table	NNP
+3	CD
+shows	VBZ
+that	IN
+global	JJ
+planning	NN
+approach	NN
+gives	VBZ
+better	JJR
+QoS	NN
+of	IN
+composite	JJ
+services	NNS
+than	IN
+that	DT
+of	IN
+local	JJ
+optimization	NN
+approach	NN
+in	IN
+most	JJS
+of	IN
+the	DT
+cases	NNS
+in	IN
+dynamic	JJ
+environments	NNS
+.	.
+
+At	IN
+the	DT
+same	JJ
+time	NN
+,	,
+the	DT
+average	JJ
+QoS	NN
+of	IN
+composite	JJ
+services	NNS
+in	IN
+the	DT
+global	JJ
+planning	NN
+approach	NN
+is	VBZ
+better	JJR
+than	IN
+that	DT
+of	IN
+the	DT
+local	JJ
+optimization	NN
+approach	NN
+.	.
+
+However	RB
+,	,
+in	IN
+some	DT
+cases	NNS
+-LRB-	-LRB-
+see	VB
+table	NN
+3	CD
+-LRB-	-LRB-
+1	CD
+-RRB-	-RRB-
+,	,
+composite	JJ
+service	NN
+4	CD
+-RRB-	-RRB-
+,	,
+the	DT
+global	JJ
+planning	NN
+approach	NN
+may	MD
+create	VB
+worse	JJR
+execution	NN
+result	VBP
+compared	VBN
+to	TO
+the	DT
+local	JJ
+optimization	NN
+approach	NN
+.	.
+
+The	DT
+reason	NN
+is	VBZ
+that	IN
+the	DT
+global	JJ
+planning	NN
+approach	NN
+makes	VBZ
+the	DT
+decision	NN
+based	VBN
+on	IN
+the	DT
+set	NN
+of	IN
+currently	RB
+available	JJ
+Web	NN
+services	NNS
+.	.
+
+Since	IN
+the	DT
+availability	NN
+of	IN
+Web	NN
+services	NNS
+is	VBZ
+dynamic	JJ
+,	,
+some	DT
+services	NNS
+that	WDT
+are	VBP
+selected	VBN
+by	IN
+the	DT
+optimal	JJ
+execution	NN
+plan	NN
+may	MD
+become	VB
+unavailable	JJ
+when	WRB
+the	DT
+task	NN
+needs	VBZ
+to	TO
+be	VB
+executed	VBN
+.	.
+
+Although	IN
+the	DT
+system	NN
+can	MD
+replan	VB
+the	DT
+unexecuted	JJ
+part	NN
+of	IN
+composite	JJ
+services	NNS
+,	,
+the	DT
+executed	VBN
+part	NN
+may	MD
+become	VB
+sub-optimal	JJ
+,	,
+making	VBG
+the	DT
+entire	JJ
+composite	JJ
+service	NN
+execution	NN
+sub-optimal	JJ
+.	.
+
+Note	VB
+also	RB
+that	IN
+even	RB
+in	IN
+dynamic	JJ
+environments	NNS
+,	,
+the	DT
+global	JJ
+planner	NN
+is	VBZ
+still	RB
+able	JJ
+to	TO
+handle	VB
+constraints	NNS
+spanning	VBG
+multiple	JJ
+tasks	NNS
+when	WRB
+performing	VBG
+execution	NN
+replanning	NN
+-LRB-	-LRB-
+see	VB
+Section	NNP
+4.2.5	CD
+-RRB-	-RRB-
+.	.
+
+For	IN
+example	NN
+,	,
+in	IN
+table	NN
+3	CD
+-LRB-	-LRB-
+1	CD
+-RRB-	-RRB-
+,	,
+the	DT
+composite	JJ
+service	NN
+executions	NNS
+are	VBP
+performed	VBN
+under	IN
+a	DT
+execution	NN
+duration	NN
+constraint	NN
+-LRB-	-LRB-
+Qdu	NN
+<	JJR
+7500	CD
+-RRB-	-RRB-
+.	.
+
+
+Table	NNP
+2	CD
+:	:
+Experimental	JJ
+Results	NNS
+on	IN
+QoS	NN
+of	IN
+Composite	NNP
+Services	NNPS
+in	IN
+Static	JJ
+Environments	NNS
+Composite	NNP
+Service	NNP
+Qdu	NNP
+-LRB-	-LRB-
+CS	NNP
+-RRB-	-RRB-
+Qprice	NNP
+-LRB-	-LRB-
+CS	NNP
+-RRB-	-RRB-
+Composite	NNP
+Service	NNP
+Qdu	NNP
+-LRB-	-LRB-
+CS	NNP
+-RRB-	-RRB-
+Qprice	NNP
+-LRB-	-LRB-
+CS	NNP
+-RRB-	-RRB-
+
+
+GP	NN
+LO	NNP
+GP	NNP
+LO	NNP
+GP	NNP
+LO	NNP
+GP	NNP
+LO	NNP
+1	CD
+6523.2	CD
+8322.4	CD
+1023	CD
+1642	CD
+1	CD
+10212.4	CD
+14110.2	CD
+2216	CD
+3626	CD
+2	CD
+6634.4	CD
+9123.9	CD
+1117	CD
+1728	CD
+2	CD
+11221.7	CD
+15330.5	CD
+2327	CD
+3502	CD
+3	CD
+6843.2	CD
+9234.5	CD
+1123	CD
+1825	CD
+3	CD
+10945.2	CD
+14280.4	CD
+2424	CD
+3445	CD
+4	CD
+6432.5	CD
+9292.2	CD
+1132	CD
+1824	CD
+4	CD
+12535.5	CD
+15292.2	CD
+2221	CD
+3524	CD
+5	CD
+6347.3	CD
+8943.3	CD
+1121	CD
+1723	CD
+5	CD
+12340.5	CD
+14302.5	CD
+2123	CD
+3324	CD
+6	CD
+6512.3	CD
+9902.8	CD
+1185	CD
+1888	CD
+6	CD
+11350.5	CD
+14470.5	CD
+2285	CD
+3528	CD
+7	CD
+6451.2	CD
+9480.4	CD
+1231	CD
+1789	CD
+7	CD
+12445.2	CD
+13980.4	CD
+2184	CD
+3589	CD
+8	CD
+6440.5	CD
+9470.5	CD
+1275	CD
+1787	CD
+8	CD
+12440.5	CD
+14470.5	CD
+2485	CD
+3487	CD
+9	CD
+6970.4	CD
+9920.4	CD
+1324	CD
+1625	CD
+9	CD
+11970.4	CD
+15920.4	CD
+2160	CD
+3616	CD
+10	CD
+6890.3	CD
+9628.3	CD
+1235	CD
+1759	CD
+10	CD
+11250.3	CD
+15628.3	CD
+2352	CD
+3459	CD
+11	CD
+6590.3	CD
+9520.3	CD
+1267	CD
+1852	CD
+11	CD
+11490.3	CD
+15520.3	CD
+2373	CD
+3412	CD
+12	CD
+6890.3	CD
+8920.5	CD
+1250	CD
+1599	CD
+12	CD
+12890.3	CD
+14920.5	CD
+2163	CD
+3519	CD
+Average	NN
+:	:
+6627.16	CD
+9305.9	CD
+1191.08	CD
+1753.42	CD
+Average	NN
+:	:
+11757.73	CD
+14852.22	CD
+2276.08	CD
+3502.58	CD
+
+
+1	LS
+.	.
+
+Composite	NNP
+service	NN
+has	VBZ
+20	CD
+tasks	NNS
+and	CC
+one	CD
+execution	NN
+path	NN
+.	.
+
+2	LS
+.	.
+
+Composite	NNP
+service	NN
+has	VBZ
+80	CD
+tasks	NNS
+and	CC
+one	CD
+execution	NN
+path	NN
+.	.
+
+
+6.3	CD
+
+
+Discussion	NN
+
+
+From	IN
+theexperimentalresults	NNS
+,	,
+we	PRP
+concludethatthe	VBP
+IP-based	JJ
+globalplanningapproach	NN
+leads	VBZ
+tosignif	NN
+-	:
+icantly	RB
+better	JJR
+QoS	NN
+of	IN
+composite	JJ
+service	NN
+executions	NNS
+with	IN
+little	JJ
+extra	JJ
+system	NN
+cost	NN
+in	IN
+static	JJ
+environments	NNS
+.	.
+
+
+29	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+29	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+Table	NNP
+3	CD
+:	:
+Experimental	JJ
+Results	NNS
+on	IN
+QoS	NN
+of	IN
+Composite	NNP
+Services	NNPS
+in	IN
+Dynamic	NNP
+Environments	NNP
+Composite	NNP
+Service	NNP
+Qdu	NNP
+-LRB-	-LRB-
+CS	NNP
+-RRB-	-RRB-
+Qprice	NNP
+-LRB-	-LRB-
+CS	NNP
+-RRB-	-RRB-
+Composite	NNP
+Service	NNP
+Qdu	NNP
+-LRB-	-LRB-
+CS	NNP
+-RRB-	-RRB-
+Qprice	NNP
+-LRB-	-LRB-
+CS	NNP
+-RRB-	-RRB-
+
+
+GP	NN
+LO	NNP
+GP	NNP
+LO	NNP
+GP	NNP
+LO	NNP
+GP	NNP
+LO	NNP
+1	CD
+6433.2	CD
+9322.4	CD
+1341	CD
+1834	CD
+1	CD
+11225.5	CD
+18346.3	CD
+2341	CD
+3834	CD
+2	CD
+6434.9	CD
+8123.9	CD
+1123	CD
+1873	NNP
+2	CD
+11342.5	CD
+18324.6	CD
+2651	CD
+3834	CD
+3	CD
+6343.6	CD
+8654.5	CD
+1512	CD
+1836	CD
+3	CD
+12341.4	CD
+18345.4	CD
+2234	CD
+3345	CD
+4	CD
+7443.8	CD
+7302.2	CD
+1123	CD
+1873	NNP
+4	CD
+13221.4	CD
+17344.3	CD
+2612	CD
+3873	CD
+5	CD
+6334.3	CD
+8463.3	CD
+1134	CD
+1838	CD
+5	CD
+16512.6	CD
+18734.7	CD
+2123	CD
+3345	CD
+6	CD
+7112.7	CD
+9474.8	CD
+1324	CD
+1834	CD
+6	CD
+12315.2	CD
+17232.3	CD
+2234	CD
+3873	CD
+7	CD
+6235.4	CD
+8674.4	CD
+1241	CD
+1835	NNP
+7	CD
+13123.6	CD
+17234.3	CD
+2612	CD
+3873	CD
+8	CD
+6542.7	CD
+8354.5	CD
+1132	CD
+1873	NNP
+8	CD
+13123.7	CD
+14235.7	CD
+2512	CD
+3458	CD
+9	CD
+6234.7	CD
+8363.4	CD
+1312	CD
+1835	NNP
+9	CD
+12341.9	CD
+17623.8	CD
+2124	CD
+3456	CD
+10	CD
+6435.2	CD
+8733.3	CD
+1153	CD
+1736	CD
+10	CD
+13123.2	CD
+17232.2	CD
+2342	CD
+3443	CD
+11	CD
+5823.6	CD
+8340.3	CD
+1212	CD
+1873	NNP
+11	CD
+13213.9	CD
+14343.7	CD
+2651	CD
+3983	CD
+12	CD
+7245.1	CD
+9473.5	CD
+1142	CD
+1546	CD
+12	CD
+12322.8	CD
+17623.7	CD
+2213	CD
+3436	CD
+Average	NN
+:	:
+6609.93	CD
+8673.37	CD
+1229.08	CD
+1815.5	CD
+Average	NN
+:	:
+12850.65	CD
+17218.42	CD
+2387.42	CD
+3646.08	CD
+
+
+1	LS
+.	.
+
+Composite	NNP
+service	NN
+has	VBZ
+20	CD
+tasks	NNS
+and	CC
+one	CD
+execution	NN
+path	NN
+.	.
+
+2	LS
+.	.
+
+Composite	NNP
+service	NN
+has	VBZ
+80	CD
+tasks	NNS
+and	CC
+one	CD
+execution	NN
+path	NN
+.	.
+
+
+For	IN
+example	NN
+,	,
+in	IN
+a	DT
+static	JJ
+environment	NN
+,	,
+a	DT
+composite	JJ
+service	NN
+execution	NN
+with	IN
+40	CD
+tasks	NNS
+spends	VBZ
+:	:
+-LRB-	-LRB-
+i	LS
+-RRB-	-RRB-
+1.6	CD
+sec	SYM
+-	:
+onds	NNS
+for	IN
+selecting	VBG
+Web	NN
+services	NNS
+using	VBG
+global	JJ
+planning	NN
+;	:
+-LRB-	-LRB-
+ii	LS
+-RRB-	-RRB-
+0.7	CD
+seconds	NNS
+using	VBG
+local	JJ
+optimization	NN
+.	.
+
+In	IN
+a	DT
+dynamic	JJ
+environment	NN
+however	RB
+,	,
+global	JJ
+planning	NN
+imposes	VBZ
+a	DT
+perceivable	JJ
+overhead	NN
+.	.
+
+For	IN
+example	NN
+,	,
+a	DT
+composite	JJ
+service	NN
+with	IN
+80	CD
+tasks	NNS
+spends	VBZ
+190	CD
+seconds	NNS
+for	IN
+selecting	VBG
+Web	NN
+services	NNS
+using	VBG
+global	JJ
+plan	NN
+-	:
+ning	NN
+,	,
+while	IN
+it	PRP
+spends	VBZ
+4.9	CD
+seconds	NNS
+using	VBG
+local	JJ
+optimization	NN
+.	.
+
+
+These	DT
+results	NNS
+reinforce	VBP
+the	DT
+conclusions	NNS
+of	IN
+the	DT
+analytical	JJ
+considerations	NNS
+of	IN
+Section	NN
+4.3	CD
+.	.
+
+If	IN
+there	EX
+is	VBZ
+no	DT
+requirement	NN
+for	IN
+specifying	VBG
+global	JJ
+constraints	NNS
+,	,
+then	RB
+local	JJ
+optimization	NN
+is	VBZ
+preferable	JJ
+,	,
+especially	RB
+in	IN
+dynamic	JJ
+environments	NNS
+.	.
+
+On	IN
+the	DT
+other	JJ
+hand	NN
+,	,
+global	JJ
+planning	NN
+is	VBZ
+superior	JJ
+when	WRB
+it	PRP
+comes	VBZ
+to	TO
+selecting	VBG
+services	NNS
+that	WDT
+satisfycertain	VBP
+globalconstraintsand	NN
+which	WDT
+optimizeglobal	JJ
+tradeoffs	NNS
+.	.
+
+Giventhe	NNP
+fact	NN
+that	IN
+,	,
+a	DT
+global	JJ
+selection	NN
+approach	NN
+considers	VBZ
+both	CC
+local	JJ
+and	CC
+global	JJ
+selection	NN
+constraints	NNS
+,	,
+the	DT
+results	NNS
+clearly	RB
+demonstrate	VBP
+the	DT
+bene	NN
+of	IN
+using	VBG
+a	DT
+LP-based	JJ
+method	NN
+for	IN
+global	JJ
+service	NN
+execution	NN
+planning	NN
+,	,
+even	RB
+if	IN
+we	PRP
+take	VBP
+into	IN
+consideration	NN
+the	DT
+modest	JJ
+planning	NN
+overhead	NN
+.	.
+
+
+7	CD
+
+
+Related	JJ
+Work	NN
+
+
+Web	NN
+service	NN
+composition	NN
+is	VBZ
+a	DT
+very	RB
+active	JJ
+area	NN
+of	IN
+research	NN
+and	CC
+development	NN
+-LSB-	-LRB-
+3	CD
+,	,
+9	CD
+-RSB-	-RRB-
+.	.
+
+In	IN
+this	DT
+section	NN
+,	,
+we	PRP
+review	VBP
+QoS	NN
+management	NN
+in	IN
+middleware	NN
+,	,
+then	RB
+look	VB
+at	IN
+some	DT
+related	JJ
+standards	NNS
+and	CC
+service	NN
+composition	NN
+prototypes	NNS
+.	.
+
+
+QoS	NN
+management	NN
+is	VBZ
+widely	RB
+discussed	VBN
+in	IN
+middleware	JJ
+systems	NNS
+-LSB-	-LRB-
+1	CD
+,	,
+24	CD
+,	,
+15	CD
+-RSB-	-RRB-
+.	.
+
+The	DT
+focus	NN
+of	IN
+these	DT
+work	NN
+is	VBZ
+essentially	RB
+on	IN
+the	DT
+following	VBG
+four	CD
+issues	NNS
+:	:
+QoS	NNS
+speci	VBP
+to	TO
+allow	VB
+description	NN
+of	IN
+applica	NN
+-	:
+tion	NN
+behavior	NN
+and	CC
+QoS	NN
+parameters	NNS
+;	:
+QoS	NN
+translation	NN
+and	CC
+compilation	NN
+to	TO
+translate	VB
+speci	NN
+application	NN
+behavior	NN
+into	IN
+candidate	NN
+application	NN
+con	NN
+for	IN
+different	JJ
+resource	NN
+conditions	NNS
+;	:
+QoS	NN
+setup	NN
+to	TO
+ap	SYM
+-	:
+propriately	RB
+select	JJ
+and	CC
+instantiate	VB
+a	DT
+particular	JJ
+con	NN
+and	CC
+,	,
+QoS	NN
+adaptation	NN
+to	TO
+runtime	VB
+resource	NN
+Most	JJS
+efforts	NNS
+in	IN
+QoS-Aware	JJ
+middleware	NN
+are	VBP
+centered	VBN
+on	IN
+the	DT
+network	NN
+transport	NN
+and	CC
+system	NN
+level	NN
+.	.
+
+Very	RB
+limited	JJ
+work	NN
+has	VBZ
+been	VBN
+done	VBN
+at	IN
+the	DT
+business	NN
+process	NN
+level	NN
+.	.
+
+
+30	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+30	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+Not	RB
+much	JJ
+work	NN
+has	VBZ
+been	VBN
+done	VBN
+on	IN
+QoS-driven	JJ
+service	NN
+composition	NN
+.	.
+
+Several	JJ
+standards	NNS
+that	WDT
+aim	VBP
+at	IN
+providing	VBG
+infrastructure	NN
+to	TO
+support	VB
+Web	NN
+services	NNS
+composition	NN
+have	VBP
+recently	RB
+emerged	VBN
+including	VBG
+SOAP	NN
+-LSB-	-LRB-
+29	CD
+-RSB-	-RRB-
+,	,
+WSDL	NN
+-LSB-	-LRB-
+34	CD
+-RSB-	-RRB-
+,	,
+UDDI	NN
+-LSB-	-LRB-
+30	CD
+-RSB-	-RRB-
+,	,
+and	CC
+BPEL4WS	NN
+-LSB-	-LRB-
+2	CD
+-RSB-	-RRB-
+.	.
+
+SOAP	NN
+de	IN
+an	DT
+XML	NN
+messaging	NN
+protocol	NN
+for	IN
+communication	NN
+among	IN
+services	NNS
+.	.
+
+WSDL	NN
+is	VBZ
+an	DT
+XML-based	JJ
+language	NN
+for	IN
+describing	VBG
+web	NN
+service	NN
+interfaces	NNS
+.	.
+
+UDDI	NNP
+provides	VBZ
+the	DT
+directory	NN
+and	CC
+a	DT
+SOAP-based	JJ
+API	NN
+to	TO
+publish	VB
+and	CC
+discover	VB
+services	NNS
+.	.
+
+BPEL4WS	NN
+provides	VBZ
+a	DT
+process-based	JJ
+language	NN
+for	IN
+services	NNS
+composition	NN
+.	.
+
+It	PRP
+should	MD
+be	VB
+noted	VBN
+that	IN
+the	DT
+above	JJ
+standards	NNS
+are	VBP
+complementary	JJ
+to	TO
+our	PRP$
+approach	NN
+.	.
+
+Our	PRP$
+approach	NN
+builds	VBZ
+upon	IN
+the	DT
+building	NN
+blocks	NNS
+of	IN
+these	DT
+standards	NNS
+-LRB-	-LRB-
+e.g.	FW
+,	,
+SOAP	NNP
+,	,
+UDDI	NNP
+-RRB-	-RRB-
+to	TO
+provide	VB
+a	DT
+quality-driven	JJ
+and	CC
+dynamic	JJ
+service	NN
+composition	NN
+model	NN
+.	.
+
+In	IN
+fact	NN
+,	,
+our	PRP$
+proposal	NN
+could	MD
+be	VB
+applied	VBN
+for	IN
+composite	JJ
+services	NNS
+speci	NN
+in	IN
+BPEL4WS	NN
+,	,
+as	IN
+statecharts	NNS
+basically	RB
+support	VBP
+the	DT
+same	JJ
+set	NN
+of	IN
+control-w	JJ
+primitives	NNS
+as	IN
+BPEL4WS	NN
+.	.
+
+
+Notationsfor	NNP
+servicedescriptionandcompositionhavealsobeenproposedinebXMLand	NNP
+DAML	NNP
+-	:
+S.	NNP
+DAML-S	NNP
+supports	VBZ
+the	DT
+description	NN
+of	IN
+services	NNS
+based	VBN
+on	IN
+a	DT
+generic	JJ
+ontology	NN
+.	.
+
+This	DT
+ontology	NN
+supports	VBZ
+the	DT
+speci	NN
+of	IN
+composite	JJ
+services	NNS
+as	RB
+well	RB
+as	IN
+preconditions	NNS
+and	CC
+postconditions	NNS
+on	IN
+service	NN
+opera	NN
+-	:
+tions	NNS
+.	.
+
+Unlike	IN
+our	PRP$
+proposal	NN
+however	RB
+,	,
+DAML-S	NN
+does	VBZ
+not	RB
+aim	VB
+at	IN
+de	FW
+speci	FW
+QoS	NN
+criteria	NNS
+,	,
+nor	CC
+does	VBZ
+it	PRP
+address	VB
+the	DT
+issue	NN
+of	IN
+dynamic	JJ
+service	NN
+selection	NN
+using	VBG
+these	DT
+criteria	NNS
+.	.
+
+
+There	EX
+are	VBP
+some	DT
+standardization	NN
+efforts	NNS
+in	IN
+the	DT
+area	NN
+of	IN
+QoS	NN
+of	IN
+Web	NN
+services	NNS
+,	,
+most	RBS
+notably	RB
+WSLA	NN
+-LRB-	-LRB-
+Web	NN
+Service	NN
+Level	NNP
+Agreement	NNP
+-RRB-	-RRB-
+-LSB-	-LRB-
+18	CD
+-RSB-	-RRB-
+.	.
+
+WSLA	NN
+focuses	VBZ
+on	IN
+specifying	VBG
+and	CC
+monitoring	VBG
+service	NN
+level	NN
+agreements	NNS
+for	IN
+Web	NN
+services	NNS
+.	.
+
+However	RB
+,	,
+it	PRP
+does	VBZ
+not	RB
+address	VB
+the	DT
+modeling	NN
+and	CC
+management	NN
+of	IN
+the	DT
+QoS	NN
+of	IN
+composite	JJ
+services	NNS
+.	.
+
+
+Previous	JJ
+work	NN
+has	VBZ
+investigated	VBN
+dynamic	JJ
+service	NN
+selection	NN
+based	VBN
+on	IN
+user	NN
+requirements	NNS
+.	.
+
+Related	JJ
+projects	NNS
+include	VBP
+CMI	NNP
+-LSB-	-LRB-
+14	CD
+-RSB-	-RRB-
+and	CC
+eFlow	NN
+-LSB-	-LRB-
+8	CD
+-RSB-	-RRB-
+.	.
+
+CMIâ	NNP
+$	$
+™	CD
+s	NNS
+service	NN
+de	IN
+model	NN
+features	VBZ
+the	DT
+concept	NN
+of	IN
+a	DT
+placeholder	NN
+activity	NN
+to	TO
+cater	VB
+for	IN
+dynamic	JJ
+composition	NN
+of	IN
+services	NNS
+.	.
+
+A	DT
+placeholder	NN
+is	VBZ
+an	DT
+abstract	JJ
+activity	NN
+replaced	VBN
+at	IN
+runtime	NN
+with	IN
+a	DT
+concrete	JJ
+activity	NN
+type	NN
+.	.
+
+A	DT
+selection	NN
+policy	NN
+is	VBZ
+speci	NN
+to	TO
+indicate	VB
+the	DT
+activity	NN
+that	WDT
+should	MD
+be	VB
+executed	VBN
+in	IN
+place	NN
+of	IN
+the	DT
+placeholder	NN
+.	.
+
+In	IN
+eFlow	NN
+,	,
+the	DT
+de	NNP
+of	IN
+a	DT
+service	NN
+node	NN
+contains	VBZ
+a	DT
+search	NN
+recipe	NN
+represented	VBN
+in	IN
+a	DT
+query	NN
+language	NN
+.	.
+
+When	WRB
+a	DT
+service	NN
+node	NN
+is	VBZ
+invoked	VBN
+,	,
+a	DT
+search	NN
+recipe	NN
+is	VBZ
+executed	VBN
+in	IN
+order	NN
+to	TO
+select	VB
+a	DT
+reference	NN
+to	TO
+a	DT
+speci	NN
+service	NN
+.	.
+
+However	RB
+,	,
+Market-based	JJ
+workw	NN
+,	,
+CMI	NNP
+and	CC
+eFlow	NNP
+focus	NN
+on	IN
+optimizing	VBG
+service	NN
+selection	NN
+at	IN
+a	DT
+single	JJ
+task	NN
+level	NN
+.	.
+
+In	IN
+addition	NN
+,	,
+no	DT
+QoS	NN
+model	NN
+is	VBZ
+explicitly	RB
+supported	VBN
+.	.
+
+Our	PRP$
+approach	NN
+focuses	VBZ
+on	IN
+optimizing	VBG
+service	NN
+selection	NN
+at	IN
+a	DT
+composite	JJ
+service	NN
+level	NN
+.	.
+
+Based	VBN
+on	IN
+a	DT
+generic	JJ
+QoS	NN
+model	NN
+,	,
+a	DT
+novel	JJ
+service	NN
+selection	NN
+approach	NN
+that	WDT
+uses	VBZ
+integer	NN
+programming	NN
+techniques	NNS
+has	VBZ
+been	VBN
+proposed	VBN
+.	.
+
+
+Some	DT
+work	NN
+on	IN
+QoS	NN
+has	VBZ
+been	VBN
+done	VBN
+in	IN
+the	DT
+area	NN
+of	IN
+workw	NN
+.	.
+
+In	IN
+general	JJ
+,	,
+most	RBS
+existing	JJ
+projects	NNS
+in	IN
+this	DT
+area	NN
+focus	NN
+on	IN
+specifying	VBG
+and	CC
+enforcing	VBG
+temporal	JJ
+constraints	NNS
+-LSB-	-LRB-
+12	CD
+,	,
+5	CD
+,	,
+15	CD
+-RSB-	-RRB-
+.	.
+
+Other	JJ
+projects	NNS
+such	JJ
+as	IN
+METEOR	NN
+-LSB-	-LRB-
+7	CD
+-RSB-	-RRB-
+and	CC
+CrossFlow	NN
+-LSB-	-LRB-
+21	CD
+-RSB-	-RRB-
+consider	VB
+more	JJR
+comprehensive	JJ
+QoS	NN
+models	NNS
+.	.
+
+METEOR	NN
+-LSB-	-LRB-
+7	CD
+-RSB-	-RRB-
+con	NN
+-	:
+siders	NNS
+four	CD
+quality	NN
+dimensions	NNS
+,	,
+namely	RB
+time	NN
+,	,
+cost	NN
+,	,
+reliability	NN
+and	CC
+.	.
+
+However	RB
+,	,
+this	DT
+work	NN
+does	VBZ
+not	RB
+focus	VB
+on	IN
+the	DT
+dynamic	JJ
+composition	NN
+of	IN
+services	NNS
+.	.
+
+It	PRP
+focuses	VBZ
+on	IN
+analyzing	VBG
+,	,
+predicting	VBG
+,	,
+and	CC
+moni	NNS
+-	:
+
+
+31	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+31	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+toring	VBG
+QoS	NN
+of	IN
+workw	NN
+processes	NNS
+.	.
+
+CrossFlow	NNP
+proposes	VBZ
+the	DT
+use	NN
+of	IN
+continuous-time	JJ
+Markov	NNP
+chain	NN
+to	TO
+estimate	VB
+execution	NN
+time	NN
+and	CC
+cost	NN
+of	IN
+a	DT
+workw	NN
+instance	NN
+.	.
+
+It	PRP
+should	MD
+be	VB
+noted	VBN
+that	IN
+these	DT
+two	CD
+latter	JJ
+efforts	NNS
+are	VBP
+complementary	JJ
+to	TO
+ours	JJ
+,	,
+insofar	RB
+as	IN
+they	PRP
+do	VBP
+not	RB
+deal	VB
+with	IN
+dynamic	JJ
+selection	NN
+of	IN
+services	NNS
+.	.
+
+-LSB-	-LRB-
+20	CD
+-RSB-	-RRB-
+does	VBZ
+propose	VB
+modeling	NN
+primitives	NNS
+for	IN
+capturing	VBG
+of	IN
+xibility	NN
+in	IN
+workw	NN
+models	NNS
+where	WRB
+dynamic	JJ
+selection	NN
+can	MD
+occur	VB
+,	,
+but	CC
+does	VBZ
+not	RB
+provide	VB
+speci	NN
+approaches	NNS
+or	CC
+algorithms	NNS
+for	IN
+performing	VBG
+this	DT
+selection	NN
+as	IN
+in	IN
+our	PRP$
+work	NN
+.	.
+
+
+Other	JJ
+complementary	JJ
+work	NN
+include	VBP
+-LSB-	-LRB-
+23	CD
+-RSB-	-RRB-
+and	CC
+-LSB-	-LRB-
+25	CD
+-RSB-	-RRB-
+which	WDT
+consider	VBP
+data	NNS
+quality	NN
+management	NN
+in	IN
+cooperative	JJ
+information	NN
+systems	NNS
+.	.
+
+They	PRP
+investigate	VBP
+techniques	NNS
+to	TO
+select	VB
+the	DT
+best	JJS
+available	JJ
+data	NNS
+from	IN
+various	JJ
+service	NN
+providers	NNS
+based	VBN
+on	IN
+dimensions	NNS
+such	JJ
+as	IN
+accuracy	NN
+,	,
+completeness	NN
+,	,
+and	CC
+consistency	NN
+.	.
+
+
+8	CD
+
+
+Conclusion	NN
+
+
+AgFlow	NNP
+is	VBZ
+a	DT
+QoS-aware	JJ
+middleware	JJ
+supporting	VBG
+quality	NN
+driven	VBN
+Web	NN
+service	NN
+composition	NN
+.	.
+
+The	DT
+main	JJ
+features	NNS
+of	IN
+the	DT
+AgFlow	NNP
+system	NN
+are	VBP
+:	:
+
+
+A	DT
+service	NN
+quality	NN
+model	NN
+to	TO
+evaluate	VB
+overall	JJ
+quality	NN
+of	IN
+Web	NN
+services	NNS
+.	.
+
+
+Two	CD
+alternative	JJ
+service	NN
+selection	NN
+approaches	NNS
+for	IN
+executing	VBG
+composite	JJ
+services	NNS
+.	.
+
+
+AgFlow	NNP
+has	VBZ
+been	VBN
+implementedas	NNS
+a	DT
+platform	NN
+that	WDT
+provide	VBP
+tools	NNS
+for	IN
+:	:
+-LRB-	-LRB-
+i	LS
+-RRB-	-RRB-
+de	IN
+service	NN
+ontologies	NNS
+;	:
+-LRB-	-LRB-
+ii	LS
+-RRB-	-RRB-
+specifying	VBG
+composite	JJ
+services	NNS
+using	VBG
+statecharts	NNS
+;	:
+-LRB-	-LRB-
+iii	LS
+-RRB-	-RRB-
+assigning	VBG
+services	NNS
+to	TO
+the	DT
+tasks	NNS
+of	IN
+a	DT
+composite	JJ
+service	NN
+.	.
+
+The	DT
+AgFlow	NNP
+platform	NN
+has	VBZ
+been	VBN
+used	VBN
+to	TO
+validate	VB
+the	DT
+feasibility	NN
+and	CC
+bene	NN
+of	IN
+the	DT
+proposed	VBN
+approaches	NNS
+.	.
+
+In	IN
+particular	JJ
+,	,
+relatively	RB
+large	JJ
+composite	JJ
+services	NNS
+integrating	VBG
+a	DT
+large	JJ
+number	NN
+of	IN
+candidate	NN
+component	NN
+services	NNS
+have	VBP
+been	VBN
+created	VBN
+and	CC
+used	VBN
+to	TO
+conduct	VB
+experiments	NNS
+.	.
+
+The	DT
+results	NNS
+of	IN
+these	DT
+exper	NN
+-	:
+iments	NNS
+are	VBP
+encouraging	VBG
+:	:
+the	DT
+computational	JJ
+cost	NN
+of	IN
+the	DT
+planning	NN
+phase	NN
+for	IN
+a	DT
+composite	JJ
+service	NN
+with	IN
+80	CD
+tasks	NNS
+is	VBZ
+about	IN
+8	CD
+seconds	NNS
+in	IN
+a	DT
+static	JJ
+environment	NN
+and	CC
+about	IN
+190	CD
+seconds	NNS
+in	IN
+a	DT
+dynamic	JJ
+environment	NN
+.	.
+
+In	IN
+addition	NN
+,	,
+the	DT
+experiments	NNS
+have	VBP
+shown	VBN
+that	IN
+the	DT
+global	JJ
+planning	NN
+approach	NN
+leads	VBZ
+to	TO
+better	JJR
+QoS	NN
+,	,
+and	CC
+speci	NN
+,	,
+to	TO
+lower	JJR
+execution	NN
+prices	NNS
+and	CC
+execution	NN
+durations	NNS
+.	.
+
+
+References	NNS
+
+
+-LSB-	-LRB-
+1	LS
+-RSB-	-RRB-
+C.	FW
+Aurrecoechea	FW
+,	,
+A.	NN
+T.	NNP
+Campbell	NNP
+,	,
+and	CC
+L.	NNP
+Hauw	NNP
+.	.
+
+A	DT
+Survey	NN
+of	IN
+QoS	NN
+Architectures	NNS
+.	.
+
+Multimedia	NNP
+
+
+Systems	NNPS
+,	,
+6	CD
+-LRB-	-LRB-
+3	CD
+-RRB-	-RRB-
+:138	CD
+1998	CD
+.	.
+
+
+-LSB-	-LRB-
+2	CD
+-RSB-	-RRB-
+BEA	NNP
+Systems	NNPS
+,	,
+Microsoft	NNP
+,	,
+and	CC
+IBM	NNP
+.	.
+
+Business	NNP
+Process	VB
+Execution	NNP
+Language	NNP
+for	IN
+Web	NN
+
+
+Services	NNPS
+.	.
+
+ftp	NN
+:	:
+/	:
+/	:
+www6.software.ibm.com	NN
+/	:
+software/developer/library	JJ
+/	:
+
+
+ws-bpel	NN
+.	.
+
+pdf	NN
+,	,
+2002	CD
+.	.
+
+
+32	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+32	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+-LSB-	-LRB-
+3	CD
+-RSB-	-RRB-
+B.	NNP
+Benatallah	NNP
+and	CC
+F.	NNP
+Casati	NNP
+,	,
+editors	NNS
+.	.
+
+Distributed	VBN
+and	CC
+Parallel	JJ
+Database	NN
+,	,
+Special	JJ
+issue	NN
+on	IN
+Web	NN
+
+
+Services	NNPS
+.	.
+
+Kluwer	NNP
+Academic	NNP
+Publishers	NNPS
+,	,
+2002	CD
+.	.
+
+
+-LSB-	-LRB-
+4	LS
+-RSB-	-RRB-
+B.	NNP
+Benatallah	NNP
+,	,
+M.	NNP
+Dumas	NNP
+,	,
+Q.	NNP
+Z.	NNP
+Sheng	NNP
+,	,
+and	CC
+A.	NN
+H.	NNP
+Ngu	NNP
+.	.
+
+Declarative	JJ
+composition	NN
+and	CC
+peer-to	NN
+-	:
+
+
+peer	VB
+provisioning	VBG
+of	IN
+dynamic	JJ
+web	NN
+services	NNS
+.	.
+
+In	IN
+Proceedings	NNP
+of	IN
+the	DT
+International	NNP
+Conference	NN
+on	IN
+
+
+Data	NNP
+Engineering	NNP
+-LRB-	-LRB-
+ICDE	NN
+-RRB-	-RRB-
+,	,
+pages	NNS
+297	CD
+San	NNP
+Jose	NNP
+CA	NNP
+,	,
+USA	NNP
+,	,
+February	NNP
+2002	CD
+.	.
+
+IEEE	NNP
+Press	NNP
+.	.
+
+
+-LSB-	-LRB-
+5	CD
+-RSB-	-RRB-
+C.	NNP
+Bettini	NNP
+,	,
+X.	NNP
+Wang	NNP
+,	,
+and	CC
+S.	NNP
+Jajodia	NNP
+.	.
+
+Temporal	JJ
+Reasoning	NN
+in	IN
+Workw	NNP
+Systems	NNPS
+.	.
+
+Distributed	VBN
+and	CC
+
+
+Parallel	JJ
+Databases	NNS
+,	,
+11	CD
+-LRB-	-LRB-
+3	CD
+-RRB-	-RRB-
+:269	CD
+2002	CD
+.	.
+
+
+-LSB-	-LRB-
+6	CD
+-RSB-	-RRB-
+H.	NNP
+C.-L	NNP
+and	CC
+K.	NNP
+Yoon	NNP
+.	.
+
+Multiple	JJ
+Criteria	NNP
+Decision	NNP
+Making	VBG
+.	.
+
+Lecture	NN
+Notes	NNS
+in	IN
+Economics	NNP
+and	CC
+
+
+Mathematical	NNP
+Systems	NNPS
+,	,
+Springer-Verlag	NNP
+,	,
+1981	CD
+.	.
+
+
+-LSB-	-LRB-
+7	CD
+-RSB-	-RRB-
+J.	NNP
+Cardoso	NNP
+.	.
+
+Quality	NNP
+of	IN
+service	NN
+and	CC
+semantic	JJ
+composition	NN
+of	IN
+workws	NNS
+.	.
+
+Ph.D	NNP
+Thesis	NNP
+,	,
+University	NNP
+
+
+of	IN
+Georgia	NNP
+,	,
+2002	CD
+.	.
+
+
+-LSB-	-LRB-
+8	CD
+-RSB-	-RRB-
+F.	NNP
+Casati	NNP
+and	CC
+M.-C	NNP
+.	.
+
+Shan	NNP
+.	.
+
+Dynamic	NNP
+and	CC
+adaptive	JJ
+composition	NN
+of	IN
+e-services	NNS
+.	.
+
+Information	NNP
+Sys	NNP
+-	:
+
+
+tems	NNS
+,	,
+26	CD
+-LRB-	-LRB-
+3	CD
+-RRB-	-RRB-
+:143	CD
+May	NNP
+2001	CD
+.	.
+
+
+-LSB-	-LRB-
+9	CD
+-RSB-	-RRB-
+F.	NNP
+Casati	NNP
+,	,
+M.-C	NN
+.	.
+
+Shan	NNP
+,	,
+and	CC
+D.	NNP
+Georgakopoulos	NNP
+,	,
+editors	NNS
+.	.
+
+VLDB	NNP
+Journal	NNP
+,	,
+Special	JJ
+issue	NN
+on	IN
+E	NN
+-	:
+
+
+Services	NNPS
+.	.
+
+Springer-Verlag	NNP
+,	,
+2001	CD
+.	.
+
+
+-LSB-	-LRB-
+10	CD
+-RSB-	-RRB-
+F.	NNP
+Curbera	NNP
+et	FW
+al.	FW
+.	.
+
+Unraveling	VBG
+the	DT
+Web	NN
+Services	NNPS
+:	:
+an	DT
+Introduction	NN
+to	TO
+SOAP	NNP
+,	,
+WSDL	NNP
+,	,
+and	CC
+UDDI	NNP
+.	.
+
+
+IEEE	NNP
+Internet	NNP
+Computing	NNP
+,	,
+Mar/Apr	NNP
+issue	NN
+2002	CD
+.	.
+
+
+-LSB-	-LRB-
+11	CD
+-RSB-	-RRB-
+M.	NNP
+Dumas	NNP
+and	CC
+A.	NNP
+t.	NNP
+Hofstede	NNP
+.	.
+
+UML	NN
+activity	NN
+diagrams	NNS
+as	IN
+a	DT
+workw	NN
+speci	NN
+language	NN
+.	.
+
+In	IN
+
+
+Proceedings	NNP
+of	IN
+the	DT
+International	NNP
+Conference	NN
+on	IN
+the	DT
+Uni	NNP
+Modeling	NNP
+Language	NN
+-LRB-	-LRB-
+UML	NN
+-RRB-	-RRB-
+,	,
+pages	NNS
+
+
+86	CD
+Toronto	NNP
+,	,
+Canada	NNP
+,	,
+October	NNP
+2001	CD
+.	.
+
+Springer	NNP
+Verlag	NNP
+.	.
+
+
+-LSB-	-LRB-
+12	CD
+-RSB-	-RRB-
+J.	NNP
+Eder	NNP
+,	,
+E.	NNP
+Panagos	NNP
+,	,
+and	CC
+M.	NNP
+Rabinovich	NNP
+.	.
+
+Time	NNP
+Constraints	NNPS
+in	IN
+Workw	NNP
+Systems	NNPS
+.	.
+
+Lecture	NN
+Notes	NNS
+
+
+in	IN
+Computer	NNP
+Science	NNP
+,	,
+1626	CD
+,	,
+1999	CD
+.	.
+
+
+-LSB-	-LRB-
+13	CD
+-RSB-	-RRB-
+M.-C	NN
+.	.
+
+Fauvet	NNP
+,	,
+M.	NNP
+Dumas	NNP
+,	,
+and	CC
+B.	NNP
+Benatallah	NNP
+.	.
+
+Collecting	VBG
+and	CC
+Querying	VBG
+Distributed	VBN
+Traces	NNS
+of	IN
+
+
+Composite	NNP
+Service	NNP
+Executions	NNS
+.	.
+
+In	IN
+Proceeding	VBG
+of	IN
+the	DT
+10th	JJ
+International	NNP
+Conference	NN
+on	IN
+Cooper	NNP
+-	:
+
+
+ative	JJ
+Information	NNP
+Systems	NNP
+-LRB-	-LRB-
+CoopIS	NNP
+-RRB-	-RRB-
+,	,
+Irvine	NNP
+CA	NNP
+,	,
+USA	NNP
+,	,
+2002	CD
+.	.
+
+
+-LSB-	-LRB-
+14	CD
+-RSB-	-RRB-
+D.	NNP
+Georgakopoulos	NNP
+,	,
+H.	NNP
+Schuster	NNP
+,	,
+A.	NNP
+Cichocki	NNP
+,	,
+and	CC
+D.	NNP
+Baker	NNP
+.	.
+
+Managing	VBG
+Process	VB
+and	CC
+Service	NNP
+
+
+Fusion	NN
+In	IN
+Virtual	JJ
+Enterprises	NNPS
+.	.
+
+Information	NNP
+System	NNP
+,	,
+Special	JJ
+Issue	NN
+on	IN
+Information	NNP
+System	NNP
+Support	NN
+
+
+for	IN
+Electronic	JJ
+Commerce	NNP
+,	,
+24	CD
+-LRB-	-LRB-
+6	CD
+-RRB-	-RRB-
+:429	CD
+199	CD
+.	.
+
+
+33	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+33	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+-LSB-	-LRB-
+15	CD
+-RSB-	-RRB-
+M.	NNP
+Gillmann	NNP
+,	,
+G.	NNP
+Weikum	NNP
+,	,
+and	CC
+W.	NNP
+Wonner	NNP
+.	.
+
+Workw	JJ
+management	NN
+with	IN
+service	NN
+quality	NN
+guaran	NN
+-	:
+
+
+tees	NNS
+.	.
+
+In	IN
+Proc	NNP
+.	.
+
+of	IN
+the	DT
+ACM	NNP
+SIGMOD	NNP
+international	JJ
+Conference	NN
+on	IN
+Management	NN
+of	IN
+Data	NNS
+,	,
+pages	NNS
+
+
+228	CD
+Madison	NNP
+WI	NNP
+,	,
+USA	NNP
+,	,
+June	NNP
+2002	CD
+.	.
+
+ACM	NNP
+Press	NNP
+.	.
+
+
+-LSB-	-LRB-
+16	CD
+-RSB-	-RRB-
+D.	NNP
+Harel	NNP
+and	CC
+A.	NNP
+Naamad	NNP
+.	.
+
+The	DT
+STATEMATE	NNP
+Semantics	NNPS
+of	IN
+Statecharts	NNPS
+.	.
+
+ACM	NNP
+Transactions	NNS
+on	IN
+
+
+Software	NNP
+Engineering	NNP
+and	CC
+Methodology	NNP
+,	,
+5	CD
+-LRB-	-LRB-
+4	CD
+-RRB-	-RRB-
+:293	CD
+1996	CD
+.	.
+
+
+-LSB-	-LRB-
+17	CD
+-RSB-	-RRB-
+H.	NNP
+Karloff	NNP
+.	.
+
+Linear	JJ
+Programming	NN
+.	.
+
+Birkhauser	NNP
+,	,
+1991	CD
+.	.
+
+
+-LSB-	-LRB-
+18	CD
+-RSB-	-RRB-
+A.	NN
+Keller	NNP
+and	CC
+H.	NNP
+Ludwig	NNP
+.	.
+
+The	DT
+WSLA	NNP
+Framework	NNP
+:	:
+Specifying	VBG
+and	CC
+Monitoring	VBG
+Service	NNP
+Level	NNP
+
+
+Agreements	NNS
+for	IN
+Web	NN
+Services	NNPS
+.	.
+
+Technical	NNP
+Report	NNP
+RC22456	NNP
+,	,
+IBM	NNP
+research	NN
+,	,
+New	NNP
+York	NNP
+,	,
+2002	CD
+.	.
+
+
+-LSB-	-LRB-
+19	CD
+-RSB-	-RRB-
+B.	NNP
+Kiepuszewski	NNP
+,	,
+A.	NNP
+ter	NNP
+Hofstede	NNP
+,	,
+and	CC
+C.	NNP
+Bussler	NNP
+.	.
+
+On	IN
+structured	JJ
+workw	NN
+modelling	NN
+.	.
+
+In	IN
+Proc	NNP
+.	.
+
+
+of	IN
+the	DT
+International	NNP
+Conference	NN
+on	IN
+Advanced	NNP
+Information	NNP
+Systems	NNP
+Engineering	NNP
+-LRB-	-LRB-
+CAiSE	NNP
+-RRB-	-RRB-
+,	,
+Stock	NN
+-	:
+
+
+holm	NN
+,	,
+Sweden	NNP
+,	,
+June	NNP
+2000	CD
+.	.
+
+Springer	NNP
+Verlag	NNP
+.	.
+
+
+-LSB-	-LRB-
+20	CD
+-RSB-	-RRB-
+J.	NNP
+Klingemann	NNP
+.	.
+
+Controlled	VBN
+xibility	NN
+in	IN
+workw	NN
+management	NN
+.	.
+
+In	IN
+Proc	NNP
+.	.
+
+of	IN
+the	DT
+International	NNP
+
+
+Conference	NN
+on	IN
+Advanced	NNP
+Information	NNP
+Systems	NNP
+Engineering	NNP
+-LRB-	-LRB-
+CAiSE	NNP
+-RRB-	-RRB-
+,	,
+pages	NNS
+126	CD
+Stock	NN
+-	:
+
+
+holm	NN
+,	,
+Sweden	NNP
+,	,
+June	NNP
+2000	CD
+.	.
+
+Springer	NNP
+Verlag	NNP
+.	.
+
+
+-LSB-	-LRB-
+21	CD
+-RSB-	-RRB-
+J.	NNP
+Klingemann	NNP
+,	,
+J.	NNP
+Wasch	NNP
+,	,
+Â	NNP
+$	$
+and	CC
+K.	NNP
+Aberer	NNP
+.	.
+
+Deriving	NNP
+Service	NNP
+Models	NNS
+in	IN
+Cross-Organizational	JJ
+
+
+Workws	NNP
+.	.
+
+In	IN
+Ninth	NNP
+International	NNP
+Workshop	NNP
+on	IN
+Research	NNP
+Issues	NNP
+in	IN
+Data	NNP
+Engineering	NNP
+:	:
+Virtual	JJ
+
+
+Enterprise	NNP
+,	,
+RIDE-VEâ	JJ
+$	$
+™	CD
+99	CD
+,	,
+Sydney	NNP
+,	,
+Australia	NNP
+,	,
+March	NNP
+1999	CD
+.	.
+
+
+-LSB-	-LRB-
+22	CD
+-RSB-	-RRB-
+S.	NNP
+Martello	NNP
+and	CC
+P.	NNP
+Toth	NNP
+.	.
+
+Knapsack	NNP
+Problems	NNS
+:	:
+Algorithms	NNS
+and	CC
+Computer	NN
+Implementations	NNS
+.	.
+
+John	NNP
+
+
+Wiley	NNP
+and	CC
+Sons	NNPS
+,	,
+2001	CD
+.	.
+
+
+-LSB-	-LRB-
+23	CD
+-RSB-	-RRB-
+M.	NNP
+Mecella	NNP
+,	,
+M.	NNP
+Scannapieco	NNP
+,	,
+A.	NNP
+Virgillito	NNP
+,	,
+R.	NNP
+Baldoni	NNP
+,	,
+T.	NNP
+Catarci	NNP
+,	,
+and	CC
+C.	NNP
+Batini	NNP
+.	.
+
+Managing	VBG
+Data	NNS
+
+
+Quality	NNP
+in	IN
+Cooperative	NNP
+Information	NNP
+Systems	NNP
+.	.
+
+In	IN
+Proc	NNP
+.	.
+
+of	IN
+the	DT
+10th	JJ
+International	NNP
+Conference	NN
+on	IN
+
+
+Cooperative	NNP
+Information	NNP
+Systems	NNP
+-LRB-	-LRB-
+CoopIS	NNP
+-RRB-	-RRB-
+,	,
+Irvine	NNP
+CA	NNP
+,	,
+USA	NNP
+,	,
+2002	CD
+.	.
+
+
+-LSB-	-LRB-
+24	CD
+-RSB-	-RRB-
+K.	NNP
+Nahrstedt	NNP
+,	,
+D.	NNP
+Xu	NNP
+,	,
+D.	NNP
+Wichadakul	NNP
+,	,
+and	CC
+B.	NNP
+Li	NNP
+.	.
+
+QoS-Aware	NNP
+Middleware	NNP
+for	IN
+Ubiquitous	NNP
+and	CC
+
+
+Heterogeneous	JJ
+Environments	NNS
+.	.
+
+IEEE	NNP
+Communications	NNP
+Magazine	NNP
+,	,
+39	CD
+-LRB-	-LRB-
+11	CD
+-RRB-	-RRB-
+:2	CD
+2001	CD
+.	.
+
+
+-LSB-	-LRB-
+25	CD
+-RSB-	-RRB-
+F.	NNP
+Naumann	NNP
+,	,
+U.	NNP
+Leser	NNP
+,	,
+and	CC
+J.	NNP
+C.	NNP
+Freytag	NNP
+.	.
+
+Quality-Driven	JJ
+Integration	NN
+of	IN
+Heterogenous	JJ
+Informa	NNP
+-	:
+
+
+tion	NN
+Systems	NNPS
+.	.
+
+In	IN
+Proceedings	NNP
+of	IN
+the	DT
+InternationalConference	NN
+on	IN
+Very	RB
+Large	JJ
+Databases	NNS
+-LRB-	-LRB-
+VLDB	NN
+-RRB-	-RRB-
+,	,
+
+
+pages	NNS
+447	CD
+Edinburgh	NNP
+,	,
+UK	NNP
+,	,
+1999	CD
+.	.
+
+
+-LSB-	-LRB-
+26	CD
+-RSB-	-RRB-
+J.	NNP
+Oâ	NNP
+$	$
+™	CD
+Sullivan	NNP
+,	,
+D.	NNP
+Edmond	NNP
+,	,
+and	CC
+A.	NN
+ter	NNP
+Hofstede	NNP
+.	.
+
+Whatâ	NNP
+$	$
+™	CD
+s	NNS
+in	IN
+a	DT
+Service	NNP
+?	.
+
+Distributed	VBN
+and	CC
+Parallel	JJ
+
+
+Databases	NNS
+,	,
+12	CD
+-LRB-	-LRB-
+2	CD
+September	NNP
+2002	CD
+.	.
+
+
+34	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+34	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+-LSB-	-LRB-
+27	CD
+-RSB-	-RRB-
+G.	NNP
+Oulsnam	NNP
+.	.
+
+Unravelling	VBG
+structured	JJ
+programs	NNS
+.	.
+
+The	DT
+Computer	NNP
+Journal	NNP
+,	,
+25	CD
+-LRB-	-LRB-
+3	CD
+-RRB-	-RRB-
+:379	CD
+1982	CD
+.	.
+
+
+-LSB-	-LRB-
+28	CD
+-RSB-	-RRB-
+M.	NNP
+Pinedof	NNP
+.	.
+
+Scheduling	NN
+:	:
+Theory	NNP
+,	,
+Algorithms	NNP
+,	,
+and	CC
+Systems	NNP
+-LRB-	-LRB-
+2nd	JJ
+Edition	NN
+-RRB-	-RRB-
+.	.
+
+Prentice	NNP
+Hall	NNP
+,	,
+2001	CD
+.	.
+
+
+-LSB-	-LRB-
+29	CD
+-RSB-	-RRB-
+Simple	NN
+Object	NNP
+Access	NN
+Protocol	NNP
+-LRB-	-LRB-
+SOAP	NNP
+-RRB-	-RRB-
+.	.
+
+http://www.w3.org/TR/SOAP	NN
+.	.
+
+
+-LSB-	-LRB-
+30	CD
+-RSB-	-RRB-
+Universal	NNP
+Description	NN
+,	,
+
+
+http://www.uddi.org	NN
+.	.
+
+
+Discovery	NNP
+and	CC
+Integration	NN
+of	IN
+Business	NN
+for	IN
+the	DT
+Web	NN
+,	,
+
+
+2000	CD
+.	.
+
+
+-LSB-	-LRB-
+31	CD
+-RSB-	-RRB-
+A.	NN
+van	NNP
+Moorsel	NNP
+.	.
+
+Metrics	NNS
+for	IN
+the	DT
+Internet	NN
+Age	NN
+:	:
+Quality	NNP
+of	IN
+Experience	NN
+and	CC
+Quality	NNP
+of	IN
+Business	NNP
+.	.
+
+
+Technical	NNP
+Report	NNP
+HPL-2001-179	NNP
+,	,
+HP	NNP
+Labs	NNPS
+,	,
+August	NNP
+2001	CD
+.	.
+
+Also	RB
+published	VBN
+in	IN
+5th	JJ
+Performability	NN
+
+
+Workshop	NNP
+,	,
+September	NNP
+2001	CD
+,	,
+Erlangen	NNP
+,	,
+Germany	NNP
+.	.
+
+
+-LSB-	-LRB-
+32	CD
+-RSB-	-RRB-
+K.	NNP
+Verma	NNP
+,	,
+K.	NNP
+Sivashanmugam	NNP
+,	,
+A.	NNP
+Sheth	NNP
+,	,
+A.	NNP
+Patil	NNP
+,	,
+S.	NNP
+Oundhakar	NNP
+,	,
+and	CC
+J.	NNP
+Miller	NNP
+.	.
+
+METEOR-S	NN
+
+
+WSDI	NNP
+:	:
+A	NNP
+scalable	JJ
+infrastructure	NN
+of	IN
+registries	NNS
+for	IN
+semantic	JJ
+publication	NN
+and	CC
+discovery	NN
+of	IN
+web	NN
+
+
+services	NNS
+.	.
+
+Journal	NNP
+of	IN
+Information	NNP
+Technology	NNP
+and	CC
+Management	NNP
+,	,
+2	CD
+-LRB-	-LRB-
+3	CD
+-RRB-	-RRB-
+,	,
+2003	CD
+.	.
+
+To	TO
+appear	VB
+.	.
+
+
+-LSB-	-LRB-
+33	CD
+-RSB-	-RRB-
+D.	NNP
+D.	NNP
+Wackerly	NNP
+,	,
+W.	NNP
+Mendenhall	NNP
+,	,
+and	CC
+R.	NNP
+L.	NNP
+Scheaffer	NNP
+.	.
+
+Mathematical	JJ
+Statistics	NNS
+with	IN
+Application	NN
+.	.
+
+
+Duxbury	NNP
+Press	NNP
+,	,
+1996	CD
+.	.
+
+
+-LSB-	-LRB-
+34	CD
+-RSB-	-RRB-
+Web	NN
+Services	NNPS
+Description	NN
+Language	NN
+-LRB-	-LRB-
+WSDL	NN
+-RRB-	-RRB-
+.	.
+
+http://www.w3.org/wsdl	NN
+.	.
+
+
+-LSB-	-LRB-
+35	CD
+-RSB-	-RRB-
+L.	NNP
+Zeng	NNP
+.	.
+
+Dynamic	NNP
+Web	NN
+Services	NNP
+Composition	NNP
+.	.
+
+2003	CD
+.	.
+
+Ph.D	NNP
+Thesis	NNP
+,	,
+University	NNP
+of	IN
+New	NNP
+South	NNP
+
+
+Wales	NNP
+.	.
+
+
+-LSB-	-LRB-
+36	CD
+-RSB-	-RRB-
+L.	NNP
+Zeng	NNP
+,	,
+B.	NNP
+Benatallah	NNP
+,	,
+M.	NNP
+Dumas	NNP
+,	,
+J.	NNP
+Kalagnanam	NNP
+,	,
+and	CC
+Q.	NNP
+Z.	NNP
+Sheng	NNP
+.	.
+
+Quality	NNP
+Driven	NNP
+Web	NN
+
+
+Services	NNP
+Composition	NNP
+.	.
+
+In	IN
+Proceedings	NNP
+of	IN
+the	DT
+12th	JJ
+international	JJ
+conference	NN
+on	IN
+World	NNP
+Wide	NN
+Web	NN
+
+
+-LRB-	-LRB-
+WWW	NN
+-RRB-	-RRB-
+,	,
+Budapest	NNP
+,	,
+Hungary	NNP
+.	.
+
+ACM	NNP
+Press	NNP
+,	,
+May	NNP
+2003	CD
+.	.
+
+
+-LSB-	-LRB-
+37	CD
+-RSB-	-RRB-
+L.	NNP
+Zeng	NNP
+,	,
+B.	NNP
+Benatallah	NNP
+,	,
+and	CC
+A.	NN
+H.	NNP
+H.	NNP
+Ngu	NNP
+.	.
+
+On	IN
+Demand	NN
+Business-to-Business	NN
+Integration	NN
+.	.
+
+In	IN
+
+
+Proceedings	NNP
+of	IN
+Ninth	NNP
+International	NNP
+Conference	NNP
+on	IN
+Cooperative	NNP
+Information	NNP
+Systems	NNP
+,	,
+Trento	NNP
+,	,
+
+
+Italy	NNP
+,	,
+2001	CD
+.	.
+
+Springer	NNP
+Verlag	NNP
+.	.
+
+
+-LSB-	-LRB-
+38	CD
+-RSB-	-RRB-
+L.	NNP
+Zeng	NNP
+,	,
+B.	NNP
+Benatallah	NNP
+,	,
+A.	NNP
+H.	NNP
+H.	NNP
+Ngu	NNP
+,	,
+and	CC
+P.	NNP
+Nguyen	NNP
+.	.
+
+AgFlow	NNP
+:	:
+Agent-based	JJ
+Cross-Enterprise	NNP
+
+
+Workw	NNP
+Management	NNP
+System	NNP
+-LRB-	-LRB-
+Demonstration	NN
+Paper	NN
+-RRB-	-RRB-
+.	.
+
+In	IN
+Proceedings	NNP
+of	IN
+27th	JJ
+International	NNP
+
+
+Conference	NN
+on	IN
+Very	RB
+Large	JJ
+Data	NNS
+Bases	NNS
+,	,
+Roma	NNP
+,	,
+Italy	NNP
+,	,
+2001	CD
+.	.
+
+Morgan	NNP
+Kauffmann	NNP
+.	.
+
+
+35	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+35	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+Appendix	NN
+
+
+<	JJR
+ontology-service	JJ
+NAME	NN
+=	JJ
+rip-planning-services	JJ
+VERSION	NN
+=	JJ
+>	JJR
+
+
+<	JJR
+domain	NN
+>	JJR
+tourism	NN
+<	JJR
+/	:
+domain	NN
+>	JJR
+
+
+<	JJR
+domainSynonym	NN
+>	JJR
+leisure	NN
+<	JJR
+/	:
+domainSynonym	NN
+>	JJR
+
+
+<	JJR
+domainSynonym	NN
+>	JJR
+trip	NN
+<	JJR
+/	:
+domainSynonym	NN
+>	JJR
+
+
+<	JJR
+domainSynonym	NN
+>	JJR
+journey	NN
+<	JJR
+/	:
+domainSynonym	NN
+>	JJR
+
+
+<	JJR
+domainSynonym	NN
+>	JJR
+travel	NN
+<	JJR
+/	:
+domainSynonym	NN
+>	JJR
+
+
+<	JJR
+superDomain	NN
+>	JJR
+ROOT	NN
+<	JJR
+/	:
+superDomain	NN
+>	JJR
+
+
+<	JJR
+variable	JJ
+NAME	NN
+=	JJ
+BonusPoint	NNP
+TYPE	NN
+=	JJ
+integer	NN
+>	JJR
+
+
+<	JJR
+variable	JJ
+NAME	NN
+=	JJ
+DrivingTime	NNP
+TYPE	NN
+=	JJ
+real	JJ
+>	JJR
+
+
+<	JJR
+variable	JJ
+NAME	NN
+=	JJ
+Discount	NN
+TYPE	NN
+=	JJ
+real	JJ
+>	JJR
+
+
+<	JJR
+serviceclass	JJ
+NAME	NN
+=	JJ
+ketBooking	NN
+
+
+SUPERCLASS-OF	NN
+=	JJ
+ket-booking-service	NN
+,	,
+intl-ticket-booking-service	JJ
+>	JJR
+
+
+<serviceDescription >	NNP
+This	DT
+is	VBZ
+a	DT
+service	NN
+for	IN
+booking	VBG
+the	DT
+ticket	NN
+</serviceDescription >	NN
+
+
+<	JJR
+attribute	NN
+NAME	NN
+=	JJ
+viceProvider	NN
+TYPE	NN
+=	JJ
+ing	NN
+>	JJR
+</attribute>	NN
+
+
+<	JJR
+attribute	NN
+NAME	NN
+=	JJ
+l	NN
+TYPE	NN
+=	JJ
+ing	NN
+>	JJR
+</attribute>	NN
+
+
+<	JJR
+operation	NN
+NAME	NN
+=	JJ
+ket	NN
+>	JJR
+
+
+<	JJR
+inputData	NNP
+NAME	NN
+=	JJ
+tingAirport	NN
+TYPE	NN
+=	JJ
+ing	NN
+</inputData>	NN
+
+
+...	:
+
+
+<	JJR
+outputData	NN
+NAME	NN
+=	JJ
+vailability	NN
+TYPE	NN
+=	JJ
+</outputData>	NN
+
+
+</operation>	NN
+
+
+<	JJR
+operation	NN
+NAME	NN
+=	JJ
+ket	NN
+>	JJR
+
+
+<	JJR
+inputData	NNP
+NAME	NN
+=	JJ
+TYPE	NN
+=	JJ
+</inputData>	NN
+
+
+...	:
+
+
+<	JJR
+outputData	NN
+NAME	NN
+=	JJ
+ket-receipt	JJ
+TYPE	NN
+=	JJ
+</outputData>	NN
+
+
+<	JJR
+outputData	NN
+NAME	NN
+=	JJ
+mation-no	NN
+TYPE	NN
+=	JJ
+ing	NN
+</outputData>	NN
+
+
+</operation>	NN
+
+
+</serviceclass>	NN
+
+
+<	JJR
+serviceclass	JJ
+NAME	NN
+=	JJ
+>	JJR
+
+
+<	JJR
+attribute	NN
+NAME	NN
+=	JJ
+TYPE	NN
+=	JJ
+>	JJR
+</attribute>	NN
+
+
+<	JJR
+attribute	NN
+NAME	NN
+=	JJ
+l	NN
+TYPE	NN
+=	JJ
+ing	NN
+>	JJR
+</attribute>	NN
+
+
+<	JJR
+operation	NN
+NAME	NN
+=	JJ
+>	JJR
+
+
+...	:
+
+
+</serviceclass>	NN
+
+
+<	JJR
+serviceclass	JJ
+NAME	NN
+=	JJ
+vices	NNS
+>	JJR
+
+
+<	JJR
+operation	NN
+NAME	NN
+=	JJ
+>	JJR
+
+
+...	:
+
+
+</serviceclass>	NN
+
+
+</ontology-service>	NN
+
+
+Table	NNP
+4	CD
+:	:
+Simpli	JJ
+service	NN
+ontology	NN
+for	IN
+trip	NN
+planning	NN
+
+
+36	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+36	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+<	JJR
+tModel	NN
+tModelKey	NN
+=	JJ
+84fe307a-fe3e-4fff-a9fb-79140b265177	JJ
+>	JJR
+
+
+<name>	JJ
+Trip-planning-services	NNS
+</name>	VBP
+
+
+<	JJR
+description	NN
+lang	NN
+=	JJ
+>	JJR
+XML	NN
+speci	NN
+of	IN
+service	NN
+ontology	NN
+</description>	NN
+
+
+<overviewDoc>	NN
+
+
+<	JJR
+description	NN
+lang	NN
+=	JJ
+>	JJR
+Service	NNP
+Ontology	NNP
+</description>	NN
+
+
+<overviewURL>	NN
+http://dyw.cse.unsw.edu.au/ontology/trip-planning-services.xml	NN
+</overviewURL>	NN
+
+
+</overviewDoc>	NN
+
+
+<categoryBag>	NN
+
+
+<	JJR
+keyedReference	NN
+tModelKey	NN
+=	JJ
+CF26D-9672-4404-9D70-39B756E62AB4	NN
+
+
+keyName	NN
+=	SYM
+A	DT
+speci	NN
+keyValue	NN
+=	JJ
+>	JJR
+
+
+<	JJR
+keyedReference	NN
+tModelKey	NN
+=	JJ
+CF26D-9672-4404-9D70-39B756E62AB4	NN
+
+
+keyName	NN
+=	JJ
+An	DT
+XML	NN
+speci	NN
+keyValue	NN
+=	JJ
+>	JJR
+
+
+<	JJR
+keyedReference	NN
+tModelKey	NN
+=	JJ
+
+
+keyName	NN
+=	JJ
+An	DT
+XML	NN
+speci	NN
+for	IN
+Service	NNP
+Ontology	NNP
+keyValue	NN
+=	JJ
+viceOntologySpec	NN
+>	JJR
+
+
+<	JJR
+keyedReference	NN
+tModelKey	NN
+=	JJ
+
+
+keyName	NN
+=	JJ
+An	DT
+XML	NN
+speci	NN
+for	IN
+Parent	NNP
+Service	NNP
+Ontology	NNP
+keyValue	NN
+=	JJ
+viceOntologySpec	NN
+>	JJR
+
+
+</categoryBag>	NN
+
+
+</tModel>	NN
+
+
+Table	NNP
+5	CD
+:	:
+tModel	NN
+for	IN
+a	DT
+service	NN
+ontology	NN
+
+
+37	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+37	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+<	JJR
+wsdl	CD
+:	:
+de	FW
+name	NN
+=	JJ
+
+
+targetNamespace	NN
+=	JJ
+w.cse.unsw.ede.au	NN
+/	:
+services/ooking	VBG
+.	.
+
+wsdl	NN
+
+
+xmlns	NN
+=	JJ
+w.cse.unsw.ede.au	NN
+/	:
+services/Booking	NN
+.	.
+
+wsdl	NN
+
+
+xmlns	NN
+=	JJ
+w.cse.unsw.ede.au	NN
+/	:
+ontology/Trip-planning-services	NNS
+.	.
+
+xml	NN
+
+
+xmlns	NNS
+:	:
+soap=.xmlsoap.org/wsdl/soap/	JJ
+xmlns	NNS
+:	:
+wsdl=.xmlsoap.org/wsdl/	NN
+
+
+xmlns	NNS
+:	:
+xsd	NN
+=	JJ
+.	.
+
+w3.org	NN
+/	:
+2001/XMLSchema	NN
+>	JJR
+
+
+<wsdl:types>	NN
+
+
+<	JJR
+xsd	CD
+:	:
+schema	NN
+targetNamespace	NN
+=	JJ
+w.cse.unsw.ede.au	NN
+/	:
+services/ooking	VBG
+.	.
+
+wsdl	NN
+>	JJR
+
+
+<	JJR
+xsd	CD
+:	:
+element	NN
+name	NN
+=	JJ
+type	NN
+=	JJ
+ing	NN
+>	JJR
+
+
+...	:
+...	:
+
+
+<	JJR
+xsd	CD
+:	:
+element	NN
+name	NN
+=	JJ
+assenger	NN
+type	NN
+=	JJ
+>	JJR
+
+
+<	JJR
+xsd	CD
+:	:
+complexType	NN
+name	NN
+=	JJ
+ketBooking	NN
+outParametersType	NN
+>	JJR
+
+
+<xsd:sequence>	NN
+
+
+<	JJR
+xsd	CD
+:	:
+element	NN
+name	NN
+=	JJ
+type	NN
+=	JJ
+>	JJR
+
+
+...	:
+...	:
+
+
+</xsd:sequence>	NN
+
+
+</xsd:complexType>	NN
+
+
+<	JJR
+xsd	CD
+:	:
+element	NN
+name	NN
+=	JJ
+ketBooking	NN
+outParameters	NNS
+type	NN
+=	JJ
+ketBooking	NN
+outParametersType	NN
+>	JJR
+
+
+<	JJR
+xsd	CD
+:	:
+complexType	NN
+name	NN
+=	JJ
+ketBooking	NN
+inParametersType	NN
+>	JJR
+
+
+<xsd:sequence>	NN
+
+
+<	JJR
+xsd	CD
+:	:
+element	NN
+name	NN
+=	JJ
+tingAirport	NN
+type	NN
+=	JJ
+ing	NN
+>	JJR
+
+
+...	:
+...	:
+
+
+</xsd:sequence>	NN
+
+
+</xsd:complexType>	NN
+
+
+<	JJR
+xsd	CD
+:	:
+element	NN
+name	NN
+=	JJ
+ketBooking	NN
+inParameters	NNS
+type	NN
+=	JJ
+ketBooking	NN
+inParametersType	NN
+>	JJR
+
+
+</xsd:schema>	NN
+
+
+</wsdl:types>	NN
+
+
+<	JJR
+wsdl	CD
+:	:
+message	NN
+name	NN
+=	JJ
+ketBookingSoapOut	NN
+>	JJR
+
+
+<	JJR
+wsdl	CD
+:	:
+part	NN
+element	NN
+=	JJ
+ketBooking	NN
+outParameters	NNS
+name	NN
+=	JJ
+arameters	NNS
+>	JJR
+
+
+</wsdl:message>	NN
+
+
+<	JJR
+wsdl	CD
+:	:
+message	NN
+name	NN
+=	JJ
+ketBookingSoapIn	NN
+>	JJR
+
+
+<	JJR
+wsdl	CD
+:	:
+part	NN
+element	NN
+=	JJ
+ketBooking	NN
+inParameters	NNS
+name	NN
+=	JJ
+arameters	NNS
+>	JJR
+
+
+</wsdl:message>	NN
+
+
+<	JJR
+wsdl	CD
+:	:
+portType	NN
+name	NN
+=	JJ
+ortType	NN
+>	JJR
+
+
+<	JJR
+wsdl	CD
+:	:
+operation	NN
+name	NN
+=	JJ
+ketBooking	NN
+>	JJR
+
+
+<	JJR
+wsdl	CD
+:	:
+input	NN
+message	NN
+=	JJ
+ketBookingSoapIn	NN
+name	NN
+=	JJ
+ketBookingInput	NN
+>	JJR
+
+
+<	JJR
+wsdl	CD
+:	:
+output	NN
+message	NN
+=	JJ
+ketBookingSoapOut	NN
+name	NN
+=	JJ
+ketBookingOutput	NN
+>	JJR
+
+
+</wsdl:operation>	NN
+
+
+</wsdl:portType>	NN
+
+
+<	JJR
+wsdl	CD
+:	:
+binding	VBG
+name	NN
+=	JJ
+AP	NN
+type	NN
+=	JJ
+ortType	NN
+>	JJR
+
+
+<	JJR
+soap	NN
+:	:
+binding	VBG
+style	NN
+=	JJ
+transport=.xmlsoap.org/soap/http	NN
+>	JJR
+
+
+<	JJR
+wsdl	CD
+:	:
+operation	NN
+name	NN
+=	JJ
+ketBooking	NN
+>	JJR
+
+
+<	JJR
+soap	NN
+:	:
+operation	NN
+soapAction	NN
+=	JJ
+w.cse.unsw.ede.au	NN
+/	:
+services/FlightTicketBooking	VBG
+style	NN
+=	JJ
+>	JJR
+
+
+<	JJR
+wsdl	CD
+:	:
+input	NN
+name	NN
+=	JJ
+ketBookingInput	NN
+>	JJR
+
+
+<	JJR
+soap	NN
+:	:
+body	NN
+use	NN
+=	JJ
+al	FW
+>	JJR
+
+
+</wsdl:input>	NN
+
+
+<	JJR
+wsdl	CD
+:	:
+output	NN
+name	NN
+=	JJ
+ketBookingOutput	NN
+>	JJR
+
+
+<	JJR
+soap	NN
+:	:
+body	NN
+use	NN
+=	JJ
+al	FW
+>	JJR
+
+
+</wsdl:output>	NN
+
+
+</wsdl:operation>	NN
+
+
+</wsdl:binding>	NN
+
+
+</wsdl:de>	NN
+
+
+Table	NNP
+6	CD
+:	:
+Simpli	NNP
+WSDL	NNP
+document	NN
+for	IN
+a	DT
+Web	NN
+service	NN
+
+
+38	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+38	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+<	JJR
+tModel	NN
+tModelKey	NN
+=	JJ
+9760f81e-badd-492b-99ee-77ea408f6645	NN
+>	JJR
+
+
+<name>	JJ
+FlightTicketBooking	NN
+</name>	NN
+
+
+<	JJR
+description	NN
+lang	NN
+=	JJ
+>	JJR
+XML	NN
+speci	NN
+of	IN
+a	DT
+Web	NN
+service	NN
+</description>	NN
+
+
+<overviewDoc>	NN
+
+
+<	JJR
+description	NN
+lang	NN
+=	JJ
+>	JJR
+Web	NN
+service	NN
+description	NN
+</description>	NN
+
+
+<overviewURL>	NN
+http://dyw.cse.unsw.edu.au/services/wsdl	NN
+</overviewURL>	NN
+
+
+</overviewDoc>	NN
+
+
+<categoryBag>	NN
+
+
+<	JJR
+keyedReference	NN
+tModelKey	NN
+=	JJ
+CF26D-9672-4404-9D70-39B756E62AB4	NN
+
+
+keyName	NN
+=	SYM
+A	DT
+speci	NN
+keyValue	NN
+=	JJ
+>	JJR
+
+
+<	JJR
+keyedReference	NN
+tModelKey	NN
+=	JJ
+CF26D-9672-4404-9D70-39B756E62AB4	NN
+
+
+keyName	NN
+=	JJ
+An	DT
+XML	NN
+speci	NN
+keyValue	NN
+=	JJ
+>	JJR
+
+
+<	JJR
+keyedReference	NN
+tModelKey	NN
+=	JJ
+CF26D-9672-4404-9D70-39B756E62AB4	NN
+
+
+keyName	NN
+=	JJ
+types	NNS
+keyValue	NN
+=	JJ
+>	JJR
+
+
+<	JJR
+keyedReference	NN
+tModelKey	NN
+=	JJ
+
+
+keyName	NN
+=	JJ
+An	DT
+XML	NN
+speci	NN
+for	IN
+Service	NNP
+Ontology	NNP
+keyValue	NN
+=	JJ
+viceOntologySpec	NN
+>	JJR
+
+
+</categoryBag>	NN
+
+
+</tModel>	NN
+
+
+Table	NNP
+7	CD
+:	:
+tModel	NN
+for	IN
+a	DT
+web	NN
+service	NN
+
+
+39	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+39	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+

@@ -1,0 +1,6669 @@
+HUMAN	JJ
+MOVEMENT	JJ
+SUMMARIZATION	NN
+AND	CC
+DEPICTION	NN
+FROM	IN
+VIDEOS	NNS
+
+
+Yijuan	JJ
+Lu1	NN
+and	CC
+Hao	NN
+Jiang2	NN
+1Texas	NNS
+State	NNP
+University	NNP
+and	CC
+2	CD
+
+
+Boston	NNP
+College	NNP
+
+
+ABSTRACT	NN
+
+
+Human	JJ
+movement	NN
+summarization	NN
+and	CC
+depiction	NN
+from	IN
+videos	NNS
+is	VBZ
+to	TO
+automatically	RB
+turn	VB
+an	DT
+input	NN
+video	NN
+into	IN
+high	JJ
+level	NN
+action	NN
+illustrations	NNS
+,	,
+in	IN
+which	WDT
+the	DT
+movements	NNS
+of	IN
+the	DT
+body	NN
+parts	NNS
+are	VBP
+visualized	VBN
+using	VBG
+arrows	NNS
+and	CC
+motion	NN
+particles	NNS
+.	.
+
+Motion	NNP
+depic	JJ
+-	:
+tion	NN
+compactly	RB
+illustrates	VBZ
+how	WRB
+speciï	JJ
+¬	NN
+c	NN
+movements	NNS
+are	VBP
+per	IN
+-	:
+formed	VBN
+.	.
+
+Previous	JJ
+action	NN
+summarization	NN
+methods	NNS
+reply	VBP
+on	IN
+3D	NN
+motion	NN
+capture	NN
+or	CC
+manually	RB
+labeled	VBN
+data	NNS
+,	,
+without	IN
+which	WDT
+de	FW
+-	:
+picting	VBG
+actions	NNS
+is	VBZ
+a	DT
+challenging	JJ
+task	NN
+.	.
+
+In	IN
+this	DT
+paper	NN
+,	,
+we	PRP
+propose	VBP
+a	DT
+novel	JJ
+scheme	NN
+to	TO
+automatically	RB
+summarize	VB
+and	CC
+depict	VB
+hu	SYM
+-	:
+man	NN
+movements	NNS
+from	IN
+2D	NN
+videos	NNS
+without	IN
+3D	NN
+motion	NN
+capture	NN
+or	CC
+manually	RB
+labeled	VBN
+data	NNS
+.	.
+
+The	DT
+proposed	VBN
+method	NN
+ï	NN
+¬	CD
+rst	NN
+segments	NNS
+videos	NNS
+into	IN
+sub-actions	NNS
+with	IN
+an	DT
+effective	JJ
+streamline	VB
+matching	VBG
+scheme	NN
+.	.
+
+Then	RB
+,	,
+to	TO
+estimate	VB
+human	JJ
+movement	NN
+,	,
+we	PRP
+propose	VBP
+a	DT
+novel	JJ
+trajectory	NN
+following	VBG
+method	NN
+to	TO
+track	VB
+points	NNS
+by	IN
+using	VBG
+both	CC
+body	NN
+part	NN
+detection	NN
+and	CC
+optical	JJ
+ï	NN
+¬	CD
+‚	CD
+ow	NN
+.	.
+
+With	IN
+the	DT
+estimated	VBN
+movement	NN
+,	,
+we	PRP
+depict	VBP
+the	DT
+human	JJ
+articulated	JJ
+motion	NN
+with	IN
+ar	NN
+-	:
+rows	NNS
+and	CC
+motion	NN
+particles	NNS
+.	.
+
+Our	PRP$
+experiments	NNS
+on	IN
+a	DT
+variety	NN
+of	IN
+videos	NNS
+show	VBP
+that	IN
+the	DT
+proposed	VBN
+method	NN
+is	VBZ
+effective	JJ
+in	IN
+summa	NN
+-	:
+rizing	VBG
+complex	JJ
+human	JJ
+movements	NNS
+and	CC
+generating	VBG
+compact	JJ
+depictions	NNS
+.	.
+
+
+1	CD
+Introduction	NN
+
+
+Summarizing	VBG
+human	JJ
+movement	NN
+in	IN
+videos	NNS
+using	VBG
+a	DT
+small	JJ
+set	NN
+of	IN
+static	JJ
+illustrations	NNS
+has	VBZ
+many	JJ
+important	JJ
+applications	NNS
+.	.
+
+It	PRP
+is	VBZ
+a	DT
+valuable	JJ
+tool	NN
+for	IN
+the	DT
+educational	JJ
+purpose	NN
+to	TO
+demonstrate	VB
+how	WRB
+a	DT
+speciï	NN
+¬	NN
+c	NN
+movement	NN
+can	MD
+be	VB
+performed	VBN
+.	.
+
+It	PRP
+also	RB
+helps	VBZ
+video	NN
+browsing	NN
+and	CC
+provides	VBZ
+compact	JJ
+representations	NNS
+for	IN
+ac	NN
+-	:
+tion	NN
+recognition	NN
+and	CC
+movement	NN
+analysis	NN
+.	.
+
+Without	IN
+3D	NN
+motion	NN
+capture	NN
+or	CC
+manual	JJ
+labeling	NN
+,	,
+high	JJ
+level	NN
+action	NN
+summarization	NN
+that	WDT
+depicts	VBZ
+the	DT
+human	JJ
+body	NN
+part	NN
+movement	NN
+is	VBZ
+a	DT
+difï	NN
+¬	NN
+cult	NN
+task	NN
+.	.
+
+In	IN
+this	DT
+paper	NN
+,	,
+we	PRP
+propose	VBP
+novel	JJ
+methods	NNS
+to	TO
+automatically	RB
+es	SYM
+-	:
+timate	NN
+human	JJ
+articulated	JJ
+motion	NN
+and	CC
+generate	VB
+motion	NN
+depic	JJ
+-	:
+tions	NNS
+from	IN
+2D	NN
+videos	NNS
+without	IN
+manually	RB
+labeled	VBN
+data	NNS
+.	.
+
+A	DT
+mo	NN
+-	:
+tion	NN
+depiction	NN
+example	NN
+is	VBZ
+shown	VBN
+in	IN
+Fig.	NN
+1	CD
+.	.
+
+
+In	IN
+human	JJ
+movement	NN
+summarization	NN
+and	CC
+depiction	NN
+,	,
+we	PRP
+have	VBP
+to	TO
+solve	VB
+three	CD
+basic	JJ
+problems	NNS
+:	:
+action	NN
+segmentation	NN
+-LRB-	-LRB-
+video	NN
+segmentation	NN
+into	IN
+meaningful	JJ
+sub-actions	NNS
+-RRB-	-RRB-
+,	,
+human	JJ
+movement	NN
+estimation	NN
+,	,
+and	CC
+movement	NN
+depiction	NN
+.	.
+
+Action	NNP
+seg	SYM
+-	:
+mentation	NN
+is	VBZ
+to	TO
+partition	NN
+a	DT
+complex	JJ
+action	NN
+in	IN
+a	DT
+video	NN
+into	IN
+frame	NN
+groups	NNS
+and	CC
+in	IN
+each	DT
+group	NN
+a	DT
+simple	JJ
+sub-action	NN
+occurs	VBZ
+.	.
+
+We	PRP
+are	VBP
+most	RBS
+interested	JJ
+in	IN
+segmenting	VBG
+input	NN
+videos	NNS
+into	IN
+sub	NN
+-	:
+actions	NNS
+that	WDT
+reï	VBP
+¬	CD
+‚	CD
+ect	NN
+different	JJ
+movements	NNS
+of	IN
+human	JJ
+body	NN
+parts	NNS
+.	.
+
+Most	JJS
+previous	JJ
+research	NN
+on	IN
+action	NN
+segmentation	NN
+uses	VBZ
+3D	NN
+mo	NN
+-	:
+tion	NN
+capture	NN
+data	NNS
+-LSB-	-LRB-
+1	CD
+,	,
+2	CD
+,	,
+5	CD
+-RSB-	-RRB-
+.	.
+
+Movement	NNP
+segmentation	NN
+with	IN
+
+
+Fig.	NN
+1	CD
+.	.
+
+Our	PRP$
+method	NN
+converts	VBZ
+a	DT
+video	NN
+sequence	NN
+to	TO
+movement	NN
+depictions	NNS
+,	,
+which	WDT
+illustrate	VBP
+body	NN
+part	NN
+movements	NNS
+using	VBG
+ar	SYM
+-	:
+rows	NNS
+and	CC
+subtle	JJ
+local	JJ
+movements	NNS
+using	VBG
+motion	NN
+particles	NNS
+.	.
+
+
+videos	NNS
+as	IN
+a	DT
+direct	JJ
+input	NN
+is	VBZ
+more	RBR
+challenging	JJ
+.	.
+
+Clustering	NN
+based	VBN
+methods	NNS
+-LSB-	-LRB-
+3	CD
+-RSB-	-RRB-
+for	IN
+generic	JJ
+video	NN
+segmentation	NN
+can	MD
+be	VB
+applied	VBN
+to	TO
+action	NN
+segmentation	NN
+.	.
+
+The	DT
+downside	NN
+of	IN
+a	DT
+clustering	NN
+approach	NN
+is	VBZ
+that	IN
+the	DT
+number	NN
+of	IN
+clusters	NNS
+is	VBZ
+hard	JJ
+to	TO
+determine	VB
+.	.
+
+Another	DT
+widely	RB
+used	VBN
+scheme	NN
+is	VBZ
+to	TO
+directly	RB
+detect	VB
+the	DT
+action	NN
+boundaries	NNS
+.	.
+
+Rui	NNP
+et	FW
+al.	FW
+-LSB-	-LRB-
+4	CD
+-RSB-	-RRB-
+propose	VBP
+to	TO
+use	VB
+PCA	NN
+coefï	NN
+¬	CD
+cients	NNS
+of	IN
+dense	JJ
+optical	JJ
+ï	NN
+¬	CD
+‚	CD
+ow	NN
+to	TO
+quantify	VB
+the	DT
+movement	NN
+changes	NNS
+;	:
+the	DT
+temporal	JJ
+curves	NNS
+of	IN
+the	DT
+features	NNS
+derived	VBN
+from	IN
+the	DT
+PCA	NN
+coefï	NN
+¬	CD
+cients	NNS
+are	VBP
+used	VBN
+to	TO
+detect	VB
+sub-action	JJ
+boundaries	NNS
+.	.
+
+In	IN
+this	DT
+paper	NN
+,	,
+we	PRP
+follow	VBP
+the	DT
+ac	NN
+-	:
+tion	NN
+boundary	NN
+detection	NN
+scheme	NN
+.	.
+
+Our	PRP$
+method	NN
+uses	VBZ
+a	DT
+cluster	NN
+of	IN
+streamlines	NNS
+to	TO
+capture	VB
+the	DT
+salient	JJ
+movement	NN
+characteristics	NNS
+in	IN
+action	NN
+boundary	NN
+detection	NN
+.	.
+
+
+In	IN
+the	DT
+second	JJ
+step	NN
+,	,
+we	PRP
+extract	VBP
+the	DT
+high	JJ
+level	NN
+movement	NN
+of	IN
+a	DT
+human	JJ
+subject	NN
+.	.
+
+A	DT
+high	JJ
+level	NN
+movement	NN
+representation	NN
+has	VBZ
+to	TO
+reï	VB
+¬	CD
+‚	CD
+ect	VBD
+the	DT
+body	NN
+part	NN
+movement	NN
+and	CC
+local	JJ
+subtle	JJ
+motion	NN
+.	.
+
+To	TO
+this	DT
+end	NN
+,	,
+we	PRP
+detect	VBP
+body	NN
+parts	NNS
+and	CC
+compute	VB
+the	DT
+motion	NN
+tra	NN
+-	:
+jectories	NNS
+of	IN
+feature	NN
+points	NNS
+.	.
+
+Finding	VBG
+feature	NN
+point	NN
+trajectories	NNS
+on	IN
+human	JJ
+subjects	NNS
+has	VBZ
+been	VBN
+studied	VBN
+in	IN
+a	DT
+multiple	JJ
+camera	NN
+set	NN
+-	:
+ting	NN
+-LSB-	-LRB-
+9	CD
+-RSB-	-RRB-
+.	.
+
+For	IN
+single	JJ
+view	NN
+videos	NNS
+,	,
+ï	NN
+¬	CD
+nding	JJ
+long	JJ
+trajectories	NNS
+is	VBZ
+a	DT
+hard	JJ
+problem	NN
+.	.
+
+Simply	RB
+propagating	VBG
+point	NN
+location	NN
+estimate	NN
+from	IN
+frame	NN
+to	TO
+frame	NN
+using	VBG
+optical	JJ
+ï	NN
+¬	CD
+‚	CD
+ow	NN
+would	MD
+cause	VB
+the	DT
+tra	NN
+-	:
+jectory	NN
+to	TO
+drift	VB
+in	IN
+a	DT
+long	JJ
+time	NN
+span	NN
+.	.
+
+Occlusions	NNS
+also	RB
+make	VBP
+direct	JJ
+point	NN
+tracking	VBG
+a	DT
+difï	NN
+¬	NN
+cult	NN
+problem	NN
+.	.
+
+In	IN
+this	DT
+paper	NN
+,	,
+we	PRP
+merge	VBP
+body	NN
+part	NN
+detection	NN
+,	,
+which	WDT
+can	MD
+be	VB
+obtained	VBN
+using	VBG
+meth	NN
+-	:
+ods	NNS
+in	IN
+-LSB-	-LRB-
+6	CD
+,	,
+7	CD
+,	,
+8	CD
+-RSB-	-RRB-
+,	,
+and	CC
+optical	JJ
+ï	NN
+¬	CD
+‚	CD
+ow	NN
+to	TO
+achieve	VB
+reliable	JJ
+results	NNS
+.	.
+
+Compared	VBN
+with	IN
+previous	JJ
+human	JJ
+tracking	NN
+methods	NNS
+-LSB-	-LRB-
+10	CD
+-RSB-	-RRB-
+,	,
+our	PRP$
+scheme	NN
+can	MD
+be	VB
+used	VBN
+to	TO
+track	VB
+feature	NN
+points	NNS
+on	IN
+human	JJ
+subjects	NNS
+in	IN
+unconstrained	JJ
+movements	NNS
+.	.
+
+We	PRP
+propose	VBP
+an	DT
+efï	NN
+¬	NN
+cient	NN
+mul	NN
+-	:
+tiple	NN
+path	NN
+optimization	NN
+method	NN
+to	TO
+link	VB
+body	NN
+part	NN
+detections	NNS
+in	IN
+different	JJ
+video	NN
+frames	NNS
+.	.
+
+The	DT
+optimization	NN
+explicitly	RB
+models	NNS
+high	JJ
+order	NN
+dynamics	NNS
+and	CC
+can	MD
+be	VB
+efï	NN
+¬	NN
+ciently	RB
+solved	VBD
+using	VBG
+a	DT
+lin	NN
+-	:
+ear	NN
+method	NN
+.	.
+
+The	DT
+point	NN
+cloud	NN
+trajectory	NN
+estimation	NN
+is	VBZ
+further	JJ
+formulated	VBN
+as	IN
+an	DT
+optimization	NN
+problem	NN
+in	IN
+which	WDT
+we	PRP
+jointly	RB
+ï	VBD
+¬	CD
+nd	NN
+all	PDT
+the	DT
+coupled	VBN
+trajectories	NNS
+constrained	VBN
+by	IN
+the	DT
+body	NN
+part	NN
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+1	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+detection	NN
+,	,
+optical	JJ
+ï	NN
+¬	CD
+‚	CD
+ow	NN
+and	CC
+object	NN
+foreground	NN
+estimation	NN
+.	.
+
+
+In	IN
+step	NN
+three	CD
+,	,
+motion	NN
+depiction	NN
+,	,
+we	PRP
+express	VBP
+the	DT
+object	NN
+movement	NN
+in	IN
+each	DT
+segmented	JJ
+sub-action	NN
+using	VBG
+a	DT
+static	JJ
+illus	NN
+-	:
+tration	NN
+.	.
+
+Human	JJ
+movement	NN
+depiction	NN
+has	VBZ
+been	VBN
+practiced	VBN
+in	IN
+different	JJ
+artworks	NNS
+for	IN
+centuries	NNS
+.	.
+
+Graphics	NNP
+elements	NNS
+,	,
+such	JJ
+as	IN
+streamlines	NNS
+,	,
+motion	NN
+blur	NN
+,	,
+and	CC
+overlapping	VBG
+semi-transparent	JJ
+ghost	NN
+images	NNS
+have	VBP
+been	VBN
+used	VBN
+to	TO
+illustrate	VB
+actions	NNS
+.	.
+
+For	IN
+com	NN
+-	:
+putational	JJ
+motion	NN
+depiction	NN
+,	,
+the	DT
+challenge	NN
+is	VBZ
+to	TO
+translate	VB
+hu	SYM
+-	:
+man	NN
+movement	NN
+estimation	NN
+into	IN
+appropriate	JJ
+graphics	NNS
+repre	NN
+-	:
+sentations	NNS
+.	.
+
+Our	PRP$
+work	NN
+is	VBZ
+inspired	VBN
+by	IN
+-LSB-	-LRB-
+2	CD
+-RSB-	-RRB-
+which	WDT
+uses	VBZ
+arrows	NNS
+,	,
+noise	NN
+waves	NNS
+,	,
+and	CC
+stroboscopic	JJ
+motion	NN
+to	TO
+depict	VB
+stick	NN
+ï	NN
+¬	CD
+gure	NN
+movement	NN
+.	.
+
+-LSB-	-LRB-
+2	CD
+-RSB-	-RRB-
+uses	VBZ
+3D	NN
+motion	NN
+capture	NN
+data	NNS
+.	.
+
+In	IN
+contrast	NN
+,	,
+our	PRP$
+method	NN
+does	VBZ
+not	RB
+reply	VB
+on	IN
+3D	NN
+motion	NN
+capture	NN
+or	CC
+manual	JJ
+label	NN
+-	:
+ing	NN
+;	:
+it	PRP
+automatically	RB
+generates	VBZ
+the	DT
+illustration	NN
+from	IN
+a	DT
+direct	JJ
+2D	NN
+video	NN
+input	NN
+.	.
+
+We	PRP
+use	VBP
+arrows	NNS
+to	TO
+illustrate	VB
+the	DT
+body	NN
+part	NN
+movement	NN
+,	,
+the	DT
+motion	NN
+particles	NNS
+to	TO
+depict	VB
+the	DT
+subtle	JJ
+local	JJ
+mo	NN
+-	:
+tion	NN
+,	,
+and	CC
+ghost	NN
+images	NNS
+to	TO
+provide	VB
+reference	NN
+transitional	JJ
+and	CC
+ending	VBG
+poses	VBZ
+.	.
+
+In	IN
+the	DT
+following	VBG
+sections	NNS
+,	,
+we	PRP
+show	VBP
+how	WRB
+a	DT
+con	NN
+-	:
+vincing	NN
+motion	NN
+depiction	NN
+can	MD
+be	VB
+achieved	VBN
+using	VBG
+the	DT
+proposed	VBN
+method	NN
+.	.
+
+
+To	TO
+our	PRP$
+best	JJS
+knowledge	NN
+,	,
+the	DT
+proposed	VBN
+method	NN
+is	VBZ
+the	DT
+ï	NN
+¬	NN
+rst	NN
+attempt	NN
+that	WDT
+automatically	RB
+converts	VBZ
+a	DT
+2D	NN
+video	NN
+sequence	NN
+to	TO
+high	JJ
+level	NN
+human	JJ
+movements	NNS
+depictions	NNS
+without	IN
+3D	NN
+motion	NN
+capture	NN
+or	CC
+manually	RB
+labeled	VBN
+data	NNS
+.	.
+
+It	PRP
+is	VBZ
+potentially	RB
+capable	JJ
+of	IN
+providing	VBG
+compact	JJ
+representations	NNS
+for	IN
+action	NN
+recognition	NN
+and	CC
+movement	NN
+analysis	NN
+.	.
+
+It	PRP
+can	MD
+be	VB
+used	VBN
+in	IN
+many	JJ
+applications	NNS
+especially	RB
+for	IN
+education	NN
+purpose	NN
+to	TO
+teach	VB
+students	NNS
+,	,
+patients	NNS
+or	CC
+people	NNS
+with	IN
+disabilities	NNS
+how	WRB
+speciï	JJ
+¬	NN
+c	NN
+movements	NNS
+can	MD
+be	VB
+achieved	VBN
+.	.
+
+
+2	CD
+Motion	NNP
+Summary	NNP
+and	CC
+Depiction	NNP
+
+
+Our	PRP$
+method	NN
+is	VBZ
+composed	VBN
+of	IN
+three	CD
+steps	NNS
+:	:
+1	LS
+-RRB-	-RRB-
+Action	NNP
+segmenta	NN
+-	:
+tion	NN
+:	:
+we	PRP
+segment	NN
+complex	NN
+actions	NNS
+into	IN
+simple	JJ
+ones	NNS
+which	WDT
+can	MD
+be	VB
+depicted	VBN
+using	VBG
+directional	JJ
+arrows	NNS
+;	:
+2	LS
+-RRB-	-RRB-
+Human	JJ
+movement	NN
+estimation	NN
+:	:
+we	PRP
+detect	VBP
+human	JJ
+body	NN
+parts	NNS
+and	CC
+associate	VBP
+them	PRP
+through	IN
+time	NN
+.	.
+
+Then	RB
+,	,
+we	PRP
+obtain	VBP
+rough	JJ
+human	JJ
+movement	NN
+which	WDT
+will	MD
+be	VB
+reï	NN
+¬	NN
+ned	VBD
+for	IN
+movement	NN
+depiction	NN
+.	.
+
+Finally	RB
+,	,
+we	PRP
+augment	VBP
+the	DT
+movement	NN
+estimation	NN
+into	IN
+body	NN
+point	NN
+domain	NN
+and	CC
+clean	JJ
+up	IN
+the	DT
+error	NN
+body	NN
+part	NN
+movement	NN
+estimation	NN
+;	:
+3	LS
+-RRB-	-RRB-
+Movement	NNP
+depiction	NN
+:	:
+based	VBN
+on	IN
+the	DT
+cleaned	VBN
+up	RP
+point	NN
+motion	NN
+estimation	NN
+,	,
+we	PRP
+generate	VBP
+directional	JJ
+arrows	NNS
+to	TO
+depict	VB
+the	DT
+human	JJ
+body	NN
+part	NN
+movements	NNS
+.	.
+
+The	DT
+arrows	NNS
+are	VBP
+overlapped	VBN
+on	IN
+the	DT
+images	NNS
+to	TO
+gen	SYM
+-	:
+erate	VB
+the	DT
+ï	NN
+¬	CD
+nal	JJ
+rendering	VBG
+results	NNS
+.	.
+
+
+2.1	CD
+Action	NNP
+Segmentation	NN
+
+
+Action	NNP
+segmentation	NN
+is	VBZ
+to	TO
+partition	NN
+a	DT
+complex	JJ
+action	NN
+into	IN
+sim	NN
+-	:
+ple	NN
+sub-actions	NNS
+to	TO
+facilitate	VB
+movement	NN
+depiction	NN
+.	.
+
+We	PRP
+ï	VBP
+¬	CD
+rst	JJ
+di	FW
+-	:
+rectly	RB
+detect	VB
+the	DT
+action	NN
+boundaries	NNS
+and	CC
+then	RB
+use	VB
+motion	NN
+tra	NN
+-	:
+jectories	NNS
+to	TO
+quantify	VB
+human	JJ
+movements	NNS
+.	.
+
+We	PRP
+randomly	RB
+select	JJ
+seed	NN
+points	NNS
+in	IN
+each	DT
+video	NN
+frame	NN
+and	CC
+follow	VB
+the	DT
+motion	NN
+ï	NN
+¬	CD
+eld	NN
+in	IN
+a	DT
+ï	NN
+¬	NN
+xed	VBD
+time	NN
+interval	NN
+.	.
+
+The	DT
+trajectories	NNS
+are	VBP
+constructed	VBN
+by	IN
+con	NN
+-	:
+necting	VBG
+the	DT
+points	NNS
+from	IN
+one	CD
+frame	NN
+to	TO
+the	DT
+next	JJ
+using	VBG
+the	DT
+motion	NN
+vectors	NNS
+in	IN
+a	DT
+ï	NN
+¬	NN
+xed	VBD
+time	NN
+interval	NN
+.	.
+
+In	IN
+this	DT
+paper	NN
+,	,
+motion	NN
+trajec	NN
+-	:
+tories	NNS
+are	VBP
+computed	VBN
+in	IN
+15	CD
+frames	NNS
+.	.
+
+In	IN
+such	PDT
+a	DT
+simple	JJ
+scheme	NN
+,	,
+
+
+there	EX
+is	VBZ
+no	DT
+guarantee	NN
+that	IN
+the	DT
+motion	NN
+trajectories	NNS
+will	MD
+not	RB
+in	IN
+-	:
+tersect	NN
+.	.
+
+However	RB
+,	,
+since	IN
+we	PRP
+are	VBP
+only	RB
+interested	JJ
+in	IN
+the	DT
+overall	JJ
+motion	NN
+,	,
+the	DT
+rough	JJ
+representation	NN
+is	VBZ
+sufï	JJ
+¬	NN
+cient	NN
+.	.
+
+
+After	IN
+obtaining	VBG
+the	DT
+motion	NN
+trajectories	NNS
+starting	VBG
+from	IN
+each	DT
+frame	NN
+and	CC
+stretching	VBG
+a	DT
+ï	NN
+¬	NN
+xed	VBD
+time	NN
+interval	NN
+,	,
+we	PRP
+shift	VBP
+the	DT
+trajec	NN
+-	:
+tories	NNS
+so	IN
+that	IN
+they	PRP
+all	DT
+start	VBP
+from	IN
+point	NN
+-LRB-	-LRB-
+0,0,0	CD
+-RRB-	-RRB-
+,	,
+where	WRB
+the	DT
+three	CD
+coordinates	VBZ
+are	VBP
+x	NN
+,	,
+y	NN
+and	CC
+time	NN
+.	.
+
+These	DT
+clusters	NNS
+of	IN
+motion	NN
+tra	NN
+-	:
+jectories	NNS
+at	IN
+each	DT
+frame	NN
+reï	NN
+¬	CD
+‚	CD
+ecthow	NN
+the	DT
+object	NN
+moves	VBZ
+in	IN
+a	DT
+small	JJ
+time	NN
+interval	NN
+.	.
+
+
+To	TO
+reduce	VB
+the	DT
+scale	NN
+inï	NN
+¬	CD
+‚	NN
+uence	NN
+,	,
+the	DT
+trajectories	NNS
+are	VBP
+further	JJ
+projected	VBN
+to	TO
+the	DT
+xy	NN
+plane	NN
+and	CC
+the	DT
+2D	NN
+coordinates	VBZ
+of	IN
+points	NNS
+on	IN
+the	DT
+curve	NN
+are	VBP
+collapsed	VBN
+to	TO
+form	VB
+a	DT
+normalized	VBN
+vector	NN
+with	IN
+unit	NN
+length	NN
+.	.
+
+The	DT
+difference	NN
+of	IN
+movements	NNS
+is	VBZ
+deï	NN
+¬	NN
+ned	VBD
+as	IN
+the	DT
+distance	NN
+of	IN
+these	DT
+feature	NN
+vectors	NNS
+.	.
+
+LetF	NN
+=	SYM
+-LCB-	-LRB-
+vn	NN
+,	,
+n	NN
+=	JJ
+1	CD
+.	.
+.	.
+
+N	NN
+-RCB-	-RRB-
+be	VB
+the	DT
+feature	NN
+vectors	NNS
+for	IN
+action	NN
+one	CD
+and	CC
+G	NN
+=	JJ
+-LCB-	-LRB-
+um	NN
+,	,
+m	NN
+=	JJ
+1	CD
+.	.
+.	.
+
+M	NN
+-RCB-	-RRB-
+be	VB
+the	DT
+vectors	NNS
+for	IN
+action	NN
+two	CD
+.	.
+
+The	DT
+distance	NN
+d	NN
+between	IN
+F	NN
+and	CC
+G	NN
+is	VBZ
+deï	NN
+¬	NN
+ned	VBD
+as	IN
+
+
+
+d	NN
+-LRB-	-LRB-
+F	NN
+,	,
+G	NN
+-RRB-	-RRB-
+=	JJ
+
+
+1	CD
+
+
+
+minacos	NN
+-LRB-	-LRB-
+vTm	NN
+
+
+n	NN
+
+
+um	NN
+-RRB-	-RRB-
++	CC
+
+
+1	CD
+
+
+N	NN
+
+
+n	NN
+
+
+M	NN
+
+
+minacos	NN
+-LRB-	-LRB-
+uTn	NN
+
+
+mvn	NN
+-RRB-	-RRB-
+
+
+m	NN
+
+
+To	TO
+detect	VB
+movement	NN
+boundaries	NNS
+,	,
+we	PRP
+require	VBP
+that	IN
+the	DT
+action	NN
+features	VBZ
+be	VB
+stable	JJ
+when	WRB
+body	NN
+parts	NNS
+keep	VBP
+their	PRP$
+motion	NN
+direction	NN
+and	CC
+the	DT
+changes	NNS
+of	IN
+the	DT
+measurement	NN
+should	MD
+be	VB
+proportional	JJ
+to	TO
+the	DT
+motion	NN
+direction	NN
+changes	NNS
+.	.
+
+The	DT
+feature	NN
+deï	NN
+¬	CD
+ned	VBD
+above	IN
+fulï	NN
+¬	CD
+lls	VBZ
+the	DT
+requirement	NN
+.	.
+
+
+In	IN
+movement	NN
+segmentation	NN
+,	,
+we	PRP
+compute	VBP
+the	DT
+distances	NNS
+of	IN
+streamlines	NNS
+between	IN
+successive	JJ
+time	NN
+instants	NNS
+and	CC
+form	VB
+the	DT
+re	NN
+-	:
+sults	NNS
+into	IN
+a	DT
+1D	NN
+curve	NN
+.	.
+
+Local	JJ
+maxima	NNS
+on	IN
+the	DT
+curve	NN
+indicate	VBP
+potential	JJ
+action	NN
+changes	NNS
+.	.
+
+To	TO
+avoid	VB
+the	DT
+detection	NN
+of	IN
+spurious	JJ
+local	JJ
+peaks	NNS
+,	,
+the	DT
+distance	NN
+curve	NN
+is	VBZ
+low	JJ
+pass	NN
+ï	NN
+¬	CD
+ltered	VBN
+.	.
+
+With	IN
+the	DT
+robust	JJ
+streamline	VB
+feature	NN
+,	,
+the	DT
+efï	NN
+¬	NN
+cient	JJ
+approach	NN
+achieves	VBZ
+suf	SYM
+-	:
+ï	NN
+¬	CD
+cient	JJ
+segmentation	NN
+results	VBZ
+for	IN
+further	JJ
+action	NN
+depiction	NN
+.	.
+
+2.2	CD
+Human	JJ
+Movement	NNP
+Estimation	NN
+
+
+Extracting	VBG
+human	JJ
+movement	NN
+is	VBZ
+a	DT
+prerequisite	NN
+for	IN
+high	JJ
+level	NN
+movement	NN
+depiction	NN
+.	.
+
+Apart	RB
+from	IN
+extracting	VBG
+feature	NN
+point	NN
+movements	NNS
+on	IN
+a	DT
+human	JJ
+subject	NN
+,	,
+we	PRP
+would	MD
+like	VB
+to	TO
+determine	VB
+which	WDT
+body	NN
+part	NN
+each	DT
+point	NN
+belongs	VBZ
+to	TO
+.	.
+
+We	PRP
+devise	VBP
+a	DT
+robust	JJ
+method	NN
+to	TO
+extract	NN
+articulated	VBD
+motion	NN
+by	IN
+combining	VBG
+the	DT
+global	JJ
+body	NN
+part	NN
+motion	NN
+and	CC
+local	JJ
+optical	JJ
+ï	NN
+¬	CD
+‚	CD
+ow	NN
+.	.
+
+
+2.2.1	CD
+The	DT
+Movement	NNP
+of	IN
+Body	NNP
+Parts	NNP
+
+
+We	PRP
+detect	VBP
+human	JJ
+body	NN
+parts	NNS
+in	IN
+each	DT
+video	NN
+frame	NN
+and	CC
+track	VB
+them	PRP
+through	IN
+time	NN
+.	.
+
+We	PRP
+use	VBP
+-LSB-	-LRB-
+8	CD
+-RSB-	-RRB-
+for	IN
+human	JJ
+body	NN
+part	NN
+detection	NN
+.	.
+
+We	PRP
+detect	VBP
+10	CD
+body	NN
+parts	NNS
+including	VBG
+head	NN
+,	,
+torso	NN
+,	,
+4	CD
+half	NN
+arms	NNS
+and	CC
+4	CD
+half	NN
+legs	NNS
+as	IN
+shown	VBN
+in	IN
+Fig.	NN
+2	CD
+Note	NN
+that	IN
+the	DT
+detector	NN
+does	VBZ
+not	RB
+distinguish	VB
+the	DT
+left	JJ
+and	CC
+right	JJ
+arms	NNS
+and	CC
+legs	NNS
+and	CC
+there	EX
+are	VBP
+many	JJ
+detection	NN
+errors	NNS
+.	.
+
+We	PRP
+use	VBP
+the	DT
+body	NN
+part	NN
+detections	NNS
+as	IN
+a	DT
+basis	NN
+for	IN
+body	NN
+part	NN
+tracking	NN
+,	,
+i.e.	FW
+,	,
+we	PRP
+associate	VBP
+the	DT
+corresponding	JJ
+body	NN
+parts	NNS
+in	IN
+successive	JJ
+video	NN
+frames	NNS
+.	.
+
+
+Based	VBN
+on	IN
+the	DT
+body	NN
+part	NN
+detection	NN
+results	VBZ
+,	,
+each	DT
+limb	NN
+that	WDT
+corresponds	VBZ
+to	TO
+an	DT
+upper	JJ
+or	CC
+lower	JJR
+body	NN
+part	NN
+has	VBZ
+two	CD
+possible	JJ
+locations	NNS
+in	IN
+a	DT
+video	NN
+frame	NN
+.	.
+
+We	PRP
+need	VBP
+to	TO
+assign	VB
+the	DT
+two	CD
+part	NN
+detections	NNS
+to	TO
+limb	NN
+one	CD
+and	CC
+limb	NN
+two	CD
+in	IN
+each	DT
+video	NN
+frame	NN
+and	CC
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+2	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+Fig.	NN
+2	CD
+.	.
+
+Body	NN
+part	NN
+detection	NN
+sample	NN
+results	NNS
+.	.
+
+
+aa	NN
+
+
+aa	NN
+
+
+aa	NN
+
+
+aa	NN
+
+
+ab	IN
+
+
+ab	IN
+
+
+ab	IN
+
+
+s1	NN
+
+
+ab	IN
+
+
+â	RB
+$	$
+¦	CD
+
+
+t1	NN
+
+
+ba	NN
+
+
+bb	NN
+V1	NN
+,1,4	CD
+
+
+ba	NN
+V1	NN
+,2,3	CD
+bb	NN
+
+
+ba	NN
+
+
+ba	NN
+
+
+bb	NN
+
+
+bb	NN
+
+
+aa	NN
+
+
+aa	NN
+
+
+aa	NN
+
+
+aa	NN
+
+
+ab	NN
+ab	IN
+
+
+ab	NN
+ab	IN
+
+
+s2	NN
+
+
+â	RB
+$	$
+¦	CD
+
+
+t2	NN
+
+
+ba	NN
+ba	NN
+
+
+ba	NN
+ba	NN
+
+
+V2	NN
+,2,3	CD
+
+
+bb	NN
+bb	NN
+
+
+bb	NN
+
+
+bb	NN
+
+
+V2	NN
+,1,4	CD
+
+
+Fig.	NN
+3	CD
+.	.
+
+Trellises	NNS
+for	IN
+a	DT
+pair	NN
+of	IN
+limbs	NNS
+.	.
+
+The	DT
+path	NN
+in	IN
+each	DT
+trel	NN
+-	:
+lis	NN
+corresponds	VBZ
+to	TO
+body	NN
+part	NN
+assignments	NNS
+through	IN
+time	NN
+;	:
+paths	NNS
+should	MD
+not	RB
+conï	VB
+¬	CD
+‚	CD
+ict	NN
+.	.
+
+
+we	PRP
+have	VBP
+to	TO
+make	VB
+sure	JJ
+that	IN
+each	DT
+body	NN
+part	NN
+moves	VBZ
+smoothly	RB
+in	IN
+time	NN
+and	CC
+space	NN
+.	.
+
+Unfortunately	RB
+,	,
+naive	JJ
+exhaustive	JJ
+enumeration	NN
+method	NN
+has	VBZ
+an	DT
+exponential	JJ
+complexity	NN
+;	:
+for	IN
+n	NN
+frames	NNS
+there	RB
+will	MD
+be	VB
+2n	JJ
+possible	JJ
+assignments	NNS
+.	.
+
+Such	PDT
+a	DT
+method	NN
+can	MD
+not	RB
+be	VB
+used	VBN
+for	IN
+body	NN
+part	NN
+association	NN
+in	IN
+hundreds	NNS
+and	CC
+thousands	NNS
+of	IN
+frames	NNS
+.	.
+
+We	PRP
+propose	VBP
+an	DT
+efï	NN
+¬	NN
+cient	JJ
+linear	NN
+method	NN
+to	TO
+solve	VB
+this	DT
+problem	NN
+.	.
+
+In	IN
+this	DT
+paper	NN
+,	,
+body	NN
+part	NN
+association	NN
+is	VBZ
+formulated	VBN
+as	IN
+a	DT
+multiple	JJ
+shortest	JJS
+path	NN
+following	VBG
+problem	NN
+.	.
+
+The	DT
+formulation	NN
+is	VBZ
+linear	JJ
+and	CC
+can	MD
+be	VB
+solved	VBN
+efï	NN
+¬	NN
+ciently	RB
+.	.
+
+As	IN
+follows	VBZ
+,	,
+we	PRP
+will	MD
+also	RB
+illustrate	VB
+how	WRB
+the	DT
+second	JJ
+order	NN
+smoothness	NN
+constraint	NN
+can	MD
+be	VB
+modeled	VBN
+by	IN
+properly	RB
+constructing	VBG
+the	DT
+transition	NN
+graph	NN
+.	.
+
+
+To	TO
+optimize	VB
+the	DT
+body	NN
+part	NN
+association	NN
+,	,
+we	PRP
+construct	VBP
+two	CD
+graphs	NNS
+for	IN
+each	DT
+pair	NN
+of	IN
+limbs	NNS
+.	.
+
+Fig.	NN
+3	CD
+shows	VBZ
+two	CD
+trellises	NNS
+cor	SYM
+-	:
+responding	VBG
+to	TO
+a	DT
+pair	NN
+of	IN
+limbs	NNS
+.	.
+
+Each	DT
+node	NN
+of	IN
+the	DT
+trellises	NNS
+in	IN
+-	:
+dicates	NNS
+a	DT
+possible	JJ
+body	NN
+part	NN
+assignment	NN
+.	.
+
+Except	IN
+for	IN
+the	DT
+body	NN
+part	NN
+candidate	NN
+nodes	NNS
+,	,
+source	NN
+nodes	NNS
+and	CC
+sink	VB
+nodes	NNS
+are	VBP
+also	RB
+included	VBN
+.	.
+
+At	IN
+each	DT
+layer	NN
+,	,
+we	PRP
+have	VBP
+4	CD
+possible	JJ
+body	NN
+part	NN
+assign	VBP
+-	:
+ments	NNS
+and	CC
+each	DT
+corresponds	VBZ
+to	TO
+a	DT
+limb	NN
+selecting	VBG
+one	CD
+candidate	NN
+in	IN
+the	DT
+current	JJ
+frame	NN
+and	CC
+one	CD
+in	IN
+the	DT
+next	JJ
+frame	NN
+.	.
+
+Note	VB
+that	IN
+each	DT
+node	NN
+indicates	VBZ
+the	DT
+assignments	NNS
+of	IN
+body	NN
+parts	NNS
+candidate	NN
+as	IN
+-	:
+signment	NN
+at	IN
+two	CD
+instants	NNS
+.	.
+
+Such	PDT
+a	DT
+setting	NN
+is	VBZ
+necessary	JJ
+since	IN
+we	PRP
+would	MD
+like	VB
+to	TO
+introduce	VB
+not	RB
+only	RB
+the	DT
+ï	NN
+¬	NN
+rst	NN
+order	NN
+,	,
+the	DT
+position	NN
+smoothness	NN
+,	,
+but	CC
+also	RB
+the	DT
+second	JJ
+order	NN
+,	,
+the	DT
+speed	NN
+smoothness	NN
+constraint	NN
+.	.
+
+
+We	PRP
+name	VBP
+the	DT
+type	NN
+of	IN
+a	DT
+node	NN
+as	IN
+aa	NN
+,	,
+ab	NN
+,	,
+ba	NN
+or	CC
+bb.Forin	NN
+-	:
+stance	NN
+,	,
+an	DT
+ab	NN
+node	NN
+indicates	VBZ
+a	DT
+limb	NN
+selecting	NN
+candidate	NN
+one	CD
+in	IN
+the	DT
+current	JJ
+frame	NN
+and	CC
+candidate	NN
+two	CD
+in	IN
+the	DT
+next	JJ
+frame	NN
+;	:
+other	JJ
+types	NNS
+of	IN
+nodes	NNS
+are	VBP
+similarly	RB
+deï	NN
+¬	CD
+ned	VBD
+.	.
+
+We	PRP
+link	VBP
+the	DT
+source	NN
+nodes	NNS
+,	,
+candidate	NN
+nodes	NNS
+and	CC
+sink	VB
+nodes	NNS
+into	IN
+trellises	NNS
+.	.
+
+Fig.	NN
+3	CD
+shows	VBZ
+two	CD
+trellises	NNS
+corresponding	VBG
+to	TO
+a	DT
+pair	NN
+of	IN
+arms	NNS
+or	CC
+legs	NNS
+.	.
+
+Note	VB
+that	IN
+the	DT
+edges	NNS
+between	IN
+the	DT
+nodes	NNS
+need	VBP
+follow	VB
+the	DT
+pat	NN
+-	:
+tern	NN
+of	IN
+xy	NN
+nodes	NNS
+connecting	VBG
+to	TO
+yz	NN
+nodes	NNS
+to	TO
+enforce	VB
+the	DT
+con	NN
+-	:
+sistency	NN
+of	IN
+body	NN
+part	NN
+assignments	NNS
+.	.
+
+Therefore	RB
+not	RB
+every	DT
+node	NN
+-	:
+
+
+node	NN
+connection	NN
+is	VBZ
+valid	JJ
+.	.
+
+With	IN
+the	DT
+constructed	VBN
+graphs	NNS
+,	,
+body	NN
+part	NN
+association	NN
+becomes	VBZ
+the	DT
+problem	NN
+of	IN
+ï	NN
+¬	CD
+nding	VBG
+an	DT
+optimal	JJ
+path	NN
+in	IN
+each	DT
+of	IN
+the	DT
+trellis	NN
+.	.
+
+
+As	IN
+shown	VBN
+in	IN
+Fig.	NN
+3	CD
+,	,
+the	DT
+body	NN
+part	NN
+assignments	NNS
+to	TO
+each	DT
+limb	NN
+correspond	VBP
+to	TO
+a	DT
+path	NN
+that	WDT
+starts	VBZ
+from	IN
+the	DT
+source	NN
+node	NN
+and	CC
+ends	VBZ
+in	IN
+the	DT
+sink	NN
+node	NN
+in	IN
+each	DT
+trellis	NN
+.	.
+
+Each	DT
+feasible	JJ
+path	NN
+corresponds	VBZ
+to	TO
+a	DT
+valid	JJ
+body	NN
+part	NN
+association	NN
+and	CC
+vice	NN
+versa	RB
+.	.
+
+Every	DT
+path	NN
+has	VBZ
+different	JJ
+cost	NN
+.	.
+
+The	DT
+goal	NN
+is	VBZ
+to	TO
+choose	VB
+the	DT
+minimum	JJ
+cost	NN
+paths	NNS
+on	IN
+all	PDT
+the	DT
+trellises	NNS
+.	.
+
+What	WP
+makes	VBZ
+the	DT
+problem	NN
+complicated	VBN
+is	VBZ
+that	IN
+the	DT
+paths	NNS
+are	VBP
+not	RB
+independent	JJ
+:	:
+at	IN
+each	DT
+layer	NN
+,	,
+there	EX
+is	VBZ
+at	IN
+most	JJS
+one	CD
+node	NN
+that	WDT
+can	MD
+be	VB
+selected	VBN
+in	IN
+a	DT
+node	NN
+conï	NN
+¬	CD
+‚	CD
+ict	NN
+group	NN
+.	.
+
+In	IN
+Fig.	NN
+3	CD
+,	,
+the	DT
+two	CD
+green	JJ
+ovals	NNS
+in	IN
+layer	NN
+three	CD
+form	VBP
+a	DT
+conï	NN
+¬	NN
+‚	CD
+ict	NN
+group	NN
+;	:
+the	DT
+other	JJ
+group	NN
+in	IN
+the	DT
+same	JJ
+layer	NN
+is	VBZ
+indicated	VBN
+by	IN
+two	CD
+blue	JJ
+rectangles	NNS
+.	.
+
+Within	IN
+each	DT
+conï	NN
+¬	NN
+‚	CD
+ict	NN
+group	NN
+,	,
+there	EX
+is	VBZ
+at	IN
+most	JJS
+one	CD
+path	NN
+passing	NN
+.	.
+
+Each	DT
+conï	NN
+¬	NN
+‚	CD
+icting	NN
+group	NN
+corresponds	VBZ
+to	TO
+a	DT
+spatial	JJ
+location	NN
+that	WDT
+only	RB
+one	CD
+limb	NN
+can	MD
+be	VB
+assigned	VBN
+to	TO
+.	.
+
+
+We	PRP
+formulate	VBP
+the	DT
+problem	NN
+in	IN
+details	NNS
+.	.
+
+We	PRP
+introduce	VBP
+a	DT
+node	NN
+variable	JJ
+Î	NN
+·	NN
+n	NN
+,	,
+m	NN
+,	,
+k	NN
+.	.
+
+It	PRP
+is	VBZ
+1	CD
+if	IN
+the	DT
+node	NN
+vn	NN
+,	,
+m	NN
+,	,
+k	NN
+,	,
+representing	VBG
+limb	NN
+nâ	NN
+$	$
+™	CD
+s	NNS
+choice	NN
+part	NN
+candidate	NN
+k	NN
+in	IN
+frame	NN
+m	NN
+,	,
+is	VBZ
+on	IN
+a	DT
+path	NN
+,	,
+and	CC
+oth	SYM
+-	:
+erwise	JJ
+Î	NN
+·	NN
+n	NN
+,	,
+m	NN
+,	,
+k	NN
+is	VBZ
+0	CD
+.	.
+
+We	PRP
+also	RB
+deï	VBP
+¬	CD
+ne	NN
+the	DT
+edge	NN
+variable	JJ
+Î	NN
+3/4	CD
+n	NN
+,	,
+m	NN
+,	,
+p	NN
+,	,
+q	NN
+,	,
+which	WDT
+is	VBZ
+1	CD
+if	IN
+edge	NN
+-LRB-	-LRB-
+vn	NN
+,	,
+m	NN
+,	,
+p	NN
+,	,
+vn	NN
+,	,
+m	NN
++1	NN
+,	,
+q	NN
+-RRB-	-RRB-
+is	VBZ
+on	IN
+a	DT
+path	NN
+and	CC
+0	CD
+oth	SYM
+-	:
+erwise	NN
+.	.
+
+We	PRP
+would	MD
+like	VB
+to	TO
+minimize	VB
+the	DT
+cost	NN
+of	IN
+paths	NNS
+
+
+
+cn	NN
+,	,
+m	NN
+,	,
+p	NN
+,	,
+q	VB
+Â	NN
+·	NN
+Î	NN
+3/4	CD
+n	NN
+,	,
+m	NN
+,	,
+p	NN
+,	,
+q	IN
+
+
+-LRB-	-LRB-
+vn	NN
+,	,
+m	NN
+,	,
+p	NN
+,	,
+vn	NN
+,	,
+m	NN
++1	NN
+,	,
+q	NN
+-RRB-	-RRB-
+âˆˆE	NN
+
+
+where	WRB
+E	NN
+is	VBZ
+the	DT
+edge	NN
+set	NN
+of	IN
+the	DT
+trellises	NNS
+;	:
+cn	NN
+,	,
+m	NN
+,	,
+p	NN
+,	,
+q	NN
+is	VBZ
+the	DT
+cost	NN
+on	IN
+the	DT
+edge	NN
+-LRB-	-LRB-
+vn	NN
+,	,
+m	NN
+,	,
+p	NN
+,	,
+vn	NN
+,	,
+m	NN
++1	NN
+,	,
+q	NN
+-RRB-	-RRB-
+:	:
+for	IN
+non-source	JJ
+and	CC
+non-sink	JJ
+edges	NNS
+.	.
+
+We	PRP
+deï	VBP
+¬	CD
+ne	NN
+the	DT
+cost	NN
+c	NN
+on	IN
+each	DT
+edge	NN
+as	IN
+
+
+cn	NN
+,	,
+m	NN
+,	,
+p	NN
+,	,
+q	NN
+=	JJ
+
+
+|	NN
+|	CD
+uan	NN
+,	,
+m	NN
+,	,
+p	NN
+âˆ	NN
+'	''
+uan	NN
+,	,
+m	NN
++1	NN
+,	,
+q	VB
+|	CD
+|	CD
++	CC
+|	CD
+|	CD
+2ubn	NN
+,	,
+m	NN
+,	,
+p	NN
+âˆ	NN
+'	''
+ubn	NN
+,	,
+m	NN
++1	NN
+,	,
+q	VB
+âˆ	NN
+'	''
+uan	NN
+,	,
+m	NN
+,	,
+p	NN
+|	CD
+|	NN
+
+
+-LRB-	-LRB-
+1	LS
+-RRB-	-RRB-
+
+
+and	CC
+c	NN
+is	VBZ
+0	CD
+for	IN
+source	NN
+and	CC
+sink	NN
+edges	NNS
+.	.
+
+Recall	VB
+that	IN
+each	DT
+node	NN
+is	VBZ
+related	VBN
+to	TO
+two	CD
+body	NN
+part	NN
+candidates	NNS
+and	CC
+has	VBZ
+a	DT
+type	NN
+xy.In	NN
+Eq	NN
+.1	NN
+,	,
+uan	NN
+,	,
+m	NN
+,	,
+p	NN
+is	VBZ
+the	DT
+end	NN
+point	NN
+vector	NN
+corresponding	VBG
+to	TO
+the	DT
+ï	NN
+¬	NN
+rst	NN
+body	NN
+part	NN
+candidate	NN
+for	IN
+nodevn	NN
+,	,
+m	NN
+,	,
+p	NN
+;	:
+andubn	NN
+,	,
+m	NN
+,	,
+p	NN
+is	VBZ
+the	DT
+second	JJ
+vector	NN
+.	.
+
+c	NN
+is	VBZ
+therefore	RB
+composed	VBN
+of	IN
+both	DT
+ï	FW
+¬	FW
+rst	FW
+order	NN
+and	CC
+second	JJ
+order	NN
+smoothness	NN
+terms	NNS
+,	,
+which	WDT
+enforces	VBZ
+position	NN
+and	CC
+speed	NN
+continuity	NN
+.	.
+
+
+Î	NN
+3/4	CD
+follows	VBZ
+the	DT
+ï	NN
+¬	CD
+‚	CD
+ow	NN
+continuity	NN
+condition	NN
+for	IN
+each	DT
+trellis	NN
+:	:
+
+
+
+Î	NN
+3/4	CD
+n	NN
+,	,
+mâˆ	NN
+'	''
+1	CD
+,	,
+k	NN
+,	,
+p	NN
+=	JJ
+Î	NN
+3/4	CD
+n	NN
+,	,
+m	NN
+,	,
+p	NN
+,	,
+q	NN
+.	.
+
+
+k	NN
+q	SYM
+
+
+And	CC
+the	DT
+ï	NN
+¬	CD
+‚	CD
+ow	NN
+from	IN
+each	DT
+source	NN
+node	NN
+should	MD
+be	VB
+1	CD
+.	.
+
+This	DT
+condi	NN
+-	:
+tion	NN
+makes	VBZ
+sure	JJ
+the	DT
+solution	NN
+is	VBZ
+a	DT
+path	NN
+on	IN
+a	DT
+trellis	NN
+.	.
+
+To	TO
+constrain	VB
+the	DT
+paths	NNS
+so	IN
+that	IN
+they	PRP
+do	VBP
+not	RB
+conï	VB
+¬	CD
+‚	CD
+ict	NN
+,	,
+we	PRP
+introduce	VBP
+a	DT
+node	NN
+variable	JJ
+Î	NN
+·	NN
+that	WDT
+is	VBZ
+related	JJ
+to	TO
+edge	VB
+variable	JJ
+Î	NN
+3/4	CD
+by	IN
+
+
+
+Î	NN
+·	NN
+n	NN
+,	,
+m	NN
+,	,
+p	NN
+=	JJ
+Î	NN
+3/4	CD
+n	NN
+,	,
+m	NN
+,	,
+p	NN
+,	,
+q	NN
+.	.
+
+
+q	SYM
+
+
+To	TO
+enforce	VB
+that	IN
+paths	NNS
+do	VBP
+not	RB
+conï	VB
+¬	CD
+‚	CD
+ict	NN
+,	,
+we	PRP
+introduce	VBP
+constraints	NNS
+:	:
+
+
+
+Î	NN
+·	NN
+n	NN
+,	,
+m	NN
+,	,
+p	NN
+â	NN
+‰	CD
+$	$
+1	CD
+,	,
+i	FW
+=	JJ
+1,2	CD
+
+
+vn	NN
+,	,
+m	NN
+,	,
+pâˆˆQm	NN
+,	,
+i	FW
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+3	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+where	WRB
+Qm	NNP
+,	,
+i	FW
+is	VBZ
+the	DT
+ith	NN
+conï	NN
+¬	CD
+‚	CD
+ict	NN
+node	NN
+set	VBN
+in	IN
+frame	NN
+m.	VBD
+Each	DT
+conï	NN
+¬	NN
+‚	CD
+ict	NN
+set	VBN
+corresponds	VBZ
+to	TO
+a	DT
+possible	JJ
+body	NN
+part	NN
+location	NN
+in	IN
+each	DT
+video	NN
+frame	NN
+.	.
+
+This	DT
+constraint	NN
+prevents	VBZ
+two	CD
+body	NN
+parts	NNS
+from	IN
+being	VBG
+assigned	VBN
+to	TO
+the	DT
+same	JJ
+place	NN
+in	IN
+one	CD
+video	NN
+frame	NN
+.	.
+
+
+Combining	VBG
+everything	NN
+together	RB
+,	,
+we	PRP
+obtain	VBP
+the	DT
+following	VBG
+integer	NN
+linear	JJ
+program	NN
+:	:
+
+
+
+min	NN
+-LCB-	-LRB-
+cn	NN
+,	,
+m	NN
+,	,
+p	NN
+,	,
+q	VB
+Â	NN
+·	NN
+Î	NN
+3/4	CD
+n	NN
+,	,
+m	NN
+,	,
+p	NN
+,	,
+q	VB
+-RCB-	-RRB-
+
+
+s.t.	IN
+
+
+
+-LRB-	-LRB-
+vn	NN
+,	,
+m	NN
+,	,
+p	NN
+,	,
+vn	NN
+,	,
+m	NN
++1	CD
+
+
+
+,	,
+q	NN
+-RRB-	-RRB-
+âˆˆE	NN
+
+
+
+Î	NN
+3/4	CD
+n	NN
+,	,
+mâˆ	NN
+'	''
+1	CD
+,	,
+k	NN
+,	,
+p	NN
+=	JJ
+Î	NN
+3/4	CD
+n	NN
+,	,
+m	NN
+,	,
+p	NN
+,	,
+q	NN
+,	,
+Î	NN
+3/4	CD
+s	NNS
+,	,
+m	NN
+
+
+s	NNS
+,	,
+n	NN
+,	,
+l	NN
+
+
+=	JJ
+1	CD
+k	NN
+
+
+
+q	VB
+l	NN
+
+
+Î	NN
+·	NN
+n	NN
+,	,
+m	NN
+,	,
+p	NN
+=	JJ
+Î	NN
+3/4	CD
+n	NN
+,	,
+m	NN
+,	,
+p	NN
+,	,
+q	NN
+,	,
+n	NN
+=	JJ
+1,2	CD
+
+
+
+q	SYM
+
+
+Î	NN
+·	NN
+n	NN
+,	,
+m	NN
+,	,
+p	NN
+â	NN
+‰	CD
+$	$
+1	CD
+,	,
+i	FW
+=	JJ
+1,2	CD
+
+
+vn	NN
+,	,
+m	NN
+,	,
+pâˆˆQm	NN
+,	,
+i	FW
+
+
+where	WRB
+s	NNS
+is	VBZ
+the	DT
+source	NN
+node	NN
+and	CC
+ms	NN
+is	VBZ
+a	DT
+single	JJ
+dummy	NN
+can	MD
+-	:
+didate	NN
+of	IN
+the	DT
+source	NN
+node	NN
+;	:
+V	NN
+is	VBZ
+the	DT
+node	NN
+set	NN
+of	IN
+the	DT
+trellises	NNS
+.	.
+
+This	DT
+integer	NN
+linear	JJ
+program	NN
+can	MD
+be	VB
+efï	NN
+¬	NN
+ciently	RB
+solved	VBD
+using	VBG
+a	DT
+relaxation	NN
+method	NN
+followed	VBN
+by	IN
+a	DT
+rounding	VBG
+procedure	NN
+to	TO
+force	VB
+solutions	NNS
+to	TO
+be	VB
+integers	NNS
+.	.
+
+In	IN
+fact	NN
+,	,
+the	DT
+relaxed	VBN
+linear	JJ
+program	NN
+always	RB
+yields	VBZ
+integer	NN
+solution	NN
+and	CC
+therefore	RB
+achieves	VBZ
+global	JJ
+optimum	NN
+directly	RB
+.	.
+
+Using	VBG
+the	DT
+simplex	NN
+method	NN
+,	,
+we	PRP
+can	MD
+com	NN
+-	:
+pute	VB
+the	DT
+body	NN
+part	NN
+association	NN
+in	IN
+thousands	NNS
+of	IN
+frames	NNS
+in	IN
+few	JJ
+seconds	NNS
+.	.
+
+
+2.2.2	CD
+Finding	VBG
+Point	NN
+Trajectories	NNS
+
+
+The	DT
+body	NN
+part	NN
+association	NN
+ï	NN
+¬	CD
+nds	VBZ
+the	DT
+rough	JJ
+locations	NNS
+of	IN
+body	NN
+parts	NNS
+in	IN
+each	DT
+video	NN
+frame	NN
+.	.
+
+However	RB
+,	,
+body	NN
+part	NN
+foreshortening	NN
+and	CC
+local	JJ
+deformations	NNS
+have	VBP
+not	RB
+been	VBN
+addressed	VBN
+.	.
+
+Body	NN
+parts	NNS
+also	RB
+may	MD
+have	VB
+large	JJ
+estimation	NN
+errors	NNS
+due	JJ
+to	TO
+the	DT
+errors	NNS
+in	IN
+the	DT
+initial	JJ
+detections	NNS
+.	.
+
+In	IN
+the	DT
+following	VBG
+,	,
+we	PRP
+study	VBD
+how	WRB
+to	TO
+correct	JJ
+errors	NNS
+and	CC
+extract	NN
+more	RBR
+detailed	JJ
+point	NN
+trajectories	NNS
+using	VBG
+both	CC
+body	NN
+part	NN
+detection	NN
+and	CC
+short	JJ
+term	NN
+optical	JJ
+ï	NN
+¬	CD
+‚	CD
+ow	NN
+estimation	NN
+.	.
+
+
+We	PRP
+randomly	RB
+select	JJ
+points	NNS
+on	IN
+the	DT
+object	NN
+in	IN
+the	DT
+ï	NN
+¬	NN
+rst	NN
+video	NN
+frame	NN
+.	.
+
+Each	DT
+point	NN
+traverses	VBZ
+the	DT
+spatial	JJ
+and	CC
+temporal	JJ
+volume	NN
+and	CC
+plots	NNS
+a	DT
+trajectory	NN
+.	.
+
+We	PRP
+require	VBP
+that	IN
+the	DT
+trajectories	NNS
+be	VB
+con	JJ
+-	:
+trolled	VBN
+by	IN
+both	CC
+body	NN
+part	NN
+detections	NNS
+and	CC
+optical	JJ
+ï	NN
+¬	CD
+‚	CD
+ow	NN
+:	:
+each	DT
+trajectory	NN
+ï	NN
+¬	CD
+ts	VBZ
+the	DT
+local	JJ
+motion	NN
+estimation	NN
+in	IN
+the	DT
+tangent	NN
+direc	NN
+-	:
+tion	NN
+;	:
+the	DT
+point	NN
+following	VBG
+a	DT
+trajectory	NN
+moves	VBZ
+smoothly	RB
+in	IN
+space	NN
+and	CC
+with	IN
+a	DT
+smoothly	RB
+changing	VBG
+speed	NN
+;	:
+it	PRP
+complies	VBZ
+with	IN
+body	NN
+part	NN
+detection	NN
+and	CC
+stays	VBZ
+inside	IN
+the	DT
+object	NN
+foreground	NN
+.	.
+
+The	DT
+body	NN
+part	NN
+tracking	VBG
+result	NN
+presents	VBZ
+a	DT
+long	JJ
+term	NN
+movement	NN
+of	IN
+body	NN
+points	NNS
+;	:
+however	RB
+there	EX
+are	VBP
+often	RB
+errors	NNS
+.	.
+
+The	DT
+optical	JJ
+ï	NN
+¬	CD
+‚	CD
+ow	NN
+presents	VBZ
+short	JJ
+term	NN
+movement	NN
+of	IN
+body	NN
+parts	NNS
+that	WDT
+are	VBP
+usually	RB
+accurate	JJ
+in	IN
+a	DT
+short	JJ
+time	NN
+span	NN
+.	.
+
+By	IN
+merging	VBG
+these	DT
+two	CD
+estima	NN
+-	:
+tions	NNS
+,	,
+we	PRP
+can	MD
+achieve	VB
+more	RBR
+robust	JJ
+results	NNS
+.	.
+
+Moreover	RB
+,	,
+there	EX
+is	VBZ
+a	DT
+global	JJ
+constraint	NN
+that	IN
+the	DT
+points	NNS
+on	IN
+trajectories	NNS
+also	RB
+act	VBP
+on	IN
+each	DT
+other	JJ
+so	IN
+that	IN
+their	PRP$
+topologies	NNS
+should	MD
+be	VB
+consistent	JJ
+at	IN
+each	DT
+time	NN
+instant	NN
+.	.
+
+
+Before	IN
+we	PRP
+optimize	VBP
+trajectories	NNS
+,	,
+we	PRP
+estimate	VBP
+initial	JJ
+body	NN
+point	NN
+trajectories	NNS
+to	TO
+correct	VB
+gross	JJ
+body	NN
+part	NN
+detection	NN
+errors	NNS
+.	.
+
+We	PRP
+use	VBP
+a	DT
+dynamic	JJ
+programming	NN
+approach	NN
+.	.
+
+At	IN
+each	DT
+instant	NN
+,	,
+
+
+t1	NN
+t2	NN
+t4t3	NN
+t5	NN
+
+
+Fig.	NN
+4	CD
+.	.
+
+Error	NN
+correction	NN
+trellis	NN
+.	.
+
+The	DT
+white	JJ
+nodes	NNS
+indicate	VBP
+point	NN
+locations	NNS
+determined	VBN
+by	IN
+part	NN
+detections	NNS
+.	.
+
+The	DT
+blue	JJ
+nodes	NNS
+rep	NN
+-	:
+resent	VBP
+predicted	VBN
+candidates	NNS
+from	IN
+the	DT
+previous	JJ
+part	NN
+detections	NNS
+using	VBG
+optical	JJ
+ï	NN
+¬	CD
+‚	CD
+ow	NN
+.	.
+
+The	DT
+red	JJ
+nodes	NNS
+represent	VBP
+the	DT
+predictions	NNS
+from	IN
+the	DT
+previous	JJ
+predictions	NNS
+.	.
+
+In	IN
+this	DT
+example	NN
+,	,
+two	CD
+errors	NNS
+at	IN
+time	NN
+3	CD
+and	CC
+4	CD
+are	VBP
+skipped	VBN
+by	IN
+the	DT
+â	NN
+$	$
+œblueâ	JJ
+$	$
+path	NN
+in	IN
+the	DT
+graph	NN
+.	.
+
+
+apart	RB
+from	IN
+the	DT
+point	NN
+locations	NNS
+determined	VBN
+by	IN
+the	DT
+body	NN
+part	NN
+de	IN
+-	:
+tection	NN
+,	,
+we	PRP
+include	VBP
+the	DT
+point	NN
+candidates	NNS
+predicted	VBN
+from	IN
+point	NN
+locations	NNS
+in	IN
+previous	JJ
+frames	NNS
+.	.
+
+The	DT
+basic	JJ
+idea	NN
+is	VBZ
+if	IN
+there	EX
+is	VBZ
+a	DT
+wrong	JJ
+large	JJ
+jump	NN
+of	IN
+point	NN
+from	IN
+one	CD
+frame	NN
+to	TO
+the	DT
+next	JJ
+,	,
+the	DT
+prediction	NN
+of	IN
+the	DT
+current	JJ
+point	NN
+using	VBG
+optical	JJ
+ï	NN
+¬	CD
+‚	CD
+ow	NN
+should	MD
+be	VB
+used	VBN
+as	IN
+the	DT
+location	NN
+estimate	NN
+in	IN
+the	DT
+next	JJ
+frame	NN
+.	.
+
+As	IN
+illustrated	VBN
+in	IN
+Fig.	NN
+4	CD
+,	,
+we	PRP
+use	VBP
+nodes	NNS
+of	IN
+a	DT
+graph	NN
+to	TO
+indicate	VB
+point	NN
+locations	NNS
+and	CC
+the	DT
+edges	NNS
+to	TO
+indicate	VB
+possible	JJ
+transitions	NNS
+.	.
+
+Apart	RB
+from	IN
+the	DT
+point	NN
+locations	NNS
+estimated	VBN
+by	IN
+body	NN
+part	NN
+detection	NN
+,	,
+the	DT
+candi	NN
+-	:
+date	NN
+locations	NNS
+also	RB
+include	VBP
+the	DT
+predicted	VBN
+locations	NNS
+using	VBG
+op	SYM
+-	:
+tical	JJ
+ï	NN
+¬	CD
+‚	CD
+ow	NN
+.	.
+
+The	DT
+graph	NN
+therefore	RB
+provides	VBZ
+alternative	JJ
+routes	NNS
+to	TO
+bypass	VB
+the	DT
+wrong	JJ
+point	NN
+estimations	NNS
+.	.
+
+The	DT
+weight	NN
+on	IN
+each	DT
+edge	NN
+equals	VBZ
+the	DT
+distance	NN
+of	IN
+the	DT
+points	NNS
+associated	VBN
+with	IN
+the	DT
+incidence	NN
+nodes	NNS
+.	.
+
+The	DT
+optimal	JJ
+point	NN
+locations	NNS
+through	IN
+time	NN
+correspond	VBP
+to	TO
+the	DT
+shortest	JJS
+path	NN
+from	IN
+the	DT
+ï	NN
+¬	NN
+rst	NN
+layer	NN
+to	TO
+the	DT
+last	JJ
+layer	NN
+of	IN
+the	DT
+graph	NN
+.	.
+
+It	PRP
+can	MD
+be	VB
+solved	VBN
+using	VBG
+dynamic	JJ
+programming	NN
+.	.
+
+By	IN
+in	IN
+-	:
+troducing	VBG
+more	JJR
+prediction	NN
+steps	NNS
+,	,
+this	DT
+method	NN
+can	MD
+be	VB
+used	VBN
+to	TO
+correct	VB
+multiple	JJ
+errors	NNS
+.	.
+
+
+After	IN
+estimating	VBG
+the	DT
+initial	JJ
+locations	NNS
+for	IN
+all	PDT
+the	DT
+points	NNS
+,	,
+we	PRP
+optimize	VBP
+all	PDT
+the	DT
+point	NN
+locations	NNS
+over	IN
+all	PDT
+the	DT
+image	NN
+frames	NNS
+by	IN
+minimizing	VBG
+the	DT
+following	VBG
+energy	NN
+:	:
+
+
+Nâˆ	NN
+'	''
+1	CD
+
+
+-LCB-	-LRB-
+|	NN
+|	CD
+xn	NN
+,	,
+k	NN
++	CC
+f	FW
+-LRB-	-LRB-
+xn	NN
+,	,
+k	NN
+-RRB-	-RRB-
+âˆ	NN
+'	''
+x	CC
+
+
+2n	JJ
++1	NN
+,	,
+k	NN
+|	CD
+|	NN
+
+
++	CC
+Î	NN
+''	''
+1	CD
+|	CD
+|	CD
+xnâˆ	NN
+'	''
+1	CD
+,	,
+k	NN
++	CC
+xn	NN
++1	NN
+,	,
+kâˆ	NN
+'	''
+n	NN
+=	JJ
+2	CD
+
+
+
+2xn	JJ
+,	,
+k	NN
+|	CD
+|	NN
+2	CD
++	CC
+Î	NN
+''	''
+2	CD
+|	CD
+|	CD
+xn	NN
+,	,
+k	NN
+âˆ	NN
+'	''
+xn	NN
+,	,
+m	NN
+âˆ	NN
+'	''
+xn	NN
++1	NN
+,	,
+k	NN
++	CC
+xn	NN
++1	NN
+,	,
+m	NN
+|	CD
+|	NN
+2	CD
++	CC
+
+
+mâˆˆN	NN
+-LRB-	-LRB-
+k	NN
+-RRB-	-RRB-
+
+
+Î	NN
+''	''
+3	CD
+|	CD
+|	CD
+xn	NN
+,	,
+k	NN
+âˆ	NN
+'	''
+x0n	NN
+,	,
+k	NN
+|	CD
+|	NN
+2	CD
++	CC
+Î	NN
+''	''
+4g	NN
+-LRB-	-LRB-
+xn	NN
+,	,
+k	NN
+-RRB-	-RRB-
+-RCB-	-RRB-
+
+
+where	WRB
+N	NN
+is	VBZ
+the	DT
+number	NN
+of	IN
+frames	NNS
+;	:
+|	CD
+|	CD
+.	.
+
+|	RB
+|	CD
+is	VBZ
+the	DT
+L2	NN
+norm	NN
+;	:
+xn	NN
+,	,
+k	NN
+is	VBZ
+the	DT
+intersection	NN
+point	NN
+of	IN
+trajectory	NN
+k	NN
+with	IN
+video	NN
+frame	NN
+n	NN
+;	:
+f	LS
+-LRB-	-LRB-
+xn	NN
+,	,
+k	NN
+-RRB-	-RRB-
+is	VBZ
+the	DT
+motion	NN
+vector	NN
+at	IN
+point	NN
+k	NN
+in	IN
+frame	NN
+n	NN
+;	:
+x0n	NN
+,	,
+k	NN
+is	VBZ
+the	DT
+initial	JJ
+estimate	NN
+of	IN
+the	DT
+trajectory	NN
+k	NN
+,	,
+obtained	VBN
+by	IN
+dynamic	JJ
+programming	NN
+;	:
+N	NN
+-LRB-	-LRB-
+k	NN
+-RRB-	-RRB-
+is	VBZ
+the	DT
+set	NN
+of	IN
+points	NNS
+that	WDT
+are	VBP
+the	DT
+neigh	NN
+-	:
+bors	NNS
+of	IN
+point	NN
+k	NN
+.	.
+
+A	DT
+point	NN
+is	VBZ
+deï	NN
+¬	NN
+ned	VBD
+as	IN
+a	DT
+neighbor	NN
+of	IN
+point	NN
+k	NN
+if	IN
+the	DT
+Delaunay	NNP
+triangulation	NN
+of	IN
+the	DT
+point	NN
+set	VBN
+in	IN
+the	DT
+ï	NN
+¬	NN
+rst	NN
+video	NN
+frame	NN
+has	VBZ
+an	DT
+edge	NN
+connecting	VBG
+the	DT
+point	NN
+to	TO
+pointk	NN
+.	.
+
+g	NN
+is	VBZ
+a	DT
+func	NN
+-	:
+tion	NN
+that	WDT
+penalizes	VBZ
+trajectories	NNS
+deviating	VBG
+from	IN
+the	DT
+object	NN
+fore	NN
+-	:
+ground	NN
+.	.
+
+In	IN
+this	DT
+paper	NN
+,	,
+g	NN
+is	VBZ
+the	DT
+Gaussian	JJ
+ï	NN
+¬	NN
+ltered	VBD
+distance	NN
+trans	NN
+-	:
+form	NN
+of	IN
+the	DT
+object	NN
+foreground	NN
+.	.
+
+g	NN
+is	VBZ
+an	DT
+optional	JJ
+term	NN
+;	:
+it	PRP
+is	VBZ
+set	VBN
+to	TO
+zero	CD
+when	WRB
+the	DT
+foreground	NN
+map	NN
+is	VBZ
+unavailable	JJ
+.	.
+
+Î	NN
+''	''
+1	CD
+,	,
+Î	NN
+''	''
+2	CD
+,	,
+Î	NN
+''	''
+3	CD
+,	,
+Î	NN
+''	''
+4	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+4	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+are	VBP
+constant	JJ
+coefï	NN
+¬	NN
+cients	NNS
+.	.
+
+
+We	PRP
+use	VBP
+a	DT
+gradient	NN
+descent	NN
+method	NN
+to	TO
+solve	VB
+the	DT
+optimiza	NN
+-	:
+tion	NN
+.	.
+
+xn	NN
+,	,
+k	NN
+is	VBZ
+updated	VBN
+with	IN
+the	DT
+following	VBG
+rule	NN
+:	:
+
+
+xt	NN
++1	CD
+n	NN
+,	,
+k	NN
+=	JJ
+xtn	NN
+,	,
+k	NN
+âˆ	NN
+'	''
+Î	NN
+´	NN
+-LRB-	-LRB-
+-LRB-	-LRB-
+xtn	NN
+,	,
+k	NN
++	CC
+f	FW
+-LRB-	-LRB-
+xtn	NN
+,	,
+k	NN
+-RRB-	-RRB-
+âˆ	NN
+'	''
+xtn	NN
++1	CD
+,	,
+k	NN
+-RRB-	-RRB-
++	CC
+Î	NN
+''	''
+1	CD
+-LRB-	-LRB-
+6xtn	CD
+,	,
+k	NN
+âˆ	NN
+'	''
+4xtnâˆ	NN
+'	''
+1	CD
+,	,
+k	NN
+âˆ	NN
+'	''
+4xtn	JJ
++1	NN
+,	,
+k	NN
++	CC
+xtnâˆ	NN
+'	''
+2	CD
+,	,
+k	NN
++	CC
+xtn	NN
++2	CD
+,	,
+k	NN
+-RRB-	-RRB-
++	CC
+
+
+Î	NN
+''	''
+2	CD
+-LRB-	-LRB-
+2xtn	NN
+,	,
+k	NN
+âˆ	NN
+'	''
+2xtn	JJ
+,	,
+m	NN
+âˆ	NN
+'	''
+xtn	NN
++1	CD
+,	,
+k	NN
++	CC
+xtn	NN
++1	CD
+,	,
+mâˆ	NN
+'	''
+
+
+mâˆˆN	NN
+-LRB-	-LRB-
+k	NN
+-RRB-	-RRB-
+
+
+xtnâˆ	NN
+'	''
+1	CD
+,	,
+k	NN
++	CC
+xtnâˆ	NN
+'	''
+1	CD
+,	,
+m	NN
+-RRB-	-RRB-
++	CC
+Î	NN
+''	''
+3	CD
+-LRB-	-LRB-
+xtn	NN
+,	,
+k	NN
+âˆ	NN
+'	''
+x0n	NN
+,	,
+k	NN
+-RRB-	-RRB-
++	CC
+Î	NN
+''	''
+4âˆ	NN
+‡	CD
+g	NN
+-LRB-	-LRB-
+xtn	NN
+,	,
+k	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+
+
+where	WRB
+Î	NNP
+´	CD
+is	VBZ
+a	DT
+small	JJ
+constant	JJ
+.	.
+
+We	PRP
+use	VBP
+about	IN
+1000	CD
+iterations	NNS
+to	TO
+obtain	VB
+the	DT
+trajectory	NN
+clusters	NNS
+for	IN
+hundreds	NNS
+of	IN
+frames	NNS
+.	.
+
+2.3	CD
+Movement	NNP
+Depiction	NN
+
+
+With	IN
+the	DT
+extracted	VBN
+articulated	JJ
+motion	NN
+,	,
+we	PRP
+are	VBP
+ready	JJ
+for	IN
+move	NN
+-	:
+ment	NN
+depiction	NN
+.	.
+
+We	PRP
+construct	VBP
+a	DT
+single	JJ
+image	NN
+for	IN
+each	DT
+sub	NN
+-	:
+action	NN
+and	CC
+use	NN
+graphics	NNS
+components	NNS
+such	JJ
+as	IN
+arrows	NNS
+and	CC
+mo	NN
+-	:
+tion	NN
+particles	NNS
+to	TO
+illustrate	VB
+the	DT
+body	NN
+part	NN
+movements	NNS
+.	.
+
+
+We	PRP
+use	VBP
+arrows	NNS
+to	TO
+illustrate	VB
+the	DT
+movements	NNS
+of	IN
+torso	NN
+,	,
+arms	NNS
+and	CC
+legs	NNS
+.	.
+
+From	IN
+the	DT
+cluster	NN
+of	IN
+trajectories	NNS
+of	IN
+a	DT
+body	NN
+part	NN
+,	,
+we	PRP
+compute	VBP
+the	DT
+mean	NN
+trajectory	NN
+and	CC
+use	VB
+it	PRP
+as	IN
+the	DT
+center	NN
+line	NN
+of	IN
+the	DT
+arrow	NN
+.	.
+
+However	RB
+,	,
+the	DT
+mean	NN
+trajectory	NN
+may	MD
+still	RB
+have	VB
+errors	NNS
+.	.
+
+To	TO
+solve	VB
+this	DT
+problem	NN
+,	,
+we	PRP
+ï	VBP
+¬	CD
+t	NN
+each	DT
+trajectory	NN
+in	IN
+a	DT
+sub-action	NN
+to	TO
+a	DT
+second-order	JJ
+polynomial	NN
+.	.
+
+These	DT
+low	JJ
+order	NN
+polynomials	NNS
+are	VBP
+sufï	JJ
+¬	NN
+cient	NN
+to	TO
+quantify	VB
+the	DT
+shapes	NNS
+of	IN
+the	DT
+trajectories	NNS
+in	IN
+sub	NN
+-	:
+actions	NNS
+and	CC
+to	TO
+further	JJ
+remove	VB
+the	DT
+gross	JJ
+motion	NN
+errors	NNS
+.	.
+
+The	DT
+width	NN
+of	IN
+an	DT
+arrow	NN
+is	VBZ
+pre-deï	JJ
+¬	NN
+ned	VBD
+while	IN
+the	DT
+brightness	NN
+at	IN
+each	DT
+point	NN
+on	IN
+the	DT
+arrow	NN
+is	VBZ
+proportional	JJ
+to	TO
+the	DT
+speed	NN
+of	IN
+the	DT
+corre	NN
+-	:
+sponding	VBG
+point	NN
+on	IN
+the	DT
+body	NN
+part	NN
+.	.
+
+The	DT
+color	NN
+on	IN
+the	DT
+arrows	NNS
+is	VBZ
+important	JJ
+to	TO
+illustrate	VB
+the	DT
+coordination	NN
+of	IN
+different	JJ
+body	NN
+parts	NNS
+.	.
+
+To	TO
+reduce	VB
+clutter	NN
+,	,
+only	RB
+arrows	NNS
+with	IN
+enough	JJ
+length	NN
+are	VBP
+kept	VBN
+.	.
+
+Apart	RB
+from	IN
+the	DT
+arrows	NNS
+,	,
+we	PRP
+scatter	VBP
+particles	NNS
+on	IN
+the	DT
+trajectories	NNS
+of	IN
+limbs	NNS
+to	TO
+depict	VB
+the	DT
+detailed	JJ
+movements	NNS
+.	.
+
+Semi-transparent	JJ
+ending	VBG
+frame	NN
+and	CC
+intermediate	JJ
+frame	NN
+are	VBP
+also	RB
+overlapped	VBN
+on	IN
+the	DT
+depiction	NN
+to	TO
+show	VB
+pose	VB
+transition	NN
+.	.
+
+
+3	CD
+Experimental	JJ
+Results	NNS
+
+
+We	PRP
+test	VBP
+the	DT
+proposed	JJ
+motion	NN
+depiction	NN
+method	NN
+on	IN
+two	CD
+bal	SYM
+-	:
+let	VB
+sequences	NNS
+and	CC
+two	CD
+recorded	VBN
+videos	NNS
+.	.
+
+These	DT
+videos	NNS
+contain	VBP
+complex	JJ
+movements	NNS
+and	CC
+some	DT
+have	VBP
+strong	JJ
+clutter	NN
+.	.
+
+It	PRP
+is	VBZ
+a	DT
+great	JJ
+challenge	NN
+to	TO
+summarize	VB
+and	CC
+depict	VB
+the	DT
+human	JJ
+movements	NNS
+in	IN
+these	DT
+videos	NNS
+.	.
+
+
+Fig.	NN
+5	CD
+-LRB-	-LRB-
+row	NN
+1-3	CD
+-RRB-	-RRB-
+shows	VBZ
+our	PRP$
+results	NNS
+on	IN
+the	DT
+ballet-I	NN
+sequence	NN
+.	.
+
+The	DT
+motion	NN
+segmentation	NN
+curve	NN
+and	CC
+the	DT
+action	NN
+boundary	NN
+de	IN
+-	:
+tection	NN
+results	NNS
+are	VBP
+shown	VBN
+in	IN
+the	DT
+second	JJ
+row	NN
+.	.
+
+The	DT
+proposed	VBN
+method	NN
+extracts	NNS
+the	DT
+long	JJ
+trajectories	NNS
+of	IN
+feature	NN
+points	NNS
+on	IN
+each	DT
+body	NN
+part	NN
+as	IN
+shown	VBN
+in	IN
+the	DT
+second	JJ
+row	NN
+of	IN
+Fig.	NNP
+5	CD
+.	.
+
+The	DT
+mo	NN
+-	:
+tion	NN
+depiction	NN
+results	NNS
+are	VBP
+shown	VBN
+in	IN
+row	NN
+2-3	CD
+.	.
+
+The	DT
+illustrations	NNS
+clearly	RB
+show	VBP
+the	DT
+movements	NNS
+of	IN
+the	DT
+subject	NN
+.	.
+
+The	DT
+spin	NN
+actions	NNS
+are	VBP
+also	RB
+well	RB
+illustrated	JJ
+.	.
+
+The	DT
+brightness	NN
+of	IN
+the	DT
+arrows	NNS
+repre	VBP
+-	:
+sents	VBZ
+the	DT
+speed	NN
+of	IN
+the	DT
+corresponding	JJ
+body	NN
+part	NN
+:	:
+the	DT
+brighter	JJR
+the	DT
+color	NN
+,	,
+the	DT
+faster	RBR
+it	PRP
+is	VBZ
+at	IN
+a	DT
+speciï	NN
+¬	NN
+c	NN
+instant	NN
+.	.
+
+The	DT
+blue	JJ
+motion	NN
+particles	NNS
+illustrate	VBP
+the	DT
+subtle	JJ
+local	JJ
+motion	NN
+.	.
+
+
+The	DT
+results	NNS
+of	IN
+motion	NN
+depictions	NNS
+for	IN
+another	DT
+longer	JJR
+ballet	JJ
+sequence	NN
+are	VBP
+shown	VBN
+in	IN
+Fig.	NNP
+5	CD
+-LRB-	-LRB-
+row	NN
+5-8	CD
+-RRB-	-RRB-
+.	.
+
+This	DT
+sequence	NN
+con	NN
+-	:
+tains	NNS
+complex	JJ
+body	NN
+part	NN
+movement	NN
+and	CC
+self-occlusion	NN
+.	.
+
+The	DT
+proposed	VBN
+method	NN
+illustrates	VBZ
+these	DT
+movements	NNS
+using	VBG
+a	DT
+com	NN
+-	:
+pact	NN
+set	NN
+of	IN
+static	JJ
+images	NNS
+.	.
+
+Fig.	NN
+5	CD
+-LRB-	-LRB-
+row	NN
+10	CD
+-RRB-	-RRB-
+shows	VBZ
+another	DT
+result	NN
+for	IN
+the	DT
+girl	NN
+ï	NN
+¬	CD
+tness	NN
+sequence	NN
+which	WDT
+contains	VBZ
+fast	JJ
+motion	NN
+and	CC
+the	DT
+video	NN
+is	VBZ
+shot	VBN
+with	IN
+a	DT
+shaky	JJ
+hand	NN
+held	VBD
+camera	NN
+.	.
+
+The	DT
+pro-	JJ
+posed	VBN
+video	NN
+segmentation	NN
+,	,
+motion	NN
+extraction	NN
+and	CC
+depiction	NN
+method	NN
+still	RB
+work	VB
+robustly	RB
+.	.
+
+The	DT
+proposed	VBN
+method	NN
+can	MD
+also	RB
+deal	VB
+with	IN
+cluttered	JJ
+videos	NNS
+as	IN
+demonstrated	VBN
+in	IN
+Fig.	NNP
+5	CD
+-LRB-	-LRB-
+row	NN
+12	CD
+-RRB-	-RRB-
+.	.
+
+4Conclusion	NN
+
+
+In	IN
+this	DT
+paper	NN
+,	,
+we	PRP
+propose	VBP
+an	DT
+automatic	JJ
+method	NN
+to	TO
+generate	VB
+human	JJ
+movement	NN
+depictions	NNS
+using	VBG
+2D	NN
+videos	NNS
+as	IN
+direct	JJ
+in	IN
+-	:
+put	VBN
+without	IN
+3D	NN
+motion	NN
+capture	NN
+and	CC
+manually	RB
+labeled	VBN
+data	NNS
+.	.
+
+The	DT
+proposed	VBN
+method	NN
+segments	NNS
+human	JJ
+movements	NNS
+into	IN
+sub	NN
+-	:
+actions	NNS
+by	IN
+streamline	VBP
+matching	NN
+.	.
+
+We	PRP
+propose	VBP
+a	DT
+novel	JJ
+trajec	NN
+-	:
+tory	JJ
+following	VBG
+method	NN
+to	TO
+track	VB
+points	NNS
+on	IN
+human	JJ
+body	NN
+based	VBN
+on	IN
+both	DT
+body	NN
+part	NN
+detection	NN
+and	CC
+optical	JJ
+ï	NN
+¬	CD
+‚	CD
+ow	NN
+.	.
+
+An	DT
+efï	NN
+¬	NN
+cient	JJ
+lin	NN
+-	:
+ear	NN
+method	NN
+is	VBZ
+used	VBN
+to	TO
+optimize	VB
+the	DT
+part	NN
+association	NN
+;	:
+a	DT
+dynamic	JJ
+programming	NN
+approach	NN
+is	VBZ
+proposed	VBN
+for	IN
+error	NN
+correction	NN
+;	:
+and	CC
+a	DT
+gradient	NN
+descent	NN
+method	NN
+is	VBZ
+used	VBN
+to	TO
+optimize	VB
+all	PDT
+the	DT
+coupled	VBN
+trajectories	NNS
+simultaneously	RB
+.	.
+
+Based	VBN
+on	IN
+the	DT
+extracted	VBN
+articulated	JJ
+motion	NN
+,	,
+we	PRP
+depict	VBP
+the	DT
+high	JJ
+level	NN
+body	NN
+part	NN
+movement	NN
+using	VBG
+color	NN
+coded	VBN
+arrows	NNS
+and	CC
+detailed	JJ
+movement	NN
+using	VBG
+motion	NN
+par	NN
+-	:
+ticles	NNS
+.	.
+
+Our	PRP$
+experiments	NNS
+on	IN
+a	DT
+variety	NN
+of	IN
+videos	NNS
+show	VBP
+that	IN
+the	DT
+proposed	VBN
+action	NN
+depiction	NN
+method	NN
+is	VBZ
+efï	NN
+¬	NN
+cient	NN
+,	,
+effective	JJ
+and	CC
+robust	JJ
+against	IN
+complex	JJ
+movement	NN
+,	,
+fast	JJ
+action	NN
+,	,
+camera	NN
+mo	NN
+-	:
+tion	NN
+and	CC
+cluttered	JJ
+background	NN
+.	.
+
+
+Acknowledgment	NNP
+This	DT
+research	NN
+is	VBZ
+supported	VBN
+by	IN
+the	DT
+United	NNP
+States	NNPS
+NSF	NNP
+funding	NN
+1018641	CD
+,	,
+1058724	CD
+and	CC
+Army	NNP
+Research	NNP
+Ofï	NNP
+¬	CD
+ce	NN
+grant	NN
+W911NF-12-1-0057	NN
+.	.
+
+
+5	CD
+References	NNS
+
+
+-LSB-	-LRB-
+1	CD
+-RSB-	-RRB-
+J.	NNP
+Assa	NNP
+,	,
+Y.	NNP
+Caspi	NNP
+and	CC
+D.	NNP
+Cohen-or	NNP
+,	,
+â	VBD
+$	$
+œAction	JJ
+synopsis	NN
+:	:
+pose	VB
+selection	NN
+and	CC
+
+
+illustrationâ	JJ
+$	$
+,	,
+SIGGRAPH	NNP
+2005	CD
+.	.
+
+
+-LSB-	-LRB-
+2	CD
+-RSB-	-RRB-
+S.	NNP
+Bouvier-Zappa	NNP
+,	,
+V.	NNP
+Ostromoukhov	NNP
+and	CC
+P.	NNP
+Poulin	NNP
+,	,
+â	VBD
+$	$
+œMotion	JJ
+cues	NNS
+for	IN
+
+
+illustration	NN
+of	IN
+skeletal	JJ
+motion	NN
+capture	NN
+dataâ	NN
+$	$
+,	,
+Symposium	NNP
+on	IN
+Non	NNP
+-	:
+
+
+Photorealistic	NNP
+Animation	NNP
+and	CC
+Rendering	NNP
+2007	CD
+.	.
+
+
+-LSB-	-LRB-
+3	CD
+-RSB-	-RRB-
+Y.	NNP
+Gong	NNP
+and	CC
+X.	NNP
+Liu	NNP
+,	,
+â	VBD
+$	$
+œVideo	JJ
+summarization	NN
+using	VBG
+singular	JJ
+value	NN
+decom	NN
+-	:
+
+
+positionâ	JJ
+$	$
+,	,
+CVPR	NNP
+2000	CD
+.	.
+
+
+-LSB-	-LRB-
+4	LS
+-RSB-	-RRB-
+Y.	NNP
+Rui	NNP
+and	CC
+P.	NNP
+Anandan	NNP
+,	,
+â	VBD
+$	$
+œSegmenting	JJ
+visual	JJ
+actions	NNS
+based	VBN
+on	IN
+spatio	NN
+-	:
+
+
+temporal	JJ
+motion	NN
+patternsâ	NN
+$	$
+,	,
+CVPR	NNP
+2000	CD
+.	.
+
+
+-LSB-	-LRB-
+5	CD
+-RSB-	-RRB-
+J.	NNP
+Barbic	NNP
+,	,
+A.	NNP
+Safonova	NNP
+J.	NNP
+Pan	NNP
+,	,
+C.	NNP
+Faloutsos	NNP
+,	,
+J.K.	NNP
+Hodgins	NNP
+and	CC
+N.S.	NNP
+Pol	NNP
+-	:
+
+
+lard	NN
+,	,
+â	VB
+$	$
+œSegmenting	JJ
+motion	NN
+capture	NN
+data	NNS
+into	IN
+distinct	JJ
+behaviorsâ	NN
+$	$
+,	,
+ACM	NNP
+
+
+Graphics	NNP
+Interface	NNP
+2004	CD
+.	.
+
+
+-LSB-	-LRB-
+6	CD
+-RSB-	-RRB-
+D.	NNP
+Ramanan	NNP
+,	,
+â	VBD
+$	$
+œLearning	JJ
+to	TO
+parse	VB
+images	NNS
+of	IN
+articulated	VBN
+objectsâ	NN
+$	$
+,	,
+NIPS	VBZ
+
+
+2006	CD
+.	.
+
+
+-LSB-	-LRB-
+7	CD
+-RSB-	-RRB-
+P.	NNP
+Felzenszwalb	NNP
+and	CC
+D.	NNP
+Huttenlocher	NNP
+,	,
+â	VBD
+$	$
+œPictorial	JJ
+structures	NNS
+for	IN
+object	NN
+
+
+recognitionâ	NN
+$	$
+,	,
+IJCV	NN
+,	,
+v.	CC
+61	CD
+,	,
+n.	NN
+1	CD
+,	,
+2005	CD
+.	.
+
+
+-LSB-	-LRB-
+8	CD
+-RSB-	-RRB-
+H.	NNP
+Jiang	NNP
+,	,
+â	VBD
+$	$
+œHuman	JJ
+pose	VBP
+estimation	NN
+using	VBG
+consistent	JJ
+max-coveringâ	JJ
+$	$
+,	,
+
+
+ICCV	NN
+2009	CD
+.	.
+
+
+-LSB-	-LRB-
+9	CD
+-RSB-	-RRB-
+K.	NNP
+Varanasi	NNP
+,	,
+A.	NNP
+Zaharescu	NNP
+,	,
+E.	NNP
+Boyer	NNP
+and	CC
+R.P.	NNP
+Horaud	NNP
+,	,
+â	VBD
+$	$
+œTemporal	JJ
+sur	SYM
+-	:
+
+
+face	NN
+tracking	NN
+using	VBG
+mesh	NN
+evolutionâ	NN
+$	$
+,	,
+ECCV	NN
+2008	CD
+.	.
+
+
+-LSB-	-LRB-
+10	CD
+-RSB-	-RRB-
+R.	NNP
+Urtasun	NNP
+,	,
+D.	NNP
+Fleet	NNP
+and	CC
+P.	NNP
+Fua	NNP
+,	,
+â	VBD
+$	$
+œTemporal	JJ
+motion	NN
+models	NNS
+for	IN
+monoc	NN
+-	:
+
+
+ular	JJ
+and	CC
+multiview	JJ
+3D	NN
+human	JJ
+body	NN
+trackingâ	NN
+$	$
+,	,
+CVIU	NNP
+,	,
+vol	NN
+.104	CD
+,	,
+no.	NN
+2	CD
+,	,
+pp	NN
+.	.
+
+
+157-177	CD
+,	,
+2006	CD
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+5	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+0.3	CD
+
+
+Frame	VB
+1âˆ	NN
+'	''
+8	CD
+
+
+Frame	VB
+8âˆ	NN
+’34	CD
+
+
+Frame	VB
+34âˆ	CD
+’57	CD
+
+
+0.2	CD
+
+
+y	NN
+
+
+0.1	CD
+
+
+300 200 100	CD
+
+
+0	CD
+
+
+300	CD
+
+
+Flow	NN
+matching	NN
+cost	NN
+
+
+100	CD
+200	CD
+
+
+Frame	VB
+#	#
+
+
+300	CD
+
+
+250	CD
+
+
+200	CD
+
+
+150t	NN
+
+
+100	CD
+
+
+x	CC
+200	CD
+
+
+50	CD
+
+
+0	CD
+
+
+Frame	NN
+57âˆ	NN
+’91	CD
+
+
+Frame	VB
+91âˆ	NN
+'	''
+153	CD
+
+
+Frame	VB
+153âˆ	NN
+'	''
+183	CD
+
+
+Frame	VB
+183âˆ	NN
+'	''
+222	CD
+
+
+Frame	VB
+222âˆ	NN
+'	''
+257	CD
+
+
+Frame	VB
+257âˆ	NN
+'	''
+273	CD
+
+
+Frame	VB
+273âˆ	NN
+'	''
+300	CD
+
+
+Frame	VB
+300âˆ	NN
+'	''
+329	CD
+
+
+Frame	VB
+1âˆ	CD
+’18	CD
+
+
+Frame	VB
+18âˆ	NNP
+’45	CD
+
+
+Frame	VB
+45âˆ	CD
+’73	CD
+
+
+Frame	VB
+73âˆ	CD
+’96	CD
+
+
+Frame	VB
+96âˆ	NN
+'	''
+121	CD
+
+
+Frame	VB
+121âˆ	NN
+'	''
+137	CD
+
+
+Frame	VB
+137âˆ	NN
+'	''
+153	CD
+
+
+Frame	VB
+153âˆ	NN
+'	''
+169	CD
+
+
+Frame	VB
+169âˆ	NN
+'	''
+203	CD
+
+
+Frame	VB
+203âˆ	NN
+'	''
+231	CD
+
+
+Frame	VB
+231âˆ	NN
+'	''
+250	CD
+
+
+Frame	VB
+250âˆ	NN
+'	''
+258	CD
+
+
+Frame	VB
+258âˆ	NN
+'	''
+266	CD
+
+
+Frame	VB
+266âˆ	NN
+'	''
+281	CD
+
+
+Frame	VB
+281âˆ	NN
+'	''
+308	CD
+
+
+Frame	VB
+308âˆ	NN
+'	''
+350	CD
+
+
+Frame	VB
+350âˆ	NN
+'	''
+371	CD
+
+
+Frame	VB
+371âˆ	NN
+'	''
+381	CD
+
+
+Frame	VB
+381âˆ	NN
+'	''
+404	CD
+
+
+Frame	VB
+404âˆ	NN
+'	''
+422	CD
+
+
+Frame	VB
+422âˆ	NN
+'	''
+440	CD
+
+
+Frame	VB
+440âˆ	NN
+'	''
+456	CD
+
+
+Frame	VB
+456âˆ	NN
+'	''
+473	CD
+
+
+Frame	VB
+473âˆ	NN
+'	''
+483	CD
+
+
+Frame	VB
+483âˆ	NN
+'	''
+505	CD
+
+
+Frame	VB
+505âˆ	NN
+'	''
+529	CD
+
+
+Frame	VB
+529âˆ	NN
+'	''
+547	CD
+
+
+Frame	VB
+547âˆ	NN
+'	''
+562	CD
+
+
+Frame	VB
+562âˆ	NN
+'	''
+583	CD
+
+
+Frame	VB
+1âˆ	NN
+'	''
+8	CD
+
+
+Frame	VB
+8âˆ	NN
+’12	CD
+
+
+Frame	VB
+12âˆ	CD
+’18	CD
+
+
+Frame	VB
+18âˆ	NNP
+’26	CD
+
+
+Frame	VB
+26âˆ	CD
+’33	CD
+
+
+Frame	VB
+33âˆ	CD
+’37	CD
+
+
+Frame	VB
+37âˆ	CD
+’43	CD
+
+
+Frame	VB
+43âˆ	CD
+’51	CD
+
+
+Frame	VB
+1âˆ	CD
+’14	CD
+
+
+Frame	VB
+14âˆ	CD
+’33	CD
+
+
+Frame	VB
+33âˆ	CD
+’45	CD
+
+
+Frame	VB
+45âˆ	CD
+’54	CD
+
+
+Frame	VB
+54âˆ	NN
+’68	CD
+
+
+Frame	VB
+68âˆ	CD
+’81	CD
+
+
+Frame	VB
+81âˆ	NN
+’89	CD
+
+
+Frame	VB
+89âˆ	NN
+'	''
+105	CD
+
+
+Fig.	NN
+5	CD
+.	.
+
+Motion	NNP
+depiction	NN
+results	VBZ
+on	IN
+the	DT
+ballet-I	NN
+-LRB-	-LRB-
+row	NN
+1-3	CD
+-RRB-	-RRB-
+,	,
+ballet-2	NN
+-LRB-	-LRB-
+row	NN
+4-8	CD
+-RRB-	-RRB-
+,	,
+girl	NN
+-LRB-	-LRB-
+row	NN
+9-10	CD
+-RRB-	-RRB-
+and	CC
+man	NN
+-LRB-	-LRB-
+row	NN
+11-12	CD
+-RRB-	-RRB-
+sequences	NNS
+.	.
+
+The	DT
+video	NN
+segmentation	NN
+curve	NN
+and	CC
+the	DT
+body	NN
+point	NN
+trajectories	NNS
+for	IN
+ballet-I	NN
+are	VBP
+shown	VBN
+in	IN
+the	DT
+2nd	JJ
+row	NN
+.	.
+
+With	IN
+the	DT
+proposed	VBN
+method	NN
+,	,
+the	DT
+329-frame	JJ
+ballet-I	NN
+,	,
+583-frame	JJ
+ballet-II	NN
+,	,
+51-frame	JJ
+girl	NN
+and	CC
+105-frame	JJ
+man	NN
+sequences	NNS
+have	VBP
+been	VBN
+compactly	RB
+depicted	VBN
+as	IN
+small	JJ
+number	NN
+of	IN
+images	NNS
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+6	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+

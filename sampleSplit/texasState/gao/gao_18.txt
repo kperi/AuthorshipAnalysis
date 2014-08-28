@@ -1,0 +1,154 @@
+﻿
+Cluster Description Formats, Problems and Algorithms 
+Byron J. Gao Martin Ester 
+School of Computing Science, Simon Fraser University, Canada, V5A 1S6 
+bgao@cs.sfu.ca ester@cs.sfu.ca 
+Abstract 
+Clustering is one of the major data mining tasks. So far, the database and data mining literature lacks systematic study of cluster descriptions, which are essential to provide the user with understandable knowledge of the clusters and support further interactive exploration. In this paper, we introduce novel description formats leading to more descriptive power. We deﬂne two alternative problems of generating cluster descriptions, Minimum Description Length and Maximum Description Accuracy, providing diﬁerent trade-oﬁs between interpretability and accuracy. We also present heuristic algorithms for both problems, together with their empirical evaluation and comparison to state-of-the-art algorithms. 
+1 Introduction 
+The general objective of data mining is ﬂnding useful patterns and knowledge in large databases. Clustering is one of the major data mining tasks, grouping objects together into clusters that exhibit internal cohesion and external isolation. Unfortunately, most existing clustering algorithms represent clusters as sets of points. They do not generate patterns, do not summarize the dataset so as to provide insights into the data. 
+Cluster descriptions should generalize cluster con- tents in a human-understandable manner. For numeri- cal data, hyper-rectangles generalize multi-dimensional points, and a standard approach is to summarize a set of points with a set of isothetic hyper-rectangles [1, 5, 6]. Being axis-parallel, such rectangles can be speciﬂed in an intuitive manner; e.g., (3:80 • GP A • 4:33 and 0:1 • visual acuity • 0:5 and 0 • minutes in gym per week • 30) intuitively de- scribes a group of \nerds". Such expressions can also be used as search conditions in SQL query statements to retrieve cluster contents, supporting query-based itera- tive mining and interactive exploration of the clusters. 
+To be understandable, cluster descriptions should appear short in length and simple in format. Sum of Rectangles (SOR) has been the canonical format for cluster descriptions in the database literature. SOR is simple and generally considered understandable. How- ever, this relatively restricted format may lead to unnec- 
+essarily lengthy descriptions. We introduce two novel description formats, leading to more descriptive power yet still simple to be intuitively understandable. The SOR¡ format describes a cluster as the diﬁerence of its bounding box and a SOR description of the non-cluster points within the bounding box. The kSOR§ format allows describing diﬁerent parts of a cluster separately, using either SOR or SOR¡ descriptions. 
+Meanwhile, cluster descriptions should be accu- rate, which is a trade-oﬁ for interpretability. Previous research considered the Minimum Description Length (MDL) problem, generating perfectly accurate descrip- tions that cover a cluster completely and exclusively. Such descriptions can become very lengthy and hard to interpret for arbitrary shape or high-dimensional clus- ters. In order to specify alternative trade-oﬁs between interpretability and accuracy, we introduce the novel Maximum Description Accuracy (MDA) problem with the objective to maximize the description accuracy at a given length. We also develop eﬁective heuristic al- gorithms for solving the MDL and MDA problems with respect to diﬁerent description formats. 
+Related research exists. Greedy Growth [1] con- structs an exact covering of a cluster, a set of con- nected dense cells, with maximal isothetic rectangles. A yet-uncovered dense cell is arbitrarily chosen to grow as much as possible along an arbitrarily chosen dimen- sion, and continue with other dimensions until a hyper- rectangle is obtained. A greedy approach is then used to remove redundancy. Algorithm BP [5] further allows to cover some \don’t care" cells to reduce the cardi- nality of the cover. Starting from the set of rectangles returned by Greedy Growth, BP greedily considers pos- sible pair-wise merges of rectangles without covering un- desired cells. Also motivated by database applications, [6] formally deﬂnes the MDL problem and theoretically studies concise descriptions. Some classiﬂcation tools such as axis-parallel decision trees (e.g., [2]) can also be used for description purposes. Their preference for shorter trees coincides with the preference for shorter description length in the MDL problem; their pruning phase allows trading accuracy for shorter trees, which is similar to the motivation of the MDA problem. 
+
+========1========
+
+We discuss description formats in section 2, formal- ize the MDL and MDA problems in section 3, present algorithms for both with respect to diﬁerent formats in section 4, and conclude the paper in section 5. 
+2 Description Formats 
+In this section we discuss cluster description formats SOR, SOR¡, and kSOR§. 
+Given a ﬂnite set of multi-dimensional points U as the universe, and a set of isothetic hyper-rectangles § as the alphabet, each of which is a subset of U contain- ing points covered by the corresponding rectangle. A description format F allows certain Boolean set expres- sions over the alphabet. All such expressions constitute the description language L with each expression E 2 L being a possible description for a given subset C  U. The vocabulary for E, VE, is the set of symbols in E. 
+Two descriptions E1 and E2 are equivalent, denoted by E1 = E2, if they cover the same set of points. Logical equivalence implies equivalence but not vice versa. The length of a description E, jjEjj, is a major indication for its interpretability and deﬂned as the cardinality of VE. Consider C as a cluster, EF(C) denotes a description for C in format F. In the following, we also use BC to¡ 
+denote the bounding box for C and C = BC ¡ C. 
+A description problem, viewed as searching, is to search good descriptions that optimize some objective function in a given description language. A more powerful language certainly contains better results at the cost of larger search space. 
+We require descriptions to be interpretable. For descriptions to be interpretable, the description format has to have a simple and clean structure. Sum of Rectangles (SOR), denoting the union of a set of rectangles, serves this purpose well and has been the canonical format for cluster descriptions as seen in [1, 5]. For better interpretability, we also want descriptions to be as short as possible. To minimize the description length of SOR descriptions has been the common description problem. 
+Nevertheless, there is a trade-oﬁ between our pref- erences for simpler formats and shorter length. Simple formats such as SOR may restrict the search space too much leading to languages with low descriptive power. On the other hand, if a description format allows ar- bitrary Boolean operations, we certainly have the most general and expressive language containing the short- est descriptions, but such descriptions are likely hard to comprehend due to their complexity in format despite their succinctness in length. Moreover, complex formats bring di–culties in manipulation of symbols and design of e–cient and eﬁective searching algorithms. 
+Clearly, we require description languages with high 
+C2 
+R 
+C1 
+SOR:  5 
+SOR–: 4     kSOR±: 3  
+EkSOR±(C) 
+= ESOR(C1)  + ESOR–(C2) = BC1 + (BC2 – R) 
+Figure 1: Description formats. 
+expressive power yet in intuitively understandable for- mats. For this purpose, we introduce SOR¡ descrip- tions and kSOR§ descriptions. 
+Definition 2.1. (SOR¡ description) Given a cluster C  U, a SOR¡ description for C, ESOR ¡(C), is a Boolean expression in the form of BC ¡ ESOR(C¡),¡ 
+where ESOR(C ) is a SOR description for C¡. 
+In addition, a SOR§ description for C, ESOR §(C), is an expression in the form of either ESOR(C) or ESOR ¡(C). 
+In describing a cluster C, SOR and SOR¡ descrip- tions together nicely cover two situations where C is easier to describe or C¡ is easier to describe. Diﬁer- ent data distributions, which are usually not known in advance, favor diﬁerent formats. In Figure 1, consider C2 as a single cluster, certainly SOR¡ descriptions are favored. The shortest ESOR(C2) has length 4 whereas the shortest ESOR ¡(C2) has length 2. 
+SOR¡ descriptions have a structure as simple and clean as SOR descriptions. In addition, the added BC draws a big picture of cluster C and contributes to interpretability in a positive way. 
+SOR§ generally serves well in describing compact and distinctive clusters. However, for the application of arbitrary-shaped and/or high-dimensional clusters, we may want to further increase the description power by allowing less restrictive formats. 
+Definition 2.2. (kSOR§ description) Given a cluster C  U and a k-partition of C, < C1; C2:::Ck >, a§ 
+kSOR description for C, EkSOR §(C), is a Boolean expression in the form of ESOR §(C1) + ESOR §(C2) + ::: + ESOR §(Ck). 
+Clearly, kSOR§ descriptions generalize SOR§ de- scriptions by allowing diﬁerent parts of C to be de- scribed separately; and the latter one is a special case of the former one with k = 1. In Figure 1, C1 favors SOR¡ 
+whereas C2 favors SOR . The shortest ESOR(C) and§ ESOR ¡(C) have length 5 and 4 respectively. kSOR is able to provide local treatments for C1 and C2 sepa- rately and the shortest EkSOR §(C) has length 3. 
+
+========2========
+
+The full version of the paper [3] formally proves the language corresponding to kSOR§ is as powerful as propositional language, the most general description language considered in [6] that allows usual set oper- ations of union, intersection and diﬁerence. Despite its exceptional descriptive power, the kSOR§ format is very simple and conceptually clear. It is also well- structured to ease the design of searching strategies. 
+3 Description Problems 
+A description problem is to ﬂnd a description for a cluster in a given format that optimizes some objectives. 
+Besides the goal of minimizing description length, we also want to maximize description accuracy. An accurate description should cover many points in the cluster and few points not in the cluster. For a description E of cluster C, we have recall = jE¢Cj = jCj and precision = jE ¢ Cj = jEj. If we only consider recall, the bounding box BC could make a perfectly accurate description; if we only consider precision, any single point in C would do the same. The F-measure f considers both and is the harmonic mean of the two. 
+f = 
+2 £ recall £ precision 
+(recall + precision) 
+A description with f = 1 has recall = 1 and precision = 1, which we call a perfect description. In a perfect description, all rectangles are pure in the sense that they contain same-class points only. 
+Two additional accuracy measures help to specify constraints on either recall or precision, \recall at ﬂxed precision" and \precision at ﬂxed recall". Often, we want to ﬂx precision or recall at 1. The measures can be found useful in many situations; say, in a case we want to trade description accuracy for shorter length. It may well happen that we can aﬁord to lose points in C much more than to include points in C¡, then we can choose the \recall at ﬂxed precision of 1" measure to sacriﬂce recall and protect precision. 
+Description length and accuracy are two con objective measures that cannot be optimized simulta- neously. By constraining one and optimizing the other, we deﬂne the following two description problems. 
+Definition 3.1. (Minimum Description Length (MDL) problem) Given a cluster C and a description format F, ﬂnd a Boolean expression E in format F with minimum length such that (E ¢ C = C) ^ (E ¢ C¡ = ;). 
+Definition 3.2. (Maximum Description Accuracy (MDA) problem) Given a cluster C, a description format F, an integer l, and an accuracy measure, ﬂnd a Boolean expression E in format F with jjEjj • l such that the accuracy measure is maximized. 
+The MDL problem is a perfect description problem. It aims at ﬂnding a description of minimum length with the constraint of f = 1. The MDA problem appreciates imperfect descriptions as well and allows trading description accuracy for shorter length. The MDL problem can be considered as a special case of the MDA problem with no constraint l on the description length, in which case f = 1 can always be achieved. 
+Previous research in the database literature only considered the MDL problem with SOR as the descrip- tion format. However, in practice, the MDA problem has many important applications. Perfect descriptions for arbitrary shape and/or high-dimensional clusters can easily contain hundreds of rectangles, which dev- astate interpretability. In such cases, solutions to the MDA problem can provide \zooming out" views of the cluster at diﬁerent resolutions. 
+It is also interesting to motivate the description problems from a \data compression" point of view. There are many applications where we need to retrieve the original points in clusters. For example, in a query- based iterative mining environment [4], partial results may need to be stored and then retrieved when the mining process is resumed. In DBMS systems, an isothetic rectangle can be speciﬂed by a Boolean search expression. A cluster description is then a compound search condition for the points in the cluster, which can be used in the WHERE clause of a SELECT query statement to retrieve the cluster entirely. 
+In this scenario, the cluster description process resembles encoding or compression, and the cluster retrieval process resembles decoding or decompression. The compression ratio for cluster description E can be roughly deﬂned as jEj = (jjEjj £ 2), as each rectangle takes twice as much space as each point. The goal of large compression ratio leads to the objective of shorter description length. Meanwhile, shorter description length also speeds up the retrieval process by saving condition checking time [6]. While a perfect description (MDL) resembles lossless compression, an imperfect description (MDA) resembles lossy compression. The two are not interchangeable. 
+4 Description Algorithms 
+In this section we ﬂrst present Learn2Cover for the MDL problem, and then DesTree for the MDA problem with respect to diﬁerent accuracy measures. After that, we present FindClans, which takes advantage of the excep- tional expressive power of kSOR§ to shorten descrip- tions generated by either Learn2Cover or DesTree with- out reducing the accuracy. The experimental results of the three algorithms are also brie summarized at the end of the section. 
+
+========3========
+
+4.1 Learn2Cover. Learn2Cover returns a descrip- tion for cluster C in either SOR or SOR¡ format with f = 1. For this purpose, it su–ces to learn a set of pure rectangles < covering C and a set of pure rectangles <¡ covering C¡ completely. Learn2Cover is carefully designed such that < and <¡ are learned simultane- ously in a single run; besides, the extra learning of <¡ does not come as a cost but rather a boost to the run- ning time. Algorithm 1 and 2 give the pseudo codes for the simpliﬂed Learn2Cover and its subroutine cover(). 
+Algorithm 1 Learn2Cover 
+1. preprocessing(); //BC¡sorted returned, sorted along Ds 2. for each (ox 2 BC¡sorted) f //fetched in order 3. if (ox 2 C) 
+4. cover(<, ox, <¡); 
+5. else 
+6. cover(<¡, ox, <); g 
+Algorithm 2 subroutine cover(<, ox, <¡) 1. for each (R 2 <¡) 
+2. if (cost(R; ox) == 0) 
+3. close R; 
+4. for each (R 2 < && R is not closed) f 
+5. if (cost(R; ox) == 0) f 
+6. extend R to cover ox; 
+7. return; gg 
+8. for each (R 2 <) f //fetch in ascending order of cost 9. if (no violation against <¡) f 
+10. expand R to cover ox; 
+11. return; gg 
+12. insert(<, Rnew); //ox not covered; Rnew = ox 
+In preprocessing(), the points in BC are sorted along selected dimension Ds to obtain BC¡sorted. Ini-¡ 
+tially < = ; and < = ;. Let ox be the next point¡ from BC¡sorted to be processed. cover(<, ox, <¡ ) or cover(< , ox, <) is called to process it depending on¡ 
+ox 2 C or C . The two situations are symmetric; we suppose ox 2 C and show how cover(<, ox, <¡) works.¡ 
+The subroutine cover(<, ox, < ) chooses a non- closed R 2 < with minimum covering cost with respect to ox to expand and cover ox. This choice is on condition that R does not cover any points covered by rectangles in <¡. Otherwise, a new rectangle Rnew minimally cov- ering ox will be created and added to <. A rectangle is closed if it cannot be expanded to cover any further point without causing a covering violation, i.e., cover- ing points from the other class. Violation checking can be expensive; therefore, we always calculate cost(R; ox) ﬂrst. If there is a non-closed R with cost(R; ox) = 0, we need to extend R only along Ds to cover ox, in which 
+R2 
+Ds 
+Φ 
+R6 
+R1 
+R3 
+cut2: {R5, R3} 
+Φ 
+R 
+A  
+R5 
+cut1: {R5, R3, R4} 
+  B  
+R4 
+R6 
+R1 
+R2 
+R3 
+R4 
+Φ 
+cut0: R (R–) input: R (R–) 
+(a)  Learn2Cove r 
+(b) Description tree w.r.t. F-measure  
+Figure 2: Description algorithms. 
+case violation checking is unnecessary. Otherwise rec- tangles are considered in ascending order of cost(R; ox) for violation checking. The ﬂrst qualiﬂed rectangle will be used to cover ox. 
+The behavior of Learn2Cover largely depends on how cost(R; ox) is deﬂned, i.e., the cost of R in covering point ox. Intuitively, rectangles should keep maximal potential for future expansions without incurring cover- ing violations. For a more detailed discussion see [3]. 
+Figure 2(a) is a real run of Learn2Cover on a toy dataset. Dark and light points denote points in C and C¡ respectively. Rectangles are numbered in ascending order of their creation time. Note on processing point A, a better choice of R3 (cost 0) was made while R4 was also available. If R4 had been chosen to cover A, it would have been closed before covering point B. 
+BP considers all inter-class points in violation checking. In Learn2Cover, since points are processed in sorted order, the only points that could lead to vio- lation in the expansion of Ri 2 < (<¡) are currently¡ 
+processed points in Rj 2 < (<) such that the expanded Ri overlaps with Rj. Therefore, < and <¡, the sets of rectangles to be learned, also exist to help each other in violation checking to dramatically reduce the number of points in consideration and improve e–ciency. 
+4.2 DesTree. DesTree is based on the novel concept of description tree. A description tree is a tree structure with each node representing a rectangle such that a parent rectangle is normally the bounding box for the children rectangles. Each horizontal cut of the tree deﬂnes a set of rectangles. For the so-called C- description tree, the set of rectangles constitute the vocabulary for a SOR description of C; for the so-called C¡-description tree; the set of rectangles constitute the vocabulary for a SOR description of C¡, which leads to a SOR¡ description of C. Each cut of a tree oﬁers an alternative trade-oﬁ between description length and description accuracy. The higher in the tree we cut, the shorter the description length and the lower the description accuracy, as illustrated in Figure 2 (b). 
+
+========4========
+
+DesTree is a greedy approach starting from leaf nodes, the sets of pure rectangles < or <¡ generated by Learn2Cover, building the tree in a bottom-up fashion. Pairwise merges are performed iteratively, and the merging criterion is the biggest resulting accuracy measure. The C-description tree and C¡-description tree are built separately in the same fashion. 
+Merging rectangles in a C-description tree (C¡- description tree) may cause precision (recall) to de- crease; removing a rectangle in a C-description tree (C¡-description tree) may cause recall (precision) to decrease. Both operations trade the F-measure for shorter length and we want to consider both. Removals of rectangles do not have resulting parents, thus there are no links as in a usual tree representation indicating the parent-children relationship. Then a cut of a \tree" after some removals may not be able to identify when the removals were performed and decide if the rectan- gles should be included in the cut set or not. In order to maintain a tree structure and be able to make cuts, we add the symbolic empty set ; as a leaf node and deﬂne the merge operator as follows. 
+Definition 4.1. (merge) Ri merge Rj = Rparent = (1) bounding box for Ri and Rj; if Ri = 6 ; and Rj = 6 ; (2) ;; otherwise 
+Figure 2 (b) shows a description tree example with respect to the F-measure. The lowest cut cut0 is < or¡ 
+< ; cut1 and cut2 can clearly identify when R4 was¡ removed. Each cut corresponds to a SOR or SOR description. Take cut2 as an example, if the tree is a C-description tree, cut2 corresponds to ESOR(C) =¡ 
+R5 +R3; if it is a C -description tree, cut2 corresponds to ESOR ¡(C) = BC ¡ (R5 + R3). 
+For other accuracy measures, description trees can be built in a similar fashion [3]. A general property that these description trees share in common is the accuracy measure monotonically decreases along the merging process. Description trees are not necessarily binary. A merge could result in more rectangles fully contained in the parent rectangle. Nevertheless, the merging criterion discourages branchy trees and Figure 2 (b) is a typical example. 
+4.3 FindClans. FindClans takes a SOR or SOR¡ description as input and outputs a kSOR§ description with shorter length and equal or better accuracy. The input can be speciﬂed by a cut from a description tree. The algorithm is based on the concept of clan. Intuitively, a clan is a rectangular local region in which rectangles of diﬁerent classes are unevenly distributed, which makes it possible to rewrite a SOR description of the local data into a shorter SOR¡ description. 
+The full version of the paper [3] provides formal de- ﬂnition of clan and greedy heuristic of ﬂnding clans, to- gether with instructions on rewriting input descriptions into the kSOR§ format and its correctness proof. 
+4.4 Experimental results. We compared our meth- ods with BP and CART (Salford 5.0) on UCI and syn- thetic datasets. For the MDL problem, Learn2Cover gained 50% length reduction over CART and 20% » 50% over BP, leading to a substantial improvement in interpretability. FindClans achieved additional reduc- tion of about 20%. For the MDA problem, Destree con- sistently achieved a signiﬂcantly higher f than CART for all datasets and all values of length l, providing good trade-oﬁs between description length and accuracy. 
+5 Conclusions 
+In this paper, we have investigated description for- mats, problems and algorithms for clusters of numerical records using sets of isothetic rectangles. We note that, the proposed framework is actually applicable to other scenarios requiring discriminative summarization of ar- bitrary sets of labeled objects. However, our study is in the context of clustering because the majority of data are unlabeled and clustering is the major unsupervised way of generating data labels. Besides, descriptions are generally only meaningful if the data exhibit clustered pattern allowing short, yet accurate descriptions. 
+Last but not least, cluster descriptions are patterns that can be stored as tuples in a relational table, so that a clustering and its associated clusters become queriable data mining objects. Thus, this research can serve as a ﬂrst step for integrating clustering into the framework of inductive databases [4], a paradigm for query-based \second-generation" database mining systems. 
+References 
+[1] R. Agrawal, J. Gehrke, D.Gunopulos, and P.Paghavan. 
+Automatic subspace clustering of high dimensional 
+data for data mining applications. In SIGMOD, 1998. [2] L. Breiman, J. Friedman, R. Olshen, and C. Stone. 
+Classiﬂcation and Regression Trees. Wadsworth, 1984. [3] B. Gao and M. Ester. Summarizing data clusters: de- 
+scription formats, problems and algorithms. Technical 
+Report, TR 2006-01, Simon Fraser University, 2006. [4] T. Imielinski and H. Mannila. A database perspective 
+on knowledge discovery. In Communications of the 
+ACM, volume 39(11), pages 58{64, 1996. 
+[5] L. Lakshmanan, R. Ng, C. Wang, X. Zhou, and 
+T. Johnson. The generalized MDL approach for sum- 
+marization. In VLDB, 2002. 
+[6] A. Mendelzon and K. Pu. Concise descriptions of 
+subsets of structured sets. In PODS, 2003. 
+
+========5========
+

@@ -1,0 +1,175 @@
+﻿LEARNING IMAGE SALIENCY FROM HUMAN TOUCH BEHAVIORS 
+Shaomin F ang1, Yijuan Lu1, Xinmei T ian2 
+1Department of Computer Science, Texas State University-San Marcos, 
+fs f5, lug@txstate.edu 
+2University of Science and Technology of China, xinmei@ustc.edu.cn 
+ABSTRACT 
+The concept of touch saliency was recently introduced to gen- erate image saliency maps based on human simple zoom be- havior on touch devices. However, when browsing images on touch screen, users tend to apply a variety of touch behav- iors such as pinch zoom, tap, double tap zoom, and scroll. Do these different behaviors correspond to different human atten- tions? Which behaviors are highly correlated with human eye ﬁxation? How to learn a good image saliency map from var- ious/multiple human behaviors? In this work, we design and conduct a series of studies to address these open questions. We also propose a novel touch saliency learning approach to derive a good image saliency map from a variety of human touch behaviors by using machine learning algorithm. The experimental results demonstrate the validity of our study and the potential and effectiveness of the proposed approach. 
+Index Terms— Touch saliency, visual saliency, touch be- haviors. 
+1. INTRODUCTION 
+Visual attention refers to selective concentration on meaning- ful region of a scene [1]. A visual saliency map displays the spotlights of the concentrations. Visual attention learning is widely applied in image compression [2], image segmenta- tion [3], image retargeting [4], and information retrieval [1]. 
+In the traditional visual attention study, users’ eye ﬁxa- tion data are required and the eye tracking device is the only equipment to collect the data. Although eye tracking has been developed for years, it is not widely popularized due to three major reasons: 1) high cost; 2) complicated operation, which requires non-trivial calibration, validation, and chin- and-forehead-rest for stabilization; 3) low mobility (not easy to carry it everywhere due to considerable size and weight). 
+Recently, with the popularity of touch screen phones, tablets and laptops, more and more people rely on them for daily image or video browsing, sharing, and surﬁng. When using a limited size of touch screen for image browsing, users tend to tap, pinch zoom, double tap zoom, and scroll to have a closer view of a particular region of interest. These touch be- haviors may indicate user interests on certain regions of a im- age, and perhaps capture similar information as eye ﬁxations 
+in visual attention study. A recent study [5] called ”Touch Saliency” investigated generating saliency maps based solely on simple zoom behavior. Many interesting questions natu- rally arise: 1) Do different touch behaviors (tap, pinch zoom, double tap zoom, scroll etc.) correspond to different human attentions? 2) Which behaviors are more correlated with hu- man eye ﬁxation? 3) How to learn a good image saliency map from various/multiple human touch behaviors? 
+To address these questions, we design and conduct a series of studies with the conventional eye-ﬁxation based saliency served as ground truth. An image browsing app is designed on a touch mobile phone to collect users’ touch behavior data. A novel touch saliency learning approach is also proposed to derive a good image saliency map from a variety of human touch behaviors. During the process of building a supervised learning model, the weights of different human touch behav- iors are learned, which indicate the different contributions of these behaviors to the image saliency information. The exper- imental results demonstrate the validity of our study and the potential and effectiveness of the proposed approach. 
+Compared with eye-tracking devices, touch devices are much more popular, cheaper and also easier to operate and carry. The users ﬁnger behaviors are much easier to be recorded than eye-movements. Therefore, touch saliency can be easily obtained and it will deﬁnitely have wide applica- tions in image compression, image segmentation, and image retargeting etc. in the near future. 
+The main contributions introduced in this paper are sum- marized as follows: 1) We quantitatively study and analyze human attention from a variety of touch behaviors in this pa- per, and then propose a set of valuable features from the touch information. 2) We propose to utilize a supervised learning method to automatically learn the correlation between differ- ent touch behaviors and human eye ﬁxations, and then to de- rive a good image saliency map from a variety of touch behav- iors. 3) Our work will guide the research in touch saliency ability estimation and opens broad research possibility for touch-based visual attention learning. 
+2. RELATED WORK 
+Xie et al. [6] made the ﬁrst attempt to extract user attention by analyzing the touch information on images in 2005. They 
+
+========1========
+
+collected data from 10 subjects on 26 images. Several at- tributes are considered in the users attention learning includ- ing region of interest, minimal allowable spatial area of the attention, minimal duration of the attention etc. This study demonstrates that users attention can be easily obtained from touch behaviors. However, its performance is not quantita- tively evaluated. Therefore, its validity is unknown. 
+In 2012, Xu et al. [5] introduced a new concept of touch saliency, which is to generate image saliency maps based on a human simple zoom behavior. In their data collection, 16 par- ticipants freely viewed 440 images in NUSEF database [3] on a touch-screen mobile device. The center point of the screen is treated as the ﬁxation point and the zoom scale is used as Gaussian ﬁlter parameters to generate the touch saliency map. This study shows that touch saliency map and visual saliency map are highly correlated with each other in an image brows- ing task. However, in this work, the image pixel of center point of the screen is selected as the ﬁxation point, which al- ways causes some bias in the saliency map learning. It is observed that when the image is zoomed in, the users do not always adjust the most salient area to the center of the screen. 
+In our preliminary study, we observe that when browsing images on the limited size touch screen, users tend to apply a variety of touch behaviors, such as tap, pinch zoom, double tap zoom, and scroll to ﬁnd a particular region of interest and look them closer. What correlations between these different behaviors and human attention are, whether they contribute equally to the human eye ﬁxation, and how to learn good image saliency maps from multiple touch behaviors have not been explored in the existing works. To our best knowledge, this is the ﬁrst attempt that conducts a series of studies to ex- plore these questions. 
+3. IMAGE SALIENCY LEARNING FROM TOUCH 
+BEHAVIORS 
+3.1. Touch Behaviors Data Collection 
+In order to collect user touch behavior data, we develop an image browsing interface on a multi-touch mobile phone. The interface is designed as same as most popular image browsers which support tap, pinch zoom, double tap zoom, scroll, etc. 
+The same data set NUSEF [3] used in the work [5] is chosen in our study by considering its two unique at- tributes. First, this data set contains 446 images (size is around 1024x768 pixels) and corresponding ground truth eye ﬁxation data acquired from an eye-tracking device with a pool of 75 subjects. Second, the images in this dataset are man- ually collected from Flickr, Photo.net, Google Images and IAPS, and they are representative of various semantic con- cepts, scales, orientations and illuminations [3]. 
+15 users (4 females, 11 males) with the age between 24 and 33 ( = 26:6,  = 2:75) participated our user study. Each participant freely viewed all the 446 images on 
+the Samsung Galaxy S3 Android phone (4.8 inch HD Super AMOLED display with 1280x720 pixels). Each user can use any touch behavior to move to a particular region of interest. During the image browsing process, each image is displayed for 12 seconds, a black screen is shown for 2 seconds between any two consecutive images to avoid interference. For every user, all images are displayed in a random order. Thus, the display orders may be different for each participant to avoid bias. The program keeps recording the touch behavior type, center pixel coordinates of the pinch zoom, double tap coor- dinates, pixel coordinates of center point of the screen, scroll target position, tap point coordinates, and etc. 
+3.2. Touch Behaviors Features 
+In order to learn the relationship between different touch be- haviors and the human attention on the images, we analyze all the touch behaviors data collected from the user study and propose the following ﬁve features that may indicate humans interest and attention on certain regions of the image. 
+ Tap (T): Image pixel coordinates of the tap point. 
+ Pinch-zoom-in (P): Image pixel coordinates of the cen- 
+ter point between two ﬁngers after zoom in. 
+ Scroll (S): Image pixel coordinates of the scrolling 
+point after zoom in. 
+ Double-tap-zoom-in (D): Image pixel coordinates of 
+the double-tap point and the zoom scales of the double- 
+tap zoom in/out on images. 
+ Center (C): Image pixel coordinates of the center point 
+of the touch screen after zoom in. 
+3.3. Touch Saliency Learning 
+Different from previous touch saliency generation methods, a novel learning based approach is proposed to generate image saliency maps from the touch behaviors data. 
+Let R=fI1,I2,I3,...,Img be a set of training im- ages. We divided an image Ik1 into a by b grids, GI 
+k 
+= fg 
+I 
+; g2 ; g3 ; :::; gab g, where gjI = 
+k 
+I 
+k 
+I 
+k 
+I 
+k k 
+(gI 
+Tj; gPj 
+; g 
+Sj 
+; gI 
+Dj Cj 
+I 
+; g ) 2 R 
+5 
+is a touch feature vector extracted from the 
+k k 
+I 
+k k 
+I 
+j-th grid. The value of these ﬁve touch 
+k 
+behavior features gT 
+j 
+; gP 
+j 
+I I 
+; gS 
+j 
+; gD 
+j 
+; gC 
+j 
+are calculated by counting the number of occurrences the corresponding 
+k k 
+I 
+k 
+I 
+k 
+I 
+k 
+behavior happens in the j-th grid of image Ik. For example, if 10 tap points are found in the j-th grid of image Ik , itsT 
+corresponding value gI 
+j 
+is 10. Obvioursly, the more frequent the touch behaviors happen in one grid, the more attentions 
+k 
+are given to that grid by users. 
+Since eye ﬁxation maps acquired from the eye-tracking device reﬂect real visual attention information, they are used as the ground truth for our learning algorithm. The eye ﬁx- ation map is a grayscale image and each pixels value ranges from 0 to 255. The higher the value is, the more salient that pixel is. Each eye ﬁxation map is also divided into a by b 
+
+========2========
+
+Fig. 1: Saliency Maps. From left to right: a) original image, b) NUSEF eye ﬁxation map, c) our touch saliency map (gird size: image width x image height), d) Center saliency map, e) Itti saliency map, f) Signature saliency map, g) AIM saliency map, h) 
+GBVS saliency map. 
+grids. The target real visual attention value of the j-th grid in image Ik: tjI is approximated as the average of all the pixel values in the 
+k 
+j-th grid. Apparently, if more pixels in one grid has high value, it indicates that grid attarcts a lot of attention. 
+Since different touch behaviors may contribute differently to the touch saliency value of each grid, we propose to use linear regression model to generate the touch saliency value for the j-th grid in image Ik in a linear function: 
+h(gj 
+Ik 
+)=w 
+D 
+j 
+Cj 
+0 +w T gTj+w 
+Ik 
+P gPj+w 
+Ik 
+S gSj 
+I 
++wk Dg 
+I 
++wk Cg 
+Ik 
+(1) wT, wP, wS, wD and wC are the corresponding weights of the ﬁve features, which implicitly indicate correlation be- tween each behavior and touch saliency value h(gjI ). 
+The touch saliency learning problem is formulated as a 
+k 
+linear regression algorithm, which learns the weight of each behavior by solving the following minimization function: 
+Xm Xab 
+  
+min h(gjI )  tjI (2) 
+k k 
+k=1 j=1 
+The learning framework is shown in Fig.2, it contains two stages: training and testing. During the training stage, the weight of each behavior can be learned by solving function (2), and indicates how many contributions each touch behav- ior makes to the touch saliency value. In the testing stage, given collected touch behavior data of a new image, its touch saliency map can be predicted with the learned weights based on formula (1). Above all, the proposed learning based ap- proach can successfully explore the correlation between each touch behavior feature and human attention. This thus leads to a good saliency map from those touch behaviors. 
+Fig. 2: Touch Saliency Learning Framework. 
+4. EXPERIMENTS 
+In our experiments, the NUSEF dataset is divided into a train- ing set (396 images) and a testing set (50 images). After tran- ing the model on the collected training data, the weights of features wT, wP, wS, wD and wC are learned, whose approx- imate average values are 28%, 14% , 20%, 10%, and 28% re- spectively. These learned weights show that all the features contribute to the touch saliency, but in the different degree. Center point of screen and the tap behavior are the most im- portant ones. Scrolling is the third important touch behavior. Pinch-zoom and Double-tap-zoom make less contribution to the visual attention information. The weights of Pinch-zoom and Double-tap-zoom are similar. This makes sense as both behaviors are used to zoom in images. 
+In order to evaluate the performance of our touch saliency learning from multiple touch behaviors algorithm (TSMB), we utilize two popular saliency performance evaluation met- rics: AUC (Area under Curve) score and CC (Correlation Co- efﬁcients). A good saliency map should have both high AUC score (maximum value is 1) and CC score (maximum value is 
+
+========3========
+
+Table 1: AUC and CC comparison results. 
+1). In addition, we compare the performance of our approach with other ﬁve state-of-the-arts methods on the NUSEF data set. These ﬁve state-of-the-arts include four visual saliency map generation methods, which derive saliency maps based on image visual content information (Itti Model (Itti) [7], Graph Based Visual Saliency (GBVS) [8], Attention via In- formation Maximization (AIM) [9], Image Signature model (Sign.) [10]), and one touch saliency generation approach (center-based touch saliency map (Center) [5]). Fig.1 shows the generated saliency maps of these methods. 
+In our approach, different numbers of grids are tested, which range from 10x10, 14x14, 18x18, 22x22, 26x26, 30x30, 40x40, 50x50, 60x60 to image width x image height. In the case of image width x image height(WxH), every recorded pixel in the image is chosen as one grid, the mild outliers are removed using the quartile method (lower quartile = 0th percentile, higher quartile = 75th percentile) for scroll and tap features, since most users tend to continiously scroll and accidentally tap the image on the screen. 
+The AUC and CC comparison result is listed in Table 1. From the results, it can be observed that: 1) our touch saliency learning algorithm TSMB outperforms the state-of- the-art touch saliency learning method (Center). The AUC value has been improved from 0.73 to 0.80 and CC value is also improved from 0.44 to 0.46. The major reason is that the center-based method only considers zoom behavior. Ac- tually, it is found out in our study that all the touch behaviors contribute to the human attention. Tap and scroll behaviors even make more contributions than zoom does; 2) The touch saliency map generated by our algorithm has better accuracy than the saliency map derived by many complex and expen- sive visual-based approaches. Although multiple touch be- haviors may involve noise, the generated touch saliency map still has high quality and the touch saliency learning approach is much cheaper, faster, and more efﬁcient than visual-based approaches; 3) As the number of grids increases (the grid size decreases), the accuracy of the learned saliency map also increases. Even if the image is roughly divided into 10x10 grids, the performance is still very good. Therefore, users can freely choose the best number of grids based on their appli- cation needs. If the application has high requirement on the execution time, 10x10 is a good choice. If the accuracy is the ﬁrst priority of the application, WxH should be chosen. 
+5. CONCLUSIONS 
+In this work, we conduct a quantitative and qualitative study of touch saliency learning from a variety of human touch be- 
+haviors. It is learned that different touch behaviors make different contributions to human attentions and considering more touch behaviors usually leads to a better touch saliency map. The experimental results demonstrate the proposed touch saliency learning approach can automatically generate a good saliency map from multiple human touch behaviors. Therefore, our approach will have wide application potentials where eye tracking is utilized. In the future, we will further improve the touch saliency performance by applying different learning algorithms such as classiﬁcation algorithms. 
+6. ACKNOWLEDGEMENT 
+This work is in part supported by the Texas State Univer- sity Research Enhancement Program (REP), Army Research Ofﬁce grant W911NF-12-1-0057, and NSF CRI 1058724 to Dr. Yijuan Lu and in part supported by the NSFC 61201413, SRFDP2100060003, the Fundamental Research Funds for the Central Universities No. WK2100060007 and No. WK2100100021 to Dr. Xinmei Tian. 
+7. REFERENCES 
+[1] O. Marques, L. Mayron, G. Borba, and H. Gamba, “Using 
+visual attention to extract regions of interest in the context of 
+image retrieval,” 2006, ACM-SE 44, pp. 638–643. [2] S. X. Yu and D. A. Lisin, “Image compression based on visual 
+saliency at individual scales,” ISVC ’09, pp. 157–166. [3] S. Ramanathan, H. Katti, N. Sebe, M. Kankanhalli, and T.- 
+S. Chua, “An eye ﬁxation database for saliency detection in 
+images,” ECCV’10, pp. 30–43. 
+[4] V. Setlur, S. Takagi, R. Raskar, M. Gleicher, and B. Gooch, 
+“Automatic image retargeting,” MUM ’05, pp. 59–68. [5] M. Xu, B. Ni, J. Dong, Z. Huang, M. Wang, and S. Yan, “Touch 
+saliency,” ACM MM’12, pp. 1041–1044. 
+[6] X. Xie, H. Liu, S. Goumaz, and W.-Y. Ma, “Learning user in- 
+terest for image browsing on small-form-factor devices,” CHI 
+’05, pp. 671–680. 
+[7] L. Itti, C. Koch, and E. Niebur, “A model of saliency-based 
+visual attention for rapid scene analysis,” TPAMI’98, vol. 20, 
+no. 11, pp. 1254–1259. 
+[8] J. Harel, C. Koch, and P. Perona, “Graph-based visual 
+saliency,” NIPS ’06, pp. 545–552. 
+[9] N. Bruce and J. Tsotsos, “Saliency based on information max- 
+imization,” NIPS’06, pp. 155–162. 
+[10] X. Hou, J. Harel, and C. Koch, “Image signature: Highlighting 
+sparse salient regions,” TPAMI’12, vol. 34, no. 1, pp. 194–201. 
+
+========4========
+

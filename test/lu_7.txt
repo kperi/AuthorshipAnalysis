@@ -1,0 +1,5117 @@
+Spatial	JJ
+Pooling	NN
+for	IN
+Transformation	NN
+Invariant	JJ
+Image	NN
+
+
+Representation	NN
+
+
+Xia	NNP
+Li	NNP
+Dept.	NNP
+of	IN
+Computer	NNP
+Science	NNP
+
+
+University	NNP
+of	IN
+Texas	NNP
+
+
+at	IN
+San	NNP
+Antonio	NNP
+
+
+TX	NNP
+,	,
+78249	CD
+,	,
+U.S.A	NN
+
+
+xial@cs.utsa.edu	NN
+
+
+Yan	NNP
+Song	NN
+
+
+Department	NNP
+of	IN
+EEIS	NNP
+University	NNP
+of	IN
+Science	NNP
+and	CC
+Technology	NNP
+of	IN
+China	NNP
+,	,
+Hefei	NNP
+,	,
+
+
+230027	CD
+,	,
+China	NNP
+songy@ustc.edu.cn	NN
+
+
+ABSTRACT	NN
+
+
+Spatial	JJ
+Pyramid	NN
+Matching	NN
+-LRB-	-LRB-
+SPM	NN
+-RRB-	-RRB-
+-LSB-	-LRB-
+2	CD
+-RSB-	-RRB-
+has	VBZ
+been	VBN
+proposed	VBN
+to	TO
+extend	VB
+the	DT
+Bag-of-Word	NNP
+-LRB-	-LRB-
+BoW	NN
+-RRB-	-RRB-
+model	NN
+for	IN
+object	NN
+classification	NN
+.	.
+
+By	IN
+re	SYM
+-	:
+serving	VBG
+the	DT
+finer	NN
+level	NN
+information	NN
+,	,
+it	PRP
+makes	VBZ
+image	NN
+matching	VBG
+more	RBR
+accurate	JJ
+.	.
+
+However	RB
+,	,
+for	IN
+not	RB
+well-aligned	JJ
+images	NNS
+,	,
+where	WRB
+the	DT
+object	NN
+is	VBZ
+rotated	VBN
+,	,
+flipped	VBD
+or	CC
+translated	VBN
+,	,
+SPM	NNP
+may	MD
+lose	VB
+its	PRP$
+discrimination	NN
+power	NN
+.	.
+
+To	TO
+tackle	VB
+this	DT
+problem	NN
+,	,
+we	PRP
+propose	VBP
+novel	JJ
+spatial	JJ
+pooling	VBG
+layouts	NNS
+to	TO
+address	VB
+various	JJ
+transformations	NNS
+,	,
+and	CC
+generate	VB
+a	DT
+more	RBR
+general	JJ
+image	NN
+representation	NN
+.	.
+
+To	TO
+evaluate	VB
+the	DT
+effectiveness	NN
+of	IN
+the	DT
+proposed	VBN
+approach	NN
+,	,
+we	PRP
+conduct	VBP
+extensive	JJ
+experiments	NNS
+on	IN
+three	CD
+transformation	NN
+emphasized	VBD
+datasets	NNS
+for	IN
+object	NN
+classification	NN
+task	NN
+.	.
+
+Experimental	JJ
+results	NNS
+demonstrate	VBP
+its	PRP$
+superiority	NN
+over	IN
+the	DT
+state-of	JJ
+-	:
+the-arts	NNS
+.	.
+
+Besides	IN
+,	,
+the	DT
+proposed	VBN
+image	NN
+representation	NN
+is	VBZ
+compact	JJ
+and	CC
+consistent	JJ
+with	IN
+the	DT
+BoW	NN
+model	NN
+,	,
+which	WDT
+makes	VBZ
+it	PRP
+applicable	JJ
+to	TO
+image	NN
+retrieval	NN
+task	NN
+as	RB
+well	RB
+.	.
+
+
+Categories	NNS
+and	CC
+Subject	NNP
+Descriptors	NNS
+
+
+I.	NN
+4.8	CD
+-LSB-	-LRB-
+Scene	NN
+Analysis	NN
+-RSB-	-RRB-
+:	:
+Object	NN
+recognition	NN
+.	.
+
+
+General	NNP
+Terms	NNS
+
+
+Algorithms	NNS
+,	,
+Experimentation	NN
+,	,
+and	CC
+Verification	NNP
+.	.
+
+
+Keywords	NNS
+
+
+Image	NN
+Representation	NN
+,	,
+Spatial	JJ
+Transformation	NN
+,	,
+and	CC
+Object	NNP
+Classification	NN
+.	.
+
+
+1	LS
+.	.
+
+INTRODUCTION	NN
+
+
+Bag-of-Word	JJ
+model	NN
+-LRB-	-LRB-
+BoW	NN
+-RRB-	-RRB-
+has	VBZ
+shown	VBN
+its	PRP$
+superiority	NN
+over	IN
+many	JJ
+conventional	JJ
+global	JJ
+features	NNS
+in	IN
+image	NN
+classification	NN
+and	CC
+retrieval	NN
+systems	NNS
+-LSB-	-LRB-
+5	CD
+,	,
+7	CD
+,	,
+11-13	CD
+,	,
+19	CD
+,	,
+20	CD
+-RSB-	-RRB-
+.	.
+
+However	RB
+,	,
+it	PRP
+has	VBZ
+been	VBN
+shown	VBN
+that	IN
+quantization	NN
+error	NN
+may	MD
+degrade	VB
+the	DT
+performance	NN
+of	IN
+image	NN
+classifi	NN
+-	:
+cation	NN
+and	CC
+retrieval	NN
+.	.
+
+To	TO
+address	VB
+this	DT
+issue	NN
+,	,
+many	JJ
+methods	NNS
+have	VBP
+been	VBN
+proposed	VBN
+recently	RB
+.	.
+
+They	PRP
+can	MD
+be	VB
+categorized	VBN
+into	IN
+three	CD
+groups	NNS
+:	:
+1	LS
+-RRB-	-RRB-
+improving	VBG
+the	DT
+codebook	NN
+quality	NN
+and	CC
+reducing	VBG
+quantization	NN
+error	NN
+-LSB-	-LRB-
+5	CD
+,	,
+7	CD
+-RSB-	-RRB-
+,	,
+2	LS
+-RRB-	-RRB-
+constructing	VBG
+a	DT
+robust	JJ
+visual	JJ
+representation	NN
+,	,
+e.g.	FW
+visual	JJ
+phrase	NN
+-LSB-	-LRB-
+11	CD
+-RSB-	-RRB-
+,	,
+and	CC
+3	LS
+-RRB-	-RRB-
+utilizing	VBG
+the	DT
+geometric	JJ
+information	NN
+to	TO
+remove	VB
+false	JJ
+matched	VBN
+feature	NN
+pairs	NNS
+,	,
+e.g.	FW
+bundled	VBN
+feature	NN
+-LSB-	-LRB-
+12	CD
+-RSB-	-RRB-
+,	,
+spatial	JJ
+coding	NN
+-LSB-	-LRB-
+13	CD
+-RSB-	-RRB-
+,	,
+and	CC
+spatial	JJ
+matching	NN
+-LSB-	-LRB-
+14	CD
+-RSB-	-RRB-
+.	.
+
+
+In	IN
+this	DT
+paper	NN
+,	,
+we	PRP
+mainly	RB
+focus	VBP
+on	IN
+image	NN
+matching	NN
+method	NN
+for	IN
+object	NN
+recognition	NN
+.	.
+
+As	IN
+BoW	NN
+discards	VBZ
+the	DT
+spatial	JJ
+order	NN
+of	IN
+local	JJ
+
+
+*	SYM
+Area	NN
+Chair	NNP
+:	:
+Nicu	NNP
+Sebe	NNP
+.	.
+
+
+Permission	NN
+to	TO
+make	VB
+digital	JJ
+or	CC
+hard	JJ
+copies	NNS
+of	IN
+all	DT
+or	CC
+part	NN
+of	IN
+this	DT
+work	NN
+for	IN
+personal	JJ
+or	CC
+classroom	NN
+use	NN
+is	VBZ
+granted	VBN
+without	IN
+fee	NN
+provided	VBD
+that	IN
+copies	NNS
+are	VBP
+not	RB
+made	VBN
+or	CC
+distributed	VBN
+for	IN
+profit	NN
+or	CC
+commercial	JJ
+advantage	NN
+and	CC
+that	IN
+copies	NNS
+bear	VBP
+this	DT
+notice	NN
+and	CC
+the	DT
+full	JJ
+citation	NN
+on	IN
+the	DT
+first	JJ
+page	NN
+.	.
+
+To	TO
+copy	VB
+otherwise	RB
+,	,
+or	CC
+republish	NN
+,	,
+to	TO
+post	VB
+on	IN
+servers	NNS
+or	CC
+to	TO
+redistribute	VB
+to	TO
+lists	NNS
+,	,
+requires	VBZ
+prior	RB
+specific	JJ
+permission	NN
+and/or	CC
+a	DT
+fee	NN
+.	.
+
+
+MMâ	NNP
+$	$
+™	CD
+11	CD
+,	,
+November	NNP
+28â	VBD
+$	$
+``	``
+December	NNP
+1	CD
+,	,
+2011	CD
+,	,
+Scottsdale	NNP
+,	,
+Arizona	NNP
+,	,
+USA	NNP
+.	.
+
+Copyright	NN
+2011	CD
+ACM	NNP
+978-1-4503-0616-4	CD
+/	:
+11/11	CD
+...	:
+$	$
+10.00	CD
+.	.
+
+
+Yijuan	NNP
+Lu	NNP
+Qi	NNP
+Tian	NNP
+Dept.	NNP
+of	IN
+Computer	NNP
+Science	NNP
+Dept.	NNP
+of	IN
+Computer	NNP
+Science	NNP
+Texas	NNP
+State	NNP
+University	NNP
+University	NNP
+of	IN
+Texas	NNP
+San	NNP
+Marcos	NNP
+,	,
+TX	NNP
+,	,
+78666	CD
+,	,
+at	IN
+San	NNP
+Antonio	NNP
+
+
+U.S.A	NN
+TX	NNP
+,	,
+78249	CD
+,	,
+U.S.A	NN
+yl12@txstate.edu	NN
+qtian@cs.utsa.edu	NN
+
+
+features	NNS
+,	,
+the	DT
+descriptive	JJ
+power	NN
+of	IN
+its	PRP$
+image	NN
+representation	NN
+is	VBZ
+li	SYM
+-	:
+mited	VBN
+.	.
+
+The	DT
+previously	RB
+proposed	VBN
+spatial	JJ
+pyramid	NN
+matching	NN
+-LRB-	-LRB-
+SPM	NN
+-RRB-	-RRB-
+-LSB-	-LRB-
+2	CD
+-RSB-	-RRB-
+provides	VBZ
+a	DT
+good	JJ
+solution	NN
+for	IN
+this	DT
+problem	NN
+.	.
+
+Typically	RB
+,	,
+SPM	NNP
+partitions	NNS
+the	DT
+image	NN
+into	IN
+regions	NNS
+on	IN
+multiple	JJ
+resolution	NN
+levels	NNS
+.	.
+
+As	IN
+shown	VBN
+in	IN
+Fig.	NN
+1	CD
+,	,
+each	DT
+column	NN
+displays	VBZ
+the	DT
+3-level	JJ
+SPM	NN
+partition	NN
+.	.
+
+The	DT
+final	JJ
+image	NN
+representation	NN
+is	VBZ
+the	DT
+concatenation	NN
+of	IN
+the	DT
+BoW	NN
+representations	NNS
+of	IN
+all	PDT
+the	DT
+regions	NNS
+.	.
+
+This	DT
+â	NN
+$	$
+œsubdivide	JJ
+and	CC
+reorderâ	JJ
+$	$
+strategy	NN
+achieves	VBZ
+more	JJR
+accurate	JJ
+matching	NN
+by	IN
+reserving	VBG
+the	DT
+spatial	JJ
+information	NN
+.	.
+
+Although	IN
+SPM	NN
+can	MD
+greatly	RB
+improve	VB
+the	DT
+performance	NN
+of	IN
+image	NN
+classification	NN
+on	IN
+some	DT
+benchmark	JJ
+datasets	NNS
+,	,
+including	VBG
+Caltech101	NN
+-LSB-	-LRB-
+3	CD
+-RSB-	-RRB-
+and	CC
+Scenes15	NN
+-LSB-	-LRB-
+15	CD
+-RSB-	-RRB-
+,	,
+it	PRP
+can	MD
+not	RB
+handle	VB
+object	NN
+trans	NN
+-	:
+formations	NNS
+.	.
+
+Three	CD
+object	NN
+transformations	NNS
+are	VBP
+illustrated	VBN
+in	IN
+Fig.	NN
+1	CD
+.	.
+
+The	DT
+guitars	NNS
+in	IN
+image	NN
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+and	CC
+-LRB-	-LRB-
+b	LS
+-RRB-	-RRB-
+are	VBP
+rotated	VBN
+different	JJ
+angles	NNS
+.	.
+
+The	DT
+ducks	NNS
+in	IN
+image	NN
+-LRB-	-LRB-
+c	NN
+-RRB-	-RRB-
+and	CC
+-LRB-	-LRB-
+d	LS
+-RRB-	-RRB-
+are	VBP
+flipped	VBN
+horizontally	RB
+.	.
+
+The	DT
+bottles	NNS
+in	IN
+image	NN
+-LRB-	-LRB-
+e	LS
+-RRB-	-RRB-
+and	CC
+-LRB-	-LRB-
+f	LS
+-RRB-	-RRB-
+appears	VBZ
+at	IN
+different	JJ
+locations	NNS
+.	.
+
+We	PRP
+can	MD
+see	VB
+that	IN
+the	DT
+corresponding	JJ
+SPM	NN
+regions	NNS
+of	IN
+similar	JJ
+images	NNS
+fail	VBP
+to	TO
+match	VB
+in	IN
+the	DT
+three	CD
+cases	NNS
+.	.
+
+Our	PRP$
+experiments	NNS
+demonstrate	VBP
+that	IN
+SPM	NNP
+performs	VBZ
+even	RB
+worse	JJR
+than	IN
+BoW	NN
+with	IN
+translation	NN
+variance	NN
+.	.
+
+Spatial	JJ
+Bag-of	JJ
+-	:
+Visual	JJ
+Word	NN
+-LRB-	-LRB-
+SBoW	NN
+-RRB-	-RRB-
+-LSB-	-LRB-
+8	CD
+-RSB-	-RRB-
+is	VBZ
+proposed	VBN
+to	TO
+extend	VB
+SPM	NNP
+.	.
+
+The	DT
+image	NN
+retrieval	NN
+experiments	NNS
+show	VBP
+the	DT
+effectiveness	NN
+of	IN
+SBoW	NN
+.	.
+
+However	RB
+,	,
+its	PRP$
+image	NN
+representation	NN
+consists	VBZ
+of	IN
+thousands	NNS
+of	IN
+long	JJ
+histograms	NNS
+,	,
+which	WDT
+are	VBP
+too	RB
+complex	JJ
+for	IN
+real-time	JJ
+application	NN
+.	.
+
+So	RB
+labeled	VBN
+data	NNS
+and	CC
+boosting	VBG
+algorithm	NN
+are	VBP
+used	VBN
+to	TO
+select	VB
+the	DT
+most	RBS
+useful	JJ
+histo	NN
+-	:
+grams	NNS
+for	IN
+a	DT
+given	VBN
+dataset	NN
+.	.
+
+
+Different	JJ
+from	IN
+SBoW	NN
+,	,
+this	DT
+paper	NN
+aims	VBZ
+to	TO
+find	VB
+out	RP
+a	DT
+compact	JJ
+im	NN
+-	:
+age	NN
+representation	NN
+robust	JJ
+to	TO
+rotation	NN
+,	,
+flipping	VBG
+and	CC
+translation	NN
+va	NN
+-	:
+riances	NNS
+.	.
+
+We	PRP
+propose	VBP
+three	CD
+kinds	NNS
+of	IN
+spatial	JJ
+layouts	NNS
+:	:
+spatial	JJ
+pyramid	NN
+ring	NN
+,	,
+reordered	VBD
+SPM	NNP
+,	,
+and	CC
+relative	JJ
+SPM	NNP
+,	,
+which	WDT
+are	VBP
+evaluated	VBN
+by	IN
+extensive	JJ
+experiments	NNS
+on	IN
+different	JJ
+transformation	NN
+datasets	NNS
+.	.
+
+Expe	SYM
+-	:
+rimental	JJ
+results	NNS
+show	VBP
+that	IN
+compared	VBN
+with	IN
+SPM	NN
+and	CC
+SBoW	NN
+,	,
+our	PRP$
+approaches	NNS
+can	MD
+handle	VB
+these	DT
+spatial	JJ
+variances	NNS
+more	RBR
+efficiently	RB
+and	CC
+effectively	RB
+.	.
+
+Furthermore	RB
+,	,
+the	DT
+simplicity	NN
+of	IN
+the	DT
+proposed	VBN
+layouts	NNS
+makes	VBZ
+it	PRP
+a	DT
+promising	JJ
+potential	NN
+for	IN
+real	JJ
+time	NN
+applications	NNS
+.	.
+
+
+Figure	NNP
+1	CD
+.	.
+
+SPM	NNP
+division	NN
+on	IN
+rotated	VBN
+,	,
+flipped	VBD
+and	CC
+translated	VBN
+
+
+objects	NNS
+.	.
+
+
+1509	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+1	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+We	PRP
+will	MD
+introduce	VB
+our	PRP$
+approaches	NNS
+in	IN
+Section	NN
+2	CD
+.	.
+
+In	IN
+Section	NN
+3	CD
+,	,
+the	DT
+experiments	NNS
+and	CC
+results	NNS
+are	VBP
+given	VBN
+.	.
+
+Finally	RB
+,	,
+discussion	NN
+and	CC
+future	JJ
+work	NN
+are	VBP
+concluded	VBN
+in	IN
+Section	NN
+4	CD
+.	.
+
+
+2	LS
+.	.
+
+THE	DT
+PROPOSED	VBN
+APPROACH	NN
+
+
+Our	PRP$
+objective	NN
+is	VBZ
+to	TO
+construct	VB
+a	DT
+spatial	JJ
+transformation	NN
+invariant	JJ
+image	NN
+representation	NN
+.	.
+
+We	PRP
+will	MD
+first	RB
+introduce	VB
+our	PRP$
+rotation	NN
+-	:
+and	CC
+flip	VB
+-	:
+invariant	JJ
+method	NN
+,	,
+and	CC
+then	RB
+the	DT
+translation-invariant	JJ
+method	NN
+will	MD
+be	VB
+introduced	VBN
+next	JJ
+.	.
+
+
+2.1	CD
+Rotation	NN
+and	CC
+Flipping	VBG
+Invariance	NNP
+An	DT
+object	NN
+may	MD
+rotate	VB
+any	DT
+angle	NN
+on	IN
+the	DT
+image	NN
+plane	NN
+,	,
+like	IN
+the	DT
+ex	FW
+-	:
+emplars	NNS
+of	IN
+electronic	JJ
+guitar	NN
+in	IN
+Fig.	NN
+1	CD
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+and	CC
+-LRB-	-LRB-
+b	LS
+-RRB-	-RRB-
+,	,
+or	CC
+flip	JJ
+horizontal	JJ
+-	:
+ly	RB
+or	CC
+vertically	RB
+,	,
+like	IN
+the	DT
+duck	NN
+images	NNS
+in	IN
+Fig.	NN
+1	CD
+-LRB-	-LRB-
+c	NN
+-RRB-	-RRB-
+and	CC
+-LRB-	-LRB-
+d	LS
+-RRB-	-RRB-
+.	.
+
+We	PRP
+can	MD
+see	VB
+that	IN
+different	JJ
+spatial	JJ
+transformations	NNS
+may	MD
+cause	VB
+the	DT
+same	JJ
+vis	FW
+-	:
+ual	JJ
+features	NNS
+fall	VBP
+into	IN
+different	JJ
+SPM	NNP
+bins	NNS
+,	,
+which	WDT
+degrades	VBZ
+the	DT
+dis	NN
+-	:
+crimination	NN
+power	NN
+of	IN
+SPM	NNP
+.	.
+
+Note	VB
+that	IN
+in	IN
+this	DT
+section	NN
+,	,
+we	PRP
+assume	VBP
+images	NNS
+are	VBP
+well-aligned	JJ
+after	IN
+rotation	NN
+or	CC
+flipping	VBG
+.	.
+
+
+2.1.1	CD
+Spatial	JJ
+Pyramid	NN
+Ring	NN
+-LRB-	-LRB-
+SPR	NN
+-RRB-	-RRB-
+
+
+To	TO
+handle	VB
+object	NN
+rotation	NN
+like	IN
+image	NN
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+and	CC
+-LRB-	-LRB-
+b	LS
+-RRB-	-RRB-
+in	IN
+Fig.	NN
+1	CD
+,	,
+SBoW	NN
+calibrates	VBZ
+sectors	NNS
+according	VBG
+to	TO
+a	DT
+certain	JJ
+structure	NN
+pattern	NN
+.	.
+
+Howev	NNP
+-	:
+er	NN
+,	,
+to	TO
+deal	VB
+with	IN
+any	DT
+rotation	NN
+angle	NN
+in	IN
+the	DT
+meanwhile	RB
+avoiding	VBG
+be	VB
+-	:
+ing	NN
+too	RB
+strict	JJ
+,	,
+the	DT
+appropriate	JJ
+sector	NN
+number	NN
+needs	VBZ
+to	TO
+be	VB
+pre	JJ
+-	:
+determined	VBN
+,	,
+which	WDT
+is	VBZ
+a	DT
+challenging	JJ
+task	NN
+.	.
+
+Furthermore	RB
+,	,
+SBoW	NN
+is	VBZ
+not	RB
+flipping	VBG
+free	JJ
+.	.
+
+As	IN
+we	PRP
+can	MD
+see	VB
+from	IN
+the	DT
+flipping	VBG
+example	NN
+in	IN
+Fig	NN
+.	.
+
+1	CD
+,	,
+when	WRB
+object	NN
+structure	NN
+is	VBZ
+flipped	VBN
+,	,
+partial	JJ
+shifting	VBG
+method	NN
+can	MD
+not	RB
+find	VB
+matching	VBG
+pairs	NNS
+,	,
+as	IN
+the	DT
+order	NN
+of	IN
+sectors	NNS
+is	VBZ
+reversed	VBN
+.	.
+
+
+In	IN
+order	NN
+to	TO
+solve	VB
+this	DT
+problem	NN
+,	,
+we	PRP
+propose	VBP
+a	DT
+pooling	VBG
+method	NN
+based	VBN
+on	IN
+spatial	JJ
+pyramid	NN
+ring	NN
+,	,
+which	WDT
+can	MD
+better	RB
+handle	VB
+both	DT
+rota	NN
+-	:
+tion	NN
+and	CC
+flipping	VBG
+transformations	NNS
+.	.
+
+This	DT
+is	VBZ
+inspired	VBN
+from	IN
+the	DT
+obser	NN
+-	:
+vation	NN
+that	WDT
+visual	JJ
+words	NNS
+falling	VBG
+into	IN
+a	DT
+spatial	JJ
+ring	NN
+area	NN
+remain	VBP
+stable	JJ
+on	IN
+rotated	VBN
+or	CC
+flipped	VBN
+objects	NNS
+.	.
+
+
+We	PRP
+first	RB
+partition	NN
+the	DT
+image	NN
+into	IN
+concentric	JJ
+rings	NNS
+on	IN
+the	DT
+polar	JJ
+coordinate	NN
+.	.
+
+Then	RB
+we	PRP
+compute	VBP
+BoW	NN
+histogram	NN
+within	IN
+each	DT
+ring	NN
+.	.
+
+Motivated	VBN
+from	IN
+the	DT
+â	NN
+$	$
+œsubdivide	JJ
+and	CC
+reorderâ	JJ
+$	$
+strategy	NN
+of	IN
+SPM	NNP
+,	,
+we	PRP
+also	RB
+build	VBP
+a	DT
+spatial	JJ
+pyramid	NN
+to	TO
+represent	VB
+the	DT
+image	NN
+.	.
+
+Assume	VB
+we	PRP
+have	VBP
+L-level	JJ
+pyramid	NN
+,	,
+on	IN
+the	DT
+l-th	JJ
+level	NN
+;	:
+the	DT
+image	NN
+is	VBZ
+divided	VBN
+into	IN
+2	CD
+concentric	JJ
+rings	NNS
+from	IN
+the	DT
+image	NN
+center	NN
+.	.
+
+The	DT
+step	NN
+size	NN
+be	VB
+-	:
+tween	NN
+rings	NNS
+is	VBZ
+set	VBN
+to	TO
+D/2	NNP
+,	,
+where	WRB
+D	NN
+denotes	VBZ
+the	DT
+half	NN
+diagonal	JJ
+length	NN
+of	IN
+the	DT
+image	NN
+.	.
+
+Fig.	NN
+2	CD
+displays	VBZ
+our	PRP$
+spatial	JJ
+pyramid	NN
+ring	NN
+parti	NN
+-	:
+tions	NNS
+on	IN
+the	DT
+horizontally	RB
+flipped	VBN
+duck	NN
+images	NNS
+.	.
+
+This	DT
+method	NN
+will	MD
+yield	VB
+âˆ	RB
+`	``
+2	CD
+histograms	NNS
+for	IN
+one	CD
+image	NN
+based	VBN
+on	IN
+the	DT
+rings	NNS
+.	.
+
+All	PDT
+the	DT
+histograms	NNS
+can	MD
+be	VB
+concatenated	VBN
+to	TO
+form	VB
+a	DT
+long	JJ
+histogram	NN
+for	IN
+representing	VBG
+the	DT
+entire	JJ
+image	NN
+.	.
+
+
+Fig.	NN
+2	CD
+illustrates	VBZ
+that	IN
+this	DT
+simple	JJ
+ring	NN
+layout	NN
+is	VBZ
+flipping	VBG
+invariant	JJ
+as	IN
+the	DT
+corresponding	JJ
+rings	NNS
+of	IN
+the	DT
+two	CD
+images	NNS
+are	VBP
+still	RB
+matched	VBN
+.	.
+
+It	PRP
+also	RB
+works	VBZ
+for	IN
+rotations	NNS
+.	.
+
+This	DT
+mainly	RB
+benefits	NNS
+from	IN
+the	DT
+fact	NN
+that	IN
+the	DT
+same	JJ
+parts	NNS
+of	IN
+an	DT
+object	NN
+will	MD
+remain	VB
+within	IN
+a	DT
+certain	JJ
+ring	NN
+area	NN
+in	IN
+spite	NN
+of	IN
+rotation	NN
+or	CC
+flipping	VBG
+.	.
+
+And	CC
+the	DT
+pyramid	NN
+representation	NN
+can	MD
+be	VB
+matched	VBN
+on	IN
+different	JJ
+resolution	NN
+levels	NNS
+of	IN
+the	DT
+rings	NNS
+structure	NN
+.	.
+
+2.2	CD
+Translation	NN
+Invariance	NN
+
+
+In	IN
+this	DT
+section	NN
+,	,
+we	PRP
+will	MD
+address	VB
+the	DT
+translation	NN
+transformation	NN
+problem	NN
+.	.
+
+As	IN
+shown	VBN
+in	IN
+Fig.	NN
+1	CD
+-LRB-	-LRB-
+e	LS
+-RRB-	-RRB-
+and	CC
+-LRB-	-LRB-
+f	LS
+-RRB-	-RRB-
+,	,
+objects	NNS
+may	MD
+appear	VB
+any	DT
+-	:
+where	WRB
+in	IN
+an	DT
+image	NN
+,	,
+which	WDT
+can	MD
+not	RB
+be	VB
+handled	VBN
+by	IN
+the	DT
+layout	NN
+based	VBN
+on	IN
+SPM	NNP
+.	.
+
+Hence	RB
+,	,
+we	PRP
+further	RB
+propose	VBP
+two	CD
+schemes	NNS
+:	:
+Reordered	VBN
+SPM	NN
+and	CC
+relative	JJ
+SPM	NNP
+.	.
+
+
+2.2.1	CD
+Reordered	NNP
+SPM	NNP
+
+
+The	DT
+reason	NN
+that	WDT
+SPM	NNP
+fails	VBZ
+under	IN
+translation	NN
+transformation	NN
+is	VBZ
+that	IN
+SPM	NN
+requires	VBZ
+matching	VBG
+each	DT
+region	NN
+pairs	NNS
+correspondingly	RB
+be	VB
+-	:
+
+
+1510	CD
+
+
+tween	VB
+any	DT
+two	CD
+images	NNS
+.	.
+
+This	DT
+problem	NN
+can	MD
+be	VB
+fixed	VBN
+to	TO
+some	DT
+extent	NN
+by	IN
+resetting	VBG
+the	DT
+matching	VBG
+order	NN
+of	IN
+SPM	NN
+cells	NNS
+.	.
+
+
+Figure	NN
+2	CD
+.	.
+
+Illustration	NN
+of	IN
+SPR	NN
+on	IN
+image	NN
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+and	CC
+-LRB-	-LRB-
+b	LS
+-RRB-	-RRB-
+.	.
+
+From	IN
+
+
+left	VBN
+to	TO
+right	NN
+are	VBP
+1st	CD
+,	,
+2nd	JJ
+,	,
+and	CC
+3rd	JJ
+pyramid	NN
+level	NN
+.	.
+
+
+First	RB
+,	,
+we	PRP
+build	VBP
+SPM	NN
+with	IN
+L	NN
+levels	NNS
+,	,
+which	WDT
+are	VBP
+âˆ	JJ
+`	``
+2	CD
+cells	NNS
+in	IN
+total	NN
+.	.
+
+Then	RB
+on	IN
+the	DT
+l-th	JJ
+level	NN
+,	,
+we	PRP
+sort	VBP
+the	DT
+2	CD
+bins	NNS
+for	IN
+each	DT
+visual	JJ
+word	NN
+channel	NN
+according	VBG
+to	TO
+either	CC
+ascending	VBG
+or	CC
+descending	VBG
+order	NN
+and	CC
+form	VB
+the	DT
+re-ordered	JJ
+histogram	NN
+for	IN
+each	DT
+visual	JJ
+word	NN
+channel	NN
+.	.
+
+For	IN
+example	NN
+,	,
+Fig.	NN
+3	CD
+contains	VBZ
+three	CD
+visual	JJ
+words	NNS
+-LRB-	-LRB-
+represented	VBN
+by	IN
+yellow	JJ
+triangle	NN
+,	,
+green	JJ
+star	NN
+,	,
+and	CC
+blue	JJ
+square	NN
+-RRB-	-RRB-
+in	IN
+the	DT
+image	NN
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+and	CC
+-LRB-	-LRB-
+b	LS
+-RRB-	-RRB-
+,	,
+and	CC
+it	PRP
+displays	VBZ
+the	DT
+SPM	NNP
+partition	NN
+on	IN
+the	DT
+2nd	JJ
+level	NN
+.	.
+
+The	DT
+right	NN
+of	IN
+the	DT
+image	NN
+shows	VBZ
+the	DT
+term	NN
+frequency	NN
+of	IN
+each	DT
+visual	JJ
+word	NN
+in	IN
+every	DT
+region	NN
+in	IN
+descending	VBG
+order	NN
+.	.
+
+Then	RB
+the	DT
+histo	NN
+-	:
+grams	NNS
+of	IN
+all	DT
+visual	JJ
+word	NN
+channels	NNS
+are	VBP
+connected	VBN
+to	TO
+form	VB
+the	DT
+l-th	JJ
+level	NN
+histogram	NN
+representation	NN
+,	,
+and	CC
+finally	RB
+representations	NNS
+of	IN
+all	PDT
+the	DT
+levels	NNS
+are	VBP
+concatenated	VBN
+together	RB
+to	TO
+form	VB
+the	DT
+entire	JJ
+image	NN
+re	SYM
+-	:
+presentation	NN
+.	.
+
+With	IN
+reordered	VBN
+SPM	NNP
+,	,
+objects	NNS
+appearing	VBG
+within	IN
+dif	NN
+-	:
+ferent	JJ
+regionss	NN
+will	MD
+be	VB
+matched	VBN
+because	IN
+their	PRP$
+histograms	NNS
+on	IN
+each	DT
+word	NN
+channel	NN
+have	VBP
+been	VBN
+aligned	VBN
+well	RB
+.	.
+
+
+1	CD
+
+
+2	CD
+
+
+1	CD
+
+
+1	CD
+
+
+3	CD
+
+
+122	CD
+
+
+2	CD
+4	CD
+
+
+2	CD
+
+
+3	CD
+
+
+4	CD
+
+
+3	CD
+
+
+4	CD
+
+
+3	CD
+
+
+3	CD
+
+
+4	CD
+
+
+1	CD
+
+
+4	CD
+
+
+1	CD
+
+
+1	CD
+
+
+4	CD
+
+
+2	CD
+
+
+2	CD
+
+
+1	CD
+
+
+3	CD
+
+
+2	CD
+
+
+34	CD
+34	CD
+
+
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+-LRB-	-LRB-
+b	NN
+-RRB-	-RRB-
+
+
+Figure	NNP
+3	CD
+.	.
+
+Illustration	NN
+of	IN
+Reordered	NNP
+SPM	NNP
+for	IN
+translation	NN
+inva	NN
+-	:
+riance	NN
+.	.
+
+Image	NN
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+and	CC
+-LRB-	-LRB-
+b	LS
+-RRB-	-RRB-
+have	VBP
+the	DT
+same	JJ
+object	NN
+circled	VBN
+by	IN
+a	DT
+red	JJ
+ellipse	NN
+.	.
+
+Images	NNS
+are	VBP
+divided	VBN
+into	IN
+2Ã	NN
+--	:
+2	CD
+grids	NNS
+.	.
+
+Their	PRP$
+right	JJ
+parts	NNS
+show	VBP
+the	DT
+reordered	VBN
+histograms	NNS
+from	IN
+top	JJ
+to	TO
+bottom	NN
+for	IN
+each	DT
+visual	JJ
+word	NN
+colored	VBN
+in	IN
+yellow	JJ
+,	,
+green	JJ
+and	CC
+blue	JJ
+separately	RB
+.	.
+
+
+2.2.2	CD
+Relative	JJ
+SPM	NN
+
+
+In	IN
+the	DT
+quantization	NN
+and	CC
+pooling	VBG
+step	NN
+of	IN
+image	NN
+classification	NN
+,	,
+some	DT
+recent	JJ
+work	NN
+has	VBZ
+shown	VBN
+that	IN
+Locality-constrained	JJ
+Linear	NNP
+Coding	NN
+-LRB-	-LRB-
+LLC	NN
+-RRB-	-RRB-
+-LSB-	-LRB-
+7	CD
+-RSB-	-RRB-
+with	IN
+max	NN
+pooling	VBG
+-LSB-	-LRB-
+6	CD
+-RSB-	-RRB-
+can	MD
+yield	VB
+good	JJ
+performance	NN
+.	.
+
+LLC	NNP
+softly	RB
+quantizes	VBZ
+local	JJ
+features	NNS
+to	TO
+their	PRP$
+k	NN
+nearest	JJS
+words	NNS
+.	.
+
+Max	NNP
+pool	NN
+-	:
+ing	NN
+then	RB
+selects	VBZ
+the	DT
+nearest	JJS
+one	CD
+feature	NN
+for	IN
+a	DT
+certain	JJ
+visual	JJ
+word	NN
+.	.
+
+Hence	RB
+the	DT
+selected	VBN
+feature	NN
+can	MD
+be	VB
+regarded	VBN
+as	IN
+salient	JJ
+points	NNS
+and	CC
+we	PRP
+are	VBP
+able	JJ
+to	TO
+derive	VB
+the	DT
+specific	JJ
+location	NN
+where	WRB
+a	DT
+visual	JJ
+word	NN
+appears	VBZ
+in	IN
+an	DT
+image	NN
+.	.
+
+
+We	PRP
+propose	VBP
+to	TO
+utilize	VB
+the	DT
+geo	NN
+information	NN
+of	IN
+salient	JJ
+points	NNS
+gener	NN
+-	:
+ated	VBN
+from	IN
+the	DT
+coarser	JJR
+level	NN
+of	IN
+SPM	NNP
+to	TO
+generate	VB
+the	DT
+current	JJ
+level	NN
+grids	NNS
+.	.
+
+For	IN
+example	NN
+,	,
+after	IN
+max	NN
+pooling	VBG
+on	IN
+the	DT
+l-th	JJ
+level	NN
+,	,
+we	PRP
+can	MD
+compute	VB
+the	DT
+center	NN
+of	IN
+the	DT
+selected	VBN
+salient	JJ
+points	NNS
+within	IN
+each	DT
+re	SYM
+-	:
+gion	NN
+on	IN
+this	DT
+level	NN
+,	,
+then	RB
+each	DT
+center	NN
+is	VBZ
+used	VBN
+as	IN
+the	DT
+origin	NN
+point	NN
+to	TO
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+2	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+divide	VB
+its	PRP$
+belonging	VBG
+region	NN
+into	IN
+another	DT
+2Ã	NN
+--	:
+2	CD
+grids	NNS
+for	IN
+the	DT
+-LRB-	-LRB-
+l	NN
++1	CD
+-RRB-	-RRB-
+-	:
+th	DT
+level	NN
+.	.
+
+See	VB
+the	DT
+toy	NN
+example	NN
+in	IN
+Fig.	NNP
+4	CD
+for	IN
+reference	NN
+.	.
+
+
+We	PRP
+call	VBP
+this	DT
+method	NN
+relative	JJ
+SPM	NNP
+as	IN
+its	PRP$
+grid	NN
+division	NN
+is	VBZ
+relative	JJ
+to	TO
+the	DT
+distribution	NN
+of	IN
+salient	JJ
+points	NNS
+.	.
+
+This	DT
+method	NN
+benefits	NNS
+from	IN
+the	DT
+approximate	JJ
+tracking	NN
+of	IN
+the	DT
+object	NN
+position	NN
+.	.
+
+
+3	LS
+.	.
+
+EXPERIMENTS	NNS
+
+
+In	IN
+this	DT
+section	NN
+,	,
+we	PRP
+will	MD
+verify	VB
+the	DT
+proposed	VBN
+spatial	JJ
+pooling	VBG
+me	PRP
+-	:
+thods	NNS
+for	IN
+object	NN
+classification	NN
+on	IN
+three	CD
+different	JJ
+spatial	JJ
+transfor	NN
+-	:
+mation	NN
+datasets	NNS
+including	VBG
+flipping	VBG
+,	,
+rotation	NN
+and	CC
+translation	NN
+va	NN
+-	:
+riance	NN
+datasets	NNS
+.	.
+
+
+Figure	NNP
+4	CD
+.	.
+
+Illustration	NN
+of	IN
+Relative	JJ
+SPM	NNP
+.	.
+
+The	DT
+same	JJ
+object	NN
+is	VBZ
+sketched	VBN
+in	IN
+green	JJ
+curve	NN
+.	.
+
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+and	CC
+-LRB-	-LRB-
+c	LS
+-RRB-	-RRB-
+are	VBP
+the	DT
+original	JJ
+SPM	NNP
+par	NN
+-	:
+tition	NN
+.	.
+
+-LRB-	-LRB-
+b	NN
+-RRB-	-RRB-
+and	CC
+-LRB-	-LRB-
+d	LS
+-RRB-	-RRB-
+show	VBP
+the	DT
+partition	NN
+of	IN
+our	PRP$
+approach	NN
+.	.
+
+Red	NNP
+line	NN
+is	VBZ
+the	DT
+2nd	JJ
+level	NN
+partition	NN
+and	CC
+black	JJ
+line	NN
+is	VBZ
+the	DT
+3	CD
+
+
+rd	NN
+
+
+level	NN
+partition	NN
+.	.
+
+3.1	CD
+Experimental	JJ
+Settings	NNS
+
+
+Image	NN
+representation	NN
+:	:
+The	DT
+Bag-of-Word	JJ
+histogram	NN
+is	VBZ
+adopted	VBN
+.	.
+
+We	PRP
+use	VBP
+K-Means	JJ
+clustering	NN
+to	TO
+generate	VB
+visual	JJ
+codebooks	NNS
+of	IN
+size	NN
+from	IN
+512	CD
+to	TO
+2048	CD
+.	.
+
+After	IN
+quantizing	VBG
+local	JJ
+feature	NN
+descriptors	NNS
+into	IN
+visual	JJ
+words	NNS
+,	,
+each	DT
+image	NN
+is	VBZ
+represented	VBN
+by	IN
+a	DT
+visual	JJ
+word	NN
+histo	NN
+-	:
+gram	NN
+.	.
+
+Here	RB
+,	,
+Locality-constrained	JJ
+Linear	NNP
+Coding	NN
+-LSB-	-LRB-
+7	CD
+-RSB-	-RRB-
+is	VBZ
+used	VBN
+for	IN
+feature	NN
+quantization	NN
+,	,
+and	CC
+max	NN
+pooling	VBG
+-LSB-	-LRB-
+6	CD
+-RSB-	-RRB-
+is	VBZ
+used	VBN
+for	IN
+histogram	NN
+generation	NN
+due	JJ
+to	TO
+their	PRP$
+sound	JJ
+performance	NN
+on	IN
+standard	JJ
+image	NN
+classification	NN
+benchmarks	NNS
+.	.
+
+To	TO
+extract	VB
+local	JJ
+feature	NN
+descriptors	NNS
+,	,
+we	PRP
+adopt	VBP
+two	CD
+popular	JJ
+methods	NNS
+:	:
+SIFT	VB
+-LSB-	-LRB-
+1	CD
+-RSB-	-RRB-
+detected	VBN
+from	IN
+sparse	JJ
+regions	NNS
+and	CC
+densely	RB
+sampled	VBD
+SIFT	NNP
+.	.
+
+It	PRP
+has	VBZ
+been	VBN
+shown	VBN
+that	IN
+dense	JJ
+SIFT	NN
+sampling	NN
+gives	VBZ
+better	JJR
+performance	NN
+than	IN
+sparse	JJ
+region	NN
+of	IN
+interest	NN
+detectors	NNS
+,	,
+especially	RB
+for	IN
+object	NN
+classification	NN
+.	.
+
+This	DT
+is	VBZ
+because	IN
+the	DT
+so	RB
+called	VBN
+â	RB
+$	$
+œbrute	JJ
+forceâ	NN
+$	$
+metric	JJ
+of	IN
+dense	JJ
+sampling	NN
+which	WDT
+covers	VBZ
+all	PDT
+the	DT
+information	NN
+with	IN
+overlap	VBP
+.	.
+
+However	RB
+,	,
+the	DT
+SIFT	NN
+descriptors	NNS
+gen	SYM
+-	:
+erated	VBN
+by	IN
+dense	JJ
+sampling	NN
+are	VBP
+not	RB
+scale	NN
+and	CC
+orientation	NN
+invariant	JJ
+.	.
+
+So	IN
+we	PRP
+choose	VBP
+the	DT
+appropriate	JJ
+one	CD
+to	TO
+avoid	VB
+the	DT
+feature	NN
+level	NN
+influ	NN
+-	:
+ence	NN
+in	IN
+different	JJ
+experiments	NNS
+.	.
+
+For	IN
+dense	JJ
+sampling	NN
+,	,
+we	PRP
+extract	VBP
+SIFT	NNP
+descriptors	NNS
+from	IN
+16Ã	NN
+--	:
+16	CD
+patches	NNS
+with	IN
+step	NN
+size	NN
+4	CD
+.	.
+
+For	IN
+sparse	JJ
+region	NN
+of	IN
+interest	NN
+detection	NN
+,	,
+we	PRP
+use	VBP
+the	DT
+open	JJ
+source	NN
+software	NN
+VLFeat	NN
+-LSB-	-LRB-
+9	CD
+-RSB-	-RRB-
+with	IN
+default	NN
+parameters	NNS
+.	.
+
+
+Model	NNP
+training	NN
+:	:
+Three	CD
+datasets	NNS
+are	VBP
+generated	VBN
+to	TO
+test	VB
+flipping	VBG
+,	,
+rotation	NN
+,	,
+and	CC
+translation	NN
+variances	NNS
+respectively	RB
+.	.
+
+We	PRP
+use	VBP
+LIBSVM	NN
+-LSB-	-LRB-
+10	CD
+-RSB-	-RRB-
+with	IN
+linear	JJ
+kernel	NN
+for	IN
+object	NN
+classification	NN
+.	.
+
+For	IN
+every	DT
+object	NN
+,	,
+we	PRP
+randomly	RB
+select	JJ
+30	CD
+images	NNS
+for	IN
+training	NN
+.	.
+
+The	DT
+left	JJ
+data	NNS
+are	VBP
+used	VBN
+for	IN
+testing	NN
+.	.
+
+We	PRP
+run	VBP
+the	DT
+experiments	NNS
+five	CD
+times	NNS
+and	CC
+calculate	VB
+the	DT
+average	JJ
+classification	NN
+accuracy	NN
+of	IN
+all	DT
+categories	NNS
+for	IN
+each	DT
+run	NN
+.	.
+
+
+Baseline	NN
+system	NN
+:	:
+We	PRP
+use	VBP
+BoW	NN
+to	TO
+denote	VB
+the	DT
+baseline	NN
+image	NN
+level	NN
+classification	NN
+.	.
+
+SPM	NNP
+denotes	VBZ
+adding	VBG
+SPM	NNP
+on	IN
+the	DT
+baseline	NN
+method	NN
+,	,
+where	WRB
+max	NN
+pooling	VBG
+is	VBZ
+performed	VBN
+within	IN
+each	DT
+cell	NN
+.	.
+
+Three-level	JJ
+SPM	NNP
+is	VBZ
+adopted	VBN
+with	IN
+1	CD
++4	CD
++16	CD
+=	JJ
+21	CD
+cells	NNS
+.	.
+
+
+3.2	CD
+Flipping	VBG
+Invariance	NNP
+Experiment	NNP
+Flipping	NNP
+Dataset	NNP
+:	:
+To	TO
+test	VB
+flipping	VBG
+invariant	JJ
+methods	NNS
+,	,
+we	PRP
+assume	VBP
+no	DT
+other	JJ
+spatial	JJ
+variance	NN
+exists	VBZ
+,	,
+e.g.	FW
+objects	NNS
+are	VBP
+center-aligned	JJ
+,	,
+and	CC
+occupy	VBP
+the	DT
+most	JJS
+part	NN
+of	IN
+an	DT
+image	NN
+with	IN
+similar	JJ
+scale	NN
+.	.
+
+We	PRP
+use	VBP
+Caltech101	NN
+-LSB-	-LRB-
+3	CD
+-RSB-	-RRB-
+with	IN
+9144	CD
+images	NNS
+of	IN
+101	CD
+categories	NNS
+in	IN
+this	DT
+expe	NN
+-	:
+riment	NN
+and	CC
+we	PRP
+randomly	RB
+flip	VBP
+images	NNS
+horizontally	RB
+or	CC
+vertically	RB
+.	.
+
+Flipping	VBG
+samples	NNS
+are	VBP
+shown	VBN
+in	IN
+Fig.	NNP
+5	CD
+.	.
+
+
+1511	CD
+
+
+We	PRP
+use	VBP
+dense	JJ
+SIFT	NN
+descriptors	NNS
+to	TO
+cover	VB
+the	DT
+whole	JJ
+image	NN
+.	.
+
+Al	NNP
+-	:
+though	IN
+dense	JJ
+SIFT	NN
+is	VBZ
+not	RB
+flipping	VBG
+invariant	JJ
+,	,
+It	PRP
+has	VBZ
+been	VBN
+proposed	VBN
+in	IN
+-LSB-	-LRB-
+18	CD
+-RSB-	-RRB-
+to	TO
+combine	VB
+the	DT
+metrics	NNS
+of	IN
+both	DT
+dense	JJ
+sampling	NN
+and	CC
+sparse	JJ
+detectors	NNS
+to	TO
+make	VB
+the	DT
+extracted	VBN
+feature	NN
+more	RBR
+stable	JJ
+and	CC
+repeatable	JJ
+.	.
+
+Therefore	RB
+,	,
+in	IN
+our	PRP$
+experiments	NNS
+,	,
+we	PRP
+make	VBP
+an	DT
+assumption	NN
+that	IN
+there	EX
+is	VBZ
+a	DT
+good	JJ
+way	NN
+to	TO
+address	VB
+the	DT
+feature	NN
+level	NN
+variance	NN
+to	TO
+avoid	VB
+its	PRP$
+influence	NN
+on	IN
+feature	NN
+matching	NN
+.	.
+
+With	IN
+this	DT
+assumption	NN
+,	,
+we	PRP
+can	MD
+fo	SYM
+-	:
+cus	NN
+on	IN
+analyzing	VBG
+the	DT
+spatial	JJ
+transformation	NN
+.	.
+
+Hence	RB
+,	,
+the	DT
+descriptors	NNS
+from	IN
+the	DT
+non-flipped	JJ
+images	NNS
+are	VBP
+used	VBN
+for	IN
+the	DT
+flipped	VBN
+images	NNS
+in	IN
+-	:
+stead	NN
+,	,
+but	CC
+the	DT
+location	NN
+information	NN
+of	IN
+descriptors	NNS
+are	VBP
+flipped	VBN
+.	.
+
+
+Figure	NNP
+5	CD
+.	.
+
+Image	NN
+samples	NNS
+.	.
+
+The	DT
+first	JJ
+three	CD
+rows	NNS
+are	VBP
+from	IN
+Cal	NN
+-	:
+
+
+tech101	NN
+:	:
+1st	CD
+row	NN
+shows	VBZ
+the	DT
+original	JJ
+images	NNS
+;	:
+2	CD
+
+
+nd	NN
+
+
+row	NN
+shows	VBZ
+images	NNS
+after	IN
+random	JJ
+rotation	NN
+;	:
+3rd	JJ
+row	NN
+shows	VBZ
+images	NNS
+after	IN
+randomly	RB
+horizontal	JJ
+or	CC
+vertical	JJ
+flipping	VBG
+.	.
+
+The	DT
+last	JJ
+row	NN
+shows	VBZ
+sample	NN
+images	NNS
+from	IN
+the	DT
+â	NN
+$	$
+œAjaxOrangeâ	JJ
+$	$
+category	NN
+of	IN
+SIVAL	NN
+.	.
+
+
+In	IN
+the	DT
+experiment	NN
+,	,
+we	PRP
+combine	VBP
+BoW	NN
+model	NN
+with	IN
+three	CD
+different	JJ
+spatial	JJ
+coding	VBG
+algorithms	NNS
+:	:
+SPM	NN
+-LSB-	-LRB-
+2	CD
+-RSB-	-RRB-
+,	,
+calibrated	VBN
+circular	JJ
+projection	NN
+-LRB-	-LRB-
+CCP	NN
+-RRB-	-RRB-
+in	IN
+SBoW	NN
+-LSB-	-LRB-
+8	CD
+-RSB-	-RRB-
+,	,
+and	CC
+spatial	JJ
+pyramid	NN
+ring	NN
+-LRB-	-LRB-
+SPR	NN
+-RRB-	-RRB-
+pooling	VBG
+.	.
+
+The	DT
+codebook	NN
+size	NN
+is	VBZ
+2048	CD
+as	IN
+it	PRP
+is	VBZ
+widely	RB
+used	VBN
+in	IN
+previous	JJ
+work	NN
+-LSB-	-LRB-
+6	CD
+-RSB-	-RRB-
+.	.
+
+For	IN
+CCP	NNP
+,	,
+the	DT
+images	NNS
+are	VBP
+divided	VBN
+into	IN
+1	CD
+,	,
+4	CD
+,	,
+and	CC
+16	CD
+sectors	NNS
+.	.
+
+In	IN
+our	PRP$
+spatial	JJ
+pyramid	NN
+ring	NN
+pooling	VBG
+,	,
+1	CD
+,	,
+2	CD
+,	,
+4	CD
+,	,
+and	CC
+8	CD
+rings	NNS
+are	VBP
+constructed	VBN
+from	IN
+the	DT
+1st	CD
+to	TO
+4	CD
+
+
+th	DT
+
+
+level	NN
+,	,
+which	WDT
+yields	VBZ
+1	CD
++	CC
+2	CD
++4	CD
++8	NN
+=	JJ
+15	CD
+rings	NNS
+.	.
+
+We	PRP
+test	VBP
+the	DT
+three	CD
+algorithms	NNS
+on	IN
+the	DT
+flipping	VBG
+dataset	NN
+and	CC
+obtain	VB
+the	DT
+average	JJ
+classification	NN
+accuracy	NN
+shown	VBN
+in	IN
+Table	NNP
+1	CD
+.	.
+
+
+Table	NNP
+1	CD
+.	.
+
+Caltech101	NN
+classification	NN
+accuracy	NN
+comparison	NN
+on	IN
+
+
+flipping	VBG
+and	CC
+rotation	NN
+data	NNS
+
+
+Method	NN
+
+
+Before	IN
+After	IN
+After	IN
+
+
+transformation	NN
+flipping	VBG
+rotation	NN
+BoW	NN
+52.17	CD
+%	NN
+-	:
+26.81	CD
+%	NN
+SPM	NN
+-LSB-	-LRB-
+2	CD
+-RSB-	-RRB-
+74.34	CD
+%	NN
+57.94	CD
+%	NN
+29.84	CD
+%	NN
+
+
+CCP	NN
+-LSB-	-LRB-
+8	CD
+-RSB-	-RRB-
+57.04	CD
+%	NN
+29.23	CD
+%	NN
+
+
+SPR	NN
+66.61	CD
+%	NN
+34.95	CD
+%	NN
+
+
+SPR	NN
++	CC
+SPM	NN
+70.19	CD
+%	NN
+35.20	CD
+%	NN
+
+
+The	DT
+accuracy	NN
+of	IN
+SPM	NN
+drops	VBZ
+to	TO
+57.94	CD
+%	NN
+from	IN
+74.34	CD
+%	NN
+after	IN
+flip	JJ
+-	:
+ping	NN
+.	.
+
+The	DT
+performance	NN
+of	IN
+CCP	NN
+is	VBZ
+close	JJ
+to	TO
+SPM	NNP
+.	.
+
+Our	PRP$
+proposed	VBN
+SPR	NN
+gives	VBZ
+the	DT
+best	JJS
+improvement	NN
+of	IN
+14	CD
+%	NN
+over	IN
+the	DT
+image	NN
+level	NN
+classification	NN
+,	,
+i.e.	FW
+,	,
+BoW	NN
+,	,
+and	CC
+about	IN
+8.6	CD
+%	NN
+improvement	NN
+over	IN
+SPM	NNP
+and	CC
+CCP	NNP
+.	.
+
+These	DT
+results	NNS
+clearly	RB
+demonstrate	VBP
+that	IN
+spatial	JJ
+pyramid	NN
+ring	NN
+pooling	VBG
+is	VBZ
+very	RB
+effective	JJ
+against	IN
+flipping	VBG
+variances	NNS
+.	.
+
+3.3	CD
+Rotation	NNP
+Invariance	NNP
+Experiment	NNP
+Rotation	NNP
+Dataset	NNP
+:	:
+We	PRP
+randomly	RB
+rotate	VBP
+the	DT
+images	NNS
+in	IN
+Caltech101	NN
+with	IN
+an	DT
+angle	NN
+between	IN
+0	CD
+and	CC
+360	CD
+counterclockwise	JJ
+.	.
+
+See	VB
+Fig.	NNP
+5	CD
+for	IN
+sample	NN
+images	NNS
+.	.
+
+
+In	IN
+this	DT
+section	NN
+,	,
+we	PRP
+want	VBP
+to	TO
+show	VB
+that	IN
+spatial	JJ
+pyramid	NN
+ring	NN
+pooling	VBG
+also	RB
+works	VBZ
+well	RB
+with	IN
+rotation	NN
+variance	NN
+.	.
+
+As	IN
+we	PRP
+mentioned	VBD
+above	RB
+,	,
+dense	JJ
+SIFT	NN
+is	VBZ
+not	RB
+rotation	NN
+invariant	JJ
+.	.
+
+So	RB
+in	IN
+this	DT
+experiment	NN
+,	,
+we	PRP
+use	VBP
+the	DT
+sparse	JJ
+region	NN
+of	IN
+interest	NN
+detector	NN
+to	TO
+extract	NN
+SIFT	NN
+features	NNS
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+3	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+Experimental	JJ
+results	NNS
+of	IN
+the	DT
+three	CD
+spatial	JJ
+pooling	VBG
+methods	NNS
+are	VBP
+shown	VBN
+in	IN
+the	DT
+last	JJ
+column	NN
+of	IN
+Table	NNP
+1	CD
+.	.
+
+Both	DT
+SPM	NNP
+and	CC
+CCP	NNP
+improve	VB
+the	DT
+performance	NN
+.	.
+
+However	RB
+,	,
+spatial	JJ
+pyramid	NN
+ring	NN
+pooling	VBG
+method	NN
+achieves	VBZ
+the	DT
+best	JJS
+performance	NN
+.	.
+
+We	PRP
+further	RB
+test	VB
+combining	VBG
+SPM	NN
+with	IN
+SPR	NN
+pooling	VBG
+by	IN
+connecting	VBG
+their	PRP$
+histograms	NNS
+together	RB
+to	TO
+form	VB
+the	DT
+final	JJ
+image	NN
+representation	NN
+.	.
+
+It	PRP
+outperforms	VBZ
+all	DT
+other	JJ
+methods	NNS
+on	IN
+both	DT
+flipping	VBG
+and	CC
+rotation	NN
+.	.
+
+
+3.4	CD
+Translation	NN
+Invariance	NNP
+Experiment	NNP
+Translation	NN
+Dataset	NNP
+:	:
+To	TO
+test	VB
+translation	NN
+invariant	JJ
+methods	NNS
+,	,
+we	PRP
+use	VBP
+SIVAL	JJ
+benchmark	NN
+-LSB-	-LRB-
+17	CD
+-RSB-	-RRB-
+.	.
+
+This	DT
+dataset	NN
+contains	VBZ
+1	CD
+,	,
+500	CD
+images	NNS
+in	IN
+25	CD
+categories	NNS
+.	.
+
+An	DT
+image	NN
+contains	VBZ
+a	DT
+primary	JJ
+object	NN
+located	JJ
+ran	VBD
+-	:
+domly	NN
+and	CC
+independently	RB
+on	IN
+the	DT
+image	NN
+with	IN
+diverse	JJ
+backgrounds	NNS
+.	.
+
+Objects	NNS
+do	VBP
+not	RB
+occupy	VB
+the	DT
+entire	JJ
+image	NN
+,	,
+but	CC
+have	VBP
+similar	JJ
+scale	NN
+at	IN
+most	JJS
+time	NN
+.	.
+
+Since	IN
+the	DT
+biggest	JJS
+variance	NN
+of	IN
+this	DT
+dataset	NN
+is	VBZ
+translation	NN
+,	,
+we	PRP
+use	VBP
+it	PRP
+to	TO
+evaluate	VB
+the	DT
+methods	NNS
+for	IN
+handling	VBG
+translation	NN
+variance	NN
+only	RB
+.	.
+
+Fig.	NN
+5	CD
+shows	VBZ
+some	DT
+sample	NN
+images	NNS
+from	IN
+this	DT
+dataset	NN
+.	.
+
+
+Table	NNP
+2	CD
+.	.
+
+SIVAL	JJ
+classification	NN
+accuracy	NN
+
+
+Codebook	NNP
+Size	NN
+512	CD
+1024	CD
+2048	CD
+
+
+BoW	NN
+51.03	CD
+%	NN
+64.86	CD
+%	NN
+76.22	CD
+%	NN
+
+
+SPM	NN
+-LSB-	-LRB-
+2	CD
+-RSB-	-RRB-
+26.39	CD
+%	NN
+32.63	CD
+%	NN
+39.57	CD
+%	NN
+
+
+Relative	JJ
+SPM	NN
+34.31	CD
+%	NN
+40.27	CD
+%	NN
+46.15	CD
+%	NN
+
+
+Reordered	VBN
+SPM	NN
+59.50	CD
+%	NN
+69.94	CD
+%	NN
+77.83	CD
+%	NN
+Reordered	NNP
+Relative	JJ
+SPM	NNP
+61.29	CD
+%	NN
+71.53	CD
+%	NN
+78.94	CD
+%	NN
+
+
+We	PRP
+test	VBP
+BoW	NN
+,	,
+SPM	NNP
+,	,
+Relative	JJ
+SPM	NNP
+,	,
+Reordered	NNP
+SPM	NNP
+,	,
+and	CC
+Reor	NNP
+-	:
+dered	VBN
+Relative	JJ
+SPM	NN
+on	IN
+this	DT
+dataset	NN
+.	.
+
+Their	PRP$
+classification	NN
+accuracy	NN
+with	IN
+different	JJ
+codebook	NN
+sizes	NNS
+are	VBP
+listed	VBN
+in	IN
+Table	NNP
+2	CD
+.	.
+
+We	PRP
+can	MD
+see	VB
+SPM	NNP
+fails	VBZ
+on	IN
+this	DT
+dataset	NN
+.	.
+
+It	PRP
+is	VBZ
+even	RB
+worse	JJR
+than	IN
+image	NN
+level	NN
+classi	NN
+-	:
+fication	NN
+.	.
+
+The	DT
+Relative	JJ
+SPM	NN
+method	NN
+is	VBZ
+designed	VBN
+for	IN
+adjusting	VBG
+the	DT
+division	NN
+of	IN
+SPM	NNP
+to	TO
+make	VB
+it	PRP
+focus	VB
+on	IN
+the	DT
+object	NN
+.	.
+
+This	DT
+method	NN
+does	VBZ
+improve	VB
+the	DT
+SPM	NNP
+performance	NN
+by	IN
+about	IN
+7	CD
+%	NN
+.	.
+
+The	DT
+most	RBS
+effective	JJ
+method	NN
+is	VBZ
+Reordered	VBN
+SPM	NNP
+,	,
+which	WDT
+gains	VBZ
+improvement	NN
+over	IN
+the	DT
+image	NN
+level	NN
+classification	NN
+.	.
+
+Combining	VBG
+the	DT
+two	CD
+methods	NNS
+together	RB
+achieves	VBZ
+the	DT
+best	JJS
+performance	NN
+on	IN
+this	DT
+dataset	NN
+.	.
+
+This	DT
+improvement	NN
+is	VBZ
+relatively	RB
+less	JJR
+than	IN
+what	WP
+can	MD
+be	VB
+gained	VBN
+by	IN
+using	VBG
+SPM	NNP
+on	RB
+well	RB
+-	:
+aligned	VBN
+image	NN
+datasets	NNS
+as	IN
+can	MD
+be	VB
+seen	VBN
+from	IN
+Table	NNP
+1	CD
+.	.
+
+This	DT
+means	VBZ
+without	IN
+object	NN
+localization	NN
+,	,
+it	PRP
+is	VBZ
+hard	JJ
+to	TO
+do	VB
+fine	JJ
+level	NN
+matching	VBG
+globally	RB
+due	JJ
+to	TO
+the	DT
+large	JJ
+translation	NN
+variance	NN
+of	IN
+objects	NNS
+and	CC
+irrela	NN
+-	:
+tively	RB
+diverse	JJ
+background	NN
+noise	NN
+.	.
+
+We	PRP
+donâ	VBP
+$	$
+™	CD
+t	NN
+compare	VB
+our	PRP$
+methods	NNS
+with	IN
+SBoW	NN
+on	IN
+translation	NN
+problem	NN
+,	,
+as	IN
+it	PRP
+requires	VBZ
+a	DT
+complex	JJ
+learn	VBP
+-	:
+ing	NN
+process	NN
+to	TO
+determine	VB
+which	WDT
+line	NN
+projections	NNS
+should	MD
+be	VB
+used	VBN
+.	.
+
+4	LS
+.	.
+
+CONCLUSIONS	NNS
+
+
+In	IN
+this	DT
+paper	NN
+,	,
+we	PRP
+propose	VBP
+several	JJ
+effective	JJ
+spatial	JJ
+pooling	VBG
+me	PRP
+-	:
+thods	NNS
+to	TO
+handle	VB
+various	JJ
+spatial	JJ
+transformations	NNS
+.	.
+
+The	DT
+generated	VBN
+spatial	JJ
+transformation	NN
+invariant	JJ
+image	NN
+representation	NN
+can	MD
+improve	VB
+the	DT
+entire	JJ
+image	NN
+matching	VBG
+very	RB
+well	RB
+.	.
+
+Experimental	JJ
+results	NNS
+show	VBP
+that	IN
+Spatial	JJ
+Pyramid	NN
+Ring	NN
+-LRB-	-LRB-
+SPR	NN
+-RRB-	-RRB-
+pooling	VBG
+works	NNS
+best	RB
+for	IN
+rotation	NN
+and	CC
+flipping	VBG
+variances	NNS
+.	.
+
+A	DT
+refined	VBN
+version	NN
+of	IN
+SPM	NNP
+-LRB-	-LRB-
+Relative	JJ
+Re	NNP
+-	:
+ordered	VBN
+SPM	NNP
+-RRB-	-RRB-
+can	MD
+improve	VB
+the	DT
+matching	NN
+accuracy	NN
+with	IN
+large	JJ
+translation	NN
+variance	NN
+.	.
+
+
+Furthermore	RB
+,	,
+the	DT
+proposed	VBN
+approaches	NNS
+are	VBP
+not	RB
+limited	VBN
+to	TO
+classifi	NN
+-	:
+cation	NN
+task	NN
+.	.
+
+They	PRP
+also	RB
+can	MD
+be	VB
+applied	VBN
+on	IN
+object	NN
+detection	NN
+and	CC
+im	NN
+-	:
+age	NN
+retrieval	NN
+applications	NNS
+as	RB
+well	RB
+.	.
+
+That	DT
+is	VBZ
+because	IN
+we	PRP
+invariantly	RB
+embed	VBD
+the	DT
+spatial	JJ
+layout	NN
+information	NN
+into	IN
+classical	JJ
+BoW	NN
+image	NN
+representation	NN
+,	,
+which	WDT
+ensures	VBZ
+that	IN
+all	DT
+current	JJ
+techniques	NNS
+following	VBG
+the	DT
+image	NN
+representation	NN
+step	NN
+can	MD
+be	VB
+seamlessly	RB
+applied	VBN
+.	.
+
+
+In	IN
+the	DT
+future	NN
+,	,
+we	PRP
+will	MD
+continue	VB
+to	TO
+address	VB
+other	JJ
+spatial	JJ
+transforma	NN
+-	:
+tions	NNS
+of	IN
+objects	NNS
+,	,
+e.g.	FW
+scale	NN
+and	CC
+view	NN
+angle	NN
+change	NN
+.	.
+
+We	PRP
+also	RB
+would	MD
+like	VB
+to	TO
+fuse	NN
+these	DT
+methods	NNS
+together	RB
+to	TO
+design	VB
+a	DT
+unified	JJ
+representa	NN
+-	:
+tion	NN
+,	,
+which	WDT
+can	MD
+be	VB
+tolerant	JJ
+with	IN
+all	DT
+kinds	NNS
+of	IN
+layout	NN
+variances	NNS
+.	.
+
+
+5	CD
+.	.
+
+ACKNOWLEDGEMENT	NN
+
+
+This	DT
+work	NN
+is	VBZ
+supported	VBN
+in	IN
+part	NN
+to	TO
+Dr.	NNP
+Qi	NNP
+Tian	NNP
+by	IN
+NSF	NNP
+IIS	NNP
+1052851	CD
+,	,
+Faculty	NNP
+Research	NNP
+Awards	NNS
+by	IN
+Google	NNP
+,	,
+FXPAL	NNP
+and	CC
+NEC	NNP
+Laboratories	NNPS
+of	IN
+America	NNP
+,	,
+in	IN
+part	NN
+to	TO
+Dr.	NNP
+Yan	NNP
+Song	NN
+by	IN
+Anhui	NNP
+Pro-	NNP
+vincial	NNP
+Natural	NNP
+Science	NNP
+Foundation	NNP
+under	IN
+grant	NN
+090412056	CD
+,	,
+and	CC
+in	IN
+part	NN
+to	TO
+Dr.	NNP
+Yijuan	NNP
+Lu	NNP
+by	IN
+Research	NNP
+Enhancement	NN
+Program	NN
+-LRB-	-LRB-
+REP	NN
+-RRB-	-RRB-
+and	CC
+start-up	JJ
+funding	NN
+from	IN
+the	DT
+Texas	NNP
+State	NNP
+University	NNP
+re	SYM
+-	:
+spectively	RB
+.	.
+
+
+6	CD
+.	.
+
+REFERENCES	NNS
+
+
+-LSB-	-LRB-
+1	CD
+-RSB-	-RRB-
+D.	NNP
+Lowe	NNP
+,	,
+â	VBD
+$	$
+œDistinctive	JJ
+image	NN
+features	NNS
+from	IN
+scale-invariant	JJ
+key	NN
+-	:
+
+
+points	NNS
+,	,
+â	VB
+$	$
+IJCV	CD
+,	,
+2004	CD
+.	.
+
+
+-LSB-	-LRB-
+2	CD
+-RSB-	-RRB-
+S.	NNP
+Lazebnik	NNP
+,	,
+C.	NNP
+Schmid	NNP
+,	,
+and	CC
+J.	NNP
+Ponce	NNP
+,	,
+â	VBD
+$	$
+œBeyond	JJ
+bags	NNS
+of	IN
+features	NNS
+:	:
+
+
+Spatial	JJ
+pyramid	NN
+matching	VBG
+for	IN
+recognizing	VBG
+natural	JJ
+scene	NN
+catego	NN
+-	:
+
+
+ries	NNS
+,	,
+â	VB
+$	$
+In	IN
+proc	NN
+.	.
+
+CVPR	NNP
+,	,
+2006	CD
+.	.
+
+
+-LSB-	-LRB-
+3	CD
+-RSB-	-RRB-
+L.	NNP
+Fei-Fei	NNP
+,	,
+R.	NNP
+Fergus	NNP
+,	,
+and	CC
+P.	NNP
+Perona	NNP
+,	,
+â	VBD
+$	$
+œLearning	JJ
+generative	JJ
+visual	JJ
+
+
+models	NNS
+from	IN
+few	JJ
+training	NN
+examples	NNS
+:	:
+an	DT
+incremental	JJ
+Bayesian	JJ
+
+
+approach	NN
+tested	VBN
+on	IN
+101	CD
+object	NN
+categories	NNS
+,	,
+â	VB
+$	$
+CVPR	CD
+Workshop	NNP
+on	IN
+
+
+Generative-Model	NNP
+Based	VBD
+Vision	NNP
+,	,
+2004	CD
+.	.
+
+
+-LSB-	-LRB-
+4	CD
+-RSB-	-RRB-
+L.	NNP
+Fei-Fei	NNP
+and	CC
+P.	NNP
+Perona	NNP
+,	,
+â	VBD
+$	$
+œA	JJ
+Bayesian	JJ
+hierarchical	JJ
+model	NN
+for	IN
+
+
+learning	VBG
+natural	JJ
+scene	NN
+categories	NNS
+,	,
+â	VB
+$	$
+In	IN
+proc	NN
+.	.
+
+CVPR	NNP
+,	,
+2005	CD
+.	.
+
+-LSB-	-LRB-
+5	CD
+-RSB-	-RRB-
+D.	NNP
+Nister	NNP
+and	CC
+H.	NNP
+Stewenius	NNP
+,	,
+â	VBD
+$	$
+œScalable	JJ
+recognition	NN
+with	IN
+a	DT
+voca	NN
+-	:
+
+
+bulary	JJ
+tree	NN
+,	,
+â	VB
+$	$
+In	IN
+proc	NN
+.	.
+
+CVPR	NNP
+,	,
+2006	CD
+.	.
+
+
+-LSB-	-LRB-
+6	CD
+-RSB-	-RRB-
+Y.	NNP
+Boureau	NNP
+,	,
+F.	NNP
+Bach	NNP
+,	,
+Y.	NNP
+LeCun	NNP
+,	,
+J.	NNP
+Ponce	NNP
+,	,
+â	VBD
+$	$
+œLearning	JJ
+mid-level	JJ
+
+
+features	NNS
+for	IN
+recognition	NN
+,	,
+â	VB
+$	$
+In	IN
+proc	NN
+.	.
+
+CVPR	NNP
+,	,
+2010	CD
+.	.
+
+
+-LSB-	-LRB-
+7	CD
+-RSB-	-RRB-
+J.	NNP
+Wang	NNP
+,	,
+J.	NNP
+Yang	NNP
+,	,
+K.	NNP
+Yu	NNP
+,	,
+F.	NNP
+Lv	NNP
+,	,
+T.	NNP
+Huang	NNP
+,	,
+and	CC
+Y.	NNP
+Gong	NNP
+,	,
+â	VBD
+$	$
+œLocali	JJ
+-	:
+
+
+ty-constrained	JJ
+linear	JJ
+coding	VBG
+for	IN
+image	NN
+classification	NN
+,	,
+â	VB
+$	$
+In	IN
+proc	NN
+.	.
+
+
+CVPR	NNP
+,	,
+2010	CD
+.	.
+
+
+-LSB-	-LRB-
+8	CD
+-RSB-	-RRB-
+Y.	NNP
+Cao	NNP
+,	,
+C.	NNP
+Wang	NNP
+,	,
+Z.	NNP
+Li	NNP
+,	,
+L.	NNP
+Zhang	NNP
+,	,
+â	VBD
+$	$
+œSpatial-bag-of-features	JJ
+,	,
+â	JJ
+$	$
+In	IN
+
+
+proc	NN
+.	.
+
+CVPR	NNP
+,	,
+2010	CD
+.	.
+
+
+-LSB-	-LRB-
+9	CD
+-RSB-	-RRB-
+A.	NN
+Vedaldi	NNP
+and	CC
+B.	NNP
+Fulkerson	NNP
+,	,
+â	VBD
+$	$
+œVLFeat	JJ
+:	:
+An	DT
+Open	NNP
+and	CC
+Portable	NNP
+
+
+Library	NNP
+of	IN
+Computer	NNP
+Vision	NNP
+Algorithms	NNP
+,	,
+â	VBD
+$	$
+2008	CD
+,	,
+
+
+http://www.vlfeat.org/	NN
+
+
+-LSB-	-LRB-
+10	CD
+-RSB-	-RRB-
+C.-C	NN
+.	.
+
+Chang	NNP
+and	CC
+C.-J	NNP
+.	.
+
+Lin	NNP
+.	.
+
+LIBSVM	NNP
+:	:
+a	DT
+library	NN
+for	IN
+support	NN
+vector	NN
+
+
+machines	NNS
+,	,
+2001	CD
+.	.
+
+Software	NNP
+available	JJ
+at	IN
+
+
+http://www.csie.ntu.edu.tw/-cjlin/libsvm	NN
+.	.
+
+
+-LSB-	-LRB-
+11	CD
+-RSB-	-RRB-
+S.	NNP
+Zhang	NNP
+,	,
+Q.	NNP
+Tian	NNP
+,	,
+G.	NNP
+Hua	NNP
+,	,
+Q.	NNP
+Huang	NNP
+,	,
+and	CC
+S.	NNP
+Li	NNP
+,	,
+â	VBD
+$	$
+œDescriptive	JJ
+
+
+Visual	JJ
+Words	NNS
+and	CC
+Visual	JJ
+Phrases	NNS
+for	IN
+Image	NN
+Applications	NNS
+,	,
+â	VB
+$	$
+In	IN
+
+
+ACM	NNP
+MM	NN
+,	,
+2009	CD
+.	.
+
+
+-LSB-	-LRB-
+12	CD
+-RSB-	-RRB-
+Z.	NNP
+Wu	NNP
+,	,
+Q.	NNP
+Ke	NNP
+,	,
+M.	NNP
+Isard	NNP
+,	,
+and	CC
+J.	NNP
+Sun	NNP
+,	,
+â	VBD
+$	$
+œBundling	JJ
+features	NNS
+for	IN
+large	JJ
+
+
+scale	NN
+partial-duplicate	NN
+web	NN
+image	NN
+search	NN
+,	,
+â	VB
+$	$
+In	IN
+proc	NN
+.	.
+
+CVPR	NNP
+,	,
+2009	CD
+.	.
+
+-LSB-	-LRB-
+13	CD
+-RSB-	-RRB-
+W.	NNP
+Zhou	NNP
+,	,
+Y.	NNP
+Lu	NNP
+,	,
+H.	NNP
+Li	NNP
+,	,
+Y.	NNP
+Song	NN
+,	,
+Q.	NNP
+Tian	NNP
+,	,
+â	VBD
+$	$
+œSpatial	JJ
+coding	VBG
+for	IN
+
+
+large	JJ
+scale	NN
+partial-duplicate	NN
+web	NN
+image	NN
+search	NN
+,	,
+â	VB
+$	$
+In	IN
+ACM	NNP
+MM	NN
+,	,
+
+
+2009	CD
+.	.
+
+
+-LSB-	-LRB-
+14	CD
+-RSB-	-RRB-
+J.	NNP
+Philbin	NNP
+,	,
+O.	NNP
+Chum	NNP
+,	,
+M.	NNP
+Isard	NNP
+,	,
+J.	NNP
+Sivic	NNP
+and	CC
+A.	NNP
+Zisserman	NNP
+,	,
+â	VBD
+$	$
+œObject	JJ
+
+
+retrieval	NN
+with	IN
+large	JJ
+vocabularies	NNS
+and	CC
+fast	JJ
+spatial	JJ
+matching	NN
+,	,
+â	VB
+$	$
+In	IN
+
+
+proc	NN
+.	.
+
+CVPR	NNP
+,	,
+2007	CD
+.	.
+
+
+-LSB-	-LRB-
+15	CD
+-RSB-	-RRB-
+A.	NN
+Oliva	NNP
+and	CC
+A.	NNP
+Torralba	NNP
+,	,
+â	VBD
+$	$
+œModeling	JJ
+the	DT
+shape	NN
+of	IN
+the	DT
+scene	NN
+:	:
+a	DT
+
+
+holistic	JJ
+representation	NN
+of	IN
+the	DT
+spatial	JJ
+envelope	NN
+,	,
+â	VB
+$	$
+IJCV	CD
+,	,
+2001	CD
+.	.
+
+-LSB-	-LRB-
+16	CD
+-RSB-	-RRB-
+M.	NNP
+Everingham	NNP
+,	,
+L.V.	NNP
+Gool	NNP
+,	,
+C.K.I.	NNP
+Williams	NNP
+,	,
+J.	NNP
+Winn	NNP
+,	,
+A.	NNP
+Zis	NNP
+-	:
+
+
+serman	NN
+,	,
+â	VB
+$	$
+œThe	JJ
+PASCAL	NNP
+Visual	NNP
+Object	NNP
+Classes	NNS
+-LRB-	-LRB-
+VOC	NN
+-RRB-	-RRB-
+Chal	NN
+-	:
+
+
+lenge	NN
+,	,
+â	VB
+$	$
+IJCV	CD
+,	,
+2009	CD
+
+
+-LSB-	-LRB-
+17	CD
+-RSB-	-RRB-
+SIVAL	NNP
+:	:
+http://accio.cse.wustl.edu/sg-accio/SIVAL.html	NN
+-LSB-	-LRB-
+18	CD
+-RSB-	-RRB-
+T.	FW
+Tuytelaars	FW
+,	,
+â	VB
+$	$
+œDense	JJ
+interest	NN
+points	NNS
+,	,
+â	VB
+$	$
+In	IN
+proc	NN
+.	.
+
+CVPR	NNP
+,	,
+2010	CD
+.	.
+
+-LSB-	-LRB-
+19	CD
+-RSB-	-RRB-
+M.	NNP
+Wang	NNP
+,	,
+X.	NNP
+Hua	NNP
+,	,
+R.	NNP
+Hong	NNP
+,	,
+J.	NNP
+Tang	NNP
+,	,
+G.	NNP
+Qi	NNP
+,	,
+Y.	NNP
+Song	NN
+,	,
+``	``
+Unified	JJ
+
+
+Video	NNP
+Annotation	NNP
+Via	NNP
+Multi-Graph	NNP
+Learning	NNP
+,	,
+''	''
+IEEE	NNP
+CSVT	NNP
+,	,
+
+
+2009	CD
+.	.
+
+
+-LSB-	-LRB-
+20	CD
+-RSB-	-RRB-
+M.	NNP
+Wang	NNP
+,	,
+X.	NNP
+Hua	NNP
+,	,
+T.	NNP
+Mei	NNP
+,	,
+R.	NNP
+Hong	NNP
+,	,
+G.	NNP
+Qi	NNP
+,	,
+Y.Song	NNP
+and	CC
+L.	NNP
+Dai	NNP
+,	,
+
+
+``	``
+Semi-Supervised	JJ
+Kernel	NNP
+Density	NNP
+Estimation	NNP
+for	IN
+Video	NNP
+Annota	NNP
+-	:
+
+
+tion	NN
+,	,
+''	''
+CVIU	NNP
+,	,
+2009	CD
+.	.
+
+
+1512	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+4	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+

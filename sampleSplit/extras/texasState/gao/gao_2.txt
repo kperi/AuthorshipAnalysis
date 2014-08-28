@@ -1,0 +1,1041 @@
+﻿Neurocomputing 92 (2012) 170–182 
+Contents lists available at SciVerse ScienceDirect 
+Neurocomputing 
+journal homepage: www.elsevier.com/locate/neucom 
+A framework for application-driven classiﬁcation of data streams 
+Peng Zhanga,b,n, Byron J. Gaob, Ping Liua, Yong Shic, Li Guoa 
+a 
+Institute of Computing Technology, Chinese Academy of Sciences, Beijing 100190, China b 
+Department of Computer Science, Texas State University, San Marcos, TX 78666, USA c 
+FEDS Center, Graduate University, Chinese Academy of Sciences, Beijing 100190, China 
+article info 
+abstract 
+Available online 13 March 2012 
+Keywords: 
+Data stream classiﬁcation Transfer learning Semi-supervised learning Relational k-means Concept drifting 
+Data stream classiﬁcation has drawn increasing attention from the data mining community in recent years. Relevant applications include network trafﬁc monitoring, sensor network data analysis, Web click stream mining, power consumption measurement, dynamic tracing of stock ﬂuctuations, to name a few. Data stream classiﬁcation in such real-world applications is typically subject to three major challenges: concept drifting, large volumes, and partial labeling. As a result, training examples in data streams can be very diverse and it is very hard to learn accurate models with efﬁciency. In this paper, we propose a novel framework that ﬁrst categorizes diverse training examples into four types and assign learning priorities to them. Then, we derive four learning cases based on the proportion and priority of the different types of training examples. Finally, for each learning case, we employ one of the four SVM-based training models: classical SVM, semi-supervised SVM, transfer semi-supervised SVM, and relational k-means transfer semi-supervised SVM. We perform comprehensive experiments on real-world data streams that validate the utility of our approach. 
+1. Introduction 
+Recent advances in computing technology and networking architectures have enabled generation and collection of unprece- dented amount of data streams of various kinds, such as network trafﬁc data, wireless sensor readings, Web page visits, online ﬁnancial transactions and phone call records [5]. Consequently, data stream mining has emerged to be one of the most important research frontiers in data mining. Common stream mining tasks include classiﬁcation [34,30], clustering [3] and frequent pattern mining [15]. Among them, data stream classiﬁcation has drawn particular attention due to its vast real-world applications. 
+Example. In wireless sensor networks, data stream classiﬁcation has been used to monitor environment changes. For example, in the sensor data collected by the Intel Berkeley Research Lab [37], each sensor reading contains information (temperature, humidity, light and sensor voltage) collected from 54 sensors deployed in the lab. The whole stream contains consecutive information recorded over a 2-month period (one reading per 1–3 min). By using the sensor ID as class label, the learning task is to correctly identify the sensor ID (one out of 54 sensors) purely based on the sensor data and the corresponding recording time. 
+n 
+Corresponding author at: Institute of Computing Technology, Chinese Academy of Sciences, Beijing 100190, China. 
+E-mail addresses: zhangpeng@ict.ac.cn (P. Zhang), bgao@txstate.edu (B.J. Gao), liuping@ict.ac.cn (P. Liu), yshi@gucas.ac.cn (Y. Shi), guoli@ict.ac.cn (L. Guo). 
+0925-2312/$ - see front matter & 2012 Elsevier B.V. All rights reserved. doi:10.1016/j.neucom.2011.11.026 
+& 2012 Elsevier B.V. All rights reserved. 
+Example. In power consumption analysis, data stream classiﬁca- tion has been used to measure power consumptions. For example, the power supply stream collected by an Italian electricity company [37] contains hourly power supply of the company recording the power from two sources: power supplied from main grid and power transformed from other grids. The stream contains 3-year power supply records from 1995 to 1998, and the learning task is to predict which hour (1 out of 24 h) the current power supply belongs to. 
+Example. In information security, data stream classiﬁcation has been widely used to monitor Web trafﬁc streams. For example, the KDDCUP’99 intrusion detection dataset [4] was provided by the MIT Lincoln Labs collecting 9 weeks of raw TCP dump data for a local area network. The learning task is to build a predictive model capable of distinguishing between normal connections and intrusive connections such as DOS (denial-of-service), R2L (unauthorized access from a remote machine), U2R (unauthorized access to local super user privileges), and Probing (surveillance and other probing) attacks. 
+In these applications, the essential goal is to efﬁciently build classiﬁcation models from data streams for accurate prediction. Compared to traditional stationary data, building prediction models from stream data faces three additional challenges: 
+ Concept drifting: In data streams, hidden patterns continuously 
+change with time [26]. For example, in the wireless sensor 
+
+========1========
+
+P. Zhang et al. / Neurocomputing 92 (2012) 170–182 
+b1 
+b1 b2 
+b2 
+b3 
+Time T1 
+Time T2 
+Time T3 
+Fig. 1. An illustration of concept drifting in data streams. In the three consecutive time stamps T1, T2 and T3, the classiﬁcation boundary gradually drifts from b1 to b2 and ﬁnally to b3. 
+stream, lighting during working hours is generally stronger 
+than off-hours. Fig. 1 illustrates the concept drifting problem, 
+where the classiﬁcation boundary (concept) continuously 
+drifts from b1 to b2, and ﬁnally to b3 down the streams.  Large volumes: Stream data come rapidly and continuously in 
+large volumes. For example, the wireless sensor stream con- 
+tains 2,219,803 examples recorded over a 2-month period (one 
+reading per 1–3 min). It is impossible to maintain all historical 
+stream records for in-depth analysis. 
+ Partial labeling: Due to large volumes of stream data, it is 
+infeasible to label all stream examples for building classiﬁcation 
+models. Thus data streams are typically partially labeled and 
+training data contain both labeled and unlabeled examples. 
+As a result, training examples in data streams are very diverse. To see why, let us assume data streams are buffered chunk by chunk. Examples in the most recent up-to-date chunk are training data, and examples in the yet-to-come chunk are testing data [31]. Due to the concept drifting, training examples in the up-to-date chunk often exhibit two distributions: target domain and similar domain, where the former represents the distribution of the testing data, and the latter represents a distribution similar to the target domain [9]. Then, training examples can be categorized into four types: labeled and from the target domain (Type I), labeled and from a similar domain (Type II), unlabeled and from the target domain (Type III) and unlabeled and from a similar domain (Type IV). 
+In order to build accurate prediction models from such diverse training examples with efﬁciency, it is necessary to closely examine the characteristics, in particular, proportion and learning priority, of the different types of examples in the training chunk. 
+ Proportion: The proportion of training examples from different 
+types is determined by the concept drifting probability and 
+labeling percentage (percentage of labeled examples). For 
+example, when concept drifting is low and labeling percentage 
+is high (low), the training chunk will have a large portion of 
+Type I (III) examples. When concept drifting is high and 
+labeling percentage is high (low), the training chunk will have 
+a large portion of Type II (IV) examples. 
+ Learning priority: Generally, examples from the target domain 
+(Types I and III) are capable of capturing the genuine concept 
+of the testing data, and have a higher priority than examples 
+from similar domains (Types II and IV). Besides, since Type I 
+examples are labeled, they have a higher priority than Type III 
+examples. Similarly, Type II examples have a higher priority 
+than Type IV examples. 
+We take an example to explain how our framework can achieve accuracy with efﬁciency in building prediction models. If the Type I examples dominate the training chunk, according to the learning priority, we do not use the remaining three types of examples for training. By doing so, we gain in efﬁciency by building a simple model, comparing to a very complex model if 
+171 
+we have to learn from all four types of training examples. On the other hand, the most informative examples, i.e., the ones in Type I, are utilized in model construction and the learning accuracy is not sacriﬁced comparing to some sophisticated model, e.g., TS3VM, a very accurate yet complex learning model that we propose in this paper. 
+Based on the same observation and argument, we categorize learning from data streams into four cases: Type I dominates (Case 1), Type III dominates (Case 2), Type II dominates (Case 3) and Type IV dominates (Case 4). For Cases 1 and 2, we apply classical SVM and semi-supervised SVM, respectively, for training. For Cases 3 and 4, we propose two novel learning models, transfer semi-supervised SVM (TS3VM) and relational k-means-based TS3VM (RK-TS3VM), for training. 
+The rest of the paper is organized as follows: Section 2 introduces categorization of training examples and learning cases. Sections 3 describes the corresponding learning models for the four learning cases. Section 4 reports experimental results. Section 5 surveys the related work. We conclude the paper in Section 6. 
+2. Categorization of training examples and learning cases 
+Consider a data stream S consisting of an inﬁnite sequence of examples fxi,yig, where xiARd, d is the dimensionality and yiAf1,þ1g indicates the class label of xi. Note that yi may not be always observed. Assume that the stream S arrives at a speed of n examples per second. The decision boundary (concept) underneath drifts with a probability of c, where 0rcr1. Besides, assume that at each time stamp, a training chunk D ¼fx1, ...,xng is buffered and labeled by experts with a labeling rate of l per chunk where 0olo1. 
+Categorization of training examples: As discussed previously, due to the concept drifting, not all examples in the up-to-date chunk share the same distribution with the testing data in the yet-to-come chunk. In other words, examples in the up-to-date chunk could be generated from some similar domain instead of the target domain. Besides, since it is impractical to label all examples in the up-to-date training chunk, the training chunk will contain both labeled and unlabeled examples. By combining these two factors, we categorize training examples in data streams into four types. 
+Deﬁnition (Four types of training examples). In an up-to-date training chunk, there are four types of examples: labeled and from the target domain (Type I), labeled and from a similar domain (Type II), unlabeled and from the target domain (Type III) and unlabeled and from a similar domain (Type IV). 
+Fig. 2 illustrates the four types of training examples, where blue solid circles denote the Type I examples, red solid circles denote the Type II examples, blue hollow circles denote the Type III examples, and red hollow circles denote the Type IV examples. Due to the temporal correlation of concepts [18], Type I and III examples are usually located at the tail of a training chunk and close to the yet-to-come chunk. Type II and IV examples are usually located at the head of a training chunk and relatively far away from the yet-to-come chunk. 
+Estimation of number of examples: By estimating the number of examples of each type, we can gain insights into the training chunk and apply an appropriate learning model. Intuitively, the percentage of labeled examples depends on how fast labeling can be done by the experts, and the number of target domain examples depends on the concept drifting probability. By considering the two factors, the number of examples of each type can be estimated as follows. 
+
+========2========
+
+172 
+P. Zhang et al. / Neurocomputing 92 (2012) 170–182 
+Historical stream data  
+Up-to-date chunk Yet-to-come chunk  
+…… 
+Training chunk  
+Test chunk  
+Type I  
+Type IV  
+Type II  
+Type III  
+Fig. 2. An illustration of the four types of training examples in an up-to-date training chunk. (For interpretation of the references to color in this ﬁgure legend, the reader is referred to the web version of this article.) 
+Theorem 1. Let L1, L2, L3 and L4 be the number of examples of Type I, Type II, Type III and Type IV respectively in the up-to-date chunk. Then 
+L1pg  c1  l  n 
+L2pð1g  c1Þl n 
+L3pg c1 1lÞn 
+L4pð1g c1Þ1lÞn 
+where g40 is a constant coefﬁcient. 
+ð1Þ 
+Proof. Recall that stream S ﬂows at a speed of n examples per second, the concept drifting probability is c, and the labeling rate is l. The number of target domain examples is inversely proportional to the concept drifting rate c with a coefﬁcient of g, so it can be easily estimated that gc1 n examples in the up-to- date chunk have the same distribution as the testing data. The remaining ð1g c1Þn examples have a similar distribution to the testing examples. From the estimates the theorem follows immediately. & 
+Learning priority: Not all the four types of training examples have to be used in model construction. For example, consider a data stream where the concept drifting is low and the labeling rate is high, the training chunk will have a large portion of Type I examples. In this case, we are able to build a satisfactory model by training only on the Type I examples. We observe that the four types of training examples have the following learning priorities. 
+Observation 1. The learning priority of the four types of training examples is 
+Type I4Type III4Type II4Type IV 
+ð2Þ 
+What is the intuition behind Observation 1? Generally, exam- ples from the target domain (Types I and III) are capable of capturing the genuine concept of the testing data, and thus have a high priority than examples from similar domains (Types II and IV). Besides, since Type I examples are labeled, they have a higher priority than Type III examples. Similarly, Type II examples have a higher priority than Type IV examples. 
+Based on Observation 1, when a particular type dominates the training examples, examples with lower priorities will not be used for training. For example, if Type III dominates the training examples, only Type I and Type III examples will be used for training. This is because Type I examples have a higher priority than Type III examples, and the remaining two types have lower priorities. By doing so, we gain in efﬁciency by building a simple model, comparing to a very complex model if we have to learn from all four types of training examples. On the other hand, the 
+II 
+I 
+II 
+I 
+IV 
+III 
+IV 
+III 
+II 
+I 
+II 
+I 
+IV 
+III 
+IV 
+III 
+Fig. 3. The proportion of the four types of training examples with respect to different labeling rate l and concept drifting probability c. (a) l is high and c is low. Case 1, (b) both l and c are low. Case 2, (c) Both l and l are high. Case 3 and (d) l is low and c is high. Case 4. 
+most informative examples are utilized in model construction and the learning accuracy is not sacriﬁced. 
+Learning cases: Aiming at both accuracy and efﬁciency in learning prediction models, we categorize learning from data streams into the following four cases: 
+Case 1: Type I dominates. When labeling rate is high and the 
+concept drifting probability is low, Type I dominates the 
+training examples. In this case, we can train a satisfactory 
+model by using only Type I examples. 
+Case 2: Type III dominates. When both labeling rate and 
+concept drifting probability are low, Type III dominates the 
+training examples. According to the learning priority, it is 
+necessary to combine both Type I and Type III examples for 
+training. 
+Case 3: Type II dominates. When both labeling rate and 
+concept drifting probability are high, Type II dominates the 
+training examples, and we will use Type I, Type II and Type III 
+examples for training. 
+Case 4: Type IV dominates. When labeling rate is low and the 
+concept drifting probability is high, Type IV dominates the 
+training examples. This is the most difﬁcult case because most 
+examples are unlabeled and not from the target domain. 
+According to the learning priority, we need to use all the four 
+types of training examples for training. 
+These learning cases are further illustrated in Fig. 3. 
+3. Learning models 
+We have introduced the four learning cases. In this section, we present their corresponding learning models. 
+Throughout the section, T1 ¼ðx1,y1Þ, ...,ðxL 
+1 
+,yL Þ denotes the 
+1 
+set of Type I examples. T2 ¼fðxL 
+1 
+þ1,yL1 þ1Þ, 
+...,ðxL,yLÞgdenotes the set of Type II examples, where L ¼L1þL2. T3 ¼fxLþ1, ...,xLþUg denotes the set of Type III examples, where U is the set of unlabeled examples. T4 ¼fxLþUþ1, ...,xLþUþNgdenotes the set of Type IV examples, where N is the set of unlabeled examples. 
+3.1. Case 1: Type I dominates 
+In this case, Type I examples T1 dominate the training chunk and has the highest learning priority. Thus, only T1 will be used for training. Formally, to learn from T1 ¼fðx1,y1Þ, ...,ðxL 
+1 
+,yL Þg, 
+1 a generic SVM model can be trained by maximizing the margin 
+
+========3========
+
+P. Zhang et al. / Neurocomputing 92 (2012) 170–182 
+Fig. 4. An illustration of the Hinge loss function (a) HðtÞ¼maxð0;1tÞ, and the Symmetric Hinge loss function (b) HðtÞ¼maxð0;19t9Þ. The Hinge loss function is equivalent to the following optimization problem: min x, s:t: : xZ0, xZ1t. 
+distance between classes while minimizing the error rates as 
+XL min 
+1JwJ2 
+1 
+2 
+þC xi 
+i ¼ 1 
+s:t: : yiðwxiþbÞZ1xi 
+xiZ0, 1rirL1 
+ð3Þ 
+where w is the projection direction, b is the classiﬁcation boundary, xi is the error distance from xi to b, and parameter C is the penalty for the examples inside the margin. 
+The SVM model given in Eq. (3) is a constrained convex optimization problem. To simplify the expression, the Hinge loss function [8] in Fig. 4 can be used to transform Eq. (3) into an unconstrained convex optimization problem as 
+miny 
+1JwJ2 
+XL 1 
+2 
+þC HðyifyðxiÞÞ ð4Þ 
+i ¼ 1 
+where y¼ðw,bÞand fyðxÞ¼ðwxþbÞ. 
+3.2. Case 2: Type III dominates 
+In this case, Type III examples T3 dominate the training chunk and Type I examples T1 have a higher learning priority than Type III examples. Thus, both T1 and T3 will be used for training. 
+Learning from T1 and T3 is a semi-supervised learning problem [27]. Generally speaking, adding unlabeled T3 examples into learning will further improve the performance for the following reasons: (1) labeled examples in T1 are too few to build a satisfactory model. (2) T3 contains a relatively large number of examples that come from the target domain, which can greatly help in differentiating the genuine classiﬁcation boundaries. 
+Formally, in order to learn from both T1 and T3, semi-super- vised SVM (S3VM) [7] can be used as the learning model. The logic behind S3VM is to ﬁnd a classiﬁcation boundary that achieves a maximum margin not only between labeled examples, but alsoPLþU unlabeled examples. That is, adding an extra term Cn 
+i ¼Lþ1 
+H ð9fyðxiÞ9Þ to penalize the misclassiﬁcation of unlabeled examples located inside the margin as 
+LXþU 
+173 
+where L denotes the number of labeled examples and U denotes the number of unlabeled examples. 
+By taking account of the balance constraint, we can derive a modiﬁed semi-supervised SVM model as 
+LXþU 
+miny 
+1JwJ2 
+XL 1 
+2 
+þC HðyifyðxiÞÞþCn 
+i ¼1 
+Hð9fyðxiÞ9Þ 
+i ¼Lþ1 
+s:t: : 
+1 
+LXþU 
+fyðxiÞ¼ 
+1 
+XL 1 U L 
+yi1 
+i ¼Lþ1 i ¼1 
+ð7Þ 
+where y¼ðw,bÞ. 
+Obviously, Eq. (7) is a standard S3VM model and can be easily solved by using off-the-shelf tools [19]. 
+3.3. Case 3: Type II dominates 
+In this case, Type II examples T2 dominate the training chunk, and Type I and Type III examples T1 and T3 have higher learning priorities than Type II examples. Thus, T1, T2 and T3 will be used for training. 
+Accurately learning from these three types of examples is non- trivial. For this purpose, we design a novel transfer semi-super- vised SVM model (TS3VM for short). Intuitively, the TS3VM model can be formulated by incorporating examples in T1, T2 and T3 sequentially. Speciﬁcally, we can ﬁrst formulate a generic SVM model by taking T1 into consideration. Then, a transfer SVM model can be formulated by taking T2 into consideration. Finally, we can include T2 and formulate the TS3VM model. 
+Learning from T1 has been discussed in Eq. (4), based on which T2 can be incorporated by applying the transfer learning strategy. Practically, transfer learning can use labeled examples in T2 to reﬁne the classiﬁcation boundary by transferring the knowledge from T2 to T1. An effective way of doing so is to consider the problem as a multi-task learning procedure [13]. A common two-task learning SVM model on T1 and T2 can be formulated as 
+XL min 
+1JwJ2þC1Jv1J2þC2Jv2J2 
+2 
+þC xi 
+i ¼1 
+s:t: : yiððwþv1ÞxiþbÞZ1xi, 1rirL1 
+yiððwþv2ÞxiþbÞZ1xi, L1þ1rirL 
+xiZ0, 1rirL 
+ð8Þ 
+where parameters C1 and C2 are the penalties on the two tasks, and v1 and v2 are the discrepancies between the global optimal decision boundary w and the local optimal decision boundary (i.e., wþv1 for the task of learning from T1 and wþv2 for the task of learning from T2). 
+In Eq. (8), parameters C1 and C2 control the preference between the two tasks. If C14C2, task 1 is preferred over task 2; otherwise, task 2 is preferred over task 1. The relationship between C1 and C2 is furthered studied in the Experiments 
+miny 
+1JwJ2 
+XL 1 
+2 
+þC HðyifyðxiÞÞþCn 
+i ¼1 
+Hð9fyðxiÞ9Þð5Þsection. By using the Hinge loss function, Eq. (8) can be trans- 
+i ¼Lþ1 
+Balance constraint: A possible limitation of the TS3VM model is that all unlabeled examples in T3 may be classiﬁed into one class with a very large margin, leading to deteriorated performance. To address this issue, an additional balance constraint should be added to ensure that unlabeled examples in T3 be assigned into both classes. In the case that we do not have any prior knowledge about the class ratio in T3, a reasonable approach [8] is to estimate its class ratio from T1 and T2 as 
+1 
+LXþU 
+fyðxiÞ¼ 
+1 
+XL 1 U L 
+yi1 
+i ¼Lþ1 i ¼1 
+ð6Þ 
+formed into an unconstrained form 
+miny 
+1JwJ2þC1JV1J2þC2JV 
+2 
+XL 
+2 
+2J 
+þC HðyifyðxiÞÞ ð9Þ 
+i ¼1 
+where y¼ðw,v1,v2,bÞ, fyðxÞ¼ðwþv1Þxþb for task 1 and fyðxÞ¼ðwþv2Þxþb for task 2. 
+In addition to T1 and T2, the additional semi-supervised learning method can be used to learn from the remainingP T3.AsLþU 
+discussed in Eq. (5), by adding an extra term Cn 
+i ¼Lþ1 
+Hð9fyðxiÞ9Þ to penalize the misclassiﬁcation of unlabeled examples in T3 located inside the margin decided by Eq. (9), as well as the balance constraint in Eq. (6), we can ﬁnally get the TS3VM 
+
+========4========
+
+174 
+P. Zhang et al. / Neurocomputing 92 (2012) 170–182 
+model as 
+miny 
+1JwJ2þC1Jv1J2þC2Jv2J2 2 
+þC 
+XL 
+HðyifyðxiÞÞþCn i ¼ 1 
+LXþU 
+Hð9fyðxiÞ9Þ 
+i ¼ Lþ1 
+s:t: : 
+1 
+LXþU 
+XL U 
+fyðxiÞ¼1 
+L 
+yi 
+i ¼ Lþ1 i ¼1 
+ð10Þ 
+where y¼ðw,v1,v2,bÞ, fyðxiÞ¼ðwþv1Þxiþb for 1rirL1, fyðxiÞ¼ðwþv2Þxiþb for L1þ1rirL, and fyðxiÞ¼wxiþb for Lþ1rirLþU. 
+Solution to the TS3VM objective function:AsshowninEq.(10), optimizing the objective function of TS3VM is a non-convex optimi- zation problem, which is difﬁcult to ﬁnd global minima especially for large-scale problems. We propose to solve this non-convex problem by using Concave–Convex Procedure (CCCP), which has been devel- oped by the optimization community [29,8,7]. CCCP decomposes a non-convex function into the sum of a convex function and a concave function, and then approximates the concave part by using a linear function (a tangential approximation). By doing so, the whole optimization procedure can be carried out iteratively by solving a sequence of convex problems. Algorithm 1 describes the CCCP algorithm in detail. 
+Algorithm 1. CCCP Algorithm. 
+Require: objective function JðyÞ 
+generate an initial point y0 with a best guess 
+JðyÞ¼JvexðyÞþJcavðyÞ 
+repeat 
+ytþ1 ¼argminy JvexðyÞþJ0cavðytÞy 
+until convergence of y 
+return a local minima solution yn 
+From the CCCP perspective, we can observe that the ﬁrst four terms of TS 
+3VM are convex functions, whereas the last Symmetric Hinge loss part Cn 
+PLþU 
+i ¼Lþ1 
+Hð9fyðxiÞ9Þ makes it a non-convex model. Thus, we will decompose and analyze the last part by using the CCCP method. To simplify the notation, we denotePLþU zi ¼fyðxiÞ, so the last part can be rewritten as Cn 
+i ¼Lþ1 
+Hð9zi9Þ. Considering a speciﬁc zi (without loss of generality, we denote it as z here), the Symmetric Hinge loss on z can be denoted by J(z)as 
+If zo0 in the current iteration, then in the next iteration, the current effective loss can be denoted as 
+8 
+>2Cn< z, zZ1 
+Lðz,1Þ¼ Cnð1þzÞ, 9z9o1 ð15Þ 
+:> 
+0, zr1 
+On the other hand, if zZ0, then in the next iteration, the current effective loss can be denoted as 
+8 
+<> 
+0, zZ1 
+Lðz,þ1Þ¼> Cnð1zÞ, 9z9o1 ð16Þ 
+: 
+2Cnz, zr1 
+By doing so, within each iteration, when taking all zi ¼fyðxiÞinto3 
+consideration, solving the TS VM model is equivalent to solving Eq. (17) under the balance constraint equation (6) 
+miny 
+1JwJ2þþC1Jv1J2þC2Jv2J2 
+2 
+XL 
+LXþU 
+þC HðyifyðxiÞÞþ LðfyðxiÞ,yiÞð17Þ 
+i ¼1 i ¼Lþ1 
+where yi (Lþ1rirLþU) is the class label of xi that has been assigned in the previous iteration. If yio0, Eq. (15) will be used to calculate the loss function; otherwise, Eq. (16) will be used to calculate the loss function. The detailed description of solving TS3VM is given in Algorithm 2. 
+Algorithm 2. TS3VM learning model. 
+Require: T1, T2 and T3 
+use T1 and T2 to build a transfer SVM model as shown in Eq. (8), and generate an initial point y0 ¼ðw0,v10,v20,b0Þ 
+repeat 
+yi’sgnðwxiþbÞ, 8Lþ1rirLþU 
+y’ calculate Eq. (17) under the balance constraint equation (6) 
+until yi remains unchanged, 8Lþ1rirLþU 
+return fðxÞ¼sgnðwxþbÞ 
+Theorem 2 (Convergence of TS 
+3VM). 
+The TS3VM learning model in Algorithm 2 converges after a limited number of iterations . 
+Proof. In Algorithm 2, in each iteration t, the objective function JðytÞis split into a convex part JvexðytÞand a concave part JcavðytÞ. Then, in the next iteration tþ1, the point ytþ1 is the minimal solution of the current objective function, and we have 
+Jvexðytþ1ÞþJ0cavðytÞy 
+0tþ1 
+rJvexðytÞþJcavðytÞyt 
+ð18Þ 
+Meanwhile, because the concavity of J 
+cavðyÞ, we have 
+JðzÞ¼CnHð9z9Þð11ÞJ 
+cavðy 
+0tþ1ÞrJ 
+cavðytÞþJcavðytÞðytþ1ytÞð19Þ 
+Eq. (11) is a non-convex function, which can be split into a convex part and a concave part as 
+JðzÞ¼CnHð9z9Þ¼Cn|ﬄﬄﬄﬄﬄﬄﬄﬄﬄﬄﬄﬄﬄﬄﬄﬄﬄﬄﬄﬄﬄﬄ{zﬄﬄﬄﬄﬄﬄﬄﬄﬄﬄﬄﬄﬄﬄﬄﬄﬄﬄﬄﬄﬄﬄ}maxð0;19z9ÞþCn9z9Cn|ﬄﬄﬄﬄ{zﬄﬄﬄﬄ}9z9 
+JvexðtÞ JcavðtÞ 
+ð12Þ 
+According to Algorithm 1, the next iterative point can be calcu- lated by the approximation of the concave part Jcav as 
+( 
+@JcavðzÞz Cnz, zo0 
+@z 
+¼ 
+Cnz, zZ0 
+ð13Þ 
+and then minimizing 
+JðzÞ¼Cn maxð0;19z9ÞþCn9z9þ@JcavðzÞ@z z 
+ð14Þ 
+By adding both sides of Eqs. (18) and (19), we have 
+Jvexðytþ1ÞþJcavðytþ1ÞþJ0cavðytÞytþ1 
+rJvexð ytÞþJ0 
+0 
+cavðytÞyt 
+þJcavðytÞþJcavðytÞðytþ1ytÞð20Þ 
+Move the third item on the left-hand side of Eq. (20) to the right-hand side, we have 
+Jvexðytþ1ÞþJcavðytþ1ÞrJvexðytÞþJ0cavðytÞyt 
+þJcavð ytÞþJ0cavðytÞðytþ1ytÞJ0cavðytþ1Þytþ1 
+ð21Þ 
+The right-hand side of the above inequation equals to JvexððytÞÞþJcavðytÞ. Therefore, the objective function will decrease after each iteration Jvexðytþ1ÞrJðytÞ. & 
+
+========5========
+
+P. Zhang et al. / Neurocomputing 92 (2012) 170–182 
+Consequently, Algorithm 2 will converge after a limited number of iterations. In fact, as long as the initial point is carefully selected (i.e., using a multi-task SVM model built on T1 and T2 as the initial point), Algorithm 2 will converge very fast. 
+3.4. Case 4: Type IV dominates 
+This is the most complex learning case. In this case, Type IV examples T4 dominate the training chunk and has the lowest learning priority. Thus, it is necessary to use all T1, T2, T3 and T4 for training. 
+To solve this learning problem, we design a novel Relational K-means-based Transfer Semi-Supervised learning model (RK-TS3VM for short). The TS3VM model, as discussed previously, is used to learn from T1, T2 and T3. Now we discuss how to learn from T4 using a Relational K-means model [38] (RK for short). 
+Learning from T4 is more challenging than from other three types of training examples, mainly because examples in T4 are unlabeled and have different distributions from the target domain. The aim of the RK model is to transfer knowledge from T4 to T1, T2 and T3 by constructing some new features for the three types of examples using the relational information between T1, T2, T3 and T4. 
+An example of RK learning is shown in Fig. 5, where T4 examples are ﬁrst clustered into k clusters, G1, ...,Gk based on a relational matrix built between T1 and T4. After that, k new features fðxi,GtÞ ( t¼1,...,k) are added to each example xi in T1 to construct a new data set T01 by calculating the relationship between xi and each cluster center. By doing so, the new data set T01 will contain information transferred from T4, which can help to build a more accurate prediction model. 
+Given L1 examples in T1 and N examples in T4, the purpose of the relational k-means clustering is to cluster instances in T4 into k groups, by taking the relationships between instances in T1 andL 
+T4 into consideration. Let WAR 
+1N 
+denote the similarity matrix between T1 and T4 with each wi,j indicating the similarity (which can be calculated according to the Euclidian distance) between instance xi in T1 and instance xj in T4. For each cluster Gt on W the average pairwise similarity for all examples in Gt can be deﬁned as 
+1 
+X X 
+175 
+Explicitly solving Eq. (24) is very difﬁcult. Alternatively, we can use a recursive hill-climbing search process as an approxima- tion solution. Assume that examples in T4 are clustered into k clusters, G1, ...,Gk. Moving an instance x from cluster Gi to cluster Gj changes only the cluster objective values JG and J 
+i 
+G 
+. 
+j Therefore, in order to maximize Eq. (24), at each step t,we randomly select an example x from a cluster Gi, and move it to cluster Gj. Such a move is accepted only if the inequity (25) achieves a higher value at step tþ1 
+JG ðtÞþJ 
+i 
+G 
+ðtÞoJ 
+j 
+G 
+ðtþ1ÞþJ 
+i 
+G 
+ðtþ1Þð25Þ 
+j 
+Based on the search process in inequity (25), major steps of the relational k-means are listed in Algorithm 3. 
+Algorithm 3. Relational k-means clustering. 
+Require: T1, T4, number of clusters k, and number of iterations T 
+W ’ calculate similarity matrix between T1 and T4 
+G1, ...,Gk’ apply k-means to W 
+for t’1toT do 
+x’ randomly select an example fromT4 
+Gi’ current cluster of examplex 
+JG ðtÞ’ calculateG 
+i 
+i’s objective value in Eq. (24) 
+JG ðtþ1Þ’ G 
+i 
+i’s new value after excludingx 
+for j’1tok,jai do 
+JG ðtÞ’ calculateG 
+j 
+j’s objective value 
+JG ðtþ1Þ’ G 
+j 
+j’s new value after includingx 
+if inequity (25) istrue then 
+Gj’Gj [x; Gi’Gi \ x 
+break 
+end if 
+end for 
+end for 
+m1,...,mk’ calculate cluster centers forG1, ...,Gk 
+return m1,...,mk 
+Algorithm 3has three tiers of loops. Within each tier, it needs 
+0 
+to frequently recalculateJ 
+SGt ¼ Þð22ÞG 
+ðtÞwhen the current examples are 
+Sðx,x 
+c 
+9Gt92 
+removed from its current group to another. Nevertheless, becausexAG 
+tx0 AGt 
+JG ðtÞ, as shown in Eq. (24), contains information from both the 
+c 
+similaritySG 
+i 
+and variancedG 
+i 
+in the relationship matrix, fre- 
+quently recalculatingJG ðtÞwill be time-consuming. To alleviate 
+c 
+this problem, we introduce an addictive update method and a 
+where Sðx,x0Þdenotes the similarity between two examples of x and x0. On the other hand, the variance of the relationship values of all examples in Gt can be calculated as 
+where bGt denotes the average relationship vector of all instances in Gt, and biAR1L 
+1 
+denotes the relationships of instance xj with respect to all examples in T1. The objective of the relational k-means is to ﬁnd k groups, Gt, t¼1,...,k, such that the sum of the similarities is maximized while the sum of variances is minimized as 
+X 
+subtractive update method to recalculateJG ðtÞ. 
+c 
+d 
+1G 
+t 
+¼9G ð 
+t 
+jb t 
+ÞT9 b 
+G 
+ðbjbGtÞð23ÞConsider an examplex inT4that moves from groupGi toGj. 
+yi AGt 
+Before the move,bG andbG are the mean vectors,d 
+i j 
+Gi 
+anddG 
+j 
+are 
+the variance vectors. After the move, the new groups areG0i andG0j. 
+Then the addictive update is given in the following theorem: 
+Theorem 3 (Additive update).When adding an example x into Gj, 
+the mean vector of Gj,bG ,can be updated to b0 
+i G 
+as follows: 
+i 
+X 
+b0G ¼1 
+j 
+9G0j9 
+bl 
+b bG 
+¼b 
+G 
+þk 
+j 
+i 
+xi A 
+njþ1 
+ð26Þ 
+Xk Xk 
+J0 
+e 
+¼max JGt ¼max 
+SGt 
+t ¼1 t ¼1 
+dGt 
+ð24ÞMeanwhile,the variance 
+dG 
+j 
+can be updated to d0G as follows: 
+j 
+Information from T1 
+Information from T4 
+Class label for T1 
+A1  A 
+2 
+.. Ad  G 
+1 
+.. Gk  Y  1 2 .. 5 f (x1, G1) .. f (x1, Gk) 1  .. .. .. ..  ..  .. ..  ..  3 7 .. 1 f (xL 
+1, 
+G1) .. f ( xL 
+1, 
+Gk) 2 
+Fig. 5. An illustration of the RK learning model. 
+X 
+d0G ¼19G09 ðb 
+0 
+j 
+lb G 
+ÞTðb 
+0 
+j 
+lb G 
+Þ 
+j 
+j yl AG0j 
+¼njnjþ1dG 
+j 
+þnj Þðb 
+T 
+ðn þ1Þ2ðbkbG 
+j 
+kbG 
+Þð27Þ 
+j 
+j 
+where nj is the number of examples in Gj. 
+Therefore, the updated mean and variance vectors of group Gj can be incrementally calculated, without recalculating Eq. (24). 
+
+========6========
+
+176 
+P. Zhang et al. / Neurocomputing 92 (2012) 170–182 
+Similarly, for a group Gi, where an example x is removed, its mean and variance vectors can be updated using the following theorem. 
+Theorem 4 (Subtractive update). When an example x is removed from group Gi, the mean vector bG can be updated to b0 
+i G 
+as follows: 
+i 
+1 
+X 
+b0G ¼ 
+9G09 
+bl ¼ 
+1 
+i 
+i 
+n 
+b bkbG 
+i 
+i 
+1ðn 
+ibG kÞ¼bG 
+yl AG0 
+i 
+i 
+ni1 
+ð28Þ 
+i 
+Meanwhile, the variance dG 
+i 
+can be updated to d0G as follows: 
+i 
+examples is a desirable trade-off solution. (3) When T2 dominates the training examples, using TS 
+3VM to train on 
+T1, T2 and T3 examples is a desirable trade-off solution. (4) When T4 dominates the training examples, using RK-TS 
+3VM is a desirable trade-off solution. 
+4.1. Experimental settings 
+Comparison partners: We implemented all the learning models 
+SVM, S3VM, TS3VM and RK-TS 
+d 
+1 
+. To solve the quadratic0 X 
+3VM in Cþþ 
+G 
+¼9G09 ðblb0G ÞTðblb0G Þ 
+i i i 
+programming problem for the RK-TS3VM model as in Eq. (17), wei 
+y AG0l 
+i 
+used the optimization package in the IMSL Fortran Library.1 Whilen 
+i 
+dG 
+i 
+ 
+ni 
+2 
+ðbkb 
+T 
+G 
+Þ ðb Þðn 
+G 
+29Þð 
+i1Þ 
+i 
+kb 
+our proposed RK-TS3VM model is the most accurate, it is also the 
+i 
+most sophisticated and time-consuming. Other simpler models 
+¼ni1 
+where ni is the number of examples in Gi. 
+Time complexity: Now we analyze the time complexity of Algorithm 3.InAlgorithm 3, when searching for a new group for each example in the relationship matrix, the updating operation, by using Theorems 3 and 4, can be executed within constant time O(1). Besides, Algorithm 3 is a greedy algorithm. In each iteration, it uses a local optimization technique to cluster examples into groups that maximizes Eq. (24). There are three tiers of loops in the algorithm. The ﬁrst tier aims to ﬁnd the best group for each example x with the worst-case complexity of O(k) (i.e., traversing all the k groups). The second tier aims to ﬁnd the best groups for all examples in T4,which has the worst-case complexity of O(N) (i.e., searching over all the N examples). The last tier aims to make the algorithm converge to a stable solution. Obviously, the ﬁrst two tiers dominate the time consumption of the whole algorithm, and thus the time complexity of Algorithm 3 is OðkÞOðNÞ¼OðkNÞ. 
+RK-TS3VM learning model: Algorithm 4 lists the detailed proce- dures of the RK-TS3VM learning model, which is the combination of the TS3VM and RK learning models. Given a training chunk D,Step 1 identiﬁes the four types of examples T1, T2, T3 and T4.Step 2 constructs a group of k feature vectors, denoted by m¼fm1,...,mkg, by applying RK to T1 and T4. In Steps 3 and 4, the k new features are appended to each example in T1, T2 and T3 to form three new sets denoted by T01, T02 and T03, respectively. Step 5 builds a TS3VM model F from T01, T02 and T03. In Step 6, the feature vectors m and F are combined to form the ﬁnal prediction model. For any example x in the testing chunk, RK-TS3VM ﬁrst calculates k new features for x, then uses the TS3VM model to predict a label for x. 
+Algorithm 4. RK-TS3VM learning model. 
+Require: training chunk D, chunk size n, labeling rate l, concept drifting probability c, number of clusters k 
+Step 1: identify T1, T2, T3 and T4 in D according to the labeling rate l and concept drifting probability c using Eq. (1) 
+Step 2: use RK model on T1 and T4 to get k cluster centers denoted by m¼fm1,...,mkg 
+Step 3: for each example x in T1, T2 and T3, add k attributes using the inner product between x and m 
+Step 4: get the new examples T01, T02 and T03 from Step 3 
+Step 5: construct TS 
+3VM from 
+T 
+0 
+1, 
+T02 and T03, and use it to train a model F 
+return m and F together as the prediction model 
+4. Experiments 
+In this section, we report experimental results. The purpose of the experiments is to validate the following arguments: (1) when T1 dominates the training examples, using SVM to train on T1 examples is a desirable trade-off solution. (2) When T3 dominates the training examples, using S 
+3VM to train on both 
+T1 and T3 
+can perform sufﬁciently accurate with less training time in certain learning cases and thus can be desirable trade-off solutions. 
+Data streams: One synthetic data stream and three real-world data streams were used in our experiments. The synthetic data stream was used to assess the performance of our framework under different concept drifting scenarios, which are hard to capture from real-world streams. It was generated as an inﬁnite sequence of fð xi,yiÞ 
+þ1 
+i ¼1g, where 
+xiARd is the feature vector and yiAf1,þ1g is the class label. The feature values of xi were generated by a uniform distribution between 0 and 1, and the classiﬁcation boundary was controlled 
+Xd 
+aixi ¼a0 i ¼1 
+ð30Þ 
+where ai controls the decision boundaries.Pd 
+For each example xi,if 
+i ¼1 
+aixiZa0, it was labeled as yi ¼þ1; otherwise, yi ¼1. To simulate the labeling process, we 
+randomly chose p percentage of examples and labeled them using 
+Eq. (30). To simulate concept drifting, ai was given a probability c, 
+0rcr1, to evolve between ai and aiþ0:1 with 10% probability to 
+reverse the direction. Besides, we set a margin between the two 
+classes. For the ‘‘P þ1’’ class, the boundary was set tod 
+i 
+P 
+¼0 
+aixiþ0:05, and for the ‘‘1’’ class, the boundary was setd 
+to 
+i ¼0 
+aixi0:05. To keep class distributions relatively balanced, we enforced the classiﬁcation boundary around the central pointPd 
+of the feature space by setting a0 ¼12 
+i ¼1 
+ai. In order to make the decision surface nonlinearly separable, 3% noise was introduced to the stream by randomly ﬂopping the class labels of the selected instances. 
+Three real-world streams were used in our experiments: wireless sensor stream, power supply stream, and intrusion detection stream. These data streams can be downloaded at www.cse.fau.edu/xqzhu/stream.html. The corresponding learning tasks have been discussed in our Introduction section. 
+4.2. Parameter study 
+Among the four learning models, SVM and S3VM are not new. Thus, we performed parameter study on synthetic data for the TS3VM and RK models under different experimental settings. 
+The four parameters of the TS3VM model in Eq. (10) are C1, C2, C and Cn. From the multi-task learning perspective, C1 and C2 control the discrepancies between the global optimal boundary w and the local optimal boundary wþv1 and wþv2. If we assign a relative large value to C1 (compared to C2), the global optimal solution w will bias towards task 1, and vice versa. If we have C1bC2, i.e., C1=C2410;000, v1 will approach to 0 and the classiﬁcation boundary of task 1 becomes the global optimal boundary. The parameter C controls the penalty of the 
+1 
+http://www.vni.com/products/imsl/ 
+
+========7========
+
+P. Zhang et al. / Neurocomputing 92 (2012) 170–182 
+0.96 
+0.95 
+parameter C1 
+0 
+0.01 
+0.1 
+1 
+10 
+100 
+1000 10000 
+0.96 
+0.95 
+0.94 
+parameter C* 
+0.93 
+0 
+0.01 
+0.1 
+1 
+10 
+100 
+1000 10000 
+177 
+0.96 
+0.95 
+parameter C2 
+0 
+0.01 
+0.1 
+1 
+10 
+100 
+1000 10000 
+0.96 
+0.95 
+parameter C 
+0 
+0.01 
+0.1 
+1 
+10 
+100 
+1000 10000 
+Fig. 6. Parameter study for TS3VM. The y-axis denotes accuracy and the x-axis denotes parameter values for (a) C1, (b) C2, (c) Cn and (d) C, each varying from 0 to 10,000. 
+0.95 
+0.94 
+Accuracy 
+0.93 
+Accuracy of TS3 VM 
+0.92 
+1 
+2 
+3 Number of Clusters 
+4 
+5 
+Fig. 7. Accuracy of TS3VM with respect to different k values for the RK model. We can observe that when k increases from 1 to 2, the accuracy increases signiﬁcantly. After that, the improvement becomes marginal. 
+misclassiﬁed examples in T1 and T2, and the last parameter Cn controls the penalty of the misclassiﬁed examples in T3. 
+Fig. 6 reports the accuracy values (the y-axis) of TS3VM with respect to different parameter values (the x-axis). All the results were averaged over 100 data chunks each containing 500 exam- ples. The concept drifting probability c was set to 50% and the labeling percentage was set to p¼10%. From Fig. 6(a) and (b), we observe that increasing C2 will result in a more noticeable performance deterioration than increasing C1. This is consistent with our assumption that task 1 is supposed to comply with the same distribution as the target domain. The results in Fig. 6(a) and (b) also suggest that a reasonable setting for C1 and C2 is to ensure that C1=C2 ¼ 10. From Fig. 6(c) we can observe that the performance of the TS3VM model has a signiﬁcant improvement when Cn increases from 0 (where the accuracy is about 0.93) to 1 (where the accuracy is above 0.96). That is to say, 
+adding T3 for training will signiﬁcantly improve the accuracy. Based on these observations, in the following experiments, we set C1 to 10 and the remaining parameters to 1. 
+For the RK model, the key parameter is k, i.e., the number of clusters in Algorithm 3. Intuitively, increasing k is equivalent to increasing the number of feature vectors, which is supposed to enhance the performance. Our experimental settings were as follows: the TS3VM model was tested on 100 data chunks each containing 500 examples. The probability of concept evolution/ change was 90% and only 5% examples were labeled. From Fig. 7 we can observe that when setting k to 2, there is a signiﬁcant accuracy improvement (from 0.9291 to 0.9482). After that, the improvement becomes marginal (from 0.9482 to 0.9516). There- fore, in our following experiments, we set k to 2. 
+4.3. Model study 
+In this series of experiments, we studied the performances of the four learning models under different concept drifting prob- ability c and labeling percentage l. We designed four experiments, each corresponding to a different combination of parameters c and l representing one of the four learning cases. All results were averaged over 100 continuous data chunks. 
+Case 1: In the ﬁrst experiment, the concept drifting probability was set to a very low value of 10%, and the labeling percentage was set to a high value of 90%. The proportion of the four types of training examples can be calculated as in Fig. 8. Obviously, most training examples in this case are of Type I. The experiments with respect to different chunk sizes D are shown in Table 1. From the results we can observe that the SVM model performs almost as well as other three more sophisticated models in terms of accuracy. This is because T1 examples dominate the training chunk, and we can achieve satisfactory results by using only T1 for training. Furthermore, from Fig. 9, we can see that SVM is the 
+
+========8========
+
+178 
+P. Zhang et al. / Neurocomputing 92 (2012) 170–182 
+Fig. 8. Proportion of the four types of training examples in Case 1. 
+Table 1 
+Case 1 accuracy study. 
+Learning models Chunk size 
+n¼100 
+n¼500 
+n¼1000 
+SVM 0.9877 
+70.02 S3VM 0.9893 
+70.02 TS3VM 0.9910 
+70.02 RK-TS3VM 0.9922 
+70.01 
+0.9902 
+70.02 0.9902 
+70.02 0.9922 
+70.01 0.9962 
+70.01 
+0.9945 
+70.01 0.9955 
+70.01 0.9967 
+70.01 0.9973 
+70.01 
+500 
+400 
+300 
+S3VM 
+TS3VM 
+RK-TS3VM 
+200 
+SVM 
+Training Time (ms) 
+100 
+0 
+Fig. 9. Training time of the four models in Case 1. 
+Fig. 10. Proportion of the four types of training examples in Case 2. 
+Table 2 
+Case 2 accuracy study. 
+Learning models Chunk size 
+n¼100 
+n¼500 
+n¼1000 
+SVM 0.8560 
+70.07 S3VM 0.9293 
+70.04 TS3VM 0.9297 
+70.04 RK-TS3VM 0.9330 
+70.01 
+0.8792 
+70.07 0.9575 
+70.04 0.9575 
+70.04 0.9610 
+70.01 
+0.8946 
+70.04 0.9621 
+70.01 0.9622 
+70.01 0.9660 
+70.01 
+most efﬁcient model compared to its peers. Therefore, we can conclude that SVM is a better trade-off option of models when Type I examples dominate the training chunk (i.e., when concept drifting probability is low and labeling percentage is high). 
+Case 2: In the second experiment, both concept drifting probability and labeling percentage were set to a very low value of 10%. In this situation, Type III examples, as shown in Fig. 10, dominate the training chunk. The results with respect to different 
+chunk sizes are presented in Table 2. We can observe that S3VM outperforms SVM, and is almost as good as other two models in terms of accuracy. From Fig. 11 we can observe that S3VM is more efﬁcient than both TS3VM and RK-TS3VM. Therefore, we can conclude that S3VM is a better trade-off option of models when Type III examples dominates the training chunk (i.e., both concept drifting probability and labeling percentage are low). 
+Case 3: In the third experiment, drifting probability was set to a high value of 70% and labeling percentage to a high value of 90%. The proportion of the four types training examples can be calculated as in Fig. 12. Obviously, most training examples in this case are of Type II. The experiments with respect to different chunk sizes are shown in Table 3. From the results we can observe that TS3VM signiﬁcantly outperforms other two models SVM and S3VM, and is almost as good as RK-TS3VM in terms of accuracy. This is because T3 examples dominate the training examples, and TS3VM learns from T3, T2 and T1 simultaneously. Furthermore, from Fig. 13,wecanseethatTS3VM is much more efﬁcient than RK-TS3VM. Therefore, we can conclude that TS3VM is a better trade-off option of models when Type II examples dominate the training chunk (i.e., both concept drifting probability and labeling percentage are high). 
+Case 4: In the last experiment, concept drifting probability was set to a high value of 70% and labeling percentage was set to a low value of 10%. The proportion of the four types training examples is shown in Fig. 14. In this case, Type IV examples dominate the training chunk. The results with respect to different chunk sizes are shown in Table 4. We can observe that RK-TS 
+3VM signiﬁcantly 
+500 
+400 
+RK-TS3VM 
+300 
+S3VM 
+TS3VM 
+200 
+Training Time (ms) 
+100 
+SVM 
+0 
+Fig. 11. Training time of the four models in Case 2. 
+Fig. 12. Proportion of the four types of training examples in Case 3. 
+Table 3 
+Case 3 accuracy study. 
+Learning models Chunk size 
+n¼100 
+n¼500 
+n¼1000 
+SVM 0.8311 
+70.06 S3VM 0.8669 
+70.04 TS3VM 0.9321 
+70.04 RK-TS3VM 0.9330 
+70.02 
+0.8580 
+70.04 0.9072 
+70.03 0.9503 
+70.02 0.9522 
+70.02 
+0.8602 
+70.02 0.9101 
+70.02 0.9543 
+70.02 0.9545 
+70.01 
+
+========9========
+
+P. Zhang et al. / Neurocomputing 92 (2012) 170–182 
+179 
+500 
+400 
+300 
+RK-TS3VM 
+TS3VM 
+200 
+S3VM 
+Training Time (ms) 
+100 
+SVM 
+0 
+Fig. 13. Training time of the four models in Case 3. 
+Fig. 14. Proportion of the four types of training examples in Case 4. 
+Table 4 
+Case 4 accuracy study. 
+Learning models Chunk size 
+n¼100 
+n¼500 
+n¼1000 
+SVM 0.795070.07 S3VM 0.821270.05 TS3VM 0.823170.05 RK-TS3VM 0.884370.04 
+0.801170.05 0.831070.04 0.824270.04 0.891070.04 
+0.812970.03 0.833270.03 0.826670.02 0.901870.02 
+800 
+700 
+RK-TS3VM 
+600 
+500 
+In order to decide the learning model, we need to identify the main type of examples in the training chunk. For this purpose, we need to detect the concept drifting probability c and decide the labeling rate l. While several concept change detection methods are available [16,20], for simplicity (we do not need very accurate estimates), we used prediction accuracy to approximate concept drifting probability. Speciﬁcally, we ﬁrst assume that all the stream examples are labeled. If there is no concept drifting, the prediction accuracy will be close to 100%. Otherwise, the predic- tion error rate can be used to approximate the concept drifting probability. Fig. 16 shows the prediction accuracy over 50 con- tinuous data chunks of the three data streams. The average accuracy values for the three streams are 84.32%, 91.07% and 99.13%, respectively. Thus, the concept drifting probability in the three streams are approximately 15%, 10% and 1%, respectively. 
+The labeling rate depends on the labeling experts. They were set to 10%, 10% and 90%, respectively, for the three streams. By doing so, in the wireless sensor and power supply streams, Type II examples dominate the training trunk. In the intrusion detection stream, Type I examples dominate the training chunk. 
+Fig. 17(a) shows chunk-by-chunk comparisons for the four learn- ing models on the sensor stream. We can observe that SVM always has the worst prediction accuracy. The remaining three models performed similarly and better than SVM. Fig. 18(a) shows compar- isons on time cost for the four models. We can observe that S3VM is not as efﬁcient as SVM, but better than the remaining two models. Considering both prediction accuracy and efﬁciency, we can conclude that S3VM is the best trade-off option of models for classifying the sensor stream data. Similar results, as shown in Figs. 17(b) and 18(b), can also be observed for the power supply stream. 
+Figs. 18(c) and 17(c) show comparisons on the KDDCUP’99 intrusion detection stream. We can observe that SVM has the lowest time cost. On the other hand, SVM can achieve similar prediction accuracies to other three models over the continuous 50 data chunks. Therefore, we can conclude that SVM is the best trade-off option of models in this case. 
+Another important observation is that in all of the above experiments, the proposed RK-TS3VM model often had the high- est prediction accuracy. However, due to the complexity of the model, it always has the highest time cost. Therefore, this model is preferred in accuracy-critical applications where the concept drifting probability is high and the labeling rate is low. 
+400 
+300 
+5. Related work 
+Training Time (ms) 
+200 
+S3VM 
+TS3VM 
+100 
+SVM 
+0 
+Fig. 15. Training time of the four models in Case 4. 
+outperforms all other models in terms of accuracy. On the other hand, we were unable to achieve accurate results by training only on T1, T2 and T3. That is to say, in this case, we have to incorporate T4 into training even if it is time-wise costly as shown in Fig. 15. The results validate our claim that learning under Case 4 is the most difﬁcult, and we have to use the RK-TS3VM model to gain satisfactory accuracy. 
+4.4. Experiments on real-world streams 
+In this series of experiments, we compared the four learning models on three real-world data streams: wireless sensor stream, power supply stream, and intrusion detection stream. 
+The work reported in this paper applies sophisticated machine learning models, such as transfer learning [9] and semi-super- vised learning [27], to real-world data stream classiﬁcation [40,42,33,2]. 
+Two types of classiﬁcation models have been proposed for data stream classiﬁcation: incremental learning [10,11] and ensemble learning [35,32,39,41,36]. The former uses new data to update models trained from historical stream data. By doing so, the learning process scales to large data volumes as well as adapts to changing concepts. For example, Domingos [11] proposed a fast decision tree learner VFDT that incrementally builds Hoeffding trees from overwhelming volume of fast ﬂowing data streams. An extended approach CVFDT [17] handles time changing and concept evolution streams. Other methods [25] also attempted to employ incremental learning to tackle the challenge of concept evolution. 
+Ensemble learning, on the other hand, trains a number of base models from a small portion of stream data (i.e., a data chunk), and combines all base models to form an ensemble classiﬁer for prediction. Existing ensemble frameworks can be further 
+
+========10========
+
+180 
+P. Zhang et al. / Neurocomputing 92 (2012) 170–182 
+Fig. 16. Average accuracy over 50 data chunks on the three data streams. (a) Wireless sensor, (b) power supply and (c) intrusion detection. 
+Fig. 17. Chunk by chunk comparisons of the ﬁrst 50 data chunks on the three data streams. (a) Wireless sensor, (b) power supply and (c) intrusion detection. 
+300 
+300 
+250 
+250 
+200 
+RK-TS3VM 
+200 
+150 
+S3VM 
+TS3VM 
+150 
+S3VM 
+100 
+100 
+Training Time (ms) 
+50 
+Training Time (ms) 
+SVM 
+50 
+SVM 
+0 
+0 
+S3VM 
+RK-TS3VM TS3VM 
+RK-TS3VM 
+SVM 
+TS3VM 
+Training Time (ms) 
+400 350 300 250 200 150 100 50 
+0 
+Fig. 18. Training time comparisons on the three data streams. (a) Wireless sensor, (b) power supply and (c) intrusion detection. 
+categorized into two paradigms: horizontal ensemble that builds base classiﬁers on different buffered chunks by using one single learning algorithm, and vertical ensemble that builds base classi- ﬁers on the most-recent buffered chunk by using various learning algorithms. 
+A large portion of ensemble methods belong to the horizontal ensemble paradigm. For example, Street [24] proposed a SEA algo- rithm that combines decision tree models using majority voting. Kolter [21] proposed an ensemble method by using weighted online learners to handle drifting concepts. Wang et al. [18] proposed an accuracy-weighted ensemble method that assigns each classiﬁer a weight reversely proportional to its accuracy on the most recent data chunk. Yang et al. [28] proposed proactive learning where concepts (models) learnt from previous data chunks are used to foresee the best model to predict data in the current chunk. Zhu et al. [41] proposed an active learning framework that selectively labels exam- ples for concept evolution data streams. 
+Some most recent ensemble methods, however, belong to the vertical ensemble paradigm. For example, Gao et al. [14] and Zhang et al. [34]. Without the prior knowledge that when and where concept evolution may occur, buffered data chunks may contain obsolete patterns that deteriorate the ensemble’s 
+performance. Based on this observation, they proposed a new approach that builds the ensemble only from the most recent data chunk by using different learning algorithms such as decision tree, SVMs, and logistic regression models. 
+Existing data stream classiﬁcation models assume that training examples are fully labeled. However, labeling by experts is very expensive. For stream data with large, continuous volumes, this assumption would not hold. In other words, in practice, training data are often partially labeled. 
+Learning from unlabeled examples has been widely studied in the machine learning and data mining communities. For this purpose many semi-supervised learning models [19,6] have been proposed. Meanwhile, algorithms such as EM with generative mixture models [23], self-training [12], co-training [1], transductive Support Vector Machines [19,8], and graph-based [27] methods can be categorized as the semi-supervised learning category. 
+However, these methods only can be used in stationary databases. Very few studies consider data stream classiﬁcation with unlabeled training examples. Previously, Masud et al. [22] proposed a micro- cluster-based method that clusters unlabeled examples into micro- clusters, which are combined with labeled examples to generate decision boundaries. Zhang et al. [31] proposed an ensemble-based 
+
+========11========
+
+P. Zhang et al. / Neurocomputing 92 (2012) 170–182 
+model that combines base classiﬁers built from labeled examples and clusters built from unlabeled examples. Zhu et al. [41] proposed an active learning-based model that minimizes labeling cost by selecting the most important examples for labeling. Different from these methods, we perform a systematic study and provide a comprehen- sive solution for classiﬁcation of real-world data streams featuring different degrees of concept drifting and labeling percentage, target- ing not only high predicting accuracy, but also improved learning efﬁciency. 
+6. Conclusions 
+Data stream classiﬁcation for real-world applications has three major challenges: concept drifting, large volumes, and partial labeling. We have addressed these challenges and proposed a comprehensive learning framework that can efﬁciently learn accurate models from diverse training examples. In our framework, training examples are categorized into four types: labeled and from the target domain (Type I), labeled and from a similar domain (Type II), unlabeled and from the target domain (Type III) and unlabeled and from a similar domain (Type IV). Each type has its own learning priority. Then, based on the proportion and learning priority of the different types of training examples, four learning cases are considered and for each case, a different SVM-based learning model is applied. The learning models go from relatively simple (Cases 1 and 2) to fairly sophisticated (Cases 3 and 4). The framework gains in efﬁciency by learning simpler models whenever possible depending on the learning cases. Yet for each case, our framework makes sure the most informative examples are utilized and the learning model is sufﬁciently accurate. Thus, our framework also achieves high accuracy. Extensive experiments on both synthetic and real data streams have demonstrated the effectiveness and efﬁciency of our framework. 
+There are several interesting directions for future work. To improve efﬁciency of the TS3VM model, we will study how to train linear TS3VM model in linear time for high dimensional sparse data. We will also attempt to improve accuracy of the TS3VM model by incorporating kernel functions. 
+Acknowledgment 
+This research was supported by the National Science Foundation of China (NSFC) Grants (61003167, 90718042, 71110107026), National High Technology Research and Development Program 863 Grant (2011AA010705), Texas Norman Hackerman Advanced Research Program Grant (003656-0035-2009), and CAS/SAFEA Inter- national Partnership Program for Creative Research Teams (70921061). 
+References 
+[1] A. Blum, T. Mitchell, Combining labeled and unlabeled data with co-training, 
+in: The Workshop on Computational Learning Theory, 1998, pp. 92–100. [2] C. Aggarwal, Data Streams: Models and Algorithms, Springer, 2006. [3] C. Aggarwal, J. Han, J. Wang, Y. Philip, A framework for clustering evolving 
+data streams, in: Proceedings of the VLDB, 2003, pp. 81–92. 
+[4] A. Asuncion, D. Newman, UCI Machine Learning Repository, Irvine, CA. 
+University of California, School of Information and Computer Sciences, Irvine, 
+/http://archive.ics.uci.edu/ml S, 2007. 
+[5] B. Brian, B. Shivnath, D. Mayur, M. Rajeev, W. Jennifer, Models and issues in 
+data stream systems, in: Proceedings of the PODS, 2002, pp. 1–16. [6] O. Chapelle, B. Scholkopf, A. Zien, Semi-Supervised Learning, MIT Press, 
+Cambridge, MA, 2006. 
+[7] O. Chapelle, V. Sindhwani, S. Keerthi, Optimization techniques for semi- 
+supervised support vector machines, J. Mach. Learn. Res. 9 (2008) 203–233. [8] R. Collobert, F. Sinz, J. Weston, Large scale transductive SVMS, J. Mach. Learn. 
+Res. 7 (2006) 1687–1712. 
+181 
+[9] W. Dai, Q. Yang, G. Xue, Y. Yu, Boosting for transfer learning, in: Proceedings 
+of the ICML, 2007, pp. 193–200. 
+[10] C. Domeniconi, D. Gunopulos, Incremental support vector machine construc- 
+tion, in: Proceedings of the ICDM, 2001, pp. 589–592. 
+[11] P. Domingos, G. Hulten, Mining high-speed data streams, in: Proceedings of 
+the KDD, 2000, pp. 71–80. 
+[12] D. Yarowsky, Unsupervised word sense disambiguation rivaling supervised 
+methods, in: Proceedings of the ACL, 1995, pp. 189–196. 
+[13] T. Evgeniou, M. Pontil, Regularized multi-task learning, in: Proceedings of the 
+KDD, 2004, pp. 109–117. 
+[14] J. Gao, W. Fan, J. Han, On appropriate assumptions to mine data streams: 
+analysis and practice, in: Proceedings of the ICDM, 2007, pp. 143–152. [15] J. Han, H. Cheng, D. Xin, X. Yan, Frequent pattern mining: current status and future 
+directions, Data Mining and Knowledge Discovery (DMKD) 15 (13–15) (2007) 
+55–86. 
+[16] S. Ho, A martingale framework for concept change detection in time-varying 
+data streams, in: Proceedings of the ICML, 2005, pp. 321–328. 
+[17] G. Hulten, L. Spencer, P. Domingos, Mining time-changing data streams, in: 
+Proceedings of the KDD, 2001, pp 97–106. 
+[18] H. Wang, W. Fan, P. Yu, J. Han, Mining concept-drifting data streams using 
+ensemble classiﬁers, in: Proceedings of the KDD, 2003, pp. 226–235. [19] T. Joachims, Transductive inference for text classiﬁcation using support 
+vector machines, in: Proceedings of the ICML, 1999, pp. 200–209. 
+[20] D. Kifer, J.G.S. Ben-David, Detecting change in data streams, in: Proceedings 
+of the VLDB, 2004, pp. 180-191. 
+[21] J. Kolter, M. Maloof, Using additive expert ensembles to cope with concept 
+drift, in: Proceedings of the ICML, 2005, pp. 449–456. 
+[22] M. Masud, J. Gao, L. Khan, J. Han, B. Thuraisingham, A practical approach to 
+classify evolving data streams: training with limited amount of labeled data, 
+in: Proceedings of the ICDM, 2008, pp. 339–348. 
+[23] K. Nigam, R. Ghani, Analyzing the effectiveness and applicability of co- 
+training, in: Proceedings of the CIKM, 2000, pp. 86–93. 
+[24] W.N. Street, Y. Kim, A streaming ensemble algorithm (sea) for large-scale 
+classiﬁcation, in: Proceedings of the KDD, 2001, pp. 377–382. 
+[25] N. Syed, H. Liu, K. Sung, Handling concept drifts in incremental learning with 
+support vector machines, in: Proceedings of the KDD, 1999, pp. 317–321. [26] A. Tsymbal, The problem of concept drift: deﬁnitions and related work. 
+Available online: /http://www.scss.tcd.ie/publications/tech-reports/reports. 
+04/TCD-CS-2004-15.pdfS. 
+[27] X. Zhu, Semi-supervised learning literature survey, Technical Report 1530, 
+University of Wisconsin-Madison, 2005. 
+[28] Y. Yang, X. Wu, X. Zhu, Combining proactive and reactive predictions of data 
+streams, in: Proceedings of the KDD, 2005, pp. 710–715. 
+[29] A. Yuille, A. Rangarajan, The concave-convex procedure, in: Proceedings of 
+the NIPS, 2001, pp. 1033–1040. 
+[30] P. Zhang, J. Li, P. Wang, B. Gao, X. Zhu, L. Guo, Enabling fast prediction for 
+ensemble models on data streams, in: Proceedings of the KDD, 2011, 
+pp. 177–185. 
+[31] P. Zhang, X. Zhu, L. Guo, Mining data streams with labeled and unlabeled 
+training examples, in: Proceedings of the ICDM, 2009, pp. 627–636. [32] P. Zhang, X. Zhu, Y. Shi, L. Guo, X. Wu, Robust ensemble learning for mining 
+noisy data streams, Dec. Support Syst. 50 (2) (2011) 469–479. 
+[33] P. Zhang, X. Zhu, J. Tan, L. Guo, Skif: a data imputation framework for concept 
+drifting data streams, in: Proceedings of the CIKM, 2010, pp. 1869–1872. [34] P. Zhang, X. Zhu, Y. Shi, Categorizing and mining concept drifting data 
+streams, in: Proceedings of the KDD, 2008, pp. 812–820. 
+[35] P. Zhang, X. Zhu, J. Tan, L. Guo, Classiﬁerandclusterensemblesforminingconcept 
+drifting data streams, in: Proceedings of the ICDM, 2010, pp. 1175–1180. [36] P. Zhang, X. Zhu, X. Wu, Y. Shi, An aggregate ensemble for mining concept drifting 
+data streams with noise, in: Proceedings of the PAKDD, 2009, pp. 1021–1029. [37] X. Zhu, Stream data mining repository /www.cse.fau.edu/xqzhu/S, 2009. [38] X. Zhu, R. Jin, Multiple information sources cooperative learning, in: Proceed- 
+ings of the IJCAI, 2007, pp. 1369–1375. 
+[39] X. Zhu, X. Wu, C. Zhang, Vague one-class learning for data streams, in: 
+Proceedings of the ICDM, 2009, pp. 657–666. 
+[40] X. Zhu, P. Zhang, X. Lin, Y. Shi, Active learning from data streams, in: 
+Proceedings of the ICDM, 2007, pp. 757–762. 
+[41] X. Zhu, P. Zhang, X. Lin, Y. Shi, Active learning from stream data using optimal 
+weight classiﬁer ensemble, IEEE Trans. Syst. Man Cybernet. Part B 40 (4) 
+(2010) 1–15. 
+[42] X. Zhu, P. Zhang, X. Wu, D. He, C. Zhang, Y. Shi, Cleansing noisy data streams, 
+in: Proceedings of the ICDM, 2008, pp. 1139–1144. 
+Peng Zhang is an Assistant Professor with the Institute of Computing Technology, Chinese Academy of Sciences, Beijing (China). He received his PhD (2009) in Computer Science from the Graduate University of the Chinese Academy of Sciences, Beijing, China. His research interests include data stream mining and information security. 
+
+========12========
+
+182 
+P. Zhang et al. / Neurocomputing 92 (2012) 170–182 
+Byron J. Gao received PhD and BSc in Computer Science from Simon Fraser University, Canada, in 2007 and 2003, respectively. He was a postdoctoral fellow at the Uni- versity of Wisconsin-Madison before joining Texas State University-San Marcos in 2008. His research spans several related ﬁelds including data mining, databases, informa- tion retrieval, and bioinformatics. 
+Ping Liu is an Assistant Professor with the Institute of Computing Technology, Chinese Academy of Sciences, Beijing (China). Her research interests include string matching and information security. 
+Yong Shi is the Distinguished Professor of Information Technology, College of Information Science and Tech- nology, Peter Kiewit Institute, University of Nebraska, USA. He is also the Executive Deputy Director of the Fictitious Economy and Data Science Research Center, Chinese Academy of Sciences, Beijing, China. He is the Editor-in-Chief of International Journal of Information Technology and Decision Making (SCI), an Area Editor of International Journal of Operations and Quantitative Management, a member of Editorial Board for a number of academic journals, including International Journal of Data Mining and Business Intelligence. 
+Li Guo is the Director of the Information Security Research Center, Institute of Computing Technology, Chinese Academy of Sciences. Her research interests include data stream management and information security. 
+
+========13========
+

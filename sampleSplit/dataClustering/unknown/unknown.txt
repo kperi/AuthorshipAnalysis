@@ -1,0 +1,841 @@
+Chapter 24 
+
+
+
+Educational and Software Resources for Data 
+
+Clustering 
+
+
+
+Charu C. Aggarwal 
+
+IBM T. J. Watson Research Center 
+
+Yorktown Heights, NY 
+
+charu@us.ibm.com 
+
+
+
+Chandan K. Reddy 
+
+Wayne State University 
+
+Detroit, MI 
+
+reddy@cs.wayne.edu 
+
+
+
+24.1      Introduction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 607 
+
+24.2      Educational Resources . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 608 
+
+          24.2.1     Books on Data Clustering  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 608 
+
+          24.2.2     Popular Survey Papers on Data Clustering  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 608 
+
+24.3      Software for Data Clustering . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 609 
+
+          24.3.1     Free and Open-Source Software . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 610 
+
+                     24.3.1.1         General Clustering Software . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 610 
+
+                     24.3.1.2         Specialized Clustering Software . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 610 
+
+          24.3.2     Commercial Packages . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 611 
+
+          24.3.3     Data Benchmarks for Software and Research . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   611 
+
+24.4      Summary . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 612 
+
+          Bibliography . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 613 
+
+
+
+24.1       Introduction 
+
+
+
+     Since data clustering is a vast area, it is impossible to cover all the material on the topic in a 
+
+single book. Therefore, this chapter will summarize the key resources in this area. In general, the 
+
+resources on data clustering can be divided into the categories of (i) books, (ii) survey articles, and 
+
+(iii) software. 
+
+     The books on data clustering are mostly generic and are not speci?c to any particular area or 
+
+topic. On the other hand, since surveys are generally more focussed, many more surveys have been 
+
+written, which are speci?c to particular topics, such as high-dimensional data, nonnegative matrix 
+
+factorization, spectral clustering, or text data. Finally, since clustering is used extensively in the 
+
+industry, a signi?cant number of software packages are available for data clustering. 
+
+     The last of the aforementioned categories is an ever changing landscape, since advancements in 
+
+data clustering make older software packages obsolete. Therefore, it is possible that the software 
+
+resources listed in this chapter will eventually become obsolete. Furthermore, it is impossible to 
+
+fully list all the possible resources available in terms of the different kinds of software. Neverthe- 
+
+less, some of the key commercial and noncommercial sources from which data clustering software 
+
+
+
+                                                                                                                            607 
+
+
+----------------------- Page 634-----------------------
+
+608                           Data Clustering: Algorithms and Applications 
+
+
+
+can be used will be listed. Commercial software packages are generally based on the classical clus- 
+
+tering algorithms, whereas open-source packages are often much more advanced and sometimes 
+
+implement the latest algorithms available in the literature. 
+
+    This chapter is organized as follows. Section 24.2 presents educational resources on data clus- 
+
+tering. This section is itself divided into two subsections. The key books are discussed in section 
+
+24.2.1, whereas the survey papers on data clustering are discussed in section 24.2.2. Finally, the 
+
+software on data clustering will be discussed in section 24.3. Section 24.4 presents the conclusions 
+
+and summary. 
+
+
+
+24.2     Educational Resources 
+
+
+
+    Educational resources are either generic in the form of books or more focussed on the research 
+
+communities in the form of surveys. Books are generally more useful from a practical perspective, 
+
+whereas survey articles are more useful for an academic perspective. 
+
+
+
+24.2.1    Books on Data Clustering 
+
+
+
+    Some of the earlier books on data clustering are by Anderberg [3], Duran [9], and Hartigan 
+
+[15]. Much of the developments in data clustering occurred after the writing of these books. Fur- 
+
+thermore, these books were written before the advent of the modern computer age. Therefore, the 
+
+perspective in these books is not necessarily optimized toward the computational design of clus- 
+
+tering algorithms. Many of the classical clustering algorithms were developed after the writing of 
+
+these algorithms, primarily because of the ease in implementation which arose with the use of mod- 
+
+ern computers. 
+
+    Two of the earliest and most well-known books after the advent of the modern computer age 
+
+were written by Jain and Dubes [18] and by Kaufman and Rousseauw [21]. These books discuss 
+
+most of the classical clustering literature, in a way which is easy to understand and comprehend. In 
+
+particular, the book by Kaufman and Rousseauw, written in 2005, was updated to the most recent 
+
+developments in the ?eld at that time. Some of the recent books on data clustering, for example, Xu 
+
+and Wunsch [33], are focused on the classical methods on data clustering. Mirkin [26] addresses the 
+
+topic from the perspective of data recovery. 
+
+    With the advent of database technology and the large amounts of data in the nineties, the issue 
+
+of  scalability  has become  increasingly important. Therefore, a  number of  algorithms have  been 
+
+proposed over the last 15 years, which have been designed in order to improve the scalability of 
+
+the approach. The work in [14] is one of the recent books, which addresses many of the algorithms 
+
+developed by the database community. Nevertheless, the work over the last 15 years is much broader 
+
+and  addresses many different domains of  data,  along with  scalability  issues.  To  the  best  of  our 
+
+knowledge, there is no single book addressing all these issues. This book is therefore an attempt to 
+
+?ll the void in the ?eld. 
+
+
+
+24.2.2    Popular Survey Papers on Data Clustering 
+
+
+
+    There are numerous surveys on the topic of data clustering. The area of data clustering is so vast, 
+
+that many surveys have been written, which address a speci? c area of data clustering. The surveys 
+
+broadly fall into three categories: 
+
+
+----------------------- Page 635-----------------------
+
+                    Educational and Software Resources for Data Clustering                            609 
+
+
+
+    •  General Data  Clustering  Survey: In  these  surveys,  the  problems of  data  clustering  is  ad- 
+
+       dressed in a very general way and is not speci?c to a particular technique or data type. How- 
+
+       ever, the area of clustering is so vast, that most of these surveys tend to be overview articles. 
+
+
+
+    •  Technique-Centered Survey: In these surveys, a speci?c technique such as spectral clustering 
+
+       or k-means clustering is addressed in detail. 
+
+
+
+    •  Data Type-Centered Survey: In such surveys, a speci?c kind of data type such as time-series 
+
+       data, high-dimensional data, or text data is addressed by the survey. Different data types pro- 
+
+       vide different challenges to  clustering algorithms. Therefore, the  clustering methods for a 
+
+       speci?c data type are often closely related and addressed in a speci?c survey. 
+
+
+
+An excellent review article on the topic of data clustering is available in [19]. This article provides 
+
+an overview of the main issues in data clustering. Two other excellent survey articles are available 
+
+in [32, 6]. These provide a good overview of the landscape, though not in much detail. This is to be 
+
+expected, since the area of clustering is too vast to be easily covered by a single publication on the 
+
+topic. 
+
+    Many articles have also been written, which cover speci?c techniques of data clustering. An 
+
+excellent overview article on the k-means algorithm, which also provides a historical perspective, is 
+
+presented in [17]. The k-means method is a classical technique, which is closely related to hierar- 
+
+chical clustering algorithms. This is covered extensively in [28]. Hierarchical clustering algorithms 
+
+are also  used quite frequently for document data for organization of large corpora. A survey of 
+
+such algorithms for document data is presented in [31, 34]. Spectral clustering techniques are an 
+
+important class of methods which have found signi?cant popularity in the clustering literature. Two 
+
+surveys on spectral clustering may be found in [24, 11]. The survey in [24] is considered classical. 
+
+While evolutionary clustering algorithms have not found much popularity in the research literature, 
+
+they have often turned out be quite useful for practitioners. A survey on evolutionary clustering 
+
+algorithms may be found in [16]. 
+
+    Probabilistic  clustering algorithms are  very popular in  the  data  mining literature  because  of 
+
+their natural interpretability. A closely related class of algorithms is the fuzzy clustering method . 
+
+Techniques for fuzzy clustering are covered extensively in [4, 5]. 
+
+    Numerous articles have also been written on clustering in speci?c data types or domains. The 
+
+problem of clustering high dimensional data was ?rst covered in [29] and more recently in [22]. 
+
+Since high-dimensional clustering is a recent topic, and much research on the area has been per- 
+
+formed recently, the latter survey [22] is much more extensive. Document data is a particular case 
+
+of sparse high-dimensional data, for which clustering methods provide a tremendous challenge. For 
+
+example, hierarchical methods for document clustering have been studied in [31, 34], and a more 
+
+general survey on text clustering is provided in [2]. 
+
+    Many data types are contextual in which dependencies exist between the data items. Examples of 
+
+such data sets include (continuous) time-series data, discrete sequential data (which could be either 
+
+temporal or biological), and graph data. Contextual domains provide a special challenge because 
+
+the dependencies between the data items need to be accounted for during the clustering process. 
+
+Numerous surveys have been written to address such contextual domains. An excellent survey on 
+
+time-series data clustering may be found in [23], while the biological data domain is addressed in 
+
+[20, 25]. Graph clustering is a recent area which has been popularized by the advent of social and 
+
+information networks. Graph data clustering is addressed in [12, 30]. The review in [12] is recent 
+
+and particularly extensive. 
+
+
+----------------------- Page 636-----------------------
+
+610                           Data Clustering: Algorithms and Applications 
+
+
+
+24.3     Software for Data Clustering 
+
+
+
+    A signi?cant amount of software is available for data clustering. Interestingly, most of the so- 
+
+phisticated software on data clustering is open-source software, which is freely available at different 
+
+web sites. On the other hand, most of the commercial software comprises implementations of sim- 
+
+pler and more classical algorithms such as k-means or agglomerative clustering. 
+
+
+
+24.3.1    Free and Open-Source Software 
+
+
+
+    In this section, we will ?rst address the widely used general purpose clustering software. Later, 
+
+we will provide some additional specialized software that are used for speci?c data clustering ap- 
+
+plications. 
+
+
+
+24.3.1.1   General Clustering Software 
+
+
+
+    The most well-known general purpose site offering open source software is the WEKA machine 
+
+learning repository [39]. This is a general purpose repository which contains software not just for 
+
+clustering, but also for other data mining related tasks such as data preprocessing, classi?cation, and 
+
+visualization. However, much of the software can also be used for data clustering. 
+
+    Spider is another widely used data mining software which contains the implementations of sev- 
+
+eral popular clustering algorithms [54]. It is an object-oriented environment for machine learning in 
+
+MATLAB. Its recent version also provides WEKA interfaces to the machine learning libraries built 
+
+in Spider. 
+
+    Cluster is another widely used open-source clustering software that contains several clustering 
+
+and visualization algorithms [45]. It is very popular in the bioinformatics community. In addition to 
+
+the standard clustering algorithms, it also provides an excellent graphical environment for analyzing 
+
+complex datasets. The other advantage of this software is that it has interfaces to allows users to use 
+
+the clustering algorithms in other programming environments such as Python, MATLAB, and R. In 
+
+addition to the above mentioned software, programming platforms such as MATLAB and R already 
+
+have their own implementations of some of the commonly used data clustering algorithms. 
+
+    Another comprehensive set of data clustering packages is provided in the ELKI [1] suite of al- 
+
+gorithms that include many classical partitioning algorithms, EM-based probabilistic algorithms, 
+
+density-based algorithms, and subspace clustering algorithms. The KDnuggets web site [42] also 
+
+provides access to a signi?cant number of open-source software sites for clustering and segmenta- 
+
+tion. This can be considered a meta-repository, in that it provides pointers to other relevant sites. 
+
+
+
+24.3.1.2   Specialized Clustering Software 
+
+
+
+    OpenSubspace is an open-source software that contains the implementations of several subspace 
+
+clustering algorithms [41]. A more detailed description is provided in [27]. It integrates state-of- 
+
+the-art performance measures and visualization techniques for analyzing subspace clusters in the 
+
+WEKA environment. The MOA framework also implements a number of stream clustering algo- 
+
+rithms and provides tools for their evaluation [7]. Related to  Weka, it supports the extension with 
+
+new clustering algorithms, new stream generators, and new evaluation measures. The Weka imple- 
+
+mentation of the framework may be found in [86]. 
+
+    For text data clustering, the cross-bow method is available for download from [43]. This tech- 
+
+nique uses EM-clustering of text data, with the use of hierarchical partitioning of text documents. 
+
+There are also other specialized software such as MALLET [35] which performs clustering along 
+
+with some statistical natural language processing and topic modeling. CLUTO [46] is a software 
+
+package for clustering low- and high-dimensional data sets and for analyzing the characteristics of 
+
+
+----------------------- Page 637-----------------------
+
+                    Educational and Software Resources for Data Clustering                             611 
+
+
+
+the various clusters. One advantage of this software is that it is rather general purpose. It can be used 
+
+for text data, multi-dimensional data, or even transaction data. There are also some other packages 
+
+that perform traditional clustering on text documents [44]. 
+
+    A signi?cant amount of software is also available for contextual data types. For time-series data 
+
+clustering, an open-source software Gait-CAD is publicly available under the GNU public license. 
+
+This is downloadable from sourceforge [49] and is a MATLAB toolbox. For gene expression data 
+
+clustering, one of the most popular tools is Cluster, which has an associated TreeView software for 
+
+better visualization [10]. A more detailed discussion of the available software for analyzing gene 
+
+expression and other forms of biological data can be found in the biological data clustering chapter 
+
+of this book (Chapter 16). 
+
+    Numerous clustering tools are available for graph-partitioning and clustering. The network anal- 
+
+ysis tools (NeAT) [8] provides a number of tools for the analysis of network data, though the focus 
+
+is primarily on biological networks. In addition, many individual graph clustering tools are available 
+
+for download at different sites. One of the most famous family of graph partitioning algorithms is 
+
+METIS [48]. In spite of being one of the earlier methods, it seems to perform competitively with 
+
+most of the graph clustering algorithms, in terms of both effectiveness and ef?ciency. CFinder is a 
+
+free software for ?nding and visualizing overlapping dense groups of nodes in networks, based on 
+
+the Clique Percolation Method (CPM) [53]. Another software for Markov Clustering of networks is 
+
+available at [55]. This approach provides high scalability for the clustering process. For semisuper- 
+
+vised clustering, many implementations of different algorithms that perform constrained clustering 
+
+are available in [57]. 
+
+
+
+24.3.2    Commercial Packages 
+
+
+
+    Many mathematical tools such as MATLAB [52] come with built-in methods for data clustering. 
+
+However, typically, such methods use classical techniques such as the k-means algorithm. This is 
+
+because these are very general purpose tools, and the clustering capability is not the main purpose 
+
+of such software. However, numerous other commercial tools have been constructed, with a speci?c 
+
+goal of clustering different kinds of data. 
+
+    The KDnuggets site [42] provides a link to some of the more popular forms of software in this 
+
+domain. This site provides pointers to software developed by other vendors such as IBM and SAS 
+
+rather than only its own dedicated software. One of the most well-known ones is the IBM SPSS 
+
+data mining workbench [50]. This includes two step, k-means, and Kohonen clustering algorithms. 
+
+Another well-known package is the SAS Enterprise Modeler [51]. In this case, the clustering tool is 
+
+available with other forms of visual and decision support. SAS contains built-in procedures that can 
+
+perform clustering of even large-scale datasets. 
+
+    Providing full graphics and visualization capabilities is often important for getting an intuitive 
+
+understanding of the clustering process. Clustan [56] offers such capabilities with strong graphics 
+
+support. The NeuroXL Clusterizer  [58] is a commercial tool for clustering with neural networks. 
+
+The advantage of this tool is that it naturally integrates with Microsoft Excel and can, therefore, be 
+
+easily used for spreadsheet data. 
+
+
+
+24.3.3    Data Benchmarks for Software and Research 
+
+
+
+    Numerous data sets are available for testing clustering software and research. Some of the data 
+
+sets and web sites are general purpose, whereas other web sites are tailored to speci?c kinds of data. 
+
+The most well-known among the general-purpose web sites is the UCI machine learning repository 
+
+[13]. This resource is generally intended for classi?cation, though many of the data sets can also be 
+
+used for clustering. The KDnuggets web site [38] also provides access to many general-purpose data 
+
+sets. This can be considered a meta-repository, in that it provides pointers to other sites containing 
+
+data sets. Similar to this, the other popularly known meta-repositories that give a wide range of 
+
+
+----------------------- Page 638-----------------------
+
+612                            Data Clustering: Algorithms and Applications 
+
+
+
+links to other data repositories are STATOO [71] and David Dowe’s data links [72]. The latter also 
+
+provides several online resources on data mining case studies and competitions. 
+
+    More large-scale datasets are available from the KDD Cup dataset repository [73] and other 
+
+data mining competitions [74]. These datasets are not only large scale but are also directly collected 
+
+from complex real-world problems and hence provide several challenges. Clustering is often used 
+
+in solving such real-world challenges since many of these issues typically fall into the unsupervised 
+
+category. For the statistics community, Statlib dataset archive [75] is a widely used data collection. 
+
+    In addition to the above mentioned real-world datasets, there is also a Fundamental Clustering 
+
+Problem Suite [47] that provides a simple collection of different synthetically generated 2-D and 
+
+3-D datasets. This provides some test datasets with different sizes, shapes, and densities. 
+
+    For speci?c data types, numerous resources are available. For time-series clustering, the UCR 
+
+time-series web site [36] provides access to very long continuous series of data for clustering. An- 
+
+other time-series data library is available at [37]. For the case of network data, the SNAP repository 
+
+[40] hosted by Jure Leskovec at Stanford University provides access to a large number of network 
+
+data sets. 
+
+    For testing the performance of  text document clustering algorithm, there are several publicly 
+
+available text document repositories available. Some of the most popular text document collections 
+
+include Reuters [76], 20NewsGroups [77], TREC [78], and Cora [79]. 
+
+    To evaluate the biological data clustering, there is a plethora of websites that host gene expres- 
+
+sion datasets which can be used to evaluate the clustering algorithms. Gene Expression Omnibus 
+
+(GEO) repository [68] contains a comprehensive collection of gene expression datasets along with 
+
+raw source ?les used to generate this data. Gene Expression Model Selector provides a simple repos- 
+
+itory of the most widely studied gene expression datasets [69] and several other cancer-speci?c gene 
+
+expression datasets are available at [70]. Similarly, to test the performance of biological network 
+
+clustering algorithms, there are a plenty of databases that contain protein-protein interactions. The 
+
+most popular ones are DIP (Database of Interacting Proteins) [66], BioGRID [67], STRING (Search 
+
+Tool for the Retrieval of Interacting Genes/Proteins) [65] and MIPS (Mammalian Protein-Protein 
+
+Interaction Database)  [64].  The last  resource contains links to  several other  interaction network 
+
+databases. 
+
+    To evaluate the sequence data clustering algorithms, several biological sequence database repos- 
+
+itories are available at [63]. The most widely used repositories are GenBank [61] and EMBL [62] for 
+
+nucleic acid sequences and Protein Information Resources (PIR) [60] and UniProt [59] for protein 
+
+sequences. 
+
+    In the context of image applications, researchers in machine learning and computer vision com- 
+
+munities have used clustering for solving automatic grouping of images and image segmentation 
+
+problems. Clustering can help in ef?cient organization and retrieval of image databases. ImageCLEF 
+
+[82] and ImageNet [83] are two widely used image data repositories which are used to demonstrate 
+
+the performance of image data retrieval tasks. Data clustering can also be used in the context of im- 
+
+age segmentation. Vision and Autonomous Systems Center’s Image Database [80] from Carnegie 
+
+Mellon University and the Berkeley Segmentation dataset [81] can be used to test the performance 
+
+of clustering for image segementation problems. An extensive list of websites that provide image 
+
+databases is given in [84] and [85]. 
+
+
+
+24.4     Summary 
+
+
+
+    This chapter presents a summary of the key resources for data clustering in terms of books, 
+
+surveys, and  commercial and  noncommercial software  packages. While  many of  the  books and 
+
+
+----------------------- Page 639-----------------------
+
+                     Educational and Software Resources for Data Clustering                               613 
+
+
+
+surveys address different aspects of data clustering in terms of either techniques or data types, there 
+
+seems to be a gap in creating a single integrated book, which covers the modern literature on this 
+
+topic. This book is intended to ?ll that gap. 
+
+
+
+Bibliography 
+
+
+
+  [1]  E. Achtert, S. Goldhofer, H.-P. Kriegel, E. Schubert, and A. Zimek.  Evaluation of clusterings 
+
+      – metrics and visual support.  In ICDE Conference, pages 1285–1288, 2012. http://elki. 
+
+      dbs.ifi.lmu.de/wiki/Algorithms# 
+
+
+
+  [2]  C. Aggarwal, and C. Zhai. A survey of text clustering algorithms, In Mining Text Data, pages 
+
+      77–128, Springer, 2012. 
+
+
+
+  [3]  M. Anderberg. Cluster Analysis for Applications. Academic Press, 1973. 
+
+
+
+  [4]  A. Baraldi and P. Blonda.  A survey of fuzzy clustering algorithms for pattern recognition. I. 
+
+      IEEE Transactions on Systems, Man, and Cybernetics, Part B, 29(6):778–785, 1999. 
+
+
+
+  [5]  A. Baraldi and P. Blonda.  A survey of fuzzy clustering algorithms for pattern recognition. II. 
+
+      IEEE Transactions on Systems, Man, and Cybernetics, Part B: Cybernetics, 29(6):786–801, 
+
+      1999. 
+
+
+
+  [6]  P. Berkhin. A survey of clustering data mining techniques. Grouping Multidimensional Data, 
+
+      pages 25–71, 2006. 
+
+
+
+  [7]  A.  Bifet, G.  Holmes, B.  Pfahringer, P.  Kranen, H.  Kremer, T. Jansen, and T. Seidl.  MOA: 
+
+      Massive online analysis, a framework for stream classi?cation and clustering, Journal of Ma- 
+
+      chine Learning Research-Proceedings Track, 11:44–50, 2010. http://moa.cms.waikato. 
+
+      ac.nz/publications/ 
+
+
+
+  [8]  S. Brohee, K. Faust, G. Lima-Mendez, O. Sand, R. Janky, G. Vanderstocken, Y. Deville, and 
+
+      J. van Helden. NeAT: A toolbox for the analysis of biological networks, clusters, classes and 
+
+      pathways. Nucleic Acids Research, 36(Web Server issue), July 2008. 
+
+
+
+  [9]  B. Duran. Cluster Analysis: A Survey. Springer-Verlag, 1974. 
+
+
+
+[10]  M.  B.  Eisen,  P.  T.  Spellman,  P.  O.  Brown,  and  D.  Botstein.  Cluster  analysis  and  display 
+
+      of  genome-wide  expression  patterns.  Proceedings  of  the  National  Academy  of  Sciences, 
+
+      95(25):14863–14868, 1998. http://rana.lbl.gov/EisenSoftware.htm 
+
+
+
+[11]  M. Filippone, F. Camastra, F. Masulli, and S. Rovetta. A survey of kernel and spectral methods 
+
+      for clustering. Pattern Recognition, 41(1):176–190, 2008. 
+
+
+
+[12]  S. Fortunato. Community detection in graphs, Physics Reports, 486(3–5):75–174, February 
+
+      2010. 
+
+
+
+[13]  A.  Frank, and  A.  Asuncion.  UCI  Machine Learning Repository, Irvine,  CA:  University  of 
+
+      California, School of Information and Computer Science, 2010. http://archive.ics.uci. 
+
+      edu/ml 
+
+
+
+[14]  G. Gan, C. Ma, and J. Wu.  Data Clustering: Theory, Algorithms, and Applications.              SIAM, 
+
+      Society for Industrial and Applied Mathematics, 2007. 
+
+
+----------------------- Page 640-----------------------
+
+614                         Data Clustering: Algorithms and Applications 
+
+
+
+[15]  J. A. Hartigan. Clustering Algorithms. John Wiley and Sons, 1975. 
+
+
+
+[16]  E. Hruschka, R.. Campello, A. Freitas, and Andr´e C. Ponce Leon F. De Carvalho. A survey of 
+
+     evolutionary algorithms for clustering. IEEE Transactions on Systems, Man, and Cybernetics, 
+
+     Part C, 39(2):133–155, 2009. 
+
+
+
+[17]  A. Jain.  Data clustering: 50 years beyond k-means.  Pattern Recognition Letters, 31(8):651– 
+
+      666, 2010. 
+
+
+
+[18]  A. Jain and R. Dubes. Algorithms for Clustering Data . Prentice Hall, 1988. 
+
+
+
+[19]  A. Jain, M. Murty, and P. Flynn. Data clustering: A review. ACM Computing Surveys (CSUR) , 
+
+      31(3):264–323, 1999. 
+
+
+
+[20]  D. Jiang, C. Tang, and A. Zhang.  Cluster analysis for gene expression data: A survey.  IEEE 
+
+      Transactions on Knowledge and Data Engineering, 16(11):1370–1386, 2004. 
+
+
+
+[21]  L. Kaufman and P. Rousseeuw. Finding Groups in Data: An Introduction to Cluster Analysis. 
+
+     Wiley-Interscience, 2005. 
+
+
+
+[22]  H.-P. Kriegel, P. Kr¨oger, and A. Zimek.  Clustering high-dimensional data: A survey on sub- 
+
+      space clustering, pattern-based clustering, and correlation clustering. ACM Transactions on 
+
+     Knowledge Discovery from Data (TKDD), 3(1):1–58, 2009. 
+
+
+
+[23]  T. Liao. Clustering of time series data—A survey.  Pattern Recognition, 38(11):1857–1874, 
+
+      2005. 
+
+
+
+[24]  U. von Luxberg. A tutorial on spectral clustering, Statistics and Computing, 17(4):395–416, 
+
+      2007. 
+
+
+
+[25]  S. Madeira and A. Oliveira.   Biclustering algorithms for biological data analysis: A survey. 
+
+     IEEE/ACM Transactions on Computational Biology and Bioinformatics, 1(1):24–45, 2004. 
+
+
+
+[26]  B. Mirkin. Clustering for Data Mining: A Data Recovery Approach. Chapman and Hall/CRC, 
+
+     Boca raton, FL, 2005. 
+
+
+
+[27]  E. Muller, S. Gnnemann, I. Assent, and T. Seidl. Evaluating clustering in subspace projections 
+
+     of high dimensional data. PVLDB, 2(1): 1270-1281, 2009. 
+
+
+
+[28]  F. Murtagh. A survey of recent advances in hierarchical clustering algorithms.  The Computer 
+
+     Journal, 26(4):354–359, 1983. 
+
+
+
+[29]  L. Parsons, E. Haque, and H. Liu.  Subspace clustering for high dimensional data: A review. 
+
+     ACM SIGKDD Explorations , 6(1):90–105, 2004. 
+
+
+
+[30]  S. Schaeffer. Graph clustering. Computer Science Review, 1(1):27–64, 2007. 
+
+
+
+[31]  P. Willett. Recent trends in hierarchical document clustering: A critical review.  Information 
+
+     Processing & Management, 24(5):577–597, 1988. 
+
+
+
+[32]  R. Xu and D. Wunsch.     Survey of clustering algorithms.  IEEE Transactions on Neural Net- 
+
+     works, 16(3):645–678, 2005. 
+
+
+
+[33]  R. Xu and D. Wunsch. Clustering. Wiley-IEEE Press, 2008. 
+
+
+
+[34]  Y. Zhao, G. Karypis, and U. Fayyad. Hierarchical clustering algorithms for document datasets. 
+
+     Data Mining and Knowledge Discovery, 10(2):141–168, 2005. 
+
+
+----------------------- Page 641-----------------------

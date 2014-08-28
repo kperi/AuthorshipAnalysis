@@ -1,0 +1,10655 @@
+Flexible	JJ
+Composition	NN
+of	IN
+Enterprise	NNP
+Web	NN
+Services	NNPS
+
+
+Liangzhao	NNP
+Zeng1	NN
+,	,
+Boualem	NNP
+Benatallah1	NNP
+,	,
+Hui	NNP
+Lei3	NNP
+,	,
+Anne	NNP
+Ngu2	NNP
+,	,
+David	NNP
+Flaxer3	NNP
+,	,
+and	CC
+Henry	NNP
+
+
+Chang3	NN
+
+
+1	CD
+
+
+School	NNP
+of	IN
+Computer	NNP
+Science	NNP
+and	CC
+Engineering	NNP
+,	,
+University	NNP
+of	IN
+New	NNP
+South	NNP
+Wales	NNP
+
+
+2	CD
+
+
+Southwest	NNP
+Texas	NNP
+State	NNP
+University	NNP
+,	,
+Department	NNP
+of	IN
+Computer	NNP
+Science	NNP
+,	,
+San	NNP
+Marcos	NNP
+,	,
+Texas	NNP
+
+
+3	CD
+
+
+IBM	NNP
+T.J.	NNP
+Watson	NNP
+Research	NNP
+Center	NNP
+,	,
+USA	NNP
+
+
+fzlzhao	NN
+,	,
+boualemg@cse.unsw.edu.au,	NN
+hngu@austin.rr.com,	NN
+fhlei	NNS
+,	,
+flaxer	NN
+,	,
+hychangg@us.ibm.com	NN
+
+
+Abstract	JJ
+.	.
+
+The	DT
+process-based	JJ
+composition	NN
+of	IN
+Web	NN
+services	NNS
+is	VBZ
+emerg	NN
+-	:
+ing	NN
+as	IN
+a	DT
+promising	JJ
+approach	NN
+to	TO
+automate	VB
+business	NN
+process	NN
+within	IN
+and	CC
+across	IN
+organizationalboundaries	NNS
+.	.
+
+In	IN
+this	DT
+approach	NN
+,	,
+individualWeb	NN
+ser	SYM
+-	:
+vices	NNS
+are	VBP
+federated	VBN
+into	IN
+composite	JJ
+Web	NN
+services	NNS
+whose	WP$
+business	NN
+logic	NN
+is	VBZ
+expressed	VBN
+as	IN
+a	DT
+process	NN
+model	NN
+.	.
+
+Business	NN
+process	NN
+automation	NN
+technol	NN
+-	:
+ogy	NN
+such	JJ
+as	IN
+workw	NN
+management	NN
+systems	NNS
+-LRB-	-LRB-
+WFMSs	NNS
+-RRB-	-RRB-
+can	MD
+be	VB
+used	VBN
+to	TO
+choreograph	VB
+the	DT
+component	NN
+services	NNS
+.	.
+
+However	RB
+,	,
+one	CD
+of	IN
+the	DT
+fundamental	JJ
+assumptions	NNS
+of	IN
+most	JJS
+WFMSs	NNS
+is	VBZ
+that	IN
+workw	NN
+schemas	NNS
+are	VBP
+static	JJ
+and	CC
+prede	JJ
+Such	JJ
+an	DT
+assumption	NN
+is	VBZ
+impractical	JJ
+for	IN
+business	NN
+processes	NNS
+that	WDT
+have	VBP
+an	DT
+explosive	JJ
+number	NN
+of	IN
+options	NNS
+,	,
+or	CC
+dynamic	JJ
+business	NN
+pro-	JJ
+cesses	NNS
+that	WDT
+must	MD
+be	VB
+generated	VBN
+and	CC
+altered	VBN
+on	IN
+the	DT
+to	TO
+meet	VB
+rapid	JJ
+changing	VBG
+business	NN
+conditions	NNS
+.	.
+
+In	IN
+this	DT
+paper	NN
+,	,
+we	PRP
+describe	VBP
+a	DT
+rule	NN
+infer	VBP
+-	:
+
+
+ence	NN
+framework	NN
+called	VBN
+DYflow	NNP
+,	,
+where	WRB
+end	NN
+users	NNS
+declaratively	RB
+de	IN
+their	PRP$
+business	NN
+objectives	NNS
+or	CC
+goals	NNS
+and	CC
+the	DT
+system	NN
+dynamically	RB
+com	NN
+-	:
+poses	VBZ
+Web	NN
+services	NNS
+to	TO
+execute	VB
+business	NN
+processes	NNS
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+1	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+2	CD
+
+
+Flexible	JJ
+Composition	NN
+of	IN
+Enterprise	NNP
+Web	NN
+Services	NNPS
+
+
+1	CD
+
+
+Introduction	NN
+
+
+Web	NN
+services	NNS
+technologies	NNS
+are	VBP
+emerging	VBG
+as	IN
+a	DT
+powerful	JJ
+vehicle	NN
+for	IN
+organizations	NNS
+that	WDT
+need	VBP
+to	TO
+
+
+integrate	VB
+their	PRP$
+applications	NNS
+within	IN
+and	CC
+across	IN
+organizational	JJ
+boundaries	NNS
+.	.
+
+In	IN
+particular	JJ
+,	,
+the	DT
+
+
+process-based	JJ
+composition	NN
+of	IN
+Web	NN
+services	NNS
+is	VBZ
+gaining	VBG
+a	DT
+considerable	JJ
+momentum	NN
+as	IN
+an	DT
+approach	NN
+
+
+for	IN
+the	DT
+ee	NN
+integration	NN
+of	IN
+distributed	VBN
+,	,
+heterogeneous	JJ
+,	,
+and	CC
+autonomous	JJ
+applications	NNS
+-LSB-	-LRB-
+2	CD
+-RSB-	-RRB-
+.	.
+
+In	IN
+
+
+this	DT
+approach	NN
+,	,
+applications	NNS
+are	VBP
+encapsulated	VBN
+as	IN
+Web	NN
+services	NNS
+and	CC
+the	DT
+logic	NN
+of	IN
+their	PRP$
+interactions	NNS
+
+
+is	VBZ
+expressed	VBN
+as	IN
+a	DT
+process	NN
+model	NN
+.	.
+
+This	DT
+approach	NN
+provides	VBZ
+an	DT
+attractive	JJ
+alternative	NN
+to	TO
+hand-coding	NN
+
+
+the	DT
+interactions	NNS
+between	IN
+applications	NNS
+using	VBG
+general-purpose	JJ
+programming	NN
+languages	NNS
+-LSB-	-LRB-
+3	CD
+-RSB-	-RRB-
+.	.
+
+
+The	DT
+wide	JJ
+availability	NN
+and	CC
+standardization	NN
+of	IN
+Web	NN
+services	NNS
+make	VBP
+it	PRP
+possible	JJ
+to	TO
+compose	VB
+
+
+basic	JJ
+Web	NN
+services	NNS
+into	IN
+composite	JJ
+services	NNS
+that	WDT
+provide	VBP
+more	RBR
+sophisticated	JJ
+functionality	NN
+and	CC
+
+
+create	VB
+add-on	JJ
+values	NNS
+-LSB-	-LRB-
+5	CD
+-RSB-	-RRB-
+.	.
+
+For	IN
+example	NN
+,	,
+a	DT
+composite	JJ
+service	NN
+can	MD
+provide	VB
+a	DT
+high-level	JJ
+
+
+management	NN
+service	NN
+that	WDT
+uses	VBZ
+individual	JJ
+payroll	NN
+,	,
+tax	NN
+preparation	NN
+,	,
+and	CC
+cash	NN
+management	NN
+Web	NN
+
+
+services	NNS
+as	IN
+components	NNS
+.	.
+
+The	DT
+process	NN
+model	NN
+underlying	VBG
+a	DT
+composite	JJ
+service	NN
+identi	VBP
+the	DT
+func	NN
+-	:
+
+
+tionalities	NNS
+required	VBN
+by	IN
+the	DT
+services	NNS
+to	TO
+be	VB
+composed	VBN
+-LRB-	-LRB-
+i.e.	FW
+,	,
+the	DT
+tasks	NNS
+of	IN
+the	DT
+composite	JJ
+service	NN
+-RRB-	-RRB-
+and	CC
+
+
+their	PRP$
+interactions	NNS
+-LRB-	-LRB-
+e.g.	FW
+,	,
+control-w	NN
+,	,
+data-w	NN
+,	,
+and	CC
+transactional	JJ
+dependencies	NNS
+-RRB-	-RRB-
+.	.
+
+Technologies	NNPS
+
+
+for	IN
+modelling	NN
+and	CC
+executing	VBG
+business	NN
+processes	NNS
+are	VBP
+generally	RB
+referred	VBN
+to	TO
+as	IN
+WFMSs	NNS
+.	.
+
+
+Our	PRP$
+work	NN
+is	VBZ
+motivated	VBN
+by	IN
+the	DT
+requirements	NNS
+of	IN
+dynamic	JJ
+Web	NN
+services	NNS
+composition	NN
+.	.
+
+Web	NN
+
+
+environments	NNS
+are	VBP
+highly	RB
+dynamic	JJ
+,	,
+Web	NN
+services	NNS
+can	MD
+appear	VB
+and	CC
+disappear	VB
+around	IN
+the	DT
+clock	NN
+.	.
+
+
+So	RB
+,	,
+approaches	VBZ
+that	IN
+statically	RB
+compose	VB
+services	NNS
+are	VBP
+inappropriate	JJ
+.	.
+
+Business	NN
+process	NN
+automation	NN
+
+
+technology	NN
+such	JJ
+as	IN
+production	NN
+WFMS	NNS
+can	MD
+be	VB
+used	VBN
+to	TO
+choreograph	VB
+the	DT
+component	NN
+services	NNS
+.	.
+
+
+However	RB
+,	,
+one	CD
+of	IN
+the	DT
+fundamental	JJ
+assumptions	NNS
+in	IN
+most	JJS
+production	NN
+WFMSs	NNS
+-LSB-	-LRB-
+7	CD
+-RSB-	-RRB-
+-LSB-	-LRB-
+10	CD
+-RSB-	-RRB-
+is	VBZ
+that	IN
+pro-	JJ
+
+
+cess	NN
+schemas	NNS
+are	VBP
+static	JJ
+and	CC
+prede	JJ
+In	IN
+order	NN
+to	TO
+automate	VB
+business	NN
+processes	NNS
+,	,
+designers	NNS
+need	VBP
+
+
+to	TO
+understand	VB
+business	NN
+processes	NNS
+and	CC
+use	VB
+modelling	NN
+tools	NNS
+to	TO
+chart	VB
+process	NN
+schemas	NNS
+.	.
+
+When	WRB
+a	DT
+
+
+particular	JJ
+business	NN
+process	NN
+needs	VBZ
+to	TO
+be	VB
+enacted	VBN
+,	,
+a	DT
+process	NN
+instance	NN
+is	VBZ
+created	VBN
+from	IN
+a	DT
+process	NN
+
+
+schema	NN
+.	.
+
+In	IN
+this	DT
+approach	NN
+,	,
+the	DT
+designer	NN
+is	VBZ
+required	VBN
+to	TO
+explicitly	RB
+de	IN
+what	WP
+are	VBP
+the	DT
+tasks	NNS
+that	WDT
+
+
+compose	VB
+business	NN
+processes	NNS
+and	CC
+specify	VB
+relationships	NNS
+among	IN
+them	PRP
+.	.
+
+Such	PDT
+an	DT
+approach	NN
+assumes	VBZ
+
+
+that	IN
+the	DT
+particular	JJ
+business	NN
+process	NN
+is	VBZ
+used	VBN
+repeatedly	RB
+.	.
+
+However	RB
+,	,
+this	DT
+is	VBZ
+impractical	JJ
+to	TO
+compose	VB
+
+
+services	NNS
+in	IN
+many	JJ
+application	NN
+domains	NNS
+.	.
+
+For	IN
+example	NN
+,	,
+it	PRP
+is	VBZ
+extremely	RB
+di	FW
+if	IN
+not	RB
+impossible	JJ
+,	,
+
+
+to	TO
+prede	VB
+all	DT
+composite	JJ
+service	NN
+schemas	NNS
+for	IN
+research	NN
+and	CC
+development	NN
+-LRB-	-LRB-
+abbr	NN
+R&D	NN
+-RRB-	-RRB-
+processes	NNS
+
+
+in	IN
+the	DT
+automobile	NN
+industry	NN
+since	IN
+R&D	NN
+business	NN
+processes	NNS
+are	VBP
+very	RB
+dynamic	JJ
+.	.
+
+To	TO
+meet	VB
+the	DT
+con	NN
+-	:
+
+
+straints	NNS
+and	CC
+opportunities	NNS
+posed	VBN
+by	IN
+new	JJ
+technologies	NNS
+,	,
+new	JJ
+markets	NNS
+and	CC
+new	JJ
+laws	NNS
+,	,
+business	NN
+
+
+processes	NNS
+must	MD
+be	VB
+constantly	RB
+rede	JJ
+and	CC
+adapted	VBD
+.	.
+
+However	RB
+,	,
+this	DT
+doesnâ	NN
+$	$
+™	CD
+t	NN
+mean	NN
+there	EX
+are	VBP
+no	DT
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+2	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+Flexible	JJ
+Composition	NN
+of	IN
+Enterprise	NNP
+Web	NN
+Services	NNPS
+
+
+3	CD
+
+
+business	NN
+rules	NNS
+that	WDT
+govern	VBP
+R&D	NN
+processes	NNS
+;	:
+it	PRP
+doesnâ	VBD
+$	$
+™	CD
+t	NN
+mean	NN
+that	WDT
+planning	VBG
+for	IN
+R&D	NN
+processes	NNS
+
+
+is	VBZ
+impossible	JJ
+.	.
+
+Indeed	RB
+,	,
+there	EX
+is	VBZ
+a	DT
+need	NN
+to	TO
+have	VB
+a	DT
+system	NN
+that	WDT
+enables	VBZ
+automatic	JJ
+generation	NN
+of	IN
+
+
+process	NN
+schemas	NNS
+customized	VBN
+to	TO
+an	DT
+organizationâ	NN
+$	$
+™	CD
+s	NNS
+environment	NN
+,	,
+business	NN
+policies	NNS
+and	CC
+business	NN
+
+
+objectives	NNS
+.	.
+
+
+At	IN
+the	DT
+same	JJ
+time	NN
+,	,
+since	IN
+the	DT
+global	JJ
+economy	NN
+is	VBZ
+volatile	JJ
+and	CC
+dynamic	JJ
+,	,
+organizations	NNS
+are	VBP
+chang	NN
+-	:
+
+
+ing	VBG
+constantly	RB
+as	RB
+well	RB
+:	:
+entering	VBG
+into	IN
+new	JJ
+markets	NNS
+,	,
+introducing	VBG
+new	JJ
+products	NNS
+and	CC
+restructuring	NN
+
+
+themselves	PRP
+through	IN
+mergers	NNS
+,	,
+acquisitions	NNS
+,	,
+alliances	NNS
+and	CC
+divestitures	NNS
+.	.
+
+Moreover	RB
+,	,
+most	RBS
+composite	JJ
+
+
+services	NNS
+are	VBP
+long	JJ
+running	NN
+,	,
+representing	VBG
+complex	JJ
+chains	NNS
+of	IN
+tasks	NNS
+.	.
+
+Organizations	NNP
+that	IN
+executing	VBG
+
+
+composite	JJ
+services	NNS
+may	MD
+need	VB
+to	TO
+change	VB
+business	NN
+processes	NNS
+to	TO
+adapt	VB
+the	DT
+changes	NNS
+in	IN
+application	NN
+
+
+requirements	NNS
+,	,
+technologies	NNS
+,	,
+business	NN
+policies	NNS
+,	,
+conditions	NNS
+and	CC
+constraints	NNS
+.	.
+
+Consequently	RB
+,	,
+run	NN
+-	:
+
+
+time	NN
+modi	NNS
+of	IN
+composite	JJ
+services	NNS
+is	VBZ
+necessary	JJ
+to	TO
+meet	VB
+these	DT
+changes	NNS
+.	.
+
+However	RB
+,	,
+in	IN
+most	JJS
+
+
+process	NN
+modelling	NN
+techniques	NNS
+,	,
+such	JJ
+runtime	NN
+modi	NN
+is	VBZ
+a	DT
+manual	JJ
+procedure	NN
+,	,
+which	WDT
+is	VBZ
+time	NN
+-	:
+
+
+consuming	NN
+and	CC
+costly	JJ
+to	TO
+enforce	VB
+.	.
+
+In	IN
+order	NN
+to	TO
+reduce	VB
+the	DT
+cost	NN
+and	CC
+provide	VBP
+fast	JJ
+responses	NNS
+to	TO
+these	DT
+
+
+changes	NNS
+,	,
+there	EX
+is	VBZ
+a	DT
+need	NN
+to	TO
+automate	VB
+the	DT
+runtime	NN
+modi	NN
+of	IN
+composite	JJ
+service	NN
+schemas	NNS
+.	.
+
+
+In	IN
+this	DT
+paper	NN
+,	,
+we	PRP
+present	VBP
+the	DT
+design	NN
+and	CC
+implementation	NN
+of	IN
+DYflow	NNP
+:	:
+a	DT
+DYnamic	JJ
+intelligent	JJ
+w	NN
+for	IN
+Web	NN
+services	NNS
+composition	NN
+.	.
+
+In	IN
+DYflow	NN
+,	,
+business	NN
+objectives	NNS
+are	VBP
+declaratively	RB
+de	IN
+the	DT
+composite	JJ
+service	NN
+de	FW
+are	VBP
+generated	VBN
+on	IN
+demand	NN
+and	CC
+can	MD
+be	VB
+re-con	NN
+at	IN
+runtime	NN
+in	IN
+
+
+order	NN
+to	TO
+adapt	VB
+to	TO
+changes	NNS
+.	.
+
+In	IN
+a	DT
+nutshell	NN
+,	,
+the	DT
+salient	JJ
+features	NNS
+of	IN
+DYflow	NN
+are	VBP
+:	:
+
+
+A	DT
+set	NN
+of	IN
+business	NN
+rule	NN
+templates	NNS
+for	IN
+modelling	NN
+business	NN
+policies	NNS
+and	CC
+a	DT
+rule	NN
+inference	NN
+mech	NN
+-	:
+
+
+anism	NN
+for	IN
+generating	VBG
+composite	JJ
+service	NN
+schemas	NNS
+.	.
+
+We	PRP
+argue	VBP
+that	IN
+business	NN
+rules	NNS
+should	MD
+be	VB
+
+
+independent	JJ
+of	IN
+individual	JJ
+business	NN
+processes	NNS
+.	.
+
+They	PRP
+can	MD
+be	VB
+re-used	VBN
+to	TO
+generate	VB
+dit	NN
+
+
+composite	JJ
+service	NN
+schemas	NNS
+-LSB-	-LRB-
+23	CD
+-RSB-	-RRB-
+.	.
+
+We	PRP
+propose	VBP
+a	DT
+rule	NN
+inference	NN
+approach	NN
+to	TO
+support	VB
+dynamic	JJ
+
+
+service	NN
+composition	NN
+.	.
+
+This	DT
+is	VBZ
+dit	NN
+from	IN
+traditional	JJ
+business	NN
+process	NN
+modelling	NN
+techniques	NNS
+
+
+where	WRB
+the	DT
+business	NN
+rules	NNS
+are	VBP
+implicitly	RB
+codi	NNS
+in	IN
+the	DT
+process	NN
+schemas	NNS
+-LRB-	-LRB-
+e.g.	FW
+,	,
+data	NNS
+and	CC
+control	NN
+
+
+w	NN
+constraints	NNS
+-RRB-	-RRB-
+.	.
+
+
+An	DT
+adaptive	JJ
+service	NN
+composition	NN
+engine	NN
+that	WDT
+enables	VBZ
+runtime	NN
+modi	NN
+of	IN
+composite	JJ
+
+
+service	NN
+schemas	NNS
+.	.
+
+In	IN
+DYflow	NN
+,	,
+users	NNS
+-LRB-	-LRB-
+e.g.	FW
+,	,
+business	NN
+process	NN
+managers	NNS
+-RRB-	-RRB-
+can	MD
+de	FW
+business	NN
+rules	NNS
+to	TO
+modify	VB
+the	DT
+composite	JJ
+service	NN
+schemas	NNS
+at	IN
+any	DT
+time	NN
+.	.
+
+The	DT
+adaptive	JJ
+service	NN
+composition	NN
+
+
+engine	NN
+can	MD
+automatically	RB
+incorporate	VB
+newly	RB
+added	VBN
+business	NN
+rules	NNS
+when	WRB
+there	EX
+is	VBZ
+a	DT
+need	NN
+to	TO
+
+
+modify	VB
+composite	JJ
+service	NN
+schemas	NNS
+at	IN
+runtime	NN
+.	.
+
+
+The	DT
+remainder	NN
+of	IN
+this	DT
+paper	NN
+is	VBZ
+organized	VBN
+as	IN
+follows	VBZ
+.	.
+
+In	IN
+section	NN
+2	CD
+,	,
+we	PRP
+introduce	VBP
+a	DT
+real	JJ
+world	NN
+
+
+example	NN
+,	,
+to	TO
+be	VB
+used	VBN
+for	IN
+further	JJ
+illustration	NN
+of	IN
+our	PRP$
+approach	NN
+.	.
+
+This	DT
+example	NN
+stems	VBZ
+from	IN
+a	DT
+product	NN
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+3	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+4	CD
+
+
+Flexible	JJ
+Composition	NN
+of	IN
+Enterprise	NNP
+Web	NN
+Services	NNPS
+
+
+lifecycle	NN
+management	NN
+case	NN
+study	NN
+,	,
+which	WDT
+provided	VBD
+motivations	NNS
+for	IN
+our	PRP$
+work	NN
+.	.
+
+Section	NN
+3	CD
+introduces	VBZ
+
+
+some	DT
+basic	JJ
+concepts	NNS
+and	CC
+de	FW
+in	FW
+DYflow	NN
+.	.
+
+Section	NN
+4	CD
+describes	VBZ
+the	DT
+details	NNS
+on	IN
+dynamic	JJ
+service	NN
+composition	NN
+.	.
+
+Section	NN
+5	CD
+illustrates	VBZ
+the	DT
+implementation	NN
+of	IN
+the	DT
+DYflow	NN
+system	NN
+.	.
+
+Finally	RB
+,	,
+we	PRP
+discuss	VBP
+related	JJ
+work	NN
+in	IN
+section	NN
+6	CD
+and	CC
+provide	VB
+a	DT
+concluding	VBG
+remark	NN
+in	IN
+section	NN
+7	CD
+.	.
+
+
+2	CD
+
+
+A	DT
+Motivating	VBG
+Example	NN
+
+
+In	IN
+this	DT
+section	NN
+,	,
+we	PRP
+present	VBP
+an	DT
+example	NN
+of	IN
+product	NN
+lifecycle	NN
+management	NN
+in	IN
+the	DT
+automobile	NN
+
+
+industry	NN
+.	.
+
+Let	VB
+us	PRP
+assume	VB
+that	IN
+an	DT
+automobile	NN
+company	NN
+decides	VBZ
+to	TO
+build	VB
+a	DT
+new	JJ
+prototype	NN
+of	IN
+a	DT
+sedan	NN
+
+
+car	NN
+.	.
+
+The	DT
+chief	JJ
+engineer	NN
+proposes	VBZ
+to	TO
+build	VB
+the	DT
+new	JJ
+prototype	NN
+car	NN
+by	IN
+replacing	VBG
+the	DT
+old	JJ
+petrol	NN
+
+
+engine	NN
+with	IN
+a	DT
+new	JJ
+electric	JJ
+engine	NN
+.	.
+
+In	IN
+order	NN
+to	TO
+achieve	VB
+this	DT
+business	NN
+goal	NN
+-LRB-	-LRB-
+i.e.	FW
+,	,
+replacing	VBG
+
+
+the	DT
+engine	NN
+-RRB-	-RRB-
+,	,
+a	DT
+sequence	NN
+of	IN
+tasks	NNS
+need	VBP
+to	TO
+be	VB
+conducted	VBN
+,	,
+which	WDT
+includes	VBZ
+:	:
+-LRB-	-LRB-
+1	LS
+-RRB-	-RRB-
+new	JJ
+electric	JJ
+engine	NN
+
+
+development	NN
+;	:
+-LRB-	-LRB-
+2	LS
+-RRB-	-RRB-
+new	JJ
+parts	NNS
+layout	NN
+design	NN
+;	:
+-LRB-	-LRB-
+3	LS
+-RRB-	-RRB-
+parts	NNS
+design	NN
+,	,
+development	NN
+&	CC
+manufacturing	NN
+and	CC
+
+
+-LRB-	-LRB-
+4	LS
+-RRB-	-RRB-
+assembling	VBG
+and	CC
+testing	NN
+-LRB-	-LRB-
+see	VB
+Figure	NNP
+1	LS
+-RRB-	-RRB-
+.	.
+
+
+1	LS
+.	.
+
+New	NNP
+Engine	NNP
+Development	NNP
+
+
+The	DT
+automobile	NN
+company	NN
+has	VBZ
+two	CD
+dit	NN
+alternatives	NNS
+to	TO
+obtain	VB
+a	DT
+new	JJ
+electric	JJ
+engine	NN
+:	:
+it	PRP
+
+
+can	MD
+outsource	VB
+the	DT
+development	NN
+of	IN
+the	DT
+electric	JJ
+engine	NN
+to	TO
+other	JJ
+companies	NNS
+or	CC
+it	PRP
+can	MD
+develop	VB
+
+
+the	DT
+electric	JJ
+engine	NN
+in-house	NN
+.	.
+
+If	IN
+the	DT
+cost	NN
+of	IN
+outsourcing	NN
+is	VBZ
+over	IN
+$	$
+2000K	CD
+,	,
+then	RB
+the	DT
+company	NN
+
+
+will	MD
+design	VB
+and	CC
+develop	VB
+the	DT
+electric	JJ
+engine	NN
+in-house	NN
+.	.
+
+If	IN
+the	DT
+company	NN
+wants	VBZ
+to	TO
+outsource	VB
+the	DT
+
+
+electric	JJ
+engine	NN
+,	,
+a	DT
+suitable	JJ
+vendor	NN
+needs	VBZ
+to	TO
+be	VB
+selected	VBN
+If	IN
+a	DT
+domestic	JJ
+vendor	NN
+is	VBZ
+selected	VBN
+,	,
+
+
+then	RB
+the	DT
+national	JJ
+quality	NN
+control	NN
+procedure	NN
+should	MD
+be	VB
+applied	VBN
+,	,
+otherwise	RB
+,	,
+international	JJ
+qual	JJ
+-	:
+
+
+ity	NN
+control	NN
+procedure	NN
+needs	VBZ
+to	TO
+be	VB
+applied	VBN
+.	.
+
+There	EX
+are	VBP
+many	JJ
+alternative	JJ
+processes	NNS
+in	IN
+each	DT
+type	NN
+
+
+of	IN
+quality	NN
+control	NN
+procedure	NN
+;	:
+the	DT
+selection	NN
+of	IN
+processes	NNS
+depends	VBZ
+on	IN
+the	DT
+requirements	NNS
+of	IN
+the	DT
+
+
+electric	JJ
+engine	NN
+,	,
+budgets	NNS
+and	CC
+relationships	NNS
+with	IN
+vendors	NNS
+,	,
+etc.	FW
+.	.
+
+
+2	LS
+.	.
+
+Parts	NNP
+Layout	NNP
+Design	NNP
+
+
+Replacing	VBG
+the	DT
+engine	NN
+of	IN
+a	DT
+sedan	NN
+car	NN
+will	MD
+require	VB
+system	NN
+engineers	NNS
+to	TO
+conduct	VB
+parts	NNS
+layout	NN
+
+
+design	NN
+.	.
+
+This	DT
+is	VBZ
+because	IN
+the	DT
+new	JJ
+and	CC
+old	JJ
+engines	NNS
+may	MD
+have	VB
+dit	FW
+3D	FW
+speci	FW
+Some	DT
+
+
+old	JJ
+parts	NNS
+may	MD
+need	VB
+to	TO
+be	VB
+replaced	VBN
+.	.
+
+New	NNP
+unique	JJ
+parts	NNS
+may	MD
+be	VB
+required	VBN
+by	IN
+the	DT
+electric	JJ
+engine	NN
+.	.
+
+
+System	NNP
+engineers	NNS
+will	MD
+conduct	VB
+a	DT
+3D	NN
+layout	NN
+evaluation	NN
+to	TO
+decide	VB
+whether	IN
+to	TO
+have	VB
+a	DT
+
+
+complete	JJ
+new	JJ
+layout	NN
+design	NN
+or	CC
+to	TO
+re-use	VB
+part	NN
+of	IN
+the	DT
+old	JJ
+layout	NN
+design	NN
+.	.
+
+The	DT
+layout	NN
+feasibility	NN
+
+
+analysis	NN
+has	VBZ
+three	CD
+possible	JJ
+alternatives	NNS
+:	:
+-LRB-	-LRB-
+1	LS
+-RRB-	-RRB-
+change	VB
+the	DT
+electric	JJ
+engineâ	NN
+$	$
+™	CD
+s	NNS
+3D	NN
+speci	NN
+
+
+-LRB-	-LRB-
+2	LS
+-RRB-	-RRB-
+change	VB
+related	JJ
+partsâ	NN
+$	$
+™	CD
+3D	NN
+speci	NN
+or	CC
+-LRB-	-LRB-
+3	LS
+-RRB-	-RRB-
+change	VB
+both	DT
+engine	NN
+and	CC
+related	JJ
+partâ	NN
+$	$
+™	CD
+s	NNS
+3D	NN
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+4	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+Flexible	JJ
+Composition	NN
+of	IN
+Enterprise	NNP
+Web	NN
+Services	NNPS
+
+
+5	CD
+
+
+National	NNP
+quality	NN
+control	NN
+
+
+Dometic	NNP
+Vender	NNP
+
+
+Outsource	VB
+
+
+Vender	NNP
+Selection	NN
+
+
+Oversea	NNP
+Vender	NNP
+
+
+New	NNP
+engine	NN
+development	NN
+
+
+Cost	NN
+evaluation	NN
+
+
+Budget	NNP
+<	JJR
+$	$
+2000K	CD
+
+
+Budget	NNP
+>	JJR
+=	JJ
+$	$
+2000K	CD
+
+
+International	NNP
+quality	NN
+control	NN
+
+
+Self	NN
+development	NN
+
+
+Developmentplanning	JJ
+
+
+Option	NN
+n	NN
+Option	NN
+2	CD
+
+
+Complete	JJ
+New	NNP
+Design	NNP
+
+
+Reuse	NNP
+Old	NNP
+Design	NNP
+
+
+Option	NN
+1	CD
+
+
+Layout	NN
+design	NN
+
+
+Option	NN
+n	NN
+
+
+Option	NN
+2	CD
+Option	NN
+1	CD
+
+
+Layout	NN
+redesign	NN
+
+
+Feasible	JJ
+analysis	NN
+
+
+Integrate	VB
+design	NN
+
+
+Prototypedevelop	NNP
+
+
+Testing	VBG
+
+
+Feasible	JJ
+analysis	NN
+
+
+ModificationPlanning	VBG
+
+
+Prototypedevelop	NNP
+
+
+Testing	VBG
+
+
+Partsdesign	NN
+
+
+Parts	NNS
+redesign	VBP
+
+
+E	NN
+'	''
+engine	NN
+3D	NN
+specification	NN
+
+
+New	NNP
+parts	NNS
+request	NN
+
+
+New	NNP
+E	NNP
+'	POS
+engine	NN
+
+
+Engine	NNP
+modification	NN
+
+
+Request	NN
+
+
+Change	NNP
+gasengine	NN
+'s	POS
+3D	NN
+
+
+Reuse	VB
+original	JJ
+layout	NN
+design	NN
+
+
+Layout	NN
+feasible	JJ
+
+
+Analysis	NN
+
+
+Mutal	JJ
+3Dchange	NN
+
+
+Parts	NNS
+layout	NN
+
+
+design	NN
+
+
+Reuse	NN
+layout	NN
+
+
+3	LS
+D	NN
+Layoutevaluation	NN
+
+
+Change	NNP
+other	JJ
+parts	NNS
+'	POS
+3D	NN
+
+
+New	NNP
+layout	NN
+
+
+Reâˆ	NN
+'d	MD
+esign	VB
+parts	NNS
+layout	NN
+
+
+Parts	NNS
+3D	NN
+change	NN
+
+
+request	NN
+
+
+Layout	NN
+design	NN
+
+
+report	NN
+
+
+Parts	NNS
+3D	NN
+specification	NN
+
+
+Procurement	NN
+
+
+catalogchecking	NN
+
+
+in	IN
+catalog	NN
+
+
+No	DT
+exist	VBP
+
+
+3D	NN
+change/New	NN
+parts	NNS
+
+
+self	NN
+design	NN
+&	CC
+development	NN
+
+
+Parts	NNS
+design	NN
+,	,
+
+
+development	NN
+&	CC
+procurement	NN
+
+
+Request	NN
+evaluation	NN
+
+
+No	DT
+change	NN
+
+
+Procurement	NN
+
+
+inventory	NN
+checking	NN
+
+
+Selfmanufacture	NN
+
+
+Part	NNP
+List	NN
+
+
+Parts	NNS
+faulty	JJ
+
+
+report	NN
+
+
+Parts	NNS
+change	VBP
+
+
+request	NN
+
+
+Car	NN
+testing	NN
+
+
+Report	NNP
+
+
+Failture	NN
+
+
+Failture	NN
+
+
+Assembling	NNP
+&	CC
+
+
+testing	NN
+
+
+Partsverification	NN
+
+
+Pass	VB
+
+
+CarAssembling	VBG
+
+
+sucess	NN
+
+
+Car	NN
+Testing	VBG
+
+
+Legent	NNP
+:	:
+
+
+Data	NN
+flow	NN
+
+
+Task	NNP
+
+
+Data	NNS
+
+
+Process	VB
+
+
+Control	NNP
+Flow	NN
+
+
+Fig.	NN
+1	CD
+.	.
+
+A	DT
+Motivating	VBG
+Example	NN
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+5	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+6	CD
+
+
+Flexible	JJ
+Composition	NN
+of	IN
+Enterprise	NNP
+Web	NN
+Services	NNPS
+
+
+speci	NN
+For	IN
+each	DT
+alternative	NN
+,	,
+there	EX
+is	VBZ
+a	DT
+set	NN
+of	IN
+optional	JJ
+processes	NNS
+;	:
+the	DT
+selection	NN
+of	IN
+these	DT
+
+
+processes	NNS
+is	VBZ
+based	VBN
+on	IN
+the	DT
+results	NNS
+of	IN
+layout	NN
+feasibility	NN
+analysis	NN
+.	.
+
+Inside	IN
+each	DT
+process	NN
+,	,
+there	EX
+
+
+are	VBP
+many	JJ
+possible	JJ
+options	NNS
+on	IN
+which	WDT
+tasks	NNS
+need	VBP
+to	TO
+be	VB
+invoked	VBN
+by	IN
+the	DT
+process	NN
+,	,
+and	CC
+lots	NNS
+of	IN
+
+
+possibility	NN
+on	IN
+data	NNS
+ws	NNS
+and	CC
+control	NN
+ws	NNS
+among	IN
+the	DT
+tasks	NNS
+as	RB
+well	RB
+.	.
+
+
+3	LS
+.	.
+
+Parts	NNP
+Design	NNP
+,	,
+Development	NNP
+&	CC
+Procurement	NNP
+
+
+Both	CC
+the	DT
+new	JJ
+electric	JJ
+engine	NN
+and	CC
+the	DT
+layout	NN
+design	NN
+may	MD
+require	VB
+the	DT
+design	NN
+and	CC
+the	DT
+devel	NN
+-	:
+
+
+opment	NN
+of	IN
+new	JJ
+parts	NNS
+for	IN
+the	DT
+sedan	NN
+car	NN
+.	.
+
+Three	CD
+basic	JJ
+processes	NNS
+are	VBP
+involved	VBN
+to	TO
+obtain	VB
+a	DT
+new	JJ
+
+
+part	NN
+,	,
+namely	RB
+-LRB-	-LRB-
+1	LS
+-RRB-	-RRB-
+procurement	NN
+,	,
+-LRB-	-LRB-
+2	LS
+-RRB-	-RRB-
+self	NN
+design	NN
+&	CC
+development	NN
+,	,
+and	CC
+-LRB-	-LRB-
+3	LS
+-RRB-	-RRB-
+self	NN
+manufacture	NN
+.	.
+
+
+The	DT
+decision	NN
+on	IN
+which	WDT
+processes	NNS
+should	MD
+be	VB
+adopted	VBN
+is	VBZ
+dependent	JJ
+upon	IN
+the	DT
+result	NN
+of	IN
+request	NN
+
+
+evaluation	NN
+,	,
+catalog	NN
+checking	NN
+and	CC
+inventory	NN
+checking	NN
+.	.
+
+
+4	LS
+.	.
+
+Assembling	VBG
+and	CC
+Testing	VBG
+
+
+When	WRB
+the	DT
+new	JJ
+electric	JJ
+engine	NN
+and	CC
+parts	NNS
+are	VBP
+ready	JJ
+,	,
+workshop	NN
+engineers	NNS
+will	MD
+verify	VB
+them	PRP
+
+
+Any	DT
+faults	NNS
+on	IN
+these	DT
+parts	NNS
+will	MD
+be	VB
+reported	VBN
+to	TO
+the	DT
+related	JJ
+part	NN
+obtaining	VBG
+processes	NNS
+.	.
+
+If	IN
+a	DT
+part	NN
+
+
+passes	VBZ
+the	DT
+veri	NN
+then	RB
+workshop	NN
+engineers	NNS
+can	MD
+assemble	VB
+the	DT
+parts	NNS
+.	.
+
+Any	DT
+problem	NN
+on	IN
+
+
+assembling	VBG
+will	MD
+generate	VB
+a	DT
+part	NN
+modi	NN
+request	NN
+.	.
+
+When	WRB
+workshop	NN
+engineers	NNS
+the	DT
+
+
+assembling	VBG
+of	IN
+the	DT
+car	NN
+,	,
+the	DT
+test	NN
+engineers	NNS
+will	MD
+conduct	VB
+a	DT
+sequence	NN
+of	IN
+tests	NNS
+,	,
+where	WRB
+each	DT
+test	NN
+
+
+will	MD
+generate	VB
+a	DT
+report	NN
+.	.
+
+The	DT
+report	NN
+may	MD
+recommend	VB
+some	DT
+modi	NN
+of	IN
+the	DT
+electric	JJ
+engine	NN
+
+
+or	CC
+other	JJ
+parts	NNS
+.	.
+
+In	IN
+each	DT
+step	NN
+,	,
+there	EX
+are	VBP
+several	JJ
+options	NNS
+for	IN
+tasks	NNS
+and	CC
+control	NN
+w	NN
+constraints	NNS
+.	.
+
+
+The	DT
+decisions	NNS
+depend	VBP
+on	IN
+the	DT
+type	NN
+of	IN
+parts	NNS
+,	,
+the	DT
+budget	NN
+,	,
+testing	NN
+standards	NNS
+,	,
+etc.	FW
+.	.
+
+For	IN
+
+
+example	NN
+,	,
+dit	NN
+countries	NNS
+have	VBP
+dit	JJ
+car	NN
+safety	NN
+standards	NNS
+.	.
+
+If	IN
+the	DT
+automobile	NN
+company	NN
+
+
+wants	VBZ
+to	TO
+sell	VB
+the	DT
+new	JJ
+car	NN
+in	IN
+a	DT
+particular	JJ
+country	NN
+,	,
+then	RB
+testing	VBG
+based	VBN
+on	IN
+that	DT
+countryâ	NN
+$	$
+™	CD
+s	NNS
+car	NN
+
+
+safety	NN
+standard	JJ
+needs	NNS
+to	TO
+be	VB
+used	VBN
+.	.
+
+
+The	DT
+process	NN
+of	IN
+developing	VBG
+a	DT
+new	JJ
+sedan	NN
+car	NN
+by	IN
+replacing	VBG
+the	DT
+petrol	NN
+engine	NN
+with	IN
+electronic	JJ
+
+
+engine	NN
+will	MD
+take	VB
+at	IN
+least	JJS
+half	PDT
+a	DT
+year	NN
+with	IN
+hundreds	NNS
+of	IN
+new	JJ
+parts	NNS
+to	TO
+be	VB
+designed	VBN
+,	,
+developed	VBN
+and	CC
+
+
+manufactured	VBN
+.	.
+
+There	EX
+are	VBP
+an	DT
+explosive	JJ
+number	NN
+of	IN
+tasks	NNS
+and	CC
+control	NN
+w	NN
+relationships	NNS
+in	IN
+this	DT
+
+
+R&D	NN
+product	NN
+development	NN
+process	NN
+.	.
+
+When	WRB
+pre-de	JJ
+process	NN
+schemas	NNS
+,	,
+only	RB
+the	DT
+general	JJ
+knowl	NN
+-	:
+
+
+edge	NN
+-LRB-	-LRB-
+i.e.	FW
+,	,
+business	NN
+rules	NNS
+-RRB-	-RRB-
+can	MD
+be	VB
+used	VBN
+.	.
+
+The	DT
+schemes	NNS
+need	VBP
+to	TO
+consider	VB
+all	DT
+the	DT
+possible	JJ
+options	NNS
+.	.
+
+
+However	RB
+,	,
+it	PRP
+is	VBZ
+almost	RB
+impossible	JJ
+to	TO
+prede	VB
+process	NN
+schemas	NNS
+for	IN
+such	PDT
+a	DT
+R&D	NN
+product	NN
+process	NN
+
+
+since	IN
+it	PRP
+is	VBZ
+too	RB
+complex	JJ
+and	CC
+time	NN
+consuming	NN
+to	TO
+exhaustively	RB
+enumerate	VB
+all	PDT
+the	DT
+possible	JJ
+options	NNS
+.	.
+
+
+This	DT
+calls	VBZ
+for	IN
+dynamic	JJ
+generation	NN
+of	IN
+composite	JJ
+service	NN
+schemas	NNS
+based	VBN
+on	IN
+both	DT
+business	NN
+rules	NNS
+
+
+and	CC
+context	NN
+information	NN
+such	JJ
+as	IN
+user	NN
+pro	NN
+For	IN
+example	NN
+,	,
+during	IN
+the	DT
+R&D	NN
+process	NN
+,	,
+a	DT
+user	NN
+
+
+-LRB-	-LRB-
+i.e.	FW
+,	,
+engineer	NN
+designer	NN
+-RRB-	-RRB-
+is	VBZ
+assigned	VBN
+to	TO
+develop	VB
+a	DT
+new	JJ
+electronic	JJ
+engine	NN
+under	IN
+$	$
+2000K	CD
+budget	NN
+.	.
+
+In	IN
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+6	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+Flexible	JJ
+Composition	NN
+of	IN
+Enterprise	NNP
+Web	NN
+Services	NNPS
+
+
+7	CD
+
+
+this	DT
+case	NN
+,	,
+a	DT
+composite	JJ
+service	NN
+can	MD
+be	VB
+generated	VBN
+based	VBN
+on	IN
+current	JJ
+available	JJ
+services	NNS
+,	,
+requirement	NN
+
+
+of	IN
+the	DT
+new	JJ
+electronic	JJ
+engine	NN
+,	,
+her	PRP$
+pro	NN
+and	CC
+the	DT
+budget	NN
+constraints	NNS
+,	,
+without	IN
+exhaustively	RB
+enu	SYM
+-	:
+
+
+merating	VBG
+all	PDT
+the	DT
+possible	JJ
+options	NNS
+in	IN
+engine	NN
+development	NN
+.	.
+
+Another	DT
+challenge	NN
+is	VBZ
+that	IN
+this	DT
+R&D	NN
+
+
+product	NN
+process	NN
+is	VBZ
+a	DT
+long	JJ
+running	VBG
+process	NN
+,	,
+during	IN
+which	WDT
+many	JJ
+changes	NNS
+may	MD
+occur	VB
+.	.
+
+For	IN
+example	NN
+,	,
+
+
+during	IN
+the	DT
+enactment	NN
+of	IN
+this	DT
+R&D	NN
+product	NN
+process	NN
+,	,
+better	JJR
+quality	NN
+materials	NNS
+or	CC
+new	JJ
+batteries	NNS
+
+
+that	WDT
+can	MD
+be	VB
+used	VBN
+for	IN
+the	DT
+electric	JJ
+engine	NN
+may	MD
+become	VB
+available	JJ
+.	.
+
+The	DT
+R&D	NN
+product	NN
+process	NN
+needs	NNS
+
+
+to	TO
+adapt	VB
+to	TO
+these	DT
+changes	NNS
+by	IN
+modifying	VBG
+process	NN
+schemes	NNS
+.	.
+
+In	IN
+production	NN
+workws	NNS
+,	,
+such	JJ
+adapta	NN
+-	:
+
+
+tions	NNS
+are	VBP
+very	RB
+costly	JJ
+,	,
+especially	RB
+when	WRB
+workw	NN
+schemas	NNS
+are	VBP
+complex	JJ
+.	.
+
+However	RB
+,	,
+if	IN
+the	DT
+composite	NN
+
+
+service	NN
+schema	NN
+is	VBZ
+dynamically	RB
+generated	VBN
+,	,
+adaptation	NN
+can	MD
+be	VB
+done	VBN
+by	IN
+re-generating	JJ
+composite	NN
+
+
+service	NN
+schemas	NNS
+.	.
+
+In	IN
+the	DT
+following	VBG
+sections	NNS
+,	,
+we	PRP
+will	MD
+use	VB
+this	DT
+motivating	VBG
+example	NN
+to	TO
+illustrate	VB
+how	WRB
+
+
+the	DT
+DYflow	NN
+system	NN
+composes	VBZ
+services	NNS
+to	TO
+execute	VB
+business	NN
+processes	NNS
+.	.
+
+
+3	CD
+
+
+Preliminaries	NNS
+
+
+In	IN
+this	DT
+section	NN
+,	,
+we	PRP
+introduce	VBP
+some	DT
+important	JJ
+concepts	NNS
+and	CC
+de	IN
+that	DT
+are	VBP
+used	VBN
+in	IN
+DYflow	NN
+system	NN
+.	.
+
+
+3.1	CD
+
+
+Service	NNP
+Ontology	NNP
+
+
+A	DT
+service	NN
+ontology	NN
+-LRB-	-LRB-
+see	VB
+Figure	NN
+2	CD
+-RRB-	-RRB-
+speci	VBP
+a	DT
+common	JJ
+language	NN
+agreed	VBN
+by	IN
+a	DT
+community	NN
+-LRB-	-LRB-
+e.g.	FW
+,	,
+
+
+automobile	NN
+industry	NN
+-RRB-	-RRB-
+.	.
+
+It	PRP
+de	IN
+basic	JJ
+concepts	NNS
+and	CC
+terminologies	NNS
+that	WDT
+are	VBP
+used	VBN
+by	IN
+all	DT
+partici	NN
+-	:
+
+
+pants	NNS
+in	IN
+that	DT
+community	NN
+.	.
+
+In	IN
+particular	JJ
+,	,
+a	DT
+service	NN
+ontology	JJ
+speci	NN
+a	DT
+domain	NN
+-LRB-	-LRB-
+e.g.	FW
+,	,
+Automobile	NNP
+,	,
+
+
+Healthcare	NNP
+,	,
+Insurance	NNP
+-RRB-	-RRB-
+,	,
+a	DT
+set	NN
+of	IN
+synonyms	NNS
+,	,
+which	WDT
+is	VBZ
+used	VBN
+mainly	RB
+to	TO
+facilitate	VB
+search	NN
+
+
+for	IN
+the	DT
+domain	NN
+-LRB-	-LRB-
+for	IN
+example	NN
+the	DT
+domain	NN
+Automobile	NNP
+may	MD
+have	VB
+the	DT
+synonyms	NNS
+like	IN
+Car	NN
+-RRB-	-RRB-
+.	.
+
+An	DT
+
+
+ontology	NN
+also	RB
+speci	VBP
+service	NN
+classes	NNS
+that	WDT
+are	VBP
+used	VBN
+to	TO
+de	IN
+the	DT
+property	NN
+of	IN
+the	DT
+services	NNS
+.	.
+
+A	DT
+
+
+service	NN
+class	NN
+is	VBZ
+further	JJ
+speci	NN
+by	IN
+its	PRP$
+attributes	NNS
+and	CC
+operations	NNS
+.	.
+
+For	IN
+example	NN
+,	,
+the	DT
+attributes	NNS
+
+
+of	IN
+a	DT
+service	NN
+class	NN
+may	MD
+include	VB
+access	NN
+information	NN
+such	JJ
+as	IN
+URL	NN
+.	.
+
+Each	DT
+operation	NN
+is	VBZ
+speci	NN
+
+
+by	IN
+its	PRP$
+name	NN
+and	CC
+signature	NN
+-LRB-	-LRB-
+i.e.	FW
+,	,
+inputs	NNS
+and	CC
+outputs	NNS
+-RRB-	-RRB-
+.	.
+
+Apart	RB
+from	IN
+the	DT
+service	NN
+classes	NNS
+that	WDT
+are	VBP
+
+
+used	VBN
+to	TO
+describe	VB
+functional	JJ
+properties	NNS
+of	IN
+services	NNS
+,	,
+service	NN
+ontology	NN
+also	RB
+speci	VBP
+services	NNS
+quality	NN
+
+
+model	NN
+that	WDT
+is	VBZ
+used	VBN
+to	TO
+describe	VB
+non-functional	JJ
+properties	NNS
+of	IN
+the	DT
+services	NNS
+,	,
+e.g.	FW
+,	,
+execution	NN
+duration	NN
+
+
+of	IN
+an	DT
+operation	NN
+.	.
+
+Services	NNP
+quality	NN
+model	NN
+consist	VBP
+of	IN
+a	DT
+set	NN
+of	IN
+quality	NN
+dimensions	NNS
+-LRB-	-LRB-
+i.e.	FW
+,	,
+criteria	NNS
+-RRB-	-RRB-
+.	.
+
+
+For	IN
+each	DT
+quality	NN
+criteria	NNS
+,	,
+there	EX
+are	VBP
+three	CD
+basic	JJ
+components	NNS
+:	:
+whatâ	VB
+$	$
+™	CD
+s	VBZ
+the	DT
+de	NNP
+of	IN
+criteria	NNS
+;	:
+
+
+which	WDT
+service	NN
+elements	NNS
+-LRB-	-LRB-
+e.g.	FW
+,	,
+services	NNS
+or	CC
+operations	NNS
+-RRB-	-RRB-
+it	PRP
+related	JJ
+to	TO
+;	:
+how	WRB
+to	TO
+compute	VB
+or	CC
+measure	VB
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+7	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+8	CD
+
+
+Flexible	JJ
+Composition	NN
+of	IN
+Enterprise	NNP
+Web	NN
+Services	NNPS
+
+
+the	DT
+value	NN
+of	IN
+criteria	NNS
+.	.
+
+In	IN
+DYflow	NN
+,	,
+Web	NN
+services	NNS
+-LRB-	-LRB-
+elementary	JJ
+services	NNS
+and	CC
+composite	JJ
+services	NNS
+-RRB-	-RRB-
+,	,
+business	NN
+objectives	NNS
+,	,
+business	NN
+rules	NNS
+are	VBP
+speci	NN
+over	IN
+de	FW
+set	NN
+of	IN
+service	NN
+ontologies	NNS
+.	.
+
+
+Service	NNP
+Ontology	NNP
+
+
+1	CD
+
+
+1	CD
+
+
+*	SYM
+
+
+Domain	NN
+
+
+1	CD
+
+
+Service	NNP
+Quality	NNP
+Model	NNP
+
+
+Service	NNP
+Class	NNP
+
+
+1	CD
+
+
+1	CD
+
+
+*	SYM
+
+
+*	SYM
+
+
+*	SYM
+
+
+*	SYM
+
+
+Synonyms	NNS
+
+
+Quality	NNP
+Criteria	NNP
+
+
+Attribute	VB
+
+
+Operation	NN
+
+
+1	CD
+
+
+1	CD
+
+
+Operation	NN
+Name	VB
+
+
+Legend	NNP
+:	:
+
+
+class	NN
+
+
+input	NN
+
+
+1	CD
+*	SYM
+
+
+1	CD
+*	SYM
+
+
+output	NN
+
+
+associations	NNS
+*	SYM
+1	CD
+to	TO
+many	JJ
+associations	NNS
+
+
+ParameterSpecification	NN
+
+
+Fig.	NN
+2	CD
+.	.
+
+UML	NNP
+class	NN
+diagram	NN
+for	IN
+service	NN
+ontology	NN
+
+
+3.2	CD
+
+
+Service	NNP
+Description	NN
+and	CC
+Advertisement	NN
+
+
+In	IN
+order	NN
+to	TO
+participate	VB
+in	IN
+the	DT
+DYflow	NN
+system	NN
+,	,
+services	NNS
+providers	NNS
+need	VBP
+to	TO
+publish	VB
+their	PRP$
+service	NN
+descriptions	NNS
+in	IN
+a	DT
+service	NN
+repository	NN
+.	.
+
+There	EX
+are	VBP
+two	CD
+important	JJ
+elements	NNS
+in	IN
+service	NN
+descriptions	NNS
+:	:
+
+
+Service	NNP
+ontology	NN
+and	CC
+service	NN
+class	NN
+.	.
+
+A	DT
+service	NN
+provider	NN
+needs	VBZ
+to	TO
+specify	VB
+which	WDT
+service	NN
+
+
+ontology	NN
+they	PRP
+use	VBP
+to	TO
+communicate	VB
+and	CC
+which	WDT
+service	NN
+classes	NNS
+they	PRP
+support	VBP
+.	.
+
+For	IN
+example	NN
+,	,
+a	DT
+
+
+part	NN
+testing	NN
+service	NN
+provider	NN
+may	MD
+specify	VB
+that	IN
+it	PRP
+supports	VBZ
+service	NN
+ontology	NN
+Cart-Parts	NNS
+and	CC
+
+
+service	NN
+class	NN
+PartsTesting	NN
+.	.
+
+
+SLAs	NNS
+.	.
+
+A	DT
+Service	NNP
+Level	NNP
+Agreement	NNP
+-LRB-	-LRB-
+SLA	NNP
+-RRB-	-RRB-
+is	VBZ
+a	DT
+contract	NN
+that	WDT
+de	IN
+the	DT
+terms	NNS
+and	CC
+conditions	NNS
+
+
+of	IN
+service	NN
+quality	NN
+that	IN
+a	DT
+Web	NN
+service	NN
+promises	VBZ
+to	TO
+deliver	VB
+to	TO
+requesters	NNS
+.	.
+
+The	DT
+major	JJ
+compo	NN
+-	:
+
+
+nent	NN
+of	IN
+SLA	NNP
+is	VBZ
+QoS	NN
+information	NN
+.	.
+
+There	EX
+are	VBP
+a	DT
+number	NN
+of	IN
+criteria	NNS
+that	WDT
+contribute	VBP
+to	TO
+a	DT
+Web	NN
+
+
+serviceâ	NN
+$	$
+™	CD
+s	NNS
+QoS	NN
+in	IN
+SLA	NNP
+.	.
+
+We	PRP
+consider	VBP
+mainly	RB
+the	DT
+execution	NN
+price	NN
+and	CC
+execution	NN
+duration	NN
+of	IN
+each	DT
+
+
+operation	NN
+.	.
+
+Some	DT
+service	NN
+providers	NNS
+publish	VB
+QoS	NN
+information	NN
+in	IN
+SLAs	NNS
+.	.
+
+Other	JJ
+service	NN
+providers	NNS
+
+
+may	MD
+not	RB
+publish	VB
+their	PRP$
+QoS	NN
+information	NN
+in	IN
+their	PRP$
+service	NN
+descriptions	NNS
+for	IN
+contial	JJ
+reasons	NNS
+.	.
+
+
+In	IN
+this	DT
+case	NN
+,	,
+service	NN
+providers	NNS
+need	VBP
+to	TO
+provide	VB
+interfaces	NNS
+that	WDT
+only	RB
+authorized	VBD
+requesters	NNS
+can	MD
+
+
+use	NN
+to	TO
+query	VB
+the	DT
+QoS	NN
+information	NN
+.	.
+
+
+3.3	CD
+
+
+Initial	JJ
+State	NN
+and	CC
+Business	NN
+Objectives	NNS
+
+
+An	DT
+initial	JJ
+state	NN
+represents	VBZ
+end	NN
+userâ	NN
+$	$
+™	CD
+s	NNS
+starting	VBG
+point	NN
+-LRB-	-LRB-
+i.e.	FW
+,	,
+initial	JJ
+task	NN
+-RRB-	-RRB-
+of	IN
+a	DT
+business	NN
+process	NN
+,	,
+
+
+while	IN
+business	NN
+objectives	NNS
+represent	VBP
+goals	NNS
+-LRB-	-LRB-
+i.e.	FW
+,	,
+target	NN
+tasks	NNS
+-RRB-	-RRB-
+that	IN
+the	DT
+user	NN
+wants	VBZ
+to	TO
+achieve	VB
+.	.
+
+We	PRP
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+8	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+Flexible	JJ
+Composition	NN
+of	IN
+Enterprise	NNP
+Web	NN
+Services	NNPS
+
+
+9	CD
+
+
+develop	VB
+an	DT
+XML	NN
+schema	NN
+based	VBN
+language	NN
+that	WDT
+allows	VBZ
+users	NNS
+to	TO
+specify	VB
+their	PRP$
+initial	JJ
+state	NN
+and	CC
+
+
+business	NN
+objectives	NNS
+.	.
+
+In	IN
+DYflow	NNP
+,	,
+both	DT
+initial	JJ
+state	NN
+and	CC
+business	NN
+objectives	NNS
+are	VBP
+de	IN
+in	IN
+terms	NNS
+of	IN
+a	DT
+service	NN
+ontology	NN
+.	.
+
+For	IN
+both	DT
+initial	JJ
+state	NN
+and	CC
+business	NN
+objective	NN
+,	,
+users	NNS
+need	VBP
+to	TO
+specify	VB
+the	DT
+
+
+operation	NN
+name	NN
+as	IN
+de	FW
+in	FW
+service	NN
+ontology	NN
+.	.
+
+In	IN
+initial	JJ
+state	NN
+,	,
+users	NNS
+can	MD
+provide	VB
+the	DT
+constraints	NNS
+
+
+on	IN
+input	NN
+of	IN
+the	DT
+operation	NN
+;	:
+while	IN
+in	IN
+the	DT
+business	NN
+objectives	NNS
+,	,
+users	NNS
+can	MD
+provide	VB
+constraints	NNS
+on	IN
+
+
+both	DT
+input	NN
+and	CC
+output	NN
+of	IN
+the	DT
+operation	NN
+.	.
+
+In	IN
+Figure	NNP
+3	CD
+,	,
+the	DT
+XML	NN
+document	NN
+illustrates	VBZ
+a	DT
+business	NN
+
+
+objective	NN
+where	WRB
+a	DT
+user	NN
+wants	VBZ
+to	TO
+change	VB
+a	DT
+leaded	VBN
+petrol	NN
+engine	NN
+to	TO
+an	DT
+unleaded	JJ
+petrol	NN
+engine	NN
+
+
+for	IN
+a	DT
+sedan	NN
+car	NN
+.	.
+
+A	DT
+detailed	JJ
+presentation	NN
+of	IN
+the	DT
+language	NN
+is	VBZ
+out	IN
+of	IN
+score	NN
+of	IN
+this	DT
+paper	NN
+for	IN
+space	NN
+reason	NN
+.	.
+
+
+<	JJR
+businessObjectives	NNS
+>	JJR
+
+
+<	JJR
+User	NN
+Name	NN
+=	JJ
+``	``
+Gerg	NNP
+''	''
+Role	NN
+=	JJ
+``	``
+Chief	NNP
+Engineer	NNP
+''	''
+=	JJ
+>	JJR
+
+
+<targetTask Name="change engine for sedan">	NN
+
+
+<	JJR
+ontology-service	JJ
+NAME	NN
+=	JJ
+``	``
+Automobile	NNP
+Engine	NNP
+''	''
+=	JJ
+>	JJR
+
+
+<	JJR
+operation	NN
+NAME	NN
+=	JJ
+``	``
+changeEngine	NN
+''	''
+>	JJR
+
+
+<	JJR
+data-constraint	JJ
+>	JJR
+
+
+<variable dataName="car" dataItemName="type" />	NN
+
+
+<op value="="/>	NN
+
+
+<value>	NN
+``	``
+sedan	NN
+''	''
+</value>	NN
+
+
+</data-constraint >	NN
+
+
+<	JJR
+data-constraint	JJ
+>	JJR
+
+
+<variable dataName="originalEngine" dataItemName="type" />	NN
+
+
+<op value="="/>	NN
+
+
+<value>	NN
+``	``
+Leaded	NNP
+Petrol	NNP
+''	''
+</value>	NN
+
+
+</data-constraint >	NN
+
+
+<	JJR
+data-constraint	JJ
+>	JJR
+
+
+<variable dataName="newEngine" dataItemName="type" />	NN
+
+
+<op value="="/>	NN
+
+
+<value>	NN
+``	``
+Unleaded	NNP
+Petrol	NNP
+''	''
+</value>	NN
+
+
+</data-constraint >	NN
+
+
+</operation>	NN
+
+
+</targetTask >	NN
+
+
+<	JJR
+/	:
+businessObjectives	NNS
+>	JJR
+
+
+Fig.	NN
+3	CD
+.	.
+
+An	DT
+Example	NN
+of	IN
+Business	NN
+Objective	NN
+
+
+3.4	CD
+
+
+Business	NN
+Rule	NN
+Templates	NNS
+
+
+Business	NN
+rules	NNS
+are	VBP
+statements	NNS
+about	IN
+how	WRB
+business	NN
+is	VBZ
+conducted	VBN
+,	,
+i.e.	FW
+,	,
+the	DT
+guidelines	NNS
+and	CC
+re	SYM
+-	:
+
+
+strictions	NNS
+with	IN
+respect	NN
+to	TO
+business	NN
+processes	NNS
+in	IN
+an	DT
+enterprise	NN
+.	.
+
+We	PRP
+propose	VBP
+using	VBG
+business	NN
+rule	NN
+
+
+templates	NNS
+to	TO
+facilitate	VB
+the	DT
+description	NN
+of	IN
+business	NN
+policies	NNS
+.	.
+
+There	EX
+are	VBP
+two	CD
+categories	NNS
+of	IN
+business	NN
+
+
+rule	NN
+templates	NNS
+:	:
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+9	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+10	CD
+
+
+Flexible	JJ
+Composition	NN
+of	IN
+Enterprise	NNP
+Web	NN
+Services	NNPS
+
+
+1	LS
+.	.
+
+Service	NNP
+Composition	NNP
+Rules	NNP
+.	.
+
+Service	NNP
+composition	NN
+rules	NNS
+are	VBP
+used	VBN
+to	TO
+dynamically	RB
+compose	VB
+
+
+services	NNS
+.	.
+
+There	EX
+are	VBP
+three	CD
+types	NNS
+of	IN
+service	NN
+composition	NN
+rules	NNS
+,	,
+namely	RB
+backward-chain	JJ
+rules	NNS
+,	,
+
+
+forward-chain	JJ
+rules	NNS
+and	CC
+data	NNS
+w	NN
+rules	NNS
+.	.
+
+
+Backward-chain	JJ
+rules	NNS
+indicate	VBP
+preconditions	NNS
+of	IN
+executing	VBG
+a	DT
+task	NN
+.	.
+
+A	DT
+precondition	NN
+can	MD
+
+
+specify	VB
+data	NNS
+constraints	NNS
+,	,
+i.e.	FW
+,	,
+some	DT
+data	NNS
+must	MD
+be	VB
+available	JJ
+before	IN
+the	DT
+execution	NN
+of	IN
+the	DT
+
+
+task	NN
+.	.
+
+A	DT
+precondition	NN
+can	MD
+also	RB
+be	VB
+a	DT
+w	NN
+constraint	NN
+,	,
+i.e.	FW
+,	,
+execution	NN
+of	IN
+the	DT
+task	NN
+requires	VBZ
+
+
+other	JJ
+tasks	NNS
+to	TO
+be	VB
+completed	VBN
+before	IN
+-LRB-	-LRB-
+i.e.	FW
+,	,
+a	DT
+task	NN
+must	MD
+be	VB
+executed	VBN
+before	IN
+the	DT
+task	NN
+-RRB-	-RRB-
+.	.
+
+A	DT
+
+
+backward-chain	JJ
+rule	NN
+is	VBZ
+speci	NN
+using	VBG
+following	VBG
+structure	NN
+:	:
+
+
+BACKWARD-CHAIN	NN
+RULE	NN
+<	JJR
+rule-id	CD
+>	JJR
+
+
+TASK	NN
+<	JJR
+task	NN
+>	JJR
+CONSTRAINT	NN
+<constraint>	NN
+
+
+PRE-CONDITION	NN
+<pre-condition>	NN
+
+
+The	DT
+following	NN
+is	VBZ
+an	DT
+example	NN
+of	IN
+a	DT
+backward-chain	JJ
+rule	NN
+.	.
+
+This	DT
+rule	NN
+de	IN
+that	DT
+if	IN
+a	DT
+user	NN
+
+
+wants	VBZ
+to	TO
+conduct	VB
+the	DT
+costAnalysis	NN
+task	NN
+on	IN
+the	DT
+new	JJ
+part	NN
+where	WRB
+the	DT
+partâ	NN
+$	$
+™	CD
+s	NNS
+type	NN
+is	VBZ
+a	DT
+car	NN
+
+
+engine	NN
+,	,
+then	RB
+the	DT
+systemTest	NN
+and	CC
+clashTest	NN
+tasks	NNS
+need	VBP
+to	TO
+be	VB
+completed	VBN
+
+
+BACKWARD-CHAIN	NN
+RULE	NN
+bcr1	NN
+
+
+TASK	NN
+costAnalysis	NN
+
+
+CONSTRAINT	NN
+costAnaysis	NN
+:	:
+:	:
+partType	NN
+=	JJ
+=	JJ
+â	NN
+$	$
+™	CD
+car	NN
+engineâ	NN
+$	$
+™	CD
+
+
+PRE-CONDITION	NN
+complete	JJ
+task	NN
+-LRB-	-LRB-
+systemTest	NN
+-RRB-	-RRB-
+AND	CC
+complete	JJ
+task	NN
+
+
+-LRB-	-LRB-
+clashTest	NN
+-RRB-	-RRB-
+
+
+Forward-chain	JJ
+rules	NNS
+indicate	VBP
+that	IN
+some	DT
+tasks	NNS
+may	MD
+need	VB
+to	TO
+be	VB
+added	VBN
+or	CC
+dropped	VBN
+as	IN
+a	DT
+
+
+consequence	NN
+of	IN
+executing	VBG
+a	DT
+given	VBN
+task	NN
+.	.
+
+Forward-chain	JJ
+rules	NNS
+are	VBP
+de	IN
+as	IN
+ECA	NN
+-LRB-	-LRB-
+Event	NN
+-	:
+
+
+Condition-Action	NN
+-RRB-	-RRB-
+rules	NNS
+:	:
+
+
+FORWARD-CHAIN	NN
+RULE	NN
+<rule-id>	NN
+
+
+EVENT	NN
+<event>	JJ
+CONDITION	NN
+<	JJR
+condition	NN
+>	JJR
+ACTION	NN
+<	JJR
+action	NN
+>	JJR
+
+
+In	IN
+the	DT
+following	VBG
+forward-chain	NN
+rule	NN
+,	,
+if	IN
+task	NN
+engineCostAnalysis	NN
+is	VBZ
+completed	VBN
+and	CC
+the	DT
+
+
+makingCost	NN
+of	IN
+the	DT
+new	JJ
+part	NN
+is	VBZ
+greater	JJR
+than	IN
+$	$
+2000K	CD
+,	,
+then	RB
+the	DT
+task	NN
+audit	NN
+2	CD
+needs	VBZ
+to	TO
+be	VB
+
+
+executed	VBN
+after	IN
+the	DT
+task	NN
+costAnalysis	NN
+.	.
+
+
+FORWARD-CHAIN	NN
+RULE	NN
+fcr1	NN
+
+
+EVENT	NN
+TaskEvent	NNP
+:	:
+:	:
+complete	JJ
+task	NN
+-LRB-	-LRB-
+engineCostAnalysis	NN
+-RRB-	-RRB-
+
+
+CONDITION	NN
+-LRB-	-LRB-
+engineCostAnalysis	NN
+:	:
+:	:
+makingCost	NN
+>	JJR
+$	$
+2000K	CD
+-RRB-	-RRB-
+
+
+ACTION	NN
+execute	VB
+task	NN
+-LRB-	-LRB-
+audit	NN
+2	CD
+-RRB-	-RRB-
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+10	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+Flexible	JJ
+Composition	NN
+of	IN
+Enterprise	NNP
+Web	NN
+Services	NNPS
+
+
+11	CD
+
+
+Data	NNS
+Flow	NN
+Rules	NNS
+are	VBP
+used	VBN
+to	TO
+specify	VB
+data	NNS
+ws	NNS
+among	IN
+tasks	NNS
+.	.
+
+Each	DT
+task	NN
+in	IN
+a	DT
+business	NN
+
+
+process	NN
+may	MD
+have	VB
+input	NN
+and	CC
+output	NN
+parameters	NNS
+.	.
+
+For	IN
+those	DT
+tasks	NNS
+that	WDT
+require	VBP
+an	DT
+input	NN
+,	,
+
+
+data	NNS
+w	VBP
+rules	NNS
+can	MD
+be	VB
+used	VBN
+to	TO
+specify	VB
+the	DT
+data	NNS
+source	NN
+.	.
+
+The	DT
+general	JJ
+form	NN
+of	IN
+a	DT
+data	NN
+w	NN
+
+
+rule	NN
+is	VBZ
+given	VBN
+as	IN
+follows	VBZ
+:	:
+
+
+DATA	NNP
+FLOW	NNP
+RULE	NN
+<	JJR
+rule-id	CD
+>	JJR
+
+
+CONSTRAINT	NN
+<constraint>	NN
+
+
+DATA-SOURCE	NN
+TASK	NN
+<	JJR
+task	NN
+>	JJR
+DATA-ITEM	NN
+<	JJR
+data-item	CD
+>	JJR
+
+
+DATA-TARGET	NNP
+TASK	NN
+<	JJR
+task	NN
+>	JJR
+DATA-ITEM	NN
+<	JJR
+data-item	CD
+>	JJR
+
+
+A	DT
+data	NN
+source	NN
+can	MD
+be	VB
+a	DT
+task	NN
+or	CC
+human	JJ
+users	NNS
+.	.
+
+For	IN
+example	NN
+,	,
+in	IN
+the	DT
+following	VBG
+data	NN
+w	NN
+
+
+rule	NN
+,	,
+task	NN
+designEngineâ	NN
+$	$
+™	CD
+s	NNS
+output	NN
+engineType	NN
+provides	VBZ
+input	NN
+for	IN
+task	NN
+testEngineâ	NN
+$	$
+™	CD
+s	NNS
+
+
+engineType	NN
+.	.
+
+
+DATA	NNP
+FLOW	NNP
+RULE	NN
+dfr1	NN
+
+
+DATA-SOURCE	NN
+TASK	NN
+designEngine	NN
+DATA-ITEM	NN
+output	NN
+:	:
+:	:
+engineType	NN
+
+
+DATA-TARGET	NNP
+TASK	NNP
+testEngine	NN
+DATA-ITEM	NN
+input	NN
+:	:
+:	:
+engineType	NN
+
+
+2	LS
+.	.
+
+Service	NNP
+Selection	NN
+Rules	NNS
+.	.
+
+Service	NNP
+selection	NN
+rules	NNS
+identify	VBP
+a	DT
+particular	JJ
+algorithm	NN
+or	CC
+strategy	NN
+to	TO
+
+
+be	VB
+used	VBN
+for	IN
+choosing	VBG
+a	DT
+Web	NN
+service	NN
+to	TO
+execute	VB
+tasks	NNS
+during	IN
+the	DT
+runtime	NN
+.	.
+
+The	DT
+general	JJ
+form	NN
+
+
+of	IN
+a	DT
+service	NN
+selection	NN
+rule	NN
+is	VBZ
+as	IN
+follows	VBZ
+:	:
+:	:
+
+
+SERVICE	NN
+SELECTION	NN
+RULE	NN
+<rule-id>	NN
+
+
+TASK	NN
+<	JJR
+task	NN
+>	JJR
+CONSTRAINT	NN
+<	JJR
+constraint	NN
+>	JJR
+
+
+SERVICE-SELECTION	NN
+<	JJR
+service-selection-method	CD
+>	JJR
+
+
+For	IN
+each	DT
+task	NN
+,	,
+there	EX
+is	VBZ
+a	DT
+set	NN
+of	IN
+candidate	NN
+Web	NN
+services	NNS
+that	WDT
+can	MD
+perform	VB
+the	DT
+task	NN
+.	.
+
+Currently	RB
+,	,
+
+
+we	PRP
+adopt	VBP
+a	DT
+Multiple	JJ
+Criteria	NNP
+Decision	NNP
+Making	VBG
+-LRB-	-LRB-
+MCDM	NN
+-RRB-	-RRB-
+-LSB-	-LRB-
+12	CD
+-RSB-	-RRB-
+approach	NN
+to	TO
+select	VB
+Web	NN
+ser	SYM
+-	:
+
+
+vices	NNS
+.	.
+
+However	RB
+,	,
+methodologies	NNS
+other	JJ
+than	IN
+MCDM	NN
+such	JJ
+as	IN
+auction	NN
+or	CC
+negotiation	NN
+can	MD
+also	RB
+
+
+be	VB
+adopted	VBN
+by	IN
+the	DT
+system	NN
+to	TO
+support	VB
+selection	NN
+of	IN
+Web	NN
+services	NNS
+.	.
+
+MCDM	NNP
+is	VBZ
+a	DT
+con	NN
+
+
+decision	NN
+model	NN
+for	IN
+quality-based	JJ
+Web	NN
+services	NNS
+selection	NN
+.	.
+
+This	DT
+decision	NN
+model	NN
+takes	VBZ
+into	IN
+con	NN
+-	:
+
+
+sideration	NN
+some	DT
+service	NN
+quality	NN
+criteria	NNS
+such	JJ
+as	IN
+execution	NN
+price	NN
+,	,
+execution	NN
+duration	NN
+,	,
+etc.	FW
+.	.
+
+Our	PRP$
+
+
+implementation	NN
+of	IN
+MCDM	NN
+based	VBN
+Web	NN
+service	NN
+selection	NN
+can	MD
+be	VB
+found	VBN
+in	IN
+-LSB-	-LRB-
+22	CD
+-RSB-	-RRB-
+.	.
+
+In	IN
+the	DT
+following	VBG
+
+
+service	NN
+provider	NN
+selection	NN
+rule	NN
+,	,
+if	IN
+the	DT
+task	NN
+is	VBZ
+buildEngine	NN
+and	CC
+the	DT
+engineâ	NN
+$	$
+™	CD
+s	NNS
+weight	NN
+is	VBZ
+greater	JJR
+
+
+than	IN
+3000Kg	NNP
+,	,
+execution	NN
+price	NN
+is	VBZ
+used	VBN
+as	IN
+the	DT
+criteria	NNS
+to	TO
+select	JJ
+Web	NN
+services	NNS
+.	.
+
+
+SERVICE	NN
+SELECTION	NN
+RULE	NN
+ssr1	NN
+
+
+TASK	NN
+TaskEvent	NN
+:	:
+:	:
+start	VB
+task	NN
+-LRB-	-LRB-
+buildEngine	NN
+-RRB-	-RRB-
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+11	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+12	CD
+
+
+Flexible	JJ
+Composition	NN
+of	IN
+Enterprise	NNP
+Web	NN
+Services	NNPS
+
+
+CONSTRAINT	NN
+-LRB-	-LRB-
+bulidEngine	NN
+:	:
+:	:
+engine.weight	JJ
+>	JJR
+3000Kg	NN
+-RRB-	-RRB-
+
+
+SERVICE-SELECTION	NN
+service	NN
+selection	NN
+-LRB-	-LRB-
+MCDM	NN
+,	,
+execution	NN
+price	NN
+-RRB-	-RRB-
+
+
+In	IN
+DYflow	NN
+,	,
+we	PRP
+expect	VBP
+domain	NN
+experts	NNS
+to	TO
+de	IN
+the	DT
+various	JJ
+business	NN
+rules	NNS
+using	VBG
+the	DT
+above	JJ
+rule	NN
+templates	NNS
+.	.
+
+For	IN
+example	NN
+,	,
+domain	NN
+experts	NNS
+in	IN
+service	NN
+outsourcing	NN
+may	MD
+de	FW
+service	NN
+selection	NN
+
+
+rules	NNS
+,	,
+while	IN
+domain	NN
+experts	NNS
+in	IN
+product	NN
+life	NN
+cycle	NN
+may	MD
+de	FW
+service	NN
+composition	NN
+rules	NNS
+.	.
+
+
+3.5	CD
+
+
+Organizational	JJ
+Structure	NN
+
+
+Organization	NNP
+
+
+1	CD
+
+
+Service	NNP
+
+
+*	SYM
+
+
+*	SYM
+
+
+User	NN
+
+
+*	SYM
+
+
+1	CD
+
+
+1	CD
+
+
+User	NN
+Profile	NNP
+
+
+*	SYM
+
+
+Service	NNP
+Ontology	NNP
+
+
+1	CD
+*	SYM
+1	CD
+1	CD
+
+
+Department	NNP
+
+
+1	CD
+
+
+*	SYM
+
+
+*	SYM
+Role	NN
+
+
+1	CD
+
+
+*	SYM
+
+
+Business	NN
+Rule	NN
+
+
+1	CD
+
+
+*	SYM
+
+
+Legend	NNP
+:	:
+
+
+agregation	NN
+
+
+associations	NNS
+
+
+class	NN
+
+
+Fig.	NN
+4	CD
+.	.
+
+UML	NNP
+Class	NNP
+Diagram	NNP
+for	IN
+Organizational	JJ
+Structure	NN
+
+
+In	IN
+DYflow	NN
+,	,
+the	DT
+organizational	JJ
+structure	NN
+is	VBZ
+used	VBN
+to	TO
+glue	NN
+the	DT
+basic	JJ
+elements	NNS
+in	IN
+an	DT
+organization	NN
+-LRB-	-LRB-
+real	JJ
+or	CC
+virtual	JJ
+-RRB-	-RRB-
+such	JJ
+as	IN
+Department	NNP
+,	,
+Role	NN
+,	,
+User	NN
+,	,
+Business	NNP
+Rule	NNP
+and	CC
+Service	NNP
+together	RB
+-LRB-	-LRB-
+see	VB
+Fig	SYM
+-	:
+
+
+ure	NN
+4	CD
+-RRB-	-RRB-
+.	.
+
+An	DT
+organization	NN
+is	VBZ
+subdivided	VBN
+into	IN
+several	JJ
+departments	NNS
+that	WDT
+again	RB
+may	MD
+consist	VB
+of	IN
+other	JJ
+
+
+departments	NNS
+in	IN
+a	DT
+hierarchical	JJ
+structure	NN
+.	.
+
+Each	DT
+department	NN
+is	VBZ
+associated	VBN
+with	IN
+a	DT
+service	NN
+ontology	NN
+,	,
+
+
+a	DT
+set	NN
+of	IN
+roles	NNS
+,	,
+users	NNS
+,	,
+and	CC
+services	NNS
+.	.
+
+Every	DT
+role	NN
+is	VBZ
+associated	VBN
+with	IN
+a	DT
+set	NN
+of	IN
+business	NN
+rules	NNS
+.	.
+
+Every	DT
+user	NN
+
+
+is	VBZ
+assigned	VBN
+one	CD
+or	CC
+more	JJR
+roles	NNS
+describing	VBG
+her	PRP$
+context-dependent	JJ
+behavior	NN
+and	CC
+has	VBZ
+her	PRP$
+own	JJ
+user	NN
+
+
+pro	NN
+.	.
+
+The	DT
+information	NN
+in	IN
+user	NN
+pro	NN
+includes	VBZ
+userâ	JJ
+$	$
+™	CD
+s	NNS
+personal	JJ
+information	NN
+,	,
+roles	NNS
+in	IN
+the	DT
+orga	NN
+-	:
+
+
+nization	NN
+,	,
+and	CC
+preferences	NNS
+.	.
+
+In	IN
+DYflow	NN
+,	,
+the	DT
+user	NN
+pro	JJ
+facilitates	VBZ
+the	DT
+generation	NN
+and	CC
+execution	NN
+of	IN
+composite	JJ
+services	NNS
+.	.
+
+When	WRB
+the	DT
+system	NN
+generates	VBZ
+composite	JJ
+service	NN
+schemas	NNS
+,	,
+personal	JJ
+information	NN
+
+
+provides	VBZ
+input	NN
+for	IN
+executing	VBG
+composite	JJ
+services	NNS
+,	,
+userâ	JJ
+$	$
+™	CD
+s	NNS
+role	NN
+information	NN
+is	VBZ
+used	VBN
+to	TO
+identify	VB
+rele	NN
+-	:
+
+
+vant	NN
+business	NN
+rules	NNS
+,	,
+and	CC
+preferences	NNS
+are	VBP
+used	VBN
+to	TO
+customize	VB
+the	DT
+business	NN
+rules	NNS
+.	.
+
+For	IN
+example	NN
+,	,
+in	IN
+the	DT
+
+
+forward-chain	NN
+rule	NN
+fcr3	NN
+-LRB-	-LRB-
+see	VB
+Table	NNP
+1	LS
+-RRB-	-RRB-
+,	,
+the	DT
+variable	JJ
+orderBudgetLimitation	NN
+in	IN
+condition	NN
+is	VBZ
+left	VBN
+
+
+uninstantiated	JJ
+.	.
+
+This	DT
+value	NN
+will	MD
+be	VB
+substituted	VBN
+by	IN
+a	DT
+preference	NN
+-LRB-	-LRB-
+e.g.	FW
+,	,
+orderBudgetLimitation	NN
+=	JJ
+
+
+$	$
+20K	CD
+-RRB-	-RRB-
+in	IN
+a	DT
+userâ	JJ
+$	$
+™	CD
+s	NNS
+pro	JJ
+It	PRP
+should	MD
+be	VB
+noted	VBN
+that	IN
+dit	NN
+users	NNS
+may	MD
+have	VB
+dit	NN
+constraints	NNS
+
+
+for	IN
+orderBudgetLimitation	NN
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+12	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+Flexible	JJ
+Composition	NN
+of	IN
+Enterprise	NNP
+Web	NN
+Services	NNPS
+
+
+13	CD
+
+
+FORWARD-CHAIN	NN
+RULE	NN
+fcr3	NN
+
+
+EVENT	NN
+TaskEvent	NNP
+:	:
+:	:
+complete	JJ
+task	NN
+-LRB-	-LRB-
+partPriceQuatation	NN
+-RRB-	-RRB-
+
+
+CONDITION	NN
+-LRB-	-LRB-
+partPriceQuatation	NN
+:	:
+:	:
+price	NN
+>	JJR
+orderBudgetLimitation	NN
+-RRB-	-RRB-
+ACTION	NN
+execute	VB
+task	NN
+-LRB-	-LRB-
+budgetApproval	NN
+-RRB-	-RRB-
+
+
+Table	NNP
+1	CD
+.	.
+
+A	DT
+Forward-chain	JJ
+Rule	NN
+
+
+4	CD
+
+
+Incremental	NNP
+Service	NNP
+Composition	NNP
+
+
+A	DT
+composite	JJ
+service	NN
+schema	NN
+is	VBZ
+de	IN
+in	IN
+terms	NNS
+of	IN
+service	NN
+ontologies	NNS
+.	.
+
+It	PRP
+consists	VBZ
+of	IN
+a	DT
+collection	NN
+of	IN
+
+
+generic	JJ
+tasks	NNS
+combined	VBN
+in	IN
+certain	JJ
+ways	NNS
+.	.
+
+In	IN
+DYflow	NN
+,	,
+we	PRP
+adopt	VBP
+UML	NN
+statechart	NN
+-LSB-	-LRB-
+19	CD
+-RSB-	-RRB-
+to	TO
+represent	VB
+the	DT
+composite	JJ
+services	NNS
+.	.
+
+An	DT
+example	NN
+of	IN
+a	DT
+composite	JJ
+service	NN
+schema	NN
+of	IN
+the	DT
+business	NN
+process	NN
+for	IN
+
+
+making	VBG
+new	JJ
+part	NN
+is	VBZ
+shown	VBN
+graphically	RB
+in	IN
+Figure	NNP
+5	CD
+.	.
+
+A	DT
+statechart	JJ
+diagram	NN
+consists	VBZ
+of	IN
+states	NNS
+and	CC
+
+
+PSfrag	NN
+
+
+transitions	NNS
+.	.
+
+There	EX
+are	VBP
+two	CD
+kinds	NNS
+of	IN
+states	NNS
+in	IN
+statechart	NN
+:	:
+actual	JJ
+states	NNS
+and	CC
+pseudo	JJ
+states	NNS
+.	.
+
+An	DT
+replacemenactual	JJ
+tsstate	NN
+
+
+represents	VBZ
+a	DT
+task	NN
+that	WDT
+requires	VBZ
+invoking	VBG
+a	DT
+Web	NN
+service	NN
+to	TO
+execute	VB
+it	PRP
+at	IN
+runtime	NN
+.	.
+
+It	PRP
+
+
+is	VBZ
+labeled	VBN
+by	IN
+an	DT
+operation	NN
+name	NN
+in	IN
+a	DT
+service	NN
+class	NN
+of	IN
+a	DT
+service	NN
+ontology	NN
+.	.
+
+It	PRP
+should	MD
+be	VB
+noted	VBN
+that	IN
+
+
+tasks	NNS
+in	IN
+composite	JJ
+services	NNS
+are	VBP
+not	RB
+bound	VBN
+to	TO
+speci	VB
+Web	NN
+services	NNS
+at	IN
+de	FW
+time	NN
+.	.
+
+
+t2	NN
+
+
+Cost	NN
+Analysis	NN
+
+
+ta	NN
+
+
+t6	NN
+Ws1	NN
+Ws2	NN
+Ws3	NN
+-LRB-	-LRB-
+We1	NN
+-RRB-	-RRB-
+-LRB-	-LRB-
+We	PRP
+2	LS
+-RRB-	-RRB-
+Legend	NNP
+:	:
+
+
+t1	NN
+
+
+tb	NN
+
+
+tc	NN
+
+
+td	NN
+
+
+Make	VB
+a	DT
+New	NNP
+Part	NNP
+
+
+t5	NN
+
+
+Verify	VB
+Testing	VBG
+
+
+t3	NN
+
+
+t4	NN
+
+
+Clash	NN
+Testing	VBG
+
+
+Clash	NN
+Analysis	NN
+
+
+Task	NNP
+
+
+Data	NNS
+
+
+Control	NNP
+Flow	NN
+
+
+Data	NN
+flow	NN
+
+
+Initial	JJ
+State	NN
+
+
+Final	JJ
+State	NN
+
+
+Pseudo	NN
+State	NN
+
+
+Fig.	NN
+5	CD
+.	.
+
+De	NNP
+Composite	NNP
+Service	NNP
+Using	VBG
+a	DT
+Statechart	NNP
+
+
+Instead	RB
+of	IN
+using	VBG
+single	JJ
+composite	JJ
+service	NN
+schema	NN
+to	TO
+represent	VB
+the	DT
+whole	JJ
+business	NN
+process	NN
+,	,
+
+
+in	IN
+DYflow	NNP
+,	,
+we	PRP
+identify	VBP
+dit	NN
+levels	NNS
+of	IN
+composite	JJ
+services	NNS
+and	CC
+model	NN
+a	DT
+business	NN
+process	NN
+as	IN
+a	DT
+hierarchical	JJ
+structure	NN
+-LRB-	-LRB-
+i.e.	FW
+,	,
+composition	NN
+hierarchy	NN
+-RRB-	-RRB-
+as	IN
+shown	VBN
+in	IN
+Figure	NNP
+6	CD
+.	.
+
+A	DT
+composite	JJ
+service	NN
+
+
+that	DT
+is	VBZ
+used	VBN
+to	TO
+initiate	VB
+a	DT
+new	JJ
+business	NN
+process	NN
+is	VBZ
+de	IN
+as	IN
+the	DT
+top-level	JJ
+composite	JJ
+service	NN
+;	:
+
+
+a	DT
+composite	JJ
+service	NN
+that	WDT
+is	VBZ
+used	VBN
+to	TO
+execute	VB
+a	DT
+task	NN
+in	IN
+a	DT
+composite	JJ
+service	NN
+is	VBZ
+de	IN
+as	IN
+task	NN
+-	:
+
+
+level	NN
+composite	JJ
+service	NN
+.	.
+
+It	PRP
+should	MD
+be	VB
+noted	VBN
+that	IN
+all	PDT
+the	DT
+composite	JJ
+services	NNS
+in	IN
+the	DT
+composition	NN
+
+
+hierarchy	NN
+are	VBP
+created	VBN
+on	IN
+the	DT
+based	VBN
+on	IN
+userâ	JJ
+$	$
+™	CD
+s	NNS
+business	NN
+objectives	NNS
+using	VBG
+the	DT
+business	NN
+rules	NNS
+.	.
+
+
+The	DT
+composition	NN
+hierarchy	NN
+is	VBZ
+built	VBN
+from	IN
+an	DT
+initial	JJ
+top-level	JJ
+composite	JJ
+service	NN
+which	WDT
+is	VBZ
+expanded	VBN
+
+
+into	IN
+a	DT
+hierarchy	NN
+of	IN
+composite	JJ
+services	NNS
+at	IN
+runtime	NN
+-LRB-	-LRB-
+see	VB
+Figure	NNP
+7	CD
+-RRB-	-RRB-
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+13	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+14	CD
+
+
+Flexible	JJ
+Composition	NN
+of	IN
+Enterprise	NNP
+Web	NN
+Services	NNPS
+
+
+Legent	NNP
+:	:
+
+
+Top	JJ
+level	NN
+Composite	NNP
+Service	NNP
+
+
+Task	NNP
+level	NN
+Composite	NNP
+Service	NNP
+
+
+Task	NNP
+refinement	NN
+
+
+Fig.	NN
+6	CD
+.	.
+
+Composition	NN
+Hierarchy	NN
+
+
+Snapshot	NN
+1	CD
+
+
+Snapshot	NN
+2	CD
+
+
+Snapshot	NN
+3	CD
+
+
+Snapshot	NN
+n	NN
+
+
+Legend	NNP
+:	:
+
+
+Top	JJ
+level	NN
+Composite	NNP
+Service	NNP
+
+
+Task	NNP
+level	NN
+Composite	NNP
+Service	NNP
+
+
+Task	NNP
+refinement	NN
+
+
+Fig.	NN
+7	CD
+.	.
+
+Snapshots	NNS
+for	IN
+Composition	NNP
+Hierarchy	NNP
+
+
+Service	NNP
+composition	NN
+-LRB-	-LRB-
+for	IN
+both	DT
+top-level	JJ
+and	CC
+task-level	JJ
+business	NN
+process	NN
+-RRB-	-RRB-
+in	IN
+DYflow	NN
+involves	VBZ
+three	CD
+major	JJ
+steps	NNS
+-LRB-	-LRB-
+see	VB
+Figure	NNP
+8	CD
+-RRB-	-RRB-
+:	:
+composite	JJ
+service	NN
+generation	NN
+,	,
+selection	NN
+and	CC
+execution	NN
+.	.
+
+
+Business	NN
+Objectives	NNS
+
+
+Composition	NNP
+Service	NNP
+Generation	NNP
+
+
+Execution	NN
+Result	NN
+
+
+Backwardâˆ	NN
+'	''
+chain	NN
+
+
+Inference	NN
+
+
+Forwardâˆ	NN
+'	''
+chain	NN
+
+
+Inference	NN
+
+
+Data	NN
+flow	NN
+Inference	NN
+
+
+A	DT
+set	NN
+of	IN
+Composition	NNP
+Services	NNPS
+
+
+Composite	NNP
+Service	NNP
+
+
+Selection	NN
+
+
+A	DT
+Composite	NN
+
+
+Service	NNP
+
+
+Composite	NNP
+Service	NNP
+
+
+Execution	NN
+
+
+
+
+Runtime	NNP
+Inference	NNP
+
+
+Fig.	NN
+8	CD
+.	.
+
+Composite	NNP
+Service	NNP
+Generation	NNP
+,	,
+Selection	NN
+and	CC
+Execution	NN
+in	IN
+DYflow	NN
+
+
+1	LS
+.	.
+
+Composite	NNP
+service	NN
+generation	NN
+.	.
+
+We	PRP
+formulate	VBP
+the	DT
+problem	NN
+of	IN
+composite	JJ
+service	NN
+genera	NN
+-	:
+
+
+tion	NN
+as	IN
+a	DT
+planning	NN
+problem	NN
+,	,
+which	WDT
+has	VBZ
+three	CD
+inputs	NNS
+:	:
+
+
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+A	DT
+description	NN
+of	IN
+initial	JJ
+state	NN
+and	CC
+userâ	NN
+$	$
+™	CD
+s	NNS
+context	NN
+-LRB-	-LRB-
+e.g.	FW
+,	,
+user	NN
+pro	NN
+
+
+-LRB-	-LRB-
+b	NN
+-RRB-	-RRB-
+A	DT
+description	NN
+of	IN
+userâ	JJ
+$	$
+™	CD
+s	NNS
+business	NN
+objectives	NNS
+,	,
+and	CC
+
+
+-LRB-	-LRB-
+c	NN
+-RRB-	-RRB-
+A	DT
+set	NN
+of	IN
+service	NN
+composition	NN
+rules	NNS
+-LRB-	-LRB-
+i.e.	FW
+,	,
+domain	NN
+theory	NN
+-RRB-	-RRB-
+.	.
+
+
+It	PRP
+should	MD
+be	VB
+noted	VBN
+,	,
+in	IN
+the	DT
+input	NN
+,	,
+the	DT
+service	NN
+composition	NN
+rules	NNS
+are	VBP
+associated	VBN
+with	IN
+the	DT
+userâ	JJ
+$	$
+™	CD
+s	NNS
+
+
+role	NN
+that	WDT
+is	VBZ
+speci	NN
+in	IN
+user	NN
+pro	JJ
+The	DT
+associations	NNS
+between	IN
+the	DT
+business	NN
+rules	NNS
+and	CC
+roles	NNS
+are	VBP
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+14	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+Flexible	JJ
+Composition	NN
+of	IN
+Enterprise	NNP
+Web	NN
+Services	NNPS
+
+
+15	CD
+
+
+de	IN
+in	IN
+organizational	JJ
+structure	NN
+.	.
+
+The	DT
+output	NN
+is	VBZ
+a	DT
+set	NN
+of	IN
+composite	JJ
+service	NN
+schemas	NNS
+that	WDT
+
+
+can	MD
+be	VB
+instantiated	VBN
+and	CC
+executed	VBN
+to	TO
+achieve	VB
+the	DT
+business	NN
+objectives	NNS
+.	.
+
+We	PRP
+propose	VBP
+a	DT
+three	CD
+-	:
+
+
+phase	NN
+rule	NN
+inference	NN
+mechanism	NN
+to	TO
+generate	VB
+composite	JJ
+service	NN
+schemas	NNS
+.	.
+
+During	IN
+the	DT
+
+
+phase	NN
+,	,
+the	DT
+backward-chain	JJ
+inference	NN
+discovers	VBZ
+all	PDT
+the	DT
+necessary	JJ
+tasks	NNS
+-LRB-	-LRB-
+i.e.	FW
+,	,
+backward-chain	JJ
+
+
+task	NN
+-RRB-	-RRB-
+that	WDT
+must	MD
+be	VB
+executed	VBN
+to	TO
+achieve	VB
+the	DT
+business	NN
+objective	NN
+.	.
+
+The	DT
+second	JJ
+phase	NN
+consists	VBZ
+
+
+of	IN
+using	VBG
+the	DT
+forward-chain	JJ
+inference	NN
+to	TO
+determine	VB
+which	WDT
+tasks	NNS
+may	MD
+potentially	RB
+be	VB
+involved	VBN
+
+
+as	IN
+a	DT
+consequence	NN
+of	IN
+executing	VBG
+tasks	NNS
+inferred	VBN
+in	IN
+previous	JJ
+phase	NN
+.	.
+
+The	DT
+phase	NN
+involves	VBZ
+the	DT
+
+
+data	NNS
+w	VBP
+inference	NN
+mechanism	NN
+.	.
+
+Details	NNS
+about	IN
+inference	NN
+algorithms	NNS
+can	MD
+be	VB
+found	VBN
+in	IN
+-LSB-	-LRB-
+23	CD
+-RSB-	-RRB-
+.	.
+
+
+2	LS
+.	.
+
+Composite	NNP
+service	NN
+selection	NN
+.	.
+
+In	IN
+some	DT
+cases	NNS
+,	,
+more	JJR
+than	IN
+one	CD
+composite	JJ
+service	NN
+is	VBZ
+generated	VBN
+
+
+by	IN
+the	DT
+three-phase	JJ
+inference	NN
+mechanism	NN
+.	.
+
+For	IN
+example	NN
+,	,
+if	IN
+there	EX
+are	VBP
+more	JJR
+than	IN
+one	CD
+backward	RB
+-	:
+
+
+chain	NN
+rules	NNS
+for	IN
+the	DT
+same	JJ
+task	NN
+,	,
+then	RB
+there	EX
+may	MD
+be	VB
+multiple	JJ
+ways	NNS
+to	TO
+archive	NN
+a	DT
+business	NN
+objective	NN
+.	.
+
+
+In	IN
+such	JJ
+case	NN
+,	,
+the	DT
+choice	NN
+of	IN
+delegatee	NN
+is	VBZ
+based	VBN
+on	IN
+a	DT
+selection	NN
+policy	NN
+involving	VBG
+parameters	NNS
+such	JJ
+
+
+as	IN
+total	JJ
+execution	NN
+duration	NN
+,	,
+and	CC
+execution	NN
+price	NN
+,	,
+etc.	FW
+.	.
+
+
+3	LS
+.	.
+
+Composite	NNP
+service	NN
+execution	NN
+and	CC
+adaption	NN
+.	.
+
+In	IN
+this	DT
+step	NN
+,	,
+the	DT
+system	NN
+starts	VBZ
+executing	VBG
+
+
+the	DT
+selected	VBN
+composite	JJ
+service	NN
+.	.
+
+At	IN
+the	DT
+same	JJ
+time	NN
+,	,
+forward-chain	JJ
+rules	NNS
+are	VBP
+re-applied	VBN
+at	IN
+
+
+runtime	NN
+to	TO
+constantly	RB
+monitor	VB
+the	DT
+state	NN
+of	IN
+the	DT
+composite	JJ
+service	NN
+execution	NN
+by	IN
+runtime	NN
+
+
+inference	NN
+.	.
+
+The	DT
+runtime	NN
+inference	NN
+rules	NNS
+use	VBP
+a	DT
+broad	JJ
+range	NN
+of	IN
+runtime	NN
+events	NNS
+to	TO
+drive	VB
+the	DT
+rule	NN
+
+
+inference	NN
+.	.
+
+This	DT
+di	FW
+from	IN
+the	DT
+forward-chain	JJ
+inference	NN
+performed	VBN
+at	IN
+pre-execution	JJ
+time	NN
+
+
+that	IN
+assumes	VBZ
+all	PDT
+the	DT
+component	NN
+services	NNS
+are	VBP
+able	JJ
+to	TO
+complete	VB
+the	DT
+task	NN
+and	CC
+use	NN
+start	NN
+and	CC
+
+
+termination	NN
+events	NNS
+only	RB
+.	.
+
+
+5	CD
+
+
+Implementation	NN
+Aspects	NNS
+
+
+In	IN
+this	DT
+section	NN
+,	,
+we	PRP
+present	VBP
+the	DT
+current	JJ
+implementation	NN
+of	IN
+the	DT
+DYflow	NN
+prototype	NN
+to	TO
+illustrate	VB
+the	DT
+key	JJ
+concepts	NNS
+and	CC
+ideas	NNS
+in	IN
+our	PRP$
+approach	NN
+.	.
+
+The	DT
+prototype	NN
+-LRB-	-LRB-
+see	VB
+9	CD
+-RRB-	-RRB-
+is	VBZ
+composed	VBN
+of	IN
+a	DT
+
+
+service	NN
+composition	NN
+manager	NN
+,	,
+a	DT
+business	NN
+rule	NN
+repository	NN
+,	,
+a	DT
+user	NN
+pro	JJ
+repository	NN
+and	CC
+a	DT
+service	NN
+
+
+broker	NN
+.	.
+
+All	PDT
+the	DT
+components	NNS
+of	IN
+the	DT
+service	NN
+composition	NN
+manager	NN
+have	VBP
+been	VBN
+implemented	VBN
+in	IN
+Java	NNP
+
+
+and	CC
+IBMâ	NNP
+$	$
+™	CD
+s	NNS
+WSTK	JJ
+-LSB-	-LRB-
+11	CD
+-RSB-	-RRB-
+.	.
+
+In	IN
+order	NN
+to	TO
+participate	VB
+in	IN
+business	NN
+processes	NNS
+,	,
+Web	NN
+services	NNS
+need	VBP
+to	TO
+be	VB
+
+
+registered	VBN
+with	IN
+the	DT
+service	NN
+broker	NN
+.	.
+
+Section	NN
+5.1	CD
+brie	NN
+describes	VBZ
+the	DT
+service	NN
+broker	NN
+.	.
+
+Section	NN
+5.2	CD
+
+
+overviews	NNS
+the	DT
+components	NNS
+of	IN
+composite	JJ
+manager	NN
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+15	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+16	CD
+
+
+Flexible	JJ
+Composition	NN
+of	IN
+Enterprise	NNP
+Web	NN
+Services	NNPS
+
+
+Initiate	VB
+State	NNP
+
+
+User	NN
+Objective	NN
+
+
+User	NN
+Profile	NNP
+
+
+Statechart	NNP
+
+
+User	NN
+Profile	NNP
+repository	NN
+
+
+Statechart	NNP
+Generator	NNP
+
+
+Composition	NN
+Hierarchy	NN
+
+
+Composite	NNP
+Service	NNP
+Generation	NNP
+Rule	NN
+
+
+Statechart	NNP
+
+
+Business	NN
+Rule	NN
+
+
+Service	NNP
+Broker	NNP
+
+
+Service	NNP
+Service	NNP
+Selection	NN
+RuleSelection	NN
+Rule	NN
+
+
+QoS	NNP
+Information	NNP
+
+
+tModeltModel	NN
+
+
+tModeltModel	NN
+
+
+Business	NN
+Rule	NN
+repository	NN
+
+
+Execution	NN
+Planner	NN
+
+
+Service	NNP
+Repository	NNP
+Service	NNP
+Repository	NNP
+
+
+Rule	NN
+Base	NN
+
+
+ReRe	NN
+
+
+ExecutionExecution	NN
+
+
+PlanPlan	NNP
+
+
+-LRB-	-LRB-
+UDDI	NNP
+Registry	NNP
+-RRB-	-RRB-
+-LRB-	-LRB-
+UDDI	NNP
+Registry	NNP
+-RRB-	-RRB-
+
+
+Service	NNP
+Ontology	NNP
+Service	NNP
+Ontology	NNP
+
+
+Repository	NNP
+Repository	NNP
+-LRB-	-LRB-
+UDDI	NNP
+Registry	NNP
+-RRB-	-RRB-
+-LRB-	-LRB-
+UDDI	NNP
+Registry	NNP
+-RRB-	-RRB-
+
+
+WSDL	NNP
+WSDL	NNP
+DocumentDocument	NNP
+
+
+PublishPublish	NN
+
+
+SubscribeSubscribe	NN
+
+
+Adaptive	JJ
+Execution	NN
+
+
+Engine	NNP
+
+
+Web	NN
+serviceWeb	NN
+service	NN
+
+
+Web	NN
+serviceWeb	NN
+service	NN
+
+
+Web	NN
+serviceWeb	NN
+service	NN
+
+
+Web	NN
+serviceWeb	NN
+service	NN
+
+
+Service	NNP
+Composition	NNP
+Manager	NNP
+
+
+Fig.	NNP
+9	CD
+.	.
+
+Architecture	NNP
+of	IN
+the	DT
+DYflow	NN
+prototype	NN
+
+
+5.1	CD
+
+
+Service	NNP
+Broker	NNP
+
+
+There	EX
+are	VBP
+two	CD
+meta-data	JJ
+repositories	NNS
+in	IN
+service	NN
+broker	NN
+,	,
+namely	RB
+service	NN
+ontology	JJ
+repository	NN
+and	CC
+
+
+service	NN
+repository	NN
+.	.
+
+We	PRP
+adopt	VBP
+the	DT
+UDDI	NNP
+registry	NN
+to	TO
+implement	VB
+both	CC
+meta-data	JJ
+repositories	NNS
+.	.
+
+
+We	PRP
+de	IN
+an	DT
+XML	NN
+schema	NN
+for	IN
+service	NN
+ontologies	NNS
+.	.
+
+Each	DT
+service	NN
+ontology	NN
+is	VBZ
+represented	VBN
+as	IN
+an	DT
+
+
+XML	NN
+document	NN
+.	.
+
+A	DT
+separate	JJ
+tModel	NN
+of	IN
+type	NN
+serviceOntologySpec	NN
+is	VBZ
+created	VBN
+for	IN
+each	DT
+service	NN
+
+
+ontology	NN
+.	.
+
+The	DT
+information	NN
+that	WDT
+makes	VBZ
+up	RP
+a	DT
+serviceOntologySpec	NN
+tModel	NN
+is	VBZ
+quite	RB
+simple	JJ
+.	.
+
+
+There	EX
+is	VBZ
+a	DT
+tModel	NN
+key	NN
+,	,
+a	DT
+name	NN
+-LRB-	-LRB-
+i.e.	FW
+,	,
+service	NN
+ontologyâ	NN
+$	$
+™	CD
+s	NNS
+name	NN
+-RRB-	-RRB-
+,	,
+optional	JJ
+description	NN
+,	,
+and	CC
+a	DT
+URL	NN
+
+
+that	IN
+points	NNS
+to	TO
+the	DT
+location	NN
+of	IN
+service	NN
+ontology	NN
+description	NN
+document	NN
+.	.
+
+
+Based	VBN
+on	IN
+UDDI	NNP
+API	NNP
+,	,
+the	DT
+service	NN
+broker	NN
+provides	VBZ
+two	CD
+kinds	NNS
+of	IN
+interfaces	NNS
+for	IN
+both	DT
+repositories	NNS
+:	:
+-	:
+
+
+the	DT
+publish	VB
+interface	NN
+and	CC
+the	DT
+search	NN
+interface	NN
+.	.
+
+For	IN
+the	DT
+service	NN
+ontology	NN
+repository	NN
+,	,
+the	DT
+publish	VB
+
+
+interface	NN
+allows	VBZ
+an	DT
+ontology	JJ
+engineer	NN
+to	TO
+create	VB
+new	JJ
+service	NN
+ontology	NN
+.	.
+
+It	PRP
+also	RB
+provides	VBZ
+methods	NNS
+
+
+to	TO
+modify	VB
+the	DT
+service	NN
+ontology	NN
+such	JJ
+as	IN
+add	VB
+a	DT
+new	JJ
+service	NN
+class	NN
+,	,
+delete	VB
+an	DT
+existing	VBG
+service	NN
+class	NN
+,	,
+
+
+etc.	FW
+.	.
+
+The	DT
+search	NN
+interface	NN
+allows	VBZ
+service	NN
+providers	NNS
+and	CC
+end	VB
+users	NNS
+to	TO
+search	VB
+and	CC
+browse	VB
+the	DT
+exist	VBP
+-	:
+
+
+ing	VBG
+service	NN
+ontologies	NNS
+.	.
+
+The	DT
+search	NN
+can	MD
+be	VB
+based	VBN
+on	IN
+service	NN
+ontologyâ	JJ
+$	$
+™	CD
+s	NNS
+domain	NN
+name	NN
+,	,
+synonyms	NNS
+,	,
+
+
+service	NN
+class	NN
+,	,
+etc.	FW
+.	.
+
+For	IN
+the	DT
+Web	NN
+service	NN
+repository	NN
+,	,
+the	DT
+publish	VB
+interface	NN
+allows	VBZ
+service	NN
+providers	NNS
+
+
+to	TO
+publish	VB
+or	CC
+advertise	VB
+their	PRP$
+service	NN
+descriptions	NNS
+.	.
+
+While	IN
+the	DT
+search	NN
+interface	NN
+allows	VBZ
+the	DT
+user	NN
+to	TO
+
+
+discover	VB
+Web	NN
+services	NNS
+by	IN
+service	NN
+class	NN
+name	NN
+,	,
+operation	NN
+name	NN
+,	,
+input	NN
+and	CC
+output	NN
+data	NNS
+.	.
+
+It	PRP
+should	MD
+
+
+be	VB
+noted	VBN
+that	IN
+QoS	NN
+information	NN
+is	VBZ
+retrieved	VBN
+via	IN
+generic	JJ
+operations	NNS
+-LRB-	-LRB-
+e.g.	FW
+,	,
+getExecutionTime	NN
+-LRB-	-LRB-
+-RRB-	-RRB-
+-RRB-	-RRB-
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+16	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+Flexible	JJ
+Composition	NN
+of	IN
+Enterprise	NNP
+Web	NN
+Services	NNPS
+
+
+17	CD
+
+
+5.2	CD
+
+
+Service	NNP
+Composition	NNP
+Manager	NNP
+
+
+The	DT
+service	NN
+composition	NN
+manager	NN
+consists	VBZ
+of	IN
+three	CD
+modules	NNS
+,	,
+namely	RB
+the	DT
+statechart	NN
+generator	NN
+,	,
+
+
+the	DT
+execution	NN
+planner	NN
+and	CC
+the	DT
+adaptive	JJ
+execution	NN
+engine	NN
+.	.
+
+
+The	DT
+statechart	JJ
+generator	NN
+receives	VBZ
+end	NN
+usersâ	JJ
+$	$
+™	CD
+initiate	NN
+state	NN
+-LRB-	-LRB-
+i.e.	FW
+,	,
+initiate	VB
+task	NN
+-RRB-	-RRB-
+and	CC
+business	NN
+
+
+objectives	NNS
+-LRB-	-LRB-
+i.e.	FW
+,	,
+the	DT
+target	NN
+task	NN
+-RRB-	-RRB-
+as	IN
+input	NN
+.	.
+
+It	PRP
+locates	VBZ
+userâ	JJ
+$	$
+™	CD
+s	NNS
+pro	JJ
+in	IN
+the	DT
+repository	NN
+and	CC
+consults	NNS
+
+
+business	NN
+rules	NNS
+to	TO
+dynamically	RB
+generate	VB
+a	DT
+set	NN
+of	IN
+independent	JJ
+statecharts	NNS
+in	IN
+XML	NN
+documents	NNS
+.	.
+
+
+When	WRB
+a	DT
+statechart	NN
+is	VBZ
+generated	VBN
+,	,
+the	DT
+execution	NN
+planner	NN
+will	MD
+create	VB
+an	DT
+optimal	JJ
+execution	NN
+plan	NN
+
+
+based	VBN
+on	IN
+Web	NN
+servicesâ	NN
+$	$
+™	CD
+QoS	NN
+information	NN
+in	IN
+an	DT
+XML	NN
+document	NN
+.	.
+
+Details	NNS
+on	IN
+execution	NN
+planning	NN
+
+
+can	MD
+be	VB
+found	VBN
+in	IN
+-LSB-	-LRB-
+22	CD
+-RSB-	-RRB-
+.	.
+
+The	DT
+optimal	JJ
+execution	NN
+plan	NN
+will	MD
+be	VB
+passed	VBN
+to	TO
+the	DT
+adaptive	JJ
+execution	NN
+engine	NN
+
+
+to	TO
+execute	VB
+composite	JJ
+services	NNS
+.	.
+
+The	DT
+execution	NN
+engine	NN
+manages	VBZ
+the	DT
+composite	JJ
+serviceâ	NN
+$	$
+™	CD
+s	NNS
+lifecycle	NN
+
+
+and	CC
+enables	VBZ
+state	NN
+control	NN
+,	,
+service	NN
+collaboration	NN
+and	CC
+monitoring	NN
+by	IN
+executing	VBG
+business	NN
+rules	NNS
+.	.
+
+
+The	DT
+service	NN
+composition	NN
+manager	NN
+GUI	NNP
+-LRB-	-LRB-
+see	VB
+Figure	NNP
+10	CD
+-RRB-	-RRB-
+provides	VBZ
+a	DT
+single	JJ
+point-of-access	NN
+to	TO
+
+
+DYflow	NN
+system	NN
+.	.
+
+Using	VBG
+the	DT
+Business	NN
+Rule	NN
+Manager	NN
+,	,
+users	NNS
+can	MD
+edit	VB
+,	,
+modify	VB
+and	CC
+delete	VB
+business	NN
+rules	NNS
+.	.
+
+The	DT
+GUI	NNP
+also	RB
+provides	VBZ
+a	DT
+Pro	FW
+Manager	NN
+that	WDT
+allows	VBZ
+users	NNS
+to	TO
+manage	VB
+their	PRP$
+pro	JJ
+The	DT
+
+
+lower	JJR
+panel	NN
+shows	VBZ
+the	DT
+tool	NN
+for	IN
+displaying	VBG
+the	DT
+diagram	NN
+of	IN
+a	DT
+statechart	NN
+graphically	RB
+.	.
+
+
+Fig.	NN
+10	CD
+.	.
+
+GUI	NNP
+of	IN
+Service	NNP
+Composition	NNP
+Manager	NNP
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+17	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+18	CD
+
+
+Flexible	JJ
+Composition	NN
+of	IN
+Enterprise	NNP
+Web	NN
+Services	NNPS
+
+
+5.3	CD
+
+
+An	DT
+Application	NN
+
+
+To	TO
+illustrate	VB
+the	DT
+viability	NN
+of	IN
+our	PRP$
+approach	NN
+,	,
+we	PRP
+have	VBP
+implemented	VBN
+an	DT
+automobile	NN
+R&D	NN
+appli	NNS
+-	:
+
+
+cation	NN
+.	.
+
+We	PRP
+used	VBD
+about	IN
+100	CD
+business	NN
+rules	NNS
+in	IN
+this	DT
+application	NN
+.	.
+
+The	DT
+application	NN
+incrementally	RB
+
+
+generates	VBZ
+composite	JJ
+services	NNS
+to	TO
+manage	VB
+the	DT
+replacing	VBG
+engine	NN
+R&D	NN
+product	NN
+process	NN
+-LRB-	-LRB-
+see	VB
+sec	SYM
+-	:
+
+
+tion	NN
+2	CD
+-RRB-	-RRB-
+.	.
+
+The	DT
+detailed	JJ
+scenario	NN
+is	VBZ
+as	IN
+follows	VBZ
+:	:
+-	:
+
+
+Step	NN
+1	CD
+:	:
+Creating	VBG
+top	JJ
+level	NN
+composite	JJ
+service	NN
+schema	NN
+
+
+In	IN
+this	DT
+step	NN
+,	,
+the	DT
+chief	JJ
+engineer	NN
+provides	VBZ
+description	NN
+of	IN
+her	PRP$
+business	NN
+objective	NN
+-LRB-	-LRB-
+i.e.	FW
+,	,
+replacing	VBG
+
+
+engine	NN
+-RRB-	-RRB-
+as	IN
+input	NN
+to	TO
+the	DT
+statechart	NN
+generator	NN
+.	.
+
+The	DT
+statechart	JJ
+generator	NN
+will	MD
+locate	VB
+the	DT
+userâ	JJ
+$	$
+™	CD
+s	NNS
+
+
+pro	JJ
+and	CC
+appropriate	JJ
+business	NN
+rules	NNS
+to	TO
+generate	VB
+an	DT
+XML	NN
+document	NN
+that	WDT
+represent	VBP
+a	DT
+stat	NN
+-	:
+
+
+echart	NN
+of	IN
+service	NN
+.	.
+
+The	DT
+graphical	JJ
+presentation	NN
+of	IN
+the	DT
+statechart	NN
+is	VBZ
+shown	VBN
+in	IN
+Figure	NNP
+10	CD
+.	.
+
+After	IN
+
+
+creating	VBG
+the	DT
+top	JJ
+level	NN
+composite	JJ
+service	NN
+,	,
+the	DT
+chief	JJ
+engineer	NN
+will	MD
+initiate	VB
+the	DT
+R&D	NN
+product	NN
+
+
+process	NN
+.	.
+
+The	DT
+task	NN
+of	IN
+new	JJ
+engine	NN
+development	NN
+will	MD
+be	VB
+assigned	VBN
+to	TO
+an	DT
+engine	NN
+designer	NN
+.	.
+
+
+Step	NN
+2	CD
+:	:
+Creating	VBG
+task	NN
+level	NN
+composite	JJ
+service	NN
+schema	NN
+
+
+Assuming	VBG
+that	IN
+an	DT
+engine	NN
+designer	NN
+is	VBZ
+assigned	VBN
+to	TO
+execute	VB
+the	DT
+task	NN
+new	JJ
+engine	NN
+development	NN
+
+
+in	IN
+the	DT
+top	JJ
+level	NN
+composite	JJ
+service	NN
+.	.
+
+Here	RB
+,	,
+new	JJ
+engine	NN
+development	NN
+is	VBZ
+a	DT
+task	NN
+in	IN
+the	DT
+top	JJ
+level	NN
+
+
+composite	JJ
+service	NN
+.	.
+
+However	RB
+,	,
+the	DT
+statechart	NN
+generator	NN
+needs	VBZ
+to	TO
+generate	VB
+a	DT
+composite	JJ
+service	NN
+
+
+for	IN
+the	DT
+engine	NN
+designer	NN
+to	TO
+execute	VB
+this	DT
+task	NN
+.	.
+
+Having	VBG
+the	DT
+business	NN
+objective	NN
+and	CC
+the	DT
+engine	NN
+
+
+designerâ	NN
+$	$
+™	CD
+s	NNS
+pro	JJ
+as	IN
+initial	JJ
+context	NN
+,	,
+the	DT
+statechart	NN
+generator	NN
+can	MD
+create	VB
+a	DT
+task	NN
+level	NN
+compos	NNS
+-	:
+
+
+ite	NN
+service	NN
+schema	NN
+as	IN
+shown	VBN
+in	IN
+Figure	NNP
+11	CD
+.	.
+
+It	PRP
+should	MD
+be	VB
+noted	VBN
+that	IN
+,	,
+for	IN
+a	DT
+task	NN
+in	IN
+a	DT
+composite	JJ
+
+
+service	NN
+,	,
+either	CC
+an	DT
+elementary	JJ
+service	NN
+is	VBZ
+used	VBN
+to	TO
+execute	VB
+it	PRP
+,	,
+or	CC
+the	DT
+statechart	JJ
+generator	NN
+create	VB
+
+
+a	DT
+statechart	NN
+to	TO
+execute	VB
+it	PRP
+.	.
+
+For	IN
+example	NN
+,	,
+for	IN
+the	DT
+task	NN
+of	IN
+Cost	NN
+Evaluation	NN
+,	,
+since	IN
+there	EX
+is	VBZ
+no	DT
+
+
+service	NN
+composition	NN
+rule	NN
+for	IN
+it	PRP
+,	,
+an	DT
+elementary	JJ
+service	NN
+is	VBZ
+used	VBN
+to	TO
+execute	VB
+it	PRP
+.	.
+
+However	RB
+,	,
+for	IN
+the	DT
+
+
+task	NN
+of	IN
+Outsourcing	NNP
+Engine	NNP
+,	,
+since	IN
+there	EX
+is	VBZ
+a	DT
+set	NN
+of	IN
+service	NN
+composition	NN
+rules	NNS
+,	,
+the	DT
+statechart	NN
+
+
+generator	NN
+create	VB
+a	DT
+composite	JJ
+service	NN
+to	TO
+execute	VB
+it	PRP
+.	.
+
+
+The	DT
+above	JJ
+scenario	NN
+shows	VBZ
+that	IN
+the	DT
+system	NN
+only	RB
+creates	VBZ
+the	DT
+necessary	JJ
+composite	JJ
+service	NN
+
+
+schemas	NNS
+for	IN
+the	DT
+R&D	NN
+product	NN
+process	NN
+.	.
+
+It	PRP
+does	VBZ
+not	RB
+enumerate	VB
+all	PDT
+the	DT
+possible	JJ
+tasks	NNS
+,	,
+control	NN
+
+
+ws	NNS
+and	CC
+data	NNS
+ws	NNS
+.	.
+
+Instead	RB
+of	IN
+using	VBG
+a	DT
+single	JJ
+large	JJ
+one-level	JJ
+schema	NN
+to	TO
+represent	VB
+the	DT
+whole	NN
+
+
+R&D	NN
+product	NN
+process	NN
+,	,
+we	PRP
+use	VBP
+composition	NN
+hierarchy	NN
+that	WDT
+consists	VBZ
+of	IN
+multiple	JJ
+nested	JJ
+composite	NN
+
+
+services	NNS
+to	TO
+represent	VB
+the	DT
+R&D	NN
+product	NN
+process	NN
+.	.
+
+This	DT
+modular	JJ
+approach	NN
+allows	VBZ
+distinct	JJ
+process	NN
+
+
+to	TO
+be	VB
+encapsulated	VBN
+in	IN
+a	DT
+composite	JJ
+service	NN
+.	.
+
+This	DT
+representation	NN
+is	VBZ
+more	RBR
+scalable	JJ
+and	CC
+makes	VBZ
+it	PRP
+
+
+easy	JJ
+to	TO
+implement	VB
+runtime	NN
+modi	NN
+on	IN
+composite	JJ
+services	NNS
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+18	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+Flexible	JJ
+Composition	NN
+of	IN
+Enterprise	NNP
+Web	NN
+Services	NNPS
+
+
+19	CD
+
+
+Fig.	NN
+11	CD
+.	.
+
+Task	NNP
+Level	NNP
+Composite	NNP
+Service	NNP
+for	IN
+New	NNP
+Engine	NNP
+Development	NNP
+
+
+6	CD
+
+
+Related	JJ
+Work	NN
+
+
+There	EX
+are	VBP
+several	JJ
+research	NN
+e	SYM
+in	IN
+modelling	NN
+complex	NN
+process	NN
+.	.
+
+In	IN
+this	DT
+section	NN
+we	PRP
+review	VBP
+some	DT
+
+
+related	JJ
+work	NN
+in	IN
+area	NN
+of	IN
+production	NN
+workw	NN
+,	,
+Web	NN
+services	NNS
+standard	JJ
+,	,
+and	CC
+Arti	NNP
+Intelligent	NNP
+
+
+-LRB-	-LRB-
+AI	NN
+-RRB-	-RRB-
+planning	NN
+.	.
+
+
+Production	NN
+workws	NNS
+-LSB-	-LRB-
+7	CD
+-RSB-	-RRB-
+-LSB-	-LRB-
+14	CD
+-RSB-	-RRB-
+focus	NN
+on	IN
+automating	VBG
+business	NN
+processes	NNS
+that	WDT
+are	VBP
+character	NN
+-	:
+
+
+ized	VBN
+by	IN
+static	JJ
+pattern	NN
+and	CC
+high	JJ
+repetition	NN
+factor	NN
+.	.
+
+IBMâ	NNP
+$	$
+™	CD
+s	NNS
+MQseries	NNS
+workw	NN
+-LSB-	-LRB-
+10	CD
+-RSB-	-RRB-
+use	NN
+FDL	NN
+-LRB-	-LRB-
+
+
+de	IN
+language	NN
+-RRB-	-RRB-
+to	TO
+de	FW
+workw	FW
+schemas	NNS
+.	.
+
+In	IN
+the	DT
+WIDE	NNP
+project	NN
+-LSB-	-LRB-
+6	CD
+-RSB-	-RRB-
+,	,
+a	DT
+workw	NN
+manage	VBP
+-	:
+
+
+ment	NN
+system	NN
+is	VBZ
+built	VBN
+to	TO
+support	VB
+distributed	VBN
+workw	NN
+execution	NN
+.	.
+
+ECA	NNP
+rules	NNS
+are	VBP
+used	VBN
+to	TO
+support	VB
+
+
+exceptions	NNS
+and	CC
+asynchronous	JJ
+behavior	NN
+during	IN
+the	DT
+execution	NN
+of	IN
+distributed	VBN
+workw	NN
+instance	NN
+.	.
+
+
+In	IN
+the	DT
+EvE	NN
+project	NN
+-LSB-	-LRB-
+8	CD
+-RSB-	-RRB-
+,	,
+ECA	NN
+rules	NNS
+are	VBP
+used	VBN
+to	TO
+address	VB
+the	DT
+problem	NN
+of	IN
+distributed	VBN
+event-based	JJ
+
+
+workw	NN
+execution	NN
+,	,
+which	WDT
+is	VBZ
+a	DT
+fundamental	JJ
+metaphor	NN
+for	IN
+de	FW
+and	CC
+enforcing	VBG
+workw	NN
+ex	FW
+-	:
+
+
+ecution	NN
+.	.
+
+Typically	RB
+,	,
+production	NN
+workws	NNS
+require	VBP
+de	IN
+workw	NN
+schemas	NNS
+in	IN
+advance	NN
+,	,
+which	WDT
+is	VBZ
+
+
+not	RB
+suitable	JJ
+for	IN
+dynamic	JJ
+Web	NN
+service	NN
+composition	NN
+where	WRB
+the	DT
+business	NN
+rules	NNS
+may	MD
+be	VB
+modi	NN
+or	CC
+
+
+created	VBN
+during	IN
+the	DT
+execution	NN
+of	IN
+business	NN
+process	NN
+.	.
+
+However	RB
+,	,
+DYflow	NN
+uses	VBZ
+ECA	NNP
+rules	NNS
+to	TO
+specify	VB
+business	NN
+rules	NNS
+and	CC
+dynamically	RB
+generate	VBP
+composite	JJ
+services	NNS
+using	VBG
+those	DT
+rules	NNS
+at	IN
+runtime	NN
+,	,
+which	WDT
+
+
+can	MD
+adopt	VB
+the	DT
+changes	NNS
+in	IN
+business	NN
+rules	NNS
+.	.
+
+
+Decision	NN
+Flow	NN
+-LSB-	-LRB-
+9	CD
+-RSB-	-RRB-
+focuses	VBZ
+on	IN
+providing	VBG
+a	DT
+high	JJ
+level	NN
+business	NN
+process	NN
+speci	NN
+language	NN
+
+
+with	IN
+declarative	JJ
+semantics	NNS
+,	,
+which	WDT
+are	VBP
+understood	VBN
+by	IN
+users	NNS
+throughout	IN
+an	DT
+enterprise	NN
+.	.
+
+It	PRP
+provides	VBZ
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+19	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+20	CD
+
+
+Flexible	JJ
+Composition	NN
+of	IN
+Enterprise	NNP
+Web	NN
+Services	NNPS
+
+
+an	DT
+algorithm	NN
+for	IN
+eager	JJ
+detection	NN
+of	IN
+eligible	NN
+,	,
+needed	VBN
+or	CC
+necessary	JJ
+tasks	NNS
+to	TO
+support	VB
+et	FW
+
+
+execution	NN
+of	IN
+decision	NN
+w.	NN
+However	RB
+,	,
+a	DT
+decision	NN
+w	NN
+is	VBZ
+prede	NN
+and	CC
+the	DT
+business	NN
+rules	NNS
+are	VBP
+
+
+hard	RB
+coded	VBN
+into	IN
+the	DT
+decision	NN
+w.	NN
+ISEE	NN
+-LSB-	-LRB-
+16	CD
+-RSB-	-RRB-
+introduces	VBZ
+events	NNS
+and	CC
+rules	NNS
+to	TO
+the	DT
+business	NN
+process	NN
+
+
+model	NN
+.	.
+
+This	DT
+enables	VBZ
+runtime	NN
+modi	NN
+of	IN
+the	DT
+business	NN
+processes	NNS
+.	.
+
+However	RB
+,	,
+all	PDT
+the	DT
+tasks	NNS
+in	IN
+
+
+the	DT
+business	NN
+processes	NNS
+are	VBP
+prede	NN
+and	CC
+the	DT
+rules	NNS
+can	MD
+not	RB
+be	VB
+modi	JJ
+dynamically	RB
+.	.
+
+DYflow	NN
+
+
+composes	VBZ
+the	DT
+business	NN
+processes	NNS
+on	IN
+demand	NN
+immediately	RB
+before	IN
+execution	NN
+and	CC
+continuously	RB
+
+
+adapts	IN
+the	DT
+process	NN
+as	IN
+events	NNS
+occur	VBP
+at	IN
+runtime	NN
+.	.
+
+Business	NN
+rules	NNS
+are	VBP
+re-evaluated	VBN
+at	IN
+runtime	NN
+to	TO
+
+
+ensure	VB
+the	DT
+optimal	JJ
+composite	JJ
+service	NN
+is	VBZ
+used	VBN
+at	IN
+runtime	NN
+.	.
+
+
+Several	JJ
+standards	NNS
+that	WDT
+aim	VBP
+at	IN
+providing	VBG
+infrastructure	NN
+to	TO
+support	VB
+Web	NN
+services	NNS
+composition	NN
+
+
+have	VB
+recently	RB
+emerged	VBD
+including	VBG
+SOAP	NN
+-LSB-	-LRB-
+17	CD
+-RSB-	-RRB-
+,	,
+WSDL	NN
+-LSB-	-LRB-
+21	CD
+-RSB-	-RRB-
+,	,
+UDDI	NN
+-LSB-	-LRB-
+18	CD
+-RSB-	-RRB-
+,	,
+and	CC
+BPEL4WS	NN
+-LSB-	-LRB-
+4	CD
+-RSB-	-RRB-
+.	.
+
+SOAP	NN
+
+
+de	IN
+an	DT
+XML	NN
+messaging	NN
+protocol	NN
+for	IN
+basic	JJ
+service	NN
+interoperability	NN
+.	.
+
+WSDL	NN
+introduces	VBZ
+a	DT
+com	NN
+-	:
+
+
+mon	NN
+grammar	NN
+for	IN
+describing	VBG
+services	NNS
+.	.
+
+UDDI	NNP
+provides	VBZ
+the	DT
+infrastructure	NN
+required	VBN
+to	TO
+publish	VB
+and	CC
+
+
+discover	VB
+services	NNS
+in	IN
+a	DT
+systematic	JJ
+way	NN
+.	.
+
+Together	RB
+,	,
+these	DT
+speci	NNS
+allow	VBP
+applications	NNS
+to	TO
+
+
+each	DT
+other	JJ
+and	CC
+collaborate	VB
+using	VBG
+a	DT
+loosely	RB
+coupled	VBN
+,	,
+platform-independent	JJ
+protocol	NN
+.	.
+
+BPEL4WS	NN
+
+
+is	VBZ
+the	DT
+latest	JJS
+attempt	NN
+to	TO
+add	VB
+a	DT
+layer	NN
+on	IN
+top	NN
+of	IN
+WSDL	NNP
+for	IN
+specifying	VBG
+business	NN
+processes	NNS
+and	CC
+
+
+business	NN
+interaction	NN
+protocols	NNS
+.	.
+
+By	IN
+doing	VBG
+so	RB
+,	,
+it	PRP
+extends	VBZ
+the	DT
+Web	NN
+services	NNS
+interaction	NN
+model	NN
+
+
+and	CC
+enables	VBZ
+it	PRP
+to	TO
+support	VB
+business	NN
+transactions	NNS
+.	.
+
+BPEL4WS	NN
+and	CC
+DYflow	NN
+are	VBP
+complementary	JJ
+to	TO
+each	DT
+other	JJ
+.	.
+
+The	DT
+former	JJ
+provides	VBZ
+a	DT
+formalism	NN
+for	IN
+de	FW
+composite	JJ
+services	NNS
+,	,
+while	IN
+the	DT
+latter	JJ
+
+
+is	VBZ
+concerned	VBN
+with	IN
+how	WRB
+composite	JJ
+services	NNS
+may	MD
+be	VB
+derived	VBN
+from	IN
+business	NN
+rules	NNS
+.	.
+
+Currently	RB
+,	,
+our	PRP$
+
+
+prototype	NN
+uses	VBZ
+UML	NN
+statechart	NN
+to	TO
+describe	VB
+the	DT
+resultant	JJ
+composite	JJ
+services	NNS
+.	.
+
+The	DT
+choice	NN
+of	IN
+stat	NN
+-	:
+
+
+echarts	NNS
+for	IN
+specifying	VBG
+composite	JJ
+services	NNS
+is	VBZ
+motivated	VBN
+by	IN
+two	CD
+main	JJ
+reasons	NNS
+:	:
+-LRB-	-LRB-
+i	LS
+-RRB-	-RRB-
+statecharts	NNS
+have	VBP
+
+
+a	DT
+well-de	JJ
+semantics	NNS
+;	:
+and	CC
+-LRB-	-LRB-
+ii	LS
+-RRB-	-RRB-
+they	PRP
+o	NN
+the	DT
+basic	JJ
+w	NN
+constructs	NNS
+found	VBN
+in	IN
+contemporary	JJ
+
+
+process	NN
+modelling	NN
+languages	NNS
+-LRB-	-LRB-
+i.e.	FW
+,	,
+sequence	NN
+,	,
+conditional	JJ
+branching	VBG
+,	,
+structured	VBN
+loops	NNS
+,	,
+concurrent	JJ
+
+
+threads	NNS
+,	,
+and	CC
+inter-thread	JJ
+synchronization	NN
+-RRB-	-RRB-
+.	.
+
+The	DT
+characteristic	JJ
+facilitates	VBZ
+the	DT
+application	NN
+of	IN
+
+
+formal	JJ
+manipulation	NN
+techniques	NNS
+to	TO
+statechart	JJ
+models	NNS
+,	,
+while	IN
+the	DT
+second	JJ
+characteristic	JJ
+ensures	VBZ
+
+
+that	IN
+the	DT
+generated	VBN
+composite	JJ
+services	NNS
+can	MD
+be	VB
+adapted	VBN
+to	TO
+other	JJ
+process	NN
+modelling	NN
+languages	NNS
+,	,
+
+
+like	IN
+for	IN
+example	NN
+,	,
+it	PRP
+could	MD
+easily	RB
+switch	VB
+to	TO
+the	DT
+BPEL4WS	NN
+framework	NN
+.	.
+
+
+Early	JJ
+work	NN
+in	IN
+AI	NNP
+planning	VBG
+seeks	VBZ
+to	TO
+build	VB
+control	NN
+algorithms	NNS
+that	WDT
+enable	VBP
+an	DT
+agent	NN
+to	TO
+synthe	NN
+-	:
+
+
+size	NN
+a	DT
+plan	NN
+to	TO
+achieve	VB
+its	PRP$
+goal	NN
+-LSB-	-LRB-
+20	CD
+-RSB-	-RRB-
+.	.
+
+Recently	RB
+,	,
+AI	NN
+planning	NN
+is	VBZ
+used	VBN
+in	IN
+information	NN
+gathering	NN
+and	CC
+
+
+integration	NN
+over	IN
+the	DT
+web	NN
+-LSB-	-LRB-
+15	CD
+-RSB-	-RRB-
+-LSB-	-LRB-
+13	CD
+-RSB-	-RRB-
+.	.
+
+In	IN
+-LSB-	-LRB-
+1	CD
+-RSB-	-RRB-
+,	,
+AI	NN
+planning	NN
+is	VBZ
+adopted	VBN
+to	TO
+enable	VB
+the	DT
+interaction	NN
+of	IN
+Web	NN
+
+
+services	NNS
+,	,
+but	CC
+it	PRP
+requires	VBZ
+prede	NN
+activity	NN
+diagrams	NNS
+-LRB-	-LRB-
+i.e.	FW
+,	,
+workw	NN
+schema	NN
+-RRB-	-RRB-
+that	WDT
+enumerate	VBP
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+20	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+Flexible	JJ
+Composition	NN
+of	IN
+Enterprise	NNP
+Web	NN
+Services	NNPS
+
+
+21	CD
+
+
+all	DT
+the	DT
+possible	JJ
+interactions	NNS
+of	IN
+Web	NN
+services	NNS
+.	.
+
+DYflow	NN
+uses	VBZ
+planning	VBG
+algorithm	NN
+for	IN
+choosing	VBG
+the	DT
+most	RBS
+optimal	JJ
+execution	NN
+plan	NN
+,	,
+but	CC
+it	PRP
+does	VBZ
+not	RB
+require	VB
+any	DT
+prede	NN
+workw	NN
+schemas	NNS
+.	.
+
+
+7	CD
+
+
+Conclusion	NN
+
+
+DYflow	NN
+is	VBZ
+a	DT
+dynamic	JJ
+service	NN
+composition	NN
+framework	NN
+that	WDT
+uses	VBZ
+rule	NN
+inference	NN
+to	TO
+support	VB
+Web	NN
+service	NN
+composition	NN
+.	.
+
+DYflow	NN
+provides	VBZ
+tools	NNS
+for	IN
+:	:
+-LRB-	-LRB-
+i	LS
+-RRB-	-RRB-
+de	IN
+business	NN
+rules	NNS
+;	:
+-LRB-	-LRB-
+ii	LS
+-RRB-	-RRB-
+generating	VBG
+com	NN
+-	:
+posite	JJ
+services	NNS
+to	TO
+execute	VB
+business	NN
+processes	NNS
+.	.
+
+Together	RB
+,	,
+these	DT
+tools	NNS
+provide	VBP
+an	DT
+infrastructure	NN
+
+
+for	IN
+a	DT
+new	JJ
+approach	NN
+to	TO
+dynamically	RB
+compose	VB
+Web	NN
+services	NNS
+.	.
+
+Currently	RB
+,	,
+the	DT
+DYflow	NN
+platform	NN
+has	VBZ
+been	VBN
+used	VBN
+to	TO
+generate	VB
+a	DT
+business	NN
+process	NN
+for	IN
+an	DT
+automobile	NN
+industry	NN
+.	.
+
+In	IN
+particular	JJ
+,	,
+a	DT
+relatively	RB
+
+
+complex	JJ
+composition	NN
+hierarchy	NN
+that	WDT
+contains	VBZ
+15	CD
+composite	JJ
+services	NNS
+-LRB-	-LRB-
+120	CD
+tasks	NNS
+-RRB-	-RRB-
+has	VBZ
+been	VBN
+created	VBN
+
+
+for	IN
+the	DT
+replacing	VBG
+engine	NN
+R&D	NN
+product	NN
+process	NN
+.	.
+
+Ongoing	JJ
+research	NN
+includes	VBZ
+optimization	NN
+of	IN
+
+
+composite	JJ
+services	NNS
+and	CC
+automatic	JJ
+business	NN
+rule	NN
+learning	NN
+.	.
+
+
+Acknowledgments	NNS
+
+
+The	DT
+work	NN
+of	IN
+Boualem	NNP
+Benatallah	NNP
+is	VBZ
+partially	RB
+supported	VBN
+by	IN
+the	DT
+Australian	NNP
+Research	NNP
+Councilâ	NNP
+$	$
+™	CD
+s	NNS
+
+
+SPIRT	NNP
+GRANT	NNP
+C00001812	NN
+.	.
+
+
+References	NNS
+
+
+1	LS
+.	.
+
+M.	NNP
+Aiello	NNP
+,	,
+M.	NNP
+Papzoglou	NNP
+,	,
+J.	NNP
+Yang	NNP
+,	,
+M.	NNP
+Carman	NNP
+,	,
+M.	NNP
+Pistore	NNP
+an	DT
+d	NN
+L.	NN
+Sera	NNP
+and	CC
+P.	NNP
+Traverso	NNP
+.	.
+
+A	DT
+request	NN
+language	NN
+
+
+for	IN
+web-services	NNS
+based	VBN
+on	IN
+planning	NN
+and	CC
+constraint	NN
+sa	NN
+tisfaction	NN
+.	.
+
+In	IN
+VLDB	NN
+workshp	NN
+on	IN
+Technologies	NNPS
+for	IN
+E-Services	NNS
+
+
+-LRB-	-LRB-
+TES	NN
+-RRB-	-RRB-
+,	,
+LNCS	NN
+,	,
+page	NN
+10	CD
+.	.
+
+Springer	NNP
+,	,
+2002	CD
+.	.
+
+
+2	LS
+.	.
+
+Boualem	NNP
+Benatallah	NNP
+and	CC
+Fabio	NNP
+Casati	NNP
+,	,
+editors	NNS
+.	.
+
+Distributed	VBN
+and	CC
+Parallel	JJ
+Database	NN
+,	,
+Special	JJ
+issue	NN
+on	IN
+Web	NN
+Services	NNPS
+.	.
+
+
+Springer-Verlag	NNP
+,	,
+2002	CD
+.	.
+
+
+3	LS
+.	.
+
+Boualem	NNP
+Benatallah	NNP
+,	,
+Marlon	NNP
+Dumas	NNP
+,	,
+and	CC
+Zakaria	NNP
+Maamar	NNP
+.	.
+
+De	NNP
+and	CC
+execution	NN
+of	IN
+composite	JJ
+web	NN
+services	NNS
+:	:
+The	DT
+
+
+self-serv	NN
+project	NN
+.	.
+
+Bulletin	NNP
+of	IN
+the	DT
+Technical	NNP
+Committee	NNP
+on	IN
+Data	NNP
+Engineering	NNP
+,	,
+25	CD
+-LRB-	-LRB-
+4	CD
+-RRB-	-RRB-
+:47	CD
+-LCB-	-LRB-
+52	CD
+,	,
+2002	CD
+.	.
+
+
+4	LS
+.	.
+
+Business	NN
+
+
+process	NN
+
+
+execution	NN
+
+
+language	NN
+
+
+for	IN
+
+
+web	NN
+
+
+services	NNS
+,	,
+
+
+version	NN
+
+
+1.0	CD
+,	,
+
+
+2000	CD
+.	.
+
+
+http://www	SYM
+-	:
+
+
+106	CD
+.	.
+
+ibm.com/developerworks/library/ws-bpel/	NN
+.	.
+
+
+5	CD
+.	.
+
+Fabio	NNP
+Casati	NNP
+,	,
+Ming-Chien	NNP
+Shan	NNP
+,	,
+and	CC
+Dimitrios	NNP
+Georgakopoulos	NNP
+,	,
+editors	NNS
+.	.
+
+VLDB	NNP
+Journal	NNP
+,	,
+Special	JJ
+issue	NN
+on	IN
+E-Services	NNS
+.	.
+
+
+Springer-Verlag	NNP
+,	,
+2001	CD
+.	.
+
+
+6	CD
+.	.
+
+Stefano	NNP
+Ceri	NNP
+,	,
+Paul	NNP
+W.	NNP
+P.	NNP
+J.	NNP
+Grefen	NNP
+,	,
+and	CC
+Gabriel	NNP
+Sanchez	NNP
+.	.
+
+WIDE	NN
+:	:
+A	DT
+distributed	VBN
+architecture	NN
+for	IN
+workw	NN
+manage	VBP
+-	:
+
+
+ment	NN
+.	.
+
+1997	CD
+.	.
+
+
+7	CD
+.	.
+
+Dimitrios	NNP
+Georgakopoulos	NNP
+,	,
+Mark	NNP
+F.	NNP
+Hornick	NNP
+,	,
+and	CC
+Amit	NNP
+P.	NNP
+Sheth	NNP
+.	.
+
+An	DT
+overview	NN
+of	IN
+workw	NN
+management	NN
+:	:
+From	IN
+
+
+process	NN
+modeling	NN
+to	TO
+work	VB
+ow	NN
+automation	NN
+infrastructure	NN
+.	.
+
+Distributed	VBN
+and	CC
+Parallel	JJ
+Databases	NNS
+,	,
+3	CD
+-LRB-	-LRB-
+2	CD
+-RRB-	-RRB-
+:119	CD
+-LCB-	-LRB-
+153	CD
+,	,
+1995	CD
+.	.
+
+
+8	CD
+.	.
+
+Andreas	NNP
+Geppert	NNP
+and	CC
+Dimitrios	NNP
+Tombros	NNP
+.	.
+
+Event-based	JJ
+distributed	VBN
+workw	NN
+execution	NN
+with	IN
+EVE	NN
+.	.
+
+Technical	NNP
+report	NN
+,	,
+
+
+1998	CD
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+21	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+22	CD
+
+
+Flexible	JJ
+Composition	NN
+of	IN
+Enterprise	NNP
+Web	NN
+Services	NNPS
+
+
+9	CD
+.	.
+
+Richard	NNP
+Hull	NNP
+,	,
+Bharat	NNP
+Kumar	NNP
+,	,
+Gang	NN
+Zhou	NNP
+,	,
+Francois	NNP
+Llirbat	NNP
+,	,
+Guozhu	NNP
+Dong	NNP
+,	,
+and	CC
+Jianwen	NNP
+Su	NNP
+.	.
+
+Optimization	NN
+techniques	NNS
+
+
+for	IN
+data-intensive	JJ
+decision	NN
+ws	NNS
+.	.
+
+In	IN
+Proceeding	VBG
+of	IN
+16th	JJ
+International	JJ
+Conference	NN
+on	IN
+Data	NNP
+Engineering	NNP
+,	,
+2000	CD
+.	.
+
+
+10	CD
+.	.
+
+IBM	NNP
+MQseries	NNPS
+Workw	NNP
+,	,
+2002	CD
+.	.
+
+http://www-3.ibm.com/software/ts/mqseries/workw/	NN
+.	.
+
+
+11	CD
+.	.
+
+IBM	NNP
+WSTK	NNP
+Toolkit	NNP
+.	.
+
+http://alphaworks.ibm.com/tech/webservicestoolkit	NN
+.	.
+
+
+12	CD
+.	.
+
+M.	NNP
+Kksalan	NNP
+and	CC
+S.	NNP
+Zionts	NNP
+,	,
+editors	NNS
+.	.
+
+Multiple	JJ
+Criteria	NNP
+Decision	NNP
+Making	VBG
+in	IN
+the	DT
+New	NNP
+Millennium	NNP
+.	.
+
+Springer-Verlag	NNP
+,	,
+2001	CD
+.	.
+
+
+13	CD
+.	.
+
+Craig	NNP
+A.	NNP
+Knoblock	NNP
+,	,
+Steven	NNP
+Minton	NNP
+,	,
+Jose	NNP
+Luis	NNP
+Ambite	NNP
+,	,
+Navee	NNP
+n	NN
+Ashish	NNP
+,	,
+Ion	NNP
+Muslea	NNP
+,	,
+Andrew	NNP
+Philpot	NNP
+,	,
+and	CC
+Sheila	NNP
+Te	NNP
+-	:
+
+
+jada	NN
+.	.
+
+The	DT
+ariadne	NN
+approach	NN
+to	TO
+web-based	JJ
+information	NN
+integration	NN
+.	.
+
+International	NNP
+Journal	NNP
+of	IN
+Cooperative	NNP
+Information	NNP
+
+
+Systems	NNPS
+,	,
+10	CD
+-LRB-	-LRB-
+1-2	CD
+-RRB-	-RRB-
+:145	CD
+-LCB-	-LRB-
+169	CD
+,	,
+2001	CD
+.	.
+
+
+14	CD
+.	.
+
+Frank	NNP
+Leymann	NNP
+,	,
+Dieter	NNP
+Roller	NNP
+,	,
+and	CC
+Andreas	NNP
+Reuter	NNP
+.	.
+
+Production	NN
+Work	NN
+Concepts	NNS
+and	CC
+Techniques	NNS
+.	.
+
+Prentice	NNP
+Hall	NNP
+,	,
+
+
+1999	CD
+.	.
+
+
+15	CD
+.	.
+
+Drew	NNP
+Mcdermott	NNP
+.	.
+
+Estimated-regression	NN
+planning	NN
+for	IN
+interactions	NNS
+with	IN
+web	NN
+services	NNS
+.	.
+
+In	IN
+6th	JJ
+Int	NN
+.	.
+
+Conf	NNP
+.	.
+
+on	IN
+AI	NNP
+planning	NN
+
+
+and	CC
+scheduling	NN
+,	,
+2002	CD
+.	.
+
+
+16	CD
+.	.
+
+J.	NNP
+Meng	NNP
+,	,
+S.	NNP
+Y.W.	NNP
+Su	NNP
+,	,
+H.	NNP
+Lam	NNP
+,	,
+and	CC
+A.	NN
+Helal	NNP
+.	.
+
+Achieving	VBG
+dynamic	JJ
+inter-organizational	JJ
+workw	NN
+management	NN
+by	IN
+
+
+integrating	VBG
+business	NN
+processes	NNS
+,	,
+events	NNS
+,	,
+and	CC
+rules	NNS
+.	.
+
+In	IN
+Proceedings	NNP
+of	IN
+the	DT
+Thirty-Fifth	NNP
+Hawaii	NNP
+International	NNP
+Conference	NNP
+
+
+on	IN
+System	NNP
+Sciences	NNPS
+-LRB-	-LRB-
+HICSS-35	NN
+-RRB-	-RRB-
+,	,
+2002	CD
+.	.
+
+
+17	CD
+.	.
+
+Simple	JJ
+Object	NNP
+Access	NN
+Protocol	NNP
+-LRB-	-LRB-
+SOAP	NNP
+-RRB-	-RRB-
+.	.
+
+http://www.w3.org/TR/SOAP	NN
+.	.
+
+
+18	CD
+.	.
+
+Universal	NNP
+Description	NN
+,	,
+Discovery	NNP
+and	CC
+Integration	NN
+of	IN
+Business	NN
+for	IN
+the	DT
+Web	NN
+,	,
+2000	CD
+.	.
+
+http://www.uddi.org	NN
+.	.
+
+
+19	CD
+.	.
+
+UML	NNP
+Resource	NNP
+page	NN
+,	,
+2000	CD
+.	.
+
+At	IN
+http://www.omg.org/uml/	NN
+.	.
+
+
+20	CD
+.	.
+
+Daniel	NNP
+S.	NNP
+Weld	NNP
+.	.
+
+Recent	JJ
+advances	NNS
+in	IN
+AI	NNP
+planning	NN
+.	.
+
+AI	NNP
+Magazine	NNP
+,	,
+20	CD
+-LRB-	-LRB-
+2	CD
+-RRB-	-RRB-
+:93	CD
+-LCB-	-LRB-
+123	CD
+,	,
+1999	CD
+.	.
+
+
+21	CD
+.	.
+
+Web	NN
+Services	NNPS
+Description	NN
+Language	NN
+-LRB-	-LRB-
+WSDL	NN
+-RRB-	-RRB-
+.	.
+
+http://www.w3.org/wsdl	NN
+.	.
+
+
+22	CD
+.	.
+
+Liangzhao	NNP
+Zeng	NNP
+,	,
+Boualem	NNP
+Benatallah	NNP
+,	,
+and	CC
+Anne	NNP
+Hee	NNP
+Hiong	NNP
+Ngu	NNP
+.	.
+
+Dynamic	NNP
+web	NN
+service	NN
+integration	NN
+and	CC
+collaboration	NN
+
+
+-LRB-	-LRB-
+submit	VB
+for	IN
+publication	NN
+-RRB-	-RRB-
+.	.
+
+Technical	NNP
+report	NN
+,	,
+School	NNP
+of	IN
+Computer	NNP
+Science	NNP
+and	CC
+Engineering	NNP
+,	,
+University	NNP
+of	IN
+New	NNP
+South	NNP
+
+
+Wales	NNP
+,	,
+2002	CD
+.	.
+
+
+23	CD
+.	.
+
+Liangzhao	NNP
+Zeng	NNP
+,	,
+David	NNP
+Flaxer	NNP
+,	,
+Henry	NNP
+Chang	NNP
+,	,
+and	CC
+Jun-Jang	NNP
+Jeng	NNP
+.	.
+
+PLMflow	NN
+-LCB-	-LRB-
+dynamic	JJ
+business	NN
+process	NN
+composition	NN
+
+
+and	CC
+execution	NN
+by	IN
+rule	NN
+inference	NN
+.	.
+
+In	IN
+VLDB	NN
+workshp	NN
+on	IN
+Technologies	NNPS
+for	IN
+E-Services	NNS
+-LRB-	-LRB-
+TES	NN
+-RRB-	-RRB-
+,	,
+LNCS	NN
+.	.
+
+Springer	NNP
+,	,
+2002	CD
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+22	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+

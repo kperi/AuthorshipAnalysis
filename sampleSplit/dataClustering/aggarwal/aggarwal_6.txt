@@ -1,0 +1,716 @@
+A Framework for Projected Clustering of High 
+Dimensional Data Streams 
+Charu C. Aggarwal T. J. Watson Resch. Ctr. 
+charu@us.ibm.com 
+Jiawei Han, Jianyong Wangy 
+UIUC 
+f hanj, wangj g@cs.uiuc.edu 
+Abstract 
+The data stream problem has been studied ex- tensively in recent years, because of the great ease in collection of stream data. The na- ture of stream data makes it essential to use algorithms which require only one pass over the data. Recently, single-scan, stream anal- ysis methods have been proposed in this con- text. However, a lot of stream data is high- dimensional in nature. High-dimensional data is inherently more complex in clustering, clas- si and similarity search. Recent re- search discusses methods for projected clus- tering over high-dimensional data sets. This method is however di to generalize to data streams because of the complexity of the method and the large volume of the data streams. 
+In this paper, we propose a new, high- dimensional, projected data stream clustering method, called HPStream. The method incor- porates a fading cluster structure, and the pro- jection based clustering methodology. It is in- crementally updatable and is highly scalable on both the number of dimensions and the size of the data streams, and it achieves bet- ter clustering quality in comparison with the previous stream clustering methods. Our per- formance study with both real and synthetic data sets demonstrates the e and ef- fectiveness of our proposed framework and im- plementation methods. 
+The 
+second author was supported in part by the U.S. Na- tional Science Foundation Grant IIS-03-08215 and an IBM Fac- ulty Award. 
+yCurrent 
+Address: University of Minnesota at Twin-Cities, Minneapolis, MN 55455, Email: jianyong@cs.umn.edu Permission to copy without fee all or part of this material is granted provided that the copies are not made or distributed for direct commercial advantage, the VLDB copyright notice and the title of the publication and its date appear, and notice is given that copying is by permission of the Very Large Data Base Endowment. To copy otherwise, or to republish, requires a fee and/or special permission from the Endowment. 
+Proceedings of the 30th VLDB Conference, Toronto, Canada, 2004 
+Philip S. Yu T. J. Watson Resch. Ctr. 
+psyu@us.ibm.com 
+1 Introduction 
+The problem of data streams has gained importance in recent years because of advances in hardware tech- nology. These advances have made it easy to store and record numerous transactions and activities in everyday life in an automated way. The ubiquitous presence of data streams in a number of practical do- mains has generated a lot of research in this area [8, 10, 12, 13, 17]. One of the important problems which has recently been explored in the data stream domain is that of clustering [17]. The clustering prob- lem is especially interesting for the data stream domain because of its application to data summarization and outlier detection. 
+The clustering problem is de as follows: for a given set of data points, we wish to partition them into one or more groups of similar objects, where the notion of similarity is ded by a distance function. There have been a lot of research work devoted to scalable cluster analysis in recent years [2, 6, 14, 15, 16, 18]. In the data stream domain, the clustering problem requires a process which can continuously determine the dominant clusters in the data without being dom- inated by the previous history of the stream. 
+The high-dimensional case presents a special chal- lenge to clustering algorithms even in the traditional domain of static data sets. This is because of the spar- sity of the data in the high-dimensional case. In high- dimensional space, all pairs of points tend to be almost equidistant from one another. As a result, it is often unrealistic to de distance-based clusters in a mean- ingful way. Some recent work on high-dimensional data uses techniques for projected clustering which can determine clusters for a speci subset of dimensions [2, 6]. In these methods, the de of the clusters are such that each cluster is speci to a particular group of dimensions. This alleviates the sparsity prob- lem in high-dimensional space to some extent. Even though a cluster may not be meaningfully de on all the dimensions because of the sparsity of the data, some subset of the dimensions can always be found on which particular subsets of points form high quality and meaningful clusters. Of course, these subsets of dimensions may vary over the dit clusters. Such clusters are referred to as projected clusters [2]. 
+852 
+
+========1========
+
+The concept of a projected cluster is formally de-  as follows. Assume that k is the number of clus- ters to be found. In addition, the algorithm will take as input the dimensionality l of the subspace in which each cluster is reported. The output of the algorithm will be twofold: 
+ A (k + 1)-way partition fC1;:::;Ck;Og of the data, 
+such that the points in each partition element ex- 
+cept the last form a cluster, whereas the points in 
+the last partition element are the outliers, which by 
+de do not cluster well. 
+ A possibly dit set Ei of dimensions for each 
+cluster Ci, 1  i  k, such that the points in Ci clus- 
+ter well in the subspace de by these vectors. 
+(The vectors for the outlier set O can be assumed 
+to be the empty set.) For each cluster Ci, the car- 
+dinality of the corresponding set Ei is equal to the 
+user-de parameter l. 
+In the context of a data stream, the problem of  ing projected clusters becomes even more challenging. This is because the additional problem of  the relevant set of dimensions for each cluster makes the problem signitly more computationally intensive in the data stream environment. While the problem of clustering has recently been studied in the data stream environment [3, 8, 11], these methods are for the case of full dimensional clustering. In this paper, we will work on the signitly more di problem of clustering high-dimensional data stream by explor- ing projected clustering methods. We note that ex- isting projected clustering methods such as those dis- cussed in [2] cannot be easily generalized to the data stream problem because they typically require multi- ple passes over the data. Furthermore, the algorithms in [2] are too computationally intensive to be used for the data stream problem. In addition, data streams quickly evolve over time [4, 5] because of which it is essential to design methods which are designed to ef- fectively adjust with the progression of the stream. 
+In this paper, we will develop an algorithm for high- dimensional projected stream clustering by continu- ous ret of the set of projected dimensions and data points during the progression of the stream. We will refer to this algorithm as HPStream, since it de- scribes the High-dimensional Projected Stream clus- tering method. The updating of the set of dimensions associated with each cluster is performed in such a way that the points and dimensions associated with each cluster can eely evolve over time. In or- der to achieve this goal, we utilize a condensed rep- resentation of the statistics of the points inside the clusters. These condensed representations are chosen in such a way that they can be updated eely in a fast data stream. At the same time, a sut amount of statistics is stored so that important mea- sures about the cluster in a given projection can be quickly computed. In the next section, we will dis- cuss the fading cluster structure which is useful for such book-keeping. This structure is also capable of performing the updates in such a way that outdated 
+data is temporally discounted. This ensures that in an evolving data stream, the past history is gradually discounted from the computation. 
+In comparison with the previous literature, we have made substantial progress in the following aspects: 1. HPStream introduces the concept of projected clus- 
+tering to data streams. Since a lot of stream data 
+is high-dimensional in nature, it is necessary to per- 
+form high quality high-dimensional clustering. How- 
+ever, the previous stream clustering methods, such 
+as STREAM and CluStream, cannot handle such data 
+well, due to their clustering of data in all the relevant 
+dimensions. Moreover, PROCLUS, though exploring 
+projected clustering, cannot handle data streams due 
+to its requirement of multiple scans of the data. 
+2. HPStream explores a linear update philosophy in 
+projected clustering, achieving both high scalabil- 
+ity and high clustering quality. This philosophy was 
+ proposed in BIRCH. CluStream introduces this 
+idea to stream clustering, however, it does not show 
+good quality with high dimensional data. With pro- 
+jected clustering, HPStream can reach consistently 
+high clustering quality due to its adaptability to the 
+nature of real data set, where data shows its tight 
+clustering behavior only at dit subsets of di- 
+mension combinations. 
+Besides the above major progress, HPStream has pro- posed and explored several other innovative ideas. For example, the fading cluster structure, nicely integrates historical and current data with a user-speci or user-tunable fading factor. Also, using bit-vector for registration and dynamic update of relevant dimen- sions, and using minimal radius for clustering quality enhancement have improved the clustering e and accuracy. 
+The remaining of the paper is organized as follows. In Section 2, we will discuss the basic concepts that are necessary for developing the algorithm. In Sec- tion 3, we will introduce the HPStream algorithm of this paper. Section 4 reports our performance study on real and synthetic data sets. We will compare the HPStream algorithm to the full dimensional CluStream algorithm. A brief discussion of the possible extensions of this work is included in Section 5. The conclusions and summary are discussed in Section 6. 
+2 The Fading Cluster Structure: Mo- 
+tivation and Concepts 
+The data stream consists of a set of multi- dimensional records X1 :::Xk ::: arriving at time stamps T1 :::Tk :::. Each data point Xi is a multi- dimensional record containing d dimensions, denoted by Xi = (x1i :::xdi). Since the stream clustering pro- cess should provide a greater level of importance to re- cent data points, we introduce the concept of a fading data structure which is able to adjust for the recency of the clusters in a  way. It is assumed that each data point has a weight de by a function f(t) to the time t. The function f(t) is also referred to as the 
+853 
+
+========2========
+
+fading function. The value of the fading function lies in the range (0;1). It is also assumed that the fading function is a monotonic decreasing function which de- cays uniformly with time t. In particular, we choose an exponential form for the fading function. The ex- ponentially fading function is widely used in temporal applications in which it is desirable to gradually dis- count the history of past behavior. In order to formal- ize the concept of the fading function, we will de the half-life of a point in the data stream. 
+De 2.1 The half life t0 of a point is ded as the time at which f(t0) = (1=2)f(0). 
+Conceptually, the aim of de a half life is to de the rate of decay of the weight assigned to each data point in the stream. Correspondingly, the decay-rate is de as the inverse of the half life of the data stream. We denote the decay rate by  = 1=t0. In order for the half-life property to hold, we de the weight of each point in the data stream by f(t) = 2 
+ t. 
+From the perspective of the clustering process, the weight of each data point is f(t). It is easy to see that this decay function creates a half life of 1=. It is also evident that by changing the value of , it is possible to change the rate at which the importance of the historical information in the data stream decays. The higher the value of , the lower the importance of the historical information compared to more recent data. 
+We will now de the fading cluster structure, a data structure which is designed to capture key sta- tistical characteristics of the clusters generated during the course of a data stream. The aim of the fading cluster structure is to capture a sut number of the underlying statistics so that it is possible to com- pute key characteristics of the underlying clusters. 
+De 2.2 A fading cluster structure at time t for a set of d-dimensional points C = fXi 
+1 
+:::Xi 
+ng with time stamps Ti 
+1 
+:::Ti 
+n 
+is ded as the (2d+1) tuple FC(C;t) = (FC2x(C;t);FC1x(C;t);W(t)). The vectors FC2x(C;t) and FC1x(C;t) each contain d en- tries. We will now explain the signiance of each of these sets of entries: 
+1. For each dimension j, the jth entry of 
+FC2x(C;t) is given by the weighted sum of the 
+squares of the corresponding data values in that 
+dimension. The weight of each data point is de- 
+d by its level of staleness since its arrival in 
+the data stream. Thus, FC2x(C;t) contains d 
+Pvalues. 
+The j-th entry of FC2x(C;t) is equal ton 
+k=1 
+f(t  Ti 
+k 
+)  (xji )2. 
+k 
+2. For each dimension j, the jth entry of 
+FC1x(C;t) is given by the weighted sum of the 
+corresponding data values. The weight of each 
+data point is ded by its level of staleness since 
+its arrival in the data stream. Thus, FC1x(C;t) 
+contains d values. The j-th entry of FC1xP (C;t)n 
+is equal to 
+k=1 
+f(t  Ti 
+k 
+)  (xji ). 
+k 
+3. We also maintain a single entry W(t) contain- 
+ing the sum of all the weights of the data points 
+Pat 
+time t. Thus, this entry is equal to W(t) =n 
+k=1 
+f(t  Ti 
+k 
+). 
+The clustering structure discussed above satis a number of interesting properties. These properties are referred to as additivity and temporal multiplicity. The additivity property is de as follows: 
+Observation 2.1 Let C1 and C2 be two clusters with cluster structures FC(C1;t) and FC(C2;t) respectively. Then, the cluster structure of C1 [ C2 is given by FC(C1 [ C2;t) = FC(C1;t) + FC(C2;t). 
+The additivity property follows from the fact that each cluster can be expressed as a sum of its individual components. The temporal multiplicity property is de as follows: 
+Observation 2.2 Consider the cluster structure at the time FC(C;t). If no points are added to C in the time interval (t;t + t), then FC(C;t + t) = e 
+ t 
+ FC(C;t). 
+We note that this property holds because of the expo- nential decay of each component of the cluster struc- ture. 
+Since the algorithm in this paper is designed for pro- jected clustering of data streams, a set of dimensions is associated with each cluster. Therefore, with each cluster C, we associate a d-dimensional bit vector B(C) which corresponds to the relevant set of dimensions in C. Each element in this d-dimensional vector has a 1-0 value corresponding to whether or not a given dimension is included in that cluster. This bit vector is required for the book-keeping needed in the assign- ment of incoming points to the appropriate cluster. As the algorithm progresses, this bit vector varies in order to re the changing set of dimensions. In the next section, we will discuss the clustering algorithm along with the various procedures which are used for cluster maintenance. 
+3 The High Dimensional Projected 
+Clustering Algorithm 
+In this section, we will discuss how the individual clus- ters are maintained in an online fashion. The algo- rithm for high-dimensional clustering utilizes an itera- tive approach which continuously determines new clus- ter structures while re-de the set of dimensions included in each cluster. 
+At the beginning of the clustering process, we run a normalization process in order to weigh dit di- mensions correctly. This is because the clustering algo- rithm needs to pick the dimensions which are speci to each cluster by comparing the radii along dit dimensions. We note that dit dimensions may 
+854 
+
+========3========
+
+Algorithm HPStream (Data Stream Point: X, Cluster Structures: FCS, 
+Dimensionality Vector Sets: BS, MaxClusters: k, Dimensionality: l); 
+begin 
+f Assume that FCS contains the relevant cluster structures denoted by FCS = fFCx(C1;t):::FCx(Cr;t)::: g g 
+f Assume that BS contains the relevant cluster dimensions denoted by BS = fB(C1):::B(Cr)::: g 
+Receive the next data point X at current time t from stream DS; 
+BS =ComputeDimensions(FCS, l, X); 
+for r = 1 to jFCSj do 
+ds(r) = FindProjectedDist(FCx(Cr;t);B(Cr;X)); 
+index = argmaxifds(i)g; 
+s = FindLimitingRadius(FCx(Cindex;t;);B(Cindex)); 
+if ds(index) > s 
+then set index = jFCSj + 1 and add new fading cluster structure CjFCSj+1 with a solitary data point to FCS; 
+else add X to FCx(Cindex;t); 
+Remove those clusters from FCS which have zero dimensions assigned to them; 
+if jFCSj > k 
+then delete the least recently added cluster in FCS; 
+end; 
+Figure 1: Basic Algorithm for Clustering High-dimensional Data Streams 
+Algorithm FindProjectedDist(FadedClusterStructure : FCx(Cr;t);Bitvector : B(Cr;Datapoint : X); begin 
+f This procedure  Manhattan Segmental Distance along the projected dimensions g 
+for each dimension with bit value of 1 in B(Cr) 
+ the distance between X and the centroid of B(Cr); 
+return average distance along the included dimensions; 
+end 
+Figure 2: Finding the Projected Distance 
+Algorithm ComputeDimensions(Faded Cluster Structures:FCS, NumberofDimensions: l, Incoming Point: X); begin 
+Create jFCSj (tentative) fading cluster structures by adding X to each of the existing clusters; 
+Compute the jFCSj  d radii of each of the jFCSj (tentative) clusters along each of the d dimensions; 
+Pick the jFCS  lj dimensions with the least radii; 
+Create a bitvector B(Cr) for each cluster Cr re its projected dimensions; 
+end; 
+Figure 3: Computing the Projected Dimensions 
+Algorithm FindLimitingRadius(Faded Cluster Structure: FCx(Cindex;t), Bitvector: B(Cindex)) begin 
+f Find the radius r 
+0 
+of the cluster using only the dimensions contained in B(Cindex);g r2j =PFC2x(C;t)j=W(t)  FC1x(C;t)j  FC1x(C;t)j=W(t)2; 
+R = 
+j2B(C) 
+r2j; 
+Let d 
+p0 
+be the number of bits in B(C) with value of 1; 
+R = R=d0; 
+return(R  ;) 
+end 
+Figure 4: Finding the Limiting Radius of the Cluster 
+855 
+
+========4========
+
+refer to dit scales of reference such as age, salary or other attributes which have vastly dit ranges and variances. Therefore, it is not possible to com- pare the dimensions in a meaningful way using the original data. In order to be able to compare dit dimensions meaningfully, we perform a normalization process. The aim is to equalize the standard devia- tion along each dimension. We use an initial sample of the data points to calculate the standard deviation i of each dimension i. Subsequently, the value of di- mension i for each data point is divided by i. We note that since the data stream may evolve over time, the values of i may change as well. Therefore, the normalization factor is recomputed on a periodic ba- sis. Speci, this process is repeated at an interval of every N0 points. However, whenever the value of i changes, the corresponding fading cluster statistics may also need to be changed. Let us assume that the standard deviation of dimension i changes from i to 0i during a normalization phase. Then, the cluster statistics FC(C;t) = (FC2x(C;t);FC1x(C;t);W(t)) for each cluster C needs to be correspondingly mod- i Speci, the ith entry in (FC2x(C;t) needs to be multiplied by 2i =02i , whereas the ith entry in FC1x(C;t) needs to be multiplied by i= 
+0 
+i. 
+In Figure 1, we have illustrated the basic (incre- mental) algorithm for clustering high-dimensional data streams. Thus, the incremental pseudo-code shows the steps associated with adding one point to the data stream. The input to the algorithm includes the cur- rent cluster structure FCS, and the sets of dimensions associated with each cluster. These cluster structures and sets of dimensions are dynamically updated as the algorithm progresses. The set of dimensions BS asso- ciated with each cluster includes a d-dimensional bit vector B(Ci) for each cluster structure in FCS. This bit vector contains a 1 bit for each dimension which is included in cluster Ci. In addition, the maximum number of clusters k and the average cluster dimen- sionality l is used as an input parameter. The average cluster dimensionality l represents the average number of dimensions used in the cluster projection. 
+The data stream clustering algorithm utilizes an it- erative approach by assigning data points to the clos- est cluster structure at each step of the algorithm. The closest cluster structure is determined by using a pro- jected distance measure. For each cluster, only those dimensions which are relevant to that cluster are uti- lized in the distance computation. At the same time, we continue to re-de the set of projected dimen- sions associated with each cluster. The re-de of the projected dimensions aims to keep the radii of the clusters over the projected dimensions as low as possible. Thus, the clustering process requires a simul- taneous maintenance of the clusters as well as the set of dimensions associated with each cluster. 
+We will now proceed to systematically describe the steps of the high-dimensional clustering algorithm. A pseudo-code of the algorithm is described in Figure 1.  The set of dimensions associated with each cluster 
+are updated using the procedure ComputeDimen- sions. This procedure determines the dimensions in such a way that the spread along the chosen dimen- sions is as small as possible. We note that many of the clusters may contain only a few points. This makes it di to compute the dimensions in a statistically robust way. In the extreme case, a clus- ter may contain only one point. In this degenerate case, the computation of the dimensions is not possi- ble since the radii along dit dimensions cannot be distinguished. In order to deal with such degener- ate cases, we need to use the incoming data point X during the determination of the dimensions for each cluster. It is desirable to pick the dimensions in such a way that X  the selected cluster well even after the projected dimensions are selected. Speci, the data point X is temporarily added to each pos- sible cluster during the process of determination of dimensions. This makes signit di to the chosen dimensions for clusters which contain very few data points. Once these selected dimensions have been chosen, the corresponding bits are stored in BS. 
+ The next step is the determination of the closest 
+cluster structure to the incoming data point X. In 
+order to do so, we compute the distance of X to 
+each cluster centroid using only the set of projected 
+dimensions for the corresponding cluster. This data 
+in BS is used as a book-keeping mechanism to deter- 
+mine the set of projected dimensions for each cluster 
+during the distance computation. The correspond- 
+ing procedure is referred to as FindProjectedDist. 
+We will discuss more details about this procedure 
+slightly later. 
+ Once it is decided which cluster the data point X should be assigned to, we determine the natural lim- 
+iting radius of the corresponding cluster. The lim- 
+iting radius is considered a natural boundary of the 
+cluster. Data points which lie outside this natu- 
+ral boundary are not added to the cluster. Instead such points create new clusters of their own. The procedure for determination of the limiting radius is denoted by FindLimitingRadius. 
+ If the incoming data point lies inside the limiting 
+radius, it is added to the cluster. Otherwise, a new 
+cluster needs to be constructed containing the soli- 
+tary data point X. We note that if the new data 
+point is noise, the newly created cluster will subse- quently have few points added to it. As explained below, this will ultimately lead to the deletion of 
+that cluster. 
+ In the event that a new cluster is created, the total 
+number of cluster structures in FCS may increase. 
+Therefore, one cluster needs to be deleted in order to 
+make room for the incoming cluster. In that case, 
+the cluster structure to which the least recent up- 
+dating was performed is deleted. Thus rule ensures 
+856 
+
+========5========
+
+that only stale and outdated clusters are removed by the update process. 
+In order to determine the closest cluster to the incom- ing data point, we use the procedure for determining the projected distance of X from each cluster Cr. The method for  this distance is discussed in the procedure FindProjectedDist, and is illustrated in Fig- ure 2. In order to  the projected distance, the distance along each dimension with bit value of 1 in B(Cr) is determined. The average distance along these dimensions (also known as the Manhattan Segmental Distance [2]) is reported as the projected distance. We note that it is not necessary to normalize the distance measurements at this point, since the entire stream has already been normalized at this point. This distance value is computed for each cluster, and the data point X is added to the cluster with the least distance value. 
+The procedure for  the limiting radius is il- lustrated in Figure 4. The motivation for  the limiting radius is to determine the natural boundary of the clusters. Incoming data points which do not lie within this limiting radius of their closest cluster must be assigned a cluster of their own. This is because these data points do not naturally  inside any of the existing clusters. The limiting radius is de as a certain factor  of the average radius of the data points in the cluster. This radius can be computed using the statistics in the fading cluster structure. 
+We note that the fading cluster structure contains the  and second order moments of the data points inside the clusters. The average square radius along the dimension j is given by: 
+ 
+the included data point X. This helps in a more stable computation of the projected dimensionality when the cluster contains a small number of data points. 
+We note that whenever a data point is assigned to a cluster, it needs to be added to the statistics of the corresponding cluster. For this purpose, we need to use the additive and temporal multiplicity properties. The temporal multiplicity is applied in a lazy way at speci instants when a new data point is added to a cluster. Thus, the temporal component of the cluster statistics may remain stale in many cases. However, this does not a the execution of the overall algo- rithm. This is because the computation of other mea- sures such as  the projected distance or com- puting the dimensions is not a by the temporal decay factor. The  step in assigning a data point to a cluster is to update the temporal decay function for each cluster. Let t be the current time and tup be the last update time for that cluster. Then, each item in the fading cluster structure is multiplied by the factor e 
+ (t  tup). 
+At this point, the statistics for the incom- ing data point are added to the corresponding fad- ing cluster structure statistics. The additivity prop- erty ensures that the updated cluster is represented by these statistics. 
+At the beginning of the data stream clustering pro- cess, it is necessary to perform an additional initializa- tion process by which the original clusters are created. For this purpose, a certain initial portion (containing InitNumber points) is utilized. An o process is used in order to create the initial clusters. This process is implemented as a K-means algorithm on an initial sample of the data points. First, a full dimensional K- means algorithm is applied to the data points so as to 
+r2j = FC2x(C;t)j=W(t) FC1x(C;t)jFC1x(C;t) 
+2j=W(t) 
+:create the initial set of clusters. Then, the ComputeD- 
+(1) 
+imensions procedure is applied in order to determine 
+the most relevant dimensions for each cluster. The set 
+The square radius over the dimensions included in B(C) is averaged in order to  the total square ra- dius of the included dimensions. The square root of this value is the relevant radius of the cluster along theqPprojected set of dimensions. Thus, we  R = 
+j2B(C) 
+r2j=d0. Here d0 is the number of dimensions included in that projected cluster. This value is scaled by a boundary factor  in order to decide the  value of the limiting radius. Thus, any incoming data point which lies outside a factor  of the average ra- dius along the projected dimensions of its closest clus- ter needs to create a new cluster containing a solitary data point. 
+In Figure 3, we have illustrated the process of com- putation of the projected dimensions. This is accom- plished by calculating the spread along each dimension for each cluster in FCS. Thus, a total of jFCSjd val- ues are computed and ranked in increasing order. We select the jFCSj  l dimensions with the least radii as the projected dimensions for that cluster. The incom- ing data point X is included in each cluster for the purpose of computation of dimensions. This ensures that if the incoming data point is added to that cluster, the corresponding set of projected dimensions re 
+of dimensions associated with each cluster is used to compute a new set of assignments of data points to the corresponding centroids. We note that this new assignment is dit from the full dimensional as- signments, since the set of projected dimensions are used in order to calculate the closest centroid to each data point. These new assignments are utilized to cre- ate a new set of K centers. The process of recom- puting the dimensions and the centroids is repeated iteratively until the procedure converges to a  set of clusters. These clusters are used to create the fading cluster structures at the beginning of the data stream computation. 
+We observe that the number of projected dimen- sions l is used as an input parameter. The ComputeD- imensions procedure uses this input parameter in pick- ing the jFCS  lj dimensions with the least radii. In- stead of using a  number of projected dimensions based on the radius rank, we can use a threshold on the radii of the dit dimensions. This would al- low the number of projected dimensions to vary over the course of the execution of the data stream cluster- ing process. The use of such a threshold can often be more intuitively appealing over a wide variety of data 
+857 
+
+========6========
+
+sets. Since the data normalization ensures that the standard deviation along each dimension is one unit, the threshold can be chosen in terms of the number of standard deviations per dimension. While there may be some variation across data sets in picking this value, this choice has better statistical interpretation. 
+4 Empirical Results 
+In this section we present our thorough experimental study in evaluating the various aspects of HPStream al- gorithm. All the experiments were performed on a In- tel Pentium IV processor computer with 256MB mem- ory and running on Windows XP professional. In [3], the authors proposed the CluStream algorithm, which has shown better clustering quality than the previously designed STREAM clustering algorithm [17]. In testing the clustering accuracy and e, we compared our HPStream algorithm with CluStream. We imple- mented both algorithms in Microsoft Visual C++. 
+In the experiments, HPStream maintained the same number of the fading cluster structures as that of micro-clusters used by CluStream. The algorithm pa- rameters for CluStream were chosen the same as those adopted in [3]. Unless otherwise mentioned, the pa- rameters for HPStream were set as follows: decay-rate  = 0:5, spread radius factor  = 2, InitNumber = 2000. Both real and synthetic data sets were used in evaluating HPStream’s clustering quality, stream pro- cessing rate, scalability, and sensitivity. 
+Real data sets. Many previously proposed stream clustering algorithms [17, 3] chose the sum of square distance (or SSQ for short) to evaluate the cluster- 
+ing quality. The SSQ at current time Tc with a given horizon H (denoted as SSQ(Tc;H)) is computed as follows. For each point pi, we  the centroid Cp 
+i of its closest cluster structure, and compute d(pi;Cp 
+i 
+), the distance between pi and Cp 
+i 
+. Then SSQ(Tc;H) is equal to the sum of d2(pi;Cp 
+i 
+) for all the points within the previous horizon H. However, SSQ is not a good measure in evaluating projected clustering be- cause full dimensional measures are not very useful for measuring the quality of a projected clustering al- gorithm. For this purpose, we will try to  some large real data sets which contain class labels for the data points, although we do not use the class labels in the clustering process. Instead of using SSQ, we will use the cluster purity to assess the clustering accuracy. As in [1], the cluster purity is de as the average percentage of the dominant class label in each cluster. Only those subset of points which arrive within a pre- de window of time from the current instant were used to compute the cluster purity. Our empirical re- sults showed that the qualitative results were generally not very sensitive to this choice of window or horizon. 
+The  real data set used was the KDD-CUP’99 Network Intrusion Detection stream data set which has been used to evaluate the clustering accuracy for several stream clustering algorithms [17, 3]. This data set corresponds to the important problem of automatic and real-time detection of cyber attacks and consists 
+of a series of TCP connection records from two weeks of LAN network tra managed by MIT Lincoln Labs. Each record can either correspond to a normal connec- tion, or an intrusion which can be classi into one of 22 types. Most of the connections in this data set are normal, but occasionally there could be a burst of attacks at certain times. Also, this data set contains totally 494020 connection records, and each connec- tion record has 42 attributes. As in [17, 3], all 34 continuous attributes will be used for clustering and one outlier point has been removed. 
+The second real data set we tested is the For- est CoverType data set and was obtained from the UCI machine learning repository website (i.e., http://www.ics.uci.edu/mlearn). This data set con- tains totally 581012 observations and each observa- tion consists of 54 attributes, including 10 quantita- tive variables, 4 binary wilderness areas and 40 binary soil type variables. In our testing, we used all the 10 quantitative variables. There are seven forest cover type classes. 
+Synthetic datasets. We also generated several syn- thetic data sets to test the clustering quality, e and scalability. Because we know the true cluster dis- tribution a priori, we can compare the clusters found with the true clusters and compute the cluster purity. The synthetic data set generator takes four parameters as input: the number of data points N, the number of natural clusters K, the number of dimensions d, and the average number of projected dimensions l (we re- quired l > bdc). The number of projected dimensions in each cluster2 is uniformly distributed and drawn fromd 
+[l  x;l + x], where 1  x  b 
+2 
+c and (l  x)  2. The projected dimensions for each cluster were chosen ran- domly. The data points of each cluster are normally distributed with the mean for each cluster uniformly chosen fromp [0;K). The standard deviation was de-  as v forp each projected dimension of any clus- ter, and y  v where (y > 1) for each of the other dimensions, where v was always randomly chosen from [0.5, 2.5] for any dimension. In our experiments, we set parameters x and y at 2 and 3, respectively. 
+The data points for dit clusters were generated at dit times according to a pre-de probabil- ity distribution. In order to re the evolution of the stream data over time, we randomly re-computed the probability of the appearance of a certain cluster periodically. We also assume the projected dimensions will evolve a little over time. In order to capture this kind of evolution, we randomly dropped one of the pro- jected dimensions in one of the clusters and replaced it by a new dimension in a (possibly dit) cluster. In addition, we will use the following notations in nam- ing the synthetic data sets: `B’ indicates the base size, i.e., the number of data points in the data set, whereas `C’, `D’, and `L’ indicate the number of natural clus- ters, the dimensionality of each point, and the average number of projected dimensions, respectively. For ex- ample, B100kC10D50L30 means the data set contains in total 100K data points of 50-dimensions, belonging 
+858 
+
+========7========
+
+to 10 dit clusters, and on average, the number of projected dimensions is 30. 
+4.1 Clustering Evaluation 
+Here we present and analyze our experimental results on clustering quality (accuracy) and the e of the comparing algorithms. An important discovery is that SSQ is no longer a good measure of clustering quality. Instead, cluster purity is taken as the measure of the clustering quality. 
+Accuracy comparison. We evaluated the clustering quality of the HPStream algorithm in comparison with the CluStream algorithm using both real and synthetic data sets. 
+HPStream(l=20) 
+CluStream 
+100 
+ 
+% 
+y 
+t 
+90 
+i 
+r 
+u 
+p 
+r 
+e 
+t 
+s 
+80 
+u 
+l 
+C 
+70 
+211 
+255 433 Stream (in time units) 
+1857 
+Figure 5: Quality comparison (Network Intrusion data set, horizon = 1, stream speed = 200) 
+HPStream(l=20) 
+CluStream 
+100 
+ 
+% 
+y 
+t 
+90 
+i 
+r 
+u 
+p 
+r 
+e 
+t 
+s 
+80 
+u 
+l 
+C 
+70 
+1500 
+2500 3500 Stream (in time units) 
+4500 
+Figure 6: Quality comparison (Network Intrusion data set, horizon = 10, stream speed = 100) 
+Figure 5 and Figure 6 show the clustering quality comparison results for the Network Intrusion Detec- tion data set. In the experiments CluStream used all the 34 dimensions, while we set the average number of projected dimensions at 20 (i.e., l = 20) for HPStream, which means on average HPStream used 20 projected dimensions. In Figure 5, the stream speed is set at 200 points per time unit and horizon H = 1. We chose a se- ries of time points when there were some kind of attack connections happened. For example, at time T = 211 there were 1 \phf " connection, 23 \portsweep" con- nections, and 176 \normal" connections during the past 1 horizon, while at time T = 1857, there were totally 79 \smurf ", 99 \teardrop", and 22 \pod" at- tack connections for the last horizon. From Figure 5, we can see that HPStream has a very good cluster- ing quality: its clustering purity is always higher than 90% and better than CluStream. For example, at time 
+T = 1857, HPStream grouped dit attack connec- tions into dit clusters, while CluStream grouped all kinds of attacks into one cluster, this is why HP- Stream’s cluster purity is more than 20% higher than that of CluStream. We also set the stream speed at 100 points per time unit and horizon H at 10 to test the clustering quality, Figure 6 shows the results. Ex- cept at time T = 2500, HPStream always has a much higher cluster purity than CluStream. We checked the original class labels for the connections in the last ten horizons from the current time 2500 and found all the connections belong to one attack type, \smurf ". As a result, no matter what clustering algorithms we used, they would always have a 100% cluster purity and this does not mean CluStream can do good job in this case. 
+HPStream(l=8) 
+CluStream 
+100 
+ 
+95 
+% 
+y 
+t 
+90 
+i 
+r 
+u 
+p 
+85 
+r 
+e 
+t 
+s 
+80 
+u 
+l 
+C 
+75 
+70 
+160 
+320 640 Stream (in time units) 
+1280 
+2560 
+Figure 7: Quality comparison (Forest CoverType data set, horizon=1, stream speed=200) 
+We also tested the clustering quality of HPStream for another real data set, Forest CoverType. For this data set, we set the average number of projected di- mensions at 8 (i.e., l = 8). Figure 7 and Figure 8 show the clustering quality comparison results. In Figure 7, we set the stream speed at 200 points per time unit and compute the cluster purity at dit time for the last one horizon (i.e., H = 1). Figure 7 shows that HPStream always has higher cluster purity than CluStream, even for such a data set with a not very high dimensionality (here d = 10). We then changed the stream speed to 100 points per time unit and hori- zon H to 10 and compare the cluster quality for the two algorithms. Figure 8 shows the similar picture: HPStream always has higher cluster purity than CluS- tream. 
+HPStream(l=8) 
+CluStream 
+95 
+90 
+ 
+% 
+85 
+y 
+t 
+i 
+r 
+u 
+80 
+p 
+r 
+e 
+75 
+t 
+s 
+u 
+l 
+70 
+C 
+65 
+60 
+200 
+400 800 Stream (in time units) 
+1600 
+3200 
+Figure 8: Quality comparison (Forest CoverType data set, horizon = 10, stream speed = 100) 
+We 
+generated 
+one 
+synthetic 
+data 
+set, 
+859 
+
+========8========
+
+HPStream(l=30) 
+CluStream 
+90 
+ 
+% 
+y 
+t 
+i 
+r 
+u 
+80 
+p 
+r 
+e 
+t 
+s 
+u 
+l 
+70 
+C 
+60 
+100 
+200 300 Stream (in time units) 
+400 
+500 
+Figure 9: Quality comparison (Synthetic data set B100kC10D50L30, horizon = 1, stream speed = 200) 
+HPStream(l=30) 
+CluStream 
+90 
+ 
+% 
+y 
+t 
+i 
+r 
+u 
+80 
+p 
+r 
+e 
+t 
+s 
+u 
+l 
+70 
+C 
+60 
+50 
+100 150 Stream (in time units) 
+200 
+250 
+Figure 10: Quality comparison (Synthetic data set B100kC10D50L30, horizon = 10, stream speed = 400) 
+B100kC10D50L30, to test the clustering quality. This data set contains 100,000 points that has a total dimensionality of 50 and an average number of projected dimensions 30. The data points belong to 10 dit clusters. In the experiments, we set l at 30 for HPStream. As Figure 9 shows when we set the stream speed at 200 points per time unit and horizon at 1, HPStream consistently has much better clustering quality than CluStream: On average, the cluster purity of HPStream is about 20% higher than that of CluStream. We then changed the stream speed to 400 points per time unit and used a lager horizon, H = 10, to test the clustering quality. Figure 10 shows that the cluster purity of the HPStream algorithm is always over 15% higher than that of CluStream. 
+E test. We used both the Network Intrusion Detection and Forest CoverType data sets to test the e of HPStream against CluStream. Because the CluStream algorithm needs to periodically store away the current snapshot of micro-clusters under the Pyra- midal Time Framework, we implemented two versions of the CluStream algorithm: One uses disk to maintain the snapshots of micro-clusters, and the other stores the snapshots of micro-clusters in memory. The algo- rithm e is measured by the stream processing rate versus progression of the stream, which is de as the inverse of the time required to process the last 1000 points (The unit is in points/second). In the ex- periments, we  the stream speed at 200 points per second. 
+Figure 11 shows the stream processing rate for Network Intrusion data set, from which we can see 
+CluStream(memory) 
+HPStream 
+CluStream(disk) 
+10000 
+Number of points processed per second 
+1000 
+200 
+300 
+400 
+500 600 700 Stream (in time units) 
+800 
+900 
+1000 
+Figure 11: Stream Processing Rate (Network Intrusion data set, stream speed = 200) 
+100000 
+CluStream(memory) 
+HPStream 
+CluStream(disk) 
+Number of points processed per second 
+10000 
+200 
+300 
+400 
+500 600 700 Stream (in time units) 
+800 
+900 
+1000 
+Figure 12: Stream Processing Rate (Forest CoverType data set, stream speed = 200) 
+that HPStream is more et than the disk-based CluStream algorithm and is only marginally slower than the memory-based CluStream algorithm. How- ever, as we know, the memory-based CluStream al- gorithm will consume much more memory than HP- Stream. In addition, for this data set, the processing rate of HPStream is very stable and is around 11,000 points/second, which means HPStream can support a high stream speed at 10,000 points/second. Figure 12 shows the stream processing rate for the Forest Cover- Type data set. Because this data set has a smaller di- mensionality than the Network Intrusion data set, all these algorithms have a higher stream processing rate. For example, both HPStream and the memory-based CluStream algorithms have a stream processing speed around 35,000 points/second. Similarly, HPStream has a higher processing speed than the disk-based CluS- tream algorithm while consumes less memory than the memory-based CluStream algorithm. 
+4.2 Sensitivity Analysis 
+In sensitivity analysis, we show how sensitive the clus- tering quality is in relevance to the average projected dimensionality, the radius threshold, and the decay rate. 
+Choice of the average projected dimensional- ity l. The average projected dimensionality l plays an important role in choosing a proper set of pro- jected dimensions that are used by HPStream to do 
+860 
+
+========9========
+
+clustering, we want to know how sensitive it is in af- fecting the clustering quality. Because we know the true average projected dimensionality in advance for synthetic data sets, we will use the synthetic data set B100kC10D50L30 to test the clustering quality by choosing dit average projected dimensionality l. 
+l=10 
+l=20 
+l=30 
+l=40 
+l=50 
+100 
+ 
+% 
+90 
+y 
+t 
+i 
+r 
+u 
+p 
+r 
+e 
+t 
+s 
+80 
+u 
+l 
+C 
+70 
+100 
+200 300 Stream (in time units) 
+400 
+500 
+Figure 13: Choice of l (Synthetic data set B100kC10D50L30, horizon = 5, stream speed = 200) 
+l=10 
+l=20 
+l=30 
+l=40 
+l=50 
+100 
+ 
+% 
+y 
+t 
+90 
+i 
+r 
+u 
+p 
+r 
+e 
+t 
+s 
+80 
+u 
+l 
+C 
+70 
+50 
+100 150 Stream (in time units) 
+200 
+250 
+Figure 14: Choice of l (Synthetic data set B100kC10D50L30, horizon = 10, stream speed = 400) 
+B100kC10D50L30 was generated with an average projected dimensionality l = 30, in our experiments we used a series of dit l’s, i.e., f10, 20, 30, 40, 50g, to test the clustering quality. We   the stream speed at 200 points per time unit and horizon at 5. Figure 13 shows the result. As we can see, overall l = 30 can lead to the best cluster purity, and a too small l at 10 or a too large l at 50 will generate very poor clustering quality. In addition, the cluster purity for l = 20 or l = 40 is very similar to that for l = 30, which suggests as long as we choose a value for l in the range from 20 to 40, HPStream will have a very good clustering quality. 
+We then set the stream speed at 400 points per time unit and horizon H at 10, and did the same set of tests. Figure 14 shows the result, which is very similar to that in Figure 13. In addition, under the same settings and with the same data set, from Figure 10 we know CluStream never generated a cluster purity higher than 80%, as a result, no matter what value we choose for l from 20, 30, or 40, HPStream always has much better cluster purity than CluStream 
+The above experiments about the sensitivity of the average projected dimensionality l demonstrate that as long as we choose for l a value not too deviated from the true average projected dimensionality, HPStream 
+will have a high clustering quality. We also did some further tests using the Network Intrusion Detection data set and found HPStream always generated similar clustering solution if we chose for l a value in the range from 20 to 30. 
+Choice of the radius threshold. Although the average projected dimensionality l provides a very  and natural way for HPStream to pick the set of well correlated dimensions for clustering high- dimensional data, however, in some cases a radius threshold may be more intuitively chosen as an al- ternative in selecting the set of projected dimen- sions. This quality-controlled parameter would allow the number of projected dimensions evolve over the stream. For example, among the 34 dimensions for Network Intrusion Detection data set, most of them have a deviation 0 for a certain type of connections. If the user has this knowledge in advance, he may choose a radius threshold which is very close to 0 in de the set of projected dimensions. 
+HPStream(r=0) HPStream(r=0.001) 
+HPStream(r=0.0001) CluStream 
+100 
+ 
+% 
+y 
+t 
+90 
+i 
+r 
+u 
+p 
+r 
+e 
+t 
+s 
+80 
+u 
+l 
+C 
+70 
+211 
+255 433 Stream (in time units) 
+1857 
+Figure 15: Quality comparison based on the radius threshold (Network Intrusion data set, horizon = 1, stream speed = 200) 
+Figure 15 shows the test result for the Network In- trusion data set by setting the stream speed at 200 points per time unit and horizon H at 1. In the ex- periments, we test against CluStream the clustering quality of HPStream with varying radius threshold as an input parameter. The result shows that if we set the radius threshold at 0.001 or 0.0001, HPStream al- ways has much better clustering quality than CluS- tream. For example, at time T = 1857, the cluster pu- rity of HPStream is more than 20% higher than that of CluStream. This suggests a radius threshold in the range [0:0001;0:001] could make HPStream generate very good clustering solutions for the Network Intru- sion data set. 
+Choice of the decay rate . Another important parameter for HPStream is the decay rate , which de the importance of the historical data. In sec- tion 4.1, we set  at a moderate value, 0.5, with which HPStream showed much better clustering quality than CluStream. We also did several experiments to iso- late the e of decay rate  by changing  from a small value to a large one. We used the synthetic data set B100kC10D50L30 and set the stream speed at 200 points per time unit and average projected dimension- ality l = 30 to test the cluster purity of HPStream at 
+861 
+
+========10========
+
+110 
+HPStream CluStream 
+100 
+90 
+80 
+Cluster purity % 
+70 
+60 
+0.001 
+0.01 
+0.1 Decay rate 
+1 
+Figure 16: Choice of decay rate  (Synthetic data set B100kC10D50L30, stream speed = 200, H = 10, time units = 100, l = 30) 
+time T = 100 with horizon 10. Figure 16 shows the results corresponding to a series of decay rates, 0.0005, 0.005, 0.05, 0.5, 1, 2, and 4. If 0:0005    2, HP- Stream has a relatively stable cluster purity which is much better than that of CluStream. However, when we use a very high value for  like 4, HPStream’s qual- ity deteriorates quickly, but still is a little better than that of CluStream. We note that the choice of  = 4 represents a pathological case in which the clusters are determined based on only a small number of recently arriving data points. In such cases, both algorithms tends to show relatively similar behavior. 
+4.3 Scalability Test 
+The scalability tests presented below show that HP- Stream is linearly scalable with both dimensionality and the number of clusters. We have already shown that HPStream has very stable stream processing speed along with the progression of the stream for the two real data sets. High scalability in terms of dimension- ality and the number of clusters is also very critical to the success of a high-dimensional clustering algorithm. We generated a series of synthetic data sets to test the scalability of HPStream. 
+140 
+120 
+B400kC20 B200kC10 B100kC5 
+100 
+80 
+60 
+runtime in seconds 
+40 
+20 
+0 10 
+20 
+30 
+40 50 Number of dimensions 
+60 
+70 
+80 
+Figure 17: Scalability with (stream speed = 100, l = 0:8  d) 
+dimensionality 
+We  generated 3 data sets with varying num- ber of dimensions to test the scalability against di- 
+mensionality. B100kC5 contains 100K points and 5 natural clusters, B200kC10 contains 200K points and 10 clusters, and B400kC20 contains 400K points and 20 clusters. For each series of data sets, we generated 4 data sets with dimensionality d set at 10, 20, 40, and 80, respectively. The average number of projected dimensions for each data set is set at 0:8  d and the stream speed is set at 100 points per time unit. Figure 17 shows that when we varied the dimensionality from 10 to 80, HPStream has linear increase in runtime for data sets with dit number of points and dit number of clusters. For example, for data set series B200kC10, the runtime increases from 6.579 seconds to 49.401 seconds when the dimensionality is changed from 10 to 80. 
+90 
+80 
+B400kD40 B200kD20 B100kD10 
+70 
+60 
+50 
+40 
+30 
+runtime in seconds 
+20 
+10 
+0 5 
+10 
+15 
+20 25 Number of clusters 
+30 
+35 
+40 
+Figure 18: Scalability with number of clusters (stream speed=100, l = 0:6  d) 
+To test the scalability against the number of nat- ural clusters, we generated another 3 series of data sets with varying number of clusters. B100kD10 con- tains 100K 10-dimensional data points, B200kD20 has 200K 20-d data points, and B400kD40 has 400K 40-d data points. For each series of data sets, we generated 4 data sets with the number of natural clusters set at 5, 10, 20, and 40, respectively. The average num- ber of projected dimensions for each data set is set at 0:6  d and the stream speed at 100 points per time unit. Figure 18 shows that the runtime of HPStream has very good scalability in terms of the number of clusters for data sets with dit number of points and dimensionality. The high scalability of HPStream in terms of the number of clusters stems from both the algorithm design and implementation. Among the three most costly functions in HPStream algorithm, the computation of FindLimitingRadius has nothing to do with the number of clusters, FindProjectedDist is lin- early scalable to the the number of clusters, whereas for ComputeDimensions, we can exploit the temporal locality to improve its e At a certain period, the points usually only belong to a small number of clusters, and only the dimensions of these clusters will be changed during the past period with the necessity to re-compute their radii. 
+862 
+
+========11========
+
+5 Discussion 
+Our experiments have shown that the HPStream framework leads to accurate and et high- dimensional stream clustering. This framework can be extended in many ways to assist stream data mining. 
+First, some methodologies, such as the cluster struc- ture and micro-clustering ideas, though designed for projected stream clustering, can be applied to pro- jected clustering of non-stream data as well. Moreover, the method worked out here for high-dimensional pro- jected stream clustering represents a general method- ology, independent of particular evaluation measures and implementation techniques. For example, one can change the distance measure from Euclidean distance to other measures, or change detailed clustering algo- rithm, such as k-means, to other methods, the general methodology should still be applicable. However, it is interesting to work out the detail implementation techniques for particular applications. 
+Second, one extension of the framework is to use tilted time windows to store data at dit time granularity. This may take somewhat more space in cluster structure, however, it may give user more  ibility to dynamically assign or modify fading ratio, as well as to discover clusters at more  speci windows or time periods to facilitate the discovery of cluster evolution regularity. 
+Finally, this study may promote the development of new streaming data mining functions, such as stream classi and similarity analysis based on dynam- ically discovered projected clusters. 
+6 Conclusions 
+We have presented a new framework, HPStream, for high-dimensional projected clustering of data streams. It  projected clusters in particular subsets of the dimensions by maintaining condensed representations of the clusters over time. The algorithm provides bet- ter quality clusters than full dimensional data stream clustering algorithms. We tested the algorithm on a number of real and synthetic data sets. In each case, we found that the HPStream algorithm was more ef- fective than the full dimensional CluStream algorithm. 
+High-dimensional projected clustering of data streams opens a new direction for exploration of stream data mining. With this methodology, one can treat projected clustering as a preprocessing step, which may promote more ee methods for stream classi similarity, evolution and outlier analysis. 
+References 
+[1] C. C. Aggarwal. A Human-Computer Interactive 
+Method for Projected Clustering. IEEE Transac- 
+tions on Knowledge and Data Engineering, 16(4), 
+448{460, 2004. 
+[2] C. C. Aggarwal, C. Procopiuc, J. Wolf, P. S. Yu, J.- 
+S. Park. Fast algorithms for projected clustering. 
+ACM SIGMOD Conference, 1999. 
+[3] C. C. Aggarwal, J. Han, J. Wang, P. Yu. A Frame- 
+work for Clustering Evolving Data Streams. VLDB 
+Conference, 2003. 
+[4] C. C. Aggarwal. An Intuitive Framework for Un- 
+derstanding Changes in Evolving Data Streams. 
+ICDE Conference, 2002. 
+[5] C. C. Aggarwal. A Framework for Diagnosing 
+Changes in Evolving Data Streams. ACM SIG- 
+MOD Conference, pp. 575{586, 2003. 
+[6] R. Agrawal, J. Gehrke, D. Gunopulos, P. Ragha- 
+van. Automatic Subspace Clustering of High Di- 
+mensional Data for Data Mining Applications. 
+ACM SIGMOD Conference, 1998. 
+[7] M. Ankerst, M. Breunig, H.-P. Kriegel, J. Sander. 
+OPTICS: Ordering Points To Identify the Cluster- 
+ing Structure. ACM SIGMOD Conference, 1999. 
+[8] B. Babcock, S. Babu, M. Datar, R. Motwani, J. 
+Widom. Models and Issues in Data Stream Sys- 
+tems, ACM PODS Conference, 2002. 
+[9] C. Cortes, K. Fisher, D. Pregibon, A. Rogers, F. 
+Smith. Hancock: A Language for Extracting Sig- 
+natures from Data Streams. ACM SIGKDD Con- 
+ference, 2000. 
+[10] P. Domingos, G. Hulten. Mining High-Speed Data 
+Streams. ACM SIGKDD Conference, 2000. 
+[11] F. Farnstrom, J. Lewis, C. Elkan. Scalability for 
+Clustering Algorithms Revisited. SIGKDD Explo- 
+rations, 2(1):51-57, 2000. 
+[12] J. Feigenbaum et al. Testing and spot-checking of 
+data streams. ACM SODA Conference, 2000. 
+[13] S. Guha, N. Mishra, R. Motwani, L. O’Callaghan. 
+Clustering Data Streams. IEEE FOCS Conference, 
+2000. 
+[14] S. Guha, R. Rastogi, K. Shim. CURE: An E 
+cient Clustering Algorithm for Large Databases. 
+ACM SIGMOD Conference, 1998. 
+[15] A. Jain, R. Dubes. Algorithms for Clustering 
+Data, Prentice Hall, New Jersey, 1998. 
+[16] R. Ng, J. Han. Et and Ee Clustering 
+Methods for Spatial Data Mining. Very Large Data 
+Bases Conference, 1994. 
+[17] L. O’Callaghan, N. Mishra, A. Meyerson, S. 
+Guha, R. Motwani. Streaming-Data Algorithms 
+For High-Quality Clustering. ICDE Conference, 
+2002. 
+[18] T. Zhang, R. Ramakrishnan, M. Livny. BIRCH: 
+An Et Data Clustering Method for Very 
+Large Databases. ACM SIGMOD Conference, 
+1996. 
+863 
+
+========12========
+

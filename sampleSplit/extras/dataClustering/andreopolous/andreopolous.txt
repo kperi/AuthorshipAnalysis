@@ -1,0 +1,2823 @@
+Chapter 12 
+
+
+
+Clustering Categorical Data 
+
+
+
+Bill Andreopoulos 
+
+Lawrence Berkeley National Laboratory 
+
+Berkeley, CA 
+
+billandreo@gmail.com 
+
+
+
+12.1         Introduction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 277 
+
+12.2         Goals of Categorical Clustering    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       279 
+
+            12.2.1         Clustering Road Map  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   280 
+
+12.3         Similarity Measures for Categorical Data             . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       282 
+
+            12.3.1         The Hamming Distance in Categorical and Binary Data . . . . . . . . . . . . . . . . . . . .                                      282 
+
+            12.3.2         Probabilistic Measures . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   283 
+
+            12.3.3         Information-Theoretic Measures         . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       283 
+
+            12.3.4         Context-Based Similarity Measures  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .                 284 
+
+12.4         Descriptions of Algorithms . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     284 
+
+            12.4.1         Partition-Based Clustering  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      284 
+
+                                12.4.1.1       k-Modes  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 284 
+
+                                12.4.1.2       k-Prototypes (Mixed Categorical and Numerical)  . . . . . . . . . . . . . .                                  285 
+
+                                12.4.1.3       Fuzzy k-Modes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    286 
+
+                                12.4.1.4       Squeezer . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 286 
+
+                                12.4.1.5       COOLCAT . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  286 
+
+            12.4.2         Hierarchical Clustering  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   287 
+
+                                12.4.2.1       ROCK  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 287 
+
+                                12.4.2.2       COBWEB . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 288 
+
+                                12.4.2.3       LIMBO . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 289 
+
+            12.4.3         Density-Based Clustering . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       289 
+
+                                12.4.3.1       Projected (Subspace) Clustering            . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       290 
+
+                                12.4.3.2       CACTUS  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 290 
+
+                                12.4.3.3       CLICKS  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 290 
+
+                                12.4.3.4       STIRR . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 291 
+
+                                12.4.3.5       CLOPE . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 292 
+
+                                12.4.3.6       HIERDENC: Hierarchical Density-Based Clustering  . . . . . . . . . .                                         292 
+
+                                12.4.3.7       MULIC: Multiple Layer Incremental Clustering . . . . . . . . . . . . . . .                                   293 
+
+            12.4.4         Model-Based Clustering  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      296 
+
+                                12.4.4.1       BILCOM Empirical Bayesian (Mixed Categorical and 
+
+                                               Numerical)  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 296 
+
+                                12.4.4.2       AutoClass (Mixed Categorical and Numerical)  . . . . . . . . . . . . . . . .                                 296 
+
+                                12.4.4.3       SVM Clustering (Mixed Categorical and Numerical)  . . . . . . . . . .                                        297 
+
+12.5         Conclusion . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 298 
+
+            Bibliography . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 299 
+
+
+
+                                                                                                                                                        277 
+
+
+----------------------- Page 304-----------------------
+
+278                            Data Clustering: Algorithms and Applications 
+
+
+
+12.1     Introduction 
+
+
+
+    A growing number of clustering algorithms for categorical data have been proposed in recent 
+
+years, along with interesting applications, such as partitioning large software systems [8, 9] and 
+
+protein interaction data [13, 21, 38, 77]. 
+
+    A categorical dataset with m attributes is viewed as an m-dimensional “cube”, offering a spatial 
+
+density basis for clustering. A cell of the cube is mapped to the number of objects having values 
+
+equal to its coordinates. Clusters in such a cube are regarded as subspaces of high object density 
+
+and are separated by subspaces of low object density. Clustering the cube poses several challenges: 
+
+   (i)  Since  there  is  no  ordering of  attribute  values,  the  cube  cells  have  no  ordering either.  The 
+
+search for dense subspaces might have to consider several orderings of each dimension of the cube 
+
+to identify the best clustering (unless all the attributes have binary values). 
+
+   (ii) The density of a subspace is often de?ned relative to a user-speci?ed value, such as a radius. 
+
+However, different radii are preferable for different subspaces of the cube [17]. In dense subspaces 
+
+where no information should be missed, the search is more accurately done “cell by cell” with a low 
+
+radius of 1. In sparse subspaces, a higher radius may be preferable to aggregate information. The 
+
+cube search could start from a low radius and gradually move to higher radii. Although the term 
+
+radius is derived from geometrical analogies that assume circular constructs, with categorical data 
+
+radius is not a Euclidean distance. 
+
+    Figure 12.1 illustrates a 3-dimensional cube with subspaces that may be clusters. Figure 12.2 
+
+shows examples of creating and expanding clusters in a 3-D dataset. The radius is the maximum 
+
+number of dimensions by which neighbors can differ. 
+
+    Categorical clustering algorithms have often been motivated by density-based clustering, such 
+
+as CLIQUE [4], CLICKS [75], CACTUS [32], COOLCAT [19], DBSCAN [29, 68], OPTICS [17], 
+
+
+
+ FIGURE  12.1:  Two  “subspaces”  in  a  3-D 
+
+                                                           FIGURE      12.2:  A   cluster  is a  dense   sub- 
+
+ cube, for r=1. 
+
+                                                           space  with  a  “central”  cell  marked  with  a 
+
+                                                           dot.  (a) radius=1, two  new clusters.  (b) ra- 
+
+                                                           dius=1,  clusters  expand.  (c) radius=2,  clus- 
+
+                                                           ters expand. (d ) radius=2, one new cluster. 
+
+
+----------------------- Page 305-----------------------
+
+                                    Clustering Categorical Data                                          279 
+
+
+
+CHAMELEON [53], ROCK [39], and DENCLUE [44], and others. Although most of these ap- 
+
+proaches are ef?cient and relatively accurate, many of these algorithms require the user to specify 
+
+input parameters (with wrong parameter values resulting in a bad clustering), may return too many 
+
+clusters or too many outliers, often have dif?culty ?nding clusters within clusters or subspace clus- 
+
+ters, or are sensitive to the order of object input [21, 35, 38, 75]. 
+
+    Hierarchical algorithms for categorical clustering take the approach of building a hierarchy rep- 
+
+resenting a dataset’s entire underlying cluster structure. Hierarchical algorithms require few user- 
+
+speci?ed parameters and are insensitive to object ordering. Such approaches offer the cluster struc- 
+
+ture of a dataset as a hierarchy, which is usually built independent of user-speci?ed parameters or 
+
+object ordering. A user can cut its branches and study the cluster structure at different levels of 
+
+granularity and detect subclusters within clusters. Though some hierarchical algorithms are slow 
+
+achieving quadratic runtimes, they inspire faster simpli?cations that are useful for ?nding the rich 
+
+cluster structure of a dataset. 
+
+    The objectives of this chapter are to survey important clustering applications for categorical (dis- 
+
+crete) datasets and to explain bene?ts and drawbacks of existing categorical clustering algorithms. 
+
+This chapter is organized as follows. Section 12.2 presents the goals of categorical clustering al- 
+
+gorithms in general. Section 12.3 gives an overview of similarity measures for categorical data. 
+
+Section 12.4 describes previous categorical clustering algorithms from the literature and discusses 
+
+the scalability of the algorithms. Finally we discuss open problems for future work in Section 12.5. 
+
+
+
+12.2     Goals of Categorical Clustering 
+
+
+
+    Categorical clustering algorithms have various features, which make them suitable for applica- 
+
+tions with different requirements. To evaluate a categorical clustering algorithm’s suitability for a 
+
+problem, we use a general set of desirable features [15, 41, 42, 73]: 
+
+
+
+     • Scalability:  the runtime  and  memory  requirements  should        not  explode  on   large  (high- 
+
+       dimensional) datasets [28]. 
+
+
+
+     • Robustness: it should have ability to detect outliers that are distant from the rest of the objects. 
+
+       Outliers may indicate objects that belong to a different population of the samples [39]. 
+
+
+
+     • Order insensitivity: a clustering algorithm should not be sensitive to the ordering of the in- 
+
+       put objects. Reordering the objects in a dataset should not result in different clusters. Order 
+
+       insensitivity is important for every application, as it is key to ensure reproducibility of results. 
+
+
+
+     • Minimum user-speci?ed input: parameters, such as the  number of clusters, will affect the 
+
+       result [21, 38]. 
+
+
+
+     • Mixed datatypes: objects may have numerical descriptive attributes, such as a set of genes 
+
+       expressed at different levels over time, and discrete (categorical) descriptive attributes, such 
+
+       as genes with Gene Ontology annotations [1]. 
+
+
+
+     • Point proportion admissibility: duplicating objects and re-clustering should not change the 
+
+       result [37]. 
+
+
+
+    Evaluation of  clustering  quality  is  application-dependent, with  choices  for  quality  measures 
+
+including 
+
+
+
+     • Precision/recall to a gold standard [33], 
+
+
+----------------------- Page 306-----------------------
+
+280                           Data Clustering: Algorithms and Applications 
+
+
+
+    •  Entropy of the clusters [65], 
+
+
+
+    •  Reproducibility [59], 
+
+
+
+    •  Hubert-Arabie Indices, the number of pairs of objects that are correctly placed in the same or 
+
+       different clusters divided by all pairs of objects [49]. 
+
+
+
+12.2.1    Clustering Road Map 
+
+
+
+    Categorical clustering partitions N objects into k clusters. Object o has m attributes, {o  , ··· ,o } 
+
+                                                                                               1       m 
+
+(usually N  >> m). Attribute oi , i = 1 ···m, has a domain Di  of a categorical or boolean datatype. 
+
+Figure 12.3 depicts inheritance relationships between categorical clustering algorithms. Root ap- 
+
+proaches are separated into algorithms with different features: partitioning, hierarchical, density- 
+
+based, model-based [41, 42, 73]. Re?nement algorithms improve upon a root approach, inheriting 
+
+the  approach’s features, while  possibly  introducing drawbacks. Table  12.1 compares categorical 
+
+clustering algorithms’ features and shows whether they are recommended for an application. The 
+
+
+
+                 FIGURE 12.3: Classi?cation of categorical clustering algorithms. 
+
+
+----------------------- Page 307-----------------------
+
+                                      TABLE 12.1: Properties of Different Categorical Data Clustering Algorithms 
+
+
+
+Algorithm                  Complexity    Robust to       Order        User      Mixed     Point prop.             Availability            Since 
+
+                                          outliers    independence    input   datatypes     admiss. 
+
+Partitioning (k-Means) 
+
+k-Modes [47]                 O(tkN)          no            no           1         no           no             MATLAB, Weka, R              1998 
+
+k-Prototypes [46]            O(tkN)          no            no           1        yes           no               MATLAB, Weka               1997 
+
+                                                                                                                                                                C 
+
+Fuzzy k-Modes [48]           O(tkN)          no            no           1         no           no               MATLAB, Weka               1999                 l 
+
+                                                                                                                                                                u 
+
+Squeezer [43]                 O(kN )         no            no           13       yes           no                    Code                  2006                 s 
+
+                                                                                                                                                                t 
+
+                                                                                                                                                                e 
+
+                                                                                                                                                                r 
+
+COOLCAT [19]                  O(N 2 )        no            no           1         no           no                      -                   2002                 i 
+
+                                                                                                                                                                n 
+
+Hierarchical                                                                                                                                                    g 
+
+                                   2                                                                                                                            C 
+
+ROCK [39]                    O(kN   )        no            yes         1,13      yes           no                      C                   2000                 a 
+
+                                                                                                                                                                t 
+
+                                                                                                                                                                e 
+
+Chameleon [53]                O(N 2 )        yes           yes          13        no          yes              Code, web service           1999 
+
+                                                                                                                                                                g 
+
+                                   2                                                                                                                            o 
+
+COBWEB [31]                  O(Nd   )        yes           no           -         no           no                    Weka                  1987                 r 
+
+                                                                                                                                                                i 
+
+                                                                                                                                                                c 
+
+LIMBO [16]                  O(NlogN )        yes           yes          14        no           no                    C++                   2004                 a 
+
+                                                                                                                                                                l 
+
+Density-based                                                                                                                                                   D 
+
+                                                                                                                                                                a 
+
+HIERDENC [12, 14]             O(N )          yes           yes          -        yes           no                    Code                  2007                 t 
+
+MULIC [13, 12, 14]            O(N 2 )        yes           no           -        yes           no         Code, web service, Cytoscape     2006                 a 
+
+
+
+CACTUS [32]                 “scalable”       no            yes         1,4        no           no                    Code                  1999 
+
+CLICKS [76]                 “scalable”       no            yes          -         no           no                    Code                  2005 
+
+STIRR [34]                  “scalable”       no            no           12        no           no                      -                   1998 
+
+CLOPE [74]                   O(kdN )         no            yes          -         no           no                      -                   2002 
+
+Model-based 
+
+BILCOM [10]                   O(N 2 )        yes           no           5        yes           no                    Code                  2006 
+
+
+
+                                 2 
+
+AutoClass (ExpMax) [71]     O(kd  Nt )       yes           yes          -        yes           no            Weka, C++, R mclust           1995 
+
+SVM clustering [72]          O(N 1.8 )       no            no           -        yes          yes       MATLAB, C++, Java, SVMlight        2007 
+
+
+
+                                                                                                                                                                2 
+
+                                                                                                                                                                8 
+
+                                                                                                                                                                1 
+
+
+----------------------- Page 308-----------------------
+
+282                           Data Clustering: Algorithms and Applications 
+
+
+
+O(.) notation describes how the size of the dataset affects an algorithm’s runtimes; higher values 
+
+are slower. In the next sections, we discuss these algorithms. 
+
+
+
+12.3     Similarity Measures for Categorical Data 
+
+
+
+    The notion of similarity or distance for categorical data is not as intuitive as it is for continuous 
+
+numerical data. One of the main characteristics of categorical data is that a categorical attribute 
+
+takes discrete values that do not have any inherent ordering, unlike numerical attributes. Although 
+
+two categorical attribute values may be identical or different, they are not directly comparable as in 
+
+numerical data (by the less than = or greater than = relationships). 
+
+
+
+12.3.1    The Hamming Distance in Categorical and Binary Data 
+
+
+
+    The simplest categorical similarity measure is the Hamming distance, which measures the over- 
+
+lap between two categorical data objects by counting the number of matching attributes (in which 
+
+the objects have identical values). For a ?xed length m, the Hamming distance (HD) is a metric on 
+
+the vector space of the words of that length. Figure 12.4 shows an example of HDs in the zoo dataset 
+
+[60]. The serpent tuatara is within a relatively small HD from the other serpents; the maximum dis- 
+
+tance is HD (tuatara      seasnake) = 5. On the other hand, HD (tuatara        gorilla) = 8, and gorilla 
+
+is unlikely to belong to the class of serpents. For binary strings a and b, the HD is equivalent to the 
+
+number of ones in a xor b. The metric space of length-m binary strings, with the HD, is known as 
+
+the Hamming cube. 
+
+    One obvious drawback of the Hamming distance is that all matches and mismatches are treated 
+
+equally since HD does not distinguish between the different values taken by an attribute. The Ham- 
+
+ming distance is too simplistic as it gives equal weight to all matches and mismatches. Although 
+
+categorical data values do not have any inherent ordering, there is other information in categorical 
+
+data that can be used to de?ne what is more or less similar. A combination of attribute values may 
+
+co-occur frequently or rarely in the dataset. This observation leads to similarity measures for cat- 
+
+egorical attributes, which take into account the frequency distribution of different attribute values 
+
+in a  given dataset. These measures may use probability or information theory to de?ne similar- 
+
+ity between categorical attribute values. Several such categorical similarity measures are described 
+
+next. 
+
+
+
+                        FIGURE 12.4 (See color insert): Example of Ham- 
+
+                        ming distances on the zoo categorical dataset. 
+
+
+----------------------- Page 309-----------------------
+
+                                        Clustering Categorical Data                                                  283 
+
+
+
+12.3.2      Probabilistic Measures 
+
+
+
+     Probabilistic approaches take into account the probability of a match between attribute values 
+
+taking place. The following measures are probabilistic: 
+
+
+
+Goodall:      This measure assigns a higher similarity to a  match if  the value is infrequent than if 
+
+        the value is frequent. This similarity measure essentially considers the probability that the 
+
+        similarity value would be observed in a random sample of two points from the dataset. The 
+
+        maximum similarity is attained when the matching value Xk                 occurs twice and all other pos- 
+
+        sible Ak  values occur more than twice. The minimum similarity is attained when attribute Ak 
+
+        has only one value. The Goodall similarity formula is 
+
+                                S  (X  ,Y ) = 1 -       p 2 (q)  i f X  = Y ,  0  otherwise. 
+
+                                 k   k   k          ? k               k     k 
+
+                                                    q?Q 
+
+
+
+        The original Goodall similarity measure combines similarities in multivariate categorical data, 
+
+        by considering dependencies between attributes; however, this procedure is computationally 
+
+        expensive to compute and Boriah et al. have proposed 4 simpler variants [36, 22]. 
+
+
+
+Smirnov:      The Smirnov measure is a probabilistic measure that considers both matches and mis- 
+
+        matches. This measure considers both a value’s frequency as well as the distribution of the 
+
+        other values taken by the same attribute. The similarity is higher for a match, if the matching 
+
+        values are infrequent, but the other values for the attribute are frequently occurring; the max- 
+
+        imum similarity is attained if the matching value Xk            occurs only twice and there is just one 
+
+        other value for Ak , which occurs N - 2 times. The minimum similarity for a matching value 
+
+        is attained if Xk   is the only value for Ak      occurring N  times. For a mismatch, the maximum 
+
+        similarity is attained if X    and Y    occur once each and A        takes just one more value occurring 
+
+                                     k        k                            k 
+
+       N - 2 times. For a mismatch, the minimum similarity is attained when X  ,Y                   are the only two 
+
+                                                                                               k  k 
+
+        possible values for Ak     [70]. 
+
+
+
+Anderberg:       This similarity measure also takes into account both matches and mismatches. Using 
+
+        this approach, matches on rare values indicate a strong similarity, while mismatches on rare 
+
+        values should be treated distinctly and should indicate lower similarity. It assigns higher sim- 
+
+        ilarity for matches on rare values and lower similarity for matches on frequent values. As for 
+
+        mismatches, it decreases the similarity for mismatches on rare values (decreasing it less for 
+
+        mismatches on frequent value) [6]. 
+
+
+
+12.3.3      Information-Theoretic Measures 
+
+
+
+     Information-theoretic approaches incorporate the information content of a particular attribute 
+
+value with respect to the data set. Usually, these measures are inspired by information theory, where 
+
+attribute values that are rarely observed are considered more informative. The following measures 
+
+are information-theoretic: 
+
+
+
+Burnaby:       This  measure  assigns  higher  similarity  to  mismatches on  frequent values and  lower 
+
+        similarity to mismatches on rare values. For mismatching values, the range of S  (X  ,Y ) is 
+
+                                                                                                           k   k  k 
+
+        [     Nlog (1-f rac 1N )    , 1]. For matching values, this similarity measure returns S  (X  ,Y ) = 
+
+         Nlog (1-f rac 1N )-log(N -1)                                                                      k   k  k 
+
+
+
+        1. This formula returns the minimum similarity when all the values for attribute Ak                     are in- 
+
+        frequent (each occurring only once) and the maximum value when X  ,Y                      are frequent (each 
+
+                                                                                            k   k 
+
+        occurring N /2 times) [25]. 
+
+
+
+Lin:    This measure gives higher similarity to matches on frequent values and lower similarity to 
+
+        mismatches on infrequent values. The basic Lin similarity formula is [58]: 
+
+
+
+                  S  (X  ,Y ) = 2 log p  (X  )  i f   X   = Y ,     2log(p    (X  ) + p  (Y ))  otherwise. 
+
+                    k   k   k             k   k         k     k             k   k       k  k 
+
+
+----------------------- Page 310-----------------------
+
+284                             Data Clustering: Algorithms and Applications 
+
+
+
+12.3.4     Context-Based Similarity Measures 
+
+
+
+    Context-based measures evaluate similarity between two objects by examining the contexts in 
+
+which they appear. For example, a context-based measure may evaluate the distance between two 
+
+soft drink customers, considering one is a Coke customer and the other a Pepsi customer. So, the 
+
+question becomes how to de?ne the distance between two vectors of boolean or categorical attributes 
+
+in m-space, which correspond to Coke and Pepsi customers. 
+
+    The  context-based metric  proposed by  Das  and  Mannila  follows an  iterative  approach [26]. 
+
+Given distances between all pairs of m attributes in the dataset, this approach iteratively computes 
+
+distances between subrelations (e.g. Coke and Pepsi customers), and then it computes distances 
+
+between all attributes again. After several iterations, a stable set of distances between all pairs of 
+
+attributes is produced. 
+
+    An overview of this similarity measure is given next. We are given a set R of m attributes. Let r 
+
+be a boolean 0/1 relation over R. Initially, all distances between attribute pairs A ,B ?R are initialized 
+
+to random values. Then, subrelation centers are computed as follows. For each t ? r, all attributes 
+
+A 1, ··· ,Ak to which t is similar (according to a criterion) are used to compute a vector f  (t ) consisting 
+
+of all the pairwise distances between t and Ai . Then, the subrelation center for each attribute A ? R 
+
+is the vector cA   on R, de?ned by the average of all vectors f  (t ) from the previous step where t 
+
+and A  are similar. Next, for each pair of attributes A ,B ? R, the distance is de?ned by computing 
+
+distance between subrelation centers cA  and cB . This iteration is repeated until the distance between 
+
+A ,B ? R converges. Given attribute distances, it is easy to compute object distances and subrelation 
+
+distances. 
+
+
+
+12.4      Descriptions of Algorithms 
+
+
+
+    In this section, a description of the key classes of categorical data clustering algorithms is pro- 
+
+vided. 
+
+
+
+12.4.1     Partition-Based Clustering 
+
+
+
+    In the partitioning approach, objects are partitioned and may change clusters based on dissim- 
+
+ilarity.  Partitioning methods are  useful for  bioinformatics applications where  a  ?xed  number of 
+
+clusters is desired, such as small gene expression datasets [24]. A drawback is that the user typically 
+
+speci?es the number of clusters as an input parameter. 
+
+
+
+12.4.1.1    k-Modes 
+
+
+
+    The k-Modes algorithm represents a cluster by a summary of the attribute-value frequencies of 
+
+objects classi?ed under the node. Iteratively, objects are assigned to a cluster and the summaries are 
+
+reevaluated. Usually, the algorithm converges after a ?nite (small) number of iterations. The number 
+
+of clusters is user-speci?ed. 
+
+    The k-Modes algorithm is an adaptation of k-Means to categorical datasets. K -Modes removes 
+
+the numerical-only limitation of the k-Means algorithm but maintains its ef?ciency in clustering 
+
+large  categorical  datasets.  K -Modes  makes  the  following  modi?cations:  1)  it  uses  a  dissimilar- 
+
+ity  measure for  categorical objects; 2) it  replaces the  means of  clusters with  the  modes; and  3) 
+
+it uses  a  frequency-based method to  ?nd  the modes. It has similar  runtime, bene?ts, and draw- 
+
+backs as k-Means [47]. The Hamming Distance can be used for ?nding an object’s nearest cluster 
+
+mode. 
+
+
+----------------------- Page 311-----------------------
+
+                                         Clustering Categorical Data                                                   285 
+
+
+
+     The mode of a cluster is used to assign an unassigned object to the closest cluster. Let X = 
+
+{X 1,X2 , ··· ,Xn } be a set of n categorical objects described by categorical attributes, A 1,A2 , ··· ,Am . 
+
+A mode of X is a vector Q = [q  ,q  , ··· ,q          ] that minimizes 
+
+                                       1   2        m 
+
+
+
+                                                              n 
+
+                                              D (X,Q) =         d  (X ,Q) 
+
+                                                             ? 1      i 
+
+                                                            i=1 
+
+
+
+where d1 is a distance function, such as Hamming Distance. It was proven that the function D (X,Q) 
+
+is minimized if and only if every position j  of the mode Q contains the most frequently occurring 
+
+value in attribute A  , such that f r (A       = q  |X) = f r (A     = c    |X) for q    =  c    for all j  = 1, ··· ,m. 
+
+                        j                    j      j              j      i,j          j      i,j 
+
+Note that the mode vector Q is not necessarily an element of X . 
+
+     The mode of cluster c is a vector µ = {µ ···µ }, where µ is the most frequent value in c for 
+
+                                               c       c1     cm              c j 
+
+the j th attribute. The mode of c is determined by setting µc j  to the most frequent value for the j th 
+
+category in c. To ?nd a mode for a set, let nci,j         be the number of objects having the ith value ci,j           in 
+
+attribute Aj   and f r (Aj  = ci,j |X) = nci,j /n be the relative frequency of value ci,j         in X . 
+
+     The basic algorithm evaluates the total cost against the whole dataset, according to the cost func- 
+
+                    k   n   m 
+
+tion P (X,Q) = ? ? ? d(xi,j ,ql ,j ), each time a new mode is obtained over the k clusters, n objects, 
+
+         ¯ 
+
+                   l=1 i=1j =1 
+
+and m categorical attributes. To make the computation more ef?cient, the following algorithm can 
+
+be used instead in practice: 
+
+
+
+    1.  Select k initial modes, one for each cluster. 
+
+
+
+    2.  Assign an object to the cluster with the nearest mode, according to a distance measure. Update 
+
+        the mode of the cluster after each object allocation. 
+
+
+
+    3.  After all objects have been assigned to clusters, retest the dissimilarity of objects against the 
+
+        current modes. If an object is found such that its nearest mode belongs to another cluster 
+
+        rather than its current one, reassign the object to that cluster and update the modes of both 
+
+        clusters. 
+
+
+
+    4.  Repeat until no object changes clusters. 
+
+
+
+     In the original published implementation of the k-Modes algorithm two initial mode selection 
+
+methods were described. The ?rst and simplest method selects the ?rst k distinct records from the 
+
+dataset as the initial k  modes. The second method evaluates the frequencies of all values for all 
+
+categorical attributes and stores them in an array in descending order of frequency; then it assigns 
+
+the most frequent values to the initial k modes. 
+
+     The main disadvantage of k-Modes is that (like the k-Means algorithm) it produces locally opti- 
+
+mal solutions that are heavily dependent on the initial modes and the order of objects in the dataset. 
+
+
+
+12.4.1.2     k-Prototypes (Mixed Categorical and Numerical) 
+
+
+
+     An extension of k-Modes called k-Prototypes handles mixed datatypes [46]. The k-Prototypes 
+
+algorithm that is used to cluster mixed-type objects integrates the k-Means and k-Modes algorithms. 
+
+The k-Prototypes algorithm is practically more useful because frequently encountered objects in real 
+
+world databases are mixed-type objects. k-Prototypes uses a distance metric that weighs the con- 
+
+tribution of the numerical versus categorical attributes. Like the k-Means and k-Modes algorithms, 
+
+k-Prototypes iterates until few objects change clusters. 
+
+     The dissimilarity between two mixed-type objects X  and Y , which are described by p numerical 
+
+and m -p categorical attributes Ar , ··· ,Ar ,Ac            ...Ac  , can be measured by 
+
+                                          1        p   p +1     m 
+
+
+
+                                                  p                     m 
+
+                                   d  (X ,Y ) =      (x  -y  )2 + ?          d(x   ,y  ) 
+
+                                    2            ? j         j          ? j          j 
+
+                                                 j =1                 j =p +1 
+
+
+----------------------- Page 312-----------------------
+
+286                               Data Clustering: Algorithms and Applications 
+
+
+
+where the ?rst term is the squared Euclidean distance measure on the numerical attributes and the 
+
+second term is the simple matching dissimilarity measure on the categorical attributes. The weight 
+
+?is used to avoid favoring either type of attribute. 
+
+
+
+12.4.1.3     Fuzzy k-Modes 
+
+
+
+     Fuzzy k-Modes extends fuzzy k-Means to categorical data [48]. Fuzzy k-Modes is based on 
+
+the same ideas as k-Modes, involving iterative assignment of objects to the closest modes and re- 
+
+evaluation of modes, until convergence. However, objects’ assignments to clusters involve degrees 
+
+of membership between 0 and 1. The degree of membership of object 1 = i = n in  cluster 1 = 
+
+l = k is represented by the weight 0 = wli            = 1. An object’s total membership across all clusters 
+
+must equal 1, represented as ?k            wli  = 1, for an object 1 = i = n. The fuzzy k-Modes algorithm 
+
+                                       l=1 
+
+evaluates the total cost against the whole dataset X, according to the cost function F (W,X,Z ) = 
+
+ k   n 
+
+ ? ? wad (X ,Z ), where a= 1 is a weighting exponent and Z                     = [z   , ··· ,z   ] is the mode of the 
+
+          li    i   l                                                        l      l ,1      l ,m 
+
+l=1 i=1 
+
+lth cluster. The weights 0 = wli  = 1 are set at each iteration, such that the ith object will tend to join 
+
+the lth cluster with the least dissimilar mode Zl . In turn, the mode Zl  of cluster 1 = l = k, represented 
+
+by [zl ,1, ··· ,zl ,m ], has each position zl ,j set to the value for the attribute Aj   that will minimize the cost 
+
+function. The cost function is the sum of the weighted distances of all objects against the cluster 
+
+mode. It was proven that the fuzzy k-Means algorithm will converge in a ?nite number of iterations. 
+
+Its main disadvantage is that it often terminates at a local minimum. 
+
+
+
+12.4.1.4     Squeezer 
+
+
+
+     Squeezer is a one-pass algorithm that is based on summarizing clusters like k-Modes. However, 
+
+Squeezer improves upon the iteration-bound speed of k-Modes [43]. Squeezer reads objects one- 
+
+by-one. The ?rst tuple forms a cluster alone. Next objects are either put into an existing cluster or 
+
+rejected by all to form a new cluster. 
+
+     The Squeezer algorithm accepts as input the dataset of objects and a value s for the similarity 
+
+threshold. The  algorithm then  fetches objects  in  an  iterative  fashion. Initially, the  ?rst  object is 
+
+read in and a new Clustering Structure is established, which includes a summary and the cluster 
+
+itself. For each subsequent object, the similarity between any existing cluster C and the object is 
+
+computed. The  maximal similarity  value  (denoted by  sim-max) and  the  corresponding index  of 
+
+a  cluster  (denoted by  index) are  evaluated from  the  above computing results.  Then,  if  the  sim- 
+
+max is larger than the input threshold s, the object is assigned to the selected cluster. Otherwise, a 
+
+new Clustering Structure is constructed, consisting of the cluster and summary. Finally, outliers are 
+
+handled and the clustering results are returned. 
+
+     One of the disadvantages of Squeezer is that on some datasets, it may not produce accurate 
+
+clusters. Squeezer is considered ef?cient with a complexity of O(kN ). 
+
+
+
+12.4.1.5     COOLCAT 
+
+
+
+     COOLCAT is based on similar ideas as k-Modes, but instead of modes (summaries) of clusters 
+
+it uses objects as cluster centers. COOLCAT attempts to deal with k-Modes’ sensitivity to the initial 
+
+cluster modes problem. Clusters are created by reducing their entropy [19]. COOLCAT ?nds a set 
+
+of k maximally dissimilar objects to create initial clusters. All remaining objects are placed in one 
+
+of  the clusters,  such  that the increase  in  entropy is  minimized. The  name of COOLCAT  comes 
+
+from the  notion of  reducing the  entropy of  the  clusters, thereby “cooling” them. Entropy is  the 
+
+measure of information and uncertainty of a random variable. If X  is a random variable, S (X ) the 
+
+set of values that X  can take, and p (x ) the probability function of X , the entropy E (X ) is de?ned 
+
+as E (X ) = -      ? p (x )log(p (x )). Entropy is sometimes referred to as a measure of the amount of 
+
+                x ?S (X ) 
+
+
+----------------------- Page 313-----------------------
+
+                                    Clustering Categorical Data                                          287 
+
+
+
+                      TABLE 12.2: Three Different Clusterings of a Zoo Dataset 
+
+
+
+  Cluster #             Clustering 1                   Clustering 2                   Clustering 3 
+
+                 members                E       members                E       members                 E 
+
+  Cluster 0      { tail, 4-legs },      1.0     { tail, 4-legs },      2.0     { tail, 4-legs }        0 
+
+                 { tail, 2-legs }               { no-tail, 0-legs } 
+
+  Cluster 1      { no-tail, 0-legs }    0       { tail, 2-legs }       0       { tail, 2-legs },       2.0 
+
+                                                                               { no-tail, 0-legs } 
+
+  Exp. E                                0.66                            1.33                            1.33 
+
+
+
+Note :  Table  has  three  objects  (shown  in   brackets)  and  two   attributes: tail (yes/no)  and  legs 
+
+(zero/two/four). As shown, clustering 1 minimizes the expected entropy of the two clusters. 
+
+
+
+“disorder” in a system. The authors argue that as a measure of the similarity between two vectors, 
+
+the use of entropy is equivalent to that of other widely used similarity coef?cients. 
+
+    COOLCAT starts with a sample of points. The initial step selects the k most dissimilar objects 
+
+from the sample set, such that the pairwise entropy of the chosen objects is maximized. These serve 
+
+as initial representatives of the k clusters. All remaining objects of the dataset are placed in one of the 
+
+clusters such that, at each step, the increase in the entropy of the resulting clustering is minimized. 
+
+After the initialization, COOLCAT proceeds to process the remaining objects of the dataset (not 
+
+selected to seed the clusters initially) incrementally, ?nding a suitable cluster for each object. This 
+
+is done by computing the expected entropy that results after placing the object in each of the clusters 
+
+and selecting the cluster for which that expected entropy is the minimum. Table 12.2 compares three 
+
+clusterings and selects the one that minimizes the expected entropy. 
+
+    Disadvantages of COOLCAT include its sensitivity to the order of object selection, as well as 
+
+its quadratic complexity of O(N 2 ). 
+
+
+
+12.4.2     Hierarchical Clustering 
+
+
+
+    Hierarchical clustering algorithms partition the objects into a tree of nodes, where each node 
+
+represents a potential cluster [56, 61]. Hierarchical clustering methods applied to categorical data 
+
+usually cluster the data in an agglomerative (bottom-up) fashion, where the most similar objects are 
+
+gradually placed in clusters at different levels of the resulting tree. For choosing a similarity metric, 
+
+there are many choices, such as Hamming distance. Alternatively, a classi?cation tree can be created 
+
+in a divisive (top-down) fashion, where every node at a level consists of a statistical summary of the 
+
+resulting cluster and a new object is placed in the most suitable cluster. 
+
+    Disadvantages of hierarchical methods for categorical data include their quadratic runtime and 
+
+often slower speed. The resulting clustering may be sensitive to the ordering by which objects are 
+
+presented. Errors in merging clusters cannot be undone and will affect the result. If large clusters 
+
+are merged then interesting local cluster structure may be lost. Next, we discuss several hierarchical 
+
+clustering algorithms for categorical data. 
+
+
+
+12.4.2.1    ROCK 
+
+
+
+    ROCK is an agglomerative (bottom-up) hierarchical algorithm [39]. ROCK handles categorical 
+
+data clustering by building a tree; at each tree level clusters are merged in such a way that the re- 
+
+sulting intra-cluster similarity is maximized, where similarity is evaluated by the number of similar 
+
+object pairs within a resulting cluster. ROCK assumes a special similarity measure between objects 
+
+and de?nes a “link” between two objects the similarity of which exceeds a threshold. 
+
+
+----------------------- Page 314-----------------------
+
+288                                Data Clustering: Algorithms and Applications 
+
+
+
+     The motivation for ROCK was to develop a global clustering approach that considers the links 
+
+between objects. For this purpose, ROCK uses common neighbors to de?ne links. If object A neigh- 
+
+bors object C and object B neighbors object C, then the objects A and B are linked (even if they are 
+
+not themselves neighbors). Two objects belonging to the same cluster should have many common 
+
+neighbors, while objects belonging to different clusters should have few common neighbors. Ini- 
+
+tially, each object is assigned to a separate cluster. Then, clusters are merged repeatedly according 
+
+to their “closeness,” de?ned by the sum of the number of links between all pairs of objects between 
+
+two clusters. 
+
+     In order to decide which objects are “neighbors,” ROCK de?nes a similarity function, sim (A ,C), 
+
+which encodes the level of similarity (“closeness”) between two objects. The similarity is normal- 
+
+ized, such that sim (A ,C) is one when A  equals C and zero when they are completely dissimilar. 
+
+Objects A and C are considered to be “neighbors” if sim (A ,C) = ?, where ?is a user-provided pa- 
+
+rameter. Then link(A ,B) is de?ned to be the number of common neighbors between A and B. The 
+
+similarity function can be any metric, such as Euclidean distance or the Jaccard coef?cient. 
+
+     Then, a hierarchical clustering algorithm that uses links is applied to the samples. It iteratively 
+
+merges the clusters Ci ,Cj      that maximize the goodness function 
+
+
+
+                                 total#crosslinks                            link [C ,C ] 
+
+                                                                                     i   j 
+
+               g (C ,C ) =                               =                                                  . 
+
+                    i   j      expected#crosslinks           (n  + n  )1+2f  (?) - n1+2f  (?) - n1+2f  (?) 
+
+                                                                i    j               i             j 
+
+
+
+It stops merging once there are no more links between clusters or the required number of clusters 
+
+has been reached. 
+
+     The best set of clusters is characterized through the use of a criterion function, El , such that 
+
+the best set of clusters is the one maximizing El . The most common approach is to maximize the 
+
+                                                                               k 
+
+number of links between pairs of points in each cluster: E                =  ? ? link(p             ,p  ). This criterion 
+
+                                                                         l                         q   r 
+
+                                                                             i=1p q ,p r ?Ci 
+
+
+
+keeps points that share many links in the same cluster, but it does not force points with few links to 
+
+split into different clusters. This criterion approach may end up with a large cluster, or it may result 
+
+in relatively weak clusters. 
+
+     Disadvantages of ROCK include its cubic complexity in N , which makes it generally unsuitable 
+
+for large datasets [38, 76]. 
+
+
+
+12.4.2.2     COBWEB 
+
+
+
+     COBWEB creates a hierarchical clustering in the form of a classi?cation tree. COBWEB in- 
+
+crementally organizes objects into a classi?cation tree. A classi?cation tree differs from decision 
+
+trees, which label branches rather than nodes and use logical rather than probabilistic descriptions. 
+
+Sibling nodes at a classi?cation tree level form a partition [31]. 
+
+     Each node in a classi?cation tree represents a class (concept) and is labeled by a probabilistic 
+
+concept that summarizes the attribute-value distributions of objects classi?ed under the node. This 
+
+classi?cation tree can be used to predict the class of a new object or missing attributes. COBWEB 
+
+integrates objects incrementally into an existing classi?cation tree by classifying the object along a 
+
+path of best matching nodes. 
+
+     There are four operations COBWEB employs in building the classi?cation tree. Which operation 
+
+is selected for a step depends on the category utility of the classi?cation tree achieved by applying it: 
+
+
+
+    1.  Insert a new node: a node is created corresponding to the object being inserted into the tree. 
+
+
+
+    2.  Merge two  nodes: replace two  nodes by a  node whose  children is  the  union of the  origi- 
+
+        nal nodes’ sets of children. The new node summarizes the attribute-value distributions of all 
+
+        objects classi?ed under it. 
+
+
+
+    3.  Split a node: a node is split by replacing it with its children. 
+
+
+----------------------- Page 315-----------------------
+
+                                   Clustering Categorical Data                                         289 
+
+
+
+   4.  Pass an object down the hierarchy: the COBWEB algorithm is called on the object and the 
+
+       subtree rooted in the node. 
+
+
+
+    A bene?t of COBWEB is that it can adjust the number of clusters in a partition, without the 
+
+user specifying this input parameter. A disadvantage of COBWEB is that it assumes categorical 
+
+attributes are independent and it may assume correlated attributes are independent. 
+
+
+
+12.4.2.3    LIMBO 
+
+
+
+    LIMBO handles the categorical clustering problem by building a tree, where a node contains 
+
+statistics about the objects that are members of the corresponding cluster. New objects are added to 
+
+the tree in a top-down fashion by ?nding the best matching node and possibly breaking it into a new 
+
+node, thereby extending the tree. LIMBO employs Entropy and the Information Bottleneck (IB) 
+
+framework for quantifying the relevant information preserved when clustering [16]. LIMBO scales 
+
+to large datasets using a memory bound summary for the data, thereby improving on the scalability 
+
+of other hierarchical clustering algorithms. The approach most similar to LIMBO is the COOLCAT 
+
+algorithm, a nonhierarchical algorithm also based on entropy minimization, which was presented 
+
+previously. 
+
+    LIMBO summarizes a cluster of objects using a Distributional Cluster Feature (DCF). For a 
+
+cluster c, DCF (c) = (p (c),p (A |c)), where p (c) is the probability of cluster c, and p (A |c) is the 
+
+conditional probability distribution of the attribute values given the cluster c. The information in 
+
+DCFs is used to compute the distance between two clusters or between a cluster and an object. 
+
+The LIMBO algorithm proceeds in three phases. In the ?rst phase, the DCF tree is constructed to 
+
+summarize the data. In the second phase, the DCFs of the tree leaves are merged to produce a chosen 
+
+number of clusters. In the third phase, each object is associated with the DCF to which the object is 
+
+closest. 
+
+    Phase 1 starts by reading and inserting objects into the DCF tree one by one. A tree is created, 
+
+where a node contains one or more DCF entries. Object o is converted into DCF(o). Then, starting 
+
+from the root, a path downward in the DCF tree is traced. When at a nonleaf node, the distance 
+
+between DCF(o) and each DCF entry of the node is computed, ?nding the closest DCF entry to 
+
+DCF(o). The child pointer of this entry to the next level of the tree is followed. When at a leaf node, 
+
+DCF(c) denotes the DCF entry in the leaf node that is closest to DCF(o). DCF(c) is the summary of 
+
+some cluster c. At this point, the decision is made whether o will be merged into the cluster c or not. 
+
+If there is an empty entry in the leaf node that contains DCF(c) (according to a space bound) then 
+
+DCF(o) is placed in that entry. If there is no empty leaf entry and there is suf?cient free space, then 
+
+the leaf node is split into two leaves. The two DCFs in the leaf node that are farthest apart are used 
+
+as seeds for the new leaves. The remaining DCFs and DCF(o) are placed in the leaf that contains 
+
+the closest seed DCF. 
+
+    Phase 2 clusters the leafs of the DCF tree. After the construction of the DCF tree, the leaf nodes 
+
+represent the DCFs of a clustering C of the objects. Each DCF(c) corresponds to a cluster c ? C 
+
+and contains statistics for computing probability p(c). The Agglomerative Information Bottleneck 
+
+(AIB) algorithm is employed to cluster the DCFs in the leaves and produce clusterings of the DCFs. 
+
+Any clustering algorithm is applicable at this phase of the algorithm. 
+
+    Phase 3 associates the objects with clusters. For a chosen value of k, Phase 2 produced k DCFs 
+
+that are representatives of k clusters. In the ?nal phase 3, a scan over the dataset assigns each object 
+
+to the cluster whose representative DCF is closest to the object. 
+
+
+
+12.4.3    Density-Based Clustering 
+
+
+
+    Density-based approaches use a local density criterion for clustering categorical data; clusters 
+
+are subspaces in which the objects are dense and are separated by subspaces of low density. Density- 
+
+based methods are useful in bioinformatics for ?nding the densest subspaces in networks, typically 
+
+
+----------------------- Page 316-----------------------
+
+290                                 Data Clustering: Algorithms and Applications 
+
+
+
+involving cliques [13, 18]. Advantages of many density-based algorithms include time ef?ciency 
+
+and  the  ability  to  ?nd  clusters  of  arbitrary shapes.  A  challenge  of  applying density-based clus- 
+
+tering to categorical datasets is that the “cube” of attribute values has no ordering de?ned. Some 
+
+density-based algorithms take user-speci?ed input parameters, though they usually do not require 
+
+the number of clusters k. Sometimes they cannot identify clusters of varying densities. With some 
+
+density-based algorithms the central subspace of a cluster cannot be distinguished from the rest of 
+
+the cluster based on a higher density [35, 38, 76]. Some density-based approaches are also grid- 
+
+based, since a histogram is constructed by partitioning the dataset into a number of nonoverlapping 
+
+regions. 
+
+
+
+12.4.3.1      Projected (Subspace) Clustering 
+
+
+
+     Projected clustering is motivated by high-dimensional datasets, where clusters exist only in spe- 
+
+ci?c attribute subsets. Clusters are subspaces of high-dimensional datasets, determined by the subset 
+
+of attributes most relevant to each cluster. The object membership in a cluster is de?ned by a speci?c 
+
+range of values for the relevant attributes, while objects of other clusters are less likely to have such 
+
+values. The drawback of projected (subspace) methods is that clustering depends on user parameters 
+
+for determining the attributes relevant to each cluster; such parameters are the number of clusters or 
+
+the average number of dimensions for each cluster. Projected clustering may distinguish the center 
+
+of a cluster based on a higher frequency of values for the relevant attributes [4, 2, 3]. Next, we 
+
+present several subspace clustering algorithms. 
+
+
+
+12.4.3.2      CACTUS 
+
+
+
+     CACTUS is a projected clustering method, which assumes that a cluster is identi?ed by a unique 
+
+set of attribute values that seldom occur in other clusters [32]. It searches for the minimal set of 
+
+relevant attribute sets that are suf?cient to de?ne a cluster. 
+
+     Assume all attributes A 1,...,Am  are independent and all values in an attribute are equally likely. 
+
+Then, the measure s(a ,a  ) indicates the co-occurrence (and the similarity) of attribute values a 
+
+                              i  j                                                                                           i 
+
+and a  . The values a       and a     are strongly connected if their co-occurrence s(a ,a  ) is higher by a 
+
+       j                   i        j                                                                i   j 
+
+user-speci?ed factor a> 1 than the value expected under the attribute-independence assumption. 
+
+     A set of attribute values C = {a  ,...,a  } over the attributes {A               ,...,A    } is a cluster if the set C 
+
+                                             1        n                              1        n 
+
+is a set of strongly connected attribute values. In other words, the condition should be satis?ed that 
+
+all pairs of attribute values in C are strongly connected and their co-occurrence s(a ,a  ) > afor 
+
+                                                                                                             i  j 
+
+i =  j . Cluster C is also called a subspace cluster. C is a subcluster if there is another value for one 
+
+of attributes {A 1,...,An } that is not included in C, but is strongly connected to the other attribute 
+
+values in C = {a  ,...,a  }. 
+
+                     1        n 
+
+     The CACTUS algorithm collects inter-attribute summaries and intra-attribute summaries on cat- 
+
+egorical attributes. The inter-attribute summaries consist of all strongly connected attribute value 
+
+pairs where each pair has attribute values from different attributes. The intra-attribute summaries 
+
+consist of similarities between attribute values of the same attribute. Then, the CACTUS algorithm 
+
+consists of three phases: summarization, clustering, and validation. The summarization phase com- 
+
+putes the summary information from the dataset. The clustering phase uses the summary informa- 
+
+tion to discover a set of candidate clusters. The validation phase determines the actual set of clusters 
+
+from the set of candidate clusters. 
+
+     A drawback of CACTUS is that the assumption of a cluster being identi?ed by a unique set of 
+
+attribute values that seldom occur in other clusters may be unnatural for clustering some real world 
+
+datasets. CACTUS may also return too many clusters [76, 35, 38]. 
+
+
+----------------------- Page 317-----------------------
+
+                                       Clustering Categorical Data                                                 291 
+
+
+
+12.4.3.3     CLICKS 
+
+
+
+     CLICKS is another subspace clustering method, standing for “Subspace Clustering of  Cate- 
+
+gorical data via maximal K -partite cliques.” CLICKS creates a graph representation of the dataset, 
+
+where nodes are categorical attribute values and an edge is a co-occurrence of values in an object. 
+
+     CLICKS models a categorical dataset D  as a graph where the nodes are attribute values that 
+
+form disjoint sets, one set per attribute. Edges between nodes in different partitions indicate dense 
+
+relationships. A k-partite clique is a subgraph C consisting of two disjoint sets of nodes, where every 
+
+pair of nodes from two sets is connected by an edge. The k-partite clique C is a maximal k-partite 
+
+clique if it has no k-partite superset. C is dense if the number of objects in the dataset that have the 
+
+values de?ned by C exceeds a user-speci?ed threshold. 
+
+     A k-subspace C = (C1 × ··· ×C ) is a (subspace) cluster over attributes A 1 ···A                 if and only if 
+
+                                           k                                                        k 
+
+it is a maximal, dense, and a strongly connected k-partite clique in D, such that all or most pairs of 
+
+nodes are connected by an edge. 
+
+     CLICKS uses a three-step approach to mine all subspace clusters in D : In the preprocessing step 
+
+it creates the k-partite graph from the input database D. In the clique detection step, it enumerates 
+
+maximal k-partite cliques in the graph. The approach of this step is based on a backtracking search 
+
+that tries to expand the current clique to ensure maximality. In the postprocessing phase it veri?es 
+
+the density property for the detected cliques, given a user-speci?ed threshold. A maximal clique 
+
+may fail the density test, whereas one of its subcliques may be dense. 
+
+     Disadvantages include that CLICKS may return too many clusters or too many outliers [76]. 
+
+
+
+12.4.3.4     STIRR 
+
+
+
+     STIRR stands for “Sieving Through Iterated Relational Reinforcement.” STIRR is an iterative 
+
+approach for assigning and propagating weights on the categorical values; this allows a similarity 
+
+measure for categorical data, which is based on the co-occurrence of values in the dataset. STIRR 
+
+looks for relationships between all attribute values to detect a potential cluster and converges to 
+
+clusters of highly correlated values between different categorical attribute ?elds [34]. 
+
+    Each possible value in a categorical attribute is represented by a node and the data is represented 
+
+as a set D of objects. Each object d ? D is represented as a set of nodes, consisting of one node from 
+
+each attribute ?eld. STIRR assigns a weight wv  to each node v. The weight con?guration is referred 
+
+to as w. A normalization function N (w) rescales the weights of the nodes associated with an attribute 
+
+such that their squares add to 1. 
+
+     A function f    is repeatedly applied to a set of nodes (values) until a ?xed point u is reached for 
+
+which f  (u) = u. The function f      maps the node weights to a new con?guration. So, the purpose is to 
+
+converge to a point that remains the same under repeated applications of f . The function f                  updates 
+
+a weight wv  for a node v by applying an operator ? to all objects that contain value v (as well as 
+
+m - 1 other values) and summing the results, as follows: 
+
+
+
+                        f or each ob ject o  = {v,u1 ··· ,um-1} that contains value v 
+
+
+
+                                               xr  ? ?(u1 ··· ,um-1) 
+
+
+
+                                                     w   ?      x  . 
+
+                                                       v     ? r 
+
+                                                              r 
+
+
+
+     The operator ? may be a simple multiplication or addition operator. The function f                    then nor- 
+
+malizes the set of weights using N (). After several iterations of yielding a new con?guration f  (w) 
+
+the system is expected to converge to a point where f  (w) = w. Then, the nodes with large positive 
+
+weights and the nodes with extreme negative weights represent dense regions in the dataset that are 
+
+separated and have few interconnections, possibly de?ning clusters. 
+
+
+----------------------- Page 318-----------------------
+
+292                           Data Clustering: Algorithms and Applications 
+
+
+
+    Disadvantages of STIRR include its sensitivity to the initial object ordering. It also lacks a def- 
+
+inite convergence. The notion of weights is nonintuitive and several parameters are user-speci?ed. 
+
+The ?nal detected clusters are often incomplete [76]. 
+
+
+
+12.4.3.5   CLOPE 
+
+
+
+    CLOPE  stands  for  “CLustering  with  SLOPE.”  It  is  useful  for  clustering  large  transactional 
+
+databases with high dimensions, such as market-basket data and web server logs. CLOPE is consid- 
+
+ered to be fast and scalable on transactional databases and high-dimensional datasets. CLOPE uses 
+
+a heuristic of increasing the height-to-width ratio of the cluster histogram [74]. Given a cluster C, 
+
+CLOPE ?nds all the distinct items in the cluster, with their respective occurrences, i.e., the number 
+
+of transactions containing that item. D(C) is the set of distinct items, and Occ(i, C) the occurrence 
+
+of item i in cluster C. CLOPE then draws the histogram of a cluster C, with items on the X-axis 
+
+decreasingly ordered by their occurrences, and occurrence as the Y-axis. 
+
+    Figure 12.5 shows an example of two clusterings with two clusters each. For each cluster, the 
+
+occurrence of every distinct item is counted and the results are plotted as histograms. Then the height 
+
+(H) and width (W) of the histogram for each cluster is obtained. Using the height-to-width ratio 
+
+of the cluster histograms, CLOPE de?nes a global criterion function for clustering. This example 
+
+shows that a larger height-to-width ratio of the histogram means better intra-cluster similarity. 
+
+    The main disadvantage of CLOPE clustering is that the histogram used may produce suboptimal 
+
+clusters for some datasets. 
+
+
+
+12.4.3.6   HIERDENC: Hierarchical Density-Based Clustering 
+
+
+
+    The HIERDENC algorithm for “hierarchical density-based clustering of categorical data” offers 
+
+a probabilistic basis for designing categorical clustering algorithms, as well as indexing methods 
+
+for categorical data. Bene?ts of HIERDENC are its insensitivity to order of object input, no re- 
+
+clustering needed when new objects are presented, no user-speci?ed input parameters required, and 
+
+the ability to ?nd clusters within clusters and outliers [12]. HIERDENC clusters the m-dimensional 
+
+cube representing the spatial density of a set of objects with m categorical attributes. To ?nd its dense 
+
+subspaces, HIERDENC considers an object’s neighbors to be all objects that are within a radius 
+
+of maximum dissimilarity. Clusters start from the densest subspaces of the cube. Clusters expand 
+
+
+
+                    Clustering 1                                         Clustering 2 
+
+
+
+  3                          2                         2                          3 
+
+
+
+  2                                                                               2 
+
+                             1                         1 
+
+   1                                                                              1 
+
+
+
+  0                          0                         0                          0 
+
+       a    b    c    d           d      e     f            a      b      c          d   e   a   c    f 
+
+
+
+      H=2.0, W=4                H=1.67, W=3                H=1.67, W=3                H=1.6, W=5 
+
+      {ab, abc, acd}               {de, def}                 {ab, abc}               {acd, de, def} 
+
+
+
+FIGURE 12.5: Histograms of two clusterings (with two clusters each) for a small dataset: (1) {{ab, 
+
+abc, acd}, {de, def}} and (2) {{ab, abc}, {acd, de, def}}. The height-to-width of the clusters is 
+
+used to select the best clustering. While the two histograms for clusters {de, def} and {ab, abc} are 
+
+identical, the histograms for the other two clusters are of different quality. The ?rst cluster {ab, abc, 
+
+acd} has the occurrences of a:3, b:2, c:2, and d:1. The histogram for cluster  {ab, abc, acd} has 4 
+
+items for 8 blocks with H=2.0 and W=4 (H/W=0.5). The histogram for the second cluster {acd, de, 
+
+def} has 5 items for 8 blocks with H=1.6 and W=5 (H/W=0.32). The ?rst clustering is preferable 
+
+since a larger height-to-width ratio means more overlap among transactions in the same cluster. 
+
+
+----------------------- Page 319-----------------------
+
+                                         Clustering Categorical Data                                                     293 
+
+
+
+outward from a dense subspace, by connecting nearby dense subspaces. Object neighborhoods are 
+
+insensitive to attribute or value ordering. 
+
+     We  are  given a  dataset of objects S  (which might contain duplicates) with m  categorical at- 
+
+tributes, X 1, ··· ,Xm . Each attribute Xi  has a domain Di  with a ?nite number of di  possible values. 
+
+The  space  Sm     can  be  viewed  as  an  m-dimensional “cube” with  ?m                 di cells  (positions).  A  cell 
+
+                                                                                      i=1 
+
+x = (x 1, ··· ,xm ) ? Sm represents a number of objects (given by function f req ()) with all m attribute 
+
+values equal to (x 1, ··· ,xm ). We de?ne the HIERDENC hyper-cube C (x0 ,r) ? Sm , centered at cell 
+
+
+
+x0  with radius r, as follows: 
+
+
+
+                        C(x   ,r) = {x : x ? Sm and dist (x,x  ) = r and  f req(x) > 0}. 
+
+                             0                                      0 
+
+
+
+The dist (·) is a distance function, which may be the Hamming distance. 
+
+     Figure 12.1 illustrates two HIERDENC hyper-cubes in a 3-dimensional cube. Since r=1, the 
+
+hyper-cubes are visualized as “crosses” in 3D and are not shown as actually having a cubic shape. A 
+
+cube’s cells for which f req () is 0 do not represent any objects in the dataset. Normally, a hyper-cube 
+
+                                m 
+
+will equal a subspace of S        . 
+
+     The density of a subspace X  ? Sm , where X  could equal a hyper-cube C(x0 ,r) ? Sm , involves 
+
+
+
+the sum of f req () evaluated over all cells of X : 
+
+
+
+                                                                    f req (c) 
+
+                                             density (X ) = ?                 . 
+
+                                                               c?X     |S | 
+
+
+
+This density can also be viewed as the likelihood that a hyper-cube contains a random object from 
+
+S, where |S | is the size of S. HIERDENC seeks the densest hyper-cube C(x0 ,r) ? Sm . This is the 
+
+
+
+hyper-cube centered at x0  that has the maximum likelihood of containing a random object from S. 
+
+     Figure 12.6 shows the HIERDENC clustering algorithm. Gk  represents the kth cluster. The re- 
+
+mainder set, R = {x : x ? Sm and x ?/ G ,i = 1, ··· ,k}, is the collection of unclustered cells after the 
+
+                                                 i 
+
+formation of k clusters. 
+
+     Step 1 retrieves the densest hyper-cube C ? Sm  of radius r. Step 1 checks that the densest hyper- 
+
+cube represents more than one object (density (C(x0 ,r)) >                 1 ), since otherwise the cluster will not 
+
+                                                                           |S | 
+
+expand, ending up with one object. If the hyper-cube represents zero or one object, then r is in- 
+
+cremented. Step 2 creates a new lea f  cluster at level r = 1. Starting from an existing leaf cluster, 
+
+step 3 tries to move to the densest hyper-cube of radius r nearby. If a dense hyper-cube is found 
+
+near the cluster, then in step 4 the cluster expands by collecting the hyper-cube’s cells. This is re- 
+
+peated for a cluster until no such connection can be made. New objects are clustered until r = m, 
+
+or density (R) = 1% and the unclustered cells are identi?ed as outliers (step 5). For many datasets, 
+
+most objects are likely to be clustered long before r = m. 
+
+     Initially r = 1 by default, since most datasets contain subsets of similar objects. Such subsets 
+
+are used to initially identify dense hyper-cubes. When r is incremented, a special process merges 
+
+clusters that are connected relative to r. Although the initial r = 1 value may result in many clusters, 
+
+similar clusters are merged gradually. A merge is represented as a link between two or more lea f 
+
+clusters or links, created at a level r = 1. A link represents a group of merged clusters. This process 
+
+gradually constructs one or more cluster tree structures, resembling hierarchical clustering [50, 61]. 
+
+The user speci?es a cut-off level (e.g., r = 3) to cut tree branches; links at the cut-off level are 
+
+extracted as merged clusters. Step 5 checks if a newly formed cluster is connected to another cluster 
+
+relative to r and if so links them at level r. Step 6 continues linking existing clusters into a tree, until 
+
+r = m. By allowing r to reach m, an entire tree is built. At the top of the tree, there is a single cluster 
+
+containing all objects of the dataset. 
+
+
+
+12.4.3.7     MULIC: Multiple Layer Incremental Clustering 
+
+
+
+     MULIC stands for “MUltiple Layer Incremental Clustering” of categorical data. MULIC is a 
+
+faster simpli?cation of HIERDENC. MULIC balances clustering accuracy with time ef?ciency fo- 
+
+
+----------------------- Page 320-----------------------
+
+294                                Data Clustering: Algorithms and Applications 
+
+
+
+           Input: space Sm . 
+
+
+
+           Output: a hierarchy of clusters. 
+
+           Method: 
+
+                  r = 1.          //radius of hyper-cubes 
+
+                 R = Sm .        //set of unclustered cells 
+
+
+
+                 k = 0.           //number of leaf clusters 
+
+                 kr  = 0.         //number of clusters at level r 
+
+                  Gk  = null .    //kth cluster 
+
+                  U = null .      //set of hyper-cube centers 
+
+
+
+           Step 1: Find x      ? R such that maxdensity (C(x  ,r)). 
+
+                            0                                       0 
+
+                                                 x0 
+
+
+
+                 If density (C(x  ,r)) =      1  , then: 
+
+                                   0          |S | 
+
+
+
+           (1)        r = r + 1. 
+
+           (2)        If kr-1 > 1, then: 
+
+           (3)              Merge clusters that are connected relative to r. 
+
+           (4)              kr  = #merged + #unmerged clusters. 
+
+           (5)        Repeat Step 1. 
+
+
+
+           Step 2: Set x     = x  , k = k + 1, G     = C(x  ,r), R = R -C(x  ,r) and U = U ? {x  }. 
+
+                           c     0                 k         c                     c                        c 
+
+
+
+                             *                           *                                * 
+
+           Step 3: Find x      ? C(x  ,r) such that x      ?/ U and max density (C(x  ,r)). 
+
+                                      c 
+
+                                                                         * 
+
+                                                                       x 
+
+
+
+                                      *          1 
+
+           Step 4: If density (C(x  ,r)) > |S | , then: 
+
+                           Update current cluster G  : G        = G    ? C(x* ,r). 
+
+                                                         k    k      k 
+
+                                                       * 
+
+                           Update R : R = R -C(x  ,r). 
+
+                                                       * 
+
+                           Update U: U = U ? {x  }. 
+
+                                                              * 
+
+                           Reset the new center: xc  = x  . 
+
+                           Go to Step 3. 
+
+                     Otherwise, move to the next step. 
+
+
+
+           Step 5: Set kr  = kr + 1. 
+
+                     If kr  > 1, then execute lines (3) - (4). 
+
+                     If r < m and density (R) > 1%, then go to Step 1. 
+
+
+
+           Step 6: While r < m, execute lines (1) - (4). 
+
+
+
+                                  FIGURE 12.6: The HIERDENC algorithm. 
+
+
+
+cusing on both the quality of the clusters as well as the speed of the method and scalability to large 
+
+datasets. MULIC is motivated by clustering of categorical datasets that have a multilayered struc- 
+
+ture. For instance, in networks a cluster (or module) may have a center of a few well-connected 
+
+objects (nodes) surrounded by peripheries of sparser connectivity [27, 13, 8, 9, 11]. On such data, 
+
+MULIC outperforms other algorithms that create a  ?at clustering. MULIC produces layered (or 
+
+nested) clusters, which is different in several ways from traditional hierarchical clustering. MULIC 
+
+requires no user-speci?ed parameters and the resulting clusters have a clear separation. Layered 
+
+clusters are useful in bioinformatics for ?nding protein modules and complexes, and for visualiza- 
+
+tion purposes [7, 11, 13, 62, 68]. 
+
+
+----------------------- Page 321-----------------------
+
+                                        Clustering Categorical Data                                                  295 
+
+
+
+           Input: a set S of objects. 
+
+           Parameters: (1) df: the increment for f. 
+
+                         (2) threshold for f: the maximum number of values that 
+
+                         can differ between an object and the mode of its cluster. 
+
+           Default parameter values: (1) df= 1. 
+
+                                         (2) threshold = the number of categorical attributes m. 
+
+           Output: a set of clusters. 
+
+           Method: 
+
+                1. Order objects by decreasing aggregated frequency of their attribute values. 
+
+               2. Insert the ?rst object into a new cluster, use the 
+
+                   object as the mode of the cluster, and remove the object from S. 
+
+               3. Initialize fto 1. 
+
+               4. Loop through the following until S is empty or f> threshold 
+
+                     a. For each object o in S 
+
+                          i. Find o’s nearest cluster c by using the dissimilarity metric 
+
+                              to compare o with the modes of all existing cluster(s). 
+
+                          ii. If the number of different values between o and c’s mode 
+
+                              is larger than f, insert o into a new cluster 
+
+                          iii. Otherwise, insert o into c and update c’s mode. 
+
+                          iv. Remove object o from S. 
+
+                     b. For each cluster c, if there is only one object 
+
+                        in c, remove c and put the object back in S. 
+
+                     c. If in this iteration no objects were inserted in 
+
+                        a cluster with size > 1, increment fby df. 
+
+
+
+                              FIGURE 12.7: The MULIC clustering algorithm. 
+
+
+
+     Figure 12.7 shows the main part of the MULIC clustering algorithm. MULIC does not store 
+
+the cube in memory and makes simpli?cations to decrease the runtime. A MULIC cluster starts 
+
+from a dense area and expands outwards via a radius represented by the fvariable. When MULIC 
+
+expands a  cluster it  does not search  all member objects as  HIERDENC does.  Instead, it uses  a 
+
+mode that summarizes the content of a cluster. The mode of cluster c is a vector µ = {µ , ··· ,µ } 
+
+                                                                                                  c       c1        cm 
+
+where µci    is the most frequent value for the ith attribute in the given cluster c  [47]. The MULIC 
+
+clustering  algorithm  ensures  that  when  an  object  o  is  clustered,  it  is  inserted  into  the  cluster  c 
+
+with the least dissimilar mode µ . The default dissimilarity metric between o and µ is the Ham- 
+
+                                        c                                                              c 
+
+ming distance, although any metric could be  used. A MULIC cluster  consists of  layers formed 
+
+gradually,  by  relaxing  the  maximum  dissimilarity  criterion  f for  inserting  objects  into  existing 
+
+clusters.  MULIC  does  not  require  the  user  to  specify  the  number  of  clusters  and  can  identify 
+
+outliers. 
+
+     MULIC has several differences from traditional hierarchical clustering, which stores all dis- 
+
+tances  in  an  upper  square  matrix  and  updates the  distances  after  each  merge  [50,  61].  MULIC 
+
+clusters  have  a  clear  separation.  MULIC  does  not  require  a  cut-off  to  extract  the  clusters,  as 
+
+in  hierarchical  clustering;  this  is  of  bene?t  for  some  MULIC  applications,  such  as  the  one  on 
+
+protein interaction networks discussed in [7]. One of the drawbacks of hierarchical clustering is 
+
+that  the  sequence  of  cluster  mergings  will  affect  the  result  and  “bad”  mergings  cannot  be  un- 
+
+done later on in the process. Moreover, if several large clusters are merged, then interesting local 
+
+cluster structure is likely to be lost. MULIC does not merge clusters during the object clustering 
+
+process. 
+
+
+----------------------- Page 322-----------------------
+
+296                           Data Clustering: Algorithms and Applications 
+
+
+
+    The best-case complexity of MULIC has a lower bound of O(mNk) and its worst-case com- 
+
+plexity has an upper bound of O(mN2 threshold ). The MULIC complexity is comparable to that of 
+
+                                             df 
+
+k-Modes of O(mNkt ), where t is the number of iterations [47]. 
+
+
+
+12.4.4     Model-Based Clustering 
+
+
+
+    Model-based clustering assumes that objects match a model, which is often a statistical distri- 
+
+bution. Then, the process aims to cluster objects such that they match the distribution. The model 
+
+may be user-speci?ed as a parameter and the model may change during the process. In bioinfor- 
+
+matics, model-based clustering methods integrate background knowledge into gene expression, in- 
+
+teractomes, and sequences [23, 66, 45, 51, 52, 69]. Building models is an oversimpli?cation; user 
+
+assumptions may be false and then results will be inaccurate. Another disadvantage of model-based 
+
+clustering (especially neural networks) is slow processing time on large datasets. 
+
+
+
+12.4.4.1    BILCOM Empirical Bayesian (Mixed Categorical and Numerical) 
+
+
+
+    BILCOM “BI-Level Clustering Of Mixed categorical and numerical data types” is a model- 
+
+based method [10]. This algorithm uses categorical data clustering as an example to guide the clus- 
+
+tering of numerical data. This process adapts an empirical Bayesian approach, with categorical data 
+
+as the guide. In previous biological applications to genes, Gene Ontology (GO) annotations were the 
+
+categorical data and gene expression data was numerical. Model-based clustering can ?nd arbitrary 
+
+shaped gene expression clusters by including background knowledge [1, 24, 45, 51, 52, 69, 20, 64]. 
+
+    The BILCOM algorithm performs clustering at two levels, where the ?rst level clustering acts 
+
+as a  foundation for the second level, thus simulating a pseudo-Bayesian process. BILCOM was 
+
+primarily applied to datasets from the biomedical domain. In these sets, categorical data represent 
+
+semantic information on the objects, while numerical data represent experimental results. Categor- 
+
+ical similarity is emphasized at the ?rst level and numerical similarity at the second level. The ?rst 
+
+level result is the basis given as input to the second level and the second level result is the output 
+
+of BILCOM. Figure 12.8 shows an example, where the ?rst level and second level involve four 
+
+clusters. The second level clusters consist of subclusters. Object A is assigned to different ?rst and 
+
+second level clusters, because the numerical similarity at the second level is stronger than the cat- 
+
+egorical similarity at the ?rst level. On the other hand, object B is assigned to the same clusters 
+
+in both levels, because both categorical and numerical similarities support this classi?cation. Thus, 
+
+BILCOM considers categorical and numerical similarities of an object to the clusters to which it 
+
+may be assigned. 
+
+    Different types of  data are  used  at the ?rst  and second levels. The  numerical data represent 
+
+experimental results involving the objects. For example, the numerical data used at the second level 
+
+might look as follows: BILIRUBIN : 0.39; ALBUMIN : 2.1; PROTIME : 10. The categorical data 
+
+represent what was observed to be true about the objects before the experiment. For example, the 
+
+categorical data used at the ?rst level might be existing information on objects looking as follows: 
+
+SEX : male; STEROID : yes; FATIGUE : no. 
+
+    The main disadvantage of BILCOM is that the user has to specify the number of clusters. 
+
+
+
+12.4.4.2    AutoClass (Mixed Categorical and Numerical) 
+
+
+
+    AutoClass is a  clustering algorithm for mixed datatypes, which uses a  Bayesian  method for 
+
+determining the optimal classes based on prior distributions [71]. AutoClass ?nds the most likely 
+
+classi?cations of objects in clusters, given a prior distribution for each attribute, symbolizing prior 
+
+beliefs of the user. In the ?rst step the user selects a probabilistic distribution for each of the m at- 
+
+tributes in the dataset. As an example, let the evidence on an object be X = {age = 28,blood-type = 
+
+A ,weight = 73kg}; blood-type is a categorical attribute that is modeled with a Bernoulli distribu- 
+
+
+----------------------- Page 323-----------------------
+
+                                   Clustering Categorical Data                                        297 
+
+
+
+                    FIGURE 12.8: Overview of the BILCOM clustering process. 
+
+
+
+tion, while age and weight are numerical attributes modeled with a normal (Gaussian) distribution. 
+
+At each loop, AutoClass changes the classi?cations of objects in clusters, such that each object is 
+
+assigned to the cluster with the attribute probability distributions (considering the current means and 
+
+variances) that give the highest probability of observing the object’s values. Additionally, AutoClass 
+
+iteratively investigates different numbers of clusters, which are not user-speci?ed. Then, AutoClass 
+
+changes the means and variances of the probability distributions for the attributes in each cluster. 
+
+The iteration continues until the clusters and the attributes’ probability distributions stabilize. The 
+
+AutoClass output is a mixture of several likely clusterings, where a clustering classi?es each object 
+
+into the most likely cluster on the basis of the attributes’ probability distributions. 
+
+    Drawbacks of AutoClass include that users have to specify the model spaces to be searched 
+
+in and wrong models may produce wrong results. Also, AutoClass can be slow to converge to a 
+
+clustering result on some datasets. 
+
+
+
+12.4.4.3   SVM Clustering (Mixed Categorical and Numerical) 
+
+
+
+    Support Vector Machines (SVMs) provide a method for supervised learning. SVMs construct a 
+
+separating hyperplane using a set of training data, as shown in Figure 12.9. Despite their supervised 
+
+nature, SVMs have been applied to categorical data to ?nd clusters in an unsupervised manner. The 
+
+approach involves randomly assigning objects to a pair of clusters and recomputing the separating 
+
+hyperplane, until there is a convergence of object assignment and the hyperplane. 
+
+    Previously, SVM-Internal Clustering (usually referred to as a one-class SVM) used internal as- 
+
+pects of Support Vector Machines to ?nd a cluster as the smallest enclosing sphere in a dataset. The 
+
+internal approach to SVM clustering lacked robustness and is biased towards clusters with a spher- 
+
+ical shape in feature space. In the case of most real-world problems, the SVM-Internal Clustering 
+
+algorithm could only detect the relatively small cluster cores. 
+
+    To remedy this, an external-SVM clustering algorithm was introduced that clusters data vectors 
+
+with no prior knowledge of each object’s classi?cation. Initially, every object in the dataset is ran- 
+
+domly labeled and a binary SVM classi?er is trained. After the initial convergence is achieved, the 
+
+sensitivity + speci?city will be low, likely near 1. The algorithm then improves this result by itera- 
+
+tively relabeling only the worst misclassi?ed vectors, which have con?dence factor values beyond 
+
+some threshold, followed by rerunning the SVM on the newly relabeled dataset. The lowest con?- 
+
+dence classi?cations, those objects with con?dence factor values beyond some threshold, repeatedly 
+
+
+----------------------- Page 324-----------------------
+
+298                          Data Clustering: Algorithms and Applications 
+
+
+
+              FIGURE 12.9: A Support Vector Machine tries to maximize the mar- 
+
+              gin of separation between the hyperplane and the training data, which 
+
+              typically consists of samples from two classes. SVMs have been previ- 
+
+              ously adapted for clustering. After the SVM is trained, new objects are 
+
+              predicted to belong in a class (as de?ned by the separating hyperplane) 
+
+              according to a measure of the distance between the testing data and the 
+
+              hyperplane. 
+
+
+
+have labels switched to the other class label. The SVM is retrained after each relabeling of the low- 
+
+est con?dence objects. This continues until no more progress can be made. Progress is determined 
+
+by an increasing value of sensitivity+speci?city, eventually nearly reaching 2. The repetition of the 
+
+above process limits local minima traps [72]. 
+
+    The SVM clustering approach provides a way to cluster datasets without prior knowledge of 
+
+the data’s clustering characteristics or the number of clusters. This method is not biased toward 
+
+the shape of the clusters, and unlike the SVM-Internal Clustering approach the formulation is not 
+
+?xed to a single kernel class. Nevertheless, there are robustness and consistency issues that arise in 
+
+realistic applications of SVM-External Clustering. 
+
+
+
+12.5     Conclusion 
+
+
+
+    Desired features of categorical clustering algorithms for different applications include speed, 
+
+minimal parameters, robustness to noise and outliers, redundancy handling, and object order inde- 
+
+pendence. Desirable clustering features are used as evaluation criteria for clustering algorithms. Cat- 
+
+egorical clustering algorithms are separated into various approaches: partitioning (e.g., k-Modes), 
+
+
+----------------------- Page 325-----------------------
+
+                                   Clustering Categorical Data                                         299 
+
+
+
+hierarchical (e.g., ROCK, Chameleon, LIMBO), density-based (e.g., MULIC, CACTUS, CLICKS, 
+
+CLOPE), model-based (e.g., COBWEB, Autoclass). Some algorithms can handle mixed categorical 
+
+and numerical data (k-Protoypes, BILCOM). Within an approach, inheritance relationships between 
+
+clustering algorithms specify common features and improvements they make upon one another. Ta- 
+
+ble 12.1 and Figure 12.3 summarize bene?ts and drawbacks of categorical clustering algorithms. 
+
+For improved analysis of categorical datasets, it is important to match clustering algorithms to the 
+
+requirements of an application. 
+
+    The bene?ts and drawbacks of categorical clustering algorithms can be a basis for matching 
+
+them to an application. Speed and accuracy are two competing goals in the design of categorical 
+
+clustering algorithms. Making a fast algorithm usually involves trading off precision of the result. 
+
+On the other hand, producing the most accurate result is not necessarily fast. Ideally, a set of prob- 
+
+abilistically justi?ed goals for categorical clustering would serve as a framework for approximation 
+
+algorithms [54, 63]. This would allow designing and comparing categorical clustering algorithms 
+
+on a more formal basis. 
+
+
+
+Bibliography 
+
+
+
+  [1]  B. Adryan and R. Schuh. Gene ontology-based clustering of gene expression data. Bioinfor- 
+
+      matics 20(16):2851–2852, 2004. 
+
+
+
+  [2]  C.  Aggarwal, J.  Han,  J.  Wang,  and  P.S.  Yu.  A  framework for  projected clustering of  high 
+
+      dimensional data streams. In Proceedings of the 30th VLDB Conference (VLDB’04), Toronto, 
+
+      Canada, pages 852–863, 2004. 
+
+
+
+  [3]  C.  C.  Aggarwal  and  P.  S.  Yu.  Finding  generalized  projected  clusters  in  high  dimensional 
+
+      spaces. In Proceedings of the SIGMOD, pages 70–81, 2000. 
+
+
+
+  [4]  R.  Agrawal, J.  Gehrke, D.  Gunopulos, and P. Raghavan. Automatic subspace clustering of 
+
+      high dimensional data for data mining applications (1998). In Proceedings ACM-SIGMOD 
+
+      ’98 International Conference on Management on Data, pages 94–105. Seattle, Washington, 
+
+      June 1998. 
+
+
+
+  [5]  H. Akaike. A new look at the statistical model identi?cation. IEEE TAC 19:716–723, 1974. 
+
+
+
+  [6]  M. R. Anderberg. Cluster Analysis for Applications. Academic Press, New York, 1973. 
+
+
+
+  [7]  B. Andreopoulos. Clustering algorithms for categorical data. PhD Thesis, Dept of Computer 
+
+      Science & Engineering, York University, Toronto, Canada, 2006. 
+
+
+
+  [8]  B. Andreopoulos, A. An, V. Tzerpos, and X. Wang. Clustering large software systems at mul- 
+
+      tiple layers. Elsevier Information and Software Technology (IST) 49(3):244–254, 2007. 
+
+
+
+  [9]  B. Andreopoulos, A. An, V. Tzerpos, and X. Wang. Multiple layer clustering of large software 
+
+      systems. In Proceedings of the 12th IEEE Working Conference on Reverse Engineeering 2005 
+
+      (WCRE 2005), pages 79-88, Pittsburgh, PA (Carnegie Mellon), USA, November 2005. 
+
+
+
+[10]  B. Andreopoulos, A. An and X. Wang. Bi-level clustering of mixed categorical and numerical 
+
+      biomedical data. International Journal of Data Mining and Bioinformatics (IJDMB)  1(1):19- 
+
+      56, 2006. 
+
+
+----------------------- Page 326-----------------------
+
+300                         Data Clustering: Algorithms and Applications 
+
+
+
+[11]  B. Andreopoulos, A. An, and X. Wang. Finding molecular complexes through multiple layer 
+
+     clustering of protein interaction networks. International Journal of Bioinformatics Research 
+
+     and Applications (IJBRA) 3(1):65–85, 2007. 
+
+
+
+[12]  B. Andreopoulos, A. An and X. Wang. Hierarchical density-based clustering of categorical 
+
+     data and a simpli?cation. In Proceedings of the 11th Paci? c-Asia Conference on Knowledge 
+
+     Discovery and Data Mining (PAKDD 2007), Springer LNCS 4426/2007, pages 11–22, Nan- 
+
+     jing, China, May 22–25, 2007. 
+
+
+
+[13]  B. Andreopoulos, A. An, X. Wang, M. Faloutsos, and M. Schroeder. Clustering by common 
+
+     friends ?nds locally signi?cant proteins mediating modules. Bioinformatics 23(9):1124–1131, 
+
+     2007. 
+
+
+
+[14]  B. Andreopoulos, A. An, X. Wang, and D. Labudde. Ef?cient layered density-based clustering 
+
+     of categorical data. Elsevier Journal of Biomedical Informatics 42(2):365–376, Apr 2009. 
+
+
+
+[15]  B. Andreopoulos, A. An, X. Wang, and M. Schroeder. A roadmap of clustering algorithms: 
+
+     ?nding a match for a biomedical application. Brie? ngs in Bioinformatics 10(3):297–314, May 
+
+     2009. 
+
+
+
+[16]  P. Andritsos, P. Tsaparas, R.  Miller, et al. LIMBO: Scalable  clustering of categorical data. 
+
+     In  Proceedings  of  the 9th  International  Conference  on  Extending  Database  Technology 
+
+     EDBT’04, pages 123–146, Heraklion, Greece. March 14–18, 2004. 
+
+
+
+[17]  M. Ankerst, M. Breunig, H.P. Kriegel, and J. Sander. OPTICS: Ordering points to identify the 
+
+     clustering structure. SIGMOD, pages 49–60, 1999. 
+
+
+
+[18]  G. Bader and C. Hogue. An automated method for ?nding molecular complexes in large pro- 
+
+     tein interaction networks. BMC Bioinformatics 4(2), 2003. 
+
+
+
+[19]  D. Barbara, Y. Li, and J. Couto. COOLCAT: An entropy-based algorithm for categorical clus- 
+
+     tering. In Proceedings of CIKM 2002, pages 582–589, 2002. 
+
+
+
+[20]  R. Bellazzi and B. Zupan. Towards knowledge-based gene expression data mining. Journals 
+
+     of Biomedical Informatics 40(6):787-802, June 2007. 
+
+
+
+[21]  P. Berkhin. Survey of Clustering Data Mining Techniques. Accrue Software, Inc. Technical 
+
+     report. San Jose, CA. 2002. 
+
+
+
+[22]  S. Boriah, V. Chandola, and V. Kumar. Similarity measures for categorical data: A comparative 
+
+     evaluation. In Proceedings of  the  Eighth  SIAM  International Conference  on  Data  Mining, 
+
+     pages 243–254, 2008. 
+
+
+
+[23]  D.  Brown. Ef?cient functional clustering of  protein sequences using the  Dirichlet process. 
+
+     Bioinformatics 24(16):1765–1771, 2008. 
+
+
+
+[24]  M. Brown, W. Grundy, D. Lin D, et al. Knowledge-based analysis of microarray gene expres- 
+
+      sion data by using support vector machines. PNAS 97(1): 262–267, 2000. 
+
+
+
+[25]  T. Burnaby. On a method for character weighting a similarity coef?cient, employing the con- 
+
+     cept of information. Mathematical Geology 2(1):25–38, 1970. 
+
+
+
+[26]  G. Das and H. Mannila. Context-based similarity measures for categorical databases. In Pro- 
+
+     ceedings of PKDD 2000, 4th European Conference on Principles of Data Mining and Knowl- 
+
+     edge Discovery, Pages 201– 210, Springer-Verlag, London, UK, 2000. 
+
+
+----------------------- Page 327-----------------------
+
+                                   Clustering Categorical Data                                       301 
+
+
+
+[27]  Z. Dezso, Z.N. Oltvai, and A.L. Barabasi. Bioinformatics analysis of experimentally deter- 
+
+     mined protein complexes in the yeast Saccharomyces cerevisiae. Genome Research 13, 2450– 
+
+      2454, 2003. 
+
+
+
+[28]  C. Ding, X. He, H. Zha. Adaptive dimension reduction for clustering high dimensional data. 
+
+     In Proceedings of ICDM 2002, pages 107–114, 2002. 
+
+
+
+[29]  M. Ester, H.P. Kriegel, J. Sander, X. Xu. A density-based algorithm for discovering clusters in 
+
+      large spatial databases with noise. KDD pages 226–231, 1996. 
+
+
+
+[30]  G. Even, J. Naor, S. Rao, and B. Schieber. Fast approximate graph partitioning algorithms. 
+
+      SIAM Journal on Computing 28(6):2187–2214, 1999. 
+
+
+
+[31]  Fisher D.  Knowledge acquisition via  incremental conceptual clustering. Machine Learning 
+
+      2:139–172, 1987. 
+
+
+
+[32]  V. Ganti, J. Gehrke, and R. Ramakrishnan. CACTUS-clustering categorical data using sum- 
+
+     maries. In Proceedings of KDD’99 pages 73–83, San Diego, CA, USA, 1999. 
+
+
+
+[33]  I. Gat-Viks, R. Sharan, and R. Shamir. Scoring clustering solutions by their biological rele- 
+
+      vance. Bioinformatics 19(18):2381–2389, 2003. 
+
+
+
+[34]  D. Gibson, J. Kleiberg, and P. Raghavan. Clustering categorical data: An approach based on 
+
+      dynamical systems. In Proceedings of 24th International Conference on Very Large Databases 
+
+      (VLDB’98), pages 311–323, New York City, USA, August 24–27, 1998. 
+
+
+
+[35]  A. Gionis, A. Hinneburg, S. Papadimitriou, and P. Tsaparas. Dimension induced clustering. In 
+
+     Proceedings of KDD’05, pages 51–60, 2005. 
+
+
+
+[36]  D. W. Goodall. A new similarity index based on probability. Biometrics 22(4):882–907, 1966. 
+
+
+
+[37]  A. D. Gordon. Classi? cation, 2nd Edition. London: Chapman and Hall CRC, 1999. 
+
+
+
+[38]  J. Grambeier and A. Rudolph. Techniques of cluster algorithms in data mining. Data Mining 
+
+     and Knowledge Discovery 6:303–360, 2002. 
+
+
+
+[39]  S. Guha, R. Rastogi, and K. Shim. ROCK: A Robust clustering algorithm for categorical at- 
+
+     tributes. Information Systems 25(5): 345–366, 2000. 
+
+
+
+[40]  S.  Guha,  R.  Rajeev,  and  S.  Kyuseok.  CURE:  An  ef?cient  clustering  algorithm  for  large 
+
+      databases. In Proceedings of ACM SIGMOD’98, pages 73–84, Seattle, USA, 1998. 
+
+
+
+[41]  J. Han and M. Kamber. Data Mining: Concepts and Techniques, 2nd edition, Morgan Kauf- 
+
+     mann, 2006. 
+
+
+
+[42]  J. A. Hartigan. Clustering Algorithms. New York: Wiley. 1975. 
+
+
+
+[43]  Z. He, X. Xu, S. Deng et al. Squeezer: An ef?cient algorithm for clustering categorical data. 
+
+     Journal of Computer Science and Technology 17(5):611–624, 2002. 
+
+
+
+[44]  A.  Hinneburg  and   D.A.   Keim.  An   ef?cient  approach  to  clustering  in large  multimedia 
+
+      databases with noise. KDD, pages 58–65, 1998. 
+
+
+
+[45]  D. Huang and W. Pan. Incorporating biological knowledge into distance-based clustering anal- 
+
+     ysis of microarray gene expression data. Bioinformatics 22(10):1259–1268. 2006. 
+
+
+
+[46]  Z. Huang. Clustering large data sets with mixed numeric and categorical values. Knowledge 
+
+      discovery and data mining: Techniques and applications. World Scienti? c, 1997. 
+
+
+----------------------- Page 328-----------------------
+
+302                           Data Clustering: Algorithms and Applications 
+
+
+
+[47]  Z. Huang. Extensions to the k-means algorithm for clustering large data sets with categorical 
+
+      values. Data Mining and Knowledge Discovery 2(3):283–304, 1998. 
+
+
+
+[48]  Z. Huang and M. Ng. A fuzzy k-modes algorithm for clustering categorical data. IEEE Trans- 
+
+      action on Fuzzy Systems, 7(4): 446–452. 1999. 
+
+
+
+[49]  L. Hubert and P. Arabie. Comparing partitions. Journal of Classi? cation, 2:193–218, 1985 
+
+
+
+[50]  D. Jiang, J. Pei, and A. Zhang. DHC: A density-based hierarchical clustering method for time 
+
+      series gene expression data. IEEE Symposium on Bioinformatics and Bioenginering, pages 
+
+      393–400, 2003. 
+
+
+
+[51]  Y. Joo, J. Booth, Y. Namkoong, et al. Model-based Bayesian clustering (MBBC). Bioinformat- 
+
+      ics 24(6):874–875, 2008. 
+
+
+
+[52]  A. Joshi, Y. Van de Peer, and T. Michoel. Analysis of a Gibbs sampler method for model-based 
+
+      clustering of gene expression data. Bioinformatics 24(2):176–183, 2008. 
+
+
+
+[53]  G. Karypis, E. H. Han, and V. Kumar. Chameleon: A hierarchical clustering algorithm using 
+
+      dynamic modeling. IEEE Computer Special Issue on Data Analysis and Mining 32(8): 68–75, 
+
+      1999. 
+
+
+
+[54]  J. Kleinberg, C. Papadimitriou, and P. Raghavan. Segmentation problems. Internatinal Busi- 
+
+      ness Machines, Research Division, STOC 1998. 
+
+
+
+[55]  R. Krauthgamer and J. R. Lee. The black-box complexity of nearest neighbor search. ICALP 
+
+      pages 262–276, 2004. 
+
+
+
+[56]  P. Langfelder, B. Zhang, and S. Horvath. De?ning clusters from a hierarchical cluster tree: The 
+
+      dynamic tree cut package for R. Bioinformatics 24(5):719–720, 2008. 
+
+
+
+[57]  T. Li, S. Ma, and M. Ogihara. Entropy-based criterion in categorical clustering. ICML, 2004. 
+
+
+
+[58]  D. Lin. An information-theoretic de?nition of similarity. In Proc ICML 1998 (15th Interna- 
+
+      tional Conference on Machine Learning), pages 296-304, San  Francisco, CA,  USA,  1998. 
+
+      Morgan Kaufmann Publishers Inc. 
+
+
+
+[59]  L. McShane, M. Radmacher, B. Freidlin, et al. Methods for assessing reproducibility of clus- 
+
+      tering patterns observed in  analyses of  microarray data. Bioinformatics  18(11):1462–1469, 
+
+      2002. 
+
+
+
+[60]  C. J. Mertz and P. Murphy. UCI Repository of Machine Learning Databases, 1996. 
+
+
+
+[61]  R. Mojena. Hierarchical grouping methods and stopped rules: An evaluation. The Computer 
+
+      Journal 20(4):359–63, 1977. 
+
+
+
+[62]  A.  Morgulis,  G.  Coulouris,  Y.  Raytselis,  T.L.  Madden,  R.  Agarwala,  and  A.A.  Schaeffer. 
+
+      Database indexing for production megaBLAST searches. Bioinformatics 24(16):1757–64, Au- 
+
+      gust 2008. 
+
+
+
+[63]  C. Papadimitriou. Algorithms, games, and the Internet. STOC pages 749–753, 2001. 
+
+
+
+[64]  C. Pasquier, F. Girardot, K. Jevardat de Fombelle, et al. THEA: Ontology driven analysis of 
+
+      microarray data. Bioinformatics 20:2636-2643, 2004. 
+
+
+
+[65]  I. Priness, O. Maimon, and I. Ben-Gal. Evaluation of gene-expression clustering by mutual 
+
+      information distance measures. BMC Bioinformatics 8(1):111, 2007. 
+
+
+----------------------- Page 329-----------------------
+
+                                  Clustering Categorical Data                                       303 
+
+
+
+[66]  Y. Qi, F. Balem, C. Faloutsos, et al. Protein complex identi?cation by supervised graph local 
+
+     clustering, Bioinformatics 24(13):i250–i258, 2008. 
+
+
+
+[67]  L. Royer, M. Reimann, B. Andreopoulos, and M. Schroeder. Unravelling the modular structure 
+
+     of protein networks with power graph analysis. PLoS Computational Biology 4(7):e1000108, 
+
+      1–17, July 2008. 
+
+
+
+[68]  J. Sander, M. Ester, H.P. Kriegel, and X. Xu. Density-based clustering in spatial databases: the 
+
+     algorithm GDBSCAN and its applications. Data Mining and Knowledge Discovery 2(2):169– 
+
+      194, 1998. 
+
+
+
+[69]  R. Schachtner, D. Lutter, P. Knollmueller, et al. Knowledge-based gene expression classi?ca- 
+
+     tion via matrix factorization. Bioinformatics 24(15):1688–1697, August 2008. 
+
+
+
+[70]  E. S. Smirnov. On exact methods in systematics. Systematic Zoology 17(1):1–13, 1968. 
+
+
+
+[71]  J. Stutz and P. Cheeseman. Bayesian classi?cation (AutoClass): Theory and results. Advances 
+
+      in Knowledge Discovery and Data Mining, 153–180, Menlo Park, CA, AAAI Press, 1995. 
+
+
+
+[72]  S. Winters-Hilt and S. Merat. SVM clustering. BMC Bioinformatics 8(7):S18, 2007. 
+
+
+
+[73]  R. Xu. Survey of clustering algorithms. IEEE Transactions on Neural Networks  16(3):645– 
+
+     678, May 2005. 
+
+
+
+[74]  Y. Yang, S. Guan, J. You. CLOPE: A fast and effective clustering algorithm for transactional 
+
+     data. In Proceedings of KDD 2002, pages 682–687, 2002. 
+
+
+
+[75]  M. Zaki and M. Peters. CLICK: Clustering categorical data using K -partite maximal cliques. 
+
+      TR04-11, Rensselaer Polytechnic Institute, 2004 
+
+
+
+[76]  M. J. Zaki and M. Peters. CLICKS: Mining subspace clusters in categorical data via K -partite 
+
+     maximal cliques. In Proceedings of the 21st International Conference on Data Engineering 
+
+      (ICDE) 2005, pages 355–356, Tokyo, Japan, 2005. 
+
+
+
+[77]  Y. Zhang, A. W. Fu, C. H. Cai, and P. A. Heng. Clustering categorical data. In Proceedings of 
+
+     ICDE 2000. 
+
+
+----------------------- Page 330-----------------------
+

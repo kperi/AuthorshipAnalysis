@@ -1,0 +1,666 @@
+﻿The VLDB Journal (2000) 9: ♣–♣ 028 
+Combining multi-visual features for efﬁcient indexing 
+in a large image database 
+Anne H.H. Ngu1,∗, Quan Z. Sheng1, Du Q. Huynh2, Ron Lei1 
+1 
+School of Computer Science and Engineering, The University of New South Wales, Sydney 2052 NSW, Australia; 
+E-mail: anne@cse.unsw.edu.au 
+2 
+School of Information Technology, Murdoch University, Perth 6150 WA, Australia; E-mail: d.huynh@murdoch.edu.au 
+Edited by T. Ozsu and S. Christodoulakis. Received June 11, 1998 / Accepted July 25, 2000¨ 
+Abstract. The optimized distance-based access methods cur- rently available for multidimensional indexingin multimedia databases have been developed based on two major assump- tions: a suitable distance function is known a priori and the dimensionality of the image features is low. It is not trivial to deﬁne a distance function that best mimics human visual per- ception regarding image similarity measurements. Reducing high-dimensional features in images using the popular princi- ple component analysis (PCA) might not always be possible due to the non-linear correlations that may be present in the feature vectors. We propose in this paper a fast and robust hybrid method for non-linear dimensions reduction of com- posite image features for indexing in large image database. This method incorporates both the PCA and non-linear neu- ral network techniques to reduce the dimensions of feature vectors so that an optimized access method can be applied. To incorporate human visual perception into our system, we also conducted experiments that involved a number of subjects classifyingimages into different classes for neural network training. We demonstrate that not only can our neural network system reduce the dimensions of the feature vectors, but that the reduced dimensional feature vectors can also be mapped to an optimized access method for fast and accurate indexing. 
+Key words: Image retrieval – High-dimensional indexing – Neural network 
+1 Introduction 
+Currently, intelligent image retrieval systems are mostly similarity-based. The idea of indexingan image database is to extract the features (usually in the form of a vector) from each image in the database and then to map features into points in a multi-dimensional feature space. The distance between two feature points is frequently used as a measure of similarity 
+∗ 
+Currently workingfor Telcordia Austin Research Laboratory, Texas, USA 
+Correspondence to: Anne H.H. Ngu, 10901, Spicewood Parkway, Austin TX 78750, USA 
+between the two correspondingimages. Once the distance or similarity function is deﬁned for the multidimensional feature space, a nearest neighbour search can be used to retrieve the images that satisfy the criteria speciﬁed in a given query. 
+The indexingmethods that have been proposed to sup- port this kind of retrieval are known as spatial access methods (SAMs) and metric trees. The former includes SS-tree [31], R+-tree [26], and grid ﬁles [11]; the latter includes the vp- tree [4],mvp-tree [1],GNAT[2], andM-tree [6].While these methods are effective in some specialized image database ap- plications, many open problems in indexingstill remain. 
+First, image feature vectors usually have high dimensions (e.g., some image feature vectors can have up to 100 dimen- sions). Since the existingaccess methods have an exponential time and space complexity as the number of dimensions in- creases, for indexinghigh dimensional vectors, they are no better than sequential scanningof the database. This is the well-known “dimensional curse” problem. For instance, meth- ods based onR-trees can be efﬁcient if the fan-out of theR-tree nodes remain greater than 2 and the number of dimensions is under 5. The search time with linear quadtrees is proportional to the size of the hypersurface of the query region which grows with the number of dimensions. With grid ﬁles, the search time depends on the directory, whose size also grows with the num- ber of dimensions [11]. 
+Second, one of the main differences between an image retrieval system and a traditional database system is the for- mer’s ability to rank-order results of retrieval by the degree of similarity with the query image [15]. Given a set of different feature vector types {φ1,φ2,...,φM} where each set φi, for i=1...M, contains feature vectors of the same number of dimensions, i.e., φi ={pik |k=1...Ni}. Then a similarity function must be determined for each feature vector type. That is, we must have {Si |i=1...M}, where each Si is a simi- larity function. When a query feature vector q is posed to the image database, a number of feature vectors from each set φi that satisfy a similarity criterionτare retrieved. Consequently, a separate indexingstructure is required to support retrieval based on each feature vector type. 
+Buildinga separate indexingstructure for each feature type, such as colour, texture, or shape, cannot efﬁciently sup- port queries that involve composite features (features of more 
+
+========1========
+
+2 A.H.H. Ngu et al.: Combining multi-visual features for efﬁcient indexing in a large image database 
+than one type, e.g., features that are composed of both colour and texture information). To answer a query that involves a composite feature vector, a hierarchical approach is often adopted in which each component of the query is applied against an appropriate index in a lower layer. The results are then merged and presented to the user at a higher layer. For example, a query such as “ﬁnd an object that is red in colour, round in shape, and has a fabric texture” can only be answered by ﬁrst consultingthe colour index, the shape index, the tex- ture index, and ﬁnally returningthe intersection of the three resultingsets. This is inefﬁcient in terms of storage utiliza- tion and system performance. Furthermore, it is assumed that in a complex scene, each type of visual feature contributes equally to the recognition of that image. This phenomenon is not supported in human visual perception. 
+Although many research works have claimed to support queries on composite features by combiningdifferent features into an integrated index structure, very few of them explain how the integration is implemented. There are two main prob- lems that need to be addressed here. The ﬁrst one is that the integrated features (or composite features) typically generate very high dimensional vectors, which cannot be handled ef- ﬁciently by the existingaccess methods. The other problem is the deﬁnition of image similarity measurements which re- ﬂects human visual perception. For example, in what form should the similarity function for composite features be when the contribution of each feature type is weighted differently in human visual perception? 
+There are two approaches to solvingthe indexingproblem. The ﬁrst approach is to develop a new spatial index method which can handle data of any dimensions and employ a k- nearest neighbourhood (k-NN) search. The second approach is to map the high-dimensional feature space into a lower di- mensional feature space so that an existingaccess method can be applied. Creating a generalized high-dimensional index that can handle hundreds of dimensions is still an unsolved prob- lem to date. The second approach is clearly more practical. In this work, we focus on how to reduce the dimensions of com- posite feature vectors so that effective index structures can be created. 
+The second problem is associated with human visual per- ception. The various visual features in an image are not weighted equally in human visual perception. In other words, the human visual system has different responses to colour, tex- ture, and shape information in an image. When these visual features are represented by the feature vectors extracted from an image, the similarity measure for each feature type between the query image and an image in the database is typically com- puted by a Euclidean distance function.The similarity measure between the two images is then expressed as a linear combi- nation of the similarity measures of all the feature types. The question that remains here is whether a linear combination of the similarity measures of all the feature types best reﬂects how we perceive images as similar. So far, no experiments have been conducted that demonstrate (or counter-demonstrate) the above belief. 
+The main contribution of this work is in buildingan ef- fective content-based retrieval system which can efﬁciently support queries on composite features without the need to construct a separate indexingstructure for each feature type. The core of the work is to use a hybrid method that incorpo- 
+rates the PCA and neural network to reduce high-dimensional composite image features (non-linear in nature) such that they can be mapped to an existingdistance-based index structure without any performance penalty. 
+The rest of the paper is organized as follows. In Sect.2 we review the related work in the areas of dimensionality re- duction, image similarity measurement, and distance-based access methods. In Sect.3, we brieﬂy review feature extrac- tion techniques and follow on with detailed presentation of our proposed method. Implementation and experimental re- sults are given and discussed in Sect.4. Finally, in Sect.5, we present the conclusions and outline future research. 
+2 Background 
+2.1 Image feature dimension reduction 
+In any imaging system, image features that are extracted by different image processing techniques are often high- dimensional because of the large number of parameters re- quired to model the features. Some parameters in these models are redundant for content-based retrieval purposes, but detect- ingsuch redundancies at the image processingstage is not a trivial procedure. Since low-dimensional representations of feature vectors are more efﬁcient for image retrieval from an image database, it is necessary to apply a dimensions reduction technique to eliminate the redundancies (correlated informa- tion) of image features as a post-process of feature detection. The goal of a feature dimensions reducer is to discover com- plex dependencies amongthe features of images, eliminate correlated information or noise while maintainingsufﬁcient information for discrimination between images of different classes. 
+Many dimensions reduction methods have been proposed which can be broadly classiﬁed into two categories: linear dimensions reduction (LDR) and non-linear dimensions re- duction (NLDR). 
+LDR is well known as an effective process for mappingthe original high-dimensional features into low-dimensional ones by eliminatingthe redundant information from the original feature space. The most well-known statistical approach for doingthis is the principal component analysis (PCA) [14,17]. The advantage of the PCA transformation is that it is linear and that any linear correlations present in the data are auto- matically detected. If the data are known to come from a well- deﬁned model where the underlyingfactors satisfy various as- sumptions, then factor analysis can be used to approximate the original data in terms of the common factors and thus can be used to achieve a reduction in dimensions [21]. Multidimen- sional scaling(MDS) is another well-known LDR technique for discoveringthe underlyingspatial structure of a set of data items from the similarity information amongthem [18]. 
+Because of the simplicity in the underlyingidea of LDR, it is commonly chosen for feature dimensions reduction. For example, the QBIC system [22] used the PCA to reduce a 20-D moment-based shape feature vector for indexingin its image database; Faloutsos and Lin [10] used MDS for indexingand visualisation of a multimedia database. 
+LDR works well for data that exhibit some linear correla- tion, for then a small number of eigenvalues may account for a 
+
+========2========
+
+A.H.H. Ngu et al.: Combining multi-visual features for efﬁcient indexing in a large image database 3 
+large proportion of the variance of the data, and so dimensions reduction can be achieved. If the data exhibits some non-linear correlation then this is not picked up by LDR. Since image visual features are non-linear in nature, a much better perfor- mance in dimensions reduction is expected by usingNLDR. The basis of NLDR is the standard non-linear regression anal- ysis as used in neural network approaches, which have been widely studied in recent years. The advantage of using neural network for NLDR is that it can learn directly from the training samples to form a model of the feature data (i.e., the features that matter the most in formingthe expected solutions). Since neural networks is the core technique that we adopted for do- ingNLDR in our research work, we will cover this topic in more detail in Sect.3. 
+In general, the main difference between LDR and NLDR is that NLDR enables the system to maintain a great deal of knowledge about the information on the data source. This in- formation can be represented as network weights between units in successive layers of the network. Thus, NLDR can be used for reducingthe dimensions of image feature vectors that cannot be handled by LDR. The only drawback of NLDR is that the network trainingprocess can be very slow. 
+2.2 Image similarity measurement 
+A major goal of content-based retrieval is ﬁnding the best matched (most similar) images from the multimedia database with respect to a query object (image). The query object can be speciﬁed by a sample object (image), descriptive concepts (keywords), or numerical speciﬁcation. The feature vectors (mainly numerical) for the given query object is then derived usingbasic image processingtechniques such as segmenta- tion and feature extraction. Calculatingthe similarity between a query object and an object in the multimedia databases is then reduced to computingthe distance between two im- age feature vectors. Given two n-D image feature vectors x =(x1,x2,···,xn) and y =(y1,y2,···,yn), where 
+denotes vector and matrix transpose, a similarity function S(x,y)can be deﬁned usingone of the followingwell-known distance functions: 
+1. City-block (the L1-norm): S(x,y)=Ni=1 |xi −yi| 
+N 
+2. Euclidean (the L2-norm): S(x,y)= 
+i=1 
+(xi −yi)2 
+ 
+3. Minkowski (the Lp-norm): S(x,y)= 
+ 
+ 1 
+N 
+i=1 
+|xi−yi|p 
+p 
+4. Dominance (the L∞-norm): S(x,y)=max |xi −yi| 
+Each of the distance functions above has its advantages and disadvantages when applied to image retrieval. For example, the L1-norm may cause false dismissals (i.e., not all quali- ﬁed images are retrieved); the L2-norm, on the other hand, may have false alarms (i.e., unqualiﬁed images can also be returned) [28]. 
+So far, research has been focused on ﬁndinga similar- ity function that corresponds only to single features (features of one type, e.g., features that are composed of colour infor- mation only or texture information only). That is, only simple queries, such as how similar two images are in terms of colour, 
+are well supported. In [5], the similarity measure of a pair of images based on composite feature vectors described by both texture and colour was proposed as a linear combination of the similarity measure of the individual single feature vector. Their proposal can be detailed as follows: let {xc,xt} and {yc,yt}be the colour and texture feature vectors that fully describe two images Xand Y, then the similarity measure of images Xand Y, denoted as S˜(X, Y), is given by: 
+ 
+S˜(X, Y)= αSc(xc,yc)+βSt(xt,yt) (1) where theSc andSt are the colour and texture similarity func- tions, respectively; and α and β are non-negative weighting factors. However, criteria for selectingthese weightingfactors are not mentioned in their research work. From the statistics viewpoint, by treatingthe above weightingfactors as normal- ization factors, the above deﬁnition is just a natural extension of the Euclidean distance function to a high-dimensional space in which the coordinate axes are not commensurable. If the kth weighting factor is set to the inverse of the variance of the kth component of the feature vectors then the distance function is called the Karl Pearson distance; if the kth weighting factor is set to the inverse of the range of values for the kth compo- nent of the feature vectors then the distance function is said to be standardized by range; if correlation was found to be present amongthe components of the feature vectors then the Mahalanobis distance function can be used [21]. 
+The question that remains to be answered is whether a Euclidean distance function for the similarity measure best correlates with the response from human visual perception in classifyingimages. That is, when humans perceive two im- ages as similar in colour and in texture, can a distance function given in the form of (1) be deﬁned? Does this same function hold for another pair of images that are also perceived as sim- ilar in colour and in texture? So far, no experiments have been conducted that demonstrate (or counter-demonstrate) whether linear combinations of different image features are valid sim- ilarity measure based on human visual perception. The im- portance of designing a distance function that best mimics human perception to approximate a perceptual orderingof the database is not unrecognized. Jain [25] reported that image database should use human pre-attentive similarity as much as possible; also, the distance functions of QBIC [13] were intended to reﬂect human perception. Incorporatinghuman vi- sual perception into image similarity measurement is the other major motivation behind our work. This will be discussed in Sect.3. 
+2.3 Distance-based access methods 
+Several spatial access methods have been proposed recently. These methods can be broadly classiﬁed into the following classes: point access methods and rectangle access methods. The point quad-tree, which was ﬁrst proposed in [12], is an example of a point access method. To handle complex ob- jects, such as circles, polygons, and any undeﬁned irregularly- shaped objects, minimum boundingrectangles (MBRs) have been used to approximate the representations of these ob- jects. Hence, the name, rectangle access method. The K-D- B tree [23], and R+-tree [26] are some typical examples. A comprehensive survey on SAMs can be found in [24]. 
+
+========3========
+
+4 A.H.H. Ngu et al.: Combining multi-visual features for efﬁcient indexing in a large image database 
+The applicability of SAMs is limited on two counts. First, objects for indexingmust be represented by feature values in a multi-dimensional space. Second, the design of SAMs is based on the assumption that the comparison of feature values has a negligible CPU cost with respect to disk I/O cost. Unfortu- nately, in multimedia applications, the assumption above does not normally hold. Consequently, a more general approach to the “similarity indexing” problem has gained popularity in recent years, leadingto the development of the so-called metric trees. Metric trees only consider the relative distances of objects (rather than their absolute positions in a multi- dimensional space) to organize and partition the search space. The only requirement is that the distance function must be met- ric so that the triangle inequality property applies and can be used to prune the search space. Several metric trees have been developed so far, includingthe vp-tree [4], the GNAT [2], the mvp-tree [1], and M-tree [7]. 
+Our goal is not to develop a new indexing structure for high-dimensional image features but to use an existing one effectively. We chose a very well-established access method called the M-trees as the underlyingmethod for indexingour reduced composite image visual features. TheM-trees are bal- anced, paged metric trees which are implemented based on the GiST (Generalized Search Tree) [16] framework. Since the design of the M-trees is inspired by the principles of metric trees and database access methods, performance optimization concerns both CPU (distance computations) and I/O costs. In an M-tree, the leaf nodes store all indexed (database) objects represented by their keys or features; the internal nodes store the so-called routing objects. A routingobject is a database object to which a routingrole is assigned by a speciﬁc promo- tion algorithm. See [7] for more details about the design and implementation of M-trees. 
+3 Hybrid dimension reducer 
+Multimedia visual features are usually complex and cannot be represented by single feature vectors. Thus, an effective content-based retrieval system cannot be achieved by consid- eringonly a single type of feature such as colour, texture or shape alone. However, creatingan index based on a concate- nation (see (2)) of feature vectors (such as colour, shape, and texture) will result in a very high dimensional feature space, renderingall existingindexingmethods useless. 
+We need to “fuse” the multiple single feature vectors into a composite feature vector which islow in dimensions and yet preserves all the necessary information for image retrieval. In this section, we describe our proposed hybrid method of dimensions reduction on image visual features. 
+3.1 Composite image features 
+The image features that we deal with in this paper are colour and texture features. Note that our system is not limited to dealingwith these two features only. We restrict ourselves to these two visual features for simpliﬁcation in settingup the experiments and the availability of the source codes for automatic extraction of these two types of features. 
+3.1.1 Colour features 
+It is known that the human eye responds well to colour fea- tures. In this work, the colour features were extracted using the colour histogram technique 
+1[29]. Given a discrete colour space deﬁned by some colour axes, the colour histogram is obtained by discretisingthe image colours and countingthe number of times each discrete colour occurs in the image. 
+In our experiments, we used the colour space CIE L*u*v. The reason for selectingthe CIE L*u*v instead of the normal RGB or other colour spaces is that it is more uniform percep- tually. We ﬁrst divided the three axes of the L*u*v space into four sections to obtain a total of 64 (i.e., 4 × 4 × 4) bins for the colour histogram. However, we found that, for the collec- tion of images used in our experiments, not all the bins had non-zero counts. So, after, eliminatingthose bins which had a zero count, actually receive counts, our colour features are presented as 37-D vectors. 
+3.1.2 Texture features 
+Texture features carry the property measures, such as the smoothness, coarseness, and regularity, of an image. In this work, the texture features were extracted usinga ﬁlter-based method. This method detects the global periodicity of intensity values in an image by identifying regions that have high en- ergy, narrow peaks. The advantage of the ﬁlter-based methods is in their consistent interpretation of feature data over both natural and artiﬁcial images. 
+The Gabor ﬁlter [30] is a frequently used ﬁlter in texture extraction. It measures a set of selected orientations and spatial frequencies. Six frequencies are required to cover the range of frequencies from 0 to 60 cycles/degree for human visual perception. We chose 1, 2, 4, 8, 16, and 32 cycles/degrees. The total number of ﬁlters needed for our Gabor ﬁlter is 30. Texture features are therefore represented as 30-D vectors. 
+When formingcomposite feature vectors from the two types of features described above, the most common approach is to use the direct sum operation. Let xc and xt be the colour and texture feature vectors, the direct sum operation, denoted by the symbol ⊕, of these two feature vectors is deﬁned as follows: 
+ x 
+x ≡ xc ⊕ xt = 
+c 
+xt 
+(2) The number of dimensions of the composite feature vector x is then the sum of those of the single feature vectors, i.e., dim(x)=dim(xc)+dim(xt). The ⊕ operator given in (2) extends naturally to multiple single feature vectors. 
+3.2 Architecture of hybrid image feature dimension reducer 
+With the 67-D feature vectors (37 dimensions for colour and 30 dimensions for texture) in our system, the PCA is useful as an initial dimensions reducer while further dimensions re- duction for non-linear correlations can be handled by NLDR. 
+1 
+Part of the source codes for the colour extraction was supplied by the National University of Singapore. 
+
+========4========
+
+A.H.H. Ngu et al.: Combining multi-visual features for efﬁcient indexing in a large image database 5 
+OUTPUT 
+Neural Network 
+HIDDEN 
+Lower dimension vectors 
+INPUT 
+PCA Analysis 
+PCA 
+PCA PCA 
+Principal components 
+COLOUR 
+SHAPE 
+Figure 1 shows the overall architecture of our hybrid method. The different components of the architecture will be covered in detail in this section. 
+There are two methods for combiningthe PCA and NLDR: 1. Apply the PCA to the single feature vectors separately. The 
+lower-dimensional single feature vectors are then com- 
+bined to form low-dimensional composite feature vectors 
+for NLDR and classiﬁcation. 
+2. Apply the PCA to the high-dimensional composite fea- 
+ture vectors. The reduced-dimensional composite feature 
+vectors are then used for NLDR and classiﬁcation. 
+Both methods were adopted in our system so that the dif- ferences in the reduction results could be compared. 
+3.2.1 The PCA for dimensions reduction 
+Mathematically, the PCA method can be described as follows: given a set of N feature vectors {xk =(xk1,xk2,...xkn) ∈Rn|k =1···N}and the mean vector x computed asN 
+x=1N 
+k=1 
+xk. The covariance matrix S is given as 
+N 
+S =1N (xk −x)(xk −x). 
+k=1 
+Let vi and λi be a pair of eigenvector and eigenvalue of the covariance matrix S. Then vi and λi satisfy the following: 
+ 
+N 
+λi = (vi (xk −x))2. 
+k=1 
+Since trace(S)=ni=1 λi accounts for the total variance of the original set of feature vectors, and sinceλi can be arranged in decreasingorder, i.e., λ1 ≥λ2 ≥ ··· ≥λn ≥0,ifthem (wherem<n) largest eigenvalues account for a large per- centage of variance, then, with ann×mlinear transformation matrix Tdeﬁned as: 
+T=[v1,v2,...,vm ], (3) the m×n transformation T transforms the original n-D feature vectors to m-D ones. That is, 
+T (xk −x)=yk,k=1···N (4) where yk ∈Rm,∀k. The matrix T above has orthonormal columns because{vi |i =1···n}form an orthonormal basis, i.e., 
+0 
+vi vj = 
+if i =j 
+1 otherwise, 
+Fig. 1. A hybrid image feature dimensions reduction scheme. The linear PCA appears at the bottom, the non- linear neural network is at the top, and the representation of lower dimensional vectors appears in the hidden layer 
+and 
+vi=1, ∀i. 
+The key idea in dimensions reduction of the PCA is in the computation ofλand the user-determined valuem, and ﬁnally the m×n orthogonal matrix T, which is the required linear transformation. The feature vectors in the original n-D space can be projected onto anm-D subspace via the transformation T. The value of m is normally determined by the percentage of variance that the system can “afford” to lose. 
+The ith component of the yk vector in (4) is called the ith principal component (PC) of the original feature vector xk. Alternatively, one may consider just the ith column of the T matrix deﬁned in (3), then the ith principal component of xk is simply 
+yki = vi (xk −x) 
+where vi is the ith eigenvector of S. 
+The PCA has been employed to reduce the dimensions of single feature vectors so that an efﬁcient index can be con- structed for retrieval in the image database [19,?]. It has also been applied to image coding, e.g., for removing correlation from highly correlated data, such as face images [27]. In our work, the PCA is used as the ﬁrst step in an NLDR method where it provides optimal reduced dimensional feature vectors for the 3-layer neural network, and thus speeds up the NLDR trainingtime. 
+3.2.2 Classiﬁcation based on human visual perception 
+A major part of the human perceptual process involves relat- ingnew stimuli to past experiences and tryingto answer such question as “Have I ever seen somethinglike this before?” or “What kind of thingis it?”. The Gestalt psychologists main- tained that one of the major tasks perceptual processes must perform is the recognition of shapes or form. That is, we tend to perceive whole objects even when we are lookingat only a part or some component of that object. Closure, continuity, proximity, and similarity are the four Gestalt principles of per- ceptual organization that have been applied quite successfully in feature detection and scene understandingin machine vi- sion. Linkingand merginga set of detected edge elements into more prominent features such as line and curve segments [3] is a typical application of perceptual organization. Distinguish- ing ﬁgure from ground is another basic and powerful Gestalt 
+
+========5========
+
+6 A.H.H. Ngu et al.: Combining multi-visual features for efﬁcient indexing in a large image database 
+principle of visual perceptual organization. When we are pre- sented with an image, we tend to see “things”. We interpret the visual message transmitted from the retina to the brain as objects against a background. Even though the image could be as complicated as a ship standingout against the background of sea and sky, a camel and a man standingout against a back- ground of desert sand, or a group of people posing against a background of hills, trees, and a waterfall, our perceptual sys- tem does not seem to have any major difﬁculty in determining which is ﬁgure and which is ground [20]. Furthermore, we would distinguish an image of a camel against a background of desert sand as more similar to an image of a camel and a man against the same background than to an image of a camel against a sandy beach. In general, we incorporate all the information about colour, texture, and shape under a cer- tain context that is presented to us and classify the image into the appropriate class. 
+In conductingour experiments on image classiﬁcation based on human perception, we ﬁrst prepared a set of im- ages (there were 163 images altogether), which we called test-images, from our 10,000 image collection. This set covers all the 14 different classes of images in the collection. Amongst the images in test-images, images in each class have a similarity to each other both in colour and in texture. 
+We set up a simple image classiﬁcation experiment on the Web and asked seven people (subjects), all of whom are from different backgrounds, to participate in the experiments.At the beginning of each experiment, a query image was arbitrarily chosen from test-images and presented to the subjects. The subjects were then asked to pick 20 images which were most similar in both colour and texture to the query image. Those images that were selected by more than three subjects were classiﬁed into the same class as the query image and were then deleted from test-images. The experiment was repeated until every image in test-images had been cate- gorized into an appropriate class. 
+The end result of the experiments is that images which are similar to each other in colour and in texture are put into the same class based on human visual perception. These classiﬁ- cation results are used in the NLDR process described below. 
+3.2.3 Neural network for dimension reduction 
+The advantage of using neural networks for NLDR is that neu- ral networks can be trained from the input data to get to the desired solution. In our work, a three-layer perceptron neural network with a quickprop learningalgorithm [9] is used to perform dimensions reductions of image features. In fact, the network acts as an image classiﬁer. In [32], a special neural network called learning based on experiences and perspec- tives (LEP) has been used to create categories of images in the domains of human faces and trademarks; however, no de- tails are given in his work on how the training samples were created. In our system, the trainingsamples were trainingpat- terns of the form (v,c) where v is a feature vector, which can be either a single-feature vector or a composite feature vector, and cis the class number to which the image represented by v belongs. We note that the class number for each feature vector was determined by the experiments mentioned in the previous subsection. 
+Output layer 
+Wjk 
+Hidden layer 
+Wij 
+Input layer 
+Fig. 2. Layout of a three-layered neural network system 
+Figure 2 depicts the three-layer neural network that we used. The units in the input layer accept the feature vector v of each trainingpattern; the number of units in this layer therefore corresponds to the dimensions of v. The hidden layer is conﬁgured to have fewer units. The number of units in the output layer corresponds to the total number of image classes M. Given that (v,c) is a trainingpattern, the input layer will accept vector v while the output layer will contain (0,···,0,1,0,···,0), which is a vector of dimensions M and has a 1 for the cth component and 0s everywhere else. 
+Each unit i in the neural network is a simple processing unit that calculates its activation si based on its predecessor units pi, and the overall incomingactivation of unit i is given as: 
+ 
+neti = sjwij −θi (5) 
+j∈pi 
+where j is a predecessor unit of i, the term wij is the intercon- nected weights from unit j to unit i, and θi is the bias value of the unit i. Passingthe value net 
+i 
+through a non-linear activa- tion function, the activation value si of unit i can be obtained. The sigmoid logistic function 
+si = 
+1 
+1+e−net 
+(6) 
+i 
+is used as the activation function. 
+Supervised learning. Supervised learningis appropriate in our neural network system because we have a well-deﬁned set of trainingpatterns. The learningprocess governed by the trainingpatterns will adjust the weights in the network so that a desired mappingof input to output activation can be obtained. 
+Given that we have a set of feature vectors and their ap- propriate class numbers classiﬁed by the subjects, the goal of the supervised learningis to seek the global minimum of cost function E: 
+  
+E =1 
+2 
+(tpj −opj)2 (7) 
+p j 
+where tpj and opj are, respectively, the target output and the actual output for feature vector p at node j. 
+The rule for updatingthe weights of the network can be deﬁned as follows: 
+∆wij(t)=ηd(t) (8) wij(t+1)=wij(t)+∆wij(t) (9) where η is the parameter that controls the learningrate, and d(t)is the direction alongwhich the weights need to be ad- justed in order to minimize the cost function E. There are many learningalgorithms for performingweight updates. The 
+
+========6========
+
+A.H.H. Ngu et al.: Combining multi-visual features for efﬁcient indexing in a large image database 7 
+quickprop [9] algorithm is one of most frequently used adap- tive learning paradigms. The weight update can be obtained by the followingequation: 
+∂E 
+∂wij 
+(t) 
+∆wij(t)= 
+∂E 
+(t − 1)− 
+∂E 
+(10) 
+∂w 
+(t)∆wij(t 
+− 1). 
+∂wij ij 
+Network training and dimensions reduction. The training procedure of the network consists of repeated presentations of input (the feature vector v’s in the trainingpatterns) and the desired output (the class number c for v) to the network. 
+In general, the weights of the network are randomly set to small continuous values, initially. Our network adopts the learning by epoch approach. This means that the updates of weights only happen after all the training samples have been presented to the network. In the quickprop learningalgorithm, there are two important parameters: the learningrate  for the gradient descent and the maximum step size ν. These two parameters govern the convergence of network learning. In general, the learning rate for gradient descent can vary from 0.1 to 0.9. In our system, the learningrate is kept as a constant value duringnetwork training. The step size ν is 1.75. In every iteration of the training, the error generated will be in the di- rection of the minimum error function. This is due to the fact that the trainingstarts in the direction of the eigenvectors as- sociated with the largest eigenvalue for each feature. Thus, the network has less chance of beingtrapped in a local minimum. 
+The total gradient error or the total number of error bits indicates the condition of network convergence. When this value does not change during network training, the network is said to have converged. The total error is the sum of the total output minus the desired output. It can be measured by the total number of error bits since the network also functions as a pattern classiﬁer. In this case, the error bit is determined by the difference of the actual and the desired output. If the difference is within ±40 
+It is obvious that this hybrid method for dimensions reduc- tion of image features is computationally more efﬁcient than the standard neural network with the original feature vectors. The efﬁciency is gained by using a relatively small number of network inputs and the network trainingiterations are con- ducted in the direction of the largest eigenvalues for each fea- ture. 
+Duringthe network trainingprocess, the network weights gradually converge and the required mapping from image fea- ture vectors to the correspondingclasses is implicitly stored in the network. 
+After the network has been successfully trained, the weights that connect between the input and hidden layers are entries of a transformation that map the feature vectors v to smaller dimensional vectors. This transformation can be de- ﬁned as follows: let wij be the weight that connects the unit j in the input layer and the unit i in the hidden layer; then an image feature vector x =(x1,x2,...,xn) is mapped to the units in the hidden layer as: 
+ 
+ 
+n 
+yi =f wijxj,i=1...m (11) 
+j=1 
+where f is the activation function as deﬁned in (6). Here, y =(y1,y2,···,ym) is an m-vector, and mis the number 
+of units in the hidden layer. Because the number of hidden units (m) is smaller than the number of input units (n), dimensions reduction is achieved from the neural network trainingprocess. 
+Thus, when a high-dimensional feature vector is passed through the network, its activation values in the hidden units form a lower-dimensional vector. This lower dimensional fea- ture vector keeps the most important information of the orig- inal feature vectors (colour and texture). 
+3.2.4 The hybrid trainingalgorithm 
+The complete trainingalgorithm for this hybrid dimensions reduction method is given as follows: 
+Step 1: For each type of feature vector, {xk ∈Rn |k = 
+1...N}, compute the covariance matrix of all the 
+Nimages. 
+Step 2: Apply the eigen-decomposition to each of the com- 
+puted covariance matrices in Step 1. This process 
+yields a list of eigenvectors and eigenvalues (λ), 
+which are normally sorted in decreasingorder.n 
+Step 3: Compute the total variance s = 
+i 
+λi and select 
+the mlargest eigenvalues whose sum just exceeds 
+s∗ ψ%, where ψis a predeﬁned cut-off value. This 
+step selects the mlargest eigenvalues that account 
+for theψ% of the total variance of the feature vectors. Step 4: Construct matrix T usingthe m corresponding 
+eigenvectors as given in (3). 
+Step 5: Obtain the new representationyk for each image fea- 
+ture vectors xk by applyingthe PCA transformation 
+given in (4). 
+Step 6: Select the trainingsamples from the image collec- 
+tion. Group these trainingsamples into different 
+classes as determined by the experiments described 
+in Sect.3.2.2. 
+Step 7: Construct the composite feature vectors zk from the 
+colour and texture feature vectors usingthe direct 
+sum operation deﬁned in (2). 
+Step 8: Prepare the trainingpatterns (zk,ck), for allkwhere 
+ck is the class number to which the composite feature 
+vector zk belongs. 
+Step 9: Set all the weights and node offsets of the network 
+to small random values. 
+Step 10: Present the trainingpatterns zk as input and ck as 
+output to the network. The trainingpatterns can be 
+different on each trial; alternatively, the trainingpat- 
+terns can be presented cyclically until the weights in 
+the network stabilize. 
+Step 11: Use the quickprop learningalgorithm to update the 
+weights of the network. 
+Step 12: Test the convergence of the network. If the condi- 
+tion of convergence of the network is satisﬁed then 
+stop the trainingprocess of the network. Otherwise, 
+go back to Step 10 and repeat the process. If the net- 
+work does not converge, it needs a new starting point. 
+Thus, it is necessary to go back to Step 9 instead of 
+Step 10. 
+Steps 1–5 cover the dimensions reduction procedure of the PCA, which was applied to all images in the data rather than only to the trainingsamples. This has an advantage in that 
+
+========7========
+
+8 A.H.H. Ngu et al.: Combining multi-visual features for efﬁcient indexing in a large image database 
+the covariance matrix for each type of single feature vector contains the global variance of images in the database. The number of principal components to be used is determined by the cut-off value ψ. There is no formal method to deﬁne this cut-off value. In Step 3, the cut-off value ψ is set to 99 so that the minimum variance that is retained after the PCA dimen- sions reduction is at least 99 
+After the completion of the PCA, the images are classiﬁed into classes in Step 6. Because the classiﬁcation incorporates human visual perception, more valid trainingpatterns have been used in the neural network trainingprocess. Steps 7– 12 then prepare the necessary input and output values for the network trainingprocess. 
+The network trainingcorresponds to Steps 8–11. In gen- eral, the weight of each link (a link connects two units in the network) is randomly initialized to a small value. The net- work adopts the learning by epoch approach to learning. In the quickprop learningalgorithm, the parameter ν that lim- its the step-size is set to 1.75, and the learningrate for the gradient descent can vary from 0.1 to 0.9. Each time we ap- ply the quickprop learning algorithm, the weight of each link in the network is updated. After a speciﬁed number applica- tions of the quickprop learning algorithm, the convergence of the network is tested in Step 12. At this point, it is decided whether the network has converged or a new starting weight is required for each link of the network. In the latter case, the process involved in Steps 9–12 is repeated. The problem about the convergence of a neural network system is still an open one and is outside the scope of this paper. 
+4 Experiments and discussions 
+This section presents three experimental results. The aim of these experiments is to demonstrate that the hybrid dimensions reduction method is superior to usingthe PCA or usingneural networks alone. The ﬁrst experiment shows the result of using the PCA for the reduction of composite feature vectors in images. The second experiment shows the result of using the neural network for reducingthe same set of feature vectors in images. The third experiment shows the result of using the proposed hybrid dimensions reduction method. 
+4.1 Test image collection 
+We used a collection of 10,000 images for our research. These images were retrieved from different public domains that can be classiﬁed under a number of themes which cover natural scenery, architectural buildings, plants, animals, rocks, ﬂags, etc. All the images were scaled to the same size (128 × 128 pixels). 
+A subset of this collection of images was then selected to form the trainingsamples ( test-images). There were three steps involved in formingthe trainingsamples. First, we decided on the number of classes accordingto the themes of the image collection and selected one image for each class from the collection of 10,000 images. This can be done with the help of a domain expert. Next, we built two M-tree image databases for the collection. The ﬁrst one used colour as the index and the second used texture as the index. For each image 
+in each class, we retrieved the most similar images in colour usingthe M-tree colour index to form a colour collection of images. We then repeated the same procedure to get images similar in texture for each image in each class to form the texture collection. Finally, we obtained our trainingsamples (there were 163 of them) that are similar both in colour and in texture by takingthe intersection of images from the colour and texture collections. The trainingsamples ( test-images) were presented to the subjects for classiﬁcation (Sect.3.2.2). 
+Appendix A (Table 9) shows the fourteen classes of im- ages categorized by subjects from the image collection. These fourteen classes of images were used in the following experi- ments. 
+4.2 The benchmark of the experiments 
+The aim of these experiments is to determine the accuracy and efﬁciency of the three methods for dimensions reduction. The images are represented by their corresponding feature vec- tors (67 dimensions: 37 dimensions for colour; 30 dimensions for texture) which can be viewed as points in a multidimen- sional feature space. Thus, the distance between any two fea- ture points in this feature space measures the similarity of the two correspondingimages. After the dimensions reduction of the image features, a new feature space that combines colour and texture is formed. The distance between two feature points in this space represents the visual similarity of their original images in colour and texture. In order to measure the similarity of images and the separation of classes in this feature space, we introduce the measure class separation degree Ci, deﬁned as: 
+N 
+j=1 
+Qj 
+Ci = 
+N(M − N) 
+,i=1...m (12) where mis the number of classes,Nis the number of relevant images2 in the class, Mis the total number of test images, and Qj is the number of images whose distances to the jth image in the class are greater than all the distances from the jth image to its relevant images. Obviously, if Ci is 1 (100 the images in this class are all similar. 
+The learningtime parameter, t, is used to indicate the ef- ﬁciency of dimensions reduction, that is, the total number of epochs required for trainingthe dimensions reducer. It is noted that the PCA is performed by the singular value decomposi- tion3 and so we will not compare its efﬁciency against the other two methods. 
+4.3 Result of principal component analysis approach to reduction 
+In this experiment, the PCA was performed on all training images in Appendix A. There are two ways to combine the feature vectors. Let xc and xt be the colour and texture fea- ture vectors, then the combined feature vectors can be deﬁned 
+2 
+An image is said to be relevant to a class if it belongs and has been correctly assigned or classiﬁed to that class. 
+3 
+Note that because the covariance matrix is symmetric and posi- tive semi-deﬁnite, the singular value decomposition of the covariance matrix is equivalent to the eigen-decomposition of it. 
+
+========8========
+
+A.H.H. Ngu et al.: Combining multi-visual features for efﬁcient indexing in a large image database 9 
+Table 1. The eigenvalues and the percentage of total variation 
+Class No. λ % 
+1 2345678910 
+1035 636 271 152 140 85 73 64 59 43 
+35.6 21.9 9.34 5.2 4.8 2.9 2.5 2.2 2.0 1.5 
+λ % 
+Class No.11 12 13 14 15 16 17 18 19 20 
+42.3 34.4 30.0 24.7 21.1 19.9 17.2 15.7 13.9 13.3 
+1.4 1.2 1.0 0.8 0.7 0.6 0.59 0.54 0.48 0.46 
+λ % 
+Class No.21 22 23 24 25 26 27 28 29 30 
+12.99 9.78 8.18 6.67 5.97 5.75 5.06 4.85 3.69 3.68 
+0.44 0.34 0.28 0.23 0.21 0.19 0.17 0.16 0.13 0.13 
+λ % 
+Class No.31 32 33 34 35 36 37 38 39 40–67 
+3.52 3.45 3.33 3.19 3.05 2.95 2.74 2.38 2.15<1.85 
+0.12 0.11 0.11 0.10 0.10 0.10 0.10 0.09 0.08<0.06 
+Class No12345678 Ci 
+Table 2. Class separation values from the PCA experimentxc ⊕xt andxt⊕xc. TheRecognition Rate was deﬁned as the 
+percentage of test images that the network could recognize. 
+%60.5 94.9 100 97.9 84.3 100 96.9 95.1The learningrate was set to 0.9 and the step size was set to1.75 in the quickprop learningalgorithm (Sect.3.2.3). The ini- Class No9 10 11 12 13 14 Averagetial weights were chosen randomly within the [0, 0.7] range. 
+%89.4 91.0 94.5 83.5 90.6 84.1 90.2classiﬁcation results from the network trainingprocess. 
+The number of hidden nodes was set to 6. Table 3 shows the 
+Ci 
+The learningtime was deﬁned as the average number of 
+as:xc ⊕ xt andxt ⊕ xc (see (2)). We performed the PCAepochs required until the network converged. The convergence on both combined feature vectors. The results show that thereof the network can be measured by the total error or the to-tal number of error bits of the network. Figure 3 shows the 
+was no difference in eigenvalues for the two different ways inlearningtime of the network forx 
+combiningthe feature vectors. Table 1 shows the eigenvalues 
+c 
+⊕xt andxt ⊕xc. 
+and the percentage of total variance. The eigenvalues are ar-about 6100 (x 
+From Fig.3, we can see that when the network learning is 
+ranged in descending order, i.e.,λ1 ≥ λ2 ≥ ··· ≥λ67. The 
+c 
+⊕xt) and 5700 (xt⊕xc) epochs, the errors of 
+ﬁrst 16 eigenvalues account for 94.1 of the total variance of thenecessary to get to zero since an error of 0.02 is already very 
+the network tend to be steady at about 0.02. Note that it is not 
+combined feature vectors. Choosingthe ﬁrst 16 eigenvaluessmall in comparison with the initial error. Thus, the network and usingthe 16 PCs (see Sect.3.2.1) as a new representationlearningtimest 
+for each of the original 67-D combined feature vectors, we 
+forxc ⊕xt andxt ⊕xc are 6100 and 5700 
+effectively reduced our feature dimensions from 67 to 16.After the network trainingwas completed, dimensions re- 
+epochs, respectively. 
+We note that the 14 image classes are not well separatedduction was achieved by feedingthe image feature vectors 
+from each other both before and after the PCA transformation.into the network and takingthe vectors computed in the hid- 
+In the former situation, the image classes reside in a 67-Dden units as the lower dimensional representations. Table 4 
+space; in the latter situation, they are in a 16-D space. Toshows all class separation values (C 
+measure the separation of image classes, we selected the ﬁrst 
+i) measured by the new 
+six PCs, which accounted for79.9 of the total variance of thenetwork. 
+lower-dimensional representations obtained from this neural feature vectors, and computed the class separation valueCi 
+(see (12)) for each class, which is listed in Table 2. It can beIn Table 4, it can be seen that all classes of the test imagecollection are well separated in the new 6-D feature space: the seen that only class 3 and 6 are well separated from the otherdistance of any two images from the same class is less than 
+classes. The remaining12 classes are not well separated in thethe distance of any two images from two different classes. 
+feature space. If any distance function was applied directlyHowever, as shown in Fig.3, the learning time is very long. 
+to these 12 classes, the distance between any two images inIn the next section, we show that our proposed hybrid method 
+any one class would be larger than the distance between twocan improve the network learningtime without losingmuch 
+images of two different image classes.accuracy. 
+4.4 Result of neural network approach to dimension reduction 
+4.5 Result of hybrid approach to reduction 
+In this experiment, we used a three-layer neural network dis-In this experiment, we applied the hybrid dimensions reduc- 
+cussed in Sect.3.2.3 to reduce the feature dimensions of thetion method to the images in the test collection. A dimen- 
+images intest-images (see Appendix A). All feature vec-sions reduction process was ﬁrst accomplished by applying 
+tors were 67-D, containingboth colour and texture informa-the PCA to the features of the network trainingsamples. There 
+tion from the images.As in the PCA experiment, there are alsoare four possible ways to obtain the reduced feature vectors: 
+two ways to combine the colour and texture feature vectors:P(xc)⊕P(xt), P(xt)⊕P(xc), P(xc ⊕xt) and P(xt ⊕xc) 
+
+========9========
+
+10 A.H.H. Ngu et al.: Combining multi-visual features for efﬁcient indexing in a large image database 
+Table 3. Classiﬁcation results from the network trainingprocess 
+Class No. 
+Recognition Rate(xc ⊕ xt)% Recognition Rate(xt ⊕ xc)% 
+12345678 100 75 100 100 100 100 87 75 100 87 100 100 100 100 100 87 
+Class No. 
+Recognition Rate(xc ⊕ xt)% Recognition Rate(xt ⊕ xc)% 
+9 10 11 12 13 14 Average 87 87 100 100 100 100 93 87 87 100 100 100 100 96 
+140 
+140 
+120 
+120 
+100 
+100 
+80 
+80 
+60 
+60 
+40 
+40 
+20 
+20 
+Total number of error bits 
+Total number of error bits 
+0 
+0 
+0 1500 3000 4500 6000 7500 
+Fig. 3.Learningtime of the neural network approach with six hidden nits. a xc ⊕ xt, b xt ⊕ xc 
+0 1500 3000 4500 6000 abEpoch 
+Epoch 
+Total number of error bits 
+200 180 160 140 120 100 80 60 40 20 
+0 
+Total number of error bits 
+180 160 140 120 100 80 60 40 20 
+0 
+0 500 1000 1500 2000 
+0 500 1000 1500 abEpoch 
+Epo ch 
+120 
+160 140 
+100 
+80 
+60 
+40 
+120 100 80 60 
+20 
+Total number of error bits 
+0 
+Total number of error bits 
+40 20 0 
+0 500 1000 1500 
+Fig. 4. Learningtime of the hybrid approach with 6 hidden units. a P(xc)⊕ P(xt), b P(xt)⊕ P(xc), c P(xc ⊕ xt), d P(xt ⊕ xc) 
+0 500 1000 1500 2000 cdEpoch 
+Epo ch 
+Table 4.Class separation values from the neural network experiment 
+Class 12 345678 Ci(xc ⊕ xt)% 100 100 100 100 100 100 100 100 Ci(xt ⊕ xc)% 100 100 100 100 100 100 100 100 
+Class 9 10 11 12 13 14 Average Ci(xc ⊕ xt)% 100 99.88 100 100 100 100 99.99 Ci(xt ⊕ xc)% 100 100 100 100 100 100 100 
+(see Sect.3.2) where P denotes the PCA processing. The ﬁrst 36 PCs, which accounted for about 99.2 of the total variance of the feature vectors in the trainingsamples, were then selected. Thus, the input feature vectors of the network were reduced 
+from 67 to 36 dimensions. Table 5 shows the results of recog- nition rate from the hybrid network trainingand Fig.4 shows the time of the hybrid network learningwith six hidden units. 
+When the network learningtime reached 1400 epochs (P(xc) ⊕ P(xt)), 980 epochs (P(xt) ⊕ P(xc)), 920 epochs (P(xc ⊕ xt)), 1600 epochs (P(xt ⊕ xc)), the errors of the networks were steady at about 0.02. This indicates that the learningof the networks were completed after 1400, 980, 920, and 1600 epochs for the four methods, respectively. We can see that the learningtimes are much shorter than the standard network trainingwith input feature vectors being 67in dimen- sions. Table 6 shows all the class separation values from this experiment. 
+From Table 6, we can see that all classes are well separated in the new 6-D feature space, just as in the pure neural network 
+
+========10========
+
+A.H.H. Ngu et al.: Combining multi-visual features for efﬁcient indexing in a large image database 11 
+Table 5. Results of recognition rate from the hybrid approach 
+Class No. 
+Recognition Rate(P(xc) ⊕ P(xt))% Recognition Rate(P(xt) ⊕ P(xc))% 
+12345678 
+100 50 100 100 100 100 100 75 
+100 75 100 100 100 100 100 75 Recognition Rate(P(xc ⊕ xt))%100 75 100 100 100 100 100 75 Recognition Rate(P(xt ⊕ xc))%100 75 100 100 100 100 75 75 
+Class No. 
+Recognition Rate(P(xc) ⊕ P(xt))% Recognition Rate(P(xt) ⊕ P(xc))% 
+9 10 11 12 13 14 Average 
+87 87 100 100 100 100 93 
+75 75 100 100 100 100 93 Recognition Rate(P(xc ⊕ xt))%75 87 100 100 100 100 94 Recognition Rate(P(xt ⊕ xc))%87 75 100 100 100 100 92 
+approach, but the learningtime is much shorter. There is no difference in the results of the four methods used to organize the input feature vectors. 
+4.6 Evaluation of reduced dimensional image features using M-trees 
+We used M-trees [6] for evaluatingthe quality of our reduced features as indexes. The number of dimensions ofM-trees was set to six 
+4, correspondingto the number of hidden units used in the neural networks. We built threeM-tree image databases for the 10,000 image collection using 6-D composite vectors (includingcolour and texture information after dimensions reduction) of each image in the image collection. 
+Every image from the collection can serve as a query im- age. We posed a query image to theM-trees to conduct a k-NN search. Here k was set to 15. The concepts of P recision and Recall in information retrieval were used to evaluate the ef- fectiveness of similarity retrieval. Let P be the number of all images that are relevant to the query image, Q be the num- ber of relevant images retrieved, and R be the total number of images retrieved, then 
+Recall = R = 
+Q 
+P 
+× 100, Precision = P = 
+Q 
+R 
+× 100. 
+A high P recision value means that there are few false alarms (i.e., the percentage of irrelevant images in the retrieval) while a high Recall value means that there are few false dismissals (i.e., the percentage of relevant images which failed to be re- trieved). Table 7 shows the results of queries posed against all class images using the three M-trees. 
+The result in Table 7 shows that for the PCA method, only class 3 and class 6 have no false dismissal. This is the same as the result in Table 2. We can also see that the Recall and P recision values from the neural network and the hybrid methods are almost the same. Thus, the major difference be- tween two approaches is the time required to train the network. One can therefore conclude that it is more advantageous to use a hybrid dimensions reduction method to reduce the dimen- sions of image features for effective indexing using M-trees. 
+Appendix B shows some sample retrieval results from the threeM-tree image databases using the same query image (the ﬁrst one in each result). It is easy to see that usingthe PCA 
+4 
+M-trees can index up to at least 20 dimensions 
+as reducer gives the worst result as compared to either neural network or hybrid approach. 
+We also present a content-based retrieval demonstration system on the web usingthese three methods. The web site is: http://www.cse.unsw.edu.au/∼imagedb/ index.html. 
+4.7 Analysis and discussion 
+The above experimental results show that the proposed hybrid dimensions reduction method is superior to the other two di- mensions reduction methods – the PCA and the neural network – that are applied alone. In this section, we present a discussion of the issues related to the performance of this hybrid method. 
+4.7.1 Parameters for network training 
+A wide variety of parameter values were tested in order to ﬁnd an optimal choice for the network learningalgorithm in the above experiments. However, in practice, it is often unde- sirable or even impossible to perform a large parameter test series. Moreover, different practical applications may require different sets of parameters of the network. In our case, the optimal parameter for the quickprop algorithm is a step size of 1.75 and a learningrate of 0.9. 
+The number of the hidden units used can also signiﬁcantly affect the network convergence and learning time. The more the number of hidden units, the easier it is for the network to learn. This is because more hidden units can keep more infor- mation. However, since the network is a dimensions reducer, the number of hidden units is restricted to a practical limit. We take P(xc ⊕ xt) in Sect.4.5 as an example. If we set the hidden units to 15 instead of six, then the learningtime can be reduced dramatically and the network can even reach an error of zero. Figure 5 shows the learning time. It takes only 40 epochs to reach an error of 0.02, compared to Fig.4 in which about 920 epochs are required. 
+4.7.2 Number of principal components used in network training 
+In the hybrid dimensions reduction method, the inputs to the network are not the original image features but the transformed image features from the PCA. The number of PCs selected 
+
+========11========
+
+12 A.H.H. Ngu et al.: Combining multi-visual features for efﬁcient indexing in a large image database 
+Table 6. Class separation values from the hybrid approach 
+Class No. 
+Ci(P(xc) ⊕ P(xt))% Ci(P(xt) ⊕ P(xc))% 
+12345678 
+100 100 100 100 100 100 100 100 
+100 100 100 100 100 100 100 100 Ci(P(xc ⊕ xt))%100 100 100 100 100 100 100 100 Ci(P(xt ⊕ xc))%99.9 100 100 100 100 100 100 100 
+Class No. 
+Ci(P(xc) ⊕ P(xt))% Ci(P(xt) ⊕ P(xc))% 
+9 10 11 12 13 14 Average 
+100 100 100 100 100 100 100 
+100 100 99.9 100 100 99.2 99.9 Ci(P(xc ⊕ xt))%100 100 100 99.9 99.9 100 99.9 Ci(P(xt ⊕ xc))%100 100 99.8 100 100 100 99.9 
+Table 7. Results of retrievals usingthe M-trees 
+Image class 
+xc ⊕ xt 
+xt ⊕ xc 
+P(xc)⊕ P(xt) 
+P(xc ⊕ xt) 
+P(xt ⊕ xc) 
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 Average 
+PCA Neural Network Hybrid Method 
+P(xt)⊕ 
+P(xc) 
+RP RP RP RP RP R P R P 32 25 100 80 100 80 100 80 100 80 100 80 100 80 85 68 100 80 100 80 100 80 100 80 100 80 100 80 100 80 100 80 100 80 100 80 100 80 100 80 100 80 97 77 100 80 100 80 100 80 100 80 100 80 100 80 76 61 100 80 100 80 100 80 100 80 100 80 100 80 100 80 100 80 100 80 100 80 100 80 100 80 100 80 88 70 100 80 100 80 100 80 100 80 100 80 100 80 93 75 100 80 100 80 100 80 100 80 100 80 100 80 82 66 100 80 100 80 100 80 100 80 100 80 100 80 76 61 100 80 100 80 100 80 100 80 100 80 100 80 78 57 100 73 100 73 100 73 100 73 100 73 100 73 61 45 100 73 100 73 100 73 100 73 100 73 100 73 81 60 100 73 100 73 100 73 100 73 100 73 100 73 82 54 100 67 100 67 100 67 100 67 100 67 100 67 81 63 100 78 100 78 100 78 100 78 100 78 100 78 
+140 
+120 100 
+80 
+60 
+40 20 
+Total number of error bits 
+0 
+0 50 100 150 200 
+Ep och 
+Fig. 5. Learningtime of the hybrid dimensions reduction method with 15 hidden units 
+may affect the network performance. It may not be necessary to take too many PCs for network training. On the other hand, the network may not be trained well with too few PCs since some important information of the feature vectors may have been excluded in the network trainingprocess. In this subsec- tion, we give the results of using different numbers of PCs for the hybrid dimensions reduction method for the collection of images in Appendix A. Again, we takeP(xc⊕xt) in Sect.4.5 as an example. The network trainingcondition is the same as 
+Table 8. Learningtime of the hybrid approach for different numbers of PCs 
+Number of Total LearningNumber of PCs variance errors epochs 
+% 
+7 82.4 68.0 >100,000 10 88.2 0.02 11,680 15 93.5 0.02 4,320 20 96.2 0.02 3,040 25 97.7 0.02 1,820 30 98.5 0.02 1,440 35 99.1 0.02 1,180 40 99.5 0.02 780 45 99.7 0.02 820 50 99.9 0.02 840 
+that mentioned in Sect.4.4 for six hidden units. Table 8 shows the learningtime for different numbers of PCs. 
+It can be seen that the numbers of PCs for the best net- work trainingin our application depends on their total vari- ance. There are no signiﬁcant differences in the time required 
+
+========12========
+
+A.H.H. Ngu et al.: Combining multi-visual features for efﬁcient indexing in a large image database 13 
+for network trainingfrom 35 to 50 PCs since they account for more than 99 of the total variance. Moreover, since the eigenvalues are in decreasingorder, increasingthe number of PCs after the ﬁrst 40 PCs does not require much extra time to train the network. For example, there are only 20 epochs’ difference between 45 PCs and 50 PCs. However, if we choose the number of PCs with a total variance that is less than 90 of the total variance then the differences are signiﬁcant. It takes 11,680 epochs for 10 PCs that account for 88.2 of the total variance to reach the ultimate network error of 0.02, which is far greater than the epochs needed for 35 PCs or more. 
+4.8 Scalability and updates 
+The number of images that we used in our experiments for testingour dimensions reducer is 10,000, which is a reason- ably large image database collection. From our experience, the most time-consumingpart of the system is not the neural network trainingprocess itself but the collection of training samples for the neural network system. For example, it took us around 25 h to collect a suitable set of trainingsamples (163) from the 10,000 images versus 8 min to train those sam- ples usinga Solaris machine with 64 MB RAM. The creation of trainingsamples is a one-off job which can be performed off-line. The indexingstructure that we used is the well-known M-tree whose scalability has been demonstrated in many spa- tial information systems. 
+The goal of our indexing mechanism is to be able to cre- ate a content-based image retrieval system that makes use of human visual perception with a small cost (the initial train- ing). Given an arbitrary query image (i.e., an image not from the database), the system is capable of retrievingimages from the database that are most similar in color and texture to this query image. If a new image from the same domain were to be added to the database, then the colour and texture features must be ﬁrst extracted from the image. The combined colour and texture image features could then be passed through the PCA and neural network for dimensions reduction. Finally, the reduced feature vector could be easily inserted into anM-tree. However, if a new image class from a different domain were to be added, then the neural network system would have to be retrained and the indexes rebuilt for accurate retrieval. Fortu- nately, for image deletion, the task would be a lot simpler: if an image were to be deleted from the database then all that would be required would be the deletion of the corresponding index from the M-trees. 
+5 Conclusion 
+In this paper we have proposed an indexingscheme by com- biningdifferent types of image features to support queries that involve composite multiple features. The core of this scheme is to combine the PCA and neural network as a hybrid 
+dimensions reducer. The PCA provides the optimal selection of features to reduce the trainingtime of the neural network. Through the learning phase of the network, the context that the human visual system uses for judging the similarity of the visual features in images is acquired. This is implicitly represented as the network weights after the training process. The feature vectors computed at the hidden units (which has a smaller number of dimensions) of the neural network repre- sent our reduced-dimensional composite image features. The distance between any two feature vectors at the hidden layer can be used directly as a measure of similarity between the two correspondingimages. 
+We have developed a learningalgorithm to train the hybrid dimensions reducer. We tested this hybrid dimensions reduc- tion method on a collection of 10,000 images. The result is that it achieved the same level of accuracy as the standard neural network approach with a much shorter network trainingtime. 
+We have also demonstrated the output quality of our hybrid method for indexingthe test image collection using M-trees. This shows that our proposed hybrid dimensions reduction of image features can correctly and efﬁciently reduce the di- mensions of image features and accumulate the knowledge of human visual perception in the weights of the network. This enables any existingaccess method to be used efﬁciently. 
+The parameters that affect the network trainingalgorithm is discussed in Sect.4.7. However, there is a need for further studies on the scalability of the trainingalgorithm. In particu- lar, the issue of how to choose a minimal trainingset that can be used for a maximal image collection needs to be addressed. 
+The issues that remain to be studied include extendingthe experiments to include other visual features such as shape and the topological and spatial relationships of images. There is also a need to investigate more advanced machine learning techniques that can incrementally re-classify images as new images from different domains are added. 
+A Test-image collection 
+Table 9 outlines the types of images used in the training and testingprocess. 
+B Results of k-NN search using reduced dimensions 
+Figure 6 shows the results of the k-NN search for the three methods described in the text. 
+Acknowledgements. We wish to thank the anonymous reviewers for their helpful comments and the editors for their patience while wait- ingfor our revised version. We would also like to thank Ooi Beng Chin from the National University of Singapore for providing the source codes for colour extraction. This research was supported by the Small Australian Council Research Grant and the Murdoch Spe- cial Research Grant MUAMH.D.410MAR. 
+
+========13========
+
+14 A.H.H. Ngu et al.: Combining multi-visual features for efﬁcient indexing in a large image database 
+Table 9.A collection of 163 images used as a test bed 
+Image Description No. of No. of class trainingtesting 
+images images 1 Various red ﬂower images similar to 12 12 
+each other in colour and in texture. 
+2 Various sea scenery images similar to 12 8 
+each other in colour and in texture. 
+3 Various astronomical images similar to 12 12 
+each other in colour and in texture. 
+4 Various images of mountains similar to 12 8 
+each other in colour and in texture. 
+5 Various human face images similar to 12 8 
+each other in colour and in texture. 
+6 Various images of several bible stories 12 8 
+similar to each other in colour and in 
+texture. 
+7 Various national ﬂagimages similar to 12 8 
+each other in colour and in texture. 
+8 Various yellow ﬂower images similar 12 8 
+to each other in colour and texture. 
+9 Various images of artistic works simi- 12 8 
+lar to each other in colour and texture. 
+10 Various images of green grass similar 12 8 
+to each other in colour and texture. 
+11 Various animal images similar to each 11 11 
+other in colour and texture. 
+12 Various sunset scenery images similar 11 11 
+to each other in colour and texture. 
+13 Various buildingimages similar to 
+each other in colour and texture. 
+11 11 
+14 Various images of black-white draw- 10 10 
+ings similar to each other in colour and 
+texture. 
+References 
+1. T. Bozkaya, M. Ozsoyoglu (1997) Distance-based indexing for¨ 
+high-dimensional metric spaces. In: SIGMOD’97, pp 357–368, 
+Tucson, Ariz., USA 
+2. S. Brin (1995) Near neighbour search in large metric spaces. In: 
+VLDB’95, pp 574–584, Zurich, Switzerland 
+3. J.B. Burns, A.R. Hanson, E.M. Riseman (1984) Extracting 
+straight lines. In: Int. Conf. on Pattern Recognition 1:482–485 4. T. Chiueh (1994) Content-based image indexing. In: VLDB’94, 
+pp 582–593, Santiago, Chile 
+5. S. Christodoulakis, L. Koveos (1995) Multimedia information 
+systems: issues and approaches. Modern Database Syst., pp 318– 
+337 
+6. P. Ciaccisa, M. Patella (1998) Bulk loadingthe M-tree. In: Proc. 
+9th Australian Database Conf. (ADC’98), Perth, Australia 7. P. Ciaccia, M. Patella, P. Zezula (1997) M-tree: an efﬁcient ac- 
+cess method for similarity search in metric spaces. In: Proc. 23rd 
+VLDB Int. Conf., Athens, Greece 
+8. G.M.P. Euripides, C. Faloutsos (1997) Similarity searching 
+in medical image databases. IEEE Trans. Knowl. Data Eng., 
+3(9):435–447 
+9. S.E. Fahlman (1988) An empirical study of learningspeed for 
+back-propagation networks. Technical Report CMU-CS 88-162, 
+Carnegie-Mellon University 
+10. C. Faloutsos, K.I. Lin (1995) FastMap: a fast algorithm for index- 
+ing, data mining, and visualization of traditional and multimedia 
+database. In: SIGMOD RECORD, Proc. ’95ACM SIGMOD Int. 
+Conf. Manage. Data, pp 163–174 
+11. C. Faloutsos, R. Barber, M. Flickner, W. Niblack, D. Peetkovic, 
+W. Equitz (1994) Efﬁcient and effective queryingby image con- 
+tent. J. Intell. Inf. Syst., pp 231–262 
+12. R.A. Finkel, J.L. Bentley (1974) Quad trees: a data structure for 
+retrieval on composite keys. Acta Inf., 4:1–9 
+13. M. Flickner, H. Sawhney, W. Niblack, J. Ashley, Q. Huang, B. 
+Dom, M. Gorkani, J. Hafner, D. Lee, D Petkovic, D. Steele, P. 
+Yanker (1995) Query by image and video content: the QBIC 
+system. IEEE Comput., 28(9):23–32 
+14. K. Fukunaga, W. Koontz (1970) Representation of random 
+processes usingthe Karhumen-lo`eve expansion. Inf. Control, 
+16(1):85–101 
+15. V.N. Gudivada, V.V. Raghavan (1995) Content-based image re- 
+trieval systems. IEEE Comput., 28(9):18–22 
+16. J.M. Hellerstein, J.F. Naughton, A. Pfeffer (1995) General- 
+ized search trees for database systems. In: 21st VLDB, Zurich, 
+Switzerland, September 
+17. J. Kittler, P.Young(1973) A new application to feature selection 
+based on the Karhunen-lo`eve expansion. Pattern Recognition, 5 18. J.B. Kruskal, M. Wish (1978) Multidimensional Scaling. SAGE, 
+Beverly Hills, Calif., USA 
+19. D. Lee, R.W. Barber, W. Niblack, M. Flickner, J. Hafner, D. 
+Petkovic (1993) Indexingfor complex queries on a Query- 
+By-Content Image. In: Proc. SPIE Storage Retr. Image Video 
+Database III, pp 24–35 
+20. R.M. Lerner, P.C. Kendall, D.T. Miller, D.F. Hultsch, R.A. Jensen 
+(1986) Psychology. Macmillan, New York 
+21. K.V. Mardia, J.T. Kent, J.M. Bibby (1979) MultivariateAnalysis. 
+Academic, New York 
+22. W. Niblack, R. Barber, W. Equitz, E. Glasman, D. Petkovic, 
+P. Yanker, C. Faloutsos, G. Taubin (1987) The QBIC project: 
+queryingimage by content usingcolour,texture and shape. Proc. 
+SPIE, 1908:173–178 
+23. J.T. Robinson (1981) A search structure for large multimedi- 
+mensional dynamic indexes. In: Proc. ACM SIGMOD Int. Conf. 
+Manage. Data, pp 10–18 
+24. H. Samet (1989) The Design and Analysis of Spatial Data Struc- 
+tures. Addison Wesley, Reading, Mass., USA 
+25. S. Santini, R. Jain (1997) Similarity is a geometer. Multimedia 
+Tools Appl., 5(3):277–306 
+26. T. Sellis, N. Roussopoulos, C. Faloutsos (1987) The R+-tree: a 
+dynamic index for multidimensional objects. In: 12th Int. Conf. 
+Very Large Databases(VLDB), pp 507–518 
+27. L. Sirovich, M. Kirby (1987) A low-dimensional procedure for 
+the identiﬁcation of human faces. J. Opt. Soc. Am., 4(3):519 28. A.M. Stricker (1994) Bounds for the discrimination power of 
+colour indexing techniques. In: Proc. SPIE Storage Retr. Image 
+Video Database II, pp 15–24 
+29. M.J. Swain, D.H. Ballard (1991) Colour indexing. Int. J. Com- 
+put. Vision, 7(1):11–32 
+30. M. Turner (1986) Texture discrimination by Gabor functions. 
+Biol. Cybern, 55:71–82 
+31. D. White, R. Jain (1996) Similarity indexingwith the SS-tree. 
+In: Proc. 12th Int. Conf. Data Eng., 
+32. J.-K. Wu (1997) Content-based indexingof multimedia 
+databases. IEEE Trans. Knowl. Data Eng., 9(6):978–989 
+
+========14========
+
+A.H.H. Ngu et al.: Combining multi-visual features for efﬁcient indexing in a large image database 15 
+a 
+b 
+c 
+Fig. 6. Results of k-NN search with indexes built usingthe three methods a the PCA, b Neural network, c Hybrid approach 
+
+========15========
+

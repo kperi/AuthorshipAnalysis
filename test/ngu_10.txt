@@ -1,0 +1,4442 @@
+CMVF	NNP
+:	:
+A	NNP
+Novel	JJ
+Dimension	NNP
+Reduction	NNP
+Scheme	NNP
+for	IN
+Efï	NNP
+¬	CD
+cient	JJ
+
+
+Indexing	NN
+in	IN
+A	DT
+Large	JJ
+Image	NN
+Database	NN
+
+
+1	CD
+
+
+School	NNP
+of	IN
+Computer	NNP
+Science	NNP
+&	CC
+Engineering	NNP
+
+
+The	DT
+University	NNP
+of	IN
+New	NNP
+South	NNP
+Wales	NNP
+
+
+Sydney	NNP
+NSW	NNP
+2052	CD
+,	,
+Australia	NNP
+fjls,jas,qshengg@cse.unsw.edu.au	NN
+
+
+Jialie	JJ
+Shen1	NN
+,	,
+Anne	NNP
+H.H.	NNP
+Ngu2	NNP
+,	,
+John	NNP
+Shepherd1	NNP
+,	,
+Du	NNP
+Q.	NNP
+Huynh3	NNP
+,	,
+Quan	NNP
+Z.	NNP
+Sheng1	NN
+
+
+2	CD
+
+
+Department	NNP
+of	IN
+Computer	NNP
+Science	NNP
+
+
+Southwest	NNP
+Texas	NNP
+State	NNP
+University	NNP
+
+
+San	NNP
+Marcos	NNP
+,	,
+601	CD
+University	NNP
+Drive	NNP
+,	,
+Texas	NNP
+,	,
+USA	NNP
+
+
+1	LS
+.	.
+
+INTRODUCTION	NN
+
+
+In	IN
+recent	JJ
+years	NNS
+,	,
+due	JJ
+to	TO
+the	DT
+increasing	VBG
+volumes	NNS
+of	IN
+multimedia	NNS
+data	NNS
+in	IN
+the	DT
+World	NNP
+Wide	NN
+Web	NN
+,	,
+digital	JJ
+library	NN
+,	,
+biomedicine	NN
+and	CC
+other	JJ
+applications	NNS
+,	,
+efï	NN
+¬	NN
+cient	JJ
+content	NN
+based	VBN
+similarity	NN
+search	NN
+in	IN
+large	JJ
+image	NN
+databases	NNS
+is	VBZ
+gaining	VBG
+considerable	JJ
+research	NN
+at	IN
+-	:
+tentions	NNS
+.	.
+
+As	IN
+a	DT
+result	NN
+,	,
+various	JJ
+indexing	NN
+methods	NNS
+known	VBN
+as	IN
+Spatial	JJ
+Access	NN
+Methods	NNS
+-LRB-	-LRB-
+SAMs	NNS
+-RRB-	-RRB-
+and	CC
+metric	JJ
+trees	NNS
+have	VBP
+been	VBN
+proposed	VBN
+to	TO
+support	VB
+this	DT
+kind	NN
+of	IN
+retrieval	NN
+.	.
+
+The	DT
+former	JJ
+in	IN
+-	:
+cludes	NNS
+SS-tree	NN
+,	,
+R	NN
++	CC
+-	:
+tree	NN
+and	CC
+grid	NN
+ï	NN
+¬	CD
+les	FW
+;	:
+the	DT
+latter	JJ
+includes	VBZ
+the	DT
+vp-tree	NN
+,	,
+mvp-tree	NN
+,	,
+GNAT	NN
+and	CC
+M-tree	JJ
+-LSB-	-LRB-
+3	CD
+-RSB-	-RRB-
+.	.
+
+
+However	RB
+,	,
+the	DT
+optimised	JJ
+distance-based	JJ
+access	NN
+methods	NNS
+cur	SYM
+-	:
+rently	RB
+available	JJ
+for	IN
+multidimensional	JJ
+indexing	NN
+in	IN
+multimedia	NNS
+databases	NNS
+are	VBP
+developed	VBN
+based	VBN
+on	IN
+two	CD
+major	JJ
+assumptions	NNS
+:	:
+a	DT
+suitable	JJ
+distance	NN
+function	NN
+is	VBZ
+known	VBN
+a	DT
+priori	FW
+and	CC
+the	DT
+dimen	NN
+-	:
+sionality	NN
+of	IN
+the	DT
+image	NN
+features	NNS
+is	VBZ
+low	JJ
+.	.
+
+Unfortunately	RB
+,	,
+these	DT
+assumptions	NNS
+do	VBP
+not	RB
+make	VB
+the	DT
+problem	NN
+substantially	RB
+easier	JJR
+to	TO
+solve	VB
+.	.
+
+For	IN
+example	NN
+,	,
+it	PRP
+is	VBZ
+extremely	RB
+difï	JJ
+¬	NN
+cult	NN
+to	TO
+deï	NN
+¬	CD
+ne	NN
+a	DT
+distance	NN
+function	NN
+that	WDT
+accurately	RB
+mimics	VBZ
+human	JJ
+visual	JJ
+per	IN
+-	:
+ceptioninimagesimilaritymeasurement	NN
+.	.
+
+Also	RB
+,	,
+typicalimage	NN
+feature	NN
+vectors	NNS
+are	VBP
+high-dimensional	JJ
+-LRB-	-LRB-
+dozens	NNS
+of	IN
+dimensions	NNS
+-RRB-	-RRB-
+.	.
+
+The	DT
+standard	JJ
+approach	NN
+to	TO
+reducing	VBG
+the	DT
+size	NN
+of	IN
+feature	NN
+vec	SYM
+-	:
+tors	NNS
+is	VBZ
+Principle	NNP
+Component	NNP
+Analysis	NN
+-LRB-	-LRB-
+PCA	NN
+-RRB-	-RRB-
+.	.
+
+However	RB
+,	,
+this	DT
+approach	NN
+might	MD
+not	RB
+always	RB
+be	VB
+possible	JJ
+due	JJ
+to	TO
+the	DT
+non-linear	JJ
+correlations	NNS
+in	IN
+the	DT
+feature	NN
+vectors	NNS
+.	.
+
+
+Motivated	VBN
+by	IN
+these	DT
+concerns	NNS
+,	,
+we	PRP
+proposed	VBD
+and	CC
+developed	VBD
+the	DT
+CMVF	NN
+-LRB-	-LRB-
+Combining	VBG
+Multi-Visual	JJ
+Features	NNS
+-RRB-	-RRB-
+framework	NN
+,	,
+a	DT
+fast	JJ
+and	CC
+robust	JJ
+hybrid	NN
+method	NN
+for	IN
+nonlinear	JJ
+dimensions	NNS
+reduc	NN
+-	:
+tion	NN
+of	IN
+composite	JJ
+image	NN
+features	NNS
+for	IN
+indexing	NN
+in	IN
+large	JJ
+image	NN
+database	NN
+-LSB-	-LRB-
+2	CD
+-RSB-	-RRB-
+.	.
+
+This	DT
+method	NN
+incorporates	VBZ
+both	CC
+the	DT
+PCA	NNP
+and	CC
+non-linear	JJ
+neural	JJ
+network	NN
+techniques	NNS
+to	TO
+reduce	VB
+the	DT
+dimen	NN
+-	:
+sions	NNS
+of	IN
+feature	NN
+vectors	NNS
+,	,
+so	RB
+that	IN
+an	DT
+optimised	JJ
+access	NN
+method	NN
+can	MD
+be	VB
+applied	VBN
+.	.
+
+
+In	IN
+this	DT
+demonstration	NN
+,	,
+we	PRP
+show	VBP
+that	IN
+with	IN
+CMVF	NN
+approach	NN
+a	DT
+small	JJ
+but	CC
+well-discriminating	JJ
+feature	NN
+vector	NN
+can	MD
+be	VB
+obtained	VBN
+for	IN
+effective	JJ
+indexing	NN
+.	.
+
+It	PRP
+allows	VBZ
+us	PRP
+to	TO
+incorporate	VB
+classiï	NN
+¬	NN
+ca	MD
+-	:
+tion	NN
+information	NN
+based	VBN
+on	IN
+human	JJ
+visual	JJ
+perception	NN
+into	IN
+the	DT
+indexing	NN
+.	.
+
+In	IN
+addition	NN
+,	,
+effectiveness	NN
+of	IN
+the	DT
+indexing	NN
+can	MD
+be	VB
+improved	VBN
+signiï	NN
+¬	NN
+cantly	RB
+with	IN
+integration	NN
+of	IN
+additional	JJ
+image	NN
+features	NNS
+.	.
+
+In	IN
+the	DT
+following	VBG
+sections	NNS
+,	,
+we	PRP
+overview	NN
+the	DT
+design	NN
+and	CC
+system	NN
+architecture	NN
+of	IN
+our	PRP$
+CMVF	NN
+system	NN
+,	,
+and	CC
+give	VB
+per	IN
+-	:
+formance	NN
+evaluation	NN
+.	.
+
+
+angu@swt.edu	NN
+
+
+3	CD
+
+
+School	NNP
+of	IN
+Information	NNP
+Technology	NNP
+
+
+Murdoch	NNP
+University	NNP
+
+
+Murdoch	NNP
+WA	NNP
+6150	CD
+,	,
+Australia	NNP
+
+
+d.huynh@murdoch.edu.au	NN
+
+
+2	LS
+.	.
+
+SYSTEM	NN
+OVERVIEW	NN
+
+
+An	DT
+effective	JJ
+content-basedretrieval	JJ
+systemcannot	NN
+be	VB
+achiev	NN
+-	:
+ed	VBN
+by	IN
+consideringonly	NN
+a	DT
+single	JJ
+typeoffeature	NN
+such	JJ
+as	IN
+colour	NN
+,	,
+texture	NN
+and	CC
+shape	NN
+alone	RB
+.	.
+
+However	RB
+,	,
+creating	VBG
+an	DT
+index	NN
+based	VBN
+on	IN
+a	DT
+concatenation	NN
+of	IN
+feature	NN
+vectors	NNS
+-LRB-	-LRB-
+e.g.	FW
+,	,
+colour	NN
+,	,
+shape	NN
+and	CC
+texture	NN
+-RRB-	-RRB-
+will	MD
+result	VB
+in	IN
+a	DT
+very	RB
+high	JJ
+dimensional	JJ
+feature	NN
+space	NN
+,	,
+rendering	VBG
+all	DT
+existing	VBG
+indexing	NN
+methods	NNS
+useless	JJ
+.	.
+
+Also	RB
+as	IN
+-	:
+suming	VBG
+that	IN
+each	DT
+type	NN
+of	IN
+visual	JJ
+feature	NN
+contributes	VBZ
+equally	RB
+to	TO
+the	DT
+recognition	NN
+of	IN
+that	DT
+image	NN
+is	VBZ
+not	RB
+supported	VBN
+in	IN
+human	JJ
+visual	JJ
+perceptron	NN
+.	.
+
+We	PRP
+need	VBP
+to	TO
+â	VB
+$	$
+œfuseâ	JJ
+$	$
+the	DT
+multiple	JJ
+single	JJ
+fea	NN
+-	:
+ture	NN
+vectors	NNS
+into	IN
+a	DT
+composite	JJ
+feature	NN
+vector	NN
+which	WDT
+is	VBZ
+low	JJ
+in	IN
+dimensions	NNS
+and	CC
+yet	RB
+preserves	VBZ
+all	PDT
+the	DT
+necessary	JJ
+information	NN
+for	IN
+image	NN
+retrieval	NN
+.	.
+
+Thus	RB
+,	,
+non-linear	JJ
+dimension	NN
+reduction	NN
+-LRB-	-LRB-
+NLDR	NN
+-RRB-	-RRB-
+method	NN
+in	IN
+conjunction	NN
+with	IN
+a	DT
+multidimensional	JJ
+in	IN
+-	:
+dex	NN
+structure	NN
+becomes	VBZ
+a	DT
+natural	JJ
+and	CC
+practical	JJ
+solution	NN
+.	.
+
+Fig	SYM
+-	:
+ure	NN
+1	CD
+shows	VBZ
+the	DT
+overall	JJ
+architecture	NN
+of	IN
+our	PRP$
+hybrid	NN
+method	NN
+.	.
+
+The	DT
+different	JJ
+components	NNS
+of	IN
+the	DT
+architecture	NN
+will	MD
+be	VB
+covered	VBN
+in	IN
+detail	NN
+in	IN
+this	DT
+section	NN
+.	.
+
+
+OUTPUT	NN
+
+
+Neural	JJ
+Network	NNP
+
+
+HIDDEN	IN
+
+
+Lower	JJR
+dimension	NN
+vectors	NNS
+
+
+INPUT	NN
+
+
+PCA	NNP
+Analysis	NN
+
+
+PCA	NN
+
+
+PCA	NN
+
+
+PCA	NN
+
+
+Principal	NN
+components	NNS
+
+
+COLOUR	NNP
+
+
+TEXTURE	NN
+
+
+SHAPE	VB
+
+
+Figure	NNP
+1	CD
+:	:
+A	DT
+hybrid	NN
+image	NN
+feature	NN
+dimensions	NNS
+re	SYM
+-	:
+duction	NN
+scheme	NN
+.	.
+
+The	DT
+linear	JJ
+PCA	NN
+appears	VBZ
+at	IN
+the	DT
+bottom	NN
+,	,
+the	DT
+nonlinear	JJ
+neural	JJ
+network	NN
+is	VBZ
+at	IN
+the	DT
+top	NN
+,	,
+and	CC
+the	DT
+representation	NN
+of	IN
+lower	JJR
+dimensional	JJ
+vectors	NNS
+appears	VBZ
+in	IN
+the	DT
+hidden	JJ
+layer	NN
+.	.
+
+
+2.1	CD
+Composite	NNP
+Image	NN
+Features	NNS
+
+
+In	IN
+CMVF	NN
+,	,
+we	PRP
+consider	VBP
+three	CD
+types	NNS
+of	IN
+image	NN
+features	NNS
+:	:
+color	NN
+,	,
+texture	NN
+and	CC
+shape	NN
+.	.
+
+Note	VB
+that	IN
+our	PRP$
+system	NN
+is	VBZ
+not	RB
+limited	VBN
+to	TO
+dealing	VBG
+with	IN
+these	DT
+three	CD
+features	NNS
+only	RB
+.	.
+
+It	PRP
+can	MD
+be	VB
+extended	VBN
+to	TO
+combine	VB
+other	JJ
+visual	JJ
+and	CC
+topological	JJ
+features	NNS
+-LSB-	-LRB-
+9	CD
+-RSB-	-RRB-
+-LRB-	-LRB-
+such	JJ
+as	IN
+motion	NN
+and	CC
+spatial	JJ
+relationship	NN
+among	IN
+the	DT
+objects	NNS
+in	IN
+the	DT
+image	NN
+-RRB-	-RRB-
+for	IN
+effective	JJ
+indexing	NN
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+1	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+The	DT
+colour	NN
+features	NNS
+are	VBP
+extracted	VBN
+using	VBG
+the	DT
+colour	NN
+histogram	NN
+technique	NN
+.	.
+
+We	PRP
+used	VBD
+the	DT
+colour	NN
+space	NN
+CIE	NNP
+L	NNP
+*	SYM
+u	FW
+*	SYM
+v	LS
+.	.
+
+The	DT
+reason	NN
+for	IN
+selecting	VBG
+the	DT
+CIE	NNP
+L	NNP
+*	SYM
+u	FW
+*	SYM
+v	LS
+instead	RB
+of	IN
+the	DT
+normal	JJ
+RGB	NN
+or	CC
+other	JJ
+colour	NN
+spaces	NNS
+is	VBZ
+that	IN
+it	PRP
+is	VBZ
+more	RBR
+uniform	JJ
+perceptually	RB
+.	.
+
+Our	PRP$
+colour	NN
+features	NNS
+are	VBP
+presented	VBN
+as	IN
+37-dimensional	JJ
+vectors	NNS
+.	.
+
+
+Texture	NN
+featurescarrythepropertymeasures	NNS
+,	,
+suchassmooth	NN
+-	:
+ness	NN
+,	,
+coarseness	NN
+and	CC
+regularity	NN
+,	,
+of	IN
+an	DT
+image	NN
+.	.
+
+The	DT
+texture	NN
+fea	NN
+-	:
+tures	NNS
+are	VBP
+extracted	VBN
+using	VBG
+a	DT
+ï	NN
+¬	NN
+lter	NN
+-	:
+based	VBN
+method	NN
+.	.
+
+This	DT
+method	NN
+detects	VBZ
+the	DT
+global	JJ
+periodicity	NN
+of	IN
+intensity	NN
+values	NNS
+in	IN
+an	DT
+image	NN
+by	IN
+identifying	VBG
+regions	NNS
+that	WDT
+have	VBP
+high	JJ
+energy	NN
+,	,
+narrow	JJ
+peaks	NNS
+.	.
+
+The	DT
+advantage	NN
+of	IN
+ï	NN
+¬	CD
+lter	NN
+-	:
+based	VBN
+methods	NNS
+is	VBZ
+in	IN
+their	PRP$
+consistent	JJ
+interpretation	NN
+of	IN
+feature	NN
+data	NNS
+over	IN
+both	DT
+natural	JJ
+and	CC
+artiï	NN
+¬	CD
+cial	JJ
+images	NNS
+.	.
+
+The	DT
+Gabor	NNP
+ï	NN
+¬	CD
+lter	NN
+is	VBZ
+a	DT
+frequently	RB
+used	VBN
+ï	NN
+¬	CD
+lter	NN
+in	IN
+texture	NN
+extraction	NN
+.	.
+
+It	PRP
+measures	VBZ
+a	DT
+set	NN
+of	IN
+selected	VBN
+orientations	NNS
+and	CC
+spa	SYM
+-	:
+tial	JJ
+frequencies	NNS
+.	.
+
+The	DT
+total	JJ
+number	NN
+of	IN
+ï	NN
+¬	CD
+lters	NNS
+needed	VBN
+for	IN
+our	PRP$
+Gabor	NNP
+ï	NN
+¬	CD
+lter	NN
+is	VBZ
+30	CD
+.	.
+
+Texture	NN
+features	NNS
+are	VBP
+therefore	RB
+represented	VBN
+as	IN
+30-dimensional	JJ
+vectors	NNS
+.	.
+
+
+Shape	VBG
+is	VBZ
+an	DT
+important	JJ
+and	CC
+powerful	JJ
+attribute	NN
+for	IN
+image	NN
+re	SYM
+-	:
+trieval	NN
+.	.
+
+It	PRP
+can	MD
+represent	VB
+spatial	JJ
+information	NN
+that	WDT
+is	VBZ
+not	RB
+pre	JJ
+-	:
+sentedincolorandtexturehistogram	NN
+.	.
+
+Inoursystemtheshape	JJ
+information	NN
+of	IN
+an	DT
+image	NN
+is	VBZ
+described	VBN
+based	VBN
+on	IN
+its	PRP$
+edges	NNS
+.	.
+
+A	DT
+histogram	NN
+of	IN
+the	DT
+edge	NN
+directions	NNS
+is	VBZ
+used	VBN
+to	TO
+represent	VB
+global	JJ
+information	NN
+of	IN
+shape	NN
+attribute	NN
+for	IN
+each	DT
+image	NN
+.	.
+
+We	PRP
+used	VBD
+the	DT
+Canny	JJ
+edge	NN
+operator	NN
+-LSB-	-LRB-
+8	CD
+-RSB-	-RRB-
+to	TO
+generate	VB
+edge	NN
+histogram	NN
+of	IN
+im	NN
+-	:
+ages	NNS
+in	IN
+the	DT
+prepropressing	JJ
+stage	NN
+.	.
+
+To	TO
+solve	VB
+the	DT
+scale	NN
+invari	NN
+-	:
+ance	NN
+problem	NN
+,	,
+the	DT
+histograms	NNS
+are	VBP
+normalized	VBN
+to	TO
+the	DT
+number	NN
+of	IN
+edge	NN
+points	NNS
+in	IN
+each	DT
+image	NN
+.	.
+
+In	IN
+addition	NN
+,	,
+smoothing	VBG
+proce	NN
+-	:
+dures	NNS
+presented	VBN
+in	IN
+-LSB-	-LRB-
+1	CD
+-RSB-	-RRB-
+are	VBP
+used	VBN
+to	TO
+make	VB
+histograminvariant	NN
+to	TO
+rotation	NN
+.	.
+
+The	DT
+histogram	NN
+of	IN
+edge	NN
+directions	NNS
+is	VBZ
+represented	VBN
+by	IN
+30	CD
+bins	NNS
+.	.
+
+Shape	VBG
+features	NNS
+are	VBP
+thus	RB
+presented	VBN
+as	IN
+30-dimensional	JJ
+vectors	NNS
+.	.
+
+
+2.2	CD
+Architecture	NNP
+of	IN
+Hybrid	NNP
+Image	NN
+Feature	NN
+Di	NNP
+-	:
+
+
+mension	NN
+Reducer	NN
+
+
+In	IN
+CMVF	NN
+,	,
+concatenation1	NN
+is	VBZ
+used	VBN
+to	TO
+form	VB
+composite	JJ
+feature	NN
+vectorsforfurtherprocessing	NN
+.	.
+
+Withthe97-dimensionfeature	JJ
+vectors	NNS
+-LRB-	-LRB-
+37	CD
+dimensions	NNS
+for	IN
+colour	NN
+,	,
+30	CD
+dimensions	NNS
+for	IN
+texture	NN
+and	CC
+30	CD
+dimensions	NNS
+for	IN
+shape	NN
+-RRB-	-RRB-
+,	,
+the	DT
+PCA	NN
+-LSB-	-LRB-
+6	CD
+-RSB-	-RRB-
+is	VBZ
+useful	JJ
+as	IN
+an	DT
+initial	JJ
+dimension	NN
+reducer	NN
+while	IN
+further	JJ
+dimension	NN
+reduction	NN
+for	IN
+nonlinear	JJ
+correlations	NNS
+can	MD
+be	VB
+handled	VBN
+by	IN
+NLDR	NN
+.	.
+
+There	EX
+are	VBP
+two	CD
+methods	NNS
+for	IN
+combining	VBG
+the	DT
+PCA	NN
+and	CC
+NLDR	NN
+:	:
+
+
+Apply	VB
+the	DT
+PCA	NN
+to	TO
+the	DT
+single	JJ
+feature	NN
+vectors	NNS
+separately	RB
+.	.
+
+The	DT
+lower-dimensional	JJ
+single	JJ
+feature	NN
+vectors	NNS
+are	VBP
+then	RB
+combined	VBN
+to	TO
+form	VB
+low-dimensional	JJ
+composite	JJ
+feature	NN
+vectors	NNS
+for	IN
+NLDR	NN
+and	CC
+classiï	NN
+¬	CD
+cation	NN
+.	.
+
+
+Apply	VB
+the	DT
+PCA	NN
+to	TO
+the	DT
+high-dimensional	JJ
+composite	JJ
+fea	SYM
+-	:
+ture	NN
+vectors	NNS
+.	.
+
+The	DT
+reduced-dimensional	JJ
+composite	JJ
+fea	SYM
+-	:
+ture	NN
+vectors	NNS
+are	VBP
+then	RB
+used	VBN
+for	IN
+NLDR	NN
+and	CC
+classiï	NN
+¬	CD
+cation	NN
+.	.
+
+
+1Let	NN
+
+
+xc	NN
+,	,
+xt	NN
+and	CC
+xs	NN
+be	VB
+the	DT
+colour	NN
+,	,
+texture	NN
+and	CC
+shape	NN
+feature	NN
+vectors	NNS
+,	,
+concatenation	NN
+,	,
+denoted	VBN
+by	IN
+the	DT
+symbol	NN
+,	,
+of	IN
+these	DT
+three	CD
+feature	NN
+vectors	NNS
+is	VBZ
+de	IN
+as	IN
+follows	VBZ
+:	:
+
+
+xc	NN
+
+
+!	.
+
+
+x	CC
+xc	NN
+xt	NN
+xs	NN
+=	JJ
+xt	NN
+
+
+xs	NNPS
+
+
+Bothmethodsareadoptedinoursystemsothatthedifferences	NNS
+in	IN
+the	DT
+reduction	NN
+results	VBZ
+could	MD
+be	VB
+compared	VBN
+.	.
+
+
+2.2.1	CD
+The	DT
+PCA	NN
+for	IN
+Dimension	NNP
+Reduction	NNP
+The	NNP
+PCA	NNP
+has	VBZ
+been	VBN
+employed	VBN
+to	TO
+reduce	VB
+the	DT
+dimensions	NNS
+of	IN
+single	JJ
+feature	NN
+vectors	NNS
+so	IN
+that	IN
+an	DT
+efï	NN
+¬	NN
+cient	JJ
+index	NN
+can	MD
+be	VB
+con	JJ
+-	:
+structed	NN
+for	IN
+retrieval	NN
+in	IN
+image	NN
+databases	NNS
+-LSB-	-LRB-
+7	CD
+-RSB-	-RRB-
+.	.
+
+It	PRP
+has	VBZ
+also	RB
+been	VBN
+applied	VBN
+to	TO
+image	NN
+coding	NN
+,	,
+e.g.	FW
+,	,
+for	IN
+removing	VBG
+correlation	NN
+from	IN
+highly	RB
+correlated	VBN
+data	NNS
+such	JJ
+as	IN
+face	NN
+images	NNS
+.	.
+
+The	DT
+advantage	NN
+of	IN
+the	DT
+PCA	NNP
+transformation	NN
+is	VBZ
+that	IN
+it	PRP
+is	VBZ
+linear	JJ
+and	CC
+that	IN
+any	DT
+linear	JJ
+correlations	NNS
+presented	VBN
+in	IN
+the	DT
+data	NNS
+are	VBP
+automatically	RB
+detected	VBN
+.	.
+
+In	IN
+our	PRP$
+system	NN
+,	,
+the	DT
+PCA	NNP
+is	VBZ
+used	VBN
+as	IN
+a	DT
+``	``
+pre-processing	JJ
+''	''
+step	NN
+in	IN
+a	DT
+NLDR	NN
+method	NN
+where	WRB
+it	PRP
+provides	VBZ
+optimally	RB
+reduced	VBN
+dimen	NN
+-	:
+sionalfeature	NN
+vectors	NNS
+for	IN
+the3-layer	JJ
+neuralnetwork	NN
+,	,
+and	CC
+thus	RB
+speeds	NNS
+up	IN
+the	DT
+NLDR	NN
+training	NN
+time	NN
+.	.
+
+
+2.2.2	CD
+Classiï	NN
+¬	NN
+cation	NN
+based	VBN
+on	IN
+Human	JJ
+Visual	JJ
+Percep	NN
+-	:
+
+
+tion	NN
+
+
+The	DT
+human	JJ
+perceptual	JJ
+process	NN
+incorporates	VBZ
+information	NN
+in	IN
+colour	NN
+,	,
+texture	NN
+,	,
+shapeandothervisualfeaturesunderacertain	NN
+context	NN
+to	TO
+classify	VB
+images	NNS
+into	IN
+the	DT
+appropriate	JJ
+classes	NNS
+.	.
+
+To	TO
+integrate	VB
+this	DT
+procedure	NN
+into	IN
+our	PRP$
+system	NN
+,	,
+we	PRP
+set	VBD
+up	RP
+a	DT
+simple	JJ
+on	IN
+line	NN
+image	NN
+classiï	NN
+¬	CD
+cation	NN
+experiment	NN
+and	CC
+asked	VBD
+7	CD
+people	NNS
+-LRB-	-LRB-
+subjects	NNS
+-RRB-	-RRB-
+,	,
+all	DT
+of	IN
+whom	WP
+are	VBP
+from	IN
+different	JJ
+backgrounds	NNS
+,	,
+to	TO
+participate	VB
+in	IN
+the	DT
+experiments	NNS
+.	.
+
+Before	IN
+starting	VBG
+experiment	NN
+,	,
+we	PRP
+ï	VBP
+¬	CD
+rst	NN
+prepared	VBD
+a	DT
+set	NN
+of	IN
+images	NNS
+-LRB-	-LRB-
+labelled	VBN
+as	IN
+test-images	NNS
+from	IN
+here	RB
+on	IN
+-RRB-	-RRB-
+,	,
+from	IN
+our	PRP$
+10,000	CD
+image	NN
+collection	NN
+.	.
+
+This	DT
+set	NN
+of	IN
+image	NN
+covers	VBZ
+all	PDT
+the	DT
+different	JJ
+classes	NNS
+of	IN
+images	NNS
+in	IN
+the	DT
+collection	NN
+.	.
+
+In	IN
+order	NN
+to	TO
+enhance	VB
+robustness	NN
+of	IN
+our	PRP$
+approach	NN
+,	,
+some	DT
+of	IN
+them	PRP
+have	VBP
+image	NN
+variations	NNS
+-LRB-	-LRB-
+e.g.	FW
+,	,
+color	NN
+distortion	NN
+,	,
+shifting	VBG
+,	,
+rotation	NN
+...	:
+etc	FW
+-RRB-	-RRB-
+.	.
+
+Atthebeginningofeachexperiment	NNP
+,	,
+a	DT
+query	NN
+image	NN
+was	VBD
+arbitrarily	RB
+chosen	VBN
+from	IN
+test-images	NNS
+and	CC
+presented	VBN
+to	TO
+the	DT
+subjects	NNS
+.	.
+
+The	DT
+subjects	NNS
+were	VBD
+then	RB
+asked	VBN
+to	TO
+pick	VB
+20	CD
+images	NNS
+that	WDT
+were	VBD
+most	RBS
+similar	JJ
+in	IN
+colour	NN
+,	,
+texture	NN
+and	CC
+shapetothequeryimage	NN
+.	.
+
+Thoseimagesthatwereselectedby	NNP
+more	JJR
+than	IN
+3	CD
+subjects	NNS
+were	VBD
+classiï	NN
+¬	CD
+ed	VBD
+to	TO
+the	DT
+same	JJ
+class	NN
+as	IN
+the	DT
+query	NN
+image	NN
+and	CC
+were	VBD
+then	RB
+deleted	VBN
+from	IN
+test-images	NNS
+.	.
+
+The	DT
+experiment	NN
+was	VBD
+repeated	VBN
+until	IN
+every	DT
+image	NN
+in	IN
+test-images	JJ
+hadbeencategorizedintoanappropriateclass	NN
+.	.
+
+Theendresult	NN
+of	IN
+the	DT
+experiments	NNS
+is	VBZ
+that	IN
+images	NNS
+which	WDT
+are	VBP
+similar	JJ
+to	TO
+each	DT
+other	JJ
+in	IN
+colour	NN
+,	,
+texture	NN
+and	CC
+shape	NN
+are	VBP
+put	VBN
+into	IN
+the	DT
+same	JJ
+class	NN
+based	VBN
+on	IN
+human	JJ
+visual	JJ
+perception	NN
+.	.
+
+This	DT
+classiï	NN
+¬	NN
+cation	NN
+results	NNS
+are	VBP
+used	VBN
+in	IN
+the	DT
+NLDR	NN
+process	NN
+described	VBN
+below	IN
+.	.
+
+
+2.2.3	CD
+Neural	NNP
+Network	NNP
+for	IN
+Dimension	NNP
+Reduction	NNP
+In	IN
+our	PRP$
+work	NN
+,	,
+a	DT
+three-layer	JJ
+perceptron	NN
+neural	JJ
+network	NN
+with	IN
+a	DT
+quickprop	JJ
+learning	NN
+algorithm	NN
+-LSB-	-LRB-
+5	CD
+-RSB-	-RRB-
+is	VBZ
+used	VBN
+to	TO
+perform	VB
+dimen	JJ
+-	:
+sions	NNS
+reductions	NNS
+of	IN
+image	NN
+features	NNS
+.	.
+
+The	DT
+network	NN
+in	IN
+fact	NN
+acts	VBZ
+as	IN
+an	DT
+image	NN
+classiï	NN
+¬	CD
+er	NN
+.	.
+
+The	DT
+training	NN
+samples	NNS
+are	VBP
+training	VBG
+pat	SYM
+-	:
+terns	NNS
+of	IN
+the	DT
+form	NN
+-LRB-	-LRB-
+v	LS
+;	:
+c	NN
+-RRB-	-RRB-
+where	WRB
+v	LS
+is	VBZ
+a	DT
+feature	NN
+vector	NN
+,	,
+which	WDT
+can	MD
+beeitherasingle-featurevectororacompositefeaturevector	VB
+,	,
+and	CC
+c	NN
+is	VBZ
+the	DT
+class	NN
+number	NN
+to	TO
+which	WDT
+the	DT
+image	NN
+represented	VBN
+by	IN
+v	LS
+belongs	VBZ
+.	.
+
+We	PRP
+note	VBP
+that	IN
+the	DT
+class	NN
+number	NN
+for	IN
+each	DT
+feature	NN
+vector	NN
+was	VBD
+determined	VBN
+by	IN
+the	DT
+experiments	NNS
+mentioned	VBN
+in	IN
+the	DT
+previous	JJ
+subsection	NN
+.	.
+
+
+When	WRB
+the	DT
+network	NN
+has	VBZ
+been	VBN
+successfully	RB
+trained	VBN
+,	,
+the	DT
+weights	NNS
+that	WDT
+connect	VBP
+between	IN
+the	DT
+input	NN
+and	CC
+hidden	JJ
+layers	NNS
+are	VBP
+entries	NNS
+of	IN
+a	DT
+transformation	NN
+that	IN
+map	NN
+the	DT
+feature	NN
+vectors	NNS
+v	LS
+to	TO
+smaller	JJR
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+2	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+dimensional	JJ
+vectors	NNS
+.	.
+
+Thus	RB
+,	,
+when	WRB
+a	DT
+high-dimensional	JJ
+feature	NN
+vector	NN
+is	VBZ
+passed	VBN
+through	IN
+the	DT
+network	NN
+,	,
+its	PRP$
+activation	NN
+values	NNS
+in	IN
+the	DT
+hidden	JJ
+units	NNS
+form	VBP
+a	DT
+lower-dimensional	JJ
+vector	NN
+.	.
+
+This	DT
+lower	JJR
+dimensional	JJ
+feature	NN
+vector	NN
+keeps	VBZ
+the	DT
+most	RBS
+important	JJ
+information	NN
+of	IN
+the	DT
+original	JJ
+feature	NN
+vectors	NNS
+-LRB-	-LRB-
+colour	NN
+,	,
+texture	NN
+and	CC
+shape	NN
+-RRB-	-RRB-
+.	.
+
+
+3	LS
+.	.
+
+PERFORMANCE	NN
+EVALUATION	NN
+Inthissection	NN
+,	,
+resultsfroma	NN
+comparative	JJ
+study	NN
+arepresented	VBD
+to	TO
+demonstrate	VB
+superiority	NN
+of	IN
+our	PRP$
+hybrid	NN
+dimension	NN
+reduction	NN
+method	NN
+over	IN
+using	VBG
+the	DT
+PCA	NN
+or	CC
+using	VBG
+neural	JJ
+network	NN
+alone	RB
+.	.
+
+We	PRP
+used	VBD
+a	DT
+collection	NN
+of	IN
+10,000	CD
+images	NNS
+.	.
+
+These	DT
+images	NNS
+were	VBD
+retrieved	VBN
+from	IN
+different	JJ
+public	JJ
+domains	NNS
+that	WDT
+can	MD
+be	VB
+classiï	JJ
+¬	NN
+ed	VBN
+under	IN
+a	DT
+number	NN
+ofthemeswhichcover	NN
+naturalscenery	NN
+,	,
+archi	NN
+-	:
+tectural	JJ
+buildings	NNS
+,	,
+plants	NNS
+,	,
+animals	NNS
+,	,
+rocks	NNS
+,	,
+ï	NN
+¬	CD
+‚	CD
+ags	NNS
+,	,
+etc.	FW
+.	.
+
+A	DT
+subset	NN
+of	IN
+this	DT
+collection	NN
+of	IN
+images	NNS
+was	VBD
+selected	VBN
+to	TO
+form	VB
+the	DT
+training	NN
+samples	NNS
+-LRB-	-LRB-
+Section	NN
+2.2.2	CD
+-RRB-	-RRB-
+.	.
+
+
+3.1	CD
+Performance	NNP
+on	IN
+Image	NN
+Categorisation	NN
+To	TO
+determine	VB
+the	DT
+accuracy	NN
+and	CC
+efï	NN
+¬	CD
+cienc	NN
+y	NN
+of	IN
+the	DT
+three	CD
+meth	NN
+-	:
+ods	NNS
+for	IN
+dimension	NN
+reduction	NN
+,	,
+we	PRP
+introduce	VBP
+the	DT
+measure	NN
+class	NN
+separation	NN
+degree	NN
+Ci	NN
+,	,
+deï	NN
+¬	NN
+ned	VBD
+as	IN
+:	:
+
+
+PN	NN
+
+
+j	NN
+=	JJ
+1	CD
+
+
+Qj	NN
+
+
+Ci	NN
+=	SYM
+
+
+N	NN
+-LRB-	-LRB-
+M	NN
+N	NN
+-RRB-	-RRB-
+;	:
+
+
+i	LS
+=	SYM
+1	CD
+:	:
+:	:
+:	:
+m	NN
+
+
+wheremisthenumberofclasses	NNS
+,	,
+N	NN
+isthenumber	NN
+ofrelevant	NN
+images	NNS
+.	.
+
+In	IN
+the	DT
+class	NN
+,	,
+M	NN
+is	VBZ
+the	DT
+total	JJ
+number	NN
+of	IN
+test	NN
+images	NNS
+,	,
+Qj	NN
+is	VBZ
+the	DT
+number	NN
+of	IN
+images	NNS
+whose	WP$
+distances	NNS
+to	TO
+the	DT
+j-th	JJ
+image	NN
+in	IN
+the	DT
+class	NN
+are	VBP
+greater	JJR
+than	IN
+all	DT
+thedistances	NNS
+from	IN
+the	DT
+j-th	JJ
+image	NN
+to	TO
+its	PRP$
+relevant	JJ
+images	NNS
+.	.
+
+An	DT
+image	NN
+is	VBZ
+said	VBN
+to	TO
+be	VB
+relevant	JJ
+to	TO
+a	DT
+classifitbelongsandhasbeencorrectlyassignedorclassiï	NN
+¬	NN
+ed	VBD
+to	TO
+that	DT
+class	NN
+.	.
+
+
+Reduction	NN
+Method	NN
+
+
+PCA	NN
+
+
+NN4	NN
+CMVF	NN
+CMVF	NN
+
+
+Average	JJ
+Rate	NN
+
+
+90.2	CD
+100	CD
+%	NN
+99.9	CD
+%	NN
+99.9	CD
+%	NN
+
+
+Feature	NN
+Vector2	NN
+
+
+xc	NN
+xt	NN
+xs	NN
+
+
+P	NN
+
+
+xc	NN
+xt	NN
+xs	NNPS
+P	NN
+-LRB-	-LRB-
+xc	NN
+xt	NN
+xs	NN
+-RRB-	-RRB-
+-LRB-	-LRB-
+xc	NN
+-RRB-	-RRB-
+P	NN
+-LRB-	-LRB-
+xt	NN
+-RRB-	-RRB-
+P	NN
+-LRB-	-LRB-
+xs	NN
+-RRB-	-RRB-
+
+
+Learning	NNP
+Time	NNP
+-LRB-	-LRB-
+epoch3	NN
+-RRB-	-RRB-
+
+
+N/A	NN
+
+
+7100	CD
+
+
+4200	CD
+
+
+4120	CD
+
+
+Table	NNP
+1	CD
+:	:
+Average	JJ
+class	NN
+separation	NN
+values	NNS
+with	IN
+di	FW
+ent	FW
+method	NN
+.	.
+
+
+From	IN
+Table	NNP
+1	CD
+it	PRP
+can	MD
+be	VB
+seen	VBN
+that	IN
+all	DT
+classes	NNS
+of	IN
+the	DT
+test	NN
+image	NN
+collection	NN
+are	VBP
+well	RB
+separated	VBN
+by	IN
+using	VBG
+neural	JJ
+network	NN
+and	CC
+hybrid	JJ
+approach	NN
+comparing	VBG
+using	VBG
+thePCA	NN
+.	.
+
+However	RB
+,	,
+dimen	NN
+-	:
+sion	NN
+reduction	NN
+with	IN
+neural	JJ
+network	NN
+suffers	VBZ
+from	IN
+very	RB
+long	JJ
+learning	NN
+time	NN
+.	.
+
+In	IN
+contrast	NN
+,	,
+our	PRP$
+proposed	VBN
+hybrid	NN
+method	NN
+does	VBZ
+not	RB
+lose	VB
+much	JJ
+accuracy	NN
+but	CC
+improve	VB
+the	DT
+network	NN
+learning	VBG
+time	NN
+.	.
+
+The	DT
+efï	NN
+¬	NN
+cienc	NN
+y	NN
+is	VBZ
+gained	VBN
+by	IN
+using	VBG
+a	DT
+relatively	RB
+small	JJ
+number	NN
+of	IN
+network	NN
+inputs	NNS
+and	CC
+the	DT
+network	NN
+training	NN
+iterations	NNS
+are	VBP
+conducted	VBN
+in	IN
+the	DT
+direction	NN
+of	IN
+the	DT
+largest	JJS
+eigenvalues	NNS
+for	IN
+each	DT
+feature	NN
+.	.
+
+
+2Because	NN
+
+
+there	EX
+is	VBZ
+no	DT
+di	FW
+in	IN
+the	DT
+results	NNS
+of	IN
+methods	NNS
+used	VBN
+to	TO
+organise	VB
+the	DT
+input	NN
+feature	NN
+vectors	NNS
+,	,
+we	PRP
+just	RB
+present	JJ
+one	CD
+of	IN
+them	PRP
+.	.
+
+
+3Epoch	NN
+
+
+means	VBZ
+one	CD
+complete	JJ
+presentation	NN
+of	IN
+the	DT
+input	NN
+data	NNS
+to	TO
+the	DT
+network	NN
+being	VBG
+trained	VBN
+.	.
+
+
+4NN	NN
+
+
+means	NNS
+neural	JJ
+network	NN
+.	.
+
+
+3.2	CD
+Evaluation	NN
+of	IN
+Reduced	VBN
+Dimensional	JJ
+Im	NN
+-	:
+
+
+age	NN
+Features	NNS
+using	VBG
+M-trees	NNS
+
+
+We	PRP
+usedM-trees	JJ
+-LSB-	-LRB-
+4	CD
+-RSB-	-RRB-
+as	IN
+accessmethodforevaluatingthequal	NN
+-	:
+ity	NN
+of	IN
+feature	NN
+space	NN
+reduced	VBN
+by	IN
+the	DT
+PCA	NNP
+,	,
+neural	JJ
+network	NN
+and	CC
+hybridmethod	NN
+.	.
+
+ThenumberofdimensionsofM-treeswasset	NNP
+to	TO
+6	CD
+,	,
+corresponding	VBG
+to	TO
+the	DT
+number	NN
+of	IN
+hidden	JJ
+units	NNS
+used	VBN
+in	IN
+the	DT
+neural	JJ
+networks	NNS
+.	.
+
+Every	DT
+image	NN
+from	IN
+the	DT
+collection	NN
+can	MD
+serve	VB
+as	IN
+a	DT
+query	NN
+image	NN
+.	.
+
+We	PRP
+posed	VBD
+a	DT
+query	NN
+image	NN
+to	TO
+the	DT
+M-trees	NNS
+to	TO
+conduct	VB
+a	DT
+k-NN	NN
+search	NN
+,	,
+where	WRB
+k	NN
+was	VBD
+set	VBN
+to100	NNS
+.	.
+
+Theconcepts	NNS
+of	IN
+normalized	VBN
+precision	NN
+and	CC
+normalized	VBD
+recall	NN
+-LSB-	-LRB-
+10	CD
+-RSB-	-RRB-
+in	IN
+in	IN
+-	:
+formation	NN
+retrieval	NN
+were	VBD
+used	VBN
+to	TO
+evaluate	VB
+the	DT
+effectiveness	NN
+of	IN
+similarity	NN
+retrieval	NN
+since	IN
+not	RB
+all	DT
+relevant	JJ
+images	NNS
+are	VBP
+retrieved	VBN
+.	.
+
+
+1	CD
+
+
+e	SYM
+
+
+t	NN
+
+
+0.9	CD
+
+
+a	DT
+
+
+r	NN
+
+
+l	NN
+
+
+l	NN
+
+
+a	DT
+
+
+precision	NN
+of	IN
+PCA	NNP
+precision	NN
+of	IN
+neural	JJ
+network	NN
+precision	NN
+of	IN
+hybrid	NN
+method	NN
+recall	NN
+of	IN
+PCA	NN
+
+
+recall	NN
+of	IN
+neural	JJ
+network	NN
+recall	NN
+of	IN
+hybrid	NN
+method	NN
+
+
+c	NN
+
+
+e	SYM
+
+
+r	NN
+
+
+0.8	CD
+
+
+d	NN
+
+
+n	NN
+
+
+a	DT
+
+
+n	NN
+
+
+o	NN
+
+
+i	LS
+
+
+0.7	CD
+
+
+s	NNS
+
+
+i	LS
+
+
+c	NN
+
+
+e	SYM
+
+
+r	NN
+
+
+p	NN
+
+
+d	NN
+
+
+e	SYM
+
+
+0.6	CD
+
+
+z	SYM
+
+
+i	LS
+
+
+l	NN
+
+
+a	DT
+
+
+m	NN
+
+
+r	NN
+
+
+o	NN
+
+
+0.5	CD
+
+
+n	NN
+
+
+e	SYM
+
+
+g	NN
+
+
+a	DT
+
+
+r	NN
+
+
+e	SYM
+
+
+v	LS
+
+
+0.4	CD
+
+
+A	DT
+
+
+0.3	CD
+
+
+0	CD
+1	CD
+2	CD
+3	CD
+4	CD
+5	CD
+6	CD
+7	CD
+8	CD
+9	CD
+10	CD
+11	CD
+12	CD
+13	CD
+14	CD
+
+
+Class	NNP
+ID	NNP
+
+
+Figure	NN
+2	CD
+:	:
+Comparing	VBG
+hybrid	NN
+method	NN
+with	IN
+the	DT
+PCA	NNP
+and	CC
+neural	JJ
+network	NN
+on	IN
+average	JJ
+normalized	VBD
+recall	NN
+and	CC
+precision	NN
+rate	NN
+.	.
+
+
+1	CD
+
+
+0.9	CD
+
+
+e	SYM
+
+
+t	NN
+
+
+a	DT
+
+
+r	NN
+
+
+n	NN
+
+
+0.8	CD
+
+
+o	NN
+
+
+i	LS
+
+
+s	NNS
+
+
+i	LS
+
+
+c	NN
+
+
+e	SYM
+
+
+0.7	CD
+
+
+r	NN
+
+
+p	NN
+
+
+d	NN
+
+
+n	NN
+
+
+0.6	CD
+
+
+a	DT
+
+
+l	NN
+
+
+l	NN
+
+
+a	DT
+
+
+c	NN
+
+
+e	SYM
+
+
+0.5	CD
+
+
+r	NN
+
+
+d	NN
+
+
+e	SYM
+
+
+z	SYM
+
+
+i	LS
+
+
+0.4	CD
+
+
+l	NN
+
+
+a	DT
+
+
+m	NN
+
+
+r	NN
+
+
+o	NN
+
+
+0.3	CD
+
+
+n	NN
+
+
+e	SYM
+
+
+g	NN
+
+
+a	DT
+
+
+0.2	CD
+
+
+r	NN
+
+
+e	SYM
+
+
+v	LS
+
+
+recall	NN
+rate	NN
+without	IN
+shape	NN
+recall	NN
+rate	NN
+with	IN
+shape	NN
+precision	NN
+rate	NN
+without	IN
+shape	NN
+precision	NN
+rate	NN
+with	IN
+shape	NN
+
+
+A	DT
+
+
+0.1	CD
+
+
+0	CD
+
+
+0	CD
+
+
+1	CD
+
+
+2	CD
+
+
+3	CD
+
+
+4	CD
+
+
+5	CD
+
+
+6	CD
+
+
+7	CD
+Class	NN
+ID	NNP
+
+
+8	CD
+
+
+9	CD
+
+
+10	CD
+
+
+11	CD
+
+
+12	CD
+
+
+13	CD
+
+
+14	CD
+
+
+Figure	NNP
+3	CD
+:	:
+Eeness	NN
+of	IN
+adding	VBG
+shape	NN
+feature	NN
+on	IN
+hybrid	NN
+method	NN
+
+
+In	IN
+Figure	NN
+2	CD
+,	,
+we	PRP
+can	MD
+see	VB
+that	IN
+the	DT
+normalized	VBN
+recall	NN
+and	CC
+normalized	VBD
+precision	NN
+values	NNS
+from	IN
+the	DT
+neural	JJ
+network	NN
+and	CC
+the	DT
+hybrid	NN
+methods	NNS
+are	VBP
+almost	RB
+the	DT
+same	JJ
+.	.
+
+Thus	RB
+,	,
+the	DT
+major	JJ
+difference	NN
+between	IN
+two	CD
+approaches	NNS
+is	VBZ
+the	DT
+time	NN
+required	VBN
+to	TO
+train	VB
+the	DT
+network	NN
+.	.
+
+One	PRP
+can	MD
+therefore	RB
+conclude	VB
+that	IN
+it	PRP
+is	VBZ
+more	RBR
+advantageous	JJ
+to	TO
+use	VB
+a	DT
+hybrid	NN
+dimensions	NNS
+reduction	NN
+method	NN
+to	TO
+reduce	VB
+the	DT
+dimensions	NNS
+of	IN
+image	NN
+features	NNS
+for	IN
+effective	JJ
+in	IN
+-	:
+dexing	VBG
+using	VBG
+M-tree	NN
+.	.
+
+Inaddition	NNP
+,	,
+systemperformancecan	NN
+be	VB
+improved	VBN
+considerablely	RB
+with	IN
+incorporation	NN
+of	IN
+other	JJ
+visual	JJ
+features	NNS
+.	.
+
+As	IN
+is	VBZ
+evident	JJ
+from	IN
+Figure	NNP
+3	CD
+,	,
+an	DT
+addition	NN
+of	IN
+shape	NN
+feature	NN
+into	IN
+our	PRP$
+system	NN
+gave	VBD
+approximately	RB
+15	CD
+%	NN
+improve	VB
+-	:
+ment	NN
+of	IN
+recall	NN
+and	CC
+precision	NN
+over	IN
+just	RB
+using	VBG
+color	NN
+and	CC
+texture	NN
+histogram	NN
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+3	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+3.3	CD
+Robustness	NN
+
+
+Robustness	NNP
+is	VBZ
+a	DT
+very	RB
+important	JJ
+feature	NN
+for	IN
+a	DT
+content	NN
+based	VBN
+image	NN
+retrieval	NN
+system	NN
+because	IN
+image	NN
+data	NNS
+in	IN
+real	JJ
+life	NN
+always	RB
+accompanies	VBZ
+with	IN
+noise	NN
+and	CC
+distortion	NN
+.	.
+
+With	IN
+incorporation	NN
+of	IN
+human	JJ
+visual	JJ
+perception	NN
+,	,
+CMVF	NN
+is	VBZ
+robust	JJ
+to	TO
+different	JJ
+kind	NN
+of	IN
+image	NN
+variations	NNS
+including	VBG
+color	NN
+distortion	NN
+,	,
+sharp	JJ
+-	:
+ness	NN
+changes	NNS
+,	,
+shifting	VBG
+and	CC
+rotation	NN
+.	.
+
+Experiment	NN
+shows	VBZ
+that	IN
+CMVF	NN
+is	VBZ
+robust	JJ
+to	TO
+50.4	CD
+percent	NN
+sharpening	VBG
+,	,
+45	CD
+degree	NN
+rota	NN
+-	:
+tion	NN
+,	,
+blurringwitha9x9Gaussianï	NN
+¬	CD
+lter	NN
+,	,
+randomspreadby10	NN
+pixels	NNS
+,	,
+10	CD
+percent	NN
+more	RBR
+saturation	NN
+,	,
+11	CD
+percent	NN
+less	RBR
+saturation	NN
+and	CC
+pixelization	NN
+by	IN
+9	CD
+pixels	NNS
+.	.
+
+
+4	LS
+.	.
+
+DEMONSTRATION	NN
+
+
+With	IN
+the	DT
+use	NN
+of	IN
+hybrid	NN
+structure	NN
+,	,
+CMVF	NN
+illustrates	VBZ
+its	PRP$
+great	JJ
+advance	NN
+in	IN
+performance	NN
+against	IN
+other	JJ
+dimension	NN
+reduction	NN
+methods	NNS
+such	JJ
+as	IN
+the	DT
+PCA	NNP
+and	CC
+neural	JJ
+network	NN
+.	.
+
+To	TO
+show	VB
+these	DT
+advance	NN
+,	,
+a	DT
+content	NN
+based	VBN
+image	NN
+retrieval	NN
+system	NN
+has	VBZ
+been	VBN
+developed	VBN
+in	IN
+C++	NNP
+and	CC
+Java	NNP
+.	.
+
+An	DT
+online	NN
+demonstration	NN
+is	VBZ
+provided5	NN
+.	.
+
+WhentheuseraccessestheCMVFwebpage	NNP
+,	,
+alist	NN
+of	IN
+images	NNS
+are	VBP
+randomly	RB
+selected	VBN
+and	CC
+displayed	VBN
+as	IN
+potential	JJ
+query	NN
+images	NNS
+.	.
+
+The	DT
+user	NN
+can	MD
+submit	VB
+one	CD
+of	IN
+them	PRP
+as	IN
+a	DT
+query	NN
+andthesystemwillsearchfortheimagesthataremostsimilar	NN
+in	IN
+visual	JJ
+content	NN
+.	.
+
+It	PRP
+displays	VBZ
+a	DT
+list	NN
+of	IN
+similar	JJ
+images	NNS
+,	,
+in	IN
+order	NN
+,	,
+startingfromthemostsimilar	NN
+.	.
+
+Thequerycanbeexecutedwith	NNP
+any	DT
+ofthefollowingretrieval	JJ
+methods	NNS
+:	:
+PCA	NN
+,	,
+neuralnetwork	NN
+,	,
+CMVF	NN
+and	CC
+CMVF	NN
+with	IN
+shape	NN
+.	.
+
+During	IN
+this	DT
+demonstration	NN
+,	,
+we	PRP
+will	MD
+present	VB
+its	PRP$
+advance	NN
+in	IN
+effectiveness	NN
+,	,
+ï	NN
+¬	CD
+‚	NN
+e	SYM
+xibility	NN
+and	CC
+robustness	NN
+via	IN
+the	DT
+following	NN
+:	:
+
+
+Effectiveness	NN
+:	:
+One	CD
+of	IN
+our	PRP$
+conjectures	NNS
+is	VBZ
+that	IN
+it	PRP
+is	VBZ
+possi	JJ
+-	:
+ble	NN
+to	TO
+obtain	VB
+effective	JJ
+retrieval	NN
+from	IN
+low-dimensional	JJ
+indexing	NN
+vectors	NNS
+,	,
+if	IN
+these	DT
+vectors	NNS
+are	VBP
+carefully	RB
+con	JJ
+-	:
+structed	NN
+.	.
+
+In	IN
+CMVF	NN
+,	,
+we	PRP
+build	VBP
+indexing	NN
+vectors	NNS
+from	IN
+high-dimensional	JJ
+â	NN
+$	$
+œrawâ	JJ
+$	$
+feature	NN
+vectors	NNS
+via	IN
+PCA	NNP
+and	CC
+a	DT
+trained	JJ
+neural	JJ
+network	NN
+classiï	NN
+¬	CD
+er	NN
+,	,
+which	WDT
+incorporates	VBZ
+manual	JJ
+classiï	NN
+¬	NN
+cation	NN
+criteria	NNS
+.	.
+
+Although	IN
+some	DT
+time	NN
+is	VBZ
+required	VBN
+to	TO
+train	VB
+the	DT
+neural	JJ
+network	NN
+involved	VBN
+in	IN
+CMVF	NN
+,	,
+we	PRP
+will	MD
+demonstrate	VB
+that	IN
+signiï	NN
+¬	CD
+cant	JJ
+improvement	NN
+in	IN
+classiï	NN
+¬	CD
+cation	NN
+and	CC
+similarity	NN
+search	NN
+can	MD
+be	VB
+achieved	VBN
+by	IN
+CMVF	NN
+than	IN
+can	MD
+the	DT
+PCA	NNP
+.	.
+
+In	IN
+comparison	NN
+with	IN
+the	DT
+pure	JJ
+neural	JJ
+network	NN
+approach	NN
+,	,
+CMVF	NN
+also	RB
+gives	VBZ
+good	JJ
+clas	NNS
+-	:
+siï	NN
+¬	CD
+cation	NN
+and	CC
+query	NN
+results	NNS
+,	,
+with	IN
+less	JJR
+training	NN
+time	NN
+and	CC
+simpler	JJR
+system	NN
+structure	NN
+.	.
+
+
+Flexibility	NN
+:	:
+Forfurtherinvestigationsintocontent-based	JJ
+image	NN
+retrieval	NN
+,	,
+it	PRP
+would	MD
+be	VB
+useful	JJ
+if	IN
+new	JJ
+indexing	NN
+fea	NN
+-	:
+tures	NNS
+could	MD
+be	VB
+easily	RB
+incorporated	VBN
+into	IN
+the	DT
+system	NN
+.	.
+
+The	DT
+system	NN
+demonstrates	VBZ
+retrieval	NN
+based	VBN
+on	IN
+colour	NN
+and	CC
+tex	NN
+-	:
+ture	NN
+,	,
+as	RB
+well	RB
+as	IN
+colour	NN
+,	,
+texture	NN
+and	CC
+shape	NN
+.	.
+
+It	PRP
+was	VBD
+rela	NN
+-	:
+tively	RB
+straightforward	JJ
+to	TO
+incorporate	VB
+shape	NN
+into	IN
+the	DT
+sys	NNS
+-	:
+tem	NN
+,	,
+and	CC
+it	PRP
+clearly	RB
+demonstrates	VBZ
+that	IN
+the	DT
+addition	NN
+of	IN
+shape	NN
+leads	VBZ
+to	TO
+superior	JJ
+retrieval	NN
+results	NNS
+.	.
+
+
+Robustness	NNP
+:	:
+In	IN
+the	DT
+real	JJ
+world	NN
+,	,
+perfect	JJ
+image	NN
+data	NNS
+can	MD
+not	RB
+be	VB
+expected	VBN
+.	.
+
+Thus	RB
+,	,
+it	PRP
+is	VBZ
+very	RB
+important	JJ
+for	IN
+image	NN
+retrieval	NN
+systems	NNS
+to	TO
+be	VB
+robust	JJ
+to	TO
+image	NN
+variations	NNS
+such	JJ
+ascolordistortion	NN
+,	,
+sharpnesschanges	NNS
+,	,
+shiftingandrota	NN
+-	:
+tion	NN
+.	.
+
+WewilldemonstratethatCMVFworkseffectively	RB
+
+
+5http	NN
+:	:
+/	:
+/	:
+www.cse.unsw.edu.au/imagedb/MVindex/index.html	NN
+
+
+even	RB
+in	IN
+the	DT
+presence	NN
+of	IN
+the	DT
+kinds	NNS
+of	IN
+distortion	NN
+situations	NNS
+just	RB
+mentioned	VBN
+.	.
+
+
+5	CD
+.	.
+
+CONCLUSION	NN
+
+
+In	IN
+this	DT
+demo	NN
+,	,
+we	PRP
+present	VBP
+CMVF	NNP
+,	,
+a	DT
+novel	JJ
+indexing	NN
+scheme	NN
+by	IN
+combining	VBG
+different	JJ
+types	NNS
+of	IN
+image	NN
+features	NNS
+to	TO
+support	VB
+queries	NNS
+that	WDT
+involve	VBP
+composite	JJ
+multiple	JJ
+features	NNS
+.	.
+
+We	PRP
+have	VBP
+alsodemonstratedtheoutputqualityofourhybridmethodfor	JJ
+indexing	NN
+the	DT
+image	NN
+collection	NN
+using	VBG
+M-trees	NNS
+.	.
+
+Our	PRP$
+proposed	VBN
+hybrid	NN
+dimension	NN
+reduction	NN
+approach	NN
+,	,
+signiï	NN
+¬	NN
+cantly	RB
+reduces	VBZ
+the	DT
+size	NN
+of	IN
+image	NN
+feature	NN
+vectors	NNS
+while	IN
+at	IN
+the	DT
+same	JJ
+time	NN
+re	SYM
+-	:
+tainingeffective	JJ
+discriminationpower	NN
+andalsoallowingus	NN
+to	TO
+incorporateaspectsofhumanvisualperceptionintheweights	NNS
+of	IN
+the	DT
+network	NN
+.	.
+
+This	DT
+enables	VBZ
+any	DT
+existing	VBG
+access	NN
+method	NN
+for	IN
+moderate	JJ
+dimensions	NNS
+to	TO
+be	VB
+used	VBN
+efï	NN
+¬	NN
+ciently	RB
+and	CC
+effectively	RB
+.	.
+
+
+6	CD
+.	.
+
+REFERENCES	NNS
+
+
+-LSB-	-LRB-
+1	CD
+-RSB-	-RRB-
+A.K.Jain	NNP
+and	CC
+A.	NNP
+Vailaya	NNP
+.	.
+
+Image	NN
+retrieval	NN
+using	VBG
+color	NN
+
+
+and	CC
+shape	NN
+.	.
+
+Pattern	NN
+Recognition	NN
+,	,
+29	CD
+-LRB-	-LRB-
+8	CD
+-RRB-	-RRB-
+:1233	CD
+â	NN
+$	$
+``	``
+1244	CD
+,	,
+
+
+1996	CD
+.	.
+
+
+-LSB-	-LRB-
+2	CD
+-RSB-	-RRB-
+Anne.H.H.Ngu	NNP
+,	,
+Q.	NNP
+Z.Sheng	NNP
+,	,
+D.	NNP
+Q.Huynh	NNP
+,	,
+and	CC
+R.	NNP
+Lei	NNP
+.	.
+
+
+Combining	VBG
+multi-visual	JJ
+features	NNS
+for	IN
+efï	NN
+¬	CD
+cient	JJ
+indexing	NN
+
+
+in	IN
+a	DT
+large	JJ
+image	NN
+database	NN
+.	.
+
+The	DT
+VLDB	NNP
+Journal	NNP
+,	,
+
+
+9	CD
+-LRB-	-LRB-
+4	CD
+-RRB-	-RRB-
+:280	CD
+â	NN
+$	$
+``	``
+293	CD
+,	,
+May	NNP
+2001	CD
+.	.
+
+
+-LSB-	-LRB-
+3	CD
+-RSB-	-RRB-
+C.	NNP
+Bohm	NNP
+,	,
+Â	NNP
+¨	NNP
+S.	NNP
+Berchtold	NNP
+,	,
+and	CC
+D.	NNP
+A.	NNP
+Keim	NNP
+.	.
+
+Searching	NN
+in	IN
+
+
+high-dimensional	JJ
+spaces	NNS
+:	:
+Index	NNP
+structures	NNS
+for	IN
+
+
+improving	VBG
+the	DT
+performance	NN
+of	IN
+multimedia	NNS
+databases	NNS
+.	.
+
+
+ACM	NNP
+Computing	NNP
+Surveys	NNS
+,	,
+33	CD
+-LRB-	-LRB-
+3	CD
+-RRB-	-RRB-
+:322	CD
+â	NN
+$	$
+``	``
+373	CD
+,	,
+September	NNP
+
+
+2001	CD
+.	.
+
+
+-LSB-	-LRB-
+4	CD
+-RSB-	-RRB-
+P.	NNP
+Ciaccia	NNP
+,	,
+M.	NNP
+Patella	NNP
+,	,
+and	CC
+P.	NNP
+Zezula	NNP
+.	.
+
+M-tree	NNP
+:	:
+An	DT
+
+
+efï	NN
+¬	CD
+cient	JJ
+access	NN
+method	NN
+for	IN
+similarity	NN
+search	NN
+in	IN
+metric	JJ
+
+
+spaces	NNS
+.	.
+
+In	IN
+Proceedings	NNP
+of	IN
+the	DT
+23rd	JJ
+VLDB	NN
+
+
+International	NNP
+Conference	NNP
+,	,
+pages	NNS
+426â	VBP
+$	$
+``	``
+435	CD
+,	,
+
+
+Athens	NNP
+,	,
+Greece	NNP
+,	,
+September	NNP
+1997	CD
+.	.
+
+
+-LSB-	-LRB-
+5	CD
+-RSB-	-RRB-
+S.	NNP
+Fahlman	NNP
+.	.
+
+An	DT
+empirical	JJ
+study	NN
+of	IN
+learning	VBG
+speed	NN
+for	IN
+
+
+back-propagation	JJ
+networks	NNS
+.	.
+
+Technical	NNP
+Report	NNP
+
+
+CMU-CS	NN
+88-162	CD
+,	,
+Carnegie-Mellon	NNP
+University	NNP
+,	,
+1988	CD
+.	.
+
+
+-LSB-	-LRB-
+6	CD
+-RSB-	-RRB-
+K.	NNP
+Fukunaga	NNP
+.	.
+
+Introduction	NN
+to	TO
+Statistical	JJ
+Pattern	NN
+
+
+Recognition	NN
+.	.
+
+Academic	NNP
+Press	NNP
+,	,
+1990	CD
+.	.
+
+
+-LSB-	-LRB-
+7	CD
+-RSB-	-RRB-
+G.M.P.Euripdes	NNP
+and	CC
+C.	NNP
+Faloutsos	NNP
+.	.
+
+Similarity	NN
+searching	VBG
+
+
+in	IN
+medical	JJ
+image	NN
+databases	NNS
+.	.
+
+IEEE	NNP
+Trans	NNP
+.	.
+
+Knowl	NNP
+.	.
+
+Data	NNS
+
+
+Eng.	NNP
+,	,
+3	CD
+-LRB-	-LRB-
+9	CD
+-RRB-	-RRB-
+:435	CD
+â	NN
+$	$
+``	``
+447	CD
+,	,
+June	NNP
+1997	CD
+.	.
+
+
+-LSB-	-LRB-
+8	CD
+-RSB-	-RRB-
+J.Canny	NNP
+.	.
+
+A	DT
+computational	JJ
+approach	NN
+to	TO
+edge	VB
+detection	NN
+.	.
+
+
+IEEE	NNP
+Trans	NNP
+.	.
+
+Pattern	NN
+Anal	NNP
+.	.
+
+Mach	NNP
+.	.
+
+Intell.	NNP
+,	,
+
+
+8	CD
+-LRB-	-LRB-
+6	CD
+-RRB-	-RRB-
+:679	CD
+â	NN
+$	$
+``	``
+698	CD
+,	,
+November	NNP
+1986	CD
+.	.
+
+
+-LSB-	-LRB-
+9	CD
+-RSB-	-RRB-
+M.	NNP
+Nabil	NNP
+,	,
+Anne.H.H.Ngu	NNP
+,	,
+and	CC
+J.Shepherd	NNP
+.	.
+
+Picture	NNP
+
+
+similarity	NN
+retrieval	NN
+using	VBG
+the	DT
+2d	JJ
+projection	NN
+interval	NN
+
+
+representation	NN
+.	.
+
+IEEE	NNP
+Trans	NNP
+.	.
+
+Knowl	NNP
+.	.
+
+Data	NNS
+Eng.	NNP
+,	,
+
+
+8	CD
+-LRB-	-LRB-
+4	CD
+-RRB-	-RRB-
+:533	CD
+â	NN
+$	$
+``	``
+539	CD
+,	,
+1996	CD
+.	.
+
+
+-LSB-	-LRB-
+10	CD
+-RSB-	-RRB-
+G.	NNP
+Salton	NNP
+and	CC
+M.	NNP
+McGill	NNP
+.	.
+
+Introduction	NN
+to	TO
+Modern	NNP
+
+
+Information	NNP
+Retrieval	NNP
+.	.
+
+McGraw-Hill	NNP
+,	,
+New	NNP
+York	NNP
+,	,
+1993	CD
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+4	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+

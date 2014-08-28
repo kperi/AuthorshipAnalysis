@@ -1,0 +1,1 @@
+echo -en "\a" > /dev/tty5

@@ -1,0 +1,22426 @@
+IEEE	NNP
+TRANSACTIONS	NNPS
+ON	IN
+KNOWLEDGE	NNP
+AND	CC
+DATA	NNP
+ENGINEERING	NNP
+,	,
+VOL	NNP
+.	.
+
+24	CD
+,	,
+NO.	NNP
+2	CD
+,	,
+FEBRUARY	NNP
+2012	CD
+309	CD
+
+
+On	IN
+the	DT
+Deep	JJ
+Order-Preserving	JJ
+Submatrix	NN
+
+
+Problem	NNP
+:	:
+A	NNP
+Best	JJS
+Effort	NN
+Approach	NN
+
+
+Byron	NNP
+J.	NNP
+Gao	NNP
+,	,
+Obi	NNP
+L.	NNP
+Griffith	NNP
+,	,
+Martin	NNP
+Ester	NNP
+,	,
+Hui	NNP
+Xiong	NNP
+,	,
+Senior	NNP
+Member	NNP
+,	,
+IEEE	NNP
+,	,
+
+
+Qiang	NNP
+Zhao	NNP
+,	,
+and	CC
+Steven	NNP
+J.M.	NNP
+Jones	NNP
+
+
+Abstractâ	NNP
+$	$
+''	''
+Order-preserving	JJ
+submatrix	NN
+-LRB-	-LRB-
+OPSM	NN
+-RRB-	-RRB-
+has	VBZ
+been	VBN
+widely	RB
+accepted	VBN
+as	IN
+a	DT
+biologically	RB
+meaningful	JJ
+cluster	NN
+model	NN
+,	,
+capturing	VBG
+the	DT
+general	JJ
+tendency	NN
+of	IN
+gene	NN
+expression	NN
+across	IN
+a	DT
+subset	NN
+of	IN
+experiments	NNS
+.	.
+
+In	IN
+an	DT
+OPSM	NNP
+,	,
+the	DT
+expression	NN
+levels	NNS
+of	IN
+all	DT
+genes	NNS
+induce	VBP
+the	DT
+same	JJ
+linear	JJ
+ordering	VBG
+of	IN
+the	DT
+experiments	NNS
+.	.
+
+The	DT
+OPSM	NNP
+problem	NN
+is	VBZ
+to	TO
+discover	VB
+those	DT
+statistically	RB
+significant	JJ
+OPSMs	NNS
+from	IN
+a	DT
+given	VBN
+data	NNS
+matrix	NN
+.	.
+
+The	DT
+problem	NN
+is	VBZ
+reducible	JJ
+to	TO
+a	DT
+special	JJ
+case	NN
+of	IN
+the	DT
+sequential	JJ
+pattern	NN
+mining	NN
+problem	NN
+,	,
+where	WRB
+a	DT
+pattern	NN
+and	CC
+its	PRP$
+supporting	VBG
+sequences	NNS
+uniquely	RB
+specify	VBP
+an	DT
+OPSM	NNP
+.	.
+
+Unfortunately	RB
+,	,
+existing	VBG
+methods	NNS
+do	VBP
+not	RB
+scale	VB
+well	RB
+to	TO
+massive	JJ
+data	NNS
+sets	NNS
+containing	VBG
+thousands	NNS
+of	IN
+experiments	NNS
+and	CC
+hundreds	NNS
+of	IN
+thousands	NNS
+of	IN
+genes	NNS
+,	,
+which	WDT
+are	VBP
+common	JJ
+in	IN
+todayâ	NN
+$	$
+™	CD
+s	NNS
+gene	NN
+expression	NN
+analysis	NN
+.	.
+
+In	IN
+particular	JJ
+,	,
+deep	JJ
+OPSMs	NNS
+,	,
+corresponding	VBG
+to	TO
+long	JJ
+patterns	NNS
+with	IN
+few	JJ
+supporting	VBG
+sequences	NNS
+,	,
+incur	VBP
+explosive	JJ
+computational	JJ
+costs	NNS
+in	IN
+their	PRP$
+discovery	NN
+and	CC
+are	VBP
+completely	RB
+pruned	VBN
+off	RP
+by	IN
+existing	VBG
+methods	NNS
+.	.
+
+However	RB
+,	,
+it	PRP
+is	VBZ
+of	IN
+particular	JJ
+interest	NN
+of	IN
+biologists	NNS
+to	TO
+determine	VB
+small	JJ
+groups	NNS
+of	IN
+genes	NNS
+that	WDT
+are	VBP
+tightly	RB
+coregulated	VBN
+across	IN
+many	JJ
+experiments	NNS
+,	,
+and	CC
+some	DT
+pathways	NNS
+or	CC
+processes	NNS
+may	MD
+require	VB
+as	IN
+few	JJ
+as	IN
+two	CD
+genes	NNS
+to	TO
+act	VB
+in	IN
+concert	NN
+.	.
+
+In	IN
+this	DT
+paper	NN
+,	,
+we	PRP
+study	VBP
+the	DT
+discovery	NN
+of	IN
+deep	JJ
+OPSMs	NNS
+from	IN
+massive	JJ
+data	NNS
+sets	NNS
+.	.
+
+We	PRP
+propose	VBP
+a	DT
+novel	JJ
+best	JJS
+effort	NN
+mining	NN
+frameworkKiWi	NN
+that	WDT
+exploits	VBZ
+two	CD
+parametersk	NN
+and	CC
+w	NN
+to	TO
+bound	VBN
+the	DT
+available	JJ
+computational	JJ
+resources	NNS
+and	CC
+search	VB
+a	DT
+selected	VBN
+search	NN
+space	NN
+,	,
+and	CC
+does	VBZ
+what	WP
+it	PRP
+can	MD
+to	TO
+find	VB
+as	RB
+many	JJ
+as	IN
+possible	JJ
+deep	JJ
+OPSMs	NNS
+.	.
+
+Extensive	JJ
+biological	JJ
+and	CC
+computational	JJ
+evaluations	NNS
+on	IN
+real	JJ
+data	NNS
+sets	NNS
+demonstrate	VBP
+the	DT
+validity	NN
+and	CC
+importance	NN
+of	IN
+the	DT
+deep	JJ
+OPSM	NNP
+problem	NN
+,	,
+and	CC
+the	DT
+efficiency	NN
+and	CC
+effectiveness	NN
+of	IN
+theKiWi	NN
+mining	NN
+
+
+framework	NN
+.	.
+
+
+Index	NNP
+Termsâ	NNP
+$	$
+''	''
+Order-preserving	JJ
+submatrix	NN
+,	,
+OPSM	NNP
+,	,
+deep	JJ
+OPSM	NNP
+,	,
+deep	JJ
+pattern	NN
+,	,
+subspace	NN
+clustering	NN
+,	,
+pattern-based	JJ
+clustering	NN
+,	,
+sequential	JJ
+pattern	NN
+mining	NN
+,	,
+scalability	NN
+,	,
+best	JJS
+effort	NN
+,	,
+gene	NN
+expression	NN
+analysis	NN
+,	,
+negative	JJ
+correlation	NN
+,	,
+data	NNS
+mining	NN
+.	.
+
+
+1INTRODUCTION	NN
+
+
+A	DT
+
+
+S	NN
+an	DT
+unprecedented	JJ
+breakthrough	NN
+in	IN
+experimental	JJ
+
+
+molecular	JJ
+biology	NN
+,	,
+DNA	NN
+microarrays	NNS
+,	,
+next-generation	JJ
+sequencing	NN
+,	,
+and	CC
+similar	JJ
+technologies	NNS
+have	VBP
+enabled	VBN
+a	DT
+wave	NN
+of	IN
+extraordinary	JJ
+genomewide	JJ
+investigations	NNS
+of	IN
+gene	NN
+ex	FW
+-	:
+pression	NN
+,	,
+allowing	VBG
+simultaneous	JJ
+monitoring	NN
+of	IN
+activities	NNS
+of	IN
+many	JJ
+genes	NNS
+over	IN
+many	JJ
+experiments	NNS
+.	.
+
+The	DT
+resulting	VBG
+expres	NNS
+-	:
+sion	NN
+data	NNS
+can	MD
+be	VB
+viewed	VBN
+as	IN
+an	DT
+n	NN
+m	NN
+matrix	NN
+with	IN
+n	NN
+genes	NNS
+-LRB-	-LRB-
+rows	NNS
+-RRB-	-RRB-
+and	CC
+m	NN
+experiments	NNS
+-LRB-	-LRB-
+columns	NNS
+-RRB-	-RRB-
+,	,
+in	IN
+which	WDT
+each	DT
+entry	NN
+represents	VBZ
+the	DT
+expression	NN
+level	NN
+of	IN
+a	DT
+given	VBN
+gene	NN
+under	IN
+a	DT
+given	VBN
+experiment	NN
+.	.
+
+
+.	.
+
+B.J.	NNP
+Gao	NNP
+is	VBZ
+with	IN
+the	DT
+Department	NNP
+of	IN
+Computer	NNP
+Science	NNP
+,	,
+Texas	NNP
+State	NNP
+
+
+University	NNP
+,	,
+601	CD
+University	NNP
+Drive	NNP
+,	,
+San	NNP
+Marcos	NNP
+,	,
+TX	NNP
+78666	CD
+.	.
+
+
+E-mail	NN
+:	:
+bgao@txstate.edu	NN
+.	.
+
+
+.	.
+
+O.L.	NNP
+Griffith	NNP
+is	VBZ
+with	IN
+the	DT
+Lawrence	NNP
+Berkeley	NNP
+National	NNP
+Laboratory	NNP
+,	,
+
+
+1	CD
+Cyclotron	NNP
+Rd	NNP
+,	,
+Mailstop	NNP
+977-250	CD
+,	,
+Berkeley	NNP
+,	,
+CA	NNP
+94720	CD
+.	.
+
+
+E-mail	NN
+:	:
+olgriffith@lbl.gov	NN
+.	.
+
+
+.	.
+
+M.	NNP
+Ester	NNP
+is	VBZ
+with	IN
+the	DT
+School	NNP
+of	IN
+Computer	NNP
+Science	NNP
+,	,
+Simon	NNP
+Fraser	NNP
+University	NNP
+,	,
+
+
+8888	CD
+University	NNP
+Drive	NNP
+,	,
+Burnaby	NNP
+,	,
+BC	NNP
+V5A	NNP
+1S6	NNP
+,	,
+Canada	NNP
+.	.
+
+
+E-mail	NN
+:	:
+ester@cs.sfu.ca	NN
+.	.
+
+
+.	.
+
+H.	NNP
+Xiong	NNP
+is	VBZ
+with	IN
+the	DT
+Rutgers	NNP
+,	,
+The	DT
+State	NNP
+University	NNP
+of	IN
+New	NNP
+Jersey	NNP
+,	,
+
+
+1	CD
+Washington	NNP
+Street	NNP
+-LRB-	-LRB-
+Room	NNP
+1076	CD
+-RRB-	-RRB-
+,	,
+Newark	NNP
+,	,
+NJ	NNP
+07102	CD
+.	.
+
+
+E-mail	NN
+:	:
+hxiong@rutgers.edu	NN
+.	.
+
+
+.	.
+
+Q.	NNP
+Zhao	NNP
+is	VBZ
+with	IN
+the	DT
+Department	NNP
+of	IN
+Mathematics	NNP
+,	,
+Texas	NNP
+State	NNP
+University	NNP
+,	,
+
+
+601	CD
+University	NNP
+Drive	NNP
+,	,
+San	NNP
+Marcos	NNP
+,	,
+TX	NNP
+78666	CD
+.	.
+
+
+E-mail	NN
+:	:
+qiang.zhao@txstate.edu	NN
+.	.
+
+
+.	.
+
+S.J.M.	NNP
+Jones	NNP
+is	VBZ
+with	IN
+the	DT
+Genome	NNP
+Sciences	NNPS
+Centre	NNP
+,	,
+British	NNP
+Columbia	NNP
+Cancer	NNP
+
+
+Agency	NNP
+,	,
+Vancouver	NNP
+,	,
+BC	NNP
+Canada	NNP
+V5Z	NN
+4S6	NN
+.	.
+
+E-mail	NN
+:	:
+sjones@bcgsc.ca	NN
+.	.
+
+Manuscript	NN
+received	VBD
+18	CD
+Apr.	NNP
+2010	CD
+;	:
+revised	VBN
+22	CD
+June	NNP
+2010	CD
+;	:
+accepted	VBN
+18	CD
+July	NNP
+2010	CD
+;	:
+published	VBN
+online	NN
+17	CD
+Nov.	NNP
+2010	CD
+.	.
+
+
+Recommended	VBN
+for	IN
+acceptance	NN
+by	IN
+A.	NN
+Zhang	NNP
+.	.
+
+
+For	IN
+information	NN
+on	IN
+obtaining	VBG
+reprints	VBZ
+of	IN
+this	DT
+article	NN
+,	,
+please	VB
+send	VB
+e-mail	NN
+to	TO
+:	:
+tkde@computer.org,	NN
+and	CC
+reference	NN
+IEEECS	NNS
+Log	VBP
+Number	NNP
+TKDE-2010-04-0222	NN
+.	.
+
+Digital	NNP
+Object	NNP
+Identifier	NNP
+no.	NNP
+10.1109	CD
+/	:
+TKDE	NN
+.2010.244	CD
+.	.
+
+
+1041-4347/12	CD
+/	:
+$	$
+31.00	CD
+2012	CD
+IEEE	NNP
+Published	VBN
+by	IN
+the	DT
+IEEE	NNP
+Computer	NNP
+Society	NNP
+
+
+Ã	NN
+‡	SYM
+
+
+Clustering	NN
+,	,
+as	IN
+a	DT
+major	JJ
+tool	NN
+for	IN
+gene	NN
+expression	NN
+analysis	NN
+,	,
+is	VBZ
+an	DT
+unsupervised	JJ
+way	NN
+of	IN
+grouping	VBG
+objects	NNS
+based	VBN
+on	IN
+their	PRP$
+similarity	NN
+in	IN
+feature	NN
+space	NN
+to	TO
+achieve	VB
+internal	JJ
+cohesion	NN
+and	CC
+external	JJ
+isolation	NN
+.	.
+
+Coexpression	NN
+of	IN
+genes	NNS
+in	IN
+a	DT
+cluster	NN
+can	MD
+be	VB
+used	VBN
+to	TO
+infer	VB
+functional	JJ
+associations	NNS
+between	IN
+genes	NNS
+and	CC
+identify	VB
+coregulation	NN
+-LSB-	-LRB-
+27	CD
+-RSB-	-RRB-
+.	.
+
+Traditional	JJ
+methods	NNS
+such	JJ
+as	IN
+k	NN
+-	:
+means	VBZ
+-LSB-	-LRB-
+34	CD
+-RSB-	-RRB-
+and	CC
+hierarchical	JJ
+clustering	NN
+-LSB-	-LRB-
+29	CD
+-RSB-	-RRB-
+do	VBP
+not	RB
+work	VB
+well	RB
+for	IN
+high-dimensional	JJ
+gene	NN
+expression	NN
+data	NNS
+because	IN
+most	JJS
+genes	NNS
+are	VBP
+tightly	RB
+coregulated	VBN
+only	RB
+under	IN
+a	DT
+certain	JJ
+subset	NN
+of	IN
+experiments	NNS
+.	.
+
+Thus	RB
+,	,
+subspace	NN
+clustering	NN
+has	VBZ
+gained	VBN
+increas	NNS
+-	:
+ing	NN
+popularity	NN
+in	IN
+recent	JJ
+years	NNS
+-LSB-	-LRB-
+1	CD
+-RSB-	-RRB-
+,	,
+-LSB-	-LRB-
+3	CD
+-RSB-	-RRB-
+.	.
+
+
+Pattern-based	JJ
+subspace	NN
+clustering	NN
+,	,
+where	WRB
+clustering	NN
+is	VBZ
+performed	VBN
+using	VBG
+pattern	NN
+similarity	NN
+rather	RB
+than	IN
+distance	NN
+similarity	NN
+,	,
+is	VBZ
+particularly	RB
+meaningful	JJ
+in	IN
+gene	NN
+expression	NN
+analysis	NN
+-LSB-	-LRB-
+31	CD
+-RSB-	-RRB-
+,	,
+-LSB-	-LRB-
+35	CD
+-RSB-	-RRB-
+.	.
+
+This	DT
+is	VBZ
+due	JJ
+to	TO
+the	DT
+fact	NN
+that	IN
+coregulated	JJ
+genes	NNS
+are	VBP
+not	RB
+necessarily	RB
+expressed	VBN
+at	IN
+the	DT
+same	JJ
+-LRB-	-LRB-
+or	CC
+even	RB
+similar	JJ
+-RRB-	-RRB-
+absolute	JJ
+expression	NN
+level	NN
+.	.
+
+For	IN
+example	NN
+,	,
+a	DT
+transcrip	NN
+-	:
+tion	NN
+factor	NN
+may	MD
+be	VB
+able	JJ
+to	TO
+perform	VB
+its	PRP$
+function	NN
+at	IN
+a	DT
+very	RB
+different	JJ
+concentration	NN
+from	IN
+its	PRP$
+target	NN
+genes	NNS
+.	.
+
+
+Recently	RB
+,	,
+order-preserving	JJ
+submatrix	NN
+-LRB-	-LRB-
+OPSM	NN
+-RRB-	-RRB-
+-LSB-	-LRB-
+8	CD
+-RSB-	-RRB-
+has	VBZ
+been	VBN
+introduced	VBN
+and	CC
+accepted	VBN
+as	IN
+a	DT
+biologically	RB
+meaningful	JJ
+cluster	NN
+model	NN
+.	.
+
+An	DT
+OPSM	NNP
+,	,
+essentially	RB
+a	DT
+pattern-based	JJ
+sub	NN
+-	:
+space	NN
+cluster	NN
+,	,
+is	VBZ
+a	DT
+subset	NN
+of	IN
+rows	NNS
+and	CC
+columns	NNS
+in	IN
+a	DT
+data	NN
+matrix	NN
+where	WRB
+all	PDT
+the	DT
+rows	NNS
+induce	VBP
+the	DT
+same	JJ
+linear	JJ
+ordering	VBG
+of	IN
+the	DT
+columns	NNS
+,	,
+as	IN
+shown	VBN
+in	IN
+Fig.	NN
+1	CD
+.	.
+
+An	DT
+OPSM	NNP
+cluster	NN
+may	MD
+arise	VB
+when	WRB
+the	DT
+expression	NN
+levels	NNS
+of	IN
+the	DT
+coregulated	JJ
+genes	NNS
+rise	VBP
+and	CC
+fall	VBP
+synchronously	RB
+in	IN
+response	NN
+to	TO
+a	DT
+sequence	NN
+of	IN
+environment	NN
+stimuli	NNS
+.	.
+
+The	DT
+OPSM	NNP
+problem	NN
+is	VBZ
+to	TO
+discover	VB
+significant	JJ
+OPSMs	NNS
+from	IN
+a	DT
+given	VBN
+data	NNS
+matrix	NN
+,	,
+which	WDT
+can	MD
+play	VB
+an	DT
+essential	JJ
+role	NN
+in	IN
+inferring	VBG
+gene	NN
+regulatory	JJ
+networks	NNS
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+1	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+310	CD
+IEEE	NNP
+TRANSACTIONS	NNPS
+ON	IN
+KNOWLEDGE	NNP
+AND	CC
+DATA	NNP
+ENGINEERING	NNP
+,	,
+VOL	NNP
+.	.
+
+24	CD
+,	,
+NO.	NNP
+2	CD
+,	,
+FEBRUARY	NNP
+2012	CD
+
+
+Fig.	NN
+1	CD
+.	.
+
+OPSM	NNP
+and	CC
+GOPSM	NNP
+.	.
+
+The	DT
+raw	JJ
+gene	NN
+expression	NN
+data	NNS
+matrix	NN
+in	IN
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+Exhibits	VBZ
+no	DT
+obvious	JJ
+pattern	NN
+when	WRB
+plotted	VBN
+in	IN
+-LRB-	-LRB-
+b	NN
+-RRB-	-RRB-
+.	.
+
+-LRB-	-LRB-
+c	NN
+-RRB-	-RRB-
+Shows	VBZ
+an	DT
+GOPSM	NN
+consisting	VBG
+of	IN
+two	CD
+OPSMs	NNS
+corresponding	VBG
+to	TO
+the	DT
+submatrixes	NNS
+with	IN
+shaded	JJ
+entries	NNS
+and	CC
+underlined	VBD
+entries	NNS
+in	IN
+the	DT
+data	NNS
+matrix	NN
+respectively	RB
+.	.
+
+-LRB-	-LRB-
+d	NN
+-RRB-	-RRB-
+Shows	VBZ
+a	DT
+permutation	NN
+of	IN
+columns	NNS
+of	IN
+the	DT
+GOPSM	NNP
+,	,
+under	IN
+which	WDT
+the	DT
+row	NN
+sequences	NNS
+are	VBP
+in	IN
+either	CC
+strictly	RB
+ascending	VBG
+or	CC
+descending	VBG
+order	NN
+.	.
+
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+Data	NNS
+matrix	NN
+.	.
+
+-LRB-	-LRB-
+b	NN
+-RRB-	-RRB-
+Data	NN
+matrix	NN
+plotted	VBN
+.	.
+
+-LRB-	-LRB-
+c	NN
+-RRB-	-RRB-
+GOPSM	NN
+consisting	VBG
+of	IN
+two	CD
+OPSM	NNP
+.	.
+
+-LRB-	-LRB-
+d	NN
+-RRB-	-RRB-
+GOPSM	NN
+rearranged	VBN
+.	.
+
+
+The	DT
+OPSM	NNP
+cluster	NN
+model	NN
+focuses	VBZ
+on	IN
+the	DT
+relative	JJ
+order	NN
+of	IN
+columns	NNS
+rather	RB
+than	IN
+the	DT
+uniformity	NN
+of	IN
+actual	JJ
+values	NNS
+in	IN
+data	NNS
+matrixes	NNS
+-LSB-	-LRB-
+35	CD
+-RSB-	-RRB-
+.	.
+
+By	IN
+sorting	VBG
+the	DT
+row	NN
+vectors	NNS
+and	CC
+replacing	VBG
+the	DT
+entries	NNS
+with	IN
+their	PRP$
+corresponding	JJ
+column	NN
+labels	NNS
+,	,
+the	DT
+data	NNS
+matrix	NN
+can	MD
+be	VB
+transformed	VBN
+into	IN
+a	DT
+sequence	NN
+database	NN
+,	,
+and	CC
+OPSM	NNP
+mining	NN
+is	VBZ
+reduced	VBN
+to	TO
+a	DT
+special	JJ
+case	NN
+of	IN
+the	DT
+sequential	JJ
+pattern	NN
+mining	NN
+problem	NN
+with	IN
+some	DT
+distinctive	JJ
+properties	NNS
+.	.
+
+In	IN
+particular	JJ
+,	,
+the	DT
+sequence	NN
+database	NN
+is	VBZ
+extremely	RB
+dense	JJ
+since	IN
+each	DT
+column	NN
+label	NN
+appears	VBZ
+exactly	RB
+once	RB
+-LRB-	-LRB-
+assuming	VBG
+no	DT
+missing	VBG
+values	NNS
+-RRB-	-RRB-
+in	IN
+each	DT
+sequence	NN
+.	.
+
+A	DT
+sequential	JJ
+pattern	NN
+uniquely	RB
+specifies	VBZ
+an	DT
+OPSM	NN
+with	IN
+all	PDT
+the	DT
+supporting	VBG
+sequences	NNS
+as	IN
+the	DT
+rows	NNS
+.	.
+
+The	DT
+number	NN
+of	IN
+supporting	VBG
+sequences	NNS
+is	VBZ
+the	DT
+support	NN
+count	NN
+,	,
+or	CC
+simply	RB
+support	NN
+,	,
+for	IN
+the	DT
+pattern	NN
+.	.
+
+
+As	IN
+costs	NNS
+of	IN
+gene	NN
+expression	NN
+analysis	NN
+continue	VBP
+to	TO
+decrease	VB
+,	,
+the	DT
+numbers	NNS
+and	CC
+sizes	NNS
+of	IN
+expression	NN
+data	NNS
+sets	NNS
+have	VBP
+been	VBN
+growing	VBG
+at	IN
+an	DT
+ever-increasing	JJ
+rate	NN
+.	.
+
+To	TO
+give	VB
+just	RB
+two	CD
+examples	NNS
+,	,
+the	DT
+Gene	NNP
+Expression	NN
+Omnibus	NN
+-LRB-	-LRB-
+GEO	NN
+-RRB-	-RRB-
+currently	RB
+contains	VBZ
+over	IN
+10,000	CD
+experiments	NNS
+comprising	VBG
+400,000	CD
+sam	SYM
+-	:
+ples	NNS
+and	CC
+16	CD
+billion	CD
+individual	JJ
+abundance	NN
+measurements	NNS
+,	,
+for	IN
+over	IN
+500	CD
+organisms	NNS
+-LSB-	-LRB-
+7	CD
+-RSB-	-RRB-
+and	CC
+the	DT
+Stanford	NNP
+Microarray	NNP
+Database	NNP
+-LRB-	-LRB-
+SMD	NNP
+-RRB-	-RRB-
+contains	VBZ
+approximately	RB
+20,000	CD
+public	JJ
+experiments	NNS
+for	IN
+over	IN
+20	CD
+organisms	NNS
+-LSB-	-LRB-
+26	CD
+-RSB-	-RRB-
+.	.
+
+Expression	NN
+data	NNS
+sets	NNS
+can	MD
+easily	RB
+be	VB
+obtained	VBN
+with	IN
+hundreds	NNS
+,	,
+thousands	NNS
+,	,
+and	CC
+soon	RB
+tens	NNS
+of	IN
+thousands	NNS
+of	IN
+experiments	NNS
+.	.
+
+The	DT
+number	NN
+of	IN
+rows	NNS
+is	VBZ
+deter	VB
+-	:
+mined	VBN
+by	IN
+the	DT
+number	NN
+of	IN
+trascripts/genes	NNS
+being	VBG
+investigated	VBN
+.	.
+
+Generally	RB
+,	,
+the	DT
+approach	NN
+has	VBZ
+been	VBN
+to	TO
+include	VB
+as	RB
+many	JJ
+genes	NNS
+as	IN
+possible	JJ
+.	.
+
+As	IN
+array	NN
+designs	NNS
+continue	VBP
+to	TO
+improve	VB
+,	,
+it	PRP
+has	VBZ
+become	VBN
+possible	JJ
+to	TO
+include	VB
+probes	NNS
+for	IN
+essentially	RB
+all	DT
+known	JJ
+genes	NNS
+.	.
+
+While	IN
+the	DT
+number	NN
+of	IN
+known	JJ
+genes	NNS
+has	VBZ
+stabilized	VBN
+around	IN
+30,000	CD
+,	,
+the	DT
+continual	JJ
+discovery	NN
+of	IN
+new	JJ
+alternative	JJ
+splice	NN
+forms	NNS
+indicates	VBZ
+that	IN
+70	CD
+percent	NN
+or	CC
+more	JJR
+of	IN
+these	DT
+may	MD
+be	VB
+alternatively	RB
+spliced	VBN
+into	IN
+two	CD
+or	CC
+more	JJR
+unique	JJ
+transcripts	NNS
+-LSB-	-LRB-
+20	CD
+-RSB-	-RRB-
+,	,
+-LSB-	-LRB-
+38	CD
+-RSB-	-RRB-
+.	.
+
+Thus	RB
+,	,
+estimates	NNS
+of	IN
+the	DT
+number	NN
+of	IN
+different	JJ
+proteins	NNS
+encoded	VBN
+by	IN
+the	DT
+30,000	CD
+human	JJ
+genes	NNS
+now	RB
+exceed	VBP
+100,000	CD
+.	.
+
+Sequencing-based	JJ
+experiments	NNS
+and	CC
+whole-genome	JJ
+tiling	NN
+arrays	NNS
+that	WDT
+measure	VBP
+noncoding	JJ
+transcription	NN
+can	MD
+identify	VB
+even	RB
+greater	JJR
+numbers	NNS
+of	IN
+expressed	VBN
+sequences	NNS
+for	IN
+which	WDT
+we	PRP
+might	MD
+wish	VB
+to	TO
+identify	VB
+coexpression	NN
+.	.
+
+Thus	RB
+,	,
+with	IN
+expression	NN
+data	NNS
+sets	NNS
+of	IN
+potentially	RB
+tens	NNS
+or	CC
+hundreds	NNS
+of	IN
+thousands	NNS
+of	IN
+both	DT
+
+
+rows	NNS
+and	CC
+columns	NNS
+,	,
+there	EX
+is	VBZ
+a	DT
+need	NN
+for	IN
+algorithms	NNS
+that	WDT
+can	MD
+handle	VB
+not	RB
+only	RB
+â	VB
+$	$
+œlargeâ	JJ
+$	$
+but	CC
+â	RB
+$	$
+œmassiveâ	JJ
+$	$
+data	NNS
+sets	NNS
+.	.
+
+
+Most	JJS
+existing	VBG
+sequential	JJ
+pattern	NN
+mining	NN
+methods	NNS
+,	,
+breadth-first	NN
+or	CC
+depth-first	NN
+,	,
+are	VBP
+exact	JJ
+in	IN
+the	DT
+sense	NN
+that	IN
+they	PRP
+find	VBP
+a	DT
+complete	JJ
+set	NN
+of	IN
+frequent	JJ
+patterns	NNS
+.	.
+
+A	DT
+pattern	NN
+is	VBZ
+frequent	JJ
+if	IN
+its	PRP$
+support	NN
+is	VBZ
+beyond	IN
+a	DT
+predetermined	VBN
+minimum	NN
+support	NN
+threshold	NN
+,	,
+min	NN
+sup	NN
+.	.
+
+Such	JJ
+methods	NNS
+rely	VBP
+on	IN
+min	NN
+sup	NN
+to	TO
+prune	VB
+the	DT
+search	NN
+space	NN
+.	.
+
+A	DT
+low	JJ
+setting	NN
+of	IN
+min	NN
+sup	NN
+incurs	VBZ
+explosive	JJ
+computational	JJ
+-LRB-	-LRB-
+combinatorial	JJ
+explosion	NN
+of	IN
+the	DT
+number	NN
+of	IN
+candidate	NN
+patterns	NNS
+-RRB-	-RRB-
+cost	NN
+,	,
+making	VBG
+efficient	JJ
+sequential	JJ
+pattern	NN
+mining	NN
+infeasible	NN
+for	IN
+massive	JJ
+data	NNS
+sets	NNS
+.	.
+
+The	DT
+situation	NN
+is	VBZ
+aggravated	VBN
+in	IN
+OPSM	NNP
+mining	NN
+due	JJ
+to	TO
+the	DT
+fact	NN
+that	IN
+the	DT
+transformed	VBN
+sequence	NN
+database	NN
+is	VBZ
+extremely	RB
+dense	JJ
+.	.
+
+Note	VB
+that	IN
+an	DT
+infrequent	JJ
+pattern	NN
+,	,
+even	RB
+with	IN
+the	DT
+lowest	JJS
+possible	JJ
+support	NN
+of	IN
+2	CD
+,	,
+can	MD
+still	RB
+be	VB
+statistically	RB
+significant	JJ
+if	IN
+it	PRP
+is	VBZ
+long	RB
+.	.
+
+We	PRP
+use	VBP
+deep	JJ
+patterns	NNS
+to	TO
+refer	VB
+to	TO
+such	JJ
+patterns	NNS
+that	WDT
+are	VBP
+long	JJ
+-LRB-	-LRB-
+thus	RB
+significant	JJ
+-RRB-	-RRB-
+and	CC
+with	IN
+support	NN
+values	NNS
+below	IN
+reasonable	JJ
+min	NN
+sup	NN
+settings	NNS
+-LRB-	-LRB-
+thus	RB
+can	MD
+not	RB
+be	VB
+efficiently	RB
+mined	VBN
+by	IN
+exact	JJ
+methods	NNS
+-RRB-	-RRB-
+.	.
+
+In	IN
+OPSM	NNP
+mining	NN
+,	,
+a	DT
+deep	JJ
+pattern	NN
+corresponds	VBZ
+to	TO
+a	DT
+deep	JJ
+OPSM	NNP
+that	IN
+appears	VBZ
+wide	JJ
+and	CC
+short	JJ
+.	.
+
+
+Deep	JJ
+OPSMs	NNS
+are	VBP
+of	IN
+particular	JJ
+interest	NN
+to	TO
+biologists	NNS
+as	IN
+they	PRP
+may	MD
+represent	VB
+small	JJ
+groups	NNS
+of	IN
+genes	NNS
+that	WDT
+are	VBP
+tightly	RB
+coregulated	VBN
+under	IN
+many	JJ
+conditions	NNS
+.	.
+
+Previous	JJ
+studies	NNS
+have	VBP
+tended	VBN
+to	TO
+focus	VB
+on	IN
+larger	JJR
+clusters	NNS
+by	IN
+design	NN
+or	CC
+necessity	NN
+.	.
+
+While	IN
+these	DT
+large	JJ
+clusters	NNS
+have	VBP
+been	VBN
+shown	VBN
+to	TO
+be	VB
+of	IN
+interest	NN
+or	CC
+value	NN
+,	,
+there	EX
+is	VBZ
+no	DT
+reason	NN
+to	TO
+expect	VB
+that	IN
+all	DT
+or	CC
+even	RB
+most	RBS
+biological	JJ
+processes	NNS
+or	CC
+disease	NN
+mechanisms	NNS
+would	MD
+involve	VB
+tight	JJ
+coregulation	NN
+of	IN
+large	JJ
+groups	NNS
+of	IN
+genes	NNS
+.	.
+
+In	IN
+fact	NN
+,	,
+protein	NN
+-	:
+protein	NN
+interactions	NNS
+,	,
+biological	JJ
+pathway	NN
+membership	NN
+,	,
+and	CC
+coregulation	NN
+demonstrate	VBP
+â	IN
+$	$
+œpower	JJ
+lawâ	NN
+$	$
+relationships	NNS
+-LSB-	-LRB-
+5	CD
+-RSB-	-RRB-
+.	.
+
+That	DT
+is	VBZ
+to	TO
+say	VB
+,	,
+we	PRP
+tend	VBP
+to	TO
+observe	VB
+a	DT
+small	JJ
+number	NN
+of	IN
+very	RB
+large	JJ
+gene	NN
+groups	NNS
+and	CC
+a	DT
+large	JJ
+number	NN
+of	IN
+very	RB
+small	JJ
+gene	NN
+groups	NNS
+.	.
+
+In	IN
+many	JJ
+cases	NNS
+,	,
+biologists	NNS
+are	VBP
+looking	VBG
+for	IN
+tissue	NN
+-	:
+or	CC
+experi	VB
+-	:
+ment-specific	JJ
+gene	NN
+regulation	NN
+related	JJ
+to	TO
+some	DT
+highly	RB
+specialized	VBN
+process	NN
+or	CC
+disease	NN
+.	.
+
+They	PRP
+expect	VBP
+that	IN
+many	JJ
+important	JJ
+processes	NNS
+will	MD
+involve	VB
+relatively	RB
+small	JJ
+numbers	NNS
+of	IN
+genes	NNS
+.	.
+
+Some	DT
+pathways	NNS
+or	CC
+processes	NNS
+might	MD
+require	VB
+only	RB
+two	CD
+genes	NNS
+to	TO
+act	VB
+in	IN
+concert	NN
+.	.
+
+The	DT
+meaningfulness	NN
+of	IN
+deep	JJ
+OPSMs	NNS
+is	VBZ
+also	RB
+clearly	RB
+validated	VBN
+by	IN
+our	PRP$
+own	JJ
+biological	JJ
+assessments	NNS
+.	.
+
+
+Thus	RB
+,	,
+the	DT
+deep	JJ
+OPSM	NNP
+problem	NN
+,	,
+discovering	VBG
+deep	JJ
+OPSMs	NNS
+from	IN
+massive	JJ
+data	NNS
+sets	NNS
+,	,
+is	VBZ
+of	IN
+essential	JJ
+biological	JJ
+signifi	NN
+-	:
+cance	NN
+.	.
+
+While	IN
+exact	JJ
+methods	NNS
+fail	VBP
+,	,
+we	PRP
+propose	VBP
+a	DT
+novel	JJ
+best	JJS
+effort	NN
+mining	NN
+framework	NN
+KiWi	NN
+that	WDT
+does	VBZ
+what	WP
+it	PRP
+can	MD
+to	TO
+find	VB
+as	RB
+many	JJ
+as	IN
+possible	JJ
+deep	JJ
+OPSMs	NNS
+for	IN
+a	DT
+given	VBN
+amount	NN
+of	IN
+available	JJ
+computational	JJ
+resources	NNS
+.	.
+
+KiWi	NN
+exploits	VBZ
+two	CD
+parameters	NNS
+k	NN
+and	CC
+w	NN
+to	TO
+bound	VBN
+the	DT
+computational	JJ
+resources	NNS
+and	CC
+search	VB
+a	DT
+selected	VBN
+search	NN
+space	NN
+that	WDT
+are	VBP
+likely	JJ
+to	TO
+contain	VB
+deep	JJ
+OPSMs	NNS
+.	.
+
+It	PRP
+performs	VBZ
+a	DT
+beam	NN
+search	NN
+,	,
+at	IN
+each	DT
+level	NN
+maintaining	VBG
+only	RB
+the	DT
+k	NN
+most	RBS
+promising	JJ
+patterns	NNS
+as	IN
+seeds	NNS
+for	IN
+extension	NN
+in	IN
+the	DT
+next	JJ
+level	NN
+.	.
+
+In	IN
+extending	VBG
+a	DT
+pattern	NN
+,	,
+KiWi	NN
+looks	VBZ
+for	IN
+the	DT
+new	JJ
+element	NN
+in	IN
+a	DT
+vertical	JJ
+slice	NN
+of	IN
+width	NN
+w	NN
+-LRB-	-LRB-
+instead	RB
+of	IN
+the	DT
+entire	JJ
+suffixes	NNS
+-RRB-	-RRB-
+of	IN
+the	DT
+supporting	VBG
+sequences	NNS
+.	.
+
+This	DT
+biased	VBN
+sampling	NN
+approach	NN
+favors	VBZ
+items	NNS
+that	WDT
+come	VBP
+early	RB
+.	.
+
+It	PRP
+is	VBZ
+not	RB
+only	RB
+essential	JJ
+for	IN
+efficiency	NN
+,	,
+but	CC
+also	RB
+instrumental	JJ
+to	TO
+the	DT
+effective	JJ
+discovery	NN
+of	IN
+deep	JJ
+OPSMs	NNS
+,	,
+ensuring	VBG
+that	IN
+the	DT
+k	NN
+seats	NNS
+are	VBP
+reserved	VBN
+for	IN
+seeds	NNS
+that	WDT
+are	VBP
+likely	JJ
+to	TO
+be	VB
+extended	VBN
+into	IN
+longer	JJR
+patterns	NNS
+.	.
+
+The	DT
+principles	NNS
+behind	IN
+KiWi	NN
+are	VBP
+applicable	JJ
+to	TO
+sequential	JJ
+pattern	NN
+mining	NN
+in	IN
+general	JJ
+.	.
+
+
+We	PRP
+also	RB
+generalize	VBP
+OPSM	NNP
+by	IN
+including	VBG
+genes	NNS
+whose	WP$
+expression	NN
+levels	NNS
+induce	VBP
+the	DT
+opposite	JJ
+linear	JJ
+ordering	VBG
+of	IN
+the	DT
+experiments	NNS
+.	.
+
+The	DT
+so-called	JJ
+generalized	VBN
+OPSM	NNP
+-LRB-	-LRB-
+GOPSM	NNP
+-RRB-	-RRB-
+model	NN
+is	VBZ
+able	JJ
+to	TO
+capture	VB
+negative	JJ
+correlations	NNS
+among	IN
+genes	NNS
+,	,
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+2	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+GAO	NNP
+ET	NNP
+AL.	NNP
+:	:
+ON	IN
+THE	DT
+DEEP	JJ
+ORDER-PRESERVING	NN
+SUBMATRIX	NNP
+PROBLEM	NN
+:	:
+A	DT
+BEST	JJS
+EFFORT	NN
+APPROACH	NN
+
+
+which	WDT
+can	MD
+imply	VB
+common	JJ
+process/pathway	NN
+membership	NN
+or	CC
+negative	JJ
+regulation	NN
+-LSB-	-LRB-
+13	CD
+-RSB-	-RRB-
+.	.
+
+KiWiis	NNP
+capable	JJ
+of	IN
+mining	VBG
+GOPSMs	NNS
+.	.
+
+
+In	IN
+addition	NN
+,	,
+we	PRP
+provide	VBP
+substantial	JJ
+technical	JJ
+extensions	NNS
+to	TO
+KiWi	NNP
+for	IN
+improved	VBN
+efficiency	NN
+,	,
+effectiveness	NN
+,	,
+and	CC
+usabil	NN
+-	:
+ity	NN
+.	.
+
+Notably	RB
+,	,
+we	PRP
+estimate	VBP
+the	DT
+statistical	JJ
+significance	NN
+of	IN
+the	DT
+discovered	VBN
+OPSMs	NNS
+so	IN
+that	IN
+they	PRP
+can	MD
+be	VB
+totally	RB
+ordered	VBN
+.	.
+
+This	DT
+line	NN
+of	IN
+study	NN
+is	VBZ
+of	IN
+fundamental	JJ
+importance	NN
+to	TO
+not	RB
+only	RB
+OPSM	NNP
+mining	NN
+,	,
+but	CC
+pattern	NN
+mining	NN
+in	IN
+general	JJ
+.	.
+
+We	PRP
+make	VBP
+initial	JJ
+contributions	NNS
+to	TO
+this	DT
+respect	NN
+.	.
+
+
+Contributions	NNS
+.	.
+
+
+1	LS
+.	.
+
+We	PRP
+identify	VBP
+and	CC
+validate	VBP
+the	DT
+deep	JJ
+OPSM	NNP
+problem	NN
+
+
+that	DT
+is	VBZ
+of	IN
+essential	JJ
+biological	JJ
+significance	NN
+.	.
+
+
+2	LS
+.	.
+
+We	PRP
+propose	VBP
+a	DT
+novel	JJ
+best	JJS
+effort	NN
+mining	NN
+framework	NN
+
+
+KiWi	NN
+for	IN
+the	DT
+deep	JJ
+OPSM	NNP
+problem	NN
+.	.
+
+The	DT
+KiWi	NN
+
+
+principles	NNS
+are	VBP
+applicable	JJ
+to	TO
+mining	VBG
+deep	JJ
+sequential	JJ
+
+
+patterns	NNS
+from	IN
+dense	JJ
+,	,
+massive	JJ
+data	NNS
+sets	NNS
+in	IN
+general	JJ
+.	.
+
+
+3	LS
+.	.
+
+We	PRP
+generalize	VBP
+OPSM	NNP
+and	CC
+introduce	VB
+GOPSM	NNP
+,	,
+cap	NN
+-	:
+
+
+turing	VBG
+negative	JJ
+correlations	NNS
+among	IN
+genes	NNS
+as	RB
+well	RB
+.	.
+
+
+4	LS
+.	.
+
+We	PRP
+provide	VBP
+substantial	JJ
+technical	JJ
+extensions	NNS
+to	TO
+KiWi	NN
+
+
+for	IN
+improved	VBN
+efficiency	NN
+,	,
+effectiveness	NN
+,	,
+and	CC
+usability	NN
+,	,
+
+
+including	VBG
+estimation	NN
+of	IN
+statistical	JJ
+significance	NN
+of	IN
+
+
+OPSMs	NNS
+.	.
+
+
+5	CD
+.	.
+
+We	PRP
+present	VBP
+extensive	JJ
+biological	JJ
+and	CC
+computational	JJ
+
+
+experiments	NNS
+on	IN
+real	JJ
+data	NNS
+sets	NNS
+,	,
+validating	VBG
+the	DT
+deep	JJ
+
+
+OPSM	NNP
+problem	NN
+and	CC
+the	DT
+KiWi	NN
+mining	NN
+framework	NN
+.	.
+
+Outlines	NNS
+.	.
+
+The	DT
+rest	NN
+of	IN
+the	DT
+paper	NN
+is	VBZ
+organized	VBN
+as	IN
+follows	VBZ
+:	:
+Section	NN
+2	CD
+introduces	VBZ
+the	DT
+deep	JJ
+OPSM	NNP
+problem	NN
+.	.
+
+Section	NN
+3	CD
+reviews	NNS
+related	JJ
+work	NN
+.	.
+
+Section	NN
+4	CD
+presents	VBZ
+the	DT
+KiWi	NN
+mining	NN
+framework	NN
+.	.
+
+Section	NN
+5	CD
+discusses	VBZ
+the	DT
+technical	JJ
+extensions	NNS
+.	.
+
+Section	NN
+6	CD
+reports	VBZ
+the	DT
+experimental	JJ
+results	NNS
+.	.
+
+Section	NN
+7	CD
+concludes	VBZ
+the	DT
+paper	NN
+.	.
+
+
+2THE	CD
+DEEP	NNP
+OPSM	NNP
+PROBLEM	NN
+
+
+In	IN
+this	DT
+section	NN
+,	,
+we	PRP
+introduce	VBP
+the	DT
+background	NN
+of	IN
+OPSM	NNP
+mining	NN
+and	CC
+identify	VB
+the	DT
+deep	JJ
+OPSM	NNP
+problem	NN
+.	.
+
+
+2.1	CD
+OPSM	NNP
+,	,
+GOPSM	NNP
+,	,
+and	CC
+Sequential	NNP
+Pattern	NNP
+Mining	NNP
+Gene	NNP
+expression	NN
+data	NNS
+can	MD
+be	VB
+represented	VBN
+as	IN
+an	DT
+n	NN
+m	NN
+matrix	NN
+D	NN
+containing	VBG
+expression	NN
+levels	NNS
+for	IN
+n	NN
+genes	NNS
+-LRB-	-LRB-
+rows	NNS
+-RRB-	-RRB-
+under	IN
+m	NN
+experiments	NNS
+-LRB-	-LRB-
+columns	NNS
+-RRB-	-RRB-
+.	.
+
+A	DT
+submatrix	JJ
+Ã	NN
+°	CD
+R	NN
+;	:
+CÃž	NNP
+,	,
+where	WRB
+R	NN
+is	VBZ
+a	DT
+subset	NN
+of	IN
+rows	NNS
+and	CC
+C	NN
+a	DT
+subset	NN
+of	IN
+columns	NNS
+in	IN
+D	NN
+,	,
+is	VBZ
+called	VBN
+an	DT
+order-preserving	JJ
+submatrix	NN
+-LSB-	-LRB-
+8	CD
+-RSB-	-RRB-
+if	IN
+there	EX
+is	VBZ
+a	DT
+permutation	NN
+of	IN
+the	DT
+columns	NNS
+in	IN
+C	NN
+under	IN
+which	WDT
+the	DT
+sequence	NN
+of	IN
+expression	NN
+values	NNS
+in	IN
+each	DT
+row	NN
+of	IN
+R	NN
+is	VBZ
+strictly	RB
+ascending	VBG
+.	.
+
+
+Now	RB
+we	PRP
+generalize	VBP
+OPSM	NNP
+and	CC
+further	RB
+define	VB
+the	DT
+so	RB
+-	:
+called	VBN
+generalized	VBN
+order-preserving	JJ
+submatrix	NN
+-LRB-	-LRB-
+GOPSM	NN
+-RRB-	-RRB-
+.	.
+
+If	IN
+the	DT
+above	JJ
+constraint	NN
+is	VBZ
+relaxed	VBN
+such	JJ
+that	IN
+the	DT
+sequence	NN
+of	IN
+expression	NN
+values	NNS
+can	MD
+be	VB
+either	CC
+strictly	RB
+ascending	VBG
+or	CC
+descending	VBG
+,	,
+Ã	NN
+°	CD
+R	NN
+;	:
+CÃž	NN
+becomes	VBZ
+a	DT
+GOPSM	NNP
+.	.
+
+GOPSMs	NNS
+are	VBP
+able	JJ
+to	TO
+capture	VB
+anticorrelations	NNS
+among	IN
+genes	NNS
+,	,
+which	WDT
+can	MD
+imply	VB
+common	JJ
+process/pathway	NN
+membership	NN
+or	CC
+negative	JJ
+regula	NN
+-	:
+tion	NN
+-LSB-	-LRB-
+13	CD
+-RSB-	-RRB-
+.	.
+
+One	CD
+gene	NN
+may	MD
+repress	VB
+the	DT
+expression	NN
+of	IN
+other	JJ
+genes	NNS
+-LRB-	-LRB-
+negative	JJ
+regulators	NNS
+-RRB-	-RRB-
+and	CC
+anticorrelated	JJ
+genes	NNS
+may	MD
+represent	VB
+members	NNS
+of	IN
+opposing	VBG
+pathways	NNS
+-LSB-	-LRB-
+43	CD
+-RSB-	-RRB-
+.	.
+
+The	DT
+con	NN
+-	:
+cepts	NNS
+of	IN
+OPSM	NNP
+and	CC
+GOPSM	NNP
+are	VBP
+illustrated	VBN
+in	IN
+Fig.	NN
+1	CD
+.	.
+
+
+The	DT
+OPSM	NNP
+problem	NN
+-LSB-	-LRB-
+8	CD
+-RSB-	-RRB-
+is	VBZ
+to	TO
+discover	VB
+those	DT
+statistically	RB
+significant	JJ
+OPSMs	NNS
+from	IN
+the	DT
+data	NNS
+matrix	NN
+D	NN
+.	.
+
+The	DT
+problem	NN
+is	VBZ
+closely	RB
+related	JJ
+to	TO
+sequential	JJ
+pattern	NN
+mining	NN
+.	.
+
+Conventional	JJ
+sequential	JJ
+pattern	NN
+mining	NN
+-LSB-	-LRB-
+4	CD
+-RSB-	-RRB-
+was	VBD
+motivated	VBN
+and	CC
+intro	NN
+-	:
+duced	VBN
+in	IN
+the	DT
+context	NN
+of	IN
+transaction	NN
+databases	NNS
+,	,
+where	WRB
+a	DT
+
+
+311	CD
+
+
+sequence	NN
+is	VBZ
+an	DT
+ordered	VBN
+list	NN
+of	IN
+itemsets	NNS
+.	.
+
+A	DT
+common	JJ
+subsequence	NN
+with	IN
+support	NN
+-LRB-	-LRB-
+number	NN
+of	IN
+sequences	NNS
+containing	VBG
+the	DT
+subsequence	NN
+-RRB-	-RRB-
+beyond	IN
+a	DT
+minimum	JJ
+support	NN
+threshold	NN
+,	,
+min	NN
+sup	NN
+,	,
+is	VBZ
+called	VBN
+a	DT
+frequent	JJ
+sequential	JJ
+pattern	NN
+.	.
+
+The	DT
+sequential	JJ
+pattern	NN
+mining	NN
+problem	NN
+is	VBZ
+to	TO
+find	VB
+the	DT
+complete	JJ
+set	NN
+of	IN
+frequent	JJ
+sequential	JJ
+patterns	NNS
+with	IN
+respect	NN
+to	TO
+min	NN
+sup	NN
+.	.
+
+
+OPSM	NNP
+mining	NN
+can	MD
+be	VB
+reduced	VBN
+to	TO
+a	DT
+special	JJ
+case	NN
+of	IN
+the	DT
+sequential	JJ
+pattern	NN
+mining	NN
+problem	NN
+.	.
+
+If	IN
+we	PRP
+sort	VBP
+each	DT
+row	NN
+in	IN
+the	DT
+data	NNS
+matrix	NN
+D	NN
+in	IN
+ascending	VBG
+order	NN
+,	,
+and	CC
+replace	VB
+the	DT
+entries	NNS
+with	IN
+their	PRP$
+corresponding	JJ
+column	NN
+labels	NNS
+,	,
+then	RB
+D	NN
+is	VBZ
+transformed	VBN
+into	IN
+a	DT
+sequence	NN
+database	NN
+,	,
+as	IN
+shown	VBN
+in	IN
+Fig.	NN
+3b	NN
+.	.
+
+Each	DT
+sequential	JJ
+pattern	NN
+uniquely	RB
+specifies	VBZ
+an	DT
+OPSM	NNP
+,	,
+where	WRB
+the	DT
+pattern	NN
+specifies	VBZ
+the	DT
+columns	NNS
+and	CC
+the	DT
+supporting	VBG
+sequences	NNS
+specify	VB
+the	DT
+rows	NNS
+.	.
+
+
+Comparing	VBG
+to	TO
+conventional	JJ
+sequential	JJ
+pattern	NN
+mining	NN
+,	,
+OPSM	NNP
+mining	NN
+bears	VBZ
+some	DT
+special	JJ
+properties	NNS
+.	.
+
+First	RB
+,	,
+each	DT
+sequence	NN
+in	IN
+the	DT
+transformed	VBN
+sequence	NN
+database	NN
+is	VBZ
+an	DT
+ordered	VBN
+list	NN
+of	IN
+1-item	NN
+itemsets	NNS
+.	.
+
+Second	RB
+,	,
+each	DT
+column	NN
+label	NN
+-LRB-	-LRB-
+item	NN
+-RRB-	-RRB-
+in	IN
+the	DT
+alphabet	NN
+appears	VBZ
+at	IN
+most	JJS
+once	RB
+in	IN
+a	DT
+sequence	NN
+,	,
+or	CC
+exactly	RB
+once	RB
+in	IN
+the	DT
+absence	NN
+of	IN
+missing	VBG
+values	NNS
+.	.
+
+Third	NNP
+,	,
+since	IN
+missing	VBG
+values	NNS
+are	VBP
+rare	JJ
+in	IN
+expression	NN
+data	NNS
+,	,
+sequences	NNS
+can	MD
+be	VB
+long	RB
+,	,
+most	RBS
+containing	VBG
+all	DT
+items	NNS
+-LRB-	-LRB-
+experiments	NNS
+-RRB-	-RRB-
+in	IN
+the	DT
+alphabet	NN
+.	.
+
+These	DT
+properties	NNS
+imply	VBP
+that	IN
+the	DT
+sequence	NN
+data	NN
+-	:
+base	NN
+in	IN
+OPSM	NNP
+mining	NN
+is	VBZ
+extremely	RB
+dense	JJ
+and	CC
+of	IN
+high	JJ
+dimensionality	NN
+.	.
+
+
+In	IN
+sequential	JJ
+pattern	NN
+mining	NN
+,	,
+mining	VBG
+efficiency	NN
+is	VBZ
+very	RB
+sensitive	JJ
+to	TO
+min	NN
+sup	NN
+-LSB-	-LRB-
+40	CD
+-RSB-	-RRB-
+,	,
+-LSB-	-LRB-
+52	CD
+-RSB-	-RRB-
+.	.
+
+A	DT
+slightly	RB
+lower	JJR
+min	NN
+sup	NN
+will	MD
+bring	VB
+in	RP
+significantly	RB
+more	RBR
+new	JJ
+frequent	JJ
+patterns	NNS
+.	.
+
+The	DT
+dense	JJ
+and	CC
+high-dimensional	JJ
+nature	NN
+of	IN
+OPSM	NNP
+mining	NN
+aggravates	VBZ
+the	DT
+case	NN
+.	.
+
+Thus	RB
+,	,
+exact	JJ
+methods	NNS
+do	VBP
+not	RB
+scale	VB
+well	RB
+for	IN
+massive	JJ
+data	NNS
+sets	NNS
+with	IN
+low	JJ
+min	NN
+sup	NN
+settings	NNS
+.	.
+
+
+2.2	CD
+The	DT
+Deep	JJ
+OPSM	NNP
+Problem	NNP
+
+
+We	PRP
+are	VBP
+interested	JJ
+in	IN
+statistically	RB
+significant	JJ
+OPSMs	NNS
+.	.
+
+While	IN
+various	JJ
+significance	NN
+measures	NNS
+can	MD
+be	VB
+defined	VBN
+,	,
+it	PRP
+is	VBZ
+con	JJ
+-	:
+sensus	NN
+that	WDT
+for	IN
+fixed	VBN
+#	#
+cols	NNS
+-LRB-	-LRB-
+number	NN
+of	IN
+columns	NNS
+-RRB-	-RRB-
+,	,
+larger	JJR
+#	#
+rows	NNS
+-LRB-	-LRB-
+number	NN
+of	IN
+rows	NNS
+-RRB-	-RRB-
+lead	VBP
+to	TO
+more	JJR
+significance	NN
+,	,
+and	CC
+for	IN
+fixed	JJ
+#	#
+rows	NNS
+,	,
+larger	JJR
+#	#
+cols	NNS
+lead	VBP
+to	TO
+more	JJR
+significance	NN
+.	.
+
+To	TO
+compare	VB
+OPSMs	NNS
+with	IN
+different	JJ
+#	#
+rows	NNS
+and	CC
+#	#
+cols	NNS
+,	,
+we	PRP
+can	MD
+use	VB
+their	PRP$
+p-values	NNS
+assuming	VBG
+the	DT
+null	JJ
+hypothesis	NN
+of	IN
+random	JJ
+matrix	NN
+.	.
+
+
+In	IN
+statistical	JJ
+hypothesis	NN
+testing	NN
+,	,
+the	DT
+probability	NN
+value	NN
+,	,
+p	NN
+-	:
+value	NN
+for	IN
+short	JJ
+,	,
+is	VBZ
+the	DT
+probability	NN
+of	IN
+obtaining	VBG
+a	DT
+value	NN
+of	IN
+the	DT
+test	NN
+statistic	NN
+at	IN
+least	JJS
+as	IN
+extreme	JJ
+as	IN
+the	DT
+one	CD
+observed	VBN
+by	IN
+chance	NN
+alone	RB
+,	,
+assuming	VBG
+that	IN
+the	DT
+null	JJ
+hypothesis	NN
+is	VBZ
+true	JJ
+.	.
+
+The	DT
+critical	JJ
+value	NN
+is	VBZ
+a	DT
+threshold	NN
+to	TO
+which	WDT
+the	DT
+value	NN
+of	IN
+the	DT
+test	NN
+statistic	NN
+is	VBZ
+compared	VBN
+to	TO
+determine	VB
+whether	IN
+or	CC
+not	RB
+the	DT
+null	JJ
+hypothesis	NN
+is	VBZ
+rejected	VBN
+.	.
+
+It	PRP
+depends	VBZ
+on	IN
+a	DT
+selected	VBN
+significance	NN
+level	NN
+.	.
+
+Let	VB
+pÃ	NNP
+°	CD
+R	NN
+;	:
+CÃž	NN
+denote	VBP
+the	DT
+p-value	NN
+for	IN
+OPSM	NNP
+Ã	NNP
+°	CD
+R	NN
+;	:
+CÃž	NN
+.	.
+
+The	DT
+significance	NN
+level	NN
+at	IN
+which	WDT
+we	PRP
+reject	VBP
+the	DT
+null	JJ
+hypothesis	NN
+can	MD
+be	VB
+set	VBN
+at	IN
+,	,
+e.g.	FW
+,	,
+0.001	CD
+.	.
+
+In	IN
+that	DT
+case	NN
+,	,
+Ã	NN
+°	CD
+R	NN
+;	:
+CÃž	NN
+is	VBZ
+significant	JJ
+if	IN
+pÃ	NN
+°	CD
+R	NN
+;	:
+CÃž	NN
+<	JJR
+0:001	CD
+,	,
+meaning	VBG
+there	EX
+is	VBZ
+less	JJR
+than	IN
+0.1	CD
+percent	NN
+probability	NN
+that	WDT
+Ã	NNP
+°	CD
+R	NN
+;	:
+CÃž	NN
+occurs	VBZ
+at	IN
+random	JJ
+.	.
+
+
+In	IN
+Fig.	NN
+2a	NN
+,	,
+the	DT
+curve	NN
+represents	VBZ
+the	DT
+critical	JJ
+values	NNS
+w.r.t.	VBP
+a	DT
+given	VBN
+significance	NN
+level	NN
+for	IN
+different	JJ
+#	#
+cols	NNS
+values	NNS
+.	.
+
+The	DT
+region	NN
+above	IN
+the	DT
+curve	NN
+is	VBZ
+the	DT
+significant	JJ
+region	NN
+.	.
+
+An	DT
+OPSM	NNP
+Ã	NNP
+°	CD
+R	NN
+;	:
+CÃž	NN
+is	VBZ
+significant	JJ
+if	IN
+it	PRP
+falls	VBZ
+in	IN
+this	DT
+region	NN
+.	.
+
+Since	IN
+in	IN
+an	DT
+OPSM	NNP
+,	,
+the	DT
+order	NN
+of	IN
+columns	NNS
+matters	NNS
+whereas	IN
+the	DT
+order	NN
+of	IN
+rows	NNS
+does	VBZ
+not	RB
+,	,
+its	PRP$
+significance	NN
+is	VBZ
+much	RB
+more	RBR
+sensitive	JJ
+to	TO
+#	#
+cols	NNS
+than	IN
+#	#
+rows	NNS
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+3	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+312	CD
+IEEE	NNP
+TRANSACTIONS	NNPS
+ON	IN
+KNOWLEDGE	NNP
+AND	CC
+DATA	NNP
+ENGINEERING	NNP
+,	,
+VOL	NNP
+.	.
+
+24	CD
+,	,
+NO.	NNP
+2	CD
+,	,
+FEBRUARY	NNP
+2012	CD
+
+
+Fig.	NN
+2	CD
+.	.
+
+Significance	NN
+of	IN
+OPSM	NNP
+.	.
+
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+Deep	JJ
+region	NN
+.	.
+
+-LRB-	-LRB-
+b	NN
+-RRB-	-RRB-
+Critical	JJ
+values	NNS
+.	.
+
+
+Example	NN
+1	CD
+.	.
+
+Fig.	NN
+2b	NN
+shows	VBZ
+estimated	VBN
+critical	JJ
+values	NNS
+for	IN
+
+
+#	#
+cols	NNS
+Â	NN
+1/4	CD
+2	CD
+;	:
+...	:
+;	:
+34w	NN
+.	.
+
+r.t.	NNP
+significance	NN
+level	NN
+of	IN
+0.001	CD
+for	IN
+n	NN
+Â	NN
+1/4	CD
+
+
+20	CD
+;	:
+000and	CD
+m	NN
+Â	NN
+1/4	CD
+100	CD
+.	.
+
+Our	PRP$
+experiments	NNS
+show	VBP
+that	IN
+for	IN
+long	RB
+
+
+patterns	NNS
+,	,
+e.g.	FW
+,	,
+#	#
+cols	NNS
+6	CD
+,	,
+these	DT
+values	NNS
+do	VBP
+not	RB
+vary	VB
+
+
+significantly	RB
+w.r.t.	FW
+n	NN
+and	CC
+m.	NN
+Note	VBP
+that	IN
+when	WRB
+the	DT
+pattern	NN
+is	VBZ
+
+
+sufficiently	RB
+long	RB
+-LRB-	-LRB-
+e.g.	FW
+,	,
+10	CD
+or	CC
+longer	JJR
+-RRB-	-RRB-
+,	,
+even	RB
+two	CD
+to	TO
+five	CD
+
+
+genes	NNS
+can	MD
+form	VB
+significant	JJ
+OPSMs	NNS
+.	.
+
+
+In	IN
+Fig.	NN
+2a	NN
+,	,
+represents	VBZ
+an	DT
+imaginary	JJ
+lower	JJR
+bound	VBN
+of	IN
+min	NN
+sup	NN
+,	,
+for	IN
+which	WDT
+the	DT
+region	NN
+above	IN
+can	MD
+be	VB
+mined	VBN
+within	IN
+a	DT
+reasonable	JJ
+amount	NN
+of	IN
+time	NN
+using	VBG
+exact	JJ
+methods	NNS
+and	CC
+the	DT
+region	NN
+below	IN
+it	PRP
+can	MD
+not	RB
+.	.
+
+The	DT
+deep	JJ
+region	NN
+refers	VBZ
+to	TO
+part	NN
+of	IN
+the	DT
+significant	JJ
+region	NN
+that	WDT
+is	VBZ
+below	IN
+.	.
+
+An	DT
+OPSM	NNP
+is	VBZ
+deep	JJ
+if	IN
+it	PRP
+falls	VBZ
+in	IN
+this	DT
+region	NN
+.	.
+
+
+Definition	NN
+1	CD
+-LRB-	-LRB-
+Deep	JJ
+OPSM	NN
+-RRB-	-RRB-
+.	.
+
+Deep	JJ
+OPSMs	NNS
+are	VBP
+OPSMs	NNS
+with	IN
+
+
+many	JJ
+columns	NNS
+and	CC
+few	JJ
+rows	NNS
+that	WDT
+are	VBP
+statistically	RB
+significant	JJ
+
+
+but	CC
+can	MD
+not	RB
+be	VB
+efficiently	RB
+discovered	VBN
+using	VBG
+exact	JJ
+methods	NNS
+.	.
+
+
+The	DT
+deep	JJ
+OPSM	NNP
+problem	NN
+is	VBZ
+to	TO
+efficiently	RB
+mine	JJ
+deep	JJ
+OPSMs	NNS
+from	IN
+massive	JJ
+data	NNS
+sets	NNS
+.	.
+
+It	PRP
+can	MD
+be	VB
+reduced	VBN
+to	TO
+a	DT
+sequential	JJ
+pattern	NN
+mining	NN
+problem	NN
+that	WDT
+mines	NNS
+long	RB
+patterns	NNS
+with	IN
+few	JJ
+supporting	VBG
+sequences	NNS
+.	.
+
+
+Many	JJ
+significant	JJ
+OPSMs	NNS
+are	VBP
+deep	JJ
+.	.
+
+In	IN
+Fig.	NN
+2a	NN
+,	,
+the	DT
+line	NN
+crosses	VBZ
+the	DT
+significance	NN
+border	NN
+curve	NN
+at	IN
+#	#
+cols	NNS
+of	IN
+l	NN
+,	,
+which	WDT
+means	VBZ
+if	IN
+the	DT
+pattern	NN
+length	NN
+goes	VBZ
+beyond	IN
+l	NN
+,	,
+there	EX
+will	MD
+occur	VB
+deep	JJ
+OPSMs	NNS
+.	.
+
+With	IN
+the	DT
+increase	NN
+of	IN
+the	DT
+pattern	NN
+length	NN
+,	,
+most	RBS
+significant	JJ
+OPSMs	NNS
+will	MD
+be	VB
+deep	JJ
+.	.
+
+In	IN
+other	JJ
+words	NNS
+,	,
+exact	JJ
+methods	NNS
+will	MD
+miss	VB
+most	JJS
+of	IN
+the	DT
+wide	JJ
+significant	JJ
+OPSMs	NNS
+that	WDT
+correspond	VBP
+to	TO
+long	JJ
+patterns	NNS
+.	.
+
+
+Example	NN
+2	CD
+.	.
+
+In	IN
+SPADE	NNP
+-LSB-	-LRB-
+52	CD
+-RSB-	-RRB-
+and	CC
+PrefixSpan	NN
+-LSB-	-LRB-
+40	CD
+-RSB-	-RRB-
+experiments	NNS
+,	,
+
+
+the	DT
+lowest	JJS
+min	NN
+sup	NN
+values	NNS
+are	VBP
+set	VBN
+to	TO
+0.25	CD
+percent	NN
+and	CC
+
+
+0.2	CD
+percent	NN
+of	IN
+the	DT
+total	JJ
+number	NN
+of	IN
+rows	NNS
+,	,
+corresponding	VBG
+to	TO
+
+
+support	NN
+of	IN
+50	CD
+and	CC
+40	CD
+,	,
+respectively	RB
+,	,
+forn	JJ
+Â	NN
+1/4	CD
+20	CD
+;	:
+000	CD
+.	.
+
+It	PRP
+can	MD
+be	VB
+
+
+said	VBD
+that	IN
+for	IN
+a	DT
+data	NN
+set	NN
+with	IN
+20,000	CD
+genes	NNS
+,	,
+these	DT
+methods	NNS
+
+
+can	MD
+not	RB
+find	VB
+OPSMs	NNS
+with	IN
+less	JJR
+than	IN
+40	CD
+genes	NNS
+efficiently	RB
+.	.
+
+
+may	MD
+move	VB
+down	RP
+with	IN
+the	DT
+growth	NN
+of	IN
+computational	JJ
+power	NN
+,	,
+or	CC
+move	VB
+up	RB
+due	JJ
+to	TO
+the	DT
+ever-increasing	JJ
+complexity	NN
+of	IN
+data	NNS
+.	.
+
+In	IN
+this	DT
+paper	NN
+,	,
+we	PRP
+take	VBP
+as	RB
+0.2	CD
+percent	NN
+of	IN
+the	DT
+total	JJ
+number	NN
+of	IN
+rows	NNS
+.	.
+
+Then	RB
+in	IN
+Fig.	NNP
+2b	NN
+,	,
+roughly	RB
+l	NN
+Â	NN
+1/4	CD
+7	CD
+,	,
+where	WRB
+the	DT
+critical	JJ
+value	NN
+is	VBZ
+31	CD
+-LRB-	-LRB-
+not	RB
+shown	VBN
+in	IN
+figure	NN
+-RRB-	-RRB-
+.	.
+
+Note	VB
+that	IN
+this	DT
+estimation	NN
+is	VBZ
+very	RB
+conservative	JJ
+-LRB-	-LRB-
+lower	JJR
+than	IN
+it	PRP
+should	MD
+be	VB
+-RRB-	-RRB-
+.	.
+
+A	DT
+practical	JJ
+can	MD
+be	VB
+much	RB
+higher	JJR
+-LRB-	-LRB-
+see	VB
+Example	NNP
+3	LS
+-RRB-	-RRB-
+,	,
+as	IN
+in	IN
+OPSM	NNP
+mining	NN
+;	:
+the	DT
+sequence	NN
+database	NN
+is	VBZ
+extremely	RB
+dense	JJ
+.	.
+
+This	DT
+meansin	NN
+real	JJ
+cases	NNS
+,	,
+a	DT
+large	JJ
+number	NN
+of	IN
+significant	JJ
+OPSMs	NNS
+are	VBP
+deep	JJ
+.	.
+
+Example	NN
+3	CD
+.	.
+
+In	IN
+our	PRP$
+experiment	NN
+,	,
+PrefixSpan	NNP
+,	,
+one	CD
+of	IN
+the	DT
+fastest	JJS
+
+
+sequential	JJ
+mining	NN
+algorithms	NNS
+,	,
+did	VBD
+not	RB
+return	VB
+after	IN
+
+
+48	CD
+hours	NNS
+on	IN
+real	JJ
+data	NNS
+set	VBP
+human-SMD-cDNA	JJ
+-LRB-	-LRB-
+12,671	CD
+genes	NNS
+and	CC
+2,852	CD
+experiments	NNS
+-RRB-	-RRB-
+-LSB-	-LRB-
+26	CD
+-RSB-	-RRB-
+for	IN
+min	NN
+sup	NN
+Â	NN
+1/4	CD
+2	CD
+;	:
+535	CD
+.	.
+
+It	PRP
+returned	VBD
+after	IN
+36	CD
+hours	NNS
+on	IN
+GPL96	NN
+-LRB-	-LRB-
+12,332	CD
+genes	NNS
+and	CC
+1,640	CD
+experiments	NNS
+-RRB-	-RRB-
+-LSB-	-LRB-
+7	CD
+-RSB-	-RRB-
+for	IN
+min	NN
+sup	NN
+Â	NN
+1/4	CD
+1	CD
+;	:
+234with	CD
+the	DT
+maximum	NN
+pattern	NN
+length	NN
+of	IN
+7	CD
+,	,
+while	IN
+the	DT
+longest	JJS
+pattern	NN
+with	IN
+support	NN
+2has	VBZ
+a	DT
+length	NN
+of	IN
+161	CD
+.	.
+
+Such	PDT
+a	DT
+long	JJ
+pattern	NN
+corresponds	VBZ
+to	TO
+an	DT
+extremely	RB
+significant	JJ
+OPSM	NNP
+.	.
+
+
+In	IN
+summary	NN
+,	,
+deep	JJ
+OPSMs	NNS
+are	VBP
+statistically	RB
+significant	JJ
+.	.
+
+They	PRP
+are	VBP
+also	RB
+biologically	RB
+significant	JJ
+as	IN
+we	PRP
+argued	VBD
+in	IN
+Section	NN
+1	CD
+and	CC
+will	MD
+show	VB
+in	IN
+the	DT
+experimental	JJ
+evaluation	NN
+.	.
+
+In	IN
+practice	NN
+,	,
+a	DT
+large	JJ
+number	NN
+of	IN
+desirable	JJ
+significant	JJ
+OPSMs	NNS
+are	VBP
+deep	JJ
+and	CC
+missed	VBN
+out	RP
+by	IN
+existing	VBG
+exact	JJ
+methods	NNS
+.	.
+
+Thus	RB
+,	,
+the	DT
+deep	JJ
+OPSM	NNP
+problem	NN
+is	VBZ
+of	IN
+critical	JJ
+importance	NN
+.	.
+
+
+3RELATED	CD
+WORK	VBP
+
+
+Clustering	NN
+is	VBZ
+the	DT
+process	NN
+of	IN
+dividing	VBG
+data	NNS
+objects	NNS
+into	IN
+subsets	NNS
+,	,
+i.e.	FW
+,	,
+clusters	NNS
+,	,
+so	RB
+that	IN
+objects	NNS
+in	IN
+the	DT
+same	JJ
+cluster	NN
+are	VBP
+as	IN
+similar	JJ
+as	IN
+possible	JJ
+,	,
+and	CC
+objects	NNS
+in	IN
+different	JJ
+clusters	NNS
+are	VBP
+as	IN
+dissimilar	JJ
+as	IN
+possible	JJ
+.	.
+
+Traditional	JJ
+clustering	NN
+methods	NNS
+,	,
+e.g.	FW
+,	,
+k-means	JJ
+-LSB-	-LRB-
+34	CD
+-RSB-	-RRB-
+,	,
+Agnes	NNP
+-LSB-	-LRB-
+29	CD
+-RSB-	-RRB-
+,	,
+CLARANS	NN
+-LSB-	-LRB-
+39	CD
+-RSB-	-RRB-
+,	,
+BIRCH	NN
+-LSB-	-LRB-
+54	CD
+-RSB-	-RRB-
+,	,
+and	CC
+DBSCAN	NN
+-LSB-	-LRB-
+15	CD
+-RSB-	-RRB-
+,	,
+work	NN
+on	IN
+full	JJ
+feature	NN
+spaces	NNS
+.	.
+
+They	PRP
+do	VBP
+not	RB
+perform	VB
+well	RB
+if	IN
+the	DT
+feature	NN
+space	NN
+is	VBZ
+high	JJ
+dimensional	JJ
+.	.
+
+
+Based	VBN
+on	IN
+the	DT
+observation	NN
+that	IN
+data	NNS
+objects	NNS
+may	MD
+form	VB
+clusters	NNS
+in	IN
+a	DT
+subset	NN
+of	IN
+features	NNS
+,	,
+subspace	NN
+clustering	NN
+has	VBZ
+been	VBN
+introduced	VBN
+-LSB-	-LRB-
+3	CD
+-RSB-	-RRB-
+and	CC
+received	VBD
+much	JJ
+attention	NN
+due	JJ
+to	TO
+its	PRP$
+wide	JJ
+applications	NNS
+as	RB
+well	RB
+as	IN
+technical	JJ
+complexity	NN
+.	.
+
+Subspace	NN
+clustering	NN
+can	MD
+be	VB
+described	VBN
+as	IN
+finding	VBG
+a	DT
+set	NN
+of	IN
+pairs	NNS
+Ã	JJ
+°	NN
+X	NN
+;	:
+YÃž	NNP
+,	,
+where	WRB
+X	NN
+is	VBZ
+a	DT
+subset	NN
+of	IN
+data	NNS
+objects	NNS
+and	CC
+Y	NN
+is	VBZ
+a	DT
+subset	NN
+of	IN
+features	NNS
+,	,
+such	JJ
+that	IN
+the	DT
+objects	NNS
+in	IN
+X	NN
+are	VBP
+close	RB
+when	WRB
+projected	VBN
+onto	IN
+Y	NN
+,	,
+but	CC
+not	RB
+close	VB
+when	WRB
+projected	VBN
+onto	IN
+the	DT
+remaining	VBG
+features	NNS
+-LSB-	-LRB-
+30	CD
+-RSB-	-RRB-
+.	.
+
+
+Various	JJ
+subspace	NN
+clustering	NN
+algorithms	NNS
+have	VBP
+been	VBN
+proposed	VBN
+in	IN
+recent	JJ
+years	NNS
+,	,
+including	VBG
+CLIQUE	NN
+-LSB-	-LRB-
+3	CD
+-RSB-	-RRB-
+,	,
+ENCLUS	NN
+-LSB-	-LRB-
+9	CD
+-RSB-	-RRB-
+,	,
+MAFIA	NN
+-LSB-	-LRB-
+19	CD
+-RSB-	-RRB-
+,	,
+PROCLUS	NN
+-LSB-	-LRB-
+1	CD
+-RSB-	-RRB-
+,	,
+ORCLUS	NN
+-LSB-	-LRB-
+2	CD
+-RSB-	-RRB-
+,	,
+DOC	NN
+-LSB-	-LRB-
+42	CD
+-RSB-	-RRB-
+,	,
+FPC	NN
+-LSB-	-LRB-
+51	CD
+-RSB-	-RRB-
+,	,
+FINDIT	NN
+-LSB-	-LRB-
+48	CD
+-RSB-	-RRB-
+,	,
+HARP	NN
+-LSB-	-LRB-
+50	CD
+-RSB-	-RRB-
+,	,
+EWKM	NN
+-LSB-	-LRB-
+28	CD
+-RSB-	-RRB-
+,	,
+and	CC
+COSA	NNP
+-LSB-	-LRB-
+16	CD
+-RSB-	-RRB-
+.	.
+
+In	IN
+particular	JJ
+,	,
+CLIQUE	NN
+-LSB-	-LRB-
+3	CD
+-RSB-	-RRB-
+is	VBZ
+a	DT
+density	NN
+-	:
+and	CC
+grid-based	JJ
+bottom-up	JJ
+method	NN
+that	WDT
+uses	VBZ
+the	DT
+Apriori	NNP
+principle	NN
+to	TO
+mine	VB
+dense	JJ
+cells	NNS
+beyond	IN
+a	DT
+density	NN
+threshold	NN
+in	IN
+subspaces	NNS
+.	.
+
+
+Pattern-based	JJ
+clustering	NN
+aims	VBZ
+at	IN
+finding	VBG
+patterns	NNS
+formed	VBN
+by	IN
+subsets	NNS
+of	IN
+objects	NNS
+in	IN
+subsets	NNS
+of	IN
+features	NNS
+.	.
+
+Each	DT
+pattern	NN
+corresponds	VBZ
+to	TO
+a	DT
+subspace	NN
+cluster	NN
+.	.
+
+Thus	RB
+,	,
+pattern-based	JJ
+clustering	NN
+is	VBZ
+indeed	RB
+subspace	JJ
+clustering	NN
+.	.
+
+However	RB
+,	,
+it	PRP
+is	VBZ
+a	DT
+different	JJ
+variant	NN
+because	IN
+it	PRP
+measures	VBZ
+similarity	NN
+between	IN
+objects	NNS
+based	VBN
+on	IN
+the	DT
+patterns	NNS
+they	PRP
+exhibit	VBP
+over	IN
+the	DT
+subsets	NNS
+of	IN
+features	NNS
+,	,
+instead	RB
+of	IN
+the	DT
+euclidean	JJ
+distance	NN
+between	IN
+them	PRP
+in	IN
+the	DT
+subspace	NN
+as	IN
+in	IN
+normal	JJ
+subspace	NN
+clustering	NN
+.	.
+
+
+Most	JJS
+pattern-based	JJ
+clustering	NN
+methods	NNS
+treat	VBP
+data	NNS
+fea	SYM
+-	:
+tures	NNS
+and	CC
+data	NNS
+objects	NNS
+as	IN
+interchangeable	JJ
+concepts	NNS
+.	.
+
+Thus	RB
+,	,
+they	PRP
+are	VBP
+also	RB
+referred	VBN
+to	TO
+as	IN
+biclustering	NN
+,	,
+coclustering	NN
+,	,
+two	CD
+-	:
+mode	NN
+clustering	NN
+,	,
+or	CC
+two-way	JJ
+clustering	NN
+algorithms	NNS
+.	.
+
+Biclus	NN
+-	:
+tering	NN
+algorithms	NNS
+are	VBP
+surveyed	VBN
+in	IN
+-LSB-	-LRB-
+35	CD
+-RSB-	-RRB-
+.	.
+
+Pattern-based	JJ
+clustering	NN
+has	VBZ
+proved	VBN
+to	TO
+be	VB
+particularly	RB
+meaningful	JJ
+in	IN
+gene	NN
+expression	NN
+analysis	NN
+.	.
+
+Most	JJS
+proposed	VBN
+methods	NNS
+have	VBP
+utilized	VBN
+such	JJ
+applications	NNS
+for	IN
+their	PRP$
+validation	NN
+.	.
+
+
+Preceded	VBN
+by	IN
+direct	JJ
+clustering	NN
+-LSB-	-LRB-
+23	CD
+-RSB-	-RRB-
+and	CC
+block	VB
+clustering	NN
+-LSB-	-LRB-
+37	CD
+-RSB-	-RRB-
+,	,
+the	DT
+-	:
+bicluster	NN
+model	NN
+-LSB-	-LRB-
+9	CD
+-RSB-	-RRB-
+was	VBD
+introduced	VBN
+for	IN
+gene	NN
+expression	NN
+analysis	NN
+that	WDT
+discovers	VBZ
+local	JJ
+coherence	NN
+of	IN
+genes	NNS
+and	CC
+experiments	NNS
+in	IN
+a	DT
+submatrix	NN
+of	IN
+a	DT
+DNA	NN
+array	NN
+.	.
+
+In	IN
+the	DT
+biological	JJ
+sense	NN
+,	,
+genes	NNS
+in	IN
+such	JJ
+clusters	NNS
+have	VBP
+the	DT
+same	JJ
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+4	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+GAO	NNP
+ET	NNP
+AL.	NNP
+:	:
+ON	IN
+THE	DT
+DEEP	JJ
+ORDER-PRESERVING	NN
+SUBMATRIX	NNP
+PROBLEM	NN
+:	:
+A	DT
+BEST	JJS
+EFFORT	NN
+APPROACH	NN
+
+
+amount	NN
+of	IN
+response	NN
+to	TO
+the	DT
+experiments	NNS
+.	.
+
+They	PRP
+assess	VBP
+the	DT
+quality	NN
+of	IN
+a	DT
+bicluster	NN
+Ã	NN
+°	CD
+I	PRP
+;	:
+JÃž	NN
+,	,
+i.e.	FW
+,	,
+a	DT
+submatrix	NN
+,	,
+by	IN
+mean	NN
+squared	VBD
+residue	NN
+defined	VBN
+as	IN
+
+
+X	NN
+
+
+HÃ	NN
+°	CD
+I	PRP
+;	:
+JÃžÂ	NN
+1/4	CD
+jIjJj	NN
+
+
+1	CD
+
+
+Ã	NN
+°	CD
+aij	NN
+aiJ	NN
+aIj	NN
+Ã	NN
+3/4	CD
+aIJÃž2	NN
+:	:
+
+
+i2I	NN
+;	:
+j2J	NN
+
+
+Here	RB
+,	,
+Ã	NN
+°	CD
+I	PRP
+;	:
+JÃž	NN
+qualifies	VBZ
+as	IN
+a	DT
+-	:
+bicluster	NN
+if	IN
+HÃ	NN
+°	CD
+I	PRP
+;	:
+JÃž	NN
+.	.
+
+
+Based	VBN
+on	IN
+the	DT
+-	:
+bicluster	NN
+model	NN
+,	,
+Yang	NNP
+et	FW
+al.	FW
+-LSB-	-LRB-
+49	CD
+-RSB-	-RRB-
+introduced	VBD
+the	DT
+-	:
+cluster	NN
+model	NN
+by	IN
+allowing	VBG
+missing	VBG
+values	NNS
+.	.
+
+They	PRP
+also	RB
+proposed	VBD
+an	DT
+improved	VBN
+algorithm	NN
+FLOC	NN
+,	,
+which	WDT
+is	VBZ
+a	DT
+randomized	VBN
+move-based	JJ
+algorithm	NN
+efficiently	RB
+approx	RB
+-	:
+imating	VBG
+k-clusters	NNS
+.	.
+
+The	DT
+same	JJ
+authors	NNS
+further	RB
+introduced	VBD
+the	DT
+-	:
+pCluster	NN
+-LSB-	-LRB-
+47	CD
+-RSB-	-RRB-
+model	NN
+and	CC
+proposed	VBD
+a	DT
+deterministic	JJ
+approach	NN
+.	.
+
+The	DT
+-	:
+pCluster	NN
+model	NN
+captures	VBZ
+clusters	NNS
+that	WDT
+exhibit	VBP
+shifting	VBG
+or	CC
+scaling	VBG
+patterns	NNS
+.	.
+
+Scaling	VBG
+pattern	NN
+can	MD
+be	VB
+transformed	VBN
+into	IN
+shifting	VBG
+pattern	NN
+by	IN
+applying	VBG
+a	DT
+logarithmic	JJ
+function	NN
+on	IN
+the	DT
+raw	JJ
+data	NNS
+.	.
+
+Under	IN
+shifting	VBG
+pattern	NN
+,	,
+the	DT
+expression	NN
+levels	NNS
+of	IN
+all	DT
+genes	NNS
+in	IN
+a	DT
+cluster	NN
+rise	NN
+and	CC
+fall	VB
+coherently	RB
+under	IN
+a	DT
+subset	NN
+of	IN
+experiments	NNS
+.	.
+
+
+The	DT
+above	JJ
+pattern-based	JJ
+cluster	NN
+models	NNS
+capture	VBP
+biclusters	NNS
+with	IN
+coherent	JJ
+values	NNS
+.	.
+
+They	PRP
+can	MD
+be	VB
+restrictive	JJ
+in	IN
+many	JJ
+applications	NNS
+.	.
+
+As	IN
+a	DT
+relaxation	NN
+,	,
+Ben-Dor	NNP
+et	FW
+al.	FW
+-LSB-	-LRB-
+8	CD
+-RSB-	-RRB-
+proposed	VBD
+the	DT
+order-preserving	JJ
+submatrixmodel	NN
+that	WDT
+captures	VBZ
+biclusters	NNS
+with	IN
+coherent	JJ
+evolutions	NNS
+.	.
+
+In	IN
+an	DT
+OPSM	NNP
+,	,
+the	DT
+expression	NN
+levels	NNS
+of	IN
+all	DT
+genes	NNS
+induce	VBP
+the	DT
+same	JJ
+linear	JJ
+ordering	VBG
+of	IN
+the	DT
+experiments	NNS
+.	.
+
+The	DT
+OPSM	NNP
+discovery	NN
+problem	NN
+is	VBZ
+NP-hard	NN
+;	:
+a	DT
+greedy	JJ
+bottom-up	JJ
+algorithm	NN
+was	VBD
+given	VBN
+in	IN
+-LSB-	-LRB-
+8	CD
+-RSB-	-RRB-
+to	TO
+find	VB
+the	DT
+â	NN
+$	$
+œbestâ	JJ
+$	$
+OPSM	CD
+that	WDT
+has	VBZ
+the	DT
+largest	JJS
+statistical	JJ
+significance	NN
+,	,
+i.e.	FW
+,	,
+having	VBG
+the	DT
+smallest	JJS
+prior	JJ
+probability	NN
+.	.
+
+The	DT
+algorithm	NN
+starts	VBZ
+with	IN
+small	JJ
+OPSMs	NNS
+and	CC
+iteratively	RB
+extend	VB
+the	DT
+best	JJS
+lof	NN
+them	PRP
+.	.
+
+The	DT
+algorithm	NN
+favors	VBZ
+OPSMs	NNS
+with	IN
+large	JJ
+support	NN
+values	NNS
+-LSB-	-LRB-
+30	CD
+-RSB-	-RRB-
+.	.
+
+It	PRP
+requires	VBZ
+excessive	JJ
+computational	JJ
+resources	NNS
+and	CC
+is	VBZ
+not	RB
+scalable	JJ
+to	TO
+large	JJ
+gene	NN
+expression	NN
+matrixes	NNS
+,	,
+especially	RB
+when	WRB
+used	VBN
+in	IN
+finding	VBG
+OPSMs	NNS
+with	IN
+small	JJ
+support	NN
+values	NNS
+,	,
+i.e.	FW
+,	,
+deep	JJ
+OPSMs	NNS
+.	.
+
+
+The	DT
+OP-cluster	NN
+-LRB-	-LRB-
+order-preserving	JJ
+cluster	NN
+-RRB-	-RRB-
+model	NN
+-LSB-	-LRB-
+32	CD
+-RSB-	-RRB-
+,	,
+-LSB-	-LRB-
+33	CD
+-RSB-	-RRB-
+generalizes	VBZ
+the	DT
+OPSM	NNP
+model	NN
+by	IN
+grouping	VBG
+attributes	NNS
+into	IN
+equivalent	JJ
+classes	NNS
+.	.
+
+Their	PRP$
+proposed	VBN
+algorithm	NN
+,	,
+OPC	NN
+-	:
+tree	NN
+,	,
+reports	VBZ
+all	DT
+-LRB-	-LRB-
+maximal	JJ
+-RRB-	-RRB-
+submatrices	NNS
+with	IN
+#	#
+rows	NNS
+and	CC
+#	#
+cols	NNS
+beyond	IN
+given	VBN
+thresholds	NNS
+.	.
+
+The	DT
+algorithm	NN
+first	JJ
+groups	NNS
+together	RB
+similar	JJ
+columns	NNS
+and	CC
+then	RB
+creates	VBZ
+a	DT
+nondecreasing	JJ
+order	NN
+of	IN
+columns	NNS
+for	IN
+each	DT
+row	NN
+.	.
+
+The	DT
+resulting	VBG
+set	NN
+of	IN
+column	NN
+sequences	NNS
+are	VBP
+mined	VBN
+to	TO
+obtain	VB
+a	DT
+complete	JJ
+set	NN
+of	IN
+frequent	JJ
+sequential	JJ
+patterns	NNS
+.	.
+
+As	IN
+in	IN
+conventional	JJ
+sequential	JJ
+pattern	NN
+mining	NN
+,	,
+the	DT
+algorithm	NN
+is	VBZ
+exact	JJ
+and	CC
+fails	VBZ
+for	IN
+the	DT
+same	JJ
+reason	NN
+to	TO
+discover	VB
+deep	JJ
+OPSMs	NNS
+from	IN
+massive	JJ
+data	NNS
+sets	NNS
+.	.
+
+
+Cheung	NNP
+et	FW
+al.	FW
+-LSB-	-LRB-
+10	CD
+-RSB-	-RRB-
+showed	VBD
+that	IN
+OPSM	NNP
+can	MD
+be	VB
+generalized	VBN
+to	TO
+cover	VB
+most	RBS
+existing	JJ
+pattern-based	JJ
+cluster	NN
+models	NNS
+and	CC
+proposed	VBD
+a	DT
+number	NN
+of	IN
+extensions	NNS
+.	.
+
+Prelic	JJ
+et	FW
+al.	FW
+-LSB-	-LRB-
+41	CD
+-RSB-	-RRB-
+assessed	VBN
+existing	VBG
+subspace	NN
+cluster	NN
+models	NNS
+and	CC
+showed	VBD
+that	IN
+OPSM	NNP
+had	VBD
+the	DT
+highest	JJS
+proportion	NN
+of	IN
+clusters	NNS
+with	IN
+significant	JJ
+enrichment	NN
+of	IN
+one	CD
+or	CC
+more	JJR
+Gene	NN
+Ontology	NN
+-LRB-	-LRB-
+GO	NN
+-RRB-	-RRB-
+categories	NNS
+.	.
+
+They	PRP
+also	RB
+showed	VBD
+that	IN
+OPSM	NNP
+had	VBD
+good	JJ
+correspondence	NN
+with	IN
+known	JJ
+pathways	NNS
+according	VBG
+to	TO
+their	PRP$
+analysis	NN
+of	IN
+model	NN
+-	:
+system	NN
+protein-protein	JJ
+interaction	NN
+networks	NNS
+.	.
+
+Zhao	NNP
+et	FW
+al.	FW
+-LSB-	-LRB-
+55	CD
+-RSB-	-RRB-
+proposed	VBD
+a	DT
+maximal	JJ
+subspace	NN
+clustering	NN
+algorithm	NN
+that	WDT
+mines	NNS
+both	CC
+positive	JJ
+and	CC
+negative	JJ
+regulated	JJ
+gene	NN
+clusters	NNS
+.	.
+
+A	DT
+survey	NN
+on	IN
+subspace	NN
+clustering	NN
+,	,
+pattern-based	JJ
+clustering	NN
+,	,
+and	CC
+correlation	NN
+clustering	NN
+can	MD
+be	VB
+found	VBN
+in	IN
+-LSB-	-LRB-
+31	CD
+-RSB-	-RRB-
+.	.
+
+
+The	DT
+OPSM	NNP
+mining	NN
+problem	NN
+can	MD
+be	VB
+reduced	VBN
+to	TO
+a	DT
+special	JJ
+case	NN
+of	IN
+the	DT
+sequential	JJ
+pattern	NN
+mining	NN
+problem	NN
+that	WDT
+was	VBD
+introduced	VBN
+in	IN
+-LSB-	-LRB-
+4	CD
+-RSB-	-RRB-
+.	.
+
+Existing	VBG
+methods	NNS
+are	VBP
+exact	JJ
+in	IN
+the	DT
+sense	NN
+that	IN
+they	PRP
+find	VBP
+a	DT
+complete	JJ
+set	NN
+of	IN
+frequent	JJ
+patterns	NNS
+.	.
+
+These	DT
+
+
+313	CD
+
+
+methods	NNS
+can	MD
+be	VB
+categorized	VBN
+as	IN
+either	DT
+breadth-first	NN
+as	IN
+in	IN
+GSP	NN
+-LSB-	-LRB-
+45	CD
+-RSB-	-RRB-
+and	CC
+SPADE	NNP
+-LSB-	-LRB-
+52	CD
+-RSB-	-RRB-
+,	,
+or	CC
+depth-first	JJ
+as	IN
+in	IN
+PrefixSpan	NNP
+-LSB-	-LRB-
+40	CD
+-RSB-	-RRB-
+.	.
+
+In	IN
+particular	JJ
+,	,
+GSP	NNP
+uses	VBZ
+the	DT
+downward-closure	JJ
+property	NN
+of	IN
+sequential	JJ
+patterns	NNS
+and	CC
+adopts	VBZ
+a	DT
+multiple-pass	JJ
+,	,
+candidate	NN
+generate-and-test	JJ
+approach	NN
+.	.
+
+SPADE	NNP
+uses	VBZ
+the	DT
+same	JJ
+Apriori	NN
+-	:
+like	IN
+approach	NN
+,	,
+but	CC
+takes	VBZ
+advantage	NN
+of	IN
+vertical	JJ
+data	NNS
+format	NN
+and	CC
+ID	NN
+lists	NNS
+to	TO
+reduce	VB
+scans	NNS
+of	IN
+the	DT
+sequence	NN
+database	NN
+.	.
+
+PrefixSpan	NNP
+uses	VBZ
+pattern	NN
+growth	NN
+,	,
+a	DT
+frequent-pattern	JJ
+mining	NN
+paradigm	NN
+that	WDT
+does	VBZ
+not	RB
+require	VB
+candidate	NN
+generation	NN
+.	.
+
+Prefixspan	NNP
+performs	VBZ
+similarily	RB
+to	TO
+GSP	NNP
+for	IN
+minsup	JJ
+>	JJR
+1:5	CD
+%	NN
+but	CC
+much	RB
+more	RBR
+efficient	JJ
+for	IN
+low	JJ
+minsupsettings	NNS
+.	.
+
+It	PRP
+is	VBZ
+generally	RB
+considered	VBN
+one	CD
+of	IN
+the	DT
+most	RBS
+efficient	JJ
+algorithms	NNS
+.	.
+
+
+A	DT
+preliminary	JJ
+version	NN
+of	IN
+this	DT
+paper	NN
+appears	VBZ
+in	IN
+-LSB-	-LRB-
+17	CD
+-RSB-	-RRB-
+.	.
+
+The	DT
+main	JJ
+additions	NNS
+include	VBP
+definition	NN
+of	IN
+the	DT
+deep	JJ
+OPSM	NNP
+problem	NN
+in	IN
+a	DT
+statistically	RB
+rigorous	JJ
+manner	NN
+-LRB-	-LRB-
+Section	NN
+2	CD
+-RRB-	-RRB-
+and	CC
+biological	JJ
+justification	NN
+on	IN
+the	DT
+meaningfulness	NN
+of	IN
+deep	JJ
+OPSMs	NNS
+-LRB-	-LRB-
+Section	NN
+6	CD
+-RRB-	-RRB-
+.	.
+
+Theoretical	JJ
+analysis	NN
+for	IN
+observations	NNS
+used	VBN
+in	IN
+KiWi	NN
+is	VBZ
+also	RB
+added	VBN
+-LRB-	-LRB-
+Appendix	NN
+A	NN
+-RRB-	-RRB-
+.	.
+
+Technically	NNP
+,	,
+substantial	JJ
+extensions	NNS
+are	VBP
+added	VBN
+for	IN
+improved	VBN
+efficiency	NN
+,	,
+effectiveness	NN
+,	,
+and	CC
+usability	NN
+-LRB-	-LRB-
+Sections	NNS
+4	CD
+and	CC
+5	CD
+-RRB-	-RRB-
+,	,
+leading	VBG
+to	TO
+the	DT
+release	NN
+of	IN
+KiWi	NN
+1.0	CD
+,	,
+a	DT
+comprehensive	JJ
+deep	JJ
+OPSM	NNP
+mining	NN
+package	NN
+.	.
+
+These	DT
+extensions	NNS
+include	VBP
+parameter	NN
+tuning	NN
+,	,
+back	RB
+-	:
+ward	VB
+mining	NN
+,	,
+pattern	NN
+extension	NN
+,	,
+and	CC
+estimation	NN
+of	IN
+statistical	JJ
+significance	NN
+of	IN
+OPSMs	NNS
+.	.
+
+In	IN
+particular	JJ
+,	,
+our	PRP$
+study	NN
+of	IN
+statistical	JJ
+significance	NN
+of	IN
+OPSMs	NNS
+makes	VBZ
+initial	JJ
+efforts	NNS
+to	TO
+the	DT
+funda	NN
+-	:
+mental	JJ
+problem	NN
+of	IN
+estimating	VBG
+statistical	JJ
+significance	NN
+of	IN
+sequential	JJ
+patterns	NNS
+.	.
+
+
+4THE	CD
+KIWI	NNP
+MINING	NNP
+FRAMEWORK	NNP
+
+
+Exact	JJ
+methods	NNS
+fail	VBP
+to	TO
+discover	VB
+deep	JJ
+OPSMs	NNS
+.	.
+
+We	PRP
+propose	VBP
+a	DT
+best	JJS
+effort	NN
+mining	NN
+framework	NN
+KiWi	NN
+that	WDT
+does	VBZ
+what	WP
+it	PRP
+can	MD
+to	TO
+find	VB
+as	RB
+many	JJ
+as	IN
+possible	JJ
+deep	JJ
+OPSMs	NNS
+for	IN
+available	JJ
+computational	JJ
+resources	NNS
+.	.
+
+The	DT
+key	JJ
+idea	NN
+is	VBZ
+to	TO
+utilize	VB
+two	CD
+parameters	NNS
+kand	VBD
+wto	NN
+bound	VBD
+the	DT
+number	NN
+of	IN
+candidates	NNS
+and	CC
+perform	VB
+a	DT
+biased	VBN
+sampling	NN
+in	IN
+candidate	NN
+testing	NN
+.	.
+
+By	IN
+doing	VBG
+so	RB
+,	,
+KiWi	NN
+substantially	RB
+reduces	VBZ
+the	DT
+search	NN
+space	NN
+to	TO
+a	DT
+selected	VBN
+part	NN
+,	,
+targeting	VBG
+highly	RB
+promising	JJ
+subpatterns	NNS
+that	WDT
+lead	VBP
+to	TO
+long	JJ
+patterns	NNS
+.	.
+
+Such	JJ
+long	JJ
+patterns	NNS
+form	VBP
+deep	JJ
+OPSMs	NNS
+.	.
+
+
+4.1	CD
+Principles	NNS
+
+
+KiWi	NN
+performs	VBZ
+level-wise	JJ
+search	NN
+from	IN
+short	JJ
+to	TO
+long	JJ
+patterns	NNS
+,	,
+growing	VBG
+one	CD
+item	NN
+at	IN
+each	DT
+level	NN
+.	.
+
+However	RB
+,	,
+it	PRP
+does	VBZ
+not	RB
+perform	VB
+typical	JJ
+candidate	NN
+generation	NN
+and	CC
+pruning	NN
+as	IN
+in	IN
+other	JJ
+level-wise	JJ
+search	NN
+methods	NNS
+.	.
+
+First	RB
+,	,
+in	IN
+KiWi	NN
+minsupis	NN
+set	VBN
+to	TO
+the	DT
+lowest	JJS
+possible	JJ
+value	NN
+of	IN
+2	CD
+;	:
+there	EX
+is	VBZ
+no	DT
+practical	JJ
+benefit	NN
+in	IN
+pruning	NN
+.	.
+
+Second	RB
+,	,
+the	DT
+Apriori	NNP
+property	NN
+that	IN
+such	JJ
+pruning	NN
+relies	VBZ
+on	IN
+does	VBZ
+not	RB
+hold	VB
+in	IN
+KiWi	NNP
+.	.
+
+KiWi	NN
+takes	VBZ
+a	DT
+best	JJS
+effort	NN
+approach	NN
+making	VBG
+use	NN
+of	IN
+two	CD
+observations	NNS
+.	.
+
+Observation	NN
+1	CD
+.	.
+
+A	DT
+frequent	JJ
+subpattern	NN
+will	MD
+likely	RB
+grow	VB
+into	IN
+
+
+a	DT
+frequent	JJ
+superpattern	NN
+.	.
+
+
+Based	VBN
+on	IN
+Observation	NN
+1	CD
+,	,
+at	IN
+each	DT
+level	NN
+iof	NN
+the	DT
+level-wise	JJ
+search	NN
+,	,
+only	RB
+the	DT
+top	JJ
+kpatterns	NNS
+-LRB-	-LRB-
+in	IN
+terms	NNS
+of	IN
+support	NN
+count	NN
+-RRB-	-RRB-
+are	VBP
+kept	VBN
+and	CC
+used	VBN
+to	TO
+grow	VB
+the	DT
+level	NN
+iÃ	NN
+3/4	CD
+1	CD
+patterns	NNS
+.	.
+
+By	IN
+doing	VBG
+so	RB
+,	,
+mining	NN
+time	NN
+is	VBZ
+spent	VBN
+on	IN
+those	DT
+promising	JJ
+subpatterns	NNS
+only	RB
+,	,
+leading	VBG
+to	TO
+significant	JJ
+efficiency	NN
+gain	NN
+.	.
+
+This	DT
+breaks	NNS
+down	IN
+the	DT
+Apriori	NNP
+property	NN
+,	,
+which	WDT
+does	VBZ
+not	RB
+help	VB
+anyway	RB
+due	JJ
+to	TO
+the	DT
+setting	NN
+of	IN
+minsupÂ	NN
+1/4	CD
+2	CD
+.	.
+
+
+Observation	NN
+2	CD
+.	.
+
+A	DT
+long	JJ
+pattern	NN
+segments	NNS
+its	PRP$
+supporting	NN
+
+
+sequences	NNS
+into	IN
+small	JJ
+sections	NNS
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+5	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+314	CD
+IEEE	NNP
+TRANSACTIONS	NNPS
+ON	IN
+KNOWLEDGE	NNP
+AND	CC
+DATA	NNP
+ENGINEERING	NNP
+,	,
+VOL	NNP
+.	.
+
+24	CD
+,	,
+NO.	NNP
+2	CD
+,	,
+FEBRUARY	NNP
+2012	CD
+
+
+Appendix	NN
+A	NN
+has	VBZ
+theoretical	JJ
+analysis	NN
+justifying	VBG
+the	DT
+observation	NN
+by	IN
+deriving	VBG
+the	DT
+cumulative	JJ
+distribution	NN
+func	NN
+-	:
+tion	NN
+-LRB-	-LRB-
+cdf	NN
+-RRB-	-RRB-
+of	IN
+the	DT
+maximum	NN
+length	NN
+of	IN
+sections	NNS
+segmented	JJ
+by	IN
+a	DT
+pattern	NN
+.	.
+
+An	DT
+R	NN
+program	NN
+was	VBD
+also	RB
+written	VBN
+to	TO
+compute	VB
+the	DT
+cdf	NN
+for	IN
+a	DT
+given	VBN
+pattern	NN
+length	NN
+.	.
+
+
+Based	VBN
+on	IN
+Observation	NN
+2	CD
+,	,
+the	DT
+adjacent	JJ
+elements	NNS
+of	IN
+a	DT
+long	JJ
+pattern	NN
+should	MD
+not	RB
+appear	VB
+far	RB
+away	RB
+from	IN
+each	DT
+other	JJ
+in	IN
+a	DT
+supporting	VBG
+sequence	NN
+.	.
+
+Thus	RB
+,	,
+in	IN
+counting	VBG
+the	DT
+test	NN
+statistic	NN
+-LRB-	-LRB-
+e.g.	FW
+,	,
+support	NN
+-RRB-	-RRB-
+of	IN
+a	DT
+candidate	NN
+pattern	NN
+,	,
+KiWi	NN
+utilizes	VBZ
+a	DT
+biased	VBN
+sampling	NN
+technique	NN
+.	.
+
+It	PRP
+samples	NNS
+-LRB-	-LRB-
+on	IN
+average	NN
+-RRB-	-RRB-
+w	NN
+of	IN
+the	DT
+m	NN
+items	NNS
+.	.
+
+The	DT
+sampling	NN
+is	VBZ
+biased	VBN
+because	IN
+the	DT
+w	NN
+items	NNS
+are	VBP
+the	DT
+ones	NNS
+in	IN
+the	DT
+sequences	NNS
+immediately	RB
+following	VBG
+the	DT
+pattern	NN
+from	IN
+the	DT
+previous	JJ
+level	NN
+.	.
+
+For	IN
+example	NN
+,	,
+in	IN
+counting	VBG
+the	DT
+support	NN
+of	IN
+Â	NN
+1/2	CD
+a	DT
+;	:
+b	NN
+;	:
+c	NN
+;	:
+d	NN
+;	:
+e	LS
+,	,
+KiWi	NN
+examines	VBZ
+if	IN
+e	SYM
+appears	VBZ
+in	IN
+the	DT
+w	NN
+items	NNS
+immediately	RB
+following	VBG
+d	NN
+in	IN
+the	DT
+sequences	NNS
+support	VBP
+-	:
+ing	NN
+Â	NN
+1/2	CD
+a	DT
+;	:
+b	NN
+;	:
+c	NN
+;	:
+d.	SYM
+
+
+The	DT
+biased	VBN
+sampling	NN
+technique	NN
+gains	NNS
+in	IN
+both	DT
+efficiency	NN
+and	CC
+effectiveness	NN
+.	.
+
+For	IN
+efficiency	NN
+,	,
+it	PRP
+reduces	VBZ
+the	DT
+time	NN
+complexity	NN
+of	IN
+KiWi	NN
+from	IN
+relying	VBG
+on	IN
+m	NN
+to	TO
+relying	VBG
+on	IN
+w	NN
+,	,
+an	DT
+adjustable	JJ
+constant	NN
+.	.
+
+For	IN
+effectiveness	NN
+,	,
+should	MD
+we	PRP
+consider	VB
+the	DT
+entire	JJ
+suffixes	NNS
+of	IN
+the	DT
+sequences	NNS
+,	,
+some	DT
+unpromising	JJ
+candidates	NNS
+would	MD
+gain	VB
+high	JJ
+ranks	NNS
+to	TO
+take	VB
+many	JJ
+of	IN
+the	DT
+k	NN
+seats	NNS
+that	WDT
+are	VBP
+reserved	VBN
+for	IN
+promising	JJ
+patterns	NNS
+,	,
+and	CC
+the	DT
+iteration	NN
+would	MD
+soon	RB
+terminate	VB
+and	CC
+fail	VB
+to	TO
+grow	VB
+long	JJ
+patterns	NNS
+.	.
+
+
+Best	JJS
+effort	NN
+approach	NN
+.	.
+
+This	DT
+is	VBZ
+a	DT
+best	JJS
+effort	NN
+approach	NN
+.	.
+
+Users	NNS
+can	MD
+use	VB
+the	DT
+two	CD
+parameters	NNS
+k	NN
+and	CC
+w	NN
+to	TO
+bound	VBN
+the	DT
+computational	JJ
+resources	NNS
+,	,
+i.e.	FW
+,	,
+space	NN
+and	CC
+time	NN
+.	.
+
+Then	RB
+,	,
+KiWi	NN
+does	VBZ
+what	WP
+it	PRP
+can	MD
+to	TO
+find	VB
+as	RB
+many	JJ
+as	IN
+possible	JJ
+deep	JJ
+OPSMs	NNS
+based	VBN
+on	IN
+what	WP
+is	VBZ
+available	JJ
+.	.
+
+Most	JJS
+existing	VBG
+sequential	JJ
+pattern	NN
+mining	NN
+methods	NNS
+are	VBP
+exact	JJ
+.	.
+
+The	DT
+breadth-first	JJ
+methods	NNS
+normally	RB
+suffer	VBP
+from	IN
+the	DT
+inherent	JJ
+large	JJ
+memory	NN
+consump	NN
+-	:
+tion	NN
+problem	NN
+.	.
+
+The	DT
+depth-first	JJ
+methods	NNS
+have	VBP
+parsimonious	JJ
+memory	NN
+usage	NN
+;	:
+however	RB
+,	,
+they	PRP
+can	MD
+not	RB
+perform	VB
+within-level	JJ
+comparisons	NNS
+to	TO
+keep	VB
+the	DT
+most	RBS
+promising	JJ
+patterns	NNS
+to	TO
+work	VB
+on	IN
+,	,
+and	CC
+a	DT
+lot	NN
+of	IN
+computations	NNS
+are	VBP
+wasted	VBN
+on	IN
+recursively	JJ
+mining	NN
+patterns	NNS
+that	WDT
+are	VBP
+eventually	RB
+shown	VBN
+to	TO
+be	VB
+insignif	NN
+-	:
+icant	NN
+.	.
+
+With	IN
+k	NN
+and	CC
+w	NN
+,	,
+KiWi	NN
+can	MD
+well	RB
+bound	VBD
+the	DT
+computa	NN
+-	:
+tional	JJ
+resources	NNS
+.	.
+
+If	IN
+k	NN
+is	VBZ
+sufficiently	RB
+large	JJ
+and	CC
+w	NN
+is	VBZ
+set	VBN
+to	TO
+m	NN
+,	,
+KiWi	NN
+becomes	VBZ
+exact	JJ
+returning	VBG
+the	DT
+complete	JJ
+set	NN
+of	IN
+patterns	NNS
+.	.
+
+
+This	DT
+best	JJS
+effort	NN
+approach	NN
+is	VBZ
+particularly	RB
+suitable	JJ
+for	IN
+gene	NN
+expression	NN
+analysis	NN
+for	IN
+the	DT
+following	VBG
+reason	NN
+.	.
+
+In	IN
+gene	NN
+expression	NN
+analysis	NN
+,	,
+the	DT
+more	RBR
+valuable	JJ
+information	NN
+in	IN
+a	DT
+cluster	NN
+is	VBZ
+the	DT
+genes	NNS
+,	,
+not	RB
+the	DT
+subspace	NN
+.	.
+
+The	DT
+subspace	NN
+is	VBZ
+just	RB
+a	DT
+set	NN
+of	IN
+experiments	NNS
+that	WDT
+provide	VBP
+evidence	NN
+or	CC
+explanation	NN
+for	IN
+why	WRB
+the	DT
+genes	NNS
+form	VBP
+a	DT
+cluster	NN
+.	.
+
+The	DT
+best	JJS
+effort	NN
+approach	NN
+used	VBN
+in	IN
+KiWi	NN
+may	MD
+result	VB
+in	IN
+some	DT
+losses	NNS
+of	IN
+deep	JJ
+OPSMs	NNS
+;	:
+however	RB
+,	,
+it	PRP
+may	MD
+not	RB
+lose	VB
+as	RB
+many	JJ
+clusters	NNS
+because	IN
+many	JJ
+OPSMs	NNS
+would	MD
+map	VB
+to	TO
+the	DT
+same	JJ
+cluster	NN
+.	.
+
+
+4.2	CD
+Overview	NN
+
+
+We	PRP
+use	VBP
+pattern	NN
+to	TO
+denote	VB
+an	DT
+ordered	VBN
+subset	NN
+of	IN
+column	NN
+labels	NNS
+-LRB-	-LRB-
+pattern	NN
+elements	NNS
+-RRB-	-RRB-
+,	,
+e.g.	FW
+,	,
+pi	NN
+Â	NN
+1/4	CD
+Â	NN
+1/2	CD
+p1	NN
+;	:
+p2	NN
+;	:
+...	:
+;	:
+pi	NN
+is	VBZ
+a	DT
+pattern	NN
+ofiÃ	NN
+3/4	CD
+1	CD
+
+
+length	NN
+i	FW
+and	CC
+p	NN
+Â	NN
+1/4	CD
+pi	NN
+Ã	NN
+3/4	CD
+piÃ	NN
+3/4	CD
+1	CD
+.	.
+
+pi	NN
+can	MD
+be	VB
+used	VBN
+to	TO
+denote	VB
+either	CC
+a	DT
+candidate	NN
+or	CC
+a	DT
+seed	NN
+-LRB-	-LRB-
+qualified	JJ
+candidate	NN
+-RRB-	-RRB-
+at	IN
+level	NN
+-LRB-	-LRB-
+iteration	NN
+-RRB-	-RRB-
+i	FW
+as	IN
+they	PRP
+are	VBP
+generated	VBN
+in	IN
+a	DT
+level-wise	JJ
+manner	NN
+,	,
+starting	VBG
+with	IN
+level	NN
+1	CD
+.	.
+
+Conceptually	RB
+,	,
+all	DT
+seeds	NNS
+from	IN
+level	NN
+i	FW
+1are	FW
+extended	VBN
+by	IN
+each	DT
+possible	JJ
+single	JJ
+element	NN
+,	,
+creating	VBG
+candidates	NNS
+for	IN
+level	NN
+i.	NN
+Note	VBP
+that	IN
+this	DT
+candidate	NN
+generation	NN
+step	NN
+is	VBZ
+avoided	VBN
+in	IN
+the	DT
+actual	JJ
+implementation	NN
+.	.
+
+These	DT
+candidates	NNS
+are	VBP
+assessed	VBN
+using	VBG
+a	DT
+certain	JJ
+statistic	NN
+.	.
+
+Based	VBN
+on	IN
+Observation	NN
+1	CD
+,	,
+the	DT
+k	NN
+candidates	NNS
+with	IN
+the	DT
+highest	JJS
+values	NNS
+of	IN
+this	DT
+statistic	NN
+are	VBP
+retained	VBN
+as	IN
+the	DT
+seeds	NNS
+of	IN
+level	NN
+i	FW
+.	.
+
+We	PRP
+use	VBP
+Si	NNP
+to	TO
+denote	VB
+this	DT
+set	NN
+
+
+Fig.	NN
+3	CD
+.	.
+
+Running	VBG
+example	NN
+.	.
+
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+Row	NN
+matrix	NN
+.	.
+
+-LRB-	-LRB-
+b	NN
+-RRB-	-RRB-
+PD	NN
+-LRB-	-LRB-
+-LSB-	-LRB-
+-RSB-	-RRB-
+-RRB-	-RRB-
+and	CC
+its	PRP$
+windows	NNS
+-LRB-	-LRB-
+wÂ	NN
+1/4	CD
+2	LS
+-RRB-	-RRB-
+.	.
+
+-LRB-	-LRB-
+c	NN
+-RRB-	-RRB-
+PD	NN
+-LRB-	-LRB-
+-LSB-	-LRB-
+a	DT
+-RSB-	-RRB-
+-RRB-	-RRB-
+and	CC
+its	PRP$
+windows	NNS
+-LRB-	-LRB-
+wÂ	NN
+1/4	CD
+2	LS
+-RRB-	-RRB-
+.	.
+
+-LRB-	-LRB-
+d	NN
+-RRB-	-RRB-
+Complete	JJ
+and	CC
+P	NN
+Ã	NN
+°	CD
+kÂ	NN
+1/4	CD
+6	CD
+;	:
+wÂ	NN
+1/4	CD
+4Ãž	NN
+.	.
+
+-LRB-	-LRB-
+e	LS
+-RRB-	-RRB-
+P	NN
+Ã	NN
+°	CD
+kÂ	NN
+1/4	CD
+6	CD
+;	:
+wÂ	NN
+1/4	CD
+2Ãž	NN
+.	.
+
+
+of	IN
+seeds	NNS
+.	.
+
+The	DT
+number	NN
+of	IN
+candidates	NNS
+is	VBZ
+thus	RB
+upper	JJ
+bounded	VBN
+by	IN
+k	NN
+m	NN
+and	CC
+the	DT
+search	NN
+space	NN
+is	VBZ
+selectively	RB
+restricted	JJ
+.	.
+
+Based	VBN
+on	IN
+Observation	NN
+2	CD
+,	,
+the	DT
+elements	NNS
+of	IN
+a	DT
+long	JJ
+pattern	NN
+can	MD
+be	VB
+expected	VBN
+to	TO
+appear	VB
+early	RB
+,	,
+say	VBP
+,	,
+in	IN
+the	DT
+next	JJ
+w	NN
+positions	NNS
+of	IN
+the	DT
+supporting	VBG
+sequences	NNS
+.	.
+
+Thus	RB
+,	,
+to	TO
+test	VB
+candidates	NNS
+,	,
+KiWi	NN
+considers	VBZ
+a	DT
+vertical	JJ
+slice	NN
+of	IN
+width	NN
+w	NN
+of	IN
+the	DT
+supporting	VBG
+sequences	NNS
+,	,
+instead	RB
+of	IN
+the	DT
+entire	JJ
+suffixes	NNS
+.	.
+
+
+For	IN
+each	DT
+seed	NN
+pi	NN
+2Si	NN
+,	,
+the	DT
+projected	VBN
+database	NN
+for	IN
+pi	NN
+,	,
+PDÃ	NN
+°	CD
+piÃž	NN
+,	,
+i	FW
+is	VBZ
+maintained	VBN
+containing	VBG
+the	DT
+sequences	NNS
+supporting	VBG
+p	NN
+under	IN
+the	DT
+w-constraint	NN
+,	,
+that	WDT
+is	VBZ
+,	,
+a	DT
+sequence	NN
+in	IN
+PDÃ	NNP
+°	CD
+piÃž	NN
+is	VBZ
+segmented	JJ
+by	IN
+the	DT
+elements	NNS
+of	IN
+pi	NN
+into	IN
+sections	NNS
+of	IN
+length	NN
+no	DT
+more	JJR
+than	IN
+w	NN
+except	IN
+for	IN
+the	DT
+last	JJ
+section	NN
+.	.
+
+Rapidly	RB
+shrinking	VBG
+,	,
+the	DT
+projected	VBN
+databases	NNS
+provide	VBP
+a	DT
+horizontal	JJ
+slicing	VBG
+of	IN
+the	DT
+sequence	NN
+database	NN
+and	CC
+reduce	VB
+the	DT
+problem	NN
+scale	NN
+effectively	RB
+from	IN
+iteration	NN
+to	TO
+iteration	NN
+.	.
+
+The	DT
+usage	NN
+of	IN
+w	NN
+further	JJ
+performs	VBZ
+a	DT
+vertical	JJ
+slicing	VBG
+on	IN
+the	DT
+projected	VBN
+databases	NNS
+,	,
+dramatically	RB
+reducing	VBG
+the	DT
+problem	NN
+scale	NN
+since	IN
+w	NN
+is	VBZ
+usually	RB
+very	RB
+small	JJ
+comparing	VBG
+to	TO
+m	NN
+.	.
+
+The	DT
+window	NN
+for	IN
+each	DT
+sequence	NN
+rin	NN
+PDÃ	NN
+°	CD
+piÃž	NN
+is	VBZ
+a	DT
+region	NN
+of	IN
+width	NN
+at	IN
+most	JJS
+win	VBP
+rthat	NN
+immediately	RB
+follows	VBZ
+pi	NN
+.	.
+
+Projected	VBN
+databases	NNS
+-LRB-	-LRB-
+PDs	NNS
+-RRB-	-RRB-
+and	CC
+windows	NNS
+are	VBP
+illustrated	VBN
+in	IN
+Figs.	NNP
+3b	NN
+and	CC
+3c	NN
+.	.
+
+
+In	IN
+testing	NN
+candidate	NN
+piÃ	NN
+3/4	CD
+1	CD
+,	,
+only	RB
+the	DT
+windows	NNS
+of	IN
+PDÃ	NN
+°	CD
+piÃž	NN
+are	VBP
+considered	VBN
+.	.
+
+As	IN
+we	PRP
+have	VBP
+explained	VBN
+,	,
+this	DT
+does	VBZ
+not	RB
+only	RB
+substantially	RB
+improve	VB
+efficiency	NN
+,	,
+but	CC
+is	VBZ
+also	RB
+necessary	JJ
+for	IN
+long	JJ
+pattern	NN
+discovery	NN
+,	,
+avoiding	VBG
+the	DT
+waste	NN
+of	IN
+valuable	JJ
+seats	NNS
+by	IN
+unpromising	VBG
+candidates	NNS
+.	.
+
+
+To	TO
+rank	VB
+candidates	NNS
+,	,
+support	NN
+seems	VBZ
+to	TO
+be	VB
+an	DT
+apparent	JJ
+and	CC
+natural	JJ
+choice	NN
+as	IN
+the	DT
+statistic	NN
+.	.
+
+Experiments	NNS
+also	RB
+show	VBP
+that	IN
+this	DT
+choice	NN
+can	MD
+produce	VB
+reasonably	RB
+good	JJ
+results	NNS
+.	.
+
+Never	RB
+-	:
+theless	JJ
+,	,
+support	NN
+does	VBZ
+not	RB
+consider	VB
+the	DT
+distribution	NN
+of	IN
+column	NN
+labels	NNS
+in	IN
+the	DT
+sequence	NN
+database	NN
+.	.
+
+Moreover	RB
+,	,
+many	JJ
+candidates	NNS
+may	MD
+have	VB
+tied	VBN
+support	NN
+values	NNS
+and	CC
+thus	RB
+can	MD
+not	RB
+be	VB
+well	RB
+distinguished	VBN
+.	.
+
+We	PRP
+introduce	VBP
+the	DT
+concept	NN
+of	IN
+weighted	JJ
+support	NN
+.	.
+
+While	IN
+each	DT
+supporting	VBG
+sequence	NN
+contributes	VBZ
+1	CD
+to	TO
+support	VB
+,	,
+its	PRP$
+contribution	NN
+to	TO
+weighted	JJ
+support	NN
+depends	VBZ
+on	IN
+â	NN
+$	$
+œhow	CD
+it	PRP
+supports	VBZ
+,	,
+â	VB
+$	$
+i.e.	FW
+,	,
+on	IN
+the	DT
+position	NN
+of	IN
+the	DT
+supported	VBN
+pattern	NN
+in	IN
+the	DT
+sequence	NN
+.	.
+
+
+Specifically	RB
+,	,
+let	VB
+r	NN
+be	VB
+a	DT
+sequence	NN
+supporting	VBG
+a	DT
+candidate	NN
+pi	NN
+.	.
+
+Suffix	NN
+Ã	NN
+°	CD
+pi	NN
+;	:
+rÃž	NN
+is	VBZ
+the	DT
+suffix	NN
+of	IN
+rstarting	VBG
+at	IN
+element	NN
+pi	NN
+,	,
+whose	WP$
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+6	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+GAO	NNP
+ET	NNP
+AL.	NNP
+:	:
+ON	IN
+THE	DT
+DEEP	JJ
+ORDER-PRESERVING	NN
+SUBMATRIX	NNP
+PROBLEM	NN
+:	:
+A	DT
+BEST	JJS
+EFFORT	NN
+APPROACH	NN
+
+
+length	NN
+,	,
+jsuffixÃ	NN
+°	CD
+pi	NN
+;	:
+rÃžj	NN
+,	,
+signals	VBZ
+the	DT
+potential	NN
+of	IN
+pi	NN
+to	TO
+continuei	VB
+
+
+to	TO
+grow	VB
+in	IN
+r	NN
+.	.
+
+The	DT
+weighted	JJ
+support	NN
+for	IN
+p	NN
+is	VBZ
+defined	VBN
+as	IN
+the	DT
+summation	NN
+of	IN
+all	DT
+such	JJ
+suffix	NN
+lengths	NNS
+over	IN
+the	DT
+supporting	VBG
+sequences	NNS
+of	IN
+pi	NN
+,	,
+as	IN
+exemplified	VBN
+in	IN
+Fig.	NN
+3b	NN
+.	.
+
+The	DT
+usage	NN
+of	IN
+weighted	JJ
+support	NN
+significantly	RB
+improves	VBZ
+the	DT
+quality	NN
+of	IN
+seeds	NNS
+,	,
+leading	VBG
+to	TO
+the	DT
+discovery	NN
+of	IN
+longer	JJR
+patterns	NNS
+with	IN
+even	RB
+small	JJ
+kvalues	NNS
+.	.
+
+Also	RB
+,	,
+it	PRP
+makes	VBZ
+wan	JJ
+insensitive	JJ
+parameter	NN
+.	.
+
+
+All	PDT
+the	DT
+seeds	NNS
+from	IN
+different	JJ
+levels	NNS
+,	,
+i.e.	FW
+,	,
+S	NN
+Si	NNP
+for	IN
+different	JJ
+is	VBZ
+,	,
+constitute	VBP
+the	DT
+output	NN
+pattern	NN
+set	VBN
+P	NN
+Â	NN
+1/4	CD
+Si	NNP
+.	.
+
+From	IN
+this	DT
+set	NN
+,	,
+the	DT
+deep	JJ
+-LRB-	-LRB-
+long	JJ
+-RRB-	-RRB-
+patterns	NNS
+that	WDT
+correspond	VBP
+to	TO
+deep	JJ
+OPSMs	NNS
+can	MD
+be	VB
+retrieved	VBN
+automatically	RB
+by	IN
+comparing	VBG
+against	IN
+a	DT
+preset	JJ
+threshold	NN
+or	CC
+interactively	RB
+through	IN
+a	DT
+user	NN
+query	NN
+interface	NN
+.	.
+
+
+Obviously	RB
+,	,
+P	NN
+Complete	JJ
+,	,
+where	WRB
+Complete	JJ
+is	VBZ
+the	DT
+com	NN
+-	:
+plete	JJ
+set	NN
+of	IN
+patterns	NNS
+with	IN
+support	NN
+of	IN
+at	IN
+least	JJS
+2	CD
+.	.
+
+Fig.	NN
+3d	NN
+shows	VBZ
+Complete	JJ
+in	IN
+a	DT
+tree	NN
+structure	NN
+.	.
+
+In	IN
+KiWi	NN
+once	RB
+w	NN
+is	VBZ
+chosen	VBN
+,	,
+PDÃ	NN
+°	CD
+pÃž	NN
+for	IN
+each	DT
+pattern	NN
+p2	NN
+Completeis	NNP
+determined	VBD
+,	,
+as	RB
+well	RB
+as	IN
+the	DT
+statistic	NN
+value	NN
+for	IN
+p.	NN
+Then	RB
+,	,
+it	PRP
+depends	VBZ
+on	IN
+kwhether	NN
+p	NN
+would	MD
+appear	VB
+in	IN
+P	NN
+or	CC
+not	RB
+.	.
+
+At	IN
+a	DT
+given	VBN
+length	NN
+,	,
+some	DT
+top	JJ
+k	NN
+patterns	NNS
+in	IN
+Complete	JJ
+may	MD
+not	RB
+survive	VB
+if	IN
+their	PRP$
+prefixes	NNS
+failed	VBD
+;	:
+the	DT
+extra	JJ
+seats	NNS
+will	MD
+be	VB
+taken	VBN
+by	IN
+some	DT
+patterns	NNS
+not	RB
+among	IN
+the	DT
+top	JJ
+k	NN
+in	IN
+Complete	JJ
+,	,
+but	CC
+having	VBG
+their	PRP$
+prefixes	NNS
+survived	VBD
+in	IN
+the	DT
+previous	JJ
+level	NN
+.	.
+
+In	IN
+other	JJ
+words	NNS
+,	,
+pl	NN
+2	CD
+Sl	NN
+-RRB-	-RRB-
+pi	NN
+2	CD
+Si	NNP
+for	IN
+1	CD
+i	FW
+l	NN
+,	,
+meaning	NN
+,	,
+for	IN
+pl	NN
+to	TO
+be	VB
+discovered	VBN
+,	,
+each	DT
+of	IN
+its	PRP$
+prefixes	NNS
+pi	NN
+has	VBZ
+to	TO
+appear	VB
+among	IN
+Si	NNP
+.	.
+
+
+4.3	CD
+Running	VBG
+Example	NN
+
+
+In	IN
+Fig.	NN
+3	CD
+,	,
+the	DT
+raw	JJ
+data	NNS
+matrix	NN
+with	IN
+four	CD
+experiments	NNS
+and	CC
+six	CD
+genes	NNS
+in	IN
+Fig.	NNP
+3a	NN
+is	VBZ
+transformed	VBN
+into	IN
+a	DT
+6	CD
+4	CD
+sequence	NN
+database	NN
+as	IN
+shown	VBN
+in	IN
+Fig.	NN
+3b	NN
+.	.
+
+Figs.	NN
+3b	NN
+and	CC
+3c	NN
+exemplify	VBP
+the	DT
+PDs	NNS
+and	CC
+their	PRP$
+windows	NNS
+-LRB-	-LRB-
+the	DT
+shaded	JJ
+areas	NNS
+-RRB-	-RRB-
+in	IN
+growing	VBG
+pattern	NN
+Â	NN
+1/2	CD
+a	DT
+with	IN
+respect	NN
+to	TO
+wÂ	NN
+1/4	CD
+2	CD
+,	,
+from	IN
+which	WDT
+we	PRP
+can	MD
+see	VB
+how	WRB
+the	DT
+problem	NN
+scale	NN
+is	VBZ
+reduced	VBN
+level	NN
+by	IN
+level	NN
+.	.
+
+Fig.	NN
+3d	NN
+shows	VBZ
+Complete	JJ
+and	CC
+the	DT
+actual	JJ
+support	NN
+for	IN
+each	DT
+pattern	NN
+and	CC
+also	RB
+shows	VBZ
+the	DT
+pattern	NN
+discovery	NN
+process	NN
+for	IN
+kÂ	NN
+1/4	CD
+6	CD
+and	CC
+wÂ	NN
+1/4	CD
+4	CD
+,	,
+in	IN
+which	WDT
+support	NN
+is	VBZ
+used	VBN
+as	IN
+the	DT
+statistic	NN
+for	IN
+simplicity	NN
+of	IN
+illustration	NN
+.	.
+
+For	IN
+each	DT
+level	NN
+of	IN
+1	CD
+to	TO
+4	CD
+,	,
+the	DT
+nongray-colored	JJ
+patterns	NNS
+are	VBP
+candidates	NNS
+and	CC
+the	DT
+dark-colored	JJ
+ones	NNS
+are	VBP
+eventually	RB
+chosen	VBN
+as	IN
+seeds	NNS
+.	.
+
+
+The	DT
+results	NNS
+in	IN
+Fig.	NN
+3d	NN
+are	VBP
+reasonably	RB
+good	JJ
+,	,
+but	CC
+one	CD
+longest	JJS
+pattern	NN
+,	,
+Â	NN
+1/2	CD
+c	NN
+;	:
+d	NN
+;	:
+b	NN
+;	:
+a	DT
+,	,
+is	VBZ
+missing	VBG
+.	.
+
+Level	NN
+2	CD
+of	IN
+Fig.	NN
+3d	NN
+also	RB
+shows	VBZ
+the	DT
+ranking	JJ
+problem	NN
+that	IN
+some	DT
+candidates	NNS
+with	IN
+support	NN
+3	CD
+are	VBP
+chosen	VBN
+as	IN
+seeds	NNS
+,	,
+some	DT
+not	RB
+.	.
+
+Fig.	NN
+3e	NN
+shows	VBZ
+the	DT
+mining	NN
+process	NN
+when	WRB
+w	NN
+is	VBZ
+adjusted	VBN
+to	TO
+2	CD
+.	.
+
+The	DT
+results	NNS
+in	IN
+Fig.	NNP
+3e	NN
+are	VBP
+very	RB
+good	JJ
+with	IN
+both	CC
+the	DT
+longest	JJS
+patterns	NNS
+discovered	VBN
+,	,
+together	RB
+with	IN
+most	JJS
+of	IN
+the	DT
+more	RBR
+frequent	JJ
+patterns	NNS
+at	IN
+each	DT
+level	NN
+.	.
+
+Comparing	VBG
+to	TO
+Fig.	NNP
+3d	NN
+,	,
+the	DT
+wÂ	NN
+1/4	CD
+m	NN
+case	NN
+,	,
+the	DT
+support	NN
+values	NNS
+are	VBP
+suppressed	VBN
+but	CC
+in	IN
+a	DT
+biased	VBN
+fashion	NN
+.	.
+
+Some	DT
+candidates	NNS
+appearing	VBG
+early	RB
+have	VBP
+their	PRP$
+support	NN
+values	NNS
+less	RBR
+suppressed	VBN
+;	:
+thus	RB
+,	,
+they	PRP
+are	VBP
+favored	VBN
+and	CC
+have	VBP
+increased	VBN
+probabilities	NNS
+to	TO
+emerge	VB
+as	IN
+seeds	NNS
+.	.
+
+
+When	WRB
+weighted	JJ
+support	NN
+is	VBZ
+used	VBN
+,	,
+w	NN
+is	VBZ
+less	RBR
+sensitive	JJ
+.	.
+
+For	IN
+wÂ	NN
+1/4	CD
+4	CD
+,	,
+3	CD
+,	,
+or	CC
+2	CD
+,	,
+exactly	RB
+the	DT
+same	JJ
+results	NNS
+are	VBP
+returned	VBN
+as	IN
+in	IN
+Fig.	NNP
+3e	NN
+.	.
+
+The	DT
+underlined	VBN
+numbers	NNS
+in	IN
+Fig.	NN
+3e	NN
+for	IN
+level	NN
+1	CD
+show	VBP
+the	DT
+weighted	JJ
+support	NN
+values	NNS
+for	IN
+the	DT
+candidates	NNS
+,	,
+e.g.	FW
+,	,
+the	DT
+weighted	JJ
+support	NN
+for	IN
+Â	NN
+1/2	CD
+a	DT
+is	VBZ
+10	CD
+,	,
+which	WDT
+can	MD
+be	VB
+verified	VBN
+in	IN
+Fig.	NN
+3b	NN
+.	.
+
+In	IN
+Fig.	NN
+3b	NN
+,	,
+the	DT
+three	CD
+a-suffixes	NNS
+for	IN
+sequences	NNS
+supporting	VBG
+Â	NNP
+1/2	CD
+a	DT
+-LRB-	-LRB-
+II	CD
+,	,
+IV	CD
+,	,
+and	CC
+V	NN
+-RRB-	-RRB-
+have	VBP
+the	DT
+total	JJ
+length	NN
+of	IN
+10	CD
+.	.
+
+Note	VB
+that	IN
+only	RB
+windows	NNS
+for	IN
+PDÃ	NN
+°	CD
+Â	NN
+1/2	CD
+are	VBP
+considered	VBN
+in	IN
+testing	NN
+candidate	NN
+Â	NN
+1/2	CD
+a.	NN
+From	IN
+Fig.	NN
+3e	NN
+,	,
+we	PRP
+can	MD
+also	RB
+see	VB
+that	IN
+if	IN
+weighted	JJ
+support	NN
+is	VBZ
+used	VBN
+,	,
+even	RB
+for	IN
+kÂ	NN
+1/4	CD
+2	CD
+,	,
+the	DT
+two	CD
+longest	JJS
+patterns	NNS
+will	MD
+still	RB
+be	VB
+returned	VBN
+.	.
+
+
+315	CD
+
+
+4.4	CD
+Algorithm	NN
+
+
+Algorithm	NN
+1	CD
+gives	VBZ
+the	DT
+pseudocode	NN
+for	IN
+the	DT
+KiWi	NN
+pattern	NN
+discovery	NN
+algorithm	NN
+.	.
+
+Since	IN
+candidate	NN
+testing	NN
+dominates	VBZ
+the	DT
+runtime	NN
+,	,
+the	DT
+pseudocode	NN
+provides	VBZ
+certain	JJ
+low-level	JJ
+details	NNS
+toward	IN
+this	DT
+respect	NN
+.	.
+
+Column	NN
+labels	NNS
+are	VBP
+renamed	VBN
+with	IN
+integers	NNS
+0	CD
+to	TO
+m	NN
+1	CD
+before	IN
+the	DT
+raw	JJ
+data	NNS
+matrix	NN
+is	VBZ
+transformed	VBN
+into	IN
+the	DT
+sequence	NN
+database	NN
+SB	NN
+;	:
+thus	RB
+,	,
+each	DT
+sequence	NN
+in	IN
+SB	NN
+is	VBZ
+a	DT
+permutation	NN
+of	IN
+a	DT
+subset	NN
+of	IN
+f0	NN
+;	:
+1	CD
+;	:
+...	:
+;	:
+m	NN
+1g	NN
+.	.
+
+The	DT
+output	NN
+pattern	NN
+setP	NN
+containsS	NN
+from	IN
+different	JJ
+levels	NNS
+,	,
+at	IN
+mostk	NN
+for	IN
+each	DT
+level	NN
+and	CC
+organized	VBN
+as	IN
+linked	VBN
+lists	NNS
+in	IN
+order	NN
+to	TO
+save	VB
+space.S	NNP
+is	VBZ
+a	DT
+list	NN
+of	IN
+seeds	NNS
+,	,
+each	DT
+being	VBG
+a	DT
+pattern	NN
+and	CC
+a	DT
+list	NN
+of	IN
+elements	NNS
+.	.
+
+-LSB-	-LRB-
+-RSB-	-RRB-
+denotes	VBZ
+the	DT
+empty	JJ
+list.PDis	NN
+a	DT
+list	NN
+of	IN
+projected	VBN
+databases	NNS
+,	,
+each	DT
+for	IN
+a	DT
+seed	NN
+in	IN
+S	NN
+with	IN
+the	DT
+same	JJ
+index	NN
+.	.
+
+For	IN
+example	NN
+,	,
+PDÂ	NN
+1/2	CD
+s	NNS
+stores	NNS
+a	DT
+list	NN
+of	IN
+indexes	NNS
+of	IN
+sequences	NNS
+supporting	VBG
+the	DT
+seed	NN
+SÂ	NN
+1/2	CD
+s.	NN
+Statsis	VBZ
+a	DT
+list	NN
+of	IN
+integers	NNS
+used	VBN
+for	IN
+statistic	NN
+counting	NN
+,	,
+which	WDT
+always	RB
+has	VBZ
+the	DT
+size	NN
+of	IN
+mSjsince	NN
+we	PRP
+preserve	VBP
+m	NN
+positions	NNS
+for	IN
+each	DT
+seed	NN
+.	.
+
+The	DT
+data	NNS
+structures	NNS
+S	NN
+,	,
+Stats	NNS
+,	,
+and	CC
+PD	NN
+are	VBP
+reused	VBN
+from	IN
+iteration	NN
+to	TO
+iteration	NN
+.	.
+
+
+Lines	NNP
+1-3	CD
+perform	VB
+initialization.Pstarts	NNS
+with	IN
+an	DT
+empty	JJ
+set	NN
+.	.
+
+Sinitially	RB
+contains	VBZ
+one	CD
+empty	JJ
+pattern	NN
+Â	NN
+1/2	CD
+.	.
+
+PDÃ	NN
+°	CD
+Â	NN
+1/2	CD
+contains	VBZ
+all	PDT
+the	DT
+nsequence	NN
+indexes	NNS
+.	.
+
+Lines	NNP
+4-20	CD
+mine	PRP
+all	DT
+levels	NNS
+of	IN
+Sfrom	NNP
+iteration	NN
+to	TO
+iteration	NN
+.	.
+
+During	IN
+each	DT
+iteration	NN
+,	,
+lines	NNS
+5-12	CD
+perform	VBP
+candidate	NN
+testing	NN
+.	.
+
+Then	RB
+in	IN
+line	NN
+13	CD
+,	,
+Sis	NNP
+updated	VBN
+with	IN
+the	DT
+-LRB-	-LRB-
+at	IN
+most	JJS
+-RRB-	-RRB-
+kcandidates	VBZ
+having	VBG
+top	JJ
+values	NNS
+inStats	NNS
+.	.
+
+Then	RB
+in	IN
+line	NN
+14	CD
+,	,
+S	NN
+gets	VBZ
+rid	JJ
+of	IN
+the	DT
+seeds	NNS
+with	IN
+support	NN
+less	RBR
+than	IN
+2	CD
+.	.
+
+Lines	NNP
+15-17	CD
+check	VB
+the	DT
+loop	NN
+termination	NN
+condition	NN
+.	.
+
+If	IN
+there	EX
+is	VBZ
+no	DT
+seeds	NNS
+in	IN
+S	NN
+,	,
+pattern	NN
+growth	NN
+can	MD
+not	RB
+continue	VB
+.	.
+
+Otherwise	RB
+,	,
+S	NN
+is	VBZ
+added	VBN
+to	TO
+P	NN
+-LRB-	-LRB-
+line	NN
+19	CD
+-RRB-	-RRB-
+,	,
+PDis	NN
+updated	VBN
+for	IN
+seeds	NNS
+in	IN
+S	NN
+-LRB-	-LRB-
+line	NN
+20	CD
+-RRB-	-RRB-
+,	,
+and	CC
+the	DT
+next	JJ
+iteration	NN
+starts	VBZ
+.	.
+
+When	WRB
+the	DT
+loop	NN
+ends	VBZ
+,	,
+P	NN
+contains	VBZ
+the	DT
+computed	JJ
+Sfrom	NN
+all	DT
+levels	NNS
+.	.
+
+
+Note	VB
+that	IN
+it	PRP
+is	VBZ
+possible	JJ
+to	TO
+record	VB
+the	DT
+supporting	NN
+sequence	NN
+indexes	NNS
+for	IN
+each	DT
+candidate	NN
+during	IN
+candidate	NN
+testing	NN
+.	.
+
+But	CC
+that	DT
+way	NN
+,	,
+the	DT
+memory	NN
+and	CC
+CPU	NNP
+consumptions	NNS
+are	VBP
+sig	SYM
+-	:
+nificant	NN
+.	.
+
+We	PRP
+choose	VBP
+to	TO
+update	VB
+PD	NN
+after	IN
+the	DT
+update	VBP
+of	IN
+S	NN
+,	,
+when	WRB
+we	PRP
+only	RB
+need	VBP
+to	TO
+process	VB
+at	IN
+most	JJS
+kseeds	NNS
+.	.
+
+The	DT
+runtime	NN
+of	IN
+this	DT
+update	VBP
+is	VBZ
+dominated	VBN
+by	IN
+candidate	NN
+testing	NN
+and	CC
+negligible	JJ
+.	.
+
+
+Candidate	NN
+testing	NN
+.	.
+
+Generally	RB
+,	,
+support	NN
+counting	NN
+is	VBZ
+the	DT
+major	JJ
+time	NN
+consumer	NN
+in	IN
+frequent	JJ
+-LRB-	-LRB-
+sequential	JJ
+-RRB-	-RRB-
+pattern	NN
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+7	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+316	CD
+IEEE	NNP
+TRANSACTIONS	NNPS
+ON	IN
+KNOWLEDGE	NNP
+AND	CC
+DATA	NNP
+ENGINEERING	NNP
+,	,
+VOL	NNP
+.	.
+
+24	CD
+,	,
+NO.	NNP
+2	CD
+,	,
+FEBRUARY	NNP
+2012	CD
+
+
+mining	NN
+.	.
+
+In	IN
+principle	NN
+,	,
+KiWi	NN
+achieves	VBZ
+efficiency	NN
+in	IN
+statistic	NN
+counting	NN
+by	IN
+upper	JJ
+bounding	VBG
+the	DT
+number	NN
+of	IN
+candidates	NNS
+,	,
+as	RB
+well	RB
+as	IN
+horizontal	JJ
+-LRB-	-LRB-
+line	NN
+7	CD
+-RRB-	-RRB-
+and	CC
+vertical	JJ
+-LRB-	-LRB-
+line	NN
+8	CD
+-RRB-	-RRB-
+slicing	VBG
+of	IN
+the	DT
+sequence	NN
+database	NN
+.	.
+
+
+Other	JJ
+than	IN
+that	DT
+,	,
+KiWi	NN
+avoids	VBZ
+explicit	JJ
+candidate	NN
+genera	NN
+-	:
+tion	NN
+.	.
+
+Comparing	VBG
+to	TO
+conventional	JJ
+sequential	JJ
+pattern	NN
+mining	NN
+,	,
+m	NN
+is	VBZ
+not	RB
+big	JJ
+in	IN
+OPSM	NNP
+mining	NN
+.	.
+
+Thus	RB
+,	,
+we	PRP
+preserve	VBP
+m	NN
+positions	NNS
+inStats	NNS
+for	IN
+each	DT
+seed	NN
+since	IN
+it	PRP
+has	VBZ
+at	IN
+mostm	NN
+ways	NNS
+to	TO
+grow	VB
+one	CD
+more	JJR
+element	NN
+.	.
+
+In	IN
+particular	JJ
+,	,
+letSÂ	JJ
+1/2	CD
+se	FW
+be	VB
+
+
+length	NN
+i	FW
+is	VBZ
+on	IN
+average	JJ
+supported	VBN
+by	IN
+n	NN
+1i	NN
+!	.
+
+sequences	NNS
+.	.
+
+
+Knowing	VBG
+that	DT
+i	FW
+!	.
+
+2i	NN
+for	IN
+i	FW
+1	CD
+,	,
+the	DT
+average	JJ
+case	NN
+runtime	NN
+is	VBZ
+
+
+
+O	NN
+kwn	NN
+
+
+1	CD
+
+
+l	NN
+!	.
+
+
+1	CD
+!	.
+
+
+Ã	NN
+3/4	CD
+12	CD
+!	.
+
+Ã	NN
+3/4	CD
+Ã	NN
+3/4	CD
+1	CD
+
+
+Â	NN
+1/4	CD
+O	NN
+kwn	NN
+
+
+1	CD
+
+
+Ã	NN
+3/4	CD
+
+
+1	CD
+
+
+20	CD
+21	CD
+
+
+Ã	NN
+3/4	CD
+Ã	NN
+3/4	CD
+12l	NN
+
+
+Â	NN
+1/4	CD
+OÃ	NN
+°	NN
+kwn	NN
+2ÃžÂ	NN
+1/4	CD
+OÃ	NN
+°	CD
+kwnÃž	NN
+:	:
+
+
+Note	VB
+that	IN
+the	DT
+average	JJ
+case	NN
+runtime	NN
+is	VBZ
+linear	JJ
+in	IN
+n	NN
+for	IN
+fixed	VBN
+
+
+a	DT
+candidate	NN
+withe	NN
+being	VBG
+the	DT
+newly	RB
+appended	VBN
+element	NN
+.	.
+
+
+Then	RB
+,	,
+s0Â	NN
+1/4	CD
+m	NN
+s	NNS
+Ã	VBP
+3/4	CD
+e	LS
+,	,
+meaning	VBG
+that	IN
+the	DT
+statistic	NN
+increment	NN
+-	:
+
+
+min	NN
+sup	NN
+of	IN
+2	CD
+.	.
+
+Some	DT
+other	JJ
+algorithms	NNS
+also	RB
+show	VBP
+similar	JJ
+
+
+empirical	JJ
+results	NNS
+,	,
+but	CC
+their	PRP$
+support	NN
+is	VBZ
+defined	VBN
+as	IN
+a	DT
+fraction	NN
+
+
+ing	VBG
+for	IN
+the	DT
+candidate	NN
+will	MD
+be	VB
+done	VBN
+inStatsÂ	NN
+1/2	CD
+s0	NN
+-LRB-	-LRB-
+line	NN
+9	CD
+-RRB-	-RRB-
+.	.
+
+Conversely	RB
+,	,
+knowings0	NN
+,	,
+an	DT
+index	NN
+inStats	NNS
+,	,
+we	PRP
+have	VBP
+e	SYM
+Â	FW
+1/4	CD
+
+
+properly	RB
+.	.
+
+
+each	DT
+seed	NN
+inS	NN
+with	IN
+indexs	NNS
+-LRB-	-LRB-
+line	NN
+6	CD
+-RRB-	-RRB-
+,	,
+for	IN
+each	DT
+sequencer	NN
+in	IN
+
+
+of	IN
+n	NN
+,	,
+i.e.	FW
+,	,
+min	NN
+sup	NN
+increases	VBZ
+proportionally	RB
+with	IN
+the	DT
+increase	NN
+
+
+s0	NN
+mod	NN
+m	NN
+ands	VBZ
+Â	NN
+1/4	CD
+s0	NN
+div	NN
+m	NN
+,	,
+meaning	VBG
+that	IN
+the	DT
+statistic	NN
+stored	VBD
+
+
+of	IN
+n.	NN
+
+
+in	IN
+StatsÂ	NNP
+1/2	CD
+s0is	NN
+for	IN
+candidateSÂ	NN
+1/2	CD
+se	FW
+.	.
+
+This	DT
+converse	NN
+deriva	NN
+-	:
+
+
+The	DT
+worst	JJS
+case	NN
+space	NN
+complexity	NN
+is	VBZ
+OÃ	NNP
+°	CD
+mn	NN
+Ã	NN
+3/4	CD
+km	NN
+Ã	NN
+3/4	CD
+knÃž	NN
+,	,
+tion	NN
+is	VBZ
+used	VBN
+in	IN
+line	NN
+13	CD
+to	TO
+updateS	NNP
+,	,
+growing	VBG
+the	DT
+linked	VBN
+lists	NNS
+
+
+where	WRB
+mn	NN
+is	VBZ
+for	IN
+SB	NN
+and	CC
+ISB	NN
+,	,
+km	NN
+for	IN
+Stats	NNS
+,	,
+and	CC
+kn	NN
+for	IN
+PD	NN
+
+
+since	IN
+each	DT
+pattern	NN
+can	MD
+be	VB
+supported	VBN
+by	IN
+at	IN
+most	JJS
+nsequences	NNS
+.	.
+
+
+In	IN
+Algorithm	NN
+1	CD
+,	,
+lines	NNS
+5-12	CD
+perform	VBP
+statistic	NN
+counting.The	NN
+memory	NN
+taken	VBN
+by	IN
+
+
+Sis	NNP
+OÃ	NNP
+°	CD
+kÃžand	NN
+negligible	JJ
+.	.
+
+In	IN
+general	JJ
+,	,
+it	PRP
+First	RB
+,	,
+Stats	NNS
+is	VBZ
+initialized	VBN
+withm	NN
+Sj0s	NNS
+-LRB-	-LRB-
+line	NN
+5	CD
+-RRB-	-RRB-
+.	.
+
+Then	RB
+,	,
+for	IN
+
+
+is	VBZ
+reasonable	JJ
+to	TO
+assume	VB
+that	IN
+SB	NN
+can	MD
+be	VB
+well	RB
+accommodated	VBN
+
+
+in	IN
+memory	NN
+,	,
+and	CC
+normally	RB
+n	NN
+m	NN
+;	:
+thus	RB
+,	,
+PDwould	NN
+incur	VBP
+the	DT
+the	DT
+projected	VBN
+database	NN
+ofPDÂ	NN
+1/2	CD
+s	NNS
+-LRB-	-LRB-
+line	NN
+7	CD
+-RRB-	-RRB-
+,	,
+and	CC
+for	IN
+each	DT
+
+
+largest	JJS
+memory	NN
+consumption	NN
+.	.
+
+In	IN
+practice	NN
+,	,
+the	DT
+support	NN
+for	IN
+elemente	NN
+in	IN
+the	DT
+window	NN
+ofr	NN
+-LRB-	-LRB-
+line	NN
+8	CD
+-RRB-	-RRB-
+,	,
+weighted	JJ
+support	NN
+is	VBZ
+
+
+each	DT
+seed	NN
+reduces	VBZ
+dramatically	RB
+along	IN
+the	DT
+growing	VBG
+of	IN
+the	DT
+
+
+seed	NN
+.	.
+
+It	PRP
+can	MD
+be	VB
+very	RB
+big	JJ
+for	IN
+the	DT
+first	JJ
+iteration	NN
+,	,
+but	CC
+in	IN
+that	DT
+case	NN
+
+
+Use	NN
+of	IN
+inverse	JJ
+sequence	NN
+database	NN
+.	.
+
+Locating	VBG
+windows	NNS
+of	IN
+
+
+the	DT
+number	NN
+of	IN
+patterns	NNS
+is	VBZ
+upper	JJ
+bounded	VBN
+by	IN
+minÃ	NN
+°	CD
+k	NN
+;	:
+mÃž	NN
+.	.
+
+projected	VBN
+databases	NNS
+and	CC
+incrementing	VBG
+weighted	JJ
+supportKiWi	NN
+
+
+Overall	RB
+,	,
+by	IN
+adjusting	VBG
+k	NN
+,	,
+the	DT
+total	JJ
+memory	NN
+consumption	NN
+in	IN
+values	NNS
+require	VBP
+intensive	JJ
+accesses	NNS
+to	TO
+column	NN
+indexes	NNS
+.	.
+
+Since	IN
+
+
+can	MD
+be	VB
+well	RB
+controlled	VBN
+.	.
+
+
+incremented	VBN
+for	IN
+candidateSÂ	NN
+1/2	CD
+se	FW
+-LRB-	-LRB-
+line	NN
+9	CD
+-RRB-	-RRB-
+.	.
+
+
+each	DT
+sequence	NN
+in	IN
+the	DT
+sequence	NN
+databaseSB	NN
+contains	VBZ
+unique	JJ
+elements	NNS
+,	,
+for	IN
+a	DT
+given	VBN
+row	NN
+index	NN
+,	,
+SB	NN
+can	MD
+be	VB
+considered	VBN
+as	IN
+a	DT
+one-to-one	JJ
+function	NN
+mapping	VBG
+column	NN
+indexes	NNS
+to	TO
+sequence	NN
+elements	NNS
+.	.
+
+Therefore	RB
+,	,
+the	DT
+inverse	JJ
+function	NN
+,	,
+denoted	VBN
+as	IN
+ISB	NN
+and	CC
+essentially	RB
+a	DT
+matrix	NN
+of	IN
+the	DT
+same	JJ
+size	NN
+as	IN
+SB	NN
+,	,
+maps	VBZ
+sequence	NN
+elements	NNS
+to	TO
+column	NN
+indexes	NNS
+in	IN
+a	DT
+one-to-one	JJ
+manner	NN
+.	.
+
+
+ISBcan	NN
+be	VB
+used	VBN
+in	IN
+any	DT
+situation	NN
+requiring	VBG
+the	DT
+retrieval	NN
+of	IN
+the	DT
+column	NN
+index	NN
+for	IN
+a	DT
+given	VBN
+element	NN
+.	.
+
+In	IN
+line	NN
+8	CD
+of	IN
+Algorithm	NN
+1	CD
+,	,
+window	NN
+of	IN
+r	NN
+just	RB
+corresponds	VBZ
+to	TO
+some	DT
+column	NN
+index	NN
+c	NN
+with	IN
+cISBÂ	NN
+1/2	CD
+rlastw	NN
+where	WRB
+last	JJ
+is	VBZ
+the	DT
+last	JJ
+element	NN
+of	IN
+SÂ	NN
+1/2	CD
+s.	NN
+WithoutISB	NN
+,	,
+we	PRP
+have	VBP
+to	TO
+either	CC
+perform	VB
+a	DT
+linear	JJ
+search	NN
+for	IN
+,	,
+or	CC
+record	NN
+,	,
+ISBÂ	NN
+1/2	CD
+rlast	NN
+for	IN
+each	DT
+sequence	NN
+rsupporting	NN
+each	DT
+seed	NN
+in	IN
+S	NN
+.	.
+
+In	IN
+line	NN
+9	CD
+,	,
+jsuffixÃ	NN
+°	NN
+e	SYM
+;	:
+rÃžj	NN
+can	MD
+be	VB
+quickly	RB
+calculated	VBN
+as	IN
+jSBÂ	NN
+1/2	CD
+r	NN
+ISBÂ	NN
+1/2	CD
+re	NN
+.	.
+
+In	IN
+line	NN
+19	CD
+,	,
+to	TO
+updatePD	NNP
+,	,
+for	IN
+each	DT
+new	JJ
+seed	NN
+SÃ	NN
+3/4	CD
+e	LS
+,	,
+we	PRP
+only	RB
+need	VBP
+to	TO
+check	VB
+each	DT
+sequencerinPDÂ	NN
+1/2	CD
+s	NNS
+,	,
+and	CC
+see	VB
+if	IN
+ISBÂ	NN
+1/2	CD
+reISBÂ	NN
+1/2	CD
+rlastw	NN
+.	.
+
+If	IN
+it	PRP
+is	VBZ
+,	,
+ralso	NN
+supports	VBZ
+the	DT
+new	JJ
+seed.ISBis	NNP
+also	RB
+used	VBD
+in	IN
+pattern	NN
+extension	NN
+as	IN
+to	TO
+be	VB
+discussed	VBN
+.	.
+
+
+The	DT
+SPADE	NNP
+-LSB-	-LRB-
+52	CD
+-RSB-	-RRB-
+algorithm	NN
+maintains	VBZ
+a	DT
+list	NN
+of	IN
+sid	NN
+
+
+5KIWI	NN
+EXTENSIONS	NNS
+
+
+In	IN
+this	DT
+section	NN
+,	,
+we	PRP
+discuss	VBP
+technical	JJ
+extensions	NNS
+to	TO
+the	DT
+KiWi	NN
+framework	NN
+for	IN
+improved	VBN
+efficiency	NN
+,	,
+effectiveness	NN
+,	,
+and	CC
+usability	NN
+.	.
+
+
+5.1	CD
+Parameter	NNP
+Tuning	VBG
+
+
+KiWi	NN
+is	VBZ
+a	DT
+best	JJS
+effort	NN
+approach	NN
+that	WDT
+strives	VBZ
+to	TO
+optimize	VB
+its	PRP$
+performance	NN
+based	VBN
+on	IN
+what	WP
+is	VBZ
+available	JJ
+.	.
+
+In	IN
+particular	JJ
+,	,
+kand	FW
+w	FW
+are	VBP
+the	DT
+tunable	JJ
+parameters	NNS
+used	VBN
+to	TO
+bound	VBN
+the	DT
+computa	NN
+-	:
+tional	JJ
+resources	NNS
+.	.
+
+With	IN
+unlimited	JJ
+kand	NN
+w	NN
+,	,
+KiWi	NN
+returns	VBZ
+the	DT
+complete	JJ
+set	NN
+of	IN
+patterns	NNS
+.	.
+
+Now	RB
+we	PRP
+discuss	VBP
+how	WRB
+to	TO
+automatically	RB
+determine	VB
+the	DT
+parameters	NNS
+based	VBN
+on	IN
+the	DT
+available	JJ
+computational	JJ
+resources	NNS
+.	.
+
+
+Determining	VBG
+k.	NN
+Parameter	NN
+kcan	NN
+be	VB
+determined	VBN
+based	VBN
+on	IN
+the	DT
+available	JJ
+memory	NN
+.	.
+
+Recall	VB
+that	IN
+the	DT
+worst	JJS
+case	NN
+space	NN
+complexity	NN
+is	VBZ
+OÃ	JJ
+°	NN
+mnÃ	NN
+3/4	CD
+kmÃ	NN
+3/4	CD
+knÃž	NN
+.	.
+
+By	IN
+adjusting	VBG
+k	NN
+,	,
+we	PRP
+want	VBP
+to	TO
+make	VB
+sure	JJ
+KiWi	NN
+would	MD
+not	RB
+incur	VB
+memory	NN
+spills	NNS
+.	.
+
+It	PRP
+is	VBZ
+possible	JJ
+to	TO
+do	VB
+so	RB
+because	IN
+the	DT
+amount	NN
+of	IN
+memory	NN
+consumed	VBN
+
+
+-LRB-	-LRB-
+sequence	NN
+id	NN
+-RRB-	-RRB-
+and	CC
+eid	NN
+-LRB-	-LRB-
+element	NN
+id	NN
+-RRB-	-RRB-
+pairs	NNS
+for	IN
+each	DT
+pattern	NN
+.	.
+
+
+by	IN
+the	DT
+data	NNS
+structures	NNS
+in	IN
+KiWi	NN
+can	MD
+be	VB
+precisely	RB
+calculated	VBN
+The	DT
+lists	NNS
+of	IN
+sid	NN
+correspond	VBP
+to	TO
+thePDsinKiWi	NNP
+.	.
+
+The	DT
+lists	NNS
+ofbased	VBN
+on	IN
+
+
+k	NN
+,	,
+m	NN
+,	,
+and	CC
+n	NN
+,	,
+where	WRB
+m	NN
+and	CC
+n	NN
+are	VBP
+given	VBN
+.	.
+
+eidare	NN
+condensed	JJ
+into	IN
+a	DT
+single	JJ
+static	JJ
+data	NNS
+structureISB	NN
+in	IN
+
+
+As	IN
+shown	VBN
+in	IN
+Algorithm	NN
+1	CD
+,	,
+PD	NN
+is	VBZ
+the	DT
+largest	JJS
+memory	NN
+
+
+KiWi	NN
+,	,
+making	VBG
+use	NN
+of	IN
+the	DT
+fact	NN
+that	IN
+in	IN
+OPSM	NNP
+mining	NN
+,	,
+each	DT
+column	NN
+label	NN
+-LRB-	-LRB-
+item	NN
+-RRB-	-RRB-
+in	IN
+the	DT
+alphabet	NN
+appears	VBZ
+exactly	RB
+once	RB
+in	IN
+a	DT
+sequence	NN
+.	.
+
+
+Computational	JJ
+analysis	NN
+.	.
+
+The	DT
+runtime	NN
+of	IN
+KiWi	NN
+is	VBZ
+domi	SYM
+-	:
+nated	VBN
+by	IN
+candidate	NN
+testing	NN
+in	IN
+lines	NNS
+5-12	CD
+of	IN
+Algorithm	NN
+1	CD
+.	.
+
+By	IN
+upper	JJ
+bounding	VBG
+the	DT
+number	NN
+of	IN
+visits	NNS
+of	IN
+elements	NNS
+in	IN
+the	DT
+windows	NNS
+,	,
+we	PRP
+can	MD
+obtain	VB
+the	DT
+worst	JJS
+case	NN
+complexity	NN
+as	IN
+OÃ	NN
+°	CD
+lkwnÃž	NN
+,	,
+where	WRB
+l	NN
+is	VBZ
+the	DT
+length	NN
+of	IN
+the	DT
+longest	JJS
+pattern	NN
+.	.
+
+Note	VB
+that	DT
+for	IN
+each	DT
+pattern	NN
+,	,
+there	EX
+are	VBP
+at	IN
+most	JJS
+n	NN
+supporting	VBG
+sequences	NNS
+.	.
+
+
+Now	RB
+we	PRP
+provide	VBP
+the	DT
+average	JJ
+case	NN
+analysis	NN
+assuming	VBG
+a	DT
+random	JJ
+data	NNS
+matrix	NN
+.	.
+
+In	IN
+such	PDT
+a	DT
+matrix	NN
+,	,
+each	DT
+pattern	NN
+of	IN
+
+
+consumer	NN
+.	.
+
+Other	JJ
+data	NNS
+structures	NNS
+,	,
+such	JJ
+as	IN
+SB	NN
+,	,
+ISB	NNP
+,	,
+and	CC
+S	NN
+,	,
+take	VB
+relatively	RB
+small	JJ
+amount	NN
+of	IN
+memory	NN
+constantly	RB
+from	IN
+iteration	NN
+to	TO
+iteration	NN
+.	.
+
+The	DT
+memory	NN
+consumption	NN
+by	IN
+PD	NN
+is	VBZ
+unstable	JJ
+;	:
+however	RB
+,	,
+within	IN
+each	DT
+iteration	NN
+,	,
+it	PRP
+can	MD
+be	VB
+calculated	VBN
+-LRB-	-LRB-
+line	NN
+13	CD
+of	IN
+Algorithm	NN
+1	CD
+-RRB-	-RRB-
+before	IN
+it	PRP
+is	VBZ
+actually	RB
+used	VBN
+-LRB-	-LRB-
+line	NN
+19	CD
+-RRB-	-RRB-
+.	.
+
+
+Based	VBN
+on	IN
+this	DT
+observation	NN
+,	,
+we	PRP
+can	MD
+determine	VB
+k	NN
+dynami	NN
+-	:
+cally	RB
+from	IN
+iteration	NN
+to	TO
+iteration	NN
+so	IN
+that	IN
+the	DT
+total	JJ
+memory	NN
+consumption	NN
+is	VBZ
+always	RB
+within	IN
+the	DT
+memory	NN
+constraint	NN
+.	.
+
+In	IN
+more	JJR
+detail	NN
+,	,
+in	IN
+lines	NNS
+6-12	CD
+of	IN
+Algorithm	NN
+1	CD
+,	,
+the	DT
+statistics	NNS
+for	IN
+the	DT
+candidate	NN
+patterns	NNS
+are	VBP
+collected	VBN
+and	CC
+stored	VBN
+in	IN
+Stats	NNS
+,	,
+from	IN
+which	WDT
+we	PRP
+know	VBP
+the	DT
+size	NN
+of	IN
+projected	VBN
+database	NN
+-LRB-	-LRB-
+support	NN
+-RRB-	-RRB-
+for	IN
+each	DT
+candidate	NN
+.	.
+
+Then	RB
+,	,
+in	IN
+updating	VBG
+S	NN
+-LRB-	-LRB-
+line	NN
+13	CD
+-RRB-	-RRB-
+,	,
+we	PRP
+choose	VBP
+the	DT
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+8	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+GAO	NNP
+ET	NNP
+AL.	NNP
+:	:
+ON	IN
+THE	DT
+DEEP	JJ
+ORDER-PRESERVING	NN
+SUBMATRIX	NNP
+PROBLEM	NN
+:	:
+A	DT
+BEST	JJS
+EFFORT	NN
+APPROACH	NN
+
+
+top	JJ
+k	NN
+from	IN
+Stats	NNS
+such	JJ
+that	IN
+the	DT
+calculated	VBN
+PD	NN
+is	VBZ
+within	IN
+the	DT
+given	VBN
+constraint	NN
+.	.
+
+In	IN
+line	NN
+19	CD
+,	,
+PDis	NN
+actually	RB
+filled	VBN
+but	CC
+it	PRP
+will	MD
+not	RB
+cause	VB
+a	DT
+memory	NN
+spill	NN
+.	.
+
+
+One	CD
+drawback	NN
+of	IN
+the	DT
+above	JJ
+solution	NN
+is	VBZ
+that	IN
+there	EX
+would	MD
+be	VB
+a	DT
+few	JJ
+iterations	NNS
+where	WRB
+PDis	NNP
+very	RB
+large	JJ
+and	CC
+a	DT
+relatively	RB
+small	JJ
+khas	NNS
+to	TO
+be	VB
+used	VBN
+.	.
+
+Then	RB
+these	DT
+iterations	NNS
+would	MD
+become	VB
+the	DT
+performance	NN
+bottleneck	NN
+of	IN
+KiWi	NN
+.	.
+
+A	DT
+remedy	NN
+is	VBZ
+to	TO
+maintain	VB
+a	DT
+sufficiently	RB
+large	JJ
+k	NN
+for	IN
+such	JJ
+iterations	NNS
+at	IN
+a	DT
+reasonable	JJ
+efficiency	NN
+cost	NN
+.	.
+
+
+Observe	VB
+that	IN
+the	DT
+projected	VBN
+database	NN
+of	IN
+a	DT
+superpattern	NN
+is	VBZ
+a	DT
+subset	NN
+of	IN
+the	DT
+projected	VBN
+database	NN
+of	IN
+a	DT
+subpattern	NN
+.	.
+
+The	DT
+implication	NN
+is	VBZ
+that	IN
+at	IN
+any	DT
+level	NN
+,	,
+we	PRP
+can	MD
+make	VB
+use	NN
+of	IN
+PD	NN
+of	IN
+any	DT
+previous	JJ
+level	NN
+if	IN
+we	PRP
+do	VBP
+not	RB
+have	VB
+an	DT
+updated	VBN
+one	CD
+.	.
+
+The	DT
+earlier	JJR
+the	DT
+level	NN
+we	PRP
+use	VBP
+,	,
+the	DT
+more	JJR
+efficiency	NN
+we	PRP
+lose	VBP
+.	.
+
+If	IN
+we	PRP
+have	VBP
+to	TO
+use	VB
+the	DT
+initial	JJ
+PDas	NNS
+in	IN
+line	NN
+3	CD
+,	,
+all	PDT
+the	DT
+efficiency	NN
+that	WDT
+PD	NN
+intends	VBZ
+to	TO
+offer	VB
+is	VBZ
+lost	VBN
+for	IN
+this	DT
+level	NN
+,	,
+since	IN
+the	DT
+problem	NN
+scale	NN
+does	VBZ
+not	RB
+shrink	VB
+from	IN
+the	DT
+whole	JJ
+sequence	NN
+database	NN
+SB	NN
+.	.
+
+While	IN
+we	PRP
+could	MD
+use	VB
+the	DT
+entire	JJ
+PD	NN
+from	IN
+some	DT
+previous	JJ
+level	NN
+,	,
+for	IN
+best	JJS
+efficiency	NN
+,	,
+a	DT
+better	JJR
+strategy	NN
+is	VBZ
+to	TO
+update	VB
+PDas	NNS
+much	RB
+as	IN
+possible	JJ
+from	IN
+iteration	NN
+to	TO
+iteration	NN
+.	.
+
+In	IN
+this	DT
+case	NN
+,	,
+PD	NN
+can	MD
+be	VB
+mixed	JJ
+containing	VBG
+both	DT
+unupdated	JJ
+entries	NNS
+and	CC
+updated	VBN
+entries	NNS
+.	.
+
+
+Determining	VBG
+w.	NNP
+Let	VB
+lu	FW
+be	VB
+the	DT
+minimum	JJ
+pattern	NN
+length	NN
+that	IN
+the	DT
+user	NN
+is	VBZ
+interested	JJ
+in	IN
+.	.
+
+If	IN
+the	DT
+user	NN
+does	VBZ
+not	RB
+specify	VB
+lu	NN
+,	,
+a	DT
+default	NN
+value	NN
+will	MD
+be	VB
+used	VBN
+,	,
+which	WDT
+is	VBZ
+the	DT
+minimum	JJ
+pattern	NN
+length	NN
+that	WDT
+would	MD
+make	VB
+OPSMs	NNS
+of	IN
+size	NN
+2	CD
+lu	NN
+statistically	RB
+significant	JJ
+in	IN
+an	DT
+n	NN
+m	NN
+data	NNS
+matrix	NN
+.	.
+
+
+Then	RB
+,	,
+we	PRP
+run	VBP
+the	DT
+Rprogram	NNP
+-LRB-	-LRB-
+described	VBN
+in	IN
+Appendix	NN
+A	NN
+-RRB-	-RRB-
+with	IN
+lu	NN
+as	IN
+the	DT
+input	NN
+pattern	NN
+length	NN
+.	.
+
+The	DT
+program	NN
+will	MD
+return	VB
+the	DT
+cdf	NN
+of	IN
+X	NN
+,	,
+where	WRB
+X	NN
+is	VBZ
+the	DT
+maximum	NN
+length	NN
+of	IN
+sections	NNS
+segmented	JJ
+by	IN
+a	DT
+pattern	NN
+of	IN
+length	NN
+lu	NN
+.	.
+
+
+Then	RB
+,	,
+we	PRP
+choose	VBP
+wsuch	NN
+that	WDT
+PÃ	NNP
+°	NN
+X	NN
+wÃžs	NNS
+,	,
+where	WRB
+s	NNS
+can	MD
+be	VB
+set	VBN
+to	TO
+,	,
+e.g.	FW
+,	,
+0.5	CD
+.	.
+
+This	DT
+guarantees	VBZ
+that	IN
+,	,
+on	IN
+average	NN
+,	,
+the	DT
+biased	VBN
+sampling	NN
+will	MD
+sample	NN
+ns	VBZ
+Â	NN
+1/4	CD
+s	NNS
+n	NN
+of	IN
+the	DT
+sequences	NNS
+supporting	VBG
+each	DT
+prefix	NN
+of	IN
+a	DT
+pattern	NN
+of	IN
+length	NN
+lu	NN
+.	.
+
+Thus	RB
+,	,
+the	DT
+choice	NN
+of	IN
+w	NN
+is	VBZ
+actually	RB
+the	DT
+choice	NN
+of	IN
+sample	NN
+size	NN
+.	.
+
+
+Parameter	NN
+s	NNS
+Â	VBP
+1/4	CD
+n	NN
+
+
+s	NNS
+
+
+n	NN
+
+
+is	VBZ
+the	DT
+ratio	NN
+of	IN
+sample	NN
+size	NN
+over	IN
+population	NN
+size	NN
+.	.
+
+In	IN
+practice	NN
+,	,
+when	WRB
+n	NN
+is	VBZ
+large	JJ
+,	,
+we	PRP
+tend	VBP
+to	TO
+choose	VB
+a	DT
+smaller	JJR
+s	NNS
+,	,
+leading	VBG
+to	TO
+a	DT
+smaller	JJR
+w	NN
+and	CC
+reduced	VBD
+runtime	NN
+.	.
+
+In	IN
+statistics	NNS
+,	,
+suppose	VBP
+we	PRP
+have	VBP
+determined	VBN
+that	IN
+sample	NN
+size	NN
+n0	NN
+is	VBZ
+needed	VBN
+-LRB-	-LRB-
+in	IN
+estimating	VBG
+mean	NN
+or	CC
+proportion	NN
+-RRB-	-RRB-
+to	TO
+achieve	VB
+a	DT
+desired	VBN
+precision	NN
+and	CC
+confidence	NN
+level	NN
+;	:
+for	IN
+finite	JJ
+population	NN
+,	,
+a	DT
+correction	NN
+is	VBZ
+made	VBN
+as	IN
+follows	VBZ
+:	:
+
+
+ns	NN
+Â	NN
+1/4	CD
+n0	NN
+n0	NN
+
+
+n	NN
+
+
+Ã	NN
+3/4	CD
+n	NN
+1	CD
+;	:
+
+
+317	CD
+
+
+Right-leaning	JJ
+pattern	NN
+mining	NN
+.	.
+
+InKiWi	NNP
+,	,
+a	DT
+patternpl	NN
+
+
+must	MD
+have	VB
+all	DT
+its	PRP$
+prefixes	NNS
+survived	VBD
+-LRB-	-LRB-
+among	IN
+topk	NN
+-RRB-	-RRB-
+in1tol	NN
+
+
+levels	NNS
+.	.
+
+If	IN
+one	CD
+prefix	NN
+fails	VBZ
+,	,
+pl	NN
+will	MD
+not	RB
+be	VB
+discovered	VBN
+.	.
+
+
+Depending	VBG
+on	IN
+where	WRB
+the	DT
+elements	NNS
+of	IN
+a	DT
+pattern	NN
+appear	VBP
+in	IN
+
+
+its	PRP$
+supporting	JJ
+sequences	NNS
+,	,
+the	DT
+pattern	NN
+can	MD
+be	VB
+evenly	RB
+
+
+distributed	VBN
+,	,
+left-leaning	JJ
+,	,
+orright-leaning	JJ
+.	.
+
+Foranevenly	RB
+
+
+distributed	VBN
+pattern	NN
+,	,
+the	DT
+sections	NNS
+in	IN
+the	DT
+supporting	VBG
+se	FW
+-	:
+
+
+quences	NNS
+segmented	JJ
+by	IN
+the	DT
+pattern	NN
+tend	VB
+to	TO
+be	VB
+even	RB
+in	IN
+size	NN
+
+
+on	IN
+average	NN
+.	.
+
+KiWi	NN
+favors	VBZ
+such	JJ
+patterns	NNS
+.	.
+
+
+For	IN
+a	DT
+left-leaning	JJ
+pattern	NN
+,	,
+the	DT
+sections	NNS
+tend	VBP
+to	TO
+be	VB
+small	JJ
+in	IN
+
+
+size	NN
+on	IN
+the	DT
+left-hand	JJ
+side	NN
+and	CC
+large	JJ
+on	IN
+the	DT
+right-hand	JJ
+side	NN
+.	.
+
+
+In	IN
+other	JJ
+words	NNS
+,	,
+the	DT
+elements	NNS
+of	IN
+the	DT
+pattern	NN
+appear	VBP
+dense	JJ
+on	IN
+
+
+the	DT
+left	JJ
+and	CC
+sparse	JJ
+on	IN
+the	DT
+right	NN
+.	.
+
+Such	JJ
+patterns	NNS
+are	VBP
+relatively	RB
+
+
+easy	JJ
+to	TO
+be	VB
+discovered	VBN
+for	IN
+the	DT
+following	VBG
+reasons	NNS
+.	.
+
+Since	IN
+a	DT
+
+
+random	JJ
+sequence	NN
+supports	VBZ
+a	DT
+pattern	NN
+with	IN
+length	NN
+l	NN
+with	IN
+the	DT
+
+
+probability	NN
+of	IN
+
+
+1	CD
+
+
+l	NN
+!	.
+
+
+,	,
+the	DT
+support	NN
+of	IN
+a	DT
+pattern	NN
+contributes	VBZ
+to	TO
+its	PRP$
+
+
+survivability	NN
+-LRB-	-LRB-
+chance	NN
+of	IN
+being	VBG
+selected	VBN
+as	IN
+seed	NN
+-RRB-	-RRB-
+increasingly	RB
+
+
+from	IN
+round	NN
+to	TO
+round	NN
+.	.
+
+Then	RB
+a	DT
+planted	VBN
+pattern	NN
+with	IN
+a	DT
+certain	JJ
+
+
+support	NN
+value	NN
+would	MD
+receive	VB
+less	JJR
+and	CC
+less	JJR
+competition	NN
+from	IN
+
+
+round	NN
+to	TO
+round	NN
+.	.
+
+Thus	RB
+,	,
+if	IN
+a	DT
+pattern	NN
+survives	VBZ
+in	IN
+the	DT
+early	JJ
+
+
+rounds	NNS
+,	,
+it	PRP
+is	VBZ
+likely	JJ
+that	IN
+it	PRP
+will	MD
+eventually	RB
+survive	VB
+.	.
+
+Then	RB
+,	,
+left	VBD
+-	:
+
+
+leaning	VBG
+patterns	NNS
+are	VBP
+favored	VBN
+because	IN
+KiWi	NN
+works	VBZ
+from	IN
+left	VBN
+
+
+to	TO
+right	RB
+.	.
+
+
+For	IN
+a	DT
+right-leaning	JJ
+pattern	NN
+,	,
+the	DT
+sections	NNS
+tend	VBP
+to	TO
+be	VB
+large	JJ
+
+
+in	IN
+size	NN
+on	IN
+the	DT
+left-hand	JJ
+side	NN
+and	CC
+small	JJ
+on	IN
+the	DT
+right-hand	JJ
+
+
+side	NN
+.	.
+
+Based	VBN
+on	IN
+the	DT
+above	JJ
+argument	NN
+,	,
+such	JJ
+patterns	NNS
+are	VBP
+
+
+disfavored	VBN
+by	IN
+KiWi	NN
+.	.
+
+To	TO
+solve	VB
+this	DT
+problem	NN
+,	,
+we	PRP
+extend	VBP
+KiWi	NN
+
+
+to	TO
+perform	VB
+backward	RB
+mining	NN
+,	,
+where	WRB
+the	DT
+mining	NN
+process	NN
+
+
+goes	VBZ
+from	IN
+right	NN
+to	TO
+left	VBN
+from	IN
+iteration	NN
+to	TO
+iteration	NN
+.	.
+
+This	DT
+
+
+requires	VBZ
+an	DT
+additional	JJ
+run	NN
+of	IN
+KiWi	NN
+.	.
+
+Since	IN
+the	DT
+two	CD
+runs	NNS
+are	VBP
+
+
+independent	JJ
+,	,
+a	DT
+simple	JJ
+way	NN
+of	IN
+implementing	VBG
+such	JJ
+backward	RB
+
+
+mining	NN
+is	VBZ
+to	TO
+produce	VB
+a	DT
+reversely	RB
+ordered	VBN
+sequence	NN
+database	NN
+
+
+from	IN
+the	DT
+original	JJ
+data	NNS
+matrix	NN
+and	CC
+then	RB
+run	VB
+KiWi	NN
+.	.
+
+
+GOPSM	NNP
+discovery	NN
+.	.
+
+Backward	RB
+mining	NN
+can	MD
+also	RB
+be	VB
+used	VBN
+
+
+for	IN
+mining	NN
+generalized	VBN
+OPSMs	NNS
+.	.
+
+Recall	VB
+that	IN
+in	IN
+a	DT
+GOPSM	NNP
+,	,
+the	DT
+
+
+sequence	NN
+of	IN
+expression	NN
+values	NNS
+can	MD
+be	VB
+either	CC
+strictly	RB
+
+
+ascending	VBG
+or	CC
+descending	VBG
+.	.
+
+GOPSMs	NNS
+are	VBP
+able	JJ
+to	TO
+capture	VB
+
+
+anticorrelations	NNS
+among	IN
+genes	NNS
+.	.
+
+
+The	DT
+most	RBS
+straightforward	JJ
+approach	NN
+to	TO
+mine	JJ
+GOPSMs	NNS
+is	VBZ
+
+
+to	TO
+double	VB
+the	DT
+size	NN
+of	IN
+SB	NN
+by	IN
+appending	VBG
+a	DT
+list	NN
+of	IN
+reversely	RB
+
+
+ordered	VBN
+sequences	NNS
+,	,
+and	CC
+then	RB
+run	VB
+KiWi	NN
+as	IN
+in	IN
+normal	JJ
+OPSM	NNP
+
+
+mining	NN
+.	.
+
+While	IN
+this	DT
+approach	NN
+works	VBZ
+fine	NN
+,	,
+it	PRP
+is	VBZ
+not	RB
+memory	NN
+
+
+efficient	JJ
+,	,
+since	IN
+both	DT
+SB	NN
+and	CC
+ISB	NN
+would	MD
+need	VB
+to	TO
+be	VB
+doubled	VBN
+
+
+in	IN
+size	NN
+.	.
+
+
+We	PRP
+propose	VBP
+to	TO
+use	VB
+backward	RB
+mining	NN
+.	.
+
+Different	JJ
+from	IN
+the	DT
+
+
+way	NN
+used	VBN
+for	IN
+right-leaning	JJ
+pattern	NN
+mining	NN
+,	,
+here	RB
+forward	RB
+
+
+where	WRB
+ns	VBZ
+istheadjustedsamplesize	NN
+-LSB-	-LRB-
+11	CD
+-RSB-	-RRB-
+.	.
+
+Then	RB
+,	,
+
+
+mining	NN
+and	CC
+backward	RB
+mining	VBG
+need	NN
+to	TO
+be	VB
+performed	VBN
+ns	NNS
+
+
+n	NN
+
+
+Â	NN
+1/4	CD
+
+
+n0	NN
+
+
+PDÃ	NN
+°	CD
+pÃž	NN
+
+
+Ã	NN
+°	CD
+n	NN
+
+
+,	,
+from	IN
+which	WDT
+we	PRP
+can	MD
+see	VB
+thats	NNS
+Â	NNP
+1/4	CD
+n	NN
+
+
+s	NNS
+
+
+decreasessimultaneously	RB
+.	.
+
+Specifically	RB
+,	,
+the	DT
+projected	VBN
+database	NN
+when	WRB
+
+
+0	CD
+
+
+1ÃžÃ	NN
+3/4	CD
+n	NN
+n	NN
+
+
+n	NN
+increases	NNS
+.	.
+
+
+for	IN
+each	DT
+pattern	NN
+p	NN
+can	MD
+be	VB
+divided	VBN
+into	IN
+two	CD
+groups	NNS
+:	:
+one	CD
+
+
+normally	RB
+supports	VBZ
+p	NN
+and	CC
+the	DT
+other	JJ
+reversely	NN
+supports	VBZ
+it	PRP
+.	.
+
+Example	NN
+4	CD
+.	.
+
+Supposem	NNP
+Â	NNP
+1/4	CD
+90	CD
+andlu	NN
+Â	NN
+1/4	CD
+20	CD
+.	.
+
+Use	VB
+them	PRP
+as	IN
+inputThen	NN
+in	IN
+candidate	NN
+testing	NN
+,	,
+we	PRP
+know	VBP
+in	IN
+which	WDT
+direction	NN
+we	PRP
+
+
+parameters	NNS
+to	TO
+run	VB
+theR	NN
+program	NN
+.	.
+
+Withs	JJ
+Â	NN
+1/4	CD
+0:5	CD
+,	,
+sincecan	NN
+locate	VBP
+the	DT
+testing	NN
+bed	NN
+,	,
+i.e.	FW
+,	,
+the	DT
+windows	NNS
+-LRB-	-LRB-
+line	NN
+8	CD
+of	IN
+
+
+PÃ	NN
+°	NN
+X	NN
+12Ãž0	NN
+:5	CD
+,	,
+we	PRP
+choosew	VBP
+Â	NN
+1/4	CD
+12	CD
+.	.
+
+This	DT
+guaranteesAlgorithm	NN
+1	CD
+-RRB-	-RRB-
+,	,
+to	TO
+perform	VB
+statistic	NN
+counting	NN
+.	.
+
+
+that	IN
+,	,
+on	IN
+average	NN
+,	,
+for	IN
+each	DT
+candidate	NN
+patternp	NN
+of	IN
+length5	NN
+.3	NN
+OPSM	NNP
+Formation	NN
+and	CC
+Pattern	NN
+Extension	NNP
+
+
+lu	NN
+,	,
+about	IN
+50	CD
+percent	NN
+of	IN
+the	DT
+sequences	NNS
+supportingp	NN
+will	MD
+
+
+be	VB
+used	VBN
+in	IN
+support	NN
+counting	NN
+.	.
+
+
+OPSM	NNP
+formation	NN
+.	.
+
+To	TO
+form	VB
+OPSM	NNP
+clusters	NNS
+,	,
+we	PRP
+need	VBP
+to	TO
+scan	VB
+
+
+5.2	CD
+Backward	RB
+Mining	NN
+
+
+the	DT
+sequential	JJ
+database	NN
+SB	NN
+to	TO
+retrieve	VB
+the	DT
+supporting	VBG
+sequences	NNS
+for	IN
+the	DT
+discovered	VBN
+patterns	NNS
+.	.
+
+These	DT
+supporting	VBG
+
+
+We	PRP
+extendKiWi	VBP
+to	TO
+perform	VB
+backward	RB
+mining	VBG
+in	IN
+differentsequences	NNS
+are	VBP
+not	RB
+stored	VBN
+in	IN
+the	DT
+pattern	NN
+discovery	NN
+phase	NN
+for	IN
+
+
+ways	NNS
+for	IN
+two	CD
+purposes	NNS
+,	,
+right-leaning	JJ
+pattern	NN
+mining	NN
+andseveral	JJ
+reasons	NNS
+.	.
+
+First	RB
+,	,
+such	JJ
+storage	NN
+costs	NNS
+significant	JJ
+amount	NN
+
+
+GOPSM	NNP
+mining	NN
+.	.
+
+
+of	IN
+memory	NN
+.	.
+
+Second	RB
+,	,
+due	JJ
+to	TO
+the	DT
+biased	VBN
+sampling	NN
+technique	NN
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+9	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+318	CD
+IEEE	NNP
+TRANSACTIONS	NNPS
+ON	IN
+KNOWLEDGE	NNP
+AND	CC
+DATA	NNP
+ENGINEERING	NNP
+,	,
+VOL	NNP
+.	.
+
+24	CD
+,	,
+NO.	NNP
+2	CD
+,	,
+FEBRUARY	NNP
+2012	CD
+
+
+used	VBN
+in	IN
+candidate	NN
+testing	NN
+,	,
+sequences	NNS
+in	IN
+PDÃ	NN
+°	CD
+pÃž	NN
+constitute	VBP
+an	DT
+incomplete	JJ
+portion	NN
+of	IN
+the	DT
+entire	JJ
+set	NN
+of	IN
+supporting	VBG
+sequences	NNS
+for	IN
+pattern	NN
+p.	NN
+Third	NNP
+,	,
+not	RB
+all	PDT
+the	DT
+patterns	NNS
+are	VBP
+interesting	JJ
+,	,
+e.g.	FW
+,	,
+some	DT
+intermediate	JJ
+short	JJ
+patterns	NNS
+.	.
+
+
+Before	IN
+the	DT
+scanning	NN
+,	,
+we	PRP
+want	VBP
+to	TO
+remove	VB
+those	DT
+uninter	JJ
+-	:
+esting	NN
+patterns	NNS
+first	RB
+from	IN
+all	PDT
+the	DT
+discovered	VBN
+patterns	NNS
+.	.
+
+For	IN
+this	DT
+purpose	NN
+,	,
+we	PRP
+provide	VBP
+an	DT
+interactive	JJ
+query	NN
+interface	NN
+that	WDT
+allows	VBZ
+users	NNS
+to	TO
+select	JJ
+interesting	JJ
+patterns	NNS
+based	VBN
+on	IN
+length	NN
+and	CC
+support	NN
+.	.
+
+Then	RB
+,	,
+the	DT
+sequence	NN
+database	NN
+SB	NN
+is	VBZ
+scanned	VBN
+once	RB
+to	TO
+obtain	VB
+the	DT
+supporting	VBG
+sequences	NNS
+for	IN
+the	DT
+selected	VBN
+patterns	NNS
+.	.
+
+During	IN
+the	DT
+scanning	NN
+,	,
+we	PRP
+need	VBP
+to	TO
+check	VB
+if	IN
+a	DT
+selected	VBN
+pattern	NN
+pis	NN
+a	DT
+subsequence	NN
+of	IN
+a	DT
+sequence	NN
+r	NN
+.	.
+
+We	PRP
+can	MD
+again	RB
+use	VB
+ISB	NNP
+to	TO
+achieve	VB
+OÃ	NN
+°	NN
+jpjÃž	NN
+runtime	NN
+for	IN
+this	DT
+operation	NN
+,	,
+instead	RB
+of	IN
+OÃ	NN
+°	CD
+mÃž	NN
+.	.
+
+Note	VB
+that	DT
+usually	RB
+jpjm	NN
+.	.
+
+We	PRP
+use	VBP
+an	DT
+example	NN
+to	TO
+
+
+r	NN
+,	,
+thenISBÂ	NN
+1/2	CD
+ra	NN
+<	JJR
+ISBÂ	CD
+1/2	CD
+rb	NN
+<	JJR
+ISBÂ	CD
+1/2	CD
+rc	NN
+.	.
+
+
+first	RB
+approach	NN
+uses	VBZ
+upper	JJ
+bounds	NNS
+.	.
+
+The	DT
+second	JJ
+approach	NN
+uses	VBZ
+simulation	NN
+with	IN
+bootstrap	NN
+sampling	NN
+.	.
+
+
+Recall	VB
+that	IN
+the	DT
+p-value	NN
+is	VBZ
+the	DT
+probability	NN
+of	IN
+obtaining	VBG
+a	DT
+value	NN
+of	IN
+the	DT
+test	NN
+statistic	NN
+at	IN
+least	JJS
+as	IN
+extreme	JJ
+as	IN
+the	DT
+one	CD
+observed	VBN
+by	IN
+chance	NN
+.	.
+
+We	PRP
+use	VBP
+pÃ	NN
+°	CD
+R	NN
+;	:
+CÃžto	NNP
+denote	VBP
+the	DT
+p-value	NN
+for	IN
+OPSM	NNP
+Ã	NNP
+°	CD
+R	NN
+;	:
+CÃž	NN
+.	.
+
+Intuitively	RB
+,	,
+an	DT
+OPSM	NN
+with	IN
+a	DT
+larger	JJR
+size	NN
+is	VBZ
+more	RBR
+significant	JJ
+.	.
+
+In	IN
+other	JJ
+words	NNS
+,	,
+pÃ	NN
+°	CD
+R0	NN
+;	:
+C0ÃžpÃ	NN
+°	CD
+R	NN
+;	:
+CÃž	NNP
+if	IN
+jR0jRjand	NN
+jC0jCj	NN
+.	.
+
+Specifically	RB
+,	,
+if	IN
+two	CD
+OPSMs	NNS
+have	VBP
+the	DT
+same	JJ
+size	NN
+,	,
+then	RB
+they	PRP
+have	VBP
+the	DT
+same	JJ
+p-values	NNS
+.	.
+
+Thus	RB
+,	,
+we	PRP
+use	VBP
+Ã	NN
+°	NN
+r	NN
+;	:
+cÃžto	NN
+denote	VBP
+a	DT
+model	NN
+representing	VBG
+all	PDT
+the	DT
+OPSMs	NNS
+with	IN
+r	NN
+rows	NNS
+and	CC
+c	NN
+columns	NNS
+.	.
+
+We	PRP
+use	VBP
+pÃ	NN
+°	NN
+r	NN
+;	:
+cÃžto	NN
+denote	VBP
+the	DT
+p-value	NN
+for	IN
+all	PDT
+the	DT
+OPSMS	NNS
+that	WDT
+Ã	VBP
+°	CD
+r	NN
+;	:
+cÃžrepresents	NNS
+.	.
+
+
+Upper	NNP
+bounds	NNS
+.	.
+
+The	DT
+probability	NN
+that	IN
+a	DT
+random	JJ
+row	NN
+supports	VBZ
+a	DT
+pattern	NN
+with	IN
+length	NN
+c	NN
+is	VBZ
+
+
+1	CD
+
+
+c	NN
+!	.
+
+
+.	.
+
+Assuming	VBG
+indepen	NN
+-	:
+
+
+illustrate	VB
+the	DT
+main	JJ
+idea	NN
+.	.
+
+Let	VB
+p	NN
+Â	NN
+1/4	CD
+Â	NN
+1/2	CD
+a	DT
+;	:
+b	NN
+;	:
+c.Ifp	NN
+is	VBZ
+supported	VBN
+bydence	NN
+among	IN
+the	DT
+rows	NNS
+,	,
+the	DT
+probability	NN
+of	IN
+having	VBG
+at	IN
+least	JJS
+
+
+r	NN
+
+
+rows	NNS
+supporting	VBG
+the	DT
+pattern	NN
+is	VBZ
+the	DT
+r-tail	NN
+of	IN
+the	DT
+Ã	NN
+°	NN
+n	NN
+;	:
+Ã	NNP
+°	CD
+1c	NN
+!	.
+
+ÃžÃž	NN
+
+
+The	DT
+query	NN
+interface	NN
+is	VBZ
+also	RB
+used	VBN
+after	IN
+OPSM	NNP
+formation	NN
+,	,
+
+
+binomial	JJ
+distribution	NN
+
+
+when	WRB
+users	NNS
+want	VBP
+to	TO
+retrieve	VB
+and	CC
+examine	VB
+OPSMs	NNS
+ofXn	NN
+
+
+n1	NN
+
+
+i	FW
+Ã	FW
+°	FW
+niÃž	NN
+
+
+different	JJ
+sizes	NNS
+.	.
+
+Some	DT
+convenient	JJ
+features	NNS
+are	VBP
+added	VBN
+to	TO
+thei	VB
+
+
+c	NN
+!	.
+
+
+1	CD
+1	CD
+
+
+c	NN
+!	.
+
+
+:	:
+
+
+interface	NN
+for	IN
+this	DT
+purpose	NN
+.	.
+
+
+iÂ	NN
+1/4	CD
+r	NN
+
+
+m	NN
+!	.
+
+
+Pattern	NN
+extension	NN
+.	.
+
+A	DT
+patternp	NN
+may	MD
+not	RB
+grow	VB
+into	IN
+itsIn	NN
+total	NN
+,	,
+there	EX
+are	VBP
+
+
+Ã	NN
+°	CD
+mcÃž	NN
+!	.
+
+
+possible	JJ
+patterns	NNS
+;	:
+thus	RB
+,	,
+U0Ã	NN
+°	NN
+r	NN
+;	:
+cÃž	NN
+is	VBZ
+maximal	JJ
+superpatternpl	NN
+that	WDT
+has	VBZ
+the	DT
+same	JJ
+supporting	NN
+
+
+an	DT
+upper	JJ
+bound	VBN
+of	IN
+pÃ	NN
+°	CD
+r	NN
+;	:
+cÃž	NN
+,	,
+where	WRB
+
+
+sequences	NNS
+.	.
+
+Suchpl	NNP
+is	VBZ
+also	RB
+called	VBN
+aclosed	JJ
+pattern	NN
+.	.
+
+Some	DT
+
+
+intermediate	JJ
+elements	NNS
+ofplmay	JJ
+be	VB
+missing	VBG
+inpbecause	NN
+the	DT
+m	NN
+!	.
+
+
+Xn	NN
+
+
+n1	NN
+
+
+i1	NN
+Ã	NN
+°	CD
+niÃž	NN
+
+
+corresponding	VBG
+candidates	NNS
+did	VBD
+not	RB
+get	VB
+high	JJ
+enough	JJ
+ranks	NNS
+toU0Ã	NN
+°	CD
+r	NN
+;	:
+cÃžÂ	NN
+1/4	CD
+Ã	NN
+°	NN
+m	NN
+
+
+cÃž	NN
+!	.
+
+
+iÂ	NN
+1/4	CD
+r	NN
+
+
+i	LS
+c	NN
+!	.
+
+
+1	CD
+c	NN
+!	.
+
+:	:
+emerge	VB
+as	IN
+seeds	NNS
+;	:
+however	RB
+,	,
+some	DT
+succeeding	VBG
+elements	NNS
+may	MD
+
+
+have	VB
+survived	VBN
+and	CC
+eventually	RB
+reachedpl	NN
+.	.
+
+
+Here	RB
+,	,
+U0Ã	NN
+°	NN
+r	NN
+;	:
+cÃž	NN
+is	VBZ
+used	VBN
+in	IN
+-LSB-	-LRB-
+8	CD
+-RSB-	-RRB-
+to	TO
+estimate	VB
+the	DT
+significance	NN
+of	IN
+Example	NNP
+5	CD
+.	.
+
+SupposeÂ	NN
+1/2	CD
+a	DT
+;	:
+b	NN
+;	:
+c	NN
+;	:
+d	NN
+;	:
+e	LS
+;	:
+f	LS
+andÂ	NN
+1/2	CD
+a	DT
+;	:
+b	NN
+;	:
+d	NN
+;	:
+e	LS
+;	:
+f	LS
+have	VBP
+thebecause	RB
+these	DT
+upper	JJ
+bounds	NNS
+do	VBP
+not	RB
+necessarily	RB
+preserve	VB
+the	DT
+
+
+model	NN
+Ã	NN
+°	CD
+r	NN
+;	:
+cÃž	NN
+.	.
+
+However	RB
+,	,
+this	DT
+approach	NN
+can	MD
+be	VB
+problematic	JJ
+
+
+same	JJ
+support	NN
+inSB	NN
+.	.
+
+Â	NN
+1/2	CD
+a	DT
+;	:
+b	NN
+;	:
+c	NN
+may	MD
+have	VB
+a	DT
+low	JJ
+support	NN
+-LRB-	-LRB-
+statistic	NN
+-RRB-	-RRB-
+and	CC
+not	RB
+get	VB
+selected	VBN
+.	.
+
+However	RB
+,	,
+Â	NN
+1/2	CD
+a	DT
+;	:
+b	NN
+;	:
+d	NN
+may	MD
+have	VB
+a	DT
+higher	JJR
+support	NN
+and	CC
+get	VB
+selected	VBN
+,	,
+eventually	RB
+growing	VBG
+into	IN
+Â	NN
+1/2	CD
+a	DT
+;	:
+b	NN
+;	:
+d	NN
+;	:
+e	LS
+;	:
+f.	SYM
+
+
+For	IN
+the	DT
+purpose	NN
+of	IN
+finding	NN
+closed	VBD
+patterns	NNS
+,	,
+we	PRP
+provide	VBP
+a	DT
+pattern	NN
+extension	NN
+heuristic	NN
+that	WDT
+is	VBZ
+executed	VBN
+during	IN
+OPSM	NNP
+formation	NN
+,	,
+where	WRB
+each	DT
+pattern	NN
+p	NN
+is	VBZ
+extended	VBN
+after	IN
+obtaining	VBG
+its	PRP$
+supporting	JJ
+sequence	NN
+set	NN
+RÃ	NN
+°	CD
+pÃžPDÃ	NN
+°	CD
+pÃž	NN
+.	.
+
+
+Now	RB
+we	PRP
+give	VBP
+the	DT
+main	JJ
+ideas	NNS
+of	IN
+the	DT
+heuristic	NN
+.	.
+
+Pattern	NN
+p	NN
+segments	NNS
+each	DT
+sequence	NN
+in	IN
+RÃ	NN
+°	CD
+pÃž	NN
+into	IN
+jpjÃ	NN
+3/4	CD
+1	CD
+sections	NNS
+of	IN
+length	NN
+0	CD
+.	.
+
+The	DT
+same-positioned	JJ
+sections	NNS
+from	IN
+all	DT
+sequences	NNS
+in	IN
+RÃ	NN
+°	CD
+pÃž	NN
+form	NN
+a	DT
+chunk	NN
+.	.
+
+Within	IN
+each	DT
+chunk	NN
+,	,
+if	IN
+there	EX
+is	VBZ
+any	DT
+element	NN
+ethat	NN
+appears	VBZ
+jRÃ	NN
+°	CD
+pÃžjtimes	NNS
+,	,
+it	PRP
+can	MD
+be	VB
+inserted	VBN
+into	IN
+p	NN
+as	IN
+a	DT
+new	JJ
+element	NN
+.	.
+
+
+It	PRP
+is	VBZ
+rare	JJ
+,	,
+but	CC
+possible	JJ
+that	IN
+there	EX
+are	VBP
+two	CD
+or	CC
+more	JJR
+such	JJ
+common	JJ
+elements	NNS
+within	IN
+each	DT
+chunk	NN
+.	.
+
+We	PRP
+can	MD
+use	VB
+a	DT
+bottom	NN
+-	:
+up	RP
+approach	NN
+to	TO
+find	VB
+a	DT
+longest	JJS
+ordered	VBN
+subset	NN
+of	IN
+them	PRP
+that	WDT
+has	VBZ
+the	DT
+support	NN
+of	IN
+RÃ	NN
+°	CD
+pÃž	NN
+.	.
+
+After	IN
+the	DT
+extension	NN
+,	,
+all	DT
+patterns	NNS
+are	VBP
+closed	VBN
+.	.
+
+
+5.4	CD
+Statistical	JJ
+Significance	NN
+of	IN
+OPSMs	NNS
+
+
+The	DT
+number	NN
+of	IN
+discovered	VBN
+OPSMs	NNS
+may	MD
+be	VB
+very	RB
+large	JJ
+.	.
+
+Although	IN
+we	PRP
+provide	VBP
+a	DT
+query	NN
+interface	NN
+allowing	VBG
+users	NNS
+to	TO
+select	JJ
+interesting	JJ
+OPSMs	NNS
+of	IN
+certain	JJ
+size	NN
+,	,
+it	PRP
+is	VBZ
+highly	RB
+desirable	JJ
+to	TO
+reveal	VB
+the	DT
+statistical	JJ
+significance	NN
+of	IN
+OPSMs	NNS
+and	CC
+to	TO
+rank	VB
+them	PRP
+according	VBG
+to	TO
+the	DT
+significance	NN
+.	.
+
+
+However	RB
+,	,
+since	IN
+the	DT
+underlying	JJ
+distribution	NN
+of	IN
+the	DT
+test	NN
+statistic	NN
+is	VBZ
+complex	JJ
+and	CC
+unknown	JJ
+,	,
+it	PRP
+is	VBZ
+hard	JJ
+to	TO
+analytically	RB
+obtain	VB
+p-values	NNS
+of	IN
+OPSMs	NNS
+.	.
+
+To	TO
+get	VB
+around	IN
+the	DT
+problem	NN
+,	,
+we	PRP
+provide	VBP
+two	CD
+approaches	NNS
+for	IN
+the	DT
+estimation	NN
+of	IN
+p-values	NNS
+.	.
+
+The	DT
+
+
+ordering	VBG
+of	IN
+the	DT
+corresponding	JJ
+p-values	NNS
+.	.
+
+
+Example	NN
+6	CD
+.	.
+
+Let	VB
+n	NN
+Â	NN
+1/4	CD
+10	CD
+;	:
+000	CD
+and	CC
+m	NN
+Â	NN
+1/4	CD
+100	CD
+.	.
+
+Consider	VB
+two	CD
+
+
+models	NNS
+Ã	VBP
+°	CD
+1	CD
+;	:
+80Ãž	NN
+and	CC
+Ã	NN
+°	CD
+5	CD
+;	:
+120Ãž	NN
+.	.
+
+U0Ã	NN
+°	CD
+1	CD
+;	:
+80ÃžÂ	NN
+1/4	CD
+100	CD
+1	CD
+Â	NN
+1/4	CD
+100.100	CD
+!	.
+
+
+U0Ã	NN
+°	CD
+5	CD
+;	:
+120ÃžÂ	NN
+1/4	CD
+
+
+95	CD
+!	.
+
+
+0:00008773	CD
+Â	NN
+1/4	CD
+792	CD
+;	:
+597	CD
+.	.
+
+Fromthere	SYM
+-	:
+
+
+sults	NNS
+,	,
+Ã	NN
+°	NN
+1	CD
+;	:
+80Ãžis	NN
+more	JJR
+significant	JJ
+than	IN
+Ã	NN
+°	CD
+5	CD
+;	:
+120Ãž	NN
+,	,
+which	WDT
+is	VBZ
+
+
+counterintuitive	JJ
+.	.
+
+
+To	TO
+solve	VB
+the	DT
+problem	NN
+,	,
+we	PRP
+use	VBP
+UÃ	NNP
+°	CD
+r	NN
+;	:
+cÃž	NN
+to	TO
+upper	JJ
+bound	VBN
+pÃ	NN
+°	NN
+r	NN
+;	:
+cÃž	NN
+,	,
+taking	VBG
+into	IN
+consideration	NN
+all	PDT
+the	DT
+more	RBR
+extreme	JJ
+models	NNS
+,	,
+i.e.	FW
+,	,
+Ã	NN
+°	CD
+r0	NN
+;	:
+c0Ãž	NN
+with	IN
+r0	NN
+rand	NN
+c0	NN
+c	NN
+:	:
+
+
+Xn	NN
+Xm	NN
+
+
+m	NN
+!	.
+
+
+XnUÃ	NN
+°	CD
+r	NN
+;	:
+cÃžÂ	NN
+1/4	CD
+
+
+n1	NN
+
+
+i	FW
+Ã	FW
+°	FW
+niÃž	NN
+
+
+r0Â	NN
+1/4	CD
+r	NN
+c0Â	NN
+1/4	CD
+c	NN
+
+
+Ã	NN
+°	CD
+mc0Ãž	NN
+!	.
+
+
+iÂ	NN
+1/4	CD
+r0	NN
+
+
+i	LS
+c0	NN
+!	.
+
+
+1	CD
+1	CD
+
+
+c0	NN
+!	.
+
+
+:	:
+
+
+It	PRP
+is	VBZ
+trivial	JJ
+to	TO
+prove	VB
+that	DT
+for	IN
+r0	NN
+r	NN
+and	CC
+c0	NN
+c	NN
+,	,
+UÃ	NN
+°	CD
+r0	NN
+;	:
+c0Ãž	NN
+UÃ	NN
+°	CD
+r	NN
+;	:
+cÃž	NN
+,	,
+indicating	VBG
+that	IN
+Ã	NN
+°	CD
+r0	NN
+;	:
+c0Ãž	NN
+is	VBZ
+a	DT
+more	RBR
+significant	JJ
+model	NN
+than	IN
+Ã	NN
+°	CD
+r	NN
+;	:
+cÃž	NN
+.	.
+
+
+Upper	NNP
+bounds	NNS
+can	MD
+be	VB
+used	VBN
+to	TO
+order	VB
+OPSMs	NNS
+.	.
+
+However	RB
+,	,
+they	PRP
+do	VBP
+not	RB
+provide	VB
+accurate	JJ
+estimation	NN
+of	IN
+their	PRP$
+p-values	NNS
+.	.
+
+In	IN
+the	DT
+following	VBG
+,	,
+we	PRP
+use	VBP
+bootstrap-based	JJ
+simulation	NN
+to	TO
+estimate	VB
+p-values	NNS
+of	IN
+OPSMs	NNS
+.	.
+
+
+Bootstrap-based	JJ
+simulation	NN
+.	.
+
+In	IN
+cases	NNS
+where	WRB
+the	DT
+test	NN
+statistics	NNS
+are	VBP
+complex	JJ
+,	,
+the	DT
+p-values	NNS
+based	VBN
+on	IN
+traditional	JJ
+analytic	JJ
+approximations	NNS
+are	VBP
+often	RB
+inaccurate	JJ
+,	,
+and	CC
+the	DT
+only	JJ
+reliable	JJ
+way	NN
+to	TO
+calculate	VB
+p-values	NNS
+is	VBZ
+by	IN
+simulation	NN
+.	.
+
+We	PRP
+sketch	NN
+a	DT
+bootstrap-based	JJ
+simulation	NN
+approach	NN
+for	IN
+estimat	NN
+-	:
+ing	NN
+p-values	NNS
+of	IN
+OPSMs	NNS
+in	IN
+an	DT
+n	NN
+mdata	NN
+matrix	NN
+as	IN
+follows	VBZ
+:	:
+
+
+Let	VB
+A	DT
+be	VB
+an	DT
+n	NN
+m	NN
+random	JJ
+matrix	NN
+,	,
+where	WRB
+a1	NN
+;	:
+a2	NN
+;	:
+...	:
+;	:
+an	DT
+,	,
+are	VBP
+the	DT
+n	NN
+rows	NNS
+,	,
+each	DT
+being	VBG
+a	DT
+random	JJ
+permutation	NN
+of	IN
+m	NN
+distinctive	JJ
+symbols	NNS
+.	.
+
+We	PRP
+use	VBP
+a	DT
+binary	JJ
+random	JJ
+variable	JJ
+YÃ	NN
+°	NN
+r	NN
+;	:
+cÃž	NN
+for	IN
+each	DT
+model	NN
+Ã	NN
+°	CD
+r	NN
+;	:
+cÃž	NN
+.	.
+
+Let	VB
+Y	NN
+Ã	NN
+°	CD
+r	NN
+;	:
+cÃžÂ	NN
+1/4	CD
+0	CD
+if	IN
+Ã	NN
+°	CD
+r0	NN
+;	:
+c0Ãž	NN
+,	,
+r0	NN
+r	NN
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+10	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+GAO	NNP
+ET	NNP
+AL.	NNP
+:	:
+ON	IN
+THE	DT
+DEEP	JJ
+ORDER-PRESERVING	NN
+SUBMATRIX	NNP
+PROBLEM	NN
+:	:
+A	DT
+BEST	JJS
+EFFORT	NN
+APPROACH	NN
+
+
+and	CC
+c0	NN
+c	NN
+,	,
+is	VBZ
+not	RB
+observed	VBN
+in	IN
+A	DT
+;	:
+YÃ	NN
+°	NN
+r	NN
+;	:
+cÃžÂ	NN
+1/4	CD
+1	CD
+otherwise	RB
+.	.
+
+Obviously	RB
+,	,
+pÃ	NN
+°	NN
+r	NN
+;	:
+cÃžÂ	NN
+1/4	CD
+EÃ	NN
+°	CD
+YÃ	NN
+°	NN
+r	NN
+;	:
+cÃžÃž	NN
+.	.
+
+To	TO
+estimate	VB
+pÃ	NN
+°	NN
+r	NN
+;	:
+cÃž	NN
+using	VBG
+bootstrap	NN
+resampling	NN
+,	,
+we	PRP
+choose	VBP
+an	DT
+integer	NN
+B	NN
+,	,
+and	CC
+for	IN
+1	CD
+b	NN
+B	NN
+,	,
+do	VBP
+the	DT
+following	NN
+:	:
+
+
+1	LS
+.	.
+
+
+a1	NN
+
+
+319	CD
+
+
+that	DT
+is	VBZ
+below	RB
+.	.
+
+As	IN
+discussed	VBN
+in	IN
+Section	NN
+2	CD
+,	,
+we	PRP
+conserva	VBP
+-	:
+tively	RB
+setÂ	NN
+1/4	CD
+0:002	CD
+total	JJ
+number	NN
+of	IN
+rows	NNS
+.	.
+
+
+Deep	JJ
+OPSM	NNP
+clusters	NNS
+are	VBP
+small	JJ
+in	IN
+size	NN
+and	CC
+large	JJ
+in	IN
+dimensionality	NN
+.	.
+
+Such	JJ
+clusters	NNS
+are	VBP
+of	IN
+particular	JJ
+interest	NN
+to	TO
+biologists	NNS
+as	IN
+these	DT
+may	MD
+represent	VB
+small	JJ
+groups	NNS
+of	IN
+genes	NNS
+that	WDT
+
+
+possible	JJ
+thata1	NN
+
+
+2	LS
+.	.
+
+
+3	LS
+.	.
+
+Let	VB
+YÃ	NNP
+°	CD
+bÃžÃ	NN
+°	CD
+r	NN
+;	:
+cÃžÂ	NN
+1/4	CD
+0	CD
+if	IN
+Ã	NN
+°	CD
+r0	NN
+;	:
+c0Ãž	NN
+,	,
+r0	NN
+r	NN
+and	CC
+c0	NN
+c	NN
+,	,
+is	VBZ
+not	RB
+
+
+observed	VBN
+inAÃ	NN
+°	CD
+bÃž	NN
+;	:
+1	CD
+otherwise	RB
+.	.
+
+
+Then	RB
+,	,
+pÃ	NN
+°	NN
+r	NN
+;	:
+cÃž	NN
+can	MD
+be	VB
+approximated	VBN
+by	IN
+
+
+Generate	VB
+a	DT
+new	JJ
+n	NN
+m	NN
+matrix	NN
+AÃ	NN
+°	CD
+bÃž	NN
+with	IN
+rowsÃ	NN
+°	CD
+bÃž	NN
+
+
+;	:
+aÃ	NN
+°	CD
+bÃž	NN
+;	:
+...	:
+;	:
+aÃ	NN
+°	CD
+bÃž	NN
+,	,
+where	WRB
+aÃ	NN
+°	CD
+bÃž2	NN
+
+
+n	NN
+i	FW
+
+
+s	NNS
+are	VBP
+randomly	RB
+selected	VBN
+
+
+are	VBP
+tightly	RB
+coregulated	VBN
+under	IN
+many	JJ
+conditions	NNS
+.	.
+
+Previous	JJ
+from	IN
+the	DT
+rows	NNS
+ofAwith	JJ
+replacement	NN
+.	.
+
+Note	VB
+that	IN
+it	PRP
+is	VBZ
+
+
+studies	NNS
+have	VBP
+tended	VBN
+to	TO
+focus	VB
+on	IN
+larger	JJR
+clusters	NNS
+by	IN
+design	NN
+or	CC
+
+
+Ã	NN
+°	CD
+bÃž	NN
+
+
+Â	NN
+1/4	CD
+aÃ	NN
+°	CD
+bÃž2	NN
+.	.
+
+
+necessity	NN
+.	.
+
+While	IN
+these	DT
+large	JJ
+clusters	NNS
+have	VBP
+been	VBN
+shown	VBN
+to	TO
+be	VB
+For	IN
+each	DT
+matrixAÃ	NN
+°	CD
+bÃž	NN
+,	,
+mine	PRP
+the	DT
+OPSMs	NNS
+.	.
+
+
+of	IN
+interest	NN
+or	CC
+value	NN
+,	,
+there	EX
+is	VBZ
+no	DT
+reason	NN
+to	TO
+expect	VB
+that	IN
+all	DT
+or	CC
+
+
+even	RB
+most	RBS
+biological	JJ
+processes	NNS
+or	CC
+disease	NN
+mechanisms	NNS
+
+
+XpÃ	NN
+°	CD
+r	NN
+;	:
+cÃžÂ	NN
+1/4	CD
+1	CD
+
+
+B	NN
+
+
+B	NN
+
+
+YÃ	NN
+°	CD
+bÃžÃ	NN
+°	CD
+r	NN
+;	:
+cÃž	NN
+:	:
+
+
+bÂ	NN
+1/4	CD
+1	CD
+
+
+estimating	VBG
+a	DT
+feature	NN
+of	IN
+a	DT
+distribution	NN
+such	JJ
+asp	NN
+,	,
+especially	RB
+
+
+would	MD
+involve	VB
+tight	JJ
+coregulation	NN
+of	IN
+large	JJ
+groups	NNS
+of	IN
+genes	NNS
+.	.
+
+In	IN
+fact	NN
+,	,
+we	PRP
+expect	VBP
+that	IN
+many	JJ
+important	JJ
+processes	NNS
+will	MD
+involve	VB
+relatively	RB
+small	JJ
+numbers	NNS
+of	IN
+genes	NNS
+.	.
+
+Some	DT
+pathways	NNS
+or	CC
+processes	NNS
+might	MD
+require	VB
+only	RB
+two	CD
+genes	NNS
+to	TO
+act	VB
+in	IN
+concert	NN
+.	.
+
+
+Indeed	RB
+,	,
+our	PRP$
+own	JJ
+biological	JJ
+assessments	NNS
+discussed	VBN
+below	IN
+showed	VBD
+that	IN
+many	JJ
+of	IN
+these	DT
+small	JJ
+OPSM	NNP
+clusters	NNS
+are	VBP
+of	IN
+
+
+p	NN
+-LSB-	-LRB-
+44	CD
+-RSB-	-RRB-
+,	,
+i.e.	FW
+,	,
+for	IN
+every0	NN
+,	,
+
+
+The	DT
+bootstrap	NN
+method	NN
+-LSB-	-LRB-
+14	CD
+-RSB-	-RRB-
+has	VBZ
+been	VBN
+extensively	RB
+used	VBN
+inbiological	JJ
+interest	NN
+.	.
+
+Specifically	RB
+,	,
+we	PRP
+demonstrated	VBD
+that	IN
+theseclusters	NNS
+correctly	RB
+group	NN
+related	JJ
+probe	NN
+sequences	NNS
+,	,
+tend	VBP
+to	TO
+when	WRB
+analytic	JJ
+solutions	NNS
+are	VBP
+impossible	JJ
+.	.
+
+It	PRP
+has	VBZ
+been	VBN
+shownshare	JJ
+common	JJ
+biological	JJ
+processes	NNS
+and	CC
+common	JJ
+regulatorysequences	NNS
+,	,
+and	CC
+share	NN
+common	JJ
+experimental	JJ
+annotation	NN
+that	IN
+the	DT
+bootstrap	NN
+estimator	NN
+,	,
+p	NN
+,	,
+is	VBZ
+a	DT
+consistent	JJ
+estimator	NN
+for	IN
+
+
+terms	NNS
+such	JJ
+as	IN
+tissue	NN
+source	NN
+,	,
+gender	NN
+,	,
+ethnicity	NN
+,	,
+etc.	FW
+.	.
+
+
+limn	VB
+!	.
+
+1PÃ	CD
+°	CD
+jpn	NN
+pj	NN
+<	JJR
+ÃžÂ	NN
+1/4	CD
+1	CD
+:	:
+
+
+It	PRP
+is	VBZ
+almost	RB
+certain	JJ
+thatp	NN
+will	MD
+be	VB
+arbitrarily	RB
+close	JJ
+top	NN
+
+
+6.1.2	CD
+Methods	NNS
+
+
+Data	NNS
+sets	NNS
+.	.
+
+Several	JJ
+data	NNS
+sets	NNS
+and	CC
+methods	NNS
+were	VBD
+utilized	VBN
+to	TO
+test	VB
+for	IN
+biological	JJ
+coherence	NN
+of	IN
+deep	JJ
+OPSM	NNP
+clusters	NNS
+
+
+whennis	NN
+large	JJ
+enough	RB
+.	.
+
+In	IN
+addition	NN
+,	,
+the	DT
+estimator	NN
+becomespredicted	VBN
+by	IN
+KiWi	NN
+.	.
+
+Expression	NN
+data	NNS
+sets	VBZ
+utilized	VBN
+include	VBP
+:	:
+
+
+more	RBR
+accurate	JJ
+asBincreases	NNS
+.	.
+
+It	PRP
+is	VBZ
+suggested	VBN
+thatBÂ	IN
+1/4	CD
+10n	CD
+
+
+1	LS
+-RRB-	-RRB-
+GPL96â	NN
+$	$
+''	''
+a	DT
+set	NN
+of	IN
+1,640	CD
+Affymetrix	NNP
+-LRB-	-LRB-
+HG-U133A	NN
+-RRB-	-RRB-
+experi	NN
+-	:
+
+
+be	VB
+used	VBN
+to	TO
+make	VB
+the	DT
+variability	NN
+due	JJ
+to	TO
+the	DT
+bootstrapments	NNS
+from	IN
+the	DT
+Gene	NNP
+Expression	NN
+Omnibus	NN
+-LRB-	-LRB-
+GEO	NN
+,	,
+GPL96	NN
+-RRB-	-RRB-
+simulation	NN
+small	JJ
+-LSB-	-LRB-
+12	CD
+-RSB-	-RRB-
+.	.
+
+A	DT
+smallerB	NN
+may	MD
+be	VB
+used	VBN
+if	IN
+little	JJ
+-LSB-	-LRB-
+7	CD
+-RSB-	-RRB-
+covering	VBG
+a	DT
+broad	JJ
+range	NN
+of	IN
+experimental	JJ
+conditions	NNS
+;	:
+change	NN
+in	IN
+p	NN
+is	VBZ
+observed	VBN
+as	IN
+the	DT
+number	NN
+of	IN
+iterations	NNS
+2	LS
+-RRB-	-RRB-
+expOâ	NN
+$	$
+''	''
+a	DT
+set	NN
+of	IN
+1,026	CD
+Affymetrix	NNP
+-LRB-	-LRB-
+HG-U133	NNP
+Plus	NNP
+2.0	CD
+-RRB-	-RRB-
+
+
+increases	NNS
+.	.
+
+
+experiments	NNS
+from	IN
+123	CD
+different	JJ
+cancer	NN
+tissue	NN
+types	NNS
+from	IN
+the	DT
+
+
+Note	VB
+that	DT
+for	IN
+Step	NN
+2	CD
+,	,
+it	PRP
+suffices	VBZ
+to	TO
+mine	VB
+the	DT
+closedexpO	NN
+-LRB-	-LRB-
+Expression	NN
+Project	NN
+for	IN
+Oncology	NNP
+-RRB-	-RRB-
+project	NN
+-LRB-	-LRB-
+GEO	NN
+,	,
+patterns	NNS
+only	RB
+.	.
+
+If	IN
+we	PRP
+can	MD
+observe	VB
+a	DT
+closed	JJ
+pattern	NN
+-LRB-	-LRB-
+corre-GSE2109	NN
+-RRB-	-RRB-
+.	.
+
+These	DT
+data	NNS
+sets	NNS
+are	VBP
+summarized	VBN
+in	IN
+Table	NNP
+1	CD
+.	.
+
+
+sponding	VBG
+to	TO
+a	DT
+model	NN
+-RRB-	-RRB-
+,	,
+then	RB
+all	PDT
+the	DT
+nonclosed	JJ
+patterns	NNS
+
+
+Data	NNS
+set	VBN
+processing	NN
+.	.
+
+The	DT
+Affymetrix	NNP
+HG-U133A	NN
+-LRB-	-LRB-
+GPL96	NN
+-RRB-	-RRB-
+
+
+derivable	NN
+from	IN
+the	DT
+closed	JJ
+pattern	NN
+-LRB-	-LRB-
+corresponding	VBG
+to	TO
+sub-probes	NNS
+were	VBD
+normalized	VBN
+and	CC
+mapped	VBN
+to	TO
+gene/protein	NN
+models	NNS
+-RRB-	-RRB-
+can	MD
+be	VB
+observed	VBN
+.	.
+
+To	TO
+further	RB
+improve	VB
+efficiency	NN
+,	,
+weidentifiers	NNS
+as	IN
+previously	RB
+described	VBN
+-LSB-	-LRB-
+21	CD
+-RSB-	-RRB-
+.	.
+
+The	DT
+expO	NNP
+data	NNS
+could	MD
+consider	VB
+miningclosed	JJ
+models	NNS
+,	,
+where	WRB
+each	DT
+closed	VBN
+were	VBD
+normalized	VBN
+from	IN
+CEL	NNP
+files	NNS
+using	VBG
+the	DT
+Bioconductor	NNP
+model	NN
+corresponds	VBZ
+to	TO
+many	JJ
+closed	VBD
+patterns	NNS
+.	.
+
+We	PRP
+could	MD
+alsoâ	VB
+$	$
+œjust.gcrmaâ	CD
+$	$
+function	NN
+in	IN
+the	DT
+â	NN
+$	$
+œgcrmaâ	JJ
+$	$
+library	NN
+-LRB-	-LRB-
+version	NN
+2.4.1	CD
+-RRB-	-RRB-
+.	.
+
+use	VB
+other	JJ
+frequency	NN
+estimation	NN
+techniques	NNS
+-LSB-	-LRB-
+36	CD
+-RSB-	-RRB-
+in	IN
+theProbes	NNS
+were	VBD
+mapped	VBN
+to	TO
+Uniprot	NNP
+and	CC
+Ensembl	NNP
+identifiers	NNS
+
+
+mining	NN
+process	NN
+.	.
+
+
+6EXPERIMENTAL	JJ
+EVALUATIONS	NNS
+
+
+using	VBG
+the	DT
+Bioconductor	NNP
+â	NN
+$	$
+œbiomartâ	JJ
+$	$
+package	NN
+-LSB-	-LRB-
+18	CD
+-RSB-	-RRB-
+.	.
+
+Tab	SYM
+-	:
+delimited	VBN
+data	NNS
+matrices	NNS
+for	IN
+each	DT
+data	NNS
+set	VBN
+were	VBD
+loaded	VBN
+into	IN
+the	DT
+KiWi	NN
+software	NN
+-LRB-	-LRB-
+v.	CC
+1.0	CD
+-RRB-	-RRB-
+and	CC
+OPSM	NNP
+clusters	NNS
+identified	VBN
+using	VBG
+the	DT
+parameters	NNS
+outlined	VBN
+in	IN
+Table	NNP
+1	CD
+.	.
+
+Parameters	NNS
+were	VBD
+
+
+We	PRP
+performed	VBD
+extensive	JJ
+biological	JJ
+experiments	NNS
+on	IN
+real	JJ
+datachosen	NN
+by	IN
+experimentation	NN
+to	TO
+identify	VB
+values	NNS
+of	IN
+
+
+kand	NN
+wthat	NN
+sets	VBZ
+to	TO
+demonstrate	VB
+thatKiWi	NN
+can	MD
+discover	VB
+deep	JJ
+OPSM	NNS
+
+
+would	MD
+produce	VB
+the	DT
+largest	JJS
+number	NN
+of	IN
+clusters	NNS
+and	CC
+longest	JJS
+clusters	NNS
+that	WDT
+are	VBP
+highly	RB
+meaningful	JJ
+.	.
+
+We	PRP
+also	RB
+performedpatterns	VBZ
+but	CC
+still	RB
+run	VB
+to	TO
+completion	NN
+in	IN
+24	CD
+to	TO
+48	CD
+hours	NNS
+.	.
+
+
+comprehensive	JJ
+computational	JJ
+experiments	NNS
+on	IN
+real	JJ
+and	CC
+
+
+Gene	NNP
+ontology	NN
+analysis	NN
+.	.
+
+The	DT
+first	JJ
+validation	NN
+method	NN
+
+
+synthetic	JJ
+data	NNS
+sets	NNS
+to	TO
+further	JJ
+validate	VB
+the	DT
+effectivenessused	VBN
+the	DT
+GO	NN
+,	,
+a	DT
+set	NN
+of	IN
+structured	JJ
+,	,
+controlled	JJ
+vocabularies	NNS
+to	TO
+and	CC
+efficiency	NN
+ofKiWi	NN
+.	.
+
+For	IN
+the	DT
+purpose	NN
+of	IN
+the	DT
+experiments	NNS
+,	,
+
+
+identify	VB
+functional	JJ
+associations	NNS
+between	IN
+gene	NN
+products	NNS
+-LSB-	-LRB-
+6	CD
+-RSB-	-RRB-
+.	.
+
+we	PRP
+implementedKiWi	VBP
+in	IN
+CÃ	NN
+3/4	CD
+Ã	NN
+3/4	CD
+,	,
+together	RB
+with	IN
+a	DT
+dynamic	JJ
+
+
+Current	JJ
+GO	NN
+annotations	NNS
+and	CC
+external	JJ
+references	NNS
+file	NN
+were	VBD
+programming-based	JJ
+algorithm	NN
+that	WDT
+finds	VBZ
+the	DT
+longest	JJS
+pat-downloaded	JJ
+from	IN
+the	DT
+Gene	NNP
+Ontology	NNP
+Annotation	NNP
+resource	NN
+tern	NN
+-LRB-	-LRB-
+will	MD
+be	VB
+referred	VBN
+to	TO
+asLoPad	NN
+-RRB-	-RRB-
+,	,
+and	CC
+a	DT
+synthetic	JJ
+data	NNS
+
+
+at	IN
+EBI	NN
+-LRB-	-LRB-
+http://www.ebi.ac.uk/GOA/	NN
+-RRB-	-RRB-
+.	.
+
+Each	DT
+cluster	NN
+of	IN
+generator	NN
+.	.
+
+PrefixSpan	NN
+-LSB-	-LRB-
+40	CD
+-RSB-	-RRB-
+was	VBD
+obtained	VBN
+from	IN
+the	DT
+authors	NNS
+.	.
+
+
+protein	NN
+ids	NNS
+was	VBD
+submitted	VBN
+to	TO
+the	DT
+High-Throughput	NNP
+GoMi	NNP
+-	:
+
+
+6.1	CD
+Biological	JJ
+Evaluation	NN
+6.1.1	CD
+Introduction	NN
+
+
+ner	NN
+command-line	NN
+interface	NN
+-LSB-	-LRB-
+53	CD
+-RSB-	-RRB-
+.	.
+
+Statistically	RB
+overrepre	NN
+-	:
+sented	VBN
+GO	NN
+terms	NNS
+were	VBD
+defined	VBN
+using	VBG
+Fisherâ	NNP
+$	$
+™	CD
+s	NNS
+exact	JJ
+test	NN
+and	CC
+corrected	VBN
+for	IN
+multiple	JJ
+testing	NN
+by	IN
+false	JJ
+discovery	NN
+rate	NN
+
+
+The	DT
+objective	NN
+of	IN
+this	DT
+series	NN
+of	IN
+experiments	NNS
+is	VBZ
+to	TO
+demon-detection	NN
+-LRB-	-LRB-
+100	CD
+permutations	NNS
+-RRB-	-RRB-
+.	.
+
+
+strate	NN
+that	WDT
+KiWi	NNP
+can	MD
+effectively	RB
+discover	VB
+deep	JJ
+OPSM	NNS
+
+
+oPOSSUM	NN
+TFBS	NN
+analysis	NN
+.	.
+
+The	DT
+second	JJ
+validation	NN
+
+
+clusters	NNS
+that	WDT
+are	VBP
+biologically	RB
+meaningful	JJ
+from	IN
+massivemethod	NN
+uses	VBZ
+the	DT
+oPOSSUM	NN
+tool	NN
+to	TO
+identify	VB
+statistically	RB
+data	NNS
+sets	NNS
+.	.
+
+Recall	VB
+that	IN
+an	DT
+OPSM	NNP
+is	VBZ
+deep	JJ
+if	IN
+it	PRP
+falls	VBZ
+in	IN
+theoverrepresented	JJ
+transcription	NN
+factor	NN
+binding	VBG
+sites	NNS
+-LRB-	-LRB-
+TFBS	NN
+-RRB-	-RRB-
+deep	JJ
+region	NN
+,	,
+which	WDT
+refers	VBZ
+to	TO
+part	NN
+of	IN
+the	DT
+significant	JJ
+region	NN
+-LSB-	-LRB-
+25	CD
+-RSB-	-RRB-
+.	.
+
+The	DT
+oPOSSUM	NNP
+API	NNP
+and	CC
+MySQL	NNP
+database	NN
+were	VBD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+11	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+320	CD
+IEEE	NNP
+TRANSACTIONS	NNPS
+ON	IN
+KNOWLEDGE	NNP
+AND	CC
+DATA	NNP
+ENGINEERING	NNP
+,	,
+VOL	NNP
+.	.
+
+24	CD
+,	,
+NO.	NNP
+2	CD
+,	,
+FEBRUARY	NNP
+2012	CD
+
+
+TABLE	NN
+1	CD
+
+
+Data	NNS
+Sets	NNS
+and	CC
+Parameters	NNS
+Used	VBN
+in	IN
+KiWi	NNP
+Assessment	NNP
+
+
+downloaded	VBN
+and	CC
+installed	VBN
+locally	RB
+-LRB-	-LRB-
+http://www.cisreg.ca/	NN
+cgi-bin/oPOSSUM/oPOSSUM	NN
+-RRB-	-RRB-
+.	.
+
+Each	DT
+cluster	NN
+of	IN
+genes	NNS
+was	VBD
+submitted	VBN
+to	TO
+the	DT
+software	NN
+and	CC
+statistically	RB
+overrepresented	VBN
+TFBSs	NNS
+were	VBD
+defined	VBN
+using	VBG
+the	DT
+Z-score	NN
+option	NN
+.	.
+
+
+Grouping	NN
+of	IN
+probes	NNS
+to	TO
+common	JJ
+gene	NN
+identifier	NN
+.	.
+
+Affymetrix	NNP
+gene	NN
+expression	NN
+chips	NNS
+-LRB-	-LRB-
+such	JJ
+as	IN
+the	DT
+HG-U133	NN
+Plus	NN
+2.0	CD
+platform	NN
+,	,
+used	VBN
+for	IN
+expO	NN
+-RRB-	-RRB-
+contain	VBP
+numerous	JJ
+probe	NN
+sets	NNS
+derived	VBN
+from	IN
+the	DT
+same	JJ
+gene	NN
+either	CC
+as	IN
+redundant	JJ
+probe	NN
+sets	NNS
+or	CC
+probe	NN
+sets	NNS
+for	IN
+different	JJ
+transcripts	NNS
+of	IN
+the	DT
+same	JJ
+gene	NN
+.	.
+
+It	PRP
+is	VBZ
+expected	VBN
+that	IN
+such	JJ
+probe	NN
+sets	NNS
+will	MD
+display	VB
+correlated	VBN
+expression	NN
+given	VBN
+that	IN
+they	PRP
+measure	VBP
+the	DT
+same	JJ
+or	CC
+related	JJ
+transcripts	NNS
+.	.
+
+Therefore	RB
+,	,
+we	PRP
+expect	VBP
+that	DT
+probe	NN
+sets	VBZ
+mapped	VBN
+to	TO
+a	DT
+common	JJ
+gene	NN
+identifier	NN
+will	MD
+be	VB
+grouped	VBN
+together	RB
+in	IN
+the	DT
+same	JJ
+subspace	NN
+cluster	NN
+more	RBR
+often	RB
+than	IN
+expected	VBN
+by	IN
+chance	NN
+.	.
+
+This	DT
+represents	VBZ
+a	DT
+kind	NN
+of	IN
+positive	JJ
+control	NN
+experiment	NN
+.	.
+
+The	DT
+number	NN
+of	IN
+probe	NN
+pairs	NNS
+mapped	VBN
+to	TO
+the	DT
+same	JJ
+gene	NN
+was	VBD
+determined	VBN
+for	IN
+all	DT
+clusters	NNS
+.	.
+
+Significance	NN
+was	VBD
+assessed	VBN
+by	IN
+random	JJ
+permutation	NN
+analysis	NN
+.	.
+
+That	DT
+is	VBZ
+,	,
+10,000	CD
+sets	NNS
+of	IN
+clusters	NNS
+were	VBD
+randomly	RB
+generated	VBN
+-LRB-	-LRB-
+with	IN
+the	DT
+same	JJ
+sizes	NNS
+and	CC
+dimensions	NNS
+as	IN
+produced	VBN
+by	IN
+KiWi	NN
+-RRB-	-RRB-
+.	.
+
+The	DT
+mean	JJ
+number	NN
+of	IN
+redundant	JJ
+probe	NN
+pairs	NNS
+for	IN
+all	DT
+clusters	NNS
+was	VBD
+then	RB
+compared	VBN
+between	IN
+KiWi	NN
+and	CC
+the	DT
+distribution	NN
+of	IN
+random	JJ
+results	NNS
+.	.
+
+
+Experimental	JJ
+annotation	NN
+analysis.KiWi	NN
+OPSM	NNP
+clusters	NNS
+consist	VBP
+of	IN
+a	DT
+set	NN
+of	IN
+two	CD
+or	CC
+more	JJR
+genes	NNS
+found	VBN
+to	TO
+have	VB
+correlated	VBN
+expression	NN
+patterns	NNS
+for	IN
+some	DT
+subset	NN
+of	IN
+the	DT
+available	JJ
+experiments	NNS
+.	.
+
+Most	JJS
+validation	NN
+methods	NNS
+look	VBP
+for	IN
+biologically	RB
+consistent	JJ
+grouping	NN
+of	IN
+genes	NNS
+.	.
+
+To	TO
+determine	VB
+if	IN
+the	DT
+experiments	NNS
+were	VBD
+also	RB
+grouped	VBN
+in	IN
+a	DT
+meaningful	JJ
+way	NN
+,	,
+an	DT
+overrepresentation	NN
+analysis	NN
+was	VBD
+applied	VBN
+to	TO
+experimental	JJ
+annotations	NNS
+.	.
+
+The	DT
+expO	NNP
+data	NN
+set	NN
+was	VBD
+chosen	VBN
+as	IN
+this	DT
+data	NN
+set	NN
+is	VBZ
+accompanied	VBN
+by	IN
+carefully	RB
+annotated	JJ
+clinical	JJ
+details	NNS
+.	.
+
+For	IN
+example	NN
+,	,
+each	DT
+experiment	NN
+is	VBZ
+annotated	JJ
+as	IN
+one	CD
+of	IN
+123	CD
+differ	VBP
+-	:
+ent	JJ
+tumour	NN
+tissue	NN
+types	NNS
+.	.
+
+Clusters	NNS
+with	IN
+a	DT
+minimum	NN
+of	IN
+two	CD
+genes	NNS
+and	CC
+50	CD
+experiments	NNS
+were	VBD
+selected	VBN
+for	IN
+analysis	NN
+.	.
+
+Statistically	RB
+overrepresented	VBN
+experimental	JJ
+annotation	NN
+terms	NNS
+were	VBD
+defined	VBN
+using	VBG
+Fisher	NNP
+Exact	JJ
+statistics	NNS
+and	CC
+corrected	VBN
+for	IN
+multiple	JJ
+testing	NN
+by	IN
+a	DT
+Benjamini	NNP
+and	CC
+Hochberg	NNP
+-LRB-	-LRB-
+BH	NNP
+-RRB-	-RRB-
+correction	NN
+with	IN
+the	DT
+Bioconductor	NNP
+â	NN
+$	$
+œmulttestâ	JJ
+$	$
+package	NN
+.	.
+
+Over	IN
+-	:
+all	DT
+significance	NN
+of	IN
+the	DT
+KiWi	NN
+clusters	NNS
+was	VBD
+determined	VBN
+by	IN
+comparing	VBG
+to	TO
+randomly	RB
+generated	VBN
+clusters	NNS
+using	VBG
+a	DT
+Kolmo	NNP
+-	:
+gorov-Smirnov	JJ
+test	NN
+.	.
+
+
+6.1.3	CD
+Results	NNS
+
+
+OPSM	NNP
+discovery	NN
+results.For	NN
+both	CC
+data	NNS
+sets	NNS
+analyzed	VBN
+,	,
+KiWi	NN
+was	VBD
+able	JJ
+to	TO
+run	VB
+to	TO
+completion	NN
+-LRB-	-LRB-
+after	IN
+parameter	NN
+optimiza	NN
+-	:
+tion	NN
+-RRB-	-RRB-
+and	CC
+produce	VBP
+a	DT
+large	JJ
+number	NN
+of	IN
+OPSM	NNP
+clusters	NNS
+.	.
+
+The	DT
+results	NNS
+are	VBP
+summarized	VBN
+in	IN
+Table	NNP
+2	CD
+and	CC
+density	NN
+distributions	NNS
+for	IN
+cluster	NN
+size	NN
+-LRB-	-LRB-
+number	NN
+of	IN
+genes	NNS
+-RRB-	-RRB-
+versus	CC
+pattern	NN
+length	NN
+-LRB-	-LRB-
+number	NN
+of	IN
+experiments	NNS
+-RRB-	-RRB-
+plotted	VBN
+in	IN
+Fig.	NN
+4	CD
+.	.
+
+The	DT
+density	NN
+plots	NNS
+were	VBD
+produced	VBN
+using	VBG
+the	DT
+Bioconductor	NNP
+â	NN
+$	$
+œhexbinâ	JJ
+$	$
+library	NN
+-LRB-	-LRB-
+version	NN
+2.3.0	CD
+-RRB-	-RRB-
+.	.
+
+A	DT
+large	JJ
+number	NN
+of	IN
+clusters	NNS
+-LRB-	-LRB-
+13,412	CD
+and	CC
+23,555	CD
+-RRB-	-RRB-
+were	VBD
+identified	VBN
+for	IN
+the	DT
+two	CD
+data	NNS
+sets	NNS
+,	,
+with	IN
+a	DT
+range	NN
+of	IN
+sizes	NNS
+and	CC
+pattern	NN
+lengths	NNS
+.	.
+
+In	IN
+general	JJ
+,	,
+KiWi	NN
+appears	VBZ
+well	RB
+
+
+TABLE	NN
+2	CD
+KiWi	NNP
+Results	NNS
+
+
+Note	VB
+:	:
+the	DT
+minimum	NN
+values	NNS
+seen	VBN
+for	IN
+the	DT
+ranges	NNS
+of	IN
+numbers	NNS
+of	IN
+genes	NNS
+and	CC
+experiments	NNS
+were	VBD
+set	VBN
+in	IN
+KiWi	NN
+as	IN
+parameters	NNS
+-LRB-	-LRB-
+see	VB
+Table	NNP
+1	LS
+-RRB-	-RRB-
+.	.
+
+
+suited	VBN
+to	TO
+identifying	VBG
+smaller	JJR
+clusters	NNS
+with	IN
+long	JJ
+patterns	NNS
+.	.
+
+For	IN
+example	NN
+,	,
+in	IN
+the	DT
+expO	NNP
+data	NNS
+-LRB-	-LRB-
+Fig.	NN
+4B	NN
+-RRB-	-RRB-
+80	CD
+percent	NN
+of	IN
+clusters	NNS
+had	VBD
+five	CD
+genes	NNS
+or	CC
+fewer	JJR
+,	,
+97	CD
+percent	NN
+had	VBD
+10	CD
+genes	NNS
+or	CC
+fewer	JJR
+,	,
+and	CC
+100	CD
+percent	NN
+were	VBD
+under	IN
+the	DT
+threshold	NN
+and	CC
+thus	RB
+deep	JJ
+.	.
+
+These	DT
+clusters	NNS
+,	,
+while	IN
+small	JJ
+in	IN
+gene	NN
+number	NN
+,	,
+are	VBP
+in	IN
+many	JJ
+cases	NNS
+coexpressed	VBN
+across	IN
+a	DT
+large	JJ
+number	NN
+of	IN
+experiments	NNS
+.	.
+
+For	IN
+clusters	NNS
+with	IN
+5	CD
+genes	NNS
+or	CC
+fewer	JJR
+,	,
+the	DT
+number	NN
+of	IN
+experiments	NNS
+over	IN
+which	WDT
+coexpression	NN
+was	VBD
+observed	VBN
+ranged	VBD
+from	IN
+10	CD
+to	TO
+120	CD
+with	IN
+a	DT
+mean	NN
+of	IN
+42.48	CD
+.	.
+
+Similar	JJ
+trends	NNS
+were	VBD
+seen	VBN
+for	IN
+the	DT
+GPL96	NN
+data	NNS
+-LRB-	-LRB-
+Fig.	NN
+4A	NN
+-RRB-	-RRB-
+.	.
+
+For	IN
+the	DT
+GPL96	NN
+and	CC
+expO	NN
+data	NNS
+sets	NNS
+,	,
+the	DT
+average	JJ
+cluster	NN
+size	NN
+was	VBD
+5.11	CD
+and	CC
+3.89	CD
+and	CC
+the	DT
+average	JJ
+pattern	NN
+length	NN
+was	VBD
+24.04	CD
+and	CC
+42.48	CD
+,	,
+respectively	RB
+.	.
+
+
+GO	NN
+and	CC
+oPOSSUM	NN
+analysis	NN
+.	.
+
+GO	NN
+and	CC
+oPOSSUM	NN
+analysis	NN
+results	NNS
+are	VBP
+shown	VBN
+for	IN
+the	DT
+GPL96	NN
+data	NN
+set	NN
+-LRB-	-LRB-
+Figs.	NN
+5	CD
+and	CC
+6	CD
+-RRB-	-RRB-
+.	.
+
+For	IN
+the	DT
+GO	NN
+validation	NN
+,	,
+a	DT
+set	NN
+of	IN
+representative	JJ
+clusters	NNS
+were	VBD
+chosen	VBN
+with	IN
+minimum	JJ
+size	NN
+5	CD
+and	CC
+minimum	JJ
+dimensions	NNS
+15	CD
+.	.
+
+A	DT
+total	NN
+of	IN
+634	CD
+clusters	NNS
+met	VBD
+these	DT
+criteria	NNS
+,	,
+with	IN
+22	CD
+clusters	NNS
+containing	VBG
+anticorrelated	JJ
+genes	NNS
+.	.
+
+The	DT
+GO	NN
+analysis	NN
+shows	VBZ
+that	IN
+clusters	NNS
+identified	VBN
+by	IN
+KiWi	NN
+are	VBP
+significantly	RB
+more	RBR
+likely	JJ
+to	TO
+share	VB
+a	DT
+common	JJ
+biological	JJ
+process	NN
+than	IN
+random	JJ
+expectation	NN
+-LRB-	-LRB-
+Fig.	NN
+5	CD
+-RRB-	-RRB-
+.	.
+
+The	DT
+fraction	NN
+of	IN
+clusters	NNS
+with	IN
+at	IN
+least	JJS
+one	CD
+significantly	RB
+overrepresented	VBD
+GO	NNP
+biological	JJ
+process	NN
+term	NN
+at	IN
+each	DT
+level	NN
+of	IN
+significance	NN
+are	VBP
+shown	VBN
+.	.
+
+For	IN
+example	NN
+,	,
+if	IN
+we	PRP
+consider	VBP
+a	DT
+p-value	JJ
+threshold	NN
+of	IN
+0.01	CD
+,	,
+more	JJR
+than	IN
+10	CD
+percent	NN
+of	IN
+clusters	NNS
+have	VBP
+at	IN
+least	JJS
+one	CD
+significant	JJ
+GO	NN
+term	NN
+compared	VBN
+to	TO
+the	DT
+random	JJ
+expectation	NN
+of	IN
+close	JJ
+to	TO
+zero	CD
+.	.
+
+
+Similarly	RB
+,	,
+the	DT
+oPOSSUM	NNP
+TFBS	NN
+analysis	NN
+shows	VBZ
+that	IN
+clusters	NNS
+identified	VBN
+by	IN
+the	DT
+KiWi	NN
+algorithm	NN
+are	VBP
+significantly	RB
+more	RBR
+likely	JJ
+than	IN
+random	JJ
+expectation	NN
+to	TO
+share	VB
+sequences	NNS
+bound	VBN
+by	IN
+the	DT
+same	JJ
+transcription	NN
+factor	NN
+-LRB-	-LRB-
+Fig.	NN
+6	CD
+-RRB-	-RRB-
+.	.
+
+The	DT
+fraction	NN
+of	IN
+clusters	NNS
+with	IN
+at	IN
+least	JJS
+one	CD
+significantly	RB
+overrepresented	VBD
+transcription	NN
+factor	NN
+binding	VBG
+site	NN
+-LRB-	-LRB-
+TFBS	NN
+-RRB-	-RRB-
+at	IN
+each	DT
+level	NN
+of	IN
+significance	NN
+is	VBZ
+shown	VBN
+.	.
+
+For	IN
+example	NN
+,	,
+if	IN
+we	PRP
+consider	VBP
+a	DT
+Z-score	NN
+of	IN
+30	CD
+,	,
+more	JJR
+than	IN
+10	CD
+percent	NN
+of	IN
+clusters	NNS
+have	VBP
+at	IN
+least	JJS
+one	CD
+TFBS	NN
+overrepresented	VBN
+in	IN
+the	DT
+regulatory	JJ
+regions	NNS
+for	IN
+these	DT
+genes	NNS
+.	.
+
+Random	NNP
+expectation	NN
+for	IN
+this	DT
+same	JJ
+Z-score	NN
+threshold	NN
+is	VBZ
+close	JJ
+to	TO
+zero	CD
+.	.
+
+To	TO
+summarize	VB
+,	,
+the	DT
+KiWi	NNP
+algorithm	NN
+
+
+Fig.	NN
+4	CD
+.	.
+
+KiWi	NN
+results	VBZ
+for	IN
+GPL96	NN
+and	CC
+expO	NN
+data	NNS
+sets	NNS
+.	.
+
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+GPL96	NN
+,	,
+-LRB-	-LRB-
+b	LS
+-RRB-	-RRB-
+expO	NN
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+12	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+GAO	NNP
+ET	NNP
+AL.	NNP
+:	:
+ON	IN
+THE	DT
+DEEP	JJ
+ORDER-PRESERVING	NN
+SUBMATRIX	NNP
+PROBLEM	NN
+:	:
+A	DT
+BEST	JJS
+EFFORT	NN
+APPROACH	NN
+
+
+Fig.	NN
+5	CD
+.	.
+
+Gene	NNP
+Ontology	NNP
+analysis	NN
+for	IN
+GPL96	NN
+data	NNS
+set	VBN
+.	.
+
+
+Fig.	NN
+6	CD
+.	.
+
+oPOSSUM	NN
+TFBS	NN
+analysis	NN
+for	IN
+GPL96	NN
+data	NNS
+set	VBN
+.	.
+
+
+successfully	RB
+identifies	VBZ
+groups	NNS
+of	IN
+genes	NNS
+that	WDT
+belong	VBP
+to	TO
+a	DT
+common	JJ
+function	NN
+or	CC
+process	NN
+and/or	CC
+share	NN
+common	JJ
+tran	NN
+-	:
+scription	NN
+factor	NN
+binding	VBG
+sites	NNS
+.	.
+
+
+Grouping	NN
+of	IN
+probes	NNS
+to	TO
+common	JJ
+gene	NN
+identifier	NN
+.	.
+
+Fig.	NN
+7	CD
+shows	VBZ
+the	DT
+results	NNS
+of	IN
+the	DT
+â	NN
+$	$
+œprobe	JJ
+to	TO
+common	JJ
+geneâ	NN
+$	$
+analysis	NN
+.	.
+
+The	DT
+mean	JJ
+number	NN
+of	IN
+probe	NN
+pairs	NNS
+in	IN
+a	DT
+cluster	NN
+that	WDT
+are	VBP
+mapped	VBN
+to	TO
+the	DT
+same	JJ
+gene	NN
+-LRB-	-LRB-
+redundant	JJ
+probes	NNS
+-RRB-	-RRB-
+is	VBZ
+shown	VBN
+for	IN
+each	DT
+cluster	NN
+size	NN
+-LRB-	-LRB-
+number	NN
+of	IN
+genes	NNS
+per	IN
+cluster	NN
+-RRB-	-RRB-
+for	IN
+the	DT
+expO	NNP
+data	NN
+set	NN
+.	.
+
+-LRB-	-LRB-
+Error	NN
+bars	NNS
+indicate	VBP
+95	CD
+percent	NN
+confidence	NN
+limits	NNS
+.	.
+-RRB-	-RRB-
+
+Using	VBG
+the	DT
+expO	NN
+data	NN
+set	NN
+-LRB-	-LRB-
+because	IN
+it	PRP
+is	VBZ
+based	VBN
+on	IN
+the	DT
+more	RBR
+current	JJ
+Affymetrix	NNP
+platform	NN
+-RRB-	-RRB-
+,	,
+we	PRP
+found	VBD
+that	IN
+of	IN
+the	DT
+23,555	CD
+clusters	NNS
+identified	VBN
+by	IN
+KiWi	NN
+,	,
+1,880	CD
+-LRB-	-LRB-
+7.98	CD
+percent	NN
+-RRB-	-RRB-
+contained	VBD
+at	IN
+least	JJS
+one	CD
+pair	NN
+of	IN
+redundant	JJ
+probes	NNS
+-LRB-	-LRB-
+i.e.	FW
+,	,
+different	JJ
+probes	NNS
+corresponding	VBG
+to	TO
+the	DT
+same	JJ
+gene	NN
+-RRB-	-RRB-
+and	CC
+on	IN
+average	NN
+,	,
+KiWi	NN
+clusters	NNS
+contained	VBD
+0.177	CD
+redundant	JJ
+probe	NN
+pairs	NNS
+per	IN
+cluster	NN
+.	.
+
+This	DT
+was	VBD
+significantly	RB
+more	JJR
+than	IN
+24.5	CD
+-LRB-	-LRB-
+0.10	CD
+percent	NN
+-RRB-	-RRB-
+clusters	NNS
+with	IN
+at	IN
+least	JJS
+one	CD
+redundant	JJ
+pair	NN
+-LRB-	-LRB-
+p	NN
+<	JJR
+0:0001	CD
+,	,
+10,000	CD
+permutations	NNS
+-RRB-	-RRB-
+and	CC
+the	DT
+0.002	CD
+average	JJ
+number	NN
+of	IN
+redundant	JJ
+probes	NNS
+per	IN
+cluster	NN
+-LRB-	-LRB-
+p	NN
+<	JJR
+0:0001	CD
+,	,
+
+
+321	CD
+
+
+Fig.	NN
+7	CD
+.	.
+
+Probe	NN
+to	TO
+common	JJ
+gene	NN
+analysis	NN
+for	IN
+expO	NNP
+data	NNS
+set	NN
+.	.
+
+
+Fig.	NN
+8	CD
+.	.
+
+Experimental	JJ
+annotation	NN
+analysis	NN
+for	IN
+expO	NNP
+data	NNS
+set	NN
+-LRB-	-LRB-
+all	DT
+annotations	NNS
+-RRB-	-RRB-
+.	.
+
+
+unlike	IN
+most	JJS
+gene	NN
+expression	NN
+data	NNS
+sets	NNS
+,	,
+the	DT
+expO	NNP
+data	NNS
+are	VBP
+accompanied	VBN
+by	IN
+careful	JJ
+and	CC
+comprehensive	JJ
+experimental	JJ
+annotations	NNS
+.	.
+
+The	DT
+graph	NN
+shows	VBZ
+a	DT
+significant	JJ
+tendency	NN
+by	IN
+KiWi	NN
+to	TO
+group	NN
+experimental	JJ
+dimensions	NNS
+with	IN
+common	JJ
+experimental	JJ
+annotation	NN
+terms	NNS
+such	JJ
+as	IN
+tissue	NN
+source	NN
+,	,
+histology	NN
+,	,
+gender	NN
+,	,
+ethnicity	NN
+,	,
+smoking	NN
+,	,
+or	CC
+alcohol	NN
+consump	NN
+-	:
+tion	NN
+status	NN
+-LRB-	-LRB-
+pÂ	NN
+1/4	CD
+0:009	CD
+-RRB-	-RRB-
+.	.
+
+
+6.1.4	CD
+Discussion	NN
+
+
+GO	NN
+and	CC
+oPOSSUM	NN
+performance	NN
+were	VBD
+evaluated	VBN
+using	VBG
+a	DT
+large	JJ
+Affymetrix	NNP
+data	NNS
+set	NN
+-LRB-	-LRB-
+referred	VBN
+to	TO
+here	RB
+as	IN
+GPL96	NN
+-RRB-	-RRB-
+.	.
+
+We	PRP
+showed	VBD
+that	IN
+KiWi	NN
+can	MD
+group	NN
+genes	NNS
+with	IN
+overrepresentation	NN
+of	IN
+GO	NN
+biological	JJ
+processes	NNS
+and	CC
+oPOSSUM	NN
+transcription	NN
+factor	NN
+binding	VBG
+sites	NNS
+.	.
+
+Using	VBG
+another	DT
+large	JJ
+Affymetrix	NNP
+data	NNS
+set	NN
+-LRB-	-LRB-
+expO	NN
+-RRB-	-RRB-
+,	,
+we	PRP
+show	VBP
+that	IN
+KiWi	NN
+is	VBZ
+also	RB
+very	RB
+good	JJ
+at	IN
+grouping	VBG
+probes	NNS
+for	IN
+the	DT
+same	JJ
+gene	NN
+.	.
+
+In	IN
+fact	NN
+,	,
+a	DT
+significant	JJ
+proportion	NN
+of	IN
+the	DT
+total	JJ
+clusters	NNS
+contain	VBP
+â	RB
+$	$
+œredundantâ	JJ
+$	$
+probes	NNS
+.	.
+
+In	IN
+itself	PRP
+,	,
+this	DT
+is	VBZ
+not	RB
+a	DT
+surprising	JJ
+result	NN
+,	,
+but	CC
+is	VBZ
+an	DT
+important	JJ
+positive	JJ
+
+
+control	NN
+that	WDT
+shows	VBZ
+KiWi	NN
+correctly	RB
+identifies	VBZ
+logically10	NN
+,000	CD
+permutations	NNS
+-RRB-	-RRB-
+identified	VBN
+in	IN
+our	PRP$
+random	JJ
+simulations	NNS
+.	.
+
+
+related	JJ
+genes	NNS
+.	.
+
+The	DT
+expO	NNP
+data	NN
+set	NN
+was	VBD
+also	RB
+useful	JJ
+for	IN
+its	PRP$
+
+
+Experimental	JJ
+annotation	NN
+analysis	NN
+.	.
+
+Fig.	NN
+8	CD
+shows	VBZ
+the	DT
+
+
+evaluation	NN
+of	IN
+experiment-level	JJ
+clustering	NN
+by	IN
+KiWi	NN
+.	.
+
+Part	NN
+of	IN
+
+
+results	NNS
+of	IN
+the	DT
+â	NN
+$	$
+œexperimental	JJ
+annotation	NN
+analysis.â	NN
+$	$
+The	DT
+
+
+the	DT
+promise	NN
+of	IN
+subspace	NN
+clustering	NN
+methods	NNS
+is	VBZ
+that	IN
+they	PRP
+will	MD
+fraction	NN
+of	IN
+clusters	NNS
+with	IN
+at	IN
+least	JJS
+one	CD
+significantly	RB
+over-identify	JJ
+not	RB
+only	RB
+coexpressed	JJ
+genes	NNS
+but	CC
+also	RB
+the	DT
+subset	NN
+of	IN
+represented	VBN
+experimental	JJ
+annotation	NN
+term	NN
+at	IN
+each	DT
+level	NN
+ofexperimental	JJ
+tissues	NNS
+or	CC
+conditions	NNS
+under	IN
+which	WDT
+genes	NNS
+are	VBP
+significance	NN
+are	VBP
+shown	VBN
+.	.
+
+This	DT
+used	VBD
+the	DT
+expO	NNP
+data	NNS
+because	IN
+coexpressed	VBN
+.	.
+
+Such	JJ
+clusters	NNS
+could	MD
+be	VB
+of	IN
+particular	JJ
+value	NN
+for	IN
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+13	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+322	CD
+IEEE	NNP
+TRANSACTIONS	NNPS
+ON	IN
+KNOWLEDGE	NNP
+AND	CC
+DATA	NNP
+ENGINEERING	NNP
+,	,
+VOL	NNP
+.	.
+
+24	CD
+,	,
+NO.	NNP
+2	CD
+,	,
+FEBRUARY	NNP
+2012	CD
+
+
+TABLE	NN
+3	CD
+
+
+KiWi	NN
+versus	CC
+LoPad	NN
+:	:
+Longest	NNP
+Pattern	NNP
+Discovery	NNP
+
+
+identifying	VBG
+tissue	NN
+-	:
+or	CC
+stage-specific	JJ
+coregulation	NN
+.	.
+
+But	CC
+,	,
+they	PRP
+also	RB
+allow	VBP
+identification	NN
+of	IN
+coregulation	NN
+for	IN
+previously	RB
+unconsidered	JJ
+sample	NN
+groups	NNS
+.	.
+
+For	IN
+example	NN
+,	,
+we	PRP
+were	VBD
+able	JJ
+to	TO
+identify	VB
+gene	NN
+clusters	NNS
+specific	JJ
+to	TO
+gender	VB
+,	,
+smoking	NN
+and	CC
+alcohol	NN
+consumption	NN
+status	NN
+.	.
+
+
+6.2	CD
+Computational	JJ
+Evaluation	NN
+
+
+The	DT
+objective	NN
+of	IN
+this	DT
+series	NN
+of	IN
+experiments	NNS
+is	VBZ
+to	TO
+validate	VB
+the	DT
+effectiveness	NN
+and	CC
+efficiency	NN
+of	IN
+KiWi	NN
+in	IN
+discovering	VBG
+deep	JJ
+OPSM	NNP
+clusters	NNS
+from	IN
+massive	JJ
+data	NNS
+sets	NNS
+.	.
+
+
+6.2.1	CD
+Effectiveness	NN
+
+
+Data	NNS
+sets	NNS
+.	.
+
+These	DT
+experiments	NNS
+used	VBN
+real	JJ
+data	NNS
+sets	NNS
+including	VBG
+Affymetrix	NNP
+-LRB-	-LRB-
+HG-U133A	NN
+-RRB-	-RRB-
+experiments	NNS
+from	IN
+the	DT
+Gene	NNP
+Expression	NN
+Omnibus	NN
+-LRB-	-LRB-
+GEO	NN
+,	,
+GPL96	NN
+-RRB-	-RRB-
+-LSB-	-LRB-
+7	CD
+-RSB-	-RRB-
+,	,
+SAGE	NN
+libraries	NNS
+also	RB
+from	IN
+GEO	NN
+-LRB-	-LRB-
+GPL4	NN
+-RRB-	-RRB-
+,	,
+and	CC
+cDNA	NN
+experiments	NNS
+from	IN
+the	DT
+Standford	NNP
+Microarray	NNP
+Database	NNP
+-LRB-	-LRB-
+SMD	NNP
+-RRB-	-RRB-
+-LSB-	-LRB-
+26	CD
+-RSB-	-RRB-
+.	.
+
+Affymetrix	NNP
+probes	NNS
+,	,
+cDNA	NN
+clones	NNS
+,	,
+and	CC
+SAGE	NN
+tags	NNS
+were	VBD
+normalized	VBN
+and	CC
+mapped	VBN
+to	TO
+gene/protein	NN
+identifiers	NNS
+as	IN
+previously	RB
+reported	VBN
+-LSB-	-LRB-
+21	CD
+-RSB-	-RRB-
+.	.
+
+For	IN
+comparison	NN
+with	IN
+existing	VBG
+algorithms	NNS
+,	,
+two	CD
+small	JJ
+data	NNS
+sets	NNS
+,	,
+SU	FW
+-LSB-	-LRB-
+46	CD
+-RSB-	-RRB-
+,	,
+a	DT
+smaller	JJR
+data	NN
+set	NN
+of	IN
+Affymatrix	NNP
+-LRB-	-LRB-
+HG	NNP
+-	:
+U95A	NN
+-RRB-	-RRB-
+experiments	NNS
+,	,
+and	CC
+breast	NN
+cancer	NN
+-LSB-	-LRB-
+24	CD
+-RSB-	-RRB-
+,	,
+were	VBD
+also	RB
+used	VBN
+.	.
+
+Table	NNP
+3	CD
+lists	VBZ
+the	DT
+sizes	NNS
+of	IN
+these	DT
+data	NNS
+sets	NNS
+.	.
+
+
+Results	NNS
+.	.
+
+Deep	JJ
+OPSMs	NNS
+correspond	VBP
+to	TO
+long	JJ
+patterns	NNS
+.	.
+
+To	TO
+demonstrate	VB
+that	IN
+KiWi	NN
+is	VBZ
+effective	JJ
+in	IN
+finding	VBG
+deep	JJ
+OPSMs	NNS
+,	,
+we	PRP
+compare	VBP
+KiWi	NN
+with	IN
+LoPad	NN
+,	,
+which	WDT
+can	MD
+find	VB
+the	DT
+longest	JJS
+pattern	NN
+with	IN
+respect	NN
+to	TO
+min	NN
+sup	NN
+of	IN
+2	CD
+.	.
+
+Table	NNP
+3	CD
+reports	VBZ
+the	DT
+longest	JJS
+pattern	NN
+length	NN
+and	CC
+corresponding	JJ
+running	VBG
+time	NN
+-LRB-	-LRB-
+in	IN
+seconds	NNS
+-RRB-	-RRB-
+for	IN
+LoPad	NN
+and	CC
+KiWi	NN
+,	,
+respectively	RB
+.	.
+
+We	PRP
+observe	VBP
+that	IN
+in	IN
+all	DT
+cases	NNS
+KiWi	NN
+was	VBD
+able	JJ
+to	TO
+find	VB
+the	DT
+optimal	JJ
+results	NNS
+or	CC
+very	RB
+close	RB
+,	,
+in	IN
+significantly	RB
+shorter	JJR
+time	NN
+.	.
+
+Note	VB
+that	DT
+LoPad	NN
+,	,
+with	IN
+runtime	NN
+complexity	NN
+of	IN
+OÃ	NN
+°	CD
+m2n2Ãž	NN
+,	,
+did	VBD
+not	RB
+return	VB
+after	IN
+one	CD
+week	NN
+for	IN
+the	DT
+cDNA	NN
+data	NN
+set	NN
+and	CC
+the	DT
+program	NN
+was	VBD
+terminated	VBN
+.	.
+
+
+More	RBR
+frequent	JJ
+subpatterns	NNS
+are	VBP
+likely	JJ
+to	TO
+grow	VB
+into	IN
+more	JJR
+frequent	JJ
+superpatterns	NNS
+.	.
+
+The	DT
+support	NN
+of	IN
+a	DT
+pattern	NN
+reflects	VBZ
+its	PRP$
+potential	JJ
+to	TO
+continue	VB
+to	TO
+grow	VB
+.	.
+
+Thus	RB
+,	,
+an	DT
+algorithm	NN
+that	WDT
+is	VBZ
+capable	JJ
+of	IN
+mining	NN
+patterns	NNS
+with	IN
+large	JJ
+support	NN
+values	NNS
+should	MD
+be	VB
+also	RB
+capable	JJ
+in	IN
+mining	VBG
+long	JJ
+patterns	NNS
+.	.
+
+Ben-Dor	NNP
+et	FW
+al.	FW
+-LSB-	-LRB-
+8	CD
+-RSB-	-RRB-
+proposed	VBD
+an	DT
+algorithm	NN
+-LRB-	-LRB-
+will	MD
+be	VB
+referred	VBN
+to	TO
+as	IN
+Alg	NN
+-RRB-	-RRB-
+that	WDT
+strives	VBZ
+to	TO
+find	VB
+the	DT
+most	RBS
+significant	JJ
+OPSM	NNP
+one	CD
+at	IN
+a	DT
+time	NN
+.	.
+
+Note	VB
+that	DT
+for	IN
+a	DT
+pattern	NN
+of	IN
+given	VBN
+length	NN
+,	,
+more	JJR
+support	NN
+means	VBZ
+more	RBR
+significance	NN
+.	.
+
+They	PRP
+reported	VBD
+several	JJ
+significant	JJ
+OPSMs	NNS
+with	IN
+different	JJ
+pattern	NN
+lengths	NNS
+on	IN
+the	DT
+breast	NN
+cancer	NN
+data	NNS
+set	VBN
+.	.
+
+While	IN
+they	PRP
+did	VBD
+not	RB
+give	VB
+the	DT
+runtime	NN
+,	,
+KiWi	NN
+in	IN
+just	RB
+1.47	CD
+seconds	NNS
+found	VBD
+much	RB
+better	JJR
+results	NNS
+-LRB-	-LRB-
+larger	JJR
+support	NN
+values	NNS
+-RRB-	-RRB-
+for	IN
+every	DT
+case	NN
+they	PRP
+reported	VBD
+as	IN
+shown	VBN
+in	IN
+Table	NNP
+4	CD
+.	.
+
+In	IN
+addition	NN
+,	,
+since	IN
+this	DT
+is	VBZ
+a	DT
+very	RB
+small	JJ
+data	NNS
+set	VBN
+,	,
+we	PRP
+were	VBD
+able	JJ
+to	TO
+set	VB
+min	NN
+sup	NN
+Â	NN
+1/4	CD
+2	CD
+and	CC
+obtain	VB
+the	DT
+results	NNS
+from	IN
+PrefixSpan	NNP
+in	IN
+2,085	CD
+seconds	NNS
+-LRB-	-LRB-
+with	IN
+output	NN
+file	NN
+size	NN
+of	IN
+12	CD
+GB	NN
+-RRB-	-RRB-
+,	,
+from	IN
+which	WDT
+we	PRP
+can	MD
+see	VB
+that	IN
+our	PRP$
+results	NNS
+are	VBP
+actually	RB
+optimal	JJ
+.	.
+
+
+TABLE	NN
+4	CD
+
+
+KiWi	NN
+versus	CC
+Alg	NN
+:	:
+Significant	JJ
+OPSM	NNP
+Discovery	NNP
+
+
+6.2.2	CD
+Efficiency	NN
+
+
+We	PRP
+used	VBD
+synthetic	JJ
+data	NNS
+to	TO
+demonstrate	VB
+the	DT
+efficiency	NN
+and	CC
+scalability	NN
+of	IN
+KiWi	NN
+.	.
+
+Random	NNP
+matrixes	NNS
+of	IN
+different	JJ
+sizes	NNS
+were	VBD
+generated	VBN
+by	IN
+the	DT
+synthetic	JJ
+data	NNS
+generator	NN
+.	.
+
+The	DT
+results	NNS
+shown	VBN
+in	IN
+Fig.	NNP
+9	CD
+confirm	VBP
+the	DT
+average	JJ
+case	NN
+complexity	NN
+of	IN
+OÃ	NN
+°	CD
+kwnÃž	NN
+.	.
+
+In	IN
+particular	JJ
+,	,
+Fig.	NN
+9c	NN
+shows	VBZ
+that	IN
+the	DT
+runtime	NN
+of	IN
+KiWi	NN
+is	VBZ
+linear	JJ
+in	IN
+n.	NNP
+Note	VBP
+that	IN
+in	IN
+KiWi	NNP
+,	,
+min	NN
+sup	NN
+is	VBZ
+always	RB
+fixed	VBN
+at	IN
+2	CD
+.	.
+
+As	IN
+previously	RB
+mentioned	VBN
+,	,
+some	DT
+existing	VBG
+algo	NN
+-	:
+rithms	NNS
+also	RB
+show	VBP
+a	DT
+similar	JJ
+trend	NN
+for	IN
+some	DT
+fixed	JJ
+â	NN
+$	$
+œmin	JJ
+sup	NN
+,	,
+â	VB
+$	$
+but	CC
+their	PRP$
+support	NN
+is	VBZ
+defined	VBN
+as	IN
+a	DT
+fraction	NN
+of	IN
+n	NN
+,	,
+i.e.	FW
+,	,
+with	IN
+the	DT
+increase	NN
+of	IN
+n	NN
+,	,
+min	NN
+sup	NN
+proportionally	RB
+increases	VBZ
+.	.
+
+Also	RB
+note	NN
+that	WDT
+in	IN
+Fig.	NN
+9d	NN
+,	,
+the	DT
+runtime	NN
+does	VBZ
+not	RB
+show	VB
+a	DT
+clear	JJ
+trend	NN
+when	WRB
+varying	VBG
+m	NN
+,	,
+which	WDT
+is	VBZ
+consistent	JJ
+with	IN
+our	PRP$
+complexity	NN
+analysis	NN
+.	.
+
+From	IN
+Figs.	NNP
+9c	NN
+and	CC
+9d	NN
+,	,
+we	PRP
+can	MD
+see	VB
+that	DT
+KiWi	NN
+scales	NNS
+nicely	RB
+with	IN
+respect	NN
+to	TO
+n	NN
+and	CC
+m.	NN
+
+
+7CONCLUSION	NN
+
+
+OPSMs	NNS
+have	VBP
+been	VBN
+accepted	VBN
+as	IN
+a	DT
+biologically	RB
+meaningful	JJ
+pattern-based	JJ
+subspace	NN
+cluster	NN
+model	NN
+,	,
+capturing	VBG
+the	DT
+gen	NN
+-	:
+eral	JJ
+tendency	NN
+of	IN
+gene	NN
+expression	NN
+across	IN
+a	DT
+subset	NN
+of	IN
+experiments	NNS
+.	.
+
+Biologists	NNS
+are	VBP
+particularly	RB
+interested	JJ
+in	IN
+OPSMs	NNS
+consisting	VBG
+of	IN
+a	DT
+small	JJ
+number	NN
+of	IN
+genes	NNS
+sharing	VBG
+expression	NN
+patterns	NNS
+over	IN
+many	JJ
+experiments	NNS
+.	.
+
+However	RB
+,	,
+such	JJ
+OPSMs	NNS
+are	VBP
+often	RB
+deep	JJ
+in	IN
+massive	JJ
+data	NNS
+sets	NNS
+in	IN
+the	DT
+sense	NN
+that	WDT
+existing	VBG
+exact	JJ
+methods	NNS
+fail	VBP
+to	TO
+discover	VB
+them	PRP
+due	JJ
+to	TO
+the	DT
+explosive	JJ
+computational	JJ
+costs	NNS
+.	.
+
+
+In	IN
+this	DT
+paper	NN
+,	,
+we	PRP
+have	VBP
+proposed	VBN
+a	DT
+novel	JJ
+best	JJS
+effort	NN
+mining	NN
+framework	NN
+KiWi	NN
+for	IN
+the	DT
+deep	JJ
+OPSM	NNP
+discovery	NN
+problem	NN
+.	.
+
+KiWi	NN
+exploits	VBZ
+two	CD
+parameters	NNS
+k	NN
+and	CC
+w	NN
+to	TO
+bound	VBN
+the	DT
+available	JJ
+computational	JJ
+resources	NNS
+and	CC
+search	VB
+a	DT
+selected	VBN
+promising	JJ
+search	NN
+space	NN
+,	,
+and	CC
+does	VBZ
+what	WP
+it	PRP
+can	MD
+to	TO
+find	VB
+as	IN
+manyaspossibledeepOPSMs.Wehaveperformed	JJ
+extensive	JJ
+biological	JJ
+and	CC
+computational	JJ
+experiments	NNS
+on	IN
+real	JJ
+data	NNS
+sets	NNS
+that	WDT
+demonstrated	VBD
+the	DT
+meaningfulness	NN
+of	IN
+deep	JJ
+OPSMs	NNS
+,	,
+and	CC
+the	DT
+effectiveness	NN
+and	CC
+efficiency	NN
+of	IN
+KiWi	NN
+in	IN
+discovering	VBG
+deep	JJ
+OPSMs	NNS
+.	.
+
+
+The	DT
+deep	JJ
+OPSM	NNP
+problem	NN
+we	PRP
+have	VBP
+identified	VBN
+and	CC
+studied	VBN
+can	MD
+play	VB
+an	DT
+important	JJ
+role	NN
+in	IN
+inferring	VBG
+gene	NN
+regulatory	JJ
+networks	NNS
+and	CC
+is	VBZ
+of	IN
+essential	JJ
+biological	JJ
+significance	NN
+.	.
+
+Beyond	IN
+that	DT
+,	,
+our	PRP$
+study	NN
+can	MD
+have	VB
+a	DT
+broader	JJR
+influence	NN
+in	IN
+pattern	NN
+mining	NN
+in	IN
+general	JJ
+.	.
+
+The	DT
+deep	JJ
+OPSM	NNP
+problem	NN
+,	,
+in	IN
+a	DT
+broader	JJR
+sense	NN
+,	,
+is	VBZ
+a	DT
+deep	JJ
+pattern	NN
+problem	NN
+,	,
+where	WRB
+the	DT
+principles	NNS
+and	CC
+ideas	NNS
+in	IN
+our	PRP$
+solution	NN
+are	VBP
+directly	RB
+applicable	JJ
+.	.
+
+Our	PRP$
+attempt	NN
+to	TO
+estimate	VB
+statistical	JJ
+significance	NN
+of	IN
+OPSMs	NNS
+has	VBZ
+made	VBN
+initial	JJ
+contributions	NNS
+to	TO
+estimation	NN
+of	IN
+statistical	JJ
+significance	NN
+of	IN
+patterns	NNS
+,	,
+a	DT
+fundamental	JJ
+problem	NN
+in	IN
+pattern	NN
+mining	NN
+-LSB-	-LRB-
+22	CD
+-RSB-	-RRB-
+that	WDT
+has	VBZ
+been	VBN
+largely	RB
+overlooked	VBN
+.	.
+
+
+APPENDIX	NN
+
+
+MAXIMUM	NNP
+LENGTH	NNP
+OF	IN
+SECTIONS	NNS
+
+
+Here	RB
+,	,
+we	PRP
+derive	VBP
+the	DT
+cdf	NN
+of	IN
+the	DT
+maximum	NN
+length	NN
+of	IN
+sections	NNS
+of	IN
+sequences	NNS
+segmented	JJ
+by	IN
+a	DT
+pattern	NN
+.	.
+
+The	DT
+cdf	NN
+theoretically	RB
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+14	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+GAO	NNP
+ET	NNP
+AL.	NNP
+:	:
+ON	IN
+THE	DT
+DEEP	JJ
+ORDER-PRESERVING	NN
+SUBMATRIX	NNP
+PROBLEM	NN
+:	:
+A	DT
+BEST	JJS
+EFFORT	NN
+APPROACH	NN
+
+
+100	CD
+
+
+1000	CD
+
+
+80	CD
+
+
+800	CD
+
+
+60	CD
+
+
+600	CD
+
+
+40	CD
+
+
+400	CD
+
+
+Runtime	NN
+-LRB-	-LRB-
+seconds	NNS
+-RRB-	-RRB-
+
+
+20	CD
+
+
+Runtime	NN
+-LRB-	-LRB-
+seconds	NNS
+-RRB-	-RRB-
+
+
+200	CD
+
+
+0	CD
+
+
+0	CD
+
+
+1000	CD
+
+
+2000	CD
+
+
+3000	CD
+
+
+4000	CD
+
+
+5000	CD
+
+
+6000	CD
+
+
+7000	CD
+
+
+8000	CD
+
+
+9000	CD
+
+
+10000	CD
+
+
+100	CD
+
+
+200	CD
+
+
+300	CD
+
+
+400	CD
+
+
+500	CD
+
+
+600	CD
+
+
+700	CD
+
+
+800	CD
+
+
+900	CD
+
+
+1000	CD
+
+
+k	NN
+
+
+w	NN
+
+
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+Runtime	NNP
+vs.	FW
+k	NN
+
+
+-LRB-	-LRB-
+b	LS
+-RRB-	-RRB-
+Runtime	NNP
+vs.	FW
+w	FW
+
+
+n	NN
+=	JJ
+100000	CD
+,	,
+m	NN
+=	JJ
+1000	CD
+,	,
+w	NN
+=	JJ
+100	CD
+n	NN
+=	JJ
+100000	CD
+,	,
+m	NN
+=	JJ
+1000	CD
+,	,
+k	NN
+=	JJ
+5000	CD
+
+
+60	CD
+
+
+60	CD
+
+
+40	CD
+
+
+40	CD
+
+
+w	NN
+=	JJ
+200	CD
+w	NN
+=	JJ
+100	CD
+w	NN
+=	JJ
+50	CD
+
+
+20	CD
+
+
+20	CD
+
+
+Runtime	NN
+-LRB-	-LRB-
+seconds	NNS
+-RRB-	-RRB-
+
+
+Runtime	NN
+-LRB-	-LRB-
+seconds	NNS
+-RRB-	-RRB-
+
+
+0	CD
+
+
+0	CD
+
+
+10000	CD
+
+
+20000	CD
+
+
+30000	CD
+
+
+40000	CD
+
+
+50000	CD
+
+
+60000	CD
+
+
+70000	CD
+
+
+80000	CD
+
+
+90000	CD
+
+
+100000	CD
+
+
+1000	CD
+
+
+2000	CD
+
+
+3000	CD
+
+
+4000	CD
+
+
+5000	CD
+
+
+6000	CD
+
+
+7000	CD
+
+
+8000	CD
+
+
+9000	CD
+
+
+10000	CD
+
+
+n	NN
+-LRB-	-LRB-
+number	NN
+of	IN
+rows	NNS
+-RRB-	-RRB-
+
+
+m	NN
+-LRB-	-LRB-
+number	NN
+of	IN
+columns	NNS
+-RRB-	-RRB-
+
+
+-LRB-	-LRB-
+c	NN
+-RRB-	-RRB-
+Runtime	NN
+vs.	CC
+n	NN
+
+
+m	NN
+=	JJ
+1000	CD
+,	,
+k	NN
+=	JJ
+5000	CD
+,	,
+w	NN
+=	JJ
+100	CD
+
+
+-LRB-	-LRB-
+d	LS
+-RRB-	-RRB-
+Runtime	NNP
+vs.	FW
+m	NN
+
+
+n	NN
+=	JJ
+20000	CD
+,	,
+k	NN
+=	JJ
+5000	CD
+
+
+Fig.	NNP
+9	CD
+.	.
+
+Runtime	NNP
+.	.
+
+
+justifies	VBZ
+Observation	NN
+2	CD
+in	IN
+Section	NN
+4.1	CD
+.	.
+
+It	PRP
+is	VBZ
+also	RB
+used	VBN
+to	TO
+determine	VB
+the	DT
+parameter	NN
+w	NN
+in	IN
+Section	NN
+5.1	CD
+.	.
+
+
+Suppose	VB
+there	EX
+is	VBZ
+a	DT
+sequence	NN
+of	IN
+length	NN
+m	NN
+consisting	VBG
+of	IN
+distinct	JJ
+elements	NNS
+.	.
+
+Then	RB
+,	,
+any	DT
+pattern	NN
+of	IN
+length	NN
+l	NN
+;	:
+1	CD
+l	NN
+m	NN
+,	,
+separates	VBZ
+the	DT
+sequence	NN
+into	IN
+P	NN
+Â	NN
+1/4	CD
+l	NN
+Ã	NN
+3/4	CD
+1	CD
+sections	NNS
+with	IN
+length	NN
+
+
+N	NN
+Â	NN
+1/4	CD
+
+
+of	IN
+lengthl	NN
+,	,
+i.e.	FW
+,	,
+X	NN
+Â	NN
+1/4	CD
+maxfr1	NN
+;	:
+r2	NN
+;	:
+...	:
+;	:
+rPg	NN
+.	.
+
+
+Example	NN
+7	CD
+.	.
+
+Patternbc	NN
+segments	NNS
+sequenceabcdef	NN
+into	IN
+three	CD
+
+
+323	CD
+
+
+Fig.	NN
+10	CD
+.	.
+
+Distributions	NNS
+and	CC
+properties	NNS
+of	IN
+X	NN
+:	:
+-LRB-	-LRB-
+a	LS
+-RRB-	-RRB-
+cdf	NN
+,	,
+-LRB-	-LRB-
+b	LS
+-RRB-	-RRB-
+pmf	NN
+,	,
+-LRB-	-LRB-
+c	NN
+-RRB-	-RRB-
+mean	NN
+,	,
+and	CC
+-LRB-	-LRB-
+d	LS
+-RRB-	-RRB-
+variance	NN
+.	.
+
+
+where	WRB
+
+
+P	NN
+
+
+x	NN
+
+
+sums	NNS
+over	IN
+partitions	NNS
+with	IN
+the	DT
+maximum	NN
+component	NN
+equal	JJ
+to	TO
+x	NN
+,	,
+d	NN
+represents	VBZ
+the	DT
+number	NN
+of	IN
+distinct	JJ
+components	NNS
+of	IN
+such	PDT
+a	DT
+partition	NN
+including	VBG
+zero	CD
+,	,
+mÃ	NN
+°	CD
+xÃž1	NN
+;	:
+...	:
+;	:
+mÃ	NN
+°	CD
+xÃžd	NN
+denote	VBP
+the	DT
+counts	NNS
+of	IN
+the	DT
+corresponding	JJ
+
+
+P	NN
+!	.
+
+
+3	CD
+
+
+12	CD
+
+
+f4	NN
+;	:
+0	CD
+;	:
+0g	NN
+,	,
+PÃ	NN
+°	NN
+X	NN
+Â	NN
+1/4	CD
+3ÃžÂ	NN
+1/4	CD
+
+
+111	CD
+
+
+distinct	JJ
+components	NNS
+,	,
+andÃ	NN
+°	NN
+
+
+P	NN
+
+
+r1	NN
+;	:
+r2	NN
+;P	NN
+...	:
+;	:
+rP	NN
+,	,
+respectively	RB
+.	.
+
+Define	VB
+the	DT
+total	JJ
+length	NN
+
+
+m	NN
+m	NN
+
+
+ÃžÂ	NN
+1/4	CD
+
+
+1	CD
+d	NN
+m1!m	NN
+
+
+.	.
+
+
+d	NN
+!	.
+
+
+P	NN
+
+
+iÂ	NN
+1/4	CD
+1	CD
+
+
+ri	NN
+.	.
+
+Apparently	RB
+,	,
+N	NN
+Â	NN
+1/4	CD
+m	NN
+l.	NN
+Let	VB
+X	NN
+be	VB
+the	DT
+max	NN
+-	:
+
+
+Example	NN
+9	CD
+.	.
+
+For	IN
+the	DT
+above	JJ
+example	NN
+,	,
+X	NN
+takes	VBZ
+values	NNS
+2	CD
+,	,
+3	CD
+,	,
+and	CC
+imum	NN
+length	NN
+of	IN
+all	DT
+sections	NNS
+produced	VBN
+by	IN
+a	DT
+random	JJ
+pattern	NN
+
+
+4	CD
+based	VBN
+on	IN
+the	DT
+four	CD
+partitions	NNS
+used	VBN
+,	,
+
+
+PÃ	NN
+°	NN
+X	NN
+Â	NN
+1/4	CD
+4ÃžÂ	NN
+1/4	CD
+
+
+=	JJ
+62	CD
+Â	NN
+1/4	CD
+3	CD
+=	JJ
+15corresponding	VBG
+to	TO
+permutations	NNS
+of	IN
+
+
+3	CD
+
+
+=	JJ
+62	CD
+Â	NN
+1/4	CD
+6	CD
+=	JJ
+15corresponding	VBG
+to	TO
+
+
+sections	NNS
+:	:
+a	DT
+,	,
+â	VB
+$	$
+˜â	CD
+$	$
+™	CD
+,	,
+anddef	NN
+with	IN
+lengths	NNS
+1	CD
+,	,
+0	CD
+,	,
+and	CC
+3	CD
+.	.
+
+In	IN
+this	DT
+case	NN
+,	,
+
+
+3	CD
+
+
+
+permutations	NNS
+of	IN
+f3	NN
+;	:
+1	CD
+;	:
+0g	NN
+,	,
+andPÃ	NN
+°	NN
+X	NN
+Â	NN
+1/4	CD
+2ÃžÂ	NN
+1/4	CD
+Â	NN
+1/2	CD
+21	CD
+Ã	NN
+3/4	CD
+
+
+3	CD
+
+
+12	CD
+
+
+=	JJ
+62	CD
+Â	NN
+1/4	CD
+6	CD
+=	JJ
+15corresponding	VBG
+to	TO
+permutations	NNS
+of	IN
+
+
+of	IN
+length	NN
+2	CD
+may	MD
+result	VB
+in	IN
+a	DT
+different	JJ
+set	NN
+of	IN
+section	NN
+lengthsf2	NN
+;	:
+2	CD
+;	:
+0g	NN
+
+
+and	CC
+f2	NN
+;	:
+1	CD
+;	:
+1g	CD
+.	.
+
+
+N	NN
+Â	NN
+1/4	CD
+4	CD
+;P	NN
+Â	NN
+1/4	CD
+3	CD
+,	,
+andXÂ	NN
+1/4	CD
+maxf1	NN
+;	:
+0	CD
+;	:
+3gÂ	NN
+1/4	CD
+3	CD
+.	.
+
+Another	DT
+pattern	NN
+
+
+such	JJ
+asf0	NN
+;	:
+1	CD
+;	:
+3g	NN
+-LRB-	-LRB-
+for	IN
+patternac	NN
+-RRB-	-RRB-
+orf1	NN
+;	:
+2	CD
+;	:
+1g	NN
+-LRB-	-LRB-
+for	IN
+patternbe	NN
+-RRB-	-RRB-
+.	.
+
+
+Thus	RB
+,	,
+the	DT
+cdf	NN
+for	IN
+the	DT
+random	JJ
+variableX	NN
+is	VBZ
+
+
+components	NNS
+of	IN
+each	DT
+of	IN
+the	DT
+partitions	NNS
+of	IN
+N	NN
+that	WDT
+have	VBP
+at	IN
+most	JJS
+P	NN
+elements	NNS
+.	.
+
+If	IN
+the	DT
+number	NN
+of	IN
+elements	NNS
+of	IN
+a	DT
+partition	NN
+is	VBZ
+less	JJR
+than	IN
+P	NN
+,	,
+zero	CD
+-LRB-	-LRB-
+s	NNS
+-RRB-	-RRB-
+will	MD
+be	VB
+added	VBN
+before	IN
+permuting	VBG
+it	PRP
+to	TO
+form	VB
+compositions	NNS
+.	.
+
+
+Example	NN
+8	CD
+.	.
+
+Integer	NN
+NÂ	NN
+1/4	CD
+4	CD
+has	VBZ
+five	CD
+partitions	NNS
+:	:
+f4g	NN
+;	:
+f3	NN
+;	:
+1g	NN
+;	:
+
+
+f2	NN
+;	:
+2g	NN
+;	:
+f2	NN
+;	:
+1	CD
+;	:
+1g	CD
+;	:
+f1	NN
+;	:
+1	CD
+;	:
+1	CD
+;	:
+1g	CD
+.	.
+
+When	WRB
+P	NN
+Â	NN
+1/4	CD
+3	CD
+,	,
+only	RB
+the	DT
+first	JJ
+four	CD
+
+
+partitions	NNS
+will	MD
+be	VB
+utilized	VBN
+,	,
+and	CC
+
+
+3Ã	NN
+3/4	CD
+41	CD
+
+
+4	CD
+
+
+Â	NN
+1/4	CD
+15	CD
+different	JJ
+
+
+compositions	NNS
+can	MD
+be	VB
+formed	VBN
+by	IN
+permuting	VBG
+partitions	NNS
+
+
+f4	NN
+;	:
+0	CD
+;	:
+0g	NN
+;	:
+f3	NN
+;	:
+1	CD
+;	:
+0g	NN
+;	:
+f2	NN
+;	:
+2	CD
+;	:
+0g	NN
+,	,
+and	CC
+f2	NN
+;	:
+1	CD
+;	:
+1g	CD
+.	.
+
+
+There	EX
+are62	IN
+Â	NN
+1/4	CD
+15	CD
+different	JJ
+sets	NNS
+of	IN
+section	NN
+lengths	NNS
+in	IN
+total	NN
+
+
+X	NN
+
+
+
+PÃ	NN
+°	NN
+X	NN
+xÃžÂ	NN
+1/4	CD
+PÃ	NN
+°	NN
+X	NN
+Â	NN
+1/4	CD
+tÃž	NN
+:	:
+
+
+for	IN
+all	DT
+patterns	NNS
+of	IN
+length	NN
+2	CD
+andml	NN
+for	IN
+all	DT
+patterns	NNS
+of	IN
+length	NN
+l	NN
+
+
+in	IN
+general	JJ
+,	,
+where	WRB
+
+
+
+tx	NN
+
+
+m	NN
+
+
+l	NN
+
+
+Â	NN
+1/4	CD
+
+
+m	NN
+!	.
+
+
+l!Ã	NN
+°	CD
+mlÃž	NN
+!	.
+
+
+.	.
+
+In	IN
+fact	NN
+,	,
+these	DT
+distinguished	VBN
+
+
+sets	NNS
+of	IN
+section	NN
+lengths	NNS
+are	VBP
+formed	VBN
+by	IN
+permuting	VBG
+the	DT
+
+
+An	DT
+R	NN
+program	NN
+was	VBD
+written	VBN
+to	TO
+compute	VB
+the	DT
+cdf	NN
+ofX	NN
+for	IN
+
+
+givenm	NN
+andl	NN
+values	NNS
+.	.
+
+Using	VBG
+the	DT
+program	NN
+,	,
+the	DT
+distributions	NNS
+
+
+ofX	NN
+were	VBD
+obtained	VBN
+form	NN
+Â	NN
+1/4	CD
+90andl	NN
+Â	NN
+1/4	CD
+5	CD
+,	,
+10	CD
+,	,
+20	CD
+,	,
+40	CD
+,	,
+and	CC
+60	CD
+.	.
+
+The	DT
+means	NNS
+and	CC
+variances	NNS
+ofX	NN
+were	VBD
+also	RB
+computed	VBN
+.	.
+
+The	DT
+results	NNS
+are	VBP
+summarized	VBN
+in	IN
+Fig.	NNP
+10	CD
+.	.
+
+
+Figs.	NN
+10a	NN
+and	CC
+10c	NN
+reveal	VBP
+the	DT
+relationship	NN
+betweenX	NN
+and	CC
+l	NN
+that	WDT
+conforms	VBZ
+to	TO
+Observation	NN
+2	CD
+.	.
+
+In	IN
+Fig.	NN
+10c	NN
+,	,
+the	DT
+mean	NN
+ofX	NN
+decreases	VBZ
+asl	NN
+increases	NNS
+.	.
+
+Fig.	NN
+10b	NN
+shows	VBZ
+thatX	NN
+takes	VBZ
+values	NNS
+1	CD
+;	:
+...	:
+;	:
+m	NN
+l	NN
+in	IN
+general	JJ
+.	.
+
+The	DT
+distributions	NNS
+ofX	NN
+are	VBP
+right	JJ
+skewed	JJ
+but	CC
+become	VBP
+more	RBR
+symmetric	JJ
+as	IN
+l	NN
+decreases	NNS
+.	.
+
+According	VBG
+to	TO
+Fig.	NNP
+10d	CD
+,	,
+the	DT
+variance	NN
+of	IN
+X	NN
+decreases	VBZ
+too	RB
+as	RB
+
+
+Obviously	RB
+,	,
+the	DT
+maximum	NN
+section	NN
+length	NN
+,	,
+X	NN
+,	,
+takes	VBZ
+
+
+l	NN
+increases	NNS
+.	.
+
+
+distinct	JJ
+elements	NNS
+formed	VBN
+by	IN
+the	DT
+largest	JJS
+component	NN
+of	IN
+each	DT
+partition	NN
+of	IN
+N	NN
+utilized	VBD
+as	IN
+it	PRP
+values	VBZ
+.	.
+
+The	DT
+probability	NN
+mass	NN
+function	NN
+of	IN
+X	NN
+is	VBZ
+given	VBN
+by	IN
+
+
+P	NN
+
+
+
+PÃ	NN
+°	CD
+xÃž	NN
+
+
+PÃ	NN
+°	NN
+X	NN
+Â	NN
+1/4	CD
+xÃžÂ	NN
+1/4	CD
+
+
+x	NN
+
+
+m1	NN
+mÃ	NN
+°	CD
+xÃž	NN
+
+
+d	NN
+
+
+m	NN
+
+
+;	:
+
+
+l	NN
+
+
+ACKNOWLEDGMENTS	NNS
+
+
+A	DT
+preliminary	JJ
+version	NN
+of	IN
+this	DT
+paper	NN
+was	VBD
+published	VBN
+in	IN
+the	DT
+Proceedings	NNP
+of	IN
+the	DT
+12th	JJ
+ACM	NN
+SIGKDD	NNP
+International	NNP
+Conference	NNP
+on	IN
+Knowledge	NNP
+Discovery	NNP
+and	CC
+Data	NNP
+Mining	NNP
+-LRB-	-LRB-
+KDD	NNP
+-RRB-	-RRB-
+-LSB-	-LRB-
+17	CD
+-RSB-	-RRB-
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+15	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+324	CD
+IEEE	NNP
+TRANSACTIONS	NNPS
+ON	IN
+KNOWLEDGE	NNP
+AND	CC
+DATA	NNP
+ENGINEERING	NNP
+,	,
+VOL	NNP
+.	.
+
+24	CD
+,	,
+NO.	NNP
+2	CD
+,	,
+FEBRUARY	NNP
+2012	CD
+
+
+REFERENCES	NNS
+
+
+-LSB-	-LRB-
+1	CD
+-RSB-	-RRB-
+C.C.	NNP
+Aggarwal	NNP
+,	,
+J.L.	NNP
+Wolf	NNP
+,	,
+P.S.	NNP
+Yu	NNP
+,	,
+C.	NNP
+Procopiuc	NNP
+,	,
+and	CC
+J.S.	NNP
+Park	NNP
+,	,
+
+
+â	RB
+$	$
+œFast	JJ
+Algorithms	NNS
+for	IN
+Projected	NNP
+Clustering	NNP
+,	,
+â	VBD
+$	$
+SIGMOD	JJ
+Record	NNP
+,	,
+
+
+vol	NN
+.	.
+
+28	CD
+,	,
+no.	NN
+2	CD
+,	,
+pp.	VBP
+61-72	CD
+,	,
+1999	CD
+.	.
+
+
+-LSB-	-LRB-
+2	CD
+-RSB-	-RRB-
+C.C.	NNP
+Aggarwal	NNP
+and	CC
+P.S.	NNP
+Yu	NNP
+,	,
+â	VBD
+$	$
+œFinding	JJ
+Generalized	NNP
+Projected	NNP
+
+
+Clusters	NNS
+in	IN
+High	JJ
+Dimensional	NNP
+Spaces	NNPS
+,	,
+â	VB
+$	$
+SIGMOD	JJ
+Record	NNP
+,	,
+vol	NN
+.	.
+
+29	CD
+,	,
+
+
+no.	NN
+2	CD
+,	,
+pp.	VBP
+70-81	CD
+,	,
+2000	CD
+.	.
+
+
+-LSB-	-LRB-
+3	CD
+-RSB-	-RRB-
+R.	NNP
+Agrawal	NNP
+,	,
+J.	NNP
+Gehrke	NNP
+,	,
+D.	NNP
+Gunopulos	NNP
+,	,
+and	CC
+P.	NNP
+Raghavan	NNP
+,	,
+
+
+â	RB
+$	$
+œAutomatic	JJ
+Subspace	NN
+Clustering	NN
+of	IN
+High	JJ
+Dimensional	NNP
+Data	NNP
+for	IN
+
+
+Data	NNP
+Mining	NNP
+Applications	NNS
+,	,
+â	VB
+$	$
+SIGMOD	JJ
+Record	NNP
+,	,
+vol	NN
+.	.
+
+27	CD
+,	,
+no.	NN
+2	CD
+,	,
+pp.	VBP
+94	CD
+-	:
+
+
+105	CD
+,	,
+1998	CD
+.	.
+
+
+-LSB-	-LRB-
+4	LS
+-RSB-	-RRB-
+R.	NNP
+Agrawal	NNP
+and	CC
+R.	NNP
+Srikant	NNP
+,	,
+â	VBD
+$	$
+œMining	JJ
+Sequential	JJ
+Patterns	NN
+,	,
+â	VB
+$	$
+Proc	NNP
+.	.
+
+
+11th	JJ
+Intâ	NNP
+$	$
+™	CD
+l	NN
+Conf	NNP
+.	.
+
+Data	NNS
+Eng	NNP
+.	.
+
+-LRB-	-LRB-
+ICDE	NN
+-RRB-	-RRB-
+,	,
+1995	CD
+.	.
+
+
+-LSB-	-LRB-
+5	CD
+-RSB-	-RRB-
+R.	NNP
+Albert	NNP
+,	,
+â	VBD
+$	$
+œScale-Free	JJ
+Networks	NNP
+in	IN
+Cell	NN
+Biology	NNP
+,	,
+â	VBD
+$	$
+J.	NNP
+Cell	NNP
+Science	NNP
+,	,
+
+
+vol	NN
+.	.
+
+118	CD
+,	,
+pp.	VBP
+4947-4957	CD
+,	,
+2005	CD
+.	.
+
+
+-LSB-	-LRB-
+6	CD
+-RSB-	-RRB-
+M.	NNP
+Ashburner	NNP
+et	FW
+al.	FW
+,	,
+â	VB
+$	$
+œGene	JJ
+Ontology	NNP
+:	:
+Tool	NNP
+for	IN
+the	DT
+Unification	NNP
+of	IN
+
+
+Biology	NN
+,	,
+the	DT
+Gene	NNP
+Ontology	NNP
+Consortium	NNP
+,	,
+â	VBD
+$	$
+Nature	NNP
+Genetics	NNP
+,	,
+vol	NN
+.	.
+
+25	CD
+,	,
+
+
+no.	NN
+1	CD
+,	,
+pp.	VBP
+25-29	CD
+,	,
+2000	CD
+.	.
+
+
+-LSB-	-LRB-
+7	CD
+-RSB-	-RRB-
+T.	FW
+Barrett	NNP
+et	FW
+al.	FW
+,	,
+â	VB
+$	$
+œNCBI	JJ
+GEO	NN
+:	:
+Archive	NNP
+for	IN
+High-Throughput	NNP
+
+
+Functional	JJ
+Genomic	JJ
+Data	NNS
+,	,
+â	VB
+$	$
+Nucleic	JJ
+Acids	NNP
+Research	NNP
+,	,
+vol	NN
+.	.
+
+37	CD
+,	,
+
+
+pp	NN
+.	.
+
+D885-D890	NN
+,	,
+2009	CD
+.	.
+
+
+-LSB-	-LRB-
+8	CD
+-RSB-	-RRB-
+A.	NN
+Ben-Dor	NNP
+,	,
+B.	NNP
+Chor	NNP
+,	,
+R.	NNP
+Karp	NNP
+,	,
+and	CC
+Z.	NNP
+Yakhini	NNP
+,	,
+â	VBD
+$	$
+œDiscovering	JJ
+Local	JJ
+
+
+Structure	NN
+in	IN
+Gene	NNP
+Expression	NN
+Data	NNS
+:	:
+The	DT
+Order-Preserving	NNP
+Sub	NN
+-	:
+
+
+matrix	NN
+Problem	NNP
+,	,
+â	VBD
+$	$
+J.	NNP
+Computational	NNP
+Biology	NNP
+,	,
+vol	NN
+.	.
+
+10	CD
+,	,
+nos.	RB
+3/4	CD
+,	,
+
+
+pp.	NN
+373-384	CD
+,	,
+2003	CD
+.	.
+
+
+-LSB-	-LRB-
+9	CD
+-RSB-	-RRB-
+Y.	NNP
+Cheng	NNP
+and	CC
+G.M.	NNP
+Church	NNP
+,	,
+â	VBD
+$	$
+œBiclustering	JJ
+of	IN
+Expression	NN
+Data	NNS
+,	,
+â	VB
+$	$
+
+
+Proc	NNP
+.	.
+
+Eighth	JJ
+Intâ	NNP
+$	$
+™	CD
+l	NN
+Conf	NNP
+.	.
+
+Intelligent	NNP
+Systems	NNPS
+for	IN
+Molecular	JJ
+Biology	NN
+
+
+-LRB-	-LRB-
+ISMB	NN
+-RRB-	-RRB-
+,2000	CD
+.	.
+
+
+-LSB-	-LRB-
+10	CD
+-RSB-	-RRB-
+L.	NNP
+Cheung	NNP
+,	,
+D.W.	NNP
+Cheung	NNP
+,	,
+B.	NNP
+Kao	NNP
+,	,
+K.Y.	NNP
+Yip	NNP
+,	,
+and	CC
+M.K.	NNP
+Ng	NNP
+,	,
+â	VBD
+$	$
+œOn	JJ
+
+
+Mining	NN
+Micro-Array	NNP
+Data	NNP
+by	IN
+Order-Preserving	NNP
+Submatrix	NNP
+,	,
+â	VBD
+$	$
+Intâ	JJ
+$	$
+™	CD
+l	NN
+J.	NNP
+
+
+Bioinformatics	NNP
+Research	NNP
+and	CC
+Applications	NNS
+,	,
+vol	NN
+.	.
+
+3	CD
+,	,
+no.	RB
+1	CD
+,	,
+pp.	VBP
+42-64	CD
+,	,
+
+
+2007	CD
+.	.
+
+
+-LSB-	-LRB-
+11	CD
+-RSB-	-RRB-
+W.G.	NNP
+Cochran	NNP
+,	,
+Sampling	VBG
+Techniques	NNS
+,	,
+third	JJ
+ed	NN
+.	.
+
+John	NNP
+Wiley	NNP
+and	CC
+Sons	NNPS
+,	,
+
+
+1977	CD
+.	.
+
+
+-LSB-	-LRB-
+12	CD
+-RSB-	-RRB-
+A.C.	NNP
+Davison	NNP
+and	CC
+D.V.	NNP
+Hinkley	NNP
+,	,
+Bootstrap	NNP
+Methods	NNS
+and	CC
+Their	PRP$
+
+
+Application.Cambridge	NN
+Univ.	NN
+.	.
+
+Press	NNP
+,	,
+1997	CD
+.	.
+
+
+-LSB-	-LRB-
+13	CD
+-RSB-	-RRB-
+I.	NN
+Dhillon	NNP
+,	,
+E.	NNP
+Marcotte	NNP
+,	,
+and	CC
+U.	NNP
+Roshan	NNP
+,	,
+â	VBD
+$	$
+œDiametrical	JJ
+Clustering	NN
+for	IN
+
+
+Identifying	VBG
+Anti-Correlated	JJ
+Gene	NN
+Clusters	NNS
+,	,
+â	VB
+$	$
+Bioinformatics	NNPS
+,	,
+vol	NN
+.	.
+
+13	CD
+,	,
+
+
+no.	RB
+19	CD
+,	,
+pp.	VBP
+1612-1619	CD
+,	,
+2003	CD
+.	.
+
+
+-LSB-	-LRB-
+14	CD
+-RSB-	-RRB-
+B.	NNP
+Efron	NNP
+,	,
+â	VBD
+$	$
+œBootstrap	JJ
+Methods	NNS
+:	:
+Another	DT
+Look	NN
+at	IN
+the	DT
+Jackknife	NNP
+,	,
+â	VBD
+$	$
+
+
+Annals	NN
+of	IN
+Statistics	NNPS
+,	,
+vol	NN
+.	.
+
+7	CD
+,	,
+pp.	VBP
+1-26	CD
+,	,
+1979	CD
+.	.
+
+
+-LSB-	-LRB-
+15	CD
+-RSB-	-RRB-
+M.	NNP
+Ester	NNP
+,	,
+H.	NNP
+Kriegel	NNP
+,	,
+J.	NNP
+Sander	NNP
+,	,
+and	CC
+X.	NNP
+Xu	NNP
+,	,
+â	VBD
+$	$
+œA	JJ
+Density-Based	JJ
+
+
+Algorithm	NN
+for	IN
+Discovering	VBG
+Clusters	NNS
+in	IN
+Large	JJ
+Spatial	JJ
+Database	NN
+with	IN
+
+
+Noise	NN
+,	,
+â	VB
+$	$
+Proc	NNP
+.	.
+
+Second	JJ
+Intâ	NNP
+$	$
+™	CD
+l	NN
+Conf	NNP
+.	.
+
+Knowledge	NN
+Discovery	NNP
+and	CC
+Data	NNP
+
+
+Mining	NN
+-LRB-	-LRB-
+KDD	NN
+-RRB-	-RRB-
+,1996	CD
+.	.
+
+
+-LSB-	-LRB-
+16	CD
+-RSB-	-RRB-
+J.H.	NNP
+Friedman	NNP
+and	CC
+J.J.	NNP
+Meulman	NNP
+,	,
+â	VBD
+$	$
+œClustering	JJ
+Objects	NNS
+on	IN
+Subsets	NNS
+of	IN
+
+
+Attributes	NNS
+,	,
+â	VB
+$	$
+J.	NNP
+Royal	NNP
+Statistical	JJ
+Soc.	NN
+,	,
+vol	NN
+.	.
+
+66	CD
+,	,
+no.	RB
+4	CD
+,	,
+pp.	VBP
+815-849	CD
+,	,
+2004	CD
+.	.
+
+-LSB-	-LRB-
+17	CD
+-RSB-	-RRB-
+B.J.	NNP
+Gao	NNP
+,	,
+O.L.	NNP
+Griffith	NNP
+,	,
+M.	NNP
+Ester	NNP
+,	,
+and	CC
+S.J.M.	NNP
+Jones	NNP
+,	,
+â	VBD
+$	$
+œDiscovering	JJ
+
+
+Significant	JJ
+OPSM	NNP
+Subspace	NNP
+Clusters	NNS
+in	IN
+Massive	JJ
+Gene	NN
+Expression	NN
+
+
+Data	NNS
+,	,
+â	VB
+$	$
+Proc	NNP
+.	.
+
+12th	JJ
+ACM	NNP
+SIGKDD	NNP
+Intâ	NNP
+$	$
+™	CD
+l	NN
+Conf	NNP
+.	.
+
+Knowledge	NN
+Discovery	NNP
+and	CC
+
+
+Data	NNS
+Mining	NN
+-LRB-	-LRB-
+KDD	NN
+-RRB-	-RRB-
+,2006	CD
+.	.
+
+
+-LSB-	-LRB-
+18	CD
+-RSB-	-RRB-
+R.	NNP
+Gentleman	NNP
+et	FW
+al.	FW
+,	,
+â	VB
+$	$
+œBioconductor	JJ
+:	:
+Open	VB
+Software	NNP
+Development	NNP
+
+
+for	IN
+Computational	NNP
+Biology	NNP
+and	CC
+Bioinformatics	NNP
+,	,
+â	VBD
+$	$
+Genome	NNP
+Biology	NNP
+,	,
+
+
+vol	NN
+.	.
+
+5	CD
+,	,
+no.	RB
+10	CD
+,	,
+p.	NN
+R80	NN
+,	,
+2004	CD
+.	.
+
+
+-LSB-	-LRB-
+19	CD
+-RSB-	-RRB-
+S.	NNP
+Goil	NNP
+,	,
+H.	NNP
+Nagesh	NNP
+,	,
+and	CC
+A.	NN
+Choudhary	NNP
+,	,
+â	VBD
+$	$
+œMAFIA	JJ
+:	:
+Efficient	JJ
+and	CC
+
+
+Scalable	JJ
+Subspace	NN
+Clustering	NN
+for	IN
+Very	RB
+Large	JJ
+Data	NNS
+Sets	VBZ
+,	,
+â	VB
+$	$
+Technical	NNP
+
+
+Report	NNP
+CPDC-TR-9906-010	NNP
+,	,
+Northwestern	NNP
+Univ.	NNP
+,	,
+1999	CD
+.	.
+
+
+-LSB-	-LRB-
+26	CD
+-RSB-	-RRB-
+J.	NNP
+Hubble	NNP
+et	FW
+al.	FW
+,	,
+â	VB
+$	$
+œImplementation	JJ
+of	IN
+Genepattern	NNP
+within	IN
+the	DT
+
+
+Stanford	NNP
+Microarray	NNP
+Database	NNP
+,	,
+â	VBD
+$	$
+Nucleic	JJ
+Acids	NNP
+Research	NNP
+,	,
+vol	NN
+.	.
+
+37	CD
+,	,
+
+
+pp	NN
+.	.
+
+D898-D901	NN
+,	,
+2009	CD
+.	.
+
+
+-LSB-	-LRB-
+27	CD
+-RSB-	-RRB-
+L.	NNP
+Jensen	NNP
+et	FW
+al.	FW
+,	,
+â	VB
+$	$
+œArrayprospector	JJ
+:	:
+A	DT
+Web	NN
+Resource	NNP
+of	IN
+Functional	JJ
+
+
+Associations	NNS
+Inferred	VBN
+from	IN
+Microarray	NNP
+Expression	NN
+Data	NNS
+,	,
+â	VB
+$	$
+Nucleic	JJ
+
+
+Acids	NNP
+Research	NNP
+,	,
+vol	NN
+.	.
+
+32	CD
+,	,
+pp	NN
+.	.
+
+W445-W448	NN
+,	,
+2004	CD
+.	.
+
+
+-LSB-	-LRB-
+28	CD
+-RSB-	-RRB-
+L.	NNP
+Jing	NNP
+,	,
+M.K.	NNP
+Ng	NNP
+,	,
+and	CC
+J.Z.	NNP
+Huang	NNP
+,	,
+â	VBD
+$	$
+œAn	JJ
+Entropy	NNP
+Weighting	NN
+K	NN
+-	:
+
+
+Means	NNP
+Algorithm	NNP
+for	IN
+Subspace	NNP
+Clustering	NNP
+of	IN
+High-Dimensional	NNP
+
+
+Sparse	NNP
+Data	NNP
+,	,
+â	VBD
+$	$
+IEEE	CD
+Trans	NNP
+.	.
+
+Knowledge	NN
+and	CC
+Data	NNS
+Eng.	NNP
+,	,
+vol	NN
+.	.
+
+19	CD
+,	,
+no.	RB
+8	CD
+,	,
+
+
+pp.	NN
+1026-1041	CD
+,	,
+Aug.	NNP
+2007	CD
+.	.
+
+
+-LSB-	-LRB-
+29	CD
+-RSB-	-RRB-
+L.	NNP
+Kaufman	NNP
+and	CC
+P.J.	NNP
+Rousseeuw	NNP
+,	,
+Finding	NNP
+Groups	NNS
+in	IN
+Data	NNS
+:	:
+An	DT
+
+
+Introduction	NN
+to	TO
+Cluster	NNP
+Analyis	NNP
+.	.
+
+John	NNP
+Wiley	NNP
+and	CC
+Sons	NNPS
+,	,
+1990	CD
+.	.
+
+-LSB-	-LRB-
+30	CD
+-RSB-	-RRB-
+H.-P	NN
+.	.
+
+Kriegel	NNP
+,	,
+P.	NNP
+Kroger	NNP
+,	,
+M.	NNP
+Renz	NNP
+,	,
+and	CC
+S.	NNP
+Wurst	NNP
+,	,
+â	VBD
+$	$
+œA	JJ
+Generic	JJ
+
+
+Framework	NN
+for	IN
+Efficient	JJ
+Subspace	NNP
+Clustering	NN
+of	IN
+High-Dimen	NNP
+-	:
+
+
+sional	JJ
+Data	NNS
+,	,
+â	VB
+$	$
+Proc	NNP
+.	.
+
+IEEE	NNP
+Fifth	NNP
+Intâ	NNP
+$	$
+™	CD
+l	NN
+Conf	NNP
+.	.
+
+Data	NNS
+Mining	NN
+-LRB-	-LRB-
+ICDM	NN
+-RRB-	-RRB-
+,	,
+2005	CD
+.	.
+
+-LSB-	-LRB-
+31	CD
+-RSB-	-RRB-
+H.-P	NN
+.	.
+
+Kriegel	NNP
+,	,
+P.	NNP
+KroÂ	NNP
+¨	CD
+ger	NN
+,	,
+and	CC
+A.	NN
+Zimek	NNP
+,	,
+â	VBD
+$	$
+œClustering	JJ
+High	JJ
+-	:
+
+
+Dimensional	NNP
+Data	NNPS
+:	:
+A	DT
+Survey	NN
+on	IN
+Subspace	NNP
+Clustering	NNP
+,	,
+Pattern	NNP
+-	:
+
+
+Based	VBN
+Clustering	NN
+,	,
+and	CC
+Correlation	NN
+Clustering	NN
+,	,
+â	VB
+$	$
+ACM	JJ
+Trans	NNP
+.	.
+
+
+Knowledge	NN
+Discovery	NNP
+Data	NNP
+,	,
+vol	NN
+.	.
+
+3	CD
+,	,
+no.	RB
+1	CD
+,	,
+pp.	VBP
+1-58	CD
+,	,
+2009	CD
+.	.
+
+
+-LSB-	-LRB-
+32	CD
+-RSB-	-RRB-
+J.	NNP
+Liu	NNP
+and	CC
+W.	NNP
+Wang	NNP
+,	,
+â	VBD
+$	$
+œOP-Cluster	JJ
+:	:
+Clustering	NN
+by	IN
+Tendency	NN
+in	IN
+High	JJ
+
+
+Dimensional	NNP
+Space	NNP
+,	,
+â	VBD
+$	$
+Proc	NNP
+.	.
+
+IEEE	NNP
+Third	NNP
+Intâ	NNP
+$	$
+™	CD
+l	NN
+Conf	NNP
+.	.
+
+Data	NNS
+Mining	NN
+
+
+-LRB-	-LRB-
+ICDM	NN
+-RRB-	-RRB-
+,	,
+2003	CD
+.	.
+
+
+-LSB-	-LRB-
+33	CD
+-RSB-	-RRB-
+J.	NNP
+Liu	NNP
+,	,
+J.	NNP
+Yang	NNP
+,	,
+and	CC
+W.	NNP
+Wang	NNP
+,	,
+â	VBD
+$	$
+œBiclustering	JJ
+in	IN
+Gene	NNP
+Expression	NN
+
+
+Data	NNS
+by	IN
+Tendency	NN
+,	,
+â	VB
+$	$
+Proc	NNP
+.	.
+
+IEEE	NNP
+Computational	NNP
+Systems	NNPS
+Bioinfor	NNP
+-	:
+
+
+matics	NNS
+Conf	NNP
+.	.
+
+-LRB-	-LRB-
+CSB	NN
+-RRB-	-RRB-
+,	,
+2004	CD
+.	.
+
+
+-LSB-	-LRB-
+34	CD
+-RSB-	-RRB-
+J.B.	NNP
+MacQueen	NNP
+,	,
+â	VBD
+$	$
+œSome	JJ
+Methods	NNS
+for	IN
+Classifiation	NN
+and	CC
+Analysis	NN
+of	IN
+
+
+Multivariate	JJ
+Observations	NNS
+,	,
+â	VB
+$	$
+Proc	NNP
+.	.
+
+Fifth	JJ
+Berkeley	NNP
+Symp	NNP
+.	.
+
+Math	NNP
+.	.
+
+
+Statistics	NNPS
+and	CC
+Probability	NNP
+,	,
+1967	CD
+.	.
+
+
+-LSB-	-LRB-
+35	CD
+-RSB-	-RRB-
+S.	NNP
+Madeira	NNP
+and	CC
+A.	NNP
+Oliveira	NNP
+,	,
+â	VBD
+$	$
+œBiclustering	JJ
+Algorithms	NNS
+for	IN
+
+
+Biological	NNP
+Data	NNP
+Analysis	NN
+:	:
+A	DT
+Survey	NN
+,	,
+â	VB
+$	$
+IEEE/ACM	CD
+Trans	NNP
+.	.
+
+Computa	NNP
+-	:
+
+
+tional	JJ
+Biology	NNP
+and	CC
+Bioinformatics	NNP
+,	,
+vol	NN
+.	.
+
+1	CD
+,	,
+no.	RB
+1	CD
+,	,
+pp.	VBP
+24-45	CD
+,	,
+Jan.-Mar	NN
+.	.
+
+
+2004	CD
+.	.
+
+
+-LSB-	-LRB-
+36	CD
+-RSB-	-RRB-
+T.	NNP
+Mielikainen	NNP
+and	CC
+H.	NNP
+Mannila	NNP
+,	,
+â	VBD
+$	$
+œThe	JJ
+Pattern	NNP
+Ordering	NNP
+Problem	NNP
+,	,
+â	VBD
+$	$
+
+
+Proc	NNP
+.	.
+
+Seventh	NNP
+European	NNP
+Conf	NNP
+.	.
+
+Principles	NNS
+and	CC
+Practice	NN
+of	IN
+Knowledge	NN
+
+
+Discovery	NNP
+in	IN
+Databases	NNP
+-LRB-	-LRB-
+PKDD	NNP
+-RRB-	-RRB-
+,	,
+2003	CD
+.	.
+
+
+-LSB-	-LRB-
+37	CD
+-RSB-	-RRB-
+B.	NNP
+Mirkin	NNP
+,	,
+Mathematical	NNP
+Classification	NN
+and	CC
+Clustering	NN
+.	.
+
+Kluwer	NNP
+
+
+Academic	NNP
+Publishers	NNPS
+,	,
+1996	CD
+.	.
+
+
+-LSB-	-LRB-
+38	CD
+-RSB-	-RRB-
+B.	NNP
+Modrek	NNP
+and	CC
+C.	NNP
+Lee	NNP
+,	,
+â	VBD
+$	$
+œA	JJ
+Genomic	JJ
+View	NNP
+of	IN
+Alternative	NNP
+Splicing	NNP
+,	,
+â	VBD
+$	$
+
+
+Nature	NNP
+Genetics	NNP
+,	,
+vol	NN
+.	.
+
+30	CD
+,	,
+no.	RB
+1	CD
+,	,
+pp.	VBP
+13-19	CD
+,	,
+2002	CD
+.	.
+
+
+-LSB-	-LRB-
+39	CD
+-RSB-	-RRB-
+R.T.	NNP
+Ng	NNP
+and	CC
+J.	NNP
+Han	NNP
+,	,
+â	VBD
+$	$
+œEfficient	JJ
+and	CC
+Effective	JJ
+Clustering	NN
+Methods	NNS
+
+
+for	IN
+Spatial	NNP
+Data	NNP
+Mining	NNP
+,	,
+â	VBD
+$	$
+Proc	NNP
+.	.
+
+20th	JJ
+Intâ	NNP
+$	$
+™	CD
+l	NN
+Conf	NNP
+.	.
+
+Very	RB
+Large	JJ
+Data	NNS
+
+
+Bases	NNS
+-LRB-	-LRB-
+VLDB	NN
+-RRB-	-RRB-
+,1994	CD
+.	.
+
+
+-LSB-	-LRB-
+40	CD
+-RSB-	-RRB-
+J.	NNP
+Pei	NNP
+,	,
+J.	NNP
+Han	NNP
+,	,
+B.	NNP
+Mortazavi-Asl	NNP
+,	,
+J.	NNP
+Wang	NNP
+,	,
+H.	NNP
+Pinto	NNP
+,	,
+Q.	NNP
+Chen	NNP
+,	,
+U.	NNP
+
+
+Dayal	NNP
+,	,
+and	CC
+M.-C	NN
+.	.
+
+Hsu	NNP
+,	,
+â	VBD
+$	$
+œMining	JJ
+Sequential	JJ
+Patterns	NN
+by	IN
+Pattern	NN
+-	:
+
+
+Growth	NN
+:	:
+The	DT
+Prefixspan	NNP
+Approach	NNP
+,	,
+â	VBD
+$	$
+IEEE	CD
+Trans	NNP
+.	.
+
+Knowledge	NN
+and	CC
+
+
+Data	NNS
+Eng.	NNP
+,	,
+vol	NN
+.	.
+
+16	CD
+,	,
+no.	RB
+11	CD
+,	,
+pp.	VBP
+1424-1440	CD
+,	,
+Nov.	NNP
+2004	CD
+.	.
+
+
+-LSB-	-LRB-
+41	CD
+-RSB-	-RRB-
+A.	NN
+Prelic	NNP
+et	FW
+al.	FW
+,	,
+â	VB
+$	$
+œA	JJ
+Systematic	JJ
+Comparison	NN
+and	CC
+Evaluation	NN
+of	IN
+
+
+Biclustering	VBG
+Methods	NNS
+for	IN
+Gene	NNP
+Expression	NN
+Data	NNS
+,	,
+â	VB
+$	$
+Bioinformatics	NNPS
+,	,
+
+
+vol	NN
+.	.
+
+22	CD
+,	,
+no.	RB
+9	CD
+,	,
+pp.	VBP
+1122-1129	CD
+,	,
+2006	CD
+.	.
+
+
+-LSB-	-LRB-
+42	CD
+-RSB-	-RRB-
+C.M.	NNP
+Procopiuc	NNP
+,	,
+M.	NNP
+Jones	NNP
+,	,
+P.K.	NNP
+Agarwal	NNP
+,	,
+and	CC
+T.M.	NNP
+Murali	NNP
+,	,
+â	VBD
+$	$
+œA	JJ
+
+
+Monte	NNP
+Carlo	NNP
+Algorithm	NNP
+for	IN
+Fast	JJ
+Projective	NNP
+Clustering	NN
+,	,
+â	VB
+$	$
+Proc	NNP
+.	.
+
+ACM	NNP
+
+
+SIGMOD	NNP
+Intâ	NNP
+$	$
+™	CD
+l	NN
+Conf	NNP
+.	.
+
+Management	NN
+of	IN
+Data	NNS
+-LRB-	-LRB-
+SIGMOD	NN
+-RRB-	-RRB-
+,2002	CD
+.	.
+
+-LSB-	-LRB-
+43	CD
+-RSB-	-RRB-
+J.	NNP
+Qian	NNP
+et	FW
+al.	FW
+,	,
+â	VB
+$	$
+œBeyond	JJ
+Synexpression	NNP
+Relationships	NNPS
+:	:
+Local	JJ
+
+
+Clustering	NN
+of	IN
+Time-Shifted	JJ
+and	CC
+Inverted	JJ
+Gene	NN
+Expression	NN
+Profiles	NNS
+
+
+Identifies	VBZ
+New	NNP
+,	,
+Biologically	RB
+Relevant	JJ
+Interactions	NNS
+,	,
+â	VB
+$	$
+J.	NNP
+Molecular	JJ
+
+
+Biology	NN
+,	,
+vol	NN
+.	.
+
+314	CD
+,	,
+no.	RB
+5	CD
+,	,
+pp.	VBP
+1053-1066	CD
+,	,
+2001	CD
+.	.
+
+
+-LSB-	-LRB-
+44	CD
+-RSB-	-RRB-
+C.P.	NNP
+Robert	NNP
+and	CC
+G.	NNP
+Casella	NNP
+,	,
+Monte	NNP
+Carlo	NNP
+Statistical	NNP
+Methods	NNS
+.	.
+
+
+Springer	NNP
+,	,
+2004	CD
+.	.
+
+
+-LSB-	-LRB-
+20	CD
+-RSB-	-RRB-
+A.Goldstrohm,A.Greenleaf,andM.Garcia-Blanco	NNP
+,	,
+â	VBD
+$	$
+œCo	JJ
+-	:
+-LSB-	-LRB-
+45	CD
+-RSB-	-RRB-
+R.	NNP
+Srikant	NNP
+and	CC
+R.	NNP
+Agrawal	NNP
+,	,
+â	VBD
+$	$
+œMining	JJ
+Sequential	JJ
+Patterns	NN
+:	:
+General	NNP
+-	:
+
+
+Transcriptional	JJ
+Splicing	NN
+of	IN
+Pre-Messenger	NNP
+RNAs	NNS
+:	:
+Considerations	NNS
+
+
+for	IN
+the	DT
+Mechanism	NN
+of	IN
+Alternative	JJ
+Splicing	NN
+,	,
+â	VB
+$	$
+Gene	NNP
+,	,
+vol	NN
+.	.
+
+277	CD
+,	,
+nos.	NN
+1	CD
+/	:
+
+
+2	CD
+,	,
+pp.	VBP
+31-47	CD
+,	,
+2001	CD
+.	.
+
+
+-LSB-	-LRB-
+21	CD
+-RSB-	-RRB-
+O.	NNP
+Griffith	NNP
+et	FW
+al.	FW
+,	,
+â	VB
+$	$
+œAssessment	JJ
+and	CC
+Integration	NN
+of	IN
+Publicly	RB
+
+
+Available	JJ
+SAGE	NN
+,	,
+cDNA	NN
+Microarray	NN
+,	,
+and	CC
+Oligonucleotide	NN
+Micro	NNP
+-	:
+
+
+array	NN
+Expression	NN
+Data	NNS
+for	IN
+Global	JJ
+Coexpression	NN
+Analyses	NNS
+,	,
+â	VB
+$	$
+
+
+Genomics	NNS
+,	,
+vol	NN
+.	.
+
+86	CD
+,	,
+pp.	VBP
+476-488	CD
+,	,
+2005	CD
+.	.
+
+
+-LSB-	-LRB-
+22	CD
+-RSB-	-RRB-
+S.	NNP
+HanhijaÂ	NNP
+¨	CD
+rvi	NNS
+,	,
+M.	NNP
+Ojala	NNP
+,	,
+N.	NNP
+Vuokko	NNP
+,	,
+K.	NNP
+PuolamaÂ	NNP
+¨	CD
+ki	NNS
+,	,
+N.	NNP
+Tatti	NNP
+,	,
+and	CC
+H.	NNP
+
+
+izations	NNS
+and	CC
+Performance	NNP
+Improvements	NNP
+,	,
+â	VBD
+$	$
+Proc	NNP
+.	.
+
+Fifth	JJ
+Intâ	NNP
+$	$
+™	CD
+l	NN
+Conf	NNP
+.	.
+
+
+Extending	VBG
+Database	NNP
+Technology	NNP
+-LRB-	-LRB-
+EDBT	NNP
+-RRB-	-RRB-
+,1996	CD
+.	.
+
+
+-LSB-	-LRB-
+46	CD
+-RSB-	-RRB-
+A.	NN
+Su	NNP
+et	FW
+al.	FW
+,	,
+â	VB
+$	$
+œLarge-Scale	JJ
+Analysis	NN
+of	IN
+the	DT
+Human	JJ
+and	CC
+Mouse	NN
+
+
+Transcriptomes	NNP
+,	,
+â	VBD
+$	$
+Proc	NNP
+.	.
+
+Natâ	NNP
+$	$
+™	CD
+l	NN
+Academy	NN
+of	IN
+Sciences	NNPS
+USA	NNP
+,	,
+vol	NN
+.	.
+
+99	CD
+,	,
+
+
+no.	NN
+7	CD
+,	,
+pp.	VBP
+4465-4470	CD
+,	,
+2002	CD
+.	.
+
+
+-LSB-	-LRB-
+47	CD
+-RSB-	-RRB-
+H.	NNP
+Wang	NNP
+,	,
+W.	NNP
+Wang	NNP
+,	,
+J.	NNP
+Yang	NNP
+,	,
+and	CC
+P.S.	NNP
+Yu	NNP
+,	,
+â	VBD
+$	$
+œClustering	JJ
+by	IN
+Pattern	NN
+
+
+Similarity	NN
+in	IN
+Large	JJ
+Data	NNS
+Sets	VBZ
+,	,
+â	VB
+$	$
+Proc	NNP
+.	.
+
+ACM	NNP
+SIGMOD	NNP
+Intâ	NNP
+$	$
+™	CD
+l	NN
+Conf	NNP
+.	.
+
+
+Management	NN
+of	IN
+Data	NNS
+-LRB-	-LRB-
+SIGMOD	NN
+-RRB-	-RRB-
+,2002	CD
+.	.
+
+
+Mannila	NNP
+,	,
+â	VBD
+$	$
+œTell	JJ
+Me	PRP
+Something	NN
+I	PRP
+Donâ	VBP
+$	$
+™	CD
+t	NN
+Know	NNP
+:	:
+Randomization	NN
+-LSB-	-LRB-
+48	CD
+-RSB-	-RRB-
+K.-G	NN
+.	.
+
+Woo	NNP
+,	,
+J.-H	NNP
+.	.
+
+Lee	NNP
+,	,
+M.-H	NN
+.	.
+
+Kim	NNP
+,	,
+and	CC
+Y.-J	NN
+.	.
+
+Lee	NNP
+,	,
+â	VBD
+$	$
+œFindit	JJ
+:	:
+A	DT
+Fast	JJ
+and	CC
+
+
+Strategies	NNS
+for	IN
+Iterative	NNP
+Data	NNP
+Mining	NNP
+,	,
+â	VBD
+$	$
+Proc	NNP
+.	.
+
+15th	JJ
+ACM	NN
+SIGKDD	NN
+
+
+Intâ	RB
+$	$
+™	CD
+l	NN
+Conf	NNP
+.	.
+
+Knowledge	NN
+Discovery	NNP
+and	CC
+Data	NNP
+Mining	NNP
+-LRB-	-LRB-
+KDD	NNP
+-RRB-	-RRB-
+,	,
+2009	CD
+.	.
+
+-LSB-	-LRB-
+23	CD
+-RSB-	-RRB-
+J.	NNP
+Hartigan	NNP
+,	,
+â	VBD
+$	$
+œDirect	JJ
+Clustering	NN
+of	IN
+a	DT
+Data	NN
+Matrix	NNP
+,	,
+â	VBD
+$	$
+J.	NNP
+Am	NNP
+.	.
+
+Statistical	JJ
+
+
+Assoc.	NNP
+,	,
+vol	NN
+.	.
+
+67	CD
+,	,
+no.	NN
+337	CD
+pp.	NN
+123-129	CD
+,	,
+1972	CD
+.	.
+
+
+-LSB-	-LRB-
+24	CD
+-RSB-	-RRB-
+I.	NN
+Hedenfalk	NNP
+et	FW
+al.	FW
+,	,
+â	VB
+$	$
+œGene-Expression	JJ
+Profiles	NNS
+in	IN
+Hereditary	JJ
+Breast	NN
+
+
+Cancer	NN
+,	,
+â	VB
+$	$
+New	JJ
+England	NNP
+J.	NNP
+Medicine	NNP
+,	,
+vol	NN
+.	.
+
+344	CD
+,	,
+no.	RB
+8	CD
+,	,
+pp.	VBP
+539-548	CD
+,	,
+2001	CD
+.	.
+
+
+Intelligent	JJ
+Subspace	NNP
+Clustering	NNP
+Algorithm	NNP
+Using	VBG
+Dimension	NN
+
+
+Voting	NNP
+,	,
+â	VBD
+$	$
+Information	NN
+and	CC
+Software	NNP
+Technology	NNP
+,	,
+vol	NN
+.	.
+
+46	CD
+,	,
+no.	RB
+4	CD
+,	,
+
+
+pp.	NN
+255-271	CD
+,	,
+2004	CD
+.	.
+
+
+-LSB-	-LRB-
+49	CD
+-RSB-	-RRB-
+J.	NNP
+Yang	NNP
+,	,
+W.	NNP
+Wang	NNP
+,	,
+H.	NNP
+Wang	NNP
+,	,
+and	CC
+P.S.	NNP
+Yu	NNP
+,	,
+â	VBD
+$	$
+œ-Clusters	JJ
+:	:
+Capturing	VBG
+
+
+Subspace	NNP
+Correlation	NN
+in	IN
+a	DT
+Large	JJ
+Data	NN
+Set	VB
+,	,
+â	VB
+$	$
+Proc	NNP
+.	.
+
+18th	JJ
+Intâ	NNP
+$	$
+™	CD
+l	NN
+Conf	NNP
+.	.
+
+
+Data	NNS
+Eng	NNP
+.	.
+
+-LRB-	-LRB-
+ICDE	NN
+-RRB-	-RRB-
+,2002	CD
+.	.
+
+
+-LSB-	-LRB-
+25	CD
+-RSB-	-RRB-
+S.	NNP
+Ho	NNP
+Sui	NNP
+et	FW
+al.	FW
+,	,
+â	VB
+$	$
+œoPOSSUM	JJ
+:	:
+Identification	NN
+of	IN
+Over-Represented	JJ
+-LSB-	-LRB-
+50	CD
+-RSB-	-RRB-
+K.Y.	NNP
+Yip	NNP
+,	,
+D.W.	NNP
+Cheung	NNP
+,	,
+and	CC
+M.K.	NNP
+Ng	NNP
+,	,
+â	VBD
+$	$
+œHarp	JJ
+:	:
+A	DT
+Practical	NNP
+
+
+Transcription	NN
+Factor	NN
+Binding	NN
+Sites	NNS
+in	IN
+Co-Expressed	JJ
+Genes	NNS
+,	,
+â	VB
+$	$
+Nucleic	JJ
+Acids	NNP
+Research	NNP
+,	,
+vol	NN
+.	.
+
+33	CD
+,	,
+no.	RB
+10	CD
+,	,
+pp.	VBP
+3154-3164	CD
+,	,
+2005	CD
+.	.
+
+
+Projected	NNP
+Clustering	NNP
+Algorithm	NNP
+,	,
+â	VBD
+$	$
+IEEE	CD
+Trans	NNP
+.	.
+
+Knowledge	NN
+and	CC
+Data	NNS
+Eng.	NNP
+,	,
+vol	NN
+.	.
+
+16	CD
+,	,
+no.	RB
+11	CD
+pp.	NN
+1387-1397	CD
+,	,
+Nov.	NNP
+2004	CD
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+16	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+GAO	NNP
+ET	NNP
+AL.	NNP
+:	:
+ON	IN
+THE	DT
+DEEP	JJ
+ORDER-PRESERVING	NN
+SUBMATRIX	NNP
+PROBLEM	NN
+:	:
+A	DT
+BEST	JJS
+EFFORT	NN
+APPROACH	NN
+
+
+-LSB-	-LRB-
+51	CD
+-RSB-	-RRB-
+M.L.	NNP
+Yiu	NNP
+and	CC
+N.	NNP
+Mamoulis	NNP
+,	,
+â	VBD
+$	$
+œIterative	JJ
+Projected	NNP
+Clustering	NN
+by	IN
+
+
+Subspace	NNP
+Mining	NNP
+,	,
+â	VBD
+$	$
+IEEE	CD
+Trans	NNP
+.	.
+
+Knowledge	NN
+and	CC
+Data	NNS
+Eng.	NNP
+,	,
+vol	NN
+.	.
+
+17	CD
+,	,
+
+
+no.	NN
+2	CD
+,	,
+pp.	VBP
+176-189	CD
+,	,
+Feb.	NNP
+2005	CD
+.	.
+
+
+-LSB-	-LRB-
+52	CD
+-RSB-	-RRB-
+M.J.	NNP
+Zaki	NNP
+,	,
+â	VBD
+$	$
+œSPADE	JJ
+:	:
+An	DT
+Efficient	JJ
+Algorithm	NN
+for	IN
+Mining	NN
+Frequent	JJ
+
+
+Sequences	NNS
+,	,
+â	VB
+$	$
+Machine	NN
+Learning	NNP
+,	,
+vol	NN
+.	.
+
+42	CD
+,	,
+nos.	RB
+1/2	CD
+,	,
+pp.	VBP
+31-60	CD
+,	,
+2001	CD
+.	.
+
+-LSB-	-LRB-
+53	CD
+-RSB-	-RRB-
+B.	NNP
+Zeeberg	NNP
+et	FW
+al.	FW
+,	,
+â	VB
+$	$
+œHigh-Throughput	JJ
+GoMiner	NNP
+,	,
+an	DT
+â	JJ
+$	$
+˜Industrial	JJ
+-	:
+
+
+Strengthâ	NNP
+$	$
+™	CD
+Integrative	JJ
+Gene	NN
+Ontology	NNP
+Tool	NNP
+for	IN
+Interpretation	NNP
+of	IN
+
+
+Multiple-Microarray	NNP
+Experiments	NNS
+,	,
+with	IN
+Application	NN
+to	TO
+Studies	NNS
+of	IN
+
+
+Common	JJ
+Variable	JJ
+Immune	JJ
+Deficiency	NN
+-LRB-	-LRB-
+CVID	NN
+-RRB-	-RRB-
+,	,
+â	VB
+$	$
+BMC	CD
+Bioinfor	NN
+-	:
+
+
+matics	NNS
+,	,
+vol	NN
+.	.
+
+6	CD
+,	,
+article	NN
+168	CD
+,	,
+2005	CD
+.	.
+
+
+-LSB-	-LRB-
+54	CD
+-RSB-	-RRB-
+T.	FW
+Zhang	NNP
+,	,
+R.	NNP
+Ramakrishnan	NNP
+,	,
+and	CC
+M.	NNP
+Livny	NNP
+,	,
+â	VBD
+$	$
+œBirch	JJ
+:	:
+An	DT
+Efficient	JJ
+
+
+Data	NNS
+Clustering	VBG
+Method	NN
+for	IN
+Very	RB
+Large	JJ
+Databases	NNS
+,	,
+â	VB
+$	$
+SIGMOD	CD
+
+
+Record	NNP
+,	,
+vol	NN
+.	.
+
+25	CD
+,	,
+no.	NN
+2	CD
+,	,
+pp.	VBP
+103-114	CD
+,	,
+1996	CD
+.	.
+
+
+-LSB-	-LRB-
+55	CD
+-RSB-	-RRB-
+Y.	NNP
+Zhao	NNP
+,	,
+J.	NNP
+Xu	NNP
+Yu	NNP
+,	,
+G.	NNP
+Wang	NNP
+,	,
+L.	NNP
+Chen	NNP
+,	,
+B.	NNP
+Wang	NNP
+,	,
+and	CC
+G.	NNP
+Yu	NNP
+,	,
+
+
+â	RB
+$	$
+œMaximal	JJ
+Subspace	NN
+Coregulated	JJ
+Gene	NN
+Clustering	NN
+,	,
+â	VB
+$	$
+IEEE	CD
+Trans	NNP
+.	.
+
+
+Knowledge	NN
+and	CC
+Data	NNS
+Eng.	NNP
+,	,
+vol	NN
+.	.
+
+20	CD
+,	,
+no.	RB
+1	CD
+,	,
+pp.	VBP
+83-98	CD
+,	,
+Jan.	NNP
+2008	CD
+.	.
+
+
+Byron	NNP
+J.	NNP
+Gao	NNP
+received	VBD
+the	DT
+PhD	NN
+and	CC
+BSc	NN
+degrees	NNS
+in	IN
+computer	NN
+science	NN
+from	IN
+Simon	NNP
+Fraser	NNP
+University	NNP
+,	,
+Canada	NNP
+,	,
+in	IN
+2007	CD
+and	CC
+2003	CD
+,	,
+respec	NN
+-	:
+tively	RB
+.	.
+
+He	PRP
+spent	VBD
+one	CD
+and	CC
+a	DT
+half	NN
+years	NNS
+as	IN
+a	DT
+postdoctoral	JJ
+fellow	NN
+at	IN
+the	DT
+Database	NNP
+Lab	NN
+of	IN
+University	NNP
+of	IN
+Wisconsin-Madison	NNP
+.	.
+
+In	IN
+2008	CD
+,	,
+he	PRP
+joined	VBD
+Texas	NNP
+State	NNP
+University	NNP
+,	,
+San	NNP
+Marcos	NNP
+,	,
+as	IN
+an	DT
+assistant	JJ
+professor	NN
+.	.
+
+His	PRP$
+research	NN
+spans	VBZ
+several	JJ
+related	JJ
+fields	NNS
+including	VBG
+data	NNS
+mining	NN
+,	,
+databases	NNS
+,	,
+information	NN
+retrieval	NN
+,	,
+and	CC
+bioinformatics	NNS
+.	.
+
+
+Obi	NNP
+L.	NNP
+Griffith	NNP
+received	VBD
+the	DT
+PhD	NN
+degree	NN
+in	IN
+
+
+medical	JJ
+genetics	NNS
+from	IN
+the	DT
+University	NNP
+of	IN
+British	NNP
+
+
+Columbia	NNP
+,	,
+Canada	NNP
+,	,
+in	IN
+2008	CD
+.	.
+
+He	PRP
+was	VBD
+a	DT
+post	NN
+-	:
+
+
+doctoral	JJ
+fellow	NN
+at	IN
+the	DT
+Michael	NNP
+Smith	NNP
+Genome	NNP
+
+
+Sciences	NNP
+Center	NNP
+,	,
+BC	NNP
+Cancer	NNP
+Research	NNP
+Center	NNP
+
+
+until	IN
+December	NNP
+2009	CD
+.	.
+
+Currently	RB
+,	,
+he	PRP
+is	VBZ
+working	VBG
+as	RB
+
+
+a	DT
+postdoctoral	JJ
+fellow	NN
+at	IN
+the	DT
+Lawrence	NNP
+Berkeley	NNP
+
+
+National	NNP
+Laboratory	NNP
+.	.
+
+His	PRP$
+research	NN
+interests	NNS
+
+
+include	VB
+bioinformatics	NNS
+,	,
+cancer	NN
+informatics	NNS
+,	,
+gene	NN
+
+
+expression	NN
+and	CC
+regulation	NN
+,	,
+biomarkers	NNS
+,	,
+biosta	NN
+-	:
+tistics	NNS
+,	,
+next-generation	JJ
+sequencing	NN
+analysis	NN
+,	,
+community-driven	JJ
+genome	NN
+annotation	NN
+,	,
+clustering	NN
+,	,
+and	CC
+cancer	NN
+therapeutics	NNS
+.	.
+
+
+Martin	NNP
+Ester	NNP
+received	VBD
+the	DT
+PhD	NN
+degree	NN
+in	IN
+
+
+computer	NN
+science	NN
+from	IN
+the	DT
+Swiss	NNP
+Federal	NNP
+
+
+Institute	NNP
+of	IN
+Technology	NNP
+in	IN
+1989	CD
+.	.
+
+In	IN
+1993	CD
+,	,
+he	PRP
+
+
+joined	VBD
+the	DT
+University	NNP
+of	IN
+Munich	NNP
+as	IN
+an	DT
+assistant	NN
+
+
+professor	NN
+and	CC
+cofounded	VBD
+their	PRP$
+Data	NNS
+Mining	NN
+lab	NN
+.	.
+
+
+He	PRP
+joined	VBD
+the	DT
+School	NNP
+of	IN
+Computing	NNP
+Science	NNP
+of	IN
+
+
+Simon	NNP
+Fraser	NNP
+University	NNP
+as	IN
+an	DT
+associate	NN
+
+
+professor	NN
+in	IN
+2001	CD
+and	CC
+became	VBD
+a	DT
+full	JJ
+professor	NN
+
+
+in	IN
+2008	CD
+.	.
+
+He	PRP
+has	VBZ
+published	VBN
+extensively	RB
+in	IN
+
+
+leading	VBG
+conferences	NNS
+and	CC
+journals	NNS
+of	IN
+his	PRP$
+field	NN
+.	.
+
+
+His	PRP$
+publications	NNS
+have	VBP
+been	VBN
+very	RB
+well	RB
+cited	VBN
+,	,
+and	CC
+his	PRP$
+H-number	NN
+is	VBZ
+currently	RB
+29	CD
+.	.
+
+His	PRP$
+most	RBS
+well-known	JJ
+paper	NN
+on	IN
+the	DT
+density-based	JJ
+clustering	NN
+algorithm	NN
+DBSCAN	NNP
+has	VBZ
+been	VBN
+cited	VBN
+more	RBR
+than	IN
+2,300	CD
+times	NNS
+.	.
+
+His	PRP$
+current	JJ
+research	NN
+interests	NNS
+include	VBP
+clustering	NN
+,	,
+multi	NNS
+-	:
+relational	JJ
+data	NNS
+mining	NN
+,	,
+graph	NN
+mining	NN
+,	,
+social	JJ
+network	NN
+analysis	NN
+,	,
+bioinformatics	NNS
+,	,
+and	CC
+information	NN
+extraction	NN
+.	.
+
+
+325	CD
+
+
+Hui	NNP
+Xiong	NNP
+received	VBD
+the	DT
+PhD	NN
+degree	NN
+from	IN
+the	DT
+
+
+University	NNP
+of	IN
+Minnesota	NNP
+.	.
+
+Currently	RB
+,	,
+he	PRP
+is	VBZ
+working	VBG
+
+
+as	IN
+an	DT
+associate	JJ
+professor	NN
+in	IN
+the	DT
+Management	NN
+
+
+Science	NNP
+and	CC
+Information	NNP
+Systems	NNP
+Department	NNP
+at	IN
+
+
+Rutgers	NNP
+University	NNP
+.	.
+
+His	PRP$
+general	JJ
+area	NN
+of	IN
+research	NN
+
+
+is	VBZ
+data	NNS
+and	CC
+knowledge	NN
+engineering	NN
+,	,
+with	IN
+a	DT
+focus	NN
+
+
+on	IN
+developing	VBG
+effective	JJ
+and	CC
+efficient	JJ
+data	NNS
+ana	NN
+-	:
+
+
+lysis	NN
+techniques	NNS
+for	IN
+emerging	VBG
+data	NNS
+intensive	JJ
+
+
+applications	NNS
+.	.
+
+He	PRP
+has	VBZ
+published	VBN
+more	JJR
+than	IN
+70	CD
+
+
+technical	JJ
+papers	NNS
+in	IN
+peer-reviewed	JJ
+journals	NNS
+and	CC
+conference	NN
+proceedings	NNS
+.	.
+
+He	PRP
+is	VBZ
+a	DT
+coeditor	NN
+of	IN
+Clustering	NN
+and	CC
+Information	NN
+Retrieval	NN
+-LRB-	-LRB-
+Kluwer	NNP
+Academic	NNP
+Publishers	NNPS
+,	,
+2003	CD
+-RRB-	-RRB-
+and	CC
+a	DT
+coeditor-in-chief	NN
+of	IN
+Encyclopedia	NN
+of	IN
+GIS	NNS
+-LRB-	-LRB-
+Springer	NNP
+,	,
+2008	CD
+-RRB-	-RRB-
+.	.
+
+He	PRP
+is	VBZ
+an	DT
+associate	JJ
+editor	NN
+of	IN
+the	DT
+Knowledge	NN
+and	CC
+Information	NNP
+Systems	NNP
+journal	NN
+.	.
+
+He	PRP
+is	VBZ
+a	DT
+senior	JJ
+member	NN
+of	IN
+the	DT
+IEEE	NNP
+,	,
+and	CC
+a	DT
+member	NN
+of	IN
+the	DT
+ACM	NNP
+.	.
+
+
+Qiang	NNP
+Zhao	NNP
+received	VBD
+the	DT
+PhD	NN
+degree	NN
+in	IN
+statistics	NNS
+from	IN
+the	DT
+University	NNP
+of	IN
+Missouri	NNP
+,	,
+Columbia	NNP
+,	,
+in	IN
+2004	CD
+.	.
+
+He	PRP
+worked	VBD
+at	IN
+the	DT
+Uni	NNP
+-	:
+versity	NN
+of	IN
+Texas-Pan	NNP
+American	NNP
+as	IN
+an	DT
+assistant	JJ
+professor	NN
+from	IN
+2004	CD
+to	TO
+2006	CD
+before	IN
+joining	VBG
+the	DT
+Department	NNP
+of	IN
+Mathematics	NNP
+at	IN
+Texas	NNP
+State	NNP
+University	NNP
+,	,
+San	NNP
+Marcos	NNP
+.	.
+
+His	PRP$
+research	NN
+interests	NNS
+include	VBP
+survival	NN
+analysis	NN
+,	,
+nonpara	NN
+-	:
+metric	JJ
+statistics	NNS
+,	,
+computational	JJ
+statistics	NNS
+,	,
+and	CC
+bioinformatics	NNS
+.	.
+
+
+Steven	NNP
+J.	NNP
+M.	NNP
+Jonesreceived	NNP
+the	DT
+PhD	NN
+degree	NN
+at	IN
+
+
+the	DT
+Sanger	NNP
+Institute	NNP
+where	WRB
+he	PRP
+was	VBD
+involved	VBN
+in	IN
+
+
+the	DT
+C.	NNP
+elegans	NNS
+genome	NN
+project	NN
+.	.
+
+Currently	RB
+,	,
+he	PRP
+is	VBZ
+
+
+workinga	NN
+as	IN
+an	DT
+associate	JJ
+director	NN
+and	CC
+head	NN
+of	IN
+
+
+bioinformatics	NNS
+at	IN
+Canadaâ	NNP
+$	$
+™	CD
+s	NNS
+Michael	NNP
+Smith	NNP
+Gen	NN
+-	:
+
+
+ome	NNP
+Sciences	NNP
+Center	NNP
+,	,
+Vancouver	NNP
+,	,
+BC	NNP
+.	.
+
+He	PRP
+has	VBZ
+
+
+established	VBN
+himself	PRP
+as	IN
+one	CD
+of	IN
+Canadaâ	NNP
+$	$
+™	CD
+s	NNS
+brightest	JJS
+
+
+young	JJ
+scientists	NNS
+,	,
+being	VBG
+honored	VBN
+in	IN
+2006	CD
+with	IN
+the	DT
+
+
+Top	JJ
+40	CD
+Under	IN
+40	CD
+Award	NN
+by	IN
+Caldwell	NNP
+Partners	NNPS
+
+
+International	NNP
+.	.
+
+He	PRP
+also	RB
+received	VBD
+in	IN
+2006	CD
+the	DT
+Senior	JJ
+Early	JJ
+Career	NNP
+Scholar	NNP
+Award	NN
+by	IN
+Peter	NNP
+Wall	NNP
+Institute	NNP
+for	IN
+Advanced	NNP
+Studies	NNPS
+,	,
+the	DT
+Spencer	NNP
+Award	NN
+for	IN
+IT	PRP
+Innovation	NN
+from	IN
+the	DT
+University	NNP
+of	IN
+British	NNP
+Columbia	NNP
+as	RB
+well	RB
+as	IN
+the	DT
+Presidentâ	NNP
+$	$
+™	CD
+s	NNS
+40th	JJ
+Anniversary	NN
+Award	NN
+from	IN
+Simon	NNP
+Fraser	NNP
+University	NNP
+.	.
+
+He	PRP
+has	VBZ
+been	VBN
+an	DT
+author	NN
+on	IN
+more	JJR
+than	IN
+150	CD
+peer	VBP
+reviewed	VBN
+publications	NNS
+.	.
+
+He	PRP
+has	VBZ
+been	VBN
+Principal	NN
+Investigator	NN
+and	CC
+coappli	NN
+-	:
+cant	NN
+on	IN
+numerous	JJ
+awarded	VBN
+grants	NNS
+totaling	VBG
+over	IN
+$	$
+20	CD
+million	CD
+.	.
+
+
+.	.
+
+For	IN
+more	JJR
+information	NN
+on	IN
+this	DT
+or	CC
+any	DT
+other	JJ
+computing	NN
+topic	NN
+,	,
+please	VB
+visit	VB
+our	PRP$
+Digital	NNP
+Library	NNP
+atwww.computer.org/publications/dlib	NN
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+17	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+

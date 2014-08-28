@@ -1,0 +1,20 @@
+/*String wordStop = "0-9" + WHITESPACE_CHARS + ".,?!;:\"" + SPECIAL_CHARS;
+		Pattern wordPattern = Pattern.compile("[" + wordStop + "]" + "[A-Za-z]+" + "[" + wordStop + "]");
+		Pattern sentencePattern = Pattern.compile("[a-zA-Z0-9" + WHITESPACE_CHARS + ",;:" + SPECIAL_CHARS + "-]+[.!?]+[" + WHITESPACE_CHARS + "]");
+		int newNumSentences = numSentences;*/
+		
+/*Matcher wordMatcher = wordPattern.matcher(line);
+			while(wordMatcher.find()) {   // XXX how slow is regexing? ALL OF THE TIME IS REGEX
+				lineTokens.add(wordMatcher.group().substring(1, wordMatcher.group().length() - 1)); // adds match between [1:-1]
+			}
+			
+			// XXX regex probably not the way to go.. too slow for sentences.. or go with a simpler regex
+			Matcher sentenceMatcher = sentencePattern.matcher(line);  // XXX do we need to worry about punctuation wrapping onto the next line? 
+																	// in general need to be very careful with this regex
+			while(sentenceMatcher.find()) {   
+				numSentences++;
+				int random = (int) (Math.random() * 100);
+				if (random == 1)
+					System.out.println(sentenceMatcher.group());
+			}
+			*/

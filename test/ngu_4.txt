@@ -1,0 +1,10356 @@
+Speciï	NN
+¬	CD
+cation	NN
+of	IN
+Cooperative	NNP
+Constraints	NNPS
+in	IN
+
+
+Virtual	JJ
+Enterprise	NN
+Workï	NN
+¬	CD
+‚	CD
+ow	NN
+
+
+Anne	NNP
+H.H.	NNP
+Ngu	NNP
+
+
+University	NNP
+of	IN
+New	NNP
+South	NNP
+Wales	NNP
+School	NNP
+of	IN
+Computer	NNP
+Science	NNP
+and	CC
+Engineering	NNP
+
+
+Sydney	NNP
+2052	CD
+
+
+NSW	NN
+,	,
+Australia	NNP
+
+
+email:anne@cse.unsw.edu.au	NN
+
+
+Abstract	JJ
+
+
+Workï	JJ
+¬	NN
+‚	CD
+ow	NN
+systems	NNS
+are	VBP
+an	DT
+emerging	VBG
+technology	NN
+which	WDT
+have	VBP
+become	VBN
+increasingly	RB
+important	JJ
+in	IN
+the	DT
+drive	NN
+for	IN
+business	NN
+to	TO
+provide	VB
+better	JJR
+services	NNS
+and	CC
+increase	VB
+productiv	NN
+-	:
+ity	NN
+.	.
+
+Intuitively	RB
+,	,
+workï	NN
+¬	CD
+‚	CD
+ow	NN
+applications	NNS
+are	VBP
+processes	NNS
+which	WDT
+automate	VBP
+and	CC
+regulate	VBP
+the	DT
+movement	NN
+and	CC
+execution	NN
+of	IN
+a	DT
+number	NN
+of	IN
+work	NN
+,	,
+across	IN
+one	CD
+or	CC
+more	JJR
+servers	NNS
+,	,
+according	VBG
+to	TO
+business	NN
+deï	NN
+¬	CD
+ned	VBD
+rules	NNS
+and	CC
+routes	NNS
+.	.
+
+Lacking	VBG
+in	IN
+the	DT
+current	JJ
+workï	NN
+¬	NN
+‚	CD
+ow	NN
+products	NNS
+is	VBZ
+a	DT
+way	NN
+to	TO
+specify	VB
+both	CC
+the	DT
+temporal	JJ
+and	CC
+the	DT
+obligations	NNS
+constraints	NNS
+that	WDT
+are	VBP
+inherent	JJ
+for	IN
+effective	JJ
+and	CC
+ï	NN
+¬	VBP
+‚	CD
+exible	JJ
+ï	NN
+¬	CD
+‚	CD
+ow	NN
+of	IN
+information	NN
+among	IN
+the	DT
+activities	NNS
+.	.
+
+
+We	PRP
+propose	VBP
+using	VBG
+propositional	JJ
+temporal	JJ
+logic	NN
+for	IN
+specifying	VBG
+and	CC
+reasoning	NN
+over	IN
+the	DT
+temporal	JJ
+constraints	NNS
+in	IN
+workï	NN
+¬	CD
+‚	CD
+owâ	NN
+$	$
+™	CD
+s	NNS
+activities	NNS
+and	CC
+complement	NN
+it	PRP
+with	IN
+deontic	JJ
+logic	NN
+which	WDT
+is	VBZ
+used	VBN
+to	TO
+specify	VB
+commitments	NNS
+of	IN
+participants	NNS
+in	IN
+the	DT
+course	NN
+of	IN
+the	DT
+work	NN
+-	:
+ï	NN
+¬	CD
+‚	CD
+ow	NN
+.	.
+
+These	DT
+two	CD
+approaches	NNS
+are	VBP
+combined	VBN
+by	IN
+enforcing	VBG
+all	DT
+messages	NNS
+to	TO
+be	VB
+commu	NN
+-	:
+nicated	VBN
+using	VBG
+a	DT
+pre-deï	JJ
+¬	NN
+ned	VBD
+speech	NN
+act	NN
+primitives	NNS
+.	.
+
+By	IN
+capturing	VBG
+these	DT
+two	CD
+important	JJ
+constraints	NNS
+in	IN
+workï	NN
+¬	CD
+‚	CD
+ow	NN
+,	,
+we	PRP
+aim	VBP
+to	TO
+provide	VB
+a	DT
+model	NN
+that	WDT
+can	MD
+react	VB
+and	CC
+adapt	VB
+to	TO
+or	CC
+-	:
+ganizational	JJ
+changes	NNS
+in	IN
+a	DT
+controlled	JJ
+way	NN
+.	.
+
+We	PRP
+demonstrate	VBP
+our	PRP$
+speciï	NN
+¬	CD
+cation	NN
+using	VBG
+a	DT
+virtual	JJ
+conference	NN
+planning	NN
+workï	NN
+¬	CD
+‚	CD
+ow	NN
+.	.
+
+
+1	CD
+Introduction	NN
+
+
+Workï	JJ
+¬	NN
+‚	CD
+ow	NN
+applications	NNS
+are	VBP
+processes	NNS
+which	WDT
+automate	VBP
+and	CC
+regulate	VBP
+the	DT
+movement	NN
+and	CC
+exe	NN
+-	:
+cution	NN
+of	IN
+a	DT
+number	NN
+of	IN
+work	NN
+,	,
+across	IN
+one	CD
+or	CC
+more	JJR
+servers	NNS
+-LRB-	-LRB-
+could	MD
+be	VB
+a	DT
+database	NN
+,	,
+a	DT
+knowledge	NN
+base	NN
+,	,
+a	DT
+document	NN
+server	NN
+or	CC
+a	DT
+WWW	NNP
+service	NN
+-RRB-	-RRB-
+,	,
+according	VBG
+to	TO
+business	NN
+de	IN
+ï	NN
+¬	CD
+ned	VBD
+rules	NNS
+and	CC
+routes	NNS
+.	.
+
+A	DT
+work	NN
+ï	NN
+¬	CD
+‚	CD
+ow	NN
+also	RB
+typically	RB
+de	FW
+ï	FW
+¬	FW
+nes	VBZ
+the	DT
+individual	JJ
+business	NN
+activity	NN
+steps	NNS
+,	,
+the	DT
+order	NN
+and	CC
+the	DT
+conditions	NNS
+under	IN
+which	WDT
+the	DT
+activities	NNS
+must	MD
+be	VB
+executed	VBN
+,	,
+the	DT
+ï	NN
+¬	CD
+‚	CD
+ow	NN
+of	IN
+data	NNS
+between	IN
+activities	NNS
+,	,
+the	DT
+users	NNS
+responsible	JJ
+for	IN
+the	DT
+conduct	NN
+of	IN
+these	DT
+activities	NNS
+and	CC
+the	DT
+tools	NNS
+used	VBN
+.	.
+
+
+As	IN
+an	DT
+example	NN
+of	IN
+a	DT
+work	NN
+ï	NN
+¬	CD
+‚	CD
+ow	NN
+application	NN
+,	,
+consider	VB
+the	DT
+emerging	VBG
+concept	NN
+of	IN
+virtual	JJ
+healthcare	NN
+enterprises	NNS
+-LSB-	-LRB-
+22	CD
+-RSB-	-RRB-
+which	WDT
+interlinks	NNS
+geographically	RB
+distributed	VBN
+and	CC
+organization	NN
+-	:
+ally	NN
+disparate	JJ
+hospitals	NNS
+,	,
+private	JJ
+practices	NNS
+,	,
+clinics	NNS
+,	,
+pharmaceutical	JJ
+companies	NNS
+,	,
+tertiary	JJ
+care	NN
+centers	NNS
+that	WDT
+have	VBP
+a	DT
+legacy	NN
+of	IN
+different	JJ
+approaches	NNS
+to	TO
+providing	VBG
+healthcare	NN
+.	.
+
+The	DT
+objective	NN
+
+
+1	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+1	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+is	VBZ
+to	TO
+loosely	RB
+couple	VB
+these	DT
+groups	NNS
+and	CC
+coordinate	VB
+the	DT
+administrative	JJ
+,	,
+ï	JJ
+¬	NN
+nancial	JJ
+and	CC
+clinical	JJ
+processes	NNS
+of	IN
+such	JJ
+enterprises	NNS
+,	,
+while	IN
+controlling	VBG
+costs	NNS
+and	CC
+providing	VBG
+quality	NN
+healthcare	NN
+.	.
+
+To	TO
+meet	VB
+these	DT
+requirements	NNS
+,	,
+the	DT
+different	JJ
+patient	NN
+care	NN
+and	CC
+other	JJ
+medical	JJ
+processes	NNS
+in	IN
+the	DT
+healthcare	NN
+industry	NN
+must	MD
+be	VB
+streamlined	JJ
+and	CC
+the	DT
+data	NNS
+must	MD
+be	VB
+integrated	VBN
+and	CC
+coordinated	VBN
+.	.
+
+The	DT
+exchange	NN
+of	IN
+electronic	JJ
+business	NN
+data	NNS
+and	CC
+documents	NNS
+and	CC
+the	DT
+use	NN
+of	IN
+standardized	JJ
+clin	NN
+-	:
+ical	JJ
+,	,
+administrative	JJ
+,	,
+insurance	NN
+and	CC
+ï	NN
+¬	VBP
+nancial	JJ
+transactions	NNS
+,	,
+can	MD
+reduce	VB
+cost	NN
+and	CC
+improve	VB
+the	DT
+productivity	NN
+of	IN
+physicians	NNS
+and	CC
+health	NN
+care	NN
+enterprises	NNS
+.	.
+
+
+If	IN
+a	DT
+group	NN
+of	IN
+enterprise	NN
+servers	NNS
+are	VBP
+to	TO
+cooperate	VB
+to	TO
+achieve	VB
+certain	JJ
+business	NN
+tasks	NNS
+,	,
+we	PRP
+need	VBP
+to	TO
+be	VB
+able	JJ
+to	TO
+specify	VB
+both	CC
+temporal	JJ
+and	CC
+obligation	NN
+constraints	NNS
+among	IN
+them	PRP
+-LRB-	-LRB-
+i.e.	FW
+a	FW
+well	RB
+established	VBN
+protocol	NN
+to	TO
+guarantee	VB
+the	DT
+exchange	NN
+of	IN
+information	NN
+-RRB-	-RRB-
+.	.
+
+
+We	PRP
+aim	VBP
+to	TO
+develop	VB
+a	DT
+declarative	JJ
+model	NN
+for	IN
+specifying	VBG
+the	DT
+temporal	JJ
+constraints	NNS
+in	IN
+work	NN
+-	:
+ï	NN
+¬	CD
+‚	CD
+ow	NN
+and	CC
+a	DT
+mechanism	NN
+for	IN
+specifying	VBG
+the	DT
+obligation	NN
+constraints	NNS
+among	IN
+participants	NNS
+in	IN
+workï	NN
+¬	CD
+‚	CD
+ow	NN
+.	.
+
+By	IN
+integrating	VBG
+the	DT
+temporal	JJ
+and	CC
+the	DT
+obligation	NN
+constraints	NNS
+,	,
+we	PRP
+aim	VBP
+to	TO
+arrive	VB
+at	IN
+a	DT
+model	NN
+that	WDT
+is	VBZ
+ï	NN
+¬	CD
+‚	CD
+exible	JJ
+and	CC
+will	MD
+enable	VB
+organisations	NNS
+to	TO
+rapidly	RB
+respond	VB
+to	TO
+changes	NNS
+in	IN
+business	NN
+processes	NNS
+.	.
+
+Effectively	RB
+,	,
+the	DT
+model	NN
+provides	VBZ
+a	DT
+way	NN
+to	TO
+perform	VB
+reasoning	NN
+over	IN
+alternatives	NNS
+when	WRB
+an	DT
+obligation	NN
+is	VBZ
+violated	VBN
+to	TO
+reduce	VB
+the	DT
+aborts	NNS
+and	CC
+recovery	NN
+in	IN
+workï	NN
+¬	CD
+‚	CD
+ow	NN
+.	.
+
+
+We	PRP
+view	VBP
+workï	NN
+¬	CD
+‚	CD
+ow	NN
+process	NN
+as	IN
+consists	VBZ
+of	IN
+a	DT
+set	NN
+of	IN
+activities	NNS
+or	CC
+transactions	NNS
+.	.
+
+Each	DT
+activ	NN
+-	:
+ity	NN
+-LRB-	-LRB-
+similar	JJ
+to	TO
+task	NN
+-RRB-	-RRB-
+consists	VBZ
+of	IN
+a	DT
+set	NN
+of	IN
+valid	JJ
+messages	NNS
+that	WDT
+can	MD
+be	VB
+exchanged	VBN
+among	IN
+the	DT
+participants	NNS
+-LRB-	-LRB-
+such	JJ
+as	IN
+different	JJ
+web	NN
+resources	NNS
+-RRB-	-RRB-
+that	WDT
+participate	VBP
+in	IN
+the	DT
+activity	NN
+.	.
+
+Each	DT
+activ	NN
+-	:
+ity	NN
+also	RB
+has	VBZ
+a	DT
+goal	NN
+and	CC
+an	DT
+exit	NN
+state	NN
+.	.
+
+The	DT
+set	NN
+of	IN
+participants	NNS
+communicate	VBP
+by	IN
+exchanging	VBG
+messages	NNS
+that	WDT
+obey	VBP
+certain	JJ
+temporal	JJ
+constraints	NNS
+-LRB-	-LRB-
+in	IN
+the	DT
+sense	NN
+that	WDT
+message	NN
+A	NN
+can	MD
+only	RB
+be	VB
+sent	VBN
+after	IN
+receiving	VBG
+message	NN
+B	NN
+-RRB-	-RRB-
+.	.
+
+Each	DT
+message	NN
+contains	VBZ
+a	DT
+speech-act	JJ
+primitive	JJ
+and	CC
+a	DT
+proposition	NN
+which	WDT
+could	MD
+be	VB
+another	DT
+sub-activity	NN
+.	.
+
+A	DT
+workï	NN
+¬	CD
+‚	CD
+ow	NN
+process	NN
+is	VBZ
+valid	JJ
+if	IN
+the	DT
+tem	NN
+-	:
+poral	JJ
+constraints	NNS
+among	IN
+the	DT
+activities	NNS
+are	VBP
+consistent	JJ
+,	,
+that	DT
+is	VBZ
+there	EX
+is	VBZ
+at	IN
+least	JJS
+one	CD
+possible	JJ
+execution	NN
+trace	NN
+.	.
+
+We	PRP
+adopted	VBD
+Propositional	NNP
+Temporal	JJ
+Logic	NN
+-LRB-	-LRB-
+PTL	NNP
+-RRB-	-RRB-
+for	IN
+modeling	NN
+the	DT
+coor	NN
+-	:
+dination	NN
+or	CC
+temporal	JJ
+constraints	NNS
+for	IN
+exchange	NN
+of	IN
+messages	NNS
+among	IN
+the	DT
+participants	NNS
+.	.
+
+Each	DT
+of	IN
+our	PRP$
+activity	NN
+is	VBZ
+an	DT
+aggregation	NN
+of	IN
+some	DT
+subactivities	NNS
+-LRB-	-LRB-
+messages	NNS
+-RRB-	-RRB-
+which	WDT
+are	VBP
+executed	VBN
+cooperatively	RB
+by	IN
+a	DT
+few	JJ
+agents	NNS
+.	.
+
+This	DT
+has	VBZ
+the	DT
+advantage	NN
+of	IN
+being	VBG
+more	RBR
+intuitive	JJ
+from	IN
+the	DT
+designer	NN
+point	NN
+of	IN
+view	NN
+.	.
+
+It	PRP
+is	VBZ
+much	RB
+easier	JJR
+to	TO
+be	VB
+able	JJ
+to	TO
+specify	VB
+complex	JJ
+workï	NN
+¬	NN
+‚	CD
+ow	NN
+process	NN
+in	IN
+a	DT
+goal-directed	JJ
+way	NN
+with	IN
+each	DT
+goal	NN
+being	VBG
+collectively	RB
+achieved	VBN
+by	IN
+cooperating	VBG
+agents	NNS
+.	.
+
+
+Currently	RB
+,	,
+there	EX
+is	VBZ
+no	DT
+single	JJ
+logical	JJ
+framework	NN
+to	TO
+specify	VB
+and	CC
+enforce	VB
+both	DT
+temporal	JJ
+and	CC
+obligation	NN
+constraints	NNS
+in	IN
+an	DT
+workï	NN
+¬	NN
+‚	CD
+owâ	NN
+$	$
+™	CD
+s	NNS
+activity	NN
+.	.
+
+We	PRP
+believe	VBP
+that	IN
+obligations	NNS
+can	MD
+be	VB
+extracted	VBN
+and	CC
+then	RB
+explicitly	RB
+modeled	VBN
+in	IN
+deontic	JJ
+logic	NN
+if	IN
+messages	NNS
+are	VBP
+sent	VBN
+and	CC
+received	VBN
+in	IN
+an	DT
+activity	NN
+using	VBG
+a	DT
+set	NN
+of	IN
+well	RB
+deï	JJ
+¬	NN
+ned	VBD
+speech-act	JJ
+primitives	NNS
+.	.
+
+We	PRP
+thus	RB
+restrict	VBP
+messages	NNS
+that	WDT
+will	MD
+generate	VB
+a	DT
+deontic	JJ
+effect	NN
+to	TO
+be	VB
+sent	VBN
+or	CC
+received	VBN
+with	IN
+speciï	NN
+¬	CD
+c	NN
+speech-act	JJ
+primitives	NNS
+.	.
+
+This	DT
+allows	VBZ
+us	PRP
+to	TO
+model	VB
+the	DT
+obligation	NN
+constraints	NNS
+among	IN
+the	DT
+participants	NNS
+.	.
+
+For	IN
+example	NN
+,	,
+a	DT
+message	NN
+sent	VBN
+with	IN
+an	DT
+order	NN
+speech-act	NN
+obliged	VBD
+the	DT
+sender	NN
+to	TO
+pay	VB
+for	IN
+what	WP
+is	VBZ
+being	VBG
+ordered	VBN
+.	.
+
+The	DT
+same	JJ
+message	NN
+sends	VBZ
+with	IN
+a	DT
+request	NN
+speech	NN
+act	NN
+does	VBZ
+not	RB
+impose	VB
+such	PDT
+an	DT
+obligation	NN
+.	.
+
+We	PRP
+use	VBP
+deontic	JJ
+logic	NN
+to	TO
+document	VB
+the	DT
+deontic	JJ
+effect	NN
+of	IN
+a	DT
+speech-act	JJ
+operator	NN
+-LRB-	-LRB-
+i.e.	FW
+obligations	NNS
+-RRB-	-RRB-
+.	.
+
+The	DT
+major	JJ
+contribution	NN
+in	IN
+this	DT
+paper	NN
+is	VBZ
+demonstrating	VBG
+that	IN
+PTL	NNP
+which	WDT
+is	VBZ
+a	DT
+logic	NN
+oriented	VBN
+towards	IN
+reasoning	NN
+about	IN
+sequences	NNS
+is	VBZ
+suitable	JJ
+for	IN
+specifying	VBG
+all	DT
+types	NNS
+of	IN
+dependencies	NNS
+in	IN
+activities	NNS
+in	IN
+workï	NN
+¬	CD
+‚	CD
+ow	NN
+.	.
+
+Deontic	JJ
+logic	NN
+can	MD
+be	VB
+used	VBN
+to	TO
+specify	VB
+and	CC
+reason	VB
+about	IN
+â	RB
+$	$
+obligationsâ	JJ
+$	$
+,	,
+i.e.	FW
+,	,
+commitments	NNS
+of	IN
+participants	NNS
+in	IN
+the	DT
+course	NN
+of	IN
+the	DT
+workï	NN
+¬	CD
+‚	CD
+ow	NN
+.	.
+
+
+This	DT
+paper	NN
+is	VBZ
+organized	VBN
+as	IN
+follow	VB
+.	.
+
+In	IN
+section	NN
+2	CD
+,	,
+we	PRP
+discuss	VBP
+why	WRB
+the	DT
+need	NN
+to	TO
+enforce	VB
+both	CC
+temporal	JJ
+and	CC
+obligation	NN
+constraints	NNS
+in	IN
+workï	NN
+¬	CD
+‚	CD
+ow	NN
+and	CC
+how	WRB
+these	DT
+can	MD
+be	VB
+speciï	JJ
+¬	NN
+ed	VBN
+by	IN
+
+
+2	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+2	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+using	VBG
+PTL	NNP
+and	CC
+deontic	JJ
+logic	NN
+separately	RB
+.	.
+
+In	IN
+section	NN
+3	CD
+,	,
+we	PRP
+show	VBP
+through	IN
+some	DT
+activities	NNS
+in	IN
+the	DT
+virtual	JJ
+conference	NN
+planning	NN
+workï	NN
+¬	CD
+‚	CD
+ow	NN
+how	WRB
+temporal	JJ
+constraints	NNS
+can	MD
+be	VB
+speciï	JJ
+¬	NN
+ed	VBD
+using	VBG
+PTL	NNP
+.	.
+
+In	IN
+section	NN
+4	CD
+,	,
+we	PRP
+demonstrate	VBP
+how	WRB
+to	TO
+extract	VB
+and	CC
+document	VB
+the	DT
+obligation	NN
+constraints	NNS
+from	IN
+the	DT
+activityâ	NN
+$	$
+™	CD
+s	NNS
+messages	NNS
+in	IN
+deontic	JJ
+clauses	NNS
+.	.
+
+Section	NN
+5	CD
+outlines	VBZ
+our	PRP$
+conclusion	NN
+and	CC
+future	JJ
+work	NN
+.	.
+
+
+2	CD
+How	WRB
+temporal	JJ
+and	CC
+obligation	NN
+constraints	NNS
+can	MD
+be	VB
+speci	NN
+-	:
+
+
+ï	NN
+¬	CD
+ed	VBN
+?	.
+
+
+The	DT
+main	JJ
+contribution	NN
+of	IN
+our	PRP$
+previous	JJ
+work	NN
+in	IN
+workï	NN
+¬	CD
+‚	CD
+ow	NN
+modeling	NN
+is	VBZ
+the	DT
+focus	NN
+on	IN
+commu	NN
+-	:
+nication	NN
+and	CC
+the	DT
+declarative	JJ
+form	NN
+of	IN
+specifying	VBG
+messages	NNS
+coordination	NN
+-LRB-	-LRB-
+temporal	JJ
+aspect	NN
+only	RB
+-RRB-	-RRB-
+in	IN
+PTL	NNP
+which	WDT
+can	MD
+be	VB
+veriï	JJ
+¬	NN
+ed	VBD
+formally	RB
+by	IN
+a	DT
+dependency	NN
+graph	NN
+-LSB-	-LRB-
+17	CD
+-RSB-	-RRB-
+.	.
+
+We	PRP
+name	VBP
+this	DT
+speciï	NN
+¬	NN
+cation	NN
+as	IN
+interoperable	JJ
+transactions	NNS
+.	.
+
+Our	PRP$
+interoperable	JJ
+transaction	NN
+is	VBZ
+essentially	RB
+the	DT
+same	JJ
+as	IN
+an	DT
+activity	NN
+in	IN
+a	DT
+process	NN
+workï	NN
+¬	CD
+‚	CD
+ow	NN
+model	NN
+.	.
+
+Here	RB
+,	,
+we	PRP
+only	RB
+specify	VBP
+the	DT
+tempo	NN
+-	:
+ral	NN
+constraints	NNS
+and	CC
+thus	RB
+have	VBP
+to	TO
+assume	VB
+that	IN
+all	PDT
+the	DT
+participants	NNS
+will	MD
+always	RB
+honour	VB
+their	PRP$
+obligations	NNS
+,	,
+i.e	VBP
+the	DT
+communication	NN
+is	VBZ
+always	RB
+reliable	JJ
+.	.
+
+Thus	RB
+any	DT
+failure	NN
+in	IN
+communication	NN
+is	VBZ
+always	RB
+treated	VBN
+as	IN
+a	DT
+â	JJ
+$	$
+œtrue	JJ
+failureâ	NN
+$	$
+regardless	RB
+of	IN
+its	PRP$
+type	NN
+.	.
+
+This	DT
+causes	VBZ
+unnecessary	JJ
+roll	NN
+-	:
+back	RB
+and	CC
+recovery	NN
+.	.
+
+An	DT
+unreliable	JJ
+communication	NN
+resulted	VBD
+from	IN
+a	DT
+cooperating	VBG
+participant	NN
+not	RB
+fulï	JJ
+¬	NN
+lling	NN
+his/her	NN
+obligations	NNS
+should	MD
+be	VB
+treated	VBN
+as	IN
+a	DT
+violation	NN
+,	,
+and	CC
+should	MD
+not	RB
+require	VB
+a	DT
+rollback	NN
+of	IN
+the	DT
+activity	NN
+.	.
+
+For	IN
+example	NN
+,	,
+if	IN
+an	DT
+airline	NN
+promises	VBZ
+a	DT
+ï	NN
+¬	CD
+‚	CD
+ight	NN
+at	IN
+a	DT
+particular	JJ
+time	NN
+,	,
+and	CC
+canceled	VBD
+the	DT
+ï	NN
+¬	CD
+‚	CD
+ight	NN
+due	JJ
+to	TO
+bad	JJ
+weather	NN
+,	,
+we	PRP
+said	VBD
+that	IN
+the	DT
+airline	NN
+did	VBD
+not	RB
+fullï	JJ
+¬	NN
+l	NN
+its	PRP$
+obli	NN
+-	:
+gations	NNS
+,	,
+the	DT
+system	NN
+should	MD
+reason	VB
+over	IN
+this	DT
+violation	NN
+and	CC
+trigger	VB
+off	RP
+appropriate	JJ
+actions	NNS
+,	,
+for	IN
+example	NN
+,	,
+putting	VBG
+the	DT
+passengers	NNS
+on	IN
+the	DT
+next	JJ
+available	JJ
+ï	NN
+¬	CD
+‚	CD
+ight	NN
+and	CC
+thus	RB
+avoid	VB
+having	VBG
+to	TO
+abort	VB
+the	DT
+activity	NN
+.	.
+
+
+Currently	RB
+there	EX
+is	VBZ
+no	DT
+single	JJ
+logical	JJ
+framework	NN
+available	JJ
+to	TO
+specify	VB
+and	CC
+enforce	VB
+both	DT
+temporal	JJ
+and	CC
+obligation	NN
+constraints	NNS
+.	.
+
+One	CD
+possibility	NN
+is	VBZ
+to	TO
+extend	VB
+the	DT
+PTL	NNP
+to	TO
+include	VB
+the	DT
+modeling	NN
+of	IN
+obligation	NN
+constraints	NNS
+.	.
+
+However	RB
+this	DT
+will	MD
+complicate	VB
+the	DT
+speciï	NN
+¬	NN
+cation	NN
+of	IN
+the	DT
+temporal	JJ
+constraints	NNS
+and	CC
+lead	VB
+to	TO
+the	DT
+violation	NN
+of	IN
+the	DT
+completeness	NN
+of	IN
+the	DT
+tableauâ	NN
+$	$
+™	CD
+s	NNS
+veriï	VBP
+¬	SYM
+-	:
+cation	NN
+method	NN
+and	CC
+thus	RB
+the	DT
+generation	NN
+of	IN
+dependency	NN
+graph	NN
+.	.
+
+Moreover	RB
+,	,
+it	PRP
+will	MD
+complicate	VB
+the	DT
+declarative	JJ
+PTL	NNP
+speciï	NN
+¬	CD
+cation	NN
+and	CC
+also	RB
+lower	JJR
+the	DT
+reusibility	NN
+of	IN
+the	DT
+workï	NN
+¬	NN
+‚	CD
+owâ	NN
+$	$
+™	CD
+s	NNS
+activity	NN
+speciï	NN
+¬	CD
+cation	NN
+.	.
+
+
+The	DT
+speech	NN
+act	NN
+theory	NN
+describes	VBZ
+the	DT
+illocutionary	JJ
+force	NN
+of	IN
+the	DT
+message	NN
+-LRB-	-LRB-
+assertive	JJ
+,	,
+di	FW
+-	:
+rective	JJ
+,	,
+commissive	JJ
+or	CC
+declarative	JJ
+-RRB-	-RRB-
+together	RB
+with	IN
+its	PRP$
+authorization	NN
+claim	NN
+-LRB-	-LRB-
+power	NN
+,	,
+authority	NN
+or	CC
+charity	NN
+-RRB-	-RRB-
+,	,
+and	CC
+a	DT
+content	NN
+-LRB-	-LRB-
+a	DT
+proposition	NN
+or	CC
+action	NN
+-RRB-	-RRB-
+.	.
+
+An	DT
+assertive	JJ
+speech	NN
+act	NN
+simply	RB
+makes	VBZ
+a	DT
+statement	NN
+about	IN
+the	DT
+state	NN
+of	IN
+affairs	NNS
+in	IN
+the	DT
+world	NN
+and	CC
+commits	VBZ
+the	DT
+speaker	NN
+to	TO
+the	DT
+truth	NN
+of	IN
+the	DT
+expressed	VBN
+proposition	NN
+.	.
+
+A	DT
+directive	NN
+speech	NN
+act	VBP
+tries	VBZ
+to	TO
+get	VB
+the	DT
+addressee	NN
+to	TO
+do	VB
+things	NNS
+.	.
+
+A	DT
+commissive	JJ
+speech	NN
+act	NN
+commits	VBZ
+the	DT
+speaker	NN
+to	TO
+a	DT
+future	JJ
+course	NN
+of	IN
+action	NN
+.	.
+
+A	DT
+declarative	JJ
+speech	NN
+act	NN
+brings	VBZ
+about	IN
+some	DT
+new	JJ
+state	NN
+of	IN
+affairs	NNS
+of	IN
+the	DT
+world	NN
+.	.
+
+
+By	IN
+providing	VBG
+a	DT
+standard	JJ
+set	NN
+of	IN
+speech	NN
+act	VBP
+primitives	NNS
+for	IN
+communication	NN
+in	IN
+workï	NN
+¬	CD
+‚	CD
+ow	NN
+,	,
+we	PRP
+can	MD
+have	VB
+a	DT
+pre-deï	JJ
+¬	NN
+ned	VBD
+semantics	NNS
+in	IN
+terms	NNS
+of	IN
+obligations	NNS
+and	CC
+authorizations	NNS
+for	IN
+mes	SYM
+-	:
+sages	NNS
+exchanged	VBD
+between	IN
+participants	NNS
+.	.
+
+For	IN
+example	NN
+a	DT
+message	NN
+such	JJ
+as	IN
+
+
+request	NN
+-LRB-	-LRB-
+reserve	NN
+-LRB-	-LRB-
+airline-ticket	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+involves	VBZ
+a	DT
+directive	NN
+speech	NN
+actrequest	NN
+and	CC
+the	DT
+action	NN
+reserve	NN
+from	IN
+the	DT
+sender	NN
+to	TO
+the	DT
+receiver	NN
+.	.
+
+By	IN
+enforcing	VBG
+all	DT
+messages	NNS
+that	WDT
+carried	VBD
+deontic	JJ
+effects	NNS
+to	TO
+be	VB
+exchanged	VBN
+via	IN
+pre-deï	JJ
+¬	NN
+ned	VBD
+speech-act	JJ
+primitives	NNS
+,	,
+we	PRP
+can	MD
+ex	FW
+-	:
+
+
+3	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+3	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+tract	NN
+the	DT
+obligation	NN
+constraints	NNS
+and	CC
+document	VBP
+it	PRP
+using	VBG
+deontic	JJ
+logic	NN
+.	.
+
+
+Deontic	JJ
+logic	NN
+-LSB-	-LRB-
+25	CD
+-RSB-	-RRB-
+is	VBZ
+a	DT
+form	NN
+of	IN
+dynamic	JJ
+logic	NN
+with	IN
+two	CD
+operators	NNS
+,	,
+Obl	NN
+-LRB-	-LRB-
+i	FW
+,	,
+-RRB-	-RRB-
+and	CC
+Aut	NN
+-LRB-	-LRB-
+i	FW
+,	,
+-RRB-	-RRB-
+,	,
+for	IN
+obliged	VBN
+and	CC
+authorized	VBN
+,	,
+respectively	RB
+.	.
+
+The	DT
+semantics	NNS
+of	IN
+an	DT
+authorized	VBN
+request	NN
+to	TO
+do	VB
+is	VBZ
+that	IN
+Obl	NN
+-LRB-	-LRB-
+i	FW
+,	,
+-RRB-	-RRB-
+holds	VBZ
+-LRB-	-LRB-
+as	IN
+a	DT
+postcondition	NN
+-RRB-	-RRB-
+provided	VBD
+that	IN
+Aut	NN
+-LRB-	-LRB-
+i	FW
+,	,
+-RRB-	-RRB-
+holds	VBZ
+-LRB-	-LRB-
+as	IN
+a	DT
+pre	JJ
+-	:
+condition	NN
+-RRB-	-RRB-
+.	.
+
+Obl	NN
+-LRB-	-LRB-
+i	FW
+,	,
+-RRB-	-RRB-
+means	VBZ
+that	IN
+if	IN
+a	DT
+system	NN
+does	VBZ
+not	RB
+perform	VB
+,	,
+then	RB
+this	DT
+leads	VBZ
+to	TO
+a	DT
+violation	NN
+.	.
+
+Independent	JJ
+rules	NNS
+specify	VBP
+what	WP
+such	PDT
+a	DT
+violation	NN
+implies	VBZ
+.	.
+
+These	DT
+rules	NNS
+are	VBP
+usually	RB
+expressed	VBN
+in	IN
+terms	NNS
+of	IN
+other	JJ
+Obl	NN
+and	CC
+Aut	NN
+formulas	NNS
+.	.
+
+
+Deontic	JJ
+logic	NN
+has	VBZ
+been	VBN
+used	VBN
+in	IN
+the	DT
+context	NN
+of	IN
+modeling	NN
+legal	JJ
+contracts	NNS
+.	.
+
+In	IN
+-LSB-	-LRB-
+16	CD
+-RSB-	-RRB-
+,	,
+deontic	JJ
+logic	NN
+is	VBZ
+used	VBN
+to	TO
+model	VB
+the	DT
+notion	NN
+of	IN
+permissions	NNS
+in	IN
+legal	JJ
+applications	NNS
+.	.
+
+We	PRP
+found	VBD
+that	IN
+when	WRB
+used	VBN
+in	IN
+the	DT
+context	NN
+of	IN
+workï	NN
+¬	CD
+‚	CD
+ow	NN
+,	,
+the	DT
+three	CD
+primitive	JJ
+operators	NNS
+Obl	NN
+-LRB-	-LRB-
+i	FW
+,	,
+-RRB-	-RRB-
+,	,
+Aut	NN
+-LRB-	-LRB-
+i	FW
+,	,
+-RRB-	-RRB-
+and	CC
+Acc	NN
+-LRB-	-LRB-
+i	FW
+,	,
+-RRB-	-RRB-
+are	VBP
+needed	VBN
+.	.
+
+This	DT
+stands	VBZ
+for	IN
+obliged	VBN
+,	,
+authorized	VBN
+and	CC
+accomplished	VBN
+respectively	RB
+.	.
+
+Acc	NN
+-LRB-	-LRB-
+i	FW
+,	,
+-RRB-	-RRB-
+indicates	VBZ
+that	IN
+agent	NN
+has	VBZ
+carried	VBN
+out	RP
+the	DT
+stated	VBN
+action	NN
+.	.
+
+
+The	DT
+following	VBG
+are	VBP
+the	DT
+set	NN
+of	IN
+speech-act	JJ
+primitives	NNS
+whose	WP$
+deontic	JJ
+effects	NNS
+-LRB-	-LRB-
+obligations	NNS
+-RRB-	-RRB-
+can	MD
+be	VB
+deï	NN
+¬	NN
+ned	VBD
+using	VBG
+deontic	JJ
+logic	NN
+.	.
+
+These	DT
+set	NN
+of	IN
+speech	NN
+act	VBP
+primitives	NNS
+are	VBP
+ï	NN
+¬	CD
+rst	NN
+proposed	VBN
+in	IN
+-LSB-	-LRB-
+10	CD
+-RSB-	-RRB-
+.	.
+
+This	DT
+is	VBZ
+not	RB
+by	IN
+all	DT
+mean	VB
+an	DT
+exhaustive	JJ
+list	NN
+.	.
+
+
+Message	NN
+:	:
+
+
+|	NN
+Request	NN
+-LRB-	-LRB-
+action	NN
+-RRB-	-RRB-
+/	:
+*	SYM
+directive	NN
+charity	NN
+*	SYM
+/	:
+
+
+|	NN
+Command	NN
+-LRB-	-LRB-
+action	NN
+-RRB-	-RRB-
+/	:
+*	SYM
+directive	NN
+authority	NN
+*	SYM
+/	:
+
+
+|	NNP
+Order	NNP
+-LRB-	-LRB-
+action	NN
+-RRB-	-RRB-
+/	:
+*	SYM
+directive	NN
+power	NN
+*	SYM
+/	:
+
+
+|	NN
+Commit	VB
+-LRB-	-LRB-
+action	NN
+-RRB-	-RRB-
+/	:
+*	SYM
+commissive	JJ
+*	SYM
+/	:
+
+
+|	NNP
+Suggest	NNP
+-LRB-	-LRB-
+proposition	NN
+-RRB-	-RRB-
+/	:
+*	SYM
+assertive	JJ
+charity	NN
+*	SYM
+/	:
+
+
+|	NN
+Assert	NN
+-LRB-	-LRB-
+proposition	NN
+-RRB-	-RRB-
+/	:
+*	SYM
+assertive	JJ
+authority	NN
+*	SYM
+/	:
+
+
+|	NN
+Claim	NN
+-LRB-	-LRB-
+proposition	NN
+-RRB-	-RRB-
+/	:
+*	SYM
+assertive	JJ
+power	NN
+*	SYM
+/	:
+
+
+|	RB
+Nominate	VB
+-LRB-	-LRB-
+proposition	NN
+-RRB-	-RRB-
+/	:
+*	SYM
+declarative	JJ
+charity	NN
+*	SYM
+/	:
+
+
+|	RB
+Declare	VB
+-LRB-	-LRB-
+proposition	NN
+-RRB-	-RRB-
+/	:
+*	SYM
+declarative	JJ
+authority	NN
+*	SYM
+/	:
+
+
+|	NN
+Establish	NN
+-LRB-	-LRB-
+proposition	NN
+-RRB-	-RRB-
+/	:
+*	SYM
+declarative	JJ
+power	NN
+*	SYM
+/	:
+
+
+|	NNP
+Propose	NNP
+-LRB-	-LRB-
+proposition	NN
+-RRB-	-RRB-
+/	:
+*	SYM
+declarative	JJ
+power	NN
+*	SYM
+/	:
+
+
+|	NN
+Authorize	NN
+-LRB-	-LRB-
+message	NN
+-RRB-	-RRB-
+
+
+|	NN
+Permit	NN
+-LRB-	-LRB-
+action	NN
+-RRB-	-RRB-
+
+
+|	NN
+Conï	NN
+¬	CD
+rm	NN
+-LRB-	-LRB-
+action	NN
+-RRB-	-RRB-
+
+
+|	NN
+Promise	NNP
+-LRB-	-LRB-
+action	NN
+OR	NN
+Proposition	NN
+-RRB-	-RRB-
+/	:
+*	SYM
+commissive	JJ
+power	NN
+*	SYM
+/	:
+
+
+|	NN
+Request	NN
+-LRB-	-LRB-
+Authorize	NN
+-LRB-	-LRB-
+action	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+
+
+|	NNP
+Assert	NNP
+-LRB-	-LRB-
+Accept	NNP
+-LRB-	-LRB-
+action	NN
+OR	NN
+Proposition	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+
+
+|	NN
+Assert	NN
+-LRB-	-LRB-
+Refuse-to	NN
+-LRB-	-LRB-
+action	NN
+,	,
+â	VB
+$	$
+reasonâ	JJ
+$	$
+-RRB-	-RRB-
+
+
+The	DT
+semantics	NNS
+of	IN
+speech	NN
+act	VBP
+order	NN
+generates	VBZ
+the	DT
+following	VBG
+obligations	NNS
+.	.
+
+The	DT
+clause	NN
+-LSB-	-LRB-
+-RSB-	-RRB-
+p	NN
+means	VBZ
+that	IN
+after	IN
+action	NN
+,	,
+p	NN
+holds	VBZ
+.	.
+
+The	DT
+expression	NN
+NOT	NN
+stands	VBZ
+for	IN
+the	DT
+non	JJ
+-	:
+performance	NN
+of	IN
+the	DT
+action	NN
+.	.
+
+The	DT
+clause	NN
+obl	NN
+-LRB-	-LRB-
+i	FW
+,	,
+j	NN
+,	,
+payfor	NN
+-LRB-	-LRB-
+goods	NNS
+-RRB-	-RRB-
+-RRB-	-RRB-
+stands	VBZ
+for	IN
+i	FW
+obliged	VBN
+to	TO
+j	VB
+for	IN
+action	NN
+payfor	NN
+-LRB-	-LRB-
+goods	NNS
+-RRB-	-RRB-
+.	.
+
+
+/	:
+*	SYM
+if	IN
+i	FW
+ordered	VBD
+the	DT
+good	JJ
+from	IN
+j	NN
+and	CC
+j	NN
+shipped	VBD
+the	DT
+goods	NNS
+/	:
+*	SYM
+i	FW
+is	VBZ
+obliged	VBN
+to	TO
+pay	VB
+j	NN
+for	IN
+the	DT
+good	JJ
+
+
+order	NN
+-LRB-	-LRB-
+i	FW
+,	,
+j	NN
+,	,
+goods	NNS
+-RRB-	-RRB-
+-LSB-	-LRB-
+ship	NN
+-LRB-	-LRB-
+j	NN
+,	,
+goods	NNS
+-RRB-	-RRB-
+-RSB-	-RRB-
+obl	NN
+-LRB-	-LRB-
+i	FW
+,	,
+j	NN
+,	,
+payfor	NN
+-LRB-	-LRB-
+goods	NNS
+-RRB-	-RRB-
+-RRB-	-RRB-
+
+
+/	:
+*	SYM
+if	IN
+j	NN
+is	VBZ
+obliged	VBN
+to	TO
+ship	VB
+the	DT
+goods	NNS
+to	TO
+i	FW
+and	CC
+he	PRP
+does	VBZ
+not	RB
+do	VB
+it	PRP
+,	,
+/	:
+*	SYM
+he	PRP
+is	VBZ
+obliged	VBN
+to	TO
+pay	VB
+a	DT
+ï	NN
+¬	CD
+ne	NN
+and	CC
+the	DT
+other	JJ
+party	NN
+i	FW
+is	VBZ
+/	:
+*	SYM
+authorized	VBN
+to	TO
+request	NN
+-LRB-	-LRB-
+other	JJ
+-RRB-	-RRB-
+goods	NNS
+from	IN
+other	JJ
+source	NN
+k	NN
+Obl	NN
+-LRB-	-LRB-
+j	NN
+,	,
+i	FW
+,	,
+ship	NN
+-LRB-	-LRB-
+goods	NNS
+-RRB-	-RRB-
+-RRB-	-RRB-
+-LSB-	-LRB-
+NOT	RB
+ship	NN
+-LRB-	-LRB-
+j	NN
+,	,
+goods	NNS
+-RRB-	-RRB-
+-RSB-	-RRB-
+
+
+Obl	NN
+-LRB-	-LRB-
+j	NN
+,	,
+i	FW
+,	,
+pay	NN
+-LRB-	-LRB-
+$	$
+100	CD
+-RRB-	-RRB-
+-RRB-	-RRB-
+AND	CC
+Aut	NN
+-LRB-	-LRB-
+i	FW
+,	,
+order	NN
+-LRB-	-LRB-
+i	FW
+,	,
+k	NN
+,	,
+goods	NNS
+-RRB-	-RRB-
+-RRB-	-RRB-
+-RRB-	-RRB-
+
+
+4	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+4	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+The	DT
+semantics	NNS
+of	IN
+speech	NN
+act	VBP
+command	NN
+and	CC
+order	NN
+are	VBP
+similar	JJ
+,	,
+they	PRP
+are	VBP
+both	DT
+directive	NN
+speech	NN
+acts	VBZ
+,	,
+but	CC
+only	RB
+person	NN
+with	IN
+certain	JJ
+authority	NN
+can	MD
+use	VB
+the	DT
+speech	NN
+act	NN
+command	NN
+.	.
+
+The	DT
+command	NN
+speech	NN
+act	VBP
+automatically	RB
+creates	VBZ
+the	DT
+obligations	NNS
+for	IN
+the	DT
+receivers	NNS
+to	TO
+carry	VB
+out	RP
+the	DT
+action	NN
+with	IN
+high	JJ
+priority	NN
+.	.
+
+When	WRB
+compared	VBN
+with	IN
+the	DT
+speech-act	JJ
+order	NN
+,	,
+the	DT
+request	NN
+speech	NN
+act	NN
+does	VBZ
+not	RB
+express	VB
+the	DT
+need	NN
+to	TO
+have	VB
+the	DT
+propositional	JJ
+contents	NNS
+of	IN
+the	DT
+speech	NN
+act	NN
+be	VB
+realised	VBN
+by	IN
+the	DT
+addressee	NN
+.	.
+
+For	IN
+example	NN
+,	,
+there	EX
+is	VBZ
+no	DT
+need	NN
+to	TO
+provide	VB
+an	DT
+answer	NN
+to	TO
+a	DT
+request	NN
+,	,
+unless	IN
+the	DT
+speaker	NN
+has	VBZ
+an	DT
+authority	NN
+-LRB-	-LRB-
+or	CC
+special	JJ
+relationship	NN
+-RRB-	-RRB-
+over	IN
+the	DT
+addressees	NNS
+.	.
+
+
+By	IN
+includingobligationconstraints	NNS
+in	IN
+the	DT
+communication	NN
+model	NN
+of	IN
+workï	NN
+¬	CD
+‚	CD
+ow	NN
+,	,
+we	PRP
+aim	VBP
+to	TO
+deliver	VB
+a	DT
+mechanisms	NNS
+which	WDT
+emulate	VBP
+the	DT
+way	NN
+human	JJ
+beings	NNS
+interact	VBP
+.	.
+
+It	PRP
+is	VBZ
+known	VBN
+that	IN
+the	DT
+coordination	NN
+behaviour	NN
+among	IN
+agents	NNS
+-LRB-	-LRB-
+human	JJ
+being/computer	NN
+system	NN
+-RRB-	-RRB-
+always	RB
+requires	VBZ
+some	DT
+form	NN
+of	IN
+agreement	NN
+and	CC
+mutual	JJ
+commitment	NN
+.	.
+
+If	IN
+for	IN
+whatever	WDT
+reason	NN
+,	,
+an	DT
+agent	NN
+does	VBZ
+not	RB
+execute	VB
+an	DT
+action	NN
+it	PRP
+has	VBZ
+itself	PRP
+committed	VBN
+to	TO
+,	,
+this	DT
+causes	VBZ
+a	DT
+violation	NN
+of	IN
+agreement	NN
+.	.
+
+When	WRB
+there	EX
+is	VBZ
+a	DT
+violation	NN
+of	IN
+obligation	NN
+,	,
+a	DT
+rescheduling	NN
+of	IN
+activities	NNS
+in	IN
+the	DT
+workï	NN
+¬	CD
+‚	CD
+ow	NN
+is	VBZ
+achieved	VBN
+by	IN
+reasoning	NN
+over	IN
+the	DT
+consequences	NNS
+of	IN
+those	DT
+violations	NNS
+.	.
+
+Our	PRP$
+model	NN
+will	MD
+be	VB
+able	JJ
+to	TO
+react	VB
+â	NN
+$	$
+œactivelyâ	JJ
+$	$
+to	TO
+dynamic	JJ
+changes	NNS
+of	IN
+workï	NN
+¬	CD
+‚	CD
+ow	NN
+-LRB-	-LRB-
+when	WRB
+participants	NNS
+in	IN
+the	DT
+workï	NN
+¬	CD
+‚	NN
+ow	NN
+behave	VBP
+less	JJR
+than	IN
+ideally	RB
+-RRB-	-RRB-
+.	.
+
+This	DT
+provides	VBZ
+a	DT
+crucial	JJ
+ï	NN
+¬	CD
+‚	NN
+exibility	NN
+in	IN
+execution	NN
+of	IN
+workï	NN
+¬	CD
+‚	CD
+ow	NN
+,	,
+which	WDT
+is	VBZ
+not	RB
+possible	JJ
+with	IN
+traditional	JJ
+workï	NN
+¬	NN
+‚	CD
+ow	NN
+technology	NN
+as	IN
+described	VBN
+in	IN
+-LSB-	-LRB-
+20	CD
+-RSB-	-RRB-
+.	.
+
+
+3	CD
+Examples	NNS
+of	IN
+temporal	JJ
+constraints	NNS
+speciï	VBP
+¬	CD
+cation	NN
+
+
+Consider	VB
+as	IN
+an	DT
+application	NN
+the	DT
+communication	NN
+between	IN
+participants	NNS
+involved	VBN
+in	IN
+planning	VBG
+a	DT
+conference	NN
+for	IN
+hosting	VBG
+an	DT
+International	NNP
+Data	NNP
+Engineering	NNP
+Conference	NNP
+.	.
+
+Since	IN
+it	PRP
+is	VBZ
+an	DT
+international	JJ
+conference	NN
+,	,
+the	DT
+executive	NN
+committee	NN
+members	NNS
+can	MD
+come	VB
+from	IN
+different	JJ
+parts	NNS
+of	IN
+the	DT
+world	NN
+.	.
+
+For	IN
+example	NN
+,	,
+the	DT
+conference	NN
+location	NN
+could	MD
+be	VB
+in	IN
+Sydney	NNP
+,	,
+while	IN
+the	DT
+program	NN
+chairs	NNS
+could	MD
+come	VB
+from	IN
+Europe	NNP
+,	,
+Asia	NNP
+and	CC
+USA	NNP
+.	.
+
+Thus	RB
+part	NN
+of	IN
+the	DT
+administrative	JJ
+work	NN
+will	MD
+be	VB
+done	VBN
+in	IN
+Sydney	NNP
+and	CC
+part	NN
+of	IN
+it	PRP
+will	MD
+be	VB
+done	VBN
+in	IN
+Europe	NNP
+,	,
+USA	NNP
+or	CC
+Asia	NNP
+.	.
+
+Information	NNP
+pertaining	VBG
+to	TO
+the	DT
+conference	NN
+can	MD
+come	VB
+from	IN
+different	JJ
+parts	NNS
+of	IN
+the	DT
+world	NN
+.	.
+
+For	IN
+example	NN
+the	DT
+information	NN
+regarding	VBG
+paper	NN
+submission	NN
+could	MD
+be	VB
+stored	VBN
+in	IN
+a	DT
+web	NN
+server	NN
+located	JJ
+in	IN
+Europe	NNP
+,	,
+while	IN
+the	DT
+ï	NN
+¬	NN
+nancial	JJ
+and	CC
+registration	NN
+information	NN
+are	VBP
+stored	VBN
+in	IN
+Sydney	NNP
+.	.
+
+The	DT
+papers	NNS
+submitted	VBD
+should	MD
+be	VB
+accessible	JJ
+to	TO
+the	DT
+assigned	VBN
+program	NN
+committee	NN
+members	NNS
+in	IN
+any	DT
+part	NN
+of	IN
+the	DT
+world	NN
+.	.
+
+The	DT
+result	NN
+of	IN
+reviews	NNS
+by	IN
+different	JJ
+program	NN
+committee	NN
+members	NNS
+could	MD
+be	VB
+processed	VBN
+by	IN
+any	DT
+of	IN
+the	DT
+three	CD
+program	NN
+chairs	NNS
+.	.
+
+Authors	NNS
+of	IN
+the	DT
+submitted	VBN
+papers	NNS
+should	MD
+be	VB
+able	JJ
+to	TO
+check	VB
+the	DT
+status	NN
+of	IN
+their	PRP$
+papers	NNS
+from	IN
+any	DT
+part	NN
+of	IN
+the	DT
+world	NN
+too	RB
+.	.
+
+For	IN
+the	DT
+organization	NN
+of	IN
+the	DT
+conference	NN
+to	TO
+be	VB
+successful	JJ
+,	,
+it	PRP
+is	VBZ
+critical	JJ
+that	IN
+committee	NN
+members	NNS
+cooperate	VBP
+and	CC
+adhere	VBP
+to	TO
+the	DT
+speciï	NN
+¬	NN
+ed	VBD
+roles	NNS
+and	CC
+deadlines	NNS
+.	.
+
+
+The	DT
+following	VBG
+are	VBP
+example	NN
+speciï	NN
+¬	CD
+cations	NNS
+of	IN
+activities	NNS
+for	IN
+an	DT
+IEEE	NN
+conference	NN
+.	.
+
+Key	NN
+-	:
+words	NNS
+are	VBP
+in	IN
+boldface	NN
+.	.
+
+The	DT
+activity	NN
+Plan-Conference	NN
+is	VBZ
+an	DT
+aggregation	NN
+of	IN
+ï	NN
+¬	CD
+ve	FW
+sub	FW
+activities	NNS
+.	.
+
+The	DT
+messages	NNS
+within	IN
+an	DT
+activity	NN
+are	VBP
+sent	VBN
+with	IN
+appropriate	JJ
+speech-act	JJ
+primi	NN
+-	:
+tives	NNS
+.	.
+
+Each	DT
+activity	NN
+is	VBZ
+aimed	VBN
+at	IN
+performing	VBG
+a	DT
+speciï	NN
+¬	NN
+c	NN
+task	NN
+-LRB-	-LRB-
+goal	NN
+-RRB-	-RRB-
+.	.
+
+The	DT
+constraints	NNS
+repre	VBP
+-	:
+sent	VBD
+the	DT
+synchronisation	NN
+of	IN
+the	DT
+activities	NNS
+or	CC
+messages	NNS
+.	.
+
+We	PRP
+use	VBP
+the	DT
+Plan-Conference	NNP
+,	,
+Conference-Registration	NNP
+and	CC
+Reserve-Conference-Venue	NNP
+to	TO
+illustrate	VB
+our	PRP$
+modelling	NN
+framework	NN
+.	.
+
+The	DT
+details	NNS
+of	IN
+other	JJ
+activities	NNS
+can	MD
+be	VB
+found	VBN
+in	IN
+the	DT
+appendix	NN
+.	.
+
+
+In	IN
+the	DT
+activityPlan-Conference	NN
+,	,
+the	DT
+constraint	NN
+â	VBD
+$	$
+œËœPlan-publicationUNTIL	JJ
+Plan	NN
+-	:
+
+
+5	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+5	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+technical-sessionâ	JJ
+$	$
+indicates	VBZ
+that	IN
+the	DT
+task	NN
+for	IN
+printing	VBG
+the	DT
+actual	JJ
+proceedings	NNS
+can	MD
+only	RB
+hap	SYM
+-	:
+
+
+pen	NN
+after	IN
+the	DT
+reviewing	VBG
+of	IN
+the	DT
+papers	NNS
+and	CC
+the	DT
+details	NNS
+of	IN
+the	DT
+ï	NN
+¬	CD
+nal	JJ
+technical	JJ
+program	NN
+is	VBZ
+being	VBG
+
+
+ï	NN
+¬	SYM
+nalised	VBN
+.	.
+
+The	DT
+absence	NN
+of	IN
+any	DT
+constraint	NN
+between	IN
+two	CD
+activities	NNS
+imply	VBP
+they	PRP
+can	MD
+be	VB
+executed	VBN
+
+
+in	IN
+any	DT
+order	NN
+.	.
+
+For	IN
+example	NN
+Reserve-Conference-Venue	NN
+and	CC
+Plan-publicity	NN
+
+
+are	VBP
+independent	JJ
+.	.
+
+The	DT
+Goal	NNP
+statement	NN
+speciï	NN
+¬	CD
+es	VBZ
+what	WP
+make	VBP
+the	DT
+activity	NN
+successful	JJ
+and	CC
+
+
+the	DT
+Exit	NN
+statement	NN
+speciï	NN
+¬	CD
+es	VBZ
+what	WP
+make	VBP
+the	DT
+activity	NN
+failed	VBD
+or	CC
+aborted	VBD
+.	.
+
+In	IN
+the	DT
+activity	NN
+
+
+Plan-Conference	NNP
+,	,
+both	DT
+the	DT
+sub-activity	JJ
+Plan-technical-session	NN
+
+
+and	CC
+Reserve-Conference-venue	NNP
+must	MD
+succeed	VB
+for	IN
+this	DT
+activity	NN
+to	TO
+be	VB
+declared	VBN
+a	DT
+
+
+success	NN
+.	.
+
+Plan-Conferenceactivity	NNP
+fails	VBZ
+,	,
+if	IN
+either	DT
+one	CD
+of	IN
+the	DT
+sub	NN
+activityReverve-Conference-Venu	NN
+or	CC
+Plan-technical-session	NN
+fails	VBZ
+.	.
+
+
+Activity	NN
+Plan-Conference	NN
+
+
+aggregate	NN
+of	IN
+:	:
+
+
+Conference-Registration	NNP
+
+
+Plan-technical-session	NN
+
+
+Plan-publicity	NN
+
+
+Plan-publication	NN
+
+
+Reserve-Conference-Venue	NNP
+
+
+Constraints	NNS
+:	:
+
+
+/	:
+*	SYM
+Ëœ	NN
+stands	VBZ
+for	IN
+NOT	NNP
+
+
+/	:
+*	SYM
+No	DT
+constraint	NN
+is	VBZ
+speciï	NN
+¬	NN
+ed	VBD
+between	IN
+Reserve-Conference-venue	NNP
+/	:
+*	SYM
+and	CC
+Plan-publicity	NN
+.	.
+
+Thus	RB
+they	PRP
+can	MD
+occur	VB
+in	IN
+any	DT
+sequence	NN
+
+
+ËœPlan-technical-session	NNP
+UNTIL	NNP
+Reserve-Conference-Venue	NNP
+
+
+ËœPlan-technical-session	NNP
+UNTIL	NNP
+Plan-publicity	NN
+
+
+ËœPlan-publication	NN
+
+
+UNTIL	IN
+Plan-technical-session	NN
+
+
+/	:
+*	SYM
+Do	VBP
+not	RB
+start	VB
+the	DT
+registration	NN
+process	NN
+until	IN
+call	NN
+for	IN
+participation	NN
+/	:
+*	SYM
+notice	NN
+is	VBZ
+sent	VBN
+
+
+ËœConference-Registration	NNP
+
+
+UNTIL	IN
+Plan-publicity	NN
+.	.
+
+send	VB
+-LRB-	-LRB-
+call-for-participation	NN
+-RRB-	-RRB-
+
+
+Goal	NN
+=	JJ
+Plan-technical-session	NN
+AND	CC
+
+
+Reserve-Conference-venue	NNP
+
+
+Exit	NN
+=	JJ
+ËœPlan-technical-session	NN
+OR	NN
+
+
+ËœReserve-Conference-venue	JJ
+
+
+End	NN
+Activity	NN
+
+
+Activity	NN
+Conference-Registration	NNP
+
+
+agents	NNS
+:	:
+t	NN
+:	:
+treasurer	NN
+,	,
+p	NN
+:	:
+publication-chair	NN
+,	,
+r	NN
+:	:
+registrar-chair	NN
+,	,
+
+
+c	NN
+:	:
+technical-pg-chair	NN
+,	,
+d	NN
+:	:
+delegates	NNS
+,	,
+
+
+r	NN
+can	MD
+send	VB
+messages	NNS
+:	:
+
+
+request	NN
+-LRB-	-LRB-
+list-of-authors	NNS
+-RRB-	-RRB-
+to	TO
+c	NN
+
+
+print	NN
+-LRB-	-LRB-
+labels-for-delegates	NNS
+-RRB-	-RRB-
+to	TO
+self	NN
+
+
+request	NN
+-LRB-	-LRB-
+get	VB
+-LRB-	-LRB-
+proceedings	NNS
+-RRB-	-RRB-
+-RRB-	-RRB-
+to	TO
+p	NN
+
+
+assert	VB
+-LRB-	-LRB-
+register	NN
+-LRB-	-LRB-
+delegate-in-advance	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+to	TO
+self	NN
+
+
+register	NN
+-LRB-	-LRB-
+delegate-on-site	NN
+-RRB-	-RRB-
+to	TO
+self	NN
+
+
+request	NN
+-LRB-	-LRB-
+payment	NN
+-RRB-	-RRB-
+to	TO
+d	NN
+
+
+conï	NN
+¬	CD
+rm	NN
+-LRB-	-LRB-
+register	NN
+-LRB-	-LRB-
+delegate	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+to	TO
+d	NN
+
+
+assert	VB
+-LRB-	-LRB-
+deliver	VB
+-LRB-	-LRB-
+payment	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+to	TO
+t	NN
+
+
+assert	VB
+-LRB-	-LRB-
+cancel	VB
+-LRB-	-LRB-
+registration	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+to	TO
+t	NN
+
+
+c	NN
+can	MD
+send	VB
+messages	NNS
+:	:
+
+
+conï	NN
+¬	CD
+rm	NN
+-LRB-	-LRB-
+list-of-authors	NNS
+-RRB-	-RRB-
+to	TO
+r	NN
+
+
+p	NN
+can	MD
+send	VB
+messages	NNS
+:	:
+
+
+conï	NN
+¬	CD
+rm	NN
+-LRB-	-LRB-
+deliver	VB
+-LRB-	-LRB-
+proceedings	NNS
+-RRB-	-RRB-
+-RRB-	-RRB-
+to	TO
+r	NN
+
+
+6	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+6	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+t	NN
+can	MD
+send	VB
+:	:
+
+
+authorize	VB
+-LRB-	-LRB-
+refund-to	NN
+-LRB-	-LRB-
+delegate	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+to	TO
+d	NN
+
+
+conï	NN
+¬	CD
+rm	NN
+-LRB-	-LRB-
+deposit	NN
+-LRB-	-LRB-
+payment	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+to	TO
+r	NN
+
+
+d	NN
+can	MD
+send	VB
+:	:
+
+
+request	NN
+-LRB-	-LRB-
+registration	NN
+-RRB-	-RRB-
+to	TO
+r	NN
+
+
+conï	NN
+¬	CD
+rm	NN
+-LRB-	-LRB-
+payment	NN
+-RRB-	-RRB-
+to	TO
+r	NN
+
+
+request	NN
+-LRB-	-LRB-
+cancel	VB
+-LRB-	-LRB-
+registration	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+to	TO
+r	NN
+
+
+Constraints	NNS
+:	:
+
+
+Ëœprint	NN
+-LRB-	-LRB-
+labels-for-delegates	NNS
+-RRB-	-RRB-
+UNTIL	IN
+
+
+conï	NN
+¬	CD
+rm	NN
+-LRB-	-LRB-
+list-of-authors	NNS
+-RRB-	-RRB-
+AND	CC
+
+
+conï	NN
+¬	CD
+rm	NN
+-LRB-	-LRB-
+register	NN
+-LRB-	-LRB-
+delegate	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+
+
+Ëœregister	NN
+-LRB-	-LRB-
+delegate-on-site	NN
+-RRB-	-RRB-
+
+
+UNTIL	IN
+assert	VB
+-LRB-	-LRB-
+register	NN
+-LRB-	-LRB-
+delegate-in-advance	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+
+
+/	:
+*	SYM
+delegates	NNS
+can	MD
+send	VB
+a	DT
+request	NN
+to	TO
+cancel	VB
+registration	NN
+after	IN
+
+
+/	:
+*	SYM
+request	NN
+for	IN
+registration	NN
+
+
+ALWAYS	NNP
+-LRB-	-LRB-
+request	NN
+-LRB-	-LRB-
+registration	NN
+-RRB-	-RRB-
+SOMETIMES	RB
+-LRB-	-LRB-
+request	NN
+-LRB-	-LRB-
+cancel	VB
+-LRB-	-LRB-
+registration	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+-RRB-	-RRB-
+/	:
+*	SYM
+delegates	NNS
+can	MD
+send	VB
+a	DT
+request	NN
+to	TO
+cancel	VB
+registration	NN
+after	IN
+
+
+/	:
+*	SYM
+sending	VBG
+the	DT
+conï	NN
+¬	NN
+rm	NN
+-LRB-	-LRB-
+payment	NN
+-RRB-	-RRB-
+message	NN
+
+
+ALWAYS	NN
+-LRB-	-LRB-
+conï	NN
+¬	CD
+rm	NN
+-LRB-	-LRB-
+payment	NN
+-RRB-	-RRB-
+NEXT	NN
+-LRB-	-LRB-
+TRUE	JJ
+OR	NN
+request	NN
+-LRB-	-LRB-
+cancel	VB
+-LRB-	-LRB-
+registration	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+-RRB-	-RRB-
+
+
+Goal	NN
+=	JJ
+conï	NN
+¬	NN
+rm	NN
+-LRB-	-LRB-
+register	NN
+-LRB-	-LRB-
+delegate	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+
+
+Exit	NN
+=	JJ
+request	NN
+-LRB-	-LRB-
+cancel	VB
+-LRB-	-LRB-
+registration	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+OR	NN
+
+
+-LRB-	-LRB-
+Ëœ	NN
+conï	NN
+¬	CD
+rm	NN
+-LRB-	-LRB-
+payment	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+
+
+end	NN
+Activity	NN
+
+
+Activity	NN
+:	:
+Reserve-conference-venue	NN
+
+
+agents	NNS
+:	:
+h	NN
+:	:
+hotel	NN
+,	,
+t	NN
+:	:
+treasurer	NN
+,	,
+a	DT
+:	:
+organizing-chair	NN
+
+
+a	DT
+can	MD
+send	VB
+:	:
+
+
+request	NN
+-LRB-	-LRB-
+quotation-for-venue	NN
+-RRB-	-RRB-
+to	TO
+h	NN
+
+
+request	NN
+-LRB-	-LRB-
+approve	VB
+-LRB-	-LRB-
+cost-for-venue	JJ
+-RRB-	-RRB-
+-RRB-	-RRB-
+to	TO
+t	NN
+
+
+request	NN
+-LRB-	-LRB-
+reserve	NN
+-LRB-	-LRB-
+venue	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+to	TO
+h	NN
+
+
+assert	VB
+-LRB-	-LRB-
+pay	NN
+-LRB-	-LRB-
+deposit	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+to	TO
+h	NN
+
+
+h	NN
+can	MD
+send	VB
+:	:
+
+
+send	VB
+-LRB-	-LRB-
+quotation-for-venue	JJ
+-RRB-	-RRB-
+to	TO
+a	DT
+
+
+reserve	NN
+-LRB-	-LRB-
+venue	NN
+-RRB-	-RRB-
+to	TO
+self	NN
+
+
+conï	NN
+¬	CD
+rm	NN
+-LRB-	-LRB-
+reserve	NN
+-LRB-	-LRB-
+venue	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+to	TO
+a	DT
+
+
+assert	VB
+-LRB-	-LRB-
+no	DT
+available	JJ
+-LRB-	-LRB-
+venue	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+to	TO
+a	DT
+
+
+promise	NN
+-LRB-	-LRB-
+venue	NN
+-RRB-	-RRB-
+to	TO
+a	DT
+
+
+t	NN
+can	MD
+send	VB
+:	:
+
+
+conï	NN
+¬	CD
+rm	NN
+-LRB-	-LRB-
+approve	VB
+-LRB-	-LRB-
+cost-for-venue	JJ
+-RRB-	-RRB-
+-RRB-	-RRB-
+to	TO
+a	DT
+
+
+conï	NN
+¬	CD
+rm	NN
+-LRB-	-LRB-
+refuse	NN
+-LRB-	-LRB-
+cost-for-venue	JJ
+-RRB-	-RRB-
+-RRB-	-RRB-
+to	TO
+a	DT
+
+
+Constraints	NNS
+:	:
+
+
+Ëœrequest	NN
+-LRB-	-LRB-
+reserve	NN
+-LRB-	-LRB-
+venue	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+UNTIL	IN
+
+
+request	NN
+-LRB-	-LRB-
+conï	NN
+¬	CD
+rm	NN
+-LRB-	-LRB-
+approve	VB
+-LRB-	-LRB-
+cost-for-venue	JJ
+-RRB-	-RRB-
+-RRB-	-RRB-
+
+
+Ëœconï	NNP
+¬	CD
+rm	NN
+-LRB-	-LRB-
+reserve	NN
+-LRB-	-LRB-
+venue	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+UNTIL	IN
+reserve	NN
+-LRB-	-LRB-
+venue	NN
+-RRB-	-RRB-
+
+
+Ëœassert	NN
+-LRB-	-LRB-
+send	VB
+-LRB-	-LRB-
+venue-details	NNS
+-RRB-	-RRB-
+-RRB-	-RRB-
+
+
+UNTIL	IN
+conï	NN
+¬	CD
+rm	NN
+-LRB-	-LRB-
+reserve	NN
+-LRB-	-LRB-
+venue	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+
+
+ALWAYS	NNP
+-LRB-	-LRB-
+request	NN
+-LRB-	-LRB-
+reserve	NN
+-LRB-	-LRB-
+venue	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+
+
+NEXT	NN
+-LRB-	-LRB-
+SOMETIMES	NN
+-LRB-	-LRB-
+conï	NN
+¬	CD
+rm	NN
+-LRB-	-LRB-
+reserve	NN
+-LRB-	-LRB-
+venue	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+
+
+XOR	NN
+assert	VBP
+-LRB-	-LRB-
+no	DT
+available	JJ
+-LRB-	-LRB-
+venue	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+-RRB-	-RRB-
+
+
+Goal	NN
+=	JJ
+conï	NN
+¬	NN
+rm	NN
+-LRB-	-LRB-
+reserve	NN
+-LRB-	-LRB-
+venue	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+
+
+Exit	NN
+=	JJ
+conï	NN
+¬	NN
+rm	NN
+-LRB-	-LRB-
+refuse	NN
+-LRB-	-LRB-
+cost-for-venue	JJ
+-RRB-	-RRB-
+-RRB-	-RRB-
+
+
+XOR	NN
+assert	VBP
+-LRB-	-LRB-
+no	DT
+available	JJ
+-LRB-	-LRB-
+venue	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+
+
+End	NN
+Activity	NN
+
+
+7	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+7	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+The	DT
+registration	NN
+chair	NN
+has	VBZ
+to	TO
+coordinate	VB
+with	IN
+the	DT
+treasurer	NN
+-LRB-	-LRB-
+to	TO
+deposit	VB
+the	DT
+payments	NNS
+from	IN
+delegates	NNS
+-RRB-	-RRB-
+,	,
+with	IN
+delegates	NNS
+-LRB-	-LRB-
+to	TO
+conï	VB
+¬	CD
+rm	NN
+registration	NN
+and	CC
+ensure	VB
+receive	VB
+of	IN
+payment	NN
+-RRB-	-RRB-
+,	,
+with	IN
+publication	NN
+chair	NN
+-LRB-	-LRB-
+to	TO
+get	VB
+the	DT
+proceedings	NNS
+for	IN
+distribution	NN
+and	CC
+pass	VB
+the	DT
+information	NN
+about	IN
+which	WDT
+authors	NNS
+who	WP
+have	VBP
+not	RB
+pre-registered	JJ
+-RRB-	-RRB-
+,	,
+with	IN
+program	NN
+chairs	NNS
+-LRB-	-LRB-
+about	IN
+techni	NNS
+-	:
+cal	JJ
+program	NN
+for	IN
+printing	NN
+suitable	JJ
+labels	NNS
+for	IN
+delegates	NNS
+-RRB-	-RRB-
+.	.
+
+Different	JJ
+kinds	NNS
+of	IN
+information	NN
+is	VBZ
+needed	VBN
+at	IN
+different	JJ
+period	NN
+of	IN
+time	NN
+.	.
+
+For	IN
+example	NN
+,	,
+printing	NN
+of	IN
+labels	NNS
+only	RB
+need	VBP
+to	TO
+happen	VB
+a	DT
+week	NN
+before	IN
+conference	NN
+.	.
+
+However	RB
+,	,
+it	PRP
+must	MD
+occur	VB
+after	IN
+knowing	VBG
+who	WP
+are	VBP
+the	DT
+presenters	NNS
+,	,
+the	DT
+session	NN
+chairs	NNS
+etc	FW
+from	IN
+the	DT
+technical-programme	NN
+.	.
+
+
+Each	DT
+sub	NN
+activity	NN
+consists	VBZ
+of	IN
+messages	NNS
+that	WDT
+can	MD
+be	VB
+exchanged	VBN
+among	IN
+the	DT
+participants	NNS
+to	TO
+accomplish	VB
+a	DT
+task	NN
+in	IN
+that	DT
+activity	NN
+.	.
+
+It	PRP
+is	VBZ
+a	DT
+non-trivial	JJ
+task	NN
+to	TO
+write	VB
+correct	JJ
+communi	NNS
+-	:
+cation	NN
+constraints	NNS
+between	IN
+many	JJ
+participants	NNS
+.	.
+
+Thus	RB
+a	DT
+declarative	JJ
+speciï	NN
+¬	NN
+cation	NN
+of	IN
+con	NN
+-	:
+straints	NNS
+should	MD
+be	VB
+used	VBN
+.	.
+
+Propositional	NNP
+Temporal	JJ
+Logic	NN
+-LRB-	-LRB-
+PTL	NNP
+-RRB-	-RRB-
+-LSB-	-LRB-
+26	CD
+-RSB-	-RRB-
+is	VBZ
+chosen	VBN
+for	IN
+specify	VB
+-	:
+ing	VBG
+the	DT
+constraints	NNS
+among	IN
+the	DT
+participating	VBG
+agents	NNS
+.	.
+
+Our	PRP$
+initial	JJ
+result	NN
+of	IN
+using	VBG
+PTL	NNP
+for	IN
+this	DT
+purpose	NN
+is	VBZ
+reported	VBN
+in	IN
+-LSB-	-LRB-
+17	CD
+-RSB-	-RRB-
+.	.
+
+The	DT
+temporal	JJ
+operators	NNS
+SOMETIME	RB
+,	,
+NEXT	NNP
+,	,
+ALWAYS	NNP
+and	CC
+UNTIL	NNP
+provide	VBP
+the	DT
+necessary	JJ
+semantics	NNS
+to	TO
+cover	VB
+the	DT
+various	JJ
+kinds	NNS
+of	IN
+dependencies	NNS
+be	VB
+-	:
+tween	NN
+events/messages	NNS
+in	IN
+a	DT
+communication	NN
+process	NN
+.	.
+
+For	IN
+example	NN
+,	,
+SOMETIME	RB
+conveys	VBZ
+the	DT
+obligation	NN
+to	TO
+honour	VB
+an	DT
+event	NN
+in	IN
+a	DT
+future	JJ
+state	NN
+.	.
+
+The	DT
+NEXT	NN
+operator	NN
+is	VBZ
+similar	JJ
+to	TO
+the	DT
+concept	NN
+of	IN
+trigger	NN
+used	VBN
+in	IN
+active	JJ
+databases	NNS
+;	:
+it	PRP
+guarantees	VBZ
+that	IN
+an	DT
+event	NN
+occurs	VBZ
+after	IN
+the	DT
+current	JJ
+one	CD
+.	.
+
+The	DT
+PTL	NNP
+formula	NN
+ËœB	NN
+UNTIL	NN
+A	NN
+-LRB-	-LRB-
+Ëœ	NN
+is	VBZ
+the	DT
+symbol	NN
+for	IN
+NOT	NN
+-RRB-	-RRB-
+expresses	VBZ
+the	DT
+constraint	NN
+that	IN
+the	DT
+event	NN
+B	NN
+can	MD
+not	RB
+happen	VB
+until	IN
+event	NN
+A	NN
+has	VBZ
+happened	VBN
+.	.
+
+The	DT
+unary	JJ
+operator	NN
+ALWAYS	NNP
+is	VBZ
+used	VBN
+to	TO
+express	VB
+cyclic	JJ
+sequences	NNS
+.	.
+
+For	IN
+example	NN
+,	,
+ALWAYS	NN
+C	NN
+means	VBZ
+that	IN
+the	DT
+PTL	NNP
+formula	NN
+C	NN
+will	MD
+always	RB
+have	VB
+the	DT
+value	NN
+TRUE	JJ
+.	.
+
+This	DT
+is	VBZ
+because	IN
+the	DT
+condition	NN
+C	NN
+is	VBZ
+al	NNP
+-	:
+ways	NNS
+being	VBG
+regenerated	VBN
+.	.
+
+The	DT
+following	VBG
+example	NN
+shows	VBZ
+two	CD
+mutually	RB
+exclusive	JJ
+events	NNS
+A	DT
+andB	NN
+speciï	NN
+¬	CD
+ed	VBN
+in	IN
+PTL	NNP
+-LRB-	-LRB-
+A	DT
+trigger	NN
+stands	VBZ
+for	IN
+the	DT
+event	NN
+that	WDT
+triggers	VBZ
+A	NN
+-RRB-	-RRB-
+.	.
+
+The	DT
+corresponding	JJ
+graph	NN
+is	VBZ
+shown	VBN
+in	IN
+ï	NN
+¬	CD
+gure	NN
+1	CD
+:	:
+
+
+ALWAYS	NNP
+-LRB-	-LRB-
+A	DT
+ALWAYS	NN
+-LRB-	-LRB-
+B	NN
+
+
+NEXT	NN
+-LRB-	-LRB-
+Ëœ	NN
+-LRB-	-LRB-
+A	NN
+OR	NN
+B	NN
+-RRB-	-RRB-
+UNTIL	IN
+A	DT
+trigger	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+NEXT	NN
+-LRB-	-LRB-
+Ëœ	NN
+-LRB-	-LRB-
+A	NN
+OR	NN
+B	NN
+-RRB-	-RRB-
+UNTIL	NN
+B	NN
+trigger	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+
+
+a	DT
+
+
+A_Trigger	NN
+
+
+B_Trigger	NN
+
+
+A	DT
+
+
+B	NN
+
+
+bc	NN
+
+
+Figure	NNP
+1	CD
+:	:
+Dependency	NN
+graph	NN
+for	IN
+Mutual	JJ
+Exclusive	JJ
+events	NNS
+
+
+PTL	NNP
+speciï	NN
+¬	CD
+cations	NNS
+can	MD
+be	VB
+veriï	JJ
+¬	NN
+ed	VBD
+formally	RB
+by	IN
+using	VBG
+the	DT
+well	RB
+known	VBN
+tableau	NN
+method	NN
+.	.
+
+Such	PDT
+a	DT
+veriï	NN
+¬	NN
+cation	NN
+system	NN
+has	VBZ
+been	VBN
+implemented	VBN
+using	VBG
+Allegro	NNP
+Common	NNP
+Lisp	NNP
+in	IN
+-LSB-	-LRB-
+9	CD
+-RSB-	-RRB-
+.	.
+
+
+8	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+8	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+We	PRP
+can	MD
+easily	RB
+use	VB
+it	PRP
+to	TO
+verify	VB
+each	DT
+of	IN
+the	DT
+above	JJ
+sub	NN
+activities	NNS
+.	.
+
+A	DT
+dependency	NN
+graph	NN
+for	IN
+Plan-Conference	NN
+is	VBZ
+shown	VBN
+in	IN
+ï	NN
+¬	CD
+gure	NN
+2	CD
+.	.
+
+
+a	DT
+
+
+d	NN
+
+
+Reserve-Conference-Venue	NNP
+
+
+Plan-Publicity	NN
+
+
+b	NN
+
+
+e	SYM
+
+
+Plan-Publicity	NN
+
+
+Conference-Registration	NNP
+
+
+c	NN
+
+
+f	SYM
+
+
+Conference-Registration	NNP
+
+
+Reserve-Conference-Venue	NNP
+
+
+g	NN
+
+
+Plan-technical-session	NN
+
+
+h	NN
+
+
+Plan-publication	NN
+
+
+goal	NN
+
+
+Figure	NN
+2	CD
+:	:
+Dependency	NN
+graph	NN
+for	IN
+Plan-Conference	NN
+
+
+Note	VB
+that	IN
+the	DT
+speciï	NN
+¬	NN
+cation	NN
+of	IN
+messages	NNS
+is	VBZ
+in	IN
+functional	JJ
+style	NN
+.	.
+
+It	PRP
+starts	VBZ
+with	IN
+one	CD
+of	IN
+the	DT
+speech	NN
+act	NN
+primitive	JJ
+and	CC
+ends	VBZ
+with	IN
+an	DT
+action	NN
+or	CC
+a	DT
+proposition	NN
+.	.
+
+For	IN
+example	NN
+in	IN
+the	DT
+Reserve-conference-venue	JJ
+activity	NN
+,	,
+the	DT
+fact	NN
+that	IN
+a	DT
+hotel	NN
+promise	VBP
+a	DT
+particular	JJ
+venue	NN
+for	IN
+the	DT
+conference	NN
+,	,
+and	CC
+conference	NN
+organizer	NN
+had	VBD
+paid	VBN
+the	DT
+deposit	NN
+to	TO
+secure	VB
+it	PRP
+are	VBP
+modeled	VBN
+by	IN
+promise	NN
+-LRB-	-LRB-
+venue	NN
+-RRB-	-RRB-
+and	CC
+assert	VB
+-LRB-	-LRB-
+pay	NN
+-LRB-	-LRB-
+deposit	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+respectively	RB
+.	.
+
+The	DT
+occurrence	NN
+of	IN
+promise	NN
+-LRB-	-LRB-
+venue	NN
+-RRB-	-RRB-
+will	MD
+create	VB
+the	DT
+obligations	NNS
+for	IN
+the	DT
+hotel	NN
+to	TO
+hold	VB
+the	DT
+venue	NN
+-LRB-	-LRB-
+i.e.	FW
+,	,
+not	RB
+to	TO
+give	VB
+the	DT
+requested	VBN
+venue	NN
+to	TO
+another	DT
+customer	NN
+-RRB-	-RRB-
+for	IN
+the	DT
+conference	NN
+or	CC
+-	:
+ganizer	NN
+and	CC
+the	DT
+occurrence	NN
+of	IN
+assert	VB
+-LRB-	-LRB-
+pay	NN
+-LRB-	-LRB-
+deposit	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+remove	VB
+this	DT
+obligation	NN
+,	,
+but	CC
+create	VB
+a	DT
+different	JJ
+obligation	NN
+for	IN
+the	DT
+hotel	NN
+towards	IN
+the	DT
+organizer	NN
+.	.
+
+We	PRP
+illustrate	VBP
+how	WRB
+to	TO
+ex	FW
+-	:
+tract	NN
+obligation	NN
+constraints	NNS
+from	IN
+the	DT
+messages	NNS
+embedded	VBN
+in	IN
+a	DT
+speech-act	JJ
+primitive	JJ
+and	CC
+explicitly	RB
+represented	VBD
+them	PRP
+in	IN
+deontic	JJ
+clauses	NNS
+so	IN
+that	IN
+it	PRP
+is	VBZ
+possible	JJ
+to	TO
+reason	NN
+over	IN
+it	PRP
+in	IN
+the	DT
+next	JJ
+section	NN
+.	.
+
+
+4	CD
+Example	NN
+of	IN
+obligation	NN
+constraints	NNS
+speciï	VBP
+¬	CD
+cation	NN
+
+
+The	DT
+need	NN
+for	IN
+specifying	VBG
+obligation	NN
+constraints	NNS
+in	IN
+the	DT
+context	NN
+of	IN
+our	PRP$
+communication-based	JJ
+workï	NN
+¬	NN
+‚	CD
+ow	NN
+model	NN
+has	VBZ
+been	VBN
+discussed	VBN
+in	IN
+section	NN
+2	CD
+.	.
+
+The	DT
+logic	NN
+to	TO
+reason	NN
+about	IN
+obligations	NNS
+and	CC
+related	JJ
+concepts	NNS
+is	VBZ
+called	VBN
+deontic	JJ
+logic	NN
+.	.
+
+In	IN
+theory	NN
+,	,
+two	CD
+types	NNS
+of	IN
+obligations	NNS
+can	MD
+be	VB
+distinguished	VBN
+:	:
+the	DT
+temporal	JJ
+constraints	NNS
+interpreted	VBN
+in	IN
+a	DT
+deontic	JJ
+sense	NN
+,	,
+i.e.	FW
+,	,
+the	DT
+responsi	NN
+-	:
+
+
+9	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+9	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+bilities	NNS
+or	CC
+the	DT
+role	NN
+of	IN
+participants	NNS
+involved	VBN
+in	IN
+accomplishing	VBG
+a	DT
+task	NN
+;	:
+and	CC
+the	DT
+obligations	NNS
+that	WDT
+are	VBP
+created	VBN
+by	IN
+the	DT
+basic	JJ
+speech	NN
+act	NN
+primitives	NNS
+while	IN
+communicating	VBG
+for	IN
+actions	NNS
+.	.
+
+We	PRP
+only	RB
+deal	VBP
+with	IN
+the	DT
+obligation	NN
+semantics	NNS
+of	IN
+the	DT
+later	JJ
+type	NN
+.	.
+
+In	IN
+-LSB-	-LRB-
+24	CD
+-RSB-	-RRB-
+,	,
+we	PRP
+introduced	VBD
+the	DT
+notion	NN
+of	IN
+contract	NN
+to	TO
+document	VB
+obligations	NNS
+and	CC
+deal	VB
+with	IN
+violation	NN
+of	IN
+obligations	NNS
+using	VBG
+deontic	JJ
+logic	NN
+.	.
+
+It	PRP
+is	VBZ
+not	RB
+clear	JJ
+how	WRB
+to	TO
+capture	VB
+both	CC
+temporal	JJ
+and	CC
+obligation	NN
+constraints	NNS
+in	IN
+one	CD
+frame	NN
+-	:
+work	NN
+.	.
+
+In	IN
+this	DT
+paper	NN
+,	,
+we	PRP
+indirectly	RB
+force	VBP
+users	NNS
+to	TO
+specify	VB
+obligation	NN
+semantics	NNS
+by	IN
+providing	VBG
+a	DT
+standard	JJ
+set	NN
+of	IN
+speech-act	JJ
+primitives	NNS
+to	TO
+be	VB
+used	VBN
+for	IN
+communication	NN
+among	IN
+the	DT
+partici	NN
+-	:
+pants	NNS
+of	IN
+an	DT
+activity	NN
+.	.
+
+It	PRP
+is	VBZ
+possible	JJ
+to	TO
+limit	VB
+the	DT
+type	NN
+of	IN
+obligations	NNS
+that	IN
+we	PRP
+are	VBP
+dealing	VBG
+with	IN
+and	CC
+it	PRP
+is	VBZ
+possible	JJ
+to	TO
+document	VB
+and	CC
+track	VB
+them	PRP
+.	.
+
+In	IN
+our	PRP$
+context	NN
+,	,
+any	DT
+message	NN
+sent	VBN
+without	IN
+using	VBG
+the	DT
+authorized	VBN
+set	NN
+of	IN
+speech-act	JJ
+primitives	NNS
+implies	VBZ
+no	DT
+inherent	JJ
+obligation	NN
+involved	VBN
+between	IN
+the	DT
+sender	NN
+and	CC
+the	DT
+receiver	NN
+.	.
+
+
+Thus	RB
+the	DT
+ï	NN
+¬	NN
+rst	NN
+step	NN
+in	IN
+our	PRP$
+workï	NN
+¬	CD
+‚	CD
+ow	NN
+modelling	NN
+is	VBZ
+to	TO
+determine	VB
+what	WP
+types	NNS
+of	IN
+speech-act	JJ
+primitives	NNS
+are	VBP
+required	VBN
+for	IN
+the	DT
+communication	NN
+.	.
+
+We	PRP
+then	RB
+go	VBP
+through	IN
+an	DT
+activity	NN
+and	CC
+extract	NN
+the	DT
+obligations	NNS
+of	IN
+both	DT
+service	NN
+providers	NNS
+and	CC
+service	NN
+receivers	NNS
+by	IN
+checking	VBG
+what	WP
+type	NN
+of	IN
+speech	NN
+act	NN
+are	VBP
+used	VBN
+by	IN
+them	PRP
+to	TO
+communicate	VB
+with	IN
+one	CD
+another	DT
+.	.
+
+The	DT
+type	NN
+of	IN
+speech-act	JJ
+used	VBN
+bind	VBP
+them	PRP
+to	TO
+certain	JJ
+type	NN
+of	IN
+obligations	NNS
+.	.
+
+We	PRP
+document	VBP
+the	DT
+obligations	NNS
+in	IN
+terms	NNS
+of	IN
+deontic	JJ
+clauses	NNS
+-LRB-	-LRB-
+which	WDT
+is	VBZ
+a	DT
+conjunction	NN
+of	IN
+deontic	JJ
+formula	NN
+-RRB-	-RRB-
+.	.
+
+
+The	DT
+following	VBG
+example	NN
+illustrates	VBZ
+the	DT
+obligations	NNS
+that	WDT
+arise	VBP
+between	IN
+hotel	NN
+-LRB-	-LRB-
+h	NN
+-RRB-	-RRB-
+and	CC
+theconference	NN
+organizer	NN
+-LRB-	-LRB-
+o	NN
+-RRB-	-RRB-
+in	IN
+the	DT
+activityReserve-conference-venue	NN
+.	.
+
+We	PRP
+use	VBP
+a	DT
+set	NN
+of	IN
+deontic	JJ
+clauses	NNS
+to	TO
+track	VB
+the	DT
+state	NN
+of	IN
+the	DT
+obligations	NNS
+.	.
+
+Each	DT
+deontic	JJ
+clause	NN
+is	VBZ
+reached	VBN
+by	IN
+one	CD
+or	CC
+more	JJR
+messages	NNS
+and	CC
+is	VBZ
+left	VBN
+again	RB
+by	IN
+other	JJ
+messages	NNS
+.	.
+
+
+/	:
+*	SYM
+obligation	NN
+of	IN
+hotel	NN
+in	IN
+sending	VBG
+the	DT
+message	NN
+promise	NN
+-LRB-	-LRB-
+venue	NN
+-RRB-	-RRB-
+*	SYM
+/	:
+s0	NN
+:	:
+obl	NN
+-LRB-	-LRB-
+h	NN
+,	,
+keep	VB
+-LRB-	-LRB-
+reserved	VBN
+venue	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+
+
+in	IN
+promise	NN
+-LRB-	-LRB-
+venue	NN
+-RRB-	-RRB-
+
+
+goal	NN
+assert	VB
+-LRB-	-LRB-
+accept	VB
+-LRB-	-LRB-
+conference	NN
+guest	NN
+booking	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+goto	NN
+s4	NN
+&	CC
+s1	NN
+
+
+exit	NN
+
+
+-LRB-	-LRB-
+o	NN
+,	,
+request	NN
+-LRB-	-LRB-
+cancel	VB
+-LRB-	-LRB-
+reserved	VBN
+venue	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+-RRB-	-RRB-
+goto	NN
+s2	NN
+
+
+assert	VB
+-LRB-	-LRB-
+cancel	VB
+-LRB-	-LRB-
+reserved	VBN
+venue	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+goto	NN
+s3	NN
+
+
+/	:
+*	SYM
+obligation	NN
+of	IN
+conference	NN
+organizer	NN
+in	IN
+accepting	VBG
+the	DT
+/	:
+*	SYM
+quotation	NN
+for	IN
+the	DT
+venue	NN
+*	SYM
+/	:
+
+
+s1	NN
+:	:
+obl	NN
+-LRB-	-LRB-
+o	NN
+,	,
+pay	NN
+-LRB-	-LRB-
+deposit	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+
+
+in	IN
+promise	NN
+-LRB-	-LRB-
+venue	NN
+-RRB-	-RRB-
+
+
+goal	NN
+-LRB-	-LRB-
+h	NN
+,	,
+assert	VB
+-LRB-	-LRB-
+receive	VB
+-LRB-	-LRB-
+deposit	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+-RRB-	-RRB-
+goto	NN
+s7	NN
+
+
+exit	NN
+
+
+declare	VB
+-LRB-	-LRB-
+cancel	VB
+-LRB-	-LRB-
+reserved	VBN
+venue	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+goto	NN
+s2	NN
+
+
+/	:
+*	SYM
+obligation	NN
+of	IN
+hotel	NN
+to	TO
+refund	VB
+the	DT
+deposit	NN
+if	IN
+cancellation	NN
+from	IN
+
+
+conference	NN
+organizer	NN
+is	VBZ
+with	IN
+sufï	NN
+¬	NN
+cient	JJ
+notice	NN
+*	SYM
+/	:
+s2	NN
+:	:
+obl	NN
+-LRB-	-LRB-
+h	NN
+,	,
+refund	NN
+-LRB-	-LRB-
+deposit	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+
+
+in	IN
+declare	VB
+-LRB-	-LRB-
+cancel	VB
+-LRB-	-LRB-
+reserved	VBN
+venue	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+
+
+goal	NN
+-LRB-	-LRB-
+o	NN
+,	,
+collect	VB
+-LRB-	-LRB-
+deposit	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+goto	NN
+s0	NN
+
+
+exit	NN
+
+
+-LRB-	-LRB-
+o	NN
+,	,
+assert	VB
+-LRB-	-LRB-
+cancel	VB
+-LRB-	-LRB-
+with	IN
+no	DT
+sufï	NN
+¬	NN
+cient	JJ
+notice	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+-RRB-	-RRB-
+goto	NN
+s6	NN
+
+
+/	:
+*	SYM
+authorization	NN
+that	WDT
+hotel	NN
+gives	VBZ
+to	TO
+conference	NN
+organizer	NN
+
+
+in	IN
+the	DT
+event	NN
+that	WDT
+hotel	NN
+withdraws	VBZ
+the	DT
+venue	NN
+*	SYM
+/	:
+s3	NN
+:	:
+aut	NN
+-LRB-	-LRB-
+o	NN
+,	,
+request	NN
+-LRB-	-LRB-
+alternative	JJ
+venue	NN
+-RRB-	-RRB-
+&	CC
+collect	VB
+-LRB-	-LRB-
+deposit	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+
+
+in	IN
+assert	VB
+-LRB-	-LRB-
+cancel	VB
+-LRB-	-LRB-
+reserved	VBN
+venue	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+
+
+10	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+10	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+goal	NN
+-LRB-	-LRB-
+h	NN
+,	,
+conï	NN
+¬	NN
+rm	NN
+-LRB-	-LRB-
+reserved	JJ
+venue	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+goto	NN
+s0	NN
+exit	NN
+
+
+declare	VB
+-LRB-	-LRB-
+cancel	VB
+-LRB-	-LRB-
+reserved	VBN
+venue	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+goto	NN
+s2	NN
+
+
+/	:
+*	SYM
+accomplishment	NN
+of	IN
+hotel	NN
+in	IN
+promise	NN
+-LRB-	-LRB-
+venue	NN
+-RRB-	-RRB-
+*	SYM
+/	:
+s4	NN
+:	:
+acc	NN
+-LRB-	-LRB-
+h	NN
+,	,
+keep	VB
+-LRB-	-LRB-
+reserved	VBN
+venue	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+
+
+in	IN
+assert	VB
+-LRB-	-LRB-
+accept	VB
+-LRB-	-LRB-
+conference	NN
+guest	NN
+booking	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+
+
+goal	NN
+goto	NN
+s0	NN
+
+
+/	:
+*	SYM
+obligation	NN
+of	IN
+hotel	NN
+in	IN
+venue	NN
+cancellation	NN
+*	SYM
+/	:
+s5	NN
+:	:
+obl	NN
+-LRB-	-LRB-
+h	NN
+,	,
+pay	NN
+-LRB-	-LRB-
+ï	NN
+¬	CD
+ne	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+
+
+in	IN
+assert	VB
+-LRB-	-LRB-
+cancel	VB
+-LRB-	-LRB-
+reserved	VBN
+venue	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+
+
+goal	NN
+goto	NN
+s0	NN
+
+
+/	:
+*	SYM
+authorization	NN
+that	WDT
+conference	NN
+organizer	NN
+gives	VBZ
+to	TO
+hotel	NN
+/	:
+*	SYM
+when	WRB
+insufï	NN
+¬	NN
+cient	JJ
+notice	NN
+is	VBZ
+given	VBN
+
+
+s6	NN
+:	:
+aut	NN
+-LRB-	-LRB-
+h	NN
+,	,
+permit	NN
+-LRB-	-LRB-
+keep	VB
+-LRB-	-LRB-
+deposit	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+-RRB-	-RRB-
+
+
+in	IN
+-LRB-	-LRB-
+o	NN
+,	,
+assert	VB
+-LRB-	-LRB-
+cancel	VB
+-LRB-	-LRB-
+with	IN
+no	DT
+sufï	NN
+¬	NN
+cient	JJ
+notice	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+-RRB-	-RRB-
+
+
+goal	NN
+goto	NN
+s0	NN
+
+
+/	:
+*	SYM
+hotel	NN
+obliged	VBN
+to	TO
+provide	VB
+the	DT
+venue	NN
+after	IN
+receiving	VBG
+the	DT
+deposit	NN
+s7	NN
+:	:
+obl	NN
+-LRB-	-LRB-
+h	NN
+,	,
+provide	VBP
+-LRB-	-LRB-
+venue	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+
+
+in	IN
+assert	VB
+-LRB-	-LRB-
+receive	VB
+-LRB-	-LRB-
+deposit	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+
+
+goal	NN
+goto	NN
+s0	NN
+
+
+exit	NN
+goto	NN
+s5	NN
+
+
+The	DT
+obligation	NN
+is	VBZ
+identiï	NN
+¬	CD
+ed	VBN
+by	IN
+a	DT
+unique	JJ
+state	NN
+number	NN
+such	JJ
+as	IN
+S1	NN
+,	,
+S2	NN
+,	,
+S3	NN
+and	CC
+S4	NN
+.	.
+
+The	DT
+in	IN
+part	NN
+refers	VBZ
+to	TO
+the	DT
+speech-act	JJ
+action	NN
+or	CC
+message	NN
+that	WDT
+leads	VBZ
+to	TO
+this	DT
+state	NN
+.	.
+
+The	DT
+goal	NN
+and	CC
+exit	NN
+have	VBP
+the	DT
+effect	NN
+of	IN
+moving	VBG
+to	TO
+another	DT
+deontic	JJ
+state	NN
+-LRB-	-LRB-
+a	DT
+different	JJ
+obligation	NN
+-RRB-	-RRB-
+.	.
+
+The	DT
+current	JJ
+state	NN
+is	VBZ
+no	RB
+longer	RB
+valid	JJ
+.	.
+
+
+The	DT
+speech-act	JJ
+promise	NN
+commit	VB
+the	DT
+hotel	NN
+-LRB-	-LRB-
+h	NN
+-RRB-	-RRB-
+with	IN
+obligation	NN
+labelled	VBN
+as	IN
+state	NN
+s0	NN
+.	.
+
+This	DT
+obligation	NN
+is	VBZ
+removed	VBN
+by	IN
+the	DT
+goal	NN
+state	NN
+i.e.	FW
+,	,
+occurrences	NNS
+of	IN
+action	NN
+
+
+assert	VB
+-LRB-	-LRB-
+accept	VB
+-LRB-	-LRB-
+conference	NN
+guest	NN
+booking	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+.	.
+
+This	DT
+obligation	NN
+is	VBZ
+violated	VBN
+by	IN
+the	DT
+exit	NN
+state	NN
+i.e.	FW
+,	,
+if	IN
+hotel	NN
+unilaterally	RB
+canceled	VBD
+the	DT
+promised	VBN
+venue	NN
+.	.
+
+The	DT
+violation	NN
+will	MD
+trig	VB
+-	:
+ger	NN
+some	DT
+other	JJ
+obligations	NNS
+,	,
+in	IN
+this	DT
+case	NN
+states3	NN
+which	WDT
+states	VBZ
+that	IN
+the	DT
+conference	NN
+organizer	NN
+is	VBZ
+authorized	VBN
+to	TO
+seek	VB
+for	IN
+an	DT
+alternative	JJ
+venue	NN
+and	CC
+collect	VB
+the	DT
+full	JJ
+refund	NN
+of	IN
+deposit	NN
+.	.
+
+Al	NNP
+-	:
+ternatively	RB
+,	,
+the	DT
+conference	NN
+organizer	NN
+may	MD
+seek	VB
+to	TO
+cancel	VB
+the	DT
+conference	NN
+completely	RB
+and	CC
+hotel	NN
+is	VBZ
+obliged	VBN
+to	TO
+pay	VB
+a	DT
+penalty	NN
+-LRB-	-LRB-
+S5	NN
+-RRB-	-RRB-
+.	.
+
+
+The	DT
+difference	NN
+between	IN
+the	DT
+goal	NN
+and	CC
+the	DT
+exit	NN
+is	VBZ
+that	IN
+one	CD
+involves	VBZ
+the	DT
+fulï	NN
+¬	NN
+llment	NN
+of	IN
+the	DT
+obligation	NN
+whereas	IN
+the	DT
+other	JJ
+involves	VBZ
+a	DT
+violation	NN
+or	CC
+non-fulï	JJ
+¬	NN
+llment	NN
+.	.
+
+The	DT
+fact	NN
+that	IN
+the	DT
+hotel	NN
+promised	VBD
+to	TO
+keep	VB
+the	DT
+reserved	JJ
+venue	NN
+obliged	VBD
+the	DT
+conference	NN
+organizer	NN
+-LRB-	-LRB-
+o	NN
+-RRB-	-RRB-
+to	TO
+pay	VB
+the	DT
+deposit	NN
+.	.
+
+This	DT
+corresponds	VBZ
+to	TO
+obligation	NN
+labelled	VBN
+as	IN
+s1	NN
+.	.
+
+
+5	CD
+Related	JJ
+Work	NN
+
+
+Various	JJ
+formalisms	NNS
+have	VBP
+been	VBN
+proposed	VBN
+in	IN
+the	DT
+past	NN
+for	IN
+the	DT
+speciï	NN
+¬	NN
+cation	NN
+of	IN
+constraints	NNS
+be	VB
+-	:
+tween	NN
+objects	NNS
+.	.
+
+In	IN
+-LSB-	-LRB-
+14	CD
+-RSB-	-RRB-
+,	,
+the	DT
+concept	NN
+of	IN
+activity	NN
+is	VBZ
+used	VBN
+to	TO
+specify	VB
+the	DT
+communication	NN
+behaviour	NN
+and	CC
+interactions	NNS
+in	IN
+the	DT
+framework	NN
+of	IN
+object	NN
+oriented	VBN
+databases	NNS
+.	.
+
+In	IN
+the	DT
+event	NN
+model	NN
+by	IN
+King	NNP
+and	CC
+McLeod	NNP
+-LSB-	-LRB-
+11	CD
+-RSB-	-RRB-
+,	,
+a	DT
+ï	NN
+¬	NN
+nite	JJ
+state	NN
+diagram	NN
+is	VBZ
+used	VBN
+to	TO
+model	VB
+communication	NN
+
+
+11	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+11	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+paths	NNS
+.	.
+
+In	IN
+the	DT
+90â	CD
+$	$
+™	CD
+s	NNS
+,	,
+the	DT
+Flexible	NNP
+Transaction	NNP
+Model	NNP
+-LSB-	-LRB-
+5	CD
+-RSB-	-RRB-
+has	VBZ
+been	VBN
+proposed	VBN
+for	IN
+the	DT
+speciï	NN
+¬	NN
+ca	MD
+-	:
+tion	NN
+of	IN
+coordination	NN
+in	IN
+multi-systems	NNS
+applications	NNS
+.	.
+
+More	RBR
+recently	RB
+,	,
+coordinative	JJ
+workï	NN
+¬	NN
+‚	CD
+ow	NN
+speciï	NN
+¬	CD
+cation	NN
+based	VBN
+on	IN
+process	NN
+algebra	NN
+is	VBZ
+proposed	VBN
+in	IN
+-LSB-	-LRB-
+1	CD
+-RSB-	-RRB-
+.	.
+
+
+Systems	NNPS
+like	IN
+the	DT
+METEOR	NN
+-LSB-	-LRB-
+18	CD
+-RSB-	-RRB-
+,	,
+TSME	NN
+-LSB-	-LRB-
+7	CD
+-RSB-	-RRB-
+,	,
+Tractor	NN
+-LSB-	-LRB-
+8	CD
+-RSB-	-RRB-
+,	,
+ASSET	NN
+-LSB-	-LRB-
+2	CD
+-RSB-	-RRB-
+take	VB
+the	DT
+approach	NN
+of	IN
+providing	VBG
+sublanguage	JJ
+primitives	NNS
+for	IN
+specifying	VBG
+the	DT
+coordination	NN
+in	IN
+workï	NN
+¬	CD
+‚	CD
+ow	NN
+and	CC
+the	DT
+corresponding	JJ
+execution	NN
+environment	NN
+for	IN
+application-speciï	NN
+¬	CD
+c	NN
+workï	NN
+¬	CD
+‚	CD
+ow	NN
+systems	NNS
+.	.
+
+How	WRB
+-	:
+ever	RB
+,	,
+we	PRP
+want	VBP
+to	TO
+be	VB
+able	JJ
+to	TO
+specify	VB
+and	CC
+verify	VB
+constraints	NNS
+in	IN
+workï	NN
+¬	CD
+‚	CD
+ow	NN
+formally	RB
+.	.
+
+PTL	NNP
+has	VBZ
+a	DT
+well	RB
+proven	JJ
+veriï	NN
+¬	NN
+cation	NN
+method	NN
+.	.
+
+Primitives	NNS
+used	VBN
+in	IN
+the	DT
+above	JJ
+systems	NNS
+tend	VBP
+to	TO
+be	VB
+ad	NN
+hoc	FW
+and	CC
+informal	JJ
+,	,
+it	PRP
+canâ	VBD
+$	$
+™	CD
+t	NN
+enforce	VBP
+the	DT
+correct	JJ
+execution	NN
+of	IN
+workï	NN
+¬	CD
+‚	CD
+ow	NN
+transactions	NNS
+.	.
+
+That	DT
+is	VBZ
+,	,
+the	DT
+correct	JJ
+behaviour	NN
+of	IN
+those	DT
+primitives	NNS
+can	MD
+not	RB
+be	VB
+ensured	VBN
+without	IN
+a	DT
+formal	JJ
+approach	NN
+.	.
+
+
+Our	PRP$
+choice	NN
+of	IN
+using	VBG
+the	DT
+Propositional	NNP
+Temporal	JJ
+Logic	NN
+for	IN
+specifying	VBG
+the	DT
+temporal	JJ
+constraints	NNS
+in	IN
+workï	NN
+¬	CD
+‚	CD
+ow	NN
+not	RB
+only	RB
+has	VBZ
+the	DT
+advantage	NN
+of	IN
+being	VBG
+declarative	JJ
+but	CC
+also	RB
+has	VBZ
+the	DT
+added	VBN
+beneï	NN
+¬	NN
+t	NN
+of	IN
+having	VBG
+a	DT
+well-established	JJ
+veriï	NN
+¬	NN
+cation	NN
+method	NN
+.	.
+
+Furthermore	RB
+,	,
+by	IN
+using	VBG
+the	DT
+full	JJ
+Propositional	NNP
+Temporal	JJ
+Logic	NN
+system	NN
+as	IN
+a	DT
+speciï	NN
+¬	NN
+cation	NN
+language	NN
+,	,
+we	PRP
+avoid	VBP
+imposing	VBG
+any	DT
+practical	JJ
+restrictions	NNS
+on	IN
+the	DT
+types	NNS
+of	IN
+dependencies	NNS
+that	WDT
+can	MD
+be	VB
+expressed	VBN
+.	.
+
+For	IN
+example	NN
+,	,
+it	PRP
+is	VBZ
+not	RB
+possible	JJ
+to	TO
+specify	VB
+cyclic	JJ
+sequences	NNS
+such	JJ
+as	IN
+A	DT
+,	,
+B	NN
+,	,
+A	NN
+,	,
+B	NN
+,	,
+...	:
+Dependencies	NNS
+such	JJ
+as	IN
+A	DT
+will	MD
+always	RB
+follow	VB
+B	NN
+,	,
+A	DT
+will	MD
+never	RB
+follow	VB
+B	NN
+and	CC
+B	NN
+will	MD
+never	RB
+follow	VB
+A	DT
+are	VBP
+not	RB
+catered	VBN
+for	IN
+.	.
+
+The	DT
+temporal	JJ
+operators	NNS
+such	JJ
+as	IN
+ALWAYS	NNP
+and	CC
+SOMETIMES	NNP
+provide	VBP
+the	DT
+means	NNS
+to	TO
+specify	VB
+both	CC
+partial	JJ
+order	NN
+and	CC
+cyclic	JJ
+dependencies	NNS
+in	IN
+our	PRP$
+approach	NN
+.	.
+
+Thus	RB
+we	PRP
+are	VBP
+not	RB
+restricted	JJ
+to	TO
+a	DT
+directed	VBN
+graph	NN
+structure	NN
+.	.
+
+In	IN
+-LSB-	-LRB-
+9	CD
+-RSB-	-RRB-
+PTL	NNP
+has	VBZ
+been	VBN
+shown	VBN
+to	TO
+be	VB
+adequate	JJ
+to	TO
+express	VB
+all	PDT
+the	DT
+time	NN
+interval	JJ
+operators	NNS
+as	IN
+proposed	VBN
+by	IN
+Allen	NNP
+and	CC
+it	PRP
+has	VBZ
+been	VBN
+used	VBN
+to	TO
+successfully	RB
+generate	VB
+concurrent	JJ
+communication	NN
+systems	NNS
+.	.
+
+
+A	DT
+number	NN
+of	IN
+declarative	JJ
+approaches	NNS
+to	TO
+workï	NN
+¬	CD
+‚	CD
+ow	NN
+modelling	NN
+have	VBP
+also	RB
+been	VBN
+proposed	VBN
+in	IN
+-LSB-	-LRB-
+21	CD
+,	,
+3	CD
+,	,
+19	CD
+-RSB-	-RRB-
+.	.
+
+However	RB
+,	,
+none	NN
+of	IN
+these	DT
+approaches	NNS
+address	VBP
+the	DT
+issues	NNS
+of	IN
+obligation	NN
+con	NN
+-	:
+straints	NNS
+and	CC
+in	IN
+our	PRP$
+view	NN
+lack	VBP
+a	DT
+mechanism	NN
+to	TO
+react	VB
+and	CC
+capture	VB
+dynamic	JJ
+changes	NNS
+in	IN
+work	NN
+-	:
+ï	NN
+¬	CD
+‚	CD
+ow	NN
+processes	NNS
+.	.
+
+For	IN
+example	NN
+,	,
+workï	NN
+¬	CD
+‚	CD
+ow	NN
+is	VBZ
+being	VBG
+modelled	VBN
+,	,
+veriï	NN
+¬	CD
+ed	VBD
+and	CC
+executed	VBD
+in	IN
+one	CD
+framework	NN
+in	IN
+CTR	NN
+-LRB-	-LRB-
+Concurrent	JJ
+TRansaction	NN
+Logic	NN
+-RRB-	-RRB-
+.	.
+
+This	DT
+implies	VBZ
+that	IN
+CTR	NN
+is	VBZ
+the	DT
+ulti	NN
+-	:
+mate	NN
+workï	NN
+¬	CD
+‚	CD
+ow	NN
+engine	NN
+for	IN
+the	DT
+workï	NN
+¬	CD
+‚	CD
+ow	NN
+.	.
+
+It	PRP
+is	VBZ
+unclear	JJ
+how	WRB
+this	DT
+approach	NN
+can	MD
+be	VB
+extended	VBN
+to	TO
+dynamically	RB
+modify	VB
+the	DT
+execution	NN
+sequences	NNS
+in	IN
+reaction	NN
+to	TO
+new	JJ
+constraints	NNS
+-LRB-	-LRB-
+violation	NN
+of	IN
+obligations	NNS
+-RRB-	-RRB-
+.	.
+
+
+The	DT
+obligation	NN
+constraints	NNS
+,	,
+which	WDT
+is	VBZ
+imperative	JJ
+for	IN
+workï	NN
+¬	CD
+‚	CD
+ow	NN
+systems	NNS
+to	TO
+be	VB
+reactive	JJ
+to	TO
+unanticipated	JJ
+changes	NNS
+need	VBP
+to	TO
+be	VB
+speciï	JJ
+¬	NN
+ed	VBD
+.	.
+
+A	DT
+pioneering	JJ
+work	NN
+in	IN
+specifying	VBG
+obligations	NNS
+aspects	NNS
+of	IN
+workï	NN
+¬	CD
+‚	CD
+ow	NN
+is	VBZ
+found	VBN
+in	IN
+ActionFlow	NNP
+which	WDT
+makes	VBZ
+use	NN
+of	IN
+the	DT
+speech-act	JJ
+theory	NN
+-LSB-	-LRB-
+15	CD
+-RSB-	-RRB-
+.	.
+
+This	DT
+has	VBZ
+the	DT
+advantage	NN
+that	WDT
+obligations	NNS
+can	MD
+be	VB
+stated	VBN
+in	IN
+a	DT
+concise	JJ
+manner	NN
+and	CC
+we	PRP
+can	MD
+perform	VB
+reasoning	NN
+with	IN
+the	DT
+speciï	NN
+¬	NN
+cation	NN
+.	.
+
+Obligations	NNS
+that	WDT
+can	MD
+not	RB
+be	VB
+fullï	JJ
+¬	NN
+lled	VBD
+can	MD
+be	VB
+detected	VBN
+and	CC
+resolved	VBN
+.	.
+
+However	RB
+,	,
+system	NN
+that	WDT
+emphasises	VBZ
+on	IN
+obligations	NNS
+tends	VBZ
+to	TO
+ignore	VB
+the	DT
+temporal	JJ
+constraints	NNS
+.	.
+
+
+Our	PRP$
+emphasis	NN
+is	VBZ
+on	IN
+the	DT
+modelling	NN
+of	IN
+both	CC
+temporal	JJ
+and	CC
+the	DT
+obligation	NN
+aspect	NN
+of	IN
+work	NN
+-	:
+ï	NN
+¬	CD
+‚	CD
+ow	NN
+.	.
+
+We	PRP
+are	VBP
+not	RB
+addressing	VBG
+the	DT
+computation	NN
+or	CC
+transactional	JJ
+aspects	NNS
+of	IN
+workï	NN
+¬	CD
+‚	CD
+ow	NN
+.	.
+
+In	IN
+fact	NN
+,	,
+our	PRP$
+ultimate	JJ
+goal	NN
+is	VBZ
+to	TO
+specify	VB
+,	,
+validate	VB
+and	CC
+then	RB
+translate	VB
+our	PRP$
+speciï	NN
+¬	CD
+cation	NN
+into	IN
+a	DT
+format	NN
+that	WDT
+can	MD
+be	VB
+imported	VBN
+and	CC
+executed	VBN
+in	IN
+any	DT
+open-nested	JJ
+transaction	NN
+management	NN
+facilities	NNS
+like	IN
+in	IN
+-LSB-	-LRB-
+5	CD
+-RSB-	-RRB-
+,	,
+-LSB-	-LRB-
+4	CD
+-RSB-	-RRB-
+,	,
+-LSB-	-LRB-
+13	CD
+-RSB-	-RRB-
+,	,
+-LSB-	-LRB-
+6	CD
+-RSB-	-RRB-
+,	,
+-LSB-	-LRB-
+12	CD
+-RSB-	-RRB-
+,	,
+-LSB-	-LRB-
+23	CD
+-RSB-	-RRB-
+.	.
+
+
+12	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+12	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+6	CD
+Conclusions	NNPS
+&	CC
+Future	NNP
+Works	NNP
+
+
+In	IN
+this	DT
+paper	NN
+,	,
+we	PRP
+have	VBP
+outlined	VBN
+an	DT
+approach	NN
+to	TO
+workï	NN
+¬	CD
+‚	CD
+ow	NN
+modeling	NN
+which	WDT
+makes	VBZ
+use	NN
+of	IN
+both	CC
+temporal	JJ
+and	CC
+deontic	JJ
+logics	NNS
+.	.
+
+The	DT
+emphasis	NN
+is	VBZ
+on	IN
+the	DT
+modeling	NN
+of	IN
+both	CC
+temporal	JJ
+and	CC
+obligation	NN
+constraints	NNS
+.	.
+
+We	PRP
+demonstrate	VBP
+our	PRP$
+workï	NN
+¬	CD
+‚	CD
+ow	NN
+modeling	NN
+using	VBG
+a	DT
+virtual	JJ
+conference	NN
+planning	NN
+example	NN
+.	.
+
+We	PRP
+believe	VBP
+that	IN
+though	IN
+temporal	JJ
+constraints	NNS
+alone	RB
+can	MD
+capture	VB
+all	PDT
+the	DT
+coordination	NN
+constraints	NNS
+in	IN
+a	DT
+workï	NN
+¬	CD
+‚	CD
+ow	NN
+,	,
+coordination	NN
+constraints	NNS
+is	VBZ
+not	RB
+sufï	JJ
+¬	NN
+cient	NN
+to	TO
+make	VB
+the	DT
+workï	NN
+¬	CD
+‚	CD
+ow	NN
+reactive	JJ
+to	TO
+business	NN
+environment	NN
+which	WDT
+requires	VBZ
+a	DT
+continuous	JJ
+adaptation	NN
+to	TO
+possible	JJ
+â	NN
+$	$
+hiccupsâ	JJ
+$	$
+along	IN
+the	DT
+process	NN
+.	.
+
+
+We	PRP
+believe	VBP
+that	IN
+the	DT
+correctness	NN
+of	IN
+any	DT
+speciï	NN
+¬	NN
+cation	NN
+for	IN
+controlling	VBG
+the	DT
+data	NNS
+ï	NN
+¬	CD
+‚	CD
+ow	NN
+in	IN
+a	DT
+workï	NN
+¬	CD
+‚	CD
+ow	NN
+system	NN
+is	VBZ
+of	IN
+vital	JJ
+importance	NN
+,	,
+as	IN
+any	DT
+apparently	RB
+minor	JJ
+,	,
+local	JJ
+problem	NN
+can	MD
+have	VB
+disastrous	JJ
+effects	NNS
+which	WDT
+are	VBP
+distributed	VBN
+among	IN
+the	DT
+communicating	VBG
+activities	NNS
+.	.
+
+The	DT
+writing	NN
+of	IN
+such	JJ
+speciï	NN
+¬	NN
+cation	NN
+requires	VBZ
+great	JJ
+attention	NN
+to	TO
+detail	NN
+and	CC
+is	VBZ
+prone	JJ
+to	TO
+errors	NNS
+.	.
+
+The	DT
+use	NN
+of	IN
+propositional	JJ
+temporal	JJ
+logic	NN
+not	RB
+only	RB
+has	VBZ
+the	DT
+advantages	NNS
+of	IN
+being	VBG
+more	RBR
+declarative	JJ
+as	IN
+compared	VBN
+to	TO
+the	DT
+ï	NN
+¬	CD
+‚	NN
+exible	JJ
+transaction	NN
+model	NN
+-LSB-	-LRB-
+6	CD
+-RSB-	-RRB-
+,	,
+but	CC
+also	RB
+lends	VBZ
+itself	PRP
+to	TO
+a	DT
+well-proven	JJ
+veriï	NN
+¬	NN
+cation	NN
+method	NN
+.	.
+
+Furthermore	RB
+by	IN
+using	VBG
+the	DT
+full	JJ
+propositional	JJ
+temporal	JJ
+logic	NN
+system	NN
+as	IN
+speciï	NN
+¬	CD
+cation	NN
+language	NN
+,	,
+we	PRP
+avoid	VBP
+imposing	VBG
+any	DT
+practical	JJ
+restrictions	NNS
+on	IN
+the	DT
+types	NNS
+of	IN
+dependencies	NNS
+that	WDT
+can	MD
+be	VB
+expressed	VBN
+.	.
+
+
+There	EX
+arenâ	VBZ
+$	$
+™	CD
+t	NN
+any	DT
+single	JJ
+logical	JJ
+framework	NN
+that	WDT
+can	MD
+captures	NNS
+both	CC
+temporal	JJ
+and	CC
+obli	JJ
+-	:
+gations	NNS
+constraints	NNS
+.	.
+
+We	PRP
+propose	VBP
+to	TO
+capture	VB
+obligation	NN
+constraints	NNS
+in	IN
+workï	NN
+¬	CD
+‚	CD
+ow	NN
+through	IN
+the	DT
+use	NN
+of	IN
+a	DT
+pre-deï	JJ
+¬	NN
+ned	VBD
+set	NN
+of	IN
+speech-act	JJ
+primitives	NNS
+for	IN
+communications	NNS
+.	.
+
+It	PRP
+is	VBZ
+possible	JJ
+to	TO
+declaratively	RB
+specify	VB
+obligations	NNS
+inherent	JJ
+in	IN
+speech-act	JJ
+primitives	NNS
+using	VBG
+deontic	JJ
+logic	NN
+.	.
+
+For	IN
+example	NN
+,	,
+a	DT
+speech	NN
+act	NN
+order	NN
+and	CC
+request	NN
+can	MD
+be	VB
+speciï	JJ
+¬	NN
+ed	VBD
+as	IN
+having	VBG
+different	JJ
+de	IN
+-	:
+ontic	JJ
+effect	NN
+.	.
+
+Thus	RB
+messages	NNS
+that	WDT
+are	VBP
+sent	VBN
+with	IN
+order	NN
+can	MD
+be	VB
+interpreted	VBN
+different	JJ
+from	IN
+messages	NNS
+that	WDT
+are	VBP
+sent	VBN
+with	IN
+request	NN
+.	.
+
+
+When	WRB
+there	EX
+is	VBZ
+a	DT
+failure	NN
+in	IN
+communication	NN
+in	IN
+the	DT
+workï	NN
+¬	CD
+‚	CD
+ow	NN
+-LRB-	-LRB-
+this	DT
+means	VBZ
+an	DT
+agent	NN
+did	VBD
+not	RB
+act	VB
+upon	IN
+the	DT
+message	NN
+or	CC
+an	DT
+agent	NN
+unable	JJ
+to	TO
+act	VB
+upon	IN
+the	DT
+message	NN
+because	IN
+of	IN
+new	JJ
+constraints	NNS
+-RRB-	-RRB-
+,	,
+it	PRP
+is	VBZ
+possible	JJ
+to	TO
+analyse	VB
+the	DT
+situation	NN
+using	VBG
+the	DT
+underlying	VBG
+deontic	JJ
+contract	NN
+between	IN
+the	DT
+communicating	VBG
+agents	NNS
+.	.
+
+If	IN
+there	EX
+is	VBZ
+a	DT
+violation	NN
+of	IN
+obligation	NN
+,	,
+speciï	NN
+¬	NN
+c	NN
+rules	NNS
+can	MD
+be	VB
+followed	VBN
+at	IN
+that	DT
+point	NN
+-LRB-	-LRB-
+new	JJ
+workï	NN
+¬	NN
+‚	CD
+ow	NN
+instance	NN
+started	VBD
+,	,
+compensating	VBG
+task	NN
+launched	VBD
+etc	NN
+-RRB-	-RRB-
+.	.
+
+
+Propositional	JJ
+temporal	JJ
+logic	NN
+has	VBZ
+been	VBN
+shown	VBN
+to	TO
+be	VB
+appropriate	JJ
+for	IN
+specifying	VBG
+coor	SYM
+-	:
+dination	NN
+constraints	NNS
+at	IN
+the	DT
+activity	NN
+level	NN
+,	,
+while	IN
+deontic	JJ
+logic	NN
+is	VBZ
+shown	VBN
+to	TO
+be	VB
+suitable	JJ
+for	IN
+specifying	VBG
+the	DT
+obligation	NN
+constraints	NNS
+.	.
+
+Currently	RB
+,	,
+the	DT
+extraction	NN
+of	IN
+obligation	NN
+is	VBZ
+done	VBN
+manu	SYM
+-	:
+ally	NN
+.	.
+
+One	CD
+immediate	JJ
+work	NN
+is	VBZ
+to	TO
+investigate	VB
+how	WRB
+to	TO
+efï	VB
+¬	CD
+ciently	RB
+extract	NN
+obligation	NN
+constraints	NNS
+from	IN
+the	DT
+speech-act	JJ
+primitives	NNS
+.	.
+
+
+Appendix	NN
+
+
+Some	DT
+examples	NNS
+activities	NNS
+from	IN
+the	DT
+virtual	JJ
+conference	NN
+planning	NN
+workï	NN
+¬	CD
+‚	CD
+ow	NN
+:	:
+
+
+Activity	NN
+:	:
+Plan-technical-session	NN
+
+
+agents	NNS
+:	:
+p	NN
+:	:
+publicity-chair	NN
+,	,
+a	DT
+:	:
+author	NN
+,	,
+ch	NN
+:	:
+conference-chair	NN
+
+
+m	NN
+:	:
+pg-committee-member	NN
+,	,
+c	NN
+:	:
+technical-pg-chair	NN
+
+
+tu	NN
+:	:
+tutorial-chair	NN
+,	,
+sp	NN
+:	:
+invited-speakers	NNS
+
+
+c	NN
+can	MD
+send	VB
+:	:
+
+
+13	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+13	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+,	,
+
+
+request	NN
+-LRB-	-LRB-
+authorize	VB
+-LRB-	-LRB-
+committee-members	NNS
+-RRB-	-RRB-
+-RRB-	-RRB-
+to	TO
+ch	VB
+
+
+request	NN
+-LRB-	-LRB-
+print	NN
+-LRB-	-LRB-
+call-for-papers	NNS
+-RRB-	-RRB-
+-RRB-	-RRB-
+to	TO
+p	NN
+
+
+conï	NN
+¬	CD
+rm	NN
+-LRB-	-LRB-
+received-paper	NN
+-RRB-	-RRB-
+to	TO
+a	DT
+
+
+count	NN
+-LRB-	-LRB-
+received-paper	NN
+-RRB-	-RRB-
+to	TO
+self	NN
+
+
+request	NN
+-LRB-	-LRB-
+review	NN
+-LRB-	-LRB-
+received-paper	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+to	TO
+m	NN
+
+
+organize	VB
+-LRB-	-LRB-
+committee-meeting	JJ
+-RRB-	-RRB-
+to	TO
+self	NN
+
+
+request	NN
+-LRB-	-LRB-
+attend	VB
+-LRB-	-LRB-
+committee-meeting	JJ
+-RRB-	-RRB-
+-RRB-	-RRB-
+to	TO
+m	NN
+
+
+request	NN
+-LRB-	-LRB-
+authorize	VB
+-LRB-	-LRB-
+list-of-accepted-papers	NNS
+-RRB-	-RRB-
+-RRB-	-RRB-
+-RRB-	-RRB-
+to	TO
+m	NN
+
+
+conï	NN
+¬	CD
+rm	NN
+-LRB-	-LRB-
+accepted-paper	NN
+-RRB-	-RRB-
+to	TO
+a	DT
+
+
+ï	NN
+¬	CD
+nalize	NN
+-LRB-	-LRB-
+logical-program	NN
+-RRB-	-RRB-
+to	TO
+self	NN
+
+
+declare	VB
+-LRB-	-LRB-
+logical-program	NN
+-RRB-	-RRB-
+to	TO
+p	NN
+
+
+request	NN
+-LRB-	-LRB-
+present	JJ
+-LRB-	-LRB-
+keynote-speech	JJ
+-RRB-	-RRB-
+-RRB-	-RRB-
+-RRB-	-RRB-
+to	TO
+sp	NN
+
+
+conï	NN
+¬	CD
+rm	NN
+-LRB-	-LRB-
+list-of-tutorial-speakers	NNS
+-RRB-	-RRB-
+to	TO
+tu	FW
+
+
+m	NN
+can	MD
+send	VB
+:	:
+
+
+conï	NN
+¬	CD
+rm	NN
+-LRB-	-LRB-
+received-paper	NN
+-RRB-	-RRB-
+to	TO
+c	NN
+
+
+assert	VB
+-LRB-	-LRB-
+reviews-for-papers	NNS
+-RRB-	-RRB-
+to	TO
+c	NN
+
+
+conï	NN
+¬	CD
+rm	NN
+-LRB-	-LRB-
+list-of-accepted-papers	NNS
+-RRB-	-RRB-
+to	TO
+c	NN
+
+
+tu	NN
+can	MD
+send	VB
+:	:
+
+
+propose	VBP
+-LRB-	-LRB-
+tutorial-speakers	NNS
+-RRB-	-RRB-
+to	TO
+c	NN
+
+
+a	DT
+can	MD
+send	VB
+:	:
+
+
+assert	VB
+-LRB-	-LRB-
+send	VB
+-LRB-	-LRB-
+copies-of-paper	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+to	TO
+c	NN
+
+
+request	NN
+-LRB-	-LRB-
+paper-status	NN
+-RRB-	-RRB-
+to	TO
+c	NN
+
+
+request	NN
+-LRB-	-LRB-
+withdraw	VB
+-LRB-	-LRB-
+copies-of-paper	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+to	TO
+c	NN
+
+
+p	NN
+can	MD
+send	VB
+:	:
+
+
+conï	NN
+¬	CD
+rm	NN
+-LRB-	-LRB-
+print	NN
+-LRB-	-LRB-
+call-for-papers	NNS
+-RRB-	-RRB-
+-RRB-	-RRB-
+to	TO
+c	NN
+
+
+sp	NN
+can	MD
+send	VB
+:	:
+
+
+conï	NN
+¬	CD
+rm	NN
+-LRB-	-LRB-
+agree-to-be	NN
+-LRB-	-LRB-
+keynote-speaker	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+to	TO
+c	NN
+
+
+ch	NN
+can	MD
+send	VB
+:	:
+
+
+conï	NN
+¬	CD
+rm	NN
+-LRB-	-LRB-
+committee-members	NNS
+-RRB-	-RRB-
+to	TO
+c	NN
+
+
+Constraints	NNS
+
+
+Ëœsend	NN
+-LRB-	-LRB-
+organize	VB
+-LRB-	-LRB-
+call-for-papers	NNS
+-RRB-	-RRB-
+-RRB-	-RRB-
+UNTIL	IN
+
+
+organize	VB
+-LRB-	-LRB-
+committee-members	NNS
+-RRB-	-RRB-
+
+
+Ëœï	NN
+¬	CD
+nalize	NN
+-LRB-	-LRB-
+logical-program	NN
+-RRB-	-RRB-
+UNTIL	IN
+
+
+-LRB-	-LRB-
+conï	NN
+¬	CD
+rm	NN
+-LRB-	-LRB-
+keynote-speakers	NNS
+-RRB-	-RRB-
+
+
+AND	CC
+conï	NN
+¬	CD
+rm	NN
+-LRB-	-LRB-
+tutorial-speakers	NNS
+-RRB-	-RRB-
+-RRB-	-RRB-
+
+
+Ëœsend	NN
+-LRB-	-LRB-
+print	NN
+-LRB-	-LRB-
+call-for-papers	NNS
+-RRB-	-RRB-
+-RRB-	-RRB-
+UNTIL	IN
+
+
+-LRB-	-LRB-
+conï	NN
+¬	CD
+rm	NN
+-LRB-	-LRB-
+approved	VBN
+-LRB-	-LRB-
+committee-members	NNS
+-RRB-	-RRB-
+-RRB-	-RRB-
+
+
+Goal	NN
+=	JJ
+declare	VB
+-LRB-	-LRB-
+logical-program	NN
+-RRB-	-RRB-
+
+
+Exit	NN
+=	JJ
+count	NN
+-LRB-	-LRB-
+received-papers	NNS
+-RRB-	-RRB-
+Threshold	NNP
+End	NNP
+Activity	NN
+
+
+Activity	NN
+:	:
+Plan-publicity	NN
+
+
+agents	NNS
+:	:
+p	NN
+:	:
+publicity-chair	NN
+,	,
+a	DT
+:	:
+potential-authors	NNS
+,	,
+
+
+ch	NN
+:	:
+conference-chair	NN
+,	,
+ph	NN
+:	:
+publication-chair	NN
+,	,
+
+
+b	NN
+:	:
+potential-bus-attendance	NN
+
+
+p	NN
+can	MD
+send	VB
+:	:
+
+
+send	VB
+-LRB-	-LRB-
+call-for-papers	NNS
+-RRB-	-RRB-
+to	TO
+a	DT
+
+
+setup	NN
+-LRB-	-LRB-
+conference-web-site	NN
+-RRB-	-RRB-
+
+
+design	NN
+-LRB-	-LRB-
+-LRB-	-LRB-
+conference-poster	NN
+-RRB-	-RRB-
+
+
+request	NN
+-LRB-	-LRB-
+approve	VB
+-LRB-	-LRB-
+conference-poster	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+to	TO
+ch	VB
+
+
+send	VB
+-LRB-	-LRB-
+conference-posters	NNS
+-RRB-	-RRB-
+to	TO
+a	DT
+
+
+send	VB
+-LRB-	-LRB-
+call-for-participation	NN
+-RRB-	-RRB-
+to	TO
+a	DT
+
+
+send	VB
+-LRB-	-LRB-
+call-for-exhibition	NN
+-RRB-	-RRB-
+to	TO
+b	NN
+
+
+request	NN
+-LRB-	-LRB-
+print	NN
+-LRB-	-LRB-
+advanced-pgm	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+to	TO
+ph	VB
+
+
+14	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+14	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+request	NN
+-LRB-	-LRB-
+print	NN
+-LRB-	-LRB-
+day-pgm	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+to	TO
+ph	VB
+
+
+setup	NN
+-LRB-	-LRB-
+conference-signage	NN
+-RRB-	-RRB-
+to	TO
+self	NN
+
+
+ch	NN
+can	MD
+send	VB
+:	:
+
+
+conï	NN
+¬	CD
+rm	NN
+-LRB-	-LRB-
+approve	VB
+-LRB-	-LRB-
+conference-poster	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+to	TO
+p	NN
+
+
+Constraints	NNS
+:	:
+
+
+Ëœsend	NN
+-LRB-	-LRB-
+call-for-papers	NNS
+-RRB-	-RRB-
+AND	CC
+
+
+Ëœsetup	NN
+-LRB-	-LRB-
+conference-web-site	NN
+-RRB-	-RRB-
+AND	CC
+
+
+Ëœdesign	NN
+-LRB-	-LRB-
+conference-posters	NN
+-RRB-	-RRB-
+UNTIL	IN
+
+
+conï	NN
+¬	CD
+rm	NN
+-LRB-	-LRB-
+committee-members	NNS
+-RRB-	-RRB-
+
+
+Ëœconï	NNP
+¬	CD
+rm	NN
+-LRB-	-LRB-
+approved	VBN
+-LRB-	-LRB-
+conference-poster	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+UNTIL	IN
+
+
+request	NN
+-LRB-	-LRB-
+approve	VB
+-LRB-	-LRB-
+conference-poster	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+
+
+Ëœrequest	NN
+-LRB-	-LRB-
+approve	VB
+-LRB-	-LRB-
+conference-poster	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+UNTIL	IN
+
+
+design	NN
+-LRB-	-LRB-
+conference-poster	NN
+-RRB-	-RRB-
+
+
+Ëœsend	NN
+-LRB-	-LRB-
+call-for-participation	NN
+-RRB-	-RRB-
+AND	CC
+
+
+Ëœsend	NN
+-LRB-	-LRB-
+call-for-exhibition	NN
+-RRB-	-RRB-
+UNTIL	IN
+
+
+send	VB
+-LRB-	-LRB-
+call-for-papers	NNS
+-RRB-	-RRB-
+
+
+Ëœ	NN
+-LRB-	-LRB-
+request	NN
+-LRB-	-LRB-
+print	NN
+-LRB-	-LRB-
+advanced-pgm	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+AND	CC
+
+
+Ëœ	NN
+-LRB-	-LRB-
+request	NN
+-LRB-	-LRB-
+print	NN
+-LRB-	-LRB-
+day-pgm	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+AND	CC
+
+
+Goal	NN
+=	JJ
+TRUE	JJ
+
+
+Exit	NN
+=	JJ
+declare	VB
+-LRB-	-LRB-
+cancel	VB
+-LRB-	-LRB-
+conference	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+End	NN
+Activity	NN
+
+
+Activity	NN
+:	:
+Plan-publication	NN
+
+
+agents	NNS
+:	:
+t	NN
+:	:
+treasurer	NN
+,	,
+ph	NN
+:	:
+printing-house	NN
+
+
+pc	NN
+:	:
+pg-chair	NN
+,	,
+r	NN
+:	:
+registration	NN
+,	,
+p	NN
+:	:
+publication-chair	NN
+
+
+p	NN
+can	MD
+send	VB
+:	:
+
+
+request	NN
+-LRB-	-LRB-
+camera-ready-copy	NN
+-RRB-	-RRB-
+to	TO
+a	DT
+
+
+request	NN
+-LRB-	-LRB-
+quotation-for-printing	NN
+-RRB-	-RRB-
+to	TO
+ph	VB
+
+
+request	NN
+-LRB-	-LRB-
+print	NN
+-LRB-	-LRB-
+proceedings	NNS
+-RRB-	-RRB-
+-RRB-	-RRB-
+to	TO
+ph	VB
+
+
+request	NN
+-LRB-	-LRB-
+pay	NN
+-LRB-	-LRB-
+printing-cost	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+to	TO
+t	NN
+
+
+conï	NN
+¬	CD
+rm	NN
+-LRB-	-LRB-
+payment	NN
+-RRB-	-RRB-
+to	TO
+ph	VB
+
+
+ph	NN
+can	MD
+send	VB
+:	:
+
+
+conï	NN
+¬	CD
+rm	NN
+-LRB-	-LRB-
+quotation-for-printing	NN
+-RRB-	-RRB-
+to	TO
+p	NN
+
+
+print	NN
+-LRB-	-LRB-
+proceedings	NNS
+-RRB-	-RRB-
+
+
+conï	NN
+¬	CD
+rm	NN
+-LRB-	-LRB-
+print	NN
+-LRB-	-LRB-
+proceedings	NNS
+-RRB-	-RRB-
+-RRB-	-RRB-
+to	TO
+p	NN
+
+
+assert	VB
+-LRB-	-LRB-
+refuse-to	NN
+-LRB-	-LRB-
+print	NN
+-LRB-	-LRB-
+proceedings	NNS
+-RRB-	-RRB-
+,	,
+
+
+â	RB
+$	$
+schedule-conï	JJ
+¬	CD
+‚	CD
+ictâ	NN
+$	$
+-RRB-	-RRB-
+
+
+assert	VB
+-LRB-	-LRB-
+deliver	VB
+-LRB-	-LRB-
+proceedings	NNS
+-RRB-	-RRB-
+-RRB-	-RRB-
+to	TO
+p	NN
+
+
+request	NN
+-LRB-	-LRB-
+payment	NN
+-RRB-	-RRB-
+to	TO
+p	NN
+
+
+t	NN
+can	MD
+send	VB
+:	:
+
+
+conï	NN
+¬	CD
+rm	NN
+-LRB-	-LRB-
+pay	NN
+-LRB-	-LRB-
+printing-cost	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+to	TO
+ph	VB
+
+
+a	DT
+can	MD
+send	VB
+
+
+conï	NN
+¬	CD
+rm	NN
+-LRB-	-LRB-
+camera-ready-copy	NN
+-RRB-	-RRB-
+to	TO
+p	NN
+
+
+pc	NN
+can	MD
+send	VB
+:	:
+
+
+assert	VB
+-LRB-	-LRB-
+send	VB
+-LRB-	-LRB-
+reminder	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+to	TO
+a	DT
+
+
+Constraints	NNS
+:	:
+
+
+Ëœprint	NN
+-LRB-	-LRB-
+proceedings	NNS
+-RRB-	-RRB-
+UNTIL	IN
+
+
+conï	NN
+¬	CD
+rm	NN
+-LRB-	-LRB-
+camera-ready-copy	NN
+-RRB-	-RRB-
+
+
+ALWAYS	NNP
+-LRB-	-LRB-
+request	NN
+-LRB-	-LRB-
+camera-ready-copy	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+
+
+NEXT	NN
+-LRB-	-LRB-
+SOMETIMES	NN
+-LRB-	-LRB-
+conï	NN
+¬	CD
+rm	NN
+
+
+-LRB-	-LRB-
+camera-ready-copy	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+
+
+XOR	NN
+assert	VBP
+-LRB-	-LRB-
+send	VB
+-LRB-	-LRB-
+reminder	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+-RRB-	-RRB-
+
+
+Goal	NN
+=	JJ
+declare	VB
+-LRB-	-LRB-
+print	NN
+-LRB-	-LRB-
+proceedings	NNS
+-RRB-	-RRB-
+-RRB-	-RRB-
+
+
+Exit	NN
+=	JJ
+assert	VBP
+-LRB-	-LRB-
+refuse-to	NN
+-LRB-	-LRB-
+print	NN
+-LRB-	-LRB-
+proceeding	NN
+-RRB-	-RRB-
+,	,
+
+
+15	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+15	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+â	RB
+$	$
+schedule-conï	JJ
+¬	CD
+‚	CD
+ictâ	NN
+$	$
+-RRB-	-RRB-
+End	NN
+Activity	NN
+
+
+References	NNS
+
+
+-LSB-	-LRB-
+1	LS
+-RSB-	-RRB-
+A.	NN
+Barros	NNP
+and	CC
+A.	NNP
+t.	NNP
+Hofstede	NNP
+.	.
+
+Formal	JJ
+Semantics	NNS
+of	IN
+Coordinative	JJ
+Workï	JJ
+¬	NN
+‚	CD
+ow	NN
+Spec	NNP
+-	:
+
+
+iï	NN
+¬	CD
+cations	NNS
+.	.
+
+Technical	NNP
+Report	NNP
+420	CD
+,	,
+Department	NNP
+of	IN
+Computer	NNP
+Science	NNP
+&	CC
+Electrical	JJ
+
+
+Engineering	NNP
+,	,
+University	NNP
+of	IN
+Queensland	NNP
+,	,
+Brisbane	NNP
+,	,
+Australia	NNP
+,	,
+Dec.	NNP
+1997	CD
+.	.
+
+
+-LSB-	-LRB-
+2	LS
+-RSB-	-RRB-
+A.	NN
+Biliris	NNP
+,	,
+S.	NNP
+Dar	NNP
+,	,
+N.	NNP
+Gehani	NNP
+,	,
+H.	NNP
+Jagadish	NNP
+,	,
+and	CC
+K.	NNP
+Ramamritham	NNP
+.	.
+
+Asset	NNP
+:	:
+A	NNP
+sys	SYM
+-	:
+
+
+tem	NN
+for	IN
+supporting	VBG
+extended	JJ
+transactions	NNS
+.	.
+
+In	IN
+Procs	NNP
+.	.
+
+ACM	JJ
+SIGMOD	JJ
+international	JJ
+
+
+Conference	NN
+on	IN
+Management	NN
+of	IN
+Data	NNS
+,	,
+pages	NNS
+44â	VBP
+$	$
+``	``
+54	CD
+,	,
+Minneapolis	NNP
+,	,
+Minnesota	NNP
+,	,
+1994	CD
+.	.
+
+
+-LSB-	-LRB-
+3	LS
+-RSB-	-RRB-
+A.	NN
+Bonner	NNP
+and	CC
+M.	NNP
+Kifer	NNP
+.	.
+
+Concurrency	NNP
+and	CC
+communication	NN
+in	IN
+transaction	NN
+logic	NN
+.	.
+
+In	IN
+
+
+Joint	NNP
+International	NNP
+Conference	NNP
+and	CC
+Symposium	NNP
+on	IN
+Logic	NNP
+Programming	NNP
+Languages	NNPS
+.	.
+
+
+MIT	NNP
+Press	NNP
+,	,
+1996	CD
+.	.
+
+
+-LSB-	-LRB-
+4	LS
+-RSB-	-RRB-
+A.	NN
+Buchmann	NNP
+,	,
+T.	NNP
+Ozsu	NNP
+,	,
+M.	NNP
+Hornick	NNP
+,	,
+D.	NNP
+Georgakopoulos	NNP
+,	,
+and	CC
+F.	NNP
+Manola	NNP
+.	.
+
+A	DT
+trans	JJ
+-	:
+
+
+action	NN
+model	NN
+for	IN
+active	JJ
+distributed	VBN
+object	NN
+systems	NNS
+.	.
+
+In	IN
+A.	NN
+K.	NNP
+Elmagarmid	NNP
+,	,
+editor	NN
+,	,
+
+
+Database	NN
+Transaction	NN
+Models	NNS
+for	IN
+Advanced	NNP
+Applications	NNS
+,	,
+pages	NNS
+123â	VBP
+$	$
+``	``
+158	CD
+,	,
+San	NNP
+Ma	NNP
+-	:
+
+
+teo	NN
+,	,
+California	NNP
+,	,
+1992	CD
+.	.
+
+
+-LSB-	-LRB-
+5	CD
+-RSB-	-RRB-
+A.	NN
+Elmagarmid	NNP
+,	,
+Y.	NNP
+Leu	NNP
+,	,
+W.	NNP
+Litwin	NNP
+,	,
+and	CC
+M.	NNP
+Rusinkiewicz	NNP
+.	.
+
+A	DT
+multidatabase	JJ
+trans	NN
+-	:
+
+
+action	NN
+model	NN
+for	IN
+interbase	NN
+.	.
+
+In	IN
+Proceedings	NNP
+of	IN
+the	DT
+16th	JJ
+VLDB	NN
+Conference	NN
+,	,
+August	NNP
+
+
+1990	CD
+.	.
+
+
+-LSB-	-LRB-
+6	CD
+-RSB-	-RRB-
+H.	NNP
+Garcia-Molina	NNP
+,	,
+D.	NNP
+Gawlick	NNP
+,	,
+J.	NNP
+Klein	NNP
+,	,
+K.	NNP
+Kleissner	NNP
+,	,
+and	CC
+K.	NNP
+Salem	NNP
+.	.
+
+Coordinating	VBG
+
+
+multiple	JJ
+transaction	NN
+activities	NNS
+.	.
+
+Technical	NNP
+Report	NNP
+CS-TR-247-90	NNP
+,	,
+Technical	NNP
+Report	NNP
+,	,
+
+
+Princeton	NNP
+University	NNP
+,	,
+Dept	NNP
+of	IN
+Computer	NNP
+Science	NNP
+,	,
+Feb	NNP
+1990	CD
+.	.
+
+
+-LSB-	-LRB-
+7	CD
+-RSB-	-RRB-
+D.	NNP
+Georgakopulos	NNP
+and	CC
+et	FW
+al.	FW
+.	.
+
+Speciï	NN
+¬	CD
+cation	NN
+and	CC
+management	NN
+of	IN
+extended	JJ
+transac	NN
+-	:
+
+
+tions	NNS
+in	IN
+a	DT
+programmable	JJ
+transaction	NN
+environment	NN
+.	.
+
+In	IN
+Proceedings	NNP
+of	IN
+the	DT
+10th	JJ
+Data	NNS
+
+
+Engineering	NNP
+Conference	NNP
+,	,
+Houston	NNP
+,	,
+USA	NNP
+,	,
+February	NNP
+1994	CD
+.	.
+
+
+-LSB-	-LRB-
+8	CD
+-RSB-	-RRB-
+M.	NNP
+Haghjoo	NNP
+,	,
+M.	NNP
+Papazoglou	NNP
+,	,
+and	CC
+H.	NNP
+Schmit	NNP
+.	.
+
+A	DT
+semantics-based	JJ
+nested	JJ
+transaction	NN
+
+
+model	NN
+for	IN
+intelligent	JJ
+and	CC
+cooperative	JJ
+information	NN
+systems	NNS
+.	.
+
+In	IN
+First	NNP
+International	NNP
+
+
+Conference	NN
+on	IN
+Intelligent	JJ
+and	CC
+Cooperative	NNP
+Information	NNP
+Systems	NNP
+,	,
+Roterdam	NNP
+,	,
+Nether	NNP
+-	:
+
+
+land	NN
+,	,
+May	NNP
+1993	CD
+.	.
+
+
+-LSB-	-LRB-
+9	CD
+-RSB-	-RRB-
+D.	NNP
+Kieronska	NNP
+.	.
+
+A	DT
+system	NN
+for	IN
+the	DT
+synthesis	NN
+of	IN
+concurrent	JJ
+programs	NNS
+:	:
+an	DT
+algorithmic	JJ
+
+
+approach	NN
+to	TO
+state	NN
+graph	NN
+constructions	NNS
+and	CC
+transformations	NNS
+.	.
+
+Technical	NNP
+report	NN
+,	,
+PhD	NN
+
+
+thesis	NN
+,	,
+Department	NNP
+of	IN
+Computer	NNP
+Science	NNP
+,	,
+University	NNP
+of	IN
+Western	NNP
+Australia	NNP
+,	,
+1991	CD
+.	.
+
+
+-LSB-	-LRB-
+10	CD
+-RSB-	-RRB-
+S.	NNP
+Kimbrough	NNP
+and	CC
+S.	NNP
+Moore	NNP
+.	.
+
+On	IN
+automated	VBN
+message	NN
+processing	NN
+in	IN
+electronic	JJ
+com	NN
+-	:
+
+
+merce	NN
+and	CC
+work	NN
+support	NN
+systems	NNS
+:	:
+Speech	NN
+act	NN
+theory	NN
+and	CC
+expressive	JJ
+felicity	NN
+.	.
+
+ACM	NNP
+
+
+Transactions	NNS
+on	IN
+Informarion	NNP
+Systems	NNPS
+,	,
+15	CD
+-LRB-	-LRB-
+4	CD
+-RRB-	-RRB-
+:321	CD
+â	NN
+$	$
+``	``
+367	CD
+,	,
+October	NNP
+1997	CD
+.	.
+
+
+16	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+16	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+-LSB-	-LRB-
+11	CD
+-RSB-	-RRB-
+R.	NNP
+King	NNP
+and	CC
+D.	NNP
+Mcleod	NNP
+.	.
+
+A	NN
+database	NN
+design	NN
+methodology	NN
+and	CC
+tool	NN
+for	IN
+informa	NN
+-	:
+
+
+tion	NN
+systems	NNS
+.	.
+
+ACM	NNP
+Transactions	NNS
+on	IN
+Ofï	NN
+¬	CD
+ce	NN
+Information	NNP
+Systems	NNP
+,	,
+3	CD
+-LRB-	-LRB-
+1	CD
+-RRB-	-RRB-
+:2	CD
+â	NN
+$	$
+``	``
+21	CD
+,	,
+January	NNP
+
+
+1985	CD
+.	.
+
+
+-LSB-	-LRB-
+12	CD
+-RSB-	-RRB-
+H.	NNP
+F.	NNP
+Korth	NNP
+and	CC
+G.	NNP
+Speegle	NNP
+.	.
+
+Formal	JJ
+aspets	NNS
+of	IN
+concurrency	NN
+control	NN
+in	IN
+long-duration	NN
+
+
+transaction	NN
+systems	NNS
+using	VBG
+the	DT
+nt/pv	NN
+model	NN
+.	.
+
+ACM	NNP
+Transactions	NNS
+on	IN
+Database	NNP
+Systems	NNPS
+,	,
+
+
+19	CD
+-LRB-	-LRB-
+3	CD
+-RRB-	-RRB-
+:492	CD
+â	NN
+$	$
+``	``
+535	CD
+,	,
+1994	CD
+.	.
+
+
+-LSB-	-LRB-
+13	CD
+-RSB-	-RRB-
+E.	NNP
+Levy	NNP
+,	,
+H.	NNP
+Korth	NNP
+,	,
+and	CC
+A.	NN
+Silberschatz	NNP
+.	.
+
+An	DT
+optimistic	JJ
+commit	VB
+protocol	NN
+for	IN
+dis	NN
+-	:
+
+
+tributed	VBN
+transaction	NN
+management	NN
+.	.
+
+In	IN
+Procs	NNP
+.	.
+
+ACM	JJ
+SIGMOD	JJ
+international	JJ
+Confer	NNP
+-	:
+
+
+ence	NN
+on	IN
+Management	NN
+of	IN
+Data	NNS
+,	,
+May	NNP
+1991	CD
+.	.
+
+
+-LSB-	-LRB-
+14	CD
+-RSB-	-RRB-
+L.	NNP
+Liu	NNP
+and	CC
+R.	NNP
+Meersman	NNP
+.	.
+
+The	DT
+building	NN
+blocks	VBZ
+for	IN
+specifying	VBG
+communication	NN
+be	VB
+-	:
+
+
+haviour	NN
+of	IN
+complex	JJ
+objects	NNS
+:	:
+An	DT
+activity-driven	JJ
+approach	NN
+.	.
+
+ACM	NNP
+Transactions	NNS
+on	IN
+
+
+Database	NNP
+Systems	NNPS
+,	,
+21	CD
+-LRB-	-LRB-
+2	CD
+-RRB-	-RRB-
+:157	CD
+â	NN
+$	$
+``	``
+207	CD
+,	,
+1996	CD
+.	.
+
+
+-LSB-	-LRB-
+15	CD
+-RSB-	-RRB-
+R.	NNP
+Medina-Mora	NNP
+,	,
+T.	NNP
+Winograd	NNP
+,	,
+Rodrigo	NNP
+,	,
+and	CC
+F.	NNP
+Flores	NNP
+.	.
+
+The	DT
+action	NN
+workï	NN
+¬	CD
+‚	CD
+ow	NN
+ap	NN
+-	:
+
+
+proach	NN
+to	TO
+workï	NN
+¬	CD
+‚	CD
+ow	NN
+management	NN
+technology	NN
+.	.
+
+In	IN
+CSCW	NNP
+92	CD
+Proceedings	NNP
+,	,
+pages	NNS
+281â	VBP
+$	$
+``	``
+
+
+288	CD
+,	,
+November	NNP
+1995	CD
+.	.
+
+
+-LSB-	-LRB-
+16	CD
+-RSB-	-RRB-
+R.	NNP
+V.	NNP
+D.	NNP
+Meyden	NNP
+.	.
+
+The	DT
+dynamic	JJ
+logic	NN
+of	IN
+permission	NN
+.	.
+
+Journal	NNP
+of	IN
+Logic	NNP
+Computation	NNP
+,	,
+
+
+6	CD
+-LRB-	-LRB-
+3	CD
+-RRB-	-RRB-
+:465	CD
+â	NN
+$	$
+``	``
+479	CD
+,	,
+1996	CD
+.	.
+
+
+-LSB-	-LRB-
+17	CD
+-RSB-	-RRB-
+A.	NN
+Ngu	NNP
+,	,
+R.	NNP
+Meersman	NNP
+,	,
+and	CC
+H.	NNP
+Weigand	NNP
+.	.
+
+Speciï	NN
+¬	CD
+cation	NN
+and	CC
+veriï	NN
+¬	CD
+cation	NN
+of	IN
+communi	NNS
+-	:
+
+
+cation	NN
+constraints	NNS
+for	IN
+interoperable	JJ
+transactions	NNS
+.	.
+
+International	NNP
+Journal	NNP
+of	IN
+Intelligent	NNP
+
+
+and	CC
+Cooperative	NNP
+Systems	NNPS
+,	,
+3	CD
+-LRB-	-LRB-
+1	CD
+-RRB-	-RRB-
+:47	CD
+â	NN
+$	$
+``	``
+65	CD
+,	,
+1994	CD
+.	.
+
+
+-LSB-	-LRB-
+18	CD
+-RSB-	-RRB-
+N.Krishnakumar	NNP
+and	CC
+A.Sheth	NNP
+.	.
+
+Managing	VBG
+hetergeneous	JJ
+multi-system	JJ
+tasks	NNS
+to	TO
+sup	SYM
+-	:
+
+
+port	NN
+enterprise-wide	JJ
+operations	NNS
+.	.
+
+Distributed	VBN
+and	CC
+Parallel	JJ
+Databases	NNS
+,	,
+3:1	CD
+â	NN
+$	$
+``	``
+33	CD
+,	,
+1995	CD
+.	.
+
+
+-LSB-	-LRB-
+19	CD
+-RSB-	-RRB-
+A.	NN
+S.	NNP
+Paul	NNP
+C.	NNP
+Attie	NNP
+,	,
+Murindar	NNP
+P.	NNP
+Singh	NNP
+and	CC
+M.	NNP
+Rusinkiewicz	NNP
+.	.
+
+Specifying	VBG
+and	CC
+enforc	NN
+-	:
+
+
+ing	NN
+intertask	NN
+dependencies	NNS
+.	.
+
+In	IN
+Proceedings	NNP
+of	IN
+the	DT
+19th	JJ
+VLDB	NN
+Conference	NN
+,	,
+Dublin	NNP
+,	,
+
+
+Ireland	NNP
+,	,
+1993	CD
+.	.
+
+
+-LSB-	-LRB-
+20	CD
+-RSB-	-RRB-
+A.	NN
+Sheth	NNP
+.	.
+
+From	IN
+contemporary	JJ
+workï	NN
+¬	NN
+‚	CD
+ow	NN
+process	NN
+automation	NN
+to	TO
+adaptive	JJ
+and	CC
+dy	SYM
+-	:
+
+
+namic	JJ
+work	NN
+activity	NN
+coordination	NN
+and	CC
+collaboration	NN
+.	.
+
+In	IN
+Proceedings	NNP
+of	IN
+the	DT
+Workshop	NNP
+
+
+on	IN
+Workï	NNP
+¬	CD
+‚	CD
+ows	NNS
+in	IN
+Scientiï	NNP
+¬	CD
+c	NN
+and	CC
+Engineering	NNP
+Applications	NNS
+,	,
+1997	CD
+.	.
+
+
+-LSB-	-LRB-
+21	CD
+-RSB-	-RRB-
+M.	NNP
+P.	NNP
+Singh	NNP
+.	.
+
+Synthesizing	VBG
+distributed	VBN
+constrained	VBN
+events	NNS
+from	IN
+transactional	JJ
+work	NN
+-	:
+
+
+ï	NN
+¬	SYM
+‚	CD
+ow	NN
+speciï	NN
+¬	CD
+cations	NNS
+.	.
+
+In	IN
+Proceedings	NNP
+of	IN
+12th	JJ
+International	NNP
+Conference	NNP
+on	IN
+Data	NNP
+Engi	NNP
+-	:
+
+
+neering	NN
+,	,
+New	NNP
+Orleans	NNP
+,	,
+Louisiana	NNP
+,	,
+February	NNP
+1996	CD
+.	.
+
+
+-LSB-	-LRB-
+22	CD
+-RSB-	-RRB-
+B.	NNP
+Vivier	NNP
+,	,
+I.	NNP
+Haimowitz	NNP
+,	,
+and	CC
+J.	NNP
+Luciano	NNP
+.	.
+
+Workï	JJ
+¬	NN
+‚	CD
+ow	NN
+requirements	NNS
+for	IN
+electronic	JJ
+com	NN
+-	:
+
+
+merce	NN
+in	IN
+a	DT
+distributed	VBN
+he	PRP
+althcare	RB
+enterprise	NN
+.	.
+
+In	IN
+A.	NN
+Sheth	NNP
+,	,
+editor	NN
+,	,
+NSF	NNP
+Workshop	NNP
+on	IN
+
+
+Workï	JJ
+¬	NN
+‚	CD
+ow	NN
+and	CC
+Process	VB
+Automat	NN
+ion	NN
+in	IN
+Information	NNP
+Systems	NNP
+,	,
+May	NNP
+1996	CD
+.	.
+
+
+-LSB-	-LRB-
+23	CD
+-RSB-	-RRB-
+H.	NNP
+Wachter	NNP
+and	CC
+A.	NNP
+Reuter	NNP
+.	.
+
+The	DT
+ConTract	NNP
+Model	NNP
+.	.
+
+In	IN
+A.	NN
+K.	NNP
+Elmagarmid	NNP
+,	,
+editor	NN
+,	,
+
+
+Database	NN
+Transaction	NN
+Models	NNS
+for	IN
+Advanced	NNP
+Applications	NNS
+,	,
+pages	NNS
+220â	VBP
+$	$
+``	``
+263	CD
+,	,
+San	NNP
+Ma	NNP
+-	:
+
+
+teo	NN
+,	,
+California	NNP
+,	,
+1992	CD
+.	.
+
+
+17	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+17	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+-LSB-	-LRB-
+24	CD
+-RSB-	-RRB-
+H.	NNP
+Weigand	NNP
+and	CC
+A.	NNP
+H.	NNP
+Ngu	NNP
+.	.
+
+Flexible	JJ
+speciï	NN
+¬	NN
+cation	NN
+of	IN
+interoperable	JJ
+transactions	NNS
+.	.
+
+
+Data	NNS
+and	CC
+Knowledge	NNP
+Engineering	NNP
+,	,
+25	CD
+-LRB-	-LRB-
+5	CD
+-RRB-	-RRB-
+:327	CD
+â	NN
+$	$
+``	``
+345	CD
+,	,
+1998	CD
+.	.
+
+
+-LSB-	-LRB-
+25	CD
+-RSB-	-RRB-
+R.	NNP
+Wieringa	NNP
+,	,
+J.	NNP
+Meyer	NNP
+,	,
+and	CC
+H.	NNP
+Weigand	NNP
+.	.
+
+Specifying	VBG
+dynamic	JJ
+and	CC
+deontic	JJ
+integrity	NN
+
+
+constraints	NNS
+.	.
+
+Data	NNS
+and	CC
+Knowledge	NNP
+Engineering	NNP
+,	,
+2	CD
+-LRB-	-LRB-
+4	CD
+-RRB-	-RRB-
+:157	CD
+â	NN
+$	$
+``	``
+191	CD
+,	,
+1989	CD
+.	.
+
+
+-LSB-	-LRB-
+26	CD
+-RSB-	-RRB-
+P.	NNP
+Wolper	NNP
+.	.
+
+Speciï	NN
+¬	CD
+cation	NN
+and	CC
+synthesis	NN
+of	IN
+communicating	VBG
+processes	NNS
+using	VBG
+an	DT
+ex	FW
+-	:
+
+
+tended	VBD
+temporal	JJ
+logic	NN
+.	.
+
+In	IN
+Proceedings	NNP
+of	IN
+the	DT
+9th	JJ
+Annual	JJ
+ACM	NNP
+Symposium	NNP
+on	IN
+prin	NN
+-	:
+
+
+ciples	NNS
+of	IN
+Programming	NNP
+Languages	NNP
+,	,
+pages	NNS
+20â	VBP
+$	$
+``	``
+33	CD
+,	,
+1981	CD
+.	.
+
+
+18	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+18	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+

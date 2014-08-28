@@ -1,0 +1,273 @@
+﻿HUMAN MOVEMENT SUMMARIZATION AND DEPICTION FROM VIDEOS 
+Yijuan Lu1 and Hao Jiang2 1Texas State University and 2 
+Boston College 
+ABSTRACT 
+Human movement summarization and depiction from videos is to automatically turn an input video into high level action illustrations, in which the movements of the body parts are visualized using arrows and motion particles. Motion depic- tion compactly illustrates how speciﬁc movements are per- formed. Previous action summarization methods reply on 3D motion capture or manually labeled data, without which de- picting actions is a challenging task. In this paper, we propose a novel scheme to automatically summarize and depict hu- man movements from 2D videos without 3D motion capture or manually labeled data. The proposed method ﬁrst segments videos into sub-actions with an effective streamline matching scheme. Then, to estimate human movement, we propose a novel trajectory following method to track points by using both body part detection and optical ﬂow. With the estimated movement, we depict the human articulated motion with ar- rows and motion particles. Our experiments on a variety of videos show that the proposed method is effective in summa- rizing complex human movements and generating compact depictions. 
+1 Introduction 
+Summarizing human movement in videos using a small set of static illustrations has many important applications. It is a valuable tool for the educational purpose to demonstrate how a speciﬁc movement can be performed. It also helps video browsing and provides compact representations for ac- tion recognition and movement analysis. Without 3D motion capture or manual labeling, high level action summarization that depicts the human body part movement is a difﬁcult task. In this paper, we propose novel methods to automatically es- timate human articulated motion and generate motion depic- tions from 2D videos without manually labeled data. A mo- tion depiction example is shown in Fig.1. 
+In human movement summarization and depiction, we have to solve three basic problems: action segmentation (video segmentation into meaningful sub-actions), human movement estimation, and movement depiction. Action seg- mentation is to partition a complex action in a video into frame groups and in each group a simple sub-action occurs. We are most interested in segmenting input videos into sub- actions that reﬂect different movements of human body parts. Most previous research on action segmentation uses 3D mo- tion capture data [1, 2, 5]. Movement segmentation with 
+Fig. 1. Our method converts a video sequence to movement depictions, which illustrate body part movements using ar- rows and subtle local movements using motion particles. 
+videos as a direct input is more challenging. Clustering based methods [3] for generic video segmentation can be applied to action segmentation. The downside of a clustering approach is that the number of clusters is hard to determine. Another widely used scheme is to directly detect the action boundaries. Rui et al. [4] propose to use PCA coefﬁcients of dense optical ﬂow to quantify the movement changes; the temporal curves of the features derived from the PCA coefﬁcients are used to detect sub-action boundaries. In this paper, we follow the ac- tion boundary detection scheme. Our method uses a cluster of streamlines to capture the salient movement characteristics in action boundary detection. 
+In the second step, we extract the high level movement of a human subject. A high level movement representation has to reﬂect the body part movement and local subtle motion. To this end, we detect body parts and compute the motion tra- jectories of feature points. Finding feature point trajectories on human subjects has been studied in a multiple camera set- ting [9]. For single view videos, ﬁnding long trajectories is a hard problem. Simply propagating point location estimate from frame to frame using optical ﬂow would cause the tra- jectory to drift in a long time span. Occlusions also make direct point tracking a difﬁcult problem. In this paper, we merge body part detection, which can be obtained using meth- ods in [6, 7, 8], and optical ﬂow to achieve reliable results. Compared with previous human tracking methods [10], our scheme can be used to track feature points on human subjects in unconstrained movements. We propose an efﬁcient mul- tiple path optimization method to link body part detections in different video frames. The optimization explicitly models high order dynamics and can be efﬁciently solved using a lin- ear method. The point cloud trajectory estimation is further formulated as an optimization problem in which we jointly ﬁnd all the coupled trajectories constrained by the body part 
+
+========1========
+
+detection, optical ﬂow and object foreground estimation. 
+In step three, motion depiction, we express the object movement in each segmented sub-action using a static illus- tration. Human movement depiction has been practiced in different artworks for centuries. Graphics elements, such as streamlines, motion blur, and overlapping semi-transparent ghost images have been used to illustrate actions. For com- putational motion depiction, the challenge is to translate hu- man movement estimation into appropriate graphics repre- sentations. Our work is inspired by [2] which uses arrows, noise waves, and stroboscopic motion to depict stick ﬁgure movement. [2] uses 3D motion capture data. In contrast, our method does not reply on 3D motion capture or manual label- ing; it automatically generates the illustration from a direct 2D video input. We use arrows to illustrate the body part movement, the motion particles to depict the subtle local mo- tion, and ghost images to provide reference transitional and ending poses. In the following sections, we show how a con- vincing motion depiction can be achieved using the proposed method. 
+To our best knowledge, the proposed method is the ﬁrst attempt that automatically converts a 2D video sequence to high level human movements depictions without 3D motion capture or manually labeled data. It is potentially capable of providing compact representations for action recognition and movement analysis. It can be used in many applications especially for education purpose to teach students, patients or people with disabilities how speciﬁc movements can be achieved. 
+2 Motion Summary and Depiction 
+Our method is composed of three steps: 1) Action segmenta- tion: we segment complex actions into simple ones which can be depicted using directional arrows; 2) Human movement estimation: we detect human body parts and associate them through time. Then, we obtain rough human movement which will be reﬁned for movement depiction. Finally, we augment the movement estimation into body point domain and clean up the error body part movement estimation; 3) Movement depiction: based on the cleaned up point motion estimation, we generate directional arrows to depict the human body part movements. The arrows are overlapped on the images to gen- erate the ﬁnal rendering results. 
+2.1 Action Segmentation 
+Action segmentation is to partition a complex action into sim- ple sub-actions to facilitate movement depiction. We ﬁrst di- rectly detect the action boundaries and then use motion tra- jectories to quantify human movements. We randomly select seed points in each video frame and follow the motion ﬁeld in a ﬁxed time interval. The trajectories are constructed by con- necting the points from one frame to the next using the motion vectors in a ﬁxed time interval. In this paper, motion trajec- tories are computed in 15 frames. In such a simple scheme, 
+there is no guarantee that the motion trajectories will not in- tersect. However, since we are only interested in the overall motion, the rough representation is sufﬁcient. 
+After obtaining the motion trajectories starting from each frame and stretching a ﬁxed time interval, we shift the trajec- tories so that they all start from point(0,0,0), where the three coordinates are x, y and time. These clusters of motion tra- jectories at each frame reﬂecthow the object moves in a small time interval. 
+To reduce the scale inﬂuence, the trajectories are further projected to the xy plane and the 2D coordinates of points on the curve are collapsed to form a normalized vector with unit length. The difference of movements is deﬁned as the distance of these feature vectors. LetF = {vn,n=1..N}be the feature vectors for action one and G ={um,m=1..M} be the vectors for action two. The distance d between F and G is deﬁned as 
+ 
+d(F, G)= 
+1 
+ 
+minacos(vTm 
+n 
+um)+ 
+1 
+N 
+n 
+M 
+minacos(uTn 
+mvn) 
+m 
+To detect movement boundaries, we require that the action features be stable when body parts keep their motion direction and the changes of the measurement should be proportional to the motion direction changes. The feature deﬁned above fulﬁlls the requirement. 
+In movement segmentation, we compute the distances of streamlines between successive time instants and form the re- sults into a 1D curve. Local maxima on the curve indicate potential action changes. To avoid the detection of spurious local peaks, the distance curve is low pass ﬁltered. With the robust streamline feature, the efﬁcient approach achieves suf- ﬁcient segmentation results for further action depiction. 2.2 Human Movement Estimation 
+Extracting human movement is a prerequisite for high level movement depiction. Apart from extracting feature point movements on a human subject, we would like to determine which body part each point belongs to. We devise a robust method to extract articulated motion by combining the global body part motion and local optical ﬂow. 
+2.2.1 The Movement of Body Parts 
+We detect human body parts in each video frame and track them through time. We use [8] for human body part detection. We detect 10 body parts including head, torso, 4 half arms and 4 half legs as shown in Fig.2 Note that the detector does not distinguish the left and right arms and legs and there are many detection errors. We use the body part detections as a basis for body part tracking, i.e., we associate the corresponding body parts in successive video frames. 
+Based on the body part detection results, each limb that corresponds to an upper or lower body part has two possible locations in a video frame. We need to assign the two part detections to limb one and limb two in each video frame and 
+
+========2========
+
+Fig. 2. Body part detection sample results. 
+aa 
+aa 
+aa 
+aa 
+ab 
+ab 
+ab 
+s1 
+ab 
+… 
+t1 
+ba 
+bb V1,1,4 
+ba V1,2,3 bb 
+ba 
+ba 
+bb 
+bb 
+aa 
+aa 
+aa 
+aa 
+ab ab 
+ab ab 
+s2 
+… 
+t2 
+ba ba 
+ba ba 
+V2,2,3 
+bb bb 
+bb 
+bb 
+V2,1,4 
+Fig. 3. Trellises for a pair of limbs. The path in each trel- lis corresponds to body part assignments through time; paths should not conﬂict. 
+we have to make sure that each body part moves smoothly in time and space. Unfortunately, naive exhaustive enumeration method has an exponential complexity; for n frames there will be 2n possible assignments. Such a method cannot be used for body part association in hundreds and thousands of frames. We propose an efﬁcient linear method to solve this problem. In this paper, body part association is formulated as a multiple shortest path following problem. The formulation is linear and can be solved efﬁciently. As follows, we will also illustrate how the second order smoothness constraint can be modeled by properly constructing the transition graph. 
+To optimize the body part association, we construct two graphs for each pair of limbs. Fig.3 shows two trellises cor- responding to a pair of limbs. Each node of the trellises in- dicates a possible body part assignment. Except for the body part candidate nodes, source nodes and sink nodes are also included. At each layer, we have 4 possible body part assign- ments and each corresponds to a limb selecting one candidate in the current frame and one in the next frame. Note that each node indicates the assignments of body parts candidate as- signment at two instants. Such a setting is necessary since we would like to introduce not only the ﬁrst order, the position smoothness, but also the second order, the speed smoothness constraint. 
+We name the type of a node as aa, ab, ba or bb.Forin- stance, an ab node indicates a limb selecting candidate one in the current frame and candidate two in the next frame; other types of nodes are similarly deﬁned. We link the source nodes, candidate nodes and sink nodes into trellises. Fig.3 shows two trellises corresponding to a pair of arms or legs. Note that the edges between the nodes need follow the pat- tern of xy nodes connecting to yz nodes to enforce the con- sistency of body part assignments. Therefore not every node- 
+node connection is valid. With the constructed graphs, body part association becomes the problem of ﬁnding an optimal path in each of the trellis. 
+As shown in Fig.3, the body part assignments to each limb correspond to a path that starts from the source node and ends in the sink node in each trellis. Each feasible path corresponds to a valid body part association and vice versa. Every path has different cost. The goal is to choose the minimum cost paths on all the trellises. What makes the problem complicated is that the paths are not independent: at each layer, there is at most one node that can be selected in a node conﬂict group. In Fig.3, the two green ovals in layer three form a conﬂict group; the other group in the same layer is indicated by two blue rectangles. Within each conﬂict group, there is at most one path passing. Each conﬂicting group corresponds to a spatial location that only one limb can be assigned to. 
+We formulate the problem in details. We introduce a node variable ηn,m,k. It is 1 if the node vn,m,k, representing limb n’s choice part candidate k in frame m, is on a path, and oth- erwise ηn,m,k is 0. We also deﬁne the edge variable ξn,m,p,q, which is 1 if edge (vn,m,p,vn,m+1,q) is on a path and 0 oth- erwise. We would like to minimize the cost of paths 
+ 
+cn,m,p,q · ξn,m,p,q 
+(vn,m,p,vn,m+1,q)∈E 
+where E is the edge set of the trellises; cn,m,p,q is the cost on the edge (vn,m,p,vn,m+1,q): for non-source and non-sink edges. We deﬁne the cost c on each edge as 
+cn,m,p,q = 
+||uan,m,p − uan,m+1,q|| + ||2ubn,m,p − ubn,m+1,q − uan,m,p|| 
+(1) 
+and c is 0 for source and sink edges. Recall that each node is related to two body part candidates and has a type xy.In Eq.1, uan,m,p is the end point vector corresponding to the ﬁrst body part candidate for nodevn,m,p;andubn,m,p is the second vector. c is therefore composed of both ﬁrst order and second order smoothness terms, which enforces position and speed continuity. 
+ξ follows the ﬂow continuity condition for each trellis: 
+  
+ξn,m−1,k,p = ξn,m,p,q . 
+k q 
+And the ﬂow from each source node should be 1. This condi- tion makes sure the solution is a path on a trellis. To constrain the paths so that they do not conﬂict, we introduce a node variable η that is related to edge variable ξ by 
+ 
+ηn,m,p = ξn,m,p,q . 
+q 
+To enforce that paths do not conﬂict, we introduce constraints: 
+ 
+ηn,m,p ≤ 1,i=1,2 
+vn,m,p∈Qm,i 
+
+========3========
+
+where Qm,i is the ith conﬂict node set in frame m. Each conﬂict set corresponds to a possible body part location in each video frame. This constraint prevents two body parts from being assigned to the same place in one video frame. 
+Combining everything together, we obtain the following integer linear program: 
+ 
+min{ cn,m,p,q · ξn,m,p,q} 
+s.t. 
+ 
+(vn,m,p,vn,m+1 
+ 
+,q)∈E 
+ 
+ξn,m−1,k,p = ξn,m,p,q, ξs,m 
+s,n,l 
+=1 k 
+ 
+q l 
+ηn,m,p = ξn,m,p,q,n=1,2 
+ 
+q 
+ηn,m,p ≤ 1,i=1,2 
+vn,m,p∈Qm,i 
+where s is the source node and ms is a single dummy can- didate of the source node; V is the node set of the trellises. This integer linear program can be efﬁciently solved using a relaxation method followed by a rounding procedure to force solutions to be integers. In fact, the relaxed linear program always yields integer solution and therefore achieves global optimum directly. Using the simplex method, we can com- pute the body part association in thousands of frames in few seconds. 
+2.2.2 Finding Point Trajectories 
+The body part association ﬁnds the rough locations of body parts in each video frame. However, body part foreshortening and local deformations have not been addressed. Body parts also may have large estimation errors due to the errors in the initial detections. In the following, we study how to correct errors and extract more detailed point trajectories using both body part detection and short term optical ﬂow estimation. 
+We randomly select points on the object in the ﬁrst video frame. Each point traverses the spatial and temporal volume and plots a trajectory. We require that the trajectories be con- trolled by both body part detections and optical ﬂow: each trajectory ﬁts the local motion estimation in the tangent direc- tion; the point following a trajectory moves smoothly in space and with a smoothly changing speed; it complies with body part detection and stays inside the object foreground. The body part tracking result presents a long term movement of body points; however there are often errors. The optical ﬂow presents short term movement of body parts that are usually accurate in a short time span. By merging these two estima- tions, we can achieve more robust results. Moreover, there is a global constraint that the points on trajectories also act on each other so that their topologies should be consistent at each time instant. 
+Before we optimize trajectories, we estimate initial body point trajectories to correct gross body part detection errors. We use a dynamic programming approach. At each instant, 
+t1 t2 t4t3 t5 
+Fig. 4. Error correction trellis. The white nodes indicate point locations determined by part detections. The blue nodes rep- resent predicted candidates from the previous part detections using optical ﬂow. The red nodes represent the predictions from the previous predictions. In this example, two errors at time 3 and 4 are skipped by the “blue” path in the graph. 
+apart from the point locations determined by the body part de- tection, we include the point candidates predicted from point locations in previous frames. The basic idea is if there is a wrong large jump of point from one frame to the next, the prediction of the current point using optical ﬂow should be used as the location estimate in the next frame. As illustrated in Fig.4, we use nodes of a graph to indicate point locations and the edges to indicate possible transitions. Apart from the point locations estimated by body part detection, the candi- date locations also include the predicted locations using op- tical ﬂow. The graph therefore provides alternative routes to bypass the wrong point estimations. The weight on each edge equals the distance of the points associated with the incidence nodes. The optimal point locations through time correspond to the shortest path from the ﬁrst layer to the last layer of the graph. It can be solved using dynamic programming. By in- troducing more prediction steps, this method can be used to correct multiple errors. 
+After estimating the initial locations for all the points, we optimize all the point locations over all the image frames by minimizing the following energy: 
+N−1 
+{||xn,k + f(xn,k) − x 
+2n+1,k|| 
++ λ1||xn−1,k + xn+1,k− n=2 
+ 
+2xn,k||2 + λ2 ||xn,k − xn,m − xn+1,k + xn+1,m||2+ 
+m∈N(k) 
+λ3||xn,k − x0n,k||2 + λ4g(xn,k)} 
+where N is the number of frames; ||.|| is the L2 norm; xn,k is the intersection point of trajectory k with video frame n; f(xn,k) is the motion vector at point k in frame n; x0n,k is the initial estimate of the trajectory k, obtained by dynamic programming; N(k) is the set of points that are the neigh- bors of point k. A point is deﬁned as a neighbor of point k if the Delaunay triangulation of the point set in the ﬁrst video frame has an edge connecting the point to pointk. g is a func- tion that penalizes trajectories deviating from the object fore- ground. In this paper,g is the Gaussian ﬁltered distance trans- form of the object foreground. g is an optional term; it is set to zero when the foreground map is unavailable. λ1,λ2,λ3,λ4 
+
+========4========
+
+are constant coefﬁcients. 
+We use a gradient descent method to solve the optimiza- tion. xn,k is updated with the following rule: 
+xt+1n,k = xtn,k − δ((xtn,k + f(xtn,k) − xtn+1,k)+ λ1(6xtn,k − 4xtn−1,k − 4xtn+1,k + xtn−2,k + xtn+2,k)+ 
+λ2 (2xtn,k − 2xtn,m − xtn+1,k + xtn+1,m− 
+m∈N(k) 
+xtn−1,k + xtn−1,m)+λ3(xtn,k − x0n,k)+λ4∇g(xtn,k)) 
+where δ is a small constant. We use about 1000 iterations to obtain the trajectory clusters for hundreds of frames. 2.3 Movement Depiction 
+With the extracted articulated motion, we are ready for move- ment depiction. We construct a single image for each sub- action and use graphics components such as arrows and mo- tion particles to illustrate the body part movements. 
+We use arrows to illustrate the movements of torso, arms and legs. From the cluster of trajectories of a body part, we compute the mean trajectory and use it as the center line of the arrow. However, the mean trajectory may still have errors. To solve this problem, we ﬁt each trajectory in a sub-action to a second-order polynomial. These low order polynomials are sufﬁcient to quantify the shapes of the trajectories in sub- actions and to further remove the gross motion errors. The width of an arrow is pre-deﬁned while the brightness at each point on the arrow is proportional to the speed of the corre- sponding point on the body part. The color on the arrows is important to illustrate the coordination of different body parts. To reduce clutter, only arrows with enough length are kept. Apart from the arrows, we scatter particles on the trajectories of limbs to depict the detailed movements. Semi-transparent ending frame and intermediate frame are also overlapped on the depiction to show pose transition. 
+3 Experimental Results 
+We test the proposed motion depiction method on two bal- let sequences and two recorded videos. These videos contain complex movements and some have strong clutter. It is a great challenge to summarize and depict the human movements in these videos. 
+Fig.5 (row 1-3) shows our results on the ballet-I sequence. The motion segmentation curve and the action boundary de- tection results are shown in the second row. The proposed method extracts the long trajectories of feature points on each body part as shown in the second row of Fig.5. The mo- tion depiction results are shown in row 2-3. The illustrations clearly show the movements of the subject. The spin actions are also well illustrated. The brightness of the arrows repre- sents the speed of the corresponding body part: the brighter the color, the faster it is at a speciﬁc instant. The blue motion particles illustrate the subtle local motion. 
+The results of motion depictions for another longer ballet sequence are shown in Fig.5 (row 5-8). This sequence con- tains complex body part movement and self-occlusion. The proposed method illustrates these movements using a com- pact set of static images. Fig.5 (row 10) shows another result for the girl ﬁtness sequence which contains fast motion and the video is shot with a shaky hand held camera. The pro- posed video segmentation, motion extraction and depiction method still work robustly. The proposed method can also deal with cluttered videos as demonstrated in Fig.5 (row 12). 4Conclusion 
+In this paper, we propose an automatic method to generate human movement depictions using 2D videos as direct in- put without 3D motion capture and manually labeled data. The proposed method segments human movements into sub- actions by streamline matching. We propose a novel trajec- tory following method to track points on human body based on both body part detection and optical ﬂow. An efﬁcient lin- ear method is used to optimize the part association; a dynamic programming approach is proposed for error correction; and a gradient descent method is used to optimize all the coupled trajectories simultaneously. Based on the extracted articulated motion, we depict the high level body part movement using color coded arrows and detailed movement using motion par- ticles. Our experiments on a variety of videos show that the proposed action depiction method is efﬁcient, effective and robust against complex movement, fast action, camera mo- tion and cluttered background. 
+Acknowledgment This research is supported by the United States NSF funding 1018641, 1058724 and Army Research Ofﬁce grant W911NF-12-1-0057. 
+5 References 
+[1] J. Assa, Y. Caspi and D. Cohen-or, “Action synopsis: pose selection and 
+illustration”, SIGGRAPH 2005. 
+[2] S. Bouvier-Zappa, V. Ostromoukhov and P. Poulin, “Motion cues for 
+illustration of skeletal motion capture data”, Symposium on Non- 
+Photorealistic Animation and Rendering 2007. 
+[3] Y. Gong and X. Liu, “Video summarization using singular value decom- 
+position”, CVPR 2000. 
+[4] Y. Rui and P. Anandan, “Segmenting visual actions based on spatio- 
+temporal motion patterns”, CVPR 2000. 
+[5] J. Barbic, A. Safonova J. Pan, C. Faloutsos, J.K. Hodgins and N.S. Pol- 
+lard, “Segmenting motion capture data into distinct behaviors”, ACM 
+Graphics Interface 2004. 
+[6] D. Ramanan, “Learning to parse images of articulated objects”, NIPS 
+2006. 
+[7] P. Felzenszwalb and D. Huttenlocher, “Pictorial structures for object 
+recognition”, IJCV, v.61, n.1, 2005. 
+[8] H. Jiang, “Human pose estimation using consistent max-covering”, 
+ICCV 2009. 
+[9] K. Varanasi, A. Zaharescu, E. Boyer and R.P. Horaud, “Temporal sur- 
+face tracking using mesh evolution”, ECCV 2008. 
+[10] R. Urtasun, D. Fleet and P. Fua, “Temporal motion models for monoc- 
+ular and multiview 3D human body tracking”, CVIU, vol.104, no.2, pp. 
+157-177, 2006. 
+
+========5========
+
+0.3 
+Frame 1−8 
+Frame 8−34 
+Frame 34−57 
+0.2 
+y 
+0.1 
+300 200 100 
+0 
+300 
+Flow matching cost 
+100 200 
+Frame # 
+300 
+250 
+200 
+150t 
+100 
+x 200 
+50 
+0 
+Frame 57−91 
+Frame 91−153 
+Frame 153−183 
+Frame 183−222 
+Frame 222−257 
+Frame 257−273 
+Frame 273−300 
+Frame 300−329 
+Frame 1−18 
+Frame 18−45 
+Frame 45−73 
+Frame 73−96 
+Frame 96−121 
+Frame 121−137 
+Frame 137−153 
+Frame 153−169 
+Frame 169−203 
+Frame 203−231 
+Frame 231−250 
+Frame 250−258 
+Frame 258−266 
+Frame 266−281 
+Frame 281−308 
+Frame 308−350 
+Frame 350−371 
+Frame 371−381 
+Frame 381−404 
+Frame 404−422 
+Frame 422−440 
+Frame 440−456 
+Frame 456−473 
+Frame 473−483 
+Frame 483−505 
+Frame 505−529 
+Frame 529−547 
+Frame 547−562 
+Frame 562−583 
+Frame 1−8 
+Frame 8−12 
+Frame 12−18 
+Frame 18−26 
+Frame 26−33 
+Frame 33−37 
+Frame 37−43 
+Frame 43−51 
+Frame 1−14 
+Frame 14−33 
+Frame 33−45 
+Frame 45−54 
+Frame 54−68 
+Frame 68−81 
+Frame 81−89 
+Frame 89−105 
+Fig. 5. Motion depiction results on the ballet-I (row 1-3), ballet-2 (row 4-8), girl (row 9-10) and man (row 11-12) sequences. The video segmentation curve and the body point trajectories for ballet-I are shown in the 2nd row. With the proposed method, the 329-frame ballet-I, 583-frame ballet-II, 51-frame girl and 105-frame man sequences have been compactly depicted as small number of images. 
+
+========6========
+

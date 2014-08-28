@@ -1,0 +1,934 @@
+﻿Optimizing Complex Extraction Programs 
+over Evolving Text Data 
+Fei Chen1, Byron J. Gao2, AnHai Doan1, Jun Yang3, Raghu Ramakrishnan4;1 
+1University of Wisconsin-Madison, 2Texas State University-San Marcos, 
+3Duke University, 4Yahoo! Research 
+ABSTRACT 
+Most information extraction (IE) approaches have consid- ered only static text corpora, over which we apply IE only once. Many real-world text corpora however are dynamic. They evolve over time, and so to keep extracted information up to date we often must apply IE repeatedly, to consecutive corpus snapshots. Applying IE from scratch to each snap- shot can take a lot of time. To avoid doing this, we have recently developed Cyclex, a system that recycles previous IE results to speed up IE over subsequent corpus snapshots. Cy- clex clearly demonstrated the promise of the recycling idea. The work itself however is limited in that it considers only IE programs that contain a single IE \blackbox." In practice, many IE programs are far more complex, containing multiple IE blackboxes connected in a compositional \workow." 
+In this paper, we present Delex, a system that removes the above limitation. First we identify many di–cult challenges raised by Delex, including modeling complex IE programs for recycling purposes, implementing the recycling process e–ciently, and searching for an optimal execution plan in a vast plan space with diﬁerent recycling alternatives. Next we describe our solutions to these challenges. Finally, we describe extensive experiments with both rule-based and learning-based IE programs over two real-world data sets, which demonstrate the utility of our approach. 
+Categories and Subject Descriptors H.4 [Information Systems Applications]: Miscellaneous 
+General Terms 
+Design, Experimentation, Performance 
+Keywords 
+Information Extraction, Optimization, Evolving Text 
+Permission to make digital or hard copies of all or part of this work for personal or classroom use is granted without fee provided that copies are not made or distributed for proﬁt or commercial advantage and that copies bear this notice and the full citation on the ﬁrst page. To copy otherwise, to republish, to post on servers or to redistribute to lists, requires prior speciﬁc permission and/or a fee. 
+SIGMOD’09, June 29–July 2, 2009, Providence, Rhode Island, USA. Copyright 2009 ACM 978-1-60558-551-2/09/06 ...$5.00. 
+1. INTRODUCTION 
+Over the past decade, the problem of information extrac- tion (IE) has attracted signiﬂcant attention. Given a text corpus (e.g., a collection of emails, Web pages, etc.), much progress has been made on developing solutions for extract- ing information from the corpus eﬁectively [9, 2, 24, 14] (see also [25, 13] for the latest survey and special issue). 
+Most of these IE solutions however have considered only static text corpora, over which we typically have to apply IE only once [25]. In practice, text corpora often are dy- namic, in that documents are added, deleted, and modiﬂed. Thus, to keep extracted information up to date, we often must apply IE repeatedly, to consecutive corpus snapshots. Consider for example DBLife [12, 11], a structured portal for the database community. DBLife operates over a text corpus of 10,000+ URLs. Each day it re-crawls these URLs to generate a 120+ MB corpus snapshot, and then applies IE to this snapshot to ﬂnd the latest community informa- tion (e.g., which database researchers have been mentioned where in the past 24 hours). As another example, the Impli- ance project at IBM Almaden seeks to build a system that manages all information within an enterprise [4, 3]. This system must regularly re-crawl and then re-apply IE to the enterprise intranet, to infer the latest information. Recent eﬁorts (e.g., [21, 28, 8], freebase.com) have also focused on converting Wikipedia and its wiki \siblings" into structured databases, and hence must regularly re-crawl and re-extract information. See [7, 15, 5] for other examples of dynamic text corpora. 
+Despite the pervasiveness of dynamic text corpora, no sat- isfactory solution has been proposed for IE over them. Given such a corpus, the common solution today is to apply IE to each corpus snapshot in isolation, from scratch. This solu- tion is simple, but highly ine–cient, with limited applicabil- ity. For example, in DBLife re-applying IE from scratch takes 8+ hours each day, leaving little time for higher-level data analysis. As another example, time-sensitive applications (e.g., stock, auction, intelligence analysis) often want to re- fresh information quickly, by re-crawling and re-extracting, say, every 30 minutes. In such cases applying IE from scratch is inapplicable if it already takes more than 30 minutes. Fi- nally, this solution is ill-suited for interactive debugging of IE applications over dynamic corpora, because such debug- ging often requires applying IE repeatedly to multiple cor- pus snapshots. Thus, given the growing need for IE over dynamic text corpora, it has now become crucial to develop e–cient IE solutions for these settings. 
+In response, we have recently developed Cyclex, a solu- 
+
+========1========
+
+tion for IE over evolving text data [6]. The key idea un- derlying Cyclex is to recycle previous IE results, given that consecutive snapshots of a text corpus often contain much overlapping content. For example, suppose that a snapshot contains the text fragment \The Cimple project will meet in CS 105 at 3 pm", from which we have extracted \CS 105" as a room number. Then under certain conditions (see Sec- tion 3), if a subsequent corpus snapshot also contains this text fragment, we can immediately conclude that \CS 105" is a room number, without having to run (often expensive) IE operations. 
+The Cyclex work clearly established that recycling IE re- sults for evolving text corpora is highly promising. The work itself however suﬁers from a major limitation: it considers only IE programs that contain a single IE \blackbox." Real- world IE programs, in contrast, often contain multiple IE blackboxes connected in a compositional \workow." As a simple example, a program to extract meetings may employ an IE blackbox to extract locations (e.g., \CS 105"), another IE blackbox to extract times (e.g., \3 pm"), then pairs lo- cations and times and keeps only those that are within 20 tokens of each other (thus producing (\CS 105", \3 pm") as a meeting instance in this case). 
+The IE blackboxes are either oﬁ-the-shelf (e.g., down- loaded from public domains or purchased commercially) or hand-coded (e.g., in Perl or Java), and they are typically \stitched together" using a procedural (e.g., Perl) or declar- ative language (e.g., UIMA, Gate, xlog [16, 10, 27]). Such multi-blackbox IE programs could be quite complex, for ex- ample, 45+ blackboxes stacked in ﬂve levels in DBLife, and 25+ blackboxes stacked in seven levels in Avatar [14]. Since Cyclex is not aware of the compositional nature of such IE programs (eﬁectively treating the whole program as a large blackbox), its utility is severely limited in such settings. 
+To remove this limitation, in this paper we describe Delex, a solution for eﬁectively executing multi-blackbox IE pro- grams over evolving text data. Like Cyclex, Delex aims at recycling IE results. However, compared with Cyclex, devel- oping Delex is fundamentally much harder, for three reasons. 
+First, since the target IE programs for Delex are multi- blackbox and compositional, we face many new and di–- cult problems. For example, how should we represent multi- blackbox IE programs, e.g., how to stitch together IE black- boxes? How to translate such programs into execution plans? At which level should we reuse such plans? We show for in- stance that reusing at the level of each IE blackbox (i.e., storing its input/output for subsequent reuse), like Cyclex does, is suboptimal in the compositional setting. Once we have decided on the level of reuse, what kind of data should we capture and store for subsequent reuse? Can we reuse across IE blackboxes? These are examples of problems that Cyclex did not face. 
+Second, since a target IE program now consists of many blackboxes, all attempting reuse at the same time, Delex faces a far harder challenge of coordinating their execution and reuse to ensure e–cient movement of large quantities of data between disk and memory. In contrast, Cyclex only had to worry about the e–cient execution of a single IE blackbox. 
+Finally, the main optimization challenge in Cyclex is to decide which matcher to assign to the sole IE blackbox. (A matcher encodes a way to ﬂnd overlapping text regions be- tween the current corpus snapshot and the past ones, for 
+the purpose of recycling IE results; see Section 3.) Thus, the Cyclex plan space is bounded by the (relatively small) number of matchers. In contrast, Delex can assign to each IE blackbox in the program a diﬁerent matcher. Hence, it must search a blown-up plan space (exponential in the number of blackboxes). To exacerbate the search problem, optimiza- tion in this case is \non-decomposable;" i.e., we cannot just optimize parts of a plan, then glue the parts together to obtain an optimized whole. 
+In this paper we develop solutions to the above challenges. As we will show in Sections 4-6, our solutions heavily exploit properties of text and information extraction. Overall, we make the following contributions. 
+† We establish that it is possible to exploit work done 
+by previous IE runs to signiﬂcantly speed up complex, 
+multi-blackbox IE programs over evolving text. As far 
+as we know, Delex is the ﬂrst solution to this important 
+problem. 
+† We show how to instrument such complex IE programs 
+for reuse. We decide the level of reuse, what to cap- 
+ture for reuse, and how to e–ciently store the captured 
+results. 
+† We show how to reuse e–ciently while executing an 
+instrumented IE program. The solution involves com- 
+plex coordination among multiple IE blackboxes on 
+extraction and reuse, across all data pages in a corpus 
+snapshot as well as across IE blackboxes. 
+† We show how to estimate cost of each plan (that con- 
+siders a reuse alternative), and how to e–ciently search 
+a vast plan space for a good one. 
+† We conduct extensive experiments with both rule-based 
+and learning-based IE programs over two real-world 
+data sets to demonstrate the utility of our approach. 
+We show in particular that Delex can cut Cyclex’s time 
+by as much as 71%. 
+2. RELATED WORK 
+The problem of information extraction has received much attention [25, 13, 2, 14, 9]. Numerous rule-based extrac- tors (e.g., those relying on regular expressions or dictionar- ies [11, 24]) and learning-based extractors (e.g., those em- ploying classiﬂers, CRF models [29, 26, 25]) have been de- veloped. Delex can handle both types of extractors (as we show in the experiments). 
+Much work has tried to improve the accuracy and runtime of these extractors [25]. But recent work has also considered how to combine and manage such extractors in large-scale IE applications [2, 14, 1]. Our work ﬂts into this emerging direction. 
+In terms of IE over evolving text data, Cyclex [6] is the closest work to ours. But Cyclex is limited in that it con- siders only IE programs that contain a single IE blackbox, as we have discussed. [22] also considers evolving text data, but in diﬁerent problem contexts. They focus on how to incrementally update an inverted index, as the indexed Web pages change. 
+Recent work [30, 18] has also exploited overlapping text data, but again in diﬁerent problem contexts. These works observe that document collections often contain overlapping text. They then consider how to exploit such overlap to \compress" the inverted indexes over these documents, and 
+
+========2========
+
+Cimple Project Meetings 
+u1 
+Cimple Project Meetings 
+v1 
+Will meet in CS 105 at 2pm this   Thursday.  
+u2 
+CS 310 at 4pm on Jun 20, to discuss  CIM and IR. 
+v3 
+Will meet in CS 105 at 2pm this   
+Thursday.  
+p q 
+v2 
+Figure 1: Two pages p and q of the same URL, re- trieved at diﬁerent times. A matcher has found that regions u1 and u2 of page p match regions v1 and v2 of page q, respectively. 
+how to answer queries e–ciently over such compressed in- dexes. In contrast, we exploit the IE results over the over- lapping text regions to reduce the overall extraction time. 
+Our work is also related to incremental view maintenance [17] { namely, if changes to the input of a dataow program are small, then incrementally computing changes to the re- sult can be more e–cient than recomputing the dataow from scratch. But the works diﬁer in many important ways. First, our inputs are text documents instead of tables. Most work on view maintenance assumes that changes to the in- puts (base tables) are readily available (e.g., from database logs), while we also face the challenge of how to characterize and e–ciently detect portions of the input texts that re- main unchanged. Most importantly, view maintenance only needs to consider a handful of standard operators with well- deﬂned semantics. In contrast, we must deal with arbitrary IE blackboxes. 
+Finally, optimizing IE programs and developing IE-centric cost models have also been considered in several recent pa- pers [27, 19, 20]. These eﬁorts however have considered only static corpus contexts, not dynamic ones as we do in this pa- per. 
+3. PROBLEM DEFINITION 
+Data Pages, Extractors, and Mentions: We now briey describe Cyclex [6], then build on it to deﬂne the problem considered in this paper. Cyclex considers an appli- cation that crawls a set of data sources at regular intervals to retrieve data pages. We refer to the set of data pages retrieved at time i as Pi, the i-th snapshot of the evolving text corpus. 
+The goal of Cyclex is to extract a target relation R from the data pages. To do so, it employs an extractor E, which is typically a learning-based program or a set of extraction rules encoded in, say, a Perl script [14]. Formally: 
+Definition 1 (extractor). An extractor 
+E : p ! R(a1; : : : ; an) extracts mentions of relation R from page p. A mention of R is a tuple (m1; : : : ; mn), such that mi is either a mention of attribute ai (i.e., a string in page p that provides a value for ai) or nil (if E did not ﬂnd a value for ai). 
+For example, from page p in Figure 1, an extractor E may ex- tract mention (\CS 105",\2pm") of the target relation MEET- ING(room,time), where \CS 105" and \2pm" are mentions of attributes room and time, respectively. 
+As Deﬂnition 1 suggests, we assume that E extracts men- tions from each data page in isolation. Such per-page extrac- tors are pervasive (e.g., constituting 94% of extractors in the current DBLife [14, 27]). Hence, we currently consider only such extractors, leaving multi-page extractors (e.g., those 
+that extract mentions spanning multiple pages) for future work. 
+The Cyclex Problem and Solution: Given the above set- ting, Cyclex then exploits IE results over past corpus snap- shots P1; : : : ; Pn to speed up IE over the current snapshot Pn+1. The following example illustrates this idea. 
+Example 1. Figure 1 show two pages p and q with the same URL, but obtained in consecutive snapshots. Suppose that extractor E has extracted mention (\CS 105", \2pm") from page p. When applying E to q, Cyclex attempts to recy- cle the above result. To do so, it ﬂrst \matches" q with p to ﬂnd overlapping text regions. Next, it copies over mentions found in the overlapping regions (regions u1 and u2 of page p in Figure 1, which match regions v1 and v2 of page q, re- spectively), and then applies E only to the non-overlapping portion of q (region v3 in this case). 
+To realize the above idea, Cyclex addresses a series of chal- lenges. First, it develops a set of\matchers,"which ﬂnd over- lapping regions of two input pages. These matchers trade oﬁ the completeness of result for running time, so each of them may be appropriate under diﬁerent circumstances. 
+Second, it turns out that we cannot simply copy over the mentions in overlapping regions. To see why, suppose a hy- pothetical extractor E extracts meetings only if a page has fewer than ﬂve lines (otherwise E produces no meetings). Then, none of the mentions of a four-line page p can be copied over to a six-line page q, even if the text in p is fully contained in q. To address this problem, a key idea behind Cyclex is to model certain extractor properties, then exploit them to reuse mentions and to guarantee the correctness of the reuse. 
+Speciﬂcally, Cyclex deﬂnes two properties: scope and con- text. An extractor E has scope ﬁ iﬁ all of the mentions that it extracts do not exceed ﬁ in length. Formally: 
+Definition 2 (extractor scope). Let s:start and s:end be the start and end character positions of a string s in a page p. We say an extractor E has scope ﬁ iﬁ for any mention m = (m1; : : : ; mn) produced by E, (maxi mi:end ¡ mini mi:start) < ﬁ, where mi:start and mi:end are the start and end character positions of attribute mention mi in page p. 
+We say that extractor E has context ﬂ iﬁ whether it ex- tracts any mention m depends only on the small \context windows" of size ﬂ to both sides of m. Formally: 
+Definition 3 (extractor context). The ﬂ-context of mention m in page p is the string p[(m:start¡ﬂ)::(m:end+ ﬂ)], i.e., the string of m being extended on both sides by ﬂ characters. We say extractor E has context ﬂ iﬁ for any m and p0 obtained by perturbing the text of p outside the ﬂ- context of m, applying E to p0 still produces m as a mention. 
+In the worst case, the scope and context of an extractor E can be set to be the length of the longest page. In practice, however, they often can be set to far smaller values with some knowledge of how E works (e.g., by the developer, or anyone with access to E’s code), as illustrated by the following examples: 
+Example 2. To extract (room,time), suppose E always extracts all room and time mentions, then pairs them and keeps only those that are spanning at most 100 characters. Then E’s scope can be set to 100. 
+
+========3========
+
+R1: titles(d,title) :- docs(d), extractTitle(d,title). 
+R2: abstracts(d,abstract) :- docs(d), extractAbstract(d,abstract). 
+R3: talks(d,title,abstract) :- titles(d,title), abstracts(d,abstract), 
+immBefore(title,abstract), approxMatch(abstract,“relevance feedback”). 
+(a) 
+σapproxMatch(abstract, “relevance feedback”) 
+σimmBefore(title,abstract) 
+extractTitle(d,title) 
+extractAbstract(d,abstract) 
+docs(d) 
+docs(d) 
+(b) 
+Figure 2: (a) A multi-blackbox IE program P in xlog, and (b) an execution plan for P. 
+Example 3. Suppose E produces string X as a topic if X matches a pre-deﬂned word (e.g., \IR") and the word \dis- cuss" occurs within a 30-character distance, either to the left or to the right of X. Then the context of X can be set to 30. That is, once E has extracted X as a topic, then no matter how we perturb the text outside a 30-character window of X (on both sides), E would still recognize X as a valid topic mention. 
+The experiment section describes more examples of setting the scope and context. 
+Using scope ﬁ and context ﬂ, Cyclex then shows how to \safely" copy the mentions from past IE results [6]. The smaller the values of ﬁ and ﬂ, the more IE results we can \safely" reuse [6]. 
+In the next step, since text corpora can be quite large (e.g., tens of thousands or millions of pages), Cyclex devel- ops a solution that e–ciently interleaves the steps of page matching, reusing, and re-extracting, over a large amount of disk-resident data. 
+Finally, addressing the above challenges results in a space of execution plans, where the plans diﬁer mainly on the page matcher employed. Thus, in the ﬂnal step, Cyclex develops a cost model and uses it to select the optimal plan. The cost model is extraction-speciﬂc in that it models the rate of change of the text corpus, the running time, and the result size of extractors and matchers, among other factors. 
+The Generality of Our IE Model: It is important to emphasize that the IE model deﬂned above is quite gen- eral. First, Deﬂnition 1 does not limit the type of extractor \blackboxes" in our model. Such extractor blackboxes can be either rule-based (e.g., those that rely on regular expres- sions or dictionaries) or learning-based (e.g., those that use classiﬂers or learning models such as CRFs, Hidden Markov Models). In fact, our experiments in Section 8 show that Delex can e–ciently handle both types of extractors. 
+Second, so far we have deﬂned extractor scope and context at the character level (see Deﬂnitions 2-3), and in this paper, for ease of exposition, we will limit our discussion to only the character level. However, Cyclex and Delex can be easily generalized to work with scope/context at higher-granularity levels (e.g., word, sentence, paragraph), should that be more appropriate for the target extractors. 
+Compositional, Multi-Blackbox IE Programs: As discussed in Section 1, Cyclex has clearly demonstrated the potential of recycling IE. However, it handles only single- blackbox IE programs, which severely limits its applicability. Thus, in this paper, we build on Cyclex to develop an e–cient 
+solution for multi-blackbox IE programs. 
+To do so, we must ﬂrst decide how to represent such pro- grams. Many possible representations exist (e.g., [16, 10, 27]). As a ﬂrst step, in this paper we will use xlog [27], a recently developed declarative IE representation. Extending our work to other IE representations is a subject for future research. 
+We now briey describe xlog (see [27] for a detailed discus- sion). xlog is a Datalog variant with embedded procedural predicates. Like Datalog, each xlog program consists of mul- tiple rules p :¡q1; : : : ; qn, where the p and qi are predicates. For example, Figure 2.a shows an xlog program P with three rules R1, R2, and R3, which extract talk titles and abstracts from seminar announcement pages. Currently xlog does not yet support negation or recursion. 
+xlog predicates can be intensional or extensional, as in Datalog, but can also be procedural. A procedural predi- cate, or p-predicate for short, q(a1; : : : ;an; b1; : : : ; bm) is as- sociated with a procedure g (e.g., written in Java or Perl) that takes as input a tuple (a1; : : : ; an) and produces as out- put tuples of the form (a1; : : : ; an; b1; : : : ; bm). For example, extractT itle(d; title) is a p-predicate in P that takes a doc- ument d and returns a set of tuples (d; title), where title is a talk title appearing in d. We deﬂne p-functions similarly. We single out a special type of p-predicate that we call IE predicate, deﬂned as: 
+Definition 4 (IE predicate). An IE predicate q ex- tracts one or more output text spans from a single input span. Formally, q is a p-predicate q(a1; : : : ;an; b1; : : : ; bm), where there exist i and j such that (a) ai is either a docu- ment or a text span variable, (b) bj is a span variable, and (c) for any output tuple (u1; : : : ; un; v1; : : : ; vm), ui contains vj (i.e., q extracts span vj from span ui). 
+In Figure 2.a, extractT itle(d; title) is an IE predicate that extracts title span from document d. The p-predicate extractAbstract(d; abstract) is another IE predicate, whereas immBefore(title;abstract) (a p-predicate that evaluates to true if title occurs immediately before abstract) is not. 
+Thus, an xlog program cleanly encapsulates multiple IE blackboxes using IE predicates, and then stitches them to- gether using Datalog. To execute such a program, we must translate (and possibly optimize) it to obtain an execution plan that mixes relational operators with blackbox proce- dures. Figure 2.b shows a possible execution plan T for pro- gram P in Figure 2.a. T extracts all titles and abstracts from d, and keeps only those (title, abstract) pairs where the title occurs immediately before the abstract. Finally, T retains only talks whose abstracts contain the phrase \relevance feedback" (allowing for misspelling and synonym matching). 
+Problem Deﬂnition: We are now in a position to deﬂne the problem considered in this paper. 
+Problem Definition Let P1; : : : ; Pn be consecutive snap- shots of a text corpus, P be an IE program written in xlog, E1; : : : ; Em be the IE blackboxes (i.e., IE predicates) in P, and (ﬁ1; ﬂ1); : : : ;(ﬁm; ﬂm) be the estimated scopes and con- texts for the blackboxes, respectively. Develop a solution to execute P over corpus snapshot Pn+1 with minimal cost, by reusing extraction results over P1; : : : ; Pn. 
+To address this problem, a simple solution is to detect iden- tical pages, then reuse IE results on those. This reuse-at- page-level solution however provides only limited reuse op- 
+
+========4========
+
+E4 
+Z 
+E 
+4 
+E33 
+Y 
+E3 
+3 
+π 
+π 
+σ 
+π 
+U σ 
+π V 
+E1 
+E2 
+E1 
+E2 
+(a) 
+(b) 
+Figure 3: (a) An execution tree T, and (b) IE units of T. 
+portunities, and does not work well when the text corpus changes frequently. 
+Another solution is to apply Cyclex to the whole program P, eﬁectively treating it as a single IE blackbox. We how- ever found that this reuse-at-whole-program-level solution does not work well either (see Section 8). The main reason is that estimating \tight"ﬁ and ﬂ for the whole IE program P is very di–cult. Whether we do so directly, by analyzing the behavior of P (which tends to be a large and complex program), or indirectly, by using the (ﬁi; ﬂi) of its compo- nent blackboxes, we often end up with large ﬁ and ﬂ, which limit reuse opportunities. 
+These problems suggest that we should try to reuse at a ﬂner granularity: regions in a page instead of whole page, and at a ﬂner level: program components instead of whole program. The Delex solution captures this intuition. In the rest of the paper we describe Delex in detail. 
+4. CAPTURING IE RESULTS 
+We will explain Delex in a bottom-up fashion. Let T be an execution plan of the target IE program P (see Problem Deﬂnition). In this section we consider what to capture for reuse, when executing T on a corpus snapshot Pn. 
+Section 5 then discusses how to reuse the captured result when executing T on Pn+1. Section 6 describes how to select such a plan T in a cost-based fashion. Section 7 puts all of these together and describes the end-to-end Delex solution. 
+In what follows we describe how to decide on the level of reuse, what to capture, and how to store the captured results, when executing T on snapshot Pn. 
+Level of Reuse: Recall that we want to reuse at the granularity of program components, instead of the whole program. The question is which components. A natural choice would be the individual IE blackboxes. For example, given the execution tree1 T in Figure 3.a, the four IE black- boxes E1; : : : ; E4 would become \reuse units," whose input and output would be captured for subsequent reuse. 
+Reusing at the IE-blackbox level however turns out to be suboptimal. To explain, consider for instance blackbox E1 (Figure 3.a), and let (E1) denote the edge of T that applies the selection operator  to the output of E1. Instead of storing the output of E1, we can store that of (E1). Doing so does not aﬁect reuse (as we will see below), but is better in two ways. First, it would incur less storage space, because (E1) often produces far fewer output tuples than E1. Second, less storage space in turn reduces the time of 
+1In the rest of the paper we will use \tree,"\execution tree," and \execution plan" interchangeably. 
+writing to disk (while executing T on Pn) and reading from disk (for reuse, while executing T on Pn+1). Consequently, we reuse at the level of IE units, deﬂned as 
+Definition 5 (IE Unit). Let X = N1 ˆ N2 ˆ ¢ ¢ ¢ ˆ Nk denote a path on tree T that applies Nk¡1 to Nk, Nk¡2 to Nk¡1, and so on. We say X is an IE unit of T iﬁ (a) Nk is an IE blackbox, (b) N1; : : : ; Nk¡1 are relational operators  and …, and (c) X is maximal in that no other path satisfying (a) and (b) contains X. 
+For example, tree T in Figure 3.a consists of four IE units U; V; Y , and Z, as shown in Figure 3.b. 
+In essence, each IE unit can be viewed as a generalized IE blackbox, with similar notions of scope ﬁ and context ﬂ. In this setting, it is easy to prove that we can set the (ﬁ; ﬂ) of an IE unit N1 ˆ N2 ˆ ¢ ¢ ¢ ˆ Nk to be exactly those of the IE blackbox Nk. This property is desirable and explains why we do not include join operator ./ in the deﬂnition of IE unit: doing so would prevent us from guaranteeing the above \wholesale transfer" of (ﬁ; ﬂ) values. 
+IE Results to Capture: Next we consider what to cap- ture for each IE unit U of tree T. Conceptually, each such unit U (which is an IE blackbox E augmented with  and … operators, whenever possible) can be viewed as extracting a set of mentions from a text region of a document. Formally, we can write U : (did; s; e; c) ! f(did; m; c0)g, where 
+† did is the ID of a document d, 
+† s and e are the start and end positions of a text region 
+S in d, 
+† c denotes the rest of the input parameter values (see 
+the example below), 
+† m denotes a mention (of a target relation) extracted 
+from text region S, and 
+† c0 denotes the rest of the output values. 
+Example 4. Consider a hypothetical IE unit 
+allcap(title)(extractT itle(d;maxlength; title; numtitles)), which extracts all titles not exceeding maxlength from doc- ument d, selects only those in all capital letters, and outputs them as well as the number of such titles. 
+Here, for the input tuple, did is the ID of document d, s and e are the positions of the ﬂrst and last characters of d (because text region S is the entire document d), and c denotes maxlength. For the output tuple, m is an extracted title, and c0 denotes numtitles. 
+In order to reuse the results of U later, at the minimum we should record all mentions m produced by U (recall that given an input tuple (did; s; e; c), U produces as output a set of tuples (did; m; c0)). Then, whenever we want to apply U to a region S in a page p, we can just copy over all mentions of a region S0 in some page q in a past snapshot, which we have recorded when applying U to S0, provided that S matches S0 and that it is safe to copy the mentions (see Section 3). 
+This is indeed what Cyclex does. In the Delex context, however, it turns out that since we employ multiple IE black- boxes that can be \stacked" on top of one another, we must record more information to guarantee correct reuse, as the following example illustrates. 
+
+========5========
+
+Example 5. Consider a page p = \Midwest DB Courses: CS764 (Wisc), CS511 (Illinois)". Suppose we have applied an IE unit V to p to remove the headline (by ignoring all text before \:"), and then applied another IE unit U to the rest of the page to extract locations \Wisc" and \Illinois". 
+Suppose the next day the page is modiﬂed into p0 = \Mid- west DB Courses This Year CS764 (Wisc), CS511 (Illi- nois)", where character \:" has been omitted (and some new text has been added). Consequently, V does not remove any- thing from p0, and p0 ends up sharing the region S = \Mid- west DB Courses" with p. Thus, when applying U to p0, we will attempt to copy over mentions found in this region. Since no such mention was recorded, however, we will con- clude that applying U to region S in p0 produces no mention. This conclusion is incorrect, since \Midwest" is a valid loca- tion mention in S. 
+The problem is that no mention has been recorded in re- gion S for U and p, not because U failed to extract any such mentions from S, but rather because U has never been ap- plied to S. U can only take as input whichever regions V outputs, and V did not output S when it operated on p. 
+Thus, we must record not only the previously extracted mentions, but also the text regions that an IE unit has op- erated over. Speciﬂcally, for an IE unit U : (did; s; e; c) ! f(did; m; c0)g, we record all pairs (s; e) and the mentions m associated with those. It is easy to see that we must record c as well, for otherwise we do not know the exact conditions under which a mention m was produced, and hence cannot recycle it appropriately. 
+Storing Captured IE Results: We now describe how to store the above intermediate results while executing tree T on a corpus snapshot Pn. Our goal is to produce, at then 
+end of the run on Pn, two reuse ﬂles I 
+U 
+and OnU for each IE unit U in tree T. 
+During the run, whenever U takes as input a tuple (did; s; e; c), we append a tuple (tid; did; s; e; c), where tid is a tuple ID (unique within InU), to InU, to capture the region that U operates on. Whenever U produces as output a tuple (did; m; c0), we append a tuple (tid; itid; m; c0) to OnU, to capture the mentions extracted by U. Here, tid is a tuple 
+ID (unique within OnU), and itid is the ID of the tuple in InU that speciﬂes the text region from which m is extracted. Hence, tuples are appended to InU and OnU in the order they are generated. After executing T over Pn, each IE unit U isn 
+associated with two reuse ﬂles I 
+U 
+and OnU that store inter- mediate IE results for U for later reuse. 
+To avoid excessive disk writes caused by individual append operations, we use one block of memory per reuse ﬂle to buﬁer the writes. Whenever a block ﬂlls up, we sh the buﬁered tuples to the end of the corresponding reuse ﬂle. The memory overhead during execution is 2jTj blocks (one per ﬂle), where jTj is the number of IE units in T. The I/O 
+overhead, same as the total storage requirement for reuseP 
+ﬂles, is exactly 
+U2T 
+(B(In)+B(On)) 
+U 
+blocks, where B(InU 
+U) and B(OnU) represent the number of blocks occupied by InU and OnU, respectively. Although it is conceivable for an IE unit to produce more mentions than the size of the input document, in practice the number of mentions is usually no more (and often far smaller) than the input size. Therefore, both the total storage and the I/O overhead are usually bounded by O(jTjB(Pn)), where B(Pn) denotes the size of Pn in blocks. 
+B2 
+q1 
+B3 
+I n U 
+(  q1) 
+B5 I 
+n+1 U 
+(  
+p1) 
+B4 
+O 
+n 
+U 
+(  q1) 
+IE Unit  U Matcher  M 
+B6 On+1U (  
+p1) 
+B1 
+p1 
+Pn 
+In U 
+L 
+I 
+n n U 
+(  q2) I 
+U 
+(  q1) 
+In+1 U 
+I 
+Pn+1 
+n+1 U 
+(  
+p1) 
+On 
+U 
+L 
+O 
+n n 
+U 
+(  q2) O 
+U 
+(  q1) 
+On+1 
+U 
+On+1U (  
+p1) 
+Figure 4: Movement of data between disk and mem- ory during the execution of IE unit U on page p1. 
+5. REUSING CAPTURED IE RESULTS 
+We have described how to capture IE results in reuse ﬂles while executing a tree T on snapshot Pn. We now describe how to use these results to speed up executing T over the subsequent snapshot Pn+1. 
+5.1 Scope of Mention Reuse 
+As discussed earlier, to reuse, we must match each page p 2 Pn+1 with pages in the past snapshots, to ﬂnd overlap- ping regions. Many such matching schemes exist. Currently, we match each page p only with the page q in Pn at the same URL as p. (If q does not exist then we declare p to have no overlapping regions.) This simpliﬂcation is based on the observation that pages with the same URL often change rel- atively slowly across consecutive snapshots, and hence often share much overlapping data. Extending Delex to handle more general matching schemes, such as matching within the same Web site, or matching over all pages of all past snapshots, is an ongoing work. 
+5.2 Overall Processing Algorithm 
+Within the above reuse scope, we now discuss how to pro- cess Pn+1. Since Pn+1 can be quite large (tens of thousands or millions of pages), we will scan it only once, and process each page in turn in memory in a streaming fashion. 
+In particular, to process tree T on a page p 2 Pn+1 (once it has been brought into memory), we need page q 2 Pn (the previous snapshot) with the same URL, as well as all intermediate IE results that we have recorded while execut- ing tree T on q. These IE results are scattered in various reuse ﬂles (Section 4), which can be large and often do not ﬂt into memory. Consequently, we must ensure that in ac- cessing intermediate IE results, we do not probe the reuse ﬂles randomly. Rather, we want to read them sequentially and access IE results in that fashion. 
+The above observation led us to the following algorithm. Let q1; q2; : : : ; qk be the order in which we processed pages in Pn. That is, we ﬂrst executed T on q1, then on q2, and so on. The way we wrote reuse ﬂles, as described earlier in Section 4, ensures that the IE results in each reuse ﬂle are stored in the same order. For example, InU stores all input tuples (for U) on page q1 ﬂrst, then all input tuples on page q2, and so on. 
+Consequently, we will process pages in Pn+1 following the same order. That is, let pi be the page with same URL as qi, i = 1; : : : ; k. Then we process p1, then p2, and so on. (If a page p 2 Pn+1 does not have a corresponding page in Pn, then we can process it at any time, by simply running extraction on it.) By processing in the same order, we only need to scan each reuse ﬂle sequentially once. 
+
+========6========
+
+Figure 4 illustrates the above idea. Suppose we are about to process page p1 2 Pn+1. First, we read p1 and q1 into memory (buﬁers B1 and B2 in the ﬂgure). 
+Next, we execute T on p1 in a bottom-up fashion. Con- sider the execution tree T in Figure 3.b. We start with executing IE unit U. To do so, we bring all intermediate 
+IE results recorded while executing U on q1 (back when wen 
+processed Pn) into memory. Speciﬂcally, let I 
+U(q1) 
+denote the input tuples for U on page q1. Since q1 is the ﬂrst pagen 
+in Pn, I 
+U(q1) 
+must appear at the beginning of ﬂle InU, and hence can be immediately brought into memory (buﬁer B3n 
+in Figure 4). Similarly, O 
+U(q1)|the tuples output by 
+U on page q1|must occupy the beginning of ﬂle OnU and can be immediately read into memory (buﬁer B4 in Figure 4). 
+The details of how to execute IE unit U on p1 will be presented next in Section 5.3. Roughly speaking, we identify overlapping regions between q1 and p1, and leverage InU(q1) and OnU(q1) for reuse. Note that InU(q1) and OnU(q1) store only the start and end positions of regions in q1, so we need q1 in memory to access these regions. During the execution of U on p1, we produce the input and output tuples of U,n+1 
+IU (p1) and On+1U (p1), in memory (buﬁers B5 and B6 in Figure 4, respectively). As described in Section 4, these tuples are also appended to reuse ﬂles In+1U and On+1U . 
+Once we are done with U (for p1), memory reserved forn 
+I 
+U(q1), 
+OnU(q1), and In+1U (p1) can be discarded; however, On+1U (p1) will be retained in memory until it is consumed by the parent operator or IE unit of U in T (in this case, the join operator in Figure 3.b). 
+Next, we move on to IE unit V . We read in InV (q1) and OnV (q1) from the corresponding reuse ﬂles InV and OnV , and generate In+1(p 1 ) and On+1V 
+V 
+(p1) in memory. Again, once V ﬂnishes, only On+1V (p1) needs to stay in memory to provide input to V ’s parent in T. This process continues until we have executed the entire T. 
+Once the entire T ﬂnishes execution on p1, we move on to process T on page p2, then p3, and so on. Note that each time we process a page pi, the intermediate IE results of qi will be at the start of the unread portion of the reuse ﬂles, and thus can be read in easily. Consequently, we only have to scan each reuse ﬂle once during the entire run overP 
+Pn+1. The total number of I/Os is thus 
+U2T 
+(B(InU) + B(On) + B(In+1) + 
+U 
+B(On+1U 
+U 
+)) + B(Pn) + B(Pn+1), i.e., one pass over the current and previous corpus snapshots and all reuse ﬂles for the two snapshots. At any point in 
+time (say, when executing IE unit U on page pi), we onlyn 
+need to keep in memory pi, qi, I 
+U(qi), 
+OnU(qi), In+1U (pi), On+1U (pi), as well as On+1U0 (pi) for any child U0 of U. There- fore, the maximum memory requirement for the algorithm (not counting memory needed for buﬁering writes to reuse ﬂles discussed in Section 4, or by the IE units and rela- tional operators themselves) is O(maxi(B(pi)+B(qi)+(F(T)+n+1 
+1) maxU2T(B(InU(qi)); B(OnU(qi)); B(IU (pi)); B(On+1U (pi))))) blocks, where F(T) is the maximum fan-in of T. In prac- tice, under the reasonable assumption that the total size of the extracted mentions is linear in the size of the input page, the memory requirement comes down to O((F(T) + 1) maxi(B(pi) + B(qi))). 
+5.3 IE Unit Processing 
+We now describe in more detail how to execute an IE unit U on a particular page p (in snapshot Pn+1), whose previous version is q (in snapshot Pn). The overall algorithm 
+Matchin g 
+Extraction  regions 
+Copy  regions 
+Figure 5: An illustration of executing an IE unit. 
+is depicted in Figure 5. 
+We start with In+1U (p), the set of input tuples to U. Each input tuple (tid; did; s; e; c) 2 In+1U (p) represents a text re- gion [s; e] of page p to which we want to apply U, with additional input parameter values d. There are two cases. If U has a child in T, this set is produced by the execution of the child. If U is a leaf in T, which operates directly on page p, there is only one input tuple (did; s; e; c), where did is the ID of p, s and e are set to 0 and the length of p, and c denotes all other input parameters. 
+To identify reuse opportunities, we consult InU(q), which contains the input tuples to U when it executed on q. This set is read in from the reuse ﬂle InU as discussed in Sec- tion 5.2. Each tuple in In(q) has the form (tid0; did0 ; s 
+0U 
+; e0; c0), where did0 is the ID of q, and c0 records the values of ad- ditional input parameters that U took when applied to re- gion [s0; e0] of q. To ﬂnd results to reuse for input tuple (did; s; e; c) 2 In+1U (p), we \match" the region [s; e] of p with regions of q encoded by tuples in InU(q) with c0 = c. This matching is done using one of the matchers to be described later in Section 5.4 (Section 6 discusses how to select a good matcher). 
+We repeat the matching step for each input tuple in In+1U (p) to ﬂnd its matching input tuples in InU(q). From the corre- sponding pairs of matching regions in p and q as well as the scope and context properties of U (Section 3), we derive the extraction regions and copy regions. Because of space con- straint, we do not discuss the derivation process further, but instead refer the reader to [6] for details. 
+Extraction regions require new work: we run U over these regions of p. Copy regions represent reuse. If a copy region is derived from input tuple (tid0; did0; s0; e0; c0) 2 InU(q), we ﬂnd the joining output tuples (with the same tid0) in OnU(q). Recall that OnU(q) contains the output tuples of U when it executed on q, and this set is read in from the reuse ﬂle OnU as discussed in Section 5.2. The OnU(q) tuples with tid0 represent the mentions extracted from region [s0; e0] of q, which can be reused by U to produce output tuples for the corresponding copy region. 
+Regardless of how U produces its output tuples (through reuse or new execution), they are appended to the reuse ﬂle On+1U (as described in Section 4), and kept in memory until consumed by a parent operator or IE unit in T (as described in Section 5.2). 
+5.4 Identifying Reuse With Matchers 
+Delex currently employs four matchers|DN, UD, ST, and RU|for matching regions between two pages (more match- ers can be easily plugged in as they become available). We describe the ﬂrst three matchers here only briey, since they 
+
+========7========
+
+come from Cyclex. Then, we focus on RU, a novel contribu- tion of Delex that allows sharing the work of matching across IE units. 
+Given two text regions R (of page p 2 Pn+1) and S (of page q 2 Pn) to match, DN immediately declares that the two regions have no matching portions, incurring zero run- ning time. Using DN thus amounts to applying IE from scratch to R. UD employs a Unix-diﬁ-command like algo- rithm [23]. It is relatively fast (takes time linear in jRj+jSj), but ﬂnds only some matching regions. ST is a su–x-tree based matcher, which ﬂnds all matching regions of R using time linear in jRj + jSj. We do not discuss these Cyclex matchers further; see [6] for more details. 
+The development of RU is based on the observation that we can often avoid repeating much of the matching work for diﬁerent IE units. This opportunity does not arise in Cyclex because Cyclex considers only a single IE blackbox. To illustrate the idea in a multi-blackbox setting, consider again executing tree T of Figure 3.b on page p 2 Pn+1, and suppose that we execute IE units U, V , Y , and Z, in that order. During U’s execution we would have matched page p with page q 2 Pn with the same URL to ﬂnd overlapping regions on which we can reuse mentions. 
+Now consider executing V . Here, we would need to match p and q again; clearly, we should take advantage of the matching work we have already performed on behalf of U. Next, consider executing Y . Here, we often have to match a region R of p with a set of regions S1; : : : ; Sk of q (as described in Section 5.3) to detect overlapping regions (on which we can reuse mentions produced by Y on page q). However, since we have already matched p with q while exe- cuting U, we should be able to leverage that result to quickly ﬂnd all overlapping regions between R of p and Si of q. 
+In general, since all regions to be matched by IE units of an execution tree come from two pages (one from Pn and the other from Pn+1), and since IE units often match successively smaller regions that are extracted from longer regions (matched by lower IE units), it follows that higher- level IE units can often reuse matching results of lower ones, as described earlier. 
+We now briey describe RU, a novel matcher that draws on this idea. While T executes on a page p, RU keeps track of all triples (R; S;O), whenever a ST or UD matcher has matched a region R of p with a region S of q and found overlapping regions O. Now suppose an IE unit X calls RU to match two regions R0 and S0. RU computes the intersection of R0 with all recorded R regions, the intersection of S0 with all recorded S regions, and then uses these intersections and the recorded overlapping regions O to quickly compute the set of overlapping regions for R0 and S0. We omit further details for space reasons. 
+The four matchers in Delex make diﬁerent trade-oﬁs be- tween result completeness and runtime e–ciency. The next section discusses how Delex assigns appropriate matchers to IE units, thereby selecting a good IE plan. 
+6. SELECTING A GOOD IE PLAN 
+Given an execution tree T, we now discuss how to select appropriate matchers for T using a cost-based approach. We ﬂrst describe the space of alternatives, then our cost-driven search strategy, and ﬂnally the cost model itself. 
+Z 
+C1 
+C2 
+C3 
+C4 
+Y 
+π 
+UU1 
+U2 
+U3 DN ST 
+VV 
+UD 
+C1 
+U V 
+(a) 
+C2 
+(b) 
+Figure 6: IE chains and sharing the work of match- ing across them. 
+6.1 Space of Alternatives 
+For each corpus snapshot, we consider assigning a matcher to each IE unit of tree T, and then use the so-augmented tree to process pages in the snapshot. Let jTj be the number of IE units in T, and k be the number of matchers available to choose (Section 5.4). We would have a total of up to kjTj alternatives. For ease of exposition, we will refer to such an alternative as an IE plan whenever there is no ambiguity. 
+Note that we could make the choice of matchers at even ﬂner levels, such as whenever we must match two regions (while executing T on a page p). However, such low-level assignments would produce a vast plan space that is practi- cally unmanageable. Hence, we assign matchers only at the IE-unit level. Even at this level, the plan space is already huge, ranging from 1 million plans for 10 IE units and four possible matchers, to 1 billion plans for 15 IE units, and beyond. 
+Furthermore, for most plans in this space, optimization is not \decomposable," in that \gluing" the locally optimized subplans together does not necessarily yield a globally opti- mized plan. The following example illustrates this point. 
+Example 6. Consider a plan of two IE units A(B), where we apply A to the output of B. When optimizing A and B in isolation, we may ﬂnd that matcher UD works best for both. So the best global plan appears to be applying UD to both units. However, when optimizing A(B) as whole, we may ﬂnd that applying ST to A and RU to B produces a better plan. The reason is that for A ST may be more expensive (i.e., takes longer to run) than UD, but it generates more matching regions, and B can just use RU to recycle these regions at a very low cost. 
+For the above reasons, we did not look for an exact algo- rithm that ﬂnds the optimal plan. Rather, as a ﬂrst step, in this paper we develop a greedy solution that can quickly ﬂnd a good plan in the above huge plan space. We now describe this solution. 
+6.2 Searching for Good Plans 
+Our solution breaks tree T into smaller pieces, ﬂnds a good plan for some initial pieces, and iteratively builds on them to ﬂnd a good plan to cover other pieces until the entire T is covered. To describe the solution, we start with the concept of IE chain: 
+Definition 6 (IE Chain). An IE chain is a path in tree T such that (a) the path contains a sequence of IE units A1;¢ ¢ ¢ ; Ak, (b) the path begins with A1 and ends with Ak, (c) between each pair of adjacent IE units Ai and Ai+1, there are no other IE units, and Ai extracts mentions from regions output by Ai+1, and (d) the chain is maximal in that we can 
+
+========8========
+
+Algorithm 1 Searching for Execution Plan 
+1: Input: IE execution tree T 
+2: Output: execution plan G 
+3: C ( partition T //C is a set of chains 
+4: C1;¢ ¢ ¢ ; Ch ( sort C in decreasing order of cost estimate 5: g ( ﬂndBest(C ) 
+6: 
+1 1 
+G ( fg1g 
+7: for 2 • i • h do 
+8: g0 
+9: 
+i 
+( ﬂndBest(Ci) 
+B ( bottom IE units for all chains in G 
+10: if (any U 2 B has the raw data page as input and is assigned 
+ST or UD) then00 
+11: g 
+i 
+( assign RU to all IE units of Ci reusing the matching 
+results of U 
+12:13: gi ( select g 
+0 
+i 
+or gi 
+00 
+with the smaller cost estimate 
+G ( G [ fgig 
+14:15: else 
+G ( G [ fg 
+0 
+16:17: 
+ig 
+end if 
+end for 
+Procedure FindBest(Ci) 
+1: Input: chain Ci = A1(A2(¢ ¢ ¢(Ak)¢ ¢ ¢)) 
+2: Output: best execution plan for Ci in Mi, where Mi is the set 
+of plans each having at most one IE unit Aj, 1 • j • k, assigned 
+matcher ST or UD. 
+3: M0i ( ; 
+4: g ( assign DN to each Aj, 1 • j • k 
+5: M0i ( M0i [ fgg 
+6: for 1 • j • k do 
+7: g ( assign ST to Aj, RU to Am, 1 • m < j, and DN to An, 
+j < n • k 
+8: M0i ( M0i [ fgg 
+9: g ( assign UD to Aj, RU to Am, 1 • m < j, and DN to An, 
+j < n • k 
+10: M0 
+0i 
+( Mi [ fgg 
+11: end for 
+12: for each g 2 M0i, estimate its cost using the cost model 13: return the g with the smallest cost estimate 
+not add another IE unit to its beginning or end and obtain another chain satisfying the above properties. 
+For example, an IE execution tree 
+extractT opics(extractAbstract(d; abstract)) is itself a chain because the IE unit extractAbstract extracts abstracts from a document d, and then feeds them to IE unit extractT opics, which in turn extracts topic strings from the abstract. 
+Note that the above deﬂnition allows two adjacent IE units to be connected indirectly by relational operators that do not belong to any IE units. For example, the chain C1 in Figure 6.a consists of the sequence of IE units Z, Y , U, where Y and U are connected by project-join (and Y ex- tracts mentions from a text region output by U). 
+It is relatively straightforward to partition any execution tree T into a set of IE chains. Figure 6.a shows for example a partition of such a tree into two chains C1 and C2. Note that this is also the only possible partition created by Def- inition 6, given that Y extracts mentions only from a text region output by U (not from any text region output by V ). In general, given a tree T, Deﬂnition 6 creates a unique partition of T into IE chains. 
+We deﬂne the concept of IE chain because, within each chain, it is relatively easy to ﬂnd a good local plan, as we will see later. Unfortunately, we cannot just ﬂnd these lo- cally optimal plans independently, and then assemble them together to form a good global plan. The reason is that chains can reuse results of other chains, and this reuse of- ten leads to a substantially better plan (than one that does not exploit reuse across chains), as the following example illustrates. 
+Example 7. Suppose we have found a good plan for chain C1 in Figure 6.a, and this plan applies matcher ST for IE unit U. That is, for each page p in snapshot Pn+1, U applies ST to match p with q, the page with the same URL in Pn. Assuming that the running time of matcher RU is negligible (which it is in practice), the best local plan for chain C2 is to apply matcher RU in IE unit V . Since V must also match p and q, RU will enable V to recycle matching results of U, with negligible cost. 
+Thus, optimality of IE chains is clearly \interdependent." To take such interdependency into account and yet keep the search still manageable, we start with one initial chain, ﬂnd a good plan for it in isolation, then extend this plan to cover a next chain, taking into account cross-chain reuse, and so on, until we have covered all chains. Our concrete algorithm is as follows (Algorithm 1 shows the full pseudo code). 
+1. Sort the IE Chains: Using the cost model (see the next subsection), we estimate the cost of each IE chain if extraction were to be performed from the scratch in all IE units of the chain. We then sort the chains in decreasing order of this cost. Without loss of generality, let this order be C1; : : : ; Ch. 
+2. Find a Good Plan g for the First Chain: Since the ﬂrst chain is the most expensive, we give it the maxi- mum amount of freedom in choosing matchers. To do so, we enumerate the following set of plans for the ﬂrst chain C1 (based on the heuristics that we explain below): 
+1. a plan that assigns matcher DN to all IE units of C1; 2. all plans that assign ST to an IE unit U of C1, RU to 
+all\ancestor"IE units of U, and DN to all\descendant" 
+IE units of U; 
+3. all plans that assign UD to an IE unit U of C1, RU to 
+all\ancestor"IE units of U, and DN to all\descendant" 
+IE units of U. 
+We then use the cost model to select the best plan g from the above set. 
+Since the cost of RU is negligible in practice (as remarked earlier), it is easy to prove that the above set of plans domi- nates the set M of plans where each plan employs matchers ST and UD at most once, i.e., at most one IE unit in the plan is assigned a matcher that is either ST or UD. Thus, the plan we select will be the best plan from M. 
+We do not examine a larger set of plans because any plan outside M would contain at least either two ST matchers, or two UD matchers, or an ST matcher together with a UD matcher. Since the cost of these matchers are not negligi- ble, our experiments suggest that plans with two or more such matchers tend to incur high overhead. In particular, they usually underperform plans where we apply just one such expensive matcher relatively early on the chain, and then apply only RU matcher afterward. For this reason, we currently consider only the plan space M. 
+3. Extend Plan g to Cover the Second Chain: First, we repeat the above Step 2 (but replacing C1 with C2), to0 
+ﬂnd a good plan g for the second chain C2. 
+Next, let U be the bottom IE unit of chain C1. Suppose the best plan g for C1 assigns either matcher ST or UD to U. Then we can potentially reuse the results of this matcher for C2 (if C2 is executed later than C1 in T). Hence, we consider 
+
+========9========
+
+a b c d l m v 
+Average number of input tuples in  IU per page Size of  IUon disk (in blocks) 
+Size of  OUon disk (in blocks) 
+Size of all pages on disk (in blocks) in a snapshot Average length of a region encoded by an input tupl Number of pages in a single snapshot 
+e 
+f 
+Number of buckets in the in-memory hash table of copy regions 
+(a) Meta data statistics 
+Fraction of pages with an earlier version in the previous snapshot 
+s g h 
+Number of times a matcher is invoked on a region encoded by an input tuple 
+After matching region  R, the ratio of resulting extraction regions to  R (in length) 
+Number of copy regions generated from matching a region 
+(b) Selectivity statistics  
+Figure 7: Cost model parameters. 
+a reuse-across-chains plan g00 that assigns matcher RU to all IE units of C2 (and directing them to reuse from IE unit U of C1). 
+We then compare the estimated cost of g0 and g00, and select the cheaper one as the best plan found for chain C2. 4. Cover the Remaining Chains Similarly: We then repeat Step 3 to cover the remaining chains. In general, for a chain Ci, we could have as many reuse-across-chains plans as the number of chains in the set fC1; : : : ; Ci¡1g that assign matcher ST or UD to their bottom IE units. 
+Example 8. Figure 6.b depicts a situation where we have found the best plans for chains C1; C2, and C3. These plans have assigned matchers UD, DN, and ST to the bottom IE units U1; U2, and U3, respectively. Then, when considering chain C4, we will create two reuse-across-chains plans: the ﬂrst one reuses the results of matcher UD of U1, and the second reuses the results of matcher ST of U3 (see the ﬂgure). 
+Once we have covered all the chains, we have found a reasonable plan for execution tree T. Our experiments in Section 8 show that such plans prove quite eﬁective on our real-world data sets. 
+6.3 Cost Model 
+We now describe how to estimate the runtime of an execu- tion plan. Since the diﬁerence among all plans is how they execute the IE units of tree T (Section 6.1), we focus on the cost incurred by executing IE units, and ignore other costs.P Therefore, we estimate the cost of a plan to be tU, where tU denotes the elapsed time of executing the IE unitU2T U. 
+For an IE unit U, we further model tU as the sum of the elapsed time of the steps involved in executing U (Sec- tion 5.3). We model the elapsed time of each step as a weighted sum of I/O and CPU costs to capture the elapsed times of highly tuned implementations that overlap I/O with CPU computation (in which case, the dominated cost com- ponent will be completely masked and therefore have weight 0) as well as simple implementations that do not exploit par- allelism. 
+To model tU, our cost model employs three categories of parameters. The ﬂrst category of parameters (listed in Fig- ure 7.(a)) are the meta data of data pages and intermediate results. For these parameters, we use subscript n to repre- sent the value of the parameter on snapshot n. For example, 
+an denotes the average number of input tuples in InU(q) for a page q 2 Pn. 
+The second category of parameters (listed in Figure 7.(b)) are selectivity statistics of a matcher. The last category of parameters are I/O and CPU cost weights w, whose sub- scripts ret which step incur the associated costs. For all parameters, we use hatted variables to represent parameters are estimated. 
+We now describe tU as follows. tU consists of 4 cost com- ponents in executing U. The ﬂrst cost component is the cost of identifying regions encoded by input tuples (tid; did; s; e; c) 2 In+1U and (tid0; did0; s0; e0; c0) 2 InU where c = c0. We model the cost component as: 
+w^1;IO ¢ bn + ^w1;find ¢ an ¢ a^n+1 ¢ mn+1 ¢ f^ (1) 
+The term w^1;IO¢bn models the I/O cost of reading in InU into buﬁer. The term an¢a^n+1¢mn+1¢ f^models the total number of comparisons between arguments c and c0 for input tuples in InU and In+1U respectively. 
+The second cost component is the cost of matching the regions identiﬂed in the ﬂrst step. We model this component as: 
+w^2;IO ¢ dn ¢ f^+ ^w2;mat ¢ a^n+1 ¢ mn+1 ¢ f^¢ s^¢ 
+^l 
+(2) This model accounts for the I/O cost of reading in pages in Pn and the CPU cost of applying matchers. The term dn ¢ f^ estimates the size (in disk blocks) of raw data pages in Pn that share the same URL, since we only match same URL pages (see Section 5.1). The term a^n+1 ¢ mn+1 ¢ f ¢ s estimates the total number of times we apply the matcher when executing U on Pn+1. 
+The third cost component is the cost of applying U to all extraction regions. We model this component as: 
+w^3;ex ¢ (^an+1 ¢ mn+1 ¢ (1 ¡ f^) ¢ 
+^l 
++ ^an+1 ¢ mn+1 ¢ f^¢ 
+^l 
+¢ g^) 
+(3) 
+We will apply U to those input tuples (in In+1U ) on pages in Pn+1 that do not have an earlier version in Pn. The term a^n+1 ¢ mn+1 ¢ (1 ¡ f^) ¢ 
+^l 
+estimates the total length of regions encoded in those tuples. In addition, we also need to apply U to the extraction regions on pages Pn+1 that do have an earlier version in Pn. The term a^n+1 ¢ mn+1 ¢ f^¢ 
+^l 
+¢ g^ estimates the length of these extraction regions. In particular, g measures, on average, the fraction of a region we still need to apply U after we match it using a matcher. 
+The last cost component is the cost of reusing output tu- ples for copy regions. We model this component as: 
+¢ cn + ^w4;copy ¢ an ¢ m ¢ 
+a^n+1 ¢ mn+1 ¢ f^w^4;IO ¢ h^n 
+v 
+(4) The formula models the I/O cost of reading in OnU and the CPU cost of probing the copy regions to determine whether to copy each mention. Delex stores the copy regions in a hash table to facilitate fast lookups. The term 
+a^n+1¢mn+1¢f^¢h^ estimates the number of hash table entries per bucket.v 
+Notice that we ignore the costs of reading the raw data pages in Pn+1 and writing out the intermediate results and the ﬂnal target relation, since these costs are the same for all plans. 
+Given the cost model, we then estimate the parameters using a small sample S of Pn+1 as well as the past k snap- shots, for a pre-speciﬂed k. Since our parameter estimation 
+
+========10========
+
+Data Sets 
+# Data Sources Time Between Snapshots 
+# Snapshots Avg # Page per Snapshot Avg Size per Snapshot 
+DBLife 
+980 
+2 days 
+15 
+10155 
+180M (a) Data sets for our experiments. 
+Wikipedia 
+925 21 days 
+15 
+3038 
+35M 
+IE Program for DBLife 
+talk (speaker, topics) chair (person, chairType, conference) 
+advise (advisor, advisee, topics) 
+# IE “Blackboxes” 
+1 
+3 
+5 
+α (in char.) 
+155 
+9458 20539 
+β (in char.) 
+9 
+5 
+12 
+IE Program for Wikipedia 
+# IE “Blackboxes” 
+α (in char.) 
+β (in char.) 
+blockbuster (movie) 2 10625 7 
+play (actor, movie) 4 22705 7 award (actor, movie, role, award ) 6 30506 15 
+(b) IE programs for our experiments. 
+Figure 8: Data sets and IE programs for our exper- iments 
+techniques are similar to those in Cyclex, we do not discuss the details any further. 
+7. PUTTING IT ALL TOGETHER 
+We now describe the end-to-end Delex solution. Given an IE program P written in xlog, we ﬂrst employ the tech- niques described in [27] to translate and optimizes P into an execution tree T, and then pass T to Delex. 
+Given a corpus snapshot Pn+1, Delex ﬂrst employs the op- timization technique described in Section 6 to assign match- ers to the IE units of T. Next, Delex executes the so- augmented tree T on Pn+1, employing the reuse algorithm described in Section 5 and the reuse ﬂles it produced for snapshot Pn. During execution, it captures and stores in- termediate IE results (for reuse in the subsequent snapshot Pn+2), as described in Section 4. 
+Note that Delex executes essentially the same plan tree T on all snapshots. The only aspect of the plan that changes across snapshots is the matchers assigned to the IE units. Our experiments in Section 8 show that for our real-world data sets this scheme already performs far better than cur- rent solutions (e.g., applying IE from scratch, running Cy- clex, reusing IE results on duplicate pages). Exploring more complex schemes, such as re-optimizing the IE program P for each snapshot or re-assigning the matchers for diﬁerent pages, is a subject of ongoing work. The following theorem states the correctness of Delex: 
+Theorem 1 (Correctness of Delex). Let Mn+1 be mentions of the target relation R obtained by applying IE program P from scratch to snapshot Pn+1. Then Delex is correct in that when applied to Pn+1 it produces exactly Mn+1. 
+8. EMPIRICAL EVALUATION 
+We now empirically evaluate the utility of Delex. Figure 8 describes two real-world data sets and six IE programs used in our experiments. DBLife consists of 15 snapshots from the DBLife system [12], and Wikipedia consists of 15 snap- shots from Wikipedia.com (Figure 8.a). The three DBLife IE programs extract mentions of academic entities and their relationships, and the three Wikipedia IE programs extract mentions of entertainment entities and relationships (Fig- ure 8.b). Figure 9 shows for example the execution plan 
+exActor (bioSection,p,actor) 
+π(movie1,role,award) 
+σmatch(movie1,movie2) 
+exBioSection (d,bioSection) namePatterns(p) 
+docs(d) 
+exRole (d,m,movie1,role) 
+exAward (awardItem,m,a,movie2,award) 
+exAwardItem (awardSection,awardItem) 
+docs(d) moviePatterns(m)  moviePatterns(m) awardPatterns(a)  
+exAwardSection (d,awardSection) 
+docs(d) 
+Figure 9: The execution plan used in our experi- ments for the \award" IE task. 
+used in our experiments for the \award" IE task (with IE blackboxes shown in bold font). The above IE programs are rule-based. However, we also experimented with an IE program consisting of multiple learning-based blackboxes, as detailed at the end of this section. 
+We obtained the scope ﬁ and context ﬂ of each IE black- box and the entire IE program by analyzing the IE black- boxes and their relationships. The appendix describes this analysis in details. 
+Runtime Comparison: For each of the six IE tasks in Figure 8.b, Figure 10 shows the runtime of Delex vs. that of other possible baseline solutions over all consecutive snap- shots. We consider three baselines: No-reuse, Shortcut, and Cyclex. No-reuse re-executes the IE program over all pages in a snapshot; Shortcut detects identical pages, then reuses IE results on those; and Cyclex treats the whole IE program as a single IE blackbox. 
+On DBLife, No-reuse incurred much more time than the other solutions. Hence, to clearly show the diﬁerences in the runtimes of all solutions, we only plot the runtime curves of Shortcut, Cyclex, and Delex on DBLife (the left side of Figure 10). Since in each snapshot both Cyclex and Delex employ a cost model to select and execute a plan, their run- time includes statistic collection, optimization, and execu- tion times. 
+Figure 10 shows that, in all cases, No-reuse (i.e., rerun- ning IE from the scratch) incurs large runtimes, while Short- cut shows mixed performance. On DBLife, where 96-98% of pages remain identical on consecutive snapshots, it performs far better than No-reuse. But on Wikipedia, where many pages tend to change (only 8-20% pages remain identical on consecutive snapshots), Shortcut is only marginally better than No-reuse. In all cases, Cyclex performs comparably or signiﬂcantly better than Shortcut. 
+Delex however outperforms all of the above solutions. For \talk" task, where the IE program contains a single IE black- box, Delex performs as well as Cyclex. For all the remaining tasks, where the IE program contains multiple IE black- boxes, Delex signiﬂcantly outperforms Cyclex, cutting run- time by 50-71%. These results suggest that Delex was able to exploit the compositional nature of multi-blackbox IE pro- grams to enable more reuse, thereby signiﬂcantly speeding up program execution. 
+Contributions of Components: Figure 11 shows the runtime decomposition of the above solutions (numbers in the ﬂgure are averaged over ﬂve random snapshots per IE task). \Match" is the total time of applying all matchers in 
+
+========11========
+
+runtime(s) talk 
+1600 
+  Runtime of No-reuse varies from 14685 seconds to  15231 seconds   
+1250 
+900 
+550 
+200 
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15snapshot 
+runtime(s) chair 
+1600 
+  Runtime of No-reuse varies from 14526 seconds to  14702 seconds   
+1250 
+900 
+550 
+200 
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15snapshot 
+runtime(s) advise 
+2200 
+  Runtime of No-reuse varies from 17462 seconds to  18252 seconds   
+1700 
+1200 
+700 
+200 
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15snapshot 
+No-reuse 
+Shortcut 
+runtime(s) blockbuster 
+750 
+600 
+450 
+300 
+150 
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15snapshot 
+runtime(s) play 
+1500 
+1150 
+800 
+450 
+100 
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15snapshot 
+runtime(s) award 
+2100 
+1650 
+1200 
+750 
+300 
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15snapshot 
+Cyclex 
+Delex 
+Figure 10: Runtime of No-reuse, Shortcut, Cyclex, and Delex. 
+runtime(s) talk11552   904   414 
+  414 100 
+80 
+60 
+40 
+20 
+0 
+No-reuse Shortcut Cyclex Delex runtime(s) chair14658 878   755   473 100 
+80 
+60 
+40 
+20 
+0 
+No-reuse Shortcut Cyclex Delex 
+runtime(s) blockbuster505 491 386 203 150 
+120 
+90 
+60 
+30 
+0 
+No-reuse Shortcut Cyclex Delex 
+runtime(s) advise14805 1151   1068 
+  458 100 
+80 
+60 
+40 
+20 
+0 
+No-reuse Shortcut Cyclex Delex 
+runtime(s) play870 865 751 
+150 
+120 
+90 
+60 
+30 
+0 
+No-reuse Shortcut Cyclex Delex runtime(s) award1575 1496 1575 312 150 
+120 
+90 
+60 
+30 
+0 
+No-reuse Shortcut Cyclex Delex 
+Match 
+Extraction 
+Copy 
+Opt 
+Others 
+Figure 11: Runtime decomposition of No-reuse, Short- cut, Cyclex and Delex. 
+the execution tree. \Extraction" is the total time to apply all IE extractors. \Copy" is the total time to copy men- tions. \Opt" is the optimization time of Cyclex and Delex. Finally, \Others" is the remaining time (to apply relational operators, read ﬂle indices, etc.). 
+The results show that matching and extracting dominate runtimes. Hence we should focus on optimizing these com- ponents, as we do in Delex. Furthermore, Delex spends more time on matching and copying than Cyclex and Shortcut in complex IE programs (e.g., \play" and \award"). However, this eﬁort clearly pays oﬁ (e.g., reducing the extraction time by 37-85%). Finally, the results show Delex incurs insigniﬂ- cant overhead (optimization, copying, etc.) compared to its overall runtime. 
+We also found that in certain cases the best plan (one that incurs the least amount of time) employs RU matchers, and that the optimizer indeed selected such plans (e.g., for \chair" and \advise" IE tasks), thereby signiﬂcantly cutting runtime (see the left side of Figure 10). This suggests that reusing across IE units can be highly beneﬂcial in our Delex 
+rank 9 7 5 3 1 
+play 
+runtime(s) 1600 1200 800 400 
+0 
+play 
+3 6 9 12 15snapshot 
+3 6 9 12 15 
+snapshot 
+best plan 
+plan picked by Delex 
+bad plan 
+Figure 12: Performance of the optimizer. 
+runtime(s) 1000 750 500 250 
+0 
+play 
+runtime(s) 1000 750 500 250 
+0 
+play 
+10 20 30 40 50 
+# sampled pages 
+2 3 4 5 6#snapshot 
+Cyclex 
+Delex 
+Figure 13: Sensitivity analysis. 
+context. 
+Eﬁectiveness of the Delex Optimizer: To evaluate the Delex optimizer, we enumerate all possible plans in the plan space, and then compare the runtimes of the best plan versus the one selected by the optimizer. To conduct the experi- ment, we ﬂrst selected the \play" IE task, whose plan space contains 256 plans, thereby enabling us to enumerate and run all plans. We then ranked the plans in increasing order of their actual runtimes. Figure 12.a shows the positions in this ranking for the plan selected by the optimizer, over ﬂve snapshots. The results show that the optimizer consis- tently selected a good plan (ranked number ﬂve or three). Figure 12.b shows the runtime of the actual best plan, the selected plan, and the worst plan, again over the same ﬂve snapshots. The results show that the selected plan performs quite comparably to the best plan, and that optimization is important, given the signiﬂcantly varying runtimes of the plans. 
+Sensitivity Analysis: Next, we examined the sensitivity of Delex with respect to the main input parameters: number 
+
+========12========
+
+runtime (s) play 
+8000 
+6000 
+4000 
+2000 
+0 
+20 40 60 80 100 120# of mentions (k) 
+No-reuse 
+Shortcut 
+Cyclex 
+Delex 
+Figure 14: Runtime comparison wrt number of men- tions. 
+of snapshots, size of sample used in statistics estimation, and the scope and context values. 
+Figure 13.a plots the runtime of the plans selected by the optimizers of Delex and Cyclex as a function of sample size, only for \play" (results for other IE tasks show similar phe- nomenons). Figure 13.b plots the runtime of the plans se- lected by the optimizer of Delex and Cyclex as a function of the number of snapshots. 
+The results show that in both cases Delex only needs a few recent snapshots (3) and a small sample size (30 pages) to do well. Furthermore, even when using statistics over only the last 2 snapshots, and a sample size of 10 pages, Delex can already reduce the runtime of Cyclex by 25%. This suggests that while collecting statistics is crucial for optimization, we can do so with a relatively small number of samples over very recent snapshots. 
+We also conducted experiments to examine the sensitivity of Delex with respect to the ﬁ and ﬂ of IE \blackboxes" (ﬂg- ure omitted for space reasons). We found that the runtime of Delex grows gracefully when ﬁ and ﬂ of IE \blackboxes" in- crease. Consider for example a scenario in our experiments: randomly selecting an IE blackbox in the \play" task and in- creasing its ﬁ and ﬂ to examine the change in Delex’s time. When we increased ﬁ from 52 to 150, the averaged runtime of Delex over ﬂve randomly selected snapshots only increases by 15% (from 216 seconds to 248 seconds). When we further increased ﬁ to 250 (ﬂve times of the original ﬁ), the averaged runtime of Delex over the same ﬂve snapshots increases by only 38% (from 216 seconds to 298 seconds). We observe a similar phenomenon for ﬂ. The results suggest that a rough estimation of the ﬁ and ﬂ of the IE blackboxes does increase the runtime of Delex, but in a graceful fashion. 
+Impact of Capturing IE Results: We also evaluated the impact of capturing IE results on Delex. To do so, we varied the number of mentions extracted by the IE blackboxes and then examined the runtimes of Delex and the baseline solu- tions. For example, given the IE program\play," we changed the code of each IE blackbox in \play" so that a mention ex- tracted by the IE blackbox is output multiple times. Then we applied Delex and the baseline solutions to this revised IE program of \play." Figure 14 plots these runtimes on \play" as a function of the total number of mentions extracted by all IE blackboxes. 
+The results show Delex continues to outperform the base- line solutions by large margins as the total number of men- tions grows. This suggests that Delex scales well with re- spect to the number of extracted mentions (and thus the size of captured IE results). Furthermore, we found that as the number of mentions grows by 400% (from 22K to 110K), the time Delex spends on capturing and reusing the IE results only grows by 88% (from 17 seconds to 32 sec- onds). Additionally, the overhead of capturing and reusing 
+runtime(s) 1900 1600 1300 1000 700 
+actor 
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15snapshot 
+No-reuse 
+Shortcut 
+Cyclex 
+Delex 
+Figure 15: Runtime comparison on a learning based IE program. 
+IE results incurred by Delex remains to occupy an insigniﬂ- cant portion (3% - 8%) of its overall runtime. This suggests that the overhead of capturing IE results does increase as the number of extracted mentions increases, but only in a graceful manner. 
+Learning-based IE Programs: Finally, we wanted to know how well Delex works on IE programs that contain learning-based IE blackboxes. To this end, we experimented with an IE program proposed by a recent work [29] to auto- matically construct infoboxes (tabular summaries of an ob- ject’s key attributes) in Wikipedia pages. This IE program extracts name, birth name, birth date, and notable roles for each actor. To do this, it employs a maximal entropy (ME) classiﬂer to segment a raw data page into sentences, then employs four conditional random ﬂeld (CRF) models { one for each attribute { to extract the appropriate values from each of the sentences. 
+To apply Delex, we ﬂrst converted the above IE program into an xlog program that consists of ﬂve IE blackboxes. These blackboxes capture the ME classiﬂer and the four CRF models, respectively. Then we derived ﬁ and ﬂ for each of the blackboxes. For example, given a delimit character in a raw data page, the ME classiﬂer examines its context (i.e., surrounding characters) to determine if the delimit charac- ter is indeed the end of a sentence. Given this, we can set ﬁME to be the maximal number of characters in a sentence, and ﬂME to be the maximal number of characters in the contexts examined by the ME classiﬂer (321 and 16 in our experiment, respectively). It is more di–cult to derive tight values of ﬁCRF and ﬂCRF for the four CRF models, as these models are quite complex. However, we can always set them to the length of the CRF model’s longest input string, i.e., the longest sentence, and this is what we did in the current experiment. 
+Figure 15 shows the runtime of Delex and the three base- line solutions on the above xlog program running on Wikipedia. The results show that both Shortcut and Cyclex only perform marginally better than No-reuse, due to signiﬂcant change of pages across snapshots and large ﬁ (17824 characters) of the entire IE program. However, Delex signiﬂcantly outperforms all three solutions. In particular, Delex reduces the runtime of Cyclex by 42-53%. This suggests that Delex can beneﬂt from exploiting the compositional nature of multi-blackbox learning-based IE programs, even though we are not able to derive tight ﬁ and ﬂ for some learning-based IE blackboxes (e.g. the complex CRF models) in the programs. 
+9. CONCLUSIONS AND FUTURE WORK 
+A growing number of real-world applications involve IE over dynamic text corpora. Recent work on Cyclex has shown that executing such IE in a straightforward manner 
+
+========13========
+
+is very expensive, and that recycling past IE results can lead to signiﬂcant performance improvements. Cyclex, however, is limited in that it handles only IE programs that contain a single IE blackbox. Real-world IE programs, in contrast, of- ten contain multiple IE blackboxes connected in a workow. 
+To address the above problem, we have developed Delex, a solution for eﬁectively executing multi-blackbox IE pro- grams over evolving text data. As far as we know, Delex is the ﬂrst in-depth solution for this important problem. It opens up several interesting directions that we are planning to pursue. These include (a) how to e–ciently match a page with all past pages, so that we can expand the scope of reuse, (b) how to handle extractors that extract mentions across multiple pages, and (c) how to handle IE programs that contain recursion and negation. 
+Acknowledgments: We thank Luis Gravano for invaluable comments. This work is supported by NSF Career grant IIS-0347943, and grants from IBM, Yahoo, Microsoft, and Google to the third author; NSF Career grant IIS-0238386 and IIS-0713498 to the fourth author; and NSF grant ITR IIS-0326328 to the ﬂfth author. The research was done while the second author was in the University of Wisconsin. 
+10. REFERENCES[1] 
+http://langrid.nict.go.jp. 
+[2] E. Agichtein and S. Sarawagi. Scalable information 
+extraction and integration (tutorial). KDD-06. [3] K. Beyer, V. Ercegovac, R. Krishnamurthy, 
+S. Raghavan, J. Rao, F. Reiss, E. J. Shekita, 
+D. Simmen, S. Tata, S. Vaithyanathan, and H. Zhu. 
+Towards a scalable enterprise content analytics 
+platform. IEEE Data Eng. Bull., 32(1):28{35, 2009. [4] B. Bhattacharjee, V. Ercegovac, J. Glider, R. Golding, 
+G. Lohman, V. Markl, H. Pirahesh, J. Rao, R. Rees, 
+F. Reiss, E. Shekita, and G. Swart. Impliance: A next 
+generation information management appliance. 
+CIDR-07. 
+[5] Y. Cai, X. L. Dong, A. Y. Halevy, J. M. Liu, and 
+J. Madhavan. Personal information management with 
+semex. SIGMOD-05. 
+[6] F. Chen, A. Doan, J. Yang, and R. Ramakrishnan. 
+E–cient information extraction over evolving text 
+data. ICDE-08. 
+[7] J. Cho and H. Garcia-Molina. Eﬁective page refresh 
+policies for web crawlers. TODS-03. 
+[8] E. Chu, A. Baid, T. Chen, A. Doan, and J. Naughton. 
+A relational approach to incrementally extracting and 
+querying structure in unstructured data. VLDB-07. [9] W. Cohen and A. McCallum. Information extraction 
+from the world wide web(tutorial). KDD-03. [10] H. Cunningham, D. Maynard, K. Bontcheva, and 
+V. Tablan. GATE: A framework and graphical 
+development environment for robust NLP tools and 
+applications. ACL-02. 
+[11] P. DeRose, W. Shen, F. Chen, A. Doan, and 
+R. Ramakrishnan. Building structured web 
+community portals: A top-down, compositional, and 
+incremental approach. VLDB-07. 
+[12] P. DeRose, W. Shen, F. Chen, Y. Lee, D. Burdick, 
+A. Doan, and R. Ramakrishnan. DBLife: A 
+community information management platform for the 
+database research community (demo). CIDR-07. 
+[13] A. Doan, L. Gravano, R. Ramakrishnan, and 
+S. Vaithyanathan. Special issue on managing 
+information extraction. SIGMOD Rec., 37(4), 2008. [14] A. Doan, R. Ramakrishnan, and S. Vaithyanathan. 
+Managing information extraction: state of the art and 
+research directions (tutorial). SIGMOD-06. 
+[15] J. Edwards, K. McCurley, and J. Tomlin. An adaptive 
+model for optimizing performance of an incremental 
+web crawler. WWW-01. 
+[16] D. Ferrucci and A. Lally. UIMA: An architectural 
+approach to unstructured information processing in 
+the corporate research envrionment. Nat. Lang. Eng., 
+10(3-4):327{348, 2004. 
+[17] A. Gupta and I. Mumick. Materialized Views: 
+Techniques, Implementations and Applications. MIT 
+Press, 1999. 
+[18] M. Herscovici, R. Lempel, and S. Yogev. E–cient 
+indexing of versioned document sequences. ECIR-07. [19] P. G. Ipeirotis, E. Agichtein, P. Jain, and L. Gravano. 
+To search or to crawl? Towards a query optimizer for 
+text-centric tasks. SIGMOD-06. 
+[20] A. Jain, A. Doan, and L. Gravano. SQL queries over 
+unstructured text batabases. ICDE-07. 
+[21] G. Kasneci, M. Ramanath, F. Suchanek, and 
+G. Weikum. The YAGO-NAGA approach to 
+knowledge discovery. SIGMOD Rec., 37(4):41{47, 
+2008. 
+[22] L. Lim, M. Wang, J. Vitter, and R. Agarwal. Dynamic 
+maintenance of web indexes using landmarks. 
+WWW-03. 
+[23] E. Myers. An O(ND) diﬁerence algorithm and its 
+variations. Algorithmica, 1(1):251{256, 1986. [24] F. Reiss, S. Raghavan, R. Krishnamurthy, H. Zhu, and 
+S. Vaithyanathan. An algebraic approach to rule-based 
+information extraction. ICDE-08. 
+[25] S. Sarawagi. Information extraction. Foundations and 
+Trends in Databases, 1(3):261{377, 2008. 
+[26] S. Satpal and S. Sarawagi. Domain adaptation of 
+conditional probability models via feature subsetting. 
+ECML/PKDD-07. 
+[27] W. Shen, A. Doan, J. F. Naughton, and 
+R. Ramakrishnan. Declarative information extraction 
+using datalog with embedded extraction predicates. 
+VLDB-07. 
+[28] D. S. Weld, F. Wu, E. Adar, S. Amershi, J. Fogarty, 
+R. Hoﬁmann, K. Patel, and M. Skinner. Intelligence in 
+wikipedia. AAAI-08. 
+[29] F. Wu and D. S. Weld. Autonomously semantifying 
+wikipedia. CIKM-07. 
+[30] J. Zhang and T. Suel. E–cient search in large textual 
+collections with redundancy. WWW-07. 
+APPENDIX 
+In this section, we show how to derive ﬁ and ﬂ of individual IE blackboxes and entire IE programs used in our exper- iments. This includes the three DBLife IE programs and three Wikipedia IE programs listed in Figure 8.(b), and one learning-based IE program\actor". Their Xlog programs are showed in Figure 16 and Figure 17. 
+talk: The IE program \talk" consists of 1 IE blackbox 
+
+========14========
+
+exTalk that takes input as a data page d, a name pattern n and a topic pattern t. It then extracts mentions of talk relationship as follows. First it detects speaker mentions by ﬂnding occurrences of n in d. Then it detects topic mentions by ﬂnding occurrences of t in d. Next, it detects keywords such as \seminar",\lecture", and \talk". Finally, it pairs up a speaker mention and a topic mention if they span at most 155 characters, and a detected keyword either immediately precedes or is contained in the text spanned by the mention pair. Therefore, we set ﬁ to 155 and ﬂ to 9, the maximal length of a keyword. 
+chair: The IE program \chair" contains 3 IE blackboxes exPerson, exConference and exChairType. We derive their ﬁ and ﬂ as follows. 
+exPerson takes input as a data page d and a name pattern n. It then extracts person mentions by detecting occurrences of n in d. Therefore, we set ﬁexP erson to the maximal length of a person mention and ﬂexP erson to 0. 
+exConference operates similarly as exPerson. Accord- ingly, we set ﬁexConference to the maximal length of a con- ference mention and ﬂexConference to 0. 
+exChairType takes input as a data page d and a chair- type pattern c. It then extracts a chair-type mention by (a) detecting all occurrences of c , and (b) outputting an occur- rence of c if it is immediately followed by a keyword \chair". Therefore, we set ﬁexChairT ype to the maximal length of a chair-type mention, and ﬂexChairT ype to the length of the keyword \chair". 
+Finally, the IE program \chair" outputs a chair mention by \stitching" a person mention, a conference mention and a chair-type mention together, if (a) the conference mention precedes the chair-type mention, (b) the chair-type mention precedes the person mention, and (c) the chair-type mention and person mention span at most 20 characters. There- fore, we can set ﬁ of the entire IE program to the maximal length of the text spanned by a chair mention. Since any text spanned by a chair mention begins with the conference mention, and ends with the person mention, we set ﬂ = max(ﬂexConference, ﬂexP erson). 
+advise: The IE program \advise" contains 5 IE blackboxes: exAdvisor, exAdvisee, exNameList, exCoauthors, and exWorkOn. We derive their ﬁ and ﬂ as follows. 
+exAdvisor takes as input a data page d and a name pattern n. It then extracts an advisor mention by (a) detecting all occurrences of n , and (b) outputting an occurrence of n if it is preceded by a keyword such as \professor" or \prof.". Therefore, we set ﬁexAdvisor to the maximal length of an advisor mention, and ﬂexAdvisor to the maximal distance between the beginning of the keyword and the beginning of the advisor mention. 
+exAdvisee operates similarly as exAdvisor, except that the keywords used are\student",\PhD"etc. Therefore, ﬁexAdvisee and ﬂexAdvisee are set in a similar manner. 
+exNameList takes as input a data page d and a name list pattern l. It then extracts a list of names by detecting occurrences l in d. Therefore, we set ﬁexNameList to the maximal length of a name list, and ﬂexNameList to 0. 
+exCoauthors takes as input a name list, and a pair of name patterns n1 and n2. It then extracts coauthor mentions by (a) detecting occurrences of n1 and n2 and (b) \stitch- ing" occurrences of n1 and n2 together. Therefore, we set ﬁexCoauthor to the maximal length of a text spanned by the 
+coauthor mention, and ﬂexCoauthor to 0. 
+exWorkOn takes as input a data page d, a name pattern n and a topic pattern t. It then extracts mentions of work-on relationship in three steps. First, it detects person mentions by ﬂnding occurrences of n in d. Then it detects topic men- tions by ﬂnding occurrences of t in d. Finally, it pairs up person and topic mentions if they span at most 60 charac- ters. Therefore, we set ﬁexW orkOn to 60, and ﬂexW orkOn to 0. 
+Finally, the IE program \advise" outputs a mention of ad- vise relationship by stitching the advisor mention, advisee mention and work-on mention together, if (a) the advisor mention and advisee mention approximately match the two names in a coauthor mention, and (b) the text spanned by one of the names in the matched coauthor mention is the same text spanned by the name in the work-on mention. Therefore, we set ﬁ of the entire IE program to the maximal length of the text spanned by an advise mention. Further- more, we set ﬂ of the entire IE program to be maxi(ﬂi), where i 2 fexAdvisor; exAdvisee; exNameList; exCoauthors; exW orkOng. 
+blockbuster: The IE program \blockbuster" extracts fa- mous movies from a data page. It contains 2 IE blackboxes exCareerSection and exMovie. We derive their ﬁ and ﬂ as follows. 
+exCareerSection extract career sections from a Wikipedia page by (a) detecting all sections delimited by the section heading markups, then (b) outputting a section if keyword \career" is present in the section title preceding the section. Therefore we set the context ﬂexCareerSection to the maximal distance between the the beginning of the section title and the beginning of the section. Then we set ﬁexCareerSection to the maximal number of characters in a career section. 
+exMovie takes input as a career section and a movie name pattern. It then extracts movie mentions by detecting occur- rences of the name patterns in the career section. Therefore we set the context ﬂexMovie to 0, and scope ﬁexMovie to the maximal length of a movie name. 
+Finally, we set ﬁ of the entire IE program to the maximal length of a movie mention, and ﬂ to the max of ﬂexCareerSection and ﬂexMovie. 
+play: The IE program \play" extracts who plays in which movies relationships from data pages. It contains 4 IE black- boxes: exIntro, exActor, exCareerSection and exMovie. We derive their ﬁ and ﬂ as follows. 
+exIntro extracts the introduction paragraphs from a Wikipedia page by (a) detecting all paragraphs, and (b) outputting paragraphs that precede the ﬂrst section heading markup. Therefore, we set the context ﬂexIntro to the maximal length of a section markup, and scope ﬁexIntro to the maximal length of an introduction paragraph. 
+exActor takes as input introduction paragraphs p and an actor name pattern n. It then outputs actor mentions by ﬂnding occurrences of n in p. Therefore, we set ﬁexActor to the maximal length of spanned by an actor mention, and ﬂexActor to 0. 
+exCareerSection and exMovie operate exactly the same as those in \blockbuster". Therefore their ﬁ and ﬂ are same as before. 
+Finally, the IE program stitches the actor mentions and movie mentions together. Therefore, we set ﬁ of the entire IE program to the longest text spanned a paired actor and 
+
+========15========
+
+R1: talk(d,speaker,topics) :- docs(d), namePatterns(n), topicPatterns(t),                                  R 
+1:  careerSections(d,careerSection) :- docs(d),  
+exCareerSection (d,careerSection).  
+exTalk (d,n,t,speaker,topics).                                                           
+(a) talk         
+R2:  blockbuster(d,movie) :- careerSections(careerSection), moviePatterns(m), 
+exMovie (careerSection,m,movie) .    
+R1: people(d,person) :- docs(d), namePatterns(n),  exPerson (d,n,person).                                                               (d) blockbuster     
+R2: conferences(d,conference):- docs(d), conferencePatterns(f),                                              R 
+1: introParagraphs(d,intro) :- docs(d),  
+exIntro (d, intro).     
+exConference (d,f,conference).                                               
+R2: actors(d,actor) :- introParagraphs(d, intro), namePatterns(n),  exActor (intro,n,actor).    
+R3: chairTypes(d,chairType) :- docs(d), chairTypePatterns(c), 
+exChairType (d,c,chairType).                                                 R 
+3: careerSections(d, careerSection) :- docs(d),  
+exCareerSection (d, careerSection).  
+R4:  chair(d, person, conference, chairType) :- people(d,person), R4: movies(d,movie) :- careerSections(d,careerSection), moviePatterns(m), 
+conferences(d,conference),                                                               exMovie (carSection,m,movie). 
+chairTypes(d, chairType),                                 
+isBefore(conference,chairType),                     R 
+5: play(d,actor,movie) 
+:- actors(d,actor), movies(d,movie). isBefore(chairType,person), 
+spanChar(chairType, person) < 20. 
+(b) chair        
+(e) play 
+R1: awardSections(d,awardSection) :- docs(d),  exAwardSection (d,awardSection). 
+R1: advisors(d,advisor) :- docs(d), namePatterns(n),  exAdvisor (d,n,advisor).                          R2: bioSections(d,bioSection) :- docs(d),  exBioSection (d,bioSection). 
+R2: advisees(d,advisee) :- docs(d), namePatterns(n),  exAdvisee (d,n,advisee) R3: awardItems(d,awardItem) :- awardSections(d,awardSection),   
+exAwardItem (awardSection,awardItem). 
+R3: nameLists(d,nameList) :- docs(d), nameListPatterns(l),  exNameList (d,l,nameList). 
+R4: coauthors(d,author 
+1,author 2 
+exAward (awardItem,m,a,movie,award).   
+R5 
+R4: movieAwards(d,movie,award) :- awardItems(d,awardItem),  
+) :- docs(d), nameLists(d,nameList),                                                               moviePatterns(m), awardPatterns(a),  
+namePatterns(n 
+1), namePatterns(n 2)                                                                
+exCoauthor (nameList,n 
+1,n 2,author 1,author 2).                                          
+R5: actors(d,actor) :- bioSections(d, bioSection), namePatterns(n),   : workOn(d,person,topics) :- docs(d), namePatterns(n), topicPatterns(t),                                                               exActor (bioSection,n,actor).  
+exWorkOn (d,n,t,person,topics).                                                            
+R6: roles(d,movie,role) :- docs(d), moviePatterns(m),  exRole (d,m,movie,role).   
+R6: advise(d,advisor,advisee,topics) :- advisors(d,advisor),  advisees(d,advisee)  
+coauthors(d,author 
+1,author 2),                                         R 7: award(d,actor,movie,role,award) 
+:- roles(d,movie,role),  
+approMatch(advisor, author 
+1),                                                               movieAwards(d,movie 1,award),  
+approMatch(advisee, author 
+2),                                                               match(movie,movie 1), 
+distChar(author 
+2, person) =0                                                     actors(d,actor).   
+(c) advise      
+(f) award                            
+Figure 16: Xlog Programs for 6 IE tasks in Figure 8.(b). IE blackboxes are in bold. 
+movie mention, and ﬂ to be the longest ﬂi. 
+award: The IE program \award" contains 6 IE blackboxes: exAwardSection, exBioSection, exAwardItem exAward, ex- Actor and exRole. We derive their ﬁ and ﬂ as follows. 
+exAwardSection extracts the award section from a Wikipedia page by (a) detecting all sections delimited by the section heading markups, then (b) outputting a section if the key- word \award" is present in the section heading preceding the section. Therefore we set the context ﬂexAwardSection to the maximal distance between the beginning of the section heading and the beginning of the section. Furthermore,we set ﬁexAwardSection to the maximal number of characters in any award section. 
+exBioSection operates similarly as exAwardSection, thus ﬁexBioSection and ﬂexBioSection are estimated in a similar manner. 
+exAwardItem takes input as an award section, detects list item markups and outputs all list items in the award section. Therefore we set ﬁexAwardItem to the maximal length of a list item and ﬂexAwardItem to the maximal length of list item markups . 
+exAward takes input as an award list item i, a movie pat- tern m, and an award pattern a. It then extracts movie and 
+award mention pairs from i by (a) detecting all movie men- tions by ﬂnding occurrences of m, (b) detecting all award mentions by ﬂnding occurrences of a , and (c) pairing up all movie mentions and award mentions. Therefore, we set ﬁexAward to the maximal length of the text spanned by a movie and award mention pair, and ﬂexAward to 0. 
+exActor and exRole operates similarly as exAward. Thus, their scope and scope are estimated in a similar manner. 
+Finally, we derive the ﬁ and ﬂ of the entire IE program using above ﬁ and ﬂ of the individual IE blackboxes. Specif- ically, we set ﬁ of \award" to the maximum length of text spanned by an award mention, and ﬂ of \award" to be the maximum of all ﬂi. 
+actor: The IE program \actor"(shown in Figure 17) is a learning-based IE program that extracts mentions of actor entities from Wikipedia pages. It captures exactly the ex- traction workow of KYLIN, a machine learning system re- cently proposed by [29] to automatically construct infoboxes for Wikipedia pages. 
+Following the workow of KYLIN, \actor" operates in three steps. First, given a Wikipedia page d, rule R1 extracts sentences from d using the IE blackbox exSentence. As in KYLIN, we implemented exSentence using the sentence de- 
+
+========16========
+
+R1: sentences(d,sentence) :- docs(d),  exSentence (d,sentence). 
+R2: names(d,name) :- sentences(d,sentence), containingName(sentence),  
+exName (sentence,name). 
+R3: birthNames(d,birthName) :- sentences(d,sentence), containingBirthName(sentence),  
+exBirthName (sentence,birthName). 
+R4: birthDates(d,birthDate) :- sentences(d,sentence), containingBirthDate(sentence), 
+exBirthDate (sentence,birthDate). 
+R5: notableRoles(d,notableRoles) :- sentences(d,sentence), containingNotableRole(sentence),  
+exNotableRoles (sentence,notableRoles). 
+page p, the string p[(m:start¡ﬂCRF)::(m:end+ﬂCRF)] must contain all sentences from which the attribute values of m are extracted. Therefore, if p[(m:start ¡ ﬂCRF)::(m:end + ﬂCRF)] remains the same, we can guarantee the same at- tribute values will be extracted. Furthermore, if p[(m:start¡ ﬂCRF ¡ ﬂME)::(m:end + ﬂCRF + ﬂME)] remains the same, we can guarantee the same sentences spanned by m will also be extracted. Therefore ﬂ is set to ﬂME + ﬂCRF. In our experiment, we set ﬁ to 17824 and ﬂ to 337. 
+R6: actor(d,name,birthName,birthDate,notableRoles) :- names(d,name),  
+birthNames(d,birthName),  
+birthDates(d,birthDate), 
+notableRoles(d,notableRoles) 
+Figure 17: The Xlog program of \actor". IE black- boxes are in bold. 
+tector from openNLP library (http://opennlp.sourceforge.net). This sentence detector employs a maximal entropy (ME) classiﬂer to detect delimits of sentences. Next, each rule from R2 ¡ R5 employs an IE blackbox (in bold) to extract attribute values of a distinct attribute from a sentence, if the sentence is predicted to contain some values of that attribute at all. As in KYLIN, we implemented each IE blackbox in R2 ¡ R5 as a distinct conditional random ﬂeld (CRF) model, trained for each attribute, to extract the val- ues of that attribute. Speciﬂcally, we used the implementa- tion from http://crf.sourceforge.net/ for the CRFs. Finally, rule R6 \stitches" the attribute values extracted by R2 ¡R5 to produce actor mentions. 
+We now describe how to derive the ﬁ and ﬂ of each IE blackbox and the entire IE program. IE blackbox exSentence takes input as a data page d, and extracts sentences from d by (a) identifying candidate delimits such as \!", \." and \?", (b) capturing features from the tokens surrounding those delimits, and (c) employing an ME classiﬂer to determine if candidate delimits are actual sentence delimits based on the captured features. Obviously, as long as the tokens sur- rounding a candidate delimit remain the same, the features captured from the tokens will also remain the same, and thus the classiﬂcation of the candidate delimit remains the same. Hence, we can set ﬂME to the maximal number of characters in the surrounding tokens. Furthermore, we can set scope ﬁME to the maximal number of characters in a sentence. In our experiment, we set ﬂME to 16 and ﬁME to 321. 
+Each of the four IE blackboxes exName, exBirthName, exBirthDate and exNotableRoles employs a CRF model to extract attribute values from a sentence by (a) capturing features of each token in the sentence, then (b) ﬂnding the most likely sequence of labels (indicating if a token is part of an attribute value) of the sentence using the trained CRF model. The CRF models are very complex and thus hard to derive tight values of ﬁCRF and ﬂCRF. However, it is always true that if a given sentence remains the same, the sequence of labels of this sentence and thus the extracted attribute values will remain the same. Therefore, we can set ﬁCRF and ﬂCRF to the length of the CRF model’s longest input string, i.e., the longest sentence. 
+Finally, we estimate the ﬁ and ﬂ of the entire IE program using those of the IE blackboxes. The scope ﬁ of the IE pro- gram is set to the length of the longest string spanned by an actor mention. Additionally, for an actor mention m in 
+
+========17========
+

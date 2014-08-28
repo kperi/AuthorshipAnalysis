@@ -1,0 +1,483 @@
+A Framework for Clustering Evolving Data Streams 
+Charu C. Aggarwal T. J. Watson Resch. Ctr. 
+Jiawei Han, Jianyong Wang 
+UIUC 
+Abstract 
+The clustering problem is a di problem for the data stream domain. This is because the large volumes of data arriving in a stream renders most traditional algorithms too inef- t. In recent years, a few one-pass clus- tering algorithms have been developed for the data stream problem. Although such methods address the scalability issues of the clustering problem, they are generally blind to the evo- lution of the data and do not address the fol- lowing issues: (1) The quality of the clusters is poor when the data evolves considerably over time. (2) A data stream clustering algorithm requires much greater functionality in discov- ering and exploring clusters over dit por- tions of the stream. 
+The widely used practice of viewing data stream clustering algorithms as a class of one- pass clustering algorithms is not very use- ful from an application point of view. For example, a simple one-pass clustering algo- rithm over an entire data stream of a few years is dominated by the outdated history of the stream. The exploration of the stream over dit time windows can provide the users with a much deeper understanding of the evolving behavior of the clusters. At the same time, it is not possible to simultaneously per- form dynamic clustering over all possible time horizons for a data stream of even moderately large volume. 
+This paper discusses a fundamentally dif- ferent philosophy for data stream clustering which is guided by application-centered re- quirements. The idea is divide the clustering process into an online component which pe- riodically stores detailed summary statistics 
+Permission to copy without fee all or part of this material is granted provided that the copies are not made or distributed for direct commercial advantage, the VLDB copyright notice and the title of the publication and its date appear, and notice is given that copying is by permission of the Very Large Data Base Endowment. To copy otherwise, or to republish, requires a fee and/or special permission from the Endowment. 
+Proceedings of the 29th VLDB Conference, Berlin, Germany, 2003 
+Philip S. Yu T. J. Watson Resch. Ctr. 
+and an o component which uses only this summary statistics. The o component is utilized by the analyst who can use a wide va- riety of inputs (such as time horizon or num- ber of clusters) in order to provide a quick un- derstanding of the broad clusters in the data stream. The problems of et choice, stor- age, and use of this statistical data for a fast data stream turns out to be quite tricky. For this purpose, we use the concepts of a pyrami- dal time frame in conjunction with a micro- clustering approach. Our performance ex- periments over a number of real and synthetic data sets illustrate the eeness, e, and insights provided by our approach. 
+1 Introduction 
+In recent years, advances in hardware technology have allowed us to automatically record transactions of ev- eryday life at a rapid rate. Such processes lead to large amounts of data which grow at an unlimited rate. These data processes are referred to as data streams. The data stream problem has been exten- sively researched in recent years because of the large number of relevant applications [1, 3, 6, 8, 13]. 
+In this paper, we will study the clustering problem for data stream applications. The clustering problem is de as follows: for a given set of data points, we wish to partition them into one or more groups of sim- ilar objects. The similarity of the objects with one an- other is typically de with the use of some distance measure or objective function. The clustering problem has been widely researched in the database, data min- ing and statistics communities [4, 9, 12, 10, 11, 14] because of its use in a wide range of applications. Re- cently, the clustering problem has also been studied in the context of the data stream environment [8, 13]. 
+Previous algorithms on clustering data streams such as those discussed in [13] assume that the clusters are to be computed over the entire data stream. Such methods simply view the data stream clustering prob- lem as a variant of one-pass clustering algorithms. While such a task may be useful in many applications, a clustering problem needs to be de carefully in the context of a data stream. This is because a data stream should be viewed as an in process consist- ing of data which continuously evolves with time. As a result, the underlying clusters may also change con- 
+
+========1========
+
+siderably with time. The nature of the clusters may vary with both the moment at which they are com- puted as well as the time horizon over which they are measured. For example, a user may wish to exam- ine clusters occurring in the last month, last year, or last decade. Such clusters may be considerably dif- ferent. Therefore, a data stream clustering algorithm must provide the y to compute clusters over user-de time periods in an interactive fashion. 
+We note that since stream data naturally imposes a one-pass constraint on the design of the algorithms, it becomes more di to provide such a y in computing clusters over dit kinds of time hori- zons using conventional algorithms. For example, a di- rect extension of the stream-based k-means algorithm in [13] to such a case would require a simultaneous maintenance of the intermediate results of clustering algorithms over all possible time horizons. Such a com- putational burden increases with progression of the data stream and can rapidly become a bottleneck for online implementation. Furthermore, in many cases, an analyst may wish to determine the clusters at a pre- vious moment in time, and compare them to the cur- rent clusters. This requires even greater book-keeping and can rapidly become unwieldy for fast data streams. 
+Since a data stream cannot be revisited over the course of the computation, the clustering algorithm needs to maintain a substantial amount of informa- tion so that important details are not lost. For ex- ample, the algorithm in [13] is implemented as a con- tinuous version of k-means algorithm which continues to maintain a number of cluster centers which change or merge as necessary throughout the execution of the algorithm. Such an approach is especially risky when the characteristics of the stream evolve over time. This is because the k-means approach is highly sensitive to the order of arrival of the data points. For example, once two cluster centers are merged, there is no way to informatively split the clusters when required by the evolution of the stream at a later stage. 
+Therefore a natural design to stream clustering would separate out the process into an online micro- clustering component and an o macro-clustering component. The online micro-clustering component requires a very et process for storage of appropri- ate summary statistics in a fast data stream. The of-  component uses these summary statistics in con- junction with other user input in order to provide the user with a quick understanding of the clusters when- ever required. Since the o component requires only the summary statistics as input, it turns out to be very et in practice. This two-phased approach also provides the user with the y to explore the nature of the evolution of the clusters over di ent time periods. This provides considerable insights to users in real applications. 
+This paper is organized as follows. In section 2, we will discuss the basic concepts underlying the stream clustering framework. In section 3, we will discuss how the micro-clusters are maintained throughout the stream generation process. In section 4, we discuss 
+how the micro-clusters may be used by an o macro-clustering component to create clusters of dif- ferent spatial and temporal granularity. Since the algo- rithm is used for clustering of evolving data streams, it can also be used to determine the nature of clus- ter evolution. This process is described in section 5. Section 6 reports our performance study on real and synthetic data sets. Section 7 discusses the implication of the method and concludes our study. 
+2 The Stream Clustering Framework In this section, we will discuss the framework of our stream clustering approach. We will refer to it as the CluStream framework. The separation of the stream clustering approach into online and o components raises several important questions: 
+ What is the nature of the summary information which can be stored etly in a continuous data stream? The summary statistics should provide su cient temporal and spatial information for a horizon- speci o clustering process, while being prone to an et (online) update process. 
+ At what moments in time should the summary information be stored away on disk? How can an ef- fective trade-o be achieved between the storage re- quirements of such a periodic process and the ability to cluster for a speci time horizon to within a desired level of approximation? 
+ How can the periodic summary statistics be used to provide clustering and evolution insights over user- speci time horizons? 
+In order to address these issues, we utilize two con- cepts which are useful for et data collection in a fast stream: 
+ Micro-clusters: We maintain statistical infor- mation about the data locality in terms of micro- clusters. These micro-clusters are de as a tem- poral extension of the cluster feature vector [14]. The additivity property of the micro-clusters makes them a natural choice for the data stream problem. 
+ Pyramidal Time Frame: The micro-clusters are stored at snapshots in time which follow a pyrami- dal pattern. This pattern provides an ee trade- o between the storage requirements and the ability to recall summary statistics from dit time horizons. 
+This summary information in the micro-clusters is used by an o component which is dependent upon a wide variety of user inputs such as the time horizon or the granularity of clustering. We will now discuss a number of notations and de in order to intro- duce the above concepts. 
+It is assumed that the data stream consists of a set of multi-dimensional records X1 :::Xk ::: arriv- ing at time stamps T1 :::Tk :::. Each Xi is a multi- dimensional record containing d dimensions which are denoted by Xi = (x1i :::xdi). 
+We will  begin by de the concept of micro- clusters and pyramidal time frame more precisely. De 1 A micro-cluster for a set of d- dimensional points Xi 
+1 
+:::Xi 
+n 
+with time stamps 
+
+========2========
+
+Ti 
+1 
+:::Ti 
+n 
+is ded as the (2  d + 3) tuple (CF2x;CF1x;CF2t;CF1t;n), wherein CF2x and CF1x each correspond to a vector of d entries. The de of each of these entries is as follows: 
+ For each dimension, the sum of the squares of the data values is maintained in CF2x. Thus, CF2x cPontains d values. The p-th entry of CF2x is equal ton 
+j=1 
+(xpi )2. 
+j 
+ For each dimension, the sum of the data values is maintained in CF1x. Thus, CF1x d values.n 
+The p-th entry of CF1x is equal to 
+Pcontains 
+j=1 
+xpi . 
+j 
+ The sum of the squares of the time stamps Ti 
+1 
+:::Ti 
+n 
+is maintained in CF2t. 
+ The sum of the time stamps Ti 
+1 
+:::Ti 
+n 
+is main- tained in CF1t. 
+ The number of data points is maintained in n. 
+We note that the above de of micro-clusters is a temporal extension of the cluster feature vector in [14]. We will refer to the micro-cluster for a set of points C by CFT(C). As in [14], this summary infor- mation can be expressed in an additive way over the dit data points. This makes it a natural choice for use in data stream algorithms. At a given moment in time, the statistical information about the dominant micro-clusters in the data stream is maintained by the algorithm. As we shall see at a later stage, the nature of the maintenance process ensures that a very large number of micro-clusters can be etly maintained as compared to the method discussed in [13]. The high granularity of the online updating process ensures that it is able to provide clusters of much better quality in an evolving data stream. 
+The micro-clusters are also stored at particular mo- ments in the stream which are referred to as snapshots. The o macro-clustering algorithm discussed at a later stage in this paper will use these  level micro- clusters in order to create higher level clusters over speci time horizons. Consider the case when the current clock time is tc and the user wishes to  clusters in the stream based on a history of length h. The macro-clustering algorithm discussed in this pa- per will use some of the subtractive properties1 of the micro-clusters stored at snapshots tc and (tc  h) in or- der to  the higher level clusters in a history or time horizon of length h. The subtractive property is a very important characteristic of the micro-clustering repre- sentation which makes it feasible to generate higher level clusters over dit time horizons. Of course, since it is not possible to store the snapshots at each and every moment in time, it is important to choose particular instants of time at which the micro-clusters are stored. The aim of choosing these particular in- stants is to ensure that clusters in any user-speci time horizon (tc  h;tc) can be approximated. 
+In order to achieve this, we will introduce the con- cept of a pyramidal time frame. In this technique, the snapshots are stored at di levels of granularity 
+1This 
+property will be discussed in greater detail in a later section. 
+depending upon the recency. Snapshots are classi into dit orders which can vary from 1 to log(T), where T is the clock time elapsed since the beginning of the stream. The order of a particular class of snap- shots de the level of granularity in time at which the snapshots are maintained. The snapshots of dif- ferent ordering are maintained as follows: 
+ Snapshots of the i-th order occur at time intervals of i, where  is an integer and   1. Speci, each snapshot of the i-th order is taken at a moment in time when the clock value2 from the beginning of the stream is exactly divisible by i. 
+ At any given moment in time, only the last +1 snapshots of order i are stored. 
+We note that the above de allows for con- siderable redundancy in storage of snapshots. For ex- ample, the clock time of 8 is divisible by 20, 21, 22, and 23 (where  = 2). Therefore, the state of the micro-clusters at a clock time of 8 simultaneously cor- responds to order 0, order 1, order 2 and order 3 snap- shots. From an implementation point of view, a snap- shot needs to be maintained only once. We make the following observations: 
+ For a data stream, the maximum order of any snapshot stored at T time units since the beginning of the stream mining process is log(T). 
+ For a data stream the maximum number of snap- shots maintained at T time units since the beginning of the stream mining process is ( + 1)  log(T). 
+ For any user-speci time window of h, at least one stored snapshot can be found within 2  h units of the current time. 
+While the  two results are quite easy to verify, the last one needs to be proven formally. 
+Lemma 1 Let h be a user-specid time window, tc be the current time, and ts be the time of the last stored snapshot of any order just before the time tc  h. Then tc  ts  2  h. 
+Proof: Let r be the smallest integer such that r  h. Therefore, we know that r 
+ 1 
+< h. Since we know that there are +1 snapshots of order (r  1), at least one snapshot of order r  1 must always exist before tc  h. Let ts be the snapshot of order r  1 which occurs just before tc  h. Then (tc  h)  ts  r 
+ 1. Therefore, we have tc  ts  h + r 
+ 1 
+< 2  h. Thus, in this case, it is possible to  a snapshot within a factor of 2 of any user-speci time win- dow. Furthermore, the total number of snapshots which need to be maintained is relatively modest. For example, for a data stream running3 for 100 years with a clock time granularity of 1 second, the total number of snapshots which need to be maintained is given by 
+2Without 
+loss of generality, we can assume that one unit of clock time is the smallest level of granularity. Thus, the 0-th order snapshots measure the time intervals at the smallest level of granularity. 
+3The 
+purpose of this rather extreme example is only to illus- trate the e of the pyramidal storage process in the most demanding case. In most real applications, the data stream is likely to be much shorter. 
+
+========3========
+
+Order of Snapshots 0 1 2 3 4 5 
+Clock Times (Last 5 Snapshots) 
+55 54|53 52|51 54 52|50 48|46 52 48|44 40|36 48|40 32|24 16| 
+48 32|16 
+32 
+Table 1: An example of snapshots stored for  = 2 and l = 2 
+(2+1)log2(100365246060)  95. This is quite a modest storage requirement. 
+It is possible to improve the accuracy of time hori- zon approximation at a modest additional cost. In order to achieve this, we save the l + 1 snapshots of order r for l > 1. In this case, the storage require- ment of the technique corresponds to (l+1)log(T) snapshots. On the other hand, the accuracy of time horizon approximation also increases substantially. In this case, any time horizon can be approximated to a factor of (1 + 1=l 
+ 1). 
+We summarize this result as follows: 
+Lemma 2 Let h be a user-specid time horizon, tc be the current time, and ts be the time of the last stored snapshot of any order just before the time tc  h. Then tc  ts  (1 + 1=l 
+ 1) 
+ h. 
+Proof: Similar to previous case. 
+For larger values of l, the time horizon can be approx- imated as closely as desired. Consider the example (discussed above) of a data stream running for 100 years. By choosing l = 10; = 2, it is possible to ap- proximate any time horizon within 0:2%, while a total of only (210 +1)log2(100365246060)  32343 snapshots are required for 100 years. Since histori- cal snapshots can be stored on disk and only the cur- rent snapshot needs to be maintained in main mem- ory, this requirement is quite feasible from a practical point of view. It is also possible to specify the pyrami- dal time window in accordance with user preferences corresponding to particular moments in time such as beginning of calendar years, months, and days. While the storage requirements and horizon estimation possi- bilities of such a scheme are dit, all the algorith- mic descriptions of this paper are directly applicable. 
+In order to clarify the way in which snapshots are stored, let us consider the case when the stream has been running starting at a clock-time of 1, and a use of  = 2 and l = 2. Therefore 22 + 1 = 5 snapshots of each order are stored. Then, at a clock time of 55, snapshots at the clock times illustrated in Table 1 are stored. 
+We note that a large number of snapshots are com- mon among dit orders. From an implementation point of view, the states of the micro-clusters at times of 16, 24, 32, 36, 40, 44, 46, 48, 50, 51, 52, 53, 54, and 55 are stored. It is easy to see that for more recent 
+clock times, there is less distance between successive snapshots (better granularity). We also note that the storage requirements estimated in this section do not take this redundancy into account. Therefore, the re- quirements which have been presented so far are actu- ally worst-case requirements. 
+An important question is to  a systematic rule which will eliminate the redundancy in the snapshots at dit times. We note that in the example illus- trated in Table 1, all the snapshots of order 0 occur- ring at odd moments (nondivisible by 2) need to be retained, since these are non-redundant. Once these snapshots have been retained and others discarded, all the snapshots of order 1 which occur at times that are not divisible by 4 are non-redundant. In general, all the snapshots of order l which are not divisible by 2l+1 are non-redundant. A redundant (hence not be gener- ated) snapshot is marked by a crossbar on the number, such as 54,| in Table 1. This snapshot generation rule also applies to the general case, when  is dit from 2. We also note that whenever a new snapshot of a particular order is stored, the oldest snapshot of that order needs to be deleted. 
+3 Online Micro-cluster Maintenance The micro-clustering phase is the online statistical data collection portion of the algorithm. This pro- cess is not dependent on any user input such as the time horizon or the required granularity of the clus- tering process. The aim is to maintain statistics at a sutly high level of (temporal and spatial) gran- ularity so that it can be eely used by the o components such as horizon-speci macro-clustering as well as evolution analysis. 
+It is assumed that a total of q micro-clusters are maintained at any moment by the algorithm. We will denote these micro-clusters by M1 :::Mq. Associated with each micro-cluster i, we create a unique id when- ever it is  created. If two micro-clusters are merged (as will become evident from the details of our main- tenance algorithm), a list of ids is created in order to identify the constituent micro-clusters. The value of q is determined by the amount of main memory available in order to store the micro-clusters. Therefore, typi- cal values of q are signitly larger than the natural number of clusters in the data but are also signitly smaller than the number of data points arriving in a long period of time for a massive data stream. These micro-clusters represent the current snapshot of clus- ters which change over the course of the stream as new points arrive. Their status is stored away on disk whenever the clock time is divisible by i for any in- teger i. At the same time any micro-clusters of order r which were stored at a time in the past more remote than l+r units are deleted by the algorithm. 
+We  need to create the initial q micro-clusters. This is done using an o process at the very be- ginning of the data stream computation process. At the very beginning of the data stream, we store the  InitNumber points on disk and use a standard 
+
+========4========
+
+k-means clustering algorithm in order to create the q initial micro-clusters. The value of InitNumber is cho- sen to be as large as permitted by the computational complexity of a k-means algorithm creating q clusters. 
+Once these initial micro-clusters have been estab- lished, the online process of updating the micro- clusters is initiated. Whenever a new data point Xi 
+k arrives, the micro-clusters are updated in order to re-  the changes. Each data point either needs to be absorbed by a micro-cluster, or it needs to be put in a cluster of its own. The  preference is to absorb the data point into a currently existing micro-cluster. We   the distance of each data point to the micro-cluster centroids M1 :::Mq. Let us denote this distance value of the data point Xi 
+k 
+to the centroid of the micro-cluster Mj by dist(Mj;Xi 
+k 
+). Since the centroid of the micro-cluster is available in the cluster feature vector, this value can be computed relatively easily. 
+We  the closest cluster Mp to the data point Xi 
+k 
+. We note that in many cases, the point Xi 
+k 
+does not naturally belong to the cluster Mp. These cases are as follows: 
+ The data point Xi 
+k 
+corresponds to an outlier. 
+ The data point Xi 
+k 
+corresponds to the begin- ning of a new cluster because of evolution of the data stream. 
+While the two cases above cannot be distinguished until more data points arrive, the data point Xi 
+k 
+needs to be assigned a (new) micro-cluster of its own with a unique id. How do we decide whether a completely new cluster should be created? In order to make this decision, we use the cluster feature vector of Mp to decide if this data point falls within the maximum boundary of the micro-cluster Mp. If so, then the data point Xi 
+k 
+is added to the micro-cluster Mp using the CF additivity property. The maximum boundary of the micro-cluster Mp is de as a factor of t of the RMS deviation of the data points in Mp from the cen- troid. We de this as the maximal boundary factor. We note that the RMS deviation can only be de for a cluster with more than 1 point. For a cluster with only 1 previous point, the maximum boundary is de in a heuristic way. Speci, we choose it to be the distance to the closest cluster. 
+If the data point does not lie within the maxi- mum boundary of the nearest micro-cluster, then a new micro-cluster must be created containing the data point Xi 
+k 
+. This newly created micro-cluster is assigned a new id which can identify it uniquely at any future stage of the data steam process. However, in order to create this new micro-cluster, the number of other clusters must be reduced by one in order to create memory space. This can be achieved by either deleting an old cluster or joining two of the old clusters. Our maintenance algorithm  determines if it is safe to delete any of the current micro-clusters as outliers. If not, then a merge of two micro-clusters is initiated. 
+The  step is to identify if any of the old micro-clusters are possibly outliers which can be safely 
+deleted by the algorithm. While it might be tempting to simply pick the micro-cluster with the fewest num- ber of points as the micro-cluster to be deleted, this may often lead to misleading results. In many cases, a given micro-cluster might correspond to a point of considerable cluster presence in the past history of the stream, but may no longer be an active cluster in the recent stream activity. Such a micro-cluster can be considered an outlier from the current point of view. An ideal goal would be to estimate the average time- stamp of the last m arrivals in each micro-cluster 
+4, and delete the micro-cluster with the least recent time- stamp. While the above estimation can be achieved by simply storing the last m points in each micro-cluster, this increases the memory requirements of a micro- cluster by a factor of m. Such a requirement reduces the number of micro-clusters that can be stored by the available memory and therefore reduces the ee- ness of the algorithm. 
+We will  a way to approximate the average time- stamp of the last m data points of the cluster M. This will be achieved by using the data about the time- stamps stored in the micro-cluster M. We note that the time-stamp data allows us to calculate the mean and standard deviation5 of the arrival times of points in a given micro-cluster M. Let these values be de- noted by M and M respectively. Then, we  the time of arrival of the m=(2  n)-th percentile of the points in M assuming that the time-stamps are normally distributed. This time-stamp is used as the approximate value of the recency. We shall call this value as the relevance stamp of cluster M. When the least relevance stamp of any micro-cluster is below a user-de threshold , it can be eliminated and a new micro-cluster can be created with a unique id cor- responding to the newly arrived data point Xi 
+k 
+. 
+In some cases, none of the micro-clusters can be readily eliminated. This happens when all relevance stamps are sutly recent and lie above the user- de threshold . In such a case, two of the micro- clusters need to be merged. We merge the two micro- clusters which are closest to one another. The new micro-cluster no longer corresponds to one id. Instead, an idlist is created which is a union of the ids in the in- dividual micro-clusters. Thus, any micro-cluster which is the result of one or more merging operations can be identi in terms of the individual micro-clusters merged into it. 
+While the above process of updating is executed at the arrival of each data point, an additional process is executed at each clock time which is divisible by i for any integer i. At each such time, we store away the current set of micro-clusters (possibly on disk) to- gether with their id list, and indexed by their time of storage. We also delete the least recent snapshot of or- der i, if l+1 snapshots of such order had already been 
+4If 
+the micro-cluster contains fewer than 2m points, then we simply  the average time-stamp of all points in the cluster. 
+5The 
+pmean 
+is equal to CF1t=n. The standard deviation is equal to CF2t=n  (CF1t=n)2. 
+
+========5========
+
+stored on disk, and if the clock time for this snapshot is not divisible by i+1. 
+4 Macro-Cluster Creation 
+This section discusses one of the o components, in which a user has the y to explore stream clusters over dit horizons. The micro-clusters generated by the algorithm serve as an intermediate statistical representation which can be maintained in an et way even for a data stream of large volume. On the other hand, the macro-clustering process does not use the (voluminous) data stream, but the com- pactly stored summary statistics of the micro-clusters. Therefore, it is not constrained by one-pass require- ments. 
+It is assumed, that as input to the algorithm, the user supplies the time-horizon h, and the number of higher level clusters k which he wishes to determine. We note that the choice of the time horizon h deter- mines the amount of history which is used in order to create higher level clusters. The choice of the number of clusters k determines whether more detailed clusters are found, or whether more rough clusters are mined. 
+We note that the set of micro-clusters at each stage of the algorithm is based on the entire history of stream processing since the very beginning of the stream gen- eration process. When the user speci a particular time horizon of length h over which he would like to  the clusters, then we need to  micro-clusters which are speci to that time-horizon. How do we achieve this goal? For this purpose, we  the addi- tive property of the cluster feature vector very useful. This additive property is as follows: 
+Property 1 Let C1 and C2 be two sets of points. Then the cluster feature vector CFT(C1 [ C2) is given by the sum of CFT(C1) and CFT(C2) 
+Note that this property for the temporal version of the cluster feature vector directly extends from that discussed in [14]. The following subtractive property is also true for exactly the same reason. 
+Property 2 Let C1 and C2 be two sets of points such that C1  C2. Then, the cluster feature vector CFT(C1  C2) is given by CFT(C1)  CFT(C2) 
+The subtractive property helps considerably in de- termination of the micro-clusters over a pre-speci time horizon. This is because by using two snapshots at pre-de intervals, it is possible to determine the approximate micro-clusters for a pre-speci time horizon. Note that the micro-cluster maintenance al- gorithm always creates a unique id whenever a new micro-cluster is created. When two micro-clusters are merged, then the micro-clustering algorithm creates an idlist which is a list of all the original ids in that micro-cluster. 
+Consider the situation at a clock time of tc, when the user wishes to  clusters over a past time hori- zon of h. In this case, we  the stored snapshot 
+which occurs just before the time tc  h. (The use of a pyramidal time frame ensures that it is always pos- sible to  a snapshot at tc  h0 where h0 is within a pre-speci tolerance of the user-speci time hori- zon h.) Let us denote the set of micro-clusters at time tc  h by S(tc  h0) and the set of micro-clusters at time tc by S(tc). For each micro-cluster in the current set S(tc), we  the list of ids in each micro-cluster. For each of the list of ids, we  the corresponding micro-clusters in S(tc  h0), and subtract the CF vec- tors for the corresponding micro-clusters in S(tc  h0). This ensures that the micro-clusters created before the user-speci time horizon do not dominate the results of the clustering process. We will denote this  set of micro-clusters created from the subtraction process by N(tc;h0). These micro-clusters are then subjected to the higher level clustering process to create a smaller number of micro-clusters which can be more easily un- derstood by the user. 
+The clusters are determined by using a modi of a k-means algorithm. In this technique, the micro- clusters in N(tc;h0) are treated as pseudo-points which are re-clustered in order to determine higher level clus- ters. The k-means algorithm [10] picks k points as ran- dom seeds and then iteratively assigns database points to each of these seeds in order to create the new par- titioning of clusters. In each iteration, the old set of seeds are replaced by the centroid of each partition. When the micro-clusters are used as pseudo-points, the k-means algorithm needs to be modi in a few ways: 
+ At the initialization stage, the seeds are no longer picked randomly, but are sampled with probability proportional to the number of points in a given micro- cluster. The corresponding seed is the centroid of that micro-cluster. 
+ At the partitioning stage, the distance of a seed from a given pseudo-point (or micro-cluster) is equal to the distance of the seed from the centroid of the corresponding micro-cluster. 
+ At the seed adjustment stage, the new seed for a given partition is de as the weighted centroid of the micro-clusters in that partition. 
+It is important to note that a given execution of the macro-clustering process only needs to use two (care- fully chosen) snapshots from the pyramidal time win- dow of the micro-clustering process. The compactness of this input thus allows the user considerable  ities for querying the stored micro-clusters with di ent levels of granularity and time horizons. 
+5 Evolution Analysis of Clusters Many interesting changes can be recorded by an an- alyst in an evolving data stream for ee use in a number of business applications [1]. In the context of the clustering problem, such evolution analysis also has signit importance. For example, an analyst may wish to know how the clusters have changed over the last quarter, the last year, the last decade and so on. For this purpose, the user needs to input a few 
+
+========6========
+
+parameters to the algorithm: 
+ The two clock times t1 and t2 over which the clus- ters need to be compared. It is assumed that t2 > t1. In many practical scenarios, t2 is the current clock time. 
+ The time horizon h over which the clusters are computed. This means that the clusters created by the data arriving between (t2  h;t2) are compared to those created by the data arriving between (t1  h;t1). 
+Another important issue is that of deciding how to present the changes in the clusters to a user, so as to make the results appealing from an intuitive point of view. We present the changes occurring in the clusters in terms of the following broad objectives: 
+ Are there new clusters in the data at time t2 which were not present at time t1? 
+ Have some of the original clusters been lost be- cause of changes in the behavior of the stream? 
+ Have some of the original clusters at time t1 shifted in position and nature because of changes in the data? 
+We note that the micro-cluster maintenance algo- rithm maintains the idlists which are useful for track- ing cluster information. The  step is to com- pute N(t1;h) and N(t2;h) as discussed in the pre- vious section. Therefore, we divide the micro-clusters in N(t1;h) [ N(t2;h) into three categories: 
+ Micro-clusters in N(t2;h) for which none of the ids on the corresponding idlist are present in N(t1;h). These are new micro-clusters which were created at some time in the interval (t1;t2). We will denote thisadded 
+set of micro-clusters by M (t1;t2). 
+ Micro-clusters in N(t1;h) for which none of the corresponding ids are present in N(t2;h). Thus, these micro-clusters were deleted in the interval (t1;t2). We will denote this set of micro-clusters bydeleted 
+M (t1;t2). 
+ Micro-clusters in N(t2;h) for which some or all of the ids on the corresponding idlist are present in the idlists corresponding to the micro-clusters in N(t1;h). Such micro-clusters were at least partially created before time t1, but have been modi since then. We will denote this set of micro-clusters by Mretained(t1;t2). 
+The macro-cluster creation algorithm is then separately applied to each of this set of micro- clusters to create a new set of higher level clusters. The macro-clusters created from Madded(t1;t2) anddeleted 
+M (t1;t2) have clear signi in terms of clus- ters added to or removed from the data stream. The micro-clusters in Mretained(t1;t2) correspond to those portions of the stream which have not changed very signitly in this period. When a very large frac- tion of the data belongs to Mretained(t1;t2), this is a sign that the stream is quite stable over that time period. 
+6 Empirical Results 
+A thorough experimental study has been conducted for the evaluation of the CluStream algorithm on 
+its accuracy, reliability, e, scalability, and ap- plicability. The performance results are presented in this section. The study validates the following claims: (1) CluStream derives higher quality clusters than traditional stream clustering algorithms, espe- cially when the cluster distribution contains dramatic changes. It can answer many kinds of queries through its micro-cluster maintenance, macro-cluster creation, and change analysis over evolved data streams; (2) The pyramidal time frame and micro-clustering concepts adopted here assures that CluStream has much better clustering accuracy while maintaining high e and (3) CluStream has very good scalability in terms of stream size, dimensionality, and the number of clus- ters. 
+6.1 
+Test Environment and Data Sets 
+All of our experiments are conducted on a PC with Intel Pentium III processor and 512 MB memory, which runs Windows XP professional operating sys- tem. For testing the accuracy and e of the CluStream algorithm, we compare CluStream with the STREAM algorithm [8, 13], the best algorithm re- ported so far for clustering data streams. CluStream is implemented according to the description in this paper, and the STREAM K-means is done strictly according to [13], which shows better accuracy than BIRCH [14]. To make the comparison fair, both CluS- tream and STREAM K-means use the same amount of memory. Speci, they use the same stream in- coming speed, the same amount of memory to store intermediate clusters (called Micro-clusters in CluS- tream), and the same amount of memory to store the  clusters (called Macro-clusters in CluStream). 
+Because the synthetic datasets can be generated by controlling the number of data points, the dimension- ality, and the number of clusters, with dit dis- tribution or evolution characteristics, they are used to evaluate the scalability in our experiments. How- ever, since synthetic datasets are usually rather di ent from real ones, we will mainly use real datasets to test accuracy, cluster evolution, and outlier detection. Real datasets. First, we need to  some real datasets that evolve signitly over time in order to test the eeness of CluStream. A good candidate for such testing is the KDD-CUP’99 Network Intru- sion Detection stream data set which has been used earlier [13] to evaluate STREAM accuracy with re- spect to BIRCH. This data set corresponds to the im- portant problem of automatic and real-time detection of cyber attacks. This is also a challenging problem for dynamic stream clustering in its own right. The o clustering algorithms cannot detect such intru- sions in real time. Even the recently proposed stream clustering algorithms such as BIRCH and STREAM cannot be very ee because the clusters reported by these algorithms are all generated from the entire history of data stream, whereas the current cases may have evolved signitly. 
+The Network Intrusion Detection dataset consists 
+
+========7========
+
+of a series of TCP connection records from two weeks of LAN network tra managed by MIT Lincoln Labs. Each n record can either correspond to a normal con- nection, or an intrusion or attack. The attacks fall into four main categories: DOS (i.e., denial-of-service), R2L (i.e., unauthorized access from a remote ma- chine), U2R (i.e., unauthorized access to local supe- ruser privileges), and PROBING (i.e., surveillance and other probing). As a result, the data contains a total of e clusters including the class for \normal connec- tions". The attack-types are further classi into one of 24 types, such as buverw, guess-passwd, nep- tune, portsweep, rootkit, smurf, warezclient, spy, and so on. It is evident that each speci attack type can be treated as a sub-cluster. Most of the connections in this dataset are normal, but occasionally there could be a burst of attacks at certain times. Also, each con- nection record in this dataset contains 42 attributes, such as duration of the connection, the number of data bytes transmitted from source to destination (and vice versa), percentile of connections that have \SYN" er- rors, the number of \root" accesses, etc. As in [13], all 34 continuous attributes will be used for clustering and one outlier point has been removed. 
+Second, besides testing on the rapidly evolving net- work intrusion data stream, we also test our method over relatively stable streams. Since previously re- ported stream clustering algorithms work on the entire history of stream data, we believe that they should perform eely for some datasets with a relatively stable distribution over time. An example of such a data set is the KDD-CUP’98 Charitable Donation data set. We will show that even for such datasets, the CluStream can consistently outperform the STREAM algorithm. 
+The KDD-CUP’98 Charitable Donation data set has also been used in evaluating several one-scan clus- tering algorithms, such as [7]. This dataset contains 95412 records of information about people who have made charitable donations in response to direct mail- ing requests, and clustering can be used to group donors showing similar donation behavior. As in [7], we will only use 56  which can be extracted from the total 481  of each record. This data set is converted into a data stream by taking the data in- put order as the order of streaming and assuming that they w-in with a uniform speed. 
+Synthetic datasets. To test the scalability of CluS- tream, we generate some synthetic datasets by varying base size from 100K to 1000K points, the number of clusters from 4 to 64, and the dimensionality in the range of 10 to 100. Because we know the true clus- ter distribution a priori, we can compare the clusters found with the true clusters. The data points of each synthetic dataset will follow a series of Gaussian distri- butions. In order to re the evolution of the stream data over time, we change the mean and variance of the current Gaussian distribution every 10K points in the synthetic data generation. 
+The quality of clustering on the real data sets was measured using the sum of square distance (SSQ), de- 
+CluStream 
+STREAM 
+ 
+Q 
+S 
+S 
+e 
+g 
+a 
+r 
+e 
+v 
+A 
+1.00E+14 1.00E+12 1.00E+10 1.00E+08 1.00E+06 1.00E+04 1.00E+02 1.00E+00 
+5 
+20 80 Stream (in time units) 
+160 
+Figure 1: Quality comparison (Network Intrusion dataset, horizon=1, stream speed=2000) 
+CluStream 
+STREAM 
+ 
+Q 
+S 
+S 
+e 
+g 
+a 
+r 
+e 
+v 
+A 
+1.00E+16 1.00E+14 1.00E+12 1.00E+10 1.00E+08 1.00E+06 1.00E+04 1.00E+02 1.00E+00 
+750 1250 1750 
+Stream (in time units) 
+2250 
+Figure 2: Quality comparison (Network Intrusion dataset, horizon=256, stream speed=200) 
+ as follows. Assume that there are a total of nh 
+points in the past horizon at current time Tc. For each point pi in this horizon, we  the centroid Cp 
+i 
+of its closest macro-cluster, and compute d(pi;Cp 
+i 
+), the dis- tance between pi and Cp 
+i 
+. Then the SSQ at time Tc with horizon H (denoted as SSQ(Tc;H)) is equal to the sum of d2(pi;Cp 
+i 
+) for all the nh points within the previous horizon H. Unless otherwise mentioned, the algorithm parameters were set at  = 2, l = 10, InitNumber = 2000,  = 512, and t = 2. 
+6.2 
+Clustering Evaluation 
+One novel feature of CluStream is that it can create a set of macro-clusters for any user-speci horizon at any time upon demand. Furthermore, we expect CluS- tream to be more ee than current algorithms at clustering rapidly evolving data streams. We will  show the eeness and high quality of CluStream in detecting network intrusions. 
+We compare the clustering quality of CluStream with that of STREAM for dit horizons at dif- ferent times using the Network Intrusion dataset. For 
+
+========8========
+
+CluStream 
+STREAM 
+3.00E+07 
+2.50E+07 
+ 
+Q 
+S 
+2.00E+07 
+S 
+e 
+g 
+1.50E+07 
+a 
+r 
+e 
+1.00E+07 
+v 
+A 
+5.00E+06 
+0.00E+00 
+50 
+150 250 350 Stream (in time units) 
+450 
+Figure 3: Quality comparison (Charitable Donation dataset, horizon=4, stream speed=200) 
+CluStream 
+STREAM 
+ 
+Q 
+S 
+S 
+e 
+g 
+a 
+r 
+e 
+v 
+A 
+8.00E+07 7.00E+07 6.00E+07 5.00E+07 4.00E+07 3.00E+07 2.00E+07 1.00E+07 0.00E+00 
+50 
+150 250 350 Stream (in time units) 
+450 
+Figure 4: Quality comparison (Charitable Donation dataset, horizon=16, stream speed=200) 
+2000 
+CluStream STREAM 
+1800 
+1600 
+1400 
+1200 
+Number of points processed per second 
+1000 
+10 
+15 
+20 
+25 30 35 Elapsed time (in seconds) 
+40 
+45 
+50 
+Figure 5: Stream Processing Rate (Charitable Dona- tion dataset, stream speed=2000) 
+6000 
+5500 
+CluStream STREAM 
+5000 
+4500 
+4000 
+3500 
+3000 
+2500 
+2000 
+Number of points processed per second 
+1500 
+10 
+15 
+20 
+25 30 35 40 45 Elapsed time (in seconds) 
+50 
+55 
+60 
+Figure 6: Stream Processing Rate (Network Intrusion dataset, stream speed=2000) 
+500 
+450 
+400 
+B400C20 B200C10 B100C5 
+350 
+300 
+250 
+200 
+150 
+runtime (in seconds) 
+100 
+50 
+0 10 
+20 
+30 
+40 50 Number of dimensions 
+60 
+70 
+80 
+Figure 7: Scalability with Data Dimensionality (stream speed=2000) 
+500 
+450 
+400 
+B400D40 B200D20 B100D10 
+350 
+300 
+250 
+200 
+150 
+runtime (in seconds) 
+100 
+50 
+0 
+5 
+10 
+15 20 25 Number of clusters 
+30 
+35 
+40 
+Figure 8: Scalability with Number of Clusters (stream speed=2000) 
+
+========9========
+
+each algorithm, we determine 5 clusters. All experi- ments for this dataset have shown that CluStream has substantially higher quality than STREAM. Figures 1 and 2 show some of our results, where stream speed = 2000 means that the stream in-w speed is 2000 points per time unit. We note that the Y -axis is drawn on a logarithmic scale, and therefore the improvements correspond to orders of magnitude. We run each algo- rithm 5 times and compute their average SSQs. From Figure 1 we know that CluStream is almost always better than STREAM by several orders of magnitude. For example, at time 160, the average SSQ of CluS- tream is almost 5 orders of magnitude smaller than that of STREAM. At a larger horizon like 256, Fig- ure 2 shows that CluStream can also get much higher clustering quality than STREAM. The average SSQ values at dit times consistently continue to be or- der(s) of magnitude smaller than those of STREAM. For example, at time 1250, CluStream’s average SSQ is more than 5 orders of magnitude smaller than that of STREAM. 
+The surprisingly high clustering quality of CluS- tream bene from its good design. On the one hand, the pyramidal time frame enables CluStream to ap- proximate any time horizon as closely as desired. On the other hand, the STREAM clustering algorithm can only be based on the entire history of the data stream. Furthermore, the large number of micro-clusters main- tain a sut amount of summary information in order to contribute to the high accuracy. In addition, our experiments demonstrated CluStream is more re- liable than STREAM algorithm. In most cases, no matter how many times we run CluStream, it always returns the same (or very similar) results. More in- terestingly, the  granularity of the micro-cluster maintenance algorithm helps CluStream in detecting the real attacks. For example, at time 320, all the connections belong to the neptune attack type for any horizon less than 16. The micro-cluster maintenance algorithm always absorbs all data points in the same micro-cluster. As a result, CluStream will successfully cluster all these points into one macro-cluster. This means that it can detect a distinct cluster correspond- ing to the network attack correctly. On the other hand, the STREAM algorithm always mixes up these nep- tune attack connections with the normal connections or some other attacks. Similarly, CluStream can  one cluster (neptune attack type in underlying data set) at time 640, two clusters (neptune and smurf) at time 650, and one cluster (smurf attack type) at time 1280. These clusters correspond to true occurrences of important changes in the stream behavior, and are therefore intuitively appealing from the point of view of a user. 
+Now we examine the performance of stream clus- tering with the Charitable Donation dataset. Since the Charitable Donation dataset does not evolve much over time, STREAM should be able to cluster this data set fairly well. Figures 3 and 4 show the comparison results between CluStream and STREAM. The results show that CluStream outperforms STREAM even in 
+this case, which indicates that CluStream is ee for both evolving and stable streams. 
+6.3 
+Scalability Results 
+The key to the success of the clustering framework is high scalability of the micro-clustering algorithm. This is because this process is exposed to a potentially large volume of incoming data and needs to be implemented in an et and online fashion. On the other hand, the (o macro-clustering part of the process re- quired only a (relatively) negligible amount of time. This is because of its use of the compact micro-cluster representation as input. 
+The most time-consuming and frequent operation during micro-cluster maintenance is that of  the closest micro-cluster for each newly arrived data point. It is clear that the complexity of this operation increases linearly with the number of micro-clusters. It is also evident that the number of micro-clusters maintained should be sutly larger than the num- ber of input clusters in the data in order to obtain a high quality clustering. While the number of input clusters cannot be known a priori, it is instructive to examine the scalability behavior when the number of micro-clusters was  at a constant large factor of the number of input clusters. Therefore, for all the experiments in this section, we will  the number of micro-clusters to 10 times the number of input clusters. We tested the e of CluStream micro-cluster maintenance algorithm with respect to STREAM on the real data sets. 
+Figures 5 and 6 show the stream processing rate (the number of points processed per second) with pro- gression of the data stream. Since CluStream requires some time to compute the initial set of micro-clusters, its precessing rate is lower than STREAM at the very beginning. However, once steady state is reached, CluStream becomes faster than STREAM in spite of the fact that it needs to store the snapshots to disk periodically. This is because STREAM takes a few it- erations to make k-means clustering converge, whereas CluStream just needs to judge whether a set of points will be absorbed by the existing micro-clusters and insert into them appropriately. We make the observa- tion that while CluStream maintains 10 times higher granularity of the clustering information compared to STREAM, the processing rate is also much higher. 
+We will present the scalability behavior of the CluS- tream algorithm with data dimensionality, and the number of natural clusters. The scalability results re- port the total processing time of the micro-clustering process over the entire data stream. The  series of data sets were generated by varying the dimension- ality from 10 to 80, while  the number of points and input clusters. The  data set series B100C5 indicates that it contains 100K points and 5 clusters. The same notational convention is used for the second data set series B200C10 and the third one B400C20. Figure 7 shows the experimental results, from which one can see that CluStream has linear scalability with 
+
+========10========
+
+1e+010 
+Network intrusion Charitable donation 
+1e+009 
+Average SSQ 
+1e+008 
+1e+007 
+5 10 15 20 25 30 35 40 
+Micro-ratio(number of micro-clusters/number of macro-clusters) 
+Figure 9: Accuracy Impact of Micro-clusters 
+data dimensionality. For example, for dataset series B400C20, when the dimensionality increases from 10 to 80, the running time increases less than 8 times from 55 seconds to 396 seconds. 
+Another three series of datasets were generated to test the scalability against the number of clusters by varying the number of input clusters from 5 to 40, while  the stream size and dimensionality. For example, the  data set series B100D10 indicates it contains 100K points and 10 dimensions. The same convention is used for the other data sets. Figure 8 demonstrates that CluStream has linear scalability with the number of input clusters. 
+6.4 
+Sensitivity Analysis 
+In section 3, we indicated that the number of micro- clusters should be larger than the number of natural clusters in order to obtain a clustering of good quality. However, a very large number of micro-clusters is inef- t in terms of running time and storage. We de micro-ratio as the number of micro-clusters divided by the number of natural clusters. It is desirable that a high quality clustering can be reached by a reason- ably small micro-ratio. We will determine the typical micro-ratios used by the CluStream algorithm in this section. 
+We  the stream speed at 200 points (per time unit), and horizon at 16 time units. We use the two real datasets to test the clustering quality by varying the number of micro-clusters. For each dataset, we determine the macro-clusters over the corresponding time horizon, and measure the clustering quality using the sum of square distance (SSQ). 
+Figure 9 shows our experimental results related to the accuracy impact of micro-ratio, where we  Tc at 200 for Charitable Donation dataset and at 1000 for Network Intrusion dataset. We can see that if we use the same number of micro-clusters as the natural clus- ters, the clustering quality is quite poor. This is be- cause the use of a very small number of micro-clusters defeats the purpose of a micro-cluster approach. When 
+the micro-ratio increases, the average SSQ reduces. The average SSQ for each real dataset becomes sta- ble when the micro-ratio is about 10. This indicates that to achieve high-quality clustering, the micro-ratio does not need to be too large as compared to the nat- ural clusters in the data. Since the number of micro- clusters is limited by the available memory, this result brings good news: for most real applications, the use of a very modest amount of memory is sut for the micro-clustering process. 
+Factor t Net. Int. Cha. Don. 
+1 14.85 11.18 
+2 1.62 0.12 
+4 0.176 0.0074 
+6 0.0144 0.0021 
+8 0.0085 0.0021 
+Table 2: Exception percent vs. Max. Boundary Factor t 
+Another important parameter which may signi cantly impact the clustering quality is the maximal boundary of a micro-cluster. As discussed earlier, this was de as a factor t of the RMS deviation of the data points from the corresponding cluster centroid. The value of t should be chosen small enough, so that it can successfully detect most of the points representing new clusters or outliers. At the same time, it should not generate too many unpromising new micro-clusters or outliers. By varying the factor t from 1 to 8, we ran the CluStream algorithm for both the real datasets and recorded all the exception points which fall outside of the maximal boundary of its closest micro-cluster. Ta- ble 2 shows the percentage of the total number of data points in each real dataset that are judged belonging to exception points at dit values of the factor t. Table 2 shows that if factor t is less than 1, there will be too many exception points. Typically, a choice of t = 2 resulted in an exception percentile which did not reduce very much on increasing t further. We also note that if the distances of the data points to the centroid had followed a Gaussian distribution, the value t = 2 results in more than 95% of the data points within the corresponding cluster boundary. Therefore, the value of the factor t was set at 2 for all experiments in this paper. 
+6.5 
+Evolution Analysis 
+Our experiments also show that CluStream facilitates cluster evolution analysis. Taking the Network Intru- sion dataset as an example, we show how such an anal- ysis is performed. In our experiments, we assume that the network connection speed is 200 connections per time unit. 
+First, by comparing the data distribution for t1 = 29;t2 = 30;h = 1 CluStream found 3 micro-clusters (8 points) in Madded(t1;t2), 1 micro-cluster (1 point)deleted 
+in M (t1;t2), and 22 micro-clusters (192 points)retained 
+in M (t1;t2). This shows that only 0.5% of all the connections in (28;29) disappeared and only 4% were added in (29;30). By checking the origi- nal dataset, we  that all points in Madded(t1;t2) 
+
+========11========
+
+and Mdeleted(t1;t2) are normal connections, but are outliers because of some particular feature such as the number of bytes of data transmitted. The fact that almost all the points in this case belong to Mretained(t1;t2) indicates that the data distributions in these two windows are very similar. This happens because there are no attacks in this time period. 
+More interestingly, the data points falling into Madded(t1;t2) or Mdeleted(t1;t2) are those which have evolved signitly. These usually correspond to newly arrived or faded attacks respectively. Here are two examples: (1) During the period (34;35), all data points correspond to normal connections, whereas during (39;40) all data points belong to smurf at- tacks. By applying our change analysis procedure for t1 = 35;t2 = 40;h = 1, it shows that 99% of the smurf connections (i.e., 198 connections) fall into two Madded(t1;t2) micro-clusters, and 99% ofdeleted the normal connections fall into 21 M (t1;t2) micro-clusters. This means these normal connec- tions are non-existent during (39;40); (2) By apply- ing the change analysis procedure for t1 = 640;t2 = 1280;h = 16, we found that all the data points dur- ing (1264;1280) belong to one Madded(t1;t2) micro- cluster, and all the data points in (624;640) belong to one Mdeleted(t1;t2) micro-cluster. By checking the original labeled data set, we found that all the connec- tions during (1264;1280) are smurf attacks and all the connections during (624;640) are neptune attacks. 
+7 Discussion and Conclusions In this paper, we have developed an ee and ef- t method, called CluStream, for clustering large evolving data streams. The method has clear advan- tages over recent techniques which try to cluster the whole stream at one time rather than viewing the stream as a changing process over time. The CluS- tream model provides a wide variety of functionality in characterizing data stream clusters over dit time horizons in an evolving environment. This is achieved through a careful division of labor between the online statistical data collection component and an o an- alytical component. Thus, the process provides con- siderable y to an analyst in a real-time and changing environment. These goals were achieved by a careful design of the statistical storage process. The use of a pyramidal time window assures that the essen- tial statistics of evolving data streams can be captured without sacri the underlying space- and time- e of the stream clustering process. Further, the exploitation of microclustering ensures that CluS- tream can achieve higher accuracy than STREAM due to its registering of more detailed information than the k points used by the k-means approach. The use of micro-clustering ensures scalable data collection, while retaining the su of data required for ee clustering. 
+A wide spectrum of clustering methods have been developed in data mining, statistics, machine learn- ing with many applications. Although very few have 
+been examined in the context of stream data cluster- ing, we believe that the framework developed in this study for separating out periodic statistical data col- lection through a pyramidal time window provides a unique environment for re-examining these techniques. As future work, we are going to examine the applica- tion of the CluStream methodology developed here to other clustering paradigms for data streams. 
+References 
+[1] C. C. Aggarwal. A Framework for Diagnosing 
+Changes in Evolving Data Streams. ACM SIG- 
+MOD Conference, 2003. 
+[2] M. Ankerst et al. OPTICS: Ordering Points To 
+Identify the Clustering Structure. ACM SIGMOD 
+Conference, 1999. 
+[3] B. Babcock et al. Models and Issues in Data 
+Stream Systems, ACM PODS Conference, 2002. 
+[4] P. Bradley, U. Fayyad, C. Reina. Scaling Cluster- 
+ing Algorithms to Large Databases. SIGKDD Con- 
+ference, 1998. 
+[5] C. Cortes et al. Hancock: A Language for Extract- 
+ing Signatures from Data Streams. ACM SIGKDD 
+Conference, 2000. 
+[6] P. Domingos, G. Hulten. Mining High-Speed Data 
+Streams. ACM SIGKDD Conference, 2000. 
+[7] F. Farnstrom, J. Lewis, C. Elkan. Scalability for 
+Clustering Algorithms Revisited. SIGKDD Explo- 
+rations, 2(1):51-57, 2000. 
+[8] S. Guha, N. Mishra, R. Motwani, L. O’Callaghan. 
+Clustering Data Streams. IEEE FOCS Conference, 
+2000. 
+[9] S. Guha, R. Rastogi, K. Shim. CURE: An Et 
+Clustering Algorithm for Large Databases. ACM 
+SIGMOD Conference, 1998. 
+[10] A. Jain, R. Dubes. Algorithms for Clustering 
+Data, Prentice Hall, New Jersey, 1998. 
+[11] L. Kaufman, P. Rousseuw. Finding Groups in 
+Data- An Introduction to Cluster Analysis. Wiley 
+Series in Probability and Math. Sciences, 1990. 
+[12] R. Ng, J. Han. Et and Ee Clustering 
+Methods for Spatial Data Mining. Very Large Data 
+Bases Conference, 1994. 
+[13] L. O’Callaghan et al. Streaming-Data Algorithms 
+For High-Quality Clustering. ICDE Conference, 
+2002. 
+[14] T. Zhang, R. Ramakrishnan, M. Livny. BIRCH: 
+An Et Data Clustering Method for Very 
+Large Databases. ACM SIGMOD Conference, 
+1996. 
+
+========12========
+

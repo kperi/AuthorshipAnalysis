@@ -1,0 +1,9688 @@
+Concept	NN
+clustering	NN
+for	IN
+cooperation	NN
+
+
+U.Srinivasan	NNP
+,	,
+A.H.H.Ngu	NNP
+,	,
+T.D.Gedeon	NNP
+School	NNP
+of	IN
+Computer	NNP
+Science	NNP
+&	CC
+Engineering	NNP
+University	NNP
+of	IN
+New	NNP
+South	NNP
+Wales	NNP
+
+
+P.O.Box	NN
+1	CD
+,	,
+Kensington	NNP
+2033	CD
+,	,
+NSW	NNP
+,	,
+Australia	NNP
+.	.
+
+e-mail	NN
+:	:
+-LCB-	-LRB-
+uma	NN
+,	,
+anne	NN
+,	,
+tamas	NNS
+-RCB-	-RRB-
+@cse.unsw.edu	RB
+.	.
+
+au	NN
+Phone	NN
+:	:
+-LRB-612-RRB- 385 3970	NN
+Fax	NN
+:	:
+-LRB-612-RRB- 313 7916	NN
+
+
+Abstract	JJ
+
+
+Most	JJS
+heterogeneous	JJ
+Clinical	JJ
+Information	NNP
+Systems	NNP
+share	VBP
+a	DT
+strong	JJ
+semantic	JJ
+similarity	NN
+in	IN
+spite	NN
+of	IN
+their	PRP$
+autonomy	NN
+and	CC
+heterogeneity	NN
+.	.
+
+To	TO
+exploit	VB
+this	DT
+semantic	JJ
+similarity	NN
+,	,
+we	PRP
+propose	VBP
+a	DT
+concept	NN
+discovery	NN
+approach	NN
+based	VBN
+on	IN
+statistical	JJ
+clustering	NN
+techniques	NNS
+to	TO
+develop	VB
+a	DT
+generic	JJ
+conceptual	JJ
+schema	NN
+to	TO
+establish	VB
+interoperability	NN
+.	.
+
+The	DT
+usage	NN
+pattern	NN
+of	IN
+users	NNS
+is	VBZ
+not	RB
+just	RB
+statistical	JJ
+information	NN
+,	,
+but	CC
+carries	VBZ
+contextual	JJ
+information	NN
+that	WDT
+can	MD
+be	VB
+exploited	VBN
+during	IN
+the	DT
+concept	NN
+discovery	NN
+process	NN
+.	.
+
+
+Keywords	NNS
+
+
+Cooperative	NNP
+information	NN
+systems	NNS
+,	,
+schema	NN
+integration	NN
+,	,
+semantic	JJ
+similarity	NN
+,	,
+concept	NN
+discovery	NN
+,	,
+concept	NN
+clustering	NN
+,	,
+interoperability	NN
+,	,
+
+
+1	CD
+INTRODUCTION	NN
+
+
+Different	JJ
+organizations	NNS
+within	IN
+a	DT
+large	JJ
+enterprise	NN
+usually	RB
+use	VBP
+substantively	RB
+different	JJ
+,	,
+incompatible	JJ
+information	NN
+systems	NNS
+.	.
+
+The	DT
+differences	NNS
+-LRB-	-LRB-
+of	IN
+structure	NN
+and	CC
+content	NN
+-RRB-	-RRB-
+are	VBP
+due	JJ
+primarily	RB
+to	TO
+the	DT
+different	JJ
+organizational	JJ
+origins	NNS
+of	IN
+the	DT
+various	JJ
+information	NN
+systems	NNS
+.	.
+
+-LRB-	-LRB-
+For	IN
+example	NN
+,	,
+the	DT
+IBM	NNP
+Corporation	NNP
+uses	VBZ
+nearly	RB
+200	CD
+different	JJ
+information	NN
+systems	NNS
+for	IN
+its	PRP$
+various	JJ
+computer	NN
+businesses	NNS
+alone	RB
+!	.
+
+-LRB-	-LRB-
+Bhaskar	NNP
+,	,
+1995	CD
+-RRB-	-RRB-
+.	.
+
+In	IN
+spite	NN
+of	IN
+these	DT
+substantive	JJ
+differences	NNS
+there	EX
+are	VBP
+actually	RB
+strong	JJ
+semantic	JJ
+similarities	NNS
+in	IN
+the	DT
+information	NN
+in	IN
+the	DT
+information	NN
+system	NN
+.	.
+
+In	IN
+a	DT
+large	JJ
+enterprise	NN
+such	JJ
+as	IN
+a	DT
+hospital	NN
+,	,
+individual	JJ
+clinical	JJ
+departments	NNS
+often	RB
+manage	VBP
+their	PRP$
+own	JJ
+information	NN
+systems	NNS
+which	WDT
+typically	RB
+can	MD
+not	RB
+be	VB
+disturbed	VBN
+and	CC
+form	VB
+what	WP
+are	VBP
+referred	VBN
+to	TO
+as	IN
+legacy	NN
+information	NN
+systems	NNS
+-LRB-	-LRB-
+Brodie	NNP
+,	,
+1992	CD
+-RRB-	-RRB-
+.	.
+
+These	DT
+information	NN
+systems	NNS
+are	VBP
+often	RB
+structurally	RB
+and	CC
+semantically	RB
+different	JJ
+.	.
+
+Consequently	RB
+,	,
+information	NN
+sharing	VBG
+across	IN
+these	DT
+information	NN
+systems	NNS
+-LRB-	-LRB-
+or	CC
+databases	NNS
+-RRB-	-RRB-
+is	VBZ
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+1	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+hindered	VBN
+by	IN
+their	PRP$
+heterogeneity	NN
+and	CC
+autonomy	NN
+.	.
+
+In	IN
+spite	NN
+of	IN
+their	PRP$
+heterogeneity	NN
+,	,
+these	DT
+systems	NNS
+share	VBP
+a	DT
+strong	JJ
+semantic	JJ
+similarity	NN
+due	JJ
+to	TO
+two	CD
+factors	NNS
+.	.
+
+Firstly	RB
+,	,
+they	PRP
+all	DT
+store	NN
+and	CC
+manage	VB
+the	DT
+same	JJ
+type	NN
+of	IN
+data	NNS
+,	,
+viz.	NN
+,	,
+patient	NN
+data	NNS
+and	CC
+secondly	RB
+,	,
+the	DT
+basic	JJ
+specification	NN
+for	IN
+each	DT
+individual	JJ
+system	NN
+is	VBZ
+initially	RB
+put	VBN
+together	RB
+by	IN
+users	NNS
+such	JJ
+as	IN
+doctors	NNS
+who	WP
+are	VBP
+equipped	VBN
+with	IN
+similar	JJ
+background	NN
+knowledge	NN
+.	.
+
+With	IN
+the	DT
+increase	NN
+in	IN
+demand	NN
+for	IN
+interoperability	NN
+among	IN
+existing	VBG
+systems	NNS
+,	,
+a	DT
+mechanism	NN
+that	WDT
+can	MD
+establish	VB
+cooperation	NN
+amongst	IN
+the	DT
+heterogeneous	JJ
+clinical	JJ
+databases	NNS
+becomes	VBZ
+crucial	JJ
+.	.
+
+In	IN
+this	DT
+paper	NN
+,	,
+we	PRP
+propose	VBP
+a	DT
+concept	NN
+discovery	NN
+approach	NN
+that	WDT
+exploits	VBZ
+this	DT
+semantic	JJ
+similarity	NN
+and	CC
+allows	VBZ
+one	CD
+information	NN
+system	NN
+to	TO
+use	VB
+information	NN
+from	IN
+another	DT
+.	.
+
+
+Heterogeneous	JJ
+database	NN
+research	NN
+has	VBZ
+largely	RB
+dealt	VBN
+with	IN
+the	DT
+difficult	JJ
+issues	NNS
+related	VBN
+to	TO
+resolving	VBG
+structural	JJ
+and	CC
+semantic	JJ
+conflicts	NNS
+-LRB-	-LRB-
+Kim	NNP
+,	,
+Seo	NNP
+,	,
+1991	CD
+-RRB-	-RRB-
+-LRB-	-LRB-
+Siegel	NNP
+,	,
+Madnick	NNP
+,	,
+1991	CD
+-RRB-	-RRB-
+-LRB-	-LRB-
+Sheth	NNP
+,	,
+Kashyap	NNP
+,	,
+1992	CD
+-RRB-	-RRB-
+and	CC
+developing	VBG
+a	DT
+global	JJ
+schema	NN
+to	TO
+provide	VB
+integration	NN
+-LRB-	-LRB-
+Collet	NNP
+,	,
+Huhns	NNP
+,	,
+Shen	NNP
+,	,
+1991	CD
+-RRB-	-RRB-
+-LRB-	-LRB-
+Ahmed	NNP
+et.al	JJ
+l991	NN
+-RRB-	-RRB-
+.	.
+
+More	RBR
+recently	RB
+,	,
+the	DT
+thrust	NN
+has	VBZ
+been	VBN
+in	IN
+establishing	VBG
+intelligent	JJ
+cooperation	NN
+among	IN
+heterogeneous	JJ
+systems	NNS
+to	TO
+achieve	VB
+interoperability	NN
+-LRB-	-LRB-
+Papazoglou	NN
+,	,
+Laufman	NNP
+,	,
+Sellis	NNP
+,	,
+1992	CD
+-RRB-	-RRB-
+-LRB-	-LRB-
+Johannesson	NNP
+,	,
+Jamil	NNP
+,	,
+1994	CD
+-RRB-	-RRB-
+.	.
+
+One	CD
+of	IN
+the	DT
+means	NNS
+of	IN
+achieving	VBG
+this	DT
+is	VBZ
+by	IN
+negotiation	NN
+between	IN
+agents	NNS
+sharing	VBG
+information	NN
+-LRB-	-LRB-
+Milliner	NN
+,	,
+Papazoglou	NN
+,	,
+1994	CD
+-RRB-	-RRB-
+.	.
+
+Another	DT
+suggested	VBD
+method	NN
+is	VBZ
+sharing	VBG
+semantic	JJ
+values	NNS
+as	IN
+a	DT
+unit	NN
+of	IN
+exchange	NN
+that	WDT
+facilitates	VBZ
+semantic	JJ
+interoperability	NN
+-LRB-	-LRB-
+Sciore	NN
+,	,
+Siegel	NNP
+,	,
+Rosenthal	NNP
+,	,
+1994	CD
+-RRB-	-RRB-
+.	.
+
+Yet	RB
+another	DT
+possibility	NN
+for	IN
+establishing	VBG
+cooperation	NN
+,	,
+one	CD
+related	JJ
+to	TO
+ours	JJ
+,	,
+is	VBZ
+to	TO
+develop	VB
+a	DT
+conceptual	JJ
+schema	NN
+for	IN
+cooperative	JJ
+information	NN
+systems	NNS
+by	IN
+using	VBG
+a	DT
+semantic	JJ
+reconstruction	NN
+approach	NN
+.	.
+
+However	RB
+,	,
+semantic	JJ
+reconstruction	NN
+is	VBZ
+not	RB
+possible	JJ
+using	VBG
+the	DT
+same	JJ
+rules	NNS
+that	WDT
+were	VBD
+used	VBN
+to	TO
+develop	VB
+the	DT
+information	NN
+systems	NNS
+in	IN
+the	DT
+first	JJ
+place	NN
+,	,
+since	IN
+the	DT
+knowledge	NN
+that	WDT
+was	VBD
+used	VBN
+originally	RB
+during	IN
+the	DT
+initial	JJ
+specification	NN
+and	CC
+design	NN
+phase	NN
+is	VBZ
+no	RB
+longer	RB
+available	JJ
+or	CC
+valid	JJ
+as	IN
+pointed	VBN
+out	RP
+by	IN
+Meersman	NNP
+-LRB-	-LRB-
+1994	CD
+-RRB-	-RRB-
+.	.
+
+-LRB-	-LRB-
+This	DT
+is	VBZ
+of	IN
+course	NN
+true	JJ
+in	IN
+many	JJ
+domains	NNS
+-RRB-	-RRB-
+.	.
+
+This	DT
+is	VBZ
+because	IN
+over	IN
+a	DT
+long	JJ
+period	NN
+of	IN
+use	NN
+,	,
+perhaps	RB
+years	NNS
+,	,
+both	CC
+the	DT
+users	NNS
+and	CC
+the	DT
+underlying	VBG
+database	NN
+structures	NNS
+change	VBP
+with	IN
+the	DT
+evolution	NN
+of	IN
+business	NN
+rules	NNS
+and	CC
+technology	NN
+,	,
+and	CC
+changes	NNS
+in	IN
+user	NN
+requirements	NNS
+.	.
+
+
+Here	RB
+we	PRP
+present	VBP
+an	DT
+approach	NN
+that	WDT
+uses	VBZ
+the	DT
+current	JJ
+structure	NN
+of	IN
+a	DT
+part	NN
+of	IN
+CIS	NN
+to	TO
+somehow	RB
+â	VB
+$	$
+œdiscoverâ	JJ
+$	$
+a	DT
+set	NN
+of	IN
+concepts	NNS
+common	JJ
+to	TO
+several	JJ
+CIS	NN
+.	.
+
+This	DT
+approach	NN
+which	WDT
+we	PRP
+have	VBP
+labeled	VBN
+â	JJ
+$	$
+œconceptual	JJ
+clusteringâ	NN
+$	$
+uses	VBZ
+an	DT
+audit	NN
+trail	NN
+to	TO
+keep	VB
+track	NN
+of	IN
+usage	NN
+patterns	NNS
+of	IN
+a	DT
+particular	JJ
+group	NN
+of	IN
+CIS	NN
+.	.
+
+In	IN
+this	DT
+approach	NN
+,	,
+the	DT
+current	JJ
+structure	NN
+is	VBZ
+the	DT
+kernel	NN
+from	IN
+which	WDT
+inductions	NNS
+are	VBP
+made	VBN
+about	IN
+relevant	JJ
+new	JJ
+concepts	NNS
+.	.
+
+Existing	VBG
+database	NN
+structures	NNS
+play	VBP
+an	DT
+important	JJ
+role	NN
+as	IN
+they	PRP
+depict	VBP
+the	DT
+domain	NN
+knowledge	NN
+of	IN
+the	DT
+user	NN
+at	IN
+the	DT
+time	NN
+of	IN
+specifications	NNS
+.	.
+
+The	DT
+attributes/properties	NNS
+of	IN
+entity	NN
+definitions	NNS
+and	CC
+relationships	NNS
+among	IN
+entities/objects	NNS
+in	IN
+each	DT
+CIS	NN
+are	VBP
+valuable	JJ
+sources	NNS
+of	IN
+information	NN
+that	IN
+reflect	VBP
+domain	NN
+knowledge	NN
+.	.
+
+Establishing	VBG
+an	DT
+audit	NN
+trail	NN
+to	TO
+gather	VB
+usage	NN
+data	NNS
+needed	VBN
+for	IN
+concept	NN
+clustering	NN
+has	VBZ
+the	DT
+advantage	NN
+that	IN
+it	PRP
+can	MD
+be	VB
+technically	RB
+specific	JJ
+and	CC
+induced	VBN
+.	.
+
+Data	NNS
+pertaining	VBG
+to	TO
+usage	NN
+pattern	NN
+is	VBZ
+not	RB
+just	RB
+statistical	JJ
+information	NN
+,	,
+but	CC
+carries	VBZ
+a	DT
+cognitive	JJ
+content	NN
+that	WDT
+can	MD
+be	VB
+exploited	VBN
+during	IN
+the	DT
+concept	NN
+discovery	NN
+process	NN
+.	.
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+2	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+In	IN
+the	DT
+heterogeneous	JJ
+database	NN
+context	NN
+the	DT
+search	NN
+for	IN
+common	JJ
+concepts	NNS
+poses	VBZ
+two	CD
+substantive	JJ
+problems	NNS
+:	:
+first	RB
+,	,
+the	DT
+usual	JJ
+problems	NNS
+of	IN
+data	NNS
+semantics	NNS
+and	CC
+domain	NN
+mismatch	NN
+-LRB-	-LRB-
+Siegel	NNP
+,	,
+Madnick	NNP
+,	,
+1991	CD
+-RRB-	-RRB-
+-LRB-	-LRB-
+Saltor	NNP
+,	,
+Castellanos,Garcia-Solaco	NNP
+.	.
+
+1992	CD
+-RRB-	-RRB-
+;	:
+second	JJ
+,	,
+the	DT
+confidentiality	NN
+of	IN
+patient	NN
+clinical	JJ
+data	NNS
+pose	VBP
+difficult	JJ
+ethical	JJ
+and	CC
+social	JJ
+issues	NNS
+.	.
+
+Our	PRP$
+approach	NN
+attempts	VBZ
+to	TO
+treat	VB
+both	DT
+these	DT
+problems	NNS
+,	,
+with	IN
+the	DT
+confidentiality	NN
+issue	NN
+being	VBG
+treated	VBN
+as	IN
+a	DT
+hard	JJ
+constraint	NN
+on	IN
+any	DT
+solution	NN
+.	.
+
+
+Concept	NN
+discovery	NN
+can	MD
+be	VB
+thought	VBN
+of	IN
+as	IN
+a	DT
+form	NN
+of	IN
+inductive	JJ
+learning	NN
+-LRB-	-LRB-
+Stepp	NN
+III	CD
+,	,
+Michalski	NNP
+,	,
+1986	CD
+-RRB-	-RRB-
+,	,
+where	WRB
+learning	NN
+takes	VBZ
+place	NN
+by	IN
+a	DT
+process	NN
+of	IN
+discovery	NN
+that	WDT
+searches	VBZ
+for	IN
+similarity	NN
+among	IN
+database	NN
+objects	NNS
+in	IN
+potential	JJ
+interoperable	JJ
+databases	NNS
+.	.
+
+Although	IN
+many	JJ
+researchers	NNS
+have	VBP
+proposed	VBN
+applications	NNS
+of	IN
+machine	NN
+learning	VBG
+to	TO
+discover	VB
+hidden	JJ
+relationships	NNS
+of	IN
+data	NNS
+-LRB-	-LRB-
+Shapiro	NNP
+,	,
+Frawley	NNP
+,	,
+1991	CD
+-RRB-	-RRB-
+-LRB-	-LRB-
+Zytkow	NNP
+,	,
+Baker	NNP
+,	,
+1990	CD
+-RRB-	-RRB-
+,	,
+and	CC
+to	TO
+learn	VB
+new	JJ
+properties	NNS
+of	IN
+objects	NNS
+-LRB-	-LRB-
+Quinla	NNP
+,	,
+1990	CD
+-RRB-	-RRB-
+,	,
+till	IN
+recently	RB
+,	,
+not	RB
+many	JJ
+attempts	NNS
+have	VBP
+been	VBN
+made	VBN
+to	TO
+use	VB
+these	DT
+techniques	NNS
+in	IN
+the	DT
+area	NN
+of	IN
+interoperable	JJ
+databases	NNS
+.	.
+
+We	PRP
+use	VBP
+a	DT
+knowledge	NN
+discovery	NN
+method	NN
+that	WDT
+uses	VBZ
+statistical	JJ
+clustering	NN
+to	TO
+bring	VB
+out	RP
+the	DT
+similarity	NN
+among	IN
+the	DT
+database	NN
+objects	NNS
+that	WDT
+are	VBP
+clustered	VBN
+.	.
+
+
+In	IN
+order	NN
+to	TO
+establish	VB
+a	DT
+cluster	NN
+of	IN
+objects	NNS
+,	,
+each	DT
+object	NN
+is	VBZ
+characterized	VBN
+by	IN
+a	DT
+set	NN
+of	IN
+variables	NNS
+.	.
+
+The	DT
+variables	NNS
+are	VBP
+chosen	VBN
+such	JJ
+that	IN
+they	PRP
+are	VBP
+good	JJ
+indicators	NNS
+of	IN
+both	CC
+the	DT
+structure	NN
+and	CC
+usage	NN
+of	IN
+the	DT
+database	NN
+objects	NNS
+and	CC
+also	RB
+serve	VBP
+to	TO
+establish	VB
+similarity	NN
+measures	NNS
+among	IN
+the	DT
+objects	NNS
+that	WDT
+are	VBP
+clustered	VBN
+.	.
+
+We	PRP
+then	RB
+use	VBP
+a	DT
+clustering	NN
+algorithm	NN
+that	WDT
+partitions	VBZ
+these	DT
+objects	NNS
+into	IN
+clusters	NNS
+using	VBG
+the	DT
+values	NNS
+of	IN
+the	DT
+variables	NNS
+-LRB-	-LRB-
+data	NNS
+gathered	VBN
+during	IN
+the	DT
+audit	NN
+trail	NN
+mentioned	VBN
+earlier	RBR
+,	,
+are	VBP
+the	DT
+values	NNS
+of	IN
+these	DT
+variables	NNS
+-RRB-	-RRB-
+.	.
+
+The	DT
+clusters	NNS
+thus	RB
+formed	VBN
+are	VBP
+meaningful	JJ
+in	IN
+such	JJ
+a	DT
+way	NN
+that	IN
+each	DT
+cluster	NN
+actually	RB
+represents	VBZ
+a	DT
+generic	JJ
+concept	NN
+in	IN
+the	DT
+application	NN
+domain	NN
+.	.
+
+The	DT
+set	NN
+of	IN
+application	NN
+specific	JJ
+generic	JJ
+concepts	NNS
+so	IN
+discovered	VBN
+constitutes	VBZ
+the	DT
+reconstructed	JJ
+conceptual	JJ
+schema	NN
+that	WDT
+can	MD
+support	VB
+interoperability	NN
+among	IN
+the	DT
+information	NN
+systems	NNS
+that	WDT
+were	VBD
+clustered	VBN
+.	.
+
+This	DT
+generic	JJ
+conceptual	JJ
+schema	NN
+can	MD
+then	RB
+serve	VB
+as	IN
+the	DT
+layer	NN
+that	WDT
+provides	VBZ
+the	DT
+required	VBN
+external	JJ
+view	NN
+to	TO
+the	DT
+users	NNS
+of	IN
+the	DT
+cooperative	JJ
+information	NN
+systems	NNS
+in	IN
+the	DT
+application	NN
+domain	NN
+.	.
+
+
+The	DT
+clustering	NN
+algorithm	NN
+proposed	VBD
+has	VBZ
+been	VBN
+tested	VBN
+using	VBG
+data	NNS
+gathered	VBN
+by	IN
+setting	VBG
+up	RP
+audit	NN
+trails	VBZ
+over	IN
+a	DT
+number	NN
+of	IN
+existing	VBG
+CISs	NNS
+.	.
+
+In	IN
+order	NN
+to	TO
+evaluate	VB
+the	DT
+quality	NN
+of	IN
+clusters	NNS
+produced	VBN
+by	IN
+the	DT
+algorithm	NN
+,	,
+a	DT
+simple	JJ
+informal	JJ
+basis	NN
+is	VBZ
+used	VBN
+at	IN
+this	DT
+stage	NN
+.	.
+
+The	DT
+informal	JJ
+basis	NN
+for	IN
+evaluation	NN
+is	VBZ
+to	TO
+compare	VB
+the	DT
+results	NNS
+of	IN
+the	DT
+clustering	NN
+algorithm	NN
+with	IN
+the	DT
+generic	JJ
+concepts	NNS
+identified	VBD
+manually	RB
+by	IN
+a	DT
+human	JJ
+expert	NN
+.	.
+
+The	DT
+simple	JJ
+comparison	NN
+of	IN
+clusters	NNS
+identified	VBN
+manually	RB
+by	IN
+the	DT
+human	JJ
+expert	NN
+and	CC
+the	DT
+clusters	NNS
+discovered	VBD
+automatically	RB
+shows	VBZ
+that	IN
+the	DT
+quality	NN
+of	IN
+concept	NN
+clusters	NNS
+obtained	VBN
+automatically	RB
+is	VBZ
+found	VBN
+to	TO
+be	VB
+better	JJR
+across	IN
+systems	NNS
+that	WDT
+manually	RB
+interoperate	VBP
+than	IN
+those	DT
+clusters	NNS
+discovered	VBN
+across	IN
+systems	NNS
+that	WDT
+do	VBP
+not	RB
+manually	RB
+interoperate	VB
+.	.
+
+
+Concept	NN
+discovery	NN
+in	IN
+databases	NNS
+deals	NNS
+with	IN
+issues	NNS
+relevant	JJ
+to	TO
+several	JJ
+other	JJ
+fields	NNS
+including	VBG
+database	NN
+management	NN
+,	,
+machine	NN
+learning	NN
+,	,
+expert	NN
+systems	NNS
+and	CC
+statistical	JJ
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+3	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+analysis	NN
+-LRB-	-LRB-
+Frawley	NNP
+,	,
+Shapiro	NNP
+,	,
+Matheus	NNP
+,	,
+1991	CD
+-RRB-	-RRB-
+.	.
+
+Some	DT
+background	NN
+information	NN
+on	IN
+related	JJ
+areas	NNS
+of	IN
+knowledge	NN
+discovery	NN
+and	CC
+machine	NN
+learning	NN
+are	VBP
+described	VBN
+in	IN
+the	DT
+next	JJ
+section	NN
+.	.
+
+Our	PRP$
+approach	NN
+to	TO
+developing	VBG
+a	DT
+generic	JJ
+conceptual	JJ
+schema	NN
+is	VBZ
+then	RB
+outlined	VBN
+in	IN
+section	NN
+3	CD
+.	.
+
+This	DT
+is	VBZ
+followed	VBN
+in	IN
+section	NN
+4	CD
+with	IN
+a	DT
+description	NN
+of	IN
+the	DT
+actual	JJ
+clustering	NN
+algorithms	NNS
+used	VBN
+to	TO
+derive	VB
+the	DT
+generic	JJ
+concepts	NNS
+.	.
+
+Results	NNS
+of	IN
+some	DT
+experiments	NNS
+are	VBP
+also	RB
+discussed	VBN
+in	IN
+this	DT
+section	NN
+.	.
+
+Finally	RB
+,	,
+section	NN
+5	CD
+presents	VBZ
+the	DT
+conclusions	NNS
+and	CC
+future	JJ
+research	NN
+directions	NNS
+.	.
+
+
+The	DT
+applicability	NN
+of	IN
+these	DT
+generic	JJ
+concepts	NNS
+in	IN
+providing	VBG
+customized	VBN
+external	JJ
+view	NN
+to	TO
+the	DT
+users	NNS
+of	IN
+interoperable	JJ
+systems	NNS
+are	VBP
+discussed	VBN
+in	IN
+a	DT
+working	VBG
+paper	NN
+-LRB-	-LRB-
+Srinivassan	NNP
+,	,
+Ngu	NNP
+,	,
+1994	CD
+-RRB-	-RRB-
+.	.
+
+Although	IN
+all	PDT
+the	DT
+examples	NNS
+in	IN
+this	DT
+paper	NN
+are	VBP
+specific	JJ
+to	TO
+the	DT
+application	NN
+domain	NN
+of	IN
+a	DT
+hospital	NN
+,	,
+the	DT
+approach	NN
+may	MD
+be	VB
+general	JJ
+enough	JJ
+to	TO
+be	VB
+applicable	JJ
+in	IN
+any	DT
+application	NN
+domain	NN
+where	WRB
+there	EX
+is	VBZ
+a	DT
+Data	NN
+Base	NN
+Administrator	NNP
+-LRB-	-LRB-
+DBA	NNP
+-RRB-	-RRB-
+or	CC
+a	DT
+Data	NN
+Manager	NN
+with	IN
+some	DT
+knowledge	NN
+of	IN
+the	DT
+data	NNS
+structures	NNS
+and	CC
+usage	NN
+patterns	NNS
+of	IN
+users	NNS
+in	IN
+the	DT
+application	NN
+domain	NN
+.	.
+
+
+2	CD
+RELATED	JJ
+WORK	VBP
+:	:
+KNOWLEDGE	NN
+DISCOVERY	NN
+
+
+Discovery	NNP
+algorithms	NNS
+are	VBP
+procedures	NNS
+that	WDT
+extract	VBP
+interesting	JJ
+patterns	NNS
+in	IN
+data	NNS
+and	CC
+typically	RB
+process	NN
+raw	JJ
+data	NNS
+contained	VBN
+in	IN
+a	DT
+database	NN
+.	.
+
+In	IN
+practice	NN
+,	,
+we	PRP
+have	VBP
+found	VBN
+that	IN
+the	DT
+discovery	NN
+system	NN
+must	MD
+also	RB
+use	VB
+additional	JJ
+information	NN
+about	IN
+the	DT
+form	NN
+of	IN
+data	NNS
+and	CC
+the	DT
+constraints	NNS
+on	IN
+it	PRP
+.	.
+
+Because	IN
+discovery	NN
+is	VBZ
+computationally	RB
+expensive	JJ
+,	,
+additional	JJ
+knowledge	NN
+about	IN
+the	DT
+form	NN
+and	CC
+content	NN
+of	IN
+data	NNS
+,	,
+domain	NN
+-LRB-	-LRB-
+s	NNS
+-RRB-	-RRB-
+described	VBN
+by	IN
+the	DT
+database	NN
+,	,
+the	DT
+context	NN
+of	IN
+a	DT
+particular	JJ
+episode	NN
+and	CC
+the	DT
+purposes	NNS
+being	VBG
+served	VBN
+by	IN
+discovery	NN
+can	MD
+be	VB
+used	VBN
+to	TO
+guide	VB
+and	CC
+constrain	VB
+the	DT
+search	NN
+for	IN
+interesting	JJ
+knowledge	NN
+-LRB-	-LRB-
+Frawley	NNP
+,	,
+Shapiro	NNP
+,	,
+Matheus	NNP
+,	,
+1991	CD
+-RRB-	-RRB-
+.	.
+
+Shapiroâ	NNP
+$	$
+™	CD
+s	NNS
+book	NN
+-LRB-	-LRB-
+Shapiro	NNP
+,	,
+Frawley	NNP
+,	,
+1991	CD
+-RRB-	-RRB-
+offers	VBZ
+a	DT
+good	JJ
+collection	NN
+of	IN
+different	JJ
+categories	NNS
+of	IN
+discovery	NN
+programs	NNS
+.	.
+
+However	RB
+most	JJS
+of	IN
+them	PRP
+use	VBP
+the	DT
+basic	JJ
+data	NNS
+mining	NN
+approach	NN
+that	WDT
+only	RB
+deals	VBZ
+with	IN
+raw	JJ
+data	NNS
+values	NNS
+,	,
+to	TO
+discover	VB
+knowledge	NN
+in	IN
+the	DT
+form	NN
+of	IN
+laws	NNS
+,	,
+rules	NNS
+and	CC
+structure	NN
+.	.
+
+Moreover	RB
+,	,
+most	JJS
+of	IN
+these	DT
+systems	NNS
+look	VBP
+for	IN
+patterns	NNS
+that	WDT
+apply	VBP
+to	TO
+individual	JJ
+instances	NNS
+.	.
+
+Other	JJ
+domain	NN
+specific	JJ
+discovery	NN
+methods	NNS
+-LRB-	-LRB-
+Gonzalez	NNP
+,	,
+1991	CD
+-RRB-	-RRB-
+-LRB-	-LRB-
+Siegel	NNP
+,	,
+Sciore	NNP
+,	,
+Salveter	NNP
+,	,
+1991	CD
+-RRB-	-RRB-
+work	NN
+towards	IN
+developing	VBG
+a	DT
+knowledge	NN
+base	NN
+from	IN
+existing	VBG
+computer	NN
+resident	NN
+data	NNS
+sources	NNS
+.	.
+
+
+Creating	VBG
+a	DT
+meaningful	JJ
+classification	NN
+is	VBZ
+a	DT
+form	NN
+of	IN
+learning	VBG
+from	IN
+observations	NNS
+and	CC
+its	PRP$
+goal	NN
+is	VBZ
+to	TO
+structure	VB
+the	DT
+given	VBN
+observations	NNS
+into	IN
+meaningful	JJ
+categories	NNS
+or	CC
+clusters	NNS
+.	.
+
+Cluster	NN
+analysis	NN
+is	VBZ
+a	DT
+generic	JJ
+term	NN
+for	IN
+a	DT
+set	NN
+of	IN
+techniques	NNS
+which	WDT
+produce	VBP
+classifications	NNS
+from	IN
+initially	RB
+unclassified	JJ
+data	NNS
+-LRB-	-LRB-
+Everitt	NNP
+,	,
+1980	CD
+-RRB-	-RRB-
+.	.
+
+The	DT
+reasons	NNS
+for	IN
+classification	NN
+may	MD
+differ	VB
+from	IN
+user	NN
+to	TO
+user	NN
+-	:
+a	DT
+possible	JJ
+reason	NN
+for	IN
+the	DT
+existence	NN
+of	IN
+a	DT
+large	JJ
+variety	NN
+of	IN
+clustering	NN
+algorithms	NNS
+.	.
+
+The	DT
+central	JJ
+notion	NN
+used	VBN
+for	IN
+creating	VBG
+classes	NNS
+of	IN
+objects	NNS
+-LRB-	-LRB-
+or	CC
+clusters	NNS
+-RRB-	-RRB-
+is	VBZ
+a	DT
+numerical	JJ
+measure	NN
+of	IN
+similarity	NN
+of	IN
+objects	NNS
+.	.
+
+Clusters	NNS
+are	VBP
+collection	NN
+of	IN
+objects	NNS
+whose	WP$
+intra-class	JJ
+similarity	NN
+is	VBZ
+high	JJ
+and	CC
+inter-class	JJ
+similarity	NN
+is	VBZ
+low	JJ
+.	.
+
+Traditional	JJ
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+4	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+clustering	NN
+methods	NNS
+used	VBN
+numeric	JJ
+data	NNS
+without	IN
+the	DT
+use	NN
+of	IN
+background	NN
+knowledge	NN
+.	.
+
+Conceptual	JJ
+clustering	NN
+-LRB-	-LRB-
+Michalski	NNP
+,	,
+Stepp	NNP
+,	,
+1985	CD
+-RRB-	-RRB-
+is	VBZ
+an	DT
+approach	NN
+in	IN
+which	WDT
+a	DT
+configuration	NN
+of	IN
+objects	NNS
+forms	VBZ
+a	DT
+class	NN
+only	RB
+if	IN
+it	PRP
+can	MD
+be	VB
+described	VBN
+by	IN
+a	DT
+concept	NN
+from	IN
+a	DT
+pre-defined	JJ
+concept	NN
+class	NN
+.	.
+
+In	IN
+an	DT
+extension	NN
+to	TO
+this	DT
+work	NN
+-LRB-	-LRB-
+Stepp	NN
+III	CD
+,	,
+Michalski	NNP
+,	,
+1986	CD
+-RRB-	-RRB-
+it	PRP
+has	VBZ
+been	VBN
+shown	VBN
+that	IN
+that	IN
+in	IN
+order	NN
+to	TO
+create	VB
+meaningful	JJ
+classifications	NNS
+,	,
+a	DT
+system	NN
+must	MD
+be	VB
+equipped	VBN
+with	IN
+background	NN
+knowledge	NN
+,	,
+which	WDT
+includes	VBZ
+goals	NNS
+of	IN
+classification	NN
+,	,
+classification	NN
+evaluation	NN
+criteria	NNS
+,	,
+deductive	JJ
+and	CC
+inductive	JJ
+inference	NN
+rules	NNS
+.	.
+
+
+The	DT
+concept	NN
+discovery	NN
+approach	NN
+presented	VBD
+in	IN
+this	DT
+paper	NN
+draws	VBZ
+a	DT
+number	NN
+of	IN
+ideas	NNS
+from	IN
+Stepp	NNP
+and	CC
+Michalski	NNP
+-LRB-	-LRB-
+Stepp	NNP
+III	NNP
+,	,
+Michalski	NNP
+,	,
+1986	CD
+-RRB-	-RRB-
+.	.
+
+The	DT
+main	JJ
+thrust	NN
+of	IN
+our	PRP$
+approach	NN
+is	VBZ
+that	IN
+the	DT
+search	NN
+for	IN
+concepts	NNS
+is	VBZ
+guided	VBN
+by	IN
+information	NN
+in	IN
+existing	VBG
+CIS	NN
+.	.
+
+As	IN
+we	PRP
+are	VBP
+dealing	VBG
+with	IN
+legacy	NN
+systems	NNS
+,	,
+existing	VBG
+database	NN
+structures	NNS
+and	CC
+usage	NN
+patterns	NNS
+provide	VBP
+sufficient	JJ
+background	NN
+knowledge	NN
+that	WDT
+can	MD
+be	VB
+exploited	VBN
+-LRB-	-LRB-
+Srinivassan	NNP
+,	,
+Ngu	NNP
+,	,
+Gedeon	NNP
+,	,
+1994	CD
+-RRB-	-RRB-
+.	.
+
+
+3	CD
+GENERIC	JJ
+CONCEPTUAL	JJ
+SCHEMA	NN
+FOR	IN
+CIS	NN
+
+
+3.1	CD
+Philosophy	NN
+
+
+The	DT
+problem	NN
+of	IN
+legacy	NN
+systems	NNS
+is	VBZ
+that	IN
+much	JJ
+of	IN
+the	DT
+semantics	NNS
+of	IN
+a	DT
+system	NN
+resides	VBZ
+in	IN
+the	DT
+application	NN
+code	NN
+rather	RB
+than	IN
+in	IN
+the	DT
+conceptual	JJ
+schema	NN
+of	IN
+the	DT
+system	NN
+.	.
+
+This	DT
+therefore	RB
+hinders	VBZ
+communication	NN
+between	IN
+pre-existing	JJ
+systems	NNS
+.	.
+
+Irrespective	RB
+of	IN
+the	DT
+approach	NN
+,	,
+whether	IN
+integrated	VBN
+-LRB-	-LRB-
+Litwin	NNP
+,	,
+Abdellatif	NNP
+,	,
+1986	CD
+-RRB-	-RRB-
+,	,
+federated	VBN
+-LRB-	-LRB-
+Sheth	NNP
+,	,
+Larson	NNP
+,	,
+1990	CD
+-RRB-	-RRB-
+or	CC
+multidatabase	NN
+-LRB-	-LRB-
+Kent	NNP
+,	,
+Ahmed	NNP
+,	,
+et	FW
+.	.
+
+al	NNP
+,	,
+1992	CD
+-RRB-	-RRB-
+taken	VBN
+for	IN
+interoperability	NN
+,	,
+the	DT
+designers	NNS
+are	VBP
+faced	VBN
+with	IN
+the	DT
+problem	NN
+of	IN
+comparing	VBG
+the	DT
+information	NN
+content	NN
+of	IN
+various	JJ
+databases	NNS
+that	WDT
+need	VBP
+to	TO
+share	VB
+information	NN
+.	.
+
+One	CD
+possible	JJ
+way	NN
+out	IN
+of	IN
+this	DT
+is	VBZ
+to	TO
+assume	VB
+that	IN
+there	EX
+exists	VBZ
+a	DT
+DBA	NN
+with	IN
+domain	NN
+knowledge	NN
+who	WP
+knows	VBZ
+about	IN
+these	DT
+commonalties	NNS
+and	CC
+can	MD
+identify	VB
+them	PRP
+-LRB-	-LRB-
+Spaccapietra	NNP
+,	,
+Parent	NNP
+,	,
+1991	CD
+-RRB-	-RRB-
+.	.
+
+We	PRP
+confirmed	VBD
+this	DT
+assumption	NN
+by	IN
+conducting	VBG
+an	DT
+empirical	JJ
+study	NN
+which	WDT
+consisted	VBD
+of	IN
+manually	RB
+comparing	VBG
+the	DT
+schema	NN
+of	IN
+5	CD
+existing	VBG
+CIS	NN
+in	IN
+a	DT
+leading	VBG
+hospital	NN
+.	.
+
+The	DT
+systems	NNS
+studied	VBN
+included	VBD
+relational	JJ
+,	,
+hierarchical	JJ
+and	CC
+flat	JJ
+file	NN
+systems	NNS
+.	.
+
+The	DT
+study	NN
+highlighted	VBD
+a	DT
+number	NN
+of	IN
+issues	NNS
+:	:
+
+
+â	RB
+$	$
+cents	NNS
+A	DT
+large	JJ
+amount	NN
+of	IN
+knowledge	NN
+such	JJ
+as	IN
+rules	NNS
+and	CC
+constraints	NNS
+on	IN
+data	NNS
+domain	NN
+,	,
+and	CC
+application	NN
+specific	JJ
+knowledge	NN
+is	VBZ
+inherent	JJ
+in	IN
+the	DT
+local	JJ
+systems	NNS
+.	.
+
+Some	DT
+of	IN
+this	DT
+knowledge	NN
+apparently	RB
+gets	VBZ
+represented	VBN
+in	IN
+the	DT
+form	NN
+of	IN
+entity/object	JJ
+definitions	NNS
+,	,
+attributes/properties	NNS
+of	IN
+objects	NNS
+and	CC
+relationships	NNS
+among	IN
+entities/objects	NNS
+.	.
+
+
+â	RB
+$	$
+cents	NNS
+The	DT
+CISs	NNS
+observed	VBN
+are	VBP
+dynamic	JJ
+and	CC
+undergo	VBP
+frequent	JJ
+structural	JJ
+evolution	NN
+due	JJ
+to	TO
+changes	NNS
+in	IN
+business	NN
+rules	NNS
+,	,
+technology	NN
+and	CC
+usage	NN
+.	.
+
+
+â	RB
+$	$
+cents	NNS
+In	IN
+spite	NN
+of	IN
+the	DT
+resulting	VBG
+structural	JJ
+differences	NNS
+,	,
+a	DT
+medical	JJ
+informatics	NNS
+domain	NN
+expert	NN
+could	MD
+easily	RB
+identify	VB
+a	DT
+lot	NN
+of	IN
+semantic	JJ
+similarity	NN
+among	IN
+the	DT
+existing	VBG
+databases	NNS
+.	.
+
+The	DT
+database	NN
+structures	NNS
+as	IN
+found	VBN
+in	IN
+the	DT
+data	NNS
+dictionary	NN
+of	IN
+each	DT
+individual	JJ
+CIS	NN
+coupled	VBN
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+5	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+with	IN
+common	JJ
+querying	VBG
+patterns	NNS
+of	IN
+users	NNS
+seems	VBZ
+to	TO
+help	VB
+the	DT
+expert	NN
+in	IN
+identifying	VBG
+semantic	JJ
+similarity	NN
+.	.
+
+
+â	RB
+$	$
+cents	NNS
+This	DT
+semantic	JJ
+similarity	NN
+subsequently	RB
+helps	VBZ
+the	DT
+domain	NN
+expert	NN
+in	IN
+identifying	VBG
+a	DT
+number	NN
+of	IN
+common	JJ
+concepts	NNS
+that	WDT
+exist	VBP
+across	IN
+these	DT
+heterogeneous	JJ
+systems	NNS
+.	.
+
+
+Given	VBN
+this	DT
+scenario	NN
+,	,
+we	PRP
+propose	VBP
+an	DT
+approach	NN
+of	IN
+developing	VBG
+an	DT
+integrated	VBN
+conceptual	JJ
+schema	NN
+by	IN
+discovering	VBG
+common	JJ
+concepts	NNS
+in	IN
+much	JJ
+the	DT
+same	JJ
+way	NN
+as	IN
+the	DT
+domain	NN
+expert	NN
+,	,
+by	IN
+creating	VBG
+meaningful	JJ
+classifications	NNS
+of	IN
+concepts	NNS
+using	VBG
+data	NNS
+pertaining	VBG
+to	TO
+structure	NN
+and	CC
+usage	NN
+.	.
+
+The	DT
+data	NNS
+used	VBN
+for	IN
+automated	VBN
+classification	NN
+is	VBZ
+gathered	VBN
+from	IN
+two	CD
+sources	NNS
+.	.
+
+The	DT
+first	JJ
+from	IN
+data	NNS
+dictionary	NN
+of	IN
+each	DT
+CIS	NN
+and	CC
+the	DT
+second	JJ
+by	IN
+setting	VBG
+up	RP
+an	DT
+audit	NN
+trail	NN
+that	WDT
+captures	VBZ
+common	JJ
+querying	VBG
+patterns	NNS
+of	IN
+users	NNS
+.	.
+
+
+3.2	CD
+Approach	NN
+based	VBN
+on	IN
+Structure	NN
+,	,
+Usage	NN
+,	,
+Domain	NN
+Knowledge	NN
+
+
+Stead	NN
+and	CC
+Hammond	NNP
+-LRB-	-LRB-
+Stead	NNP
+,	,
+Hammond	NNP
+,	,
+1985	CD
+-RRB-	-RRB-
+have	VBP
+classified	VBN
+data	NNS
+stored	VBD
+in	IN
+medical	JJ
+records	NNS
+into	IN
+the	DT
+following	VBG
+groups	NNS
+:	:
+1	LS
+-RRB-	-RRB-
+Demographic	JJ
+data	NNS
+identifying	VBG
+socio-economic	JJ
+data	NNS
+,	,
+2	LS
+-RRB-	-RRB-
+General	NNP
+non-time-dependent	JJ
+data	NNS
+such	JJ
+as	IN
+tumour	NN
+registry	NN
+information	NN
+,	,
+special	JJ
+patient	NN
+needs	NNS
+,	,
+3	LS
+-RRB-	-RRB-
+Problem	NNP
+or	CC
+diagnosis	NN
+and	CC
+associated	JJ
+treatment	NN
+4	CD
+-RRB-	-RRB-
+Time-oriented	JJ
+information	NN
+such	JJ
+as	IN
+physical	JJ
+findings	NNS
+,	,
+patientâ	NN
+$	$
+™	CD
+s	NNS
+complaints	NNS
+,	,
+disease	NN
+progress	NN
+5	CD
+-RRB-	-RRB-
+Data	NNP
+resulting	VBG
+from	IN
+orders	NNS
+such	JJ
+as	IN
+lab	NN
+tests	NNS
+,	,
+and	CC
+x-rays	NNPS
+,	,
+6	CD
+-RRB-	-RRB-
+Therapies	NNS
+including	VBG
+diets	NNS
+,	,
+physio	NN
+,	,
+etc	FW
+7	CD
+-RRB-	-RRB-
+Encounter	NN
+information	NN
+such	JJ
+as	IN
+admission	NN
+data	NNS
+,	,
+including	VBG
+dates	NNS
+,	,
+places	NNS
+,	,
+care	NN
+provider	NN
+,	,
+etc	NN
+-LRB-	-LRB-
+RSP94	NN
+-RRB-	-RRB-
+.	.
+
+Our	PRP$
+own	JJ
+empirical	JJ
+study	NN
+of	IN
+existing	VBG
+CIS	NN
+in	IN
+a	DT
+large	JJ
+teaching	NN
+hospital	NN
+reveals	VBZ
+such	JJ
+similar	JJ
+groups	NNS
+of	IN
+data	NNS
+organized	VBN
+into	IN
+appropriate	JJ
+entity/objects/file	JJ
+definitions	NNS
+.	.
+
+
+The	DT
+cause	NN
+of	IN
+semantic	JJ
+heterogeneity	NN
+has	VBZ
+been	VBN
+discussed	VBN
+extensively	RB
+in	IN
+literature	NN
+-LRB-	-LRB-
+Litwin	NN
+,	,
+Mark	NNP
+,	,
+Roussopoulos	NNP
+,1990	CD
+-RRB-	-RRB-
+-LRB-	-LRB-
+Sheth	NNP
+,	,
+Gala	NNP
+,	,
+1989	CD
+-RRB-	-RRB-
+-LRB-	-LRB-
+Siegel	NNP
+,	,
+Madnick	NNP
+,	,
+1991b	NN
+-RRB-	-RRB-
+.	.
+
+Semantic	JJ
+similarity	NN
+manifests	VBZ
+itself	PRP
+in	IN
+the	DT
+database	NN
+structure	NN
+in	IN
+the	DT
+form	NN
+of	IN
+entity/object	JJ
+definitions	NNS
+,	,
+relationships	NNS
+among	IN
+entities/objects	NNS
+.	.
+
+The	DT
+database	NN
+entity	NN
+definitions	NNS
+and	CC
+relationships	NNS
+indirectly	RB
+reflect	VBP
+the	DT
+background	NN
+knowledge	NN
+of	IN
+the	DT
+user	NN
+groups	NNS
+that	WDT
+specify	VBP
+and	CC
+use	VBP
+the	DT
+system	NN
+.	.
+
+Users	NNS
+belonging	VBG
+to	TO
+a	DT
+specific	JJ
+user	NN
+group	NN
+from	IN
+the	DT
+same	JJ
+application	NN
+domain	NN
+are	VBP
+equipped	VBN
+with	IN
+similar	JJ
+background	NN
+knowledge	NN
+,	,
+examples	NNS
+of	IN
+such	JJ
+user	NN
+groups	NNS
+being	VBG
+doctors	NNS
+,	,
+nurses	NNS
+,	,
+allied	VBD
+health	NN
+professionals	NNS
+,	,
+and	CC
+health	NN
+administrators	NNS
+.	.
+
+The	DT
+commonality	NN
+of	IN
+purpose	NN
+of	IN
+these	DT
+different	JJ
+groups	NNS
+of	IN
+users	NNS
+results	VBZ
+in	IN
+updates	NNS
+of	IN
+similar	JJ
+entities	NNS
+as	RB
+well	RB
+as	IN
+similar	JJ
+querying	VBG
+patterns	NNS
+.	.
+
+In	IN
+addition	NN
+,	,
+usage	NN
+frequency	NN
+of	IN
+some	DT
+queries	NNS
+also	RB
+indicate	VBP
+preference	NN
+of	IN
+some	DT
+entities	NNS
+over	IN
+others	NNS
+.	.
+
+
+We	PRP
+assume	VBP
+that	IN
+similar	JJ
+domain	NN
+knowledge	NN
+combined	VBN
+with	IN
+common	JJ
+objectives	NNS
+leads	VBZ
+to	TO
+the	DT
+design	NN
+of	IN
+similar	JJ
+database	NN
+structures	NNS
+in	IN
+heterogeneous	JJ
+databases	NNS
+and	CC
+that	IN
+usage	NN
+pattern	NN
+carries	VBZ
+a	DT
+cognitive	JJ
+load	NN
+that	WDT
+indicates	VBZ
+background	NN
+knowledge	NN
+of	IN
+users	NNS
+.	.
+
+Database	NN
+structures	NNS
+can	MD
+serve	VB
+as	IN
+good	JJ
+indicators	NNS
+to	TO
+identify	VB
+common	JJ
+generic	JJ
+concepts	NNS
+across	IN
+CISs	NNS
+and	CC
+similar	JJ
+usage	NN
+pattern	NN
+by	IN
+a	DT
+particular	JJ
+user	NN
+group	NN
+can	MD
+indicate	VB
+similar	JJ
+concepts	NNS
+being	VBG
+used	VBN
+by	IN
+that	DT
+user	NN
+group	NN
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+6	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+If	IN
+similar	JJ
+concepts	NNS
+can	MD
+be	VB
+derived	VBN
+first	RB
+from	IN
+each	DT
+individual	JJ
+information	NN
+system	NN
+and	CC
+then	RB
+collectively	RB
+from	IN
+the	DT
+set	NN
+of	IN
+information	NN
+systems	NNS
+that	WDT
+need	VBP
+to	TO
+interoperate	VB
+,	,
+we	PRP
+have	VBP
+a	DT
+set	NN
+of	IN
+common	JJ
+generic	JJ
+concepts	NNS
+that	WDT
+can	MD
+be	VB
+perceived	VBN
+as	IN
+the	DT
+integrated	VBN
+conceptual	JJ
+schema	NN
+of	IN
+cooperative	JJ
+information	NN
+systems	NNS
+.	.
+
+
+4	LS
+.	.
+
+CONCEPTUAL	JJ
+CLUSTERING	NN
+
+
+The	DT
+purpose	NN
+of	IN
+cluster	NN
+analysis	NN
+is	VBZ
+to	TO
+place	VB
+objects	NNS
+into	IN
+groups	NNS
+or	CC
+clusters	NNS
+suggested	VBN
+by	IN
+the	DT
+data	NNS
+not	RB
+defined	VBD
+a	DT
+priori	FW
+,	,
+such	JJ
+that	IN
+objects	NNS
+in	IN
+a	DT
+given	VBN
+cluster	NN
+tend	VB
+to	TO
+be	VB
+similar	JJ
+to	TO
+each	DT
+other	JJ
+in	IN
+some	DT
+sense	NN
+and	CC
+objects	NNS
+in	IN
+different	JJ
+clusters	NNS
+tend	VBP
+to	TO
+be	VB
+dissimilar	JJ
+.	.
+
+The	DT
+basic	JJ
+data	NNS
+for	IN
+cluster	NN
+analysis	NN
+is	VBZ
+a	DT
+set	NN
+of	IN
+â	JJ
+$	$
+˜Nâ	JJ
+$	$
+™	CD
+entities	NNS
+-LRB-	-LRB-
+or	CC
+objects	NNS
+-RRB-	-RRB-
+on	IN
+which	WDT
+â	VBP
+$	$
+˜pâ	CD
+$	$
+™	CD
+measurements	NNS
+-LRB-	-LRB-
+or	CC
+variables	NNS
+-RRB-	-RRB-
+are	VBP
+recorded	VBN
+.	.
+
+The	DT
+initial	JJ
+choice	NN
+of	IN
+variables	NNS
+reflects	VBZ
+the	DT
+background	NN
+knowledge	NN
+of	IN
+the	DT
+investigator	NN
+and	CC
+the	DT
+relevance	NN
+for	IN
+the	DT
+purpose	NN
+of	IN
+classification	NN
+-LRB-	-LRB-
+Everitt80	NN
+-RRB-	-RRB-
+.	.
+
+
+4.1	CD
+Background	NN
+Knowledge	NN
+
+
+For	IN
+our	PRP$
+purposes	NNS
+the	DT
+objects	NNS
+to	TO
+be	VB
+clustered	VBN
+are	VBP
+database	NN
+â	RB
+$	$
+˜entitiesâ	CD
+$	$
+™	CD
+or	CC
+â	VB
+$	$
+˜objectsâ	CD
+$	$
+™	CD
+as	IN
+defined	VBN
+in	IN
+the	DT
+actual	JJ
+CISs	NNS
+.	.
+
+The	DT
+variables	NNS
+chosen	VBN
+are	VBP
+relevant	JJ
+for	IN
+our	PRP$
+purpose	NN
+as	IN
+they	PRP
+indicate	VBP
+structure	NN
+and	CC
+usage	NN
+of	IN
+each	DT
+entity/object	NN
+.	.
+
+Each	DT
+entity/object	NN
+is	VBZ
+characterized	VBN
+by	IN
+the	DT
+following	VBG
+variables	NNS
+:	:
+-LRB-	-LRB-
+i	LS
+-RRB-	-RRB-
+Number	NN
+of	IN
+records	NNS
+-LRB-	-LRB-
+ii	LS
+-RRB-	-RRB-
+Number	NN
+of	IN
+Attributes/fields/properties	NNS
+-LRB-	-LRB-
+iii	LS
+-RRB-	-RRB-
+Number	NN
+of	IN
+keys/links	NNS
+to	TO
+other	JJ
+entities/objects	NNS
+,	,
+-LRB-	-LRB-
+iv	LS
+-RRB-	-RRB-
+Update	NNP
+frequency	NN
+-LRB-	-LRB-
+v	LS
+-RRB-	-RRB-
+Number	NN
+of	IN
+users	NNS
+-LRB-	-LRB-
+vi	LS
+-RRB-	-RRB-
+Number	NN
+of	IN
+categories	NNS
+of	IN
+users	NNS
+.	.
+
+These	DT
+variables	NNS
+were	VBD
+chosen	VBN
+using	VBG
+some	DT
+simple	JJ
+heuristic	NN
+rules	NNS
+used	VBN
+by	IN
+the	DT
+informatics	NNS
+domain	NN
+expert	NN
+while	IN
+manually	RB
+classifying	VBG
+the	DT
+entities/objects	NNS
+into	IN
+generic	JJ
+concepts	NNS
+.	.
+
+The	DT
+other	JJ
+advantage	NN
+is	VBZ
+that	IN
+they	PRP
+are	VBP
+specific	JJ
+and	CC
+measurable	JJ
+.	.
+
+Values	NNS
+of	IN
+these	DT
+variables	NNS
+play	VBP
+a	DT
+significant	JJ
+part	NN
+in	IN
+clustering	VBG
+the	DT
+entities	NNS
+into	IN
+meaningful	JJ
+generic	JJ
+concepts	NNS
+.	.
+
+
+The	DT
+variable	JJ
+Number	NN
+of	IN
+records	NNS
+serve	VBP
+as	IN
+a	DT
+measure	NN
+to	TO
+indicate	VB
+the	DT
+popularity	NN
+of	IN
+the	DT
+entity	NN
+.	.
+
+An	DT
+entity	NN
+that	WDT
+has	VBZ
+a	DT
+large	JJ
+number	NN
+of	IN
+records	NNS
+is	VBZ
+used	VBN
+more	RBR
+often	RB
+possibly	RB
+by	IN
+a	DT
+large	JJ
+number	NN
+of	IN
+users	NNS
+.	.
+
+An	DT
+entity	NN
+characterized	VBN
+by	IN
+a	DT
+large	JJ
+number	NN
+of	IN
+attributes	NNS
+is	VBZ
+likely	JJ
+to	TO
+represent	VB
+an	DT
+important	JJ
+concept	NN
+;	:
+hence	RB
+the	DT
+variable	JJ
+Number	NN
+of	IN
+attributes	NNS
+.	.
+
+Number	NN
+of	IN
+links	NNS
+within	IN
+an	DT
+entity	NN
+definition	NN
+shows	VBZ
+the	DT
+relationship	NN
+among	IN
+entities	NNS
+and	CC
+possibly	RB
+relationship	NN
+among	IN
+concept	NN
+clusters	NNS
+.	.
+
+A	DT
+measure	NN
+of	IN
+Update	NNP
+frequency	NN
+shows	VBZ
+that	IN
+the	DT
+entity	NN
+is	VBZ
+being	VBG
+used	VBN
+most	RBS
+frequently	RB
+,	,
+possibly	RB
+by	IN
+a	DT
+large	JJ
+number	NN
+of	IN
+users	NNS
+.	.
+
+An	DT
+entity	NN
+characterized	VBN
+by	IN
+a	DT
+high	JJ
+value	NN
+of	IN
+this	DT
+variable	JJ
+coupled	VBN
+with	IN
+a	DT
+high	JJ
+value	NN
+for	IN
+the	DT
+Number	NNP
+of	IN
+categories	NNS
+of	IN
+users	NNS
+indicates	VBZ
+that	IN
+this	DT
+entity	NN
+represents	VBZ
+an	DT
+important	JJ
+concept	NN
+common	JJ
+to	TO
+many	JJ
+different	JJ
+categories	NNS
+of	IN
+users	NNS
+.	.
+
+An	DT
+entity	NN
+that	WDT
+is	VBZ
+being	VBG
+used	VBN
+by	IN
+the	DT
+maximum	NN
+number	NN
+of	IN
+users	NNS
+and	CC
+has	VBZ
+a	DT
+large	JJ
+value	NN
+for	IN
+Number	NNP
+of	IN
+records	NNS
+indicates	VBZ
+that	IN
+the	DT
+entity	NN
+is	VBZ
+popular	JJ
+among	IN
+large	JJ
+number	NN
+of	IN
+users	NNS
+and	CC
+is	VBZ
+therefore	RB
+an	DT
+important	JJ
+concept	NN
+that	WDT
+is	VBZ
+used	VBN
+frequently	RB
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+7	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+A	DT
+sample	NN
+set	NN
+of	IN
+data	NNS
+obtained	VBN
+from	IN
+an	DT
+audit	NN
+trail	NN
+of	IN
+existing	VBG
+CIS	NN
+is	VBZ
+shown	VBN
+in	IN
+Table	NNP
+I	PRP
+.	.
+
+The	DT
+first	JJ
+column	NN
+of	IN
+the	DT
+Table	NNP
+shows	VBZ
+the	DT
+actual	JJ
+names	NNS
+of	IN
+entities	NNS
+as	IN
+defined	VBN
+in	IN
+a	DT
+particular	JJ
+CIS	NN
+.	.
+
+The	DT
+remaining	VBG
+columns	NNS
+show	VBP
+the	DT
+values	NNS
+of	IN
+the	DT
+variables	NNS
+shown	VBN
+as	IN
+column	NN
+headings	NNS
+.	.
+
+The	DT
+method	NN
+of	IN
+data	NNS
+collection	NN
+is	VBZ
+explained	VBN
+later	RB
+in	IN
+the	DT
+experimental	JJ
+setup	NN
+section	NN
+.	.
+
+The	DT
+details	NNS
+of	IN
+the	DT
+clustering	NN
+algorithm	NN
+are	VBP
+explained	VBN
+in	IN
+the	DT
+following	VBG
+section1	NN
+
+
+Table1	NN
+Structure	NN
+and	CC
+Usage	NN
+data	NNS
+of	IN
+Clinical	JJ
+Information	NNP
+System	NNP
+
+
+Entity	NN
+name	NN
+number	NN
+numbe	NN
+update	VBP
+numbe	NN
+numbe	NN
+number	NN
+
+
+of	IN
+r	NN
+of	IN
+frequen	NN
+r	NN
+of	IN
+r	NN
+of	IN
+of	IN
+user	NN
+
+
+records	NNS
+attribu	NN
+cy	NN
+links	NNS
+users	NNS
+categori	NN
+
+
+tes	NNS
+es	NNS
+HCCASE	VBP
+28769	CD
+25	CD
+120	CD
+3	CD
+15	CD
+3	CD
+HCCONDITI	NN
+281	CD
+4	CD
+30	CD
+0	CD
+5	CD
+2	CD
+ONS	NNS
+
+
+HCLINK	NN
+531	CD
+3	CD
+30	CD
+0	CD
+5	CD
+1	CD
+HCPMI	NN
+28396	CD
+36	CD
+80	CD
+9	CD
+10	CD
+2	CD
+HCPOSTCOD	NNP
+2173	CD
+2	CD
+20	CD
+0	CD
+5	CD
+3	CD
+E	NN
+
+
+HCPROCEDU	NNP
+39	CD
+2	CD
+10	CD
+0	CD
+5	CD
+3	CD
+RES	NN
+
+
+HCPRINTER	NN
+435	CD
+033	CD
+S	NN
+
+
+HCSTAFF	NN
+367	CD
+11	CD
+20	CD
+1	CD
+5	CD
+2	CD
+HCTEAM	NNP
+1661	CD
+6	CD
+30	CD
+1	CD
+10	CD
+3	CD
+HCUSERDEF	NN
+23	CD
+8	CD
+5	CD
+1	CD
+1	CD
+1	CD
+S	NN
+
+
+HCUSER	NN
+22	CD
+6	CD
+5	CD
+1	CD
+1	CD
+1	CD
+
+
+4.2	CD
+Clustering	NN
+Algorithms	NNS
+
+
+A	DT
+large	JJ
+number	NN
+of	IN
+clustering	NN
+algorithms	NNS
+have	VBP
+been	VBN
+developed	VBN
+with	IN
+different	JJ
+definitions	NNS
+of	IN
+clusters	NNS
+and	CC
+similarity	NN
+among	IN
+objects	NNS
+.	.
+
+Hartigan	NNP
+-LRB-	-LRB-
+Hartigan	NNP
+,	,
+1975	CD
+-RRB-	-RRB-
+and	CC
+Everitt	NNP
+-LRB-	-LRB-
+Everitt	NNP
+,	,
+1980	CD
+-RRB-	-RRB-
+are	VBP
+authoritative	JJ
+references	NNS
+on	IN
+clustering	NN
+techniques	NNS
+.	.
+
+Clustering	NN
+techniques	NNS
+are	VBP
+broadly	RB
+classified	VBN
+into	IN
+the	DT
+following	VBG
+5	CD
+types	NNS
+:	:
+
+
+1	LS
+.	.
+
+Hierarchical	JJ
+techniques	NNS
+in	IN
+which	WDT
+clusters	NNS
+themselves	PRP
+are	VBP
+organized	VBN
+into	IN
+further	JJ
+
+
+clusters	NNS
+,	,
+the	DT
+process	NN
+being	VBG
+repeated	VBN
+at	IN
+different	JJ
+levels	NNS
+to	TO
+form	VB
+a	DT
+tree	NN
+.	.
+
+
+2	LS
+.	.
+
+Optimization	NN
+techniques	NNS
+in	IN
+which	WDT
+the	DT
+clusters	NNS
+are	VBP
+formed	VBN
+by	IN
+the	DT
+optimization	NN
+of	IN
+a	DT
+
+
+clustering	NN
+criterion	NN
+.	.
+
+The	DT
+clusters	NNS
+are	VBP
+mutually	RB
+exclusive	JJ
+,	,
+thus	RB
+forming	VBG
+a	DT
+partition	NN
+of	IN
+
+
+the	DT
+set	NN
+of	IN
+entities	NNS
+.	.
+
+
+
+1	CD
+
+
+Appendix-A	NN
+includes	VBZ
+data	NNS
+from	IN
+two	CD
+other	JJ
+CISs	NNS
+that	WDT
+were	VBD
+used	VBN
+for	IN
+clustering	NN
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+8	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+3	LS
+.	.
+
+Density	NN
+or	CC
+mode	NN
+seeking	VBG
+techniques	NNS
+in	IN
+which	WDT
+the	DT
+clusters	NNS
+are	VBP
+formed	VBN
+by	IN
+searching	VBG
+
+
+for	IN
+regions	NNS
+containing	VBG
+a	DT
+relatively	RB
+dense	JJ
+concentration	NN
+of	IN
+entities	NNS
+.	.
+
+
+4	LS
+.	.
+
+Clumping	VBG
+techniques	NNS
+in	IN
+which	WDT
+the	DT
+clusters	NNS
+or	CC
+clumps	NNS
+can	MD
+overlap	VB
+.	.
+
+
+5	CD
+.	.
+
+Others	NNS
+-	:
+methods	NNS
+that	WDT
+do	VBP
+not	RB
+fall	VB
+clearly	RB
+into	IN
+any	DT
+of	IN
+the	DT
+four	CD
+previous	JJ
+groups	NNS
+.	.
+
+
+For	IN
+our	PRP$
+experiment	NN
+we	PRP
+have	VBP
+chosen	VBN
+an	DT
+optimization	NN
+technique	NN
+as	IN
+we	PRP
+have	VBP
+a	DT
+fairly	RB
+good	JJ
+idea	NN
+of	IN
+the	DT
+possible	JJ
+number	NN
+of	IN
+clusters	NNS
+into	IN
+which	WDT
+the	DT
+entities	NNS
+of	IN
+a	DT
+CIS	NN
+database	NN
+can	MD
+be	VB
+grouped	VBN
+.	.
+
+Optimization	NN
+techniques	NNS
+are	VBP
+so	RB
+called	VBN
+because	IN
+they	PRP
+seek	VBP
+a	DT
+partition	NN
+of	IN
+the	DT
+data	NNS
+which	WDT
+optimizes	VBZ
+some	DT
+pre-defined	JJ
+numerical	JJ
+measure	NN
+,	,
+values	NNS
+of	IN
+which	WDT
+are	VBP
+indicative	JJ
+of	IN
+a	DT
+desirable	JJ
+clustering	NN
+solution	NN
+.	.
+
+
+Using	VBG
+a	DT
+partitioning	VBG
+algorithm	NN
+,	,
+the	DT
+observations	NNS
+are	VBP
+divided	VBN
+into	IN
+clusters	NNS
+such	JJ
+that	IN
+every	DT
+observation	NN
+belongs	VBZ
+to	TO
+only	RB
+one	CD
+cluster	NN
+.	.
+
+The	DT
+SASï	NN
+#	#
+¨	CD
+-LRB-	-LRB-
+SAS	NNP
+,	,
+1989	CD
+-RRB-	-RRB-
+procedure	NN
+FASTCLUS	NNS
+that	WDT
+is	VBZ
+used	VBN
+by	IN
+our	PRP$
+method	NN
+is	VBZ
+based	VBN
+on	IN
+Hartiganâ	NNP
+$	$
+™	CD
+s	NNS
+Leader	NNP
+Algorithm	NNP
+-LRB-	-LRB-
+Hartigan	NNP
+,	,
+1975	CD
+-RRB-	-RRB-
+and	CC
+MacQueenâ	NNP
+$	$
+™	CD
+s	NNS
+k-means	JJ
+algorithm	NN
+-LRB-	-LRB-
+Everitt	NN
+,	,
+1980	CD
+-RRB-	-RRB-
+.	.
+
+FASTCLUS	NNP
+uses	VBZ
+an	DT
+iterative	JJ
+algorithm	NN
+for	IN
+minimizing	VBG
+the	DT
+sum	NN
+of	IN
+squares	NNS
+distance	NN
+from	IN
+the	DT
+cluster	NN
+means	VBZ
+.	.
+
+A	DT
+set	NN
+of	IN
+points	NNS
+called	VBN
+cluster	NN
+seeds	NNS
+are	VBP
+first	JJ
+selected	VBN
+as	IN
+a	DT
+first	JJ
+guess	NN
+of	IN
+the	DT
+means	NNS
+of	IN
+the	DT
+clusters	NNS
+.	.
+
+Each	DT
+observation	NN
+is	VBZ
+assigned	VBN
+to	TO
+the	DT
+nearest	JJS
+seed	NN
+to	TO
+form	VB
+temporary	JJ
+clusters	NNS
+.	.
+
+The	DT
+seeds	NNS
+are	VBP
+then	RB
+replaced	VBN
+by	IN
+the	DT
+means	NNS
+of	IN
+temporary	JJ
+clusters	NNS
+and	CC
+the	DT
+process	NN
+is	VBZ
+repeated	VBN
+until	IN
+no	DT
+further	JJ
+changes	NNS
+occur	VBP
+in	IN
+the	DT
+clusters	NNS
+.	.
+
+Optionally	NNP
+,	,
+based	VBN
+on	IN
+domain	NN
+knowledge	NN
+it	PRP
+is	VBZ
+possible	JJ
+to	TO
+pre-specify	VB
+the	DT
+possible	JJ
+number	NN
+of	IN
+clusters	NNS
+,	,
+in	IN
+which	WDT
+case	NN
+the	DT
+number	NN
+of	IN
+iterations	NNS
+may	MD
+be	VB
+reduced	VBN
+.	.
+
+
+4.3	CD
+Experimental	JJ
+Framework	NN
+
+
+The	DT
+main	JJ
+experiment	NN
+is	VBZ
+performed	VBN
+in	IN
+two	CD
+phases	NNS
+.	.
+
+The	DT
+first	JJ
+phase	NN
+consists	VBZ
+of	IN
+running	VBG
+the	DT
+clustering	NN
+algorithm	NN
+using	VBG
+data	NNS
+from	IN
+each	DT
+individual	JJ
+CIS	NN
+in	IN
+order	NN
+to	TO
+obtain	VB
+concept	NN
+clusters	NNS
+within	IN
+each	DT
+CIS	NN
+.	.
+
+The	DT
+second	JJ
+phase	NN
+of	IN
+the	DT
+experiment	NN
+is	VBZ
+to	TO
+run	VB
+the	DT
+clustering	NN
+algorithm	NN
+using	VBG
+data	NNS
+from	IN
+all	PDT
+the	DT
+CIS	NN
+collectively	RB
+to	TO
+obtain	VB
+clusters	NNS
+across	IN
+CIS	NN
+.	.
+
+The	DT
+quality	NN
+of	IN
+clusters	NNS
+generated	VBN
+by	IN
+the	DT
+algorithm	NN
+in	IN
+each	DT
+case	NN
+is	VBZ
+compared	VBN
+to	TO
+manual	JJ
+concept	NN
+classification	NN
+as	IN
+a	DT
+simple	JJ
+means	NNS
+of	IN
+evaluating	VBG
+the	DT
+quality	NN
+of	IN
+clusters	NNS
+generated	VBN
+by	IN
+the	DT
+algorithm	NN
+.	.
+
+Table	NNP
+I	PRP
+shows	VBZ
+a	DT
+sample	NN
+data	NN
+set	NN
+.	.
+
+The	DT
+column	NN
+headings	NNS
+are	VBP
+the	DT
+variables	NNS
+used	VBN
+by	IN
+the	DT
+clustering	NN
+algorithm	NN
+.	.
+
+-LRB-	-LRB-
+Appendix-A	NN
+has	VBZ
+some	DT
+more	JJR
+data	NNS
+used	VBN
+in	IN
+the	DT
+experiment	NN
+-RRB-	-RRB-
+.	.
+
+The	DT
+method	NN
+of	IN
+collecting	VBG
+the	DT
+required	VBN
+data	NN
+is	VBZ
+explained	VBN
+in	IN
+section	NN
+4.3.1	CD
+.	.
+
+
+Data	NNS
+Collection	NNP
+
+
+The	DT
+CISs	NNS
+used	VBN
+in	IN
+the	DT
+experiment	NN
+are	VBP
+implemented	VBN
+on	IN
+different	JJ
+platforms	NNS
+such	JJ
+as	IN
+VAXÂ	NNP
+®	CD
+cluster	NN
+and	CC
+Personal	NNP
+Computer	NNP
+Networks	NNP
+,	,
+running	VBG
+under	IN
+different	JJ
+Operating	NNP
+Systems	NNPS
+such	JJ
+as	IN
+VMSÂ	NNP
+®	CD
+and	CC
+WindowsÂ	NNP
+®	NNP
+,	,
+using	VBG
+different	JJ
+network	NN
+protocols	NNS
+such	JJ
+as	IN
+DecnetÂ	NN
+®	NN
+,	,
+PathworksÂ	NN
+®	CD
+NetbuiÂ	NNP
+®	NN
+and	CC
+TCP/IP	NN
+Â	NN
+®	CD
+.	.
+
+Application	NN
+software	NN
+environment	NN
+includes	VBZ
+3	CD
+GL	NN
+languages	NNS
+such	JJ
+as	IN
+MUMPSÂ	NNP
+®	CD
+,	,
+and	CC
+COBOLÂ	NNP
+®	CD
+,	,
+4GL	NN
+languages	NNS
+such	JJ
+as	IN
+POWERHOUSEÂ	NN
+®	CD
+,	,
+Database	NNP
+Management	NNP
+Systems	NNP
+such	JJ
+as	IN
+CRSÂ	NNP
+®	CD
+-LRB-	-LRB-
+Clinical	JJ
+Reporting	NNP
+System	NNP
+-RRB-	-RRB-
+and	CC
+DbaseÂ	NN
+®	NN
+.	.
+
+This	DT
+variety	NN
+of	IN
+heterogeneity	NN
+offered	VBD
+quite	RB
+a	DT
+challenge	NN
+while	IN
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+9	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+setting	VBG
+up	RP
+the	DT
+process	NN
+for	IN
+data	NNS
+collection	NN
+.	.
+
+Actual	JJ
+data	NNS
+used	VBN
+in	IN
+the	DT
+clustering	NN
+process	NN
+was	VBD
+gathered	VBN
+at	IN
+three	CD
+different	JJ
+levels	NNS
+:	:
+a	DT
+-RRB-	-RRB-
+data	NNS
+relating	VBG
+to	TO
+structure	NN
+such	JJ
+as	IN
+Number	NN
+of	IN
+attributes	NNS
+and	CC
+Number	NN
+of	IN
+links	NNS
+was	VBD
+gathered	VBN
+from	IN
+the	DT
+data	NNS
+dictionaries	NNS
+of	IN
+each	DT
+individual	JJ
+CIS	NN
+,	,
+b	NN
+-RRB-	-RRB-
+transaction	NN
+logs	NNS
+were	VBD
+set	VBN
+up	RP
+at	IN
+the	DT
+operating	NN
+Systems	NNPS
+level	NN
+to	TO
+gather	VB
+data	NNS
+relating	VBG
+to	TO
+usage	NN
+such	JJ
+as	IN
+Number	NN
+of	IN
+users	NNS
+and	CC
+Number	NN
+of	IN
+categories	NNS
+of	IN
+users	NNS
+,	,
+c	NN
+-RRB-	-RRB-
+transaction	NN
+logs	NNS
+at	IN
+the	DT
+database	NN
+level	NN
+were	VBD
+set	VBN
+up	RP
+to	TO
+gather	VB
+data	NNS
+such	JJ
+as	IN
+Update	NNP
+frequency	NN
+and	CC
+Number	NN
+of	IN
+records	NNS
+.	.
+
+Finally	RB
+all	DT
+of	IN
+this	DT
+data	NN
+was	VBD
+moved	VBN
+to	TO
+the	DT
+NT	NNP
+advanced	VBD
+Server	NN
+on	IN
+which	WDT
+SASÂ	NNP
+®	VBD
+procedures	NNS
+and	CC
+programs	NNS
+were	VBD
+tested	VBN
+.	.
+
+
+Pre-processing	JJ
+Data	NNS
+
+
+It	PRP
+is	VBZ
+often	RB
+useful	JJ
+to	TO
+process	VB
+data	NNS
+prior	RB
+to	TO
+the	DT
+actual	JJ
+clustering	NN
+.	.
+
+This	DT
+becomes	VBZ
+essential	JJ
+when	WRB
+the	DT
+variables	NNS
+have	VBP
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+different	JJ
+units	NNS
+of	IN
+measurement	NN
+,	,
+-LRB-	-LRB-
+b	LS
+-RRB-	-RRB-
+take	VB
+on	RP
+different	JJ
+ranges	NNS
+of	IN
+values	NNS
+and	CC
+-LRB-	-LRB-
+c	LS
+-RRB-	-RRB-
+vary	VBP
+with	IN
+time	NN
+.	.
+
+For	IN
+example	NN
+,	,
+the	DT
+variable	JJ
+Number	NN
+of	IN
+records	NNS
+will	MD
+be	VB
+vastly	RB
+different	JJ
+for	IN
+a	DT
+system	NN
+that	WDT
+has	VBZ
+been	VBN
+in	IN
+operation	NN
+for	IN
+3	CD
+years	NNS
+as	IN
+compared	VBN
+to	TO
+a	DT
+systems	NNS
+that	WDT
+has	VBZ
+been	VBN
+in	IN
+operation	NN
+for	IN
+less	JJR
+than	IN
+a	DT
+year	NN
+.	.
+
+Hence	RB
+this	DT
+particular	JJ
+variable	JJ
+value	NN
+can	MD
+not	RB
+be	VB
+used	VBN
+as	IN
+it	PRP
+is	VBZ
+.	.
+
+However	RB
+since	IN
+it	PRP
+is	VBZ
+an	DT
+important	JJ
+variable	NN
+to	TO
+be	VB
+used	VBN
+in	IN
+clustering	NN
+,	,
+we	PRP
+have	VBP
+ranked	VBN
+this	DT
+variable	NN
+on	IN
+a	DT
+10	CD
+point	NN
+scale	NN
+such	JJ
+that	IN
+the	DT
+largest	JJS
+value	NN
+of	IN
+this	DT
+variable	NN
+has	VBZ
+a	DT
+rank	NN
+of	IN
+10	CD
+in	IN
+each	DT
+CIS	NN
+and	CC
+the	DT
+lowest	JJS
+value	NN
+has	VBZ
+a	DT
+rank	NN
+of	IN
+1	CD
+.	.
+
+All	DT
+other	JJ
+values	NNS
+are	VBP
+ranked	VBN
+within	IN
+this	DT
+range	NN
+.	.
+
+A	DT
+larger	JJR
+ranking	NN
+scale	NN
+may	MD
+provide	VB
+greater	JJR
+accuracy	NN
+.	.
+
+We	PRP
+use	VBP
+a	DT
+SASï	NN
+#	#
+¨	CD
+procedure	NN
+called	VBN
+ACECLUS	NNP
+that	WDT
+is	VBZ
+useful	JJ
+for	IN
+pre	JJ
+-	:
+processing	NN
+data	NNS
+to	TO
+be	VB
+subsequently	RB
+clustered	VBN
+by	IN
+the	DT
+FASTCLUS	NN
+procedure	NN
+.	.
+
+This	DT
+procedure	NN
+outputs	VBZ
+a	DT
+data	NN
+set	NN
+containing	VBG
+canonical	JJ
+variable	JJ
+scores	NNS
+to	TO
+be	VB
+used	VBN
+in	IN
+the	DT
+cluster	NN
+analysis	NN
+proper	JJ
+.	.
+
+
+The	DT
+Experiment	NN
+
+
+Initially	RB
+a	DT
+variety	NN
+of	IN
+options	NNS
+and	CC
+clustering	NN
+procedures	NNS
+were	VBD
+tried	VBN
+while	IN
+choosing	VBG
+the	DT
+initial	JJ
+cluster	NN
+seeds	NNS
+After	IN
+experience	NN
+with	IN
+initial	JJ
+runs	NNS
+,	,
+selecting	VBG
+good	JJ
+cluster	NN
+seeds	NNS
+manually	RB
+was	VBD
+relatively	RB
+straightforward	JJ
+,	,
+and	CC
+gave	VBD
+us	PRP
+clusters	NNS
+which	WDT
+matched	VBD
+very	RB
+closely	RB
+with	IN
+the	DT
+generic	JJ
+concepts	NNS
+identified	VBD
+manually	RB
+by	IN
+the	DT
+expert	NN
+.	.
+
+In	IN
+future	JJ
+work	NN
+we	PRP
+would	MD
+be	VB
+looking	VBG
+at	IN
+ways	NNS
+of	IN
+selecting	VBG
+the	DT
+cluster	NN
+seeds	NNS
+automatically	RB
+so	RB
+as	IN
+to	TO
+reduce	VB
+the	DT
+reliance	NN
+on	IN
+expert	NN
+human	JJ
+intervention	NN
+.	.
+
+Table	NNP
+II	NNP
+shows	VBZ
+some	DT
+comparative	JJ
+figures	NNS
+on	IN
+the	DT
+number	NN
+of	IN
+clusters	NNS
+obtained	VBN
+using	VBG
+the	DT
+algorithm	NN
+,	,
+and	CC
+the	DT
+number	NN
+of	IN
+generic	JJ
+concepts	NNS
+identified	VBD
+manually	RB
+by	IN
+a	DT
+medical	JJ
+informatics	NNS
+domain	NN
+expert	NN
+for	IN
+each	DT
+individual	JJ
+CIS	NN
+.	.
+
+The	DT
+first	JJ
+column	NN
+indicates	VBZ
+the	DT
+name	NN
+of	IN
+the	DT
+CIS	NN
+used	VBN
+in	IN
+the	DT
+experiment	NN
+.	.
+
+-LRB-	-LRB-
+This	DT
+is	VBZ
+synonymous	JJ
+with	IN
+the	DT
+name	NN
+of	IN
+the	DT
+corresponding	JJ
+clinical	JJ
+department	NN
+using	VBG
+the	DT
+system	NN
+-RRB-	-RRB-
+.	.
+
+The	DT
+number	NN
+of	IN
+observations	NNS
+indicate	VBP
+the	DT
+actual	JJ
+number	NN
+of	IN
+entities/objects	NNS
+and	CC
+their	PRP$
+relationships	NNS
+defined	VBN
+in	IN
+each	DT
+CIS	NN
+.	.
+
+The	DT
+next	JJ
+column	NN
+shows	VBZ
+the	DT
+number	NN
+of	IN
+clusters	NNS
+formed	VBN
+by	IN
+using	VBG
+the	DT
+algorithm	NN
+separately	RB
+on	IN
+each	DT
+CIS	NN
+.	.
+
+The	DT
+last	JJ
+column	NN
+shows	VBZ
+the	DT
+number	NN
+of	IN
+concepts	NNS
+identified	VBN
+separately	RB
+for	IN
+each	DT
+CIS	NN
+by	IN
+the	DT
+medical	JJ
+informatics	NNS
+domain	NN
+expert	NN
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+10	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+Table	NNP
+II	NNP
+:	:
+Comparison	NN
+of	IN
+Automated	NNP
+vs	CC
+Manual	NNP
+Clustering	NNP
+
+
+CIS	NN
+Number	NN
+of	IN
+Number	NNP
+of	IN
+clusters	NNS
+Number	NNP
+of	IN
+generic	JJ
+
+
+Entities	NNS
+/	:
+Objects	NNS
+generated	VBN
+by	IN
+the	DT
+concepts	NNS
+identified	VBD
+
+
+Algorithm	NN
+manually	RB
+Radiotherapy	NNP
+42	CD
+9	CD
+13	CD
+
+
+Endocrinology	NNP
+38	CD
+10	CD
+12	CD
+
+
+Community	NNP
+Health	NNP
+15	CD
+8	CD
+8	CD
+
+
+Allied	NNP
+Health	NNP
+39	CD
+10	CD
+11	CD
+
+
+Intensive	NNP
+Care	NNP
+12	CD
+8	CD
+9	CD
+
+
+As	IN
+can	MD
+be	VB
+seen	VBN
+,	,
+the	DT
+number	NN
+of	IN
+concepts	NNS
+identified	VBN
+by	IN
+the	DT
+human	JJ
+expert	NN
+seems	VBZ
+to	TO
+be	VB
+close	JJ
+or	CC
+marginally	RB
+higher	JJR
+than	IN
+the	DT
+number	NN
+of	IN
+clusters	NNS
+generated	VBN
+by	IN
+the	DT
+clustering	NN
+algorithm	NN
+.	.
+
+One	CD
+possible	JJ
+reason	NN
+could	MD
+be	VB
+that	IN
+the	DT
+manual	JJ
+clustering	NN
+process	NN
+could	MD
+also	RB
+identify	VB
+the	DT
+hierarchical	JJ
+clusters	NNS
+in	IN
+addition	NN
+to	TO
+the	DT
+disjoint	NN
+clusters	NNS
+.	.
+
+For	IN
+example	NN
+,	,
+this	DT
+was	VBD
+particularly	RB
+true	JJ
+for	IN
+systems	NNS
+that	WDT
+had	VBD
+a	DT
+large	JJ
+number	NN
+of	IN
+code	NN
+files	NNS
+.	.
+
+Since	IN
+the	DT
+algorithm	NN
+at	IN
+this	DT
+stage	NN
+only	RB
+performs	VBZ
+disjoint	NN
+partitions	NNS
+it	PRP
+lacks	VBZ
+the	DT
+level	NN
+of	IN
+sophistication	NN
+that	WDT
+is	VBZ
+possible	JJ
+in	IN
+manual	JJ
+clustering	NN
+.	.
+
+Another	DT
+interesting	JJ
+fact	NN
+that	IN
+came	VBD
+to	TO
+light	NN
+was	VBD
+that	IN
+the	DT
+discrepancy	NN
+between	IN
+manual	JJ
+and	CC
+automated	JJ
+clustering	NN
+seemed	VBD
+much	RB
+lower	JJR
+for	IN
+well	RB
+designed	VBN
+systems	NNS
+where	WRB
+data	NNS
+is	VBZ
+properly	RB
+normalized	VBN
+,	,
+possibly	RB
+because	IN
+the	DT
+well	RB
+defined	VBN
+entites	NNS
+could	MD
+themselves	PRP
+represent	VB
+concepts	NNS
+.	.
+
+
+Upon	IN
+careful	JJ
+examination	NN
+of	IN
+the	DT
+clusters	NNS
+generated	VBN
+by	IN
+the	DT
+system	NN
+,	,
+the	DT
+medical	JJ
+informatics	NNS
+domain	NN
+expert	NN
+could	MD
+label	VB
+the	DT
+clusters	NNS
+with	IN
+names	NNS
+of	IN
+some	DT
+familiar	JJ
+concepts	NNS
+.	.
+
+For	IN
+example	NN
+in	IN
+Table	NNP
+A	NNP
+of	IN
+Fig	NNP
+1	CD
+,	,
+the	DT
+entities	NNS
+DIET-TREATMENT	NNP
+,	,
+PATIENT	NNP
+-	:
+DIET	NNP
+,	,
+DRUG-TREATMENT	NNP
+and	CC
+PATIENT-PROGRAM	NNP
+grouped	VBD
+into	IN
+cluster	NN
+5	CD
+by	IN
+the	DT
+algorithm	NN
+could	MD
+all	DT
+be	VB
+classified	VBN
+as	IN
+belonging	VBG
+to	TO
+a	DT
+generic	JJ
+concept	NN
+labeled	VBN
+Treatment	NN
+Plan	NN
+by	IN
+the	DT
+human	JJ
+expert	NN
+
+
+2	CD
+
+
+.	.
+
+Labeling	VBG
+the	DT
+clusters	NNS
+generated	VBN
+by	IN
+the	DT
+system	NN
+with	IN
+some	DT
+generic	JJ
+concept	NN
+proved	VBD
+to	TO
+be	VB
+a	DT
+fairly	RB
+easy	JJ
+exercise	NN
+for	IN
+the	DT
+human	JJ
+expert	NN
+.	.
+
+The	DT
+3	CD
+Tables	NNS
+of	IN
+Figure	NN
+1	CD
+show	VBP
+the	DT
+results	NNS
+of	IN
+the	DT
+clustering	NN
+algorithm	NN
+performed	VBN
+individually	RB
+on	IN
+three	CD
+different	JJ
+CISs	NNS
+along	IN
+with	IN
+the	DT
+generic	JJ
+concepts	NNS
+labeled	VBN
+manually	RB
+by	IN
+the	DT
+domain	NN
+expert	NN
+.	.
+
+
+During	IN
+the	DT
+manual	JJ
+concept	NN
+classification	NN
+process	NN
+,	,
+although	IN
+the	DT
+human	JJ
+expert	NN
+could	MD
+identify	VB
+the	DT
+broad	JJ
+generic	JJ
+concepts	NNS
+represented	VBN
+within	IN
+each	DT
+CIS	NN
+quite	RB
+easily	RB
+,	,
+it	PRP
+was	VBD
+too	RB
+tedious	JJ
+to	TO
+slot	NN
+each	DT
+and	CC
+every	DT
+entity	NN
+into	IN
+an	DT
+appropriate	JJ
+generic	JJ
+concept	NN
+.	.
+
+This	DT
+becomes	VBZ
+quite	RB
+unmanageable	JJ
+in	IN
+poorly	RB
+designed	VBN
+systems	NNS
+.	.
+
+In	IN
+this	DT
+regard	NN
+,	,
+the	DT
+automated	JJ
+system	NN
+grouped	VBD
+all	DT
+entities	NNS
+into	IN
+one	CD
+cluster	NN
+or	CC
+another	DT
+,	,
+and	CC
+it	PRP
+was	VBD
+an	DT
+easy	JJ
+feat	NN
+for	IN
+the	DT
+human	JJ
+expert	NN
+then	RB
+to	TO
+label	VB
+the	DT
+clusters	NNS
+appropriately	RB
+and	CC
+in	IN
+some	DT
+cases	NNS
+identify	VBP
+the	DT
+entity	NN
+that	WDT
+did	VBD
+not	RB
+seem	VB
+to	TO
+belong	VB
+to	TO
+that	DT
+cluster	NN
+.	.
+
+For	IN
+example	NN
+,	,
+in	IN
+Table	NNP
+A	NNP
+of	IN
+Figure	NNP
+1	CD
+,	,
+Cluster	NN
+1	CD
+represents	VBZ
+Patient	NN
+Demographics	NNS
+,	,
+Cluster	NN
+2	CD
+represents	VBZ
+Patient	NN
+
+
+
+2	CD
+
+
+The	DT
+generic	JJ
+concepts	NNS
+identified	VBN
+by	IN
+the	DT
+human	JJ
+expert	NN
+are	VBP
+shown	VBN
+in	IN
+bold	JJ
+and	CC
+the	DT
+actual	JJ
+entity	NN
+names	NNS
+that	WDT
+are	VBP
+clustered	VBN
+by	IN
+the	DT
+algorithm	NN
+are	VBP
+shown	VBN
+in	IN
+capitals	NNS
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+11	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+visits	NNS
+,	,
+Cluster	NN
+3	CD
+represents	VBZ
+Test	NN
+results	NNS
+,	,
+Cluster	NN
+4	CD
+represents	VBZ
+Treatment	NN
+Plan	NN
+,	,
+and	CC
+
+
+Cluster	NN
+5	CD
+represents	VBZ
+the	DT
+set	NN
+of	IN
+Code	NNP
+files	NNS
+.	.
+
+
+Table	NNP
+:	:
+A	NN
+:	:
+CIS	NN
+I	NN
+:	:
+Endocrinology	NNP
+System	NNP
+Table	NNP
+B	NN
+:	:
+CIS	NN
+II	CD
+:	:
+Allied	NNP
+Health	NNP
+Information	NNP
+System	NNP
+Cluster	NNP
+Entities	NNP
+Generic	NNP
+Concept	NNP
+Cluster	NNP
+Entities	NNP
+Generic	NNP
+Concept	NNP
+
+
+1	CD
+PATIENT	NN
+
+
+2	CD
+VISIT	NN
+
+
+Patient	NN
+Demographics	NNS
+Patient	NN
+Visits	VBZ
+
+
+3	CD
+PATH-RESULTS	NN
+
+
+Test	NN
+Results	NNS
+
+
+4	LS
+CLINIC_ASSESMENT	NN
+
+
+5	CD
+DIET-TREATMENT	NN
+
+
+PATIENT-DIET	NN
+
+
+DRUG-TREATMENT	NN
+
+
+PATIENT-PROGRAM	NN
+6	CD
+LANGUAGE	NN
+
+
+STAFF-CODE	NN
+
+
+RELIGION	NN
+
+
+DOCTOR	NN
+
+
+ETHNIC-GROUP	NN
+
+
+PROGRAM-TOPICS	NN
+
+
+Treatment	NN
+Plan	NN
+
+
+Code	NNP
+Files	NNP
+6	CD
+
+
+Table	NNP
+C	NNP
+:	:
+CIS	NN
+III	CD
+:	:
+Community	NNP
+Health	NNP
+System	NNP
+Cluster	NNP
+Entities	NNP
+Generic	NNP
+Concept	NNP
+
+
+1	CD
+HCPMI	NN
+2	CD
+HCCASE	NN
+3	CD
+HCCONDITIONS	NN
+
+
+4	CD
+HCPROCEDURES	NNS
+
+
+5	CD
+
+
+HCTEAM	JJ
+HCSTAFF	NN
+HCPOSTCODE	NN
+HCUSER	NN
+
+
+1	CD
+PATIENT	NN
+
+
+2	CD
+PATIENT_ACTIVITY	NN
+
+
+Patient	NN
+Demographics	NNS
+Patient	NN
+Visits	VBZ
+
+
+3	CD
+REFERRAL	NN
+
+
+REFERRED_OUT_FOR	NN
+
+
+REFERRAL_SOURCE	NN
+4	CD
+THERAPY-COURSE	NN
+
+
+Referral	NN
+details	NNS
+
+
+Treatement	NNP
+Plan	NNP
+
+
+5	CD
+DEPARTMENT	NNP
+-	:
+
+
+ACTIVITY	NN
+
+
+Staff	NN
+activity	NN
+
+
+DEPT_CODE	NN
+LANGUAGE_CODE	NN
+THERAPIST_CODE	NN
+COMPENS_STATUS	NN
+CLINIC_AREA_CODE	NN
+
+
+Code	NNP
+Files	NNP
+
+
+Patient	NN
+Demographics	NNS
+Patient	NN
+Visits	VBZ
+Diagnosis	NN
+
+
+Treatement	NNP
+Plan	NNP
+Code	NNP
+Files	NNP
+
+
+Figure	NNP
+1	CD
+Concept	NNP
+Clusters	NNS
+of	IN
+Clinical	JJ
+Information	NNP
+Systems	NNP
+.	.
+
+
+Having	VBG
+ascertained	VBN
+that	IN
+the	DT
+clusters	NNS
+generated	VBN
+by	IN
+the	DT
+algorithm	NN
+matched	VBD
+very	RB
+closely	RB
+with	IN
+generic	JJ
+concepts	NNS
+identified	VBD
+manually	RB
+,	,
+in	IN
+the	DT
+second	JJ
+phase	NN
+of	IN
+the	DT
+experiment	NN
+clustering	NN
+was	VBD
+performed	VBN
+collectively	RB
+on	IN
+data	NNS
+gathered	VBN
+from	IN
+multiple	JJ
+heterogeneous	JJ
+CISs	NNS
+.	.
+
+In	IN
+the	DT
+first	JJ
+few	JJ
+experiments	NNS
+,	,
+the	DT
+resulting	VBG
+global	JJ
+clusters	NNS
+did	VBD
+not	RB
+group	NN
+corresponding	JJ
+entities	NNS
+of	IN
+clusters	NNS
+identified	VBN
+during	IN
+the	DT
+individual	JJ
+CIS	NN
+clustering	NN
+phase	NN
+of	IN
+the	DT
+experiment	NN
+.	.
+
+This	DT
+indicated	VBD
+that	IN
+similar	JJ
+concepts	NNS
+were	VBD
+not	RB
+being	VBG
+grouped	VBN
+together	RB
+to	TO
+form	VB
+one	CD
+generic	JJ
+concept	NN
+cluster	NN
+across	IN
+multiple	JJ
+CISs	NNS
+.	.
+
+Upon	IN
+further	JJ
+investigation	NN
+and	CC
+discussion	NN
+with	IN
+the	DT
+users	NNS
+,	,
+we	PRP
+found	VBD
+that	IN
+in	IN
+a	DT
+real	JJ
+life	NN
+situation	NN
+,	,
+there	EX
+was	VBD
+no	DT
+need	NN
+for	IN
+all	DT
+CIS	NN
+to	TO
+interoperate	VB
+.	.
+
+Only	RB
+some	DT
+clinical	JJ
+departments	NNS
+manually	RB
+exchanged	VBD
+data	NNS
+regularly	RB
+.	.
+
+For	IN
+example	NN
+,	,
+the	DT
+diabetes	NN
+patients	NNS
+treated	VBN
+by	IN
+the	DT
+Endocrinology	NNP
+department	NN
+are	VBP
+regularly	RB
+referred	VBN
+to	TO
+the	DT
+Allied	NNP
+health	NN
+departments	NNS
+such	JJ
+as	IN
+Dietetics	NNS
+and	CC
+Occupational	JJ
+therapy	NN
+which	WDT
+leads	VBZ
+to	TO
+a	DT
+regular	JJ
+flow	NN
+of	IN
+information	NN
+between	IN
+these	DT
+departments	NNS
+.	.
+
+Similarly	RB
+,	,
+there	EX
+was	VBD
+a	DT
+need	NN
+for	IN
+the	DT
+Radiotherapy	NN
+department	NN
+to	TO
+interoperate	VB
+with	IN
+the	DT
+department	NN
+of	IN
+Nuclear	JJ
+medicine	NN
+and	CC
+Radiation	NNP
+Oncology	NNP
+,	,
+but	CC
+not	RB
+with	IN
+Endocrinology	NNP
+.	.
+
+Hence	RB
+it	PRP
+is	VBZ
+possible	JJ
+that	IN
+our	PRP$
+initial	JJ
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+12	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+experiments	NNS
+in	IN
+combining	VBG
+systems	NNS
+together	RB
+randomly	RB
+,	,
+did	VBD
+not	RB
+yield	VB
+any	DT
+worthwhile	JJ
+concept	NN
+clusters	NNS
+,	,
+since	IN
+CISs	NNS
+were	VBD
+clustered	VBN
+together	RB
+arbitrarily	RB
+,	,
+rather	RB
+than	IN
+meaningfully	RB
+.	.
+
+
+Our	PRP$
+next	JJ
+attempt	NN
+was	VBD
+to	TO
+group	NN
+only	RB
+those	DT
+CISs	NNS
+where	WRB
+the	DT
+respective	JJ
+CIS	NN
+users	NNS
+indicated	VBD
+a	DT
+need	NN
+for	IN
+Interoperability	NN
+.	.
+
+The	DT
+resulting	VBG
+clusters	NNS
+were	VBD
+much	RB
+closer	JJR
+to	TO
+the	DT
+original	JJ
+generic	JJ
+concepts	NNS
+of	IN
+the	DT
+participating	VBG
+CISs	NNS
+.	.
+
+
+Table	NNP
+A	NNP
+in	IN
+Figure	NNP
+2	CD
+shows	VBZ
+the	DT
+clusters	NNS
+formed	VBN
+by	IN
+combining	VBG
+data	NNS
+from	IN
+Endocrinology	NNP
+system	NN
+and	CC
+Community	NNP
+Health	NNP
+Systems	NNPS
+which	WDT
+do	VBP
+not	RB
+manually	RB
+interoperate	VB
+.	.
+
+The	DT
+examples	NNS
+shown	VBN
+are	VBP
+the	DT
+actual	JJ
+clusters	NNS
+generated	VBN
+by	IN
+the	DT
+algorithm	NN
+.	.
+
+Only	RB
+a	DT
+representative	JJ
+sample	NN
+has	VBZ
+been	VBN
+chosen	VBN
+for	IN
+discussion	NN
+purposes	NNS
+.	.
+
+To	TO
+evaluate	VB
+the	DT
+quality	NN
+of	IN
+the	DT
+clusters	NNS
+formed	VBN
+,	,
+we	PRP
+have	VBP
+used	VBN
+a	DT
+simple	JJ
+Decision	NNP
+Table	NNP
+as	IN
+shown	VBN
+in	IN
+Table	NNP
+B.	NNP
+Currently	NNP
+we	PRP
+do	VBP
+not	RB
+have	VB
+a	DT
+formal	JJ
+procedure	NN
+in	IN
+place	NN
+to	TO
+evaluate	VB
+the	DT
+quality	NN
+of	IN
+clusters	NNS
+formed	VBN
+.	.
+
+Our	PRP$
+evaluation	NN
+is	VBZ
+based	VBN
+on	IN
+a	DT
+human	JJ
+expertâ	NN
+$	$
+™	CD
+s	NNS
+evaluation	NN
+of	IN
+the	DT
+clusters	NNS
+.	.
+
+As	IN
+shown	VBN
+in	IN
+the	DT
+Decision	NNP
+Table	NNP
+-LRB-	-LRB-
+Table	NNP
+B	NN
+-RRB-	-RRB-
+of	IN
+Figure	NN
+2	CD
+,	,
+out	IN
+of	IN
+6	CD
+clusters	NNS
+only	RB
+2	CD
+clusters	NNS
+-LRB-	-LRB-
+i.e.	FW
+clusters	NNS
+1	CD
+and	CC
+6	CD
+-RRB-	-RRB-
+generated	VBN
+by	IN
+the	DT
+algorithm	NN
+match	NN
+with	IN
+the	DT
+human	JJ
+expertâ	NN
+$	$
+™	CD
+s	NNS
+generic	JJ
+concept	NN
+.	.
+
+Clusters	NNS
+4	CD
+and	CC
+5	CD
+represent	VBP
+the	DT
+same	JJ
+generic	JJ
+concept	NN
+as	IN
+far	RB
+as	IN
+the	DT
+human	JJ
+expert	NN
+is	VBZ
+concerned	VBN
+.	.
+
+Clusters	NNS
+2	CD
+and	CC
+3	CD
+do	VBP
+not	RB
+represent	VB
+any	DT
+single	JJ
+generic	JJ
+concept	NN
+as	IN
+per	IN
+the	DT
+expert	NN
+.	.
+
+So	RB
+in	IN
+this	DT
+case	NN
+we	PRP
+can	MD
+say	VB
+that	IN
+roughly	RB
+there	EX
+is	VBZ
+a	DT
+33	CD
+%	NN
+success	NN
+as	IN
+far	RB
+as	IN
+the	DT
+algorithm	NN
+is	VBZ
+concerned	VBN
+.	.
+
+
+Table	NNP
+A	NNP
+:	:
+Clusters	NNS
+formed	VBN
+with	IN
+Endocrinology	NN
+and	CC
+Community	NNP
+Health	NNP
+Systems	NNPS
+Table	NNP
+B	NN
+:	:
+Decision	NNP
+Table	NNP
+
+
+Cluster	NNP
+Entity	NNP
+Generic	NNP
+Concept	NNP
+
+
+1	CD
+PATIENT	NN
+-LRB-	-LRB-
+I	NN
+-RRB-	-RRB-
+Patient	NN
+
+
+Humanâ	NNP
+†	NN
+'	''
+Yes	UH
+NO	UH
+
+
+HCPMI	NN
+-LRB-	-LRB-
+III	CD
+-RRB-	-RRB-
+Demographics	NNS
+Algorithm	NN
+
+
+2	CD
+CLINIC_ASSESMENT	NN
+-LRB-	-LRB-
+I	NN
+-RRB-	-RRB-
+?	.
+
+
+HCSTAFF	NN
+-LRB-	-LRB-
+III	CD
+-RRB-	-RRB-
+
+
+â	NN
+†	CD
+``	``
+
+
+3	CD
+HCCONDITIONS	NN
+-LRB-	-LRB-
+III	CD
+-RRB-	-RRB-
+Treatment	NN
+-LRB-	-LRB-
+?	.
+-RRB-	-RRB-
+
+
+Yes	UH
+2	CD
+2	CD
+
+
+DIET-TREATMENT	NN
+-LRB-	-LRB-
+I	NN
+-RRB-	-RRB-
+
+
+PATIENT-DIET	NN
+-LRB-	-LRB-
+I	NN
+-RRB-	-RRB-
+No	DT
+2	LS
+-	:
+
+
+DRUG-TREATMMENT	NN
+-LRB-	-LRB-
+I	NN
+-RRB-	-RRB-
+
+
+4	CD
+VISIT	NN
+-LRB-	-LRB-
+I	NN
+-RRB-	-RRB-
+Patient	NN
+Visits	VBZ
+
+
+5	CD
+HCCASE	NN
+-LRB-	-LRB-
+III	CD
+-RRB-	-RRB-
+Patient	NN
+Visits	VBZ
+
+
+6	CD
+LANGUAGE	NN
+-LRB-	-LRB-
+I	NN
+-RRB-	-RRB-
+Code	NNP
+Files	NNS
+
+
+STAFF-CODE	NN
+-LRB-	-LRB-
+I	NN
+-RRB-	-RRB-
+
+
+HCPOSTCODE	NN
+-LRB-	-LRB-
+III	CD
+-RRB-	-RRB-
+
+
+Fig	NN
+2	CD
+Concept	NNP
+Clusters	NNS
+produced	VBD
+with	IN
+manually	RB
+non-interoperating	JJ
+systems	NNS
+.	.
+
+
+Fig	NN
+3A	NN
+shows	VBZ
+the	DT
+clusters	NNS
+formed	VBN
+by	IN
+combining	VBG
+data	NNS
+from	IN
+Endocrinology	NNP
+and	CC
+Allied	NNP
+Health	NNP
+Systems	NNPS
+,	,
+where	WRB
+there	EX
+is	VBZ
+a	DT
+need	NN
+for	IN
+interoperability	NN
+.	.
+
+In	IN
+this	DT
+example	NN
+6	CD
+out	IN
+of	IN
+8	CD
+clusters	NNS
+coincide	VBP
+with	IN
+the	DT
+generic	JJ
+concepts	NNS
+identified	VBD
+manually	RB
+showing	VBG
+an	DT
+80	CD
+%	NN
+success	NN
+.	.
+
+The	DT
+algorithm	NN
+however	RB
+has	VBZ
+identified	VBN
+2	CD
+separate	JJ
+clusters	NNS
+for	IN
+Patient	NN
+Demographics	NNS
+.	.
+
+As	IN
+per	IN
+the	DT
+human	JJ
+expert	NN
+cluster	NN
+1	CD
+and	CC
+2	CD
+represents	VBZ
+the	DT
+same	JJ
+generic	JJ
+concept	NN
+.	.
+
+This	DT
+is	VBZ
+a	DT
+discrepancy	NN
+which	WDT
+seems	VBZ
+difficult	JJ
+to	TO
+account	VB
+for	IN
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+13	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+These	DT
+two	CD
+experiments	NNS
+confirm	VBP
+our	PRP$
+hypothesis	NN
+that	IN
+common	JJ
+objectives	NNS
+give	VBP
+rise	NN
+to	TO
+similar	JJ
+concepts	NNS
+.	.
+
+Although	IN
+it	PRP
+may	MD
+be	VB
+difficult	JJ
+to	TO
+produce	VB
+perfect	JJ
+clusters	NNS
+that	WDT
+match	VBP
+with	IN
+all	PDT
+the	DT
+generic	JJ
+concepts	NNS
+,	,
+the	DT
+process	NN
+still	RB
+yields	VBZ
+a	DT
+large	JJ
+number	NN
+of	IN
+generic	JJ
+concepts	NNS
+across	IN
+systems	NNS
+designed	VBN
+with	IN
+similar	JJ
+objectives	NNS
+.	.
+
+
+Table	NNP
+A	NNP
+:	:
+Clusters	NNS
+formed	VBN
+with	IN
+endocrinology	NN
+and	CC
+allied	VBD
+Health	NNP
+Systems	NNPS
+Cluster	NNP
+Entity	NNP
+Generic	NNP
+Concept	NNP
+1	CD
+PATIENT	NN
+-LRB-	-LRB-
+I	NN
+-RRB-	-RRB-
+Patient	NN
+Demographics	NNS
+2	CD
+PATIENT	NN
+-LRB-	-LRB-
+II	CD
+-RRB-	-RRB-
+Patient	NN
+Demographics	NNS
+
+
+3	CD
+VISIT	NN
+-LRB-	-LRB-
+I	NN
+-RRB-	-RRB-
+
+
+PATIENT_ACTIVITY	NN
+-LRB-	-LRB-
+II	CD
+-RRB-	-RRB-
+4	CD
+DIET-TREATMENT	NN
+-LRB-	-LRB-
+I	NN
+-RRB-	-RRB-
+
+
+PATIENT-DIET	NN
+-LRB-	-LRB-
+I	NN
+-RRB-	-RRB-
+
+
+DRUG-TREATMENT	NN
+-LRB-	-LRB-
+I	NN
+-RRB-	-RRB-
+
+
+PATIENT-PROGRAM	NN
+-LRB-	-LRB-
+I	NN
+-RRB-	-RRB-
+
+
+THERAPY_COURSE	NN
+-LRB-	-LRB-
+II	CD
+-RRB-	-RRB-
+5	CD
+
+
+PATH-RESULTS	NN
+-LRB-	-LRB-
+I	NN
+-RRB-	-RRB-
+6	CD
+DEPARTMENT-ACTIVITY	NN
+-LRB-	-LRB-
+II	CD
+-RRB-	-RRB-
+7	CD
+CLINIC_ASSESMENT	NN
+-LRB-	-LRB-
+I	NN
+-RRB-	-RRB-
+8	CD
+LANGUAGE	NN
+
+
+STAFF-CODE	NN
+
+
+RELIGION	NN
+
+
+DOCTOR	NN
+
+
+ETHNIC-GROUP	NN
+
+
+DEPT_CODE	NN
+-LRB-	-LRB-
+II	CD
+-RRB-	-RRB-
+
+
+LANGUAGE_CODE	NN
+-LRB-	-LRB-
+II	CD
+-RRB-	-RRB-
+
+
+THERAPIST_CODE	NN
+-LRB-	-LRB-
+II	CD
+-RRB-	-RRB-
+
+
+CLINIC_AREA_CODE	NN
+-LRB-	-LRB-
+II	CD
+-RRB-	-RRB-
+
+
+COMPENS_STATUS	NN
+-LRB-	-LRB-
+II	CD
+-RRB-	-RRB-
+
+
+Patient	NN
+Visits	NNS
+
+
+Treatment	NN
+Plan	NN
+
+
+Test	NN
+Results	NNS
+
+
+Table	NNP
+B	NN
+:	:
+Evaluation	NN
+Table	NNP
+
+
+Humanâ	NNP
+†	NN
+'	''
+Yes	UH
+NO	DT
+Algorithm	NN
+
+
+â	NN
+†	CD
+``	``
+
+
+Yes	UH
+6	CD
+1	CD
+No	DT
+1	LS
+-	:
+
+
+Department	NNP
+activity	NN
+Clinical	JJ
+Assessment	NNP
+
+
+Figure	NNP
+3	CD
+Concept	NNP
+Clusters	NNS
+produced	VBD
+with	IN
+manually	RB
+interoperating	VBG
+systems	NNS
+.	.
+
+
+The	DT
+major	JJ
+advantage	NN
+of	IN
+this	DT
+concept	NN
+clustering	NN
+approach	NN
+is	VBZ
+that	IN
+once	RB
+identified	VBN
+,	,
+these	DT
+concept	NN
+clusters	NNS
+,	,
+labeled	VBN
+as	IN
+appropriate	JJ
+generic	JJ
+concepts	NNS
+,	,
+can	MD
+serve	VB
+as	IN
+the	DT
+starting	VBG
+point	NN
+in	IN
+providing	VBG
+a	DT
+customised	VBN
+external	JJ
+view	NN
+to	TO
+different	JJ
+categories	NNS
+of	IN
+users	NNS
+.	.
+
+This	DT
+is	VBZ
+possible	JJ
+because	IN
+basically	RB
+the	DT
+concept	NN
+clusters	NNS
+are	VBP
+generated	VBN
+using	VBG
+usage	NN
+patterns	NNS
+.	.
+
+If	IN
+an	DT
+audit	NN
+trail	NN
+of	IN
+each	DT
+CIS	NN
+usage	NN
+could	MD
+be	VB
+established	VBN
+and	CC
+fed	VBN
+back	RB
+to	TO
+the	DT
+clustering	NN
+algorithm	NN
+one	CD
+could	MD
+speculate	VB
+that	IN
+it	PRP
+may	MD
+be	VB
+possible	JJ
+to	TO
+greatly	RB
+improve	VB
+the	DT
+quality	NN
+of	IN
+these	DT
+concept	NN
+clusters	NNS
+.	.
+
+With	IN
+continuos	NNS
+usage	NN
+over	IN
+a	DT
+period	NN
+of	IN
+time	NN
+,	,
+one	CD
+could	MD
+hope	VB
+to	TO
+arrive	VB
+at	IN
+a	DT
+generic	JJ
+conceptual	JJ
+schema	NN
+that	WDT
+could	MD
+reflect	VB
+the	DT
+concepts	NNS
+embedded	VBN
+in	IN
+the	DT
+underlying	VBG
+systems	NNS
+.	.
+
+This	DT
+in	IN
+turn	NN
+could	MD
+be	VB
+the	DT
+basis	NN
+for	IN
+providing	VBG
+highly	RB
+customised	VBN
+external	JJ
+view	NN
+across	IN
+heterogeneous	JJ
+cooperating	VBG
+information	NN
+systems	NNS
+.	.
+
+Details	NNS
+of	IN
+providing	VBG
+such	PDT
+a	DT
+customised	VBN
+external	JJ
+view	NN
+are	VBP
+discussed	VBN
+in	IN
+-LRB-	-LRB-
+Srinivasn	NNP
+,	,
+Nga	NNP
+,	,
+Gedeon	NNP
+,	,
+1994	CD
+-RRB-	-RRB-
+.	.
+
+A	DT
+hypertext	NN
+interface	NN
+that	WDT
+could	MD
+serve	VB
+this	DT
+purpose	NN
+is	VBZ
+presented	VBN
+in	IN
+-LRB-	-LRB-
+Lee	NNP
+,	,
+Ngu	NNP
+,	,
+Srinivassan	NNP
+,	,
+1994	CD
+-RRB-	-RRB-
+.	.
+
+
+5	CD
+.	.
+
+CONCLUSION	NN
+
+
+The	DT
+approach	NN
+to	TO
+integration	NN
+presented	VBN
+in	IN
+this	DT
+paper	NN
+is	VBZ
+based	VBN
+on	IN
+identifying	VBG
+some	DT
+common	JJ
+generic	JJ
+concepts	NNS
+that	WDT
+exist	VBP
+across	IN
+different	JJ
+clinical	JJ
+information	NN
+systems	NNS
+.	.
+
+A	DT
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+14	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+statistical	JJ
+clustering	NN
+algorithm	NN
+is	VBZ
+proposed	VBN
+using	VBG
+an	DT
+audit	NN
+trail	NN
+approach	NN
+to	TO
+identify	VB
+these	DT
+common	JJ
+generic	JJ
+concepts	NNS
+.	.
+
+The	DT
+algorithm	NN
+uses	VBZ
+existing	VBG
+database	NN
+structures	NNS
+and	CC
+usage	NN
+patterns	NNS
+to	TO
+find	VB
+meaningful	JJ
+concept	NN
+clusters	NNS
+.	.
+
+Experiments	NNS
+performed	VBN
+using	VBG
+this	DT
+approach	NN
+have	VBP
+produced	VBN
+encouraging	JJ
+results	NNS
+for	IN
+clinical	JJ
+information	NN
+systems	NNS
+that	WDT
+need	VBP
+to	TO
+interoperate	VB
+.	.
+
+
+The	DT
+generic	JJ
+concepts	NNS
+represented	VBN
+by	IN
+these	DT
+clusters	NNS
+can	MD
+be	VB
+used	VBN
+to	TO
+provide	VB
+a	DT
+flexible	JJ
+customised	VBN
+view	NN
+to	TO
+each	DT
+user	NN
+.	.
+
+Over	IN
+a	DT
+period	NN
+of	IN
+time	NN
+with	IN
+continuous	JJ
+usage	NN
+monitoring	NN
+and	CC
+feed	VB
+back	RP
+a	DT
+customised	VBN
+external	JJ
+view	NN
+for	IN
+each	DT
+category	NN
+of	IN
+user	NN
+can	MD
+be	VB
+generated	VBN
+.	.
+
+
+Currently	RB
+,	,
+there	EX
+is	VBZ
+no	DT
+formal	JJ
+mechanism	NN
+to	TO
+evaluate	VB
+the	DT
+quality	NN
+of	IN
+clusters	NNS
+and	CC
+are	VBP
+instead	RB
+relying	VBG
+on	IN
+human	JJ
+intervention	NN
+to	TO
+evaluate	VB
+them	PRP
+.	.
+
+We	PRP
+are	VBP
+also	RB
+looking	VBG
+at	IN
+the	DT
+possibility	NN
+of	IN
+providing	VBG
+continuous	JJ
+monitoring	NN
+and	CC
+feedback	NN
+and	CC
+develop	VB
+this	DT
+into	IN
+a	DT
+self	NN
+learning	NN
+system	NN
+for	IN
+automatic	JJ
+concept	NN
+generation	NN
+.	.
+
+
+Acknowledgments	NNS
+
+
+We	PRP
+acknowledge	VBP
+John	NNP
+Shepherd	NNP
+,	,
+R.	NNP
+Bhaskar	NNP
+and	CC
+Jim	NNP
+Franklin	NNP
+for	IN
+helpful	JJ
+discussions	NNS
+.	.
+
+We	PRP
+also	RB
+acknowledge	VBP
+the	DT
+help	NN
+provided	VBN
+by	IN
+various	JJ
+doctors	NNS
+at	IN
+Eastern	NNP
+Sydney	NNP
+Area	NNP
+Health	NNP
+Service	NNP
+,	,
+and	CC
+to	TO
+members	NNS
+of	IN
+the	DT
+Information	NNP
+Systems	NNP
+Unit	NNP
+at	IN
+Eastern	NNP
+Sydney	NNP
+Area	NNP
+Health	NNP
+Service	NNP
+for	IN
+providing	VBG
+the	DT
+facility	NN
+to	TO
+gather	VB
+the	DT
+large	JJ
+amount	NN
+of	IN
+data	NNS
+required	VBN
+for	IN
+the	DT
+experiment	NN
+.	.
+
+
+References	NNS
+
+
+Ahmed	NNP
+,	,
+R.	NNP
+Et	NNP
+al.	FW
+-LRB-	-LRB-
+1991	CD
+-RRB-	-RRB-
+The	DT
+PEGASUS	NNP
+heterogeneous	JJ
+multidatabase	NN
+system	NN
+.	.
+
+IEEE	NN
+
+
+Computer	NN
+,	,
+24	CD
+-LRB-	-LRB-
+12	CD
+-RRB-	-RRB-
+:19	CD
+-27	CD
+.	.
+
+
+Brodie	NNP
+,	,
+M.	NNP
+-LRB-	-LRB-
+1992	CD
+-RRB-	-RRB-
+The	DT
+promise	NN
+od	NN
+distributed	VBN
+computing	NN
+and	CC
+the	DT
+challenges	NNS
+of	IN
+legacy	NN
+
+
+information	NN
+systems	NNS
+.	.
+
+In	IN
+IFIP	NN
+DS-5	NN
+Semantics	NNS
+of	IN
+Interoperable	JJ
+Databases	NNPS
+Systems	NNPS
+:	:
+
+
+Lorne	NNP
+,	,
+Australia	NNP
+,	,
+
+
+Bhaskar	NNP
+,	,
+R.	NNP
+-LRB-	-LRB-
+1995	CD
+-RRB-	-RRB-
+Personal	NNP
+Comment	NN
+.	.
+
+
+Collet	NNP
+,	,
+C.	NNP
+Huhns	NNP
+M.N.and	NNP
+Shen	NNP
+,	,
+W.	NNP
+-LRB-	-LRB-
+1991	CD
+-RRB-	-RRB-
+Resource	NNP
+Integration	NN
+using	VBG
+a	DT
+large	JJ
+
+
+Knowledge	NN
+Base	NN
+in	IN
+Carnot	NNP
+.	.
+
+IEEE	NNP
+Computer	NNP
+,	,
+vol	NN
+24	CD
+-LRB-	-LRB-
+12	CD
+-RRB-	-RRB-
+:	:
+55-62	CD
+.	.
+
+
+Everitt	NNP
+,	,
+B.	NNP
+-LRB-	-LRB-
+1980	CD
+-RRB-	-RRB-
+Cluster	NNP
+Analysis	NNP
+,	,
+Second	NNP
+Edition	NNP
+.	.
+
+Halsted	NNP
+Press	NNP
+,	,
+Division	NNP
+of	IN
+John	NNP
+
+
+Wiley	NNP
+&	CC
+Sons	NNP
+.	.
+
+
+Frawley	NNP
+,	,
+W.J.	NNP
+Piatetsky-Shapiro	NNP
+,	,
+G.	NNP
+Matheus	NNP
+,	,
+C.J.	NNP
+-LRB-	-LRB-
+1991	CD
+-RRB-	-RRB-
+Knowledge	NNP
+Discovery	NNP
+in	IN
+
+
+Databases	NNS
+:	:
+An	DT
+Overview	NN
+in	IN
+Knowledge	NNP
+Discovery	NNP
+in	IN
+Databases	NNP
+,	,
+AAAI	NNP
+Press	NNP
+.	.
+
+Gonzalez	NNP
+,	,
+A.	NNP
+Myler	NNP
+,	,
+H.	NNP
+,	,
+et	FW
+al.	FW
+-LRB-	-LRB-
+1991	CD
+-RRB-	-RRB-
+Automated	NNP
+Knowledge	NNP
+Generation	NNP
+From	IN
+a	DT
+CAD	NN
+
+
+Database	NN
+,	,
+Knowledge	NN
+Discovery	NNP
+in	IN
+Databases	NNP
+,	,
+AAAI	NNP
+Press	NNP
+.	.
+
+
+Hartigan	NNP
+,	,
+J.A.	NNP
+-LRB-	-LRB-
+1975	CD
+-RRB-	-RRB-
+Clustering	VBG
+Algorithms	NNS
+.	.
+
+John	NNP
+Wiley	NNP
+and	CC
+Sons	NNPS
+.	.
+
+New	NNP
+York	NNP
+.	.
+
+Johannesson	NNP
+,	,
+P.	NNP
+and	CC
+Hasan	NNP
+Jamil	NNP
+,	,
+M.	NNP
+-LRB-	-LRB-
+1994	CD
+-RRB-	-RRB-
+Semantic	NNP
+Interoperability	NNP
+Context	NNP
+,	,
+Issues	NNP
+
+
+and	CC
+Research	NNP
+Directions	NNPS
+.	.
+
+In	IN
+CoopsIS-94	NN
+Proceedings.	NNP
+,	,
+pp	NN
+180-190	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+15	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+Kent	NNP
+,	,
+W.	NNP
+Ahmed	NNP
+R.	NNP
+Et.al	NNP
+.	.
+
+-LRB-	-LRB-
+1992	CD
+-RRB-	-RRB-
+Object	NNP
+Identification	NN
+in	IN
+multidatabase	JJ
+systems	NNS
+.	.
+
+In	IN
+
+
+IFIP	NN
+DS-5	NN
+Semantics	NNS
+of	IN
+Interoperable	JJ
+Databases	NNPS
+Systems	NNPS
+:	:
+302-319	CD
+,	,
+Lorne	NNP
+,	,
+
+
+Australia	NNP
+.	.
+
+
+Kim	NNP
+.	.
+
+W	NN
+,	,
+and	CC
+Seo	NNP
+,	,
+J.	NNP
+-LRB-	-LRB-
+1991	CD
+-RRB-	-RRB-
+Classifying	VBG
+schematic	JJ
+and	CC
+data	NNS
+heterogeneity	NN
+in	IN
+
+
+Multidatabases	JJ
+systems	NNS
+.	.
+
+IEEE	NNP
+Computer	NNP
+,	,
+Vol	NNP
+24	CD
+-LRB-	-LRB-
+12	CD
+-RRB-	-RRB-
+:	:
+12-18	CD
+,	,
+
+
+Litwin	NNP
+,	,
+W.	NNP
+and	CC
+Abdellatif	NNP
+,	,
+A.	NN
+-LRB-	-LRB-
+1089	CD
+-RRB-	-RRB-
+Multidatabase	JJ
+interoperability	NN
+,	,
+IEEE	NNP
+Computer	NNP
+,	,
+
+
+Vol	NNP
+19	CD
+-LRB-	-LRB-
+12	CD
+-RRB-	-RRB-
+:10	CD
+-18	CD
+.	.
+
+
+Litwin	NNP
+,	,
+W.	NNP
+,	,
+Mark	NNP
+,	,
+L.	NNP
+,	,
+and	CC
+N.Roussopoulos	NNP
+.	.
+
+-LRB-	-LRB-
+1990	CD
+-RRB-	-RRB-
+Interoperability	NN
+of	IN
+multiple	JJ
+
+
+autonomous	JJ
+databases	NNS
+.	.
+
+ACM	NNP
+Computing	NNP
+Surveys	NNS
+,	,
+22	CD
+-LRB-	-LRB-
+3	CD
+-RRB-	-RRB-
+:	:
+267-293	CD
+.	.
+
+
+Lee	NNP
+,	,
+N.	NNP
+Ngu	NNP
+,	,
+A.A.	NNP
+,	,
+and	CC
+Srinivasan	NNP
+,	,
+U.	NNP
+-LRB-	-LRB-
+1994	CD
+-RRB-	-RRB-
+A	DT
+Hypertext	NN
+approach	NN
+to	TO
+Querying	VBG
+
+
+Clinical	JJ
+Multidatabases	NNS
+.	.
+
+In	IN
+Proceedings	NNP
+of	IN
+the	DT
+5th	JJ
+International	NNP
+Hong	NNP
+Kong	NNP
+
+
+Computer	NNP
+Society	NNP
+Workshop	NNP
+on	IN
+Next	JJ
+Generation	NNP
+Databases	NNPS
+Systems	NNPS
+,	,
+Honk	NNP
+Kong	NNP
+.	.
+
+Milliner	NNP
+,	,
+S.	NNP
+and	CC
+Papazoglou	NNP
+,	,
+M.	NNP
+-LRB-	-LRB-
+1994	CD
+-RRB-	-RRB-
+Reassessing	VBG
+the	DT
+Roles	NNS
+of	IN
+Negotiation	NN
+and	CC
+
+
+Contracting	VBG
+for	IN
+Interoperable	JJ
+Databases	NNS
+.	.
+
+Intelligent	JJ
+Workshop	NNP
+on	IN
+Advances	NNS
+in	IN
+
+
+Databases	NNS
+and	CC
+Information	NNP
+Systems	NNP
+,	,
+Moscow	NNP
+.	.
+
+
+Michalski	NNP
+,	,
+R.S	NNP
+and	CC
+Stepp	NNP
+,	,
+R.E.	NNP
+-LRB-	-LRB-
+1985	CD
+-RRB-	-RRB-
+Learining	VBG
+from	IN
+Observation	NN
+:	:
+Conceptual	NNP
+
+
+Clustering	NN
+.	.
+
+In	IN
+Machine	NN
+Learning	NNP
+An	DT
+Artificial	NNP
+Intelligence	NNP
+Approach	NNP
+Volume	NN
+I.	NN
+
+
+Morgan	NNP
+Kaufmann	NNP
+Publishers	NNPS
+,	,
+Inc.	NNP
+.	.
+
+California	NNP
+.	.
+
+
+Meersman	NNP
+R.	NNP
+-LRB-	-LRB-
+1994	CD
+-RRB-	-RRB-
+Personal	JJ
+comment	NN
+during	IN
+talk	NN
+given	VBN
+at	IN
+University	NNP
+of	IN
+New	NNP
+South	NNP
+
+
+Wales	NNP
+1994	CD
+.	.
+
+
+Papazoglou	NNP
+,	,
+M.P.	NNP
+,	,
+Laufmann	NNP
+,	,
+S.	NNP
+C.	NNP
+,	,
+and	CC
+Sellis	NNP
+,	,
+T.K.	NNP
+-LRB-	-LRB-
+1992	CD
+-RRB-	-RRB-
+An	DT
+organizational	JJ
+
+
+framework	NN
+for	IN
+Cooperating	VBG
+Intelligent	NNP
+Information	NNP
+systems	NNS
+.	.
+
+International	NNP
+Journal	NNP
+
+
+of	IN
+Intelligent	NNP
+and	CC
+Cooperative	NNP
+Information	NNP
+Systems	NNP
+,	,
+Vol	NNP
+.1	CD
+,	,
+No.	NN
+1	CD
+169-202	CD
+.	.
+
+Quinlan	NNP
+J.R.	NNP
+-LRB-	-LRB-
+1990	CD
+-RRB-	-RRB-
+Learning	NNP
+Logical	JJ
+definitions	NNS
+from	IN
+Relations	NNS
+.	.
+
+Machine	NN
+learning	NN
+,	,
+
+
+1	CD
+-LRB-	-LRB-
+1	CD
+-RRB-	-RRB-
+:	:
+81-106	CD
+.	.
+
+
+Ramirez	NNP
+,	,
+J.C.G.	NNP
+,	,
+Smith	NNP
+,	,
+L.A.	NNP
+,	,
+and	CC
+Peterson	NNP
+,	,
+L.L.	NNP
+-LRB-	-LRB-
+1994	CD
+-RRB-	-RRB-
+Medical	NNP
+Information	NNP
+Systems	NNPS
+:	:
+
+
+Characterization	NN
+and	CC
+Challenges	NNS
+.	.
+
+SIGMOD	NNP
+Record	NNP
+,	,
+Vol	NNP
+.	.
+
+23	CD
+,	,
+No.	NN
+3	CD
+.	.
+
+
+SAS	NNP
+Institute	NNP
+Inc.	NNP
+-LRB-	-LRB-
+1989	CD
+-RRB-	-RRB-
+SAS/STAT	NN
+Userâ	NNP
+$	$
+™	CD
+s	NNS
+Guide	NNP
+,	,
+Version	NNP
+6	CD
+,	,
+Fourth	JJ
+Edition	NN
+,	,
+
+
+Volume	NN
+1	CD
+,	,
+Cary	NNP
+,	,
+NC	NNP
+:	:
+SAS	NNP
+Institute	NNP
+Inc.	NNP
+.	.
+
+
+Saltor	NNP
+,	,
+F.	NNP
+,	,
+Castellanos	NNP
+,	,
+M.G.	NNP
+,	,
+and	CC
+Garcia-Solaco	NNP
+,	,
+M.	NNP
+-LRB-	-LRB-
+1992	CD
+-RRB-	-RRB-
+Overcoming	VBG
+Schematic	JJ
+
+
+Discrepancies	NNS
+in	IN
+Interoperable	JJ
+Databases	NNS
+.	.
+
+In	IN
+IFIP	NN
+DS-5	NN
+Semantics	NNS
+of	IN
+Interoperable	JJ
+
+
+Database	NNP
+Systems	NNPS
+,	,
+272-301	CD
+.	.
+
+
+Piatetsky-Shapiro	NNP
+,	,
+G.	NNP
+and	CC
+Frawley	NNP
+,	,
+W.	NNP
+J.	NNP
+-LRB-	-LRB-
+1991	CD
+-RRB-	-RRB-
+Knowledge	NNP
+Discovery	NNP
+in	IN
+Databases	NNP
+.	.
+
+
+AAAI	NNP
+Press/MIT	NNP
+Press	NNP
+.	.
+
+
+Sheth	NNP
+,	,
+A.	NN
+and	CC
+Gala	NNP
+,	,
+S.	NNP
+-LRB-	-LRB-
+1989	CD
+-RRB-	-RRB-
+Attribute	NNP
+Relationships	NNPS
+:	:
+An	DT
+impediment	NN
+in	IN
+automating	VBG
+
+
+Schema	NN
+integration	NN
+.	.
+
+NSF	NNP
+Workshop	NNP
+on	IN
+heterogeneous	JJ
+databases	NNS
+Systems	NNPS
+,	,
+
+
+Chicago	NNP
+.	.
+
+
+Stead	NNP
+,	,
+W.W.	NNP
+and	CC
+Hammond	NNP
+,	,
+W.E.	NNP
+-LRB-	-LRB-
+1985	CD
+-RRB-	-RRB-
+Computer	NNP
+Based	VBD
+Medical	JJ
+Records	NNPS
+:	:
+The	DT
+
+
+Centrepiece	NNP
+of	IN
+TMR	NNP
+.	.
+
+M	NN
+D	NN
+Computing	NNP
+5	CD
+-LRB-	-LRB-
+5	CD
+-RRB-	-RRB-
+p48	NN
+.	.
+
+
+Sheth	NNP
+,	,
+A.	NN
+and	CC
+Kashyap	NNP
+,	,
+V.	NNP
+-LRB-	-LRB-
+1992	CD
+-RRB-	-RRB-
+So	RB
+far	RB
+-LRB-	-LRB-
+Schematically	RB
+-RRB-	-RRB-
+,	,
+yet	RB
+so	RB
+Near	IN
+-LRB-	-LRB-
+semantically	RB
+-RRB-	-RRB-
+.	.
+
+
+In	IN
+IFIP	NN
+DS-5	NN
+Semantics	NNS
+of	IN
+Interoperable	JJ
+Database	NNP
+Systems	NNPS
+,	,
+272-301	CD
+,	,
+Lorne	NNP
+,	,
+
+
+Australia	NNP
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+16	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+Sheth	NNP
+,	,
+A.	NN
+and	CC
+Larson	NNP
+,	,
+J.	NNP
+-LRB-	-LRB-
+1990	CD
+-RRB-	-RRB-
+Federated	NNP
+database	NN
+systems	NNS
+for	IN
+managing	VBG
+distributed	VBN
+,	,
+
+
+heterogeneous	JJ
+and	CC
+autonomous	JJ
+databases	NNS
+.	.
+
+In	IN
+ACM	NNP
+Computing	NNP
+Surveys	NNS
+,	,
+Vol	NNP
+22	CD
+-LRB-	-LRB-
+3	CD
+-RRB-	-RRB-
+.	.
+
+Stepp	NNP
+,	,
+R.E.	NNP
+and	CC
+Michalski	NNP
+,	,
+R.S.	NNP
+-LRB-	-LRB-
+1986	CD
+-RRB-	-RRB-
+Conceptual	NNP
+Clustering	NNP
+:	:
+Inventing	VBG
+Goal	NNP
+Oriented	NNP
+
+
+Classifications	NNS
+of	IN
+Structured	JJ
+Objects	NNS
+,	,
+in	IN
+Machine	NN
+Learning	NNP
+An	DT
+Artificial	NNP
+Intelligence	NNP
+
+
+Approach	NN
+,	,
+Volume	NN
+II	CD
+,	,
+Morgan	NNP
+Kaufmann	NNP
+Publishers	NNPS
+,	,
+Inc.	NNP
+.	.
+
+
+Siegel	NNP
+,	,
+M.	NNP
+and	CC
+Madnick	NNP
+,	,
+S.E.	NNP
+-LRB-	-LRB-
+1991	CD
+-RRB-	-RRB-
+A	DT
+Meatadata	JJ
+approach	NN
+to	TO
+resolving	VBG
+semantic	JJ
+
+
+conflicts	NNS
+.	.
+
+In	IN
+Proceedings	NNP
+of	IN
+the	DT
+17th	JJ
+International	NNP
+Conference	NN
+on	IN
+Very	RB
+Large	JJ
+
+
+Databases	NNS
+,	,
+133-145	CD
+.	.
+
+
+Siegel	NNP
+,	,
+M.	NNP
+and	CC
+Madnick	NNP
+,	,
+S.	NNP
+-LRB-	-LRB-
+1991	CD
+-RRB-	-RRB-
+Context	NNP
+Interchange	NNP
+:	:
+Sharing	VBG
+the	DT
+Meaning	NN
+of	IN
+Data	NNS
+,	,
+
+
+SIGMOD	NN
+record	NN
+vol20	NN
+-LRB-	-LRB-
+4	CD
+-RRB-	-RRB-
+,	,
+77-78	CD
+.	.
+
+
+Srinivasan	NNP
+,	,
+U.	NNP
+and	CC
+Ngu	NNP
+,	,
+A.A.	NNP
+-LRB-	-LRB-
+1995	CD
+-RRB-	-RRB-
+Information	NNP
+Re-engineering	NN
+in	IN
+Co-operative	JJ
+
+
+Clinical	JJ
+Information	NNP
+Systems	NNP
+.	.
+
+Working	VBG
+Papaer	NNP
+,	,
+School	NNP
+of	IN
+Computer	NNP
+Science	NNP
+and	CC
+
+
+Engineering	NNP
+,	,
+University	NNP
+of	IN
+New	NNP
+South	NNP
+Wales	NNP
+,	,
+Australia	NNP
+.	.
+
+
+Srinivasan	NNP
+,	,
+U.	NNP
+,	,
+Ngu	NNP
+A.H.H.	NNP
+and	CC
+Gedeon	NNP
+,	,
+T.	NNP
+-LRB-	-LRB-
+1994	CD
+-RRB-	-RRB-
+Discovey	NN
+of	IN
+Generic	JJ
+Concepts	NNS
+
+
+from	IN
+Heterogeneous	JJ
+Clinical	JJ
+Information	NNP
+Systems	NNP
+.	.
+
+Accepted	JJ
+paper	NN
+for	IN
+presentation	NN
+
+
+at	IN
+Second	JJ
+Singapore	NNP
+International	NNP
+Conference	NNP
+on	IN
+Intelligent	NNP
+Systems	NNP
+-LRB-	-LRB-
+SPICISâ	NNP
+$	$
+™	CD
+94	CD
+-RRB-	-RRB-
+.	.
+
+Spaccapietra	NNP
+,	,
+S.	NNP
+and	CC
+Parent	NNP
+,	,
+C.	NNP
+-LRB-	-LRB-
+1991	CD
+-RRB-	-RRB-
+Conflicts	NNS
+and	CC
+correspondence	NN
+Assertions	NNS
+in	IN
+
+
+Interoperable	JJ
+Databases	NNS
+.	.
+
+SIGMOD	NN
+record	NN
+special	NN
+,	,
+vol	NN
+20	CD
+-LRB-	-LRB-
+14	CD
+-RRB-	-RRB-
+:	:
+49-54	CD
+.	.
+
+
+Siegel	NNP
+,	,
+M.	NNP
+E.	NNP
+Sciore	NNP
+,	,
+S.	NNP
+Salveter	NNP
+.	.
+
+-LRB-	-LRB-
+1991	CD
+-RRB-	-RRB-
+Rule	NNP
+Discovery	NNP
+for	IN
+Query	NNP
+Optimization	NNP
+,	,
+
+
+Knowledge	NN
+Discovery	NNP
+in	IN
+Databases	NNP
+,	,
+AAAI	NNP
+Press	NNP
+.	.
+
+
+Sciore	NNP
+,	,
+E.	NNP
+Siegel	NNP
+,	,
+M.	NNP
+,	,
+Rosenthal	NNP
+,	,
+A.	NN
+-LRB-	-LRB-
+1991	CD
+-RRB-	-RRB-
+Using	VBG
+Semantic	JJ
+Values	NNS
+to	TO
+Facilitate	VB
+
+
+Interoperability	NNP
+Among	IN
+Heterogeneous	JJ
+Information	NNP
+Systems	NNP
+.	.
+
+ACM	NNP
+Transactions	NNS
+on	IN
+
+
+Database	NNP
+Systems	NNPS
+,	,
+Volume	NN
+19	CD
+No	DT
+2	LS
+.	.
+
+
+Zytkow	NNP
+J	NNP
+M	NN
+and	CC
+Baker	NNP
+,	,
+J.	NNP
+-LRB-	-LRB-
+1990	CD
+-RRB-	-RRB-
+Interactive	JJ
+mining	NN
+of	IN
+Regularities	NNS
+in	IN
+Databases	NNS
+.	.
+
+
+Knowledge	NN
+discovery	NN
+in	IN
+Databases	NNS
+,	,
+AAAI	NNP
+Press	NNP
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+17	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+Appendix-A	NN
+
+
+Table	NNP
+II	NNP
+:	:
+Structure	NN
+and	CC
+Usage	NN
+data	NNS
+of	IN
+Clinical	JJ
+Information	NN
+System-II	NN
+
+
+Entity	NN
+name	NN
+number	NN
+number	NN
+update	VBP
+number	NN
+number	NN
+of	IN
+number	NN
+of	IN
+
+
+of	IN
+of	IN
+frequency	NN
+of	IN
+links	NNS
+users	NNS
+user	NN
+
+
+records	NNS
+attributes	NNS
+categories	NNS
+CLINICAL-AREA	NN
+-	:
+146	CD
+5	CD
+5	CD
+1	CD
+10	CD
+1	CD
+
+
+CODE	NN
+
+
+CONTACT-TYPE	NN
+-	:
+158	CD
+5	CD
+5	CD
+2	CD
+10	CD
+1	CD
+
+
+CODE	NN
+
+
+COMPENSIBLE	SYM
+-	:
+10	CD
+3	CD
+5	CD
+0	CD
+10	CD
+1	CD
+
+
+STATUS-C	NN
+
+
+CLINICAL-STAT	NN
+-	:
+17	CD
+5	CD
+5	CD
+1	CD
+10	CD
+1	CD
+
+
+CODE	NN
+
+
+CODE-TYPE	NN
+24	CD
+3	CD
+5	CD
+0	CD
+10	CD
+1	CD
+
+
+DEPR-ACTIVITY	NN
+6402	CD
+7	CD
+50	CD
+3	CD
+50	CD
+2	CD
+
+
+DEPT-ACT-CODE	NN
+308	CD
+5	CD
+5	CD
+2	CD
+10	CD
+1	CD
+
+
+DEPT-CODE	NN
+5	CD
+3	CD
+5	CD
+0	CD
+10	CD
+1	CD
+
+
+DOCTOR-CODE	NN
+374	CD
+3	CD
+5	CD
+0	CD
+10	CD
+1	CD
+
+
+FIN-CLASS-CODE	NN
+74	CD
+3	CD
+5	CD
+0	CD
+10	CD
+1	CD
+
+
+GRP-ACTVTY	NN
+-	:
+68	CD
+5	CD
+5	CD
+2	CD
+10	CD
+1	CD
+
+
+CODE	NN
+
+
+GENERIC-CODE	NN
+677	CD
+4	CD
+5	CD
+0	CD
+10	CD
+1	CD
+
+
+GRP-CLN	NN
+-	:
+503	CD
+8	CD
+40	CD
+3	CD
+10	CD
+1	CD
+
+
+THERAPIST	NN
+
+
+HOSP-GROUP	NN
+2	CD
+4	CD
+5	CD
+0	CD
+10	CD
+1	CD
+
+
+HOSPITAL	NN
+10	CD
+8	CD
+5	CD
+1	CD
+10	CD
+1	CD
+
+
+INSURANCE	NN
+-	:
+735	CD
+0101	CD
+COVER-CODE	NN
+
+
+INTERVENE-CODE	JJ
+1139	CD
+5	CD
+5	CD
+2	CD
+10	CD
+1	CD
+
+
+LANGUAGE-CODE	NN
+92	CD
+3	CD
+5	CD
+0	CD
+10	CD
+1	CD
+
+
+LOCAL-CODE	JJ
+7614	CD
+6	CD
+5	CD
+2	CD
+10	CD
+1	CD
+
+
+MARITAL-STATUS	NN
+-	:
+735	CD
+0101	CD
+CODE	NNP
+
+
+MEDI-DIAG-CODE	NN
+2638	CD
+5	CD
+5	CD
+2	CD
+10	CD
+1	CD
+
+
+PAT-ACTIVITY	NN
+27816	CD
+16	CD
+80	CD
+4	CD
+50	CD
+2	CD
+
+
+PAT-THER-GROUP	NN
+1018	CD
+9	CD
+20	CD
+4	CD
+20	CD
+2	CD
+
+
+PAT-STATUS	NN
+-	:
+335	CD
+0101	CD
+CODE	NNP
+
+
+PATIENT	NN
+3968	CD
+23	CD
+120	CD
+0	CD
+50	CD
+2	CD
+
+
+REFD-OUT-FOR	NN
+-	:
+75	CD
+5	CD
+40	CD
+2	CD
+10	CD
+1	CD
+
+
+CODE	NN
+
+
+REFERRAL	NN
+5582	CD
+32	CD
+120	CD
+3	CD
+50	CD
+2	CD
+
+
+REFERED-FOR	NN
+-	:
+133	CD
+5	CD
+40	CD
+2	CD
+10	CD
+1	CD
+
+
+CODE	NN
+
+
+REFERRAL-OUT	NN
+177	CD
+9	CD
+40	CD
+4	CD
+40	CD
+2	CD
+
+
+REFERAL	NN
+-	:
+295	CD
+5	CD
+40	CD
+2	CD
+20	CD
+2	CD
+
+
+SOURCE-CODE	NN
+
+
+REFD-OUT-TO	NN
+-	:
+281	CD
+5	CD
+40	CD
+2	CD
+10	CD
+2	CD
+
+
+CODE	NN
+
+
+THERAPY	NN
+-	:
+5044	CD
+11	CD
+120	CD
+4	CD
+50	CD
+2	CD
+
+
+COURSE	NN
+
+
+THERAPY-DIAG	NN
+-	:
+2451	CD
+5	CD
+80	CD
+2	CD
+50	CD
+2	CD
+
+
+CODE	NN
+
+
+THERAPY-GRP	NN
+-	:
+402	CD
+13	CD
+40	CD
+4	CD
+20	CD
+2	CD
+
+
+CLINIC	NN
+
+
+THERAPIST	NN
+ATH	NN
+1	CD
+191	CD
+7	CD
+40	CD
+10	CD
+THERAPY-GRP	NN
+-	:
+160	CD
+7	CD
+40	CD
+3	CD
+0	CD
+0	CD
+
+
+CODE	NN
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+18	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+THER-DISCH	NN
+-	:
+72	CD
+5	CD
+40	CD
+2	CD
+10	CD
+1	CD
+REASON	NN
+
+
+THERA-DISCH-TO	NN
+-	:
+101	CD
+5	CD
+40	CD
+2	CD
+10	CD
+1	CD
+CODE	NN
+
+
+WARD-ID	NN
+109	CD
+2	CD
+5	CD
+0	CD
+10	CD
+1	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+19	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+Appendix-A	NN
+
+
+Table	NNP
+I	PRP
+:	:
+Structure	NN
+and	CC
+Usage	NN
+data	NNS
+of	IN
+Clinical	JJ
+Information	NN
+System-I	NN
+
+
+Entity	NN
+name	NN
+number	NN
+of	IN
+number	NN
+of	IN
+update	VB
+number	NN
+number	NN
+number	NN
+of	IN
+
+
+records	NNS
+attributes	NNS
+frequency	NN
+of	IN
+links	NNS
+of	IN
+users	NNS
+user	NN
+
+
+categories	NNS
+CLINICAL	NNP
+-	:
+500	CD
+5	CD
+20	CD
+3	CD
+10	CD
+5	CD
+ASSESSMENT	NN
+
+
+CHO-EXCHANGE	NN
+100	CD
+10	CD
+25	CD
+3	CD
+5	CD
+3	CD
+
+
+10	CD
+2	CD
+10	CD
+1	CD
+2	CD
+2	CD
+COUNTRY	NN
+100	CD
+2	CD
+10	CD
+1	CD
+2	CD
+2	CD
+DIET-ADV-GROUP	NN
+10	CD
+2	CD
+10	CD
+1	CD
+2	CD
+2	CD
+DIABETES	NN
+-	:
+50	CD
+4	CD
+20	CD
+2	CD
+5	CD
+2	CD
+CONTROL	NNP
+
+
+DRUG-DOSAGE	NN
+400	CD
+8	CD
+40	CD
+5	CD
+10	CD
+4	CD
+DRUG	NN
+-	:
+200	CD
+4	CD
+30	CD
+4	CD
+10	CD
+4	CD
+TREATMENT	NN
+
+
+DOCTOR-DETAILS	NN
+50	CD
+11	CD
+30	CD
+3	CD
+5	CD
+3	CD
+DRUGS	NN
+50	CD
+5	CD
+20	CD
+2	CD
+5	CD
+2	CD
+DOSAGE	NN
+20	CD
+3	CD
+20	CD
+1	CD
+5	CD
+2	CD
+DIET-TREATMENT	NN
+200	CD
+9	CD
+20	CD
+3	CD
+10	CD
+3	CD
+ETHNIC-GROUP	NN
+50	CD
+2	CD
+10	CD
+1	CD
+2	CD
+2	CD
+HOSPITAL	NN
+-	:
+100	CD
+3	CD
+20	CD
+2	CD
+5	CD
+4	CD
+ADMISSIONS	NNS
+
+
+HOSPITAL	NN
+-	:
+10	CD
+2	CD
+10	CD
+1	CD
+2	CD
+2	CD
+LOCATION	NN
+
+
+LANGUAGE	NN
+50	CD
+2	CD
+10	CD
+1	CD
+2	CD
+2	CD
+PATIENT	NN
+500	CD
+80	CD
+40	CD
+18	CD
+20	CD
+10	CD
+PROGRAM	NN
+-	:
+400	CD
+5	CD
+30	CD
+3	CD
+5	CD
+2	CD
+BOOKINGS	NNS
+
+
+POST-CODE	NN
+100	CD
+2	CD
+10	CD
+1	CD
+2	CD
+2	CD
+PATIENT-DIET	NN
+-	:
+200	CD
+4	CD
+30	CD
+4	CD
+10	CD
+4	CD
+RECORD	NN
+
+
+PAT-EXCERCISE	NN
+100	CD
+5	CD
+30	CD
+3	CD
+5	CD
+3	CD
+PROGRAM	NN
+-	:
+50	CD
+3	CD
+20	CD
+1	CD
+5	CD
+3	CD
+FOLLOWUP	NN
+
+
+PAT-INSURANCE	NN
+300	CD
+2	CD
+20	CD
+2	CD
+5	CD
+3	CD
+PATIENT	NN
+-	:
+200	CD
+3	CD
+30	CD
+2	CD
+10	CD
+4	CD
+PROGRAM	NN
+
+
+PATH-RESULTS	NN
+1500	CD
+5	CD
+40	CD
+3	CD
+15	CD
+4	CD
+PROGRAM	NN
+-	:
+50	CD
+4	CD
+20	CD
+3	CD
+5	CD
+2	CD
+SCHEDULE	NN
+
+
+PROGRAM	NN
+-	:
+50	CD
+2	CD
+20	CD
+2	CD
+5	CD
+2	CD
+TOPICS	NNS
+
+
+PAT-TREATMENT	JJ
+400	CD
+5	CD
+30	CD
+4	CD
+5	CD
+2	CD
+REVIEW	NNP
+-	:
+200	CD
+5	CD
+30	CD
+2	CD
+5	CD
+3	CD
+BOOKINGS	NNS
+
+
+RELIGION	NN
+50	CD
+2	CD
+10	CD
+1	CD
+2	CD
+2	CD
+REASON-FOR	NN
+-	:
+20	CD
+2	CD
+10	CD
+1	CD
+4	CD
+2	CD
+VISIT	NN
+
+
+SPECIALITY-CODE	NN
+10	CD
+2	CD
+10	CD
+1	CD
+2	CD
+2	CD
+SOURCE-OF	NN
+-	:
+20	CD
+2	CD
+10	CD
+1	CD
+4	CD
+2	CD
+REFERRAL	NN
+
+
+STAFF-CODE	NN
+50	CD
+2	CD
+10	CD
+1	CD
+2	CD
+2	CD
+TEST-CODE	NN
+100	CD
+5	CD
+20	CD
+3	CD
+10	CD
+5	CD
+TREATMENT	NN
+-	:
+100	CD
+2	CD
+20	CD
+1	CD
+5	CD
+3	CD
+GROUP	NNP
+
+
+TYPE-OF	NN
+-	:
+50	CD
+2	CD
+10	CD
+1	CD
+5	CD
+3	CD
+TREATMENT	NN
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+20	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+VISIT	NN
+500	CD
+40	CD
+40	CD
+8	CD
+15	CD
+4	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+21	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+

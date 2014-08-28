@@ -1,0 +1,23345 @@
+Building	NNP
+Community	NNP
+Wikipedias	NNPS
+:	:
+A	DT
+Machine-Human	NNP
+Partnership	NNP
+Approach	NNP
+
+
+Pedro	NNP
+DeRose1	NN
+,	,
+Xiaoyong	NNP
+Chai1	NNP
+,	,
+Byron	NNP
+J.	NNP
+Gao1	NNP
+,	,
+Warren	NNP
+Shen1	NN
+
+
+AnHai	JJ
+Doan1	NN
+,	,
+Philip	NNP
+Bohannon2	NNP
+,	,
+Jerry	NNP
+Zhu1	NN
+
+
+1University	NN
+of	IN
+Wisconsin-Madison	NNP
+,	,
+2Yahoo	NN
+!	.
+
+Research	NNP
+
+
+Abstract	JJ
+
+
+The	DT
+rapid	JJ
+growth	NN
+of	IN
+Web	NN
+communities	NNS
+has	VBZ
+motivated	VBN
+many	JJ
+solutions	NNS
+for	IN
+building	VBG
+community	NN
+data	NNS
+portals	NNS
+.	.
+
+These	DT
+solu	NN
+-	:
+tions	NNS
+follow	VBP
+roughly	RB
+two	CD
+approaches	NNS
+.	.
+
+The	DT
+ï	NN
+¬	NN
+rst	NN
+approach	NN
+-LRB-	-LRB-
+e.g	NN
+.	.
+
+,	,
+Cimple	NNP
+,	,
+Libra	NNP
+,	,
+Citeseer	NNP
+-RRB-	-RRB-
+employs	VBZ
+semi-automatic	JJ
+methods	NNS
+to	TO
+extract	VB
+and	CC
+integrate	VB
+data	NNS
+from	IN
+a	DT
+multitude	NN
+of	IN
+data	NNS
+sources	NNS
+.	.
+
+The	DT
+second	JJ
+approach	NN
+-LRB-	-LRB-
+e.g.	FW
+,	,
+Wikipedia	NNP
+,	,
+Intellipedia	NNP
+-RRB-	-RRB-
+deploys	VBZ
+an	DT
+initial	JJ
+portal	NN
+in	IN
+wiki	NN
+format	NN
+,	,
+then	RB
+invites	VBZ
+community	NN
+mem	NN
+-	:
+bers	NNS
+to	TO
+revise	VB
+and	CC
+add	VB
+material	NN
+.	.
+
+In	IN
+this	DT
+paper	NN
+we	PRP
+consider	VBP
+combining	VBG
+the	DT
+above	JJ
+two	CD
+approaches	NNS
+to	TO
+building	VBG
+community	NN
+portals	NNS
+.	.
+
+The	DT
+new	JJ
+hybrid	NN
+machine-human	NN
+approach	NN
+brings	VBZ
+signiï	NN
+¬	CD
+cant	JJ
+beneï	NN
+¬	NN
+ts	NNS
+.	.
+
+It	PRP
+can	MD
+achieve	VB
+broader	JJR
+and	CC
+deeper	JJR
+cov	SYM
+-	:
+erage	NN
+,	,
+provide	VBP
+more	JJR
+incentives	NNS
+for	IN
+users	NNS
+to	TO
+contribute	VB
+,	,
+and	CC
+keep	VB
+the	DT
+portal	NN
+more	RBR
+up	IN
+to	TO
+date	NN
+with	IN
+less	JJR
+user	NN
+efforts	NNS
+.	.
+
+In	IN
+a	DT
+sense	NN
+,	,
+it	PRP
+enables	VBZ
+building	VBG
+â	RB
+$	$
+œcommunity	JJ
+wikipediasâ	NN
+$	$
+,	,
+backed	VBD
+up	RP
+by	IN
+an	DT
+underlying	JJ
+structured	JJ
+database	NN
+that	WDT
+is	VBZ
+continuously	RB
+updated	VBN
+using	VBG
+automatic	JJ
+techniques	NNS
+.	.
+
+We	PRP
+outline	VBP
+our	PRP$
+ideas	NNS
+for	IN
+the	DT
+new	JJ
+approach	NN
+,	,
+describe	VBP
+its	PRP$
+challenges	NNS
+and	CC
+opportu	NN
+-	:
+nities	NNS
+,	,
+and	CC
+provide	VB
+initial	JJ
+solutions	NNS
+.	.
+
+Finally	RB
+,	,
+we	PRP
+describe	VBP
+a	DT
+real-world	JJ
+implementation	NN
+and	CC
+preliminary	JJ
+experiments	NNS
+that	WDT
+demonstrate	VBP
+the	DT
+utility	NN
+of	IN
+the	DT
+new	JJ
+approach	NN
+.	.
+
+
+1	CD
+Introduction	NN
+
+
+The	DT
+growing	VBG
+presence	NN
+of	IN
+Web	NN
+communities	NNS
+has	VBZ
+motivated	VBN
+many	JJ
+solutions	NNS
+to	TO
+build	VB
+community	NN
+data	NNS
+portals	NNS
+.	.
+
+These	DT
+so	RB
+-	:
+lutions	NNS
+follow	VBP
+roughly	RB
+two	CD
+approaches	NNS
+.	.
+
+The	DT
+ï	NN
+¬	NN
+rst	NN
+,	,
+machine	NN
+-	:
+based	VBN
+,	,
+approach	NN
+employs	VBZ
+semi-automatic	JJ
+methods	NNS
+to	TO
+extract	VB
+and	CC
+integrate	VB
+data	NNS
+from	IN
+a	DT
+multitude	NN
+of	IN
+data	NNS
+sources	NNS
+,	,
+to	TO
+cre	SYM
+-	:
+ate	VBD
+structured	JJ
+data	NNS
+portals	NNS
+.	.
+
+Examples	NNS
+include	VBP
+Cimple	NNP
+,	,
+Libra	NNP
+,	,
+Rexa.info	NNP
+,	,
+BlogScope	NNP
+,	,
+and	CC
+Blogosphere	NNP
+-LSB-	-LRB-
+16	CD
+,	,
+21	CD
+,	,
+6	CD
+,	,
+17	CD
+,	,
+11	CD
+,	,
+5	CD
+-RSB-	-RRB-
+.	.
+
+
+The	DT
+above	JJ
+approach	NN
+incurs	VBZ
+relatively	RB
+little	JJ
+human	JJ
+efforts	NNS
+,	,
+often	RB
+generates	VBZ
+a	DT
+reasonable	JJ
+initial	JJ
+portal	NN
+,	,
+keeps	VBZ
+portals	NNS
+fresh	JJ
+with	IN
+automatic	JJ
+updates	NNS
+,	,
+and	CC
+enables	VBZ
+structured	JJ
+queries	NNS
+over	IN
+portals	NNS
+.	.
+
+However	RB
+,	,
+it	PRP
+usually	RB
+suffers	VBZ
+from	IN
+inaccuracies	NNS
+,	,
+caused	VBN
+by	IN
+imperfect	JJ
+extraction	NN
+and	CC
+integration	NN
+methods	NNS
+,	,
+and	CC
+limited	JJ
+coverage	NN
+,	,
+because	IN
+it	PRP
+can	MD
+only	RB
+infer	VB
+whichever	WDT
+information	NN
+is	VBZ
+available	JJ
+in	IN
+the	DT
+data	NNS
+sources	NNS
+.	.
+
+
+The	DT
+second	JJ
+,	,
+human-based	JJ
+,	,
+approach	NN
+manually	RB
+deploys	VBZ
+an	DT
+initial	JJ
+portal	NN
+in	IN
+wiki	NN
+format	NN
+,	,
+then	RB
+invites	VBZ
+community	NN
+users	NNS
+to	TO
+revise	VB
+and	CC
+add	VB
+materials	NNS
+.	.
+
+Examples	NNS
+include	VBP
+Wikipedia	NNP
+,	,
+
+
+Intellipedia	NNP
+,	,
+umasswiki.com	NNP
+,	,
+ecolicommunity.org	NN
+,	,
+and	CC
+many	JJ
+wiki-based	JJ
+intranets	NNS
+.	.
+
+This	DT
+approach	NN
+avoids	VBZ
+many	JJ
+problems	NNS
+of	IN
+the	DT
+machine-based	JJ
+approach	NN
+,	,
+but	CC
+suffers	VBZ
+from	IN
+its	PRP$
+own	JJ
+limita	NN
+-	:
+tions	NNS
+.	.
+
+In	IN
+particular	JJ
+,	,
+it	PRP
+may	MD
+be	VB
+difï	JJ
+¬	NN
+cult	NN
+to	TO
+solicit	VB
+sufï	NN
+¬	NN
+cien	NN
+t	NN
+user	NN
+participation	NN
+,	,
+can	MD
+incur	VB
+signiï	NN
+¬	NN
+cant	JJ
+user	NN
+efforts	NNS
+to	TO
+keep	VB
+po	NN
+r	NN
+-	:
+tals	NNS
+up	IN
+to	TO
+date	NN
+,	,
+and	CC
+can	MD
+not	RB
+accommodate	VB
+structured	JJ
+queries	NNS
+,	,
+because	IN
+users	NNS
+contribute	VBP
+mostly	RB
+text	NN
+and	CC
+images	NNS
+.	.
+
+
+In	IN
+this	DT
+paper	NN
+we	PRP
+consider	VBP
+combining	VBG
+the	DT
+above	JJ
+two	CD
+com	NN
+-	:
+plimentary	JJ
+approaches	NNS
+to	TO
+build	VB
+community	NN
+portals	NNS
+.	.
+
+Speciï	NNP
+¬	SYM
+-	:
+cally	RB
+,	,
+we	PRP
+use	VBP
+â	RB
+$	$
+œmachinesâ	JJ
+$	$
+to	TO
+deploy	VB
+an	DT
+initial	JJ
+portal	NN
+in	IN
+wiki	NN
+format	NN
+,	,
+then	RB
+allow	VB
+both	DT
+machines	NNS
+and	CC
+human	JJ
+users	NNS
+to	TO
+revise	VB
+and	CC
+add	VB
+materials	NNS
+.	.
+
+Machines	NNS
+can	MD
+add	VB
+structured	JJ
+information	NN
+to	TO
+certain	JJ
+parts	NNS
+of	IN
+wiki	NN
+pages	NNS
+,	,
+while	IN
+users	NNS
+can	MD
+add	VB
+both	DT
+text	NN
+and	CC
+structured	VBN
+information	NN
+.	.
+
+Machines	NNS
+and	CC
+human	JJ
+can	MD
+also	RB
+correct	VB
+and	CC
+augment	VB
+each	DT
+other	JJ
+'s	POS
+contributions	NNS
+,	,
+in	IN
+a	DT
+synergis	NN
+-	:
+tic	JJ
+fashion	NN
+.	.
+
+We	PRP
+refer	VBP
+to	TO
+this	DT
+approach	NN
+asCwiki	NN
+.	.
+
+The	DT
+following	VBG
+example	NN
+illustrates	VBZ
+the	DT
+approach	NN
+.	.
+
+
+Example	NN
+1.1	CD
+.	.
+
+Suppose	VB
+we	PRP
+apply	VB
+Cwiki	NNP
+to	TO
+build	VB
+a	DT
+portal	NN
+for	IN
+the	DT
+database	NN
+community	NN
+.	.
+
+We	PRP
+can	MD
+start	VB
+by	IN
+applying	VBG
+a	DT
+semi-automatic	JJ
+approach	NN
+-LRB-	-LRB-
+i.e.	FW
+,	,
+â	VB
+$	$
+œmachinesâ	JJ
+$	$
+-RRB-	-RRB-
+to	TO
+extract	VB
+structured	JJ
+data	NNS
+fro	NN
+m	NN
+the	DT
+Web	NN
+,	,
+then	RB
+use	VB
+the	DT
+data	NNS
+to	TO
+create	VB
+and	CC
+deploy	VB
+wiki	JJ
+pages	NNS
+,	,
+such	JJ
+as	IN
+pageW	NN
+in	IN
+Figure	NNP
+1	CD
+.	.
+
+a.	IN
+Page	NNP
+W	NNP
+contains	VBZ
+â	RB
+$	$
+œstructured	JJ
+data	NNS
+piecesâ	VBP
+$	$
+mixed	JJ
+with	IN
+ordinary	JJ
+wiki	NNS
+text	NN
+,	,
+and	CC
+will	MD
+display	VB
+as	IN
+the	DT
+HTML	NNP
+page	NN
+in	IN
+Figure	NNP
+1	CD
+.	.
+
+b	NN
+.	.
+
+In	IN
+effect	NN
+,	,
+W	NNP
+describes	VBZ
+a	DT
+person	NN
+entity	NN
+who	WP
+has	VBZ
+three	CD
+attributes	NNS
+:	:
+id	NN
+=	JJ
+1	CD
+,	,
+name	NN
+=	JJ
+David	NNP
+J.	NNP
+DeWitt	NNP
+,	,
+and	CC
+title	NN
+=	JJ
+Professor	NNP
+.	.
+
+This	DT
+person	NN
+also	RB
+participates	VBZ
+in	IN
+a	DT
+relationship	NN
+called	VBN
+â	RB
+$	$
+œinterestsâ	JJ
+$	$
+wit	NN
+h	NN
+an	DT
+entity	NN
+of	IN
+type	NN
+â	CD
+$	$
+œtopicâ	JJ
+$	$
+,	,
+whose	WP$
+name	NN
+is	VBZ
+â	JJ
+$	$
+œParallel	JJ
+Databaseâ	NNP
+$	$
+.	.
+
+
+Once	RB
+W	NN
+has	VBZ
+been	VBN
+deployed	VBN
+,	,
+a	DT
+user	NN
+U	NN
+may	MD
+come	VB
+in	IN
+and	CC
+edit	VB
+page	NN
+W	NN
+,	,
+e.g.	FW
+,	,
+by	IN
+correcting	VBG
+the	DT
+value	NN
+of	IN
+attribute	NN
+title	NN
+from	IN
+â	FW
+$	$
+œPro	JJ
+-	:
+fessorâ	NN
+$	$
+,	,
+which	WDT
+was	VBD
+generated	VBN
+by	IN
+machines	NNS
+,	,
+to	TO
+â	VB
+$	$
+œJohn	JJ
+P.	NNP
+Morgri	NNP
+dge	NN
+Professorâ	NNP
+$	$
+.	.
+
+U	NNP
+may	MD
+also	RB
+contribute	VB
+a	DT
+structured	JJ
+data	NNS
+piece	NN
+â	NN
+$	$
+œ	JJ
+<	JJR
+#	#
+person	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+1	CD
+-RRB-	-RRB-
+-LCB-	-LRB-
+organization	NN
+-RCB-	-RRB-
+=	JJ
+UW	NN
+#	#
+>	JJR
+â	NN
+$	$
+,	,
+to	TO
+state	NN
+that	IN
+this	DT
+person	NN
+is	VBZ
+working	VBG
+for	IN
+an	DT
+organization	NN
+called	VBN
+â	RB
+$	$
+œUWâ	JJ
+$	$
+.	.
+
+Finally	RB
+,	,
+U	NNP
+adds	VBZ
+free	JJ
+text	NN
+â	RB
+$	$
+œsince	JJ
+1976â	CD
+$	$
+after	IN
+this	DT
+data	NNS
+piece	NN
+.	.
+
+The	DT
+edited	JJ
+page	NN
+Wâ	NN
+$	$
+²	CD
+is	VBZ
+shown	VBN
+in	IN
+Figure	NNP
+1.c	NN
+.	.
+
+
+Later	RB
+a	DT
+machine	NN
+M	NN
+may	MD
+discover	VB
+from	IN
+data	NNS
+sources	NNS
+that	IN
+the	DT
+above	JJ
+person	NN
+also	RB
+participates	VBZ
+in	IN
+â	NN
+$	$
+œinterestsâ	JJ
+$	$
+relationshi	JJ
+p	NN
+with	IN
+topic	NN
+â	VBD
+$	$
+œPrivacyâ	JJ
+$	$
+.	.
+
+M	NN
+can	MD
+then	RB
+add	VB
+this	DT
+piece	NN
+of	IN
+information	NN
+to	TO
+the	DT
+page	NN
+,	,
+as	IN
+â	NN
+$	$
+œ	JJ
+<	JJR
+#person	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+1	CD
+-RRB-	-RRB-
+.	.
+
+interests	NNS
+-LRB-	-LRB-
+id	NN
+=	JJ
+5	CD
+-RRB-	-RRB-
+.	.
+
+topic	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+6	CD
+-RRB-	-RRB-
+-LCB-	-LRB-
+name	NN
+-RCB-	-RRB-
+=	JJ
+Privacy	NN
+#	#
+>	JJR
+â	NN
+$	$
+.	.
+
+With	IN
+high	JJ
+conï	NN
+¬	NN
+dence	NN
+,	,
+M	NN
+may	MD
+also	RB
+correct	VB
+the	DT
+value	NN
+of	IN
+at	IN
+-	:
+tribute	NN
+organization	NN
+from	IN
+â	FW
+$	$
+œUWâ	JJ
+$	$
+,	,
+which	WDT
+was	VBD
+contributed	VBN
+by	IN
+U	NNP
+,	,
+to	TO
+â	VB
+$	$
+œUW-Madisonâ	JJ
+$	$
+.	.
+
+The	DT
+resulting	VBG
+wiki	JJ
+page	NN
+Wâ	NN
+$	$
+²	CD
+â	NN
+$	$
+²	CD
+is	VBZ
+in	IN
+Figure	NNP
+1	CD
+.	.
+
+d	NN
+,	,
+and	CC
+it	PRP
+will	MD
+display	VB
+as	IN
+the	DT
+HTML	NNP
+page	NN
+in	IN
+Figure	NNP
+1	CD
+.	.
+
+e.	NN
+Thus	RB
+,	,
+page	NN
+W	NN
+has	VBZ
+been	VBN
+evolved	VBN
+over	IN
+time	NN
+,	,
+with	IN
+both	DT
+machines	NNS
+and	CC
+users	NNS
+'	POS
+contributing	VBG
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+1	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+<	JJR
+#	#
+person	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+1	CD
+-RRB-	-RRB-
+-LCB-	-LRB-
+name	NN
+-RCB-	-RRB-
+=	JJ
+David	NNP
+J.	NNP
+DeWitt	NNP
+#	#
+>	JJR
+
+
+David	NNP
+J.	NNP
+DeWitt	NNP
+
+
+<	JJR
+#	#
+person	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+1	CD
+-RRB-	-RRB-
+-LCB-	-LRB-
+name	NN
+-RCB-	-RRB-
+=	JJ
+David	NNP
+J.	NNP
+DeWitt	NNP
+#	#
+>	JJR
+
+
+<	JJR
+#	#
+person	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+1	CD
+-RRB-	-RRB-
+-LCB-	-LRB-
+title	NN
+-RCB-	-RRB-
+=	JJ
+Professor	NNP
+#	#
+>	JJR
+
+
+Professor	NNP
+
+
+<	JJR
+#	#
+person	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+1	CD
+-RRB-	-RRB-
+-LCB-	-LRB-
+title	NN
+-RCB-	-RRB-
+=	JJ
+John	NNP
+P.	NNP
+Morgridge	NNP
+
+
+Professor	NNP
+#	#
+>	JJR
+
+
+<strong>	NN
+Interests	NNS
+:	:
+</strong>	NN
+
+
+<	JJR
+#	#
+person	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+1	CD
+-RRB-	-RRB-
+.	.
+
+interests	NNS
+-LRB-	-LRB-
+id	NN
+=	JJ
+3	CD
+-RRB-	-RRB-
+.	.
+
+topic	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+4	CD
+-RRB-	-RRB-
+-LCB-	-LRB-
+name	NN
+-RCB-	-RRB-
+=	JJ
+Parallel	JJ
+Database	NN
+#	#
+>	JJR
+
+
+Interests	NNS
+:	:
+
+
+Parallel	JJ
+Database	NN
+
+
+<	JJR
+#	#
+person	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+1	CD
+-RRB-	-RRB-
+-LCB-	-LRB-
+organization	NN
+-RCB-	-RRB-
+=	JJ
+UW	NN
+#	#
+>	JJR
+
+
+since	IN
+1976	CD
+
+
+<strong>	NN
+Interests	NNS
+:	:
+</strong>	NN
+
+
+<	JJR
+#	#
+person	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+1	CD
+-RRB-	-RRB-
+.	.
+
+interests	NNS
+-LRB-	-LRB-
+id	NN
+=	JJ
+3	CD
+-RRB-	-RRB-
+.	.
+
+topic	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+4	CD
+-RRB-	-RRB-
+-LCB-	-LRB-
+name	NN
+-RCB-	-RRB-
+=	JJ
+Parallel	JJ
+Database	NN
+#	#
+>	JJR
+
+
+<	JJR
+#	#
+person	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+1	CD
+-RRB-	-RRB-
+-LCB-	-LRB-
+name	NN
+-RCB-	-RRB-
+=	JJ
+David	NNP
+J.	NNP
+DeWitt	NNP
+#	#
+>	JJR
+
+
+David	NNP
+J.	NNP
+DeWitt	NNP
+
+
+<	JJR
+#	#
+person	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+1	CD
+-RRB-	-RRB-
+-LCB-	-LRB-
+title	NN
+-RCB-	-RRB-
+=	JJ
+John	NNP
+P.	NNP
+Morgridge	NNP
+Professor	NNP
+#	#
+>	JJR
+
+
+John	NNP
+P.	NNP
+Morgridge	NNP
+Professor	NNP
+UW-Madison	NNP
+since	IN
+1976	CD
+
+
+<	JJR
+#	#
+person	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+1	CD
+-RRB-	-RRB-
+-LCB-	-LRB-
+organization	NN
+-RCB-	-RRB-
+=	JJ
+UW-Madison	NN
+#	#
+>	JJR
+since	IN
+1976	CD
+
+
+<strong>	NN
+Interests	NNS
+:	:
+</strong>	NN
+
+
+<	JJR
+#	#
+person	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+1	CD
+-RRB-	-RRB-
+.	.
+
+interests	NNS
+-LRB-	-LRB-
+id	NN
+=	JJ
+3	CD
+-RRB-	-RRB-
+.	.
+
+topic	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+4	CD
+-RRB-	-RRB-
+-LCB-	-LRB-
+name	NN
+-RCB-	-RRB-
+=	JJ
+Parallel	JJ
+Database	NN
+#	#
+>	JJR
+
+
+Interests	NNS
+:	:
+
+
+Parallel	JJ
+Database	NN
+
+
+Privacy	NN
+
+
+<	JJR
+#	#
+person	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+1	CD
+-RRB-	-RRB-
+.	.
+
+interests	NNS
+-LRB-	-LRB-
+id	NN
+=	JJ
+5	CD
+-RRB-	-RRB-
+.	.
+
+topic	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+6	CD
+-RRB-	-RRB-
+-LCB-	-LRB-
+name	NN
+-RCB-	-RRB-
+=	JJ
+Privacy	NN
+#	#
+>	JJR
+
+
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+-LRB-	-LRB-
+b	NN
+-RRB-	-RRB-
+-LRB-	-LRB-
+c	NN
+-RRB-	-RRB-
+-LRB-	-LRB-
+d	NN
+-RRB-	-RRB-
+-LRB-	-LRB-
+e	LS
+-RRB-	-RRB-
+
+
+Figure	NNP
+1	CD
+.	.
+
+An	DT
+example	NN
+to	TO
+illustrate	VB
+the	DT
+machine-human	JJ
+approach	NN
+.	.
+
+
+and	CC
+correcting	VBG
+each	DT
+other	JJ
+'s	POS
+contributions	NNS
+.	.
+
+
+As	IN
+described	VBN
+,	,
+this	DT
+new	JJ
+hybrid	NN
+machine-human	NN
+approach	NN
+enables	VBZ
+building	VBG
+â	RB
+$	$
+œcommunity	JJ
+wikipediasâ	NN
+$	$
+that	WDT
+are	VBP
+backed	VBN
+up	RP
+by	IN
+an	DT
+underlying	JJ
+structured	JJ
+database	NN
+that	WDT
+is	VBZ
+continuously	RB
+up	RB
+-	:
+dated	VBN
+using	VBG
+automatic	JJ
+techniques	NNS
+.	.
+
+The	DT
+approach	NN
+can	MD
+bring	VB
+signiï	NN
+¬	NN
+cant	NN
+beneï	NN
+¬	CD
+ts	NNS
+.	.
+
+First	RB
+,	,
+it	PRP
+can	MD
+achieve	VB
+broader	JJR
+and	CC
+deepe	NN
+r	NN
+coverage	NN
+,	,
+because	IN
+it	PRP
+exploits	VBZ
+both	DT
+machines	NNS
+and	CC
+human	JJ
+users	NNS
+.	.
+
+Second	RB
+,	,
+it	PRP
+can	MD
+provide	VB
+more	JJR
+incentives	NNS
+for	IN
+users	NNS
+to	TO
+contribute	VB
+,	,
+because	IN
+the	DT
+initial	JJ
+portal	NN
+built	VBN
+by	IN
+machines	NNS
+can	MD
+already	RB
+be	VB
+reasonably	RB
+useful	JJ
+and	CC
+comprehensive	JJ
+,	,
+thus	RB
+motivating	VBG
+users	NNS
+to	TO
+further	JJ
+improving	VBG
+it	PRP
+.	.
+
+Third	NNP
+,	,
+it	PRP
+can	MD
+keep	VB
+the	DT
+portal	NN
+more	RBR
+up	IN
+to	TO
+date	NN
+,	,
+with	IN
+less	JJR
+user	NN
+efforts	NNS
+,	,
+because	IN
+machines	NNS
+can	MD
+contin	VB
+-	:
+uously	RB
+monitor	VBP
+data	NNS
+sources	NNS
+and	CC
+update	VB
+certain	JJ
+parts	NNS
+of	IN
+the	DT
+portal	NN
+.	.
+
+Finally	RB
+,	,
+the	DT
+structured	JJ
+data	NNS
+in	IN
+the	DT
+wiki	NN
+pages	NNS
+of	IN
+the	DT
+portal	NN
+is	VBZ
+also	RB
+stored	VBN
+in	IN
+an	DT
+underlying	JJ
+structured	JJ
+database	NN
+,	,
+thus	RB
+enabling	VBG
+a	DT
+variety	NN
+of	IN
+structured	JJ
+queries	NNS
+over	IN
+the	DT
+portal	NN
+.	.
+
+
+In	IN
+the	DT
+rest	NN
+of	IN
+the	DT
+paper	NN
+we	PRP
+elaborate	VBP
+on	IN
+the	DT
+above	JJ
+ap	NN
+-	:
+proach	NN
+.	.
+
+First	RB
+,	,
+we	PRP
+consider	VBP
+how	WRB
+to	TO
+build	VB
+an	DT
+initial	JJ
+wiki	NN
+-	:
+based	VBN
+portal	NN
+,	,
+using	VBG
+machines	NNS
+.	.
+
+We	PRP
+cast	VBD
+this	DT
+as	IN
+a	DT
+view	NN
+creation	NN
+problem	NN
+:	:
+store	NN
+the	DT
+data	NNS
+generated	VBN
+by	IN
+machines	NNS
+in	IN
+a	DT
+struc	NN
+-	:
+tured	VBN
+database	NN
+G	NN
+,	,
+create	VB
+structured	JJ
+views	NNS
+over	IN
+G	NN
+,	,
+then	RB
+export	VB
+the	DT
+views	NNS
+in	IN
+wiki	JJ
+pages	NNS
+.	.
+
+The	DT
+key	JJ
+questions	NNS
+are	VBP
+then	RB
+:	:
+How	WRB
+to	TO
+model	VB
+and	CC
+implement	VB
+the	DT
+structured	JJ
+database	NN
+G	NN
+?	.
+
+What	WP
+should	MD
+be	VB
+the	DT
+view	NN
+language	NN
+?	.
+
+And	CC
+how	WRB
+to	TO
+export	VB
+the	DT
+struc	NN
+-	:
+tured	JJ
+data	NNS
+of	IN
+the	DT
+views	NNS
+into	IN
+wiki	JJ
+pages	NNS
+?	.
+
+As	IN
+parts	NNS
+of	IN
+our	PRP$
+solution	NN
+,	,
+we	PRP
+represent	VBP
+the	DT
+machine-generated	JJ
+data	NNS
+using	VBG
+an	DT
+entity-relationship	NN
+-LRB-	-LRB-
+ER	NN
+-RRB-	-RRB-
+model	NN
+,	,
+deï	NN
+¬	CD
+ne	NN
+a	DT
+path-based	JJ
+view	NN
+la	DT
+n	NN
+-	:
+guage	NN
+over	IN
+this	DT
+model	NN
+,	,
+extend	VBP
+the	DT
+standard	JJ
+wiki	NN
+language	NN
+-LSB-	-LRB-
+2	CD
+-RSB-	-RRB-
+withs-slots	NNS
+â	VBP
+$	$
+``	``
+constructs	NNS
+to	TO
+embed	VB
+structured	JJ
+data	NNS
+into	IN
+the	DT
+nat	NN
+-	:
+ural	JJ
+text	NN
+of	IN
+wiki	JJ
+pages	NNS
+,	,
+then	RB
+show	VB
+how	WRB
+to	TO
+export	VB
+the	DT
+views	NNS
+in	IN
+wiki	JJ
+pages	NNS
+,	,
+using	VBG
+s-slots	NNS
+-LRB-	-LRB-
+Section	NN
+4.3	CD
+-RRB-	-RRB-
+.	.
+
+
+Next	RB
+,	,
+we	PRP
+consider	VBP
+how	WRB
+to	TO
+manage	VB
+user	NN
+contributions	NNS
+to	TO
+the	DT
+portal	NN
+.	.
+
+If	IN
+a	DT
+user	NN
+U	NN
+has	VBZ
+edited	VBN
+a	DT
+wiki	JJ
+page	NN
+W	NN
+,	,
+then	RB
+we	PRP
+want	VBP
+to	TO
+extract	VB
+the	DT
+â	NN
+$	$
+œstructuredâ	JJ
+$	$
+part	NN
+of	IN
+U	NNP
+'s	POS
+edits	NNS
+,	,
+and	CC
+â	VB
+$	$
+œpushâ	JJ
+$	$
+it	PRP
+all	PDT
+the	DT
+way	NN
+into	IN
+the	DT
+underlying	VBG
+database	NN
+G	NN
+.	.
+
+The	DT
+key	JJ
+questions	NNS
+here	RB
+are	VBP
+:	:
+What	WP
+is	VBZ
+it	PRP
+that	IN
+U	NNP
+is	VBZ
+conceptually	RB
+allowed	VBN
+to	TO
+edit	VB
+?	.
+
+And	CC
+how	WRB
+to	TO
+efï	VB
+¬	NN
+ciently	RB
+infer	VBP
+such	JJ
+edits	NNS
+based	VBN
+on	IN
+what	WP
+U	NNP
+has	VBZ
+done	VBN
+to	TO
+a	DT
+wiki	JJ
+page	NN
+W	NN
+?	.
+
+To	TO
+answer	VB
+these	DT
+questions	NNS
+,	,
+we	PRP
+cast	VBD
+the	DT
+problem	NN
+of	IN
+processing	NN
+user	NN
+contributions	NNS
+as	IN
+a	DT
+problem	NN
+of	IN
+mapping	VBG
+U	NNP
+'s	POS
+edits	NNS
+over	IN
+the	DT
+wiki	JJ
+page	NN
+into	IN
+edits	NNS
+over	IN
+the	DT
+cor	NN
+-	:
+responding	VBG
+view	NN
+,	,
+then	RB
+from	IN
+this	DT
+view	NN
+into	IN
+edits	NNS
+over	IN
+G	NN
+.	.
+
+This	DT
+is	VBZ
+a	DT
+view	NN
+update	VBP
+problem	NN
+.	.
+
+But	CC
+it	PRP
+is	VBZ
+complicated	VBN
+-LRB-	-LRB-
+compared	VBN
+to	TO
+RDBMS	VB
+view	NN
+update	VBP
+-RRB-	-RRB-
+by	IN
+the	DT
+facts	NNS
+that	WDT
+here	RB
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+U	NNP
+can	MD
+also	RB
+edit	VB
+the	DT
+schema	NN
+,	,
+not	RB
+just	RB
+the	DT
+data	NNS
+,	,
+of	IN
+the	DT
+view	NN
+,	,
+and	CC
+-LRB-	-LRB-
+b	LS
+-RRB-	-RRB-
+U	NNP
+'s	POS
+edits	NNS
+,	,
+being	VBG
+limited	VBN
+to	TO
+the	DT
+wiki	NN
+interface	NN
+,	,
+are	VBP
+often	RB
+ambigu	JJ
+-	:
+
+
+ous	NN
+.	.
+
+Furthermore	RB
+,	,
+after	IN
+we	PRP
+have	VBP
+updated	VBN
+database	NN
+G	NN
+with	IN
+edits	NNS
+from	IN
+W	NN
+,	,
+we	PRP
+must	MD
+decide	VB
+how	WRB
+to	TO
+propagate	VB
+this	DT
+update	VBP
+to	TO
+other	JJ
+views	NNS
+and	CC
+corresponding	JJ
+wiki	NNS
+pages	NNS
+.	.
+
+In	IN
+Section	NN
+5	CD
+we	PRP
+elaborate	VBP
+on	IN
+these	DT
+issues	NNS
+,	,
+then	RB
+provide	VB
+a	DT
+solution	NN
+.	.
+
+
+Finally	RB
+,	,
+for	IN
+the	DT
+sake	NN
+of	IN
+completeness	NN
+-LRB-	-LRB-
+but	CC
+not	RB
+as	IN
+a	DT
+part	NN
+of	IN
+the	DT
+contribution	NN
+of	IN
+this	DT
+paper	NN
+-RRB-	-RRB-
+,	,
+in	IN
+Section	NN
+6	CD
+we	PRP
+brieï	VBP
+¬	CD
+‚	CD
+y	NN
+touch	NN
+upon	IN
+the	DT
+problem	NN
+of	IN
+managing	VBG
+multiple	JJ
+users	NNS
+,	,
+where	WRB
+we	PRP
+ex	FW
+-	:
+tend	VB
+current	JJ
+solutions	NNS
+employed	VBN
+in	IN
+Wikipedia	NNP
+-LRB-	-LRB-
+namely	RB
+,	,
+opti	NNS
+-	:
+mistic	JJ
+concurrency	NN
+control	NN
+and	CC
+access	NN
+rights	NNS
+based	VBN
+on	IN
+a	DT
+user	NN
+hierarchy	NN
+-RRB-	-RRB-
+to	TO
+handle	VB
+concurrent	JJ
+editing	NN
+and	CC
+malicious	JJ
+users	NNS
+.	.
+
+We	PRP
+also	RB
+consider	VBP
+how	WRB
+to	TO
+let	VB
+machines	NNS
+join	VB
+users	NNS
+in	IN
+updating	VBG
+the	DT
+portal	NN
+.	.
+
+The	DT
+key	JJ
+challenge	NN
+is	VBZ
+the	DT
+following	NN
+:	:
+once	RB
+a	DT
+user	NN
+has	VBZ
+entered	VBN
+an	DT
+edit	NN
+,	,
+can	MD
+machines	NNS
+be	VB
+allowed	VBN
+to	TO
+overwrite	VB
+the	DT
+edit	NN
+,	,
+and	CC
+when	WRB
+?	.
+
+
+We	PRP
+have	VBP
+been	VBN
+applying	VBG
+the	DT
+above	JJ
+solution	NN
+to	TO
+build	VB
+a	DT
+com	NN
+-	:
+munity	NN
+wikipedia	NN
+for	IN
+the	DT
+database	NN
+research	NN
+community	NN
+-LRB-	-LRB-
+see	VB
+the	DT
+live	JJ
+system	NN
+at	IN
+-LSB-	-LRB-
+1	CD
+-RSB-	-RRB-
+-RRB-	-RRB-
+.	.
+
+In	IN
+Section	NN
+7	CD
+we	PRP
+report	VBP
+on	IN
+our	PRP$
+expe	NN
+-	:
+rience	NN
+and	CC
+preliminary	JJ
+experiments	NNS
+that	WDT
+demonstrate	VBP
+the	DT
+po	NN
+-	:
+tentials	NNS
+of	IN
+this	DT
+approach	NN
+,	,
+and	CC
+suggest	VBP
+opportunities	NNS
+for	IN
+future	JJ
+research	NN
+.	.
+
+
+To	TO
+summarize	VB
+,	,
+we	PRP
+make	VBP
+the	DT
+following	VBG
+contributions	NNS
+:	:
+
+
+â	RB
+$	$
+cents	NNS
+Introduce	VB
+a	DT
+new	JJ
+hybrid	NN
+approach	NN
+that	WDT
+employs	VBZ
+both	DT
+ma	FW
+-	:
+chines	NNS
+and	CC
+human	JJ
+users	NNS
+to	TO
+build	VB
+community	NN
+portals	NNS
+,	,
+backed	VBD
+up	RP
+by	IN
+an	DT
+underlying	JJ
+structured	JJ
+database	NN
+.	.
+
+As	IN
+far	RB
+as	IN
+we	PRP
+know	VBP
+,	,
+ours	PRP
+is	VBZ
+the	DT
+ï	NN
+¬	CD
+rst	NN
+work	NN
+that	WDT
+studies	VBZ
+this	DT
+direc	NN
+-	:
+tion	NN
+in	IN
+depth	NN
+.	.
+
+
+â	RB
+$	$
+cents	NNS
+Provide	VB
+solutions	NNS
+to	TO
+modeling	NN
+the	DT
+underlying	VBG
+structure	NN
+database	NN
+,	,
+representing	VBG
+views	NNS
+over	IN
+this	DT
+database	NN
+with	IN
+a	DT
+path-based	JJ
+language	NN
+,	,
+and	CC
+exporting	VBG
+these	DT
+views	NNS
+in	IN
+wiki	JJ
+pages	NNS
+.	.
+
+
+â	RB
+$	$
+cents	NNS
+Provide	VB
+an	DT
+efï	NN
+¬	NN
+cient	JJ
+solution	NN
+to	TO
+process	NN
+user	NN
+edits	VBZ
+in	IN
+wiki	NN
+pages	NNS
+and	CC
+â	VB
+$	$
+œpushâ	JJ
+$	$
+these	DT
+edits	NNS
+into	IN
+the	DT
+underlying	VBG
+database	NN
+.	.
+
+The	DT
+solution	NN
+recasts	NNS
+this	DT
+problem	NN
+as	IN
+translat	NN
+-	:
+ing	NN
+edits	VBZ
+across	IN
+different	JJ
+user	NN
+interfaces	NNS
+.	.
+
+
+â	RB
+$	$
+cents	NNS
+Empirical	JJ
+results	NNS
+over	IN
+a	DT
+real-world	JJ
+implementation	NN
+that	WDT
+demonstrates	VBZ
+the	DT
+promise	NN
+of	IN
+the	DT
+approach	NN
+and	CC
+suggests	VBZ
+opportunities	NNS
+for	IN
+future	JJ
+research	NN
+.	.
+
+
+2	CD
+Related	JJ
+Work	NN
+
+
+We	PRP
+are	VBP
+not	RB
+aware	JJ
+of	IN
+any	DT
+published	VBN
+work	NN
+that	WDT
+has	VBZ
+stud	NN
+-	:
+ied	VBD
+combining	VBG
+â	JJ
+$	$
+œmachinesâ	JJ
+$	$
+and	CC
+human	JJ
+approaches	NNS
+to	TO
+build	VB
+-	:
+ing	NN
+community	NN
+portals	NNS
+.	.
+
+Many	JJ
+portals	NNS
+-LRB-	-LRB-
+e.g.	FW
+,	,
+Wikipedia	NNP
+-RRB-	-RRB-
+do	VBP
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+2	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+employ	VB
+automatic	JJ
+programs	NNS
+-LRB-	-LRB-
+called	VBN
+â	RB
+$	$
+œbotsâ	JJ
+$	$
+-RRB-	-RRB-
+to	TO
+generate	VB
+new	JJ
+pages	NNS
+according	VBG
+to	TO
+some	DT
+template	NN
+,	,
+and	CC
+to	TO
+detect	VB
+problems	NNS
+-LRB-	-LRB-
+e.g.	FW
+,	,
+vandalism	NN
+-RRB-	-RRB-
+with	IN
+current	JJ
+pages	NNS
+.	.
+
+But	CC
+these	DT
+programs	NNS
+do	VBP
+not	RB
+contribute	VB
+structured	JJ
+data	NNS
+nor	CC
+do	VBP
+they	PRP
+update	VB
+existing	VBG
+data	NNS
+,	,
+as	IN
+we	PRP
+do	VBP
+here	RB
+.	.
+
+
+Perhaps	RB
+the	DT
+work	NN
+closest	JJS
+to	TO
+ours	PRP
+is	VBZ
+Semantic	NNP
+Wikipedia	NNP
+-LSB-	-LRB-
+24	CD
+-RSB-	-RRB-
+.	.
+
+This	DT
+work	NN
+develops	VBZ
+new	JJ
+wiki	NNS
+language	NN
+constructs	NNS
+that	WDT
+allow	VBP
+users	NNS
+to	TO
+add	VB
+structured	JJ
+data	NNS
+to	TO
+wiki	VB
+pages	NNS
+.	.
+
+We	PRP
+also	RB
+de	IN
+-	:
+velop	NN
+similar	JJ
+wiki	NN
+language	NN
+constructs	NNS
+-LRB-	-LRB-
+see	VB
+Section	NNP
+4.3	CD
+-RRB-	-RRB-
+.	.
+
+But	CC
+our	PRP$
+constructs	NNS
+are	VBP
+far	RB
+more	RBR
+powerful	JJ
+:	:
+we	PRP
+can	MD
+embed	VB
+arbi	SYM
+-	:
+trary	JJ
+ER	NN
+data	NNS
+graphs	NNS
+in	IN
+a	DT
+wiki	JJ
+page	NN
+,	,
+whereas	IN
+the	DT
+constructs	NNS
+in	IN
+-LSB-	-LRB-
+24	CD
+-RSB-	-RRB-
+in	IN
+a	DT
+sense	NN
+only	RB
+allow	VBP
+embedding	NN
+node	NN
+and	CC
+relationat	NN
+-	:
+tributes	NNS
+.	.
+
+More	RBR
+importantly	RB
+,	,
+Semantic	NNP
+Wikipedia	NNP
+and	CC
+several	JJ
+similar	JJ
+efforts	NNS
+,	,
+including	VBG
+semantic	JJ
+wikis	NN
+-LSB-	-LRB-
+3	CD
+-RSB-	-RRB-
+and	CC
+Metaweb	NNP
+-LSB-	-LRB-
+4	CD
+-RSB-	-RRB-
+,	,
+have	VBP
+focused	VBN
+largely	RB
+on	IN
+extending	VBG
+wiki	NN
+languages	NNS
+so	IN
+that	IN
+users	NNS
+can	MD
+contribute	VB
+structured	JJ
+data	NNS
+.	.
+
+They	PRP
+have	VBP
+not	RB
+focused	VBN
+on	IN
+allowing	VBG
+machines	NNS
+to	TO
+contribute	VB
+,	,
+nor	CC
+do	VBP
+they	PRP
+study	VB
+how	WRB
+to	TO
+â	VB
+$	$
+œpushâ	JJ
+$	$
+structured	JJ
+contributions	NNS
+from	IN
+users	NNS
+into	IN
+an	DT
+underly	JJ
+ing	NN
+database	NN
+.	.
+
+Our	PRP$
+work	NN
+here	RB
+is	VBZ
+therefore	RB
+complementary	JJ
+to	TO
+these	DT
+efforts	NNS
+.	.
+
+
+Many	JJ
+semi-automatic	JJ
+approaches	NNS
+have	VBP
+been	VBN
+developed	VBN
+to	TO
+build	VB
+structured	JJ
+portals	NNS
+-LRB-	-LRB-
+see	VB
+-LSB-	-LRB-
+14	CD
+-RSB-	-RRB-
+for	IN
+an	DT
+extensive	JJ
+discussion	NN
+-RRB-	-RRB-
+.	.
+
+Any	DT
+of	IN
+these	DT
+can	MD
+be	VB
+employed	VBN
+as	IN
+â	NN
+$	$
+œmachinesâ	JJ
+$	$
+in	IN
+our	PRP$
+current	JJ
+work	NN
+.	.
+
+
+Processing	NN
+structured	JJ
+user	NN
+edits	VBZ
+in	IN
+our	PRP$
+context	NN
+is	VBZ
+a	DT
+vari	NN
+-	:
+ation	NN
+on	IN
+the	DT
+classical	JJ
+view	NN
+update	VBP
+problem	NN
+-LSB-	-LRB-
+10	CD
+,	,
+12	CD
+-RSB-	-RRB-
+.	.
+
+Un	SYM
+-	:
+like	IN
+relational	JJ
+view	NN
+update	VBP
+,	,
+however	RB
+,	,
+in	IN
+our	PRP$
+context	NN
+users	NNS
+can	MD
+also	RB
+edit	VB
+the	DT
+schemas	NNS
+of	IN
+views	NNS
+as	RB
+well	RB
+as	IN
+of	IN
+the	DT
+underlying	VBG
+database	NN
+.	.
+
+Since	IN
+users	NNS
+employ	VBP
+the	DT
+wiki	NN
+interface	NN
+,	,
+which	WDT
+is	VBZ
+rather	RB
+limited	VBN
+for	IN
+expressing	VBG
+structured	JJ
+edits	NNS
+,	,
+this	DT
+posesprob	NN
+-	:
+lems	NNS
+in	IN
+interpreting	VBG
+user	NN
+intentions	NNS
+that	WDT
+do	VBP
+not	RB
+arise	VB
+in	IN
+rela	NN
+-	:
+tional	JJ
+view	NN
+updates	NNS
+.	.
+
+
+We	PRP
+recast	VBP
+processing	VBG
+structured	JJ
+user	NN
+edits	VBZ
+in	IN
+our	PRP$
+context	NN
+as	IN
+a	DT
+problem	NN
+of	IN
+translating	VBG
+these	DT
+edits	NNS
+across	IN
+different	JJ
+user	NN
+interfaces	NNS
+-LRB-	-LRB-
+wiki	NNS
+,	,
+ER	NN
+,	,
+and	CC
+relational	NN
+,	,
+see	VBP
+Section	NN
+5.2	CD
+-RRB-	-RRB-
+.	.
+
+Such	JJ
+UI	NN
+translations	NNS
+have	VBP
+been	VBN
+studied	VBN
+,	,
+e.g.	FW
+,	,
+translating	VBG
+a	DT
+natural	JJ
+-	:
+language	NN
+user	NN
+query	NN
+into	IN
+a	DT
+structured	JJ
+one	CD
+-LSB-	-LRB-
+9	CD
+,	,
+19	CD
+-RSB-	-RRB-
+.	.
+
+Translating	VBG
+free	JJ
+natural-language	NN
+queries	NNS
+is	VBZ
+well	RB
+known	VBN
+to	TO
+be	VB
+difï	JJ
+¬	NN
+cult	NN
+-LSB-	-LRB-
+9	CD
+,	,
+19	CD
+-RSB-	-RRB-
+.	.
+
+Our	PRP$
+problem	NN
+here	RB
+is	VBZ
+still	RB
+difï	JJ
+¬	NN
+cult	NN
+,	,
+but	CC
+more	RBR
+manageable	JJ
+,	,
+as	IN
+we	PRP
+only	RB
+translate	VB
+structured	JJ
+edits	NNS
+.	.
+
+
+Finally	RB
+,	,
+our	PRP$
+work	NN
+can	MD
+be	VB
+viewed	VBN
+as	IN
+a	DT
+mass	NN
+collaboration	NN
+,	,
+Web	NN
+2.0	CD
+effort	NN
+to	TO
+build	VB
+,	,
+maintain	VB
+,	,
+and	CC
+expand	VB
+a	DT
+hybrid	NN
+struc	NN
+-	:
+tured	VBN
+data-text	JJ
+community	NN
+database	NN
+.	.
+
+Mass	JJ
+collaboration	NN
+ap	NN
+-	:
+proaches	NNS
+to	TO
+data	NNS
+management	NN
+have	VBP
+recently	RB
+received	VBN
+increas	NNS
+-	:
+ing	NN
+attention	NN
+in	IN
+the	DT
+database	NN
+community	NN
+-LRB-	-LRB-
+e.g.	FW
+,	,
+mass	NN
+collab	NN
+-	:
+oration	NN
+panel	NN
+at	IN
+VLDB-07	NN
+,	,
+Web	NN
+2.0	CD
+track	NN
+at	IN
+ICDE-08	NN
+,	,
+see	VB
+also	RB
+-LSB-	-LRB-
+8	CD
+,	,
+20	CD
+,	,
+25	CD
+,	,
+22	CD
+,	,
+15	CD
+,	,
+7	CD
+-RSB-	-RRB-
+.	.
+
+Our	PRP$
+work	NN
+here	RB
+contributes	VBZ
+to	TO
+this	DT
+emerging	VBG
+direction	NN
+.	.
+
+
+3	CD
+The	DT
+Cwiki	NNP
+Approach	NNP
+
+
+In	IN
+the	DT
+rest	NN
+of	IN
+the	DT
+paper	NN
+we	PRP
+describe	VBP
+the	DT
+Cwiki	NNP
+approach	NN
+.	.
+
+Figure	NN
+2	CD
+illustrates	VBZ
+howCwikiworks	NNS
+.	.
+
+It	PRP
+starts	VBZ
+by	IN
+applyingM	NN
+,	,
+a	DT
+machine-based	JJ
+solution	NN
+,	,
+to	TO
+extract	VB
+and	CC
+integrate	VB
+data	NNS
+from	IN
+a	DT
+set	NN
+of	IN
+data	NNS
+sources	NNS
+,	,
+then	RB
+loads	NNS
+this	DT
+data	NNS
+into	IN
+a	DT
+structured	VBN
+
+
+V1	NN
+
+
+W1	NN
+
+
+Data	NNS
+Sources	NNS
+
+
+M	NN
+
+
+G	NN
+
+
+V2	NN
+
+
+W2	NN
+
+
+V3	NN
+
+
+W3	NN
+
+
+V3â	NN
+$	$
+™	CD
+
+
+W3â	NN
+$	$
+™	CD
+
+
+u1	NN
+
+
+T	NN
+
+
+T3â	NN
+$	$
+™	CD
+
+
+Figure	NN
+2	CD
+.	.
+
+The	DT
+Cwiki	NNP
+architecture	NN
+
+
+database	NN
+G.	NNP
+Next	NNP
+,	,
+it	PRP
+initializes	VBZ
+an	DT
+empty	JJ
+text	NN
+database	NN
+T	NN
+,	,
+which	WDT
+will	MD
+be	VB
+used	VBN
+in	IN
+the	DT
+future	NN
+to	TO
+store	VB
+text	NN
+generated	VBN
+by	IN
+users	NNS
+.	.
+
+Then	RB
+Cwiki	NNP
+generates	VBZ
+structured	JJ
+views	NNS
+over	IN
+G	NN
+-LRB-	-LRB-
+e.g.	FW
+,	,
+V1	NN
+V3	NN
+in	IN
+Figure	NN
+2	CD
+-RRB-	-RRB-
+,	,
+and	CC
+exports	VBZ
+them	PRP
+in	IN
+wiki	NN
+pages	NNS
+-LRB-	-LRB-
+e.g.	FW
+,	,
+W1	NN
+W3	NN
+-RRB-	-RRB-
+.	.
+
+The	DT
+initial	JJ
+portalW	NN
+then	RB
+consists	VBZ
+of	IN
+all	DT
+such	JJ
+wiki	JJ
+pages	NNS
+.	.
+
+
+Community	NNP
+users	NNS
+and	CC
+machineM	NN
+then	RB
+revise	VB
+and	CC
+add	VB
+ma	SYM
+-	:
+terials	NNS
+to	TO
+W.	NNP
+Suppose	VB
+a	DT
+user	NN
+u1	NN
+has	VBZ
+revised	VBN
+wiki	JJ
+page	NN
+W3â	NN
+$	$
+²	CD
+
+
+into	IN
+page	NN
+W	NN
+
+
+3	CD
+
+
+-LRB-	-LRB-
+Figure	NN
+2	CD
+-RRB-	-RRB-
+.	.
+
+Then	RB
+Cwiki	JJ
+extracts	NNS
+the	DT
+structured	JJ
+data	NNS
+portion	NN
+V	NN
+
+
+â	RB
+$	$
+²	CD
+
+
+from	IN
+Wâ	NNP
+$	$
+²	CD
+3	CD
+
+
+3	CD
+
+
+and	CC
+uses	VBZ
+it	PRP
+to	TO
+update	VB
+the	DT
+structured	JJ
+database	NN
+G.	NNP
+Next	NNP
+,	,
+Cwiki	NNP
+extracts	VBZ
+the	DT
+text	NN
+portionTâ	NN
+$	$
+²	CD
+3	CD
+fromWâ	NN
+$	$
+²	CD
+3	CD
+and	CC
+stores	NNS
+it	PRP
+in	IN
+the	DT
+text	NN
+database	NN
+T.	FW
+Cwiki	FW
+also	RB
+reruns	NNS
+ma	SYM
+-	:
+chine	NN
+M	NN
+at	IN
+regular	JJ
+intervals	NNS
+-LRB-	-LRB-
+to	TO
+obtain	VB
+the	DT
+latest	JJS
+information	NN
+from	IN
+the	DT
+data	NNS
+sources	NNS
+-RRB-	-RRB-
+,	,
+updates	NNS
+G	NN
+based	VBN
+on	IN
+the	DT
+output	NN
+of	IN
+M	NN
+,	,
+then	RB
+updates	NNS
+the	DT
+views	NNS
+and	CC
+wiki	NNS
+pages	NNS
+accordingly	RB
+.	.
+
+Updating	VBG
+a	DT
+wiki	JJ
+page	NN
+Wi	NN
+for	IN
+example	NN
+means	VBZ
+creating	VBG
+a	DT
+new	JJ
+version	NN
+of	IN
+Wi	NN
+that	WDT
+combines	VBZ
+the	DT
+latest	JJS
+versions	NNS
+of	IN
+its	PRP$
+structured	JJ
+data	NNS
+portion	NN
+from	IN
+G	NN
+and	CC
+text	NN
+portion	NN
+from	IN
+T	NN
+.	.
+
+In	IN
+addition	NN
+to	TO
+revis	NN
+-	:
+ing	NN
+existing	VBG
+wiki	NNS
+pages	NNS
+,	,
+as	IN
+described	VBN
+above	IN
+,	,
+both	DT
+users	NNS
+and	CC
+machines	NNS
+can	MD
+add	VB
+new	JJ
+pages	NNS
+or	CC
+delete	VB
+existing	VBG
+ones	NNS
+.	.
+
+
+The	DT
+next	JJ
+two	CD
+sections	NNS
+describe	VBP
+the	DT
+key	JJ
+contributions	NNS
+of	IN
+this	DT
+paper	NN
+:	:
+how	WRB
+to	TO
+build	VB
+the	DT
+initial	JJ
+portal	NN
+and	CC
+to	TO
+manage	VB
+user	NN
+contributions	NNS
+.	.
+
+Section	NN
+6	CD
+brieï	NN
+¬	CD
+‚	CD
+y	NN
+touches	NNS
+upon	IN
+the	DT
+issue	NN
+of	IN
+managing	VBG
+multiple	JJ
+users	NNS
+and	CC
+machine	NN
+.	.
+
+
+4	CD
+Creating	VBG
+the	DT
+Initial	JJ
+Community	NN
+Portal	NN
+
+
+To	TO
+create	VB
+the	DT
+initial	JJ
+portal	NN
+,	,
+we	PRP
+proceed	VBP
+in	IN
+three	CD
+steps	NNS
+:	:
+em	SYM
+-	:
+ploy	NN
+a	DT
+machine	NN
+M	NN
+to	TO
+create	VB
+a	DT
+structured	JJ
+database	NN
+G	NN
+,	,
+create	VB
+structured	JJ
+views	NNS
+Vi	NNP
+over	IN
+G	NNP
+,	,
+then	RB
+convert	VB
+each	DT
+view	NN
+Vi	NNP
+into	IN
+a	DT
+wiki	JJ
+page	NN
+Wi	NN
+.	.
+
+
+4.1	CD
+Creating	VBG
+a	DT
+Structured	NNP
+Database	NN
+G	NN
+
+
+Here	RB
+we	PRP
+describe	VBP
+in	IN
+detail	NN
+the	DT
+language	NN
+we	PRP
+use	VBP
+to	TO
+model	NN
+database	NN
+G	NN
+,	,
+how	WRB
+we	PRP
+extend	VBP
+a	DT
+conventional	JJ
+RDBMS	NN
+to	TO
+cap	NN
+-	:
+ture	NN
+temporal	JJ
+aspect	NN
+of	IN
+G	NN
+,	,
+and	CC
+how	WRB
+we	PRP
+initialize	VBP
+G	NN
+using	VBG
+the	DT
+Cimple	NNP
+solution	NN
+-LSB-	-LRB-
+14	CD
+-RSB-	-RRB-
+.	.
+
+
+4.1.1	CD
+Modeling	VBG
+Database	NN
+G	NN
+
+
+To	TO
+model	VB
+G	NN
+,	,
+we	PRP
+can	MD
+choose	VB
+from	IN
+a	DT
+wide	JJ
+variety	NN
+of	IN
+data	NNS
+lan	SYM
+-	:
+guages	NNS
+.	.
+
+Since	IN
+the	DT
+data	NNS
+from	IN
+G	NN
+will	MD
+eventually	RB
+appear	VB
+in	IN
+wiki	JJ
+pages	NNS
+as	IN
+structured	JJ
+constructs	NNS
+-LRB-	-LRB-
+see	VB
+Section	NNP
+4.3	CD
+for	IN
+a	DT
+motiva	NN
+-	:
+tion	NN
+for	IN
+this	DT
+-RRB-	-RRB-
+,	,
+we	PRP
+had	VBD
+to	TO
+select	VB
+a	DT
+data	NN
+language	NN
+that	WDT
+ordinary	JJ
+,	,
+database-illiterate	JJ
+users	NNS
+are	VBP
+familiar	JJ
+with	IN
+,	,
+and	CC
+can	MD
+quickly	RB
+understand	VB
+and	CC
+edit	VB
+.	.
+
+Since	IN
+most	JJS
+users	NNS
+are	VBP
+already	RB
+familiar	JJ
+with	IN
+the	DT
+concepts	NNS
+of	IN
+entity	NN
+and	CC
+relationship	NN
+,	,
+as	IN
+commonly	RB
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+3	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+idid	NN
+=	JJ
+8	CD
+=	JJ
+8	CD
+namename	NN
+=	JJ
+Statistics	NNPS
+=	JJ
+Statistics	NNS
+
+
+interestsinterests	NNS
+idid	NN
+=	JJ
+7	CD
+=	JJ
+7	CD
+
+
+idid	NN
+=	JJ
+6	CD
+=	JJ
+6	CD
+namename	NN
+=	JJ
+Privacy	NN
+=	JJ
+Privacy	NN
+
+
+interestsinterests	NNS
+idid	NN
+=	JJ
+5	CD
+=	JJ
+5	CD
+
+
+idid	NN
+=	JJ
+12	CD
+=	JJ
+12	CD
+
+
+namename	NN
+=	JJ
+Sigmod	NN
+02	NN
+=	JJ
+Sigmod	NN
+02	NN
+servicesservices	NNS
+
+
+idid	NN
+=	JJ
+11	CD
+=	JJ
+11	CD
+
+
+asas	NN
+=	JJ
+general	JJ
+chair	NN
+=	JJ
+general	JJ
+chair	NN
+
+
+idid	NN
+=	JJ
+14	CD
+=	JJ
+14	CD
+
+
+servicesservices	NNS
+
+
+namename	NN
+=	JJ
+Sigmod	NN
+06	NN
+=	JJ
+Sigmod	NN
+06	CD
+
+
+idid	NN
+=	JJ
+13	CD
+=	JJ
+13	CD
+
+
+asas	NN
+=	JJ
+tutorial	JJ
+chair	NN
+=	JJ
+tutorial	JJ
+chair	NN
+
+
++	CC
+person	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+1	CD
+-RRB-	-RRB-
+-LCB-	-LRB-
+name	NN
+,	,
+title	NN
+-RCB-	-RRB-
+
+
++	CC
+person	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+1	CD
+-RRB-	-RRB-
+.	.
+
+interests.topic	JJ
+-LCB-	-LRB-
+name	NN
+-RCB-	-RRB-
+
+
+â	RB
+$	$
+``	``
+person	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+1	CD
+-RRB-	-RRB-
+.	.
+
+interests.topic	JJ
+-LRB-	-LRB-
+name	NN
+=	JJ
+Statistics	NNS
+-RRB-	-RRB-
+-LCB-	-LRB-
+name	NN
+-RCB-	-RRB-
+
+
+id	NN
+=	JJ
+6	CD
+name	NN
+=	JJ
+Privacy	NN
+
+
+interests	NNS
+id	VBD
+=	JJ
+5	CD
+
+
+interestsinterests	NNS
+
+
+idid	NN
+=	JJ
+3	CD
+=	JJ
+3	CD
+idid	NN
+=	JJ
+4	CD
+=	JJ
+4	CD
+
+
+namename	NN
+=	JJ
+Parallel	JJ
+Database	NN
+=	JJ
+Parallel	JJ
+Database	NN
+
+
+idid	NN
+=	JJ
+1	CD
+=	JJ
+1	CD
+
+
+namename	NN
+=	JJ
+David	NNP
+J.	NNP
+DeWitt	NNP
+=	JJ
+David	NNP
+J.	NNP
+DeWitt	NNP
+titletitle	NN
+=	JJ
+John	NNP
+P.	NNP
+Morgridge	NNP
+Professor	NNP
+=	JJ
+John	NNP
+P.	NNP
+Morgridge	NNP
+Professor	NNP
+organizationorganization	NN
+=	JJ
+UW-Madison	NN
+=	JJ
+UW-Madison	NN
+
+
+interests	NNS
+
+
+id	NN
+=	JJ
+3	CD
+id	NN
+=	JJ
+4	CD
+
+
+name	NN
+=	JJ
+Parallel	JJ
+Database	NN
+
+
+<	JJR
+#	#
+person	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+1	CD
+-RRB-	-RRB-
+-LCB-	-LRB-
+name	NN
+-RCB-	-RRB-
+=	JJ
+David	NNP
+J.	NNP
+DeWitt	NNP
+#	#
+>	JJR
+<	JJR
+#	#
+person	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+1	CD
+-RRB-	-RRB-
+-LCB-	-LRB-
+title	NN
+-RCB-	-RRB-
+=	JJ
+John	NNP
+P.	NNP
+Morgridge	NNP
+
+
+Professor	NNP
+#	#
+>	JJR
+
+
+-LRB-	-LRB-
+b	NN
+-RRB-	-RRB-
+
+
+<	JJR
+#	#
+person	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+1	CD
+-RRB-	-RRB-
+-LCB-	-LRB-
+organization	NN
+-RCB-	-RRB-
+=	JJ
+UW-Madison	NN
+#	#
+>	JJR
+
+
+id	NN
+=	JJ
+1	CD
+
+
+name	NN
+=	JJ
+David	NNP
+J.	NNP
+DeWitt	NNP
+title	NN
+=	JJ
+John	NNP
+P.	NNP
+Morgridge	NNP
+Professor	NNP
+organization	NN
+=	JJ
+UW-Madison	NN
+
+
+<strong>	NN
+Interests	NNS
+:	:
+</strong>	NN
+
+
+<	JJR
+#	#
+person	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+1	CD
+-RRB-	-RRB-
+.	.
+
+interests	NNS
+-LRB-	-LRB-
+id	NN
+=	JJ
+3	CD
+-RRB-	-RRB-
+
+
+.	.
+
+topic	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+4	CD
+-RRB-	-RRB-
+-LCB-	-LRB-
+name	NN
+-RCB-	-RRB-
+=	JJ
+Parallel	JJ
+Database	NN
+#	#
+>	JJR
+
+
+<	JJR
+#	#
+person	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+1	CD
+-RRB-	-RRB-
+.	.
+
+interests	NNS
+-LRB-	-LRB-
+id	NN
+=	JJ
+5	CD
+-RRB-	-RRB-
+
+
+.	.
+
+topic	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+6	CD
+-RRB-	-RRB-
+-LCB-	-LRB-
+name	NN
+-RCB-	-RRB-
+=	JJ
+Privacy	NN
+#	#
+>	JJR
+
+
+-LRB-	-LRB-
+c	NN
+-RRB-	-RRB-
+
+
+-LRB-	-LRB-
+d	NN
+-RRB-	-RRB-
+
+
+Figure	NNP
+3	CD
+.	.
+
+
+sample	NN
+data	NNS
+is	VBZ
+exported	VBN
+into	IN
+a	DT
+wiki	JJ
+page	NN
+in	IN
+the	DT
+s-slot	NN
+wiki	NN
+language	NN
+.	.
+
+
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+
+
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+A	DT
+snapshot	NN
+of	IN
+the	DT
+ER	NN
+graph	NN
+G	NN
+,	,
+-LRB-	-LRB-
+b	LS
+-RRB-	-RRB-
+a	DT
+sample	NN
+view	NN
+schema	NN
+,	,
+-LRB-	-LRB-
+c	NN
+-RRB-	-RRB-
+a	DT
+sample	NN
+data	NNS
+of	IN
+the	DT
+above	JJ
+view	NN
+,	,
+and	CC
+-LRB-	-LRB-
+d	LS
+-RRB-	-RRB-
+how	WRB
+the	DT
+above	JJ
+
+
+employed	VBN
+by	IN
+current	JJ
+community	NN
+portals	NNS
+,	,
+we	PRP
+choose	VBP
+an	DT
+ER	NN
+language	NN
+to	TO
+represent	VB
+the	DT
+data	NNS
+in	IN
+G.	NNP
+
+
+Speciï	NN
+¬	NN
+cally	RB
+,	,
+we	PRP
+deï	VBP
+¬	CD
+ne	NN
+the	DT
+schema	NN
+Gs	NN
+of	IN
+G	NN
+to	TO
+consist	VB
+of	IN
+a	DT
+set	NN
+of	IN
+entity	NN
+types	NNS
+E1	NN
+,	,
+...	:
+,	,
+En	NN
+and	CC
+a	DT
+set	NN
+of	IN
+relation	NN
+types	NNS
+R1	NN
+,	,
+...	:
+,	,
+Rm	NN
+.	.
+
+Each	DT
+entity/relation	NN
+type	NN
+is	VBZ
+speciï	NN
+¬	NN
+ed	VBD
+using	VBG
+a	DT
+set	NN
+of	IN
+attributes	NNS
+.	.
+
+Attributes	NNS
+are	VBP
+either	RB
+atomic	JJ
+,	,
+taking	VBG
+string	NN
+or	CC
+numeric	JJ
+values	NNS
+,	,
+or	CC
+set-valued	JJ
+.	.
+
+
+Next	RB
+,	,
+we	PRP
+deï	VBP
+¬	CD
+ne	NN
+the	DT
+data	NNS
+Gd	NN
+of	IN
+G	NN
+to	TO
+be	VB
+a	DT
+temporal	JJ
+ER	NN
+data	NNS
+graph	NN
+.	.
+
+This	DT
+graph	NN
+contains	VBZ
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+a	DT
+set	NN
+of	IN
+nodes	NNS
+that	WDT
+specify	VBP
+entity	NN
+instances	NNS
+-LRB-	-LRB-
+or	CC
+entities	NNS
+for	IN
+short	JJ
+when	WRB
+there	EX
+is	VBZ
+no	DT
+ambi	NN
+-	:
+guity	NN
+-RRB-	-RRB-
+,	,
+-LRB-	-LRB-
+b	LS
+-RRB-	-RRB-
+a	DT
+set	NN
+of	IN
+edges	NNS
+that	WDT
+specify	VBP
+relation	NN
+instances	NNS
+-LRB-	-LRB-
+or	CC
+relations	NNS
+for	IN
+short	JJ
+when	WRB
+there	EX
+is	VBZ
+no	DT
+ambiguity	NN
+-RRB-	-RRB-
+,	,
+-LRB-	-LRB-
+c	NN
+-RRB-	-RRB-
+temporal	JJ
+information	NN
+regarding	VBG
+attributes	NNS
+,	,
+entities	NNS
+,	,
+and	CC
+relations	NNS
+,	,
+e.g.	FW
+,	,
+when	WRB
+an	DT
+attribute/entity/relation	NN
+was	VBD
+created	VBN
+,	,
+by	IN
+which	WDT
+user	NN
+,	,
+when	WRB
+it	PRP
+was	VBD
+deleted	VBN
+,	,
+by	IN
+whom	WP
+,	,
+when	WRB
+it	PRP
+was	VBD
+reinstated	VBN
+,	,
+etc.	FW
+.	.
+
+This	DT
+information	NN
+will	MD
+be	VB
+used	VBN
+in	IN
+managing	VBG
+users	NNS
+-LRB-	-LRB-
+Section	NN
+6	CD
+-RRB-	-RRB-
+.	.
+
+We	PRP
+view	VBP
+machine	NN
+M	NN
+as	IN
+a	DT
+special	JJ
+user	NN
+M.	NN
+
+
+We	PRP
+require	VBP
+G	NN
+to	TO
+be	VB
+a	DT
+temporal	JJ
+database	NN
+that	WDT
+captures	VBZ
+all	DT
+changes	NNS
+so	RB
+far	RB
+,	,
+so	IN
+that	IN
+later	RB
+we	PRP
+can	MD
+develop	VB
+undo	VB
+facilities	NNS
+-LRB-	-LRB-
+not	RB
+yet	RB
+considered	VBN
+in	IN
+this	DT
+paper	NN
+-RRB-	-RRB-
+.	.
+
+Note	VB
+also	RB
+that	IN
+even	RB
+if	IN
+Gs	NN
+speciï	NN
+¬	CD
+es	NNS
+that	IN
+a	DT
+person	NN
+entity	NN
+has	VBZ
+an	DT
+attribute	NN
+email	NN
+,	,
+this	DT
+at	IN
+-	:
+tribute	NN
+can	MD
+be	VB
+missing	VBG
+from	IN
+a	DT
+particular	JJ
+person	NN
+instance	NN
+.	.
+
+
+Figure	NNP
+3	CD
+.	.
+
+a	DT
+shows	NNS
+for	IN
+example	NN
+the	DT
+snapshot	NN
+of	IN
+a	DT
+tiny	JJ
+Gd	NN
+at	IN
+time	NN
+1	CD
+.	.
+
+On	IN
+this	DT
+snapshot	NN
+the	DT
+nodes	NNS
+are	VBP
+entities	NNS
+and	CC
+the	DT
+edges	NNS
+are	VBP
+relations	NNS
+-LRB-	-LRB-
+labeled	VBN
+with	IN
+relation	NN
+names	NNS
+-RRB-	-RRB-
+.	.
+
+The	DT
+attributes	NNS
+are	VBP
+described	VBN
+next	JJ
+to	TO
+the	DT
+nodes	NNS
+and	CC
+edges	NNS
+.	.
+
+
+4.1.2	CD
+Storing	VBG
+G	NN
+using	VBG
+RDBMS	NNS
+
+
+We	PRP
+want	VBP
+to	TO
+query	VB
+G	NN
+efï	NN
+¬	NN
+ciently	RB
+and	CC
+may	MD
+want	VB
+to	TO
+implement	VB
+a	DT
+variety	NN
+of	IN
+concurrency	NN
+control	NN
+schemes	NNS
+later	RB
+-LRB-	-LRB-
+to	TO
+manage	VB
+concurrent	JJ
+user	NN
+edits	VBZ
+-RRB-	-RRB-
+,	,
+including	VBG
+lock-based	JJ
+schemes	NNS
+.	.
+
+Con	NN
+-	:
+sequently	RB
+,	,
+we	PRP
+decided	VBD
+to	TO
+store	VB
+Gs	NN
+and	CC
+Gd	NN
+using	VBG
+an	DT
+RDBMS	NN
+.	.
+
+The	DT
+key	JJ
+questions	NNS
+are	VBP
+then	RB
+:	:
+-LRB-	-LRB-
+1	LS
+-RRB-	-RRB-
+How	WRB
+to	TO
+convert	VB
+Gs	NN
+,	,
+essen	NN
+-	:
+tially	RB
+an	DT
+ER	NN
+graph	NN
+,	,
+into	IN
+a	DT
+set	NN
+of	IN
+relational	JJ
+tables	NNS
+?	.
+
+-LRB-	-LRB-
+2	LS
+-RRB-	-RRB-
+How	WRB
+to	TO
+extend	VB
+a	DT
+conventional	JJ
+RDBMS	NN
+to	TO
+store	VB
+temporal	JJ
+data	NNS
+?	.
+
+-LRB-	-LRB-
+3	LS
+-RRB-	-RRB-
+How	WRB
+to	TO
+manage	VB
+data	NNS
+from	IN
+multiple	JJ
+users	NNS
+and	CC
+machine	NN
+?	.
+
+In	IN
+what	WDT
+follows	VBZ
+,	,
+we	PRP
+ï	VBP
+¬	CD
+rst	JJ
+elaborate	JJ
+on	IN
+and	CC
+propose	VBP
+an	DT
+initial	JJ
+so	RB
+-	:
+lution	NN
+to	TO
+each	DT
+question	NN
+.	.
+
+Then	RB
+we	PRP
+present	VBP
+a	DT
+complete	JJ
+solution	NN
+to	TO
+storing	VBG
+G	NN
+using	VBG
+an	DT
+RDBMS	NN
+.	.
+
+
+Converting	VBG
+Gs	NN
+into	IN
+Relational	NNP
+Tables	NNP
+:	:
+As	IN
+described	VBN
+above	IN
+,	,
+schemaGs	NN
+consists	VBZ
+of	IN
+a	DT
+set	NN
+of	IN
+entity	NN
+types	NNS
+and	CC
+relation	NN
+types	NNS
+.	.
+
+A	DT
+standard	JJ
+approach	NN
+to	TO
+translating	VBG
+Gs	NN
+into	IN
+a	DT
+relational	JJ
+
+
+database	NN
+schema	NN
+is	VBZ
+to	TO
+convert	VB
+each	DT
+entity	NN
+-LRB-	-LRB-
+or	CC
+relation	NN
+-RRB-	-RRB-
+type	NN
+into	IN
+a	DT
+table	NN
+.	.
+
+And	CC
+each	DT
+attribute	NN
+of	IN
+the	DT
+entity	NN
+-LRB-	-LRB-
+or	CC
+relation	NN
+-RRB-	-RRB-
+type	NN
+becomes	VBZ
+an	DT
+attribute	NN
+of	IN
+the	DT
+table	NN
+.	.
+
+An	DT
+example	NN
+is	VBZ
+shown	VBN
+in	IN
+Figure	NNP
+4	CD
+.	.
+
+a.	NNP
+Table	NNP
+person	NN
+store	NN
+person	NN
+entity	NN
+instances	NNS
+.	.
+
+In	IN
+the	DT
+table	NN
+,	,
+column	NN
+id	NN
+gives	VBZ
+the	DT
+ID	NN
+of	IN
+a	DT
+person	NN
+entity	NN
+,	,
+and	CC
+name	NN
+,	,
+title	NN
+and	CC
+organization	NN
+are	VBP
+the	DT
+three	CD
+attributes	NNS
+describing	VBG
+each	DT
+person	NN
+.	.
+
+Such	PDT
+a	DT
+design	NN
+,	,
+however	RB
+,	,
+is	VBZ
+not	RB
+space-optimized	VBN
+in	IN
+our	PRP$
+scenario	NN
+for	IN
+the	DT
+following	VBG
+reasons	NNS
+:	:
+
+
+â	RB
+$	$
+cents	NNS
+A	DT
+table	NN
+may	MD
+be	VB
+sparse	JJ
+.	.
+
+Take	VB
+a	DT
+person	NN
+table	NN
+for	IN
+exam	NN
+-	:
+
+
+ple	NN
+.	.
+
+Most	JJS
+title	NN
+values	NNS
+may	MD
+be	VB
+missing	VBG
+.	.
+
+This	DT
+happens	VBZ
+
+
+when	WRB
+title	NN
+values	NNS
+are	VBP
+obtained	VBN
+from	IN
+data	NNS
+sources	NNS
+,	,
+but	CC
+the	DT
+
+
+extractors	NNS
+are	VBP
+not	RB
+powerful	JJ
+enough	JJ
+to	TO
+extract	VB
+them	PRP
+,	,
+or	CC
+
+
+many	JJ
+title	NN
+values	NNS
+are	VBP
+simply	RB
+not	RB
+available	JJ
+in	IN
+the	DT
+sources	NNS
+.	.
+
+â	RB
+$	$
+cents	NNS
+Users	NNS
+may	MD
+create	VB
+new	JJ
+attributes	NNS
+for	IN
+an	DT
+entity	NN
+type	NN
+-LRB-	-LRB-
+e.g.	FW
+,	,
+
+
+creating	VBG
+attributes	NNS
+homepage	NN
+and	CC
+country	NN
+for	IN
+person	NN
+-RRB-	-RRB-
+.	.
+
+
+In	IN
+this	DT
+case	NN
+,	,
+we	PRP
+need	VBP
+to	TO
+enlarge	VB
+the	DT
+schema	NN
+of	IN
+the	DT
+entity	NN
+
+
+table	NN
+,	,
+and	CC
+entries	NNS
+for	IN
+these	DT
+new	JJ
+attributes	NNS
+are	VBP
+empty	JJ
+.	.
+
+â	RB
+$	$
+cents	NNS
+Last	JJ
+but	CC
+not	RB
+the	DT
+least	JJS
+,	,
+as	IN
+we	PRP
+will	MD
+see	VB
+later	RB
+,	,
+space	NN
+uti	NN
+-	:
+
+
+lization	NN
+gets	VBZ
+worse	JJR
+when	WRB
+we	PRP
+extend	VBP
+an	DT
+RDBMS	NN
+to	TO
+store	NN
+
+
+temporal	JJ
+data	NNS
+.	.
+
+When	WRB
+an	DT
+attribute	NN
+is	VBZ
+updated	VBN
+,	,
+instead	RB
+
+
+of	IN
+updating	VBG
+the	DT
+value	NN
+in	IN
+place	NN
+,	,
+we	PRP
+logically	RB
+delete	VBP
+the	DT
+
+
+record	NN
+with	IN
+the	DT
+old	JJ
+value	NN
+and	CC
+insert	VB
+a	DT
+new	JJ
+record	NN
+with	IN
+
+
+the	DT
+new	JJ
+value	NN
+.	.
+
+Other	JJ
+attribute	NN
+values	NNS
+in	IN
+the	DT
+old	JJ
+record	NN
+
+
+are	VBP
+copied	VBN
+to	TO
+the	DT
+new	JJ
+record	NN
+.	.
+
+Consequently	RB
+,	,
+we	PRP
+waste	VBP
+
+
+space	NN
+in	IN
+duplicating	VBG
+other	JJ
+attributes	NNS
+.	.
+
+Waste	NNP
+is	VBZ
+signiï	NN
+¬	CD
+cant	NN
+
+
+when	WRB
+the	DT
+table	NN
+is	VBZ
+wide	JJ
+-LRB-	-LRB-
+i.e.	FW
+,	,
+contains	VBZ
+many	JJ
+attributes	NNS
+-RRB-	-RRB-
+
+
+and	CC
+updates	NNS
+are	VBP
+frequent	JJ
+.	.
+
+
+To	TO
+address	VB
+these	DT
+problems	NNS
+,	,
+we	PRP
+chose	VBD
+to	TO
+vertically	RB
+partition	NN
+an	DT
+entity	NN
+or	CC
+relation	NN
+table	NN
+along	IN
+each	DT
+attribute	NN
+.	.
+
+Consider	VB
+an	DT
+entity	NN
+type	NN
+E.	NNP
+Let	NNP
+A1	NN
+,	,
+...	:
+,	,
+An	DT
+be	VB
+the	DT
+set	NN
+of	IN
+attributes	NNS
+E	NN
+has	VBZ
+.	.
+
+We	PRP
+convert	VBP
+E	NN
+into	IN
+n	NN
+attribute	NN
+tables	NNS
+.	.
+
+Each	DT
+attribute	NN
+table	NN
+Ti	NN
+-LRB-	-LRB-
+1	CD
+â	NN
+‰	CD
+$	$
+i	FW
+â	FW
+‰	FW
+$	$
+n	NN
+-RRB-	-RRB-
+is	VBZ
+deï	NN
+¬	NN
+ned	VBD
+as	IN
+Ti	NN
+-LRB-	-LRB-
+id	NN
+,	,
+value	NN
+-RRB-	-RRB-
+,	,
+where	WRB
+id	NN
+stores	NNS
+the	DT
+ID	NN
+of	IN
+an	DT
+entity	NN
+e	SYM
+,	,
+and	CC
+value	NN
+stores	NNS
+the	DT
+Ai	NNP
+value	NN
+of	IN
+e	LS
+.	.
+
+In	IN
+ta	NN
+-	:
+ble	NN
+Ti	NNP
+,	,
+we	PRP
+only	RB
+store	VBP
+those	DT
+entities	NNS
+that	WDT
+have	VBP
+an	DT
+Ai	NN
+value	NN
+.	.
+
+A	DT
+partitioning	NN
+of	IN
+the	DT
+person	NN
+table	NN
+in	IN
+Figure	NNP
+4	CD
+.	.
+
+a	DT
+is	VBZ
+given	VBN
+in	IN
+Fig	NN
+-	:
+ure	NN
+4.b-d	NN
+.	.
+
+Note	VB
+that	DT
+table	NN
+person	NN
+title	NN
+has	VBZ
+only	RB
+one	CD
+record	NN
+since	IN
+title	NN
+values	NNS
+for	IN
+the	DT
+other	JJ
+two	CD
+persons	NNS
+are	VBP
+missing	VBG
+.	.
+
+Sim	SYM
+-	:
+ilarly	RB
+,	,
+we	PRP
+can	MD
+convert	VB
+a	DT
+relation	NN
+type	NN
+into	IN
+a	DT
+set	NN
+of	IN
+attribute	NN
+tables	NNS
+.	.
+
+For	IN
+a	DT
+relation	NN
+type	NN
+,	,
+in	IN
+addition	NN
+to	TO
+the	DT
+attribute	NN
+tables	NNS
+,	,
+we	PRP
+need	VBP
+one	CD
+more	JJR
+table	NN
+to	TO
+store	VB
+the	DT
+IDs	NNS
+of	IN
+the	DT
+entities	NNS
+that	WDT
+each	DT
+relation	NN
+relates	VBZ
+,	,
+as	IN
+we	PRP
+will	MD
+see	VB
+later	RB
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+4	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+person_name	NN
+
+
+idid	NN
+11	CD
+22	CD
+33	CD
+
+
+namename	NN
+David	NNP
+J.	NNP
+DeWittDavid	NNP
+J.	NNP
+DeWitt	NNP
+Mike	NNP
+BrownMike	NNP
+Brown	NNP
+Chris	NNP
+CliftonChris	NNP
+Clifton	NNP
+
+
+person	NN
+
+
+titletitle	NN
+
+
+ProfessorProfessor	NNP
+
+
+NULLNULL	NN
+
+
+NULL	JJ
+NULL	NN
+
+
+organizationorganization	NN
+UW-MadisonUW-Madison	NN
+
+
+NULLNULL	NN
+
+
+PurduePurdue	NNP
+
+
+idid	NN
+11	CD
+22	CD
+33	CD
+
+
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+
+
+person_title	NN
+
+
+person_organization	NN
+
+
+valuevalue	NN
+David	NNP
+J.	NNP
+DeWittDavid	NNP
+J.	NNP
+DeWitt	NNP
+Mike	NNP
+BrownMike	NNP
+Brown	NNP
+Chris	NNP
+CliftonChris	NNP
+Clifton	NNP
+
+
+idid	NN
+11	CD
+
+
+valuevalue	NN
+ProfessorProfessor	NNP
+
+
+idid	NN
+11	CD
+33	CD
+
+
+valuevalue	NN
+UW-MadisonUW-Madison	NN
+
+
+PurduePurdue	NNP
+
+
+-LRB-	-LRB-
+b	NN
+-RRB-	-RRB-
+
+
+-LRB-	-LRB-
+c	NN
+-RRB-	-RRB-
+
+
+-LRB-	-LRB-
+d	NN
+-RRB-	-RRB-
+
+
+Figure	NNP
+4	CD
+.	.
+
+Tables	NNS
+for	IN
+person	NN
+entities	NNS
+:	:
+-LRB-	-LRB-
+a	LS
+-RRB-	-RRB-
+a	DT
+single	JJ
+table	NN
+for	IN
+all	DT
+attributes	NNS
+,	,
+and	CC
+-LRB-	-LRB-
+b	LS
+-RRB-	-RRB-
+-	:
+-LRB-	-LRB-
+d	LS
+-RRB-	-RRB-
+vertical	JJ
+partitions	NNS
+of	IN
+the	DT
+single	JJ
+table	NN
+.	.
+
+
+Supporting	VBG
+Temporal	JJ
+Data	NNS
+:	:
+A	DT
+user	NN
+may	MD
+enter	VB
+an	DT
+incorrect	JJ
+data	NNS
+value	NN
+into	IN
+the	DT
+database	NN
+,	,
+either	CC
+unintentionally	RB
+or	CC
+inten	SYM
+-	:
+tionally	RB
+.	.
+
+Once	RB
+detected	VBN
+,	,
+we	PRP
+need	VBP
+to	TO
+be	VB
+able	JJ
+to	TO
+rollback	NN
+the	DT
+data	NNS
+item	NN
+to	TO
+its	PRP$
+previous	JJ
+correct	JJ
+value	NN
+,	,
+which	WDT
+may	MD
+be	VB
+a	DT
+long	JJ
+time	NN
+ago	RB
+.	.
+
+To	TO
+provide	VB
+such	JJ
+undo	VBP
+facilities	NNS
+,	,
+we	PRP
+require	VBP
+G	NN
+to	TO
+be	VB
+a	DT
+temporal	JJ
+database	NN
+.	.
+
+Extending	VBG
+a	DT
+conventional	JJ
+database	NN
+to	TO
+support	VB
+temporal	JJ
+data	NNS
+has	VBZ
+been	VBN
+well-studied	JJ
+-LSB-	-LRB-
+23	CD
+,	,
+18	CD
+-RSB-	-RRB-
+.	.
+
+Cur	SYM
+-	:
+rently	RB
+we	PRP
+use	VBP
+the	DT
+transaction-time	JJ
+table	NN
+solution	NN
+which	WDT
+is	VBZ
+de	IN
+-	:
+scribed	VBN
+in	IN
+detail	NN
+in	IN
+-LSB-	-LRB-
+23	CD
+-RSB-	-RRB-
+.	.
+
+
+Speciï	NN
+¬	NN
+cally	RB
+,	,
+to	TO
+convert	VB
+a	DT
+non-temporal	JJ
+attribute	NN
+table	NN
+T	NN
+-LRB-	-LRB-
+id	NN
+,	,
+value	NN
+-RRB-	-RRB-
+into	IN
+a	DT
+temporal	JJ
+table	NN
+Tâ	NN
+$	$
+²	CD
+,	,
+we	PRP
+append	VBP
+T	NN
+with	IN
+two	CD
+columns	NNS
+,	,
+denoted	VBN
+as	IN
+start	NN
+and	CC
+stop	VB
+.	.
+
+Thus	RB
+we	PRP
+obtain	VB
+Tâ	NN
+$	$
+²	CD
+-LRB-	-LRB-
+id	NN
+,	,
+value	NN
+,	,
+start	NN
+,	,
+stop	NN
+-RRB-	-RRB-
+.	.
+
+Attributes	NNS
+start	VBP
+and	CC
+stop	VBP
+are	VBP
+two	CD
+timestamps	NNS
+:	:
+start	VB
+indicates	VBZ
+when	WRB
+a	DT
+value	NN
+was	VBD
+ï	JJ
+¬	NN
+rst	NN
+inserted	VBN
+into	IN
+the	DT
+database	NN
+,	,
+and	CC
+stop	VB
+indicates	VBZ
+when	WRB
+the	DT
+value	NN
+was	VBD
+up	RB
+-	:
+dated	JJ
+or	CC
+deleted	VBN
+.	.
+
+Note	VB
+that	IN
+the	DT
+primary	JJ
+key	NN
+of	IN
+Tâ	NN
+$	$
+²	CD
+consists	VBZ
+of	IN
+id	NN
+and	CC
+stop	VB
+.	.
+
+This	DT
+is	VBZ
+because	IN
+an	DT
+entity	NN
+-LRB-	-LRB-
+or	CC
+relation	NN
+-RRB-	-RRB-
+attribute	NN
+may	MD
+take	VB
+different	JJ
+values	NNS
+at	IN
+different	JJ
+times	NNS
+.	.
+
+In	IN
+our	PRP$
+design	NN
+,	,
+all	PDT
+these	DT
+values	NNS
+are	VBP
+stored	VBN
+in	IN
+the	DT
+same	JJ
+table	NN
+with	IN
+the	DT
+same	JJ
+entity	NN
+-LRB-	-LRB-
+or	CC
+relation	NN
+-RRB-	-RRB-
+ID	NN
+but	CC
+different	JJ
+stop	NN
+values	NNS
+.	.
+
+
+Figure	NNP
+5	CD
+.	.
+
+a	DT
+gives	VBZ
+an	DT
+example	NN
+of	IN
+a	DT
+temporal	JJ
+table	NN
+for	IN
+per	IN
+-	:
+son	NN
+organization	NN
+-LRB-	-LRB-
+Figure	NN
+4	CD
+.	.
+
+d	NN
+-RRB-	-RRB-
+.	.
+
+In	IN
+the	DT
+example	NN
+,	,
+at	IN
+time	NN
+2007	CD
+-	:
+04-01	CD
+08:01:20	CD
+,	,
+a	DT
+user	NN
+entered	VBD
+organization	NN
+â	RB
+$	$
+œUW-Madisonâ	JJ
+$	$
+for	IN
+the	DT
+person	NN
+entity	NN
+with	IN
+id	NN
+=	JJ
+1	CD
+-LRB-	-LRB-
+person1	NN
+for	IN
+short	JJ
+-RRB-	-RRB-
+.	.
+
+At	IN
+-	:
+tribute	NN
+start	NN
+was	VBD
+set	VBN
+to	TO
+â	VB
+$	$
+œ2007-04-01	CD
+08:01:20	CD
+â	NN
+$	$
+to	TO
+indicate	VB
+that	IN
+the	DT
+value	NN
+â	VBD
+$	$
+œUW-Madisonâ	JJ
+$	$
+started	VBD
+to	TO
+be	VB
+current	JJ
+at	IN
+the	DT
+time	NN
+of	IN
+insertion	NN
+.	.
+
+Attribute	VB
+stop	NN
+was	VBD
+set	VBN
+to	TO
+â	VB
+$	$
+œ9999-12-31	CD
+23:59:59	CD
+â	NN
+$	$
+,	,
+which	WDT
+is	VBZ
+the	DT
+largest	JJS
+timestamp	NN
+,	,
+to	TO
+indicate	VB
+that	IN
+the	DT
+value	NN
+would	MD
+be	VB
+current	JJ
+forever	RB
+.	.
+
+
+Moreover	RB
+,	,
+when	WRB
+an	DT
+attribute	NN
+value	NN
+is	VBZ
+updated	VBN
+or	CC
+deleted	VBN
+,	,
+we	PRP
+ï	VBP
+¬	CD
+rst	JJ
+logically	RB
+delete	VB
+its	PRP$
+record	NN
+,	,
+then	RB
+insert	VB
+a	DT
+new	JJ
+record	NN
+with	IN
+the	DT
+new	JJ
+value	NN
+-LRB-	-LRB-
+for	IN
+update	VBP
+-RRB-	-RRB-
+or	CC
+a	DT
+NULL	JJ
+value	NN
+-LRB-	-LRB-
+for	IN
+dele	NN
+-	:
+tion	NN
+-RRB-	-RRB-
+.	.
+
+Consider	VB
+again	RB
+the	DT
+table	NN
+in	IN
+Figure	NNP
+5	CD
+.	.
+
+a.	FW
+Suppose	VB
+that	DT
+at	IN
+time	NN
+2007-05-27	CD
+09:50:10	CD
+,	,
+another	DT
+user	NN
+modiï	NN
+¬	CD
+ed	VBD
+the	DT
+orga	NN
+-	:
+nization	NN
+value	NN
+of	IN
+person1	NN
+from	IN
+â	FW
+$	$
+œUW-Madisonâ	JJ
+$	$
+to	TO
+â	VB
+$	$
+œUWâ	JJ
+$	$
+.	.
+
+To	TO
+reï	VB
+¬	CD
+‚	CD
+ect	VBD
+the	DT
+modiï	NN
+¬	NN
+cation	NN
+in	IN
+the	DT
+table	NN
+,	,
+ï	NN
+¬	CD
+rst	NN
+we	PRP
+located	VBD
+the	DT
+reco	NN
+rd	NN
+with	IN
+the	DT
+value	NN
+â	VBD
+$	$
+œUW-Madisonâ	JJ
+$	$
+,	,
+and	CC
+changed	VBD
+the	DT
+stop	NN
+time	NN
+of	IN
+the	DT
+record	NN
+to	TO
+the	DT
+current	JJ
+time	NN
+,	,
+denoting	VBG
+that	IN
+the	DT
+value	NN
+of	IN
+â	JJ
+$	$
+œUW	JJ
+-	:
+Madisonâ	NNP
+$	$
+stopped	VBD
+to	TO
+exist	VB
+at	IN
+2007-05-27	CD
+09:50:10	CD
+.	.
+
+Next	RB
+,	,
+we	PRP
+inserted	VBD
+a	DT
+new	JJ
+record	NN
+for	IN
+value	NN
+â	NN
+$	$
+œUWâ	JJ
+$	$
+.	.
+
+We	PRP
+set	VBD
+start	NN
+and	CC
+stop	NN
+of	IN
+the	DT
+new	JJ
+record	NN
+to	TO
+â	VB
+$	$
+œ2007-05-27	JJ
+09:50:10	CD
+â	NN
+$	$
+and	CC
+â	VB
+$	$
+œ9999-12	CD
+-	:
+31	CD
+23:59:59	CD
+â	NN
+$	$
+,	,
+respectively	RB
+,	,
+denoting	VBG
+that	IN
+â	NN
+$	$
+œUWâ	JJ
+$	$
+would	MD
+be	VB
+the	DT
+current	JJ
+value	NN
+from	IN
+2007-05-27	CD
+09:50:10	CD
+on	IN
+.	.
+
+The	DT
+temporal	JJ
+table	NN
+after	IN
+the	DT
+modiï	NN
+¬	NN
+cation	NN
+is	VBZ
+shown	VBN
+in	IN
+Figure	NNP
+5	CD
+.	.
+
+b.	NN
+
+
+idid	NN
+11	CD
+33	CD
+
+
+valuevalue	NN
+UW-MadisonUW-Madison	NN
+
+
+PurduePurdue	NNP
+
+
+startstart	NN
+2007-04-01	CD
+08:01:202007	CD
+-04	CD
+-01	CD
+08:01:20	CD
+2007-05-02	CD
+11:40:352007	CD
+-05	CD
+-02	CD
+11:40:35	CD
+
+
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+
+
+stopstop	JJ
+9999-12-31	CD
+23:59:599999	CD
+-12	CD
+-31	CD
+23:59:59	CD
+9999-12-31	CD
+23:59:599999	CD
+-12	CD
+-31	CD
+23:59:59	CD
+
+
+idid	NN
+valuevalue	NN
+startstart	NN
+stopstop	NN
+
+
+11	CD
+UW-MadisonUW-Madison	NN
+2007-04-01	CD
+08:01:202007	CD
+-04	CD
+-01	CD
+08:01:20	CD
+2007-05-27	CD
+09:50:102007	CD
+-05	CD
+-27	CD
+09:50:10	CD
+
+
+33	CD
+PurduePurdue	NN
+2007-05-02	CD
+11:40:352007	CD
+-05	CD
+-02	CD
+11:40:35	CD
+9999-12-31	CD
+23:59:599999	CD
+-12	CD
+-31	CD
+23:59:59	CD
+
+
+11	CD
+UWUW	NN
+2007-05-27	CD
+09:50:102007	CD
+-05	CD
+-27	CD
+09:50:10	CD
+9999-12-31	CD
+23:59:599999	CD
+-12	CD
+-31	CD
+23:59:59	CD
+
+
+-LRB-	-LRB-
+b	NN
+-RRB-	-RRB-
+
+
+Figure	NNP
+5	CD
+.	.
+
+Examples	NNS
+of	IN
+transaction-time	JJ
+tables	NNS
+for	IN
+per	IN
+-	:
+son	NN
+organization	NN
+:	:
+-LRB-	-LRB-
+a	LS
+-RRB-	-RRB-
+before	IN
+entity	NN
+with	IN
+id	NN
+=	JJ
+1	CD
+is	VBZ
+updated	VBN
+,	,
+and	CC
+-LRB-	-LRB-
+b	LS
+-RRB-	-RRB-
+after	IN
+entity	NN
+with	IN
+id	NN
+=	JJ
+1	CD
+is	VBZ
+updated	VBN
+.	.
+
+
+By	IN
+adding	VBG
+start	NN
+and	CC
+stop	VB
+to	TO
+an	DT
+attribute	NN
+table	NN
+and	CC
+by	IN
+do	VBP
+-	:
+ing	NN
+logical	JJ
+deletions	NNS
+and	CC
+updates	NNS
+,	,
+we	PRP
+keep	VBP
+track	NN
+of	IN
+all	DT
+values	NNS
+that	IN
+an	DT
+attribute	NN
+has	VBZ
+taken	VBN
+,	,
+and	CC
+for	IN
+each	DT
+value	NN
+,	,
+the	DT
+time	NN
+period	NN
+during	IN
+which	WDT
+it	PRP
+was	VBD
+current	JJ
+.	.
+
+This	DT
+way	NN
+,	,
+we	PRP
+are	VBP
+able	JJ
+to	TO
+recover	VB
+an	DT
+attribute	NN
+value	NN
+of	IN
+any	DT
+time	NN
+in	IN
+the	DT
+past	NN
+.	.
+
+Besides	IN
+tracking	VBG
+attribute	NN
+values	NNS
+,	,
+we	PRP
+also	RB
+need	VBP
+to	TO
+maintain	VB
+temporal	JJ
+informa	NN
+-	:
+tion	NN
+regarding	VBG
+entities	NNS
+and	CC
+relations	NNS
+themselves	PRP
+,	,
+e.g.	FW
+,	,
+when	WRB
+an	DT
+entity	NN
+was	VBD
+created	VBN
+,	,
+and	CC
+when	WRB
+a	DT
+relation	NN
+was	VBD
+deleted	VBN
+.	.
+
+To	TO
+store	VB
+such	JJ
+temporal	JJ
+information	NN
+,	,
+for	IN
+each	DT
+entity	NN
+and	CC
+relation	NN
+type	NN
+,	,
+we	PRP
+ï	VBP
+¬	CD
+rst	JJ
+create	VB
+a	DT
+special	JJ
+attribute	NN
+exists	VBZ
+,	,
+then	RB
+create	VB
+a	DT
+tem	NN
+-	:
+poral	NN
+table	NN
+for	IN
+exists	VBZ
+the	DT
+same	JJ
+as	IN
+we	PRP
+do	VBP
+for	IN
+other	JJ
+attributes	NNS
+.	.
+
+Attribute	VB
+exists	VBZ
+can	MD
+take	VB
+one	CD
+of	IN
+the	DT
+two	CD
+values	NNS
+,	,
+1	CD
+,	,
+denoting	VBG
+that	IN
+the	DT
+corresponding	JJ
+instance	NN
+was	VBD
+created	VBN
+or	CC
+reinstated	VBN
+,	,
+or	CC
+0	CD
+,	,
+denoting	VBG
+that	IN
+the	DT
+instance	NN
+was	VBD
+deleted	VBN
+.	.
+
+Creating	VBG
+an	DT
+entity	NN
+or	CC
+relation	NN
+instance	NN
+can	MD
+thus	RB
+be	VB
+implemented	VBN
+as	IN
+inserting	VBG
+a	DT
+record	NN
+into	IN
+an	DT
+exists	VBZ
+table	NN
+with	IN
+a	DT
+value	NN
+of	IN
+1	CD
+,	,
+and	CC
+deleting	VBG
+an	DT
+instance	NN
+can	MD
+thus	RB
+be	VB
+implemented	VBN
+as	IN
+logically	RB
+updating	VBG
+the	DT
+value	NN
+to	TO
+0	CD
+.	.
+
+This	DT
+way	NN
+,	,
+we	PRP
+are	VBP
+able	JJ
+to	TO
+tell	VB
+from	IN
+an	DT
+exists	VBZ
+table	NN
+whether	IN
+an	DT
+instance	NN
+existed	VBD
+at	IN
+a	DT
+given	VBN
+time	NN
+.	.
+
+
+Managing	VBG
+Data	NNS
+from	IN
+Multiple	JJ
+Users	NNS
+:	:
+Multiple	JJ
+users	NNS
+may	MD
+contribute	VB
+data	NNS
+into	IN
+the	DT
+database	NN
+.	.
+
+For	IN
+user	NN
+management	NN
+-LRB-	-LRB-
+Sec	NN
+-	:
+tion	NN
+6	CD
+-RRB-	-RRB-
+,	,
+we	PRP
+need	VBP
+to	TO
+know	VB
+which	WDT
+user	NN
+inserted	VBD
+,	,
+updated	VBN
+or	CC
+deleted	VBN
+a	DT
+data	NNS
+item	NN
+.	.
+
+Moreover	RB
+,	,
+two	CD
+users	NNS
+may	MD
+disagree	VB
+on	IN
+the	DT
+value	NN
+for	IN
+one	CD
+data	NNS
+item	NN
+.	.
+
+And	CC
+we	PRP
+need	VBP
+to	TO
+decide	VB
+whose	WP$
+value	NN
+to	TO
+use	VB
+in	IN
+generating	VBG
+Vd	NN
+for	IN
+a	DT
+wiki	JJ
+page	NN
+-LRB-	-LRB-
+Section	NN
+4.2	CD
+-RRB-	-RRB-
+.	.
+
+
+To	TO
+track	VB
+the	DT
+source	NN
+of	IN
+each	DT
+data	NNS
+item	NN
+,	,
+we	PRP
+further	RB
+extend	VBP
+a	DT
+temporal	JJ
+table	NN
+Tâ	NN
+$	$
+²	CD
+by	IN
+appending	VBG
+a	DT
+column	NN
+who	WP
+,	,
+which	WDT
+stores	VBZ
+the	DT
+ID	NN
+of	IN
+the	DT
+user	NN
+who	WP
+entered	VBD
+that	IN
+item	NN
+.	.
+
+The	DT
+resulting	VBG
+table	NN
+Tâ	NN
+$	$
+²	CD
+â	NN
+$	$
+²	CD
+is	VBZ
+deï	NN
+¬	NN
+ned	VBD
+as	IN
+Tâ	NN
+$	$
+²	CD
+â	NN
+$	$
+²	CD
+-LRB-	-LRB-
+id	NN
+,	,
+value	NN
+,	,
+start	NN
+,	,
+stop	VB
+,	,
+who	WP
+-RRB-	-RRB-
+.	.
+
+Note	VB
+that	IN
+the	DT
+primary	JJ
+key	NN
+does	VBZ
+not	RB
+change	VB
+,	,
+since	IN
+we	PRP
+only	RB
+allow	VBP
+one	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+5	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+value	NN
+of	IN
+each	DT
+attribute	NN
+to	TO
+be	VB
+current	JJ
+at	IN
+any	DT
+time	NN
+,	,
+regardlessof	NN
+by	IN
+whom	WP
+.	.
+
+
+Among	IN
+all	DT
+users	NNS
+,	,
+machine	NN
+M	NN
+is	VBZ
+a	DT
+special	JJ
+one	CD
+.	.
+
+It	PRP
+au	SYM
+-	:
+tomatically	RB
+extracts	NNS
+and	CC
+integrates	VBZ
+data	NNS
+from	IN
+a	DT
+set	NN
+of	IN
+data	NNS
+sources	NNS
+.	.
+
+Thus	RB
+it	PRP
+supplies	VBZ
+data	NNS
+into	IN
+the	DT
+database	NN
+much	RB
+more	RBR
+frequently	RB
+than	IN
+any	DT
+particular	JJ
+human	JJ
+user	NN
+.	.
+
+On	IN
+the	DT
+other	JJ
+hand	NN
+,	,
+M	NN
+'s	POS
+data	NNS
+suffers	VBZ
+from	IN
+inaccuracies	NNS
+due	JJ
+to	TO
+the	DT
+capac	NN
+-	:
+ity	NN
+of	IN
+the	DT
+extraction	NN
+and	CC
+integration	NN
+methods	NNS
+M	NN
+uses	VBZ
+.	.
+
+Con	NN
+-	:
+sequently	RB
+,	,
+M	NN
+'s	POS
+data	NNS
+has	VBZ
+lower	JJR
+credibility	NN
+than	IN
+other	JJ
+users	NNS
+'	POS
+data	NNS
+.	.
+
+Therefore	RB
+,	,
+we	PRP
+need	VBP
+to	TO
+distinguish	VB
+M	NN
+from	IN
+the	DT
+rest	NN
+of	IN
+users	NNS
+.	.
+
+As	IN
+a	DT
+solution	NN
+,	,
+for	IN
+each	DT
+attribute	NN
+A	NN
+,	,
+we	PRP
+create	VBP
+two	CD
+temporal	JJ
+tables	NNS
+,	,
+A	DT
+m	NN
+-LRB-	-LRB-
+id	NN
+,	,
+value	NN
+,	,
+start	NN
+,	,
+stop	VB
+,	,
+who	WP
+-RRB-	-RRB-
+1	CD
+and	CC
+A	DT
+u	NN
+-LRB-	-LRB-
+id	NN
+,	,
+value	NN
+,	,
+start	NN
+,	,
+stop	VB
+,	,
+who	WP
+-RRB-	-RRB-
+.	.
+
+Table	NNP
+A	NNP
+m	NN
+stores	NNS
+attribute	VBP
+values	NNS
+entered	VBN
+by	IN
+M	NN
+,	,
+and	CC
+table	NN
+A	DT
+u	FW
+stores	NNS
+values	NNS
+entered	VBN
+by	IN
+human	JJ
+users	NNS
+.	.
+
+
+An	DT
+attribute	NN
+may	MD
+have	VB
+different	JJ
+values	NNS
+in	IN
+tables	NNS
+A	DT
+m	NN
+and	CC
+A	DT
+u.	NN
+To	TO
+decide	VB
+which	WDT
+value	NN
+to	TO
+use	VB
+in	IN
+generatingVd	NN
+,	,
+we	PRP
+need	VBP
+to	TO
+resolve	VB
+conï	NN
+¬	NN
+‚	CD
+icts	NNS
+between	IN
+the	DT
+two	CD
+tables	NNS
+.	.
+
+As	IN
+a	DT
+solution	NN
+,	,
+we	PRP
+deï	VBP
+¬	CD
+ne	NN
+a	DT
+view	NN
+table	NN
+A	NN
+p	NN
+over	IN
+A	DT
+m	NN
+and	CC
+A	DT
+u.	NN
+Table	NNP
+A	NNP
+p	NN
+has	VBZ
+the	DT
+same	JJ
+schema	NN
+as	IN
+A	DT
+m	NN
+and	CC
+A	DT
+u	NN
+,	,
+and	CC
+it	PRP
+stores	VBZ
+the	DT
+-LSB-	-LRB-
+-LSB-	-LRB-
+ne	SYM
+-	:
+gotiated	VBN
+-RSB-	-RRB-
+-RSB-	-RRB-
+value	NN
+of	IN
+each	DT
+attribute	NN
+.	.
+
+Table	NNP
+A	NNP
+p	NN
+is	VBZ
+updated	VBN
+when	WRB
+A	DT
+morA	NN
+uis	NN
+updated	VBN
+.	.
+
+Thus	RB
+we	PRP
+can	MD
+embed	VB
+in	IN
+its	PRP$
+update	VBP
+pro-	JJ
+cedure	NN
+how	WRB
+we	PRP
+resolve	VBP
+conï	NN
+¬	CD
+‚	CD
+icts	NNS
+in	IN
+attribute	NN
+values	NNS
+.	.
+
+Specif	NN
+-	:
+ically	RB
+,	,
+when	WRB
+an	DT
+attribute	NN
+a	DT
+is	VBZ
+updated	VBN
+in	IN
+either	DT
+of	IN
+A	DT
+m	NN
+and	CC
+A	DT
+u	NN
+,	,
+we	PRP
+ï	VBP
+¬	CD
+rst	JJ
+check	NN
+whether	IN
+a	DT
+is	VBZ
+already	RB
+in	IN
+A	DT
+p	NN
+.	.
+
+If	IN
+not	RB
+,	,
+we	PRP
+simply	RB
+insert	VB
+a	DT
+with	IN
+its	PRP$
+value	NN
+into	IN
+A	DT
+p.	NN
+-LRB-	-LRB-
+Values	NNS
+for	IN
+start	NN
+,	,
+stop	VB
+and	CC
+who	WP
+are	VBP
+assigned	VBN
+accordingly	RB
+.	.
+-RRB-	-RRB-
+
+Otherwise	RB
+,	,
+we	PRP
+need	VBP
+to	TO
+decide	VB
+whether	IN
+we	PRP
+should	MD
+overwrite	VB
+a	DT
+'s	POS
+value	NN
+in	IN
+A	DT
+p	NN
+.	.
+
+A	DT
+reasonable	JJ
+approach	NN
+is	VBZ
+to	TO
+allow	VB
+a	DT
+user	NN
+U	NN
+to	TO
+overwrite	VB
+data	NNS
+entered	VBN
+by	IN
+M	NN
+or	CC
+another	DT
+user	NN
+.	.
+
+We	PRP
+also	RB
+allow	VBP
+M	NN
+to	TO
+overwrite	VB
+its	PRP$
+own	JJ
+data	NNS
+,	,
+but	CC
+only	RB
+allow	VBP
+it	PRP
+to	TO
+overwriteU	NNP
+'s	POS
+data	NNS
+in	IN
+certain	JJ
+situations	NNS
+,	,
+for	IN
+example	NN
+,	,
+when	WRB
+M	NN
+is	VBZ
+sufï	JJ
+¬	NN
+ciently	RB
+conï	JJ
+¬	NN
+dent	NN
+in	IN
+its	PRP$
+data	NNS
+.	.
+
+
+An	DT
+example	NN
+of	IN
+A	DT
+m	NN
+,	,
+A	DT
+u	NN
+and	CC
+A	DT
+p	NN
+for	IN
+table	NN
+per	IN
+-	:
+son	NN
+organization	NN
+is	VBZ
+shown	VBN
+in	IN
+Figures	NNS
+6	CD
+.	.
+
+For	IN
+simplicity	NN
+of	IN
+illustration	NN
+,	,
+we	PRP
+assume	VBP
+that	IN
+a	DT
+user	NN
+U	NN
+can	MD
+overwrite	VB
+ma	SYM
+-	:
+chine	NN
+M	NN
+'s	POS
+data	NNS
+but	CC
+M	NN
+can	MD
+not	RB
+overwrite	VB
+U	NNP
+'s	POS
+data	NNS
+.	.
+
+Based	VBN
+on	IN
+this	DT
+assumption	NN
+,	,
+when	WRB
+user	NN
+U2	NN
+entered	VBD
+value	NN
+â	RB
+$	$
+œUW	JJ
+-	:
+Madisonâ	NNP
+$	$
+for	IN
+person1	NN
+,	,
+we	PRP
+ï	VBD
+¬	CD
+rst	NN
+inserted	VBD
+the	DT
+value	NN
+into	IN
+ta	NN
+-	:
+ble	JJ
+person	NN
+organization	NN
+u	NN
+,	,
+then	RB
+logically	RB
+updated	VBN
+the	DT
+exist	VBP
+-	:
+ing	NN
+value	NN
+â	VBD
+$	$
+œUWâ	JJ
+$	$
+in	IN
+table	NN
+person	NN
+organization	NN
+p.	NN
+Value	NN
+â	VBD
+$	$
+œUWâ	JJ
+$	$
+was	VBD
+entered	VBN
+by	IN
+M	NN
+and	CC
+thus	RB
+we	PRP
+overwrote	VBD
+it	PRP
+with	IN
+U2	NN
+'s	POS
+value	NN
+.	.
+
+In	IN
+contrast	NN
+,	,
+when	WRB
+M	NN
+entered	VBD
+â	RB
+$	$
+œMITREâ	JJ
+$	$
+for	IN
+person3	NN
+into	IN
+per	IN
+-	:
+son	NN
+organization	NN
+m	NN
+,	,
+we	PRP
+did	VBD
+not	RB
+update	VB
+value	NN
+â	NN
+$	$
+œPurdueâ	JJ
+$	$
+in	IN
+person	NN
+organization	NN
+p	NN
+since	IN
+â	NN
+$	$
+œPurdueâ	JJ
+$	$
+was	VBD
+entered	VBN
+by	IN
+a	DT
+hu	NN
+-	:
+man	NN
+user	NN
+.	.
+
+
+Finally	RB
+,	,
+table	NN
+A	NN
+p	NN
+can	MD
+be	VB
+explicitly	RB
+stored	VBN
+in	IN
+the	DT
+database	NN
+or	CC
+computed	VBN
+as	IN
+needed	VBN
+.	.
+
+In	IN
+our	PRP$
+design	NN
+,	,
+we	PRP
+chose	VBD
+to	TO
+material	NN
+-	:
+ize	NN
+A	DT
+p	NN
+for	IN
+efï	NN
+¬	CD
+ciency	NN
+.	.
+
+
+A	DT
+Complete	JJ
+Solution	NN
+:	:
+With	IN
+all	PDT
+the	DT
+problems	NNS
+addressed	VBD
+,	,
+we	PRP
+now	RB
+present	VBP
+a	DT
+complete	JJ
+solution	NN
+to	TO
+storing	VBG
+G	NN
+in	IN
+an	DT
+RDBMS	NN
+.	.
+
+
+1In	NN
+an	DT
+
+
+A	DT
+m	NN
+table	NN
+,	,
+who	WP
+â	VBP
+‰	CD
+¡	CD
+â	JJ
+$	$
+œMâ	JJ
+$	$
+since	IN
+M	NN
+is	VBZ
+the	DT
+only	JJ
+machine	NN
+involved	VBN
+.	.
+
+We	PRP
+keeps	VBZ
+attribute	NN
+who	WP
+in	IN
+the	DT
+table	NN
+so	IN
+that	IN
+our	PRP$
+design	NN
+is	VBZ
+easily	RB
+extensible	JJ
+to	TO
+multiple	JJ
+machines	NNS
+.	.
+
+
+Formally	RB
+,	,
+let	VB
+Gs	NN
+and	CC
+Gd	NN
+be	VB
+the	DT
+schema	NN
+and	CC
+the	DT
+data	NNS
+of	IN
+G.	NNP
+Let	NNP
+E1	NN
+,	,
+...	:
+,	,
+En	IN
+be	VB
+the	DT
+set	NN
+of	IN
+entity	NN
+types	NNS
+in	IN
+Gs	NN
+,	,
+and	CC
+R1	NN
+,	,
+...	:
+,	,
+Rm	NN
+be	VB
+the	DT
+set	NN
+of	IN
+relation	NN
+types	NNS
+in	IN
+Gs	NN
+.	.
+
+Suppose	VB
+for	IN
+simplicity	NN
+that	IN
+each	DT
+relation	NN
+type	NN
+is	VBZ
+binary	JJ
+.	.
+
+We	PRP
+create	VBP
+the	DT
+fol	NN
+-	:
+lowing	VBG
+relational	JJ
+tables	NNS
+to	TO
+store	VB
+G	NN
+:	:
+
+
+â	RB
+$	$
+cents	NNS
+An	DT
+entity	NN
+ID	NN
+table	NN
+Entity	NN
+ID	NN
+-LRB-	-LRB-
+id	NN
+,	,
+ename	NN
+-RRB-	-RRB-
+,	,
+where	WRB
+id	NN
+
+
+and	CC
+ename	JJ
+store	NN
+the	DT
+ID	NNP
+and	CC
+the	DT
+type	NN
+of	IN
+an	DT
+entity	NN
+.	.
+
+â	RB
+$	$
+cents	NNS
+For	IN
+each	DT
+entity	NN
+type	NN
+E	NN
+,	,
+we	PRP
+create	VBP
+a	DT
+special	JJ
+attribute	NN
+
+
+exists	VBZ
+,	,
+whose	WP$
+value	NN
+can	MD
+be	VB
+either	CC
+1	CD
+or	CC
+0	CD
+.	.
+
+Denote	VB
+ex	FW
+-	:
+
+
+ists	NNS
+as	IN
+A0	NN
+.	.
+
+Let	VB
+A1	NN
+,	,
+...	:
+,	,
+Ak	NNP
+be	VB
+the	DT
+attributes	NNS
+of	IN
+E	NN
+in	IN
+
+
+Gs	NN
+.	.
+
+For	IN
+each	DT
+attribute	NN
+A	DT
+âˆˆ	NN
+-LCB-	-LRB-
+A0	NN
+,	,
+...	:
+,	,
+Ak	NNP
+-RCB-	-RRB-
+,	,
+we	PRP
+create	VBP
+
+
+three	CD
+temporal	JJ
+tables	NNS
+,	,
+A	DT
+m	NN
+,	,
+A	DT
+u	NN
+and	CC
+A	DT
+p.	NN
+Each	DT
+table	NN
+
+
+T	NN
+âˆˆ	NN
+-LCB-	-LRB-
+A	DT
+m	NN
+,	,
+A	DT
+u	NN
+,	,
+A	DT
+p	NN
+-RCB-	-RRB-
+is	VBZ
+deï	NN
+¬	NN
+ned	VBD
+as	IN
+follows	VBZ
+:	:
+
+
+T	NN
+-LRB-	-LRB-
+id	NN
+,	,
+value	NN
+,	,
+start	NN
+,	,
+stop	VB
+,	,
+who	WP
+-RRB-	-RRB-
+,	,
+
+
+where	WRB
+id	NN
+is	VBZ
+the	DT
+ID	NN
+of	IN
+an	DT
+entity	NN
+,	,
+and	CC
+value	NN
+is	VBZ
+the	DT
+value	NN
+of	IN
+attribute	NN
+A	NN
+of	IN
+that	DT
+entity	NN
+.	.
+
+Timestamps	NNS
+start	VBP
+and	CC
+stop	VBP
+speciï	NN
+¬	CD
+es	VBZ
+a	DT
+time	NN
+period	NN
+during	IN
+which	WDT
+the	DT
+value	NN
+was	VBD
+cur	SYM
+-	:
+rent	NN
+.	.
+
+And	CC
+ï	NN
+¬	CD
+nally	RB
+,	,
+who	WP
+gives	VBZ
+the	DT
+ID	NN
+of	IN
+the	DT
+user	NN
+who	WP
+en	IN
+-	:
+tered	VBN
+that	IN
+value	NN
+.	.
+
+
+â	RB
+$	$
+cents	NNS
+For	IN
+each	DT
+relation	NN
+type	NN
+R	NN
+,	,
+we	PRP
+create	VBP
+a	DT
+relation	NN
+ID	NN
+table	NN
+R	NN
+ID	NN
+.	.
+
+Let	VB
+E1	NN
+and	CC
+E2	NN
+be	VB
+the	DT
+two	CD
+entity	NN
+types	NNS
+that	WDT
+R	NN
+relates	VBZ
+in	IN
+Gs	NN
+,	,
+table	NN
+R	NN
+ID	NN
+is	VBZ
+deï	NN
+¬	NN
+ned	VBD
+as	IN
+follows	VBZ
+:	:
+
+
+R	NN
+ID	NN
+-LRB-	-LRB-
+id	NN
+,	,
+eid1	NN
+,	,
+eid2	NN
+-RRB-	-RRB-
+,	,
+
+
+where	WRB
+id	NN
+is	VBZ
+the	DT
+ID	NN
+of	IN
+a	DT
+relation	NN
+,	,
+and	CC
+eid1	NN
+and	CC
+eid2	NN
+are	VBP
+
+
+the	DT
+IDs	NNS
+of	IN
+the	DT
+two	CD
+related	JJ
+entities	NNS
+.	.
+
+Similar	JJ
+to	TO
+converting	VBG
+
+
+an	DT
+entity	NN
+type	NN
+,	,
+we	PRP
+ï	VBD
+¬	CD
+rst	NN
+create	VBP
+attribute	NN
+exists	VBZ
+for	IN
+R	NN
+,	,
+then	RB
+
+
+create	VB
+tables	NNS
+A	DT
+m	NN
+,	,
+A	DT
+u	NN
+and	CC
+A	DT
+p	NN
+for	IN
+attribute	NN
+exists	VBZ
+and	CC
+
+
+each	DT
+attribute	NN
+of	IN
+R	NN
+in	IN
+Gs	NN
+.	.
+
+
+A	DT
+user	NN
+may	MD
+create	VB
+an	DT
+entity	NN
+type	NN
+-LRB-	-LRB-
+same	JJ
+for	IN
+a	DT
+relation	NN
+type	NN
+and	CC
+an	DT
+attribute	NN
+-RRB-	-RRB-
+,	,
+delete	VB
+an	DT
+entity	NN
+type	NN
+,	,
+or	CC
+reinstate	VB
+a	DT
+deletedentity	NN
+type	NN
+.	.
+
+To	TO
+enrich	VB
+catalog	NN
+data	NNS
+with	IN
+temporal	JJ
+information	NN
+,	,
+we	PRP
+also	RB
+create	VBP
+three	CD
+meta	NN
+tables	NNS
+:	:
+
+
+â	RB
+$	$
+cents	NNS
+Table	NNP
+meta	NN
+entity	NN
+-LRB-	-LRB-
+ename	NN
+,	,
+start	NN
+,	,
+stop	VB
+,	,
+who	WP
+-RRB-	-RRB-
+,	,
+which	WDT
+
+
+stores	NNS
+the	DT
+names	NNS
+of	IN
+the	DT
+entity	NN
+types	NNS
+that	WDT
+have	VBP
+been	VBN
+cre	SYM
+-	:
+
+
+ated	VBN
+.	.
+
+Attributes	NNS
+start	VBP
+,	,
+stop	VB
+and	CC
+who	WP
+-LRB-	-LRB-
+same	JJ
+for	IN
+those	DT
+
+
+attributes	NNS
+in	IN
+tables	NNS
+meta	NN
+relation	NN
+and	CC
+meta	NN
+attribute	NN
+
+
+below	IN
+-RRB-	-RRB-
+have	VBP
+the	DT
+same	JJ
+semantics	NNS
+as	IN
+they	PRP
+do	VBP
+in	IN
+an	DT
+attribute	NN
+
+
+table	NN
+.	.
+
+
+â	RB
+$	$
+cents	NNS
+Tablemeta	NN
+relation	NN
+-LRB-	-LRB-
+rname	NN
+,	,
+ename1	NN
+,	,
+ename2	NN
+,	,
+start	NN
+,	,
+
+
+stop	VB
+,	,
+who	WP
+-RRB-	-RRB-
+,	,
+which	WDT
+stores	VBZ
+the	DT
+names	NNS
+of	IN
+the	DT
+relation	NN
+types	NNS
+
+
+that	WDT
+have	VBP
+been	VBN
+created	VBN
+.	.
+
+For	IN
+each	DT
+relation	NN
+type	NN
+R	NN
+,	,
+the	DT
+
+
+table	NN
+also	RB
+store	VBP
+the	DT
+names	NNS
+of	IN
+the	DT
+two	CD
+entity	NN
+types	NNS
+that	WDT
+R	NN
+
+
+relates	VBZ
+.	.
+
+
+â	RB
+$	$
+cents	NNS
+Tablemeta	NN
+attribute	NN
+-LRB-	-LRB-
+tname	NN
+,	,
+aname	NN
+,	,
+category	NN
+,	,
+type	NN
+,	,
+
+
+start	NN
+,	,
+stop	VB
+,	,
+who	WP
+-RRB-	-RRB-
+,	,
+which	WDT
+stores	VBZ
+the	DT
+name	NN
+of	IN
+each	DT
+at	IN
+-	:
+
+
+tribute	NN
+-LRB-	-LRB-
+aname	NN
+-RRB-	-RRB-
+that	WDT
+each	DT
+entity	NN
+or	CC
+relation	NN
+type	NN
+-LRB-	-LRB-
+tname	NN
+-RRB-	-RRB-
+
+
+has	VBZ
+.	.
+
+For	IN
+each	DT
+attribute	NN
+,	,
+the	DT
+table	NN
+also	RB
+gives	VBZ
+its	PRP$
+category	NN
+
+
+-LRB-	-LRB-
+atomic	JJ
+or	CC
+set-valued	JJ
+-RRB-	-RRB-
+and	CC
+data	NNS
+type	NN
+-LRB-	-LRB-
+string	NN
+or	CC
+numeric	JJ
+-RRB-	-RRB-
+
+
+speciï	NN
+¬	CD
+cations	NNS
+in	IN
+category	NN
+and	CC
+type	NN
+,	,
+respectively	RB
+.	.
+
+
+Examples	NNS
+of	IN
+the	DT
+meta	NN
+tables	NNS
+are	VBP
+shown	VBN
+in	IN
+Figure	NN
+7	CD
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+6	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+person_organization_m	NN
+
+
+idid	NN
+11	CD
+33	CD
+
+
+valuevalue	NN
+UW-MadisonUW-Madison	NN
+
+
+MITREMITRE	NN
+
+
+idid	NN
+33	CD
+11	CD
+
+
+valuevalue	NN
+PurduePurdue	NNP
+UWUW	NNP
+
+
+startstart	NN
+stopstop	NN
+whowho	NN
+2007-04-01	CD
+08:01:202007	CD
+-04	CD
+-01	CD
+08:01:20	CD
+9999-12-31	CD
+23:59:599999	CD
+-12	CD
+-31	CD
+23:59:59	CD
+MM	NN
+2007-05-20	CD
+16:20:302007	CD
+-05	CD
+-20	CD
+16:20:30	CD
+9999-12-31	CD
+23:59:599999	CD
+-12	CD
+-31	CD
+23:59:59	CD
+MM	NN
+
+
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+
+
+person_organization_u	NN
+
+
+startstart	JJ
+stop	NN
+whostop	NN
+who	WP
+2007-05-02	CD
+11:40:352007	CD
+-05	CD
+-02	CD
+11:40:35	CD
+9999-12-31	CD
+23:59:599999	CD
+-12	CD
+-31	CD
+23:59:59	CD
+UU11	NN
+2007-05-27	CD
+09:50:102007	CD
+-05	CD
+-27	CD
+09:50:10	CD
+9999-12-31	CD
+23:59:599999	CD
+-12	CD
+-31	CD
+23:59:59	CD
+UU22	NN
+
+
+-LRB-	-LRB-
+b	NN
+-RRB-	-RRB-
+
+
+person_organization_p	NN
+
+
+idid	NN
+11	CD
+33	CD
+11	CD
+
+
+valuevalue	NN
+UW-MadisonUW-Madison	NN
+
+
+PurduePurdue	NNP
+
+
+UWUW	NN
+
+
+startstart	NN
+2007-04-01	CD
+08:01:202007	CD
+-04	CD
+-01	CD
+08:01:20	CD
+2007-05-02	CD
+11:40:352007	CD
+-05	CD
+-02	CD
+11:40:35	CD
+2007-05-27	CD
+09:50:102007	CD
+-05	CD
+-27	CD
+09:50:10	CD
+
+
+stopstop	JJ
+2007-05-27	CD
+09:50:102007	CD
+-05	CD
+-27	CD
+09:50:10	CD
+9999-12-31	CD
+23:59:599999	CD
+-12	CD
+-31	CD
+23:59:59	CD
+9999-12-31	CD
+23:59:599999	CD
+-12	CD
+-31	CD
+23:59:59	CD
+
+
+whowho	NN
+MM	NN
+UU11	NN
+UU22	NN
+
+
+-LRB-	-LRB-
+c	NN
+-RRB-	-RRB-
+
+
+Figure	NNP
+6	CD
+.	.
+
+An	DT
+example	NN
+of	IN
+attribute	NN
+tables	NNS
+for	IN
+organization	NN
+of	IN
+entity	NN
+type	NN
+person	NN
+:	:
+-LRB-	-LRB-
+a	LS
+-RRB-	-RRB-
+A	DT
+m	NN
+,	,
+-LRB-	-LRB-
+b	LS
+-RRB-	-RRB-
+A	DT
+u	NN
+,	,
+and	CC
+-LRB-	-LRB-
+c	LS
+-RRB-	-RRB-
+A	DT
+p.	NN
+
+
+enameename	NN
+personperson	NN
+pubpub	NN
+topictopic	JJ
+â	NN
+$	$
+¦	CD
+â	NN
+$	$
+¦	CD
+
+
+meta_entity	NN
+
+
+startstart	NN
+stopstop	NN
+2007-03-12	CD
+05:10:002007	CD
+-03	CD
+-12	CD
+05:10:00	CD
+9999-12-31	CD
+23:59:599999	CD
+-12	CD
+-31	CD
+23:59:59	CD
+2007-03-12	CD
+05:10:102007	CD
+-03	CD
+-12	CD
+05:10:10	CD
+9999-12-31	CD
+23:59:599999	CD
+-12	CD
+-31	CD
+23:59:59	CD
+2007-03-12	CD
+05:10:202007	CD
+-03	CD
+-12	CD
+05:10:20	CD
+9999-12-31	CD
+23:59:599999	CD
+-12	CD
+-31	CD
+23:59:59	CD
+
+
+â	RB
+$	$
+¦	CD
+â	NN
+$	$
+¦	CD
+â	NN
+$	$
+¦	CD
+â	NN
+$	$
+¦	CD
+
+
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+
+
+whowho	NN
+MM	NN
+MM	NN
+MM	NN
+â	NN
+$	$
+¦	CD
+â	NN
+$	$
+¦	CD
+
+
+rnamername	NN
+interestsinterests	NNS
+write-pubwrite-pub	JJ
+adviseadvise	NN
+
+
+â	RB
+$	$
+¦	CD
+â	NN
+$	$
+¦	CD
+
+
+tnametname	NN
+personperson	NN
+personperson	NN
+personperson	NN
+â	VBD
+$	$
+¦	CD
+â	NN
+$	$
+¦	CD
+
+
+anameaname	NN
+titletitle	NN
+ageage	NN
+ageage	NN
+â	VBD
+$	$
+¦	CD
+â	NN
+$	$
+¦	CD
+
+
+categorycategory	NN
+atomicatomic	JJ
+atomicatomic	JJ
+NULLNULL	NN
+
+
+â	RB
+$	$
+¦	CD
+â	NN
+$	$
+¦	CD
+
+
+meta_attribute	NN
+
+
+typetype	JJ
+CHAR	NN
+-LRB-	-LRB-
+100	CD
+-RRB-	-RRB-
+CHAR	NN
+-LRB-	-LRB-
+100	CD
+-RRB-	-RRB-
+
+
+INTINT	JJ
+
+
+NULLNULL	NN
+
+
+â	RB
+$	$
+¦	CD
+â	NN
+$	$
+¦	CD
+
+
+-LRB-	-LRB-
+c	NN
+-RRB-	-RRB-
+
+
+ename1ename1	NN
+personperson	NN
+personperson	NN
+personperson	NN
+
+
+â	RB
+$	$
+¦	CD
+â	NN
+$	$
+¦	CD
+
+
+ename2ename2	NN
+topictopic	JJ
+pubpub	NN
+personperson	NN
+
+
+â	RB
+$	$
+¦	CD
+â	NN
+$	$
+¦	CD
+
+
+meta_relation	NN
+
+
+startstart	NN
+2007-03-12	CD
+05:10:302007	CD
+-03	CD
+-12	CD
+05:10:30	CD
+2007-03-12	CD
+05:10:402007	CD
+-03	CD
+-12	CD
+05:10:40	CD
+2007-05-24	CD
+16:04:272007	CD
+-05	CD
+-24	CD
+16:04:27	CD
+
+
+â	RB
+$	$
+¦	CD
+â	NN
+$	$
+¦	CD
+
+
+-LRB-	-LRB-
+b	NN
+-RRB-	-RRB-
+
+
+stopstop	JJ
+9999-12-31	CD
+23:59:599999	CD
+-12	CD
+-31	CD
+23:59:59	CD
+9999-12-31	CD
+23:59:599999	CD
+-12	CD
+-31	CD
+23:59:59	CD
+9999-12-31	CD
+23:59:599999	CD
+-12	CD
+-31	CD
+23:59:59	CD
+
+
+â	RB
+$	$
+¦	CD
+â	NN
+$	$
+¦	CD
+
+
+whowho	NN
+MM	NN
+MM	NN
+UU11	NN
+â	VBD
+$	$
+¦	CD
+â	NN
+$	$
+¦	CD
+
+
+startstart	NN
+2007-03-12	CD
+05:10:502007	CD
+-03	CD
+-12	CD
+05:10:50	CD
+2007-04-18	CD
+12:40:192007	CD
+-04	CD
+-18	CD
+12:40:19	CD
+2007-06-10	CD
+10:30:252007	CD
+-06	CD
+-10	CD
+10:30:25	CD
+
+
+â	RB
+$	$
+¦	CD
+â	NN
+$	$
+¦	CD
+
+
+stopstop	JJ
+9999-12-31	CD
+23:59:599999	CD
+-12	CD
+-31	CD
+23:59:59	CD
+2007-06-10	CD
+10:30:252007	CD
+-06	CD
+-10	CD
+10:30:25	CD
+9999-12-31	CD
+23:59:599999	CD
+-12	CD
+-31	CD
+23:59:59	CD
+
+
+â	RB
+$	$
+¦	CD
+â	NN
+$	$
+¦	CD
+
+
+whowho	NN
+MM	NN
+UU22	NN
+UU33	NN
+â	VBD
+$	$
+¦	CD
+â	NN
+$	$
+¦	CD
+
+
+Figure	NNP
+7	CD
+.	.
+
+Examples	NNS
+of	IN
+meta	NN
+tables	NNS
+:	:
+-LRB-	-LRB-
+a	LS
+-RRB-	-RRB-
+meta	NN
+entity	NN
+,	,
+-LRB-	-LRB-
+b	LS
+-RRB-	-RRB-
+meta	NN
+relation	NN
+,	,
+and	CC
+-LRB-	-LRB-
+c	LS
+-RRB-	-RRB-
+meta	NN
+attribute	NN
+.	.
+
+
+4.1.3	CD
+Initializing	VBG
+G	NN
+
+
+To	TO
+initialize	VB
+G	NN
+,	,
+we	PRP
+employ	VBP
+a	DT
+machine-based	JJ
+solution	NN
+M	NN
+.	.
+
+Many	JJ
+such	JJ
+solutions	NNS
+exist	VBP
+-LSB-	-LRB-
+14	CD
+-RSB-	-RRB-
+.	.
+
+Currently	RB
+we	PRP
+use	VBP
+the	DT
+Cim	NNP
+-	:
+ple	NN
+solution	NN
+which	WDT
+is	VBZ
+described	VBN
+in	IN
+detail	NN
+in	IN
+-LSB-	-LRB-
+14	CD
+-RSB-	-RRB-
+.	.
+
+The	DT
+solution	NN
+works	VBZ
+in	IN
+two	CD
+steps	NNS
+:	:
+-LRB-	-LRB-
+1	LS
+-RRB-	-RRB-
+creating	VBG
+an	DT
+entity-relationship	NN
+-LRB-	-LRB-
+ER	NN
+-RRB-	-RRB-
+graph	NN
+,	,
+and	CC
+-LRB-	-LRB-
+2	LS
+-RRB-	-RRB-
+importing	VBG
+the	DT
+ER	NN
+graph	NN
+into	IN
+database	NN
+G.	NNP
+Creating	NNP
+an	DT
+Entity-Relationship	NNP
+Graph	NNP
+:	:
+First	NNP
+,	,
+a	DT
+com	NN
+-	:
+munity	NN
+expert	NN
+provides	VBZ
+Cimple	NN
+with	IN
+a	DT
+set	NN
+of	IN
+relevant	JJ
+data	NNS
+source	NN
+.	.
+
+Use	VB
+the	DT
+community	NN
+of	IN
+database	NN
+researchers	NNS
+as	IN
+an	DT
+example	NN
+.	.
+
+Data	NNS
+sources	NNS
+can	MD
+be	VB
+home	NN
+pages	NNS
+of	IN
+database	NN
+re	SYM
+-	:
+searchers	NNS
+,	,
+DBLP	NN
+,	,
+conference	NN
+pages	NNS
+,	,
+etc.	FW
+.	.
+
+The	DT
+expect	VBP
+also	RB
+provides	VBZ
+domain	NN
+knowledge	NN
+about	IN
+entities	NNS
+and	CC
+relations	NNS
+of	IN
+interest	NN
+.	.
+
+For	IN
+example	NN
+,	,
+person	NN
+and	CC
+conference	NN
+are	VBP
+two	CD
+entity	NN
+types	NNS
+,	,
+and	CC
+between	IN
+them	PRP
+exists	VBZ
+a	DT
+relation	NN
+type	NN
+give-talk	NN
+.	.
+
+
+Then	RB
+Cimple	NNP
+uses	VBZ
+simple	JJ
+but	CC
+focused	VBD
+automatic	JJ
+methods	NNS
+to	TO
+create	VB
+an	DT
+ER	NN
+graph	NN
+of	IN
+the	DT
+community	NN
+.	.
+
+Speciï	NN
+¬	NN
+cally	RB
+,	,
+Cim	NNP
+-	:
+ple	NN
+ï	NN
+¬	CD
+rst	NN
+crawls	VBZ
+the	DT
+sources	NNS
+at	IN
+regular	JJ
+intervals	NNS
+to	TO
+obtain	VB
+data	NNS
+pages	NNS
+,	,
+then	RB
+marks	VBZ
+up	RP
+mentions	VBZ
+of	IN
+relevant	JJ
+entities	NNS
+.	.
+
+Exam	NN
+-	:
+ples	NNS
+of	IN
+mentions	VBZ
+include	VBP
+people	NNS
+names	NNS
+-LRB-	-LRB-
+e.g.	FW
+,	,
+â	VB
+$	$
+œD	JJ
+.	.
+
+DeWittâ	NNP
+$	$
+,	,
+â	VB
+$	$
+œDavid	JJ
+J.	NNP
+DeWittâ	NNP
+$	$
+-RRB-	-RRB-
+,	,
+conference	NN
+names	NNS
+,	,
+and	CC
+paper	NN
+titles	NNS
+.	.
+
+Nex	NN
+t	NN
+,	,
+Cimple	NNP
+matches	VBZ
+mentions	VBZ
+and	CC
+groups	NNS
+them	PRP
+into	IN
+entities	NNS
+-LRB-	-LRB-
+e.g.	FW
+,	,
+mentions	VBZ
+â	RB
+$	$
+œD	JJ
+.	.
+
+DeWittâ	NNP
+$	$
+and	CC
+â	VB
+$	$
+œDavid	JJ
+J.	NNP
+DeWittâ	NNP
+$	$
+refer	VB
+to	TO
+the	DT
+same	JJ
+person	NN
+entity	NN
+-RRB-	-RRB-
+.	.
+
+Cimple	NNP
+then	RB
+discovers	VBZ
+relations	NNS
+among	IN
+the	DT
+entities	NNS
+.	.
+
+As	IN
+a	DT
+result	NN
+,	,
+Cimple	NNP
+creates	VBZ
+an	DT
+ER	NN
+graph	NN
+from	IN
+
+
+the	DT
+raw	JJ
+data	NNS
+sources	NNS
+.	.
+
+
+DBLife	NN
+is	VBZ
+an	DT
+example	NN
+portal	NN
+built	VBN
+using	VBG
+such	JJ
+a	DT
+semi	NN
+-	:
+automatic	JJ
+solution	NN
+.	.
+
+
+Importing	VBG
+the	DT
+ER	NN
+Graph	NN
+into	IN
+DatabaseG	NN
+:	:
+Cimple	NNP
+stores	NNS
+the	DT
+ER	NN
+graph	NN
+in	IN
+a	DT
+set	NN
+of	IN
+XML	NN
+ï	NN
+¬	CD
+les	FW
+.	.
+
+To	TO
+initialize	VB
+database	NN
+G	NN
+,	,
+we	PRP
+ï	VBD
+¬	CD
+rst	NN
+convert	VBP
+Gs	NN
+into	IN
+a	DT
+set	NN
+of	IN
+relational	JJ
+tables	NNS
+,	,
+as	IN
+described	VBN
+in	IN
+Section	NN
+4.1.2	CD
+.	.
+
+Then	RB
+we	PRP
+use	VBP
+an	DT
+import	NN
+module	NN
+to	TO
+bulk	NN
+load	NN
+the	DT
+XML	NN
+data	NNS
+into	IN
+G.	NNP
+
+
+4.2	CD
+Creating	VBG
+Views	NNS
+over	IN
+Database	NN
+G	NN
+
+
+View	NNP
+Language	NNP
+Requirements	NNS
+:	:
+To	TO
+create	VB
+views	NNS
+overG	NN
+,	,
+we	PRP
+must	MD
+deï	VB
+¬	CD
+ne	NN
+a	DT
+view	NN
+language	NN
+L	NN
+.	.
+
+We	PRP
+now	RB
+discuss	VBP
+the	DT
+require	VBP
+-	:
+ments	NNS
+for	IN
+L.	NNP
+First	NNP
+,	,
+we	PRP
+note	VBP
+that	IN
+a	DT
+primary	JJ
+goal	NN
+of	IN
+community	NN
+portals	NNS
+is	VBZ
+to	TO
+describe	VB
+interesting	JJ
+entities	NNS
+and	CC
+relations	NNS
+in	IN
+the	DT
+community	NN
+.	.
+
+Toward	IN
+this	DT
+goal	NN
+,	,
+we	PRP
+use	VBP
+each	DT
+wiki	JJ
+page	NN
+W	NN
+to	TO
+describe	VB
+an	DT
+entitye	NN
+or	CC
+a	DT
+relationr	NN
+.	.
+
+A	DT
+popular	JJ
+way	NN
+to	TO
+describe	VB
+an	DT
+entity	NN
+e	SYM
+,	,
+say	VBP
+,	,
+is	VBZ
+to	TO
+describe	VB
+a	DT
+â	JJ
+$	$
+œneighborhoodâ	CD
+$	$
+of	IN
+e	SYM
+on	IN
+the	DT
+ER	NN
+data	NNS
+graphG	NN
+,	,
+e.g.	FW
+,	,
+all	DT
+or	CC
+most	JJS
+nodes	NNS
+within	IN
+two	CD
+hops	VBZ
+from	IN
+e.	FW
+Consequently	RB
+,	,
+language	NN
+L	NN
+must	MD
+be	VB
+such	JJ
+that	IN
+we	PRP
+can	MD
+easily	RB
+write	VB
+and	CC
+modify	VB
+views	NNS
+that	WDT
+describe	VBP
+such	JJ
+â	IN
+$	$
+œneighborhoodsâ	CD
+$	$
+.	.
+
+
+Second	RB
+,	,
+when	WRB
+a	DT
+user	NN
+requests	NNS
+a	DT
+wiki	JJ
+pageW	NN
+,	,
+we	PRP
+material	NN
+-	:
+ize	VB
+it	PRP
+on	IN
+the	DT
+ï	NN
+¬	CD
+‚	CD
+y	NN
+,	,
+to	TO
+ensure	VB
+the	DT
+page	NN
+contain	VBP
+the	DT
+latest	JJS
+updates	NNS
+.	.
+
+This	DT
+in	IN
+turn	NN
+requires	VBZ
+materializing	VBG
+the	DT
+view	NN
+V	NN
+underlying	VBG
+W	NN
+-LRB-	-LRB-
+see	VB
+Section	NNP
+5.3	CD
+-RRB-	-RRB-
+.	.
+
+Consequently	RB
+,	,
+Lmust	NNP
+be	VB
+such	JJ
+that	IN
+its	PRP$
+views	NNS
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+7	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+can	MD
+be	VB
+materialized	VBN
+quickly	RB
+,	,
+to	TO
+ensure	VB
+real-time	JJ
+user	NN
+interac	NN
+-	:
+tion	NN
+.	.
+
+
+Finally	RB
+,	,
+when	WRB
+a	DT
+user	NN
+U	NNP
+edits	VBZ
+a	DT
+wiki	JJ
+page	NN
+W	NN
+,	,
+we	PRP
+assume	VBP
+that	IN
+U	NNP
+may	MD
+also	RB
+edit	VB
+the	DT
+schema	NN
+of	IN
+view	NN
+V	NN
+underlying	VBG
+W	NN
+,	,
+e.g.	FW
+,	,
+by	IN
+removing	VBG
+all	DT
+papers	NNS
+from	IN
+W	NNP
+,	,
+U	NNP
+may	MD
+be	VB
+modifying	VBG
+V	NN
+'s	POS
+schema	NN
+to	TO
+exclude	VB
+all	DT
+papers	NNS
+-LRB-	-LRB-
+Section	NN
+5.1	CD
+discusses	VBZ
+this	DT
+assumption	NN
+in	IN
+depth	NN
+-RRB-	-RRB-
+.	.
+
+Hence	RB
+,	,
+language	NN
+L	NN
+must	MD
+be	VB
+such	JJ
+that	IN
+we	PRP
+can	MD
+modify	VB
+a	DT
+view	NN
+schema	NN
+quickly	RB
+,	,
+based	VBN
+on	IN
+user	NN
+edits	VBZ
+,	,
+to	TO
+ensure	VB
+real-time	JJ
+user	NN
+editing	NN
+.	.
+
+
+A	DT
+Path-based	JJ
+View	NNP
+Language	NNP
+:	:
+The	DT
+above	JJ
+requirements	NNS
+led	VBD
+us	PRP
+to	TO
+design	VB
+a	DT
+path-based	JJ
+view	NN
+language	NN
+Lp	NN
+.	.
+
+To	TO
+deï	VB
+¬	CD
+ne	NN
+Lp	NN
+,	,
+ï	NN
+¬	CD
+rst	NN
+we	PRP
+deï	VBP
+¬	CD
+ne	NN
+data	NNS
+and	CC
+schema	NN
+paths	NNS
+.	.
+
+Intuitively	RB
+,	,
+a	DT
+data	NN
+path	NN
+is	VBZ
+a	DT
+path	NN
+on	IN
+the	DT
+ER	NN
+graph	NN
+G	NN
+that	WDT
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+starts	VBZ
+with	IN
+an	DT
+entity	NN
+node	NN
+e1	NN
+and	CC
+ends	VBZ
+at	IN
+an	DT
+entity	NN
+node	NN
+en	IN
+,	,
+and	CC
+-LRB-	-LRB-
+b	LS
+-RRB-	-RRB-
+retains	VBZ
+only	RB
+certain	JJ
+attributes	NNS
+for	IN
+each	DT
+node/edge	NN
+along	IN
+the	DT
+path	NN
+.	.
+
+
+A	DT
+schema	NN
+path	NN
+p	NN
+=	JJ
+ep1.rp2.ep3	NN
+...	:
+rpnâˆ	NN
+'	''
+1	LS
+.	.
+
+epn	NN
+then	RB
+speciï	NN
+¬	CD
+es	VBZ
+a	DT
+set	NN
+of	IN
+data	NNS
+paths	NNS
+,	,
+which	WDT
+start	VBP
+with	IN
+node	NN
+ep1	NN
+,	,
+fol	NN
+-	:
+low	JJ
+edge	NN
+rp2	NN
+,	,
+etc.	FW
+,	,
+then	RB
+end	VB
+with	IN
+node	NN
+epn	NN
+.	.
+
+To	TO
+further	RB
+con	VB
+-	:
+strain	NN
+these	DT
+data	NNS
+paths	NNS
+,	,
+we	PRP
+express	VBP
+each	DT
+epi	NN
+as	IN
+Ti	NN
+-LRB-	-LRB-
+Ci	NN
+-RRB-	-RRB-
+-LCB-	-LRB-
+Ai	NNP
+-RCB-	-RRB-
+,	,
+meaning	VBG
+that	IN
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+epi	NNS
+must	MD
+have	VB
+type	NN
+Ti	NN
+and	CC
+satisfy	VB
+condition	NN
+Ci	NN
+-LRB-	-LRB-
+which	WDT
+is	VBZ
+a	DT
+conjunction	NN
+of	IN
+conditions	NNS
+over	IN
+the	DT
+attributes	NNS
+-RRB-	-RRB-
+,	,
+and	CC
+-LRB-	-LRB-
+b	LS
+-RRB-	-RRB-
+we	PRP
+keep	VBP
+only	RB
+those	DT
+attributes	NNS
+of	IN
+epi	NNS
+that	WDT
+appear	VBP
+in	IN
+Ai	NN
+-LRB-	-LRB-
+which	WDT
+is	VBZ
+a	DT
+set	NN
+of	IN
+attribute	NN
+names	NNS
+-RRB-	-RRB-
+.	.
+
+Ti	NNP
+is	VBZ
+required	VBN
+,	,
+but	CC
+-LRB-	-LRB-
+Ci	NN
+-RRB-	-RRB-
+and	CC
+-LCB-	-LRB-
+Ai	NNP
+-RCB-	-RRB-
+are	VBP
+optional	JJ
+.	.
+
+A	DT
+missing	VBG
+-LCB-	-LRB-
+Ai	NNP
+-RCB-	-RRB-
+means	VBZ
+that	IN
+we	PRP
+retain	VBP
+all	DT
+attributes	NNS
+.	.
+
+We	PRP
+express	VBP
+each	DT
+rpi	NN
+in	IN
+an	DT
+analogous	JJ
+fashion	NN
+.	.
+
+
+Example	NN
+4.1	CD
+.	.
+
+The	DT
+schema	NN
+path	NN
+person	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+1	CD
+-RRB-	-RRB-
+-LCB-	-LRB-
+name	NN
+,	,
+title	NN
+-RCB-	-RRB-
+speciï	NN
+¬	CD
+es	VBZ
+a	DT
+single	JJ
+data	NNS
+path	NN
+that	WDT
+corresponds	VBZ
+to	TO
+person	NN
+entit	FW
+y	FW
+with	IN
+id	NN
+=	JJ
+1	CD
+and	CC
+that	WDT
+contains	VBZ
+only	RB
+attributes	VBZ
+name	NN
+and	CC
+title	NN
+of	IN
+this	DT
+entity	NN
+.	.
+
+The	DT
+schema	NN
+path	NN
+,	,
+person	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+1	CD
+-RRB-	-RRB-
+.	.
+
+give-tutorial	JJ
+.	.
+
+conf	NN
+-LCB-	-LRB-
+name	NN
+-RCB-	-RRB-
+,	,
+speciï	NN
+¬	CD
+es	VBZ
+a	DT
+set	NN
+of	IN
+data	NNS
+paths	NNS
+,	,
+each	DT
+of	IN
+which	WDT
+starts	VBZ
+with	IN
+a	DT
+person	NN
+node	NN
+whose	WP$
+id	NN
+is	VBZ
+1	CD
+,	,
+follows	VBZ
+an	DT
+edge	NN
+give-tutorial	JJ
+,	,
+then	RB
+ends	VBZ
+with	IN
+a	DT
+conf	NN
+node	NN
+.	.
+
+For	IN
+each	DT
+path	NN
+,	,
+we	PRP
+retain	VBP
+all	DT
+attributes	NNS
+of	IN
+person	NN
+node	NN
+and	CC
+give-tutorial	JJ
+edge	NN
+,	,
+but	CC
+retain	VBP
+only	RB
+the	DT
+name	NN
+attribute	NN
+of	IN
+conf	NN
+node	NN
+.	.
+
+
+We	PRP
+can	MD
+now	RB
+deï	VB
+¬	NN
+ne	NN
+ER	NN
+views	NNS
+considered	VBN
+in	IN
+this	DT
+paper	NN
+as	IN
+fol	NN
+-	:
+lows	NNS
+:	:
+
+
+Deï	NN
+¬	CD
+nition	NN
+1	CD
+-LRB-	-LRB-
+Path-based	JJ
+ER	NN
+views	NNS
+-RRB-	-RRB-
+.	.
+
+A	DT
+path-based	JJ
+ER	NN
+view	NN
+-LRB-	-LRB-
+or	CC
+view	VB
+for	IN
+short	JJ
+when	WRB
+there	EX
+is	VBZ
+no	DT
+ambiguity	NN
+-RRB-	-RRB-
+V	NN
+has	VBZ
+a	DT
+schema	NN
+Vs	NN
+=	JJ
+-LRB-	-LRB-
+In	IN
+,	,
+Ex	FW
+-RRB-	-RRB-
+,	,
+where	WRB
+In	IN
+and	CC
+Ex	FW
+are	VBP
+disjoint	JJ
+sets	NNS
+of	IN
+schema	NN
+paths	NNS
+over	IN
+G.	NNP
+Evaluating	VBG
+Vs	NNS
+over	IN
+G	NN
+yields	NNS
+the	DT
+view	NN
+data	NNS
+Vd	NN
+.	.
+
+Vd	NN
+is	VBZ
+a	DT
+sub	NN
+-	:
+graph	NN
+of	IN
+G	NN
+that	WDT
+contains	VBZ
+only	RB
+data	NNS
+paths	NNS
+that	WDT
+are	VBP
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+speciï	NN
+¬	CD
+ed	VBN
+by	IN
+some	DT
+path	NN
+schema	NN
+in	IN
+In	NNP
+and	CC
+-LRB-	-LRB-
+b	LS
+-RRB-	-RRB-
+not	RB
+speciï	NN
+¬	CD
+ed	VBN
+by	IN
+some	DT
+path	NN
+schema	NN
+in	IN
+Ex	FW
+.	.
+
+We	PRP
+refer	VBP
+to	TO
+schema	NN
+paths	NNS
+in	IN
+In	NNP
+and	CC
+Ex	FW
+as	IN
+inclusive	JJ
+and	CC
+exclusive	JJ
+paths	NNS
+,	,
+respectively	RB
+.	.
+
+
+Example	NN
+4.2	CD
+.	.
+
+Figure	NNP
+3	CD
+.	.
+
+b	NN
+shows	VBZ
+a	DT
+sample	NN
+Vs	NNS
+that	WDT
+has	VBZ
+two	CD
+inclusive	JJ
+paths	NNS
+and	CC
+one	CD
+exclusive	JJ
+path	NN
+.	.
+
+This	DT
+view	NN
+schema	NN
+selects	VBZ
+a	DT
+person	NN
+e	SYM
+with	IN
+id	NN
+=	JJ
+1	CD
+,	,
+retains	VBZ
+name	NN
+and	CC
+title	NN
+of	IN
+e	LS
+,	,
+then	RB
+selects	VBZ
+all	DT
+interests	NNS
+of	IN
+e	SYM
+except	IN
+those	DT
+named	VBN
+â	NN
+$	$
+œStatisticsâ	JJ
+$	$
+.	.
+
+Evaluating	VBG
+this	DT
+view	NN
+sche	NN
+ma	NN
+over	IN
+the	DT
+ER	NN
+graph	NN
+G	NN
+of	IN
+Figure	NNP
+3	CD
+.	.
+
+a	DT
+produces	VBZ
+the	DT
+view	NN
+data	NNS
+Vd	NN
+in	IN
+Figure	NNP
+3.c	NN
+.	.
+
+
+We	PRP
+now	RB
+discuss	VBP
+how	WRB
+language	NN
+Lp	NN
+satisï	NN
+¬	CD
+es	VBZ
+the	DT
+require	VBP
+-	:
+ments	NNS
+outlined	VBN
+earlier	RBR
+.	.
+
+First	RB
+,	,
+most	RBS
+â	RB
+$	$
+œneighborhoodsâ	CD
+$	$
+of	IN
+an	DT
+e	LS
+n	NN
+-	:
+tity	NN
+e	SYM
+-LRB-	-LRB-
+e.g.	FW
+,	,
+all	DT
+nodes	NNS
+within	IN
+two	CD
+hops	VBZ
+of	IN
+e	SYM
+on	IN
+ER	NN
+graph	NN
+G	NN
+-RRB-	-RRB-
+can	MD
+be	VB
+expressed	VBN
+with	IN
+a	DT
+set	NN
+of	IN
+inclusive	JJ
+and	CC
+exclusive	JJ
+data	NNS
+
+
+paths	NNS
+.	.
+
+Hence	RB
+,	,
+Lp	NN
+allows	VBZ
+us	PRP
+to	TO
+quickly	RB
+write	VB
+views	NNS
+that	WDT
+cap	VBP
+-	:
+ture	NN
+such	JJ
+neighborhood	NN
+,	,
+in	IN
+an	DT
+intuitive	JJ
+manner	NN
+.	.
+
+Second	JJ
+,	,
+eval	JJ
+-	:
+uating	VBG
+schema	NN
+paths	NNS
+amounts	VBZ
+to	TO
+performing	VBG
+selection	NN
+opera	NN
+-	:
+tions	NNS
+overG	NN
+.	.
+
+Hence	RB
+,	,
+views	NNS
+inLp	NN
+can	MD
+be	VB
+materialized	VBN
+quickly	RB
+.	.
+
+Finally	RB
+,	,
+if	IN
+a	DT
+user	NN
+edits	VBZ
+a	DT
+view	NN
+schema	NN
+-LRB-	-LRB-
+using	VBG
+a	DT
+wiki	JJ
+page	NN
+-RRB-	-RRB-
+,	,
+then	RB
+such	JJ
+edits	NNS
+can	MD
+be	VB
+quickly	RB
+mapped	VBN
+into	IN
+a	DT
+set	NN
+of	IN
+inclusive	JJ
+and	CC
+exclusive	JJ
+schema	NN
+paths	NNS
+,	,
+allowing	VBG
+us	PRP
+to	TO
+modify	VB
+the	DT
+view	NN
+schema	NN
+quickly	RB
+and	CC
+easily	RB
+-LRB-	-LRB-
+see	VB
+-LSB-	-LRB-
+13	CD
+-RSB-	-RRB-
+for	IN
+an	DT
+in-depth	JJ
+discus	NN
+-	:
+sion	NN
+-RRB-	-RRB-
+.	.
+
+
+Creating	VBG
+Views	NNS
+over	IN
+ER	NN
+Graph	NN
+G	NN
+:	:
+Now	RB
+that	IN
+we	PRP
+have	VBP
+de	IN
+-	:
+ï	NN
+¬	CD
+ned	VBD
+the	DT
+view	NN
+language	NN
+Lp	NN
+,	,
+we	PRP
+can	MD
+discuss	VB
+how	WRB
+Cwiki	NNP
+uses	VBZ
+Lp	NN
+to	TO
+create	VB
+views	NNS
+over	IN
+G.	NNP
+First	NNP
+,	,
+Cwiki	NNP
+decides	VBZ
+on	IN
+the	DT
+set	NN
+of	IN
+entities	NNS
+and	CC
+relations	NNS
+to	TO
+be	VB
+â	JJ
+$	$
+œwikiï	JJ
+¬	NN
+edâ	NN
+$	$
+.	.
+
+Currently	RB
+,	,
+for	IN
+simp	NN
+lic	SYM
+-	:
+ity	NN
+we	PRP
+consider	VBP
+all	DT
+entities	NNS
+,	,
+but	CC
+no	DT
+relations	NNS
+.	.
+
+Next	RB
+,	,
+for	IN
+each	DT
+entity	NN
+e	SYM
+of	IN
+a	DT
+particular	JJ
+type	NN
+-LRB-	-LRB-
+e.g.	FW
+,	,
+person	NN
+-RRB-	-RRB-
+,	,
+Cwiki	NN
+speciï	NN
+¬	CD
+es	VBZ
+a	DT
+default	NN
+view	NN
+schema	NN
+Vs	NNS
+that	WDT
+speciï	VBP
+¬	CD
+es	VBZ
+a	DT
+â	JJ
+$	$
+œneighborhoodâ	CD
+$	$
+of	IN
+e.	FW
+Cwiki	FW
+thus	RB
+speciï	VBP
+¬	CD
+es	NNS
+as	IN
+many	JJ
+default	NN
+view	NN
+schemas	NNS
+as	IN
+the	DT
+number	NN
+of	IN
+entity	NN
+types	NNS
+to	TO
+be	VB
+â	JJ
+$	$
+œwikiï	JJ
+¬	NN
+edâ	NN
+$	$
+.	.
+
+These	DT
+default	NN
+view	NN
+schemas	NNS
+are	VBP
+application	NN
+speciï	NN
+¬	CD
+c	NN
+.	.
+
+The	DT
+data	NNS
+of	IN
+the	DT
+views	NNS
+is	VBZ
+not	RB
+stored	VBN
+,	,
+but	CC
+will	MD
+be	VB
+materialized	VBN
+on	IN
+the	DT
+ï	NN
+¬	CD
+‚	CD
+y	NN
+,	,
+when	WRB
+creating	VBG
+and	CC
+refreshing	VBG
+wiki	JJ
+pages	NNS
+,	,
+which	WDT
+we	PRP
+discuss	VBP
+next	JJ
+.	.
+
+
+4.3	CD
+Converting	VBG
+Views	NNS
+to	TO
+Wiki	NNP
+Pages	NNP
+
+
+Given	VBN
+a	DT
+view	NN
+V	NN
+with	IN
+schema	NN
+Vs	NNS
+and	CC
+data	NNS
+Vd	NN
+as	IN
+deï	NN
+¬	CD
+ned	VBD
+above	RB
+,	,
+we	PRP
+now	RB
+discuss	VBP
+converting	VBG
+Vd	NN
+into	IN
+a	DT
+wiki	JJ
+page	NN
+W	NN
+.	.
+
+In	IN
+the	DT
+following	VBG
+,	,
+we	PRP
+introduce	VBP
+our	PRP$
+novel	JJ
+s-slot	NN
+solution	NN
+.	.
+
+We	PRP
+also	RB
+discuss	VBP
+some	DT
+other	JJ
+non-trivial	JJ
+design	NN
+issues	NNS
+,	,
+such	JJ
+as	IN
+the	DT
+ordering	VBG
+of	IN
+entities	NNS
+,	,
+the	DT
+formation	NN
+of	IN
+URLs	NNS
+and	CC
+the	DT
+use	NN
+of	IN
+schema	NN
+pages	NNS
+.	.
+
+
+A	DT
+Spectrum	NN
+of	IN
+Solutions	NNPS
+:	:
+Since	IN
+most	JJS
+current	JJ
+wiki	NNS
+data	NNS
+-LRB-	-LRB-
+e.g.	FW
+,	,
+Wikipedia	NNP
+-RRB-	-RRB-
+is	VBZ
+natural	JJ
+text	NN
+,	,
+the	DT
+straightforward	JJ
+solution	NN
+is	VBZ
+to	TO
+convert	VB
+Vd	NNP
+into	IN
+a	DT
+set	NN
+of	IN
+natural-language	JJ
+sentences	NNS
+.	.
+
+For	IN
+example	NN
+,	,
+suppose	VBP
+Vd	NN
+speciï	NN
+¬	CD
+es	NNS
+that	WDT
+person	NN
+X	NN
+works	VBZ
+for	IN
+orga	NN
+-	:
+nization	NN
+Y	NN
+.	.
+
+Then	RB
+we	PRP
+can	MD
+convert	VB
+this	DT
+into	IN
+sentence	NN
+â	NN
+$	$
+œX	JJ
+works	NNS
+for	IN
+Y	NN
+â	CD
+$	$
+in	IN
+wiki	JJ
+page	NN
+W.	NNP
+Knowing	VBG
+this	DT
+template	NN
+,	,
+if	IN
+a	DT
+user	NN
+later	RB
+modiï	NN
+¬	CD
+es	VBZ
+the	DT
+sentence	NN
+to	TO
+be	VB
+â	JJ
+$	$
+œ	JJ
+X	NN
+works	VBZ
+for	IN
+Y	NN
+
+
+â	RB
+$	$
+²	CD
+â	NN
+$	$
+,	,
+we	PRP
+can	MD
+still	RB
+parse	VB
+it	PRP
+back	RB
+,	,
+realize	VBP
+that	IN
+Y	NN
+has	VBZ
+been	VBN
+modiï	JJ
+¬	NN
+ed	VBD
+to	TO
+be	VB
+Y	NN
+
+
+â	RB
+$	$
+²	CD
+,	,
+then	RB
+update	VBP
+the	DT
+underlying	VBG
+database	NN
+G	NN
+accordingly	RB
+.	.
+
+
+This	DT
+was	VBD
+indeed	RB
+the	DT
+ï	NN
+¬	NN
+rst	NN
+solution	NN
+we	PRP
+tried	VBD
+.	.
+
+It	PRP
+is	VBZ
+very	RB
+easy	JJ
+for	IN
+users	NNS
+to	TO
+edit	VB
+natural-language	JJ
+wiki	NNS
+pages	NNS
+generated	VBN
+by	IN
+this	DT
+solution	NN
+.	.
+
+But	CC
+after	IN
+extensive	JJ
+experiments	NNS
+,	,
+we	PRP
+found	VBD
+that	IN
+it	PRP
+is	VBZ
+difï	JJ
+¬	NN
+cult	NN
+to	TO
+extract	NN
+and	CC
+update	VB
+structured	JJ
+data	NNS
+.	.
+
+The	DT
+set	NN
+of	IN
+templates	NNS
+that	IN
+we	PRP
+can	MD
+use	VB
+in	IN
+natural	JJ
+language	NN
+settings	NNS
+is	VBZ
+somewhat	RB
+limited	VBN
+;	:
+hence	RB
+,	,
+they	PRP
+get	VBP
+reused	VBN
+in	IN
+multiple	JJ
+con	NN
+-	:
+texts	NNS
+,	,
+causing	VBG
+many	JJ
+ambiguities	NNS
+for	IN
+the	DT
+extractor	NN
+.	.
+
+Further	JJ
+-	:
+more	RBR
+,	,
+suppose	VB
+G	NN
+has	VBZ
+been	VBN
+updated	VBN
+so	IN
+that	IN
+X	NN
+is	VBZ
+now	RB
+working	VBG
+for	IN
+Y	NN
+
+
+â	RB
+$	$
+²	CD
+.	.
+
+To	TO
+update	VB
+
+
+W	NN
+with	IN
+this	DT
+information	NN
+,	,
+we	PRP
+must	MD
+be	VB
+able	JJ
+to	TO
+pinpoint	VB
+the	DT
+location	NN
+of	IN
+Y	NN
+.	.
+
+This	DT
+is	VBZ
+equivalent	JJ
+to	TO
+being	VBG
+able	JJ
+to	TO
+extract	VB
+Y	NN
+,	,
+a	DT
+difï	NN
+¬	NN
+cult	NN
+task	NN
+,	,
+as	IN
+discussed	VBN
+earlier	RBR
+.	.
+
+
+For	IN
+these	DT
+reasons	NNS
+,	,
+we	PRP
+wanted	VBD
+a	DT
+solution	NN
+where	WRB
+it	PRP
+is	VBZ
+trivial	JJ
+to	TO
+pinpoint	VB
+pieces	NNS
+of	IN
+structured	JJ
+data	NNS
+contributed	VBN
+by	IN
+Vd	NN
+.	.
+
+A	DT
+wiki	JJ
+page	NN
+then	RB
+contains	VBZ
+multiple	JJ
+â	NN
+$	$
+œislandsâ	JJ
+$	$
+of	IN
+structured	JJ
+da	NN
+ta	NN
+from	IN
+Vd	NN
+,	,
+in	IN
+a	DT
+â	JJ
+$	$
+œseaâ	JJ
+$	$
+of	IN
+natural	JJ
+text	NN
+contributed	VBN
+by	IN
+users	NNS
+.	.
+
+We	PRP
+refer	VBP
+to	TO
+these	DT
+â	JJ
+$	$
+œislandsâ	JJ
+$	$
+as	IN
+s-slots	NNS
+-LRB-	-LRB-
+shorthand	NN
+for	IN
+structured	VBN
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+8	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+slot	NN
+-RRB-	-RRB-
+.	.
+
+Below	IN
+we	PRP
+describe	VBP
+this	DT
+s-slot	NN
+solution	NN
+.	.
+
+In	IN
+Section	NN
+7	CD
+we	PRP
+discuss	VBP
+how	WRB
+the	DT
+natural-language	NN
+and	CC
+s-slot	NN
+solutions	NNS
+lie	VBP
+at	IN
+two	CD
+ends	NNS
+of	IN
+a	DT
+spectrum	NN
+of	IN
+solutions	NNS
+that	WDT
+trade	VBP
+off	RP
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+ease	NN
+of	IN
+user	NN
+edit	NN
+,	,
+-LRB-	-LRB-
+b	LS
+-RRB-	-RRB-
+ease	NN
+of	IN
+extracting	VBG
+and	CC
+updating	VBG
+structured	JJ
+data	NNS
+,	,
+and	CC
+-LRB-	-LRB-
+c	LS
+-RRB-	-RRB-
+ease	NN
+of	IN
+moving	VBG
+data	NNS
+around	IN
+on	IN
+wiki	NN
+pages	NNS
+.	.
+
+The	DT
+S-Slot	NNP
+Solution	NN
+:	:
+We	PRP
+ï	VBD
+¬	CD
+rst	NN
+deï	NN
+¬	CD
+ne	NN
+the	DT
+notion	NN
+of	IN
+at	IN
+-	:
+tribute	NN
+path	NN
+.	.
+
+Recall	VB
+that	IN
+a	DT
+schema	NN
+path	NN
+p	NN
+has	VBZ
+the	DT
+form	NN
+T1	NN
+-LRB-	-LRB-
+C1	NN
+-RRB-	-RRB-
+-LCB-	-LRB-
+A1	NN
+-RCB-	-RRB-
+...	:
+Tn	NN
+-LRB-	-LRB-
+Cn	NN
+-RRB-	-RRB-
+-LCB-	-LRB-
+An	DT
+-RCB-	-RRB-
+.	.
+
+We	PRP
+say	VBP
+that	IN
+p	NN
+is	VBZ
+an	DT
+attribute	NN
+path	NN
+iff	NN
+A1	NN
+Anâˆ	NN
+'	''
+1	CD
+are	VBP
+empty	JJ
+sets	NNS
+and	CC
+An	DT
+identiï	NN
+¬	CD
+es	VBZ
+a	DT
+single	JJ
+attribute	NN
+a.	NN
+Thus	RB
+,	,
+p	NN
+uniquely	RB
+identiï	JJ
+¬	NN
+es	VBZ
+attribute	NN
+a.	NN
+Examples	NNS
+of	IN
+attribute	NN
+paths	NNS
+are	VBP
+person	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+1	CD
+-RRB-	-RRB-
+-LCB-	-LRB-
+title	NN
+-RCB-	-RRB-
+and	CC
+
+
+person	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+1	CD
+-RRB-	-RRB-
+.	.
+
+write-pub	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+5	CD
+-RRB-	-RRB-
+.	.
+
+pub	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+14	CD
+-RRB-	-RRB-
+-LCB-	-LRB-
+name	NN
+-RCB-	-RRB-
+.	.
+
+
+An	DT
+s-slot	NN
+s	VBZ
+then	RB
+has	VBZ
+the	DT
+form	NN
+<	JJR
+#	#
+p	NN
+=	JJ
+v	LS
+#	#
+>	JJR
+,	,
+which	WDT
+speciï	VBP
+¬	CD
+es	NNS
+that	IN
+the	DT
+attribute	NN
+a	DT
+uniquely	RB
+identiï	JJ
+¬	NN
+ed	VBN
+by	IN
+the	DT
+attribute	NN
+path	NN
+p	NN
+takes	VBZ
+value	NN
+v	LS
+.	.
+
+An	DT
+example	NN
+of	IN
+wiki	NN
+text	NN
+including	VBG
+an	DT
+s-slot	NN
+is	VBZ
+
+
+<	JJR
+#	#
+person	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+1	CD
+-RRB-	-RRB-
+-LCB-	-LRB-
+name	NN
+-RCB-	-RRB-
+=	JJ
+David	NNP
+DeWitt	NNP
+#	#
+>	JJR
+works	NNS
+for	IN
+<	JJR
+#	#
+person	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+1	CD
+-RRB-	-RRB-
+.	.
+
+work-org	NN
+.	.
+
+org	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+13	CD
+-RRB-	-RRB-
+-LCB-	-LRB-
+name	NN
+-RCB-	-RRB-
+=	JJ
+UW	NN
+#	#
+>	JJR
+since	IN
+1976	CD
+.	.
+
+
+When	WRB
+a	DT
+wiki	JJ
+page	NN
+is	VBZ
+rendered	VBN
+into	IN
+an	DT
+HTML	NNP
+page	NN
+,	,
+only	RB
+the	DT
+value	NN
+v	LS
+of	IN
+an	DT
+s-slot	NN
+<	JJR
+#	#
+p	NN
+=	JJ
+v	LS
+#	#
+>	JJR
+is	VBZ
+presented	VBN
+while	IN
+other	JJ
+parts	NNS
+,	,
+as	IN
+meta	NN
+data	NNS
+,	,
+are	VBP
+suppressed	VBN
+.	.
+
+Thus	RB
+the	DT
+HTML	NNP
+presentation	NN
+of	IN
+the	DT
+above	JJ
+example	NN
+wiki	NN
+text	NN
+will	MD
+dis	SYM
+-	:
+play	VB
+â	RB
+$	$
+œDavid	JJ
+DeWitt	NNP
+works	VBZ
+for	IN
+UW	NNP
+since	IN
+1976â	CD
+$	$
+.	.
+
+
+An	DT
+s-slot	NN
+of	IN
+<	JJR
+#	#
+p	NN
+=	JJ
+v	LS
+#	#
+>	JJR
+can	MD
+be	VB
+marked	VBN
+with	IN
+a	DT
+â	JJ
+$	$
+œnodis	JJ
+-	:
+playâ	NN
+$	$
+attribute	VBP
+as	IN
+in	IN
+<	JJR
+#	#
+p	NN
+=	JJ
+v	LS
+nodisplay	NN
+#	#
+>	JJR
+.	.
+
+In	IN
+this	DT
+case	NN
+,	,
+the	DT
+whole	JJ
+s-slot	NN
+will	MD
+be	VB
+suppressed	VBN
+and	CC
+even	RB
+the	DT
+value	NN
+v	LS
+will	MD
+not	RB
+be	VB
+presented	VBN
+in	IN
+the	DT
+HTML	NNP
+page	NN
+.	.
+
+Such	JJ
+s-slots	NNS
+are	VBP
+useful	JJ
+when	WRB
+the	DT
+values	NNS
+are	VBP
+conï	NN
+¬	NN
+dence	NN
+scores	NNS
+used	VBN
+for	IN
+entity	NN
+order	NN
+-	:
+ing	NN
+,	,
+as	IN
+to	TO
+be	VB
+discussed	VBN
+shortly	RB
+.	.
+
+
+An	DT
+s-slot	NN
+of	IN
+<	JJR
+#	#
+p	NN
+=	JJ
+v	LS
+#	#
+>	JJR
+can	MD
+also	RB
+be	VB
+marked	VBN
+with	IN
+an	DT
+â	JJ
+$	$
+œinvalidâ	JJ
+$	$
+attribute	VBP
+as	IN
+in	IN
+<	JJR
+#	#
+p	NN
+=	JJ
+v	LS
+invalid	JJ
+#	#
+>	JJR
+,	,
+indi	NN
+-	:
+cating	NN
+that	IN
+the	DT
+path	NN
+p	NN
+is	VBZ
+broken	VBN
+and	CC
+unsupported	JJ
+by	IN
+the	DT
+un	NN
+-	:
+derlying	NN
+database	NN
+,	,
+and	CC
+thus	RB
+,	,
+the	DT
+validity	NN
+of	IN
+the	DT
+value	NN
+v	LS
+ex	FW
+-	:
+pired	VBN
+.	.
+
+This	DT
+situation	NN
+is	VBZ
+generally	RB
+caused	VBN
+by	IN
+deletion	NN
+of	IN
+struc	NN
+-	:
+tured	JJ
+data	NNS
+from	IN
+other	JJ
+related	JJ
+wiki	NNS
+pages	NNS
+.	.
+
+When	WRB
+a	DT
+page	NN
+con	NN
+-	:
+taining	VBG
+invalid	JJ
+structured	JJ
+data	NNS
+is	VBZ
+requested	VBN
+,	,
+the	DT
+â	JJ
+$	$
+œinvalidâ	JJ
+$	$
+at	IN
+-	:
+tributes	NNS
+will	MD
+be	VB
+added	VBN
+by	IN
+machine	NN
+for	IN
+the	DT
+corresponding	JJ
+s	NNS
+-	:
+slots	NNS
+.	.
+
+<	JJR
+#	#
+p	NN
+=	JJ
+v	LS
+invalid	JJ
+#	#
+>	JJR
+will	MD
+be	VB
+presented	VBN
+in	IN
+the	DT
+HTML	NNP
+page	NN
+as	IN
+â	NN
+$	$
+œv	JJ
+-LRB-	-LRB-
+invalid	JJ
+-RRB-	-RRB-
+â	RB
+$	$
+,	,
+reminding	VBG
+the	DT
+user	NN
+of	IN
+the	DT
+fact	NN
+and	CC
+leav	NN
+-	:
+ing	NN
+him/her	NN
+the	DT
+right	NN
+to	TO
+delete	VB
+the	DT
+s-slot	NN
+or	CC
+ï	NN
+¬	CD
+x	CC
+the	DT
+broken	JJ
+pat	NN
+h.	NN
+
+
+Now	RB
+let	VB
+V	NN
+be	VB
+a	DT
+view	NN
+with	IN
+schema	NN
+Vs	NNS
+that	WDT
+Cwiki	NNP
+has	VBZ
+de	FW
+-	:
+ï	NN
+¬	CD
+ned	VBD
+over	IN
+database	NN
+G	NN
+-LRB-	-LRB-
+see	VB
+Section	NNP
+4.2	CD
+-RRB-	-RRB-
+.	.
+
+Then	RB
+Cwiki	JJ
+gener	NN
+-	:
+ates	VBZ
+the	DT
+default	NN
+wiki	NN
+pageW	NN
+for	IN
+V	NN
+in	IN
+two	CD
+steps	NNS
+:	:
+-LRB-	-LRB-
+a	LS
+-RRB-	-RRB-
+evaluates	VBZ
+Vs	NNS
+over	IN
+G	NN
+to	TO
+obtain	VB
+the	DT
+view	NN
+data	NNS
+Vd	NN
+,	,
+which	WDT
+is	VBZ
+a	DT
+subgraph	NN
+of	IN
+the	DT
+ER	NN
+graph	NN
+G	NN
+,	,
+then	RB
+-LRB-	-LRB-
+b	NN
+-RRB-	-RRB-
+convert	VBP
+Vd	NNP
+into	IN
+a	DT
+wiki	JJ
+page	NN
+W	NN
+using	VBG
+s-slots	NNS
+interleaved	VBN
+with	IN
+English	JJ
+text	NN
+.	.
+
+
+Step	NN
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+is	VBZ
+relatively	RB
+straightforward	JJ
+.	.
+
+Step	NN
+-LRB-	-LRB-
+b	NN
+-RRB-	-RRB-
+can	MD
+be	VB
+ex	FW
+-	:
+ecuted	VBN
+in	IN
+many	JJ
+different	JJ
+ways	NNS
+.	.
+
+We	PRP
+currently	RB
+adopt	VB
+a	DT
+de	FW
+-	:
+fault	NN
+solution	NN
+.	.
+
+Suppose	VB
+we	PRP
+know	VBP
+that	DT
+view	NN
+V	NN
+-LRB-	-LRB-
+and	CC
+thus	RB
+wiki	JJ
+page	NN
+W	NN
+-RRB-	-RRB-
+describes	VBZ
+entity	NN
+e	SYM
+,	,
+e.g.	FW
+,	,
+David	NNP
+DeWitt	NNP
+.	.
+
+Then	RB
+our	PRP$
+default	NN
+solution	NN
+ï	NN
+¬	CD
+rst	NN
+generates	VBZ
+the	DT
+line	NN
+<	JJR
+#person	CD
+-LRB-	-LRB-
+id	NN
+=	JJ
+1	CD
+-RRB-	-RRB-
+-LCB-	-LRB-
+name	NN
+-RCB-	-RRB-
+=	JJ
+David	NNP
+DeW	NNP
+itt	NN
+#	#
+>	JJR
+as	IN
+the	DT
+title	NN
+of	IN
+the	DT
+wiki	NN
+
+
+Input	NN
+:	:
+Output	NN
+:	:
+
+
+View	NNP
+data	NNS
+graph	NN
+Vd	NN
+describing	VBG
+entity	NN
+e.	VBD
+Wiki	JJ
+page	NN
+W.	NN
+
+
+1	LS
+.	.
+
+initialize	VB
+W	NNP
+to	TO
+be	VB
+empty	JJ
+;	:
+
+
+2	LS
+.	.
+
+make	VB
+title	NN
+of	IN
+W	NN
+the	DT
+s-slot	NN
+corresponding	VBG
+to	TO
+the	DT
+name	NN
+attribute	NN
+of	IN
+e	SYM
+;	:
+3	LS
+.	.
+
+create	VB
+a	DT
+section	NN
+S	NN
+in	IN
+W	NN
+for	IN
+the	DT
+attributes	NNS
+of	IN
+e	SYM
+;	:
+
+
+4	LS
+.	.
+
+FOR	IN
+each	DT
+selected	VBN
+attribute	NN
+type	NN
+a	DT
+of	IN
+e	SYM
+other	JJ
+than	IN
+name	NN
+in	IN
+Vd	NNP
+DO	NNP
+5	CD
+.	.
+
+insert	VB
+the	DT
+s-slot	NN
+corresponding	VBG
+to	TO
+a	DT
+into	IN
+S	NN
+;	:
+
+
+6	CD
+.	.
+
+FOR	IN
+each	DT
+relationship	NN
+type	NN
+r	NN
+of	IN
+e	SYM
+in	IN
+Vd	NNP
+DO	NNP
+
+
+7	CD
+.	.
+
+create	VB
+a	DT
+section	NN
+Sr	NNP
+in	IN
+W	NNP
+for	IN
+r	NN
+;	:
+
+
+8	CD
+.	.
+
+identify	VB
+a	DT
+set	NN
+P	NN
+of	IN
+data	NNS
+paths	NNS
+from	IN
+Vd	NN
+corresponding	VBG
+to	TO
+r	NN
+;	:
+
+
+9	CD
+.	.
+
+IF	IN
+P	NN
+is	VBZ
+sortable	JJ
+THEN	RB
+sort	NN
+P	NN
+;	:
+
+
+10	CD
+.	.
+
+FOR	IN
+each	DT
+edge	NN
+-LRB-	-LRB-
+e	SYM
+,	,
+f	LS
+-RRB-	-RRB-
+corresponding	VBG
+to	TO
+an	DT
+instance	NN
+of	IN
+r	NN
+DO	NN
+11	CD
+.	.
+
+create	VB
+an	DT
+item	NN
+I	PRP
+in	IN
+Sr	NNP
+;	:
+
+
+12	CD
+.	.
+
+identify	VB
+a	DT
+subset	NN
+Pf	NN
+âŠ	NN
+†	CD
+P	NN
+of	IN
+paths	NNS
+that	WDT
+share	VBP
+-LRB-	-LRB-
+e	LS
+,	,
+f	LS
+-RRB-	-RRB-
+;	:
+
+
+13	CD
+.	.
+
+insert	NN
+into	IN
+I	PRP
+the	DT
+s-slots	NNS
+corresponding	VBG
+to	TO
+all	DT
+selected	VBN
+attributes	NNS
+in	IN
+Pf	NN
+;	:
+
+
+Figure	NNP
+8	CD
+.	.
+
+Generating	NNP
+wiki	JJ
+page	NN
+W	NN
+from	IN
+view	NN
+data	NNS
+Vd	NN
+
+
+page	NN
+.	.
+
+Next	RB
+,	,
+it	PRP
+displays	VBZ
+the	DT
+attributes	NNS
+of	IN
+e	LS
+,	,
+then	RB
+the	DT
+relation	NN
+-	:
+ships	NNS
+.	.
+
+Figure	NNP
+3	CD
+.	.
+
+d	NN
+shows	VBZ
+how	WRB
+the	DT
+data	NNS
+graph	NN
+Vd	NN
+in	IN
+Figure	NNP
+3.c	NN
+may	MD
+have	VB
+been	VBN
+displayed	VBN
+in	IN
+a	DT
+wiki	JJ
+page	NN
+.	.
+
+In	IN
+the	DT
+following	VBG
+,	,
+we	PRP
+explain	VBP
+the	DT
+algorithmic	JJ
+details	NNS
+about	IN
+how	WRB
+to	TO
+generate	VB
+a	DT
+wiki	JJ
+page	NN
+W	NN
+from	IN
+a	DT
+view	NN
+data	NNS
+graph	NN
+Vd	NN
+.	.
+
+
+The	DT
+Algorithm	NNP
+Generating	NNP
+W	NNP
+from	IN
+Vd	NNP
+:	:
+The	DT
+algorithm	NN
+presented	VBN
+in	IN
+Figure	NNP
+8	CD
+generates	VBZ
+a	DT
+wiki	JJ
+page	NN
+W	NN
+from	IN
+a	DT
+given	VBN
+view	NN
+data	NNS
+graph	NN
+Vd	NN
+for	IN
+entity	NN
+e	LS
+.	.
+
+In	IN
+line	NN
+1	CD
+,	,
+W	NNP
+is	VBZ
+initialized	VBN
+to	TO
+be	VB
+empty	JJ
+.	.
+
+In	IN
+line	NN
+2	CD
+,	,
+the	DT
+s-slot	NN
+corresponding	VBG
+to	TO
+the	DT
+name	NN
+attribute	NN
+of	IN
+e	SYM
+is	VBZ
+made	VBN
+title	NN
+of	IN
+W	NN
+.	.
+
+In	IN
+lines	NNS
+3â	RB
+$	$
+``	``
+4	CD
+,	,
+a	DT
+section	NN
+is	VBZ
+created	VBN
+in	IN
+W	NN
+for	IN
+other	JJ
+selected	VBN
+attributes	NNS
+of	IN
+e	LS
+,	,
+that	WDT
+provides	VBZ
+the	DT
+basic	JJ
+attributional	JJ
+information	NN
+describing	VBG
+e	LS
+.	.
+
+In	IN
+lines	NNS
+5â	RB
+$	$
+``	``
+13	CD
+,	,
+a	DT
+section	NN
+is	VBZ
+created	VBN
+in	IN
+W	NN
+for	IN
+each	DT
+relationship	NN
+type	NN
+.	.
+
+
+Each	DT
+section	NN
+is	VBZ
+labeled	VBN
+properly	RB
+with	IN
+a	DT
+uniform	JJ
+default	NN
+look	NN
+.	.
+
+This	DT
+can	MD
+be	VB
+done	VBN
+since	IN
+in	IN
+building	VBG
+an	DT
+initial	JJ
+community	NN
+portal	NN
+W	NN
+,	,
+the	DT
+only	JJ
+participating	VBG
+user	NN
+is	VBZ
+the	DT
+portal	JJ
+builder	NN
+,	,
+for	IN
+whom	WP
+the	DT
+semantics	NNS
+of	IN
+each	DT
+attribute	NN
+type	NN
+,	,
+entity	NN
+type	NN
+and	CC
+relationship	NN
+type	NN
+are	VBP
+transparent	JJ
+to	TO
+him/her	VB
+since	IN
+he/she	NN
+was	VBD
+the	DT
+one	NN
+who	WP
+created	VBD
+the	DT
+initial	JJ
+view	NN
+schema	NN
+Vs.	NNP
+The	DT
+selec	NN
+-	:
+tion	NN
+of	IN
+view	NN
+V	NN
+delivers	VBZ
+the	DT
+builder	NN
+'s	POS
+intention	NN
+and	CC
+the	DT
+look	NN
+of	IN
+the	DT
+wiki	JJ
+page	NN
+represents	VBZ
+his/her	JJR
+preferences	NNS
+.	.
+
+For	IN
+the	DT
+same	JJ
+reason	NN
+,	,
+in	IN
+line	NN
+7	CD
+,	,
+the	DT
+data	NNS
+paths	NNS
+in	IN
+Vd	NN
+for	IN
+relationship	NN
+type	NN
+r	NN
+can	MD
+be	VB
+extracted	VBN
+properly	RB
+.	.
+
+Notice	NNP
+that	IN
+Vd	NNP
+itself	PRP
+does	VBZ
+not	RB
+em	SYM
+-	:
+bed	NN
+such	JJ
+information	NN
+that	WDT
+how	WRB
+it	PRP
+should	MD
+be	VB
+decomposed	VBN
+and	CC
+presented	VBN
+.	.
+
+Rather	RB
+,	,
+the	DT
+extraction	NN
+mechanisms	NNS
+are	VBP
+hard-coded	JJ
+for	IN
+each	DT
+relationship	NN
+section	NN
+.	.
+
+For	IN
+example	NN
+,	,
+for	IN
+the	DT
+â	NN
+$	$
+œwritesâ	JJ
+$	$
+relationship	NN
+,	,
+the	DT
+paths	NNS
+of	IN
+type	NN
+person.write-pub	NN
+.	.
+
+pub.write	NN
+-	:
+pub.person	NN
+starting	VBG
+at	IN
+entity	NN
+e	SYM
+are	VBP
+extracted	VBN
+from	IN
+Vd	NN
+.	.
+
+
+In	IN
+line	NN
+8	CD
+,	,
+the	DT
+extracted	VBN
+paths	NNS
+are	VBP
+possibly	RB
+sorted	VBN
+if	IN
+the	DT
+or	CC
+-	:
+dering	VBG
+information	NN
+is	VBZ
+provided	VBN
+in	IN
+the	DT
+paths	NNS
+.	.
+
+In	IN
+lines	NNS
+9â	RB
+$	$
+``	``
+13	CD
+,	,
+t	NN
+he	PRP
+extracted	VBD
+paths	NNS
+are	VBP
+grouped	VBN
+such	JJ
+that	IN
+each	DT
+group	NN
+corresponds	VBZ
+to	TO
+a	DT
+unique	JJ
+instance	NN
+of	IN
+the	DT
+relationship	NN
+type	NN
+r.	NN
+Then	RB
+,	,
+the	DT
+s	NNS
+-	:
+slots	NNS
+for	IN
+the	DT
+selected	VBN
+attributes	NNS
+of	IN
+each	DT
+group	NN
+form	VBP
+an	DT
+item	NN
+and	CC
+the	DT
+item	NN
+is	VBZ
+inserted	VBN
+into	IN
+the	DT
+section	NN
+.	.
+
+
+The	DT
+portal	JJ
+builder	NN
+has	VBZ
+every	DT
+reason	NN
+to	TO
+capture	VB
+the	DT
+prefer	VBP
+-	:
+ences	NNS
+of	IN
+the	DT
+majority	NN
+of	IN
+users	NNS
+.	.
+
+The	DT
+above	JJ
+hard-coded	JJ
+inter	NN
+-	:
+pretation	NN
+mechanism	NN
+translates	VBZ
+Vd	NN
+into	IN
+a	DT
+default	NN
+wiki	JJ
+page	NN
+W	NN
+,	,
+so	RB
+that	IN
+the	DT
+initial	JJ
+community	NN
+portal	JJ
+mathw	NN
+features	NNS
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+9	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+HTML	NNP
+pages	NNS
+with	IN
+a	DT
+uniform	JJ
+look	NN
+that	WDT
+is	VBZ
+easy	JJ
+to	TO
+the	DT
+eyes	NNS
+of	IN
+the	DT
+majority	NN
+of	IN
+users	NNS
+.	.
+
+Later	RB
+,	,
+W	NN
+would	MD
+be	VB
+edited	VBN
+by	IN
+dif	NN
+-	:
+ferent	JJ
+individuals	NNS
+,	,
+and	CC
+this	DT
+default	NN
+interpretation	NN
+mechanism	NN
+will	MD
+not	RB
+be	VB
+used	VBN
+in	IN
+updatingW	NN
+by	IN
+machine	NN
+,	,
+in	IN
+order	NN
+not	RB
+to	TO
+in	IN
+-	:
+tervene	NN
+users	NNS
+'	POS
+intentions	NNS
+and	CC
+interpretations	NNS
+.	.
+
+Instead	RB
+,	,
+all	PDT
+the	DT
+fresh	JJ
+structured	JJ
+contents	NNS
+will	MD
+be	VB
+inserted	VBN
+into	IN
+a	DT
+special	JJ
+sec	NN
+-	:
+tion	NN
+called	VBN
+â	RB
+$	$
+œNewâ	JJ
+$	$
+,	,
+from	IN
+which	WDT
+users	NNS
+can	MD
+pick	VB
+up	RP
+items	NNS
+and	CC
+move	VB
+them	PRP
+around	IN
+according	VBG
+to	TO
+their	PRP$
+own	JJ
+preferences	NNS
+.	.
+
+
+Ordering	NNP
+of	IN
+Entities	NNPS
+:	:
+Handling	VBG
+the	DT
+ordering	VBG
+of	IN
+entities	NNS
+is	VBZ
+a	DT
+non-trivial	JJ
+design	NN
+issue	NN
+.	.
+
+In	IN
+many	JJ
+cases	NNS
+,	,
+entities	NNS
+have	VBP
+a	DT
+natu	NN
+-	:
+ral	NN
+ordering	VBG
+depending	VBG
+on	IN
+how	WRB
+much	JJ
+they	PRP
+relate	VBP
+to	TO
+a	DT
+common	JJ
+entity	NN
+.	.
+
+For	IN
+example	NN
+,	,
+the	DT
+related	JJ
+people	NNS
+of	IN
+a	DT
+person	NN
+can	MD
+be	VB
+or	CC
+-	:
+dered	VBN
+by	IN
+the	DT
+closeness	NN
+of	IN
+their	PRP$
+relationships	NNS
+to	TO
+that	DT
+person	NN
+.	.
+
+The	DT
+related	JJ
+topics	NNS
+of	IN
+a	DT
+person	NN
+can	MD
+be	VB
+ordered	VBN
+by	IN
+the	DT
+degree	NN
+of	IN
+interest	NN
+and	CC
+involvement	NN
+of	IN
+that	DT
+person	NN
+in	IN
+those	DT
+topics	NNS
+.	.
+
+As	IN
+an	DT
+-	:
+other	JJ
+obvious	JJ
+example	NN
+,	,
+all	PDT
+the	DT
+authors	NNS
+of	IN
+a	DT
+publication	NN
+must	MD
+be	VB
+ordered	VBN
+by	IN
+how	WRB
+they	PRP
+appear	VBP
+in	IN
+the	DT
+publication	NN
+.	.
+
+To	TO
+capture	VB
+the	DT
+ordering	VBG
+information	NN
+,	,
+we	PRP
+assign	VBP
+each	DT
+involving	VBG
+relation	NN
+-	:
+ship	VB
+a	DT
+conï	NN
+¬	NN
+dence	NN
+score	NN
+as	IN
+attribute	NN
+.	.
+
+
+In	IN
+order	NN
+for	IN
+applicable	JJ
+entities	NNS
+to	TO
+appear	VB
+ordered	VBN
+in	IN
+the	DT
+HTML	NNP
+page	NN
+,	,
+the	DT
+conï	NN
+¬	NN
+dence	NN
+score	NN
+attribute	NN
+needs	VBZ
+to	TO
+be	VB
+se	FW
+-	:
+lected	VBN
+in	IN
+Vs.	NNP
+Then	RB
+,	,
+the	DT
+corresponding	JJ
+data	NNS
+paths	NNS
+in	IN
+Vd	NNP
+will	MD
+present	VB
+this	DT
+ordering	VBG
+information	NN
+and	CC
+be	VB
+ordered	VBN
+properly	RB
+by	IN
+the	DT
+algorithm	NN
+-LRB-	-LRB-
+line	NN
+9	CD
+-RRB-	-RRB-
+convertingVd	NN
+toW	NN
+.	.
+
+The	DT
+corresponding	JJ
+s-slots	NNS
+in	IN
+W	NN
+will	MD
+be	VB
+marked	VBN
+with	IN
+â	JJ
+$	$
+œnodisplayâ	JJ
+$	$
+and	CC
+thus	RB
+those	DT
+actual	JJ
+conï	NN
+¬	NN
+dence	NN
+score	NN
+values	NNS
+will	MD
+not	RB
+be	VB
+displayed	VBN
+in	IN
+the	DT
+HTML	NNP
+page	NN
+.	.
+
+This	DT
+handling	NN
+of	IN
+entity	NN
+ordering	VBG
+is	VBZ
+not	RB
+meant	VBN
+to	TO
+be	VB
+systematic	JJ
+and	CC
+sophisticated	JJ
+to	TO
+cover	VB
+arbitrary	JJ
+ordering	VBG
+needs	NNS
+;	:
+rather	RB
+,	,
+it	PRP
+focuses	VBZ
+on	IN
+simplicity	NN
+and	CC
+adequacy	NN
+in	IN
+terms	NNS
+of	IN
+fulï	NN
+¬	NN
+lling	VBG
+the	DT
+basic	JJ
+ordering	VBG
+functionality	NN
+.	.
+
+
+Formation	NN
+of	IN
+URLs	NNS
+:	:
+The	DT
+formation	NN
+of	IN
+URLs	NNS
+raises	VBZ
+another	DT
+non-trivial	JJ
+design	NN
+issue	NN
+.	.
+
+For	IN
+the	DT
+HTML	NNP
+page	NN
+speciï	NN
+¬	CD
+ed	VBN
+by	IN
+a	DT
+URL	NN
+of	IN
+http://dblife-labs.cs.wisc.edu/wiki	NN
+-	:
+test/index	NN
+.	.
+
+php/David	JJ
+DeWitt	NNP
+,	,
+the	DT
+corresponding	JJ
+wiki	JJ
+page	NN
+will	MD
+have	VB
+a	DT
+URL	NN
+of	IN
+http://dblife-labs.cs.wisc.edu/wiki	NN
+-	:
+test/index	NN
+.	.
+
+php?title	NN
+=	JJ
+David	NNP
+DeWitt	NNP
+&	CC
+action	NN
+=	JJ
+edit	NN
+.	.
+
+â	RB
+$	$
+œDavid	JJ
+De	NNP
+-	:
+Wittâ	NNP
+$	$
+is	VBZ
+the	DT
+page	NN
+title	NN
+for	IN
+the	DT
+HTML	NNP
+page	NN
+as	RB
+well	RB
+as	IN
+the	DT
+wiki	JJ
+page	NN
+.	.
+
+As	IN
+page	NN
+title	NN
+is	VBZ
+the	DT
+only	JJ
+replaceable	JJ
+element	NN
+in	IN
+a	DT
+URL	NN
+,	,
+the	DT
+formation	NN
+of	IN
+URLs	NNS
+comes	VBZ
+down	RP
+to	TO
+the	DT
+formation	NN
+of	IN
+page	NN
+titles	NNS
+.	.
+
+
+Within	IN
+the	DT
+same	JJ
+namespace	NN
+,	,
+each	DT
+entity	NN
+e	SYM
+must	MD
+have	VB
+a	DT
+unique	JJ
+page	NN
+title	NN
+.	.
+
+A	DT
+natural	JJ
+solution	NN
+to	TO
+achieve	VB
+this	DT
+unique	JJ
+-	:
+ness	NN
+is	VBZ
+to	TO
+use	VB
+entity	NN
+ID	NN
+'s	POS
+as	IN
+titles	NNS
+.	.
+
+However	RB
+,	,
+such	JJ
+page	NN
+titles	NNS
+are	VBP
+neither	DT
+informative	JJ
+to	TO
+users	NNS
+nor	CC
+cooperative	JJ
+with	IN
+search	NN
+engines	NNS
+.	.
+
+Entity	NN
+names	NNS
+seem	VBP
+to	TO
+be	VB
+the	DT
+most	RBS
+informative	JJ
+titles	NNS
+;	:
+however	RB
+,	,
+they	PRP
+can	MD
+not	RB
+guarantee	VB
+the	DT
+uniqueness	NN
+since	IN
+multiple	JJ
+entities	NNS
+may	MD
+share	VB
+the	DT
+same	JJ
+name	NN
+.	.
+
+In	IN
+our	PRP$
+design	NN
+,	,
+a	DT
+mapping	NN
+table	NN
+is	VBZ
+maintained	VBN
+to	TO
+map	VB
+each	DT
+entity	NN
+ID	NN
+to	TO
+a	DT
+unique	JJ
+page	NN
+title	NN
+.	.
+
+In	IN
+general	JJ
+cases	NNS
+,	,
+entity	NN
+names	NNS
+are	VBP
+used	VBN
+as	IN
+page	NN
+titles	NNS
+.	.
+
+In	IN
+cases	NNS
+a	DT
+title	NN
+is	VBZ
+used	VBN
+by	IN
+another	DT
+entity	NN
+,	,
+a	DT
+concatenation	NN
+of	IN
+entity	NN
+name	NN
+and	CC
+ID	NN
+will	MD
+be	VB
+used	VBN
+.	.
+
+
+In	IN
+particular	JJ
+,	,
+we	PRP
+create	VBP
+a	DT
+mapping	NN
+table	NN
+with	IN
+three	CD
+ï	NN
+¬	CD
+elds	NNS
+eid	VBD
+,	,
+title	NN
+,	,
+and	CC
+type	NN
+,	,
+storing	VBG
+entity	NN
+ID	NN
+'s	POS
+,	,
+page	NN
+titles	NNS
+and	CC
+en	IN
+-	:
+
+
+tity	NN
+types	NNS
+respectively	RB
+.	.
+
+Both	DT
+eid	NN
+and	CC
+title	NN
+are	VBP
+keys	NNS
+.	.
+
+When	WRB
+a	DT
+new	JJ
+entity	NN
+e	SYM
+is	VBZ
+inserted	VBN
+into	IN
+the	DT
+database	NN
+,	,
+a	DT
+default	NN
+wiki	JJ
+page	NN
+will	MD
+be	VB
+created	VBN
+for	IN
+e	SYM
+and	CC
+the	DT
+mapping	NN
+table	NN
+is	VBZ
+used	VBN
+to	TO
+generate	VB
+the	DT
+page	NN
+title	NN
+.	.
+
+First	RB
+,	,
+the	DT
+entity	NN
+ID	NN
+of	IN
+e	LS
+,	,
+say	VBP
+15	CD
+,	,
+is	VBZ
+checked	VBN
+against	IN
+existing	VBG
+ones	NNS
+in	IN
+the	DT
+mapping	NN
+table	NN
+.	.
+
+If	IN
+no	DT
+du	NNP
+-	:
+plicates	NNS
+,	,
+the	DT
+name	NN
+of	IN
+e	LS
+,	,
+say	VBP
+â	JJ
+$	$
+œDavid	JJ
+DeWittâ	NNP
+$	$
+,	,
+is	VBZ
+then	RB
+checked	VBN
+against	IN
+existing	VBG
+page	NN
+titles	NNS
+in	IN
+the	DT
+table	NN
+.	.
+
+If	IN
+no	DT
+duplicates	NNS
+,	,
+15	CD
+and	CC
+â	VB
+$	$
+œDavid	JJ
+DeWittâ	NNP
+$	$
+will	MD
+form	VB
+a	DT
+tuple	NN
+and	CC
+be	VB
+inserted	VBN
+into	IN
+the	DT
+table	NN
+.	.
+
+Otherwise	RB
+,	,
+a	DT
+concatenation	NN
+of	IN
+â	JJ
+$	$
+œDavid	JJ
+DeWittâ	NNP
+$	$
+and	CC
+15	CD
+,	,
+i.e.	FW
+,	,
+â	VB
+$	$
+œDavid	JJ
+DeWitt15â	NN
+$	$
+,	,
+will	MD
+be	VB
+used	VBN
+instead	RB
+as	IN
+the	DT
+page	NN
+title	NN
+.	.
+
+Obviously	RB
+,	,
+the	DT
+page	NN
+titles	NNS
+thus-generated	JJ
+are	VBP
+guaranteed	VBN
+to	TO
+be	VB
+unique	JJ
+.	.
+
+
+Use	NN
+of	IN
+Schema	NNP
+Page	NNP
+:	:
+As	IN
+to	TO
+be	VB
+discussed	VBN
+in	IN
+Â	NN
+§	CD
+5.1	CD
+,	,
+we	PRP
+expose	VBP
+view	NN
+schemas	NNS
+in	IN
+wiki	JJ
+pages	NNS
+to	TO
+allow	VB
+user	NN
+editing	NN
+.	.
+
+Thus	RB
+,	,
+a	DT
+default	NN
+schema	NN
+page	NN
+Ws	NNS
+will	MD
+be	VB
+created	VBN
+for	IN
+each	DT
+default	NN
+wiki	JJ
+page	NN
+W.	NNP
+Ws	NNP
+will	MD
+have	VB
+the	DT
+same	JJ
+page	NN
+ti	SYM
+-	:
+tle	NN
+as	IN
+W	NN
+but	CC
+under	IN
+the	DT
+namespace	NN
+of	IN
+â	JJ
+$	$
+œSchemaâ	JJ
+$	$
+.	.
+
+For	IN
+ex	FW
+-	:
+ample	JJ
+,	,
+the	DT
+URL	NN
+for	IN
+the	DT
+schema	NN
+page	NN
+of	IN
+the	DT
+wiki	JJ
+page	NN
+of	IN
+David	NNP
+DeWitt	NNP
+will	MD
+be	VB
+http://dblife-labs.cs.wisc.edu/wiki	JJ
+-	:
+test/index	NN
+.	.
+
+php/Schema	NNP
+:	:
+David	NNP
+DeWitt	NNP
+.	.
+
+
+Since	IN
+all	PDT
+the	DT
+default	NN
+schema	NN
+pages	NNS
+of	IN
+the	DT
+same	JJ
+type	NN
+dif	NN
+-	:
+fer	FW
+only	RB
+in	IN
+entity	NN
+ID	NN
+,	,
+they	PRP
+can	MD
+be	VB
+automatically	RB
+generated	VBN
+and	CC
+bulk-loaded	VBN
+into	IN
+the	DT
+system	NN
+when	WRB
+building	VBG
+the	DT
+initial	JJ
+com	NN
+-	:
+munity	NN
+portal	NN
+.	.
+
+In	IN
+particular	JJ
+,	,
+all	PDT
+the	DT
+entities	NNS
+are	VBP
+ï	NN
+¬	CD
+rst	NN
+regi	NNS
+stered	VBN
+in	IN
+the	DT
+mapping	NN
+table	NN
+.	.
+
+Then	RB
+,	,
+a	DT
+default	NN
+schema	NN
+page	NN
+is	VBZ
+gener	NN
+-	:
+ated	VBN
+for	IN
+each	DT
+tuple	NN
+in	IN
+the	DT
+table	NN
+according	VBG
+to	TO
+the	DT
+entity	NN
+type	NN
+stored	VBN
+in	IN
+the	DT
+table	NN
+.	.
+
+Next	RB
+,	,
+all	PDT
+these	DT
+schema	NN
+pages	NNS
+are	VBP
+written	VBN
+in	IN
+a	DT
+single	JJ
+ï	NN
+¬	CD
+le	DT
+,	,
+which	WDT
+is	VBZ
+then	RB
+bulk-loaded	JJ
+into	IN
+the	DT
+database	NN
+supporting	VBG
+the	DT
+wiki	NN
+system	NN
+,	,
+without	IN
+utilizing	VBG
+the	DT
+interface	NN
+of	IN
+the	DT
+system	NN
+.	.
+
+
+The	DT
+set	NN
+of	IN
+all	DT
+wiki	NNS
+pages	NNS
+generated	VBN
+as	IN
+above	JJ
+constitutes	VBZ
+the	DT
+initial	JJ
+community	NN
+portal	NN
+W	NN
+.	.
+
+The	DT
+next	JJ
+section	NN
+discusses	VBZ
+how	WRB
+users	NNS
+can	MD
+contribute	VB
+to	TO
+this	DT
+portal	NN
+.	.
+
+
+5	CD
+Managing	VBG
+User	NN
+Contributions	NNS
+
+
+In	IN
+this	DT
+section	NN
+we	PRP
+discuss	VBP
+what	WP
+users	NNS
+can	MD
+edit	VB
+and	CC
+how	WRB
+to	TO
+process	VB
+those	DT
+edits	NNS
+.	.
+
+
+5.1	CD
+What	WDT
+Can	MD
+Users	NNS
+Edit	VB
+?	.
+
+
+Consider	VB
+a	DT
+user	NN
+U	NNP
+editing	NN
+a	DT
+wiki	JJ
+page	NN
+W	NN
+.	.
+
+We	PRP
+allow	VBP
+U	NNP
+to	TO
+edit	VB
+both	CC
+text	NN
+and	CC
+structured	JJ
+data	NNS
+of	IN
+W.	NNP
+Editing	NNP
+text	NN
+is	VBZ
+trivial	JJ
+.	.
+
+Editing	VBG
+structured	JJ
+data	NNS
+of	IN
+W	NNP
+means	VBZ
+U	NNP
+can	MD
+modify	VB
+or	CC
+delete	VB
+s-slots	NNS
+,	,
+or	CC
+insert	VB
+new	JJ
+ones	NNS
+.	.
+
+
+In	IN
+modifying	VBG
+an	DT
+s-slot	NN
+s	VBZ
+=	JJ
+<	JJR
+#p	NN
+=	JJ
+v	LS
+#	#
+>	JJR
+,	,
+U	NNP
+can	MD
+modify	VB
+the	DT
+attribute	NN
+path	NN
+p	NN
+as	RB
+well	RB
+as	IN
+value	NN
+v	LS
+,	,
+but	CC
+is	VBZ
+not	RB
+allowed	VBN
+to	TO
+modify	VB
+the	DT
+formatting	NN
+characters	NNS
+-LRB-	-LRB-
+e.g.	FW
+,	,
+<	JJR
+#	#
+,	,
+=	JJ
+,	,
+and	CC
+#	#
+>	JJR
+-RRB-	-RRB-
+.	.
+
+If	IN
+U	NNP
+were	VBD
+to	TO
+do	VB
+so	RB
+,	,
+then	RB
+the	DT
+parser	NN
+would	MD
+fail	VB
+to	TO
+recognize	VB
+the	DT
+s-slot	NN
+,	,
+and	CC
+hence	RB
+would	MD
+interpret	VB
+the	DT
+modiï	NN
+¬	CD
+ed	VBD
+s-slot	NN
+as	IN
+text	NN
+,	,
+not	RB
+structured	VBN
+data	NNS
+.	.
+
+
+Let	VB
+V	NNP
+be	VB
+the	DT
+underlying	VBG
+view	NN
+of	IN
+W.	NNP
+Conceptually	NNP
+,	,
+editing	NN
+structured	VBN
+data	NNS
+of	IN
+W	NN
+means	VBZ
+editing	NN
+one	CD
+or	CC
+a	DT
+combination	NN
+of	IN
+the	DT
+following	VBG
+components	NNS
+:	:
+the	DT
+data	NNS
+of	IN
+V	NN
+,	,
+the	DT
+schema	NN
+of	IN
+V	NN
+,	,
+the	DT
+data	NNS
+of	IN
+G	NN
+,	,
+and	CC
+the	DT
+schema	NN
+of	IN
+G	NN
+-LRB-	-LRB-
+denoted	VBN
+Vd	NNP
+,	,
+Vs	NNP
+,	,
+Gd	NNP
+,	,
+Gs	NN
+,	,
+respectively	RB
+-RRB-	-RRB-
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+10	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+In	IN
+traditional	JJ
+settings	NNS
+such	JJ
+as	IN
+RDBMS	NN
+,	,
+ordinary	JJ
+users	NNS
+can	MD
+only	RB
+edit	VB
+view	NN
+data	NNS
+and	CC
+thus	RB
+also	RB
+the	DT
+underlying	VBG
+relational	NN
+database	NN
+data	NNS
+.	.
+
+This	DT
+maps	VBZ
+to	TO
+editing	NN
+Vd	NN
+and	CC
+Gd	NN
+in	IN
+our	PRP$
+case	NN
+.	.
+
+Should	MD
+we	PRP
+also	RB
+allow	VBP
+users	NNS
+to	TO
+edit	VB
+Vs	NNS
+and	CC
+Gs	NN
+?	.
+
+We	PRP
+decided	VBD
+to	TO
+allow	VB
+these	DT
+actions	NNS
+,	,
+because	IN
+there	EX
+is	VBZ
+often	RB
+a	DT
+natural	JJ
+need	NN
+to	TO
+do	VB
+so	RB
+.	.
+
+For	IN
+example	NN
+,	,
+a	DT
+user	NN
+U	NN
+may	MD
+naturally	RB
+want	VB
+to	TO
+modify	VB
+W	NNP
+so	IN
+that	IN
+it	PRP
+no	RB
+longer	RB
+displays	VBZ
+emails	NNS
+.	.
+
+To	TO
+do	VB
+this	DT
+,	,
+U	NNP
+must	MD
+modify	VB
+Vs.	NNP
+U	NNP
+can	MD
+not	RB
+modify	VB
+Vd	NN
+because	IN
+this	DT
+would	MD
+mean	VB
+removing	VBG
+certain	JJ
+emails	NNS
+from	IN
+G	NN
+,	,
+not	RB
+the	DT
+desired	VBN
+effect	NN
+.	.
+
+As	IN
+another	DT
+example	NN
+,	,
+a	DT
+user	NN
+U	NN
+may	MD
+naturally	RB
+want	VB
+to	TO
+add	VB
+to	TO
+an	DT
+entitye	NN
+-LRB-	-LRB-
+described	VBN
+inW	NN
+-RRB-	-RRB-
+a	DT
+new	JJ
+attributeathat	NN
+has	VBZ
+not	RB
+existed	VBN
+so	RB
+far	RB
+in	IN
+the	DT
+portal	NN
+.	.
+
+To	TO
+do	VB
+this	DT
+,	,
+U	NNP
+must	MD
+modify	VB
+both	DT
+Gs	NN
+and	CC
+Vs.	NN
+
+
+The	DT
+next	JJ
+question	NN
+then	RB
+is	VBZ
+:	:
+what	WP
+is	VBZ
+the	DT
+best	JJS
+way	NN
+to	TO
+allow	VB
+users	NNS
+to	TO
+modify	VB
+Vs	NNS
+and	CC
+Gs	NN
+?	.
+
+A	DT
+possible	JJ
+option	NN
+is	VBZ
+to	TO
+expose	VB
+these	DT
+schemas	NNS
+in	IN
+wiki	JJ
+pages	NNS
+,	,
+for	IN
+users	NNS
+to	TO
+edit	VB
+.	.
+
+For	IN
+example	NN
+,	,
+we	PRP
+can	MD
+expose	VB
+Vs	NNS
+in	IN
+a	DT
+wiki	JJ
+page	NN
+Ws	NNS
+.	.
+
+Then	RB
+when	WRB
+U	NNP
+edits	VBZ
+W	NNP
+,	,
+we	PRP
+interpret	VB
+such	JJ
+edits	NNS
+as	IN
+editing	NN
+Vd	NN
+,	,
+and	CC
+when	WRB
+U	NNP
+edits	VBZ
+Ws	NNP
+,	,
+we	PRP
+interpret	VB
+such	JJ
+edits	NNS
+as	IN
+editing	NN
+Vs.	NN
+
+
+The	DT
+above	JJ
+option	NN
+would	MD
+greatly	RB
+reduce	VB
+the	DT
+ambiguity	NN
+in	IN
+interpreting	VBG
+user	NN
+edits	NNS
+.	.
+
+However	RB
+,	,
+we	PRP
+decided	VBD
+against	IN
+it	PRP
+,	,
+be	VB
+-	:
+cause	NN
+we	PRP
+found	VBD
+from	IN
+experimentation	NN
+that	IN
+it	PRP
+is	VBZ
+difï	JJ
+¬	NN
+cult	NN
+for	IN
+ordinary	JJ
+,	,
+database-illiterate	JJ
+users	NNS
+to	TO
+remember	VB
+this	DT
+option	NN
+.	.
+
+In	IN
+fact	NN
+,	,
+users	NNS
+often	RB
+are	VBP
+not	RB
+even	RB
+aware	JJ
+of	IN
+the	DT
+distinction	NN
+be	VB
+-	:
+tween	NN
+data	NNS
+and	CC
+schema	NN
+edits	NNS
+.	.
+
+Instead	RB
+,	,
+they	PRP
+appear	VBP
+to	TO
+prefer	VB
+to	TO
+edit	VB
+only	RB
+the	DT
+wiki	JJ
+page	NN
+W	NN
+,	,
+then	RB
+rely	VBP
+on	IN
+Cwiki	NNP
+to	TO
+assist	VB
+them	PRP
+in	IN
+executing	VBG
+the	DT
+right	JJ
+kind	NN
+of	IN
+edit	NN
+actions	NNS
+.	.
+
+
+For	IN
+these	DT
+reasons	NNS
+,	,
+we	PRP
+allow	VBP
+U	NNP
+to	TO
+edit	VB
+only	RB
+wiki	JJ
+page	NN
+W	NN
+,	,
+then	RB
+ask	VB
+U	NNP
+-LRB-	-LRB-
+in	IN
+English	NNP
+-RRB-	-RRB-
+to	TO
+clarify	VB
+if	IN
+he	PRP
+or	CC
+she	PRP
+intends	VBZ
+to	TO
+edit	VB
+the	DT
+data	NNS
+or	CC
+the	DT
+schema	NN
+.	.
+
+In	IN
+what	WDT
+follows	VBZ
+we	PRP
+discuss	VBP
+this	DT
+pro-	JJ
+cess	NN
+in	IN
+detail	NN
+.	.
+
+
+5.2	CD
+Infer	NNP
+&	CC
+Execute	NNP
+Structured	NNP
+Edits	VBZ
+
+
+Suppose	VB
+user	NN
+U	NN
+has	VBZ
+edited	VBN
+wiki	NN
+pageW	NN
+into	IN
+Wâ	NNP
+$	$
+²	CD
+.	.
+
+Then	RB
+we	PRP
+can	MD
+parse	VB
+Wâ	NNP
+$	$
+²	CD
+to	TO
+extract	VB
+a	DT
+text	NN
+portionTâ	NN
+$	$
+²	CD
+and	CC
+a	DT
+structured	JJ
+data	NNS
+portion	NN
+Dâ	NN
+$	$
+²	CD
+.	.
+
+The	DT
+text	NN
+portion	NN
+can	MD
+immediately	RB
+be	VB
+stored	VBN
+in	IN
+a	DT
+text	NN
+database	NN
+T	NN
+-LRB-	-LRB-
+see	VB
+Figure	NNP
+2	LS
+-RRB-	-RRB-
+.	.
+
+The	DT
+structured	JJ
+data	NNS
+portion	NN
+Dâ	NN
+$	$
+²	CD
+consists	VBZ
+of	IN
+all	DT
+s-slots	NNS
+in	IN
+W.	NNP
+
+
+Next	RB
+,	,
+we	PRP
+can	MD
+merge	VB
+all	DT
+s-slots	NNS
+in	IN
+Dâ	NNP
+$	$
+²	CD
+together	RB
+to	TO
+obtain	VB
+an	DT
+ER	NN
+graph	NN
+that	IN
+we	PRP
+will	MD
+refer	VB
+to	TO
+as	IN
+V	NN
+
+
+â	RB
+$	$
+²	CD
+
+
+d.	NNP
+Given	VBN
+that	IN
+each	DT
+s	NNS
+-	:
+slot	NN
+maps	NNS
+uniquely	RB
+into	IN
+an	DT
+attribute	NN
+in	IN
+the	DT
+ER	NN
+graph	NN
+G	NN
+,	,
+the	DT
+merging	VBG
+process	NN
+is	VBZ
+relatively	RB
+straightforward	JJ
+,	,
+and	CC
+hence	RB
+will	MD
+not	RB
+be	VB
+discussed	VBN
+further	RB
+,	,
+for	IN
+lack	NN
+of	IN
+space	NN
+.	.
+
+Our	PRP$
+problem	NN
+now	RB
+is	VBZ
+:	:
+given	VBN
+V	NN
+
+
+â	RB
+$	$
+²	CD
+
+
+d	NN
+,	,
+infer	VBP
+what	WP
+actions	NNS
+user	NN
+
+
+U	NNP
+intends	VBZ
+to	TO
+execute	VB
+on	IN
+Vd	NNP
+,	,
+Vs	NNP
+,	,
+Gd	NNP
+,	,
+Gs	NN
+,	,
+then	RB
+execute	VB
+those	DT
+actions	NNS
+.	.
+
+
+Basic	JJ
+Relational	JJ
+and	CC
+ER	NN
+Actions	NNS
+:	:
+To	TO
+solve	VB
+the	DT
+above	JJ
+prob	NN
+-	:
+lem	NN
+,	,
+we	PRP
+ï	VBD
+¬	CD
+rst	NN
+deï	NN
+¬	CD
+ne	NN
+a	DT
+set	NN
+of	IN
+basic	JJ
+actions	NNS
+that	WDT
+U	NNP
+can	MD
+execute	VB
+over	IN
+Vd	NNP
+,	,
+Vs	NNP
+,	,
+Gd	NNP
+,	,
+Gs	NN
+.	.
+
+For	IN
+example	NN
+,	,
+basic	JJ
+actions	NNS
+on	IN
+Vd	NN
+in	IN
+-	:
+clude	NN
+modifying	VBG
+the	DT
+value	NN
+of	IN
+an	DT
+entity	NN
+or	CC
+relation	NN
+attribute	NN
+,	,
+and	CC
+deleting	VBG
+an	DT
+entity	NN
+.	.
+
+Basic	JJ
+actions	NNS
+on	IN
+Vs	NNS
+include	VBP
+inserting	VBG
+a	DT
+new	JJ
+entity	NN
+and	CC
+deleting	VBG
+an	DT
+attribute	NN
+of	IN
+a	DT
+relationship	NN
+.	.
+
+We	PRP
+have	VBP
+implemented	VBN
+each	DT
+basic	JJ
+action	NN
+as	IN
+a	DT
+program	NN
+over	IN
+the	DT
+temporal	JJ
+relational	NN
+database	NN
+that	WDT
+stores	NNS
+G	NN
+.	.
+
+The	DT
+complete	JJ
+sets	NNS
+of	IN
+basic	JJ
+actions	NNS
+on	IN
+Vd	NNP
+,	,
+Vs	NNP
+,	,
+Gd	NNP
+and	CC
+Gs	NN
+are	VBP
+given	VBN
+in	IN
+Table	NNP
+1	CD
+.	.
+
+
+Basic	JJ
+ER	NN
+Actions	NNS
+
+
+a1	NN
+:	:
+Modify	VB
+attribute	NN
+value	NN
+a2	NN
+:	:
+Insert	VB
+an	DT
+existing	VBG
+attribute	NN
+a3	NN
+:	:
+Insert	VB
+a	DT
+new	JJ
+attribute	NN
+a4	NN
+:	:
+Insert	VB
+an	DT
+existing	VBG
+entity	NN
+a5	NN
+:	:
+Insert	VB
+a	DT
+new	JJ
+entity	NN
+a6	NN
+:	:
+Insert	VB
+an	DT
+existing	VBG
+relationship	NN
+a7	NN
+:	:
+Insert	VB
+a	DT
+new	JJ
+relationship	NN
+a8	NN
+:	:
+Delete	VB
+an	DT
+attribute	NN
+a9	NN
+:	:
+Delete	VB
+an	DT
+entity	NN
+
+
+a10	NN
+:	:
+Delete	VB
+a	DT
+relationship	NN
+
+
+Vd	NN
+
+
+Vs	NNS
+
+
+Gd	JJ
+opt	VB
+.	.
+
+opt	VB
+.	.
+
+opt	VB
+.	.
+
+opt	VB
+.	.
+
+opt	VB
+.	.
+
+opt	VB
+.	.
+
+
+Gs	NN
+
+
+
+
+
+opt	VB
+.	.
+
+opt	VB
+.	.
+
+opt	VB
+.	.
+
+
+Table	NNP
+2	CD
+.	.
+
+Basic	JJ
+ER	NN
+actions	NNS
+that	IN
+we	PRP
+have	VBP
+deï	NN
+¬	NN
+ned	VBD
+.	.
+
+
+Appendix	NN
+A	NN
+give	VBP
+their	PRP$
+implementations	NNS
+.	.
+
+Abusing	VBG
+notation	NN
+,	,
+we	PRP
+will	MD
+refer	VB
+to	TO
+these	DT
+basic	JJ
+actions	NNS
+as	IN
+basic	JJ
+relational	JJ
+ac	NN
+-	:
+tions	NNS
+,	,
+to	TO
+distinguish	VB
+them	PRP
+from	IN
+the	DT
+basic	JJ
+ER	NN
+actions	NNS
+that	IN
+we	PRP
+will	MD
+introduce	VB
+soon	RB
+below	RB
+.	.
+
+
+Now	RB
+given	VBN
+V	NN
+
+
+â	RB
+$	$
+²	CD
+
+
+d	NN
+,	,
+we	PRP
+must	MD
+infer	VB
+the	DT
+sequence	NN
+of	IN
+basic	JJ
+rela	NN
+-	:
+tional	JJ
+actions	NNS
+that	IN
+we	PRP
+believe	VBP
+user	NN
+U	NNP
+intends	VBZ
+to	TO
+execute	VB
+.	.
+
+To	TO
+do	VB
+this	DT
+in	IN
+a	DT
+manageable	JJ
+fashion	NN
+,	,
+we	PRP
+introduce	VBP
+an	DT
+intermediate	JJ
+user	NN
+interface	NN
+:	:
+the	DT
+ER	NN
+interface	NN
+.	.
+
+This	DT
+interface	NN
+would	MD
+display	VB
+an	DT
+ER	NN
+data	NNS
+graph	NN
+-LRB-	-LRB-
+e.g.	FW
+,	,
+Vd	NN
+-RRB-	-RRB-
+in	IN
+a	DT
+graphical	JJ
+fashion	NN
+,	,
+and	CC
+al	NNP
+-	:
+low	JJ
+users	NNS
+to	TO
+execute	VB
+a	DT
+number	NN
+of	IN
+basic	JJ
+ER	NN
+actions	NNS
+,	,
+such	JJ
+as	IN
+modifying	VBG
+a	DT
+node	NN
+or	CC
+an	DT
+edge	NN
+,	,
+deleting	VBG
+a	DT
+node	NN
+,	,
+etc.	FW
+.	.
+
+
+The	DT
+ï	NN
+¬	NN
+rst	NN
+column	NN
+of	IN
+Table	NNP
+2	CD
+lists	NNS
+the	DT
+ten	CD
+basic	JJ
+ER	NN
+actions	NNS
+we	PRP
+have	VBP
+deï	NN
+¬	NN
+ned	VBD
+.	.
+
+We	PRP
+have	VBP
+implemented	VBN
+each	DT
+ER	NN
+action	NN
+as	IN
+a	DT
+sequence	NN
+of	IN
+relational	JJ
+actions	NNS
+.	.
+
+For	IN
+example	NN
+,	,
+action	NN
+a1	NN
+-LRB-	-LRB-
+see	VB
+the	DT
+table	NN
+-RRB-	-RRB-
+translates	VBZ
+into	IN
+the	DT
+sole	JJ
+relational	JJ
+action	NN
+that	WDT
+modi	SYM
+-	:
+ï	NN
+¬	CD
+es	VBZ
+the	DT
+value	NN
+of	IN
+an	DT
+entity	NN
+attribute	NN
+-LRB-	-LRB-
+in	IN
+both	DT
+Vd	NN
+and	CC
+Gd	NN
+-RRB-	-RRB-
+.	.
+
+
+However	RB
+,	,
+it	PRP
+turns	VBZ
+out	RP
+that	IN
+an	DT
+ER	NN
+action	NN
+can	MD
+be	VB
+ambigu	NN
+-	:
+ous	NN
+,	,
+in	IN
+that	IN
+it	PRP
+can	MD
+map	VB
+into	IN
+different	JJ
+sequences	NNS
+of	IN
+relational	JJ
+actions	NNS
+,	,
+depending	VBG
+on	IN
+the	DT
+user	NN
+intention	NN
+,	,
+as	IN
+the	DT
+following	VBG
+ex	FW
+-	:
+ample	JJ
+illustrates	VBZ
+:	:
+
+
+Example	NN
+5.1	CD
+.	.
+
+Suppose	VB
+a	DT
+user	NN
+U	NNP
+applies	VBZ
+action	NN
+a8	NN
+-LRB-	-LRB-
+see	VB
+Table	NNP
+2	LS
+-RRB-	-RRB-
+to	TO
+delete	VB
+an	DT
+attribute	NN
+x	NN
+of	IN
+,	,
+say	VB
+,	,
+a	DT
+person	NN
+entity	NN
+e	SYM
+in	IN
+an	DT
+ER	NN
+graph	NN
+,	,
+e.g.	FW
+,	,
+Vd	NN
+.	.
+
+Then	RB
+U	NNP
+may	MD
+mean	VB
+to	TO
+delete	VB
+x	CC
+from	IN
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+Vs	NNS
+,	,
+i.e.	FW
+,	,
+do	VBP
+not	RB
+display	VB
+x	NN
+in	IN
+view	NN
+V	NN
+,	,
+or	CC
+-LRB-	-LRB-
+b	LS
+-RRB-	-RRB-
+Gd	NN
+,	,
+thus	RB
+declaring	VBG
+that	IN
+entity	NN
+e	SYM
+does	VBZ
+not	RB
+have	VB
+attribute	NN
+x	NN
+,	,
+or	CC
+-LRB-	-LRB-
+c	LS
+-RRB-	-RRB-
+Gs	NN
+,	,
+thus	RB
+declaring	VBG
+that	IN
+attribute	NN
+x	NN
+does	VBZ
+not	RB
+exist	VB
+for	IN
+person	NN
+-LRB-	-LRB-
+the	DT
+entity	NN
+type	NN
+of	IN
+e	LS
+-RRB-	-RRB-
+.	.
+
+
+Since	IN
+we	PRP
+do	VBP
+not	RB
+know	VB
+U	NNP
+'s	POS
+intention	NN
+,	,
+if	IN
+U	NNP
+executes	VBZ
+ac	SYM
+-	:
+tion	NN
+a8	NN
+,	,
+then	RB
+we	PRP
+ï	VBP
+¬	CD
+rst	JJ
+ask	VB
+U	NNP
+-LRB-	-LRB-
+in	IN
+an	DT
+English	JJ
+phrase	NN
+-RRB-	-RRB-
+to	TO
+choose	VB
+among	IN
+options	NNS
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+-	:
+-LRB-	-LRB-
+c	LS
+-RRB-	-RRB-
+in	IN
+the	DT
+above	JJ
+example	NN
+.	.
+
+Next	RB
+,	,
+we	PRP
+trans	JJ
+-	:
+late	JJ
+a8	NN
+into	IN
+the	DT
+appropriate	JJ
+sequence	NN
+of	IN
+relational	JJ
+actions	NNS
+,	,
+de	FW
+-	:
+pending	VBG
+onU	NNP
+'s	POS
+answer	NN
+.	.
+
+For	IN
+example	NN
+,	,
+ifU	NN
+chooses	VBZ
+option	NN
+-LRB-	-LRB-
+c	NN
+-RRB-	-RRB-
+,	,
+then	RB
+the	DT
+sequence	NN
+of	IN
+relational	JJ
+actions	NNS
+is	VBZ
+:	:
+delete	VB
+x	NN
+from	IN
+Vs	NNS
+,	,
+delete	VB
+x	CC
+from	IN
+Gd	JJ
+,	,
+delete	VB
+x	CC
+from	IN
+Gs	NN
+.	.
+
+
+For	IN
+each	DT
+ER	NN
+action	NN
+,	,
+Columns	NNS
+2-5	CD
+of	IN
+Table	NNP
+2	CD
+shows	NNS
+which	WDT
+components	NNS
+-LRB-	-LRB-
+Vd	NNP
+,	,
+Vs	NNP
+,	,
+etc.	FW
+-RRB-	-RRB-
+that	IN
+the	DT
+action	NN
+may	MD
+modify	VB
+-LRB-	-LRB-
+â	RB
+$	$
+œopt.â	JJ
+$	$
+means	VBZ
+â	RB
+$	$
+œoptionalâ	JJ
+$	$
+,	,
+depending	VBG
+on	IN
+external	JJ
+conditions	NNS
+such	JJ
+as	IN
+user	NN
+intentions	NNS
+-RRB-	-RRB-
+.	.
+
+
+Mapping	NN
+User	NN
+Edits	VBZ
+into	IN
+Sequence	NN
+of	IN
+Basic	JJ
+Actions	NNS
+:	:
+With	IN
+the	DT
+introduction	NN
+of	IN
+the	DT
+ER	NN
+interface	NN
+,	,
+our	PRP$
+problem	NN
+can	MD
+be	VB
+recast	VBN
+as	IN
+follows	VBZ
+.	.
+
+When	WRB
+user	NN
+U	NNP
+edits	VBZ
+the	DT
+structured	JJ
+data	NNS
+portion	NN
+of	IN
+wiki	JJ
+page	NN
+W	NN
+,	,
+we	PRP
+view	VBP
+it	PRP
+to	TO
+be	VB
+equivalent	JJ
+to	TO
+U	NNP
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+11	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+a1	NN
+a2	NN
+a3	NN
+a4	NN
+a5	NN
+a6	NN
+a7	NN
+a8	NN
+a9	NN
+a10	NN
+
+
+Actions	NNS
+on	IN
+Vd	NNP
+Modify	VB
+an	DT
+entity	NN
+attribute	NN
+value	NN
+Modify	VB
+a	DT
+relation	NN
+attribute	NN
+value	NN
+Insert	VB
+an	DT
+entity	NN
+attribute	NN
+Insert	VB
+a	DT
+relation	NN
+attribute	NN
+Insert	VB
+an	DT
+entity	NN
+
+
+Insert	VB
+a	DT
+relation	NN
+
+
+Delete	VB
+an	DT
+entity	NN
+attribute	NN
+Delete	VB
+a	DT
+relation	NN
+attribute	NN
+Delete	VB
+an	DT
+entity	NN
+
+
+Delete	VB
+a	DT
+relation	NN
+
+
+Actions	NNS
+on	IN
+Vs	NNS
+Insert	VBP
+an	DT
+entity	NN
+attribute	NN
+Insert	VB
+a	DT
+relation	NN
+attribute	NN
+Insert	VB
+an	DT
+entity	NN
+Insert	VB
+a	DT
+relation	NN
+Delete	VB
+an	DT
+entity	NN
+attribute	NN
+Delete	VB
+a	DT
+relation	NN
+attribute	NN
+Delete	VB
+an	DT
+entity	NN
+Delete	VB
+a	DT
+relation	NN
+
+
+Table	NNP
+1	CD
+.	.
+
+Basic	JJ
+relational	JJ
+actions	NNS
+on	IN
+Vd	NNP
+,	,
+Vs	NNP
+,	,
+Gd	NNP
+and	CC
+Gs	NN
+.	.
+
+
+Input	NN
+:	:
+
+
+Output	NN
+:	:
+
+
+Data	NNS
+graphs	NNS
+Vd	NN
+and	CC
+V	NN
+
+
+â	RB
+$	$
+²	CD
+
+
+d.	IN
+
+
+Vd	NN
+=	JJ
+-LRB-	-LRB-
+E	NN
+,	,
+R	NN
+,	,
+A	NN
+-RRB-	-RRB-
+,	,
+V	NN
+
+
+â	RB
+$	$
+²	CD
+â	NN
+$	$
+²	CD
+,	,
+
+
+d	NN
+=	JJ
+-LRB-	-LRB-
+E	NN
+
+
+Râ	NN
+$	$
+²	CD
+,	,
+Aâ	NNP
+$	$
+²	CD
+-RRB-	-RRB-
+,	,
+where	WRB
+E	NN
+,	,
+Eâ	NN
+$	$
+²	CD
+are	VBP
+sets	NNS
+of	IN
+entity	NN
+instances	NNS
+,	,
+R	NN
+,	,
+Râ	NN
+$	$
+²	CD
+are	VBP
+sets	NNS
+ofâ	VB
+$	$
+²	CD
+
+
+relationship	NN
+instances	NNS
+,	,
+and	CC
+A	NN
+,	,
+A	DT
+are	VBP
+sets	NNS
+of	IN
+attributes	NNS
+.	.
+
+Sequence	NN
+of	IN
+GUI	NNP
+actions	NNS
+SER	NN
+.	.
+
+
+1	LS
+.	.
+
+FOR	IN
+each	DT
+entity	NN
+instance	NN
+e	SYM
+âˆˆ	FW
+Eâ	FW
+$	$
+²	CD
+âˆ	NN
+'	''
+E	NN
+DO	NN
+
+
+2	LS
+.	.
+
+IF	IN
+entity	NN
+type	NN
+exists	VBZ
+THEN	RB
+append	VBP
+a4	NN
+to	TO
+SER	NN
+;	:
+
+
+3	LS
+.	.
+
+ELSE	RB
+append	VBP
+a5	NN
+to	TO
+SER	NN
+;	:
+
+
+4	LS
+.	.
+
+FOR	IN
+each	DT
+relationship	NN
+instance	NN
+r	NN
+âˆˆ	NN
+Râ	NN
+$	$
+²	CD
+âˆ	NN
+'	''
+R	NN
+DO	NN
+
+
+5	CD
+.	.
+
+IF	IN
+relationship	NN
+type	NN
+exists	VBZ
+THEN	RB
+append	VBP
+a6	NN
+to	TO
+SER	NN
+;	:
+6	CD
+.	.
+
+ELSE	RB
+append	VBP
+a7	NN
+to	TO
+SER	NN
+;	:
+
+
+7	CD
+.	.
+
+FOR	IN
+each	DT
+attribute	NN
+a	DT
+âˆˆ	JJ
+Aâ	NN
+$	$
+²	CD
+âˆ	NN
+'	''
+A	DT
+DO	NN
+
+
+8	CD
+.	.
+
+IF	IN
+attribute	NN
+type	NN
+exists	VBZ
+THEN	RB
+append	VBP
+a2	NN
+to	TO
+SER	NN
+;	:
+
+
+9	CD
+.	.
+
+ELSE	RB
+append	VBP
+a3	NN
+to	TO
+SER	NN
+;	:
+
+
+10	CD
+.	.
+
+FOR	IN
+each	DT
+attribute	NN
+a	DT
+âˆˆ	NN
+A	NN
+âˆ	NN
+'	''
+Aâ	NNP
+$	$
+²	CD
+DO	NN
+
+
+11	CD
+.	.
+
+append	NN
+a8	NN
+to	TO
+SER	NN
+;	:
+
+
+12	CD
+.	.
+
+FOR	IN
+each	DT
+relationship	NN
+instance	NN
+r	NN
+âˆˆ	NN
+R	NN
+âˆ	NN
+'	''
+Râ	NN
+$	$
+²	CD
+DO	NN
+
+
+13	CD
+.	.
+
+append	NN
+a10	NN
+to	TO
+SER	NN
+;	:
+
+
+14	CD
+.	.
+
+FOR	IN
+each	DT
+entity	NN
+instance	NN
+e	SYM
+âˆˆ	FW
+E	NN
+âˆ	NN
+'	''
+Eâ	NN
+$	$
+²	CD
+DO	NN
+
+
+15	CD
+.	.
+
+append	VB
+a9	NN
+to	TO
+SER	NN
+;	:
+
+
+16	CD
+.	.
+
+FOR	IN
+each	DT
+attribute	NN
+a	DT
+âˆˆ	NN
+A	NN
+âˆ	NN
+©	CD
+Aâ	NN
+$	$
+²	CD
+DO	NN
+
+
+17	CD
+.	.
+
+IF	IN
+it	PRP
+has	VBZ
+the	DT
+same	JJ
+value	NN
+in	IN
+Vd	NN
+and	CC
+V	NN
+
+
+â	RB
+$	$
+²	CD
+
+
+d	NN
+
+
+THEN	RB
+append	VBP
+a1	NN
+to	TO
+SER	NN
+;	:
+18	CD
+.	.
+
+Return	NN
+SER	NN
+;	:
+
+
+Figure	NNP
+9	CD
+.	.
+
+Generating	NNP
+SER	NN
+from	IN
+Vd	NN
+and	CC
+V	NN
+
+
+â	RB
+$	$
+²	CD
+d	NN
+
+
+editing	NN
+the	DT
+ER	NN
+graph	NN
+Vd	NN
+in	IN
+the	DT
+ER	NN
+interface	NN
+,	,
+using	VBG
+basic	JJ
+ER	NN
+actions	NNS
+.	.
+
+We	PRP
+do	VBP
+not	RB
+know	VB
+what	WP
+basic	JJ
+ER	NN
+actions	NNS
+U	NNP
+executes	VBZ
+.	.
+
+But	CC
+we	PRP
+do	VBP
+know	VB
+the	DT
+end	NN
+result	NN
+,	,
+which	WDT
+is	VBZ
+the	DT
+ER	NN
+graph	NN
+V	NN
+
+
+â	RB
+$	$
+²	CD
+
+
+d	NN
+,	,
+as	IN
+described	VBN
+earlier	RBR
+.	.
+
+
+Thus	RB
+,	,
+in	IN
+this	DT
+perspective	NN
+,	,
+U	NNP
+has	VBZ
+executed	VBN
+a	DT
+sequence	NN
+SER	NN
+of	IN
+basic	JJ
+ER	NN
+actions	NNS
+on	IN
+the	DT
+original	JJ
+ER	NN
+graph	NN
+Vd	NN
+,	,
+transform-â	JJ
+$	$
+²	CD
+
+
+ing	VBG
+it	PRP
+into	IN
+a	DT
+new	JJ
+ER	NN
+graph	NN
+V	NN
+
+
+d	NN
+.	.
+
+Our	PRP$
+task	NN
+then	RB
+is	VBZ
+to	TO
+â	VB
+$	$
+œreverse	JJ
+engineerâ	NN
+$	$
+SER	NN
+,	,
+by	IN
+comparingVd	NN
+with	IN
+V	NN
+
+
+â	RB
+$	$
+²	CD
+
+
+d	NN
+,	,
+then	RB
+execute	VB
+
+
+SER	NN
+.	.
+
+Figure	NNP
+9	CD
+shows	VBZ
+the	DT
+pseudo	NN
+code	NN
+of	IN
+our	PRP$
+current	JJ
+algorithm	NN
+to	TO
+reverse	VB
+engineer	NN
+SER	NN
+.	.
+
+
+To	TO
+â	VB
+$	$
+œpushâ	JJ
+$	$
+the	DT
+structured	JJ
+edits	NNS
+of	IN
+U	NNP
+into	IN
+the	DT
+database	NN
+G	NN
+,	,
+we	PRP
+then	RB
+execute	VBP
+the	DT
+actions	NNS
+of	IN
+SER	NN
+sequentially	RB
+.	.
+
+Recall	VB
+that	IN
+each	DT
+such	JJ
+action	NN
+is	VBZ
+a	DT
+basic	JJ
+ER	NN
+action	NN
+-LRB-	-LRB-
+see	VB
+Table	NNP
+2	LS
+-RRB-	-RRB-
+,	,
+which	WDT
+can	MD
+be	VB
+ambiguous	JJ
+.	.
+
+If	IN
+this	DT
+happens	VBZ
+,	,
+recall	NN
+also	RB
+that	IN
+we	PRP
+resolve	VBP
+the	DT
+problem	NN
+by	IN
+asking	VBG
+user	NN
+U	NN
+a	DT
+disambiguating	VBG
+question	NN
+.	.
+
+We	PRP
+then	RB
+execute	VBP
+each	DT
+basic	JJ
+ER	NN
+action	NN
+by	IN
+executing	VBG
+the	DT
+sequence	NN
+of	IN
+relational	JJ
+actions	NNS
+that	IN
+it	PRP
+maps	VBZ
+to	TO
+,	,
+as	IN
+described	VBN
+earlier	RBR
+.	.
+
+
+A	DT
+minor	JJ
+problem	NN
+is	VBZ
+thatSER	NN
+is	VBZ
+not	RB
+unique	JJ
+.	.
+
+Given	VBN
+any	DT
+two	CD
+Vd	NN
+and	CC
+V	NN
+
+
+â	RB
+$	$
+²	CD
+
+
+d	NN
+,	,
+multiple	JJ
+sequences	NNS
+of	IN
+actions	NNS
+
+
+SER	NN
+may	MD
+exist	VB
+that	IN
+all	DT
+transform	VBP
+Vd	NN
+into	IN
+V	NN
+
+
+â	RB
+$	$
+²	CD
+
+
+d.	NNP
+Fortunately	RB
+they	PRP
+all	DT
+have	VBP
+the	DT
+same	JJ
+
+
+Actions	NNS
+on	IN
+Gd	NNP
+Modify	VB
+an	DT
+entity	NN
+attribute	NN
+value	NN
+Modify	VB
+a	DT
+relation	NN
+attribute	NN
+value	NN
+Insert	VB
+an	DT
+entity	NN
+attribute	NN
+Insert	VB
+a	DT
+relation	NN
+attribute	NN
+Insert	VB
+an	DT
+entity	NN
+
+
+Insert	VB
+a	DT
+relation	NN
+
+
+Delete	VB
+an	DT
+entity	NN
+attribute	NN
+Delete	VB
+a	DT
+relation	NN
+attribute	NN
+Delete	VB
+an	DT
+entity	NN
+
+
+Delete	VB
+a	DT
+relation	NN
+
+
+Actions	NNS
+on	IN
+Gs	NN
+Create	VB
+an	DT
+entity	NN
+attribute	NN
+Create	VB
+a	DT
+relation	NN
+attribute	NN
+Create	VB
+an	DT
+entity	NN
+type	NN
+Create	VB
+a	DT
+relation	NN
+type	NN
+Drop	VBP
+an	DT
+entity	NN
+attribute	NN
+Drop	VBP
+a	DT
+relation	NN
+attribute	NN
+Delete	VB
+an	DT
+entity	NN
+type	NN
+Delete	VB
+a	DT
+relation	NN
+type	NN
+
+
+effect	NN
+,	,
+as	IN
+this	DT
+theorem	NN
+shows	VBZ
+:	:
+
+
+Theorem	NNP
+1	CD
+.	.
+
+Let	VB
+S1	NN
+,	,
+...	:
+,	,
+Sk	NN
+be	VB
+all	DT
+sequences	NNS
+of	IN
+basic	JJ
+ER	NN
+actions	NNS
+that	WDT
+transform	VBP
+a	DT
+Vd	NN
+into	IN
+a	DT
+V	NN
+
+
+â	RB
+$	$
+²	CD
+d	NN
+.	.
+
+Then	RB
+when	WRB
+executing	VBG
+any	DT
+
+
+Si	NNP
+,	,
+the	DT
+set	NN
+of	IN
+questions	NNS
+we	PRP
+pose	VBP
+to	TO
+user	NN
+U	NN
+will	MD
+be	VB
+the	DT
+same	JJ
+for	IN
+all	DT
+i	FW
+.	.
+
+If	IN
+U	NNP
+gives	VBZ
+the	DT
+same	JJ
+answers	NNS
+to	TO
+these	DT
+questions	NNS
+,	,
+then	RB
+executing	VBG
+any	DT
+Si	NNP
+,	,
+i	FW
+âˆˆ	FW
+-LSB-	-LRB-
+1	CD
+,	,
+k	NN
+-RSB-	-RRB-
+,	,
+results	VBZ
+in	IN
+the	DT
+same	JJ
+Vd	NN
+,	,
+Vs	NNP
+,	,
+Gd	NNP
+and	CC
+Gs	NN
+.	.
+
+
+5.3	CD
+Propagate	VB
+Structured	JJ
+Edits	NNS
+
+
+Let	VB
+W1	NN
+and	CC
+W2	NN
+be	VB
+two	CD
+wiki	NNS
+pages	NNS
+that	WDT
+describe	VBP
+two	CD
+re	SYM
+-	:
+searchers	NNS
+A	DT
+and	CC
+B	NN
+,	,
+respectively	RB
+.	.
+
+Suppose	VB
+A	DT
+and	CC
+B	NN
+share	NN
+one	CD
+publicationp	NN
+.	.
+
+Sopappears	NNS
+in	IN
+bothW1	NN
+andW2	NN
+.	.
+
+Now	RB
+suppose	VB
+that	IN
+a	DT
+user	NN
+U	NN
+has	VBZ
+edited	VBN
+p	NN
+in	IN
+W1	NN
+.	.
+
+When	WRB
+should	MD
+we	PRP
+update	VB
+p	NN
+in	IN
+W2	NN
+?	.
+
+In	IN
+general	JJ
+,	,
+once	RB
+a	DT
+user	NN
+has	VBZ
+edited	VBN
+the	DT
+structured	JJ
+data	NNS
+portion	NN
+of	IN
+a	DT
+wiki	JJ
+page	NN
+W	NN
+,	,
+how	WRB
+should	MD
+we	PRP
+propagate	VB
+this	DT
+edit	NN
+to	TO
+other	JJ
+pages	NNS
+?	.
+
+
+A	DT
+solution	NN
+is	VBZ
+to	TO
+immediately	RB
+refresh	VB
+other	JJ
+pages	NNS
+,	,
+e.g.	FW
+,	,
+page	NN
+W2	NN
+in	IN
+the	DT
+above	JJ
+example	NN
+.	.
+
+We	PRP
+call	VBP
+this	DT
+eager	JJ
+propagation	NN
+.	.
+
+This	DT
+solution	NN
+ensures	VBZ
+timely	JJ
+updates	NNS
+of	IN
+pages	NNS
+,	,
+but	CC
+can	MD
+raise	VB
+tricky	JJ
+concurrency	NN
+control	NN
+issues	NNS
+.	.
+
+Hence	RB
+,	,
+we	PRP
+currently	RB
+adopt	VB
+a	DT
+lazy	JJ
+propagation	NN
+approach	NN
+,	,
+where	WRB
+we	PRP
+refresh	VBP
+a	DT
+page	NN
+,	,
+say	VBP
+W2	NN
+,	,
+only	RB
+when	WRB
+a	DT
+user	NN
+requests	NNS
+the	DT
+page	NN
+again	RB
+.	.
+
+At	IN
+that	DT
+mo	NN
+-	:
+ment	NN
+,	,
+we	PRP
+rematerialize	VBP
+the	DT
+page	NN
+from	IN
+the	DT
+structured	JJ
+database	NN
+G	NN
+and	CC
+the	DT
+text	NN
+database	NN
+T.	NNP
+Section	NNP
+7	CD
+empirically	RB
+shows	VBZ
+that	IN
+we	PRP
+can	MD
+refresh	VB
+pages	NNS
+on	IN
+the	DT
+ï	NN
+¬	CD
+‚	CD
+y	NN
+quickly	RB
+,	,
+in	IN
+a	DT
+few	JJ
+seconds	NNS
+,	,
+thus	RB
+making	VBG
+this	DT
+lazy	JJ
+approach	NN
+a	DT
+practical	JJ
+solution	NN
+.	.
+
+
+6	CD
+Managing	VBG
+Multiple	JJ
+Users	NNS
+and	CC
+Machine	NN
+
+
+While	IN
+not	RB
+a	DT
+contribution	NN
+of	IN
+this	DT
+paper	NN
+,	,
+for	IN
+completeness	NN
+we	PRP
+will	MD
+brieï	VB
+¬	CD
+‚	CD
+y	NN
+touch	NN
+on	IN
+the	DT
+key	JJ
+problems	NNS
+of	IN
+managing	VBG
+mul	SYM
+-	:
+tiple	NN
+users	NNS
+and	CC
+machines	NNS
+as	IN
+they	PRP
+contribute	VBP
+to	TO
+the	DT
+portal	NN
+.	.
+
+The	DT
+full	JJ
+paper	NN
+-LSB-	-LRB-
+13	CD
+-RSB-	-RRB-
+discusses	VBZ
+these	DT
+problems	NNS
+and	CC
+our	PRP$
+proposed	VBN
+solutions	NNS
+in	IN
+detail	NN
+.	.
+
+
+First	RB
+,	,
+we	PRP
+must	MD
+manage	VB
+concurrent	JJ
+editing	NN
+of	IN
+a	DT
+wiki	JJ
+page	NN
+by	IN
+multiple	JJ
+users	NNS
+,	,
+or	CC
+concurrent	JJ
+editing	NN
+of	IN
+some	DT
+structured	JJ
+data	NNS
+pieces	NNS
+-LRB-	-LRB-
+e.g.	FW
+,	,
+a	DT
+paper	NN
+-RRB-	-RRB-
+that	WDT
+appear	VBP
+in	IN
+multiple	JJ
+wiki	NNS
+pages	NNS
+.	.
+
+Currently	RB
+we	PRP
+employ	VBP
+the	DT
+optimistic	JJ
+concurrency	NN
+con	NN
+-	:
+trol	NN
+scheme	NN
+of	IN
+Wikipedia	NNP
+for	IN
+this	DT
+purpose	NN
+.	.
+
+
+Next	RB
+,	,
+we	PRP
+must	MD
+detect	VB
+and	CC
+remove	VB
+malicious	JJ
+users	NNS
+.	.
+
+To	TO
+do	VB
+this	DT
+,	,
+we	PRP
+currently	RB
+employ	VBP
+a	DT
+hierarchy	NN
+of	IN
+users	NNS
+,	,
+reminiscent	JJ
+to	TO
+the	DT
+Wikipedia	NNP
+solution	NN
+for	IN
+the	DT
+same	JJ
+problem	NN
+.	.
+
+Speciï	NN
+¬	NN
+cally	RB
+,	,
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+12	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+we	PRP
+require	VBP
+users	NNS
+log	VB
+in	IN
+to	TO
+edit	VB
+,	,
+and	CC
+employ	VB
+a	DT
+set	NN
+of	IN
+editors	NNS
+whose	WP$
+job	NN
+is	VBZ
+to	TO
+monitor	VB
+most	RBS
+active	JJ
+wiki	NNS
+pages	NNS
+.	.
+
+
+Finally	RB
+,	,
+if	IN
+a	DT
+user	NN
+U	NN
+has	VBZ
+modiï	NN
+¬	CD
+ed	VBD
+a	DT
+data	NN
+item	NN
+X	NN
+,	,
+can	MD
+ma	SYM
+-	:
+chine	NN
+M	NN
+overwrite	VB
+U	NNP
+'s	POS
+modiï	NN
+¬	NN
+cation	NN
+,	,
+and	CC
+if	IN
+so	RB
+,	,
+then	RB
+when	WRB
+?	.
+
+Our	PRP$
+current	JJ
+solution	NN
+allows	VBZ
+M	NN
+to	TO
+overwrite	VB
+U	NNP
+'s	POS
+data	NNS
+only	RB
+for	IN
+certain	JJ
+pre-speciï	JJ
+¬	NN
+ed	VBD
+data	NNS
+types	NNS
+-LRB-	-LRB-
+e.g.	FW
+,	,
+certain	JJ
+attributes	NNS
+of	IN
+per	IN
+-	:
+son	NN
+-RRB-	-RRB-
+,	,
+if	IN
+M	NN
+is	VBZ
+sufï	JJ
+¬	NN
+ciently	RB
+conï	JJ
+¬	NN
+dent	NN
+in	IN
+its	PRP$
+data	NNS
+.	.
+
+For	IN
+all	DT
+other	JJ
+data	NNS
+types	NNS
+,	,
+we	PRP
+do	VBP
+not	RB
+allow	VB
+M	NN
+to	TO
+overwriteU	NNP
+'s	POS
+modiï	NN
+¬	NN
+cation	NN
+,	,
+but	CC
+allow	VBP
+it	PRP
+to	TO
+add	VB
+a	DT
+suggestion	NN
+next	JJ
+to	TO
+U	NNP
+'s	POS
+modiï	NN
+¬	CD
+cations	NNS
+,	,
+in	IN
+parentheses	NNS
+,	,
+e.g.	FW
+,	,
+â	VB
+$	$
+œage	CD
+is	VBZ
+45	CD
+-LRB-	-LRB-
+according	VBG
+to	TO
+M	NN
+,	,
+age	NN
+is	VBZ
+47	CD
+-RRB-	-RRB-
+â	RB
+$	$
+.	.
+
+
+7	CD
+Empirical	JJ
+Evaluation	NN
+
+
+To	TO
+evaluate	VB
+Cwiki	NNP
+,	,
+we	PRP
+have	VBP
+been	VBN
+applying	VBG
+it	PRP
+to	TO
+build	VB
+a	DT
+community	NN
+wikipedia	NN
+for	IN
+the	DT
+database	NN
+community	NN
+-LRB-	-LRB-
+see	VB
+-LSB-	-LRB-
+1	CD
+-RSB-	-RRB-
+for	IN
+the	DT
+current	JJ
+portal	NN
+,	,
+still	RB
+under	IN
+continuous	JJ
+development	NN
+-RRB-	-RRB-
+.	.
+
+We	PRP
+now	RB
+report	VBP
+on	IN
+preliminary	JJ
+experiments	NNS
+with	IN
+this	DT
+portal	NN
+,	,
+which	WDT
+demonstrate	VBP
+the	DT
+potentials	NNS
+of	IN
+Cwiki	NNP
+and	CC
+suggest	VBP
+re	SYM
+-	:
+search	NN
+opportunities	NNS
+.	.
+
+
+Building	VBG
+an	DT
+Initial	JJ
+Community	NN
+Portal	NN
+:	:
+We	PRP
+began	VBD
+by	IN
+em	NN
+-	:
+ploying	VBG
+DBLife	NN
+as	IN
+machine	NN
+M	NN
+-LRB-	-LRB-
+see	VB
+Section	NNP
+4	LS
+-RRB-	-RRB-
+.	.
+
+It	PRP
+took	VBD
+a	DT
+two-person	JJ
+team	NN
+four	CD
+weeks	NNS
+to	TO
+developDBLife	JJ
+from	IN
+scratch	NN
+.	.
+
+DBLife	NN
+was	VBD
+ï	JJ
+¬	NN
+rst	NN
+deployed	VBN
+on	IN
+May	NNP
+of	IN
+2005	CD
+,	,
+and	CC
+has	VBZ
+been	VBN
+on	IN
+â	NN
+$	$
+œauto	JJ
+pilotâ	NN
+$	$
+since	IN
+,	,
+requiring	VBG
+only	RB
+about	IN
+one	CD
+hour	NN
+of	IN
+maintenance	NN
+per	IN
+month	NN
+-LRB-	-LRB-
+for	IN
+more	JJR
+details	NNS
+,	,
+see	VBP
+-LSB-	-LRB-
+14	CD
+-RSB-	-RRB-
+-RRB-	-RRB-
+.	.
+
+Each	DT
+day	NN
+DBLife	NN
+crawls	VBZ
+10,000	CD
++	CC
+database	NN
+research	NN
+related	JJ
+data	NNS
+sources	NNS
+,	,
+extracts	NNS
+and	CC
+integrates	VBZ
+the	DT
+data	NNS
+,	,
+to	TO
+generate	VB
+a	DT
+daily	JJ
+ER	NN
+data	NNS
+graph	NN
+.	.
+
+
+We	PRP
+used	VBD
+one	CD
+such	JJ
+daily	JJ
+ER	NN
+data	NNS
+graph	NN
+A	NN
+-LRB-	-LRB-
+98M	NN
+of	IN
+XML	NN
+data	NNS
+-RRB-	-RRB-
+to	TO
+initialize	VB
+the	DT
+structured	JJ
+database	NN
+G.	NNP
+G	NNP
+'s	POS
+schema	NN
+has	VBZ
+ï	NN
+¬	CD
+ve	NN
+entities	NNS
+and	CC
+nine	CD
+relationships	NNS
+,	,
+and	CC
+G	NN
+'s	POS
+data	NN
+contains	VBZ
+164,043	CD
+entity	NN
+instances	NNS
+and	CC
+558,260	CD
+relation	NN
+instances	NNS
+,	,
+for	IN
+a	DT
+total	JJ
+size	NN
+of	IN
+413M	NN
+.	.
+
+This	DT
+size	NN
+is	VBZ
+greater	JJR
+than	IN
+the	DT
+ER	NN
+data	NNS
+graph	NN
+size	NN
+of	IN
+98M	NN
+due	JJ
+to	TO
+the	DT
+extra	JJ
+space	NN
+needed	VBN
+to	TO
+store	VB
+tem	SYM
+-	:
+poral	JJ
+information	NN
+.	.
+
+It	PRP
+took	VBD
+216	CD
+seconds	NNS
+to	TO
+load	NN
+A	NN
+into	IN
+G	NN
+,	,
+and	CC
+183	CD
+minutes	NNS
+to	TO
+generate	VB
+and	CC
+store	VB
+all	DT
+wiki	NNS
+pages	NNS
+-LRB-	-LRB-
+164,043	CD
+pages	NNS
+for	IN
+entities	NNS
+-RRB-	-RRB-
+.	.
+
+These	DT
+results	NNS
+suggest	VBP
+that	IN
+we	PRP
+can	MD
+create	VB
+moderate-size	JJ
+initial	JJ
+portals	NNS
+-LRB-	-LRB-
+a	DT
+one-time	JJ
+task	NN
+-RRB-	-RRB-
+with	IN
+relatively	RB
+little	JJ
+efforts	NNS
+.	.
+
+
+Next	RB
+,	,
+we	PRP
+wanted	VBD
+to	TO
+know	VB
+if	IN
+the	DT
+initial	JJ
+portal	NN
+can	MD
+be	VB
+main	JJ
+-	:
+tained	VBN
+efï	NN
+¬	NN
+ciently	RB
+,	,
+assuming	VBG
+no	DT
+user	NN
+contributions	NNS
+yet	RB
+.	.
+
+We	PRP
+found	VBD
+that	IN
+over	IN
+10	CD
+days	NNS
+,	,
+as	IN
+DBLife	NN
+contributed	VBD
+data	NNS
+to	TO
+the	DT
+structured	JJ
+database	NN
+G	NN
+,	,
+G	NN
+'s	POS
+size	NN
+increased	VBD
+from	IN
+413M	CD
+to	TO
+600M	CD
+.	.
+
+This	DT
+was	VBD
+somewhat	RB
+surprising	JJ
+,	,
+because	IN
+DBLife	NNP
+data	NNS
+should	MD
+not	RB
+have	VB
+changed	VBN
+so	RB
+much	RB
+over	IN
+10	CD
+days	NNS
+.	.
+
+Upon	IN
+a	DT
+closer	JJR
+inspection	NN
+,	,
+we	PRP
+found	VBD
+that	IN
+the	DT
+conï	NN
+¬	NN
+dence	NN
+scores	NNS
+of	IN
+most	JJS
+rela	SYM
+-	:
+tion	NN
+instances	NNS
+in	IN
+G	NN
+-LRB-	-LRB-
+e.g.	FW
+,	,
+person	NN
+X	NN
+is	VBZ
+related	VBN
+to	TO
+person	NN
+Y	NN
+with	IN
+score	NN
+.8	CD
+-RRB-	-RRB-
+were	VBD
+changed	VBN
+by	IN
+DBLife	NN
+everyday	NN
+,	,
+due	JJ
+to	TO
+the	DT
+changing	VBG
+raw	JJ
+data	NNS
+-LRB-	-LRB-
+retrieved	VBN
+by	IN
+DBLife	NN
+-RRB-	-RRB-
+.	.
+
+Hence	RB
+,	,
+the	DT
+conï	NN
+¬	SYM
+-	:
+dence	NN
+scores	NNS
+of	IN
+most	JJS
+relation	NN
+instances	NNS
+in	IN
+G	NN
+were	VBD
+updated	VBN
+everyday	JJ
+,	,
+leading	VBG
+to	TO
+a	DT
+rapid	JJ
+growth	NN
+in	IN
+G	NN
+'s	POS
+size	NN
+-LRB-	-LRB-
+recall	NN
+that	WDT
+G	NN
+is	VBZ
+a	DT
+temporal	JJ
+database	NN
+that	WDT
+does	VBZ
+not	RB
+allow	VB
+update	VB
+in	IN
+place	NN
+,	,
+hence	RB
+changes	NNS
+are	VBP
+added	VBN
+to	TO
+G	NN
+-RRB-	-RRB-
+.	.
+
+Once	RB
+we	PRP
+disallowed	VBD
+updat	NN
+-	:
+ing	NN
+conï	NN
+¬	CD
+dence	NN
+scores	NNS
+,	,
+then	RB
+G	NN
+grew	VBD
+very	RB
+slowly	RB
+-LRB-	-LRB-
+by	IN
+less	JJR
+than	IN
+5M	NN
+-RRB-	-RRB-
+.	.
+
+Thus	RB
+,	,
+this	DT
+experiment	NN
+suggests	VBZ
+that	IN
+the	DT
+current	JJ
+designof	NN
+
+
+14.0	CD
+12.0	CD
+
+
+Page	NNP
+request	NN
+
+
+10.0	CD
+8.0	CD
+6.0	CD
+4.0	CD
+
+
+Response	NN
+time	NN
+-LRB-	-LRB-
+sec	NN
+-RRB-	-RRB-
+
+
+2.0	CD
+0.0	CD
+
+
+10 50 100 150	CD
+200 250 300 350	CD
+400 450 500 550	CD
+600 650 700 750	CD
+
+
+Page	NNP
+size	NN
+-LRB-	-LRB-
+#	#
+of	IN
+s-slots	NNS
+-RRB-	-RRB-
+
+
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+
+
+70.0	CD
+%	NN
+
+
+60.0	CD
+%	NN
+
+
+Page	NNP
+size	NN
+distribution	NN
+
+
+50.0	CD
+%	NN
+
+
+40.0	CD
+%	NN
+
+
+30.0	CD
+%	NN
+
+
+20.0	CD
+%	NN
+
+
+10.0	CD
+%	NN
+
+
+Percent	NN
+of	IN
+all	DT
+pages	NNS
+
+
+0.0	CD
+%	NN
+
+
+10	CD
+20	CD
+30	CD
+40 50 100 200	CD
+300	CD
+400	CD
+
+
+Page	NNP
+size	NN
+-LRB-	-LRB-
+#	#
+of	IN
+s-slots	NNS
+-RRB-	-RRB-
+
+
+-LRB-	-LRB-
+b	NN
+-RRB-	-RRB-
+
+
+Figure	NNP
+10	CD
+.	.
+
+Time	NNP
+to	TO
+request	VB
+a	DT
+wiki	JJ
+page	NN
+and	CC
+distribution	NN
+of	IN
+page	NN
+size	NN
+.	.
+
+
+#	#
+of	IN
+s-slots	NN
+=	JJ
+52	CD
+time	NN
+in	IN
+sec	NN
+
+
+Type	NN
+of	IN
+edits	NNS
+5	CD
+edits	VBZ
+10	CD
+edits	VBZ
+15	CD
+edits	VBZ
+20	CD
+edits	VBZ
+25	CD
+edits	NNS
+modification	NN
+0.258	CD
+0.266	CD
+0.275	CD
+0.283	CD
+0.291	CD
+insertion	NN
+1.041	CD
+1.314	CD
+1.583	CD
+1.826	CD
+2.115	CD
+deletion	NN
+1.012	CD
+1.122	CD
+1.253	CD
+1.363	CD
+1.483	CD
+#	#
+of	IN
+s-slots	NN
+=	JJ
+196	CD
+time	NN
+in	IN
+sec	NN
+
+
+Type	NN
+of	IN
+edits	NNS
+5	CD
+edits	VBZ
+10	CD
+edits	VBZ
+15	CD
+edits	VBZ
+20	CD
+edits	VBZ
+25	CD
+edits	NNS
+modification	NN
+1.183	CD
+1.209	CD
+1.231	CD
+1.247	CD
+1.266	CD
+insertion	NN
+1.971	CD
+2.214	CD
+2.436	CD
+2.662	CD
+2.855	CD
+deletion	NN
+1.615	CD
+1.633	CD
+1.649	CD
+1.665	CD
+1.681	CD
+
+
+Figure	NNP
+11	CD
+.	.
+
+Time	NNP
+to	TO
+process	VB
+user	NN
+edits	VBZ
+on	IN
+a	DT
+wiki	JJ
+page	NN
+.	.
+
+
+G	NN
+is	VBZ
+efï	NN
+¬	NN
+cient	NN
+for	IN
+maintaining	VBG
+all	DT
+aspects	NNS
+of	IN
+the	DT
+initial	JJ
+porta	NN
+l	NN
+over	IN
+time	NN
+,	,
+except	IN
+for	IN
+conï	NN
+¬	CD
+dence/uncertainty	JJ
+scores	NNS
+.	.
+
+We	PRP
+are	VBP
+currently	RB
+examining	VBG
+how	WRB
+to	TO
+modify	VB
+the	DT
+temporal	JJ
+design	NN
+of	IN
+G	NN
+to	TO
+efï	NN
+¬	NN
+ciently	RB
+accommodate	VBP
+frequent	JJ
+changes	NNS
+in	IN
+uncertainty	NN
+scores	NNS
+.	.
+
+
+Expressive	NNP
+Power	NNP
+of	IN
+the	DT
+S-Slot	NN
+Wiki	NNP
+Language	NNP
+:	:
+In	IN
+the	DT
+current	JJ
+DBLife	NN
+system	NN
+-LRB-	-LRB-
+see	VB
+dblife.cs.wisc.edu	NN
+-RRB-	-RRB-
+each	DT
+user	NN
+superhomepage	NN
+is	VBZ
+a	DT
+structured	JJ
+view	NN
+V	NN
+over	IN
+the	DT
+underlying	VBG
+structured	JJ
+database	NN
+.	.
+
+We	PRP
+found	VBD
+that	IN
+the	DT
+s-slot	NN
+wiki	NN
+language	NN
+-LRB-	-LRB-
+Section	NN
+4.3	CD
+-RRB-	-RRB-
+was	VBD
+sufï	JJ
+¬	NN
+ciently	RB
+powerful	JJ
+to	TO
+enable	VB
+us	PRP
+to	TO
+expre	VB
+ss	NN
+all	DT
+structured	VBN
+data	NNS
+pieces	NNS
+in	IN
+such	JJ
+views	NNS
+in	IN
+wiki	JJ
+pages	NNS
+,	,
+except	IN
+two	CD
+types	NNS
+of	IN
+data	NNS
+pieces	NNS
+:	:
+top-k	JJ
+and	CC
+aggregate	NN
+.	.
+
+A	DT
+top-k	JJ
+data	NNS
+piece	NN
+is	VBZ
+technically	RB
+a	DT
+view	NN
+that	IN
+lists	VBZ
+the	DT
+topk	NN
+items	NNS
+of	IN
+a	DT
+ranked	VBN
+list	NN
+,	,
+e.g.	FW
+,	,
+the	DT
+top	JJ
+three	CD
+authors	NNS
+,	,
+cited	VBD
+papers	NNS
+,	,
+etc.	FW
+.	.
+
+An	DT
+aggregate	JJ
+data	NNS
+piece	NN
+is	VBZ
+an	DT
+aggregate	JJ
+view	NN
+such	JJ
+as	IN
+the	DT
+total	JJ
+number	NN
+of	IN
+papers	NNS
+per	IN
+author	NN
+,	,
+or	CC
+the	DT
+total	JJ
+number	NN
+of	IN
+citations	NNS
+.	.
+
+
+We	PRP
+found	VBD
+that	IN
+top-k	JJ
+and	CC
+aggregate	JJ
+views	NNS
+also	RB
+appear	VBP
+in	IN
+many	JJ
+other	JJ
+community	NN
+portals	NNS
+.	.
+
+Thus	RB
+,	,
+any	DT
+future	JJ
+attempt	NN
+to	TO
+extend	VB
+wiki	NN
+languages	NNS
+with	IN
+structured	JJ
+constructs	NNS
+must	MD
+ad	NN
+-	:
+dress	NN
+the	DT
+problem	NN
+of	IN
+expressing	VBG
+such	JJ
+views	NNS
+.	.
+
+The	DT
+challenge	NN
+then	RB
+is	VBZ
+how	WRB
+to	TO
+efï	VB
+¬	NN
+ciently	RB
+update	VBP
+such	JJ
+views	NNS
+.	.
+
+
+Efï	NN
+¬	CD
+ciencies	NNS
+of	IN
+User	NN
+Interaction	NN
+:	:
+In	IN
+the	DT
+next	JJ
+step	NN
+,	,
+we	PRP
+exam	NN
+-	:
+ined	VBN
+how	WRB
+fast	JJ
+users	NNS
+can	MD
+interact	VB
+with	IN
+the	DT
+portal	NN
+.	.
+
+Figure	NNP
+10	CD
+.	.
+
+a	DT
+shows	VBZ
+the	DT
+time	NN
+it	PRP
+takes	VBZ
+from	IN
+when	WRB
+a	DT
+user	NN
+requests	NNS
+a	DT
+page	NN
+W	NN
+until	IN
+when	WRB
+W	NN
+is	VBZ
+served	VBN
+.	.
+
+Note	VB
+that	IN
+to	TO
+ensure	VB
+freshness	NN
+,	,
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+13	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+Editing	NN
+tasks	NNS
+Time	NN
+-LRB-	-LRB-
+sec	NN
+-RRB-	-RRB-
+Accurac	NNP
+y	NN
+editing	NN
+a	DT
+sentence	NN
+of	IN
+free	JJ
+text	NN
+13.2	CD
+-LRB-	-LRB-
+10	CD
+~	NN
+21	CD
+-RRB-	-RRB-
+100	CD
+%	NN
+modifying	VBG
+a	DT
+data	NN
+path	NN
+16.4	CD
+-LRB-	-LRB-
+10	CD
+~	NN
+30	CD
+-RRB-	-RRB-
+100	CD
+%	NN
+inserting	VBG
+a	DT
+data	NN
+path	NN
+52	CD
+-LRB-	-LRB-
+30	CD
+~	NN
+60	CD
+-RRB-	-RRB-
+100	CD
+%	NN
+inserting	VBG
+two	CD
+bonded	VBN
+data	NNS
+paths	NNS
+55	CD
+-LRB-	-LRB-
+30	CD
+~	NN
+85	CD
+-RRB-	-RRB-
+100	CD
+%	NN
+inserting	VBG
+a	DT
+paragraph	NN
+of	IN
+data	NNS
+paths	NNS
+152	CD
+-LRB-	-LRB-
+60	CD
+~	NN
+240	CD
+-RRB-	-RRB-
+100	CD
+%	NN
+deleting	VBG
+data	NNS
+paths	NNS
+36.6	CD
+-LRB-	-LRB-
+15	CD
+~	NN
+60	CD
+-RRB-	-RRB-
+100	CD
+%	NN
+
+
+Figure	NNP
+12	CD
+.	.
+
+User	NN
+performance	NN
+on	IN
+several	JJ
+editing	NN
+tasks	NNS
+.	.
+
+
+we	PRP
+materialize	VBP
+W	NN
+on	IN
+the	DT
+ï	NN
+¬	CD
+‚	CD
+y	NN
+,	,
+from	IN
+the	DT
+underlying	VBG
+structured	JJ
+database	NN
+G	NN
+and	CC
+text	NN
+database	NN
+T	NN
+-LRB-	-LRB-
+Section	NN
+5.3	CD
+-RRB-	-RRB-
+.	.
+
+Hence	RB
+,	,
+it	PRP
+is	VBZ
+critical	JJ
+that	IN
+such	JJ
+materialization	NN
+can	MD
+be	VB
+done	VBN
+quickly	RB
+,	,
+to	TO
+en	IN
+-	:
+sure	JJ
+real-time	JJ
+user	NN
+interaction	NN
+.	.
+
+
+The	DT
+results	NNS
+show	VBP
+that	IN
+request	NN
+time	NN
+increases	VBZ
+linearly	RB
+w.r.t.	JJ
+page	NN
+size	NN
+,	,
+measured	VBN
+in	IN
+the	DT
+number	NN
+of	IN
+s-slots	NNS
+in	IN
+the	DT
+page	NN
+,	,
+and	CC
+stays	VBZ
+small	JJ
+,	,
+e.g.	FW
+,	,
+under	IN
+2	CD
+seconds	NNS
+for	IN
+page	NN
+sizes	NNS
+up	IN
+to	TO
+150	CD
+.	.
+
+Figure	NNP
+10	CD
+.	.
+
+b	NN
+shows	VBZ
+that	IN
+the	DT
+vast	JJ
+majority	NN
+of	IN
+current	JJ
+pages	NNS
+have	VBP
+a	DT
+size	NN
+under	IN
+50	CD
+-LRB-	-LRB-
+the	DT
+ï	NN
+¬	FW
+rst	FW
+ï	FW
+¬	FW
+ve	FW
+bars	NNS
+of	IN
+the	DT
+ï	NN
+¬	NN
+gure	NN
+-RRB-	-RRB-
+,	,
+and	CC
+thus	RB
+incur	VBP
+under	IN
+1	CD
+second	JJ
+request	NN
+time	NN
+.	.
+
+This	DT
+result	NN
+suggests	VBZ
+that	IN
+we	PRP
+can	MD
+materialize	VB
+wiki	JJ
+pages	NNS
+quickly	RB
+,	,
+and	CC
+that	IN
+the	DT
+lazy	JJ
+update	VBP
+approach	NN
+-LRB-	-LRB-
+Section	NN
+5.3	CD
+-RRB-	-RRB-
+can	MD
+work	VB
+well	RB
+in	IN
+practice	NN
+.	.
+
+
+Since	IN
+processing	VBG
+user	NN
+edits	VBZ
+requires	VBZ
+us	PRP
+to	TO
+translate	VB
+these	DT
+edits	NNS
+across	IN
+different	JJ
+user	NN
+interfaces	NNS
+and	CC
+then	RB
+to	TO
+invoke	VB
+the	DT
+underlying	VBG
+relational	NN
+database	NN
+,	,
+we	PRP
+wanted	VBD
+to	TO
+know	VB
+if	IN
+it	PRP
+can	MD
+be	VB
+done	VBN
+efï	NN
+¬	NN
+ciently	RB
+.	.
+
+Figure	NNP
+11	CD
+shows	VBZ
+the	DT
+time	NN
+it	PRP
+takes	VBZ
+from	IN
+when	WRB
+a	DT
+user	NN
+submits	VBZ
+his/her	JJR
+edits	NNS
+until	IN
+when	WRB
+the	DT
+edits	NNS
+have	VBP
+been	VBN
+processed	VBN
+,	,
+i.e.	FW
+,	,
+updates	NNS
+on	IN
+Vs	NNS
+,	,
+Vd	NN
+,	,
+Gs	NN
+,	,
+Gd	NN
+,	,
+if	IN
+any	DT
+,	,
+have	VBP
+been	VBN
+carried	VBN
+out	RP
+.	.
+
+This	DT
+time	NN
+does	VBZ
+not	RB
+include	VB
+the	DT
+time	NN
+users	NNS
+spent	VBD
+answering	VBG
+disambiguating	VBG
+questions	NNS
+-LRB-	-LRB-
+Section	NN
+5.2	CD
+-RRB-	-RRB-
+.	.
+
+The	DT
+top	JJ
+table	NN
+of	IN
+the	DT
+ï	NN
+¬	NN
+gure	NN
+shows	VBZ
+edit	VB
+times	NNS
+over	IN
+a	DT
+wiki	JJ
+page	NN
+with	IN
+52	CD
+s-slots	NNS
+-LRB-	-LRB-
+each	DT
+time	NN
+is	VBZ
+averaged	VBN
+over	IN
+10	CD
+runs	NNS
+-RRB-	-RRB-
+.	.
+
+Here	RB
+each	DT
+edit	NN
+is	VBZ
+a	DT
+user	NN
+action	NN
+that	WDT
+affects	VBZ
+a	DT
+single	JJ
+s-slot	NN
+.	.
+
+
+The	DT
+bottom	JJ
+table	NN
+of	IN
+the	DT
+ï	NN
+¬	NN
+gure	NN
+shows	VBZ
+similar	JJ
+edit	NN
+times	NNS
+,	,
+but	CC
+over	IN
+a	DT
+wiki	JJ
+page	NN
+with	IN
+196	CD
+s-slots	NNS
+.	.
+
+In	IN
+both	DT
+cases	NNS
+,	,
+the	DT
+results	NNS
+show	VBP
+that	IN
+the	DT
+edit	NN
+times	NNS
+remain	VBP
+small	JJ
+,	,
+under	IN
+2.2	CD
+seconds	NNS
+for	IN
+the	DT
+small	JJ
+wiki	JJ
+page	NN
+and	CC
+2.9	CD
+seconds	NNS
+for	IN
+the	DT
+large	JJ
+wiki	JJ
+page	NN
+.	.
+
+This	DT
+suggests	VBZ
+that	IN
+Cwiki	NNP
+can	MD
+process	VB
+user	NN
+edits	VBZ
+efï	NN
+¬	NN
+ciently	RB
+.	.
+
+Ease	VB
+of	IN
+User	NN
+Interaction	NN
+:	:
+Next	JJ
+,	,
+we	PRP
+evaluated	VBD
+how	WRB
+easy	JJ
+it	PRP
+is	VBZ
+for	IN
+users	NNS
+to	TO
+edit	VB
+structured	JJ
+data	NNS
+in	IN
+a	DT
+wiki	JJ
+page	NN
+W	NN
+.	.
+
+We	PRP
+conducted	VBD
+a	DT
+preliminary	JJ
+experiment	NN
+with	IN
+6	CD
+users	NNS
+,	,
+where	WRB
+each	DT
+user	NN
+was	VBD
+asked	VBN
+to	TO
+edit	VB
+a	DT
+certain	JJ
+item	NN
+on	IN
+the	DT
+HTML	NNP
+represen	NN
+-	:
+tation	NN
+of	IN
+W.	NNP
+To	TO
+do	VB
+so	RB
+,	,
+they	PRP
+had	VBD
+to	TO
+go	VB
+to	TO
+W	NNP
+,	,
+locate	VB
+and	CC
+then	RB
+edit	VB
+the	DT
+appropriate	JJ
+piece	NN
+of	IN
+structured	JJ
+data	NNS
+.	.
+
+We	PRP
+measured	VBD
+how	WRB
+long	JJ
+it	PRP
+took	VBD
+them	PRP
+to	TO
+ï	VB
+¬	CD
+nish	VBP
+the	DT
+given	VBN
+editing	NN
+tasks	NNS
+and	CC
+the	DT
+correctness	NN
+of	IN
+the	DT
+results	NNS
+.	.
+
+For	IN
+comparison	NN
+purposes	NNS
+,	,
+we	PRP
+also	RB
+asked	VBD
+users	NNS
+to	TO
+edit	VB
+some	DT
+free	JJ
+text	NN
+.	.
+
+
+Figure	NNP
+12	CD
+shows	NNS
+that	WDT
+100	CD
+%	NN
+correctness	NN
+was	VBD
+achieved	VBN
+for	IN
+all	PDT
+the	DT
+editing	NN
+tasks	NNS
+.	.
+
+Editing	NN
+time	NN
+is	VBZ
+measured	VBN
+from	IN
+when	WRB
+the	DT
+edit	NN
+button	NN
+is	VBZ
+clicked	VBN
+until	IN
+when	WRB
+the	DT
+new	JJ
+HTML	NNP
+page	NN
+is	VBZ
+ren	SYM
+-	:
+dered	VBN
+.	.
+
+Figure	NNP
+12	CD
+shows	VBZ
+the	DT
+average	JJ
+and	CC
+range	NN
+of	IN
+recorded	VBN
+editing	NN
+time	NN
+over	IN
+all	PDT
+the	DT
+users	NNS
+.	.
+
+The	DT
+results	NNS
+show	VBP
+that	IN
+the	DT
+simplest	JJS
+structured	JJ
+data	NNS
+editing	NN
+task	NN
+,	,
+modifying	VBG
+a	DT
+data	NN
+path	NN
+-LRB-	-LRB-
+modifying	VBG
+an	DT
+attribute	NN
+-RRB-	-RRB-
+,	,
+took	VBD
+comparable	JJ
+time	NN
+to	TO
+editing	NN
+a	DT
+sentence	NN
+of	IN
+free	JJ
+text	NN
+.	.
+
+
+Inserting	VBG
+a	DT
+data	NN
+path	NN
+generally	RB
+involves	VBZ
+adding	VBG
+several	JJ
+en	IN
+-	:
+tities	NNS
+and	CC
+relationships	NNS
+to	TO
+the	DT
+database	NN
+.	.
+
+Users	NNS
+need	VBP
+to	TO
+type	NN
+a	DT
+complete	JJ
+legal	JJ
+path	NN
+.	.
+
+Inserting	VBG
+two	CD
+bonded	VBN
+data	NNS
+paths	NNS
+is	VBZ
+a	DT
+bit	NN
+more	RBR
+complex	JJ
+since	IN
+users	NNS
+need	VBP
+to	TO
+make	VB
+sure	JJ
+that	IN
+several	JJ
+entities	NNS
+-LRB-	-LRB-
+or	CC
+relationships	NNS
+-RRB-	-RRB-
+are	VBP
+assigned	VBN
+the	DT
+same	JJ
+id	NN
+.	.
+
+Inserting	VBG
+a	DT
+paragraph	NN
+of	IN
+data	NNS
+paths	NNS
+is	VBZ
+probably	RB
+the	DT
+most	RBS
+complex	JJ
+task	NN
+that	WDT
+generally	RB
+involves	VBZ
+multiple	JJ
+bonded	VBN
+data	NNS
+paths	NNS
+.	.
+
+Speciï	NNP
+¬	SYM
+-	:
+cally	RB
+,	,
+the	DT
+users	NNS
+were	VBD
+asked	VBN
+to	TO
+add	VB
+a	DT
+publication	NN
+with	IN
+a	DT
+title	NN
+,	,
+an	DT
+ordered	VBN
+author	NN
+list	NN
+,	,
+and	CC
+the	DT
+conference	NN
+,	,
+year	NN
+,	,
+page	NN
+,	,
+and	CC
+ci	SYM
+-	:
+tation	NN
+information	NN
+.	.
+
+The	DT
+results	NNS
+show	VBP
+that	IN
+the	DT
+editing	NN
+time	NN
+is	VBZ
+very	RB
+reasonable	JJ
+considering	VBG
+the	DT
+high	JJ
+complexity	NN
+of	IN
+the	DT
+task	NN
+.	.
+
+
+Deletion	NN
+of	IN
+data	NNS
+paths	NNS
+would	MD
+generate	VB
+some	DT
+ambiguities	NNS
+since	IN
+the	DT
+user	NN
+may	MD
+mean	VB
+to	TO
+delete	VB
+the	DT
+structured	JJ
+data	NNS
+from	IN
+the	DT
+underlying	VBG
+database	NN
+or	CC
+just	RB
+from	IN
+the	DT
+wiki	JJ
+page	NN
+.	.
+
+Thus	RB
+after	IN
+the	DT
+user	NN
+clicks	VBZ
+the	DT
+submit	VB
+button	NN
+,	,
+several	JJ
+questions	NNS
+may	MD
+be	VB
+presented	VBN
+as	IN
+radio	NN
+buttons	NNS
+to	TO
+clear	VB
+the	DT
+possible	JJ
+ambiguities	NNS
+.	.
+
+Deleting	VBG
+a	DT
+single	JJ
+data	NNS
+path	NN
+or	CC
+many	JJ
+data	NNS
+paths	NNS
+would	MD
+take	VB
+similar	JJ
+amount	NN
+of	IN
+time	NN
+from	IN
+the	DT
+editing	NN
+point	NN
+of	IN
+view	NN
+.	.
+
+The	DT
+only	JJ
+difference	NN
+is	VBZ
+the	DT
+number	NN
+of	IN
+questions	NNS
+to	TO
+ask	VB
+.	.
+
+
+This	DT
+experiment	NN
+is	VBZ
+strictly	RB
+preliminary	JJ
+.	.
+
+But	CC
+it	PRP
+does	VBZ
+sug	SYM
+-	:
+gest	NN
+that	IN
+the	DT
+current	JJ
+solutions	NNS
+may	MD
+already	RB
+be	VB
+adequate	JJ
+in	IN
+the	DT
+sense	NN
+that	WDT
+users	NNS
+are	VBP
+able	JJ
+to	TO
+correctly	RB
+execute	VB
+the	DT
+various	JJ
+edit	NN
+-	:
+ing	NN
+tasks	NNS
+within	IN
+a	DT
+reasonable	JJ
+amount	NN
+of	IN
+time	NN
+.	.
+
+
+The	DT
+experiment	NN
+also	RB
+suggests	VBZ
+that	IN
+it	PRP
+may	MD
+be	VB
+even	RB
+easier	JJR
+for	IN
+users	NNS
+to	TO
+edit	VB
+if	IN
+we	PRP
+introduce	VBP
+some	DT
+macro	NN
+that	WDT
+hide	VBP
+the	DT
+de	FW
+-	:
+tails	NNS
+of	IN
+the	DT
+structured	JJ
+data	NNS
+and	CC
+make	VB
+the	DT
+structured	JJ
+data	NNS
+looks	VBZ
+very	RB
+clean	JJ
+.	.
+
+This	DT
+point	NN
+was	VBD
+conï	JJ
+¬	NN
+rmed	VBN
+by	IN
+the	DT
+users	NNS
+'	POS
+qualita	NN
+-	:
+tive	JJ
+feedback	NN
+on	IN
+how	WRB
+convenient	JJ
+it	PRP
+is	VBZ
+to	TO
+use	VB
+the	DT
+system	NN
+.	.
+
+On	IN
+a	DT
+scale	NN
+of	IN
+1	CD
+-LRB-	-LRB-
+least	JJS
+convenient	JJ
+-RRB-	-RRB-
+to	TO
+5	CD
+-LRB-	-LRB-
+most	RBS
+convenient	JJ
+-RRB-	-RRB-
+,	,
+the	DT
+cur	NN
+-	:
+rent	NN
+system	NN
+scored	VBD
+an	DT
+average	NN
+of	IN
+2.5	CD
+.	.
+
+A	DT
+typical	JJ
+comment	NN
+is	VBZ
+that	IN
+while	IN
+the	DT
+system	NN
+is	VBZ
+easy	JJ
+to	TO
+learn	VB
+and	CC
+functioning	VBG
+well	RB
+,	,
+it	PRP
+is	VBZ
+verbose	JJ
+.	.
+
+These	DT
+comments	NNS
+meet	VBP
+our	PRP$
+expectations	NNS
+since	IN
+our	PRP$
+goal	NN
+for	IN
+the	DT
+current	JJ
+version	NN
+focuses	VBZ
+almost	RB
+exclusively	RB
+on	IN
+the	DT
+adequacy	NN
+instead	RB
+of	IN
+convenience	NN
+.	.
+
+
+In	IN
+general	JJ
+,	,
+as	IN
+commented	VBN
+in	IN
+Section	NN
+4.3	CD
+,	,
+a	DT
+lesson	NN
+we	PRP
+learned	VBD
+from	IN
+our	PRP$
+current	JJ
+Cwiki	NNP
+experience	NN
+is	VBZ
+that	IN
+there	EX
+is	VBZ
+a	DT
+spectrum	NN
+of	IN
+solutions	NNS
+on	IN
+how	WRB
+structured	JJ
+data	NNS
+can	MD
+be	VB
+repre	JJ
+-	:
+sented	VBN
+in	IN
+wiki	JJ
+pages	NNS
+.	.
+
+Our	PRP$
+s-slot	JJ
+solution	NN
+represents	VBZ
+one	CD
+spec	NN
+-	:
+trum	NN
+end	NN
+and	CC
+the	DT
+natural-language	JJ
+solution	NN
+-LRB-	-LRB-
+see	VB
+Section	NNP
+4.3	CD
+-RRB-	-RRB-
+the	DT
+other	JJ
+.	.
+
+In	IN
+between	IN
+we	PRP
+can	MD
+have	VB
+solutions	NNS
+that	WDT
+present	VBP
+struc	NN
+-	:
+tured	JJ
+data	NNS
+using	VBG
+,	,
+e.g.	FW
+,	,
+XML	NN
+formats	NNS
+-LRB-	-LRB-
+in	IN
+wiki	NN
+pages	NNS
+-RRB-	-RRB-
+.	.
+
+
+The	DT
+key	JJ
+tradeoff	NN
+factors	NNS
+for	IN
+these	DT
+solutions	NNS
+include	VBP
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+how	WRB
+easy	JJ
+it	PRP
+is	VBZ
+for	IN
+users	NNS
+to	TO
+edit	VB
+,	,
+-LRB-	-LRB-
+b	LS
+-RRB-	-RRB-
+how	WRB
+easy	JJ
+it	PRP
+is	VBZ
+for	IN
+machines	NNS
+to	TO
+re-extract	JJ
+structured	JJ
+data	NNS
+,	,
+and	CC
+-LRB-	-LRB-
+c	LS
+-RRB-	-RRB-
+how	WRB
+easy	JJ
+it	PRP
+is	VBZ
+for	IN
+users	NNS
+to	TO
+move	VB
+various	JJ
+pieces	NNS
+of	IN
+structured	JJ
+data	NNS
+around	IN
+,	,
+i.e.	FW
+,	,
+rearrange	VB
+them	PRP
+in	IN
+the	DT
+wiki	JJ
+page	NN
+.	.
+
+
+The	DT
+s-slot	JJ
+solution	NN
+appears	VBZ
+best	JJS
+for	IN
+-LRB-	-LRB-
+b	NN
+-RRB-	-RRB-
+and	CC
+-LRB-	-LRB-
+c	LS
+-RRB-	-RRB-
+,	,
+and	CC
+so-so	JJ
+for	IN
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+.	.
+
+The	DT
+natural-language	JJ
+solution	NN
+is	VBZ
+best	RB
+for	IN
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+,	,
+so-so	JJ
+for	IN
+-LRB-	-LRB-
+c	NN
+-RRB-	-RRB-
+,	,
+and	CC
+difï	NN
+¬	CD
+cult	NN
+for	IN
+-LRB-	-LRB-
+b	NN
+-RRB-	-RRB-
+.	.
+
+An	DT
+XML-like	JJ
+solution	NN
+appears	VBZ
+best	JJS
+for	IN
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+and	CC
+-LRB-	-LRB-
+b	LS
+-RRB-	-RRB-
+,	,
+but	CC
+so-so	JJ
+for	IN
+-LRB-	-LRB-
+c	NN
+-RRB-	-RRB-
+.	.
+
+Developing	VBG
+more	JJR
+solutions	NNS
+,	,
+evaluating	VBG
+them	PRP
+,	,
+and	CC
+selecting	VBG
+a	DT
+good	JJ
+one	CD
+is	VBZ
+an	DT
+interesting	JJ
+future	JJ
+research	NN
+direction	NN
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+14	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+8	CD
+Conclusions	NNPS
+&	CC
+Future	NNP
+Work	NNP
+
+
+We	PRP
+have	VBP
+described	VBN
+Cwiki	NNP
+,	,
+an	DT
+approach	NN
+that	WDT
+employs	VBZ
+both	DT
+â	RB
+$	$
+œmachinesâ	JJ
+$	$
+and	CC
+human	JJ
+users	NNS
+to	TO
+build	VB
+structured	JJ
+community	NN
+portals	NNS
+.	.
+
+This	DT
+new	JJ
+hybrid	NN
+machine-human	NN
+approach	NN
+can	MD
+bring	VB
+signiï	NN
+¬	NN
+cant	NN
+beneï	NN
+¬	CD
+ts	NNS
+.	.
+
+It	PRP
+can	MD
+achieve	VB
+broader	JJR
+and	CC
+deeper	JJR
+cover	NN
+-	:
+age	NN
+,	,
+provide	VBP
+more	JJR
+incentives	NNS
+for	IN
+users	NNS
+to	TO
+contribute	VB
+,	,
+and	CC
+keep	VB
+the	DT
+portal	NN
+more	RBR
+up	IN
+to	TO
+date	NN
+,	,
+with	IN
+less	JJR
+user	NN
+efforts	NNS
+.	.
+
+We	PRP
+have	VBP
+applied	VBN
+Cwiki	NNP
+to	TO
+build	VB
+a	DT
+â	JJ
+$	$
+œwikipediaâ	JJ
+$	$
+portal	JJ
+for	IN
+the	DT
+database	NN
+community	NN
+-LSB-	-LRB-
+1	CD
+-RSB-	-RRB-
+.	.
+
+We	PRP
+reported	VBD
+on	IN
+our	PRP$
+experience	NN
+with	IN
+this	DT
+por	NN
+-	:
+tal	NN
+that	WDT
+demonstrates	VBZ
+the	DT
+potentials	NNS
+of	IN
+Cwiki	NNP
+and	CC
+suggests	VBZ
+many	JJ
+research	NN
+opportunities	NNS
+.	.
+
+
+Indeed	RB
+,	,
+it	PRP
+is	VBZ
+clear	JJ
+that	IN
+our	PRP$
+work	NN
+here	RB
+has	VBZ
+only	RB
+scratched	VBN
+the	DT
+surface	NN
+of	IN
+this	DT
+direction	NN
+-LRB-	-LRB-
+of	IN
+combining	VBG
+â	JJ
+$	$
+œmachinesâ	JJ
+$	$
+and	CC
+human	JJ
+to	TO
+build	VB
+structured	JJ
+wikipedias	NNS
+-RRB-	-RRB-
+.	.
+
+Virtually	RB
+any	DT
+prob	NN
+-	:
+lem	NN
+that	IN
+we	PRP
+have	VBP
+discussed	VBN
+can	MD
+be	VB
+â	JJ
+$	$
+œdrilled	JJ
+downâ	NN
+$	$
+deeper	JJR
+.	.
+
+Example	NN
+problems	NNS
+include	VBP
+:	:
+-LRB-	-LRB-
+a	LS
+-RRB-	-RRB-
+extending	VBG
+the	DT
+s-slot	NN
+wiki	NN
+lan	NN
+-	:
+guage	NN
+to	TO
+handle	VB
+top-k	JJ
+and	CC
+aggregate	JJ
+views	NNS
+and	CC
+studying	VBG
+up	RP
+-	:
+dating	VBG
+for	IN
+such	JJ
+views	NNS
+,	,
+-LRB-	-LRB-
+b	LS
+-RRB-	-RRB-
+developing	VBG
+â	RB
+$	$
+œmacrosâ	JJ
+$	$
+that	WDT
+hide	VBP
+the	DT
+low-level	JJ
+structured	JJ
+constructs	NNS
+to	TO
+allow	VB
+users	NNS
+to	TO
+edit	VB
+certain	JJ
+structured	JJ
+data	NNS
+pieces	NNS
+more	RBR
+efï	NN
+¬	NN
+ciently	RB
+,	,
+-LRB-	-LRB-
+c	NN
+-RRB-	-RRB-
+developing	VBG
+efï	NN
+¬	SYM
+-	:
+cient	JJ
+eager-update-propagation	NN
+schemes	NNS
+,	,
+-LRB-	-LRB-
+d	LS
+-RRB-	-RRB-
+developing	VBG
+bet	NN
+-	:
+ter	NN
+solutions	NNS
+to	TO
+handle	VB
+machine	NN
+updates	NNS
+to	TO
+data	NNS
+already	RB
+mod	SYM
+-	:
+iï	NN
+¬	CD
+ed	VBN
+by	IN
+users	NNS
+,	,
+and	CC
+-LRB-	-LRB-
+e	LS
+-RRB-	-RRB-
+learning	VBG
+how	WRB
+to	TO
+leverage	NN
+user	NN
+edits	VBZ
+to	TO
+improve	VB
+the	DT
+extraction	NN
+and	CC
+integration	NN
+accuracy	NN
+of	IN
+machines	NNS
+.	.
+
+
+In	IN
+addition	NN
+,	,
+we	PRP
+will	MD
+continue	VB
+to	TO
+develop	VB
+the	DT
+structured	JJ
+wikipedia	NN
+for	IN
+the	DT
+database	NN
+community	NN
+-LSB-	-LRB-
+1	CD
+-RSB-	-RRB-
+,	,
+as	IN
+a	DT
+real-world	JJ
+application	NN
+that	IN
+we	PRP
+can	MD
+use	VB
+to	TO
+evaluate	VB
+Cwiki	NNP
+.	.
+
+Finally	RB
+,	,
+we	PRP
+plan	VBP
+to	TO
+release	VB
+the	DT
+Cwiki	NNP
+source	NN
+code	NN
+to	TO
+encourage	VB
+further	JJ
+development	NN
+and	CC
+evaluation	NN
+of	IN
+community	NN
+wikipedias	NNS
+in	IN
+ad	NN
+-	:
+ditional	JJ
+domains	NNS
+.	.
+
+
+References	NNS
+
+
+-LSB-	-LRB-
+1	CD
+-RSB-	-RRB-
+http://dblife-labs.cs.wisc.edu/wiki-test/index.php/main	JJ
+page	NN
+.	.
+
+-LSB-	-LRB-
+2	CD
+-RSB-	-RRB-
+http://en.wikipedia.org/	NN
+.	.
+
+
+-LSB-	-LRB-
+3	CD
+-RSB-	-RRB-
+http://en.wikipedia.org/wiki/semantic	JJ
+wiki	NNS
+.	.
+
+
+-LSB-	-LRB-
+4	LS
+-RSB-	-RRB-
+http://metaweb.com/	NN
+.	.
+
+
+-LSB-	-LRB-
+5	CD
+-RSB-	-RRB-
+http://oak.cs.ucla.edu/blogocenter	NN
+.	.
+
+
+-LSB-	-LRB-
+6	CD
+-RSB-	-RRB-
+http://rexa.info/	NN
+.	.
+
+
+-LSB-	-LRB-
+7	CD
+-RSB-	-RRB-
+Sixth	NNP
+international	JJ
+workshop	NN
+on	IN
+information	NN
+integration	NN
+on	IN
+the	DT
+
+
+web	NN
+.	.
+
+2007	CD
+.	.
+
+
+-LSB-	-LRB-
+8	CD
+-RSB-	-RRB-
+S.	NNP
+Amer-Yahia	NNP
+.	.
+
+A	NN
+database	NN
+solution	NN
+to	TO
+search	VB
+2.0	CD
+.	.
+
+WebDB-07	NN
+.	.
+
+-LSB-	-LRB-
+9	CD
+-RSB-	-RRB-
+I.	NNP
+Androutsopoulos	NNP
+,	,
+G.	NNP
+D.	NNP
+Ritchie	NNP
+,	,
+and	CC
+P.	NNP
+Thanisch	NNP
+.	.
+
+Natural	JJ
+
+
+language	NN
+interfaces	NNS
+to	TO
+databasesâ	VB
+$	$
+``	``
+an	DT
+introduction	NN
+.	.
+
+Journal	NNP
+of	IN
+
+
+Language	NN
+Engineering	NNP
+,	,
+1	CD
+-LRB-	-LRB-
+1	CD
+-RRB-	-RRB-
+:29	CD
+â	NN
+$	$
+``	``
+81	CD
+,	,
+1995	CD
+.	.
+
+
+-LSB-	-LRB-
+10	CD
+-RSB-	-RRB-
+F.	NNP
+Bancilhon	NNP
+and	CC
+N.	NNP
+Spyratos	NNP
+.	.
+
+Update	NNP
+semantics	NNS
+of	IN
+relational	JJ
+
+
+views	NNS
+.	.
+
+ACM	NNP
+Transactions	NNS
+on	IN
+Database	NNP
+Systems	NNPS
+,	,
+6	CD
+-LRB-	-LRB-
+4	CD
+-RRB-	-RRB-
+:557	CD
+â	NN
+$	$
+``	``
+575	CD
+,	,
+
+
+1981	CD
+.	.
+
+
+-LSB-	-LRB-
+11	CD
+-RSB-	-RRB-
+N.	NNP
+Bansal	NNP
+and	CC
+N.	NNP
+Koudas	NNP
+.	.
+
+Blogscope	NNP
+:	:
+Spatio-temporal	JJ
+analy	NN
+-	:
+
+
+sis	NN
+of	IN
+the	DT
+blogosphere	NN
+.	.
+
+In	IN
+WWW-07	NN
+.	.
+
+
+-LSB-	-LRB-
+12	CD
+-RSB-	-RRB-
+U.	NNP
+Dayal	NNP
+and	CC
+P.	NNP
+A.	NNP
+Bernstein	NNP
+.	.
+
+On	IN
+the	DT
+correct	JJ
+translation	NN
+of	IN
+
+
+update	VB
+operations	NNS
+on	IN
+relational	JJ
+views	NNS
+.	.
+
+ACM	NNP
+Transactions	NNS
+on	IN
+
+
+Database	NNP
+Systems	NNPS
+,	,
+7	CD
+-LRB-	-LRB-
+3	CD
+-RRB-	-RRB-
+:381	CD
+â	NN
+$	$
+``	``
+416	CD
+,	,
+1982	CD
+.	.
+
+
+-LSB-	-LRB-
+13	CD
+-RSB-	-RRB-
+P.	NNP
+DeRose	NNP
+,	,
+X.	NNP
+Chai	NNP
+,	,
+B.	NNP
+J.	NNP
+Gao	NNP
+,	,
+W.	NNP
+Shen	NNP
+,	,
+A.	NNP
+Doan	NNP
+,	,
+
+
+P.	NNP
+Bohannon	NNP
+,	,
+and	CC
+J.	NNP
+Zhu	NNP
+.	.
+
+Building	NN
+community	NN
+
+
+wikipedias	NNS
+:	:
+A	DT
+machine-human	JJ
+partnership	NN
+approach	NN
+.	.
+
+
+http://pages.cs.wisc.edu/	NN
+xchai/cwiki	NN
+.	.
+
+pdf	NN
+,	,
+2007	CD
+.	.
+
+
+-LSB-	-LRB-
+14	CD
+-RSB-	-RRB-
+P.	NNP
+DeRose	NNP
+,	,
+W.	NNP
+Shen	NNP
+,	,
+F.	NNP
+Chen	NNP
+,	,
+A.	NNP
+Doan	NNP
+,	,
+and	CC
+R.	NNP
+Ramakrishnan	NNP
+.	.
+
+
+Building	NN
+structured	JJ
+web	NN
+community	NN
+portals	NNS
+:	:
+The	DT
+case	NN
+for	IN
+an	DT
+
+
+incremental	JJ
+and	CC
+compositional	JJ
+approach	NN
+.	.
+
+In	IN
+VLDB-07	NN
+.	.
+
+-LSB-	-LRB-
+15	CD
+-RSB-	-RRB-
+A.	NN
+Doan	NNP
+,	,
+P.	NNP
+Bohannon	NNP
+,	,
+R.	NNP
+Ramakrishnan	NNP
+,	,
+X.	NNP
+Chai	NNP
+,	,
+P.	NNP
+DeRose	NNP
+,	,
+
+
+B.	NNP
+Gao	NNP
+,	,
+and	CC
+W.	NNP
+Shen	NNP
+.	.
+
+User-centric	JJ
+research	NN
+challenges	NNS
+in	IN
+com	NN
+-	:
+
+
+munity	NN
+information	NN
+management	NN
+systems	NNS
+.	.
+
+IEEE	NNP
+Data	NNP
+Engi	NNP
+-	:
+
+
+neering	VBG
+Bulletin	NNP
+,	,
+Special	JJ
+Issue	NN
+on	IN
+Data	NNP
+Management	NNP
+in	IN
+Social	NNP
+
+
+Networks	NNP
+,	,
+2007	CD
+.	.
+
+
+-LSB-	-LRB-
+16	CD
+-RSB-	-RRB-
+A.	NN
+Doan	NNP
+,	,
+R.	NNP
+Ramakrishnan	NNP
+,	,
+F.	NNP
+Chen	NNP
+,	,
+P.	NNP
+DeRose	NNP
+,	,
+Y.	NNP
+Lee	NNP
+,	,
+
+
+R.	NNP
+McCann	NNP
+,	,
+M.	NNP
+Sayyadian	NNP
+,	,
+and	CC
+W.	NNP
+Shen	NNP
+.	.
+
+Community	NNP
+infor	NNP
+-	:
+
+
+mation	NN
+management	NN
+.	.
+
+IEEE	NNP
+Data	NNP
+Engineering	NNP
+Bulletin	NNP
+,	,
+Special	JJ
+
+
+Issue	NN
+on	IN
+Probabilistic	NNP
+Databases	NNP
+,	,
+29	CD
+-LRB-	-LRB-
+1	CD
+-RRB-	-RRB-
+,	,
+2006	CD
+.	.
+
+
+-LSB-	-LRB-
+17	CD
+-RSB-	-RRB-
+C.	NNP
+Giles	NNP
+,	,
+K.	NNP
+Bollacker	NNP
+,	,
+and	CC
+S.	NNP
+Lawrence	NNP
+.	.
+
+Citeseer	NNP
+:	:
+An	DT
+auto	NN
+-	:
+
+
+matic	JJ
+citation	NN
+indexing	NN
+system	NN
+.	.
+
+In	IN
+DL-98	NN
+.	.
+
+
+-LSB-	-LRB-
+18	CD
+-RSB-	-RRB-
+H.	NNP
+Gregersen	NNP
+and	CC
+C.	NNP
+S.	NNP
+Jensen	NNP
+.	.
+
+Temporal	JJ
+entity-relationship	NN
+
+
+models	NNS
+-	:
+a	DT
+survey	NN
+.	.
+
+Knowledge	NN
+and	CC
+Data	NNP
+Engineering	NNP
+,	,
+
+
+11	CD
+-LRB-	-LRB-
+3	CD
+-RRB-	-RRB-
+:464	CD
+â	NN
+$	$
+``	``
+497	CD
+,	,
+1999	CD
+.	.
+
+
+-LSB-	-LRB-
+19	CD
+-RSB-	-RRB-
+Y.	NNP
+Li	NNP
+,	,
+H.	NNP
+Yang	NNP
+,	,
+and	CC
+H.	NNP
+V.	NNP
+Jagadish	NNP
+.	.
+
+Constructing	VBG
+a	DT
+generic	JJ
+
+
+natural	JJ
+language	NN
+interface	NN
+for	IN
+an	DT
+xml	NN
+database	NN
+.	.
+
+In	IN
+EDBT-06	NN
+.	.
+
+-LSB-	-LRB-
+20	CD
+-RSB-	-RRB-
+R.	NNP
+McCann	NNP
+,	,
+A.	NNP
+Kramnik	NNP
+,	,
+W.	NNP
+Shen	NNP
+,	,
+V.	NNP
+Varadarajan	NNP
+,	,
+O.	NNP
+Sobulo	NNP
+,	,
+
+
+and	CC
+A.	NN
+Doan	NNP
+.	.
+
+Integrating	VBG
+data	NNS
+from	IN
+disparate	JJ
+sources	NNS
+:	:
+A	DT
+mass	NN
+
+
+collaboration	NN
+approach	NN
+.	.
+
+In	IN
+ICDE-05	NN
+.	.
+
+
+-LSB-	-LRB-
+21	CD
+-RSB-	-RRB-
+Z.	NNP
+Nie	NNP
+,	,
+J.	NNP
+Wen	NNP
+,	,
+and	CC
+W.	NNP
+Ma	NNP
+.	.
+
+Object-level	JJ
+vertical	JJ
+search	NN
+.	.
+
+In	IN
+
+
+CIDR-07	NN
+.	.
+
+
+-LSB-	-LRB-
+22	CD
+-RSB-	-RRB-
+R.	NNP
+Ramakrishnan	NNP
+.	.
+
+Community	NNP
+systems	NNS
+:	:
+The	DT
+world	NN
+online	NN
+.	.
+
+In	IN
+
+
+CIDR-07	NN
+.	.
+
+
+-LSB-	-LRB-
+23	CD
+-RSB-	-RRB-
+R.	NNP
+T.	NNP
+Snodgrass	NNP
+.	.
+
+Developing	VBG
+Time-Oriented	NNP
+Database	NNP
+Appli	NNP
+-	:
+
+
+cations	NNS
+in	IN
+SQL	NNP
+.	.
+
+Morgan	NNP
+Kaufmann	NNP
+Publishers	NNPS
+,	,
+Inc.	NNP
+,	,
+1999	CD
+.	.
+
+-LSB-	-LRB-
+24	CD
+-RSB-	-RRB-
+M.	NNP
+Volkel	NNP
+,	,
+M.	NNP
+Krotzsch	NNP
+,	,
+D.	NNP
+Vrandecic	NNP
+,	,
+H.	NNP
+Haller	NNP
+,	,
+and	CC
+
+
+R.	NNP
+Studer	NNP
+.	.
+
+Semantic	JJ
+wikipedia	NN
+.	.
+
+In	IN
+WWW-06	NN
+.	.
+
+
+-LSB-	-LRB-
+25	CD
+-RSB-	-RRB-
+F.	NNP
+Wang	NNP
+,	,
+C.	NNP
+Rabsch	NNP
+,	,
+P.	NNP
+Kling	NNP
+,	,
+P.	NNP
+Liu	NNP
+,	,
+and	CC
+P.	NNP
+John	NNP
+.	.
+
+Web-based	JJ
+
+
+collaborative	JJ
+information	NN
+integration	NN
+for	IN
+scientiï	NN
+¬	CD
+c	NN
+rese	JJ
+arch	NN
+.	.
+
+In	IN
+
+
+ICDE-07	NN
+.	.
+
+
+Appendix	NN
+
+
+A	DT
+Implementing	VBG
+Basic	JJ
+Relational	JJ
+Actions	NNS
+
+
+We	PRP
+deï	VBP
+¬	CD
+ne	NN
+a	DT
+set	NN
+of	IN
+basic	JJ
+relational	JJ
+actions	NNS
+that	IN
+a	DT
+user	NN
+can	MD
+execute	VB
+over	IN
+Vd	NNP
+,	,
+Vs	NNP
+,	,
+Gd	NNP
+and	CC
+Gs	NN
+.	.
+
+There	EX
+are	VBP
+10	CD
+actions	NNS
+for	IN
+Vd	NN
+,	,
+8	CD
+for	IN
+Vs	NNS
+,	,
+10	CD
+for	IN
+Gd	NNP
+,	,
+and	CC
+8	CD
+for	IN
+Gs	NN
+.	.
+
+In	IN
+the	DT
+following	VBG
+,	,
+we	PRP
+give	VBP
+our	PRP$
+implementation	NN
+of	IN
+each	DT
+action	NN
+.	.
+
+To	TO
+distinguish	VB
+actions	NNS
+in	IN
+different	JJ
+categories	NNS
+,	,
+we	PRP
+preï	VBP
+¬	CD
+x	CC
+each	DT
+action	NN
+by	IN
+its	PRP$
+categor	NN
+y	NN
+name	NN
+.	.
+
+For	IN
+example	NN
+,	,
+we	PRP
+denote	VBP
+action	NN
+ai	VBP
+for	IN
+Vd	NN
+as	IN
+Vd	NN
+:	:
+:	:
+ai	VBP
+.	.
+
+
+A.	NN
+1	CD
+Actions	NNS
+for	IN
+Vd	NN
+
+
+Action	NNP
+a1	NN
+:	:
+Modify	VB
+an	DT
+Entity	NNP
+Attribute	NNP
+Value	NNP
+Steps	VBZ
+:	:
+
+
+1	LS
+.	.
+
+Execute	VB
+Gd	NNP
+:	:
+:	:
+a1	NN
+.	.
+
+
+Action	NNP
+a2	NN
+:	:
+Modify	VB
+a	DT
+Relation	NNP
+Attribute	NNP
+Value	NNP
+Steps	VBZ
+:	:
+
+
+1	LS
+.	.
+
+Execute	VB
+Gd	NNP
+:	:
+:	:
+a2	NN
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+15	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+Action	NNP
+a3	NN
+:	:
+Insert	VB
+an	DT
+Entity	NNP
+Attribute	NNP
+
+
+Let	VB
+eid	NN
+be	VB
+the	DT
+entity	NN
+ID	NN
+and	CC
+E	NN
+be	VB
+the	DT
+entity	NN
+type	NN
+.	.
+
+Let	VB
+A	DT
+be	VB
+the	DT
+attribute	NN
+to	TO
+insert	VB
+.	.
+
+
+Steps	NNS
+:	:
+
+
+1	LS
+.	.
+
+Execute	VB
+Gd	NNP
+:	:
+:	:
+a3	NN
+;	:
+
+
+2	LS
+.	.
+
+Add	VB
+an	DT
+inclusive	JJ
+path	NN
+E	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+eid	NN
+-RRB-	-RRB-
+-LCB-	-LRB-
+A	DT
+-RCB-	-RRB-
+to	TO
+Vs.	NNP
+
+
+Action	NNP
+a4	NN
+:	:
+Insert	VB
+a	DT
+Relation	NNP
+Attribute	NNP
+
+
+Let	VB
+rid	JJ
+be	VB
+the	DT
+relation	NN
+ID	NN
+and	CC
+R	NN
+be	VB
+the	DT
+relation	NN
+type	NN
+.	.
+
+Let	VB
+A	DT
+be	VB
+the	DT
+attribute	NN
+to	TO
+insert	VB
+.	.
+
+
+Steps	NNS
+:	:
+
+
+1	LS
+.	.
+
+Execute	VB
+Gd	NNP
+:	:
+:	:
+a4	NN
+;	:
+
+
+2	LS
+.	.
+
+Add	VB
+an	DT
+inclusive	JJ
+path	NN
+R	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+rid	JJ
+-RRB-	-RRB-
+-LCB-	-LRB-
+A	DT
+-RCB-	-RRB-
+to	TO
+Vs.	NNP
+
+
+Action	NNP
+a5	NN
+:	:
+Insert	VB
+a	DT
+New	NNP
+Entity	NNP
+
+
+Let	VB
+e	SYM
+be	VB
+the	DT
+entity	NN
+to	TO
+insert	VB
+and	CC
+E	NN
+be	VB
+its	PRP$
+type	NN
+.	.
+
+Steps	NNS
+:	:
+
+
+1	LS
+.	.
+
+Execute	VB
+Gd	NNP
+:	:
+:	:
+a5	NN
+,	,
+let	VB
+eid	NN
+be	VB
+the	DT
+ID	NN
+of	IN
+e	SYM
+;	:
+
+
+2	LS
+.	.
+
+Add	VB
+an	DT
+inclusive	JJ
+path	NN
+E	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+eid	NN
+-RRB-	-RRB-
+to	TO
+Vs.	NNP
+
+
+Action	NNP
+a6	NN
+:	:
+Insert	VB
+a	DT
+New	NNP
+Relation	NNP
+
+
+Let	VB
+r	NN
+be	VB
+the	DT
+relation	NN
+to	TO
+insert	VB
+and	CC
+R	NN
+be	VB
+its	PRP$
+type	NN
+.	.
+
+Let	VB
+eid1	NN
+and	CC
+eid2	NN
+be	VB
+the	DT
+IDs	NNS
+of	IN
+the	DT
+two	CD
+entities	NNS
+that	WDT
+r	NN
+relates	VBZ
+,	,
+and	CC
+E1	NN
+and	CC
+E2	NN
+be	VB
+their	PRP$
+types	NNS
+.	.
+
+
+Steps	NNS
+:	:
+
+
+1	LS
+.	.
+
+Execute	VB
+Gd	NNP
+:	:
+:	:
+a6	NN
+,	,
+let	VB
+rid	JJ
+be	VB
+the	DT
+ID	NN
+of	IN
+r	NN
+;	:
+
+
+2	LS
+.	.
+
+Add	VB
+an	DT
+inclusive	JJ
+path	NN
+E1	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+eid1	NN
+-RRB-	-RRB-
+.	.
+
+R	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+rid	JJ
+-RRB-	-RRB-
+.	.
+
+E2	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+
+
+eid2	NN
+-RRB-	-RRB-
+to	TO
+Vs.	NNP
+
+
+Action	NNP
+a7	NN
+:	:
+Delete	VB
+an	DT
+Entity	NNP
+Attribute	NNP
+
+
+Let	VB
+eid	NN
+be	VB
+the	DT
+ID	NN
+of	IN
+the	DT
+entity	NN
+and	CC
+E	NN
+be	VB
+its	PRP$
+type	NN
+.	.
+
+Let	VB
+A	DT
+be	VB
+the	DT
+attribute	NN
+to	TO
+delete	VB
+.	.
+
+
+Steps	NNS
+:	:
+
+
+1	LS
+.	.
+
+Execute	VB
+Gd	NNP
+:	:
+:	:
+a7	NN
+;	:
+
+
+2	LS
+.	.
+
+Add	VB
+an	DT
+exclusive	JJ
+path	NN
+E	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+eid	NN
+-RRB-	-RRB-
+-LCB-	-LRB-
+A	DT
+-RCB-	-RRB-
+to	TO
+Vs.	NNP
+
+
+Action	NNP
+a8	NN
+:	:
+Delete	VB
+a	DT
+Relation	NNP
+Attribute	NNP
+
+
+Let	VB
+rid	JJ
+be	VB
+the	DT
+ID	NN
+of	IN
+the	DT
+relation	NN
+and	CC
+R	NN
+be	VB
+its	PRP$
+type	NN
+.	.
+
+Let	VB
+A	DT
+be	VB
+the	DT
+attribute	NN
+to	TO
+delete	VB
+.	.
+
+
+Steps	NNS
+:	:
+
+
+1	LS
+.	.
+
+Execute	VB
+Gd	NNP
+:	:
+:	:
+a8	NN
+;	:
+
+
+2	LS
+.	.
+
+Add	VB
+an	DT
+exclusive	JJ
+path	NN
+R	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+rid	JJ
+-RRB-	-RRB-
+-LCB-	-LRB-
+A	DT
+-RCB-	-RRB-
+to	TO
+Vs.	NNP
+
+
+Action	NNP
+a9	NN
+:	:
+Delete	VB
+an	DT
+Entity	NN
+
+
+Let	VB
+e	SYM
+be	VB
+the	DT
+entity	NN
+to	TO
+delete	VB
+.	.
+
+Let	VB
+eid	NN
+be	VB
+e	SYM
+'s	POS
+ID	NN
+and	CC
+E	NN
+be	VB
+e	SYM
+'s	POS
+type	NN
+.	.
+
+
+Steps	NNS
+:	:
+
+
+1	LS
+.	.
+
+FOR	IN
+each	DT
+relation	NN
+r	NN
+that	WDT
+relates	VBZ
+e	SYM
+DO	SYM
+
+
+Execute	VB
+Vd	NNP
+:	:
+:	:
+a10	NN
+;	:
+
+
+2	LS
+.	.
+
+FOR	IN
+each	DT
+attribute	NN
+A	NN
+-LRB-	-LRB-
+including	VBG
+exists	VBZ
+-RRB-	-RRB-
+of	IN
+e	SYM
+DO	SYM
+
+
+Execute	VB
+Vd	NNP
+:	:
+:	:
+a7	NN
+;	:
+
+
+3	LS
+.	.
+
+Add	VB
+an	DT
+exclusive	JJ
+path	NN
+E	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+eid	NN
+-RRB-	-RRB-
+to	TO
+Vs.	NNP
+
+
+Action	NNP
+a10	NN
+:	:
+Delete	VB
+a	DT
+Relation	NN
+
+
+Let	VB
+r	NN
+be	VB
+the	DT
+relation	NN
+to	TO
+delete	VB
+.	.
+
+Let	VB
+rid	JJ
+be	VB
+r	NN
+'s	POS
+ID	NN
+and	CC
+R	NN
+be	VB
+r	NN
+'s	POS
+type	NN
+.	.
+
+Let	VB
+eid1	NN
+and	CC
+eid2	NN
+be	VB
+the	DT
+IDs	NNS
+of	IN
+the	DT
+entities	NNS
+that	WDT
+r	NN
+relates	VBZ
+,	,
+and	CC
+E1	NN
+and	CC
+E2	NN
+be	VB
+their	PRP$
+types	NNS
+.	.
+
+
+Steps	NNS
+:	:
+
+
+1	LS
+.	.
+
+FOR	IN
+each	DT
+attribute	NN
+A	NN
+-LRB-	-LRB-
+including	VBG
+exists	VBZ
+-RRB-	-RRB-
+of	IN
+r	NN
+DO	NN
+
+
+Execute	VB
+Vd	NNP
+:	:
+:	:
+a8	NN
+;	:
+
+
+2	LS
+.	.
+
+Add	VB
+an	DT
+exclusive	JJ
+path	NN
+E1	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+eid1	NN
+-RRB-	-RRB-
+.	.
+
+R	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+rid	JJ
+-RRB-	-RRB-
+.	.
+
+E2	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+
+
+eid2	NN
+-RRB-	-RRB-
+to	TO
+Vs.	NNP
+
+
+A.	NN
+2	CD
+Actions	NNS
+for	IN
+Vs	NNS
+
+
+Action	NNP
+a1	NN
+:	:
+Insert	VB
+an	DT
+Entity	NNP
+Attribute	NNP
+
+
+Let	VB
+eid	NN
+be	VB
+the	DT
+ID	NN
+of	IN
+the	DT
+entity	NN
+and	CC
+E	NN
+be	VB
+its	PRP$
+type	NN
+.	.
+
+Let	VB
+A	DT
+be	VB
+the	DT
+attribute	NN
+to	TO
+insert	VB
+.	.
+
+
+Steps	NNS
+:	:
+
+
+1	LS
+.	.
+
+Add	VB
+an	DT
+inclusive	JJ
+path	NN
+E	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+eid	NN
+-RRB-	-RRB-
+-LCB-	-LRB-
+A	DT
+-RCB-	-RRB-
+to	TO
+Vs.	NNP
+
+
+Action	NNP
+a2	NN
+:	:
+Insert	VB
+a	DT
+Relation	NNP
+Attribute	NNP
+
+
+Let	VB
+rid	JJ
+be	VB
+the	DT
+ID	NN
+of	IN
+the	DT
+relation	NN
+and	CC
+R	NN
+be	VB
+its	PRP$
+type	NN
+.	.
+
+Let	VB
+A	DT
+be	VB
+the	DT
+attribute	NN
+to	TO
+insert	VB
+.	.
+
+
+Steps	NNS
+:	:
+
+
+1	LS
+.	.
+
+Add	VB
+an	DT
+inclusive	JJ
+path	NN
+R	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+rid	JJ
+-RRB-	-RRB-
+-LCB-	-LRB-
+A	DT
+-RCB-	-RRB-
+to	TO
+Vs.	NNP
+
+
+Action	NNP
+a3	NN
+:	:
+Insert	VB
+an	DT
+Entity	NN
+
+
+Let	VB
+eid	NN
+be	VB
+the	DT
+ID	NN
+of	IN
+the	DT
+entity	NN
+and	CC
+E	NN
+be	VB
+its	PRP$
+type	NN
+.	.
+
+Steps	NNS
+:	:
+
+
+1	LS
+.	.
+
+Add	VB
+an	DT
+inclusive	JJ
+path	NN
+E	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+eid	NN
+-RRB-	-RRB-
+to	TO
+Vs.	NNP
+
+
+Action	NNP
+a4	NN
+:	:
+Insert	VB
+a	DT
+Relation	NN
+
+
+Let	VB
+r	NN
+be	VB
+the	DT
+relation	NN
+to	TO
+insert	VB
+.	.
+
+Let	VB
+rid	JJ
+be	VB
+r	NN
+'s	POS
+ID	NN
+and	CC
+R	NN
+be	VB
+r	NN
+'s	POS
+type	NN
+.	.
+
+Let	VB
+eid1	NN
+and	CC
+eid2	NN
+be	VB
+the	DT
+IDs	NNS
+of	IN
+the	DT
+entities	NNS
+that	WDT
+r	NN
+relates	VBZ
+,	,
+and	CC
+E1	NN
+and	CC
+E2	NN
+be	VB
+their	PRP$
+types	NNS
+.	.
+
+
+Steps	NNS
+:	:
+
+
+1	LS
+.	.
+
+Add	VB
+an	DT
+inclusive	JJ
+path	NN
+E1	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+eid1	NN
+-RRB-	-RRB-
+.	.
+
+R	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+rid	JJ
+-RRB-	-RRB-
+.	.
+
+E2	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+
+
+eid2	NN
+-RRB-	-RRB-
+to	TO
+Vs.	NNP
+
+
+Action	NNP
+a5	NN
+:	:
+Delete	VB
+an	DT
+Entity	NNP
+Attribute	NNP
+
+
+Let	VB
+eid	NN
+be	VB
+the	DT
+ID	NN
+of	IN
+the	DT
+entity	NN
+and	CC
+E	NN
+be	VB
+its	PRP$
+type	NN
+.	.
+
+Let	VB
+A	DT
+be	VB
+the	DT
+attribute	NN
+to	TO
+delete	VB
+.	.
+
+
+Steps	NNS
+:	:
+
+
+1	LS
+.	.
+
+Add	VB
+an	DT
+exclusive	JJ
+path	NN
+E	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+eid	NN
+-RRB-	-RRB-
+-LCB-	-LRB-
+A	DT
+-RCB-	-RRB-
+to	TO
+Vs.	NNP
+
+
+Action	NNP
+a6	NN
+:	:
+Delete	VB
+a	DT
+Relation	NNP
+Attribute	NNP
+
+
+Let	VB
+rid	JJ
+be	VB
+the	DT
+ID	NN
+of	IN
+the	DT
+relation	NN
+and	CC
+R	NN
+be	VB
+its	PRP$
+type	NN
+.	.
+
+Let	VB
+A	DT
+be	VB
+the	DT
+attribute	NN
+to	TO
+delete	VB
+.	.
+
+
+Steps	NNS
+:	:
+
+
+1	LS
+.	.
+
+Add	VB
+an	DT
+exclusive	JJ
+path	NN
+R	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+rid	JJ
+-RRB-	-RRB-
+-LCB-	-LRB-
+A	DT
+-RCB-	-RRB-
+to	TO
+Vs.	NNP
+
+
+Action	NNP
+a7	NN
+:	:
+Delete	VB
+an	DT
+Entity	NN
+
+
+Let	VB
+e	SYM
+be	VB
+the	DT
+entity	NN
+to	TO
+delete	VB
+.	.
+
+Let	VB
+eid	NN
+be	VB
+e	SYM
+'s	POS
+ID	NN
+and	CC
+E	NN
+be	VB
+e	SYM
+'s	POS
+type	NN
+.	.
+
+
+Steps	NNS
+:	:
+
+
+1	LS
+.	.
+
+FOR	IN
+each	DT
+relation	NN
+r	NN
+that	WDT
+relates	VBZ
+e	SYM
+DO	SYM
+
+
+Execute	VB
+Vs	NNS
+:	:
+:	:
+a8	NN
+;	:
+
+
+2	LS
+.	.
+
+FOR	IN
+each	DT
+attribute	NN
+A	NN
+-LRB-	-LRB-
+including	VBG
+exists	VBZ
+-RRB-	-RRB-
+of	IN
+e	SYM
+DO	SYM
+
+
+Execute	VB
+Vs	NNS
+:	:
+:	:
+a5	NN
+;	:
+
+
+3	LS
+.	.
+
+Add	VB
+an	DT
+exclusive	JJ
+path	NN
+E	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+eid	NN
+-RRB-	-RRB-
+to	TO
+Vs.	NNP
+
+
+Action	NNP
+a8	NN
+:	:
+Delete	VB
+a	DT
+Relation	NN
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+16	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+Let	VB
+r	NN
+be	VB
+the	DT
+relation	NN
+to	TO
+insert	VB
+.	.
+
+Let	VB
+rid	JJ
+be	VB
+r	NN
+'s	POS
+ID	NN
+and	CC
+R	NN
+be	VB
+r	NN
+'s	POS
+type	NN
+.	.
+
+Let	VB
+eid1	NN
+and	CC
+eid2	NN
+be	VB
+the	DT
+IDs	NNS
+of	IN
+the	DT
+entities	NNS
+that	WDT
+r	NN
+relates	VBZ
+,	,
+and	CC
+E1	NN
+and	CC
+E2	NN
+be	VB
+their	PRP$
+types	NNS
+.	.
+
+
+Steps	NNS
+:	:
+
+
+1	LS
+.	.
+
+FOR	IN
+each	DT
+attribute	NN
+A	NN
+-LRB-	-LRB-
+including	VBG
+exists	VBZ
+-RRB-	-RRB-
+of	IN
+r	NN
+DO	NN
+
+
+Execute	VB
+Vs	NNS
+:	:
+:	:
+a6	NN
+;	:
+
+
+2	LS
+.	.
+
+Add	VB
+an	DT
+exclusive	JJ
+path	NN
+E1	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+eid1	NN
+-RRB-	-RRB-
+.	.
+
+R	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+rid	JJ
+-RRB-	-RRB-
+.	.
+
+E2	NN
+-LRB-	-LRB-
+id	NN
+=	JJ
+
+
+eid2	NN
+-RRB-	-RRB-
+to	TO
+Vs.	NNP
+
+
+A.	NN
+3	CD
+Actions	NNS
+for	IN
+Gd	NN
+
+
+We	PRP
+use	VBP
+the	DT
+following	VBG
+notations	NNS
+to	TO
+represent	VB
+tables	NNS
+in	IN
+G	NN
+:	:
+E	NN
+A	NN
+m	NN
+â	VBD
+$	$
+``	``
+table	NN
+for	IN
+attribute	NN
+A	NN
+of	IN
+entity	NN
+type	NN
+E	NN
+that	WDT
+stores	NNS
+
+
+attribute	NN
+values	NNS
+entered	VBN
+by	IN
+machine	NN
+M	NN
+;	:
+E	NN
+A	DT
+u	FW
+â	FW
+$	$
+``	``
+table	NN
+for	IN
+attribute	NN
+A	NN
+of	IN
+entity	NN
+type	NN
+E	NN
+that	WDT
+stores	NNS
+
+
+attribute	NN
+values	NNS
+entered	VBN
+by	IN
+human	JJ
+users	NNS
+;	:
+E	NN
+A	NN
+p	NN
+â	VBD
+$	$
+``	``
+table	NN
+for	IN
+attribute	NN
+A	NN
+of	IN
+entity	NN
+type	NN
+E	NN
+that	WDT
+stores	NNS
+
+
+attribute	NN
+values	NNS
+used	VBN
+in	IN
+generating	VBG
+Vd	NN
+;	:
+R	NN
+A	DT
+m	NN
+,	,
+R	NN
+A	NN
+u	NN
+,	,
+R	NN
+A	NN
+p	NN
+â	VBD
+$	$
+``	``
+similar	JJ
+to	TO
+those	DT
+above	IN
+but	CC
+for	IN
+
+
+relation	NN
+type	NN
+R	NN
+instead	RB
+;	:
+
+
+R	NN
+ID	NN
+â	VBD
+$	$
+``	``
+relation	NN
+ID	NN
+table	NN
+for	IN
+relation	NN
+type	NN
+R.	NNP
+
+
+Action	NNP
+a1	NN
+:	:
+Modify	VB
+an	DT
+Entity	NNP
+Attribute	NNP
+Value	NNP
+
+
+Let	VB
+E	NNP
+be	VB
+the	DT
+type	NN
+of	IN
+the	DT
+entity	NN
+and	CC
+A	NN
+be	VB
+the	DT
+attribute	NN
+.	.
+
+Let	VB
+w	NN
+be	VB
+the	DT
+ID	NN
+of	IN
+the	DT
+user	NN
+who	WP
+modiï	VBP
+¬	CD
+es	NNS
+A.	NN
+
+
+Steps	NNS
+:	:
+
+
+1	LS
+.	.
+
+IF	IN
+w	NN
+=	JJ
+M	NN
+THEN	RB
+
+
+Logically	RB
+delete	VB
+the	DT
+current	JJ
+value	NN
+of	IN
+A	NN
+in	IN
+E	NN
+A	NN
+m	NN
+;	:
+
+
+Insert	VB
+the	DT
+new	JJ
+value	NN
+of	IN
+A	DT
+into	IN
+E	NN
+A	NN
+m	NN
+;	:
+
+
+ELSE	RB
+
+
+Logically	RB
+delete	VB
+the	DT
+current	JJ
+value	NN
+of	IN
+A	NN
+in	IN
+E	NN
+A	NN
+u	NN
+;	:
+
+
+Insert	VB
+the	DT
+new	JJ
+value	NN
+of	IN
+A	DT
+into	IN
+E	NN
+A	NN
+u	NN
+;	:
+
+
+2	LS
+.	.
+
+IF	IN
+the	DT
+current	JJ
+value	NN
+in	IN
+E	NN
+A	NN
+p	NN
+was	VBD
+entered	VBN
+by	IN
+M	NN
+
+
+OR	NN
+w	NN
+!	.
+
+=	JJ
+M	NN
+THEN	RB
+
+
+Logically	RB
+delete	VB
+the	DT
+current	JJ
+value	NN
+of	IN
+A	NN
+in	IN
+E	NN
+A	NN
+p	NN
+;	:
+
+
+Insert	VB
+the	DT
+new	JJ
+value	NN
+of	IN
+A	DT
+into	IN
+E	NN
+A	NN
+p	NN
+;	:
+
+
+Action	NNP
+a2	NN
+:	:
+Modify	VB
+a	DT
+Relation	NNP
+Attribute	NNP
+Value	NNP
+
+
+Let	VB
+R	NNP
+be	VB
+the	DT
+type	NN
+of	IN
+the	DT
+relation	NN
+and	CC
+A	NN
+be	VB
+the	DT
+attribute	NN
+.	.
+
+Let	VB
+w	NN
+be	VB
+the	DT
+ID	NN
+of	IN
+the	DT
+user	NN
+who	WP
+modiï	VBP
+¬	CD
+es	NNS
+A.	NN
+
+
+Steps	NNS
+:	:
+
+
+1	LS
+.	.
+
+IF	IN
+w	NN
+=	JJ
+M	NN
+THEN	RB
+
+
+Logically	RB
+delete	VB
+the	DT
+current	JJ
+value	NN
+of	IN
+A	NN
+in	IN
+R	NN
+A	NN
+m	NN
+;	:
+
+
+Insert	VB
+the	DT
+new	JJ
+value	NN
+of	IN
+A	DT
+into	IN
+R	NN
+A	NN
+m	NN
+;	:
+
+
+ELSE	RB
+
+
+Logically	RB
+delete	VB
+the	DT
+current	JJ
+value	NN
+of	IN
+A	NN
+in	IN
+R	NN
+A	NN
+u	NN
+;	:
+
+
+Insert	VB
+the	DT
+new	JJ
+value	NN
+of	IN
+A	DT
+into	IN
+R	NN
+A	NN
+u	NN
+;	:
+
+
+2	LS
+.	.
+
+IF	IN
+the	DT
+current	JJ
+value	NN
+in	IN
+R	NN
+A	NN
+p	NN
+was	VBD
+entered	VBN
+by	IN
+M	NN
+
+
+OR	NN
+w	NN
+!	.
+
+=	JJ
+M	NN
+THEN	RB
+
+
+Logically	RB
+delete	VB
+the	DT
+current	JJ
+value	NN
+of	IN
+A	NN
+in	IN
+R	NN
+A	NN
+p	NN
+;	:
+
+
+Insert	VB
+the	DT
+new	JJ
+value	NN
+of	IN
+A	DT
+into	IN
+R	NN
+A	NN
+p	NN
+;	:
+
+
+Action	NNP
+a3	NN
+:	:
+Insert	VB
+an	DT
+Entity	NNP
+Attribute	NNP
+
+
+Let	VB
+eid	NN
+be	VB
+the	DT
+ID	NN
+of	IN
+the	DT
+entity	NN
+and	CC
+E	NN
+be	VB
+its	PRP$
+type	NN
+.	.
+
+Let	VB
+A	DT
+be	VB
+the	DT
+attribute	NN
+and	CC
+w	NN
+be	VB
+the	DT
+ID	NN
+of	IN
+the	DT
+user	NN
+who	WP
+inserts	NNS
+A.	NN
+Steps	VBZ
+:	:
+
+
+1	LS
+.	.
+
+IF	IN
+w	NN
+=	JJ
+M	NN
+THEN	RB
+
+
+IF	IN
+exists	VBZ
+a	DT
+record	NN
+with	IN
+id	NN
+=	JJ
+eid	NN
+
+
+AND	CC
+stop	NN
+=	JJ
+â	NN
+$	$
+œ9999-12-31	CD
+23:59:59	CD
+â	NN
+$	$
+in	IN
+E	NN
+A	NN
+m	NN
+THEN	RB
+
+
+Logically	RB
+delete	VB
+the	DT
+record	NN
+;	:
+
+
+Insert	VB
+the	DT
+new	JJ
+value	NN
+of	IN
+A	DT
+into	IN
+E	NN
+A	NN
+m	NN
+;	:
+
+
+ELSE	RB
+
+
+IF	IN
+exists	VBZ
+a	DT
+record	NN
+with	IN
+id	NN
+=	JJ
+eid	NN
+
+
+AND	CC
+stop	NN
+=	JJ
+â	NN
+$	$
+œ9999-12-31	CD
+23:59:59	CD
+â	NN
+$	$
+in	IN
+E	NN
+A	NN
+m	NN
+THEN	RB
+
+
+Logically	RB
+delete	VB
+the	DT
+record	NN
+;	:
+
+
+Insert	VB
+the	DT
+new	JJ
+value	NN
+of	IN
+A	DT
+into	IN
+E	NN
+A	NN
+u	NN
+;	:
+
+
+2	LS
+.	.
+
+IF	IN
+exists	VBZ
+a	DT
+record	NN
+with	IN
+id	NN
+=	JJ
+eid	NN
+
+
+AND	CC
+stop	NN
+=	JJ
+â	NN
+$	$
+œ9999-12-31	CD
+23:59:59	CD
+â	NN
+$	$
+in	IN
+E	NN
+A	NN
+p	NN
+THEN	RB
+
+
+IF	IN
+the	DT
+record	NN
+was	VBD
+entered	VBN
+by	IN
+M	NN
+OR	NN
+w	NN
+!	.
+
+=	JJ
+M	NN
+THEN	RB
+
+
+Logically	RB
+delete	VB
+the	DT
+record	NN
+;	:
+
+
+Insert	VB
+the	DT
+new	JJ
+value	NN
+of	IN
+A	DT
+into	IN
+E	NN
+A	NN
+p	NN
+;	:
+
+
+Action	NNP
+a4	NN
+:	:
+Insert	VB
+a	DT
+Relation	NNP
+Attribute	NNP
+
+
+Let	VB
+rid	JJ
+be	VB
+the	DT
+ID	NN
+of	IN
+the	DT
+relation	NN
+and	CC
+E	NN
+be	VB
+its	PRP$
+type	NN
+.	.
+
+Let	VB
+A	DT
+be	VB
+the	DT
+attribute	NN
+and	CC
+w	NN
+be	VB
+the	DT
+ID	NN
+of	IN
+the	DT
+user	NN
+who	WP
+inserts	NNS
+A.	NN
+Steps	VBZ
+:	:
+
+
+1	LS
+.	.
+
+IF	IN
+w	NN
+=	JJ
+M	NN
+THEN	RB
+
+
+IF	IN
+exists	VBZ
+a	DT
+record	NN
+with	IN
+id	NN
+=	JJ
+rid	JJ
+
+
+AND	CC
+stop	NN
+=	JJ
+â	NN
+$	$
+œ9999-12-31	CD
+23:59:59	CD
+â	NN
+$	$
+in	IN
+R	NN
+A	NN
+m	NN
+THEN	RB
+
+
+Logically	RB
+delete	VB
+the	DT
+record	NN
+;	:
+
+
+Insert	VB
+the	DT
+new	JJ
+value	NN
+of	IN
+A	DT
+into	IN
+R	NN
+A	NN
+m	NN
+;	:
+
+
+ELSE	RB
+
+
+IF	IN
+exists	VBZ
+a	DT
+record	NN
+with	IN
+id	NN
+=	JJ
+rid	JJ
+
+
+AND	CC
+stop	NN
+=	JJ
+â	NN
+$	$
+œ9999-12-31	CD
+23:59:59	CD
+â	NN
+$	$
+in	IN
+R	NN
+A	NN
+m	NN
+THEN	RB
+
+
+Logically	RB
+delete	VB
+the	DT
+record	NN
+;	:
+
+
+Insert	VB
+the	DT
+new	JJ
+value	NN
+of	IN
+A	DT
+into	IN
+R	NN
+A	NN
+u	NN
+;	:
+
+
+2	LS
+.	.
+
+IF	IN
+exists	VBZ
+a	DT
+record	NN
+with	IN
+id	NN
+=	JJ
+rid	JJ
+
+
+AND	CC
+stop	NN
+=	JJ
+â	NN
+$	$
+œ9999-12-31	CD
+23:59:59	CD
+â	NN
+$	$
+in	IN
+R	NN
+A	NN
+p	NN
+THEN	RB
+
+
+IF	IN
+the	DT
+record	NN
+was	VBD
+entered	VBN
+by	IN
+M	NN
+OR	NN
+w	NN
+!	.
+
+=	JJ
+M	NN
+THEN	RB
+
+
+Logically	RB
+delete	VB
+the	DT
+record	NN
+;	:
+
+
+Insert	VB
+the	DT
+new	JJ
+value	NN
+of	IN
+A	DT
+into	IN
+R	NN
+A	NN
+p	NN
+;	:
+
+
+Action	NNP
+a5	NN
+:	:
+Insert	VB
+a	DT
+New	NNP
+Entity	NNP
+
+
+Let	VB
+E	NNP
+be	VB
+the	DT
+entity	NN
+type	NN
+and	CC
+max	NN
+eid	NN
+be	VB
+the	DT
+largest	JJS
+ID	NN
+in	IN
+table	NN
+entity	NN
+ID	NN
+.	.
+
+
+Steps	NNS
+:	:
+
+
+1	LS
+.	.
+
+Insert	VB
+record	NN
+-LRB-	-LRB-
+max	NN
+eid	NN
++	CC
+1	CD
+,	,
+E	NN
+-RRB-	-RRB-
+into	IN
+entity	NN
+ID	NN
+.	.
+
+
+Action	NNP
+a6	NN
+:	:
+Insert	VB
+a	DT
+New	NNP
+Relation	NNP
+
+
+Let	VB
+r	NN
+be	VB
+the	DT
+relation	NN
+to	TO
+insert	VB
+and	CC
+R	NN
+be	VB
+its	PRP$
+type	NN
+.	.
+
+Let	VB
+eid1	NN
+and	CC
+eid2	NN
+be	VB
+the	DT
+IDs	NNS
+of	IN
+the	DT
+entities	NNS
+that	WDT
+r	NN
+relates	VBZ
+.	.
+
+Let	VB
+max	NN
+rid	JJ
+be	VB
+the	DT
+largest	JJS
+ID	NN
+in	IN
+table	NN
+R	NN
+ID	NN
+.	.
+
+
+Steps	NNS
+:	:
+
+
+1	LS
+.	.
+
+Insert	VB
+record	NN
+-LRB-	-LRB-
+max	NN
+rid	JJ
++	CC
+1	CD
+,	,
+eid1	NN
+,	,
+eid2	NN
+-RRB-	-RRB-
+into	IN
+R	NN
+ID	NN
+.	.
+
+
+Action	NNP
+a7	NN
+:	:
+Delete	VB
+an	DT
+Entity	NNP
+Attribute	NNP
+Steps	VBZ
+:	:
+
+
+1	LS
+.	.
+
+Execute	VB
+Gd	NNP
+:	:
+:	:
+a1	NN
+with	IN
+NULL	NN
+as	IN
+the	DT
+attribute	NN
+value	NN
+.	.
+
+
+Action	NNP
+a8	NN
+:	:
+Delete	VB
+a	DT
+Relation	NNP
+Attribute	NNP
+Steps	VBZ
+:	:
+
+
+1	LS
+.	.
+
+Execute	VB
+Gd	NNP
+:	:
+:	:
+a2	NN
+with	IN
+NULL	NN
+as	IN
+the	DT
+attribute	NN
+value	NN
+.	.
+
+
+Action	NNP
+a9	NN
+:	:
+Delete	VB
+an	DT
+Entity	NN
+
+
+Let	VB
+e	SYM
+be	VB
+the	DT
+entity	NN
+to	TO
+delete	VB
+.	.
+
+Steps	NNS
+:	:
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+17	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+1	LS
+.	.
+
+FOR	IN
+each	DT
+relation	NN
+r	NN
+that	WDT
+relates	VBZ
+e	SYM
+DO	SYM
+
+
+Execute	VB
+Gd	NNP
+:	:
+:	:
+a10	NN
+;	:
+
+
+2	LS
+.	.
+
+FOR	IN
+each	DT
+attribute	NN
+A	NN
+-LRB-	-LRB-
+including	VBG
+exists	VBZ
+-RRB-	-RRB-
+of	IN
+e	SYM
+DO	SYM
+
+
+Execute	VB
+Gd	NNP
+:	:
+:	:
+a7	NN
+;	:
+
+
+Execute	VB
+Gs	NN
+:	:
+:	:
+a5	NN
+;	:
+
+
+3	LS
+.	.
+
+Logically	RB
+delete	VB
+entity	NN
+type	NN
+E	NN
+in	IN
+meta	NN
+entity	NN
+;	:
+
+
+Action	NNP
+a10	NN
+:	:
+Delete	VB
+a	DT
+Relation	NN
+
+
+Let	VB
+r	NN
+be	VB
+the	DT
+relation	NN
+to	TO
+delete	VB
+.	.
+
+
+Steps	NNS
+:	:
+
+
+1	LS
+.	.
+
+FOR	IN
+each	DT
+attribute	NN
+A	NN
+-LRB-	-LRB-
+including	VBG
+exists	VBZ
+-RRB-	-RRB-
+of	IN
+r	NN
+DO	NN
+
+
+Execute	VB
+Gd	NNP
+:	:
+:	:
+a8	NN
+;	:
+
+
+Action	NNP
+a8	NN
+:	:
+Drop	VB
+a	DT
+Relation	NN
+Type	NN
+
+
+Let	VB
+R	NNP
+be	VB
+the	DT
+relation	NN
+type	NN
+to	TO
+drop	VB
+.	.
+
+
+Steps	NNS
+:	:
+
+
+1	LS
+.	.
+
+FOR	IN
+each	DT
+attribute	NN
+A	NN
+-LRB-	-LRB-
+including	VBG
+exists	VBZ
+-RRB-	-RRB-
+of	IN
+R	NN
+DO	NN
+
+
+Execute	VB
+Gs	NN
+:	:
+:	:
+a6	NN
+;	:
+
+
+2	LS
+.	.
+
+Logically	RB
+delete	VB
+entity	NN
+type	NN
+R	NN
+in	IN
+meta	NN
+relation	NN
+;	:
+
+
+A.	NN
+4	CD
+Actions	NNS
+for	IN
+Gs	NN
+
+
+Action	NNP
+a1	NN
+:	:
+Create	VB
+an	DT
+Entity	NNP
+Attribute	NNP
+
+
+Let	VB
+E	NNP
+be	VB
+the	DT
+type	NN
+of	IN
+the	DT
+entity	NN
+and	CC
+A	NN
+be	VB
+the	DT
+attribute	NN
+to	TO
+create	VB
+.	.
+
+
+Steps	NNS
+:	:
+
+
+1	LS
+.	.
+
+Insert	VB
+attribute	NN
+A	NN
+into	IN
+table	NN
+meta	NN
+attribute	NN
+;	:
+
+
+2	LS
+.	.
+
+Create	VB
+tables	NNS
+E	NN
+A	DT
+m	NN
+,	,
+E	NN
+A	NN
+u	NN
+and	CC
+E	NN
+A	DT
+p.	NN
+
+
+Action	NNP
+a2	NN
+:	:
+Create	VB
+a	DT
+Relation	NNP
+Attribute	NNP
+
+
+Let	VB
+R	NNP
+be	VB
+the	DT
+type	NN
+of	IN
+the	DT
+relation	NN
+and	CC
+A	NN
+be	VB
+the	DT
+attribute	NN
+to	TO
+create	VB
+.	.
+
+
+Steps	NNS
+:	:
+
+
+1	LS
+.	.
+
+Insert	VB
+attribute	NN
+A	NN
+into	IN
+table	NN
+meta	NN
+attribute	NN
+;	:
+
+
+2	LS
+.	.
+
+Create	VB
+tables	NNS
+R	NN
+A	DT
+m	NN
+,	,
+R	NN
+A	NN
+u	NN
+and	CC
+R	NN
+A	DT
+p.	NN
+
+
+Action	NNP
+a3	NN
+:	:
+Create	VB
+an	DT
+Entity	NN
+Type	NN
+
+
+Let	VB
+E	NNP
+be	VB
+the	DT
+entity	NN
+type	NN
+to	TO
+create	VB
+.	.
+
+Steps	NNS
+:	:
+
+
+1	LS
+.	.
+
+Insert	VB
+entity	NN
+type	NN
+E	NN
+into	IN
+table	NN
+meta	NN
+entity	NN
+;	:
+
+
+2	LS
+.	.
+
+Execute	VB
+Gs	NN
+:	:
+:	:
+a1	NN
+for	IN
+attribute	NN
+exists	VBZ
+.	.
+
+
+Action	NNP
+a4	NN
+:	:
+Create	VB
+a	DT
+Relation	NN
+Type	NN
+
+
+Let	VB
+R	NNP
+be	VB
+the	DT
+relation	NN
+type	NN
+to	TO
+create	VB
+.	.
+
+Steps	NNS
+:	:
+
+
+1	LS
+.	.
+
+Insert	VB
+relation	NN
+type	NN
+R	NN
+into	IN
+table	NN
+meta	NN
+relation	NN
+;	:
+
+
+2	LS
+.	.
+
+Create	VB
+table	NN
+R	NN
+ID	NN
+;	:
+
+
+3	LS
+.	.
+
+Execute	VB
+Gs	NN
+:	:
+:	:
+a2	NN
+for	IN
+attribute	NN
+exists	VBZ
+.	.
+
+
+Action	NNP
+a5	NN
+:	:
+Drop	VB
+an	DT
+Entity	NNP
+Attribute	NNP
+
+
+Let	VB
+E	NNP
+be	VB
+the	DT
+entity	NN
+type	NN
+and	CC
+A	NN
+be	VB
+the	DT
+attribute	NN
+to	TO
+drop	VB
+.	.
+
+Steps	NNS
+:	:
+
+
+1	LS
+.	.
+
+Logically	RB
+delete	VB
+attribute	NN
+A	NN
+in	IN
+table	NN
+meta	NN
+attribute	NN
+;	:
+
+
+2	LS
+.	.
+
+Logically	RB
+delete	VB
+all	DT
+records	NNS
+in	IN
+E	NN
+A	NN
+m	NN
+,	,
+E	NN
+A	NN
+u	NN
+and	CC
+E	NN
+A	DT
+p.	NN
+
+
+Action	NNP
+a6	NN
+:	:
+Drop	VB
+a	DT
+Relation	NNP
+Attribute	NNP
+
+
+Let	VB
+R	NNP
+be	VB
+the	DT
+relation	NN
+type	NN
+and	CC
+A	NN
+be	VB
+the	DT
+attribute	NN
+to	TO
+drop	VB
+.	.
+
+Steps	NNS
+:	:
+
+
+1	LS
+.	.
+
+Logically	RB
+delete	VB
+attribute	NN
+A	NN
+in	IN
+table	NN
+meta	NN
+attribute	NN
+;	:
+
+
+2	LS
+.	.
+
+Logically	RB
+delete	VB
+all	DT
+records	NNS
+in	IN
+R	NN
+A	NN
+m	NN
+,	,
+R	NN
+A	NN
+u	NN
+and	CC
+R	NN
+A	DT
+p.	NN
+
+
+Action	NNP
+a7	NN
+:	:
+Drop	VB
+an	DT
+Entity	NN
+Type	NN
+
+
+Let	VB
+E	NNP
+be	VB
+the	DT
+entity	NN
+type	NN
+to	TO
+drop	VB
+.	.
+
+
+Steps	NNS
+:	:
+
+
+1	LS
+.	.
+
+FOR	IN
+each	DT
+relation	NN
+type	NN
+R	NN
+that	WDT
+relates	VBZ
+E	NN
+DO	NN
+
+
+Execute	VB
+Gs	NN
+:	:
+:	:
+a8	NN
+;	:
+
+
+2	LS
+.	.
+
+FOR	IN
+each	DT
+attribute	NN
+A	NN
+-LRB-	-LRB-
+including	VBG
+exists	VBZ
+-RRB-	-RRB-
+of	IN
+E	NN
+DO	NN
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+18	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+

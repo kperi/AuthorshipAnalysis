@@ -1,0 +1,241 @@
+﻿Eurographics Workshop on 3D Object Retrieval (2013), pp. 1–7 U. Castellani, T. Schreck (Editors) 
+SHREC’13: Retrieval of objects captured with low-cost 
+depth-sensing cameras 
+Mostafa Abdelrahman6, Masaki Aono3, Moumen El-Melegy6, Aly Farag6, Alfredo Ferreiray1, 
+Henry Johan5, Bo Li4, Yijuan Lu4, João Machadoy1, Pedro B. Pascoaly1;2, Atsushi Tatsuma3 
+1INESC-ID/IST/Technical University of Lisbon 
+2Microsoft Language Development Center, Portugal 
+3Toyohashi University of Technology, Japan 
+4Department of Computer Science, Texas State University, San Marcos, USA 
+5Fraunhofer IDM@NTU, Singapore 
+6Computer Vision and Image Processing Laboratory, University of Louisville, Louisville, USA 
+Abstract 
+The SHREC’13 Retrieval of objects captured with low-cost depth-sensing cameras track is a ﬁrst attempt at evalu- ating the effectiveness of 3D shape retrieval algorithms in low ﬁdelity model databases, such as the ones captured with commodity depth cameras. Both target and query set are composed by objects captured with a Kinect camera and the objective is to retrieve the models in the target set who were considered relevant by a human-generated ground truth. Given how widespread such devices are, and how easy it is becoming for an everyday user to capture models in his household, the necessity of algorithms for these new types of 3D models is also increasing. Three groups have participated in the contest, providing rank lists for the set of queries, which is composed of 12 models 
+from the target set. 
+Categories and Subject Descriptors (according to ACM CCS): H.3.3 [Information Storage and Retrieval]: Informa- tion Search and Retrieval—Relevance feedback I.3.5 [Computer Graphics]: Computational Geometry and Object Modeling—Geometric algorithms, languages, and systems 
+1. Introduction 
+The advent of low-cost scanners in the consumer market, such as the Microsoft Kinect, has made this technology available to the everyday user and is fast becoming a sta- ple in many households. While designed for a different pur- pose, such devices have proven able to digitize 3D objects in real time with acceptable quality [NIH11], at least consid- ering a myriad of contexts where before the presence of 3D capturing devices was virtually null. As a result, the prolifer- ation of 3D models on the Internet is growing and expected 
+y 
+Organizer of the SHREC track. All organizers and participants are listed in alphabetical order. For any information about the bench- mark, contact shrec@3dorus.ist.utl.pt 
+submitted to Eurographics Workshop on 3D Object Retrieval (2013) 
+to keep on that path as new and innovative ways of captur- ing and sharing 3D information are trusted to develop in the future. 
+Up to this moment, little research has been made regard- ing the retrieval of 3D models captured with commodity depth sensing cameras being this the ﬁrst attempt at such an endeavor in the Shape REtrieval Contest (SHREC). Pre- vious versions of SHREC had its evaluation mostly focused on well-deﬁned geometric or semantic classiﬁcation of ob- jects contained in the dataset, along with their ground-truth. 
+In this track, we propose a method based on the human classiﬁcation of the original set of objects, using the real models that are used for the retrieval contest. We pretended 
+
+========1========
+
+2 
+J. Machado et al / Objects captured with low-cost depth cameras track 
+to test the algorithms against real, although subjective, hu- man expectations of the queries they were presented with. 
+Therefore, there are some challenges that must be ad- dressed which are prone to skew the results of retrieval ap- proaches. The ﬁrst difﬁculty is the aforementioned subjec- tivity of the human evaluation. A second is the low degree of accuracy low-cost depth cameras present [KE12], which can be thousands lower when compared to some of the more expensive range scanners available today. 
+2. The Dataset 
+Our dataset is composed of 192 scanned models, which were acquired through the real-time capture of 224 collected ob- jects. Of these, 32 were rejected due to low quality or ma- terial incompability. The range images were captured using a Microsoft Kinect camera (Fig.  2 ) and the ReconstructMe software for image capture. Some post-processing is done to extract the meshes and make them watertight (Fig.  3 ). The collection is presented in three different ASCII ﬁle formats: PLY, OFF and STL, representing the scans in a single trian- gular mesh. 
+Figure 1: Sample from the collection 
+2.1. Target Set 
+The target database is composed by the collection of 192 models with varying degrees of accuracy over the original respective objects. Of these, those with higher degree of unique features tend to present much better digitizations. Samples can be seen in Figures  1  and  4 . 
+The collection itself is uncategorized and the objects were collected with unstrict regulations. All of these were kindly lent by 26 distinct collaborators from their households to suit the track’s theme of ubiquity. A test set is available at http://3dorus.ist.utl.pt/research/BeKi/. 
+2.2. Query Set 
+The query set is simply a subset of the target set. It features 12 signiﬁcantly distinct models to which we constructed a 
+Figure 2: Capture setup 
+Figure 3: Capture process 
+human-generated ground truth in a series of user tests. The query objects can be seen in the Figure  4 . To evaluate the user agreement, we calculated the kappa statistic [F71] for our tests. Since the users were asked to retrieve the top re- sults amongst the complete database, the general agreement is overwhelmingly high, given the high rate of accordance on non-relevant retrievals (k0:995%). Therefore, we track only the relevant category of the results, which can be seen in Table  1 . Queries with higher accordance are expected to yield better retrieval results. 
+Table 1: k values per query: 
+17 
+52 
+55 
+64 
+83 
+100 Mean Kappa 
+41,38% 47,97% 65,83% 48,32% 44,26% 60,97% 56,99% 
+117 145 160 172 200 202 
+62,68% 74,45% 56,31% 73,08% 53,91% 54,75% 
+3. Evaluation 
+All participants submitted, for the requested queries, at least one rank listing (one for each run). Each rank list has the length of the size of the target database. We employed the following evaluation measures on the results: Nearest Neigh- bor (NN), First-Tier (FT), Second-Tier (ST) and Discounted 
+submitted to Eurographics Workshop on 3D Object Retrieval (2013) 
+
+========2========
+
+J. Machado et al / Objects captured with low-cost depth cameras track 
+Figure 4: Query list 
+Cumulative Gain (DCG) [SMKF04]. As an additional visual indicator, the precision-recall curves were plotted as well. 
+4. Submissions 
+For this contest, three different groups participated with their respective methods. 
+A. Tatsuma and M. Aono from the Toyohashi Univer- sity of Technology have participated with a shape feature called Local Feature Correlation Descriptor (LCoD), pro- ducing just one run. 
+B. Li, Y. Lu (Texas State University) and H. Johan from Nanyang Technological University present several ap- proaches on Hybrid Shape Descriptors largely based on the ZFDR [LJ13]. They submitted ﬁve sets of lists each using a different combination of features: 1) ZFDR, 2) ZF, 3) ZFD, 4) ZFR and 5) ZFDSR. 
+Finally, M. Abdelrahman, M. El-Melegy and A. Farag from the University of Louisville consider the 3D models captured with a commodity low-cost depth scanner as non- rigid, deformed objects, and propose an approach based on Scale Invariant Heat Kernels (SI-HKS) [BK10] for which they have submitted one run. 
+4.1. Local Feature Correlation Descriptor (LCoD) 
+A. Tatsuma and M. Aono propose a new 3D shape feature called Local Feature Correlation Descriptor (LCoD). The overview of how the method deﬁnes the proposed LCoD is illustrated in Figure  5 . They developed this algorithm on the premise that in the ﬁeld of image classiﬁcation, the meth- ods that consider high-order statistics of local features ob- tain a higher accuracy [PSM10,  PG11 ]. Based on that, they expected that the shape feature based on the correlation of local features achieves high search performance. LCoD con- sists of the correlation of the local features extracted from depth-buffer images. 
+In LCoD, the ﬁrst step is pose normalization, since 3D 
+submitted to Eurographics Workshop on 3D Object Retrieval (2013) 
+3 
+ 
+ 
+Render depth-buffer images  
+Extract local features  
+Calculate correlation matrices  
+LCoD  
+Figure 5: Overview of the Local Feature Correlation De- scriptor (LCoD). 
+objects are usually deﬁned by different authors with distinct authoring tools, which makes the position, size, and orienta- tion of 3D objects quite different from each other. To solve that problem, they used their own [TA09] Point SVD that aligns the centroid and principal axes by generating random points on the surface of 3D shape objects, and Normal SVD that aligns the surface normals with respect to principal axes. In LCoD, a combination of Point SVD and Normal SVD is adopted for pose normalization. 
+Once pose normalization is done, the 3D object is en- closed within a regular octahedron where, from each vertex and midpoint of each edge, a depth-buffer image rendering with 256256 resolution is performed. Note that a total of 18 viewpoints are deﬁned. 
+After image rendering, Scale Invariant Feature Transform (SIFT) features [Low04] are extracted as local features from each depth-buffer image, and regular dense sampling [LP05] is employed on the interest point detection. SIFT features are extracted from 8080 pixel patches arranged every 8 pixels. 
+A. Tatsuma and M. Aono then calculate the correlation matrix of local features for each depth-buffer image. Let I1;:::;I18 be 18 depth-buffer images rendered from the 3D object, and vi 
+(m) 
+2 Rd(i = 1;:::;n) be the d-dimensional lo- cal features extracted from a depth-buffer image Im. The cor- relation matrix R(m) is obtained of local features as follows: 
+1 
+n 
+T R(m) = 
+n 
+ 
+v(m)j v(m)k : 
+j;k=1 
+(1) 
+The vector r(m) consists of concatenating the elements in the upper triangular part of the correlation matrix R(m): 
+r(m) = [R(m)1;1 ;:::;R(m) 
+(m) (m) (m) 
+1;d 
+;R2;2 ;:::;R2;d ;:::;Rd;d]: 
+(2) 
+The vectorfis generated, consisting of vectorr(m) calculated for each depth-buffer image: 
+f = [r(1):::;r(18)]T: 
+(3) 
+Finally, to obtain the proposed LCoD feature, the vector f is normalized with the power-norm and the `2-norm [PSM10]. 
+For LCoD similarity between two 3D objects, a simple calculation of inner product is required. 
+
+========3========
+
+4 
+J. Machado et al / Objects captured with low-cost depth cameras track 
+LCoD consists of concatenating the correlation matrix of the local features extracted from each depth-buffer image. This deﬁnition of LCoD leads to high dimensional shape feature. Since the dimension of SIFT extracted as a local feature is d = 128, the total dimension of LCoD becomes 18(d(d+1)=2) = 148;608. 
+4.2. ZFDR, B. Li, Y. Lu and H. Johan 
+3D models reconstructed from 3D images captured by low- cost cameras, such as Microsoft Kinect, are only approxi- mate representations of real objects. The accuracy is highly dependent on the cameras and the 3D reconstruction algo- rithms employed. Therefore, compared to the 3D models in existing benchmarks, there are many errors in the geo- metrical properties of these models, such as normals, cur- vatures and connectivity. Topological errors are also easy to be found. Because of these issues, compared to view- based retrieval approaches, it will be relatively more chal- lenging for many geometry-based and topology-based 3D model retrieval approaches to deal with the retrieval of these models. On the other hand, most view-based methods and many hybrid techniques are more robust to the errors in ge- ometry or topology. Motivated by this, they mainly adopt a view-based approach to extract visual information-based features, such as Zernike moments, Fourier descriptors and 2D Fourier Transform coefﬁcients features, to retrieve these models. 
+Their algorithms and the corresponding ﬁve runs are largely based on the hybrid shape descriptor ZFDR pro- posed in [LJ13], which comprises both visual and geomet- rical features of a 3D model: Zernike moments and Fourier descriptor features of 13 sample silhouette views, Depth in- formation of six depth buffer views, and Ray-based features of the model based on a set of ray-based feature vectors shooting from the center to the utmost intersections on the surface of the model. Based on ZFDR and for a comparative evaluation, they further test its three reduced versions: ZF, ZFD and ZFR, which will partially or completely reduce the contribution of geometrical features. D and R are two com- ponents of the hybrid shape descriptor DESIRE (also men- tioned as DSR, that is D+S+R) proposed by Vranic [Vra04]. The third component S denotes the Silhouette-based com- ponent shape descriptor which extracts 1D Fourier trans- form features of the three canonical silhouette views of a 3D model. Similarly, to compete with the above descriptors, they also test the shape descriptor ZFDSR which combines ZF and DSR. They graphically demonstrate their feature ex- traction process in Figure  6 . Some details are mentioned be- low. 
+They normalize the 3D models by utilizing the Contin- uous Principle Component Analysis (CPCA) [Vra04] al- gorithm before feature extraction. Their cube-based view sampling approach samples 13 views for an aligned 3D model with CPCA by setting cameras on the 4 top cor- 
+ners, 3 adjacent face centers and 6 middle edge points of a cube. For each sample view, they compute 35 Zernike moments [KH90] in total and its ﬁrst 10 centroid distance- based Fourier descriptors [ZL01]. They utilize the exe- cutable ﬁle [Vra04] to extract the features of D, R and S. 
+Figure 6:Flowchart of computing ﬁve hybrid shape descrip- tors: ZFDR, ZF, ZFD, ZFR and ZFDSR. 
+After obtaining the component shape descriptors Z, F, D, R and S, they assign appropriate distance metrics to measure the component distances dZ, dF, dD, dR and dDSR between two models. These component distances are linearly com- bined accordingly to form ﬁve hybrid descriptor distances dZFDR, dZF, dZFD, dZFR and dZFDSR, which correspond to their ﬁve funs: ZFDR, ZF, ZFD, ZFR and ZFDSR. For more details about the feature extraction and retrieval pro- cesses, please refer to [LJ13] and [LGA12]. 
+4.3. Scale Invariant Heat Kernels (SI-HKS) 
+M. Abdelrahman, M. El-Melegy and A. Farag faced the con- test by considering the models captured with a commodity low-cost depth scanner as deformed objects, which in itself is a challenging problem as it needs more work to compen- sate for the degrees of freedom resulting from local deforma- tions. They quote Reuter et al [Rea09] who used the Lapla- cian spectra as intrinsic shape descriptors, and employed the Laplace-Beltrami spectra as ’shape-DNA’ or a numeri- cal ﬁngerprint of any 2D or 3D manifold (surface or solid). That publication proved that ’shape-DNA’ is an isometry- invariant shape descriptor. Recently Sun et al. [AKS] proposed heat kernel signatures (HKS) as a deformation- invariant descriptors based on diffusion of multi-scale heat kernels. HKS is a point based signature satisfying many of the good descriptor properties, but suffers from sensitiv- ity to scale. Bronstein et al [BK10] solved the HKS scale problem through a series of transformations. The same re- search group has recently introduced the Shape Google ap- proach [BBGO10] based on the scaled-invariant HKS. The idea is to use HKS at all points of a shape, or alternatively at some shape feature points, to represent the shape by a Bag of Features (BoF) vector. Sparsity in the time domain is en- forced by preselecting some values of the time. 
+In this work, the participants propose an approach for shape matching and retrieval based on scale invariant heat 
+submitted to Eurographics Workshop on 3D Object Retrieval (2013) 
+
+========4========
+
+J. Machado et al / Objects captured with low-cost depth cameras track 
+5 
+kernel signature (SI-HKS). Sun et al. [AKS] proposed to use the HKS as a local shape descriptor 
+1 
+h(x;t) = Ht(x;x) = 
+e 
+ litfi(x)2 
+k=1 
+where li and fi are the eigenvalues and eigenfunctions of the Laplace-Beltrami operator. HKS has several desired proper- ties [AKS]: it is intrinsic and thus isometry-invariant (two isometric shapes have equal HKS), multi-scale and thus cap- ture both local features and global shape structure, and also informative: under mild conditions, if two shapes have equal heat kernel signatures, they are isometric. The proposed de- scriptor in this work is based on BoF representation of the HKS in frequency domain combined with the ﬁrst 15 nor- malized eigenvalues of the Laplace-Beltrami operator. The novelty introduced by the proposed method is to achieve scale-invariance of HK which is shown to be noise-robust. 
+results are being compared against potentially idiosyncratic evaluations by human subjects, so it stands to reason to con- clude this approach is the one that best suited the human expectations for the results. 
+Scale invariance is a desirable property of the shape de- scriptor, which can be achieved by many ways. A novel lo- cal scale normalization method is proposed based on sim- ple operations. It was shown [BBGO10] that scaling a shape by a factor b results in changing H(x;t) to b2H(x;b2t). The participants propose to apply the Fourier transform (FT) di- rectly 
+H0(w) = b2H(w)exp(j2pws): 
+Figure 8: Precision-recall curves 
+Then taking the amplitude of the FT, 
+jH0(w)j = b2jH(w)j 
+The effect of the multiplicative constant b2 is eliminated by normalizing the jH0(w)j by the sum of the amplitudes of the FT components. The amplitudes of the ﬁrst signiﬁ- cant FT components (normally 6) are employed to construct the scale-invariant shape descriptor. This proposed method eliminates the scale effect without having to use the noise- sensitive derivative operation or the logarithmic transforma- tion that both were used in [BBGO10]. This method is sim- pler, more computational-efﬁcient and more robust to noise. Eventually the classiﬁcation is done with the L1-Norm. 
+For the hybrid approach, the participants submitted 5 different runs, composed by distinct linear combinations of their 5 shape descriptors, while every run included the Zernike moments and Fourier descriptor features. From these runs, ZFDR produced the best overall results while ZF had the lowest scores, which hints against underestimating the contribution of geometrical features in such approaches. Ray-based features of the models seem to also play an im- portant part on the retrieval of these models, as ZFR comes close to ZFDR in the comparison. Interesting to note that the DCG outcomes are stable across the different implemen- tations. 
+The Scale Invariant Heat Kernel Signatures (SI-HKS) pre- sented the lowest average scores in all categories, save for queries 117 (plate) and 202 (wrench). This exceptions can 
+5. Results 
+The three groups of participants of the SHREC’13 Retrieval of objects captured with low-cost depth-sensing cameras contest have submitted 7 sets of rank lists in total. The re- sults for these submissions are summarized in Figure  7  and in the precision-recall curves in Figure  8 . Figures  9 ,  10  and 11  shows the individual results for the LCoD, ZFDR and SI-HKS shape descriptors, respectively. 
+In the Local Feature Correlation Descriptor (LCoD), the participants use a view-based approach to the problem using Dense SIFT to perform the feature extraction, which seems to be an appropriate candidate. This descriptor proved to be averagely the most effective of the 3 submissions in all the evaluated retrieval measures. It is important to note that the 
+Figure 9: Individual results for LCoD 
+submitted to Eurographics Workshop on 3D Object Retrieval (2013) 
+
+========5========
+
+6 
+J. Machado et al / Objects captured with low-cost depth cameras track 
+Figure 7: Retrieval performances of the algorithms 
+numbers from Table  1  and Figures  10  and  11 , a direct match between agreement and algorithm performance can not be extrapolated and further study on this topic is required. 
+6. Conclusions 
+In this paper, we have described and compared the algo- rithms from each of the three different research groups that participated in the SHREC’13: Retrieval of objects captured with low-cost depth-sensing cameras track. Each participant was presented with a subset of the target collection to pose as the query set, and asked to submit a full-depth list of results for each of their respective algorithms and possible variants. 
+Figure 10: Individual results for ZFDR 
+While the levels of precision reached by these submis- sions are relatively low, that was to be expected, both by the subjectivity of the proposed ground truth, and by the lower quality of the dataset, when compared with all other existing 3D-shape benchmarks. 
+Figure 11: Individual results for SI-HKS 
+The method that demonstrated best overall performance was the Local Feature Correlation Descriptor (LCoD). From the set of different conﬁgurations of Hybrid Descriptors pre- sented, ZFDR had the best results in average, while ZF shows promising numbers while the search-depth is still low. Finally, the SI-HKS was able to match the previous algo- rithms for a small number of queries, while providing the worst average values overall. Generally, view-based and hy- brid approaches seem to be better choices for 3D-shape re- trieval of objects captured with low-cost depth sensing cam- eras than topological or geometrical feature algorithms. 
+be explained by the contents of the target set, which includes apparently scaled-down variants of the mentioned queries (smaller plates and wrenches). This algorithm seems to work well in the context of transformations of non-rigid objects, which is not the case with this dataset, where every model is unique. 
+This is just a ﬁrst step into this topic of research. Other approaches can be considered, such as the retrieval of mod- els in a larger and more accurate database, using full queries captured with low-cost depth cameras like the ones in this benchmark, or just range scans captured with these devices. Such work could provide grounds for the use of low-cost cameras in object retrieval and environment recognition in real-time settings. 
+Although it would be logical to consider that the queries that yield better agreement among human judges, would also have slightly better results across runs, such fact could not be correlated with the results from this track. Comparing the 
+References 
+[AKS]  A LEXA M., KAZHDAN M., SUN J., OVSJANIKOV M., 
+GUIBAS L.: A concise and provably informative multi-scale sig- 
+nature based on heat diffusion.  4 ,  5 
+submitted to Eurographics Workshop on 3D Object Retrieval (2013) 
+
+========6========
+
+J. Machado et al / Objects captured with low-cost depth cameras track 
+7 
+[BBGO10]  B RONSTEIN A. M., BRONSTEIN M. M., GUIBAS 
+L. J., OVSJANIKOV M.: Shapegoogle: geometric words and 
+expressions for invariant shape retrieval, 2010.  4 ,  5 
+[BK10]  B RONSTEIN M. M., KOKKINOS I.: Scale-invariant heat 
+kernel signatures for non-rigid shape recognition. In In Proc. 
+CVPR (2010).  3 ,  4 
+[F71]  F LEISS J., ET AL.: Measuring nominal scale agreement 
+among many raters. Psychological Bulletin 76, 5 (1971), 378– 
+382.  2 
+[ZL01]  Z HANG D., LUO G.: A comparative study on shape re- 
+trieval using Fourier Descriptors with different shape signatures. 
+In Proc. of International Conference on Intelligent Multimedia 
+and Distance Education (ICIMADE01) (2001), pp. 1–9.  4 
+[KE12]  K HOSHELHAM K., ELBERINK S. O.: Accuracy 
+and resolution of kinect depth data for indoor mapping 
+applications. Sensors 12, 2 (2012), 1437–1454. URL: 
+http://www.mdpi.com/1424-8220/12/2/1437, 
+doi:10.3390/s120201437.  2 
+[KH90]  K HOTANZAD A., HONG Y.: Invariant image recognition 
+by Zernike moments. IEEE Transactions on Pattern Analysis and 
+Machine Intelligence 12, 5 (1990), 489–497.  4 
+[LGA12]  L I B., GODIL A., AONO M., BAI X., FURUYA 
+T., LI L., LÓPEZ-SASTRE R. J., JOHAN H., OHBUCHI R., 
+REDONDO-CABRERA C., TATSUMA A., YANAGIMACHI T., 
+ZHANG S.: SHREC’12 track: Generic 3D shape retrieval. In 
+3DOR (2012), Spagnuolo M., Bronstein M. M., Bronstein A. M., 
+Ferreira A., (Eds.), Eurographics Association, pp. 119–126.  4 
+[LJ13]  L I B., JOHAN H.: 3D model retrieval using hybrid fea- 
+tures and class information. Multimedia Tools Appl. 62, 3 (2013), 
+821–846.  3 ,  4 
+[Low04]  L OWE D. G.: Distinctive image features from scale- 
+invariant keypoints. International Journal Computer Vision 60, 2 
+(Nov. 2004), 91–110.  3 
+[LP05]  L I F.-F., PERONA P.: A bayesian hierarchical model for 
+learning natural scene categories. In Proceedingsedings of the 
+2005 IEEE Computer Society Conference on Computer Vision 
+and Pattern Recognition (2005), vol. 2 of CVPR ’05, pp. 524– 
+531.  3 
+[NIH11]  N EWCOMBE R. A., IZADI S., HILLIGES O., 
+MOLYNEAUX D., KIM D., DAVISON A. J., KOHLI P., SHOT- 
+TON J., HODGES S., FITZGIBBON A.: Kinectfusion: Real-time 
+dense surface mapping and tracking. In Proceedings of the 2011 
+10th IEEE International Symposium on Mixed and Augmented 
+Reality (Washington, DC, USA, 2011), ISMAR ’11, IEEE 
+Computer Society, pp. 127–136. URL: http://dx.doi. 
+org/10.1109/ISMAR.2011.6092378, doi:10.1109/ 
+ISMAR.2011.6092378.  1 
+[PG11]  P ICARD D., GOSSELIN P. H.: Improving image similar- 
+ity with vectors of locally aggregated tensors. In Proceedings 
+of the 18th IEEE International Conference on Image Processing 
+(2011), pp. 669–672.  3 
+[PSM10]  P ERRONNIN F., SÁNCHEZ J., MENSINK T.: Improving 
+the ﬁsher kernel for large-scale image classiﬁcation. In Proceed- 
+ings of the 11th European Conference on Computer Vision: Part 
+IV (2010), ECCV ’10, pp. 143–156.  3 
+[Rea09]  R EUTER M., ET AL.: Laplace-beltrami eigenvalues and 
+topological features of eigenfunctions for statistical shape analy- 
+sis, 2009.  4 
+[SMKF04]  S HILANE P., MIN P., KAZHDAN M., FUNKHOUSER 
+T.: The Princeton shape benchmark. In Shape Modeling Inter- 
+national (June 2004).  3 
+[TA09]  T ATSUMA A., AONO M.: Multi-fourier spectra descriptor 
+and augmentation with spectral clustering for 3D shape retrieval. 
+The Visual Computer 25, 8 (2009), 785–804.  3 
+[Vra04]  V RANIC D.: 3D Model Retrieval. PhD thesis, University 
+of Leipzig, 2004.  4 
+submitted to Eurographics Workshop on 3D Object Retrieval (2013) 
+
+========7========
+

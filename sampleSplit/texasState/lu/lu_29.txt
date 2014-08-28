@@ -1,0 +1,199 @@
+﻿A LEXICA FAMILY WITH SMALL SEMANTIC GAP 
+Jiemin Liu1,2,∗, Qi Tian1, Yijuan Lu3, Changhu Wang1, Lei Zhang1, Xiaokang Yang2, Shipeng Li1 
+1Microsoft Research Asia, 49 Zhichun Road, Beijing 100190, China 2Department of Electronic Engineering, Shanghai Jiao Tong University 
+3Department of Computer Science, Texas State University, USA 
+ABSTRACT 
+Deﬁning a lexicon of high-level concepts is the ﬁrst step for data collection and model construction in concept-based im- age retrieval. Differences of semantic gaps among concepts are well worth considering. By measuring consistency in vi- sual space and textual space, concepts with small semantic gap can be obtained. Considering so many diverse concepts in large-scale image dataset, we construct a lexica family of high-level concepts with small semantic gap based on dif- ferent low-level features and different consistency measure- ments. In this lexica family, the lexica are independent to each other and mutually complementary. It provides helpful suggestions about data collection, feature selection and search model construction for large-scale image retrieval. 
+Index Terms— semantic gap, lexica, large-scale, image retrieval 
+1. INTRODUCTION 
+With the explosive growth of digital images and videos in recent years, Multimedia Information Retrieval (MIR) tech- niques have experienced a rapid development. A fundamen- tal challenge in MIR is the semantic gap between low-level visual features and high-level semantic concepts. To bridge the semantic gap, generic approaches focus on concept detec- tion which is to learn a concept classiﬁer by machine learning method based on labeled examples. Hence, deﬁning a lexicon of semantic concepts is a necessary pre-task for ground truth data annotation and concept detection modeling. 
+Most research works were developed on datasets based on a lexicon manually deﬁned like LSCOM-Lite, LSCOM[1] and MediaMill[2]. Large-Scale Concept Ontology for Mul- timedia (LSCOM) is an ontology of about 1,000 concepts produced based on manually annotating a large corpus of 80 hours of broadcast news video. LSCOM-Lite is a subset of the full LSCOM and it contains 39 concepts with annota- tions over the entire development set of TRECVID[3] 2005 videos. It was selected based on semi-automatic mapping noun search terms from BBC query logs to WordNet senses. 
+* This work was done at Microsoft Research Asia. 
+978-1-4244-4291-1/09/$25.00 ©2009 IEEE 
+MediaMill is a lexicon of 101 concepts selected by taking LSCOM as leading example and analyzing extended manual annotations. In addition to these lexica produced by manual selection, there are several public image databases such as Caltech-101[4], Caltech-256[5] which contain many images belonging to some manually selected concepts. 
+However, one important question was not proposed until 2007 by Hauptmann et al.[6]. That is, what kind of concepts are most useful? They took the ﬁrst step to answer this ques- tion based on analyzing TRECVID’05 video archive anno- tated with the 320 LSCOM concepts. They calculate concept utility to measure how each concept contributes to retrieval. In their work, those useful concepts were selected from statis- tic aspect of concept frequency. 
+Although the above research proposes some useful con- cepts, it still ignores inherent semantic gap information of concepts. Difference of semantic gaps among concepts deeply affects performance of corresponding concept de- tection. Concepts with small semantic gaps are better to be modeled and retrieved. Hence, constructing a lexicon of con- cepts with small semantic gaps is meaningful for multimedia information retrieval. Based on a large-scale web image dataset, Lu et al.[7] proposed a novel way to construct a lexi- con of high-level concepts with small semantic gaps (LCSS). These concepts were extracted from textual information of candidate images by measuring their consistency in visual feature space and semantic textual space. 
+However, a single lexicon is not enough for various types of concepts in large-scale image data. It has two problems. First, in different visual spaces, images of concepts distribute differently. Two concepts may be far away from each other in one visual feature space. But in another space, they might be closer to each other. For example,“wood” and “sand” have similar color features while they are totally different in texture feature space. So a lexicon based on a single visual feature is insufﬁcient and inefﬁcient for presenting concepts. Second, in [7], the authors use a method called as nearest neighbor con- ﬁdence score (NNCS) to measure image’s consistency in the visual and textual spaces. But this NNCS is a visual-central method that only considers visually similar images’ consis- tency in textual space but ignores textually similar images’ consistency in visual space. Concepts’ consistency should be 
+1484 
+ICME 2009 
+
+========1========
+
+measured by considering both visual consistency and textual consistency, and may be more. 
+Therefore, facing to diversity of high-level concepts in large-scale dataset, we should construct a lexica family cov- ering high-level concepts with small semantic gap. In this pa- per, we analyze semantic gaps of concepts in several different low-level feature spaces and produce mutually independent and complementary lexica. In addition, both visual-central NNCS and textual-central NNCS methods are used in the framework. Semantic gap is measured based on both visual and textual space. By comparing different NNCS-based lex- ica, we can make suggestions of choosing appropriate search method for speciﬁc concepts. 
+The rest of the paper is organized as followed: In Sec- tion 2, we discuss the details about lexica family and frame- work of its construction. In Section 3, we present experimen- tal procedure and analysis of results. Conclusions and future work are given in Section 4. 
+2. A LEXICA FAMILY FOR CONCEPT-BASED 
+IMAGE RETRIEVAL 
+2.1. Different Visual Feature Spaces 
+In large-scale image dataset, there are hundreds and thou- sands of high-level concepts. The overall semantic space in- cludes many different types of concepts such as object, scene, state, landscape and so on. People distinguish things of dif- ferent concepts through species’ inherent diversity. It reﬂects on color, shape, texture and other low-level features. So it’s necessary to construct lexica based on different low-level fea- tures. A family of feature-based lexica can provide appropri- ate options for feature selection for speciﬁc concepts. 
+2.2. Semantic Gap 
+For all images in a large-scale image dataset with rich sur- rounding textual information, they can be located in two dif- ferent high-dimensional spaces. One is visual space. The other one is textual space. If nearest neighbors of one im- age in visual space are the same as the nearest neighbors of it in textual space (as shown in Fig. 1(a)), concept within the image has small semantic gap because of both consistency in two spaces. If nearest neighbors of one image in visual space are disperse around it in textual space (as shown in Fig. 1(b)), concept within the image has loose-textual seman- tic gap. Similarly, if nearest neighbors of one image in tex- tual space are disperse around it in visual space (as shown in Fig. 1(c)), concept within the image has loose-visual seman- tic gap. In order to measure images’ consistency of visual space and textual space, two algorithms are used to measure two situations as followed: 
+• Visual-central Nearest Neighbor Conﬁdence Score (VNNCS): for a given image Iq, ﬁrst ﬁnd its K neigh- 
+Xkuwcn"Urceg 
+Vgzvwcn"Urceg 
+Ks 
+Ks 
+c+"uocnn"ugocpvke"icr 
+Xkuwcn"Urceg Vgzvwcn"Urceg 
+Ks 
+Ks 
+d+"nqqug/vgzvwcn"ugocpvke"icr 
+Xkuwcn"Urceg 
+Vgzvwcn"Urceg 
+Ks 
+Ks 
+e+"nqqug/xkuwcn"ugocpvke"icr 
+Fig. 1. Consistency in visual space and textual space 
+bors in visual space {Ii|i =1,2..., K}, then calculate average of textual similarity between Iq and every Ii. 
+K 
+VNNCS(Iq)= 
+1 
+K 
+sim textual(Iq,Ii) 
+i=1 
+(1) 
+for Ii isualneighbors(Iq) • Textual-central Nearest Neighbor Conﬁdence Score (TNNCS): for a given image Iq, ﬁrst ﬁnd its K neigh- bors in textual space {Ii|i =1,2..., K}, then calculate average of visual similarity between Iq and every Ii. 
+K 
+TNNCS(Iq)= 
+1 
+K 
+sim visual(Iq,Ii) 
+i=1 
+(2) 
+for Ii  T extual neighbors(Iq) 
+sim textual(Iq,Ii) can be calculated by measuring their tex- tual descriptions’ cosine similarity. sim visual(Iq,Ii) can be calculated by measuring their negative visual features’ Eu- clidean distance. The higher the VNNCS value of one image is, the tighter textual consistency the concept concerned in this image has. Similarly, the higher the TNNCS value of one image is, the tighter visual consistency the concept concerned in this image has. 
+2.3. Lexicon Construction Framework 
+The framework of lexicon construction procedure contains four steps[7]: 
+1485 
+
+========2========
+
+1) Data collection and preparation: About 2.4 million web images with rich surrounding text information are collected from 5 online photo forums. For all images, we build indexes based on low-level visual feature and surrounding textual fea- ture respectively. 
+2) Conﬁdence map construction: By deﬁnitions of NNCS, we calculate Visual-NNCS and Textual-NNCS of each im- age. Then, top 30000 images with higher scores are selected as candidate ones. They are considered to contain high-level concepts with small semantic gaps. 
+3) Afﬁnity propagation clustering: We cluster candidate images by using afﬁnity propagation method [8]. 
+4) Text-based keyword extraction: From well clustered images sets, we extract the most representative keywords of clusters by sorting relational degree between keywords and clusters. The ﬁnal sorted list of keywords is a lexicon of high- level concepts with small semantic gaps. 
+3. EXPERIMENTS AND ANALYSIS 
+3.1. Data and Features 
+We collected about 2.4 million web images from 5 online public photo forums including Photosig1, Useﬁlm2 and so on. Rich surrounding textual information of images such as title, category, tag, description, comments were extracted and built as a textual index. These textual information are almost ac- tually good semantic description of the images. We extracted 4 low-level features for 2.4 million web images, as shown in Table 1. 
+3.2. Feature-based Lexica 
+Concepts have different semantic gaps in different low-level feature spaces. By comparing different lexica with small se- mantic gaps, we can select more appropriate low-level feature as representation, that is, feature selection for concepts. Given a speciﬁc low-level feature and Visual-NNCS algorithm, we extract top 101 concepts as a corresponding lexicon. Then we compare and contrast these lexica. After removing some noisy concepts, there are totally 104 meaningful concepts. Within them, 65 concepts belong to the lexicon based on color feature and 81 concepts belong to the lexicon based on texture feature. Meanwhile, 42 concepts both belong to two lexica. All of these concepts can be found in Fig. 2. 
+As shown in Fig. 2, the lexicon based on color feature consists of concepts shown in the box with solid line and the lexicon based on texture feature consists of concepts shown in the box with dotted line. For the concepts within the over- lapping part, they have inherently small semantic gaps based on either color feature or texture feature. 
+1http://www.photosig.com/. 2http://www.useﬁlm.com/. 
+1486 
+Ngzkeqp"dcugf"qp"eqnqt"hgcvwtg 
+}をこＣがずカ９どＨ"て９Ⅸ＋ず＋ぉＨ"ずど＋ｕｘ５Ｈ"＊９９Ｈ"５ⅨｘねケＨ"＊を５Ｈ"が９ⅨＣＨ"ぷをがｘてＨ"ｘどｘ５Ｈ"＊ずぷⅨこケＨ"＊Ⅸ＋ぉケⅨど５Ｈ" ＊がずずげＨ"ケⅨど５Ｈ"５どずてＨ"＊をｋＨ"がｘがケＨ"Ｃｘ９が５Ｈ"てがⅨこぷＨ"ねてｘ５９どＨ"ｕ９ⅨどぷＨ"カⅨぷ９どＣⅨががＨ"ｋずが５Ｈ"ｋがⅨねね 
+}をこね９ぷＨ"Eがずカ９どＨ"vをどてが９Ｈ"yずね９Ｈ"』９ががずカＨ"vｘこぉＨ"1Ⅸこ５が９Ｈ"y９５Ｈ"0がを９Ｈ"Eｘど９カずどぉＨ" Fど９９こＨ"1がずを５Ｈ"FⅨど５９こＨ"〉ｘが５Ｈ"jどⅨこｋ９Ｈ"}ぉケＨ"vⅨ＋ｘＣｘ＋Ｈ"1がずを５ケＨ"cずずこＨ"0９Ⅸ＋ｕＨ" Fずが５９こＨ"[９ケＨ"j＋９ⅨこＨ"]Ⅸぉ９Ｈ"}てどｘこｋＨ"vｘ９どＨ"yⅨｘこＨ"}をこどｘね９Ｈ"1ずⅨねぷＨ"}ⅨカＨ"cずをこぷⅨｘこＨ" }をげげ９どＨ"7ⅨどぉＨ"}ⅨｘがＨ"EⅨががＨ"NねがⅨこ５Ｈ"ˉど９９Ｈ"#をぷをげこＨ"〉Ⅸオ９Ｈ"〉Ⅸぷ９どＨ"1ｘぷケＨ"５９ね９どぷ 
+}ぷずどげＨ"ｕずどｘザずこＨ"Ｃずど９ｋどずをこ５Ｈ"＊ずⅨぷＨ"＊をどこＨ"ＣずｋＨ"どⅨケＨ"がⅨケ９どＨ"ねⅨこ５Ｈ"５をこ９Ｈ"９ケ９Ｈ" 
+どず＋ぉＨ"どｘオ９どＨ"ｕⅨど＊ずどＨ"ｕｘががＨ"ＣがｘｋｕぷＨ"カｘこ５ずカＨ"＋ⅨこケずこＨ"ＣｘねｕＨ"オⅨがが９ケＨ"Ｃずど９ねぷＨ" げず５９がＨ"５ⅨカこＨ"＊をぷぷ９どＣがケＨ"ｕずをね９Ｈ"ぷずカこＨ"ねこずカＨ"てⅨがげＨ"ねｕⅨ５ずカＨ"ねぷど９９ぷＨ"どずⅨ５Ｈ" 
+＊ｘど５Ｈ"ねカⅨこＨ"５を＋ぉＨ"カⅨががＨ"ｋｘどがＨ"ｘ＋９Ｈ"ＣⅨ＋９Ｈ"カずず５ 
+Ngzkeqp"dcugf"qp"vgzvwtg"hgcvwtg 
+Fig. 2. Concepts concerned in Feature-based Lexica 
+For those concepts which have small semantic gap only based on color feature, like sunﬂower, peacock, orchid (as shown in Fig. 3(a)), color feature is the best choice for fea- ture selection. For those concepts which have small semantic gap only based on texture feature, like window, butterﬂy, rock (as shown in Fig. 3(b)), texture feature is the best choice. For some concepts which have small semantic gap based on either color feature or texture feature, such as sunset, rose, ﬁrework (as shown in Fig. 3(c)), we can choose color and texture com- bined feature as appropriate representation. 
+*c+"Eqnqt *d+"Vgzvwtg uwphnqygt ykpfqy 
+*e+"Eqodkpgf"Hgcvwtg 
+uwpugv 
+rgceqem 
+qtejkf 
+dwvvgthn{ 
+tqem 
+tqug 
+hktgyqtm 
+vwnkr 
+ucpf 
+ictfgp 
+dgg 
+hqtguv 
+dgcej 
+um{ 
+ecpfng 
+ycvgthcnn 
+ycnn 
+Fig. 3. Examples of feature selection for concepts 
+3.3. NNCS-based Lexica 
+Deﬁnitions of two NNCS algorithms as mentioned in Sec- tion 2.2 reﬂect two different search methods, content-based search (visual-based) and context-based (textual-based) search. Lexica with small semantic gap based on different NNCS algorithms can provide suggestion of search method for con- cepts. Therefore, we use 50-dim Color feature as visual representations of image and construct two lexica by using VNNCS and TNNCS algorithms respectively. After cal- culating NNCS of each image, selecting candidate images, clustering and extracting concepts, two different lexica are obtained. Similarities and differences between these two lexica are shown in Table 2. 
+
+========3========
+
+Descriptions 
+Low-level features 
+Color Co-occurrence Texture(COT) 
+Wavelet Texture(WT) 
+Color+Texture 
+Dimension 
+50 
+16 
+128 
+64 
+6-dim color moment(LUV) and 44-dim banded auto-color correlogram(HSV) 16-dim normalized vector as measurement of global grey-level co-occurrence matrix 
+50-dim color vector concatenated with 14-dim color texture moments 
+Table 1. Four low-level features of image dataset 
+Part I: Visual-central NNCS 
+Category Concepts 
+Scene ﬁrework, sunrise, rain, wild 
+Landscape bay, ﬁeld, home, house, 
+coast, ocean, pier, hill 
+Color yellow, green, pink, purple, orange, golden Object candle, moon, drop, boat, saw 
+Plant rose, sunﬂower, orchid, tulip, daisy, 
+lily, irid, leaf, bloom, glass 
+Animal bee, peacock, ﬁsh, bird 
+Season spring, summer, autumn 
+Part II: Textual-central NNCS 
+Category Concepts 
+People girl, man, woman, model, angel, 
+nude, sister, children, male, face Animal cat, tiger, dog, wolf 
+Water creek, valley, canyon, stream 
+Place street, road, church, castle, cemetery, 
+market, square, metro, studio, village, town 
+object stone, chain, crater 
+Part III: Either of Visual-central NNCS and Textual-central NNCS Category Concepts 
+Scene sunset, sky, shadow, city, water 
+snow, storm, ice, cloud 
+Landscape fall, lake, river, garden, beach, 
+mountain, bridge, waterfall, island 
+Color red, blue, dark 
+Object eye, rock, key, window, ﬂower, tree 
+Table 2. Similarities and differences between two lexica based on two NNCS algorithms 
+In the Part I of Table 2, there are 7 categories of con- cepts with small semantic gaps only based on VNNCS but not TNNCS. Hence, for these concepts like ﬁrework and rose, content-based search is preferred than context-based search. By contrast, 5 categories of concepts within the Part II of Ta- ble 2 have small semantic gaps only based on TNNCS but not VNNCS. For these concepts like girl and street, it’s better to search them based on textual information than visual informa- tion. In addition, the Part III of Table 2 consists of concepts which have small semantic gaps based on either of VNNCS and TNNCS. For these concepts such as sunset, content-based search and context-based search both have good performance. Above analyses of experimental results are very useful for choosing search method for concepts. 
+4. CONCLUSION AND FUTURE WORK 
+In this paper, from a large-scale web image dataset, we con- structed a lexica family of high-level concepts with small se- mantic gaps which contains feature-based lexica and NNCS- based lexica. Feature-based lexica provide feature selections for image retrieval with concepts. And NNCS-based lexica 
+128-dim vector of wavelet parameters 
+obtained by measuring semantic gap from both visual and tex- tual space make suggestion of choosing search model for con- cepts. However, this is still a preliminary attempt on quantita- tively analyzing semantic gaps of high-level concepts. More systematic approaches on modeling semantic gaps are still worth probing. 
+5. REFERENCES 
+[1] M. Naphade, J.R. Smith, J. Tesic, S.F. Chang, W. Hsu, 
+L. Kennedy, A. Hauptmann, and J. Curtis, “Large-scale 
+concept ontology for multimedia”, IEEE MultiMedia, 
+vol. 13, no. 3, pp. 86–91, 2006. 
+[2] C.G.M. Snoek, M. Worring, J.C. van Gemert, 
+J.M. Geusebroek, and A.W.M. Smeulders, “The chal- 
+lenge problem for automated detection of 101 semantic 
+concepts in multimedia”, in Proceedings of the 14th 
+annual ACM international conference on Multimedia 
+(MULTIMEDIA ’06), New York, NY, USA, 2006, pp. 
+421–430, ACM. 
+[3] A.F. Smeaton, P. Over, and W. Kraaij, “Evaluation cam- 
+paigns and trecvid”, in Proceedings of the 8th ACM Inter- 
+national Workshop on Multimedia Information Retrieval 
+(MIR ’06), New York, NY, USA, 2006, pp. 321–330, 
+ACM Press. 
+[4] L. Fei-Fei, R. Fergus, and P. Perona, “Learning generative 
+visual models from few training examples: An incremen- 
+tal bayesian approach tested on 101 object categories”, 
+Comput. Vis. Image Underst., vol. 106, no. 1, pp. 59–70, 
+2007. 
+[5] G. Gregory, H. Alex, and P. Pietro, “Caltech-256 object 
+category dataset”, Caltech Technical Report, 2007. [6] A. Hauptmann, R. Yan, W.H. Lin, M. Christel, and 
+H. Wactlar, “Can high-level concepts ﬁll the semantic gap 
+in video retrieval? a case study with broadcast news”, 
+IEEE Transactions on Multimedia, vol. 9, no. 5, pp. 958– 
+966, Aug. 2007. 
+[7] Y. Lu, L. Zhang, Q. Tian, and W.Y. Ma, “What are the 
+high-level concepts with small semantic gaps?”, in IEEE 
+Conference on Computer Vision and Pattern Recognition 
+(CVPR ’08), pp. 1–8, 2008. 
+[8] B.J. Frey and D. Dueck, “Clustering by passing messages 
+between data points”, Science, vol. 315, pp. 972–976, 
+2007. 
+1487 
+
+========4========
+

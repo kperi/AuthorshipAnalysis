@@ -1,0 +1,524 @@
+﻿IEEE TRANSACTIONS ON MULTIMEDIA, VOL. 11, NO. 7, NOVEMBER 2009 
+1289 
+Discriminant Subspace Analysis: An Adaptive 
+Approach for Image Classiﬁcation 
+Yijuan Lu, Member, IEEE, and Qi Tian, Senior Member, IEEE 
+Abstract—Linear discriminant analysis (LDA) and biased dis- criminant analysis (BDA) are two effective techniques for dimen- sion reduction, which pay attention to different roles of the positive and negative samples in ﬁnding discriminating subspace. However, the drawbacks of these two methods are obvious: LDA has limited efﬁciency in classifying sample data from subclasses with different distributions, and BDA does not account for the underlying distri- bution of negative samples. 
+In order to effectively exploit favorable attributes of both BDA and LDA and avoid their unfavorable ones, we propose a novel adaptive discriminant analysis (ADA) for image classiﬁcation. ADA can ﬁnd an optimal discriminative subspace with adaptation to different sample distributions. 
+In addition, three novel variants and extensions of ADA are fur- ther proposed: 
+1) Integrated Boosting (i.Boosting), which enhances and com- 
+bines a set of ADA classiﬁers into a more powerful one. 
+i.Boosting integrates feature re-weighting, relevance feed- 
+back, and AdaBoost into one framework. With affordable 
+computational cost, i.Boosting can provide a uniﬁed and 
+stable solution to ADA prediction result. 
+2) Fast adaptive discriminant analysis (FADA). Instead of 
+searching parameters, FADA can directly ﬁnd a close-to-op- 
+timal projection very fast based on different sample distribu- 
+tions. 
+3) Two-dimensional adaptive discriminant analysis (2DADA). 
+As opposed to ADA, 2DADA is based on 2-D image matrix 
+representation rather than 1-D vector. So it is simpler, more 
+straightforward, and has lower time complexity to use for 
+image feature extraction. 
+Extensive experiments on synthetic data, UCI benchmark data sets, hand-digit data set, four facial image data sets, and COREL color image data sets show the superior performance of our pro- posed approaches. 
+Index Terms—AdaBoost, adaptive discriminant analysis, feature re-weighting, image classiﬁcation, multiple classiﬁers, relevance feedback. 
+I. INTRODUCTION 
+R 
+ECENT years have witnessed an explosion of digital im- 
+ages generated from different areas such as commerce, academia, and medical institutes. The dramatic increase of im- 
+Manuscript received November 12, 2008; revised April 23, 2009. First pub- lished August 18, 2009; current version published October 16, 2009. This work was supported in part by Research Enhancement Program (REP) and start-up funding from Texas State University and Army Research Ofﬁce (ARO) grant under W911NF-05-1-0404, and in part by the Department of Homeland Secu- rity (DHS). The associate editor coordinating the review of this manuscript and approving it for publication was Dr. Z. Jane Wang. 
+Y. Lu is with the Department of Computer Science, Texas State University, San Marcos, TX 78666 USA (e-mail: yl12@txstate.edu). 
+Q. Tian is with the Department of Computer Science, University of Texas at San Antonio, San Antonio, TX 78249 USA (e-mail: qitian@cs.utsa.edu). 
+Color versions of one or more of the ﬁgures in this paper are available online at http://ieeexplore.ieee.org. 
+Digital Object Identiﬁer 10.1109/TMM.2009.2030632 
+1520-9210/$26.00 © 2009 IEEE 
+Fig. 1. LDA outperforms BDA in (a), and BDA outperforms LDA in (b). 
+ages demands efﬁcient indexing and retrieval methods, espe- cially for a large image database. In image retrieval, an image is represented by its feature vector as a data point in a high-di- mensional space. Its dimension ranges from tens to hundreds. However, traditional statistical approaches have difﬁculties in modeling data directly in such a high-dimensional space. Hence, dimension reduction techniques play a critical role in alleviating the high dimensionality problem. 
+Linear discriminant analysis (LDA) [1] and biased discrim- inant analysis (BDA) [2] are both effective techniques for fea- ture dimension reduction. LDA assumes that positive and neg- ative samples are from the same distributions, respectively, and makes the equivalent (unbiased) effort to cluster negative and positive samples. Compared to LDA, BDA assumes that pos- itive samples must be similar while negative samples may be from different distributions. Hence, it tries to ﬁnd an optimal mapping that all positive examples are clustered and all nega- tive examples are scattered away from the centroid of the posi- tive examples. Studies have shown that BDA works very well in content-based image retrieval (CBIR), especially when the size of the training sample set is small [2]. 
+Obviously, LDA and BDA have their pros and cons. When all negative samples are from the same distribution and clus- tered together, LDA outperforms BDA [Fig. 1(a)]. However, BDA outperforms LDA when negative samples are from dif- ferent classes and scattered [Fig. 1(b)]. In addition, many ap- plications do not ﬁt exactly into either of the two assumptions, which means neither LDA nor BDA can ﬁnd an optimal projec- tion (as shown in Fig. 2). 
+Hence, we propose a novel adaptive discriminant analysis (ADA) [3], which merges LDA and BDA in a uniﬁed frame- work and offers more ﬂexibility and a richer set of alternatives to LDA and BDA in the parametric space. ADA can ﬁnd a good projection with adaptation to different sample distributions and perform the classiﬁcation in the subspace with naïve Bayes clas- siﬁer. 
+To improve the performance of ADA and save the compu- tational cost, three novel variants and extensions of ADA are proposed in this paper: 
+
+========1========
+
+1290 
+Fig. 2. Comparison of BDA, LDA, and ADA on 2-D synthetic data. (a) Case 1. (b) Case 2. (c) Case 3. (d) Case 4. (e) Case 5. 
+1) i.Boosting, which is proposed to improve the performance 
+by incorporating feature re-weighting and relevance feed- 
+back in boosting algorithm. 
+ADA is a parametric method. Parameter optimization and 
+selection are important but difﬁcult. In ADA, it needs 
+searching the whole parameter space to ﬁnd the optimal 
+one. The computational cost could be expensive. In addi- 
+tion, excessive searching also causes overﬁtting problem. 
+In order to solve these two problems, a solution is to boost 
+a set of ADA classiﬁers (an ADA classiﬁer is denoted 
+as ADA projection and a base classiﬁer in the projected 
+space). Then combine these boosted classiﬁers using some 
+fusion scheme in the projected space. 
+Here, boosting algorithms are designed to construct a 
+“strong” classiﬁer from a “weak” learning algorithm and 
+present the superior result given by a thresholded linear 
+combination of the weak classiﬁers. AdaBoost [4] is often 
+regarded as the generic boosting algorithm. The basic 
+idea of AdaBoost is to iteratively re-weight the training 
+samples based on the outputs of some weak learners. 
+Misclassiﬁed samples will receive higher weights in the 
+next iteration. This forces the classiﬁer to focus more on 
+the incorrectly classiﬁed examples. 
+However, in traditional AdaBoost, only weights of sam- 
+ples are updated. It does not update any feature element 
+weight, which is important and very useful especially for 
+image databases using high-dimensional image features 
+[5]. In this paper, we incorporate feature re-weighting 
+into boosting. To further improve the understanding of 
+visual content and user interest and alleviate the overﬁtting 
+problem, we integrate relevance feedback into boosting 
+scheme and propose a novel integrated boosting frame- 
+work (i.Boosting).i.Boosting not only weights the samples 
+but also weights the feature elements iteratively. Besides, 
+in i.Boosting, relevance feedback provides boosting with 
+more training information. Better than simple relevance 
+feedback, i.Boosting forces classiﬁers to pay more at- 
+tention to wrongfully predicted samples through user 
+feedback. 
+IEEE TRANSACTIONS ON MULTIMEDIA, VOL. 11, NO. 7, NOVEMBER 2009 
+2) FADA, which stands for fast adaptive discriminant anal- 
+ysis. The major difference between FADA and ADA lies 
+in the adaptation method. FADA does not need searching 
+parameters like ADA. It can directly calculate the close-to- 
+optimal prediction in a fast way according to sample dis- 
+tributions. Extensive experiments show that FADA has dis- 
+tinctly lower costs in time than ADA and achieves classiﬁ- 
+cation accuracy that is comparable to ADA. 
+3) 2DADA. In contrast to vector representation used in ADA, 
+2DADA works on the matrix representation of images di- 
+rectly. As a result, 2DADA has two advantages. First, it is 
+easier to evaluate the scatter matrix as the spatiality and lo- 
+cality information are better preserved. Second, less time is 
+required to determine the corresponding eigenvectors since 
+the size of scatter matrix is smaller. 
+The rest of the paper is organized as follows. In Section II, we illustrate the ADA in detail. In Sections III– V, i.Boosting, FADA, and 2DADA are introduced and discussed, respectively. Extensive experiments are also conducted to evaluate all these proposed methods on UCI benchmark data sets, hand-digit data set, four facial image data sets, and COREL color image data sets. Finally, conclusions and future work are discussed in Section VI. 
+II. ADAPTIVE DISCRIMINANT ANALYSIS 
+A. Linear Discriminant Analysis 
+LDA is one of most widely used discriminant analysis tech- niques in classiﬁcation and dimension reduction. LDA tries to ﬁnd an optimal projection from originally high -dimen- sional space to a low -dimensional space, which makes sam- ples from the same class cluster and samples from different classes separate. The problem of ﬁnding the optimal can be mathematically represented as the following maximization problem: 
+(1) 
+(2) 
+(3) 
+Here, the between-class matrix measures the separability of class centers and the within-class scatter matrix mea- sures the within-class variance in the low-dimensional space. 
+, denote the feature vec- tors of training samples. is the number of classes. is the number of the samples of the th class, is the th sample vector from the th class, is the mean vector of the th class, and is the grand mean of all examples. 
+To maximize the ratio of (1), the optimal is composed of the generalized eigenvector(s) associated with the largest eigenvalue(s). contains eigenvectors corresponding to eigenvalues, i.e., 
+
+========2========
+
+LU AND TIAN: DISCRIMINANT SUBSPACE ANALYSIS: AN ADAPTIVE APPROACH FOR IMAGE CLASSIFICATION 1291 
+[1]. It should be noted that maps the original -di- mensional data space to a -dimensional space (where 
+). 
+B. Biased Discriminant Analysis 
+In two-class LDA, the equivalent (unbiased) effort has been made to cluster negative and positive samples. Intuition suggests that clustering the negative samples may be difﬁcult and unnecessary because they may be from different classes [Fig. 1(b)]. Zhou and Huang [2] proposed biased discriminant analysis (BDA). The intuition behind the BDA is that “all positive examples are alike, and each negative example is negative in its own way”. That means that the positive samples are visually similar and should be clustered in the projected space. On the other hand, the negative samples might be from different classes, and it is difﬁcult to ﬁnd a mapping to make them close to each other. 
+BDA is deﬁned to ﬁnd an optimal projection: 
+(4) 
+(5) 
+(6) 
+where is the mean vector of the positive examples. is the scatter matrix between the negative examples and the cen- troid of the positive examples, and is the scatter matrix of the positive examples. indicates the asymmetric property of this approach, which means the user’s biased opinion towards the positive class, thus the name of biased discriminant analysis [2]. 
+Although the idea of BDA is simple and it is quite effective in content-based image retrieval, we ﬁnd that its assumption is still inappropriate in some scenarios, which will be explained in the next section. The complex nature of image data requires a classiﬁcation method that can adaptively ﬁt the distribution of image data from different classes and discover a good classiﬁ- cation boundary. 
+C. Adaptive Discriminant Analysis 
+Given that LDA and BDA have their own assumptions and pay attention to different roles of the positive and the negative examples in ﬁnding the optimal discriminating subspace, it is our expectation that they can be uniﬁed. In addition, there are many cases that both LDA and BDA are not applicable. To provide a better model ﬁtting the complex distributions for positive and negative samples, an adaptive discriminant analysis (ADA) was proposed [3], which ﬁnds an optimal projection 
+(7) 
+in which 
+(8) 
+TABLE I SPECIAL CASES OF ADA 
+(9) 
+(10) 
+(11) 
+, , , , , are deﬁned the same or in a similar way as before. The two parameters and control the bias between the positive and negative samples and range from (0,0) to (1,1). 
+Table I summarizes ﬁve special cases of ADA. From Table I, we can ﬁnd that the ADA reduces to BDA when and are set to be 0 and 0 (Case 1). Case 5 corresponds to a LDA-like projec- tion with and set to 0.5 and 0.5. Case 4 ﬁnds a projection that is on the opposite side of BDA, which is called Counter-BDA. Case 2 and Case 3 is a couple of contrary distribution scenarios, which assume that the negative (positive) samples are similar and positive (negative) samples might be from different classes. All these ﬁve cases ﬁt certain image distributions and have cor- respondence with some scenarios as illustrated in Fig. 2. In order to show the advantages of ADA, we use synthetic data to simulate different sample distributions as shown in Fig. 2. Original data are simulated in 2-D space, and the posi- tive examples are marked with ’ s and the negative examples are marked with o’s as shown in the ﬁgure. In each case, we apply BDA, LDA, and ADA to ﬁnd the best projection direction by their own criterion functions. ADA searches 36 parameter combinations sampled from 0 to 1 with step size of 0.2 to ﬁnd the best one. The resulting projection lines are drawn in dotted, dash-dotted, and solid lines, respectively. In addition, the distributions of the positive and negative samples along these projections are also drawn like bell-shaped thicker and thinner curves along projection line, assuming Gaussian distribution for each class. 
+From Fig. 2, we can see these ﬁve cases could represent sev- eral data distribution scenarios. Case 1 best ﬁts the distribu- tion where all positive samples are alike while negative ones may be irrelevant to each other and from different distributions [Fig. 2(a)]. Case 4 is on the opposite side of Case 1, in which negative samples share strong correlations while positive sam- ples may be quite different [Fig. 2(d)]. Cases 2 and 3 represent the imbalanced data set, where the size of positive (negative) 
+
+========3========
+
+1292 
+Fig. 3. Best ADA classiﬁer found in the parameter space may not be the one with optimal setting. 
+samples is much larger than that of negative (positive) samples. Case 5 is the scenario where the major descriptive directions of positive samples and negative samples are upright. From projection results, we can see LDA treats positive and negative samples equally. This makes it a bad choice in Cases 1 and 4. Similarly, since BDA assumes all positive samples are projected together, it fails in Cases 4 and 5. In Cases 2 and 3, BDA and LDA are found not applicable for imbalanced data sets. The reason for this is that LDA or BDA tends to severely bias to the dominating samples. 
+In all ﬁve cases, ADA yields good projection with positive samples and negative samples well separated and outperforms BDA and LDA. Note in Case 4, both BDA and LDA totally fail while ADA still produces a good projection. It clearly demon- strates that no matter whether it is an imbalanced data set or samples are from different subclass clusters, ADA can adap- tively ﬁt into different distributions of samples and ﬁnd a bal- ance between clustering and separating, which are embedded in the criterion function. Here, only ﬁve special cases of ADA are shown. More accurate data model ﬁtting could be achieved by ﬁne parameter tuning. 
+III. i.BOOSTING 
+In previous experiments on synthetic data, ADA analysis has shown good performance. However, the optimal classiﬁer often lies not only between but also beyond BDA and LDA in the parametric space of (Fig. 3). To ﬁnd the best parameter setting for ADA on a particular data set, exhaustive searching in the square region of parameters from (0,0) to (1,1) is needed. But it is hard to decide a trade-off between computational cost and accuracy. When the searching-step size is large, it will miss the global optimal value, and when the step size is small, it often causes overﬁtting problem. It is also true that the best pair we found for one particular data set is often different from that of other data sets, and therefore, this cannot lead to a generaliza- tion. In order to alleviate this problem, a feasible solution is to boost a set of ADA classiﬁers and combine these boosted classi- ﬁers using some fusion scheme in the projected space. AdaBoost [4] is one of the popular boosting algorithms. 
+A. AdaBoost 
+AdaBoost [4] developed in the computational machine learning area has emerged as a competitive technique that has a theoretically justiﬁed ability to improve the performance of any weak classiﬁcation algorithm in terms of bounds on the generalization error. 
+IEEE TRANSACTIONS ON MULTIMEDIA, VOL. 11, NO. 7, NOVEMBER 2009 
+The basic idea of AdaBoost is to iteratively re-weight the training examples based on the outputs of some weak learners. In order to boost the weak learning algorithm, the data are reweighed (the relative importance of the training examples is changed) before running the weak learning algorithm at each it- eration. Training examples that were misclassiﬁed by the weak classiﬁer at the current iteration then receive higher weights at the following iteration. The intention is to increase the weights of the incorrectly classiﬁed examples and decrease the weights of the correctly classiﬁed examples. This forces the classiﬁer to focus more on the incorrectly classiﬁed examples in the next iteration. The end result is a ﬁnal combined classiﬁer. Each component is the weak classiﬁer obtained at each iteration, and each component classiﬁer is weighted according to how this classiﬁer performed during each iteration. 
+AdaBoost performs better than many state-of-the-art classiﬁ- cation algorithms in experiments, and it does not seem to overﬁt. Theories trying to explain this include the margin theory [6]–[8] and the additive logistic regression [9]. These explanations have in turn given modiﬁcations or improvements over the original AdaBoost. Therefore, AdaBoost provides a general way of com- bining and enhancing a set of ADA classiﬁers in the parametric space. 
+B. i.Boosting 
+Although AdaBoost can enhance each classiﬁer’s perfor- mance by re-weighting and re-training mechanism, it only updates the weights of samples. It does not update any feature element weight, which is important and very useful, especially for image databases using high-dimensional image features [5]. Hence, we incorporate feature re-weighting into boosting and propose a new feature re-weighting approach for ADA. In addition, considering feature re-weighting on small training data set tends to bias to the training set and causes overﬁtting, we incorporate relevance feedback [10] into boosting scheme and propose a novel integrated boosting framework (i.Boosting) [11]. In contrast to AdaBoost, i.Boosting not only re-weights the samples but also re-weights the feature elements iteratively. Besides, by incorporating relevance feedback in i.Boosting, it can further improve the understanding of visual content and user interests. 
+1) Classic Feature Re-Weighting: In image database, each image is represented by its features 
+. Let the feature of query image be , the Euclidean distance between query image and the image in the database is 
+(12) 
+is the feature weighting matrix indicating the importance of each component of features. After relevance feedback, the user provides the relevance of each image to the query and the feature weights can be updated to make similar images close to each other and dissimilar images far away from each other. Traditional feature re-weighting methods are based on distance metric, e.g., generalized Euclidean distance [5]. In this paper, we propose a dynamic feature re-weighting method for dimension reduction in order to obtain a better projection during relevance feedback. 
+
+========4========
+
+LU AND TIAN: DISCRIMINANT SUBSPACE ANALYSIS: AN ADAPTIVE APPROACH FOR IMAGE CLASSIFICATION 1293 
+2) Weighted Adaptive Discriminant Analysis: We incorpo- rate dynamic feature weighting to ADA and construct weighted ADA. It can provide a more accurate model of the complex dis- tribution for positive and negative samples by ﬁnding an optimal projection: 
+(13) 
+in which 
+(14) 
+(15) 
+(16) 
+(17) 
+and are feature element weights of positive and negative samples. , are means of weighted positive samples and weighted negative samples. stands for Hadamard product op- eration. The rest are deﬁned the same as in Section II. In order to avoid searching in 2-D parameter space, we use AdaBoost to enhance and combine a set of weak ADA classiﬁers into a more powerful one. Unlike most of the existing approaches that boost individual features to form a composite classiﬁer, our scheme boosts both the individual features and a set of weak classiﬁers. 
+For each weak ADA classiﬁer, to ﬁnd a better projection, the ratio of 
+needs to be maximized. Intuitively, it is to min- imize the “within-class scatter” and maximize the “between- class scatter”. Therefore, the criterion can be redeﬁned to max- imize 
+(18) 
+Hence, re-weighting scheme for ADA is to update by maxi- mizing and update by maximizing 
+based on (14)–(17). 3) Relevance Feedback: To efﬁciently incorporate user feed- back and enhance the retrieval accuracy, relevance feedback can also be integrated in the boosting. 
+Fig. 4. Integrated boosting framework. 
+Relevance feedback was initially developed in document re- trieval [12] and widely applied in content-based image retrieval [10], [13]. The basic idea of relevance feedback is to get human in the loop. At ﬁrst, computer processing provides initial re- trieval results. Users are then asked to evaluate the current re- trieval results according to degrees that are relevant or irrelevant to his/her request. The system then applies the user’s feedback to update the training examples to improve performance for the next round. This learning process can be applied iteratively if the user desires. Relevance feedback algorithms have been shown to provide dramatic performance improvement in image retrieval systems [12]. 
+4) i.Boosting for ADA: Motivated by the strength and suc- cesses of AdaBoost, dynamic feature re-weighting, and rele- vance feedback, we propose an integrated boosting framework calledi.Boosting. It can integrate relevance feedback, AdaBoost (sample re-weighting), and feature re-weighting in the loop of boosting and better bridge the gap between semantic concept and image features. Fig. 4 gives an illustration of the integrated boosting framework. 
+Based on the above framework, the brief algorithm below shows how the i.Boosting is implemented with multiple ADA classiﬁers. 
+Algorithm: i.Boosting with ADA as weak classiﬁers 
+Input: Labeled Sample Set 
+and label Y 
+Unlabeled Sample Set 
+Feature vector D and Feature element 
+ADA classiﬁers with different 
+: The dimension of feature (feature size) 
+: positive samples : negative samples 
+: The total number of runs 
+Initialization: sample weight weight , 
+and feature 
+Boosting 
+For each classiﬁer 
+do 
+For 
+
+========5========
+
+1294 
+IEEE TRANSACTIONS ON MULTIMEDIA, VOL. 11, NO. 7, NOVEMBER 2009 
+• Find the optimal projection 
+else 
+based on weighted mean for positive samples, negative samples, and all the samples and weighted scatter matrices in the following way. Note that 
+• Assign the weights of classiﬁers based on its 
+classiﬁcation error rate on labeled samples 
+1) Update weighted mean 
+, 
+, and 
+2) Update within-class and between-class 
+scatter matrices 
+• Present samples from the unlabeled data set with 
+their predicted labels to user. 
+• Obtain user feedback on the ground truth labels. • Data obtained from user relevance feedback are 
+added to construct an enlarged labeled data set and 
+removed from unlabeled data set. 
+• Update the sample weight based on their 
+prediction correctness: 
+. 
+• Update the feature weights based on the proposed 
+feature re-weighting rule: 
+• compute the new and 
+in (18). • Update the weight of features , 
+accordingly. 
+End for 
+End for each classiﬁer 
+The ﬁnal prediction 
+sum rule to combine multiple classiﬁers. 
+, using 
+C. Experiments and Results 
+Train weak classiﬁers on the data projected 
+by the optimal projection . • Get the probability-rated prediction on labeled and 
+unlabeled sample . 
+Suppose the probability of a samples x belongs to 
+positive and negative class is denoted as 
+and , respectively. 
+If 
+In this section, we experimentally evaluate the performance of ADA and i.Boosting on various benchmark data sets in- cluding UCI benchmark data sets, the COREL image data set, and four face data sets. In order to comprehensively evaluate the performance of our proposed method, we compare it with BDA, LDA, AdaBoost, ADA with relevance feedback, and other state-of-the-art projection techniques. In all experiments, a Bayesian classiﬁer is used on the projected data for all pro- jection-based methods. 
+1) Comparison of ADA and the State-of-the-Art: In the ﬁrst experiment, we compare ADA with the state-of-the-art linear and nonlinear variants of discriminant analysis, such as DEM [14], kernel DEM (KDEM) [15], BDA [2], and kernel BDA (KBDA) [2] on face and non-face recognition. 
+The data set used in the experiments contains both face im- ages, which come from MIT facial image data set (2358 images) [16] and non-face images (2958 images) from Corel database [17]. All the face and non-face images are scaled down to 16 16 grayscale images and normalized feature vector of dimen- sion 256 is used to represent each image. The different sizes of the training sets are 100, 200, 400, and 800, respectively. Com- pared with the feature vector dimension of 256, the training set size is set from relatively small to relatively large. Table II gives the experimental results with the smallest error rates in bold. 
+
+========6========
+
+LU AND TIAN: DISCRIMINANT SUBSPACE ANALYSIS: AN ADAPTIVE APPROACH FOR IMAGE CLASSIFICATION 1295 
+TABLE II 
+COMPARISON WITH DEM, BDA, KDEM, AND KBDA 
+Fig. 5. ADA on heart benchmark data set. 
+From the results in Table II, we ﬁnd that our proposed methods perform well when the training set size is small compared to the feature dimensionality. When compared with linear techniques of DEM and BDA with simple regularization [18], [19], ADA performs much better than them and does not require regularization. Even when compared with the nonlinear techniques KDEM and KBDA, ADA still performs better in three out of four tests. It should be noted that only linear transformation is used in our ADA, but it is more efﬁcient than nonlinear algorithms such as KDEM and KBDA. These show the robust performance of the ADA. 
+2) Comparison of Boosted Single and Multiple ADA: In the second experiment, we evaluate the effectiveness of a boosted single best ADA classiﬁer (B.best_ADA) with boosted multiple ADA classiﬁers (B.ADAs). The boosted multiple ADA classi- ﬁers are trained on 36 ADA classiﬁers with evenly sam- pled from 0 to 1 with step size of 0.2. The single best ADA is the best one chosen from these 36 classiﬁers. For comparison purpose, LDA and BDA are also implemented and tested. The methods are tested on benchmark data sets from UCI repository [20]. Due to the limited space, we only show the results in Fig. 5 on SPECTF heart databases, which describe diagnosing of car- diac Single Proton Emission Computed Tomography (SPECT) images. Similar results are obtained on other data sets. This SPECTF data set contains 267 instances (patients) and totally 43 attributes. Each of the patients is classiﬁed into two cate- gories: normal and abnormal. The sizes of the training set and testing set are 80 and 187, respectively. 
+Shown in Fig. 5, as iteration goes on, the error rates of the B.best_ADA and the B.ADAs decrease. The performance of LDA and BDA are shown for reference as two straight lines. Both B.best_ADA and B.ADAs outperform the LDA and BDA in this experiment. Although B.ADAs starts with a set of weak 
+Fig. 6. Comparison between i.Boosting and other related variants. 
+classiﬁers, after one iteration , it outperforms the boosted single best ADA classiﬁer. 
+3) i.Boosting: In order to have a statistical analysis of our scheme, we perform a pseudo relevance feedback. At each rel- evance feedback, ﬁve images are fed to the system automatically based on their ground truth labels. In the following experiments, our boosted ADA is trained on 36 ADA classiﬁers with evenly sampled from 0 to 1 with step size of 0.2 and the average prediction error rate of 50 runs is reported. 
+i) i.Boosting on UCI data set: First, we tested the pro- posed i.Boosting on benchmark data sets from UCI repository. For comparison purpose, four independent experiments are de- signed and implemented to compare i.Boosting with other re- lated variants. 
+Due to the limited space, we only show the results on SPECTF heart databases. The average error rate across ﬁve iterations is plotted in Fig. 6, where the -axis denotes the iteration number (between 0 to 5). 0 stands for the starting status before iterations begin. 
+a) boosting multiple ADA classiﬁers with and without rel- evance feedback 
+Secondly, we evaluate the effect of integrating user feedback into boosting scheme. From Fig. 6(a), we can ﬁnd the perfor- mance improvement of using AdaBoost alone (B.ADAs) is less than that of using boosted ADAs with relevance feedback (B.ADAs+RF). The performance of B.ADAs+RF is consis- tently better than that of B.ADAs (without relevance feedback) by up to 30.4% on SPECTF heart set. It is no surprise that user feedback and human judgment could be accumulated iteratively to facilitate learning process. 
+b) single ADA classiﬁer + RF (without boosting) versus boosting multiple ADA classiﬁers + RF 
+The third experiment is designed to verify if the perfor- mance improvement of B.ADAs+RF is introduced by relevance feedback only. Hence, we compare the single best ADA classiﬁer with only relevance feedback (best_ADA+RF) and boosted multiple ADA classiﬁers with relevance feedback (B.ADAs+RF). From the experimental result in Fig. 6(b), we can conclude that: 1) B.ADAs+RF and relevance feedback 
+
+========7========
+
+1296 
+Fig. 7. i.Boosting on COREL data set. 
+(without boosting) only starts with similar performance in iteration 1; 2) After several iterations, simple relevance feed- back gains less performance improvement than B.ADAs+RF. In conclusion, B.ADAs+RF has obvious advantage over the simple relevance feedback method in that the classiﬁers are trained to pay more attention to wrongfully predicted samples in user feedback through a reinforcement training process. c) boosting multiple ADA classiﬁers+RF (without feature re-weighting) versus i.Boosting 
+The last experiment is to evaluate the performance of fea- ture re-weighting in integrated boosting. In Fig. 6(c), we can ﬁnd after two iterations, i.Boosting performed much better than B.ADAs+RF (without feature re-weighting). Besides, i.Boosting becomes much steadier after several iterations. It is clear that i.Boosting boosts not only a set of weak classiﬁers but also the individual features. 
+ii) i.Boosting for image classiﬁcation: In order to evaluate i.Boosting for image classiﬁcation, we test it on the COREL image databases. This database contains 1386 color images, which are categorized into 14 classes. Each class contains 99 images. Each image is represented by 37 feature components in- cluding color moments (9) [21], wavelet-based texture (10) [22], and water-ﬁlling edge-based structure features (18) [23]. For simplicity, we randomly pick up two classes of images for clas- siﬁcation. One-third of the images are used for training while the rest are used for testing. 
+The experimental result shown in Fig. 7 is consistent with the results on the UCI data set. i.Boosting, boosted multiple ADA classiﬁers (without relevance feedback), and the best ADA clas- siﬁer with relevance feedback start with similar performance in iteration 1. But as the iteration goes on, i.Boosting gains much better performance improvement than the other two. It demon- strates that interactive boosting exploits the favorable attributes of AdaBoost, feature re-weighting, and relevance feedback well. 
+iii) i.Boosting for face classiﬁcation: To evaluate i.Boosting for face classiﬁcation, we tested it on four well-known face image databases with change in illumina- tion, expression, and head pose. The Harvard Face Database contains images from ten individuals, each providing total 66 images, which are classiﬁed into ten sets based on increasingly changed illumination condition [24]. The AT&T Face Database [16] consists of grayscale images of 40 persons. Each person has ten images with different expressions, open or closed eyes, smiling or non-smiling, and wearing glasses or no glasses. The UMIST Face Database [25] consists of 564 images of 20 people, which covers a range of poses from proﬁle to frontal 
+IEEE TRANSACTIONS ON MULTIMEDIA, VOL. 11, NO. 7, NOVEMBER 2009 
+Fig. 8. Example images from four face databases. (a) Change of illumination condition, size is 84 96. (b) Change of expressions, size is 92 112. (c) Change of head pose, size is 92 112. (d) Change of head pose and illumina- tion, size is 64 64. 
+views. The CMU PIE face database [26] contains 41 368 images of 68 individuals. The face images were captured by 13 synchronized cameras and 21 ﬂashes, under varying pose, illumination, and expression. We choose the ﬁve near frontal poses (C05, C07, C09, C27, C29) and use all the images under different illuminations, lighting, and expressions which leaves us 170 near frontal face images for each individual. Fig. 8 gives some example images from the databases. Sixty image features are extracted to represent these images including his- togram (32), wavelet-based texture (10) [22], and water-ﬁlling edge-based structure features (18) [23]. 
+For each database, we randomly choose one person’s face im- ages as positive and the rest face images of others are considered as negative. For comparison purpose, six state-of-the-art projec- tion-based techniques: Eigenface [24], LDA, BDA [2], DEM [15], KDEM [16], and ADA are tested on the same databases. To be consistent, the results for these techniques are obtained after ﬁve iterations of relevance feedback accumulation. The results are listed in Table III with the smallest error rate in bold. It is clear that i.Boosting performs best in ﬁve out of six tests and second to the best ADA in one test. Therefore, i.Boosting provides more robustness to the changes of illumi- nation, expression, and pose than other techniques. 
+IV. FAST ADAPTIVE DISCRIMINANT ANALYSIS To reduce computational cost of ADA, a very simple but effective variant of ADA, fast adaptive discriminant analysis (FADA), is proposed. Instead of searching the parametric space, FADA provides a novel and stable solution to ﬁnd close-to-op- timal ADA projection very quickly [27]. 
+The basic idea of FADA is to ﬁnd projections to cluster pos- itive samples and negative samples, respectively. Then adjust these projections to separate two classes as far as possible. Fig. 9 gives an illustration of the basic idea of the FADA in two-dimen- sional space. 
+The scenario can be described in the following steps (Fig. 9): 
+
+========8========
+
+LU AND TIAN: DISCRIMINANT SUBSPACE ANALYSIS: AN ADAPTIVE APPROACH FOR IMAGE CLASSIFICATION 1297 
+TABLE III 
+COMPARISON OF i.BOOSTING WITH STATE-OF-THE-ART TECHNIQUES ON 
+DIFFERENT FACE DATABASES 
+1) Find a projection to cluster positive samples (P) ﬁrst. 
+Obviously, is the eigenvector(s) corresponding to the 
+smallest eigenvalue(s) of covariance matrix of positive 
+samples. 
+2) Project all positive and negative data to , calculate the 
+number of samples within the overlapping range 
+of these two classes after projection. The smaller , the 
+more separated of these two classes. If , the positive 
+samples and negative samples can be completely separated 
+by the projection . 
+3) Similarly, ﬁnd a projection to cluster negative sam- 
+ples (N). is the eigenvector(s) with the smallest eigen- 
+value(s) of covariance matrix of negative samples. 4) Project all data to and calculate the number of sam- 
+ples that belong to the overlapping range of the two 
+classes. 
+5) Calculate the ratio 
+(19) 
+6) The ﬁnal projection 
+: 
+is a linear combination of 
+and 
+(20) 
+Obviously, ﬁnal depends on the value of and (sep- arability of two classes after projected by and ). If can better separate two classes than , will approach Shown in Fig. 9, after projection by the calculated , there is no overlapping between positive samples and negative samples. Hence, in the low-dimensional space, these two classes can be separated well. 
+A. FADA for Image Classiﬁcation 
+In this section, we experimentally evaluate the performance of FADA on real image data sets: COREL image set and four popular face image sets in Section III. The use of ADA, LDA, BDA, and other state-of-the-art methods have been investigated on the same data set [3]. The congruent results are that ADA out- performed the other algorithms with Bayesian as the base clas- siﬁer. Therefore in our experiments, we focused on comparing ADA with FADA in terms of classiﬁcation accuracy and efﬁ- ciency (computational time). In COREL data set, ADA searches 
+Fig. 9. Illustration of FADA algorithm. 
+Fig. 10. Comparison of ADA and FADA with different sizes of training set. 
+. 
+36 parameter combinations sampled from 0 to 1 with step size of 0.2 to ﬁnd the best one. Bayesian classiﬁer is used on the projected data for all projection-based methods. In all experi- ments, average classiﬁcation accuracy of 50 runs is reported. We performed our experiments using Matlab on a Pentium IV 2.26-GHz machine with 1 GB of RAM. 
+Fig. 10 shows the performance of ADA and FADA as the size of training samples changes from 1/5 to 2/3 of the total sam- ples. For example, 1/5 means one-ﬁfth of the images are used for training while the rest are used for testing. In Fig. 10(a), we ﬁnd that the accuracy of FADA and ADA both change with different training sets. No matter if the training size is small or large, FADA is very comparable to ADA in terms of accu- racy. Another key observation from Fig. 10(b) is that FADA is much faster than ADA by an order of 1–2. As the size of the training set increases, the speedup of FADA over ADA signif- icantly increases because ADA spends a lot of time in training and searching. It demonstrates that FADA is a more efﬁcient di- mension reduction algorithm than ADA, as it is comparable to ADA in classiﬁcation while it has much lower time costs. 
+B. FADA for Face Classiﬁcation 
+To evaluate FADA for face classiﬁcation, we tested it on three face image databases used in Section III. For each database, we randomly chose one person’s face images as positive and the rest of the face images of others are considered as negative. In all of these data sets, ADA searches 121 various parameter combinations with the searching step size of 0.1. 
+Table IV shows the comparison of ADA and FADA on accu- racy and efﬁciency, with the largest accuracy and the smallest computational time in bold. It can be seen that FADA performs 
+
+========9========
+
+1298 
+TABLE IV 
+COMPARISON OF CLASSIFICATION ACCURACY AND EFFICIENCY 
+ON THREE DIFFERENT FACE DATABASES 
+better in four out of ﬁve data sets on classiﬁcation accuracy and at least two orders of magnitude faster than ADA in all ﬁve data sets. It is to be noted that the computation requirements of ADA increase cubically with the increase size of data sets (from Har- vard to UMIST data set), and the speed difference between ADA and FADA becomes more signiﬁcant with the increase of face database scale. It is proved that FADA not only reduces the com- putational cost but also achieves competitive classiﬁcation ac- curacy with ADA. It is an efﬁcient dimension reduction scheme for image classiﬁcation on small or large image data sets. 
+V. TWO-DIMENSIONAL ADA 
+In most cases, image data are stored in vector format. How- ever, recent studies indicate that matrix/tensor representation of images has become popular and widely used in face recognition and classiﬁcation recently. Compared to vector representation (1-D) of the data, 2-D representation works directly with im- ages in their native state, as two-dimensional matrices. Hence, the image does not need to be transformed, which not only saves the computational cost but also preserves all spatial information of the original image. 
+Since the two-dimensional linear discriminant analysis (2DLDA) was proposed in 2004, up to present, there are several variants. Li et al. [28] and Sanguansat et al. [29] presented their 2DLDA with only reducing the number of columns and keeping the number of rows unchanged. Instead, Yang et al. [30] presented a two-step algorithm, which ﬁrst reduces the number of columns and then reduces the number of rows. Ye et al. [31] proposed to calculate the row and column trans- formation matrices in an iterative way. Fortunately, they also recommended one iteration is sufﬁcient because the accuracy 
+IEEE TRANSACTIONS ON MULTIMEDIA, VOL. 11, NO. 7, NOVEMBER 2009 
+curves were stable with respect to the number of iterations . Later, Inoue et al. [32] proposed two non-iterative algorithms, namely selective and parallel algorithm. However, those two algorithms are more complex than the iterative one with . 
+A. Two-Dimensional ADA 
+We extend 1DADA to 2DADA, which merges 2DLDA and 2DBDA in a uniﬁed framework and offers more ﬂexibility and a richer set of alternatives to each individual method in the para- metric space. 
+2DADA tries to ﬁnd two transformation matrices and that map each from original high- dimensional space to a low-dimensional space 
+, in which the most useful features are preserved [33]. Mathematically, it could be modeled as ﬁnding two optimal projections and that maximizes the following ratios: 
+(21) 
+in which 
+(22) 
+(23) 
+(24) 
+(25) 
+Due to the difﬁculty of computing the optimal and simul- taneously, we derive an iterative algorithm similar to Ye’s work in [31]. Initially, , we can compute the optimal in (26) at the bottom of the page. Next, with the computed , calculate the optimal with (27) at the bottom of the next page. This procedure is repeated for iterations. In real application, 
+can be set to be 1 according to [29]. 
+B. 2DADA on Hand Digits Recognition 
+In this section, we experimentally evaluate the performance of the 2DADA algorithm on handwritten digit recognition. In all experiments, 2DADA is tested with evenly sampled from 0 to 1 with step size of 0.1. Besides, 10-fold cross-validation is used to report the mean accuracy of a -NN query with 
+. 
+(26) 
+
+========10========
+
+LU AND TIAN: DISCRIMINANT SUBSPACE ANALYSIS: AN ADAPTIVE APPROACH FOR IMAGE CLASSIFICATION 1299 
+Fig. 11. Examples of handwritten images. 
+Fig. 12. Comparison of accuracy with different dimensions. 
+First, we tested 2DADA, 2DBDA, 2DLDA, and their 1-D- based methods on a subset of MNIST data set [34], which con- tains 400 similar handwritten 1’s (200) and 7’s (200). Some ex- ample images are shown in Fig. 11. 
+In this experiment, the original dimension of images 28 28 is reduced to by all 2-D-based methods. Correspondingly, the reduced dimension in their 1-D-based methods is chosen such that both 1-D and 2-D methods use the same amount of storage for the transformation matrices and the reduced presentations [31]. For examples, on the MNIST data set, , 4, 6, 8, 10, 12, and 14 for 2DADA are used, corre- sponding to , 6, 12, 22, 34, 49, and 67 for 1DADA. The average accuracy rate across 10-fold cross-validation over the variation of dimension is plotted in Fig. 12, where the x-axis denotes the values of (between 2 to 14). From Fig. 12, we can clearly ﬁnd: 1) 2-D-based approaches (i.e., 2DADA, 2DBDA) achieve higher or comparable accuracy with their 1-D-based approach (1DADA and 1DBDA). In ad- dition, in our experiments, we found 2-D methods are almost one order of magnitude faster than 1-D methods. It justiﬁes that 2-D techniques have lower loss of information and are compu- tationally efﬁcient with the same amount of storage. 2) 2DADA consistently outperforms others irrespective of variation in di- mensions. Its stableness veriﬁes that it is a powerful dimension reduction method for classiﬁcation. 
+VI. CONCLUSION AND FUTURE WORK 
+This paper proposes ADA and its three variants for image classiﬁcation. These approaches address the high dimension- ality problem by applying adaptive discriminant projection in an optimal linear discriminant subspace. These proposed methods 
+are applied on UCI benchmark data sets, four facial image data sets, and COREL color image data sets. Their superior perfor- mance demonstrates that ADA and its variants are promising, effective, and efﬁcient approaches to image classiﬁcation. The main contributions of this work are as follows. 1) ADA provides a richer set of alternatives to classic dimen- 
+sion reduction methods such as LDA and BDA. As a result, 
+it not only compensates for regularization that is afﬂicted 
+by all sample-based estimation methods but also ﬁnds an 
+optimal projection with adaptation to different sample dis- 
+tributions. 
+2) In order to improve the searching time of parameter 
+space, we propose a novel integrated boosting frame- 
+work—i.Boosting. It boosts not only the individual 
+features but also a set of weak classiﬁers. Compared to the 
+traditional boosting scheme, the proposed method updates 
+both sample weights and feature weights iteratively. It 
+obtains more performance improvement from the rele- 
+vance feedback by putting human in the loop to facilitate 
+the learning process. It has obvious advantage over the 
+simple relevance feedback method in that the classiﬁers 
+are trained to pay more attention to wrongfully predicted 
+samples in user feedback through a reinforcement training 
+process. With affordable computational cost, i.Boosting 
+can provide a uniﬁed and stable solution to ﬁnd better or 
+close to optimal ADA prediction result. 
+3) The novelty of FADA lies in that without searching a para- 
+metric space, it can automatically calculate a good projec- 
+tion based on sample distributions information. FADA has 
+asymptotically lower time complexity than ADA, which is 
+desirable for large image data sets, while it achieves com- 
+petitive classiﬁcation accuracy with ADA. 
+4) 2DADA is an extension of ADA. The key difference be- 
+tween 2DADA and ADA is that 2DADA works on the 
+matrix representation of images directly, while ADA uses 
+a vector representation. 2DADA has asymptotically min- 
+imum memory requirements, e.g., the size of scatter matrix 
+is much smaller than its vector form, and lower time com- 
+plexity than ADA, which can improve the speed of image 
+feature extraction. 
+Our future work includes testing different relevance feedback schemes such as active learning techniques [35] in the interac- tive boosting. Different base classiﬁers and their corresponding feature re-weighting schemes will be implemented. We will also explore correlation metric and graph embedding-based tech- niques [36]–[38] in the boosting and feature fusion schemes in the future. 
+(27) 
+
+========11========
+
+1300 
+REFERENCES 
+[1] R. Duda, P. Hart, and D. Stork, Pattern Classiﬁcation, 2nd ed. New 
+York: Wiley, 2001. 
+[2] X. Zhou and T. S. Huang, “Small sample learning during multimedia 
+retrieval using biasMap,” in Proc. IEEE CVPR, 2001. 
+[3] J. Yu and Q. Tian, “Adaptive discriminant projection for content-based 
+image retrieval,” in Proc. Int. Conf. Pattern Recognition, Hong Kong, 
+Aug. 2006. 
+[4] Y. Freund and R. Schapire, “A short introduction to boosting,” J. Jpn. 
+Soc. Artif. Intell., vol. 14, no. 5, pp. 771–780, 1999. 
+[5] Y. Wu and A. Zhang, “A feature re-weighting approach for relevance 
+feedback in image retrieval,” in Proc. IEEE Int. Conf. Image Pro- 
+cessing, 2002. 
+[6] Schapire et al., “Boosting the margin: A new explanation for the 
+effectiveness of voting methods,” Ann. Statist., vol. 26, no. 5, pp. 
+1651–1686, 1998. 
+[7] L. Breiman, Prediction Games and Arcing Algorithms, Statist. Dept., 
+Univ. California, Tech. Rep. 504, 1997. 
+[8] C. Rudin et al., “The dynamics of AdaBoost: Cyclic behavior and con- 
+vergence of margins,” J. Mach. Learn. Res., vol. 5, pp. 1557–1595, 
+2004. 
+[9] J. Friedman et al., “Additive logistic regression: A statistical view of 
+boosting,” Ann. Statist., vol. 28, no. 2, pp. 337–374, 2000. [10] Y. Rui, T. S. Huang, M. Ortega, and S. Mehrotra, “Relevance feedback: 
+A power tool in interactive content-based image retrieval,”IEEE Trans. 
+Circuits Syst. Video Technol., vol. 8, no. 5, pp. 644–655, 1998. [11] Y. Lu, T. Zhang, and Q. Tian, “i.Boosting for image classiﬁcation,” in 
+Proc. IEEE Int. Conf. Multimedia and Expo, Beijing, China, Jul. 2–5, 
+2007. 
+[12] G. Salton and M. J. McGill, Introduction to Modern Information Re- 
+trieval. New York: McGraw-Hill, 1992. 
+[13] X. Zhou and T. S. Huang, “Relevance feedback in image retrieval: 
+A comprehensive review,” ACM Multimedia Syst. J, Special Issue on 
+CBIR, vol. 8, no. 6, pp. 536–544, 2003. 
+[14] Y. Wu, Q. Tian, and T. S. Huang, “Discriminant EM algorithm with 
+application to image retrieval,” in Proc. IEEE Computer Vision and 
+Pattern Recognition, Jun. 13–15, 2000. 
+[15] Q. Tian, Y. Wu, J. Yu, and T. S. Huang, “Self-supervised learning 
+based on discriminative nonlinear features for image classiﬁcation,” 
+Pattern Recognit., Special Issue on Image Understanding for Digital 
+Photographs, vol. 38, no. 6, pp. 903–917, 2005. 
+[16] H. A. Rowley, S. Baluja, and T. Kanade, “Neural network-based face 
+detection,” IEEE Trans. Pattern Anal. Mach. Intell., vol. 20, pp. 23–38, 
+1998. 
+[17] COREL color image database. [Online]. Available: http://www.corel. 
+com. 
+[18] Q. Tian, J. Yu, T. Rui, and T. S. Huang, “Parameterized discriminant 
+analysis for image classiﬁcation,” in Proc. Int. Conf. Multimedia and 
+Expo, Jun. 27–30, 2004. 
+[19] J. Friedman, “Regularized discriminant analysis,” J. Amer. Statist. 
+Assoc., vol. 84, no. 405, pp. 165–175, 1989. 
+[20] UCI Machine Learning Repository. [Online]. Available: http://www. 
+ics.uci.edu/~mlearn/MLRepository.html. 
+[21] M. Stricker and M. Orengo, “Similarity of color images,” inProc. SPIE 
+Storage and Retrieval for Image and Video Databases, San Diego, CA, 
+1995. 
+[22] J. R. Smith and S. F. Chang, “Transform features for texture classiﬁ- 
+cation and discrimination in large image database,” in Proc. IEEE Int. 
+Conf. Image Processing, Austin, TX, 1994. 
+[23] X. Zhou, Y. Rui, and T. S. Huang, “Water-ﬁlling algorithm: A novel 
+way for image feature extraction based on edge maps,” in Proc. IEEE 
+Int. Conf. Image Processing, Kobe, Japan, 1999. 
+[24] P. Belhumeur, J. Hespanha, and D. Kriegman, “Eigenfaces vs. Fisher- 
+faces: Recognition using class speciﬁc linear projection,” IEEE Trans. 
+Pattern Anal. Mach. Intell., vol. 19, no. 7, pp. 711–720, Jul. 1997. [25] F. Samaria and A. Harter, “Parameterisation of a stochastic model for 
+human face identiﬁcation,” in Proc. IEEE Workshop Applications of 
+Computer Vision, Sarasota, FL, Dec. 1994. 
+[26] T. Sim, S. Baker, and M. Bsat, “The CMU pose, illumination, and ex- 
+pression database,” IEEE Trans. Pattern Anal. Mach. Intell., vol. 25, 
+no. 12, pp. 1615–1618, 2003. 
+[27] Y. Lu, J. Ma, and Q. Tian, “FADA: An efﬁcient dimension reduction 
+scheme for image classiﬁcation,” in Proc. Paciﬁc-Rim Conf. Multi- 
+media, Hong Kong, Dec. 11–14, 2007. 
+[28] M. Li and B. Yuan, “2D-LDA: A novel statistical linear discriminant 
+analysis for image matrix,” Pattern Recognit. Lett., vol. 26, no. 5, pp. 
+527–532, 2005. 
+[29] P. Sanguansat and W. Asdornwised et al., “Two-dimensional linear 
+discriminant analysis of principle component vectors for face recog- 
+nition,” in Proc. ICASSP, 2006, pp. 345–348. 
+[30] J. Yang, D. Zhang, X. Yong, and J. Yang, “Two-dimensional linear dis- 
+criminant transform for face recognition,” Pattern Recognit., vol. 38, 
+no. 7, pp. 1125–1129, 2005. 
+IEEE TRANSACTIONS ON MULTIMEDIA, VOL. 11, NO. 7, NOVEMBER 2009 
+[31] J. Ye, R. Janardan, and Q. Li, “Two-dimensional linear discriminant 
+analysis,” inProc. Advances in Neural Information Processing Systems 
+(NIPS2004), 2004, vol. 17, pp. 1569–1576. 
+[32] K. Inoue and K. Urahama, “Non-iterative two-dimensional linear dis- 
+criminant analysis,” in Proc. ICPR, Hong Kong, 2006. 
+[33] Y. Lu, J. Yu, N. Sebe, and Q. Tian, “Two-dimensional adaptive dis- 
+criminant analysis,” in Proc. IEEE Int. Conf. Acoustics, Speech, and 
+Signal Processing, Honolulu, HI, Apr. 16–20, 2007. 
+[34] Y. LeCun et al. [Online]. Available: http://yann.lecun.com/exdb/ 
+mnist/. 
+[35] S. Tong and E. Chang, “Support vector machine active learning for 
+image retrieval,” in Proc. ACM Int. Conf. Multimedia, 2001, pp. 
+107–118. 
+[36] Y. Fu, S. Yan, and T. S. Huang, “Correlation metric for generalized 
+feature extraction,” IEEE Trans. Pattern Anal. Mach. Intell., vol. 30, 
+no. 12, pp. 2229–2235, 2008. 
+[37] Y. Fu and T. S. Huang, “Image classiﬁcation using correlation tensor 
+analysis,” IEEE Trans. Image Process., vol. 17, no. 2, pp. 226–234, 
+Feb. 2008. 
+[38] S. Yan, D. Xu, B. Zhang, H. Zhang, Q. Yang, and S. Lin, “Graph em- 
+bedding and extension: A general framework for dimensionality reduc- 
+tion,”IEEE Trans. Pattern Anal. Mach. Intell., vol. 29, no. 1, pp. 40–51, 
+2007. 
+Yijuan Lu (M’05) received the Ph.D. degree in com- 
+puter science from the University of Texas at San An- 
+tonio in 2008. 
+She is an Assistant Professor in the Department 
+of Computer Science, Texas State University, San 
+Marco, TX. During 2006–2008, she was a summer 
+Intern Researcher at FXPAL lab, Web Search & 
+Mining Group, Microsoft Research Asia (MSRA), 
+National Resource for Biomedical Supercomputing 
+(NRBSC) at the Pittsburgh Supercomputing Center 
+(PSC), Pittsburgh, PA. She was the Intern Researcher at Media Technologies Lab, Hewlett-Packard Laboratories (HP) in 2008, and research fellow of Multimodal Information Access and Synthesis (MIAS) Center at the University of Illinois at Urbana-Champaign (UIUC) in 2007. Her current research interests include multimedia information retrieval, computer vision, machine learning, data mining, and bioinformatics. She has published extensively and serves as a reviewer for top conferences and journals. 
+Dr. Lu is the 2007 Best Paper Candidate in Retrieval Track of Paciﬁc-Rim Conference on Multimedia (PCM) and the recipient of 2007 Prestigious HEB Dissertation Fellowship, 2007 Star of Tomorrow Internship Program of MSRA. She is a member of ACM. 
+Qi Tian (SM’03) received the B.E. degree from 
+Tsinghua University, Beijing, China, in 1992 and the 
+Ph.D. degree in electrical and computer engineering 
+from University of Illinois at Urbana-Champaign 
+(UIUC) in 2002. 
+He is currently an Associate Professor in the 
+Department of Computer Science at the University 
+of Texas at San Antonio (UTSA). He has been 
+taking Faculty Leave at Microsoft Research Aisa 
+(MSRA) since fall 2007. He was a Visiting Scholar 
+at UIUC MIAS center (2007), a Visiting Researcher at MSRA (summer 2007), a Visiting Professor in NEC Laboratories America, Inc. (summer 2003), and a Visiting Researcher (2001) in MERL, Cambridge, MA. His research interests include multimedia information retrieval and computer vision. He has published over 80 refereed book chapters, journal, and conference papers in these ﬁelds. His research projects were funded by ARO, DHS, HP Lab, SALSI, CIAS, and the Chinese Academy of Science. 
+Dr. Tian was the coauthor of a Best Student Paper in ICASSP 2006 and coauthor of a Best Paper Candidate in PCM 2007. He was nominated for 2008 UTSA President Distinguished Research Award. He has been serving as Program Chairs and Organization Committee Member for ACM Multimedia (2009), CIVR (2010), ACM ICIMCS (2009), ACM LSMMRM (2009), MMM (2010), VIP (2007, 2008), IMAI 2007, MIR (2005), and Session Chairs and TPC members for over 100 IEEE and ACM Conferences including ACM Multimedia, SIGIR, ICCV, ICME, ICASSP, ICPR, MIR, VCIP, and PCM. He has been a Guest Co-Editors for the IEEE TRANSACTIONS ON MULTIMEDIA, Journal of Computer Vision and Image Understanding, and EURASIP Journal on Advances in Signal Processing and is on the Editorial Board of Journal of Multimedia. He has been a member of ACM since 2004. 
+
+========12========
+

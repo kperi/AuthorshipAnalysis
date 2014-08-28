@@ -1,0 +1,499 @@
+﻿IEEE TRANSACTIONS ON MULTIMEDIA, VOL. 14, NO. 4, AUGUST 2012 
+951 
+Query Difﬁculty Prediction for Web Image Search 
+Xinmei Tian, Yijuan Lu, Member, IEEE, and Linjun Yang, Member, IEEE 
+Abstract—Image search plays an important role in our daily life. Given a query, the image search engine is to retrieve images related to it. However, different queries have different search difﬁculty levels. For some queries, they are easy to be retrieved (the search engine can return very good search results). While for others, they are difﬁcult (the search results are very unsatisfactory). Thus, it is desirable to identify those “difﬁcult” queries in order to handle them properly. Query difﬁculty prediction (QDP)isanattemptto predict the quality of the search result for a query over a given col- lection. QDP problem has been investigated for many years in text document retrieval, and its importance has been recognized in the information retrieval (IR) community. However, little effort has been conducted on the image query difﬁculty prediction problem for image search. Compared with QDP in document retrieval, QDP in image search is more challenging due to the noise of textual features and the well-known semantic gap of visual features. This paper aims to investigate the QDP problem in Web image search. A novel method is proposed to automatically predict the quality of image search results for an arbitrary query. This model is built based on a set of valuable features that are designed by exploring the visual characteristic of images in the search results. The exper- iments on two real image search datasets demonstrate the effec- tiveness of the proposed querydifﬁculty prediction method. Two applications, including optimal image search engine selection and search results merging, are presented to show the promising appli- cability of QDP. 
+Index Terms—Image retrieval, image search quality, query dif- ﬁculty prediction (QDP). 
+I. INTRODUCTION 
+W 
+ITH the explosive growth of online image collection, 
+image retrieval plays an important role in our daily life. Much research work has been conducted to search relevant im- ages for a given query term, with emphases on various aspects, e.g., effective low-level visual feature and high-level feature ex- traction [1]–[5] and ranking and reranking algorithms design [6]–[11]. 
+Manuscript received June 25, 2011; revised November 02, 2011; accepted November 09, 2011. Date of publication November 29, 2011; date of current version July 13, 2012. This work is supported in part by start-up funding from the University of Science and Technology of China to X. Tian, in part by the Re- search Enhancement Program (REP), and start-up funding from the Texas State University and NSF CRI 1058724 to Y. Lu. The associate editor coordinating the review of this manuscript and approving it for publication was Dr. Jinhui Tang. 
+X. Tian is with the Department of Electronic Engineering and Information Science, University of Science and Technology of China, Hefei 230027, China (e-mail: xinmei@ustc.edu.cn). 
+Y. Lu is with the Department of Computer Science, Texas State University, San Marcos, TX 78666 USA (e-mail: yl12@txstate.edu). 
+L. Yang is with Microsoft Research Asia, Beijing 100080, China (e-mail: linjuny@microsoft.com). 
+Color versions of one or more of the ﬁgures in this paper are available online at http://ieeexplore.ieee.org. 
+Digital Object Identiﬁer 10.1109/TMM.2011.2177647 
+1520-9210/$26.00 © 2011 IEEE 
+Despite the extensive efforts that have been made to improve overall search quality, image search engines/systems stillsuffer from a radical variance in performance over different queries. Even for search systems that perform very well on average, the quality of their search results may be poor for some queries. For example, Fig. 1 shows the top-10-ranked images of three queries returned by an image search engine. It shows that this search engine performs very well on query “opera garnier”with10 out of 10 relevant images returned, but only 1 out of 10 relevant image returned for query “demonstration”. This phenomenon of search quality variance over queries is caused by many factors, e.g., the query itself, index approaches, ranking/reranking algo- rithms, and image collections. To improve the search quality, it is desirable to identify those “difﬁcult” queries in order to handle them properly. For example, for users, they can conduct query expansion/reformulation for these difﬁcult queries and redo the search process to improve their search quality. For the search engines, they can use alternative ranking strategies for these difﬁcult queries or expand the image collection by adding more images related to them. 
+Query difﬁculty prediction (QDP) is an attempt to predict the quality of search results returned by a given system for the query over a given collection, in the absence of relevance judgments and without user feedback [12], [13]. Usually, the search quality is measured via average precision, etc. Query difﬁculty prediction in text document retrieval has been well explored for many years, and a lot of valuable methods have been proposed [12], [14]–[17]. However, in image search, little research has been conducted on image query difﬁculty predic- tion. The query difﬁculty prediction in image search and text document search is essentially different. Compared with QDP in text document retrieval, QDP in image search is more chal- lenging. In text document search, both the query and documents are in the textual domain. Many QDP methods are designed to explore the text distribution relationship between query and re- turned documents. However, in image search, queries are tex- tual, but returned images are visual. This domain difference es- sentially makes it more challenging for query difﬁculty predic- tion in image search. Besides, in image retrieval, the associated textual information (surrounding text, image URL, etc.) is noisy and insufﬁcient to describe the rich content of images compre- hensively and substantially. Visual features are the essential de- scription of the images, but it suffers from the well-known se- mantic gap [18]. 
+In this paper, we target at query difﬁculty prediction for the Web image search task. We propose a novel model to automati- cally predict the query difﬁculty for any given query through the machine learning approach. First, by analyzing the visual distri- bution characteristics of good and bad search results of a set of training queries, we derive several valuable features that are re- lated to image search quality. Then, through a learning process, the latent relationship between our derived features and the in- herent query difﬁculty is mined and an query difﬁculty predic- 
+
+========1========
+
+952 
+IEEE TRANSACTIONS ON MULTIMEDIA, VOL. 14, NO. 4, AUGUST 2012 
+Fig. 1. Top-10-ranked images for three queries (“opera garnier”, “Hollywood sign”, and “demonstration”) using a text-based image search engine, ordered left to right. Query-relevant images are marked by red “ ”. It shows that this image search engine suffers from a radical variance in search performance over different 
+queries. 
+tion model is built. Finally, this model will be applied to any new coming query to quantitatively measure its query difﬁculty. 
+To the best of our knowledge, it is the ﬁrst attempt that au- tomatically predicts the query difﬁculty for Web image search results. The main contributions introduced in this paper are sum- marized as follows. 
+• We quantitatively study and formulate the query difﬁculty 
+prediction problem for the Web image search. We propose 
+a set of valuable features and a machine learning based 
+method to automatically predict the quality of image search 
+results. 
+• Our proposed approach shows its effectiveness in query 
+difﬁculty prediction and promising application for optimal 
+search engine selection and search result merging. • Most of conventional QDP methods usually only predict 
+a value for each query, to indicate the degree of its difﬁ- 
+culty. This indicator cannot reﬂect their exact search per- 
+formance well. Our proposed model can successfully solve 
+this problem, whose output is the estimation of real search 
+performance, instead of only an indicator. The mean ab- 
+solute error [19], [20] criteria is introduced to evaluate the 
+capacity of precise performance prediction. 
+The remainder of this paper is organized as follows. In Section II, we will give an overview of related work. Then in Section III, we will deﬁne the query difﬁculty prediction problem and detail the proposed QDP related features. Ex- perimental results, including applications in image search engine selection and search result merging, are presented in Sections IV and V, respectively, followed by the conclusion in Section VI. 
+II. RELATED WORK 
+Query difﬁculty prediction in text document retrieval has been investigated for many years, and its importance has been recognized in the information retrieval (IR) community [12], [14], [15], [17], [21]–[24]. However, there is little research work for it in image retrieval. In this section, we focus on 
+introducing the related work of query difﬁculty prediction in text document retrieval, which can be categorized into two groups: pre-retrieval prediction and post-retrieval prediction. 
+In pre-retrieval prediction, it attempts to evaluate the search difﬁculty before the retrieval step [22]–[24]. It mainly relies on statistics of query termsover document collection. He and Ounis [22] proposed several pre-retrieval predictors by considering the intrinsic statistical features of queries, including query length, standard deviation of the inverse document frequency (idf) of terms in query, query scope, and simpliﬁed clarity score (SCS). Kwoket al.[23] employed the support vector regression to train a query difﬁculty prediction model with simple features, such as log document frequency and query term frequency. Imran and Sharan [24] proposed two pre-retrieval query difﬁculty pre- dictors based on the co-occurrence information among query terms. They assumed that higher co-occurrence of query terms means more information conveyed, which leads to easier query or lower query difﬁculty level. Pre-retrieval prediction has the advantage of efﬁciency saving relevance scores computation in retrieval process. However, due to the absence of the im- portant retrieval list, pre-retrieval prediction usually does not perform as well as post-retrieval ones. As reported in [22], the post-retrieval clarity score [14] achieves much higher correla- tions than pre-retrieval SCS [22]. 
+In post-retrieval prediction, the retrieval step is con- ducted ﬁrst to return a retrieval list. Then, by analyzing the statistical information within three sources—query, docu- ments in the retrieval list, and the whole document collec- tion—various post-retrieval query difﬁculty predictors are proposed [12]–[15], [17], [21], [25]–[27]. According to their basic assumptions, we can further group them into three cate- gories, i.e., clarity-based, stability-based, and coherence-based. 
+Clarity-based methods usually predict query difﬁculty by investigating the distribution difference between the retrieved documents and the whole document collection. Cronen–Townsend et al. [14] proposed the CS, which measures the ambiguity of a query through the Kullback–Leibler (KL) 
+
+========2========
+
+TIAN et al.: QUERY DIFFICULTY PREDICTION FOR WEB IMAGE SEARCH 
+divergence [28] between the language models created from top-retrieved documents and all documents in the collection. Encouraged by the success of the clarity score, more similar research work has been proposed. For example, Amati et al. [25] proposed to use the KL-divergence between the query term frequency in the top retrieved documents and their frequency in the whole collection. Hauff et al. [17] proposed improved clarity score to solve the parameter sensitivity problem in CS. Carmel et al. [27] proposed the use of distances between queries, relevant documents, and collections as query dif- ﬁculty predictors. The weighted information gain approach proposed by Zhou and Croft [16] indicates the query difﬁculty by measuring the information change from an average returned 
+953 
+III. THE PROPOSED APPROACH 
+For a query , the search engine can generate a search re- sult ,where is the th-ranked image. The query difﬁculty is inversely related to the search perfor- mance. The query with good retrieval performance means it is not difﬁcult to retrieve (has low query difﬁculty). Therefore, this paper proposes to predict the query difﬁcultybyapproxi- mating the search performance. In other words, given a query , the query difﬁculty prediction is to estimate the quality (or performance) of its search result . We denote the estimated per- formance prediction as and its ground-truth performance as . Here, search performance/quality can be measured via 
+hypothesis that high-quality retrieval should be much more effective than just returning the average document. 
+Stability-based methods predict query difﬁculty mainly basedontheinvestigationofthestability of several retrieval results obtained from different ways. For example, several 
+document to the actual retrieval results. It is basedonthe 
+various criteria, e.g., the commonly used measurements in in- 
+formation retrieval, such as precision, recall, average precision 
+(AP) [33], and normalized discounted cumulated gain (NDCG) [34]. 
+In this paper, we formulate the query difﬁculty prediction as a regression problem. We ﬁrst explore a set of valuable features 
+the stability of retrieval results in the presence of perturbations of the query, collection, and scoring function, respectively. Speciﬁcally, Yom-Tov et al. [12] estimated the search results quality by measuring the agreement between the top returned results of full query and the top returned result of each of the query terms. Zhou and Croft [26] proposed the ranking robustness, which is deﬁned as the similarity between ranked lists generated from the original collection and the corrupted collection. Aslam and Pavlu [13] ﬁrst obtained numbers of retrieval lists by using different scoring functions and then mapped each ranked list of documents to a probability dis- tribution. Then, the Jensen–Shannon divergence [29] among these distributions is adopted as a query difﬁculty predictor. Zhou and Croft [16] ﬁrst constructed a new query from the top returned documents of the original query. The original query and the new query generated two different ranked lists of their corresponding returned documents. The overlap of documents in these two ranked lists is used for query difﬁculty prediction. 
+Coherence-based methods assume that the tightness of the top returned documents can indicate the search quality. He et al. [30] proposed the coherence score indicator, which measures the portion of coherent document pairs in the top returned doc- ument set. A pair of documents is deﬁned as “coherent” if their similarity exceeds a given threshold. Rudinacet al.[21] also ex- ploited the coherence of the top-ranked documents returned by the unexpanded query and several query expansion alternatives, to select the best query expansion for spoken content retrieval. 
+All the above related work is designed for query difﬁculty prediction for text document retrieval. Little research has been conductedonimage query difﬁculty prediction for image retrieval. Xing et al. [31] used the textual features associated with images (URL, surrounding text, etc.) to predict whether a query is difﬁcult to be represented by images or not. However, this work does not investigate image visual features and does not measure real image search performance. It only classiﬁes queries into two categories “easy” or “hard,” relying on simple textual features. Li et al. [32] estimated the retrieval difﬁculty of a given query image by analyzing the CS [14], spatial veri- ﬁcation, and appearance consistency between the query image and the retrieved top-ranked ones. 
+works [12], [13], [26] predict query difﬁcultybymeasuring 
+to reﬂect the characteristics of the search results and then use a 
+regression model to capture the dependency between those fea- 
+tures and their ground-truth search performance. Speciﬁcally, for query , we extract a QDP related feature vector .Our aim is to learn a regression function from a set of training samples 
+The is the weighting coefﬁcient vector. In this paper, we adopt the powerful -support vector regression [35] for the model learning. It is formulated as 
+subject to 
+(1) 
+where and are the slack variables, and controls the tradeoff between model complexity and training error. 
+The regression model can be derived by solving problem (1). Then this model can be applied to any testing query to get its predicted performance 
+. 
+In the query difﬁculty prediction model , the QDP re- lated feature vector plays a crucial role. It is nontrivial to design such a feature to capture the query difﬁculty char- acteristics. By analyzing the search results, we propose a set of lightweight features from several aspects, including visual clarity score, coherence score, representativeness score, and vi- sual similarity distribution feature. 
+A. Visual Clarity Score 
+Since Cronen–Townsend et al. [14] ﬁrst proposed the CS, more research work has been proposed in a similar way with a clarity score technique encouraged by its success [16], [17], [25], [27]. It assumes that a better retrieval result is more dis- tinctive from the whole dataset and therefore has a larger clarity score. The clarity score measures the distribution difference 
+
+========3========
+
+954 
+IEEE TRANSACTIONS ON MULTIMEDIA, VOL. 14, NO. 4, AUGUST 2012 
+Fig. 2. The collection language model 
+VCS(“opera garnier”) ,VCS(“Hollywood sign”) the search quality well. (Better view in color version.) 
+and the query language models for the three example queries in Fig. 1. The visual clarity scores for them are 
+,andVCS(“demonstration”) 
+between the top-retrieved documents and the whole document collection. Speciﬁcally, it calculates the query language model from top returned documents and the collection language model from all documents in the dataset. The CS is deﬁned as the KL divergence [28] between the query language model and collection language model. 
+, respectively. It shows that the visual clarity score reﬂects 
+search result. We deﬁne as 1 if image appears in the top- returned images for query , else 0 if image does not appear in the top- returned images for query , 
+if Rank else 
+(5) 
+for the image search query difﬁculty prediction task. This VCS measures the distribution difference between the top returned images and the whole image collection. The difﬁculty in calcu- lating CS for the image search is that the query and images are in different domains: textual and visual. To solve this domain gap problem, we propose to use the popular visual bag-of-word image representation. Weﬁrst extract the scale-invariant feature transform (SIFT) [1] features for each image with dense sam- pling, and use k-means [36] to build a vocabulary/dictionary with visual words. Then, each SIFT descriptor is quantized into its corresponding visual word. With each image represented as a sequence of visual words, we can estimate the query lan- guage model and collection language model for visualwordsasfollows. 
+For query language model, it is deﬁned as 
+Inspiredbythis,weproposeavisualclarityscore(VCS) 
+where Rank 
+(2) 
+where is a visual word, and is a set of images returned for query . is deﬁned as the term frequency of the word 
+in image . 
+For , 
+(3) 
+Since each image has an equal prior , we only need to es- timate the likelihood . In text document retrieval, is deﬁned as the product of the term frequency of each query term in image , 
+(4) 
+However, in our problem, the query is in textual domain and cannot be represented by visual words. 
+Since the denotes the possibility of image to be relevant to , we can estimate it by leveraging the text-based 
+denotes the rank of in .Inotherwords,the query language model is estimated over the top- -ranked im- ages, which are assumed to be pseudorelevant to the query ac- cording to the widely used pseudorelevance feedback assump- tion [37], [38]. 
+For the collection language model, is deﬁned as the term frequency of word over all images in collection .Then, the visual clarity score is deﬁned as the KL divergence [28] between the language model and collection model 
+(6) 
+Fig. 2 shows the collection language model and the query lan- guage models for the three example queries in Fig. 1. The clarity scores for them are VCS(“opera garnier”) ,VCS(“Hol- lywood sign”) ,andVCS(“demonstration”) ,re- spectively. It demonstrates that the visual clarity score reﬂects the search quality well. 
+B. Coherence Score 
+For a good image search result, the top-ranked images in this result must contain many query relevant images. Since rele- vant images share common visual patterns, they are more vi- sually similar than query irrelevant images. According to this observation, we can measure the coherence character of the top-ranked images to indicate the search quality, termed coher- ence score (CoS). The effectiveness of coherency score in text document search query difﬁculty prediction has been demon- strated in [21] and [30]. In this paper, we will investigate its capacity for image search query difﬁculty prediction. 
+We examine the visual similarity between any image pair within top- -ranked ones and count the numbers of coherent image pairs. The coherent image pairs are those whose visual 
+
+========4========
+
+TIAN et al.: QUERY DIFFICULTY PREDICTION FOR WEB IMAGE SEARCH 
+similarities are larger than certain threshold .TheCoSis deﬁned as the ratio of coherent pairs to all image pairs, 
+(7) 
+The 
+is a binary function deﬁned as 
+if else 
+(8) 
+is the visual similarity between images and In this paper, each image is represented as a histogram of vi- sual words as described in Section III-A. The intersection kernel [39] is adopted for calculating the similarity between two his- tograms. The threshold is deﬁned as that 80% of image pairs in the dataset have smaller visual similarity than this value. 
+The coherence scores of the three example queries in Fig. 1 are CoS(“opera garnier”) ,CoS(“Hollywood sign”) 
+,andCoS(“demonstration”) , respectively. It shows that the CoS also matches the search quality well. 
+C. Representativeness Score 
+As widely used as a basic underlying assumption in visual reranking [6], [40], it is assumed that the representative images in the search results are more likely to be query relevant. In other words, a better search result consists of more representative im- ages as top ones. According to this assumption, the representa- tiveness of the top-ranked images can serve as the role for quan- tifying the search quality. For representative score (RS), weﬁrst calculate the density for each image via kernel density estima- tion (KDE) [41], 
+(9) 
+where is the set of neighbors of image among the 
+images and is a kernel function that satisﬁes both and . 
+The representativeness score is deﬁned as the mean of the density of top- -ranked images in , 
+RS 
+(10) 
+The representativeness scores for the three example queries in Fig. 1 are RS(“opera garnier”) ,RS(“Hollywood sign”) 
+,andRS(“demonstration”) , respectively. We can see that the representativeness score is also consistent with the search quality. 
+D. Visual Similarity Distribution of Top-Ranked Images 
+The above three features measure the overall characteristics of the top- -ranked images. Besides those overall measure- ments, the following features are designed to exploit them in ﬁne granularity as a complementation. 
+For query , given a ranking result , a visual similarity ma- trix can be obtained by calculating pairwise image similarity. The element in denotes the visual sim- ilarity between the th and th-ranked images. The visual sim- ilarityisinrange[0,1],andweequallydivideitinto -bins. 
+955 
+. 
+Fig. 3. Example images in Web353 dataset. 
+Then, the similarity matrix of top- -ranked images can be quantiﬁed into a -bin histogram by mapping them into their corresponding bins. We denote this visual similarity distribution histogram feature as VSDH, 
+VSDH 
+(11) 
+With the VCS, CoS, RS, and VSDH, the ﬁnal QDP related feature vector can be derived by concatenating these four individual features to a long feature vector. Then, the QDP model will be trained on a set of queries according to (1) to mine the dependency between and the ground-truth search quality . 
+IV. EXPERIMENTS 
+In this section, we investigate the effectiveness of the pro- posed query difﬁcultypredictionmethodbyapplyingitona real Web image search dataset. For each query , a text-based image search ranking list is generated by the image search en- gine. Better search quality means less query difﬁculty. We esti- mate the performance of text-based image search result for each query, and then compare the predicted with its ground- truth performance . 
+A. Dataset 
+In order to demonstrate the capacity of the proposed query difﬁcult prediction method, we conduct experiments on a large public Web image search dataset “Web353”. This dataset is collected by Krapac et al. [7]. They selected 353 queries from the most frequent terms searched by the users on a popular image search engine.1 For each query, the top-ranked images found by the search engine are collected. There are about 200 images returned on average for each query, and this dataset contains 71 478 images in total. Fig. 3 shows some example images in this dataset. The 353 queries are diverse in topics, including landmarks (“Eiffel Tower”), people (movie, sports, and singer stars), design (painting (“Guernica”), logo (“logo nba”), ﬂag (“France ﬂag”), object (vehicle (“bicycle”), building (“skyscraper”), instrument (“violin”)), animal (“dol- phin”), plant (“leeks”), event (“demonstration”), etc. Fig. 1 shows the top-10–ranked images for three example queries (“opera garnier”, “Hollywood sign,” and “demonstration”). The ground-truth relevance label for every image is evaluated 
+1Available [online]: http://www.exalead.com/search/image 
+
+========5========
+
+956 
+IEEE TRANSACTIONS ON MULTIMEDIA, VOL. 14, NO. 4, AUGUST 2012 
+Fig. 4. The AP@20 on each of the 353 queries. Here, queries are sorted according to their AP@20 in ascending order for better view. This ﬁgure shows that the 
+performance of the image search engine varies largely over different queries. 
+on two levels, “relevant” or “irrelevant”. In this dataset, there are 43.86% images labeled as relevant. 
+B. Experimental Setup 
+For query , given the text-based image search result returned by the image search engine, its ground-truth performance is measured via the commonly used noninterpolated average pre- cision (AP) [33] in information retrieval. The AP averages the precision values obtained when each relevant image occurs. The AP of top- -ranked images AP is calculated as 
+AP 
+precision 
+rel 
+(12) 
+where rel is the binary function on the relevance of the th-ranked image with “1” for relevant and “0” for irrelevant. The precision is the precision of top- -ranked images, 
+precision 
+rel 
+(13) 
+The is a normalization constant that is chosen to guarantee that AP for the perfect ranking result. 
+The ground-truth search performance in terms of AP@20 for each of the 353 queries in Web353 is illustrated in Fig. 4. In this ﬁgure, the queries are sorted in ascending order of AP for better view. It shows that the image search engine suffers a radical variance in performance over different queries. 
+The density and visual similarity are calculated based on images’ visual representation. In this paper, the bag-of-visual word histogram is adopted, as described in Section III-A. The SIFT [1] local descriptors are extracted for each image on a dense grid. Then, a codebook is generated by clustering all the local descriptors into 1000 groups [42]. By quantizing local descriptors into visual words, each image is represented as a histogram. The intersection kernel [39] is adopted for calcu- lating the similarity between two histograms. The , number of bins in VSDH, is empirically set as 50. 
+For the -support vector regression [35] model, we employ an implementationofSVR(LIBSVM)developedbyChangand Lin [43] with radial basis function kernel. The is set according to the reciprocal of averaged pairwised distance over training samples. The and are empirically set as 10 and 0.1, respec- tively. We adopt the commonly used leave-one-out [27], [44] 
+for model training. Each time, we train the SVR model on 352 queries and then test this model on the left one query. Repeat it 353 times to ensure that each query has been used exactly once as the test query. 
+For the baseline, although the work in [31] discusses the image search query difﬁculty prediction problem, their method is restricted to noun word queries and only determines the noun word is “easy” or “hard” to be represented by images, instead of predicting the real image search quality with a given retrieval list. Since there is no other work on image search query difﬁculty prediction and it is also a learning-based and post-retrieval query difﬁculty predictor, we implement the text document search query difﬁculty method proposed in [15] as a baseline for comparison, by treating the associated textual descriptions of each image as a document. According to [15], we extract textual features for each image from its associated textual descriptions, e.g., URL, surrounding texts, etc. We denote this method as “TextQD” here since this method relies on the associated textual features of the images only. 
+C. Experimental Results 
+For each query , we estimate its performance to ap- proximate its ground-truth performance . To verity the ef- fectiveness of our model, we evaluate it from the following three aspects. 
+1. Correlation Coefﬁcient: For the 353 queries, we have their ground-truth performance vector 
+and the one predicted by the proposed model 
+.Allquerydifﬁculty prediction work evaluates their methods by measuring the correlation between and . The commonly used correla- tion measurements include the Pearson’s liner correlation [45] adopted in [13], [16], [17], [22], [24], [26], and [27], nonparametric rank correlation Kendall’s [46] adopted in [12], [13], [17], [23], [24], [26], and [27], and Spearman’s [47] adopted in [14], [15], [22], [24], and [30]. The correlation coefﬁcients of the above three all range between , where means perfect negative correlation and 1.0 means perfect positive correlation. For a better understanding, Fig. 5 gives an illustration of Pearson’s at different levels. 
+In this paper, all three correlation tests are adopted. We eval- uate the proposed model at several truncation levels for ,i.e., 
+AP . The choice of depends 
+
+========6========
+
+TIAN et al.: QUERY DIFFICULTY PREDICTION FOR WEB IMAGE SEARCH 
+Fig. 5. Illustration of Pearson’s linear correlation coefﬁcients 
+957 
+with 2-dimensional toy data. 
+TABLE I 
+CORRELATION COEFFICIENTS AND P-VAL UES OF QUERY DIFFICULTY PREDICTION 
+TABLE II 
+CORRELATION COEFFICIENTS AND P-VALUES OF EACH INDIVIDUAL FEATURE 
+on the need in real applications. For example, it is very common that most users may only view the images ranked in several top pages. The correlation coefﬁcients and corresponding P-values are given in Table I. It reveals that our method (Ours) outper- forms TextQD consistently over all . Our method achieves a strong correlation between our predicted search performance and the ground-truth performance. The P-value is far less than 0.05, which indicates that the correlation between them is statis- tically signiﬁcant. The reason why TextQD does not work well is that, in image search, the textual features are not the essen- tial descriptions for the images’ content; therefore, a lot of noise (e.g., mismatching between images and surrounding texts) may be introduced. 
+We also investigate the effectiveness of each of the four fea- tures proposed in Section III. The experimental results are pre- sented in Table II. It shows that each of the four features has positive correlation with the query difﬁculty. Compared with the results in Table I , the combination of the four fea- tures achieves better results than each individual feature. Fig. 6 shows scatter plots of the ground-truth AP ( -axis) with the three scores (a), (b), and (c), the AP predicted by our method using only VSDH feature (d), the baseline method TextQD (e), and our proposed method using all four kinds of features (f). It shows that our method achieves the best correlation with the ground-truth AP. 
+2. Classiﬁcation Accuracy—For Hard and Easy Queries: Since one of our aims is to detect the “hard” queries for han- 
+dling them properly later, we further evaluate our method by constructing a hard and easy queries classiﬁcation problem. We split the 353 queries into two categories, “easy” and “hard”, according to their ground-truth search performance. We ﬁrst get the average performance over all queries avgAP as a threshold. We deﬁne queries whose ground-truth per- formances are larger/smaller than this threshold avgAP as “easy”/“hard” ones. For example, when , the threshold avgAP , and there are 175 easy queries and 178 hard queries. With this two-category query splitting, it becomes a two-class classiﬁcation problem. For each query , we check our predicted performance ,if is larger than avgAP, then is predicted as “easy”, else this query is predicted as “hard”. The classiﬁcation accuracy is deﬁned as 
+AC 
+Correctly predicted queries 
+Total queries 
+(14) 
+Besides this overall accuracy, we also examine the prediction accuracy on each of the two categories, i.e., and . They are deﬁned as 
+Correctly predicted Easy queries 
+Total Easy queries 
+(15) 
+Correctly predicted Hard queries 
+Total Hard queries 
+(16) 
+The experimental results with different sareshownin Table III. It shows that our method can classify most queries 
+
+========7========
+
+958 
+IEEE TRANSACTIONS ON MULTIMEDIA, VOL. 14, NO. 4, AUGUST 2012 
+Fig. 6. Scatter plots of the correlation between ground-truth AP@20 ( -axis) with each of the four individual features: (a) visual clarity score; (b) coherence score; (c) representative score; (d) visual similarity distribution histogram; and (e) the baseline method TextQD; as well as (f) the AP predicted by our proposed method using all four kinds of features. Each star (*) in these scatter plots corresponds to a query. It shows that our method achieves the best correlation with 
+the ground-truth AP. (a) VCS: (d) VSDH: 
+.(b)CoS: 
+. (e) TextQD: 
+TABLE III 
+PERFORMANCE OF QUERY DIFFICULTY PREDICTION IN 
+TERMS OF CLASSIFICATION ACCURACY 
+correctly and outperforms TextQD consistently. For example, in , 72.24% queries are correctly classiﬁed to their categories by our method while only 61.47% queries are cor- rectly classiﬁed by TextQD. By further investigating and ,weﬁnd that our method performs well on both categories. We notice that the performance decreases with growing. The reason is that, when grows, more irrelevant images are involved, which bring more noise in QDP related feature extraction. 
+3. MAE—Mean Absolute Error: Besides the correlation coef- ﬁcient and classiﬁcation accuracy, we also introduce to use the 
+.(c)RS: 
+. 
+. (f) Ours: 
+mean absolute error (MAE) to evaluate our proposed model. MAE is widely used in age estimation [19], [20] and collab- orative ﬁltering system [48], [49] problems. Here, we intro- duce it as a new measurement for query difﬁculty prediction problem. The MAE is deﬁned as the mean of absolute predic- tion error over all queries, i.e., MAE , where and is the number of queries. The experimental results in terms of MAE are given in Table IV. It shows that our method achieves less MAE than TextQD method. However, this moderate MAE still has a large space for im- provement. Precise prediction ofthe search performance is chal- lenging and very important in real applications. In the future, we will further investigate this problem and make an effort to reduce the estimation error. 
+Conclusion: The above three criteria, i.e., correlation coef- ﬁcient, classiﬁcation accuracy,andMAE, measure the discrim- inative power of our query difﬁculty prediction model at dif- ferent granularities. The experimental results discussed above demonstrate the capacity of our proposed query difﬁculty pre- diction method. 
+D. Complexity Analysis 
+The complexity consists of two parts. One is the time complexity for calculating the similarity matrix ,which is ,where is the dimension of the bag-of-visual word histogram and is the number of images in text-based 
+
+========8========
+
+TIAN et al.: QUERY DIFFICULTY PREDICTION FOR WEB IMAGE SEARCH 
+959 
+Fig. 7. Example images in the 29 queries dataset. Each image represents one query. 
+TABLE IV 
+MEAN ABSOLUTE ERROR OF QUERY DIFFICULTY PREDICTION 
+search result list. The other is the time complexity for cal- culating the proposed four features in Section III, which is 
+,where is the truncation level and is the number of bins in VSDH. In addition to theoretical analysis, we also test the time cost experimentally. The averaged time cost on Web353 dataset is about 0.2 s per query, where ,and is about 200. The algorithm is implemented using MATLAB and runs on a PC with 3.40-GHz Intel Core CPU and 4-GB memory in a single thread. From the theoretical analysis and experimental data discussed above, we can see that the efﬁciency of our method is acceptable for online applications. 
+V. APPLICATIONS ON IMAGE SEARCH ENGINE 
+SELECTION AND SEARCH RESULT MERGING 
+In this section, we investigate the effectiveness of the pro- posed method by applying it to optimal image search engine selection and search result merging. Speciﬁcally, each query has two ranking lists generated by two search engines—Bing and Google. The search performance of the two search engines varies largely on different queries, as shown in Fig. 8. By estimating the query difﬁculty for each query on two search 
+engines, we can determine which search engine returns better search results for query andthenpresentthebetteroneto users. 
+A. Dataset 
+We collected a dataset from two popular image search engines, Microsoft’s Bing and Google. A total of 29 popular queries were selected from a commercial image search engine query log and popular tags from Flickr. These queries cover a vast range of topics, including scene (“sky”, “winter”), objects (“funny dog”, “grape”), named person (“George W. Bush”), etc. We submitted each query to Bing and Google, respectively, and collected at most the top-1000 images returned by each search engine. There are 50 566 images contained in this dataset in total. Some example images in this dataset are shown in Fig. 7. For each query, the relevance labels of returned images are evaluated on two levels: “relevant” or “irrelevant”. In this dataset, there are 42.23% images labeled as relevant. 
+Fig. 8 gives the AP@40 on each query for the two search engines as well as the overall performance MAP (mean AP over all queries). We ﬁnd that although Bing and Google give comparable MAPs (0.5224 and 0.5236, respectively), their performances on individual queries are quite different. Fig. 8 shows that Bing achieves better performance on about half of the queries (15/29) while Google performs better on the other half (14/29). If we can automatically determine the query difﬁculty for each query on two search engines, a better perfor- mance can be obtained by selecting optimal search engine for each query. 
+
+========9========
+
+960 
+IEEE TRANSACTIONS ON MULTIMEDIA, VOL. 14, NO. 4, AUGUST 2012 
+Fig. 8. The AP@40 on each of the 29 queries as well as the mean AP (MAP) over all queries for two search engines—Bing and Google (here, queries are sorted 
+according to their AP difference for better view). 
+TABLE V 
+CORRELATION COEFFICIENTS AND ACCURACY IN SEARCH ENGINE SELECTION FROM BING,GOOGLE 
+The experimental setting is the same as that in Section IV. The bag-of-visual words histogram is adopted for image rep- resentation, and the leave-one-out method is applied for model training. 
+search engine selection. The MAP of Bing , Google 
+, and the one generated by our model selection 
+are given in Table VI. Column in Table VI is the maximal MAP by selecting optimal search engine for each query according to their ground-truth per- formance ideally. Table VI shows that achieves consistent performance improvements over both and 
+as well as random selection for all 
+. From Tables V and VI, we draw the conclusion that the 
+B. Evaluation 
+For each query , there are two ranking lists: and . We predict the search quality and respectively. The predicted performance difference is 
+pare with the ground-truth performance difference 
+. We also evaluate it from the following two aspects. 
+1) Correlation Coefﬁcient: The Kendall’s , Pearson’s 
+and Spearman’s correlation coefﬁcients be- 
+tween the ground-truth performance difference vector 
+and the one predicted by our 
+model . 
+2) Prediction Accuracy [deﬁnedasin(14)]:Here, correctly 
+predicted queries are those queries that satisfy 
+i.e., the preference relationship between the two ranking 
+lists for query is correctly predicted. 
+.Wecom- proposed model chooses better search engine from Bing and 
+Search Engine Selection: We also evaluate four different 
+,i.e., , as in Section IV. The experimental results in terms of correlation coefﬁcients and accuracy are reported in Table V. It shows that good correlation coefﬁcients are achieved, and the P-values are smaller than 0.05 in most cases except . The prediction accuracy arrives above 70%. It demonstrates that the model can choose better search engine from Bing and Google for a majority of queries. There- fore, a better performance will be achieved after this suitable 
+, 
+Google for most queries, and therefore it can be successfully applied to optimal search engine selection. 
+Search Results Merging: In search engine selection, for each query, we choose a better one from and . Instead of this binary selection, we can merge the two results to get a better one. For query , when we have no idea of the performance of the two search results, the two results may contribute equally for the ﬁnal merging results. If we have the knowledge of which one is better than the other, then a higher merging weight can be assigned to it while a lower weight is assigned to the other one. Our model can serve this role by using the predicted perfor- mance difference to set appropriate merging weight. Specif- ically, the is ﬁrst normalized into , and then for query , the weighting coefﬁcients for and are deﬁned as and , respectively. To form the merging result, we assign a score to each image. The score for a image is determined by three fac- tors: its original rank position in , its density ,andtheafore- mentioned search engine speciﬁc weighting coefﬁcient ( or ). Speciﬁcally, the score for the th-ranked images in 
+is . The score for the th-ranked image in is .Theﬁnal 
+
+========10========
+
+TIAN et al.: QUERY DIFFICULTY PREDICTION FOR WEB IMAGE SEARCH 
+TABLE VI 
+MAP ( 100) COMPARISON IN SEARCH ENGINE 
+SELECTION FROM BING,GOOGLE 
+TABLE VII 
+MAP ( 100) COMPARISON BETWEEN WEIGHTED MERGING ACCORDING TO 
+OUR QUERY DIFFICULTY PREDICTION AND EQUAL WEIGHT MERGING 
+merging ranking list is derived by sorting all images in and 
+in ascending order of their scores. The performance of weighted merging results are given in Table VII, compared with the equal weight merging in which 
+The search engine selection is actually a hard merging of the two search results with weights either 1 or 0. Table VII clearly demonstrates that merging by leveraging our query difﬁculty prediction outperforms the equal weight merging consistently. 
+Besides the applications described above, our method also has many other applications in a variety of image retrieval areas. For example, our method can be used to help collect massive clean training data. Automatic training data collection is an im- portant issue in many applications, e.g., annotation [50], concept detection [51], and captioning [52]. By automatically predicting the quality of the data collected from Web, our method can keep the collected data clean by discarding noisy data. Another useful application of our method is that it can provide prior information for image search reranking methods to tune their parameters ac- cordingtothepredictedquerydifﬁculty and can automatically determine optimal reranking algorithms and features for each query [53], [54]. Furthermore, our method can be used to per- form selective automatic query expansion and suggestion for users. 
+VI. CONCLUSION AND FUTURE WORK 
+In this paper, we propose a method to automatically predict the query difﬁculty for Web image search. We design four valu- able features and then formulate the query difﬁculty predic- tion as a regression problem. The experimental results on two real Web image search datasets have demonstrated the effec- tiveness of our query difﬁculty prediction approach and also its promising applications in automatic search engine selection and search result merging. 
+In this paper, we focus solely on leveraging the visual fea- tures for query difﬁculty prediction. We do not investigate the combination of both textual and visual features. The joint uti- lization of features from both cues is assumed to derive better 
+961 
+performance. We leave it as our future work and also will ex- plore more sophisticated query difﬁculty prediction related fea- tures and to build more effective methods in the future. 
+REFERENCES 
+. 
+[1] D. G. Lowe, “Distinctive image features from scale-invariant key- 
+points,” Int. J. Comput. Vis., vol. 60, no. 2, pp. 91–110, 2004. [2] S. Lazebnik, C. Schmid, and J. Ponce, “Beyond bags of features: 
+Spatial pyramid matching for recognizing natural scene categories,” 
+in Proc. IEEE Conf. Comput. Vis. Pattern Recognit., 2006, pp. 
+2169–2178. 
+[3] J.Tang,X.-S.Hua,M.Wang,Z.Gu,G.-J.Qi,andX.Wu,“Correlative 
+linear neighborhood propagation for video annotation,” IEEE Trans. 
+Syst., Man, Cybern. B, Cybern., vol. 39, no. 2, pp. 409–416, 2009. [4] M.Wang,X.-S.Hua,R.Hong,J.Tang,G.-J.Qi,andY.Song,“Uniﬁed 
+video annotation via multigraph learning,” IEEE Trans. Circuits, Syst. 
+Video Technol., vol. 19, no. 5, pp. 733–746, 2009. 
+[5] J. Tang, H. Li, G.-J. Qi, and T.-S. Chua, “Image annotation by 
+graph-based inference with integrated multiple/single instance rep- 
+resentations,” IEEE Trans. Multimedia, vol. 12, no. 2, pp. 131–141, 
+2010. 
+[6] Y. Jing and S. Baluja, “Visualrank: Applying pagerank to large-scale 
+image search,” IEEE Trans. Pattern Anal. Mach. Intell., vol. 30, no. 
+11, pp. 1877–1890, 2008. 
+[7] J. Krapac, M. Allan, J. Verbeek, and F. Juried, “Improving web image 
+search results using query-relative classiﬁers,” in IEEE Conf. Comput. 
+Vis. Pattern Recognit., 2010, pp. 1094–1101. 
+[8] X.Tian,D.Tao,X.-S.Hua,andX.Wu,“Activererankingforweb 
+image search,” IEEE Trans. Image Process., vol. 19, no. 3, pp. 
+805–820, 2010. 
+[9] M. Wang, K. Yang, X.-S. Hua, and H.-J. Zhang, “Towards a relevant 
+and diverse search of social images,” IEEE Trans. Multimedia, vol. 2, 
+no. 8, pp. 829–842, 2010. 
+[10] B. Geng, L. Yang, C. Xu, and X.-S. Hua, “Content-aware ranking for 
+visual search,” in Proc. IEEE Conf. Comput. Vis. Pattern Recognit., 
+2010, pp. 3400–3407. 
+[11] L. Yang and A. Hanjalic, “Learning from search engine and human su- 
+pervision for web image search,” in Proc. ACM Int. Conf. Multimedia, 
+2011, pp. 1365–1368. 
+[12] E. Yom-Tov, S. Fine, D. Carmel, and A. Darlow, “Learning to esti- 
+mate query difﬁculty: Including applications to missing content detec- 
+tion and distributed information retrieval,” Proc. ACM SIGIR Special 
+Interest Group on Inf. Retrieval, pp. 512–519, 2005. 
+[13] J. A. Aslam and V. Pavlu, “Query hardness estimation using Jensen- 
+Shannon divergence among multiple scoring functions,” in Proc. Eur. 
+Conf.Inf.Retrieval, 2007, pp. 198–209. 
+[14] S. Cronen-Townsend, Y. Zhou, and W. B. Croft, “Predicting query per- 
+formance,” in Proc. ACM SIGIR Special Interest Group on Inf. Re- 
+trieval, 2002, pp. 299–306. 
+[15] E.C.Jensen,S.M.Beitzel,D.Grossman,O.Frieder,andA.Chowd- 
+hury, “Predicting query difﬁculty on the web by learning visual clues,” 
+inProc. ACM SIGIR Special Interest Group on Inf. Retrieval, 2005, pp. 
+615–616. 
+[16] Y.ZhouandW.B.Croft,“Queryperformance prediction in web search 
+environments,” in Proc. ACM SIGIR Special Interest Group on Inf. 
+Retrieval, 2007, pp. 543–550. 
+[17] C. Hauff, V. Murdock, and R. Baeza-Yates, “Improved query difﬁ- 
+culty prediction for the web,” in Proc. ACM Int. Conf. Inf. and Knowl. 
+Manag., 2008, pp. 439–448. 
+[18] A. W. M. Smeulders, M. Worring, S. Santini, A. Gupta, and R. Jain, 
+“Content-based image retrieval at the end of the early years,” IEEE 
+Trans. Pattern Anal. Mach. Intell., vol. 22, no. 12, pp. 1349–1380, 
+2000. 
+[19] X. Geng, Z.-H. Zhou, and K. Smith-Miles, “Automatic age estimation 
+based on facial aging patterns,” IEEE Trans. Pattern Anal. Mach. In- 
+tell., vol. 29, no. 12, pp. 2234–2240, 2007. 
+[20] G.Guo,Y.Fu,C.R.Dyer,andT.S.Huang,“Image-basedhuman 
+age estimation by manifold learningand locally adjusted robust regres- 
+sion,”IEEE Trans. Image Process., vol. 17, no. 7, pp. 1178–1188, 2008. [21] S. Rudinac, M. Larson, and A. Hanjalic, “Exploiting result consistency 
+to select query expansions for spoken content retrieval,” in Proc. Eur. 
+Conf.Inf.Retrieval, 2010, pp. 645–648. 
+[22] B. He and I. Ounis, “Inferring query performance using pre-retrieval 
+predictors,” in Proc. Symp. String Process. Inf. Retrieval, 2004, pp. 
+43–54. 
+[23] K.-L. Kwok, L. Grunfeld, H. L. Sun, and P. Deng, “Trec 2004 robust 
+track experiments using PIRCs,” in Proc. TREC, 2004. 
+
+========11========
+
+962 
+[24] H. Imran and A. Sharan, “Co-occurrence based predictors for esti- 
+mating query difﬁculty,” in Proc. 2010 IEEE Int. Conf. Data Mining 
+Workshops, 2010, pp. 867–874. 
+[25] G. Amati, C. Carpineto, and G. Romano, “Query difﬁculty, robustness, 
+and selective application of query expansion,” in Proc. Eur. Conf. Inf. 
+Retrieval, 2004, pp. 127–137. 
+[26] Y. Zhou and W. B. Croft, “Ranking robustness: A novel framework 
+to predict query performance,” in Proc. ACM Int. Conf. Inf. Knowl. 
+Manag., 2006, pp. 567–574. 
+[27] D.Carmel,E.Yom-Tov,A.Darlow,andD.Pelleg,“Whatmakesa 
+query difﬁcult?,” in Proc. ACM SIGIR Special Interest Group on Inf. 
+Retrieval, 2006, pp. 390–397. 
+[28] T. M. Cover and J. A. Thomas, Elements of Information Theory.New 
+York: Wiley-Interscience, 1991. 
+[29] J. Lin, “Divergence measures based on the Shannon entropy,” IEEE 
+Trans. Inf. Theory, vol. 37, no. 1, pp. 145–151, 1991. 
+[30] J. He, M. Larson, and M. De Rijke, “Using coherence-based measures 
+to predict query difﬁculty,” in Proc. Eur. Conf. Inf. Retrieval, 2008, pp. 
+689–694. 
+[31] X. Xing, Y. Zhang, and M. Han, “Query difﬁculty prediction for con- 
+textual image retrieval,” in Proc. Eur. Conf. Inf. Retrieval, 2010, pp. 
+581–585. 
+[32] Y.Li,Y.Luo,D.Tao,andC.Xu,“Querydifﬁculty guided image re- 
+trieval system,” in Proc. Int. Conf. Adv. Multimedia Model., 2011, pp. 
+479–482. 
+[33] Trecvid Video Retrieval Evaluation [Online]. Available: hppt://www- 
+nlpir.nist.gov/projects/trecvid/ 
+[34] K. Järvelin and J. Kekäläinen, “Cumulated gain-based evaluation of IR 
+techniques,” ACM Trans. Inf. Syst., vol. 20, no. 4, pp. 422–446, 2002. [35] V. Vapnik, Statistical Learning Theory. New York: Wiley, 1998. [36] J. B. MacQueen, “Some methods for classiﬁcation and analysis of mul- 
+tivariate observations,” in Proc. 5th Berkeley Symp. Math. Stat. Prob- 
+ability, 1967, pp. 281–297, Univ. of California Press. 
+[37] J. G. Carbonell, Y. Yang, R. E. Frederking, R. D. Brown, Y. Geng, 
+and D. Lee, “Translingual information retrieval: A comparative evalu- 
+ation,” in Proc. Int. Joint Conf. Artif. Intell., 1997, pp. 708–714. [38] R. Yan, A. G. Hauptmann, and R. Jin, “Multimedia search with pseudo- 
+relevance feedback,” in ACM Int. Conf. Image Video Retrieval, 2003, 
+pp. 238–247. 
+[39] M. J. Swain and D. H. Ballard, “Color indexing,” Int. J. Comput. Vis., 
+vol. 7, no. 1, pp. 11–32, 1991. 
+[40] W. H. Hsu, L. S. Kennedy, and S.-F. Chang, “Video search reranking 
+through random walk over document-level context graph,” inACM Int. 
+Conf. Multimedia, 2007, pp. 971–980. 
+[41] E. Parzen, “On estimation of a probability density function and mode,” 
+Ann. Math. Stat., vol. 33, no. 3, pp. 1065–1076, 1962. 
+[42] J. Deng, A. C. Berg, K. Li, and F.-F. Li, “What does classifying more 
+than 10 000 image categories tell us?,” in Proc. Eur. Conf. Comput. 
+Vis., 2010, pp. 71–84. 
+[43] C.-C. Chang and C.-J. Lin, Libsvm: A Library for Support Vector Ma- 
+chines [Online]. Available: http://www.csie.ntu.edu.tw/~cjlin/libsvm/ 
+2004 
+IEEE TRANSACTIONS ON MULTIMEDIA, VOL. 14, NO. 4, AUGUST 2012 
+[53] X. Tian, L. Yang, J. Wang, Y. Yang, X. Wu, and X.-S. Hua, “Bayesian 
+video search reranking,” in Proc. ACM Int. Conf. Multimedia, 2008, 
+pp. 131–140. 
+[54] L. Yang and A. Hanjalic, “Supervised reranking for web image search,” 
+in Proc. ACM Int. Conf. Multimedia, 2010, pp. 183–192. 
+Xinmei Tian received the B.S. and Ph.D. degrees 
+from the University of Science and Technology of 
+China, Hefei, Anhui, China, in 2005 and 2010, re- 
+spectively, both in the Department of Electronic En- 
+gineering and Information Science. 
+From 2007 to 2010, she was a Research Intern 
+with the media computing group at Microsoft Re- 
+search Asia, Beijing, China. From 2008 to 2010, she 
+was a Research Assistant at Hongkong Polytechnic 
+University, Hongkong and Nanyang Technological 
+University, Singapore. During 2010–2011, she was a Postdoctoral Researcher at Texas State University, San Marcos, TX. She is currently an Associate Professor in the Department of Electronic Engineering and Information Science, University of Science and Technology of China. Her current research interests include computer vision and multimedia information retrieval. 
+Yijuan Lu (M’05) received the Ph.D. degree from 
+the University of Texas, San Antonio, in 2008. 
+She is currently an Assistant Professor in the 
+Department of Computer Science, Texas State Uni- 
+versity, San Marcos, TX. During 2006, 2007, 2008, 
+she was a summer Intern Researcher at FXPAL lab, 
+Web Search & Mining Group, Microsoft Research 
+Asia (MSRA), and National Resource for Biomed- 
+ical Supercomputing (NRBSC) at the Pittsburgh 
+Supercomputing Center (PSC), Pittsburgh. She 
+was the Intern Researcher at Media Technologies Lab, Hewlett-Packard Laboratories (HP) 2008, and Research Fellow of the Multimodal Information Access and Synthesis (MIAS) Center at the University of Illinois at Urbana-Champaign (UIUC) 2007. Her current research focuses on multimedia information retrieval, computer vision, and machine learning. She has published extensively and serves as reviewer at top conferences and journals. 
+Dr. Lu received the TSU Junior Faculty Research Enhancement Award in 2008 and 2010, and her research projects are supported by the USA National 
+York: Wiley, 2001. 
+[45] E. Kreyszig, Advanced Engineering Mathematics. New York: Wiley, 
+1997. 
+[46] S. M. Kendall and J. D. Gibbons, Rank Correlation Methods. 
+London, U.K.: Edward Arnold, 1990. 
+[47] J. D. Gibbons and S. Chakraborty, Nonparametric Statistical Infer- 
+ence. New York: Marcel Dekker, 1992. 
+[48] J. L. Herlocker, J. A. Konstan, L. G. Terveen, John, and T. Riedl, “Eval- 
+uating collaborative ﬁltering recommender systems,” ACM Trans. Inf. 
+Syst., vol. 22, no. 1, pp. 5–53, 2004. 
+[49] M. R. McLaughlin and J. L. Herlocker, “A collaborative ﬁltering algo- 
+rithm and evaluation metric that accuratelymodel the user experience,” 
+inProc. ACM SIGIR Special Interest Group on Inf. Retrieval, 2004, pp. 
+329–336. 
+[50] X. Tian, L. Yang, J. Wang, X. Wu, and X.-S. Hua, “Transductive video 
+annotation via local learnable kernel classiﬁer,” in Proc. IEEE Int. 
+Conf. Multimedia and Expo., Hannover, Germany, Jun. 23–26, 2008, 
+pp. 1509–1512. 
+[51] J.Tang,S.Yan,R.Hong,G.-J.Qi,andT.-S.Chua,“Inferringsemantic 
+concepts from community-contributed images and noisy tags,” inProc. 
+ACM Int. Conf. Multimedia, 2009, pp. 223–232. 
+[52] R. Hong, M. Wang, M. Xu, S. Yan, and T.-S. Chua, “Dynamic cap- 
+tioning: Video accessibility enhancement for hearing impairment,” in 
+Proc. ACM Int. Conf. Multimedia, 2010, pp. 421–430. 
+[44] R.O.Duda,P.E.Hart,andD.G.Stork, Pattern Classiﬁcation.New 
+Science Foundation REU and CRI program. She is the 2007 Best Paper Candi- 
+date in the Retrieval Track of the Paciﬁc-Rim Conference onMultimedia (PCM) 
+and the recipient of the 2007 Prestigious HEB Dissertation Fellowship, and the 2007 Star of Tomorrow Internship Program of MSRA. She is a memberofthe Association for Computing Machinery (ACM). 
+Linjun Yang (M’08) received the B.S. and M.S. 
+degrees from the East China Normal University and 
+Fudan University, Shanghai, China, in 2001 and 
+2006, respectively. 
+Since 2006, he has been with Microsoft Research 
+Asia, Beijing, China, where he is currently an As- 
+sociate Researcher in the Media Computing Group. 
+Since 2009, he has been working towards the Ph.D. 
+degree from Delft University of Technology, Delft, 
+The Netherlands. His current interests are in the 
+broad areas of multimedia information retrieval, with focus on multimedia search ranking and large-scale Web multimedia mining. He has received the Best Paper Award from ACM Multimedia 2009 and the Best Student Paper Award from the ACM Conference on Information and Knowledge Management 2009. He is a member of the Association for Computing Machinery (ACM). 
+
+========12========
+

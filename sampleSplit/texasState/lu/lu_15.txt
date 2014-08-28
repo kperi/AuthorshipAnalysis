@@ -1,0 +1,361 @@
+﻿Proceedings of the IASTED International Conference  Power and Energy Systems (EuroPES 2011) June 22 - 24, 2011  Crete, Greece 
+ENERGY MANAGEMENT SYSTEM FOR SMART GRID CONSUMERS WITH  
+ADVANCED USAGE INFORMATION  
+Tongdan Jin1, Yijuan Lu2, Chongqing Kang3 
+1,2Texas State University, San Marcos, TX 78666, USA  
+3Tsinghua University, Beijing, 100081, China  tj17@txstate.edu, lu@txstate.edu, cqkang@tsinghua.edu.cn   
+ABSTRACT  
+This paper presents an online energy management system  based on a virtual energy provisioning (VEP) concept.  VEP is a novel demand side management inspired by the  lean supply chain technology. It aims to control the  process of energy generation, delivery, and consumption  under the mechanism called “order-then-production”  principle. This means electricity should be ordered by end  consumers in advance before actually produced and  delivered. The utility company, after aggregating  consumers’ advance demand information, can decide an  optimal generation and distribution scheme to meet the  actual need. In this paper, the VEP principle and its  impacts on smart grid systems will be discussed.  
+KEY WORDS  
+Virtual energy provisioning, demand side management,  advance demand information, smart metering  
+1. Introduction  
+Reliable and efficient delivery of electric power is  essential to our daily life. The power grid is regarded as  healthy and robust only when all demands are consistently  satisfied and the interruption is kept at a minimum level.  Based on today’s knowledge, we are still not able to find  a globally optimal algorithm to control many complex and  dynamic systems like the electrical network [1]. The  situation becomes more complicated as wind power and  solar photovoltaic (PV), which are highly intermittent  energy resources, are penetrating into the energy  infrastructure. The growing market of Plug-in Hybrid  Electric Vehicles (PHEV) creates additional complexities  in the loading condition. Quite often we have to make a  trade-off between the energy efficiency and reliability. In  reality the priority is often given to the reliability in order  to satisfy the demand requirement. Even with that, it is  estimated that the annual losses due to power interruption  exceed $80 billion in the U.S.  [2]. Therefor e, initiatives  must be taken to rejuvenate the power grid so that the  network reliability and efficiency can be warranted.   
+Smart grids are enabling technologies with the objective  to sustain high reliability, self-healing, full controllability,  and optimal asset management. Compared to its  predecessors, smart grids have several unique features  
+including demand side management (DSM), distribution  automation, asset management, distributed energy  generation, and smart metering [3]. Obviously the energy  infrastructure embedded with these features can  significantly improve the reliability, efficiency and  security.  
+DSM is the key to the effective implementation of the  smart grid concept. Many studies have been carried out to  seek new DSM methods and apply them to existing  networks for achieving power efficiency, energy  conservation, and demand responsiveness. These studies  include load shifting [4], direct load control [5], dynamic  pricing [6], smart metering and appliances [7], and virtual  energy buffers [8]. In addition, new communication  technologies [9] are proposed to support the distribution  automation and the DSM function.   
+Besides these techniques, a viable approach to improve  the demand responsiveness is to build a close loop supply  chain mechanism, which spans generation, transmission,  distribution, and consumption, into the electricity  production process. As a first step to create such a new  management model, Jin and Mechehoul [10] proposed an  online energy reservation system called Online Purchase  Electricity Now, i.e. the OPEN  system. The idea is to treat  the electricity as a purchasable commodity allowing  consumers to order or purchase energy by providing  advance demand information through the Internet. The  utility company, after consolidating the advance demand  data, can decide an optimal generation and distribution  scheme to meet the consumer needs. In other words,  consumers place order based on their needs, and then  consume exactly what they ordered. The lead time, i.e. the  time between the order and the actual consumption,  allows the utility company to prepare an optimal  generation and delivery scheme.    
+Based on the work in [10], the purpose of this paper has  twofold: 1) providing detailed backgrounds and additional  justifications for the development of the virtual energy  provisioning concept; and 2) discussing the implications,  benefits, and challenges during the preliminary  implementation of the OPEN system.  
+
+========1========
+
+The remainder of the paper is organized as follows.  Section 2 discusses the similarities between the  manufacturing enterprise system and the energy  production system. Section 3 shows the architectural  framework of the OPEN system and examines the  necessary operational conditions. In Sections 4 and 5, the  technical aspects and the impacts on smart grids will be  elaborated, respectively. Section 6 concludes the paper  with some remarks on future research.  
+2. Virtual Energy Provisioning Concept   
+2.1 Manufacturing Supply Chain System  
+Inventory is often defined as a batch of goods or materials  held in the stock for customer order and purchasing. It is  widely used in manufacturing enterprise systems for  which the finished goods or products are temporally kept  in a warehouse before they are shipped to the retailers  who will further sell them to customers. Figure 1 depicts a  typical manufacturing supply chain system in which the  production is driven or pulled by customers’ advance  demand orders. Upon receipt of the orders, the  manufacturer began to fabricate goods which will be  temporarily stored in the inventory before delivered to the  customers. This type of supply chains are called “order- then-production” model.  
+Delivery 
+Customer  Order 
+Production 
+Inventory or 
+Warehouse 
+Figure 1. A manufacturing supply chain model  
+An inventory system consists of three key variables: the  customer’s order quantity, the inventory level (i.e. the  available goods), and the lead time which is the time lapse  between the order placed by the customer and the actual  product receiving time. Obviously, the inventory serves as  a spare parts buffer from which the manufacturer is able  to deliver the goods to the customers in a timely manner  upon the arrival of orders.  
+2.2 Virtual Energy Supply Chain System  
+Many similarities can be found between a manufacturing  enterprise system and an energy production system. In the  former, goods are produced and sold to the end customers,  and the inventory is used as a buffer to mitigate potential  back-orders due to uncertain demands. Similarly,  electricity is generated by power plants or wind farms,  and it is further delivered to the end consumers via the  transmission/distribution lines. Power interruptions or  outages will occur if the load exceeds the generation. The  problem can be mitigated or partially resolved if large  scales of storage systems can be created between the  generation and the loading lines. Research is undergoing  
+to develop conversion or storage technologies using fuel  cells, batteries, and super-capacitors [11]. At present,  commercially large and inexpensive storage systems or  technologies are still not popular for home, business, and  industry applications.  
+Transmission& Distribution 
+Customer  Order 
+Generation 
+Virtual Energy Inventory 
+Figure 2. A virtual energy supply chain model  
+Motivated by the manufacturing inventory model, a  virtual energy provisioning (VEP) concept is proposed for  the substitution or enhancement of physical energy  storage systems.  As shown in Figure 2, VEP aims to  achieve the same purpose as the physical storage system  which behaves similarly as a product inventory system.  The working principle of a virtual energy inventory is  described as following. The utility company will  implement an online database in which individual account  will be assigned to each consumer. Consumers can log-on  and access their web-based account via desk-tops, laptops,  and mobile devices. They will further place advance  demand orders based on the estimated usage. These orders  represent the future electricity usage in hourly, daily,  weekly or monthly bases. The utility company, after  aggregating all consumers’ orders, can decide an optimal  generation and distribution scheme to meet their future  needs. Just like a manufacturing supply chain system, this  managed order-then-production mechanism acts as a  virtual energy supply chain system by delivering the  power to end users over the planning horizon.  
+3. System Implementation  
+3.1 System Architecture  
+Different architectures can be  devised to implement the  virtual energy supply chain concept. The system  configuration presented here was originally in [10], and it  is called Online Purchase Electricity Now, or simply the  OPEN system. It is built upon a hybrid architecture  integrating existing utility infrastructure with the Internet  platform. Figure 3 shows the high-level configuration of  the hybrid architecture.   
+Given the ubiquitous Internet technology, the deployment  of the OPEN system only requires some additional  hardware and software components. The key hardware  component is the smart meter which supports the data  communication between the consumer and the supplier. In  fact, the meter used in the OPEN system only needs the  one-way communication function by transmitting user’s  consumption data to the database, while the consumption  data and the pricing information can be shown in the  database accessible through the Internet. Utility data are  
+301 
+
+========2========
+
+primarily in a short message or packet format,  representing hourly or daily power consumptions. Since  the transmission of these utility data is not time-critical,  Internet-based TCP/IP (Transmission Control  Protocol/Internet Protocol) should be sufficient and  reliable to handle the delivery task. Such communication  facilities will be relatively easy to implement by directly  integrating the smart meter with the Internet or the  wireless communication meshes [10, 12]. Therefore,  dedicated broadband utility communication infrastructure  or network is not needed for the OPEN system, saving  implementation costs.  
+Laptop 
+Smart Phone 
+PC 
+Loading 1 
+Loading 2  
+Loading 3 (e.g. household) 
+wireless meshes   
+SM 
+SM 
+SM 
+smart  meter 
+Data Mining 
+Database 
+Internet 
+Decision  Making 
+Power  Generation 
+Power Line 
+Figure 3. Hybrid architecture for OPEN system   
+Software applications for the OPEN system include an  on-line database, a data mining engine, and a decision  making tool. The database solicits the advance usage  orders in a regular fashion, and also stores the historical  consumption data constantly transmitted from the smart  meter via the Internet. The data mining engine is capable  of forecasting the future load by synthesizing consumers’  order with their historical usage. The decision-making  tool will determine the optimal energy generation and  distribution plan based on the load forecasting data. All  these functions are located at the utility side.   
+3.2 System Operational Conditions  
+Consumer participation is the key to the effective  operation of the OPEN system. Various incentive  packages can be devised so that consumers will  participate in the program and input demand data through  the online platform. The studies in [13] show that  financial incentives, when appropriately implemented,  will motivate consumers to participate in the energy  management system. For example, the supplier can design  customized energy portfolios to accommodate different  users’ consumption patterns. In that way, consumers can  choose the best usage portfolio to minimize their monthly  bill. In addition, monetary credits or energy discounts  could be rewarded to consumers whose order data are  equal or close to their actual usage. In the next paragraph  we discuss a set of statistics metrics to assess the  consumer performance, based on which various types of  incentives can be designed to reward the participants.   
+Ideally we expect that the consumer orders exactly match  the actual consumption. It is difficult, however, for  consumers to achieve such a performance outcome.  
+302 
+Therefore, incentive programs should be designed in a  way that a consumer will obtain a higher financial reward  if his or her actual usage is closer to the order. Three main  factors need to be taken into account when we assess the  consumer order data: 1) the deviation between the order  data and the actual consumption; 2) the variation between  the order and the consumption; and 3) any large deviation  at a particular instant time. In [14], three composite  indexes are proposed to  capture these criteria  
+1 
+m 
+q1 
+m 
+ 
+ yx 
+ii 
+)(     (1)  
+i 
+1 
+m 
+q2 
+m 
+2 
+ yx 
+ii 
+                 (2)  
+i 1 
+max{( 
+2 
+3 
+ 
+ii 
+iforyxq   m},,2,1)   (3)  
+Where, xiis the actual usage at time i  and  yi  is the original  order, and m  is the sample size. Equation (1) calculates  the mean error between the order data and the actual  usage.  The result is able to indicate whether the ordered  quantity is always below or above the actual usage.  Equation (2) measures the mean variation between the  order and the usage. Equation (3) aims to identify the  largest discrepancy between xi  and  yi  for all  i. The target  value for q1, q2, and q3  is zero. Obviously, the consumer  whose performance metrics are close to the target should  receive the financial reward or his/her electricity rate will  be reduced depending on the proximity to the target value.   
+The second assumption for the OPEN system is that  dynamic pricing is an effective means to regulate user’s  consumption behaviour. Since uncertainty is always  involved in the prediction, it could grow beyond the  control when millions of consumers’ demand data are  aggregated. Studies [9, 10] have shown that dynamic  pricing is an effective mechanism to control and minimize  the demand uncertainty. Like an adaptive controller,  dynamic pricing establishes a feedback control loop  between the suppliers and their consumers, and bring the  actual demand close the generation per the game theory  [15]. Eventually, a long-term balance between the  generation and consumption will be reached, even if less  accurate demand orders were provided by the consumers.  
+4. System Technical Aspects  
+4.1 Internet Centered Power Grid Systems  
+Information technology is a mainstay in supporting the  operation of the VEP concept. Information such as  consumer orders, consumptions, pricing, and generation  capacities are also exchanged between the network  participants including the generators, transmission &  distributors, traders, and end consumers. The Internet  provides a ubiquitous, yet cost-effective, communication  platform to support the real-time and off-line information  exchange in a seamless manner. Originally from [16],  
+
+========3========
+
+Figure 4 graphically explains a communication model  built around the internet technology.   
+Virtual  
+utility  companies 
+Utility  distribution  companies 
+Energy  service  providers 
+Energy  retailers 
+Internet 
+Industrial 
+Central  power  plants 
+Commercial 
+Residential 
+Distributed  generation resources 
+Figure 4. Internet based future grid systems  
+4.2 User Interface Design  
+In our virtual energy provisioning system, user interface  behaves like a bridge between users and service provider.  Similar to an online shopping  webpage, users can easily  browse their previous electricity usage data, input new  usage plan, and other related consumption information,  such as number of persons living in a house, appliances  information etc. Hence, to design an interactive,  functional, and user-like interface is very important.   
+Our designed interface consists of four components. 1)  User Information. When the new user logs into the  system, he/she needs to set up an account (e.g. user name  and password) and input their personal information  including the number of persons in their house, major  appliances, air conditioner model for example. This  information will be stored in our database, which will be  very useful for our system to predict their future  electricity demand. The above example is taken from  residential homes, but same principle can be applied to  industrial and business sectors. 2) Visualization. In order  to let users make a good plan, it is necessary for the  consumer to visualize the previous electricity usage (day  by day, week by week, or month by month etc.), usage  pattern of the same period in the previous years, and  usage pattern of similar household. 3) Search. The major  function of “Search” module is to help user search  electricity consumption information of their appliances  such as air-conditioner and washing machine. For  example, the user can input their refrigerator model, the  search module will find out the average electricity  consumption of this type of refrigerator. This information  will be very helpful for users to make an accurate  prediction. 4) Feedback. Through feedback component,  the system will provide a predicted usage amount to user.  Users also can input their estimated amount and give the  system a feedback. For example, based on previous usage  information, the system will automatically generate an  estimated demand for the user. It is up to the user who  will modify the recommended usage and submit it to the  OPEN system. When the user will be out of town for  
+weeks or take a long vacation, for instance, he/she can  input a very small amount of electricity usage. The user  feedback plays a very important role to decide the final  order amount.  
+4.3 Data Mining  
+In our system, data mining module is to predict load for a  future period (load forecasting) based on user’s previous  consumption records, users’ personal information  (number of families, electronic equipment information,  etc.) and user’s feedback. Load forecasting falls into  different time horizons: long-term forecasting (from one  year to ten years), medium-term forecasting (from several  months to one-year), short-term forecasting (from one  hour to one week) and real-time or very short-term  forecasting (in minutes) [17]. Our system focuses on  medium-term and short-term  forecasting.  Although it  performs prediction based on a relative short period, it  still involves many uncertain variables. Hence it actually  is a very challenging task. Our system will choose the best  scheme to get a more accurate estimation based on  different situations.   
+For a new user, who moves into a new-build house and  there is no previous usage information about this house,  data mining module will use personal information  (number of persons, appliances) to seek similar houses  nearby. The power usage information of these similar  houses will be helpful to give a forecasting. For an  experienced user, the power  prediction will not only  depend on personal information, but also depend on the  load of the same house in previous weeks and months,  and even the previous year. Other factors such as power  usage of similar houses in the same period and same area,  weather factor, and user feedback also influence the  estimation for future consumption.  
+Many load prediction tools [18-20] have been developed  based on probabilistic theories, simulation techniques, and  neural networks. These methods are able to obtain an  accurate prediction through the integration of historical  data with some external factors (e.g. environment or  weather conditions). It is anticipated that a more robust  prediction can be made if users’ feedback is incorporated  into the prediction process. In  section 5, we will briefly  review a Bayesian prediction method, which can  automatically adjust our prediction with user’s feedback.   
+4.4 Optimal Decision Making  
+Decision making strategies can be applied in: 1)  optimization techniques to determine the generation and  distribution; 2) risk assessment in the presence of  generation and load uncertainties; and 3) pricing  negotiation and consumer incentives for the participation  of OPEN system.  
+303 
+
+========4========
+
+Optimization of generation and distribution requires a  model of the market. The state of the market can be  described by the load demand and the price. The OPEN  system allows the utility companies to visualize a future  market based on consumers’ demand orders. The pricing  elasticity can be utilized to achieve the load shaving when  the generation capacity reaches the limits. Markov  Decision Process [21] and game theories [22] can be  employed for the optimization of the expected value of  the profit. Mote Carlo simulation is an effective tool  which can be used to validate and verify the results  derived from analytical methods.  
+5. Potential Impacts on Smart Grids  
+5.1 Distributed Generation Systems  
+Distributed generation (DG), or decentralized generation,  produces electricity from many small energy sources  called distributed energy resources (DER) along with the  central generation units. In other words, a DG system is a  hybrid power grid system interconnected with DER units  and substations to supply electricity. The capacity for a  DER unit ranges from 3 kW to 10 MW while the capacity  for a central generation often exceeds 500 MW. Typical  DER equipment includes wind turbines, solar PV, fuels  cells, and micro-generators.  
+Wind turbines and solar PV emerge as promising energy  sources to fill the energy gap between the supply and the  demand in the next several decades. The output of these  renewable DER units, however, is often intermittent due  to the stochastic nature of the wind speed and solar  irradiation. In particular, the wind speed and solar energy  highly depend upon the weather condition, geographical  location, and seasons of the year. Therefore, integrating  renewable technology into the power grid adds additional  variations on top of the load dynamics. The loss-of-load  probability must be modeled and analyzed by taking into  account the load uncertainty and power variability at the  same time. Otherwise the grid reliability and stability will  be jeopardized as the more renewable energy resources  are connected to the grid.   
+The proposed virtual energy inventory concept can play a  pivotal role in managing DG systems. Built upon the lean  supply chain management, the virtual energy inventory  system has the capability of aggregating consumers’  future demands and further sending the information to the  utility companies. The utility companies, after performing  data analysis, can pro-actively roll out an optimal  generation and distribution scheme to mitigate the  variable wind and solar powers. The lead-time between  the consumer order and the actual consumption serves as  a virtual energy inventory to supply needed electricity to  end users.  
+304 
+5.2 Grid Operation and Asset Maintenance  
+The OPEN system creates a truly interactive environment  that allows for real-time communications between the  supplier and its consumers.  Consumers directly or  indirectly participate in the energy forecasting,  generation, and distribution via the on-line database.  Suppliers are able to update and post the price information  on the webpage in a real-time manner, and to guide the  consumption behaviour. The system will be more  beneficial to situations where a sudden demand change  occurs, such as family leaving for vacations or a surge of  energy demands due to manufacturing or business ramp- up. Consumers can easily report their reduced or  increased power demands through the OPEN system in  advance.   
+The new system also facilitates the integration of PHEV  or other electrical apparatus into the grid systems. The  charging of PHEV automobiles has a significant impact  on the distribution lines because these vehicles consume  large amounts of energy [23]. Functions can be built in  the OPEN system that allows  the PHEV users to notify  utility suppliers when and where the charge will be  carried out, and how much energy is needed. Therefore,  the advance provisioning concept has great potentials and  promises for the development of smart grid systems.  
+The OPEN system can assist the utilities in optimizing  asset management based on consumers’ demand  information. Maintenance activities on transformers and  power lines can be scheduled during the time when the  consumer demands are low based on the order data.  
+5.3 Improving Load Forecasting  
+The OPEN system can also assist the utility companies in  making a more realistic load forecasting by combining  consumers’ past usage with their demand perspectives.  Bayesian theorem is able to combine the historical data  with the advance orders to forecast the future load.  Although the theorem has been widely used in many  fields, its application in power industry for predicting the  future consumption is still new.   
+Bayesian prediction methods can be classified into two  categories: discrete Bayesian and continuous Bayesian  models. In the former, the prior and the posterior  distributions are represented by discrete probabilities. In  the latter continuous functions are used to model the prior  and/or the posterior distributions.  
+5.3.1 Discrete Bayesian Prediction  
+The discrete Bayesian model can be applied in the  situations where the demand data is characterized by  attributes or categorical data. The mathematical  expression of the model is given as follow  
+
+========5========
+
+EFP 
+EFP 
+j 
+}{ 
+}{ 
+ 
+FPFEP 
+ii 
+}{}|{ 
+i 
+}|{ 
+EP 
+ 
+k 
+    (4)  
+FPFEP 
+jj 
+}{}|{ 
+j1 
+Where  
+k=total number of events or categories  
+P{Fi}=prior probability for Fi  with  i=1, 2, …, k 
+P{E|Fi}=probability for consuming Egiven Fi 
+P{Fi|E}=posterior probability for Fi given E  
+We use a contrived yet quite realistic data set to explain  the application of this prediction technique. Table 1 lists  the daily energy consumption for a consumer during 15  days period. The actual consumption of energy, denoted  as X, is listed in the second column, while the forecasting,  Y, provided by the consumer is shown in the last column.  For example, for day 10, the consumer originally ordered  13kWh electricity through the OPEN system, the actual  energy consumed by the consumer is 14 kWh.   
+Table 1  
+Daily energy usage versus prediction in (unit: kWh)  Day  Actual Usage (X)  Consumer Orders (Y)  1 10  11  2 11  12  3 13  12  4 13  14  5 12  12  6 11  10  7 10  12  8 14  14  9 14  12  10 14  13  11 12  13  12 14  13  13 12  11  14 12  12  15 11  11  
+From Table 1, we can easily compute the prior probability  for X  and the result is given as:  P{X=10, 11, 12, 13, or  14}=[0.13, 0.20, 0.27, 0.13, or 0.27], respectively.  Meanwhile, we are able to estimate the conditional  probability for Y  given  X  based on the data in Table 1, and  the results are summarized in  Table 2. For example, the  P{Y=13|X=14}=0.5 as shown in the last row. This means  the probability for the consumer to order 13 kWh is 50%  given that his/her actual consumption is 14 kWh.  
+   
+Table 2  
+Conditional probability of P{Y|X}   
+Y  
+   
+kWh 10  11  12  13  14     
+10 0  0.5 0.5  0  0   X  
+11 0.333 0.333 0.333  0  0     
+12 0 0.25 0.5 0.25 0     13 0  0 0.5 0 0.5     14 0  0  0.25 0.5 0.25  
+305 
+Now the posterior probability for X  can be extrapolated  base on Table 2 along with the prior probability of X. The  result is summarized in Table 3. For instance, the last row  of the table shows P{X=14|Y=13}=0.67, meaning the  probability for actually consuming 14 kWh electricity is  0.67 given that the consumer’s order is 13 kWh.     
+Table 3  
+Posterior probability of P{X|Y}   
+   Y  
+kWh 10 11  12  13  14     
+10 0 0.33 0.17 0 0  X 
+11 1.0 0.33 0.17 0  0  
+12 0 0.33 0.33 0.33 0  
+13 0 0 0.17 0 0.5  
+14 0 0 0.17 0.67 0.5  
+Given the consumer order, we can further compute the  
+conditional mean demand and the variance based on  
+information in Table 3. For instance, if the consumer’s  
+order quantity is Y=13 kWh, then the conditional mean  
+demand and its variance can be estimated as   
+ 
+5 
+YXE  {]13[ YxXxP  }13 =13.33 kWh    (5)  
+i1 
+2 
+ YXEYXEYX 
+2 
+ 89.0]13[]13[)13var(  kWh     (6)  
+ The illustrative example, though relatively simple, has  
+clearly demonstrated how the discrete Bayesian inference  
+model can be utilized to predict the consumers’ actual  
+consumption by synthesizing the historical data with their  
+demand orders.    
+5.3.2 Continuous Bayesian Prediction Model  
+If the actual consumption is  expressed as continuous  distribution functions and demand orders are still discrete  data, the forecast can be made based on the Bayesian  model for density functions [24]. That is  
+yYxf )(  
+ 
+X 
+xfxXYP )(}{  
+X 
+xfxXYP )(}{ 
+X 
+YP }{ 
+ 
+ 
+    (7)  
+ 
+ 
+X 
+)(}{ dxxfxXYP 
+0 
+When both X  and  Y  are represented by continuous  density functions, the Bayesian prediction model can be  expressed as  
+yxf )(  
+, YX 
+yxf ),( 
+| 
+ 
+| XY X 
+xfxyf )()( 
+YX 
+    (8)  
+Y 
+yf )( 
+Y 
+yf )( 
+Where  
+X=actual consumption, a continuous random variable  
+Y=consumer demand order, a discrete random variable  
+P{Y}=probability for Y  
+X 
+xf )( = prior distribution for x  
+X 
+ yYxf )( =probability density function for x  given  y 
+ xXYP }{ =the conditional probability for Y  given  x 
+Y 
+yf )( = marginal distribution for y  
+
+========6========
+
+, 
+YX 
+| 
+XY 
+| 
+YX 
+yxf ),( = joint distribution for x  and  y  xyf )( =conditional density function for y  given  x yxf )( = posterior density function for x  given  y 
+6. Conclusion  
+This paper discusses a new energy management concept,  i.e. virtual energy provisioning, allowing smart grid users  to order or request electricity via the broadband Internet  as if performing an online purchasing action. The idea is  motivated by manufacturing supply chain systems where  the production is driven by customers advance demand  information, while the lead time creates a time buffer for  planning the actual production. The new concept enables  consumers to “order the electricity they need, and  consume exactly what they ordered”. The operating  principle, system architecture,  and the benefits have been  elaborated. The preliminary study shows that on-line  electricity ordering system is  theoretically reasonable and  technically implementable. Many research opportunities  will open up while implementing the virtual energy  provisioning concept. These topics include, but not limit  to, consumer performance assessment, load forecasting,  consumer incentive programs, dynamic pricing  negotiation, and optimal generation planning. As one of  further development, we will use actual monitored  demand data in order to illustrate the effectiveness of the  proposed energy management system.  
+References  
+[1] G.K. Venayagamoorthy, “Potentials and promises of  
+computational intelligence for smart grids,” IEEE Power  
+& Energy Society General Meeting, 2009, pp. 1-6.  [2] K.H. LaCommare, J.H. Eto., “Understanding the cost of  
+power interruption to the U.S. consumers,” LBNL-55718,  
+http://certs.lbl.gov/pdf/55718.pdf, September 2004.  [3] J.A. Momoh, “Smart grid design for efficient and flexible  
+power networks operation and control,” IEEE /PES Power  
+Systems Conference and Exposition, 2009, pp. 1-8.  [4] C.A. Babu, S. Ashok, “Peak load management in  
+electrolytic process industries,” IEEE Transactions on  
+Power Systems, vol. 23, no. 2, 2008, pp. 399-405.  [5] B. Ramanathan, V. Vittal, “A framework for evaluation of  
+advanced direct load control with minimum disruption,”  
+IEEE Transactions on Power Systems, vol. 23, no. 4,  
+2008, pp. 1681-1688.   
+[6] A. Moholkar, P. Klinkhachorn,  A. Feliachi, “Effects of  
+dynamic pricing on residential electricity bill.” Power  
+Systems Conference and Exposition, vol. 2, 2004, pp.  
+1030-1035.   
+[7] H. Sui, H. Wang; M.-S. Lu; W.-J. Lee, “An AMI system  
+for the deregulated electricity markets,” IEEE  
+Transactions on Industry Applications, vol. 45, no. 6,  
+2009, pp. 2104-2108.   
+[8] L.H. Tsoukalas, R. Gao, “From smart grids to an energy  
+internet: assumptions, architectures and requirements,”  
+Third International Conference on Electric Utility  
+Deregulation and Restructuring and Power Technologies,  
+2008, pp. 94-98.   
+306 
+[9] M. Ostertag, Ch. Imboden, “High data rate, medium  
+voltage powerline communications for hybrid DA/DSM,”  
+IEEE Transmission and Distribution Conference, vol. 1,  
+1999, pp. 240-245.   
+[10] T. Jin, M. Mechehoul, “Ordering electricity via Internet  
+and its potentials for smart grid systems.” IEEE  
+Transactions on Smart Grid, vol. 1, no. 3, 2010, pp. 302- 
+310.  
+[11] A. Kusko, J. DeDad, “Stored energy - short-term and  
+long-term energy storage methods,” IEEE Industry  
+Applications Magazine, vol. 13, no. 4, 2007, pp. 66-72.  [12] J. Heidell, H. Ware, “Is there a case for broadband utility  
+communications networks? valuing and pricing  
+incremental communications capacity on electric utility  
+smart grid networks,” The Electricity Journal, vol. 23, no.  
+1, 2010, pp. 21-33.  
+[13] M. Fahrioglu, F. L. Alvardo, “Designing incentive  
+compatible contracts for effective demand managements,”  
+IEEE Transactions on Power Systems, vol. 15, no. 4,  
+2000, pp. 1255-1260.  
+[14] T. Jin, Y. Yu, “Online virtual electricity provisioning  
+system and its preliminary design,” Automation of Electric  
+Power Systems, vol. 35, no. 4, 2011, pp. 35-40.  
+[15] X. Guan, Y.-C. Ho, D.L. Pepyne, “Gaming and price  
+spikes in electric power markets,” IEEE Transactions on  
+Power Systems, vol. 16, no. 3, 2001, pp. 402-408.   [16] X. Wang, J.M. Guerrero, Z. Chen, F. Blaabjerg,  
+“Distributed energy resources in grid-interactive AC  
+microgrids,” The 2nd  International Symposium on Power  
+Electronics for Distributed Generation Systems, 2010, pp.  
+806-812.  
+[17] M. Negnevitsky, P. Mandal, “Machine learning  
+applications for load and price forecasting and wind  
+power prediction in power systems,” International  
+Conference on ISAP, 2009, pp. 1- 6.  
+[18] P.E. McSharry, S. Bouwman, G. Bloemhof, “Probabilistic  
+forecasts of the magnitude and timing of peak electricity  
+demand,” IEEE Transactions on Power Systems, vol. 20 ,  
+no. 2, 2005, pp. 1166-1172.   
+[19] D.H.O. McQueen, P.R. Hyland, S.J. Watson, “Monte  
+Carlo simulation of residential electricity demand for  
+forecasting maximum demand on distribution networks,”  
+IEEE Transactions on Power Systems, vol. 19 , no. 3,  
+2004 , pp. 1685-1689.  
+[20] W. Charytoniuk, E.D. Box, W.-J. Lee, M.-S. Chen, P.  
+Kotas, P. Van Olinda, “Neural-network-based demand  
+forecasting in a deregulated environment,” IEEE  
+Transactions on Industry Applications, vol. 36, no. 3,  
+2000, pp. 893-898.   
+[21] N. Yu, C.-C. Liu, L. Tesfatsion, “Modeling of suppliers’  
+learning behaviors in an electricity market environment,”  
+International Conference on ISAP, 2007, pp. 1- 6.  [22] P. Couchman, B. Kouvaritakis, M. Cannon, F. Prashad,  
+“Gaming strategy for electric power with random  
+demand,” IEEE Transactions on Power Systems, vol. 20,  
+no. 3, 2005, pp. 1283-1292.  
+[23] K. Clement-Nyns, E. Haesen, J. Driesen, “The impact of  
+charging plug-in hybrid electric vehicles on a residential  
+distribution grid,” IEEE Transactions on Power Systems,  
+vol. 25, no. 1, 2010, pp. 371-380.  
+[24] V. Krishnan, Probability and Random Process, 1st  
+Edition, Chapter 8, Willey-Interscience, 2006.  
+
+========7========
+

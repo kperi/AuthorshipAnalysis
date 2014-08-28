@@ -1,0 +1,274 @@
+﻿CMVF: A Novel Dimension Reduction Scheme for Efﬁcient 
+Indexing in A Large Image Database 
+1 
+School of Computer Science & Engineering 
+The University of New South Wales 
+Sydney NSW 2052, Australia fjls,jas,qshengg@cse.unsw.edu.au 
+Jialie Shen1, Anne H.H. Ngu2, John Shepherd1, Du Q. Huynh3, Quan Z. Sheng1 
+2 
+Department of Computer Science 
+Southwest Texas State University 
+San Marcos, 601 University Drive, Texas, USA 
+1. INTRODUCTION 
+In recent years, due to the increasing volumes of multimedia data in the World Wide Web, digital library, biomedicine and other applications, efﬁcient content based similarity search in large image databases is gaining considerable research at- tentions. As a result, various indexing methods known as Spatial Access Methods (SAMs) and metric trees have been proposed to support this kind of retrieval. The former in- cludes SS-tree, R+-tree and grid ﬁles; the latter includes the vp-tree, mvp-tree , GNAT and M-tree [3]. 
+However, the optimised distance-based access methods cur- rently available for multidimensional indexing in multimedia databases are developed based on two major assumptions: a suitable distance function is known a priori and the dimen- sionality of the image features is low. Unfortunately, these assumptions do not make the problem substantially easier to solve. For example, it is extremely difﬁcult to deﬁne a distance function that accurately mimics human visual per- ceptioninimagesimilaritymeasurement. Also,typicalimage feature vectors are high-dimensional (dozens of dimensions). The standard approach to reducing the size of feature vec- tors is Principle Component Analysis (PCA). However, this approach might not always be possible due to the non-linear correlations in the feature vectors. 
+Motivated by these concerns, we proposed and developed the CMVF (Combining Multi-Visual Features) framework, a fast and robust hybrid method for nonlinear dimensions reduc- tion of composite image features for indexing in large image database[2]. This method incorporates both the PCA and non-linear neural network techniques to reduce the dimen- sions of feature vectors, so that an optimised access method can be applied. 
+In this demonstration, we show that with CMVF approach a small but well-discriminating feature vector can be obtained for effective indexing. It allows us to incorporate classiﬁca- tion information based on human visual perception into the indexing. In addition, effectiveness of the indexing can be improved signiﬁcantly with integration of additional image features. In the following sections, we overview the design and system architecture of our CMVF system, and give per- formance evaluation. 
+angu@swt.edu 
+3 
+School of Information Technology 
+Murdoch University 
+Murdoch WA 6150, Australia 
+d.huynh@murdoch.edu.au 
+2. SYSTEM OVERVIEW 
+An effective content-basedretrieval systemcannot be achiev- ed by consideringonly a single typeoffeature such as colour, texture and shape alone. However, creating an index based on a concatenation of feature vectors(e.g., colour, shape and texture) will result in a very high dimensional feature space, rendering all existing indexing methods useless. Also as- suming that each type of visual feature contributes equally to the recognition of that image is not supported in human visual perceptron. We need to “fuse” the multiple single fea- ture vectors into a composite feature vector which is low in dimensions and yet preserves all the necessary information for image retrieval. Thus, non-linear dimension reduction (NLDR) method in conjunction with a multidimensional in- dex structure becomes a natural and practical solution. Fig- ure 1 shows the overall architecture of our hybrid method. The different components of the architecture will be covered in detail in this section. 
+OUTPUT 
+Neural Network 
+HIDDEN 
+Lower dimension vectors 
+INPUT 
+PCA Analysis 
+PCA 
+PCA 
+PCA 
+Principal components 
+COLOUR 
+TEXTURE 
+SHAPE 
+Figure 1: A hybrid image feature dimensions re- duction scheme. The linear PCA appears at the bottom, the nonlinear neural network is at the top, and the representation of lower dimensional vectors appears in the hidden layer. 
+2.1 Composite Image Features 
+In CMVF, we consider three types of image features: color, texture and shape. Note that our system is not limited to dealing with these three features only. It can be extended to combine other visual and topological features[9] (such as motion and spatial relationship among the objects in the image) for effective indexing. 
+
+========1========
+
+The colour features are extracted using the colour histogram technique. We used the colour space CIE L*u*v. The reason for selecting the CIE L*u*v instead of the normal RGB or other colour spaces is that it is more uniform perceptually. Our colour features are presented as 37-dimensional vectors. 
+Texture featurescarrythepropertymeasures, suchassmooth- ness, coarseness and regularity, of an image. The texture fea- tures are extracted using a ﬁlter -based method. This method detects the global periodicity of intensity values in an image by identifying regions that have high energy, narrow peaks. The advantage of ﬁlter -based methods is in their consistent interpretation of feature data over both natural and artiﬁcial images. The Gabor ﬁlter is a frequently used ﬁlter in texture extraction. It measures a set of selected orientations and spa- tial frequencies. The total number of ﬁlters needed for our Gabor ﬁlter is 30. Texture features are therefore represented as 30-dimensional vectors. 
+Shape is an important and powerful attribute for image re- trieval. It can represent spatial information that is not pre- sentedincolorandtexturehistogram. Inoursystemtheshape information of an image is described based on its edges. A histogram of the edge directions is used to represent global information of shape attribute for each image. We used the Canny edge operator[8] to generate edge histogram of im- ages in the prepropressing stage. To solve the scale invari- ance problem, the histograms are normalized to the number of edge points in each image. In addition, smoothing proce- dures presented in [1]are used to make histograminvariant to rotation. The histogram of edge directions is represented by 30 bins. Shape features are thus presented as 30-dimensional vectors. 
+2.2 Architecture of Hybrid Image Feature Di- 
+mension Reducer 
+In CMVF, concatenation1 is used to form composite feature vectorsforfurtherprocessing. Withthe97-dimensionfeature vectors(37 dimensions for colour, 30 dimensions for texture and 30 dimensions for shape), the PCA[6] is useful as an initial dimension reducer while further dimension reduction for nonlinear correlations can be handled by NLDR. There are two methods for combining the PCA and NLDR: 
+ Apply the PCA to the single feature vectors separately. The lower-dimensional single feature vectors are then combined to form low-dimensional composite feature vectors for NLDR and classiﬁcation. 
+ Apply the PCA to the high-dimensional composite fea- ture vectors. The reduced-dimensional composite fea- ture vectors are then used for NLDR and classiﬁcation. 
+1Let 
+xc, xt and xs be the colour, texture and shape feature vectors, concatenation, denoted by the symbol , of these three feature vectors is de as follows: 
+xc 
+! 
+x  xc  xt  xs = xt 
+xs 
+Bothmethodsareadoptedinoursystemsothatthedifferences in the reduction results could be compared. 
+2.2.1 The PCA for Dimension Reduction The PCA has been employed to reduce the dimensions of single feature vectors so that an efﬁcient index can be con- structed for retrieval in image databases[7]. It has also been applied to image coding, e.g., for removing correlation from highly correlated data such as face images. The advantage of the PCA transformation is that it is linear and that any linear correlations presented in the data are automatically detected. In our system, the PCA is used as a "pre-processing" step in a NLDR method where it provides optimally reduced dimen- sionalfeature vectors for the3-layer neuralnetwork, and thus speeds up the NLDR training time. 
+2.2.2 Classiﬁcation based on Human Visual Percep- 
+tion 
+The human perceptual process incorporates information in colour, texture,shapeandothervisualfeaturesunderacertain context to classify images into the appropriate classes. To integrate this procedure into our system, we set up a simple on line image classiﬁcation experiment and asked 7 people (subjects), all of whom are from different backgrounds, to participate in the experiments. Before starting experiment, we ﬁrst prepared a set of images (labelled as test-images from here on), from our 10,000 image collection. This set of image covers all the different classes of images in the collection. In order to enhance robustness of our approach, some of them have image variations(e.g., color distortion, shifting,rotation....etc). Atthebeginningofeachexperiment, a query image was arbitrarily chosen from test-images and presented to the subjects. The subjects were then asked to pick 20 images that were most similar in colour, texture and shapetothequeryimage. Thoseimagesthatwereselectedby more than 3 subjects were classiﬁed to the same class as the query image and were then deleted from test-images. The experiment was repeated until every image in test-images hadbeencategorizedintoanappropriateclass. Theendresult of the experiments is that images which are similar to each other in colour, texture and shape are put into the same class based on human visual perception. This classiﬁcation results are used in the NLDR process described below. 
+2.2.3 Neural Network for Dimension Reduction In our work, a three-layer perceptron neural network with a quickprop learning algorithm[5] is used to perform dimen- sions reductions of image features. The network in fact acts as an image classiﬁer . The training samples are training pat- terns of the form (v;c) where v is a feature vector, which can beeitherasingle-featurevectororacompositefeaturevector, and c is the class number to which the image represented by v belongs. We note that the class number for each feature vector was determined by the experiments mentioned in the previous subsection. 
+When the network has been successfully trained, the weights that connect between the input and hidden layers are entries of a transformation that map the feature vectors v to smaller 
+
+========2========
+
+dimensional vectors. Thus, when a high-dimensional feature vector is passed through the network, its activation values in the hidden units form a lower-dimensional vector. This lower dimensional feature vector keeps the most important information of the original feature vectors (colour, texture and shape). 
+3. PERFORMANCE EVALUATION Inthissection, resultsfroma comparative study arepresented to demonstrate superiority of our hybrid dimension reduction method over using the PCA or using neural network alone. We used a collection of 10,000 images. These images were retrieved from different public domains that can be classiﬁed under a number ofthemeswhichcover naturalscenery, archi- tectural buildings, plants, animals, rocks, ﬂags, etc. A subset of this collection of images was selected to form the training samples(Section 2.2.2). 
+3.1 Performance on Image Categorisation To determine the accuracy and efﬁcienc y of the three meth- ods for dimension reduction, we introduce the measure class separation degree Ci, deﬁned as: 
+PN 
+j=1 
+Qj 
+Ci = 
+N(M  N); 
+i = 1:::m 
+wheremisthenumberofclasses, N isthenumber ofrelevant images. In the class, M is the total number of test images, Qj is the number of images whose distances to the j-th image in the class are greater than all thedistances from the j-th image to its relevant images. An image is said to be relevant to a classifitbelongsandhasbeencorrectlyassignedorclassiﬁed to that class. 
+Reduction Method 
+PCA 
+NN4 CMVF CMVF 
+Average Rate 
+90.2 100% 99.9% 99.9% 
+Feature Vector2 
+xc  xt  xs 
+P 
+xc  xt  xs P(xc  xt  xs) (xc)  P(xt)  P(xs) 
+Learning Time(epoch3) 
+N/A 
+7100 
+4200 
+4120 
+Table 1: Average class separation values with di ent method. 
+From Table 1 it can be seen that all classes of the test image collection are well separated by using neural network and hybrid approach comparing using thePCA. However, dimen- sion reduction with neural network suffers from very long learning time. In contrast, our proposed hybrid method does not lose much accuracy but improve the network learning time. The efﬁcienc y is gained by using a relatively small number of network inputs and the network training iterations are conducted in the direction of the largest eigenvalues for each feature. 
+2Because 
+there is no di in the results of methods used to organise the input feature vectors, we just present one of them. 
+3Epoch 
+means one complete presentation of the input data to the network being trained. 
+4NN 
+means neural network. 
+3.2 Evaluation of Reduced Dimensional Im- 
+age Features using M-trees 
+We usedM-trees[4]as accessmethodforevaluatingthequal- ity of feature space reduced by the PCA, neural network and hybridmethod. ThenumberofdimensionsofM-treeswasset to 6, corresponding to the number of hidden units used in the neural networks. Every image from the collection can serve as a query image. We posed a query image to the M-trees to conduct a k-NN search,where k was set to100. Theconcepts of normalized precision and normalized recall[10] in in- formation retrieval were used to evaluate the effectiveness of similarity retrieval since not all relevant images are retrieved. 
+1 
+e 
+t 
+0.9 
+a 
+r 
+l 
+l 
+a 
+precision of PCA precision of neural network precision of hybrid method recall of PCA 
+recall of neural network recall of hybrid method 
+c 
+e 
+r 
+0.8 
+d 
+n 
+a 
+n 
+o 
+i 
+0.7 
+s 
+i 
+c 
+e 
+r 
+p 
+d 
+e 
+0.6 
+z 
+i 
+l 
+a 
+m 
+r 
+o 
+0.5 
+n 
+e 
+g 
+a 
+r 
+e 
+v 
+0.4 
+A 
+0.3 
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 
+Class ID 
+Figure 2: Comparing hybrid method with the PCA and neural network on average normalized recall and precision rate. 
+1 
+0.9 
+e 
+t 
+a 
+r 
+n 
+0.8 
+o 
+i 
+s 
+i 
+c 
+e 
+0.7 
+r 
+p 
+d 
+n 
+0.6 
+a 
+l 
+l 
+a 
+c 
+e 
+0.5 
+r 
+d 
+e 
+z 
+i 
+0.4 
+l 
+a 
+m 
+r 
+o 
+0.3 
+n 
+e 
+g 
+a 
+0.2 
+r 
+e 
+v 
+recall rate without shape recall rate with shape precision rate without shape precision rate with shape 
+A 
+0.1 
+0 
+0 
+1 
+2 
+3 
+4 
+5 
+6 
+7 Class ID 
+8 
+9 
+10 
+11 
+12 
+13 
+14 
+Figure 3: Eeness of adding shape feature on hybrid method 
+In Figure 2, we can see that the normalized recall and normalized precision values from the neural network and the hybrid methods are almost the same. Thus, the major difference between two approaches is the time required to train the network. One can therefore conclude that it is more advantageous to use a hybrid dimensions reduction method to reduce the dimensions of image features for effective in- dexing using M-tree. Inaddition, systemperformancecan be improved considerablely with incorporation of other visual features. As is evident from Figure 3, an addition of shape feature into our system gave approximately 15% improve- ment of recall and precision over just using color and texture histogram. 
+
+========3========
+
+3.3 Robustness 
+Robustness is a very important feature for a content based image retrieval system because image data in real life always accompanies with noise and distortion. With incorporation of human visual perception, CMVF is robust to different kind of image variations including color distortion, sharp- ness changes, shifting and rotation. Experiment shows that CMVF is robust to 50.4 percent sharpening, 45 degree rota- tion,blurringwitha9x9Gaussianﬁlter ,randomspreadby10 pixels, 10 percent more saturation, 11 percent less saturation and pixelization by 9 pixels. 
+4. DEMONSTRATION 
+With the use of hybrid structure, CMVF illustrates its great advance in performance against other dimension reduction methods such as the PCA and neural network. To show these advance, a content based image retrieval system has been developed in C++ and Java. An online demonstration is provided5. WhentheuseraccessestheCMVFwebpage,alist of images are randomly selected and displayed as potential query images. The user can submit one of them as a query andthesystemwillsearchfortheimagesthataremostsimilar in visual content. It displays a list of similar images, in order, startingfromthemostsimilar. Thequerycanbeexecutedwith any ofthefollowingretrieval methods: PCA,neuralnetwork, CMVF and CMVF with shape. During this demonstration, we will present its advance in effectiveness, ﬂe xibility and robustness via the following: 
+ Effectiveness: One of our conjectures is that it is possi- ble to obtain effective retrieval from low-dimensional indexing vectors, if these vectors are carefully con- structed. In CMVF, we build indexing vectors from high-dimensional “raw” feature vectors via PCA and a trained neural network classiﬁer , which incorporates manual classiﬁcation criteria. Although some time is required to train the neural network involved in CMVF, we will demonstrate that signiﬁcant improvement in classiﬁcation and similarity search can be achieved by CMVF than can the PCA. In comparison with the pure neural network approach, CMVF also gives good clas- siﬁcation and query results, with less training time and simpler system structure. 
+ Flexibility: Forfurtherinvestigationsintocontent-based image retrieval, it would be useful if new indexing fea- tures could be easily incorporated into the system. The system demonstrates retrieval based on colour and tex- ture, as well as colour, texture and shape. It was rela- tively straightforward to incorporate shape into the sys- tem, and it clearly demonstrates that the addition of shape leads to superior retrieval results. 
+ Robustness: In the real world, perfect image data can not be expected. Thus, it is very important for image retrieval systems to be robust to image variations such ascolordistortion,sharpnesschanges,shiftingandrota- tion. WewilldemonstratethatCMVFworkseffectively 
+5http://www.cse.unsw.edu.au/imagedb/MVindex/index.html 
+even in the presence of the kinds of distortion situations just mentioned. 
+5. CONCLUSION 
+In this demo, we present CMVF, a novel indexing scheme by combining different types of image features to support queries that involve composite multiple features. We have alsodemonstratedtheoutputqualityofourhybridmethodfor indexing the image collection using M-trees. Our proposed hybrid dimension reduction approach, signiﬁcantly reduces the size of image feature vectors while at the same time re- tainingeffective discriminationpower andalsoallowingus to incorporateaspectsofhumanvisualperceptionintheweights of the network. This enables any existing access method for moderate dimensions to be used efﬁciently and effectively. 
+6. REFERENCES 
+[1] A.K.Jain and A. Vailaya. Image retrieval using color 
+and shape. Pattern Recognition, 29(8):1233–1244, 
+1996. 
+[2] Anne.H.H.Ngu, Q. Z.Sheng, D. Q.Huynh, and R. Lei. 
+Combining multi-visual features for efﬁcient indexing 
+in a large image database. The VLDB Journal, 
+9(4):280–293, May 2001. 
+[3] C. Bohm,¨ S. Berchtold, and D. A. Keim. Searching in 
+high-dimensional spaces: Index structures for 
+improving the performance of multimedia databases. 
+ACM Computing Surveys, 33(3):322 – 373, September 
+2001. 
+[4] P. Ciaccia, M. Patella, and P. Zezula. M-tree: An 
+efﬁcient access method for similarity search in metric 
+spaces. In Proceedings of the 23rd VLDB 
+International Conference, pages 426–435, 
+Athens,Greece, September 1997. 
+[5] S. Fahlman. An empirical study of learning speed for 
+back-propagation networks. Technical Report 
+CMU-CS 88-162, Carnegie-Mellon University, 1988. 
+[6] K. Fukunaga. Introduction to Statistical Pattern 
+Recognition. Academic Press, 1990. 
+[7] G.M.P.Euripdes and C. Faloutsos. Similarity searching 
+in medical image databases. IEEE Trans. Knowl. Data 
+Eng., 3(9):435–447, June 1997. 
+[8] J.Canny. A computational approach to edge detection. 
+IEEE Trans. Pattern Anal. Mach. Intell., 
+8(6):679–698, November 1986. 
+[9] M. Nabil, Anne.H.H.Ngu, and J.Shepherd. Picture 
+similarity retrieval using the 2d projection interval 
+representation. IEEE Trans. Knowl. Data Eng., 
+8(4):533–539, 1996. 
+[10] G. Salton and M. McGill. Introduction to Modern 
+Information Retrieval. McGraw-Hill, New York, 1993. 
+
+========4========
+

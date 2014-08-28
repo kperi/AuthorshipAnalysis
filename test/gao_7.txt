@@ -1,0 +1,14039 @@
+A	DT
+Framework	NN
+for	IN
+Personalized	VBN
+and	CC
+Collaborative	JJ
+
+
+Clustering	NN
+of	IN
+Search	VB
+Results	NNS
+
+
+David	NNP
+C.	NNP
+Anastasiu	NNP
+Texas	NNP
+State	NNP
+University-San	NNP
+
+
+Marcos	NNP
+
+
+San	NNP
+Marcos	NNP
+,	,
+TX	NNP
+,	,
+USA	NNP
+da1143@txstate.edu	NN
+
+
+Byron	NNP
+J.	NNP
+Gao	NNP
+Texas	NNP
+State	NNP
+University-San	NNP
+
+
+Marcos	NNP
+
+
+San	NNP
+Marcos	NNP
+,	,
+TX	NNP
+,	,
+USA	NNP
+bgao@txstate.edu	NN
+
+
+ABSTRACT	NN
+
+
+How	WRB
+to	TO
+organize	VB
+and	CC
+present	JJ
+search	NN
+results	VBZ
+plays	VBZ
+a	DT
+critical	JJ
+role	NN
+in	IN
+the	DT
+utility	NN
+of	IN
+search	NN
+engines	NNS
+.	.
+
+Due	JJ
+to	TO
+the	DT
+unprece	NN
+-	:
+dented	VBN
+scale	NN
+of	IN
+the	DT
+Web	NN
+and	CC
+diversity	NN
+of	IN
+search	NN
+results	NNS
+,	,
+the	DT
+common	JJ
+strategy	NN
+of	IN
+ranked	VBD
+lists	NNS
+has	VBZ
+become	VBN
+increasingly	RB
+in	IN
+-	:
+adequate	JJ
+,	,
+and	CC
+clustering	NN
+has	VBZ
+been	VBN
+considered	VBN
+as	IN
+a	DT
+promising	JJ
+alternative	NN
+.	.
+
+Clustering	NN
+divides	VBZ
+a	DT
+long	JJ
+list	NN
+of	IN
+disparate	JJ
+search	NN
+results	VBZ
+into	IN
+a	DT
+few	JJ
+topic-coherent	JJ
+clusters	NNS
+,	,
+allowing	VBG
+the	DT
+user	NN
+to	TO
+quickly	RB
+locate	VB
+relevant	JJ
+results	NNS
+by	IN
+topic	NN
+navigation	NN
+.	.
+
+While	IN
+many	JJ
+clustering	NN
+algorithms	NNS
+have	VBP
+been	VBN
+proposed	VBN
+that	IN
+inno	NN
+-	:
+vate	NN
+on	IN
+the	DT
+automatic	JJ
+clustering	NN
+procedure	NN
+,	,
+we	PRP
+introduce	VBP
+ClusteringWiki	NNP
+,	,
+the	DT
+ï	NN
+¬	NN
+rst	NN
+prototype	NN
+and	CC
+framework	NN
+for	IN
+per	IN
+-	:
+sonalized	JJ
+clustering	NN
+that	WDT
+allows	VBZ
+direct	JJ
+user	NN
+editing	NN
+of	IN
+the	DT
+clustering	NN
+results	VBZ
+.	.
+
+Through	IN
+a	DT
+Wiki	NNP
+interface	NN
+,	,
+the	DT
+user	NN
+can	MD
+edit	VB
+and	CC
+annotate	VB
+the	DT
+membership	NN
+,	,
+structure	NN
+and	CC
+labels	NNS
+of	IN
+clusters	NNS
+for	IN
+a	DT
+personalized	JJ
+presentation	NN
+.	.
+
+In	IN
+addition	NN
+,	,
+the	DT
+edits	NNS
+and	CC
+annotations	NNS
+can	MD
+be	VB
+shared	VBN
+among	IN
+users	NNS
+as	IN
+a	DT
+mass	NN
+-	:
+collaborative	JJ
+way	NN
+of	IN
+improving	VBG
+search	NN
+result	VBP
+organization	NN
+and	CC
+search	NN
+engine	NN
+utility	NN
+.	.
+
+
+Categories	NNS
+and	CC
+Subject	NNP
+Descriptors	NNP
+:	:
+H.	NNP
+3.3	CD
+-LSB-	-LRB-
+Informa	FW
+-	:
+tion	NN
+Storage	NN
+and	CC
+Retrieval	NN
+-RSB-	-RRB-
+:	:
+Information	NNP
+Search	VB
+and	CC
+Re	NNP
+-	:
+trieval	JJ
+â	NN
+$	$
+``	``
+Clustering	NN
+
+
+General	NNP
+Terms	NNS
+:	:
+Algorithms	NNS
+,	,
+Design	NN
+,	,
+Human	JJ
+Factors	NNS
+Keywords	NNS
+:	:
+Personalized	VBN
+clustering	NN
+,	,
+Search	VB
+result	NN
+cluster	NN
+-	:
+ing	NN
+,	,
+Search	VB
+result	NN
+organization	NN
+,	,
+Document	NNP
+clustering	NN
+,	,
+Wiki	NNP
+,	,
+Mass	NNP
+collaboration	NN
+,	,
+Social	NNP
+tagging	NN
+,	,
+Information	NNP
+retrieval	NN
+
+
+1	LS
+.	.
+
+INTRODUCTION	NN
+
+
+The	DT
+way	NN
+search	NN
+results	NNS
+are	VBP
+organized	VBN
+and	CC
+presented	VBN
+has	VBZ
+a	DT
+direct	JJ
+and	CC
+signiï	NN
+¬	CD
+cant	JJ
+impact	NN
+on	IN
+the	DT
+utility	NN
+of	IN
+search	NN
+engines	NNS
+.	.
+
+The	DT
+common	JJ
+strategy	NN
+has	VBZ
+been	VBN
+using	VBG
+a	DT
+ï	NN
+¬	CD
+‚	NN
+at	IN
+ranked	VBD
+list	NN
+,	,
+which	WDT
+works	VBZ
+ï	NN
+¬	CD
+ne	NN
+for	IN
+homogeneous	JJ
+search	NN
+results	NNS
+.	.
+
+
+However	RB
+,	,
+queries	NNS
+are	VBP
+inherently	RB
+ambiguous	JJ
+and	CC
+search	NN
+re	SYM
+-	:
+sults	NNS
+are	VBP
+often	RB
+diverse	JJ
+with	IN
+multiple	JJ
+senses	NNS
+.	.
+
+With	IN
+a	DT
+list	NN
+presentation	NN
+,	,
+the	DT
+results	NNS
+on	IN
+dierent	JJ
+sub-topics	NNS
+of	IN
+a	DT
+query	NN
+
+
+will	MD
+be	VB
+mixed	VBN
+together	RB
+.	.
+
+The	DT
+user	NN
+has	VBZ
+to	TO
+sift	VB
+through	IN
+many	JJ
+irrelevant	JJ
+results	NNS
+to	TO
+locate	VB
+those	DT
+relevant	JJ
+ones	NNS
+.	.
+
+
+With	IN
+the	DT
+rapid	JJ
+growth	NN
+in	IN
+the	DT
+scale	NN
+of	IN
+the	DT
+Web	NN
+,	,
+queries	NNS
+have	VBP
+become	VBN
+more	RBR
+ambiguous	JJ
+than	IN
+ever	RB
+.	.
+
+For	IN
+example	NN
+,	,
+there	EX
+are	VBP
+more	JJR
+than	IN
+20	CD
+entries	NNS
+in	IN
+Wikipedia	NNP
+for	IN
+dierent	JJ
+renown	NN
+
+
+Copyright	NN
+2011	CD
+Association	NNP
+for	IN
+Computing	NNP
+Machinery	NNP
+.	.
+
+ACM	NNP
+acknowl	NN
+-	:
+edges	NNS
+that	IN
+this	DT
+contribution	NN
+was	VBD
+authored	VBN
+or	CC
+co-authored	VBN
+by	IN
+an	DT
+employee	NN
+,	,
+contractor	NN
+or	CC
+afï	NN
+¬	CD
+liate	NN
+of	IN
+the	DT
+U.S.	NNP
+Government	NN
+.	.
+
+As	IN
+such	JJ
+,	,
+the	DT
+Government	NNP
+re	SYM
+-	:
+tains	NNS
+a	DT
+nonexclusive	JJ
+,	,
+royalty-free	JJ
+right	NN
+to	TO
+publish	VB
+or	CC
+reproduce	VB
+this	DT
+article	NN
+,	,
+or	CC
+to	TO
+allow	VB
+others	NNS
+to	TO
+do	VB
+so	RB
+,	,
+for	IN
+Government	NNP
+purposes	NNS
+only	RB
+.	.
+
+
+CIKMâ	NNP
+$	$
+™	CD
+11	CD
+,	,
+October	NNP
+24â	VBD
+$	$
+``	``
+28	CD
+,	,
+2011	CD
+,	,
+Glasgow	NNP
+,	,
+Scotland	NNP
+,	,
+UK	NNP
+.	.
+
+
+Copyright	NN
+2011	CD
+ACM	NNP
+978-1-4503-0717-8	CD
+/	:
+11/10	CD
+...	:
+$	$
+10.00	CD
+.	.
+
+
+David	NNP
+Buttler	NNP
+Lawrence	NNP
+Livermore	NNP
+National	NNP
+
+
+Laboratory	NN
+
+
+Livermore	NNP
+,	,
+CA	NNP
+,	,
+USA	NNP
+
+
+buttler1@llnl.gov	NN
+
+
+individuals	NNS
+under	IN
+the	DT
+name	NN
+of	IN
+Jim	NNP
+Gray	NNP
+and	CC
+74	CD
+entries	NNS
+for	IN
+Michael	NNP
+Smith	NNP
+as	IN
+of	IN
+today	NN
+.	.
+
+Consequently	RB
+,	,
+the	DT
+diversity	NN
+of	IN
+search	NN
+results	NNS
+has	VBZ
+increased	VBN
+to	TO
+the	DT
+point	NN
+that	IN
+we	PRP
+must	MD
+con	VB
+-	:
+sider	NN
+alternative	JJ
+presentations	NNS
+,	,
+providing	VBG
+additional	JJ
+struc	NN
+-	:
+ture	NN
+to	TO
+ï	VB
+¬	CD
+‚	CD
+at	IN
+lists	NNS
+so	RB
+as	IN
+to	TO
+eectively	RB
+minimize	VB
+browsing	VBG
+eort	NN
+and	CC
+alleviate	VB
+information	NN
+overload	NN
+-LSB-	-LRB-
+12	CD
+,	,
+25	CD
+,	,
+34	CD
+,	,
+5	CD
+-RSB-	-RRB-
+.	.
+
+Over	IN
+the	DT
+years	NNS
+clustering	NN
+has	VBZ
+been	VBN
+accepted	VBN
+as	IN
+the	DT
+most	RBS
+promising	JJ
+alternative	NN
+.	.
+
+
+Clustering	NN
+is	VBZ
+the	DT
+process	NN
+of	IN
+organizing	VBG
+objects	NNS
+into	IN
+groups	NNS
+or	CC
+clusters	NNS
+that	WDT
+exhibit	VBP
+internal	JJ
+cohesion	NN
+and	CC
+external	JJ
+iso	NN
+-	:
+lation	NN
+.	.
+
+Based	VBN
+on	IN
+the	DT
+common	JJ
+observation	NN
+that	IN
+it	PRP
+is	VBZ
+much	RB
+easier	JJR
+to	TO
+scan	VB
+a	DT
+few	JJ
+topic-coherent	JJ
+groups	NNS
+than	IN
+many	JJ
+in	IN
+-	:
+dividual	JJ
+documents	NNS
+,	,
+clustering	NN
+can	MD
+be	VB
+used	VBN
+to	TO
+categorize	VB
+a	DT
+long	JJ
+list	NN
+of	IN
+disparate	JJ
+search	NN
+results	VBZ
+into	IN
+a	DT
+few	JJ
+clusters	NNS
+such	JJ
+that	IN
+each	DT
+cluster	NN
+represents	VBZ
+a	DT
+homogeneous	JJ
+sub-topic	JJ
+of	IN
+the	DT
+query	NN
+.	.
+
+Meaningfully	RB
+labeled	VBN
+,	,
+these	DT
+clusters	NNS
+form	VBP
+a	DT
+topic-wise	JJ
+non-predeï	JJ
+¬	NN
+ned	VBD
+,	,
+faceted	JJ
+search	NN
+interface	NN
+,	,
+allowing	VBG
+the	DT
+user	NN
+to	TO
+quickly	RB
+locate	VB
+relevant	JJ
+and	CC
+interesting	JJ
+results	NNS
+.	.
+
+There	EX
+is	VBZ
+good	JJ
+evidence	NN
+that	IN
+clustering	NN
+improves	VBZ
+user	NN
+experience	NN
+and	CC
+search	NN
+result	VBP
+quality	NN
+-LSB-	-LRB-
+23	CD
+-RSB-	-RRB-
+.	.
+
+
+Given	VBN
+the	DT
+signiï	NN
+¬	CD
+cant	JJ
+potential	JJ
+beneï	NN
+¬	NN
+ts	NNS
+,	,
+search	NN
+result	VBP
+clus	NN
+-	:
+tering	NN
+has	VBZ
+received	VBN
+increasing	VBG
+attention	NN
+in	IN
+recent	JJ
+years	NNS
+from	IN
+the	DT
+communities	NNS
+of	IN
+information	NN
+retrieval	NN
+,	,
+Web	NN
+search	NN
+and	CC
+data	NNS
+mining	NN
+.	.
+
+Many	JJ
+clustering	NN
+algorithms	NNS
+have	VBP
+been	VBN
+pro-	JJ
+posed	VBD
+-LSB-	-LRB-
+12	CD
+,	,
+25	CD
+,	,
+34	CD
+,	,
+35	CD
+,	,
+36	CD
+,	,
+20	CD
+,	,
+32	CD
+,	,
+21	CD
+-RSB-	-RRB-
+.	.
+
+In	IN
+the	DT
+industry	NN
+,	,
+well-known	JJ
+cluster-based	JJ
+commercial	JJ
+search	NN
+engines	NNS
+include	VBP
+Clusty	NNP
+-LRB-	-LRB-
+www.clusty.com	NNP
+-RRB-	-RRB-
+,	,
+iBoogie	NN
+-LRB-	-LRB-
+www.iboogie.com	NN
+-RRB-	-RRB-
+and	CC
+CarrotSearch	NNP
+-LRB-	-LRB-
+carrotsearch.com	NNP
+-RRB-	-RRB-
+.	.
+
+
+Despite	IN
+the	DT
+high	JJ
+promise	NN
+of	IN
+the	DT
+approach	NN
+and	CC
+a	DT
+decade	NN
+of	IN
+endeavor	NN
+,	,
+cluster-based	JJ
+search	NN
+engines	NNS
+have	VBP
+not	RB
+gained	VBN
+prominent	JJ
+popularity	NN
+,	,
+evident	JJ
+by	IN
+Clustyâ	NNP
+$	$
+™	CD
+s	NNS
+Alexa	NNP
+rank	NN
+-LSB-	-LRB-
+13	CD
+-RSB-	-RRB-
+.	.
+
+This	DT
+is	VBZ
+because	IN
+clustering	NN
+is	VBZ
+known	VBN
+to	TO
+be	VB
+a	DT
+hard	JJ
+problem	NN
+,	,
+and	CC
+search	NN
+result	VBP
+clustering	NN
+is	VBZ
+particularly	RB
+hard	JJ
+due	JJ
+to	TO
+its	PRP$
+high	JJ
+dimensionality	NN
+,	,
+complex	NN
+semantics	NNS
+and	CC
+unique	JJ
+addi	NN
+-	:
+tional	JJ
+requirements	NNS
+beyond	IN
+traditional	JJ
+clustering	NN
+.	.
+
+
+As	IN
+emphasized	VBN
+in	IN
+-LSB-	-LRB-
+32	CD
+-RSB-	-RRB-
+and	CC
+-LSB-	-LRB-
+5	CD
+-RSB-	-RRB-
+,	,
+the	DT
+primary	JJ
+focus	NN
+of	IN
+search	NN
+result	VBP
+clustering	NN
+is	VBZ
+NOT	RB
+to	TO
+produce	VB
+optimal	JJ
+clusters	NNS
+,	,
+an	DT
+ob	NN
+-	:
+jective	NN
+that	WDT
+has	VBZ
+been	VBN
+pursued	VBN
+for	IN
+decades	NNS
+for	IN
+traditional	JJ
+clus	NN
+-	:
+tering	VBG
+with	IN
+many	JJ
+successful	JJ
+automatic	JJ
+algorithms	NNS
+.	.
+
+Search	VB
+result	NN
+clustering	NN
+is	VBZ
+a	DT
+highly	RB
+user-centric	JJ
+task	NN
+with	IN
+two	CD
+unique	JJ
+additional	JJ
+requirements	NNS
+.	.
+
+First	RB
+,	,
+clusters	NNS
+must	MD
+form	VB
+interest	NN
+-	:
+ing	VBG
+sub-topics	NNS
+or	CC
+facets	NNS
+from	IN
+the	DT
+userâ	JJ
+$	$
+™	CD
+s	NNS
+perspective	NN
+.	.
+
+Second	RB
+,	,
+clusters	NNS
+must	MD
+be	VB
+assigned	VBN
+informative	JJ
+,	,
+expressive	JJ
+,	,
+meaning	NN
+-	:
+ful	NN
+and	CC
+concise	JJ
+labels	NNS
+.	.
+
+Automatic	NNP
+algorithms	NNS
+often	RB
+fail	VBP
+to	TO
+ful	SYM
+-	:
+ï	NN
+¬	CD
+ll	NN
+the	DT
+human	JJ
+factors	NNS
+in	IN
+the	DT
+objectives	NNS
+of	IN
+search	NN
+result	VBP
+clus	NN
+-	:
+tering	NN
+,	,
+generating	VBG
+meaningless	JJ
+,	,
+awkward	JJ
+or	CC
+nonsense	JJ
+cluster	NN
+labels	NNS
+-LSB-	-LRB-
+5	CD
+-RSB-	-RRB-
+.	.
+
+
+In	IN
+this	DT
+paper	NN
+,	,
+we	PRP
+explore	VBP
+a	DT
+completely	RB
+dierent	JJ
+direc	NN
+-	:
+
+
+573	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+1	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+Figure	NNP
+1	CD
+:	:
+Snapshot	NN
+of	IN
+ClusteringWiki	NNP
+.	.
+
+
+tion	NN
+in	IN
+tackling	VBG
+the	DT
+problem	NN
+of	IN
+clustering	NN
+search	NN
+results	VBZ
+,	,
+utilizing	VBG
+the	DT
+power	NN
+of	IN
+direct	JJ
+user	NN
+intervention	NN
+and	CC
+mass	NN
+-	:
+collaboration	NN
+.	.
+
+We	PRP
+introduce	VBP
+ClusteringWiki	NNP
+,	,
+the	DT
+ï	NN
+¬	NN
+rst	NN
+pro-	JJ
+totype	NN
+and	CC
+framework	NN
+for	IN
+personalized	JJ
+clustering	NN
+that	WDT
+allows	VBZ
+direct	JJ
+user	NN
+editing	NN
+of	IN
+the	DT
+clustering	NN
+results	VBZ
+.	.
+
+This	DT
+is	VBZ
+in	IN
+sharp	JJ
+contrast	NN
+with	IN
+existing	VBG
+approaches	NNS
+that	WDT
+innovate	VBP
+on	IN
+the	DT
+au	NN
+-	:
+tomatic	JJ
+algorithmic	JJ
+clustering	NN
+procedure	NN
+.	.
+
+
+In	IN
+ClusteringWiki	NNP
+,	,
+the	DT
+user	NN
+can	MD
+edit	VB
+and	CC
+annotate	VB
+the	DT
+membership	NN
+,	,
+structure	NN
+and	CC
+labels	NNS
+of	IN
+clusters	NNS
+through	IN
+a	DT
+Wiki	NNP
+interface	NN
+to	TO
+personalize	VB
+her	PRP$
+search	NN
+result	VBP
+presentation	NN
+.	.
+
+Ed	NNP
+-	:
+its	PRP$
+and	CC
+annotations	NNS
+can	MD
+be	VB
+implicitly	RB
+shared	VBN
+among	IN
+users	NNS
+as	IN
+a	DT
+mass-collaborative	JJ
+way	NN
+of	IN
+improving	VBG
+search	NN
+result	NN
+or	CC
+-	:
+ganization	NN
+and	CC
+search	NN
+engine	NN
+utility	NN
+.	.
+
+This	DT
+approach	NN
+is	VBZ
+in	IN
+the	DT
+same	JJ
+spirit	NN
+of	IN
+the	DT
+current	JJ
+trends	NNS
+in	IN
+the	DT
+Web	NN
+,	,
+like	IN
+Web	NN
+2.0	CD
+,	,
+semantic	JJ
+web	NN
+,	,
+personalization	NN
+,	,
+social	JJ
+tagging	NN
+and	CC
+mass	NN
+collaboration	NN
+.	.
+
+
+Clustering	NN
+algorithms	NNS
+fall	VBP
+into	IN
+two	CD
+categories	NNS
+:	:
+partition	NN
+-	:
+ing	NN
+and	CC
+hierarchical	JJ
+.	.
+
+Regarding	VBG
+clustering	NN
+results	NNS
+,	,
+however	RB
+,	,
+a	DT
+hierarchical	JJ
+presentation	NN
+generalizes	VBZ
+a	DT
+ï	NN
+¬	CD
+‚	NN
+at	IN
+partition	NN
+.	.
+
+Based	VBN
+on	IN
+this	DT
+observation	NN
+,	,
+ClusteringWiki	NNP
+handles	VBZ
+both	DT
+cluster	NN
+-	:
+ing	NN
+methods	NNS
+smoothly	RB
+by	IN
+providing	VBG
+editing	NN
+facilities	NNS
+for	IN
+clus	NN
+-	:
+ter	NN
+hierarchies	NNS
+and	CC
+treating	VBG
+partitions	NNS
+as	IN
+a	DT
+special	JJ
+case	NN
+.	.
+
+In	IN
+practice	NN
+,	,
+hierarchical	JJ
+methods	NNS
+are	VBP
+advantageous	JJ
+in	IN
+cluster	NN
+-	:
+ing	NN
+search	NN
+results	VBZ
+because	IN
+they	PRP
+construct	VBP
+a	DT
+topic	NN
+hierarchy	NN
+that	WDT
+allows	VBZ
+the	DT
+user	NN
+to	TO
+easily	RB
+navigate	VB
+search	NN
+results	NNS
+at	IN
+dif	NN
+-	:
+ferent	JJ
+levels	NNS
+of	IN
+granularity	NN
+.	.
+
+
+Figure	NNP
+1	CD
+shows	VBZ
+a	DT
+snapshot	NN
+of	IN
+ClusteringWiki1	NN
+.	.
+
+The	DT
+left	NN
+-	:
+hand	NN
+label	NN
+panel	NN
+presents	VBZ
+a	DT
+hierarchy	NN
+of	IN
+cluster	NN
+labels	NNS
+.	.
+
+The	DT
+right-hand	JJ
+result	NN
+panel	NN
+presents	VBZ
+search	NN
+results	NNS
+for	IN
+a	DT
+chosen	VBN
+cluster	NN
+label	NN
+.	.
+
+A	DT
+logged-in	JJ
+user	NN
+can	MD
+edit	VB
+the	DT
+current	JJ
+clusters	NNS
+by	IN
+creating	VBG
+,	,
+deleting	VBG
+,	,
+modifying	VBG
+,	,
+moving	VBG
+or	CC
+copying	VBG
+nodes	NNS
+in	IN
+the	DT
+cluster	NN
+tree	NN
+.	.
+
+Each	DT
+edit	NN
+will	MD
+be	VB
+validated	VBN
+against	IN
+a	DT
+set	NN
+of	IN
+predeï	NN
+¬	CD
+ned	VBD
+consistency	NN
+constraints	NNS
+before	IN
+being	VBG
+stored	VBN
+.	.
+
+Designing	NNP
+and	CC
+implementing	VBG
+ClusteringWiki	NNP
+pose	VB
+non	JJ
+-	:
+trivial	JJ
+technical	JJ
+challenges	NNS
+.	.
+
+User	NN
+edits	VBZ
+represent	VB
+user	NN
+prefer	VBP
+-	:
+ences	NNS
+or	CC
+constraints	NNS
+that	WDT
+should	MD
+be	VB
+respected	VBN
+and	CC
+enforced	VBN
+next	JJ
+time	NN
+the	DT
+same	JJ
+query	NN
+is	VBZ
+issued	VBN
+.	.
+
+Query	NNP
+processing	NN
+is	VBZ
+time-critical	JJ
+,	,
+thus	RB
+eciency	NN
+must	MD
+be	VB
+given	VBN
+high	JJ
+priority	NN
+in	IN
+
+
+maintaining	VBG
+and	CC
+enforcing	VBG
+user	NN
+preferences	NNS
+.	.
+
+Moreover	RB
+,	,
+com	NN
+-	:
+plications	NNS
+also	RB
+come	VBP
+from	IN
+the	DT
+dynamic	JJ
+nature	NN
+of	IN
+search	NN
+re	SYM
+-	:
+sults	NNS
+that	WDT
+constantly	RB
+change	VBP
+over	IN
+time	NN
+.	.
+
+
+Cluster	NN
+editing	NN
+takes	VBZ
+user	NN
+eort	NN
+.	.
+
+It	PRP
+is	VBZ
+essential	JJ
+that	IN
+such	JJ
+
+
+user	NN
+eort	NN
+can	MD
+be	VB
+properly	RB
+reused	VBN
+.	.
+
+ClusteringWiki	NNP
+con	NN
+-	:
+siders	NNS
+two	CD
+kinds	NNS
+of	IN
+reuse	NN
+scenarios	NNS
+,	,
+preference	NN
+transfer	NN
+and	CC
+
+
+1dmlab	NN
+.	.
+
+cs.txstate.edu/ClusteringWiki/index.html	NN
+.	.
+
+
+preference	NN
+sharing	NN
+.	.
+
+The	DT
+former	JJ
+transfers	NNS
+user	NN
+preferences	NNS
+from	IN
+one	CD
+query	NN
+to	TO
+similar	JJ
+ones	NNS
+,	,
+e.g.	FW
+,	,
+from	IN
+â	FW
+$	$
+œDavid	JJ
+J.	NNP
+Dewittâ	NNP
+$	$
+to	TO
+â	VB
+$	$
+œDavid	JJ
+Dewittâ	NNP
+$	$
+.	.
+
+The	DT
+latter	JJ
+aggregates	NNS
+and	CC
+shares	NNS
+clus	SYM
+-	:
+tering	NN
+preferences	NNS
+among	IN
+users	NNS
+.	.
+
+Proper	JJ
+aggregation	NN
+allows	VBZ
+users	NNS
+to	TO
+collaborate	VB
+at	IN
+a	DT
+mass	NN
+scale	NN
+and	CC
+â	VB
+$	$
+œvoteâ	JJ
+$	$
+for	IN
+the	DT
+best	JJS
+search	NN
+result	VBP
+clustering	NN
+presentation	NN
+.	.
+
+
+In	IN
+social	JJ
+tagging	NN
+,	,
+or	CC
+collaborative	JJ
+tagging	NN
+,	,
+users	NNS
+annotate	VBP
+Web	NN
+objects	NNS
+,	,
+and	CC
+such	JJ
+personal	JJ
+annotations	NNS
+can	MD
+be	VB
+used	VBN
+to	TO
+collectively	RB
+classify	VB
+and	CC
+ï	VB
+¬	CD
+nd	JJ
+information	NN
+.	.
+
+ClusteringWiki	NNP
+extends	VBZ
+conventional	JJ
+tagging	NN
+by	IN
+allowing	VBG
+tagging	NN
+of	IN
+struc	NN
+-	:
+tured	JJ
+objects	NNS
+,	,
+which	WDT
+are	VBP
+clusters	NNS
+of	IN
+search	NN
+results	VBZ
+organized	VBN
+in	IN
+a	DT
+hierarchy	NN
+.	.
+
+
+Contributions	NNS
+.	.
+
+
+â	RB
+$	$
+cents	NNS
+We	PRP
+introduce	VBP
+ClusteringWiki	NNP
+,	,
+the	DT
+ï	NN
+¬	NN
+rst	NN
+framework	NN
+for	IN
+
+
+personalized	VBN
+clustering	NN
+in	IN
+the	DT
+context	NN
+of	IN
+search	NN
+result	NN
+or	CC
+-	:
+
+
+ganization	NN
+.	.
+
+Unlike	IN
+existing	VBG
+methods	NNS
+that	WDT
+innovate	VBP
+on	IN
+the	DT
+
+
+automatic	JJ
+clustering	NN
+procedure	NN
+,	,
+it	PRP
+allows	VBZ
+direct	JJ
+user	NN
+edit	NN
+-	:
+
+
+ing	NN
+of	IN
+the	DT
+clustering	NN
+results	VBZ
+through	IN
+a	DT
+Wiki	NNP
+interface	NN
+.	.
+
+
+â	RB
+$	$
+cents	NNS
+In	IN
+ClusteringWiki	NNP
+,	,
+user	NN
+preferences	NNS
+are	VBP
+reused	VBN
+among	IN
+
+
+similar	JJ
+queries	NNS
+.	.
+
+They	PRP
+are	VBP
+also	RB
+aggregated	VBN
+and	CC
+shared	VBN
+
+
+among	IN
+users	NNS
+as	IN
+a	DT
+mass-collaborative	JJ
+way	NN
+of	IN
+improving	VBG
+
+
+search	NN
+result	VBP
+organization	NN
+and	CC
+search	NN
+engine	NN
+utility	NN
+.	.
+
+
+â	RB
+$	$
+cents	NNS
+We	PRP
+implement	VBP
+a	DT
+prototype	NN
+for	IN
+ClusteringWiki	NNP
+,	,
+perform	VB
+
+
+experimental	JJ
+evaluation	NN
+and	CC
+a	DT
+user	NN
+study	NN
+,	,
+and	CC
+maintain	VB
+
+
+the	DT
+prototype	NN
+as	IN
+a	DT
+public	JJ
+Web	NN
+service	NN
+.	.
+
+
+Outline	NN
+.	.
+
+The	DT
+rest	NN
+of	IN
+the	DT
+paper	NN
+is	VBZ
+organized	VBN
+as	IN
+follows	VBZ
+.	.
+
+Section	NN
+2	CD
+reviews	VBZ
+the	DT
+related	JJ
+work	NN
+.	.
+
+Section	NN
+3	CD
+overviews	NNS
+the	DT
+ClusteringWiki	NNP
+framework	NN
+.	.
+
+Section	NN
+4	CD
+introduces	VBZ
+the	DT
+framework	NN
+in	IN
+detail	NN
+.	.
+
+Section	NN
+5	CD
+presents	VBZ
+experiments	NNS
+and	CC
+user	NN
+study	NN
+.	.
+
+Section	NN
+6	CD
+concludes	VBZ
+the	DT
+paper	NN
+.	.
+
+
+2	LS
+.	.
+
+RELATED	JJ
+WORK	VBP
+
+
+Clustering	NN
+.	.
+
+Clustering	NN
+is	VBZ
+the	DT
+process	NN
+of	IN
+organizing	VBG
+objects	NNS
+into	IN
+groups	NNS
+or	CC
+clusters	NNS
+so	IN
+that	IN
+objects	NNS
+in	IN
+the	DT
+same	JJ
+cluster	NN
+are	VBP
+as	IN
+similar	JJ
+as	IN
+possible	JJ
+,	,
+and	CC
+objects	NNS
+in	IN
+dierent	JJ
+clusters	NNS
+are	VBP
+
+
+as	IN
+dissimilar	JJ
+as	IN
+possible	JJ
+.	.
+
+Clustering	NN
+algorithms	NNS
+fall	VBP
+into	IN
+two	CD
+main	JJ
+categories	NNS
+,	,
+partitioning	VBG
+and	CC
+hierarchical	JJ
+.	.
+
+Partitioning	NN
+algorithms	NNS
+,	,
+such	JJ
+as	IN
+k-means	JJ
+-LSB-	-LRB-
+22	CD
+-RSB-	-RRB-
+,	,
+produce	VBP
+a	DT
+ï	NN
+¬	CD
+‚	NN
+at	IN
+partition	NN
+of	IN
+objects	NNS
+without	IN
+any	DT
+explicit	JJ
+structure	NN
+that	WDT
+relate	VBP
+clusters	NNS
+to	TO
+each	DT
+other	JJ
+.	.
+
+Hierarchical	JJ
+algorithms	NNS
+,	,
+on	IN
+the	DT
+other	JJ
+hand	NN
+,	,
+produce	VBP
+a	DT
+more	JJR
+informative	JJ
+hierarchy	NN
+of	IN
+clusters	NNS
+called	VBD
+a	DT
+dendrogram	NN
+.	.
+
+Hierarchical	JJ
+algorithms	NNS
+are	VBP
+either	CC
+agglomera	NN
+-	:
+tive	JJ
+-LRB-	-LRB-
+bottom-up	JJ
+-RRB-	-RRB-
+such	JJ
+as	IN
+AGNES	NN
+-LSB-	-LRB-
+18	CD
+-RSB-	-RRB-
+,	,
+or	CC
+divisive	JJ
+-LRB-	-LRB-
+top-down	JJ
+-RRB-	-RRB-
+such	JJ
+as	IN
+DIANA	NN
+-LSB-	-LRB-
+18	CD
+-RSB-	-RRB-
+.	.
+
+
+Clustering	NN
+in	IN
+IR	NNP
+.	.
+
+As	IN
+a	DT
+common	JJ
+data	NN
+analysis	NN
+technique	NN
+,	,
+clustering	NN
+has	VBZ
+a	DT
+wide	JJ
+array	NN
+of	IN
+applications	NNS
+in	IN
+machine	NN
+learn	VBP
+-	:
+ing	NN
+,	,
+data	NNS
+mining	NN
+,	,
+pattern	NN
+recognition	NN
+,	,
+information	NN
+retrieval	NN
+,	,
+image	NN
+analysis	NN
+and	CC
+bioinformatics	NNS
+-LSB-	-LRB-
+14	CD
+,	,
+8	CD
+-RSB-	-RRB-
+.	.
+
+In	IN
+information	NN
+retrieval	NN
+and	CC
+Web	NN
+search	NN
+,	,
+document	NN
+clustering	NN
+was	VBD
+initially	RB
+proposed	VBN
+to	TO
+improve	VB
+search	NN
+performance	NN
+by	IN
+validating	VBG
+the	DT
+cluster	NN
+hypothesis	NN
+,	,
+which	WDT
+states	VBZ
+that	IN
+documents	NNS
+in	IN
+the	DT
+same	JJ
+cluster	NN
+behave	VBP
+similarly	RB
+with	IN
+respect	NN
+to	TO
+relevance	NN
+to	TO
+infor	NN
+-	:
+mation	NN
+needs	VBZ
+-LSB-	-LRB-
+26	CD
+-RSB-	-RRB-
+.	.
+
+
+In	IN
+recent	JJ
+years	NNS
+,	,
+clustering	NN
+has	VBZ
+been	VBN
+used	VBN
+to	TO
+organize	VB
+search	NN
+results	NNS
+,	,
+creating	VBG
+a	DT
+cluster-based	JJ
+search	NN
+interface	NN
+as	IN
+an	DT
+alter	VBP
+-	:
+native	JJ
+presentation	NN
+to	TO
+the	DT
+ranked	VBN
+list	NN
+interface	NN
+.	.
+
+The	DT
+list	NN
+interface	NN
+works	VBZ
+ï	RB
+¬	CD
+ne	NN
+for	IN
+most	JJS
+navigational	JJ
+queries	NNS
+,	,
+but	CC
+is	VBZ
+less	RBR
+eective	JJ
+for	IN
+informational	JJ
+queries	NNS
+,	,
+which	WDT
+account	VBP
+for	IN
+the	DT
+ma	NN
+-	:
+
+
+jority	NN
+of	IN
+Web	NN
+queries	NNS
+-LSB-	-LRB-
+4	CD
+,	,
+27	CD
+-RSB-	-RRB-
+.	.
+
+In	IN
+addition	NN
+,	,
+the	DT
+growing	VBG
+scale	NN
+of	IN
+
+
+574	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+2	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+the	DT
+Web	NN
+and	CC
+diversity	NN
+of	IN
+search	NN
+results	NNS
+have	VBP
+rendered	VBN
+the	DT
+list	NN
+interface	NN
+increasingly	RB
+inadequate	JJ
+.	.
+
+Research	NNP
+has	VBZ
+shown	VBN
+that	IN
+the	DT
+cluster	NN
+interface	NN
+improves	VBZ
+user	NN
+experience	NN
+and	CC
+search	NN
+re	SYM
+-	:
+sult	JJ
+quality	NN
+-LSB-	-LRB-
+12	CD
+,	,
+35	CD
+,	,
+30	CD
+,	,
+16	CD
+-RSB-	-RRB-
+.	.
+
+
+Search	VB
+result	NN
+clustering	NN
+.	.
+
+One	CD
+way	NN
+of	IN
+creating	VBG
+a	DT
+cluster	NN
+interface	NN
+is	VBZ
+to	TO
+construct	VB
+a	DT
+static	JJ
+,	,
+o-line	NN
+,	,
+pre-retrieval	JJ
+clus	NN
+-	:
+
+
+tering	NN
+of	IN
+the	DT
+entire	JJ
+document	NN
+collection	NN
+.	.
+
+However	RB
+,	,
+this	DT
+ap	NN
+-	:
+proach	NN
+is	VBZ
+ineective	JJ
+because	IN
+it	PRP
+is	VBZ
+based	VBN
+on	IN
+features	NNS
+that	WDT
+are	VBP
+
+
+frequent	JJ
+in	IN
+the	DT
+entire	JJ
+collection	NN
+but	CC
+irrelevant	JJ
+to	TO
+the	DT
+partic	JJ
+-	:
+ular	JJ
+query	NN
+-LSB-	-LRB-
+10	CD
+,	,
+28	CD
+,	,
+5	CD
+-RSB-	-RRB-
+.	.
+
+It	PRP
+has	VBZ
+been	VBN
+shown	VBN
+that	IN
+query-speciï	NN
+¬	CD
+c	NN
+,	,
+on-line	JJ
+,	,
+post-retrieval	JJ
+clustering	NN
+,	,
+i.e.	FW
+,	,
+clustering	NN
+search	NN
+re	SYM
+-	:
+sults	NNS
+,	,
+produces	VBZ
+much	JJ
+superior	JJ
+results	NNS
+-LSB-	-LRB-
+12	CD
+-RSB-	-RRB-
+.	.
+
+
+Scatter/Gather	NN
+-LSB-	-LRB-
+12	CD
+,	,
+25	CD
+-RSB-	-RRB-
+was	VBD
+an	DT
+early	JJ
+cluster-based	JJ
+doc	NN
+-	:
+ument	NN
+browsing	NN
+method	NN
+that	WDT
+performs	VBZ
+post-retrieval	JJ
+clus	NN
+-	:
+tering	NN
+on	IN
+top-ranked	JJ
+documents	NNS
+returned	VBN
+from	IN
+a	DT
+traditional	JJ
+information	NN
+retrieval	NN
+system	NN
+.	.
+
+The	DT
+Grouper	NN
+system	NN
+-LSB-	-LRB-
+34	CD
+,	,
+35	CD
+-RSB-	-RRB-
+-LRB-	-LRB-
+retired	VBN
+in	IN
+2000	CD
+-RRB-	-RRB-
+introduced	VBD
+the	DT
+well-known	JJ
+Sux	NNP
+Tree	NNP
+Clus	NNP
+-	:
+
+
+tering	NN
+-LRB-	-LRB-
+STC	NN
+-RRB-	-RRB-
+algorithm	NN
+that	IN
+groups	NNS
+Web	NN
+search	NN
+results	VBZ
+into	IN
+clusters	NNS
+labeled	VBN
+by	IN
+phrases	NNS
+extracted	VBN
+from	IN
+snippets	NNS
+.	.
+
+It	PRP
+was	VBD
+also	RB
+shown	VBN
+that	IN
+using	VBG
+snippets	NNS
+is	VBZ
+as	IN
+eective	JJ
+as	IN
+using	VBG
+whole	NN
+
+
+documents	NNS
+.	.
+
+Carrot2	NN
+-LRB-	-LRB-
+www.carrot2.org	NN
+-RRB-	-RRB-
+is	VBZ
+an	DT
+open	JJ
+source	NN
+search	NN
+result	VBP
+clustering	NN
+engine	NN
+that	WDT
+embeds	VBZ
+STC	NN
+as	RB
+well	RB
+as	IN
+Lingo	NN
+-LSB-	-LRB-
+24	CD
+-RSB-	-RRB-
+,	,
+a	DT
+clustering	NN
+algorithm	NN
+based	VBN
+on	IN
+singular	JJ
+value	NN
+decomposition	NN
+.	.
+
+
+Other	JJ
+related	JJ
+work	NN
+from	IN
+the	DT
+Web	NN
+,	,
+IR	NN
+and	CC
+data	NNS
+mining	NN
+communities	NNS
+exists	VBZ
+.	.
+
+-LSB-	-LRB-
+36	CD
+-RSB-	-RRB-
+explored	VBN
+supervised	JJ
+learning	NN
+for	IN
+ex	FW
+-	:
+tracting	VBG
+meaningful	JJ
+phrases	NNS
+from	IN
+snippets	NNS
+,	,
+which	WDT
+are	VBP
+then	RB
+used	VBN
+to	TO
+group	NN
+search	NN
+results	NNS
+.	.
+
+-LSB-	-LRB-
+20	CD
+-RSB-	-RRB-
+proposed	VBD
+a	DT
+monothetic	JJ
+al	NNP
+-	:
+gorithm	NN
+,	,
+where	WRB
+a	DT
+single	JJ
+feature	NN
+is	VBZ
+used	VBN
+to	TO
+assign	VB
+documents	NNS
+to	TO
+clusters	NNS
+and	CC
+generate	VBP
+cluster	NN
+labels	NNS
+.	.
+
+-LSB-	-LRB-
+32	CD
+-RSB-	-RRB-
+investigated	VBD
+us	PRP
+-	:
+ing	VBG
+past	JJ
+query	JJ
+history	NN
+in	IN
+order	NN
+to	TO
+better	JJR
+organize	VB
+search	NN
+results	NNS
+for	IN
+future	JJ
+queries	NNS
+.	.
+
+-LSB-	-LRB-
+21	CD
+-RSB-	-RRB-
+studied	VBN
+search	NN
+result	VBP
+cluster	NN
+-	:
+ing	NN
+for	IN
+object-level	JJ
+search	NN
+engines	NNS
+that	WDT
+automatically	RB
+extract	NN
+and	CC
+integrate	VB
+information	NN
+on	IN
+Web	NN
+objects	NNS
+.	.
+
+-LSB-	-LRB-
+5	CD
+-RSB-	-RRB-
+surveyed	VBN
+Web	NN
+clustering	NN
+engines	NNS
+and	CC
+algorithms	NNS
+.	.
+
+
+While	IN
+all	PDT
+these	DT
+methods	NNS
+focus	VBP
+on	IN
+improvement	NN
+in	IN
+the	DT
+au	NN
+-	:
+tomatic	JJ
+algorithmic	JJ
+procedure	NN
+of	IN
+clustering	NN
+,	,
+Clustering	NN
+-	:
+Wiki	NNP
+employs	VBZ
+a	DT
+Wiki	NNP
+interface	NN
+that	WDT
+allows	VBZ
+direct	JJ
+user	NN
+editing	NN
+of	IN
+the	DT
+clustering	NN
+results	VBZ
+.	.
+
+
+Clustering	VBG
+with	IN
+user	NN
+intervention	NN
+.	.
+
+In	IN
+machine	NN
+learn	VBP
+-	:
+ing	NN
+,	,
+clustering	NN
+is	VBZ
+referred	VBN
+to	TO
+as	IN
+unsupervised	JJ
+learning	NN
+.	.
+
+How	WRB
+-	:
+ever	RB
+,	,
+similar	JJ
+to	TO
+ClusteringWiki	NNP
+,	,
+there	EX
+are	VBP
+a	DT
+few	JJ
+clustering	NN
+frameworks	NNS
+that	WDT
+involve	VBP
+an	DT
+active	JJ
+user	NN
+role	NN
+,	,
+in	IN
+particular	JJ
+,	,
+semi-supervised	JJ
+clustering	NN
+-LSB-	-LRB-
+2	CD
+,	,
+6	CD
+-RSB-	-RRB-
+and	CC
+interactive	JJ
+clustering	NN
+-LSB-	-LRB-
+31	CD
+,	,
+15	CD
+,	,
+3	CD
+-RSB-	-RRB-
+These	DT
+frameworks	NNS
+are	VBP
+also	RB
+motivated	VBN
+by	IN
+the	DT
+fact	NN
+that	IN
+clustering	NN
+is	VBZ
+too	RB
+complex	JJ
+,	,
+and	CC
+it	PRP
+is	VBZ
+necessary	JJ
+to	TO
+open	VB
+the	DT
+â	NN
+$	$
+œblack	JJ
+boxâ	NN
+$	$
+of	IN
+the	DT
+clustering	NN
+procedure	NN
+for	IN
+easy	JJ
+understand	VBP
+-	:
+ing	NN
+,	,
+steering	NN
+and	CC
+focusing	VBG
+.	.
+
+However	RB
+,	,
+they	PRP
+dier	VBP
+from	IN
+Clus	NN
+-	:
+teringWiki	NN
+in	IN
+that	DT
+their	PRP$
+focus	NN
+is	VBZ
+still	RB
+on	IN
+the	DT
+clustering	NN
+pro-	JJ
+cedure	NN
+,	,
+where	WRB
+they	PRP
+adopt	VBP
+a	DT
+constraint	NN
+clustering	NN
+approach	NN
+by	IN
+transforming	VBG
+user	NN
+feedback	NN
+and	CC
+domain	NN
+knowledge	NN
+into	IN
+constraints	NNS
+-LRB-	-LRB-
+e.g.	FW
+,	,
+must-links	NNS
+and	CC
+cannot-links	NNS
+-RRB-	-RRB-
+that	WDT
+are	VBP
+in	IN
+-	:
+corporated	VBN
+into	IN
+the	DT
+clustering	NN
+procedure	NN
+.	.
+
+
+Search	VB
+result	NN
+annotation	NN
+.	.
+
+Prototypes	NNS
+that	WDT
+allow	VBP
+user	NN
+editing	NN
+and	CC
+annotation	NN
+of	IN
+search	NN
+results	VBZ
+exist	VBP
+.	.
+
+For	IN
+exam	NN
+-	:
+ple	NN
+,	,
+U	NNP
+Rank	NNP
+by	IN
+Microsoft	NNP
+-LRB-	-LRB-
+research.microsoft.com/en-us/	JJ
+projects/urank	NN
+-RRB-	-RRB-
+and	CC
+Searchwiki	NN
+by	IN
+Google	NNP
+-LRB-	-LRB-
+googleblog.blog	NN
+spot.com/2008/11/searchwiki-make-search-your-own.html	NN
+-RRB-	-RRB-
+.	.
+
+Rants	NNS
+-LSB-	-LRB-
+9	CD
+-RSB-	-RRB-
+implemented	VBD
+a	DT
+prototype	NN
+with	IN
+additional	JJ
+interest	NN
+-	:
+ing	NN
+features	NNS
+including	VBG
+the	DT
+incorporation	NN
+of	IN
+both	CC
+absolute	JJ
+and	CC
+relative	JJ
+user	NN
+preferences	NNS
+.	.
+
+Similar	JJ
+to	TO
+ClusteringWiki	NNP
+,	,
+these	DT
+works	NNS
+pursue	VBP
+personalization	NN
+as	RB
+well	RB
+as	IN
+a	DT
+mass-collaborative	JJ
+
+
+query	NN
+q	SYM
+
+
+Query	NNP
+Processing	NNP
+Module	NNP
+
+
+cluster	NN
+tree	NN
+T	NN
+
+
+edit	VB
+e	SYM
+
+
+Cluster	NN
+Editing	NN
+Module	NN
+
+
+stored	VBN
+user	NN
+preferences	NNS
+
+
+Figure	NN
+2	CD
+:	:
+Main	NNP
+architecture	NN
+of	IN
+ClusteringWiki	NNP
+.	.
+
+
+way	NN
+of	IN
+improving	VBG
+search	NN
+engine	NN
+utility	NN
+.	.
+
+The	DT
+dierence	NN
+is	VBZ
+that	IN
+
+
+they	PRP
+use	VBP
+the	DT
+traditional	JJ
+ï	NN
+¬	CD
+‚	NN
+at	IN
+list	NN
+,	,
+instead	RB
+of	IN
+cluster-based	JJ
+,	,
+search	NN
+interface	NN
+.	.
+
+
+Tagging	VBG
+and	CC
+social	JJ
+search	NN
+.	.
+
+Social	NNP
+tagging	NN
+,	,
+or	CC
+collabo	NN
+-	:
+rative	JJ
+tagging	NN
+,	,
+allows	VBZ
+users	NNS
+to	TO
+create	VB
+and	CC
+associate	VB
+objects	NNS
+with	IN
+tags	NNS
+as	IN
+a	DT
+means	NN
+of	IN
+annotating	VBG
+and	CC
+categorizing	VBG
+content	NN
+.	.
+
+While	IN
+users	NNS
+are	VBP
+primarily	RB
+interested	JJ
+in	IN
+tagging	VBG
+for	IN
+their	PRP$
+per	IN
+-	:
+sonal	JJ
+use	NN
+,	,
+tags	NNS
+in	IN
+a	DT
+community	NN
+collection	NN
+tend	VBP
+to	TO
+stabilize	VB
+into	IN
+power	NN
+law	NN
+distributions	NNS
+-LSB-	-LRB-
+11	CD
+-RSB-	-RRB-
+.	.
+
+Collaborative	JJ
+tagging	VBG
+sys	SYM
+-	:
+tems	NNS
+leverage	NN
+this	DT
+property	NN
+to	TO
+derive	VB
+folksonomies	NNS
+and	CC
+im	SYM
+-	:
+prove	VB
+search	NN
+-LSB-	-LRB-
+33	CD
+-RSB-	-RRB-
+.	.
+
+In	IN
+ClusteringWiki	NNP
+users	NNS
+tag	VBP
+clusters	NNS
+to	TO
+organize	VB
+search	NN
+results	NNS
+,	,
+and	CC
+the	DT
+tags	NNS
+can	MD
+be	VB
+shared	VBN
+and	CC
+uti	SYM
+-	:
+lized	VBN
+in	IN
+the	DT
+same	JJ
+way	NN
+as	IN
+in	IN
+collaborative	JJ
+tagging	NN
+.	.
+
+Since	IN
+clus	NN
+-	:
+ters	NNS
+are	VBP
+organized	VBN
+in	IN
+a	DT
+hierarchy	NN
+,	,
+ClusteringWiki	NNP
+extends	VBZ
+conventional	JJ
+tagging	NN
+by	IN
+allowing	VBG
+tagging	NN
+of	IN
+structured	JJ
+ob	NN
+-	:
+jects	NNS
+.	.
+
+Similar	JJ
+to	TO
+tag	VB
+suggestion	NN
+in	IN
+social	JJ
+tagging	NN
+,	,
+the	DT
+base	NN
+clustering	NN
+algorithm	NN
+in	IN
+ClusteringWiki	NNP
+provides	VBZ
+suggested	VBN
+phrases	NNS
+for	IN
+tagging	VBG
+clusters	NNS
+.	.
+
+
+Social	NNP
+search	NN
+is	VBZ
+a	DT
+mass-collaborative	JJ
+way	NN
+of	IN
+improving	VBG
+search	NN
+performance	NN
+.	.
+
+In	IN
+contrast	NN
+to	TO
+established	VBN
+algorith	NN
+-	:
+mic	JJ
+or	CC
+machine-based	JJ
+approaches	NNS
+,	,
+social	JJ
+search	NN
+determines	VBZ
+the	DT
+relevance	NN
+of	IN
+search	NN
+results	NNS
+by	IN
+considering	VBG
+the	DT
+content	NN
+created	VBN
+or	CC
+touched	VBN
+by	IN
+users	NNS
+in	IN
+the	DT
+social	JJ
+graph	NN
+.	.
+
+Exam	NN
+-	:
+ple	NN
+forms	NNS
+of	IN
+user	NN
+contributions	NNS
+include	VBP
+shared	VBN
+bookmarks	NNS
+or	CC
+tagging	NN
+of	IN
+content	NN
+with	IN
+descriptive	JJ
+labels	NNS
+.	.
+
+Currently	RB
+there	EX
+are	VBP
+more	JJR
+than	IN
+40	CD
+such	JJ
+people-powered	JJ
+or	CC
+community	NN
+-	:
+powered	VBN
+social	JJ
+search	NN
+engines	NNS
+,	,
+including	VBG
+Eurekster	NNP
+Swiki	NNP
+-LRB-	-LRB-
+www.eurekster.com	NNP
+-RRB-	-RRB-
+,	,
+Mahalo	NNP
+-LRB-	-LRB-
+www.mahalo.com	NNP
+-RRB-	-RRB-
+,	,
+Wikia	NNP
+-LRB-	-LRB-
+answers.wikia.com/wiki/Wikianswers	NNS
+-RRB-	-RRB-
+,	,
+and	CC
+Google	NNP
+social	JJ
+search	NN
+-LRB-	-LRB-
+googleblog.blogspot.com/2009/10/introducing-google	NN
+-	:
+social-search-i	NN
+.	.
+
+html	NN
+-RRB-	-RRB-
+.	.
+
+Mass	JJ
+collaboration	NN
+systems	NNS
+on	IN
+the	DT
+Web	NN
+are	VBP
+categorized	VBN
+and	CC
+discussed	VBN
+in	IN
+-LSB-	-LRB-
+7	CD
+-RSB-	-RRB-
+.	.
+
+
+3	LS
+.	.
+
+OVERVIEW	NN
+
+
+In	IN
+this	DT
+section	NN
+,	,
+we	PRP
+overview	NN
+the	DT
+main	JJ
+architecture	NN
+and	CC
+design	NN
+principles	NNS
+of	IN
+ClusteringWiki	NNP
+.	.
+
+Figure	NN
+2	CD
+shows	VBZ
+the	DT
+two	CD
+key	JJ
+modules	NNS
+.	.
+
+The	DT
+query	NN
+processing	NN
+module	NN
+takes	VBZ
+a	DT
+query	NN
+q	NN
+and	CC
+a	DT
+set	NN
+of	IN
+stored	VBN
+user	NN
+preferences	NNS
+as	IN
+input	NN
+to	TO
+produce	VB
+a	DT
+cluster	NN
+tree	NN
+T	NN
+that	WDT
+respects	VBZ
+the	DT
+preferences	NNS
+.	.
+
+The	DT
+cluster	NN
+editing	NN
+module	NN
+takes	VBZ
+a	DT
+cluster	NN
+tree	NN
+T	NN
+and	CC
+a	DT
+user	NN
+edit	NN
+e	SYM
+as	IN
+input	NN
+to	TO
+create/update	VB
+a	DT
+set	NN
+of	IN
+stored	VBN
+user	NN
+preferences	NNS
+.	.
+
+Each	DT
+user	NN
+editing	NN
+session	NN
+usually	RB
+involves	VBZ
+a	DT
+series	NN
+of	IN
+edits	NNS
+.	.
+
+The	DT
+processing-editing	JJ
+cycle	NN
+recurs	VBZ
+over	IN
+time	NN
+.	.
+
+
+Query	NNP
+processing	NN
+.	.
+
+ClusteringWiki	NNP
+takes	VBZ
+a	DT
+query	NN
+q	NN
+from	IN
+a	DT
+user	NN
+u	NN
+and	CC
+retrieves	VBZ
+the	DT
+search	NN
+results	VBZ
+R	NN
+from	IN
+a	DT
+data	NN
+source	NN
+-LRB-	-LRB-
+e.g.	FW
+,	,
+Google	NNP
+-RRB-	-RRB-
+.	.
+
+Then	RB
+,	,
+it	PRP
+clusters	NNS
+R	NN
+with	IN
+a	DT
+default	NN
+clustering	NN
+algorithm	NN
+-LRB-	-LRB-
+e.g.	FW
+,	,
+frequent	JJ
+phrase	NN
+hierarchical	JJ
+-RRB-	-RRB-
+to	TO
+produce	VB
+an	DT
+initial	JJ
+cluster	NN
+tree	NN
+Tinit	NN
+.	.
+
+Then	RB
+,	,
+it	PRP
+applies	VBZ
+P	NN
+,	,
+an	DT
+applicable	JJ
+set	NN
+of	IN
+stored	VBN
+user	NN
+preferences	NNS
+,	,
+to	TO
+Tinit	NNP
+and	CC
+presents	VBZ
+a	DT
+modiï	NN
+¬	NN
+ed	VBD
+cluster	NN
+tree	NN
+T	NN
+that	WDT
+respects	VBZ
+P.	NNP
+
+
+575	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+3	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+Note	VB
+that	DT
+ClusteringWiki	NNP
+performs	VBZ
+clustering	NN
+.	.
+
+The	DT
+mod	NN
+-	:
+iï	NN
+¬	NN
+cation	NN
+should	MD
+not	RB
+alter	VB
+R	NN
+,	,
+the	DT
+input	NN
+data	NNS
+.	.
+
+
+If	IN
+the	DT
+user	NN
+u	NN
+is	VBZ
+logged-in	JJ
+,	,
+P	NN
+will	MD
+be	VB
+set	VBN
+to	TO
+Pq	NNP
+,	,
+u	NN
+,	,
+a	DT
+set	NN
+of	IN
+preferences	NNS
+for	IN
+q	JJ
+previously	RB
+speciï	NN
+¬	CD
+ed	VBN
+by	IN
+u.Incase	NN
+Pq	NN
+,	,
+u	NN
+=	JJ
+,	,
+Pq	NN
+
+
+
+,	,
+u	FW
+
+
+will	MD
+be	VB
+used	VBN
+on	IN
+condition	NN
+that	IN
+q	NN
+is	VBZ
+suciently	RB
+close	JJ
+
+
+to	TO
+q	VB
+.	.
+
+If	IN
+the	DT
+user	NN
+u	NN
+is	VBZ
+not	RB
+logged-in	JJ
+,	,
+P	NN
+will	MD
+be	VB
+set	VBN
+to	TO
+Pq	NNP
+,	,
+U	NNP
+,	,
+a	DT
+set	NN
+of	IN
+aggregated	JJ
+preferences	NNS
+for	IN
+q	JJ
+previously	RB
+speciï	NN
+¬	CD
+ed	VBN
+by	IN
+all	DT
+users	NNS
+.	.
+
+In	IN
+case	NN
+Pq	NN
+,	,
+U	NN
+=	JJ
+,	,
+Pq	NN
+
+
+,	,
+U	NNP
+
+
+will	MD
+be	VB
+used	VBN
+on	IN
+condition	NN
+that	WDT
+q	VBP
+
+
+
+is	VBZ
+suciently	RB
+close	JJ
+to	TO
+q.	VB
+
+
+In	IN
+the	DT
+cluster	NN
+tree	NN
+T	NN
+,	,
+the	DT
+internal	JJ
+nodes	NNS
+,	,
+i.e.	FW
+,	,
+non-leaf	JJ
+nodes	NNS
+,	,
+contain	VBP
+cluster	NN
+labels	NNS
+and	CC
+are	VBP
+presented	VBN
+on	IN
+the	DT
+left	NN
+-	:
+hand	NN
+label	NN
+panel	NN
+.	.
+
+Each	DT
+label	NN
+is	VBZ
+a	DT
+set	NN
+of	IN
+keywords	NNS
+.	.
+
+The	DT
+leaf	NN
+nodes	NNS
+contain	VBP
+search	NN
+results	NNS
+,	,
+and	CC
+the	DT
+leaf	NN
+nodes	NNS
+for	IN
+a	DT
+selected	VBN
+label	NN
+are	VBP
+presented	VBN
+on	IN
+the	DT
+right-hand	JJ
+result	NN
+panel	NN
+.	.
+
+A	DT
+search	NN
+result	NN
+can	MD
+appear	VB
+multiple	JJ
+times	NNS
+in	IN
+T	NN
+.	.
+
+The	DT
+root	NN
+of	IN
+T	NN
+repre	NN
+-	:
+sents	VBZ
+the	DT
+query	NN
+q	VB
+itself	PRP
+and	CC
+is	VBZ
+always	RB
+labeled	VBN
+with	IN
+All	DT
+.	.
+
+When	WRB
+it	PRP
+is	VBZ
+chosen	VBN
+,	,
+all	DT
+search	NN
+results	NNS
+will	MD
+be	VB
+presented	VBN
+on	IN
+the	DT
+result	NN
+panel	NN
+.	.
+
+Labels	NNS
+other	JJ
+than	IN
+All	DT
+represent	VBP
+the	DT
+various	JJ
+,	,
+possibly	RB
+overlapping	VBG
+,	,
+sub-topics	NNS
+of	IN
+q	NN
+.	.
+
+When	WRB
+there	EX
+is	VBZ
+no	DT
+ambiguity	NN
+,	,
+internal	JJ
+node	NN
+,	,
+label	NN
+node	NN
+,	,
+cluster	NN
+label	NN
+and	CC
+label	NN
+are	VBP
+used	VBN
+in	IN
+-	:
+terchangeably	RB
+in	IN
+the	DT
+paper	NN
+.	.
+
+Similarly	RB
+,	,
+leaf	NN
+node	NN
+,	,
+result	VBP
+node	NN
+,	,
+search	NN
+result	NN
+and	CC
+result	NN
+are	VBP
+used	VBN
+interchangeably	RB
+.	.
+
+
+Cluster	NN
+editing	NN
+.	.
+
+If	IN
+logged-in	JJ
+,	,
+a	DT
+user	NN
+u	NN
+can	MD
+edit	VB
+the	DT
+cluster	NN
+tree	NN
+T	NN
+for	IN
+query	NN
+q	NN
+by	IN
+creating	VBG
+,	,
+deleting	VBG
+,	,
+modifying	VBG
+,	,
+moving	VBG
+or	CC
+copying	VBG
+nodes	NNS
+.	.
+
+User	NN
+edits	NNS
+will	MD
+be	VB
+validated	VBN
+against	IN
+a	DT
+set	NN
+C	NN
+of	IN
+consistency	NN
+constraints	NNS
+before	IN
+being	VBG
+written	VBN
+to	TO
+Pq	NNP
+,	,
+u	NN
+.	.
+
+The	DT
+set	NN
+C	NN
+contains	VBZ
+predeï	NN
+¬	NN
+ned	VBD
+constraints	NNS
+that	WDT
+are	VBP
+speci	NN
+-	:
+ï	NN
+¬	CD
+ed	VBD
+on	IN
+,	,
+for	IN
+example	NN
+,	,
+the	DT
+size	NN
+of	IN
+clusters	NNS
+,	,
+the	DT
+height	NN
+of	IN
+the	DT
+tree	NN
+and	CC
+the	DT
+length	NN
+of	IN
+labels	NNS
+.	.
+
+These	DT
+constraints	NNS
+exist	VBP
+to	TO
+maintain	VB
+a	DT
+favorable	JJ
+user	NN
+interface	NN
+for	IN
+fast	JJ
+and	CC
+intuitive	JJ
+navigation	NN
+.	.
+
+The	DT
+cluster	NN
+tree	NN
+T	NN
+is	VBZ
+consistent	JJ
+if	IN
+it	PRP
+satisï	JJ
+¬	NN
+es	VBZ
+all	PDT
+the	DT
+con	NN
+-	:
+straints	NNS
+in	IN
+C.	NNP
+
+
+By	IN
+combining	VBG
+preferences	NNS
+in	IN
+Pq	NNP
+,	,
+u	NN
+for	IN
+all	DT
+users	NNS
+who	WP
+have	VBP
+edited	VBN
+the	DT
+cluster	NN
+tree	NN
+T	NN
+for	IN
+query	NN
+q	NN
+,	,
+we	PRP
+obtain	VBP
+Pq	NN
+,	,
+U	NNP
+,	,
+a	DT
+set	NN
+of	IN
+aggregated	JJ
+preferences	NNS
+for	IN
+query	NN
+q.Weuse	NN
+Pu	NN
+to	TO
+denote	VB
+the	DT
+collection	NN
+of	IN
+clustering	NN
+preferences	NNS
+by	IN
+user	NN
+ufor	NN
+all	DT
+queries	NNS
+,	,
+which	WDT
+is	VBZ
+a	DT
+set	NN
+of	IN
+sets	NNS
+of	IN
+preferences	NNS
+such	JJ
+that	IN
+q	NN
+,	,
+Pq	NN
+,	,
+u	FW
+Pu	FW
+.	.
+
+We	PRP
+also	RB
+use	VBP
+PU	NN
+to	TO
+denote	VB
+the	DT
+collection	NN
+of	IN
+aggregated	JJ
+preferences	NNS
+by	IN
+all	DT
+users	NNS
+for	IN
+all	DT
+queries	NNS
+,	,
+which	WDT
+is	VBZ
+a	DT
+set	NN
+of	IN
+sets	NNS
+of	IN
+aggregated	JJ
+preferences	NNS
+such	JJ
+that	IN
+q	NN
+,	,
+Pq	NN
+,	,
+U	NNP
+PU	NN
+.	.
+
+Pu	NN
+and	CC
+PU	NN
+are	VBP
+maintained	VBN
+over	IN
+time	NN
+and	CC
+used	VBN
+by	IN
+ClusteringWiki	NNP
+in	IN
+processing	VBG
+queries	NNS
+for	IN
+the	DT
+user	NN
+u.	NN
+
+
+Design	NN
+principles	NNS
+.	.
+
+In	IN
+a	DT
+search	NN
+result	VBP
+clustering	NN
+engine	NN
+,	,
+there	EX
+are	VBP
+signiï	NN
+¬	CD
+cant	JJ
+uncertainties	NNS
+from	IN
+the	DT
+data	NNS
+to	TO
+the	DT
+clus	NN
+-	:
+tering	VBG
+algorithm	NN
+.	.
+
+Wiki-facilitated	JJ
+personalization	NN
+further	RB
+adds	VBZ
+substantial	JJ
+complications	NNS
+.	.
+
+Simplicity	NN
+should	MD
+be	VB
+a	DT
+key	JJ
+principle	NN
+in	IN
+designing	VBG
+such	PDT
+a	DT
+complex	JJ
+system	NN
+.	.
+
+Clustering	NN
+-	:
+Wiki	NNP
+adopts	VBZ
+a	DT
+simple	JJ
+yet	RB
+powerful	JJ
+path	NN
+approach	NN
+.	.
+
+With	IN
+this	DT
+approach	NN
+,	,
+a	DT
+cluster	NN
+tree	NN
+T	NN
+is	VBZ
+decomposed	VBN
+into	IN
+a	DT
+set	NN
+of	IN
+root-to-leaf	NN
+paths	NNS
+that	WDT
+serve	VBP
+as	IN
+independent	JJ
+editing	NN
+components	NNS
+.	.
+
+A	DT
+path	NN
+always	RB
+starts	VBZ
+with	IN
+All	DT
+-LRB-	-LRB-
+root	NN
+-RRB-	-RRB-
+and	CC
+ends	VBZ
+with	IN
+some	DT
+search	NN
+result	NN
+-LRB-	-LRB-
+leaf	NN
+-RRB-	-RRB-
+.	.
+
+In	IN
+ClusteringWiki	NNP
+,	,
+main	JJ
+-	:
+tenance	NN
+,	,
+aggregation	NN
+and	CC
+enforcement	NN
+of	IN
+user	NN
+preferences	NNS
+are	VBP
+based	VBN
+on	IN
+simple	JJ
+path	NN
+arithmetic	NN
+.	.
+
+Moreover	RB
+,	,
+the	DT
+path	NN
+approach	NN
+is	VBZ
+suciently	RB
+powerful	JJ
+,	,
+being	VBG
+able	JJ
+to	TO
+handle	VB
+the	DT
+
+
+ï	NN
+¬	CD
+nest	NN
+user	NN
+preference	NN
+for	IN
+a	DT
+cluster	NN
+tree	NN
+.	.
+
+
+In	IN
+particular	JJ
+,	,
+each	DT
+edit	NN
+of	IN
+T	NN
+can	MD
+be	VB
+interpreted	VBN
+as	IN
+oper	NN
+-	:
+ations	NNS
+on	IN
+one	CD
+or	CC
+more	JJR
+paths	NNS
+.	.
+
+There	EX
+are	VBP
+two	CD
+primitive	JJ
+op	NN
+-	:
+erations	NNS
+on	IN
+a	DT
+path	NN
+p	NN
+,	,
+insertion	NN
+of	IN
+p	NN
+and	CC
+deletion	NN
+of	IN
+p.A	NN
+modiï	NN
+¬	CD
+cation	NN
+of	IN
+pto	NN
+p	NN
+
+
+
+is	VBZ
+simply	RB
+a	DT
+deletion	NN
+of	IN
+p	NN
+followed	VBN
+by	IN
+an	DT
+insertion	NN
+of	IN
+p	NN
+
+
+
+.	.
+
+
+For	IN
+each	DT
+user	NN
+u	NN
+and	CC
+each	DT
+query	NN
+q	NN
+,	,
+ClusteringWiki	NNP
+main	JJ
+-	:
+
+
+576	CD
+
+
+tains	NNS
+a	DT
+set	NN
+of	IN
+paths	NNS
+Pq	NNP
+,	,
+u	FW
+representing	VBG
+the	DT
+user	NN
+edits	VBZ
+from	IN
+u	FW
+for	IN
+query	NN
+q.	VBD
+Each	DT
+path	NN
+p	NN
+Pq	NN
+,	,
+u	NN
+can	MD
+be	VB
+either	CC
+positive	JJ
+or	CC
+negative	JJ
+.	.
+
+A	DT
+positive	JJ
+path	NN
+p	NN
+represents	VBZ
+an	DT
+insertion	NN
+of	IN
+p	NN
+,	,
+meaning	VBG
+that	IN
+the	DT
+user	NN
+prefers	VBZ
+to	TO
+have	VB
+p	NN
+in	IN
+T	NN
+.	.
+
+A	DT
+negative	JJ
+path	NN
+p	NN
+represents	VBZ
+a	DT
+deletion	NN
+of	IN
+p	NN
+,	,
+meaning	VBG
+that	IN
+the	DT
+user	NN
+prefers	VBZ
+not	RB
+to	TO
+have	VB
+p	NN
+in	IN
+T.	NNP
+Two	CD
+opposite	JJ
+paths	NNS
+p	NN
+and	CC
+p	NN
+will	MD
+cancel	VB
+each	DT
+other	JJ
+out	RP
+.	.
+
+The	DT
+paths	NNS
+in	IN
+Pq	NNP
+,	,
+u	NN
+may	MD
+be	VB
+added	VBN
+from	IN
+multiple	JJ
+editing	NN
+sessions	NNS
+at	IN
+dierent	JJ
+times	NNS
+.	.
+
+
+To	TO
+aggregate	JJ
+user	NN
+preferences	NNS
+for	IN
+query	NN
+q	NN
+,	,
+Clustering	NN
+-	:
+Wiki	NNP
+ï	NN
+¬	CD
+rst	NN
+combines	VBZ
+the	DT
+paths	NNS
+in	IN
+all	DT
+Pq	NN
+,	,
+u	NN
+,	,
+u	NN
+U	NNP
+,	,
+where	WRB
+U	NNP
+is	VBZ
+the	DT
+set	NN
+of	IN
+users	NNS
+who	WP
+have	VBP
+edited	VBN
+the	DT
+cluster	NN
+tree	NN
+of	IN
+q.	NN
+Then	RB
+,	,
+certain	JJ
+statistically	RB
+signiï	NN
+¬	CD
+cant	JJ
+paths	NNS
+are	VBP
+selected	VBN
+and	CC
+stored	VBN
+in	IN
+Pq	NNP
+,	,
+U.	NNP
+
+
+Suppose	VB
+in	IN
+processing	NN
+query	NN
+q	NN
+,	,
+P	NN
+is	VBZ
+identiï	NN
+¬	NN
+ed	VBD
+as	IN
+the	DT
+ap	NN
+-	:
+plicable	JJ
+set	NN
+of	IN
+paths	NNS
+to	TO
+enforce	VB
+.	.
+
+ClusteringWiki	NNP
+ï	VBD
+¬	CD
+rst	NN
+com	NN
+-	:
+bines	NNS
+the	DT
+paths	NNS
+in	IN
+P	NN
+and	CC
+the	DT
+paths	NNS
+in	IN
+Tinit	NNP
+,	,
+where	WRB
+Tinit	NNP
+is	VBZ
+the	DT
+initial	JJ
+cluster	NN
+tree	NN
+.	.
+
+Then	RB
+,	,
+it	PRP
+presents	VBZ
+the	DT
+combined	JJ
+paths	NNS
+as	IN
+a	DT
+tree	NN
+,	,
+which	WDT
+is	VBZ
+the	DT
+cluster	NN
+tree	NN
+T	NN
+.	.
+
+The	DT
+combination	NN
+is	VBZ
+straightforward	JJ
+.	.
+
+For	IN
+each	DT
+positive	JJ
+p	NN
+P	NN
+,	,
+if	IN
+p	NN
+/	:
+Tinit	NNP
+,	,
+add	VBP
+p	NN
+toTinit	NN
+.	.
+
+For	IN
+each	DT
+negative	JJ
+p	NN
+P	NN
+,	,
+if	IN
+p	NN
+Tinit	NN
+,	,
+remove	VB
+p	NN
+from	IN
+Tinit	NNP
+.	.
+
+
+Reproducibility	NN
+.	.
+
+It	PRP
+is	VBZ
+easy	JJ
+to	TO
+verify	VB
+that	DT
+Clustering	NN
+-	:
+Wiki	NNP
+has	VBZ
+the	DT
+property	NN
+of	IN
+reproducing	VBG
+edited	VBN
+cluster	NN
+trees	NNS
+.	.
+
+In	IN
+particular	JJ
+,	,
+after	IN
+a	DT
+series	NN
+of	IN
+user	NN
+edits	VBZ
+on	IN
+Tinit	NNP
+to	TO
+produce	VB
+T	NN
+,	,
+if	IN
+Tinit	NN
+remains	VBZ
+the	DT
+same	JJ
+in	IN
+a	DT
+subsequent	JJ
+query	NN
+,	,
+exactly	RB
+the	DT
+same	JJ
+T	NN
+will	MD
+be	VB
+produced	VBN
+after	IN
+enforcing	VBG
+the	DT
+stored	VBN
+user	NN
+preferences	NNS
+generated	VBN
+from	IN
+the	DT
+user	NN
+edits	VBZ
+on	IN
+Tinit	NNP
+.	.
+
+
+4	LS
+.	.
+
+FRAMEWORK	NN
+
+
+In	IN
+this	DT
+section	NN
+,	,
+we	PRP
+introduce	VBP
+the	DT
+ClusteringWiki	NNP
+frame	NN
+-	:
+work	NN
+in	IN
+detail	NN
+.	.
+
+In	IN
+particular	JJ
+,	,
+we	PRP
+present	VBP
+the	DT
+algorithms	NNS
+for	IN
+the	DT
+query	NN
+processing	NN
+and	CC
+cluster	NN
+editing	NN
+modules	NNS
+and	CC
+explain	VB
+their	PRP$
+main	JJ
+components	NNS
+.	.
+
+
+4.1	CD
+Query	NNP
+Processing	NNP
+
+
+Algorithm	NN
+1	CD
+presents	VBZ
+the	DT
+pseudocode	NN
+for	IN
+the	DT
+query	NN
+pro-	JJ
+cessing	NN
+algorithm	NN
+of	IN
+ClusteringWiki	NNP
+.	.
+
+In	IN
+the	DT
+input	NN
+,	,
+Pu	NN
+and	CC
+PU	NN
+are	VBP
+used	VBN
+instead	RB
+of	IN
+Pq	NN
+,	,
+u	NN
+and	CC
+Pq	NN
+,	,
+U	NNP
+for	IN
+preference	NN
+transfer	NN
+purposes	NNS
+.	.
+
+In	IN
+processing	NN
+query	NN
+q	NN
+,	,
+it	PRP
+is	VBZ
+likely	JJ
+that	IN
+Pq	NN
+,	,
+u	NN
+=	JJ
+or	CC
+Pq	NN
+,	,
+U	NN
+=	JJ
+;	:
+then	RB
+some	DT
+applicable	JJ
+Pq	NN
+
+
+,	,
+u	FW
+
+
+Pu	NN
+or	CC
+Pq	NN
+
+
+,	,
+U	NNP
+
+
+PU	NN
+can	MD
+be	VB
+used	VBN
+.	.
+
+The	DT
+creation	NN
+and	CC
+maintenance	NN
+of	IN
+such	JJ
+user	NN
+preferences	NNS
+will	MD
+be	VB
+discussed	VBN
+in	IN
+Section	NN
+4.2	CD
+.	.
+
+The	DT
+output	NN
+of	IN
+the	DT
+algorithm	NN
+is	VBZ
+a	DT
+consistent	JJ
+cluster	NN
+tree	NN
+T.	FW
+
+
+Retrieving	VBG
+search	NN
+results	NNS
+.	.
+
+Line	NNP
+1	CD
+retrieves	VBZ
+a	DT
+set	NN
+R	NN
+of	IN
+search	NN
+results	NNS
+for	IN
+query	NN
+q	NN
+from	IN
+a	DT
+chosen	VBN
+data	NNS
+source	NN
+.	.
+
+The	DT
+size	NN
+of	IN
+R	NN
+is	VBZ
+set	VBN
+to	TO
+50	CD
+by	IN
+default	NN
+and	CC
+adjustable	JJ
+to	TO
+up	RB
+to	TO
+500	CD
+.	.
+
+The	DT
+available	JJ
+data	NNS
+sources	NNS
+include	VBP
+Google	NNP
+and	CC
+Yahoo	NNP
+!	.
+
+Search	VB
+APIs	NNS
+among	IN
+others	NNS
+-LRB-	-LRB-
+see	VB
+Section	NNP
+5	CD
+for	IN
+details	NNS
+-RRB-	-RRB-
+.	.
+
+Clus	SYM
+-	:
+teringWiki	NN
+retrieves	VBZ
+the	DT
+results	NNS
+via	IN
+multi-threaded	JJ
+parallel	JJ
+requests	NNS
+,	,
+which	WDT
+are	VBP
+much	JJ
+faster	JJR
+than	IN
+sequential	JJ
+requests	NNS
+.	.
+
+
+The	DT
+combined	JJ
+titles	NNS
+and	CC
+snippets	NNS
+of	IN
+search	NN
+results	VBZ
+re	SYM
+-	:
+trieved	VBN
+from	IN
+the	DT
+sources	NNS
+are	VBP
+preprocessed	VBN
+.	.
+
+In	IN
+order	NN
+to	TO
+ex	FW
+-	:
+tract	NN
+phrases	NNS
+,	,
+we	PRP
+implemented	VBD
+our	PRP$
+own	JJ
+tokenizer	NN
+that	WDT
+iden	SYM
+-	:
+tiï	NN
+¬	CD
+es	NNS
+whether	IN
+a	DT
+token	JJ
+is	VBZ
+a	DT
+word	NN
+,	,
+numeric	JJ
+,	,
+punctuation	NN
+mark	NN
+,	,
+capitalized	VBN
+,	,
+all	DT
+caps	NNS
+,	,
+etc.	FW
+.	.
+
+We	PRP
+then	RB
+remove	VB
+non-textual	JJ
+tokens	NNS
+and	CC
+stop	VB
+words	NNS
+,	,
+using	VBG
+the	DT
+stop	NN
+word	NN
+list	NN
+from	IN
+the	DT
+Apache	NNP
+Snowball	NNP
+package	NN
+-LRB-	-LRB-
+www.docjar.com/html/api/org/apache/	NN
+lucene/analysis	NN
+/	:
+snowball/SnowballAnalyzer	NN
+.	.
+
+java.html	NN
+-RRB-	-RRB-
+.	.
+
+The	DT
+tokens	NNS
+are	VBP
+then	RB
+stemmed	VBN
+using	VBG
+the	DT
+Porter	NNP
+-LRB-	-LRB-
+tartarus.org	JJ
+/	:
+mar	FW
+-	:
+tin/PorterStemmer	NN
+/	:
+-RRB-	-RRB-
+algorithm	NN
+and	CC
+indexed	VBD
+as	IN
+terms	NNS
+.	.
+
+For	IN
+each	DT
+term	NN
+,	,
+document	NN
+frequency	NN
+and	CC
+collection	NN
+frequency	NN
+are	VBP
+computed	VBN
+and	CC
+stored	VBN
+.	.
+
+A	DT
+numeric	JJ
+id	NN
+is	VBZ
+also	RB
+assigned	VBN
+to	TO
+each	DT
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+4	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+Algorithm	NN
+1	CD
+Query	NN
+processing	NN
+
+
+Input	NN
+:	:
+q	VB
+,	,
+u	FW
+,	,
+C	NN
+,	,
+Pu	NN
+and	CC
+PU	NN
+:	:
+q	VB
+is	VBZ
+a	DT
+query	NN
+.	.
+
+u	NN
+is	VBZ
+a	DT
+user	NN
+.	.
+
+C	NN
+
+
+is	VBZ
+a	DT
+set	NN
+of	IN
+consistency	NN
+constraints	NNS
+.	.
+
+Pu	NN
+is	VBZ
+a	DT
+collection	NN
+of	IN
+
+
+preferences	NNS
+by	IN
+user	NN
+u	NN
+for	IN
+all	DT
+queries	NNS
+,	,
+where	WRB
+q	NN
+,	,
+Pq	NN
+,	,
+u	NN
+
+
+Pu	NN
+.	.
+
+PU	NN
+is	VBZ
+a	DT
+collection	NN
+of	IN
+aggregated	JJ
+preferences	NNS
+for	IN
+all	DT
+
+
+queries	NNS
+,	,
+where	WRB
+q	NN
+,	,
+Pq	NN
+,	,
+U	NNP
+PU	NN
+.	.
+
+
+Output	NN
+:	:
+T	NN
+:	:
+a	DT
+consistent	JJ
+cluster	NN
+tree	NN
+for	IN
+the	DT
+search	NN
+results	VBZ
+
+
+of	IN
+query	NN
+q.	IN
+
+
+1	CD
+:	:
+retrieve	VB
+a	DT
+set	NN
+R	NN
+of	IN
+search	NN
+results	NNS
+for	IN
+query	NN
+q	NN
+;	:
+2	CD
+:	:
+cluster	NN
+R	NN
+to	TO
+obtain	VB
+an	DT
+initial	JJ
+cluster	NN
+tree	NN
+Tinit	NN
+;	:
+3	CD
+:	:
+P	NN
+;	:
+/	:
+/	:
+Pis	NNP
+the	DT
+set	NN
+of	IN
+paths	NNS
+to	TO
+be	VB
+enforced	VBN
+on	IN
+Tinit	NN
+4	CD
+:	:
+if	IN
+-LRB-	-LRB-
+u	NN
+is	VBZ
+logged-in	JJ
+-RRB-	-RRB-
+then	RB
+
+
+5	CD
+:	:
+q	VB
+
+
+
+T	NN
+rans	NNS
+-LRB-	-LRB-
+q	NN
+,	,
+u	NN
+-RRB-	-RRB-
+;	:
+
+
+6	CD
+:	:
+if	IN
+-LRB-	-LRB-
+q	SYM
+
+
+
+=	JJ
+NULL	NN
+-RRB-	-RRB-
+then	RB
+
+
+7	CD
+:	:
+P	NN
+Pq	NN
+
+
+,	,
+u	NN
+;	:
+/	:
+/	:
+use	VB
+applicable	JJ
+personal	JJ
+preferences	NNS
+8	CD
+:	:
+end	VB
+if	IN
+
+
+9	CD
+:	:
+else	RB
+
+
+10	CD
+:	:
+q	VB
+
+
+
+T	NN
+rans	NNS
+-LRB-	-LRB-
+q	NN
+,	,
+U	NNP
+-RRB-	-RRB-
+;	:
+
+
+11	CD
+:	:
+if	IN
+-LRB-	-LRB-
+q	SYM
+
+
+
+=	JJ
+NULL	NN
+-RRB-	-RRB-
+then	RB
+
+
+12	CD
+:	:
+P	NN
+Pq	NN
+
+
+,	,
+U	NNP
+;	:
+/	:
+/	:
+use	VB
+applicable	JJ
+aggregated	JJ
+preferences	NNS
+13	CD
+:	:
+end	VB
+if	IN
+
+
+14	CD
+:	:
+end	VB
+if	IN
+
+
+15	CD
+:	:
+T	NN
+Tinit	NN
+;	:
+/	:
+/	:
+initialize	VB
+T	NN
+,	,
+the	DT
+cluster	NN
+tree	NN
+to	TO
+present	JJ
+16	CD
+:	:
+clean	JJ
+P	NN
+;	:
+/	:
+/	:
+remove	VB
+p	NN
+P	NN
+if	IN
+its	PRP$
+result	NN
+node	NN
+is	VBZ
+not	RB
+in	IN
+R	NN
+17	CD
+:	:
+for	IN
+each	DT
+p	NN
+P	NN
+
+
+18	CD
+:	:
+if	IN
+-LRB-	-LRB-
+p	NN
+is	VBZ
+positive	JJ
+-RRB-	-RRB-
+then	RB
+
+
+19	CD
+:	:
+T	NN
+T	NN
+-LCB-	-LRB-
+p	NN
+-RCB-	-RRB-
+;	:
+/	:
+/	:
+add	VB
+a	DT
+preferred	JJ
+path	NN
+
+
+20	CD
+:	:
+else	RB
+
+
+21	CD
+:	:
+T	NN
+T	NN
+-LCB-	-LRB-
+p	NN
+-RCB-	-RRB-
+;	:
+/	:
+/	:
+remove	VB
+a	DT
+non-preferred	JJ
+path	NN
+22	CD
+:	:
+end	VB
+if	IN
+
+
+23	CD
+:	:
+end	VB
+for	IN
+
+
+24	CD
+:	:
+trim	JJ
+-LRB-	-LRB-
+T	NN
+,	,
+C	NN
+-RRB-	-RRB-
+;	:
+/	:
+/	:
+makeT	NN
+consistent	JJ
+
+
+25	CD
+:	:
+present	JJ
+-LRB-	-LRB-
+T	NN
+-RRB-	-RRB-
+;	:
+/	:
+/	:
+present	JJ
+the	DT
+set	NN
+of	IN
+paths	NNS
+in	IN
+T	NN
+as	IN
+a	DT
+tree	NN
+
+
+term	NN
+in	IN
+the	DT
+document	NN
+collection	NN
+in	IN
+order	NN
+to	TO
+eciently	RB
+cal	JJ
+-	:
+culate	JJ
+document	NN
+similarity	NN
+,	,
+identify	VBP
+frequent	JJ
+phrases	NNS
+,	,
+etc.	FW
+.	.
+
+
+Building	NN
+initial	JJ
+tree	NN
+.	.
+
+Line	NN
+2	CD
+builds	VBZ
+an	DT
+initial	JJ
+cluster	NN
+tree	NN
+Tinit	NN
+with	IN
+a	DT
+built-in	JJ
+clustering	NN
+algorithm	NN
+.	.
+
+ClusteringWiki	NNP
+provides	VBZ
+4	CD
+such	JJ
+algorithms	NNS
+:	:
+k-means	NNS
+ï	VBP
+¬	CD
+‚	CD
+at	IN
+,	,
+k-means	JJ
+hierar	NN
+-	:
+chical	JJ
+,	,
+frequent	JJ
+phrase	NN
+ï	NN
+¬	CD
+‚	NN
+at	IN
+and	CC
+frequent	JJ
+phrase	NN
+hierarchical	JJ
+.	.
+
+The	DT
+hierarchical	JJ
+algorithms	NNS
+recursively	RB
+apply	VBP
+their	PRP$
+ï	NN
+¬	CD
+‚	NN
+at	IN
+coun	NN
+-	:
+terparts	NNS
+in	IN
+a	DT
+top-down	JJ
+manner	NN
+to	TO
+large	JJ
+clusters	NNS
+.	.
+
+
+The	DT
+k-means	JJ
+algorithms	NNS
+follow	VBP
+a	DT
+strategy	NN
+that	IN
+generates	VBZ
+clusters	NNS
+before	IN
+labels	NNS
+.	.
+
+They	PRP
+use	VBP
+a	DT
+simple	JJ
+approach	NN
+to	TO
+gen	NN
+-	:
+erate	JJ
+cluster	NN
+labels	NNS
+from	IN
+titles	NNS
+of	IN
+search	NN
+results	VBZ
+that	DT
+are	VBP
+the	DT
+closest	JJS
+to	TO
+cluster	VB
+centers	NNS
+.	.
+
+In	IN
+order	NN
+to	TO
+produce	VB
+stable	JJ
+clus	NN
+-	:
+ters	NNS
+,	,
+the	DT
+typical	JJ
+randomness	NN
+in	IN
+k-means	NNS
+due	JJ
+to	TO
+the	DT
+random	JJ
+selection	NN
+of	IN
+initial	JJ
+cluster	NN
+centers	NNS
+is	VBZ
+removed	VBN
+.	.
+
+The	DT
+parameter	NN
+k	NN
+is	VBZ
+heuristically	RB
+determined	VBN
+based	VBN
+on	IN
+the	DT
+size	NN
+of	IN
+the	DT
+input	NN
+.	.
+
+The	DT
+frequent	JJ
+phrase	NN
+algorithms	NNS
+follow	VBP
+a	DT
+strategy	NN
+that	WDT
+gen	SYM
+-	:
+erates	NNS
+labels	NNS
+before	IN
+clusters	NNS
+.	.
+
+They	PRP
+ï	VBP
+¬	CD
+rst	NN
+identify	VBP
+frequent	JJ
+phrases	NNS
+using	VBG
+a	DT
+sux	NN
+tree	NN
+built	VBN
+in	IN
+linear	JJ
+time	NN
+by	IN
+Ukkonenâ	NNP
+$	$
+™	CD
+s	NNS
+
+
+algorithm	NN
+.	.
+
+Then	RB
+they	PRP
+select	VBP
+labels	NNS
+from	IN
+the	DT
+frequent	JJ
+phrases	NNS
+using	VBG
+a	DT
+greedy	JJ
+set	NN
+cover	NN
+heuristic	NN
+,	,
+where	WRB
+at	IN
+each	DT
+step	NN
+a	DT
+fre	NN
+-	:
+quent	JJ
+phrase	NN
+covering	VBG
+the	DT
+most	RBS
+uncovered	JJ
+search	NN
+results	NNS
+is	VBZ
+selected	VBN
+until	IN
+the	DT
+whole	JJ
+cluster	NN
+is	VBZ
+covered	VBN
+or	CC
+no	DT
+frequent	JJ
+phrases	NNS
+remain	VBP
+.	.
+
+Then	RB
+they	PRP
+assign	VBP
+each	DT
+search	NN
+result	VBP
+r	NN
+to	TO
+a	DT
+label	NN
+L	NN
+if	IN
+r	NN
+contains	VBZ
+the	DT
+keywords	NNS
+in	IN
+L.	NNP
+Uncovered	NNP
+search	NN
+results	NNS
+are	VBP
+added	VBN
+to	TO
+a	DT
+special	JJ
+cluster	NN
+labeled	VBN
+Other	JJ
+.	.
+
+These	DT
+algorithms	NNS
+are	VBP
+able	JJ
+to	TO
+generate	VB
+very	RB
+meaningful	JJ
+cluster	NN
+la	DT
+-	:
+bels	NNS
+with	IN
+a	DT
+couple	NN
+of	IN
+heuristics	NNS
+.	.
+
+For	IN
+example	NN
+,	,
+a	DT
+sublabel	NN
+
+
+577	CD
+
+
+Algorithm	NN
+2	CD
+Trans	NNP
+-LRB-	-LRB-
+q	NNP
+,	,
+u	NN
+-RRB-	-RRB-
+
+
+Input	NN
+:	:
+q	VB
+,	,
+u	FW
+and	CC
+Pu	FW
+:	:
+q	VB
+is	VBZ
+a	DT
+query	NN
+.	.
+
+u	NN
+is	VBZ
+a	DT
+user	NN
+.	.
+
+Pu	NN
+is	VBZ
+a	DT
+
+
+collection	NN
+of	IN
+preferences	NNS
+by	IN
+user	NN
+u	NN
+for	IN
+all	DT
+queries	NNS
+,	,
+where	WRB
+
+
+q	NN
+,	,
+Pq	NN
+,	,
+u	FW
+Pu	FW
+.	.
+
+
+Output	NN
+:	:
+q	VB
+
+
+
+:	:
+a	DT
+query	NN
+such	JJ
+that	IN
+Pq	NN
+
+
+,	,
+u	FW
+
+
+is	VBZ
+applicable	JJ
+for	IN
+q.	NN
+1	CD
+:	:
+if	IN
+-LRB-	-LRB-
+Pq	NN
+,	,
+u	NN
+exists	VBZ
+-RRB-	-RRB-
+then	RB
+
+
+2	CD
+:	:
+return	NN
+q	NN
+;	:
+/	:
+/	:
+uhas	NNS
+edited	VBD
+the	DT
+cluster	NN
+tree	NN
+of	IN
+q	NN
+3	CD
+:	:
+else	RB
+
+
+4	CD
+:	:
+ï	NN
+¬	CD
+nd	NN
+q	NN
+
+
+
+s.t.	NNP
+Pq	NNP
+
+
+,	,
+u	FW
+
+
+Pu	NN
+termSim	NN
+-LRB-	-LRB-
+q	NN
+,	,
+q	NN
+-RRB-	-RRB-
+is	VBZ
+the	DT
+largest	JJS
+;	:
+
+
+
+5	CD
+:	:
+if	IN
+termSim	NN
+-LRB-	-LRB-
+q	NN
+,	,
+q	IN
+
+
+
+-RRB-	-RRB-
+
+
+ts	NNS
+
+
+then	RB
+/	:
+/	:
+
+
+ts	NNS
+
+
+is	VBZ
+a	DT
+threshold	NN
+6	CD
+:	:
+if	IN
+resultSim	NN
+-LRB-	-LRB-
+q	NN
+,	,
+q	IN
+
+
+
+-RRB-	-RRB-
+
+
+rs	NNS
+
+
+then	RB
+/	:
+/	:
+
+
+rs	NNS
+
+
+is	VBZ
+a	DT
+threshold	NN
+7	CD
+:	:
+Pq	NN
+,	,
+u	FW
+Pq	FW
+
+
+,	,
+u	NN
+;	:
+/	:
+/	:
+copy	NN
+preferences	NNS
+from	IN
+
+
+q	SYM
+
+
+
+to	TO
+q	VB
+8	CD
+:	:
+return	NN
+q	IN
+
+
+
+;	:
+
+
+9	CD
+:	:
+end	VB
+if	IN
+
+
+10	CD
+:	:
+end	VB
+if	IN
+
+
+11	CD
+:	:
+end	VB
+if	IN
+
+
+12	CD
+:	:
+return	NN
+NULL	NN
+;	:
+
+
+can	MD
+not	RB
+be	VB
+a	DT
+subset	NN
+of	IN
+a	DT
+superlabel	NN
+,	,
+in	IN
+which	WDT
+case	NN
+the	DT
+subla	NN
+-	:
+bel	NN
+is	VBZ
+redundant	JJ
+.	.
+
+
+ClusteringWiki	NNP
+smoothly	RB
+handles	VBZ
+ï	NN
+¬	CD
+‚	NN
+at	IN
+clustering	NN
+by	IN
+treat	NN
+-	:
+ing	NN
+partitions	NNS
+as	IN
+a	DT
+special	JJ
+case	NN
+of	IN
+trees	NNS
+.	.
+
+The	DT
+built-in	JJ
+clus	NN
+-	:
+tering	NN
+algorithms	NNS
+are	VBP
+meant	VBN
+to	TO
+serve	VB
+their	PRP$
+basic	JJ
+functions	NNS
+.	.
+
+The	DT
+focus	NN
+of	IN
+the	DT
+paper	NN
+is	VBZ
+not	RB
+to	TO
+produce	VB
+,	,
+but	CC
+to	TO
+modify	VB
+,	,
+the	DT
+initial	JJ
+cluster	NN
+trees	NNS
+.	.
+
+
+Determining	VBG
+applicable	JJ
+preferences	NNS
+.	.
+
+Lines	NNP
+3	CD
+14	CD
+de	IN
+-	:
+termine	NN
+P	NN
+,	,
+a	DT
+set	NN
+of	IN
+applicable	JJ
+paths	NNS
+to	TO
+be	VB
+enforced	VBN
+on	IN
+Tinit	NNP
+.	.
+
+Two	CD
+cases	NNS
+are	VBP
+considered	VBN
+.	.
+
+If	IN
+the	DT
+user	NN
+u	NN
+is	VBZ
+logged-in	JJ
+,	,
+P	NN
+will	MD
+use	VB
+some	DT
+set	VBN
+from	IN
+Pu	NNP
+representing	VBG
+personal	JJ
+preferences	NNS
+of	IN
+u	NN
+-LRB-	-LRB-
+lines	NNS
+4	CD
+8	CD
+-RRB-	-RRB-
+.	.
+
+Otherwise	RB
+,	,
+P	NN
+will	MD
+use	VB
+some	DT
+set	VBN
+from	IN
+PU	NN
+representing	VBG
+aggregated	JJ
+preferences	NNS
+-LRB-	-LRB-
+lines	NNS
+9	CD
+14	CD
+-RRB-	-RRB-
+.	.
+
+The	DT
+sub	NN
+-	:
+routine	JJ
+T	NN
+rans	NNS
+-LRB-	-LRB-
+-RRB-	-RRB-
+determines	VBZ
+the	DT
+actual	JJ
+set	NN
+to	TO
+use	VB
+if	IN
+any	DT
+.	.
+
+
+The	DT
+pseudocode	NN
+of	IN
+T	NN
+rans	NNS
+-LRB-	-LRB-
+q	NN
+,	,
+u	NN
+-RRB-	-RRB-
+is	VBZ
+presented	VBN
+in	IN
+Algorithm	NN
+2	CD
+.	.
+
+Given	VBN
+a	DT
+useru	NN
+and	CC
+a	DT
+queryq	NN
+,	,
+it	PRP
+returns	VBZ
+a	DT
+queryq	NN
+
+
+
+,	,
+whose	WP$
+preferences	NNS
+stored	VBD
+inPq	NN
+
+
+,	,
+u	FW
+
+
+are	VBP
+applicable	JJ
+to	TO
+queryq	NN
+.	.
+
+In	IN
+the	DT
+subroutine	NN
+,	,
+two	CD
+similarity	NN
+measures	NNS
+are	VBP
+used.Term	NN
+similar	JJ
+-	:
+ity	NN
+,	,
+termSim	NN
+-LRB-	-LRB-
+q	NN
+,	,
+q	IN
+
+
+
+-RRB-	-RRB-
+,	,
+is	VBZ
+the	DT
+Jaccard	NNP
+coecient	NN
+that	WDT
+compares	VBZ
+
+
+the	DT
+terms	NNS
+ofq	NN
+and	CC
+q	VB
+
+
+
+.	.
+
+Result	NN
+similarity	NN
+,	,
+resultSim	NN
+-LRB-	-LRB-
+q	NN
+,	,
+q	IN
+
+
+
+-RRB-	-RRB-
+,	,
+is	VBZ
+the	DT
+Jaccard	NNP
+coecient	NN
+that	WDT
+compares	VBZ
+the	DT
+URLs	NNS
+of	IN
+the	DT
+topk	NN
+
+
+-LRB-	-LRB-
+e.g.	FW
+,	,
+k	NN
+=	JJ
+10	CD
+-RRB-	-RRB-
+results	VBZ
+ofq	NN
+and	CC
+q	VB
+
+
+
+.	.
+
+This	DT
+calculation	NN
+requires	VBZ
+that	IN
+the	DT
+URLs	NNS
+of	IN
+the	DT
+topk	NN
+results	VBZ
+forq	NN
+
+
+
+be	VB
+stored	VBN
+.	.
+
+
+To	TO
+validateq	VB
+
+
+
+,	,
+both	DT
+similarity	NN
+values	NNS
+need	VBP
+to	TO
+pass	VB
+their	PRP$
+respective	JJ
+thresholdsts	NNS
+and	CC
+rs	NNS
+.	.
+
+Obviously	RB
+,	,
+the	DT
+bigger	JJR
+the	DT
+thresholds	NNS
+,	,
+the	DT
+more	RBR
+conservative	JJ
+the	DT
+transfer	NN
+.	.
+
+Setting	VBG
+the	DT
+thresholds	NNS
+to	TO
+1	CD
+shuts	VBZ
+down	RP
+preference	NN
+transfer	NN
+.	.
+
+Instead	RB
+of	IN
+thresholding	NN
+,	,
+another	DT
+reasonable	JJ
+way	NN
+of	IN
+validation	NN
+is	VBZ
+to	TO
+pro-	JJ
+vide	NN
+a	DT
+ranked	VBN
+list	NN
+of	IN
+similar	JJ
+queries	NNS
+and	CC
+ask	VB
+the	DT
+user	NN
+for	IN
+conï	NN
+¬	NN
+rmation	NN
+.	.
+
+
+The	DT
+subroutine	NN
+in	IN
+Algorithm	NN
+2	CD
+ï	NN
+¬	CD
+rst	NN
+checks	NNS
+ifPq	NNP
+,	,
+u	NN
+exists	VBZ
+-LRB-	-LRB-
+line	NN
+1	CD
+-RRB-	-RRB-
+.	.
+
+If	IN
+it	PRP
+does	VBZ
+,	,
+preference	NN
+transfer	NN
+is	VBZ
+not	RB
+needed	VBN
+andq	NN
+is	VBZ
+returned	VBN
+-LRB-	-LRB-
+line	NN
+2	CD
+-RRB-	-RRB-
+.	.
+
+In	IN
+this	DT
+case	NN
+,	,
+u	NN
+has	VBZ
+already	RB
+edited	VBN
+the	DT
+cluster	NN
+tree	NN
+for	IN
+queryq	NN
+and	CC
+stored	VBD
+the	DT
+preferences	NNS
+inPq	NNP
+,	,
+u.	IN
+
+
+Otherwise	RB
+,	,
+the	DT
+subroutine	NN
+tries	VBZ
+to	TO
+ï	VB
+¬	CD
+ndq	NN
+
+
+
+such	JJ
+thatPq	IN
+
+
+,	,
+u	FW
+
+
+is	VBZ
+applicable	JJ
+-LRB-	-LRB-
+lines	NNS
+4	CD
+11	CD
+-RRB-	-RRB-
+.	.
+
+To	TO
+do	VB
+so	RB
+,	,
+it	PRP
+ï	VBD
+¬	CD
+rst	NN
+ï	NN
+¬	CD
+ndsq	NN
+
+
+
+such	JJ
+that	IN
+Pq	NN
+
+
+,	,
+u	FW
+
+
+exists	VBZ
+andtermSim	NN
+-LRB-	-LRB-
+q	NN
+,	,
+q	IN
+
+
+
+-RRB-	-RRB-
+is	VBZ
+the	DT
+largest	JJS
+-LRB-	-LRB-
+line	NN
+4	CD
+-RRB-	-RRB-
+.	.
+
+Then	RB
+,	,
+it	PRP
+continues	VBZ
+to	TO
+validate	VB
+the	DT
+applicability	NN
+ofq	NN
+
+
+
+by	IN
+checking	VBG
+if	IN
+termSim	NN
+-LRB-	-LRB-
+q	NN
+,	,
+q	IN
+
+
+
+-RRB-	-RRB-
+andresultSim	NN
+-LRB-	-LRB-
+q	NN
+,	,
+q	IN
+
+
+
+-RRB-	-RRB-
+have	VBP
+passed	VBN
+their	PRP$
+re	SYM
+-	:
+spective	JJ
+thresholds	NNS
+-LRB-	-LRB-
+lines	NNS
+5sim	VBP
+6	CD
+-RRB-	-RRB-
+.	.
+
+If	IN
+so	RB
+,	,
+user	NN
+preferences	NNS
+for	IN
+q	NN
+
+
+
+will	MD
+be	VB
+copied	VBN
+to	TO
+q	VB
+-LRB-	-LRB-
+line	NN
+7	CD
+-RRB-	-RRB-
+,	,
+and	CC
+q	VB
+
+
+
+will	MD
+be	VB
+returned	VBN
+-LRB-	-LRB-
+line	NN
+8	CD
+-RRB-	-RRB-
+.	.
+
+Otherwise	RB
+,	,
+NULL	NNP
+will	MD
+be	VB
+returned	VBN
+-LRB-	-LRB-
+line	NN
+11	CD
+-RRB-	-RRB-
+,	,
+indicating	VBG
+no	DT
+applicable	JJ
+preferences	NNS
+exist	VBP
+for	IN
+query	NN
+q.	IN
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+5	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+The	DT
+preference	NN
+copying	NN
+-LRB-	-LRB-
+line	NN
+7	CD
+-RRB-	-RRB-
+is	VBZ
+important	JJ
+for	IN
+the	DT
+cor	NN
+-	:
+rectness	NN
+of	IN
+ClusteringWiki	NNP
+.	.
+
+Otherwise	RB
+,	,
+suppose	VBP
+there	EX
+is	VBZ
+a	DT
+preference	NN
+transfer	NN
+from	IN
+q	NN
+
+
+
+to	TO
+q	VB
+,	,
+where	WRB
+Pq	NNP
+,	,
+u	NN
+=	JJ
+and	CC
+Pq	NN
+
+
+,	,
+u	NN
+has	VBZ
+been	VBN
+applied	VBN
+on	IN
+Tinit	NN
+to	TO
+produce	VB
+T	NN
+.	.
+
+Then	RB
+,	,
+after	IN
+some	DT
+editing	NN
+from	IN
+u	FW
+,	,
+T	NN
+becomes	VBZ
+T	NN
+
+
+
+and	CC
+the	DT
+corresponding	JJ
+edits	NNS
+are	VBP
+stored	VBN
+in	IN
+Pq	NNP
+,	,
+u.	NNP
+Then	RB
+,	,
+this	DT
+Pq	NN
+,	,
+u	NN
+will	MD
+be	VB
+used	VBN
+the	DT
+next	JJ
+time	NN
+the	DT
+same	JJ
+query	NN
+q	NN
+is	VBZ
+issued	VBN
+by	IN
+u.	NNP
+However	RB
+,	,
+Pq	NN
+,	,
+u	NN
+will	MD
+not	RB
+be	VB
+able	JJ
+to	TO
+bring	VB
+an	DT
+identical	JJ
+Tinit	NN
+to	TO
+the	DT
+expected	VBN
+T	NN
+
+
+
+.	.
+
+It	PRP
+is	VBZ
+easy	JJ
+to	TO
+verify	VB
+that	DT
+line	NN
+7	CD
+ï	NN
+¬	CD
+xes	VBZ
+the	DT
+problem	NN
+and	CC
+ensures	VBZ
+reproducibility	NN
+.	.
+
+
+T	NN
+rans	NNS
+-LRB-	-LRB-
+q	NN
+,	,
+U	NNP
+-RRB-	-RRB-
+works	VBZ
+in	IN
+the	DT
+same	JJ
+way	NN
+.	.
+
+Preference	NN
+trans	NN
+-	:
+fer	NN
+is	VBZ
+an	DT
+important	JJ
+component	NN
+ofClusteringWiki	NN
+.	.
+
+Cluster	NN
+editing	NN
+takes	VBZ
+user	NN
+eort	NN
+and	CC
+there	EX
+are	VBP
+an	DT
+inï	NN
+¬	NN
+nite	JJ
+number	NN
+of	IN
+
+
+queries	NNS
+.	.
+
+It	PRP
+is	VBZ
+essential	JJ
+that	IN
+such	JJ
+user	NN
+eort	NN
+can	MD
+be	VB
+properly	RB
+
+
+reused	VBN
+.	.
+
+
+Enforcing	VBG
+applicable	JJ
+preferences	NNS
+.	.
+
+Back	RB
+to	TO
+Algorithm	NN
+1	CD
+,	,
+lines	NNS
+15	CD
+23	CD
+enforce	VBP
+the	DT
+paths	NNS
+ofP	NN
+on	IN
+Tinit	NN
+to	TO
+produce	VB
+the	DT
+cluster	NN
+treeT	NN
+.	.
+
+The	DT
+enforcement	NN
+is	VBZ
+straightforward	JJ
+.	.
+
+First	NNP
+P	NN
+is	VBZ
+cleaned	VBN
+by	IN
+removing	VBG
+those	DT
+paths	NNS
+whose	WP$
+result	NN
+nodes	NNS
+are	VBP
+not	RB
+in	IN
+the	DT
+search	NN
+result	VBP
+setR	NN
+-LRB-	-LRB-
+line	NN
+16	CD
+-RRB-	-RRB-
+.	.
+
+Recall	VB
+that	DT
+ClusteringWiki	NNP
+performs	VBZ
+clustering	NN
+.	.
+
+It	PRP
+should	MD
+not	RB
+alter	VB
+the	DT
+input	NN
+data	NNS
+R.	NNP
+Then	RB
+,	,
+the	DT
+positive	JJ
+paths	NNS
+in	IN
+P	NN
+are	VBP
+the	DT
+ones	NNS
+u	FW
+prefers	VBZ
+to	TO
+see	VB
+in	IN
+T	NN
+,	,
+thus	RB
+they	PRP
+are	VBP
+added	VBN
+to	TO
+T	NN
+-LRB-	-LRB-
+lines	NNS
+18	CD
+19	CD
+-RRB-	-RRB-
+.	.
+
+The	DT
+negative	JJ
+paths	NNS
+in	IN
+P	NN
+are	VBP
+the	DT
+ones	NNS
+u	FW
+prefers	VBZ
+not	RB
+to	TO
+see	VB
+in	IN
+T	NN
+,	,
+thus	RB
+they	PRP
+are	VBP
+removed	VBN
+from	IN
+T	NN
+-LRB-	-LRB-
+lines	NNS
+20	CD
+21	CD
+-RRB-	-RRB-
+.	.
+
+If	IN
+P	NN
+=	JJ
+,	,
+there	EX
+are	VBP
+no	DT
+applicable	JJ
+preferences	NNS
+and	CC
+Tinit	NNP
+will	MD
+not	RB
+be	VB
+modiï	NN
+¬	NN
+ed	VBD
+.	.
+
+
+Trimming	VBG
+and	CC
+Presenting	VBG
+T	NN
+.	.
+
+The	DT
+cluster	NN
+tree	NN
+T	NN
+must	MD
+satisfy	VB
+a	DT
+set	NN
+C	NN
+of	IN
+predeï	NN
+¬	CD
+ned	VBD
+constraints	NNS
+.	.
+
+Some	DT
+constraints	NNS
+maybe	RB
+violated	VBD
+after	IN
+applying	VBG
+P	NN
+to	TO
+Tinit	NNP
+.	.
+
+For	IN
+example	NN
+,	,
+adding	VBG
+or	CC
+removing	VBG
+paths	NNS
+may	MD
+result	VB
+in	IN
+small	JJ
+clusters	NNS
+that	WDT
+violate	VBP
+constraints	NNS
+on	IN
+the	DT
+size	NN
+of	IN
+clusters	NNS
+.	.
+
+In	IN
+line	NN
+24	CD
+,	,
+sub	SYM
+-	:
+routine	JJ
+trim	JJ
+-LRB-	-LRB-
+T	NN
+,	,
+C	NN
+-RRB-	-RRB-
+is	VBZ
+responsible	JJ
+for	IN
+makingT	NN
+consistent	JJ
+,	,
+
+
+B	NN
+
+
+P1	NN
+
+
+A	DT
+
+
+P2	NN
+
+
+All	DT
+
+
+C	NN
+
+
+P3	NN
+
+
+P4	NN
+
+
+D	NN
+
+
+P1	NN
+
+
+P5	NN
+
+
+Figure	NNP
+3	CD
+:	:
+Example	NN
+cluster	NN
+tree	NN
+.	.
+
+
+ï	NN
+¬	SYM
+rst	FW
+introduce	VB
+the	DT
+essential	JJ
+consistency	NN
+constraints	NNS
+for	IN
+clus	NN
+-	:
+ter	NN
+trees	NNS
+and	CC
+the	DT
+primitive	JJ
+user	NN
+edits	VBZ
+.	.
+
+
+Essential	JJ
+consistency	NN
+constraints	NNS
+.	.
+
+Predeï	NNP
+¬	NNP
+ned	VBD
+consis	NN
+-	:
+tency	NN
+constraints	NNS
+exist	VBP
+to	TO
+maintain	VB
+a	DT
+favorable	JJ
+user	NN
+inter	NN
+-	:
+face	NN
+for	IN
+fast	JJ
+and	CC
+intuitive	JJ
+navigation	NN
+.	.
+
+They	PRP
+can	MD
+be	VB
+speciï	JJ
+¬	NN
+ed	VBD
+on	IN
+any	DT
+structural	JJ
+component	NN
+of	IN
+the	DT
+cluster	NN
+tree	NN
+T	NN
+.	.
+
+In	IN
+the	DT
+following	VBG
+,	,
+we	PRP
+list	VBP
+the	DT
+essential	JJ
+ones	NNS
+.	.
+
+
+â	RB
+$	$
+cents	NNS
+Path	NN
+constraint	NN
+:	:
+Each	DT
+path	NN
+of	IN
+cluster	NN
+tree	NN
+T	NN
+must	MD
+start	VB
+
+
+with	IN
+the	DT
+root	NN
+labeled	VBN
+Alland	NNP
+end	NN
+with	IN
+a	DT
+leaf	NN
+node	NN
+that	WDT
+is	VBZ
+a	DT
+
+
+search	NN
+result	NN
+.	.
+
+In	IN
+case	NN
+there	EX
+are	VBP
+no	DT
+search	NN
+results	VBZ
+returned	VBN
+,	,
+
+
+T	NN
+is	VBZ
+empty	JJ
+without	IN
+paths	NNS
+.	.
+
+
+â	RB
+$	$
+cents	NNS
+Presence	NN
+constraint	NN
+:	:
+Each	DT
+initial	JJ
+search	NN
+result	NN
+must	MD
+be	VB
+
+
+present	JJ
+in	IN
+T	NN
+.	.
+
+It	PRP
+implies	VBZ
+that	IN
+deletion	NN
+of	IN
+paths	NNS
+should	MD
+not	RB
+
+
+result	NN
+in	IN
+absence	NN
+of	IN
+any	DT
+search	NN
+result	NN
+in	IN
+T.	NNP
+
+
+â	RB
+$	$
+cents	NNS
+Homogeneity	NN
+constraint	NN
+:	:
+A	DT
+label	NN
+node	NN
+in	IN
+T	NN
+must	MD
+not	RB
+have	VB
+
+
+heterogeneous	JJ
+children	NNS
+that	WDT
+combine	VBP
+cluster	NN
+labels	NNS
+with	IN
+
+
+search	NN
+results	NNS
+.	.
+
+This	DT
+constraint	NN
+is	VBZ
+also	RB
+used	VBN
+in	IN
+other	JJ
+clus	NN
+-	:
+
+
+tering	VBG
+engines	NNS
+such	JJ
+as	IN
+Clusty	NNP
+and	CC
+Carrot2	NNP
+.	.
+
+
+will	MD
+discuss	VB
+the	DT
+constraint	NN
+setC	NN
+in	IN
+detail	NN
+in	IN
+Section	NN
+4.2	CD
+.	.
+
+In	IN
+line	NN
+25	CD
+,	,
+subroutinepresent	JJ
+-LRB-	-LRB-
+T	NN
+-RRB-	-RRB-
+presents	VBZ
+the	DT
+set	NN
+of	IN
+paths	NNS
+in	IN
+T	NN
+as	IN
+a	DT
+cluster	NN
+tree	NN
+on	IN
+the	DT
+search	NN
+interface	NN
+.	.
+
+The	DT
+labels	NNS
+can	MD
+be	VB
+expanded	VBN
+or	CC
+collapsed	VBN
+.	.
+
+The	DT
+search	NN
+results	VBZ
+for	IN
+a	DT
+chosen	VBN
+label	NN
+are	VBP
+presented	VBN
+in	IN
+the	DT
+result	NN
+panel	NN
+in	IN
+their	PRP$
+original	JJ
+or	CC
+-	:
+der	FW
+when	WRB
+retrieved	VBN
+from	IN
+the	DT
+source	NN
+.	.
+
+Relevant	JJ
+terms	NNS
+corre	VBP
+-	:
+sponding	VBG
+to	TO
+current	JJ
+and	CC
+ancestor	NN
+labels	NNS
+in	IN
+search	NN
+results	NNS
+are	VBP
+highlighted	VBN
+.	.
+
+
+Sibling	VBG
+cluster	NN
+labels	NNS
+in	IN
+the	DT
+label	NN
+panel	NN
+are	VBP
+ordered	VBN
+by	IN
+lex	NN
+-	:
+icographically	RB
+comparing	VBG
+the	DT
+lists	NNS
+of	IN
+original	JJ
+ranks	NNS
+of	IN
+their	PRP$
+associated	VBN
+search	NN
+results	NNS
+.	.
+
+For	IN
+example	NN
+,	,
+let	VB
+A	DT
+and	CC
+D	NN
+be	VB
+two	CD
+sibling	NN
+labels	NNS
+as	IN
+in	IN
+Figure	NNP
+3	CD
+,	,
+where	WRB
+A	DT
+contains	VBZ
+P1	NN
+,	,
+P2	NN
+,	,
+P3	NN
+and	CC
+P4	NN
+and	CC
+D	NN
+contains	VBZ
+P1	NN
+and	CC
+P5	NN
+.	.
+
+Suppose	VB
+that	DT
+i	FW
+in	IN
+Pi	NN
+indi	NN
+-	:
+cates	VBZ
+the	DT
+original	JJ
+rank	NN
+of	IN
+Pi	NN
+from	IN
+the	DT
+source	NN
+.	.
+
+By	IN
+comparing	VBG
+two	CD
+lists	NNS
+<	JJR
+1,2,3,4	CD
+>	JJR
+and	CC
+<	JJR
+1,5	CD
+>	JJR
+,	,
+we	PRP
+put	VBD
+A	NN
+in	IN
+front	NN
+of	IN
+D.	NNP
+â	NNP
+$	$
+œOtherâ	JJ
+$	$
+is	VBZ
+a	DT
+special	JJ
+label	NN
+that	WDT
+is	VBZ
+always	RB
+listed	VBN
+at	IN
+the	DT
+end	NN
+behind	IN
+all	DT
+its	PRP$
+siblings	NNS
+.	.
+
+
+e.g.	FW
+,	,
+by	IN
+re-distributing	VBG
+the	DT
+paths	NNS
+in	IN
+the	DT
+small	JJ
+clusters	NNS
+.	.
+
+Weâ	NNP
+$	$
+cents	NNS
+
+
+Height	NN
+constraint	NN
+:	:
+The	DT
+height	NN
+of	IN
+T	NN
+must	MD
+be	VB
+equal	JJ
+or	CC
+less	RBR
+
+
+Discussion	NN
+.	.
+
+As	IN
+-LSB-	-LRB-
+17	CD
+-RSB-	-RRB-
+suggested	VBD
+,	,
+the	DT
+subset	NN
+of	IN
+web	NN
+pages	NNS
+visited	VBN
+by	IN
+employees	NNS
+in	IN
+an	DT
+Enterprise	NN
+is	VBZ
+centered	VBN
+around	IN
+the	DT
+companyâ	NN
+$	$
+™	CD
+s	NNS
+business	NN
+objectives	NNS
+.	.
+
+Additionally	RB
+,	,
+employees	NNS
+share	VBP
+a	DT
+common	JJ
+vocabulary	NN
+describing	VBG
+the	DT
+objects	NNS
+and	CC
+tasks	NNS
+encountered	VBN
+in	IN
+day	NN
+to	TO
+day	NN
+activities	NNS
+.	.
+
+ClusteringWiki	NNP
+can	MD
+be	VB
+even	RB
+more	RBR
+eective	JJ
+in	IN
+this	DT
+environment	NN
+as	IN
+user	NN
+preferences	NNS
+
+
+can	MD
+be	VB
+better	RBR
+aggregated	VBN
+and	CC
+utilized	VBN
+.	.
+
+
+4.2	CD
+Cluster	NN
+Editing	NN
+
+
+Before	IN
+explaining	VBG
+the	DT
+algorithm	NN
+handling	VBG
+user	NN
+edits	NNS
+,	,
+we	PRP
+
+
+578	CD
+
+
+than	IN
+a	DT
+threshold	NN
+,	,
+e.g.	FW
+,	,
+4	CD
+.	.
+
+
+â	RB
+$	$
+cents	NNS
+Label	NN
+length	NN
+constraint	NN
+:	:
+The	DT
+length	NN
+of	IN
+each	DT
+label	NN
+in	IN
+T	NN
+must	MD
+
+
+be	VB
+equal	JJ
+or	CC
+less	JJR
+than	IN
+a	DT
+threshold	NN
+.	.
+
+
+â	RB
+$	$
+cents	NNS
+Branching	VBG
+constraint	NN
+:	:
+We	PRP
+call	VBP
+a	DT
+label	NN
+node	NN
+a	DT
+bottom	JJ
+label	NN
+
+
+node	NN
+if	IN
+it	PRP
+directly	RB
+connects	VBZ
+to	TO
+search	VB
+results	NNS
+.	.
+
+Each	DT
+non	JJ
+-	:
+
+
+bottom	JJ
+label	NN
+node	NN
+must	MD
+have	VB
+at	IN
+least	JJS
+Tn	NN
+children	NNS
+.	.
+
+Each	DT
+
+
+non-special	JJ
+bottom	JJ
+label	NN
+node	NN
+must	MD
+have	VB
+at	IN
+least	JJS
+Tm	NN
+chil	NN
+-	:
+
+
+dren	NN
+.	.
+
+Other	JJ
+is	VBZ
+a	DT
+special	JJ
+bottom	NN
+label	NN
+node	NN
+that	WDT
+may	MD
+have	VB
+
+
+less	JJR
+than	IN
+Tm	NN
+children	NNS
+.	.
+
+All	DT
+,	,
+when	WRB
+being	VBG
+a	DT
+bottom	JJ
+label	NN
+,	,
+
+
+could	MD
+also	RB
+have	VB
+less	JJR
+than	IN
+Tm	NN
+children	NNS
+in	IN
+case	NN
+there	EX
+are	VBP
+
+
+insucient	JJ
+search	NN
+results	NNS
+.	.
+
+By	IN
+default	NN
+both	CC
+Tn	NN
+and	CC
+Tm	NN
+are	VBP
+
+
+set	VBN
+to	TO
+2	CD
+in	IN
+ClusteringWiki	NNP
+as	IN
+in	IN
+Clusty	NNP
+.	.
+
+
+Primitive	JJ
+user	NN
+edits	VBZ
+.	.
+
+ClusteringWiki	NNP
+implements	VBZ
+the	DT
+
+
+following	VBG
+categories	NNS
+of	IN
+atomic	JJ
+primitive	JJ
+edits	NNS
+that	IN
+a	DT
+logged	VBN
+-	:
+
+
+in	IN
+user	NN
+can	MD
+initiate	VB
+in	IN
+the	DT
+process	NN
+of	IN
+tree	NN
+editing	NN
+.	.
+
+Each	DT
+edit	NN
+
+
+e	LS
+is	VBZ
+associated	VBN
+with	IN
+Pe	NN
+and	CC
+NPe	NN
+,	,
+the	DT
+set	NN
+of	IN
+paths	NNS
+to	TO
+be	VB
+inserted	VBN
+to	TO
+the	DT
+tree	NN
+and	CC
+the	DT
+set	NN
+of	IN
+paths	NNS
+to	TO
+be	VB
+deleted	VBN
+from	IN
+the	DT
+tree	NN
+aftere	RB
+.	.
+
+
+â	RB
+$	$
+cents	NNS
+e1	NN
+:	:
+copy	VB
+a	DT
+label	NN
+node	NN
+to	TO
+another	DT
+non-bottom	JJ
+label	NN
+node	NN
+
+
+as	IN
+its	PRP$
+child	NN
+.	.
+
+Note	VB
+that	IN
+it	PRP
+is	VBZ
+allowed	VBN
+to	TO
+copy	VB
+a	DT
+parent	NN
+label	NN
+
+
+node	NN
+to	TO
+a	DT
+child	NN
+label	NN
+node	NN
+.	.
+
+
+Example	NN
+:	:
+in	IN
+Figure	NNP
+3	CD
+,	,
+we	PRP
+can	MD
+copyD	VB
+toA	NN
+.	.
+
+For	IN
+this	DT
+edit	NN
+,	,
+Pe	NN
+=	JJ
+-LCB-	-LRB-
+All	DT
+A	NN
+D	NN
+P1	NN
+,	,
+All	DT
+A	NN
+D	NN
+P5	NN
+-RCB-	-RRB-
+.	.
+
+NPe	NN
+=	JJ
+for	IN
+any	DT
+edit	NN
+of	IN
+this	DT
+type	NN
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+6	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+Algorithm	NN
+3	CD
+Cluster	NN
+editing	NN
+
+
+Input	NN
+:	:
+q	VB
+,	,
+u	FW
+,	,
+T	NN
+,	,
+C	NN
+,	,
+Pq	NN
+,	,
+u	NN
+,	,
+Pq	NN
+,	,
+U	NNP
+and	CC
+e	SYM
+:	:
+q	VB
+is	VBZ
+a	DT
+query	NN
+.	.
+
+u	NN
+is	VBZ
+a	DT
+
+
+user	NN
+.	.
+
+T	NN
+is	VBZ
+a	DT
+cluster	NN
+tree	NN
+for	IN
+q.	NN
+C	NN
+is	VBZ
+a	DT
+set	NN
+of	IN
+consistency	NN
+
+
+constraints	NNS
+for	IN
+T.	NNP
+Pq	NNP
+,	,
+u	NN
+is	VBZ
+a	DT
+set	NN
+of	IN
+paths	NNS
+representing	VBG
+the	DT
+
+
+preferences	NNS
+by	IN
+u	NN
+for	IN
+q.	NNP
+Pq	NNP
+,	,
+U	NNP
+is	VBZ
+a	DT
+set	NN
+of	IN
+paths	NNS
+representing	VBG
+
+
+the	DT
+aggregated	JJ
+preferences	NNS
+for	IN
+q.	NN
+e	SYM
+is	VBZ
+an	DT
+edit	NN
+by	IN
+u	NN
+on	IN
+T.	NNP
+Output	NN
+:	:
+updated	VBN
+T	NN
+,	,
+Pq	NN
+,	,
+u	NN
+and	CC
+Pq	NN
+,	,
+U	NNP
+
+
+1	CD
+:	:
+if	IN
+-LRB-	-LRB-
+pre-validation	JJ
+fail	VBP
+-RRB-	-RRB-
+then	RB
+
+
+2	CD
+:	:
+return	NN
+;	:
+
+
+3	CD
+:	:
+end	VB
+if	IN
+
+
+4	CD
+:	:
+identify	VB
+Pe	NN
+;	:
+
+
+5	CD
+:	:
+identify	VB
+NPe	NN
+;	:
+
+
+6	CD
+:	:
+if	IN
+-LRB-	-LRB-
+validation	NN
+fail	VBP
+-RRB-	-RRB-
+then	RB
+
+
+7	CD
+:	:
+return	NN
+;	:
+
+
+8	CD
+:	:
+end	VB
+if	IN
+
+
+9	CD
+:	:
+update	VB
+T	NN
+;	:
+
+
+10	CD
+:	:
+add	VB
+Pe	NN
+as	IN
+positive	JJ
+paths	NNS
+to	TO
+Pq	NNP
+,	,
+u	NN
+;	:
+
+
+11	CD
+:	:
+add	VB
+NPe	NN
+as	IN
+negative	JJ
+paths	NNS
+toPq	NN
+,	,
+u	NN
+;	:
+
+
+12	CD
+:	:
+updatePq	NN
+,	,
+U	NNP
+;	:
+
+
+its	PRP$
+child	NN
+,	,
+or	CC
+move	NN
+-LRB-	-LRB-
+instead	RB
+of	IN
+copy	NN
+as	IN
+ine2	NN
+-RRB-	-RRB-
+a	DT
+result	NN
+node	NN
+to	TO
+a	DT
+bottom	JJ
+label	NN
+node	NN
+.	.
+
+Such	PDT
+a	DT
+move	NN
+edit	NN
+can	MD
+be	VB
+considered	VBN
+as	IN
+a	DT
+copy	NN
+edit	NN
+followed	VBN
+by	IN
+a	DT
+delete	VBP
+edit	NN
+.	.
+
+
+Editing	VBG
+algorithm	NN
+.	.
+
+Algorithm	NN
+3	CD
+presents	VBZ
+the	DT
+pseudocode	NN
+of	IN
+the	DT
+cluster	NN
+editing	NN
+algorithm	NN
+inClusteringWiki	NN
+for	IN
+a	DT
+
+
+single	JJ
+edit	NN
+e	SYM
+,	,
+where	WRB
+e	SYM
+can	MD
+be	VB
+any	DT
+type	NN
+of	IN
+edit	NN
+from	IN
+e1	NN
+to	TO
+e4	NN
+.	.
+
+
+Lines	NNP
+1	CD
+3	CD
+perform	VBP
+pre-validation	NN
+of	IN
+e	SYM
+to	TO
+see	VB
+if	IN
+it	PRP
+is	VBZ
+
+
+in	IN
+violation	NN
+of	IN
+consistency	NN
+constraints	NNS
+.	.
+
+Violations	NNS
+can	MD
+be	VB
+
+
+caught	VBN
+early	RB
+for	IN
+certain	JJ
+constraints	NNS
+on	IN
+certain	JJ
+edits	NNS
+,	,
+for	IN
+ex	FW
+-	:
+
+
+ample	JJ
+,	,
+the	DT
+label	NN
+length	NN
+constraint	NN
+on	IN
+e1	NN
+type	NN
+of	IN
+edits	NNS
+.	.
+
+If	IN
+
+
+pre-validation	JJ
+fails	VBZ
+,	,
+the	DT
+algorithm	NN
+returns	NNS
+immediately	RB
+.	.
+
+
+Otherwise	RB
+,	,
+the	DT
+algorithm	NN
+continues	VBZ
+with	IN
+lines	NNS
+4	CD
+5	CD
+that	IN
+
+
+identify	VB
+Pe	NNP
+and	CC
+NPe	NNP
+.	.
+
+Then	RB
+,	,
+lines	NNS
+68	CD
+perform	VBP
+full	JJ
+valida	NN
+-	:
+
+
+tion	NN
+ofe	NN
+againstC	NN
+,	,
+the	DT
+set	NN
+of	IN
+consistency	NN
+constraints	NNS
+.	.
+
+If	IN
+the	DT
+validation	NN
+fails	VBZ
+,	,
+the	DT
+algorithm	NN
+returns	NNS
+immediately	RB
+.	.
+
+
+Otherwise	RB
+,	,
+e	SYM
+is	VBZ
+a	DT
+valid	JJ
+edit	NN
+andT	NN
+is	VBZ
+updated	VBN
+-LRB-	-LRB-
+line	NN
+9	CD
+-RRB-	-RRB-
+.	.
+
+Then	RB
+,	,
+the	DT
+personal	JJ
+user	NN
+preferences	NNS
+are	VBP
+stored	VBN
+by	IN
+adding	VBG
+Pe	NN
+andNPe	NN
+to	TO
+Pq	NNP
+,	,
+u	FW
+as	IN
+positive	JJ
+paths	NNS
+and	CC
+negative	JJ
+paths	NNS
+
+
+respectively	RB
+-LRB-	-LRB-
+lines	NNS
+10	CD
+11	CD
+-RRB-	-RRB-
+.	.
+
+In	IN
+adding	VBG
+these	DT
+paths	NNS
+,	,
+the	DT
+
+
+opposite	JJ
+paths	NNS
+in	IN
+Pq	NNP
+,	,
+u	FW
+cancel	VB
+each	DT
+other	JJ
+out	RP
+.	.
+
+In	IN
+line	NN
+12	CD
+,	,
+
+
+the	DT
+aggregated	JJ
+preferences	NNS
+stored	VBN
+in	IN
+Pq	NNP
+,	,
+U	NNP
+are	VBP
+updated	VBN
+.	.
+
+We	PRP
+
+
+further	RB
+discuss	VB
+preference	NN
+aggregation	NN
+in	IN
+the	DT
+following	VBG
+.	.
+
+
+Preference	NN
+sharing	NN
+.	.
+
+Preference	NN
+sharing	NN
+in	IN
+Clustering	NN
+-	:
+
+
+â	RB
+$	$
+cents	NNS
+e2	NN
+:	:
+copy	VB
+a	DT
+result	NN
+node	NN
+to	TO
+a	DT
+bottom	JJ
+label	NN
+node	NN
+.	.
+
+
+Example	NN
+:	:
+in	IN
+Figure	NNP
+3	CD
+,	,
+we	PRP
+can	MD
+copyP3	VB
+to	TO
+D	NN
+,	,
+but	CC
+not	RB
+
+
+to	TO
+A	DT
+,	,
+which	WDT
+is	VBZ
+not	RB
+a	DT
+bottom	JJ
+label	NN
+node	NN
+.	.
+
+For	IN
+this	DT
+edit	NN
+,	,
+
+
+Pe	NN
+=	SYM
+-LCB-	-LRB-
+All	DT
+D	NN
+P3	NN
+-RCB-	-RRB-
+.	.
+
+NPe	NN
+=	SYM
+
+
+type	NN
+.	.
+
+
+Wiki	NNP
+is	VBZ
+in	IN
+line	NN
+with	IN
+the	DT
+many	JJ
+social-powered	JJ
+search	NN
+engines	NNS
+
+
+for	IN
+any	DT
+edit	NN
+of	IN
+this	DT
+
+
+as	IN
+a	DT
+mass-collaborative	JJ
+way	NN
+of	IN
+improving	VBG
+search	NN
+utility	NN
+.	.
+
+In	IN
+
+
+â	RB
+$	$
+cents	NNS
+e3	NN
+:	:
+modify	VB
+a	DT
+non-root	JJ
+label	NN
+node	NN
+.	.
+
+
+Example	NN
+:	:
+in	IN
+Figure	NNP
+3	CD
+,	,
+we	PRP
+can	MD
+modifyD	VB
+toE	NN
+.	.
+
+For	IN
+this	DT
+
+
+edit	VB
+,	,
+Pe	NN
+=	JJ
+-LCB-	-LRB-
+All	DT
+E	NN
+P1	NN
+,	,
+All	DT
+E	NN
+P5	NN
+-RCB-	-RRB-
+and	CC
+NPe	NN
+=	JJ
+
+
+-LCB-	-LRB-
+All	DT
+D	NN
+P1	NN
+,	,
+All	DT
+D	NN
+P5	NN
+-RCB-	-RRB-
+.	.
+
+
+ClusteringWiki	NNP
+,	,
+U	NNP
+is	VBZ
+considered	VBN
+as	IN
+a	DT
+special	JJ
+user	NN
+and	CC
+Pq	NN
+,	,
+U	NNP
+stores	NNS
+the	DT
+aggregated	JJ
+user	NN
+preferences	NNS
+.	.
+
+
+In	IN
+particular	JJ
+,	,
+we	PRP
+use	VBP
+P0q	NN
+,	,
+U	NNP
+to	TO
+record	VB
+the	DT
+paths	NNS
+speciï	NN
+¬	CD
+ed0	NN
+
+
+for	IN
+query	NN
+q	NN
+by	IN
+all	DT
+users	NNS
+.	.
+
+Each	DT
+path	NN
+p	NN
+P	NN
+
+
+q	NN
+,	,
+U	NNP
+
+
+has	VBZ
+a	DT
+count	NN
+attribute	NN
+,	,
+recording	VBG
+the	DT
+total	JJ
+number	NN
+of	IN
+times	NNS
+that	WDT
+p	NN
+appears	VBZ
+in	IN
+any	DT
+Pq	NN
+,	,
+u.	NN
+All	DT
+paths	NNS
+in	IN
+P0q	NN
+,	,
+U	NNP
+are	VBP
+grouped	VBN
+by	IN
+leaf	NN
+nodes	NNS
+.	.
+
+In	IN
+
+
+â	RB
+$	$
+cents	NNS
+e4	NN
+:	:
+delete	VB
+a	DT
+non-root	JJ
+node	NN
+,	,
+which	WDT
+can	MD
+be	VB
+either	CC
+a	DT
+labelother	NN
+words	NNS
+,	,
+all	DT
+paths	NNS
+that	WDT
+end	VBP
+with	IN
+the	DT
+same	JJ
+search	NN
+resultare	NN
+in	IN
+the	DT
+same	JJ
+group	NN
+.	.
+
+For	IN
+each	DT
+group	NN
+,	,
+we	PRP
+keep	VBP
+track	NN
+of	IN
+
+
+node	NN
+or	CC
+a	DT
+result	NN
+node	NN
+.	.
+
+
+Example	NN
+:	:
+in	IN
+Figure	NNP
+3	CD
+,	,
+we	PRP
+can	MD
+deleteP5	NN
+.	.
+
+For	IN
+this	DT
+edit	NN
+,	,
+NPe	NN
+=	JJ
+-LCB-	-LRB-
+All	DT
+D	NN
+P5	NN
+-RCB-	-RRB-
+.	.
+
+Pe	NN
+=	JJ
+for	IN
+any	DT
+edit	NN
+of	IN
+this	DT
+type	NN
+.	.
+
+
+two	CD
+best	JJS
+paths	NNS
+:	:
+a	DT
+positive	JJ
+one	CD
+with	IN
+the	DT
+most	RBS
+count	VB
+and	CC
+a	DT
+negative	JJ
+one	CD
+with	IN
+the	DT
+most	RBS
+count	VB
+.	.
+
+We	PRP
+mark	VBP
+a	DT
+best	JJS
+path	NN
+if	IN
+its	PRP$
+count	NN
+passes	VBZ
+a	DT
+predeï	NN
+¬	NN
+ned	VBD
+threshold	NN
+.	.
+
+All	PDT
+the	DT
+marked	JJ
+paths	NNS
+constitute	VBP
+Pq	NN
+,	,
+U	NNP
+,	,
+the	DT
+set	NN
+of	IN
+aggregated	JJ
+paths	NNS
+that	WDT
+are	VBP
+
+
+â	RB
+$	$
+cents	NNS
+e5	NN
+:	:
+create	VB
+a	DT
+label	NN
+node	NN
+,	,
+which	WDT
+can	MD
+be	VB
+either	CC
+a	DT
+non-bottomused	JJ
+in	IN
+query	NN
+processing	NN
+.	.
+
+Note	VB
+that	IN
+,	,
+here	RB
+
+
+ClusteringWiki	NNP
+
+
+or	CC
+bottom	JJ
+label	NN
+node	NN
+.	.
+
+In	IN
+particular	JJ
+,	,
+recursive	JJ
+creation	NN
+ofpositive	JJ
+path	NN
+and	CC
+one	CD
+negative	JJ
+path	NN
+for	IN
+each	DT
+search	NN
+result	NN
+.	.
+
+
+adopts	VBZ
+a	DT
+conservative	JJ
+approach	NN
+,	,
+making	VBG
+use	NN
+of	IN
+at	IN
+most	JJS
+one	CD
+
+
+non-bottom	JJ
+labels	NNS
+is	VBZ
+a	DT
+way	NN
+to	TO
+add	VB
+levels	NNS
+to	TO
+cluster	VB
+trees	NNS
+.	.
+
+
+Example	NN
+:	:
+in	IN
+Figure	NNP
+3	CD
+,	,
+we	PRP
+can	MD
+addE	VB
+as	IN
+parent	NN
+ofD	NN
+.	.
+
+For	IN
+this	DT
+edit	NN
+,	,
+Pe	NN
+=	JJ
+-LCB-	-LRB-
+All	DT
+E	NN
+D	NN
+P1	NN
+,	,
+All	DT
+E	NN
+D	NN
+P5	NN
+-RCB-	-RRB-
+andNPe	NN
+=	JJ
+-LCB-	-LRB-
+All	DT
+D	NN
+P1	NN
+,	,
+All	DT
+D	NN
+P5	NN
+-RCB-	-RRB-
+.	.
+
+
+The	DT
+editing	NN
+framework	NN
+results	VBZ
+in	IN
+severalfavorable	JJ
+prop	VBP
+-	:
+
+
+Editing	NN
+interface	NN
+.	.
+
+Cluster	NN
+editing	NN
+in	IN
+ClusteringWiki	NNP
+is	VBZ
+primarily	RB
+available	JJ
+through	IN
+context	NN
+menus	NNS
+attached	VBN
+to	TO
+label	VB
+and	CC
+result	VB
+nodes	NNS
+.	.
+
+Context	NN
+menus	NNS
+are	VBP
+context	NN
+aware	JJ
+,	,
+dis	SYM
+-	:
+playing	VBG
+only	RB
+those	DT
+operations	NNS
+that	WDT
+are	VBP
+valid	JJ
+for	IN
+the	DT
+selected	VBN
+node	NN
+.	.
+
+For	IN
+example	NN
+,	,
+the	DT
+paste	VBP
+result	NN
+operation	NN
+will	MD
+not	RB
+be	VB
+
+
+
+erties	NNS
+.	.
+
+Firstly	RB
+,	,
+the	DT
+primitive	JJ
+user	NN
+edits	NNS
+are	VBP
+such	JJ
+that	IN
+,	,
+withdisplayed	VBN
+unless	IN
+the	DT
+selected	VBN
+node	NN
+is	VBZ
+a	DT
+bottom	JJ
+label	NN
+node	NN
+a	DT
+series	NN
+of	IN
+edits	NNS
+,	,
+a	DT
+user	NN
+can	MD
+produceany	VB
+consistent	JJ
+cluster	NN
+and	CC
+a	DT
+result	NN
+node	NN
+was	VBD
+previously	RB
+copied	VBN
+or	CC
+cut	VBN
+.	.
+
+This	DT
+eec	NN
+-	:
+tree	NN
+.	.
+
+Secondly	RB
+,	,
+sincee1	NN
+only	RB
+allows	VBZ
+a	DT
+label	NN
+node	NN
+to	TO
+be	VB
+placedtively	RB
+implements	VBZ
+pre-validation	NN
+of	IN
+cluster	NN
+edit	NN
+operations	NNS
+under	IN
+a	DT
+non-bottom	JJ
+node	NN
+ande2	NN
+only	RB
+allows	VBZ
+a	DT
+result	NN
+node	NN
+toby	NN
+not	RB
+allowing	VBG
+the	DT
+user	NN
+to	TO
+choose	VB
+invalid	JJ
+tasks	NNS
+.	.
+
+
+be	VB
+placed	VBN
+under	IN
+a	DT
+bottom	JJ
+node	NN
+,	,
+the	DT
+homogeneity	NN
+constraintUsers	NNS
+can	MD
+drag	VB
+and	CC
+drop	VB
+a	DT
+result	NN
+node	NN
+or	CC
+cluster	NN
+label	NN
+will	MD
+not	RB
+be	VB
+violated	VBN
+after	IN
+any	DT
+edit	NN
+given	VBN
+the	DT
+consistency	NN
+ofin	NN
+addition	NN
+to	TO
+cutting/copying	VBG
+and	CC
+pasting	VBG
+to	TO
+perform	VB
+a	DT
+
+
+T	NN
+before	IN
+the	DT
+edit	NN
+.	.
+
+Thirdly	RB
+,	,
+the	DT
+framework	NN
+useseager	NN
+vali	NN
+-	:
+
+
+move/copy	JJ
+operation	NN
+.	.
+
+A	DT
+label	NN
+node	NN
+will	MD
+be	VB
+tagged	VBN
+with	IN
+an	DT
+
+
+dation	NN
+,	,
+where	WRB
+validation	NN
+is	VBZ
+performed	VBN
+right	RB
+after	IN
+each	DT
+edit	NN
+,	,
+icon	NN
+if	IN
+the	DT
+item	NN
+being	VBG
+dragged	VBN
+can	MD
+be	VB
+pasted	VBN
+within	IN
+that	DT
+compared	VBN
+tolazy	NN
+validation	NN
+,	,
+where	WRB
+validation	NN
+is	VBZ
+performednode	NN
+.	.
+
+An	DT
+item	NN
+that	WDT
+is	VBZ
+dropped	VBN
+outside	IN
+a	DT
+label	NN
+node	NN
+in	IN
+which	WDT
+in	IN
+the	DT
+end	NN
+of	IN
+the	DT
+editing	NN
+process	NN
+.	.
+
+Eager	JJ
+validation	NN
+is	VBZ
+moreit	JJR
+could	MD
+be	VB
+pasted	VBN
+simply	RB
+returns	VBZ
+to	TO
+its	PRP$
+original	JJ
+location	NN
+.	.
+
+
+user-friendly	JJ
+and	CC
+less	RBR
+error-prone	JJ
+in	IN
+implementation	NN
+.	.
+
+Note	VB
+that	IN
+,	,
+user	NN
+editing	NN
+can	MD
+possibly	RB
+generateempty	VB
+labels	NNS
+,	,
+
+
+i.e.	FW
+,	,
+labels	NNS
+that	WDT
+do	VBP
+not	RB
+contain	VB
+any	DT
+search	NN
+results	VBZ
+and	CC
+thus5	NN
+.	.
+
+EVALUATION	NN
+
+
+not	RB
+on	IN
+any	DT
+path	NN
+.	.
+
+Such	JJ
+labels	NNS
+will	MD
+be	VB
+trimmed	VBN
+.	.
+
+
+ClusteringWiki	NNP
+was	VBD
+implemented	VBN
+as	IN
+an	DT
+AJAX-enabled	JJ
+
+
+To	TO
+add	VB
+convenience	NN
+,	,
+ClusteringWiki	NNP
+also	RB
+implements	VBZ
+sev	SYM
+-	:
+Java	NNP
+Enterprise	NNP
+Edition	NNP
+1.5	CD
+application	NN
+.	.
+
+The	DT
+prototype	NN
+is	VBZ
+eral	JJ
+other	JJ
+types	NNS
+of	IN
+edits	NNS
+.	.
+
+For	IN
+example	NN
+,	,
+move	NN
+-LRB-	-LRB-
+instead	RB
+of	IN
+copymaintained	VBN
+on	IN
+an	DT
+average	JJ
+PC	NN
+with	IN
+Intel	NNP
+Pentium	NNP
+4	CD
+3.4	CD
+GHz	NNP
+as	IN
+ine1	NN
+-RRB-	-RRB-
+a	DT
+label	NN
+node	NN
+to	TO
+another	DT
+non-bottom	JJ
+label	NN
+node	NN
+asCPU	NN
+and	CC
+4Gb	NN
+RAM	NNP
+running	VBG
+Apache	NNP
+Tomcat	NNP
+6	CD
+.	.
+
+
+579	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+7	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+5.1	CD
+Methodology	NN
+and	CC
+Metrics	NNS
+
+
+We	PRP
+performed	VBD
+two	CD
+series	NN
+of	IN
+experiments	NNS
+:	:
+system	NN
+evalua	NN
+-	:
+tion	NN
+and	CC
+utility	NN
+evaluation	NN
+.	.
+
+The	DT
+former	JJ
+focused	VBN
+on	IN
+the	DT
+cor	NN
+-	:
+rectness	NN
+and	CC
+eciency	NN
+of	IN
+our	PRP$
+implemented	VBN
+prototype	NN
+.	.
+
+The	DT
+
+
+latter	JJ
+,	,
+our	PRP$
+main	JJ
+experiments	NNS
+,	,
+focused	VBD
+on	IN
+the	DT
+eectiveness	NN
+of	IN
+
+
+ClusteringWiki	NNP
+in	IN
+improving	VBG
+search	NN
+performance	NN
+.	.
+
+Data	NNS
+sources	NNS
+.	.
+
+Multiple	JJ
+data	NNS
+sources	NNS
+were	VBD
+used	VBN
+in	IN
+our	PRP$
+empirical	JJ
+evaluation	NN
+,	,
+including	VBG
+Google	NNP
+AJAX	NNP
+Search	VB
+API	NN
+-LRB-	-LRB-
+code.google.com/apis/ajaxsearch	NN
+-RRB-	-RRB-
+,	,
+Yahoo	NNP
+!	.
+
+Search	VB
+API	NNP
+-LRB-	-LRB-
+de	FW
+-	:
+veloper.yahoo.com/search/web/webSearch.html	NN
+-RRB-	-RRB-
+,	,
+and	CC
+local	JJ
+Lucene	NNP
+indexes	NNS
+built	VBN
+on	IN
+top	NN
+of	IN
+the	DT
+New	NNP
+York	NNP
+Times	NNP
+Anno	NNP
+-	:
+tated	VBD
+Corpus	NNP
+-LSB-	-LRB-
+29	CD
+-RSB-	-RRB-
+and	CC
+several	JJ
+datasets	NNS
+from	IN
+the	DT
+TIPSTER	NN
+-LRB-	-LRB-
+disks	NNS
+1-3	CD
+-RRB-	-RRB-
+and	CC
+TREC	NN
+-LRB-	-LRB-
+disks	NNS
+4-5	CD
+-RRB-	-RRB-
+collections	NNS
+-LRB-	-LRB-
+www.nist.gov	NN
+/	:
+tac/data/data	JJ
+desc.html	NN
+-RRB-	-RRB-
+.	.
+
+The	DT
+Google	NNP
+API	NNP
+can	MD
+retrieve	VB
+a	DT
+maximum	NN
+of	IN
+8	CD
+results	NNS
+per	IN
+request	NN
+and	CC
+a	DT
+total	NN
+of	IN
+64	CD
+results	NNS
+per	IN
+query	NN
+.	.
+
+The	DT
+Yahoo	NNP
+!	.
+
+API	NNP
+can	MD
+retrieve	VB
+a	DT
+maximum	NN
+of	IN
+100	CD
+results	NNS
+per	IN
+request	NN
+and	CC
+a	DT
+total	NN
+of	IN
+1000	CD
+results	NNS
+per	IN
+query	NN
+.	.
+
+Due	JJ
+to	TO
+user	NN
+licence	NN
+agreements	NNS
+,	,
+the	DT
+New	NNP
+York	NNP
+Times	NNP
+,	,
+TIPSTER	NNP
+and	CC
+TREC	NN
+datasets	NNS
+are	VBP
+not	RB
+available	JJ
+publicly	RB
+.	.
+
+
+System	NNP
+evaluation	NN
+methodology	NN
+.	.
+
+For	IN
+system	NN
+evalua	NN
+-	:
+tion	NN
+of	IN
+ClusteringWiki	NNP
+,	,
+we	PRP
+focused	VBD
+on	IN
+correctness	NN
+and	CC
+e	SYM
+-	:
+ciency	NN
+.	.
+
+We	PRP
+tested	VBD
+the	DT
+correctness	NN
+by	IN
+manually	RB
+executing	VBG
+a	DT
+number	NN
+of	IN
+functional	JJ
+and	CC
+system	NN
+tests	NNS
+designed	VBN
+to	TO
+test	VB
+ev	SYM
+-	:
+ery	NN
+aspect	NN
+of	IN
+application	NN
+functionality	NN
+.	.
+
+These	DT
+tests	NNS
+included	VBD
+cluster	NN
+reproducibility	NN
+,	,
+edit	VB
+operation	NN
+pre-validations	NNS
+,	,
+clus	NN
+-	:
+ter	NN
+editing	NN
+operations	NNS
+,	,
+convenience	NN
+features	NNS
+,	,
+applying	VBG
+pref	NN
+-	:
+erences	NNS
+,	,
+preference	NN
+transfer	NN
+,	,
+preference	NN
+aggregation	NN
+,	,
+etc.	FW
+.	.
+
+In	IN
+order	NN
+to	TO
+have	VB
+repeatable	JJ
+search	NN
+results	VBZ
+for	IN
+same	JJ
+queries	NNS
+,	,
+we	PRP
+used	VBD
+the	DT
+stable	JJ
+New	NNP
+York	NNP
+Times	NNP
+data	NNS
+source	NN
+.	.
+
+We	PRP
+chose	VBD
+queries	NNS
+that	WDT
+returned	VBD
+at	IN
+least	JJS
+200	CD
+results	NNS
+.	.
+
+
+We	PRP
+evaluated	VBD
+system	NN
+eciency	NN
+by	IN
+monitoring	VBG
+query	NN
+pro-	JJ
+
+
+cessing	VBG
+time	NN
+in	IN
+various	JJ
+settings	NNS
+.	.
+
+In	IN
+particular	JJ
+,	,
+we	PRP
+considered	VBD
+:	:
+â	VB
+$	$
+cents	NNS
+2	CD
+data	NNS
+sources	NNS
+:	:
+Yahoo	NNP
+!	.
+
+and	CC
+New	NNP
+York	NNP
+Times	NNP
+
+
+â	RB
+$	$
+cents	NNS
+5	CD
+dierent	JJ
+numbers	NNS
+of	IN
+retrieved	VBN
+search	NN
+results	NNS
+:	:
+100	CD
+,	,
+200	CD
+,	,
+
+
+300	CD
+,	,
+400	CD
+,	,
+500	CD
+
+
+â	RB
+$	$
+cents	NNS
+2	CD
+types	NNS
+of	IN
+clusterings	NNS
+:	:
+ï	NN
+¬	CD
+‚	NN
+at	IN
+-LRB-	-LRB-
+F	NN
+-RRB-	-RRB-
+and	CC
+hierarchical	JJ
+-LRB-	-LRB-
+H	NN
+-RRB-	-RRB-
+For	IN
+each	DT
+of	IN
+the	DT
+combinations	NNS
+,	,
+we	PRP
+executed	VBD
+5	CD
+queries	NNS
+,	,
+each	DT
+twice	RB
+.	.
+
+The	DT
+queries	NNS
+were	VBD
+chosen	VBN
+such	JJ
+that	IN
+at	IN
+least	JJS
+500	CD
+search	NN
+results	NNS
+would	MD
+be	VB
+returned	VBN
+.	.
+
+For	IN
+each	DT
+query	NN
+,	,
+we	PRP
+monitored	VBD
+6	CD
+portions	NNS
+of	IN
+execution	NN
+that	WDT
+constitute	VBP
+the	DT
+total	JJ
+query	NN
+re	SYM
+-	:
+sponse	JJ
+time	NN
+:	:
+
+
+â	RB
+$	$
+cents	NNS
+Retrieving	VBG
+search	NN
+results	NNS
+
+
+â	RB
+$	$
+cents	NNS
+Preprocessing	VBG
+retrieved	VBN
+search	NN
+results	NNS
+
+
+â	RB
+$	$
+cents	NNS
+Initial	JJ
+clustering	NN
+by	IN
+a	DT
+built-in	JJ
+algorithm	NN
+
+
+â	RB
+$	$
+cents	NNS
+Applying	VBG
+preferences	NNS
+to	TO
+the	DT
+initial	JJ
+cluster	NN
+tree	NN
+
+
+â	RB
+$	$
+cents	NNS
+Presenting	VBG
+the	DT
+ï	NN
+¬	CD
+nal	JJ
+cluster	NN
+tree	NN
+
+
+â	RB
+$	$
+cents	NNS
+Other	JJ
+-LRB-	-LRB-
+e.g.	FW
+,	,
+data	NNS
+transfer	NN
+time	NN
+between	IN
+server	NN
+and	CC
+browser	NN
+-RRB-	-RRB-
+For	IN
+the	DT
+New	NNP
+York	NNP
+Times	NNP
+data	NNS
+source	NN
+,	,
+the	DT
+index	NN
+was	VBD
+loaded	VBN
+into	IN
+memory	NN
+to	TO
+simulate	VB
+the	DT
+server	NN
+side	NN
+search	NN
+engine	NN
+be	VB
+-	:
+havior	NN
+.	.
+
+The	DT
+time	NN
+spent	VBN
+on	IN
+applying	VBG
+preferences	NNS
+depends	VBZ
+on	IN
+the	DT
+number	NN
+of	IN
+applicable	JJ
+stored	VBN
+paths	NNS
+.	.
+
+For	IN
+each	DT
+query	NN
+,	,
+we	PRP
+made	VBD
+sure	JJ
+that	IN
+at	IN
+least	JJS
+half	PDT
+the	DT
+number	NN
+of	IN
+retrieved	VBN
+results	NNS
+existed	VBD
+in	IN
+a	DT
+modiï	NN
+¬	NN
+ed	VBD
+path	NN
+,	,
+which	WDT
+is	VBZ
+a	DT
+practical	JJ
+upper-bound	JJ
+on	IN
+the	DT
+number	NN
+of	IN
+user	NN
+edits	VBZ
+on	IN
+the	DT
+clusters	NNS
+of	IN
+a	DT
+query	NN
+.	.
+
+Utility	NN
+evaluation	NN
+methodology	NN
+.	.
+
+For	IN
+utility	NN
+evaluation	NN
+,	,
+we	PRP
+focused	VBD
+on	IN
+the	DT
+eectiveness	NN
+of	IN
+ClusteringWiki	NNP
+in	IN
+im	NN
+-	:
+proving	VBG
+search	NN
+performance	NN
+,	,
+in	IN
+particular	JJ
+,	,
+the	DT
+time	NN
+users	NNS
+spent	VBD
+to	TO
+locate	VB
+a	DT
+certain	JJ
+number	NN
+of	IN
+relevant	JJ
+results	NNS
+.	.
+
+The	DT
+experiments	NNS
+were	VBD
+conducted	VBN
+through	IN
+a	DT
+user	NN
+study	NN
+with	IN
+22	CD
+
+
+paid	VBN
+participants	NNS
+.	.
+
+The	DT
+participants	NNS
+were	VBD
+primarily	RB
+under	IN
+-	:
+graduate	NN
+,	,
+with	IN
+a	DT
+few	JJ
+graduate	NN
+,	,
+colleage	NN
+students	NNS
+.	.
+
+
+We	PRP
+compared	VBD
+4	CD
+dierent	JJ
+search	NN
+result	VBP
+presentations	NNS
+:	:
+
+
+â	RB
+$	$
+cents	NNS
+Ranked	VBN
+list	NN
+-LRB-	-LRB-
+RL	NN
+-RRB-	-RRB-
+:	:
+search	NN
+results	NNS
+were	VBD
+not	RB
+clustered	VBN
+and	CC
+
+
+presented	VBN
+as	IN
+a	DT
+traditional	JJ
+ranked	VBD
+list	NN
+.	.
+
+
+â	RB
+$	$
+cents	NNS
+Initial	JJ
+clustering	NN
+-LRB-	-LRB-
+IC	NN
+-RRB-	-RRB-
+:	:
+search	NN
+results	NNS
+were	VBD
+clustered	VBN
+by	IN
+a	DT
+
+
+default	NN
+built-in	JJ
+algorithm	NN
+-LRB-	-LRB-
+frequent	JJ
+phrase	NN
+hierarchical	JJ
+-RRB-	-RRB-
+.	.
+
+â	RB
+$	$
+cents	NNS
+Personalized	VBN
+clustering	NN
+-LRB-	-LRB-
+PC	NN
+-RRB-	-RRB-
+:	:
+search	NN
+result	VBP
+clustering	NN
+was	VBD
+
+
+personalized	VBN
+by	IN
+a	DT
+logged-in	JJ
+user	NN
+after	IN
+a	DT
+series	NN
+of	IN
+edits	NNS
+,	,
+
+
+taking	VBG
+on	RP
+average	JJ
+1	CD
+and	CC
+no	DT
+more	JJR
+than	IN
+2	CD
+minutes	NNS
+per	IN
+query	NN
+.	.
+
+â	RB
+$	$
+cents	NNS
+Aggregated	JJ
+clustering	NN
+-LRB-	-LRB-
+AC	NN
+-RRB-	-RRB-
+:	:
+search	NN
+result	VBP
+clustering	NN
+was	VBD
+
+
+based	VBN
+on	IN
+aggregated	JJ
+edits	NNS
+from	IN
+on	IN
+average	JJ
+10	CD
+users	NNS
+.	.
+
+
+Navigational	JJ
+queries	NNS
+seek	VBP
+the	DT
+website	NN
+or	CC
+home	NN
+page	NN
+of	IN
+a	DT
+single	JJ
+entity	NN
+that	IN
+the	DT
+user	NN
+has	VBZ
+in	IN
+mind	NN
+.	.
+
+The	DT
+more	JJR
+common	JJ
+-LSB-	-LRB-
+4	CD
+,	,
+27	CD
+-RSB-	-RRB-
+informational	JJ
+queries	NNS
+seek	VBP
+general	JJ
+information	NN
+on	IN
+a	DT
+broad	JJ
+topic	NN
+.	.
+
+The	DT
+ranked	VBD
+list	NN
+interface	NN
+works	VBZ
+ï	RB
+¬	CD
+ne	NN
+for	IN
+the	DT
+for	IN
+-	:
+mer	NN
+in	IN
+general	JJ
+but	CC
+is	VBZ
+less	RBR
+eective	JJ
+for	IN
+the	DT
+latter	JJ
+,	,
+which	WDT
+is	VBZ
+
+
+where	WRB
+clustering	NN
+can	MD
+be	VB
+helpful	JJ
+-LSB-	-LRB-
+23	CD
+-RSB-	-RRB-
+.	.
+
+In	IN
+practice	NN
+,	,
+a	DT
+user	NN
+may	MD
+explore	VB
+a	DT
+varied	JJ
+number	NN
+-LRB-	-LRB-
+e.g.	FW
+,	,
+5	CD
+or	CC
+10	CD
+-RRB-	-RRB-
+of	IN
+relevant	JJ
+results	NNS
+for	IN
+an	DT
+informational	JJ
+query	NN
+.	.
+
+Thus	RB
+,	,
+we	PRP
+considered	VBD
+2	CD
+types	NNS
+of	IN
+infor	NN
+-	:
+mational	JJ
+queries	NNS
+.	.
+
+In	IN
+addition	NN
+,	,
+we	PRP
+argue	VBP
+that	IN
+for	IN
+some	DT
+deep	JJ
+navigational	JJ
+queries	NNS
+where	WRB
+the	DT
+desired	VBN
+page	NN
+â	RB
+$	$
+œhidesâ	JJ
+$	$
+deep	JJ
+in	IN
+a	DT
+ranked	VBN
+list	NN
+,	,
+clustering	NN
+can	MD
+still	RB
+be	VB
+helpful	JJ
+by	IN
+skipping	VBG
+ir	SYM
+-	:
+relevant	JJ
+results	NNS
+.	.
+
+Thus	RB
+,	,
+we	PRP
+also	RB
+considered	VBD
+such	JJ
+queries	NNS
+:	:
+
+
+â	RB
+$	$
+cents	NNS
+R10	NN
+:	:
+Informational	JJ
+.	.
+
+To	TO
+locate	VB
+any	DT
+10	CD
+relevant	JJ
+results	NNS
+.	.
+
+â	RB
+$	$
+cents	NNS
+R5	NN
+:	:
+Informational	JJ
+.	.
+
+To	TO
+locate	VB
+any	DT
+5	CD
+relevant	JJ
+results	NNS
+.	.
+
+â	RB
+$	$
+cents	NNS
+R1	NN
+:	:
+Navigational	NNP
+.	.
+
+To	TO
+locate	VB
+1	CD
+pre-speciï	JJ
+¬	NN
+ed	VBD
+result	NN
+.	.
+
+
+For	IN
+each	DT
+query	NN
+type	NN
+,	,
+10	CD
+queries	NNS
+were	VBD
+executed	VBN
+,	,
+5	CD
+on	IN
+Google	NNP
+results	NNS
+and	CC
+5	CD
+on	IN
+the	DT
+AP	NNP
+Newswire	NNP
+dataset	NNP
+from	IN
+disk	NN
+1	CD
+of	IN
+the	DT
+TIPSTER	NN
+corpus	NN
+.	.
+
+The	DT
+AP	NNP
+Newswire	NNP
+queries	NNS
+were	VBD
+chosen	VBN
+from	IN
+TREC	NN
+topics	NNS
+50-150	CD
+,	,
+ensuring	VBG
+that	IN
+they	PRP
+returned	VBD
+at	IN
+least	JJS
+15	CD
+relevant	JJ
+results	NNS
+within	IN
+the	DT
+ï	NN
+¬	CD
+rst	NN
+50	CD
+results	NNS
+.	.
+
+For	IN
+R1	NN
+queries	NNS
+,	,
+the	DT
+topic	NN
+descriptions	NNS
+were	VBD
+modiï	NN
+¬	CD
+ed	VBD
+to	TO
+direct	VB
+the	DT
+user	NN
+to	TO
+a	DT
+single	JJ
+result	NN
+that	WDT
+is	VBZ
+relatively	RB
+low-ranked	JJ
+to	TO
+make	VB
+the	DT
+queries	NNS
+â	VBP
+$	$
+œdeepâ	JJ
+$	$
+.	.
+
+Google	NNP
+queries	NNS
+were	VBD
+chosen	VBN
+from	IN
+topics	NNS
+that	WDT
+participants	NNS
+were	VBD
+familiar	JJ
+with	IN
+.	.
+
+All	DT
+queries	NNS
+returned	VBD
+at	IN
+least	JJS
+50	CD
+results	NNS
+.	.
+
+These	DT
+queries	NNS
+and	CC
+their	PRP$
+descriptions	NNS
+and	CC
+narratives	NNS
+can	MD
+be	VB
+found	VBN
+at	IN
+-LSB-	-LRB-
+1	CD
+-RSB-	-RRB-
+.	.
+
+
+Each	DT
+user	NN
+was	VBD
+given	VBN
+15	CD
+queries	NNS
+,	,
+5	CD
+for	IN
+each	DT
+query	NN
+type	NN
+.	.
+
+Each	DT
+query	NN
+was	VBD
+executed	VBN
+4	CD
+times	NNS
+for	IN
+the	DT
+4	CD
+presentations	NNS
+being	VBG
+compared	VBN
+.	.
+
+Thus	RB
+,	,
+in	IN
+total	JJ
+each	DT
+user	NN
+executed	VBD
+15	CD
+4	CD
+=	JJ
+60	CD
+queries	NNS
+.	.
+
+For	IN
+each	DT
+execution	NN
+,	,
+the	DT
+user	NN
+exploration	NN
+eort	NN
+was	VBD
+computed	VBN
+.	.
+
+
+User	NN
+eort	NN
+was	VBD
+the	DT
+metric	JJ
+we	PRP
+used	VBD
+to	TO
+measure	VB
+the	DT
+search	NN
+result	VBP
+exploration	NN
+eort	NN
+exerted	VBN
+by	IN
+a	DT
+user	NN
+in	IN
+fulï	NN
+¬	CD
+lling	VBG
+her	PRP$
+
+
+information	NN
+need	NN
+.	.
+
+-LSB-	-LRB-
+19	CD
+-RSB-	-RRB-
+used	VBD
+a	DT
+similar	JJ
+metric	JJ
+under	IN
+a	DT
+proba	NN
+-	:
+bilistic	JJ
+model	NN
+instead	RB
+of	IN
+user	NN
+study	NN
+.	.
+
+Assuming	VBG
+both	DT
+search	NN
+results	VBZ
+and	CC
+cluster	NN
+labels	NNS
+are	VBP
+scanned	VBN
+and	CC
+examined	VBN
+in	IN
+a	DT
+top-down	JJ
+manner	NN
+,	,
+user	NN
+eort	NN
+can	MD
+be	VB
+computed	VBN
+as	IN
+follows	VBZ
+:	:
+
+
+â	RB
+$	$
+cents	NNS
+Add	VBP
+1	CD
+point	NN
+to	TO
+for	IN
+each	DT
+examined	VBN
+search	NN
+result	NN
+.	.
+
+
+â	RB
+$	$
+cents	NNS
+Add	VBP
+0.25	CD
+point	NN
+to	TO
+for	IN
+each	DT
+examined	VBN
+cluster	NN
+label	NN
+.	.
+
+This	DT
+
+
+is	VBZ
+because	IN
+labels	NNS
+are	VBP
+much	JJ
+shorter	JJR
+than	IN
+snippets	NNS
+.	.
+
+â	RB
+$	$
+cents	NNS
+Add	VBP
+0.25	CD
+point	NN
+to	TO
+for	IN
+each	DT
+uncertain	JJ
+result	NN
+.	.
+
+Based	VBN
+on	IN
+
+
+our	PRP$
+assumption	NN
+,	,
+all	DT
+results	NNS
+before	IN
+a	DT
+tagged	VBN
+relevant	JJ
+result	NN
+
+
+are	VBP
+examined	VBN
+.	.
+
+However	RB
+,	,
+results	VBZ
+after	IN
+the	DT
+last	JJ
+tagged	VBD
+result	NN
+
+
+remain	VB
+uncertain	JJ
+.	.
+
+For	IN
+linked	VBN
+list	NN
+presentation	NN
+,	,
+there	EX
+is	VBZ
+
+
+no	DT
+uncertainty	NN
+because	IN
+the	DT
+exploration	NN
+ends	VBZ
+at	IN
+a	DT
+tagged	VBN
+
+
+result	NN
+due	JJ
+to	TO
+the	DT
+way	NN
+the	DT
+queries	NNS
+are	VBP
+chosen	VBN
+-LRB-	-LRB-
+more	JJR
+relevant	JJ
+
+
+results	NNS
+than	IN
+needed	VBN
+-RRB-	-RRB-
+.	.
+
+
+580	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+8	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+4.0	CD
+
+
+3.5	CD
+
+
+3.0	CD
+
+
+2.5	CD
+
+
+Yahoo	NNP
+!	.
+
+F	NN
+Exec	NN
+Yahoo	NNP
+!	.
+
+F	NN
+Resp	NN
+Yahoo	NNP
+!	.
+
+H	NN
+Exec	NN
+Yahoo	NNP
+!	.
+
+H	NN
+Resp	NN
+NYT	NN
+F	NN
+Exec	NN
+NYT	NN
+F	NN
+Resp	NN
+NYT	NN
+H	NN
+Exec	NN
+NYT	NN
+H	NN
+Resp	NN
+
+
+2.0	CD
+
+
+1.5	CD
+
+
+Time	NNP
+-LRB-	-LRB-
+seconds	NNS
+-RRB-	-RRB-
+
+
+1.0	CD
+
+
+0.5	CD
+
+
+0.0	CD
+
+
+100 200 300 400	CD
+500	CD
+
+
+Number	NN
+of	IN
+results	NNS
+
+
+Figure	NNP
+4	CD
+:	:
+Eciency	NN
+evaluation	NN
+.	.
+
+
+Uncertainty	NN
+could	MD
+occur	VB
+for	IN
+results	NNS
+within	IN
+a	DT
+chosen	VBN
+clus	NN
+-	:
+
+
+ter	NN
+C	NN
+.	.
+
+As	IN
+an	DT
+eective	JJ
+way	NN
+of	IN
+utilizing	VBG
+cluster	NN
+labels	NNS
+,	,
+most	JJS
+
+
+users	NNS
+would	MD
+partially	RB
+examine	VB
+a	DT
+few	JJ
+results	NNS
+in	IN
+C	NN
+to	TO
+eval	NN
+-	:
+
+
+uate	VB
+the	DT
+relevance	NN
+of	IN
+C	NN
+itself	PRP
+.	.
+
+If	IN
+they	PRP
+think	VBP
+C	NN
+is	VBZ
+relevant	JJ
+,	,
+
+
+they	PRP
+must	MD
+have	VB
+found	VBN
+and	CC
+tagged	VBN
+some	DT
+relevant	JJ
+results	NNS
+
+
+in	IN
+C	NN
+.	.
+
+If	IN
+they	PRP
+think	VBP
+C	NN
+is	VBZ
+irrelevant	JJ
+,	,
+they	PRP
+would	MD
+ignore	VB
+the	DT
+
+
+cluster	NN
+and	CC
+quickly	RB
+move	VB
+to	TO
+the	DT
+next	JJ
+label	NN
+.	.
+
+Thus	RB
+,	,
+each	DT
+un	SYM
+-	:
+
+
+certain	JJ
+result	NN
+has	VBZ
+a	DT
+probability	NN
+of	IN
+being	VBG
+examined	VBN
+.	.
+
+Based	VBN
+
+
+on	IN
+our	PRP$
+observation	NN
+for	IN
+this	DT
+particular	JJ
+user	NN
+study	NN
+,	,
+we	PRP
+em	SYM
+-	:
+
+
+pirically	RB
+used	VBN
+0.25	CD
+for	IN
+this	DT
+probability	NN
+.	.
+
+
+5.2	CD
+System	NNP
+Evaluation	NN
+Results	NNS
+
+
+For	IN
+correctness	NN
+,	,
+all	DT
+functional	JJ
+and	CC
+system	NN
+tests	NNS
+were	VBD
+exe	SYM
+-	:
+cuted	JJ
+successfully	RB
+.	.
+
+A	DT
+detailed	JJ
+description	NN
+of	IN
+these	DT
+tests	NNS
+can	MD
+be	VB
+found	VBN
+at	IN
+-LSB-	-LRB-
+1	CD
+-RSB-	-RRB-
+.	.
+
+In	IN
+the	DT
+following	VBG
+,	,
+we	PRP
+focus	VBP
+on	IN
+the	DT
+eciency	NN
+evaluation	NN
+results	NNS
+.	.
+
+
+We	PRP
+recorded	VBD
+and	CC
+averaged	VBD
+-LRB-	-LRB-
+over	IN
+10	CD
+queries	NNS
+-RRB-	-RRB-
+the	DT
+runtime	NN
+in	IN
+seconds	NNS
+for	IN
+all	DT
+6	CD
+portions	NNS
+of	IN
+total	JJ
+response	NN
+time	NN
+.	.
+
+In	IN
+addition	NN
+,	,
+we	PRP
+also	RB
+computed	VBD
+the	DT
+average	JJ
+total	JJ
+execution	NN
+time	NN
+,	,
+which	WDT
+in	IN
+-	:
+cludes	NNS
+preprocessing	VBG
+,	,
+initial	JJ
+clustering	NN
+,	,
+applying	VBG
+preferences	NNS
+and	CC
+presenting	VBG
+the	DT
+ï	NN
+¬	CD
+nal	JJ
+tree	NN
+.	.
+
+This	DT
+is	VBZ
+the	DT
+time	NN
+that	IN
+our	PRP$
+pro-	JJ
+totype	NN
+is	VBZ
+responsible	JJ
+for	IN
+.	.
+
+The	DT
+remaining	VBG
+time	NN
+is	VBZ
+irrelevant	JJ
+to	TO
+the	DT
+way	NN
+our	PRP$
+prototype	NN
+is	VBZ
+designed	VBN
+and	CC
+implemented	VBN
+.	.
+
+While	IN
+the	DT
+details	NNS
+are	VBP
+reported	VBN
+in	IN
+-LSB-	-LRB-
+1	CD
+-RSB-	-RRB-
+,	,
+Figure	NNP
+4	CD
+shows	VBZ
+the	DT
+trends	NNS
+of	IN
+the	DT
+average	JJ
+total	JJ
+execution	NN
+time	NN
+-LRB-	-LRB-
+Exec	NN
+in	IN
+the	DT
+ï	NN
+¬	NN
+gure	NN
+-RRB-	-RRB-
+and	CC
+response	NN
+time	NN
+-LRB-	-LRB-
+Resp	NN
+-RRB-	-RRB-
+for	IN
+both	DT
+ï	FW
+¬	FW
+‚	FW
+at	IN
+-LRB-	-LRB-
+F	NN
+-RRB-	-RRB-
+and	CC
+hierarchical	JJ
+-LRB-	-LRB-
+H	NN
+-RRB-	-RRB-
+presentations	NNS
+over	IN
+2	CD
+sources	NNS
+of	IN
+Yahoo	NNP
+!	.
+
+-LRB-	-LRB-
+Yahoo	NNP
+!	.
+-RRB-	-RRB-
+
+and	CC
+New	NNP
+York	NNP
+Times	NNP
+-LRB-	-LRB-
+NYT	NNP
+-RRB-	-RRB-
+.	.
+
+From	IN
+the	DT
+ï	NN
+¬	NN
+gure	NN
+we	PRP
+can	MD
+see	VB
+that	DT
+:	:
+â	VB
+$	$
+cents	NNS
+Response	NN
+and	CC
+execution	NN
+time	NN
+trends	NNS
+are	VBP
+linear	JJ
+,	,
+testifying	VBG
+
+
+to	TO
+the	DT
+scalability	NN
+of	IN
+our	PRP$
+prototype	NN
+.	.
+
+In	IN
+particular	JJ
+,	,
+for	IN
+both	DT
+
+
+ï	NN
+¬	SYM
+‚	CD
+at	IN
+and	CC
+hierarchical	JJ
+clustering	NN
+,	,
+the	DT
+total	JJ
+execution	NN
+time	NN
+is	VBZ
+
+
+about	IN
+1	CD
+second	JJ
+for	IN
+500	CD
+results	NNS
+and	CC
+0.4	CD
+second	JJ
+for	IN
+200	CD
+re	SYM
+-	:
+
+
+sults	NNS
+from	IN
+either	CC
+source	NN
+.	.
+
+Note	VB
+that	IN
+most	JJS
+existing	VBG
+cluster	NN
+-	:
+
+
+ing	NN
+search	NN
+engines	NNS
+,	,
+e.g.	FW
+,	,
+iBoogie	NN
+-LRB-	-LRB-
+www.iboogie.com	NN
+-RRB-	-RRB-
+and	CC
+
+
+CarrotSearch	NNP
+-LRB-	-LRB-
+carrotsearch.com	NNP
+-RRB-	-RRB-
+,	,
+cluster	NN
+100	CD
+results	NNS
+by	IN
+
+
+default	NN
+and	CC
+200	CD
+at	IN
+maximum	NN
+.	.
+
+Clusty	NNP
+-LRB-	-LRB-
+www.clusty.com	NNP
+-RRB-	-RRB-
+
+
+clusters	NNS
+200	CD
+results	NNS
+by	IN
+default	NN
+and	CC
+500	CD
+at	IN
+maximum	NN
+.	.
+
+â	RB
+$	$
+cents	NNS
+Hierarchical	JJ
+presentation	NN
+-LRB-	-LRB-
+H	NN
+-RRB-	-RRB-
+takes	VBZ
+comparable	JJ
+times	NNS
+to	TO
+
+
+ï	NN
+¬	SYM
+‚	CD
+at	IN
+presentation	NN
+-LRB-	-LRB-
+F	NN
+-RRB-	-RRB-
+,	,
+showing	VBG
+that	IN
+recursive	JJ
+generation	NN
+of	IN
+
+
+hierarchies	NNS
+does	VBZ
+not	RB
+add	VB
+signiï	NN
+¬	NN
+cant	JJ
+cost	NN
+to	TO
+eciency	NN
+.	.
+
+
+â	RB
+$	$
+cents	NNS
+There	EX
+is	VBZ
+a	DT
+bigger	JJR
+discrepancy	NN
+between	IN
+response	NN
+and	CC
+execu	NN
+-	:
+
+
+tion	NN
+times	NNS
+for	IN
+the	DT
+Yahoo	NNP
+!	.
+
+data	NNS
+source	NN
+compared	VBN
+to	TO
+New	NNP
+
+
+York	NNP
+Times	NNP
+,	,
+suggesting	VBG
+a	DT
+signiï	NN
+¬	CD
+cant	JJ
+eciency	NN
+improve	VB
+-	:
+
+
+ment	NN
+by	IN
+integrating	VBG
+our	PRP$
+prototype	NN
+with	IN
+the	DT
+data	NNS
+sources	NNS
+.	.
+
+
+35	CD
+
+
+30	CD
+
+
+RL	NN
+
+
+25	CD
+
+
+RL	NN
+:	:
+Ranked	VBN
+list	NN
+
+
+IC	NN
+:	:
+Initial	JJ
+clustering	NN
+PC	NN
+:	:
+Personalized	VBN
+clustering	NN
+AC	NN
+:	:
+Aggregated	JJ
+clustering	NN
+
+
+IC	NN
+
+
+20	CD
+
+
+AC	NN
+
+
+15	CD
+
+
+RL	NN
+
+
+RL	NN
+
+
+PC	NN
+
+
+10	CD
+
+
+IC	NN
+IC	NN
+
+
+AC	NN
+
+
+AC	NN
+
+
+PC	NN
+PC	NN
+
+
+-LRB-	-LRB-
+points	NNS
+-RRB-	-RRB-
+
+
+
+User	NN
+effort	NN
+
+
+5	CD
+
+
+0	CD
+
+
+R1	NN
+
+
+R5	NN
+Query	NN
+types	NNS
+
+
+R	NN
+
+
+10	CD
+
+
+Figure	NNP
+5	CD
+:	:
+Utility	NNP
+evaluation	NN
+on	IN
+Google	NNP
+data	NNS
+source	NN
+.	.
+
+
+â	RB
+$	$
+cents	NNS
+Execution	NN
+times	NNS
+for	IN
+Yahoo	NNP
+!	.
+
+are	VBP
+shorter	JJR
+than	IN
+New	NNP
+York	NNP
+
+
+Times	NNP
+due	JJ
+to	TO
+the	DT
+shorter	JJR
+titles	NNS
+and	CC
+snippets	NNS
+.	.
+
+
+In	IN
+addition	NN
+,	,
+we	PRP
+observe	VBP
+-LRB-	-LRB-
+and	CC
+report	NN
+in	IN
+-LSB-	-LRB-
+1	CD
+-RSB-	-RRB-
+with	IN
+supporting	VBG
+data	NNS
+-RRB-	-RRB-
+that	WDT
+applying	VBG
+preferences	NNS
+takes	VBZ
+less	JJR
+than	IN
+1/10	CD
+second	JJ
+in	IN
+all	DT
+test	NN
+cases	NNS
+,	,
+which	WDT
+certiï	VBP
+¬	CD
+es	VBZ
+the	DT
+eciency	NN
+of	IN
+our	PRP$
+â	NN
+$	$
+œpath	JJ
+
+
+approachâ	RB
+$	$
+for	IN
+managing	VBG
+preferences	NNS
+.	.
+
+Moreover	RB
+,	,
+presenting	VBG
+the	DT
+ï	NN
+¬	CD
+nal	JJ
+tree	NN
+takes	VBZ
+the	DT
+majority	NN
+-LRB-	-LRB-
+roughly	RB
+80	CD
+%	NN
+-RRB-	-RRB-
+of	IN
+the	DT
+total	JJ
+execution	NN
+time	NN
+,	,
+which	WDT
+can	MD
+be	VB
+improved	VBN
+by	IN
+using	VBG
+alternate	JJ
+user	NN
+interface	NN
+technologies	NNS
+.	.
+
+
+5.3	CD
+Utility	NN
+Evaluation	NN
+Results	NNS
+
+
+Figure	NNP
+5	CD
+shows	VBZ
+the	DT
+averaged	VBN
+user	NN
+eort	NN
+-LRB-	-LRB-
+over	IN
+22	CD
+5	CD
+=	JJ
+110	CD
+queries	NNS
+-RRB-	-RRB-
+for	IN
+each	DT
+of	IN
+the	DT
+4	CD
+presentations	NNS
+-LRB-	-LRB-
+RL	NN
+,	,
+IL	NN
+,	,
+PC	NN
+,	,
+AC	NN
+-RRB-	-RRB-
+and	CC
+each	DT
+of	IN
+the	DT
+query	NN
+types	NNS
+-LRB-	-LRB-
+R1	NN
+,	,
+R5	NN
+,	,
+R10	NN
+-RRB-	-RRB-
+on	IN
+the	DT
+Google	NNP
+data	NNS
+source	NN
+.	.
+
+Similar	JJ
+trends	NNS
+can	MD
+be	VB
+observed	VBN
+from	IN
+the	DT
+AP	NNP
+Newswire	NNP
+data	NNS
+source	NN
+-LRB-	-LRB-
+see	VB
+-LSB-	-LRB-
+1	CD
+-RSB-	-RRB-
+for	IN
+details	NNS
+-RRB-	-RRB-
+.	.
+
+From	IN
+the	DT
+ï	NN
+¬	NN
+gure	NN
+we	PRP
+can	MD
+see	VB
+that	DT
+:	:
+
+
+â	RB
+$	$
+cents	NNS
+Clustering	VBG
+saves	VBZ
+user	NN
+eort	NN
+in	IN
+informational	JJ
+and	CC
+deep	JJ
+nav	NN
+-	:
+
+
+igational	JJ
+queries	NNS
+,	,
+with	IN
+personalized	VBN
+clustering	NN
+the	DT
+most	RBS
+
+
+eective	JJ
+,	,
+saving	VBG
+up	RP
+to	TO
+50	CD
+%	NN
+of	IN
+user	NN
+eort	NN
+.	.
+
+
+â	RB
+$	$
+cents	NNS
+Aggregated	JJ
+clustering	NN
+also	RB
+signiï	VBP
+¬	CD
+cantly	JJ
+beneï	NN
+¬	NN
+ts	NNS
+,	,
+although	IN
+
+
+it	PRP
+is	VBZ
+not	RB
+as	IN
+eective	JJ
+as	IN
+personalized	JJ
+clustering	NN
+.	.
+
+However	RB
+,	,
+
+
+it	PRP
+is	VBZ
+â	JJ
+$	$
+œfreeâ	JJ
+$	$
+in	IN
+the	DT
+sense	NN
+that	IN
+it	PRP
+does	VBZ
+not	RB
+take	VB
+user	NN
+editing	NN
+
+
+eort	NN
+,	,
+and	CC
+it	PRP
+does	VBZ
+not	RB
+require	VB
+user	NN
+login	NN
+.	.
+
+
+In	IN
+evaluating	VBG
+aggregated	JJ
+clustering	NN
+,	,
+we	PRP
+made	VBD
+sure	JJ
+that	IN
+
+
+the	DT
+users	NNS
+using	VBG
+the	DT
+aggregated	JJ
+clusters	NNS
+were	VBD
+not	RB
+the	DT
+ones	NNS
+
+
+who	WP
+edited	VBD
+them	PRP
+.	.
+
+
+â	RB
+$	$
+cents	NNS
+The	DT
+eectiveness	NN
+of	IN
+clustering	NN
+is	VBZ
+related	VBN
+to	TO
+how	WRB
+â	JJ
+$	$
+œdeepâ	JJ
+$	$
+the	DT
+
+
+relevant	JJ
+results	NNS
+are	VBP
+.	.
+
+The	DT
+lower	JJR
+they	PRP
+are	VBP
+ranked	VBN
+,	,
+the	DT
+more	RBR
+
+
+eective	JJ
+clustering	NN
+is	VBZ
+because	IN
+more	JJR
+irrelevant	JJ
+results	NNS
+can	MD
+
+
+be	VB
+skipped	VBN
+.	.
+
+
+The	DT
+hierarchy	NN
+of	IN
+cluster	NN
+labels	NNS
+plays	VBZ
+a	DT
+central	JJ
+role	NN
+in	IN
+the	DT
+eectiveness	NN
+of	IN
+clustering	NN
+search	NN
+engines	NNS
+.	.
+
+From	IN
+the	DT
+data	NNS
+we	PRP
+
+
+have	VB
+collected	VBN
+as	RB
+well	RB
+as	IN
+the	DT
+user	NN
+feedback	NN
+,	,
+we	PRP
+observe	VBP
+that	IN
+:	:
+
+
+â	RB
+$	$
+cents	NNS
+Cluster	NNP
+labels	NNS
+should	MD
+be	VB
+short	JJ
+and	CC
+in	IN
+the	DT
+range	NN
+of	IN
+1	CD
+to	TO
+
+
+4	CD
+terms	NNS
+,	,
+with	IN
+2	CD
+and	CC
+3	CD
+the	DT
+best	JJS
+.	.
+
+The	DT
+total	JJ
+levels	NNS
+of	IN
+the	DT
+
+
+hierarchy	NN
+should	MD
+be	VB
+limited	VBN
+to	TO
+3	CD
+or	CC
+4	CD
+.	.
+
+
+â	RB
+$	$
+cents	NNS
+There	EX
+are	VBP
+two	CD
+types	NNS
+of	IN
+cluster	NN
+edits	NNS
+,	,
+-LRB-	-LRB-
+1	LS
+-RRB-	-RRB-
+assigning	VBG
+search	NN
+
+
+results	NNS
+to	TO
+labels	NNS
+and	CC
+-LRB-	-LRB-
+2	LS
+-RRB-	-RRB-
+editing	NN
+the	DT
+hierarchy	NN
+of	IN
+labels	NNS
+.	.
+
+
+Both	DT
+types	NNS
+are	VBP
+eective	JJ
+for	IN
+personalized	JJ
+clustering	NN
+.	.
+
+How	WRB
+-	:
+
+
+ever	RB
+,	,
+they	PRP
+respond	VBP
+dierently	RB
+for	IN
+aggregated	JJ
+clustering	NN
+.	.
+
+
+For	IN
+type	NN
+1	CD
+edits	VBZ
+,	,
+there	EX
+is	VBZ
+a	DT
+ground	NN
+truth	NN
+-LRB-	-LRB-
+in	IN
+a	DT
+loose	JJ
+sense	NN
+-RRB-	-RRB-
+
+
+for	IN
+each	DT
+assignment	NN
+that	WDT
+users	NNS
+tend	VBP
+to	TO
+agree	VB
+on	IN
+.	.
+
+Such	JJ
+ed	SYM
+-	:
+
+
+its	PRP$
+are	VBP
+easy	JJ
+to	TO
+aggregate	NN
+and	CC
+be	VB
+collaboratively	RB
+utilized	VBN
+.	.
+
+
+581	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+9	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+For	IN
+type	NN
+2	CD
+edits	NNS
+,	,
+it	PRP
+can	MD
+be	VB
+challenging	JJ
+-LRB-	-LRB-
+and	CC
+a	DT
+legitimate	JJ
+re	NN
+-	:
+
+
+search	NN
+topic	NN
+-RRB-	-RRB-
+to	TO
+aggregate	JJ
+hierarchies	NNS
+because	IN
+many	JJ
+edited	VBN
+
+
+hierarchies	NNS
+can	MD
+be	VB
+good	JJ
+but	CC
+in	IN
+diverse	JJ
+ways	NNS
+.	.
+
+A	DT
+good	JJ
+initial	JJ
+
+
+clustering	NN
+-LRB-	-LRB-
+e.g.	FW
+,	,
+frequent	JJ
+phrase	NN
+hierarchical	JJ
+-RRB-	-RRB-
+can	MD
+alleviate	VB
+
+
+the	DT
+problem	NN
+by	IN
+reducing	VBG
+the	DT
+diversity	NN
+.	.
+
+
+As	IN
+part	NN
+of	IN
+the	DT
+user	NN
+study	NN
+,	,
+we	PRP
+also	RB
+surveyed	VBD
+on	IN
+the	DT
+eec	NN
+-	:
+tiveness	NN
+of	IN
+general	JJ
+,	,
+personalized	JJ
+and	CC
+aggregated	JJ
+clustering	NN
+in	IN
+helping	VBG
+with	IN
+search	NN
+result	VBP
+exploration	NN
+.	.
+
+On	IN
+a	DT
+scale	NN
+of	IN
+1	CD
+to	TO
+10	CD
+with	IN
+10	CD
+as	IN
+the	DT
+best	JJS
+,	,
+users	NNS
+responded	VBD
+with	IN
+an	DT
+average	JJ
+rating	NN
+of	IN
+8.21	CD
+.	.
+
+Most	JJS
+users	NNS
+found	VBD
+ClusteringWiki	NNP
+ecient	NN
+and	CC
+useful	JJ
+in	IN
+reducing	VBG
+their	PRP$
+search	NN
+eort	NN
+.	.
+
+
+6	CD
+.	.
+
+CONCLUSION	NN
+
+
+Search	VB
+engine	NN
+utility	NN
+has	VBZ
+been	VBN
+signiï	JJ
+¬	NN
+cantly	RB
+hampered	VBN
+due	JJ
+to	TO
+the	DT
+ever-increasing	JJ
+information	NN
+overload	NN
+.	.
+
+Clustering	NN
+has	VBZ
+been	VBN
+considered	VBN
+a	DT
+promising	JJ
+alternative	NN
+to	TO
+ranked	VBD
+lists	NNS
+in	IN
+improving	VBG
+search	NN
+result	VBP
+organization	NN
+.	.
+
+Given	VBN
+the	DT
+unique	JJ
+hu	NN
+-	:
+man	NN
+factor	NN
+in	IN
+search	NN
+result	VBP
+clustering	NN
+,	,
+traditional	JJ
+automatic	JJ
+algorithms	NNS
+often	RB
+fail	VBP
+to	TO
+generate	VB
+clusters	NNS
+and	CC
+labels	NNS
+that	WDT
+are	VBP
+interesting	JJ
+and	CC
+meaningful	JJ
+from	IN
+the	DT
+userâ	JJ
+$	$
+™	CD
+s	NNS
+perspective	NN
+.	.
+
+In	IN
+this	DT
+paper	NN
+,	,
+we	PRP
+introduced	VBD
+ClusteringWiki	NNP
+,	,
+the	DT
+ï	NN
+¬	NN
+rst	NN
+pro-	JJ
+totype	NN
+and	CC
+framework	NN
+for	IN
+personalized	JJ
+clustering	NN
+,	,
+utilizing	VBG
+the	DT
+power	NN
+of	IN
+direct	JJ
+user	NN
+intervention	NN
+and	CC
+mass-collaboration	NN
+.	.
+
+Through	IN
+a	DT
+Wiki	NNP
+interface	NN
+,	,
+the	DT
+user	NN
+can	MD
+edit	VB
+the	DT
+member	NN
+-	:
+ship	NN
+,	,
+structure	NN
+and	CC
+labels	NNS
+of	IN
+clusters	NNS
+.	.
+
+Such	JJ
+edits	NNS
+can	MD
+be	VB
+ag	SYM
+-	:
+gregated	VBN
+and	CC
+shared	VBN
+among	IN
+users	NNS
+to	TO
+improve	VB
+search	NN
+result	VBP
+organization	NN
+and	CC
+search	NN
+engine	NN
+utility	NN
+.	.
+
+
+There	EX
+are	VBP
+many	JJ
+interesting	JJ
+directions	NNS
+for	IN
+future	JJ
+work	NN
+,	,
+from	IN
+fundamental	JJ
+semantics	NNS
+and	CC
+functionalities	NNS
+of	IN
+the	DT
+frame	NN
+-	:
+work	NN
+to	TO
+convenience	NN
+features	NNS
+,	,
+user	NN
+interface	NN
+and	CC
+scalability	NN
+.	.
+
+For	IN
+example	NN
+,	,
+in	IN
+line	NN
+with	IN
+social	JJ
+browsing	NN
+,	,
+social	JJ
+network	NN
+can	MD
+be	VB
+utilized	VBN
+in	IN
+preference	NN
+aggregation	NN
+.	.
+
+
+7	CD
+.	.
+
+ACKNOWLEDGMENTS	NNS
+
+
+This	DT
+work	NN
+-LRB-	-LRB-
+LLNL-CONF-461652	NN
+-RRB-	-RRB-
+was	VBD
+performed	VBN
+under	IN
+the	DT
+auspices	NNS
+of	IN
+the	DT
+U.S.	NNP
+Department	NNP
+of	IN
+Energy	NNP
+by	IN
+Lawrence	NNP
+Liver	NN
+-	:
+more	JJR
+National	NNP
+Laboratory	NNP
+under	IN
+Contract	NNP
+DE-AC52-07NA27344	NN
+.	.
+
+It	PRP
+was	VBD
+partially	RB
+supported	VBN
+by	IN
+the	DT
+Texas	NNP
+Norman	NNP
+Hackerman	NNP
+Ad	NN
+-	:
+vanced	VBN
+Research	NNP
+Program	NNP
+under	IN
+Grant	NNP
+No.003656-0035-2009	NNP
+.	.
+
+
+8	CD
+.	.
+
+REFERENCES	NNS
+-LSB-	-LRB-
+1	CD
+-RSB-	-RRB-
+D.	NNP
+C.	NNP
+Anastasiu	NNP
+,	,
+D.	NNP
+Buttler	NNP
+,	,
+and	CC
+B.	NNP
+J.	NNP
+Gao	NNP
+.	.
+
+Clusteringwiki	NNP
+
+
+technical	JJ
+report	NN
+.	.
+
+
+dmlab.cs.txstate.edu/ClusteringWiki/pdf/cw.pdf	NN
+.	.
+
+
+-LSB-	-LRB-
+2	CD
+-RSB-	-RRB-
+S.	NNP
+Basu	NNP
+,	,
+M.	NNP
+Bilenko	NNP
+,	,
+and	CC
+R.	NNP
+J.	NNP
+Mooney	NNP
+.	.
+
+A	DT
+probabilistic	JJ
+
+
+framework	NN
+for	IN
+semi-supervised	JJ
+clustering	NN
+.	.
+
+In	IN
+KDD	NNP
+,	,
+2004	CD
+.	.
+
+-LSB-	-LRB-
+3	CD
+-RSB-	-RRB-
+R.	NNP
+Bekkerman	NNP
+,	,
+H.	NNP
+Raghavan	NNP
+,	,
+J.	NNP
+Allan	NNP
+,	,
+and	CC
+K.	NNP
+Eguchi	NNP
+.	.
+
+
+Interactive	JJ
+clustering	NN
+of	IN
+text	NN
+collections	NNS
+according	VBG
+to	TO
+a	DT
+
+
+user-speciï	NN
+¬	CD
+ed	VBD
+criterion	NN
+.	.
+
+In	IN
+IJCAI	NNP
+,	,
+2007	CD
+.	.
+
+
+-LSB-	-LRB-
+4	LS
+-RSB-	-RRB-
+A.	NN
+Broder	NNP
+.	.
+
+A	DT
+taxonomy	NN
+of	IN
+web	NN
+search	NN
+.	.
+
+SIGIR	NNP
+Forum	NNP
+,	,
+
+
+36	CD
+-LRB-	-LRB-
+2	CD
+-RRB-	-RRB-
+:3	CD
+â	NN
+$	$
+``	``
+10	CD
+,	,
+2002	CD
+.	.
+
+
+-LSB-	-LRB-
+5	CD
+-RSB-	-RRB-
+C.	NNP
+Carpineto	NNP
+,	,
+S.	NNP
+OsiÂ	NNP
+´	CD
+nski	NNS
+,	,
+G.	NNP
+Romano	NNP
+,	,
+and	CC
+D.	NNP
+Weiss	NNP
+.	.
+
+A	DT
+
+
+survey	NN
+of	IN
+web	NN
+clustering	NN
+engines	NNS
+.	.
+
+ACM	NNP
+Comput	NNP
+.	.
+
+Surv.	NNP
+,	,
+
+
+41	CD
+-LRB-	-LRB-
+3	CD
+-RRB-	-RRB-
+:1	CD
+â	NN
+$	$
+``	``
+38	CD
+,	,
+2009	CD
+.	.
+
+
+-LSB-	-LRB-
+6	CD
+-RSB-	-RRB-
+D.	NNP
+Cohn	NNP
+,	,
+A.	NNP
+K.	NNP
+McCallum	NNP
+,	,
+and	CC
+T.	NNP
+Hertz	NNP
+.	.
+
+Constrained	VBN
+
+
+Clustering	NN
+:	:
+Advances	NNS
+in	IN
+Algorithms	NNP
+,	,
+Theory	NNP
+,	,
+and	CC
+
+
+Applications	NNS
+,	,
+chapter	NN
+Semi-Supervised	JJ
+Clustering	NN
+with	IN
+User	NN
+
+
+Feedback	NN
+.	.
+
+Chapman	NNP
+and	CC
+Hall/CRC	NNP
+,	,
+2009	CD
+.	.
+
+
+-LSB-	-LRB-
+7	CD
+-RSB-	-RRB-
+A.	NN
+Doan	NNP
+,	,
+R.	NNP
+Ramakrishnan	NNP
+,	,
+and	CC
+A.	NN
+Halevy	NNP
+.	.
+
+Mass	NNP
+
+
+collaboration	NN
+systems	NNS
+on	IN
+the	DT
+world-wide	JJ
+web	NN
+.	.
+
+
+Communications	NNPS
+of	IN
+the	DT
+ACM	NNP
+,	,
+to	TO
+appear	VB
+.	.
+
+
+-LSB-	-LRB-
+8	CD
+-RSB-	-RRB-
+B.	NNP
+S.	NNP
+Everitt	NNP
+,	,
+S.	NNP
+Landau	NNP
+,	,
+and	CC
+M.	NNP
+Leese	NNP
+.	.
+
+Cluster	NN
+analysis	NN
+.	.
+
+
+Oxford	NNP
+University	NNP
+Press	NNP
+,	,
+2001	CD
+.	.
+
+
+-LSB-	-LRB-
+9	CD
+-RSB-	-RRB-
+B.	NNP
+J.	NNP
+Gao	NNP
+and	CC
+J.	NNP
+Jan.	NNP
+.	.
+
+Rants	NNS
+:	:
+a	DT
+framework	NN
+for	IN
+rank	NN
+editing	NN
+
+
+and	CC
+sharing	VBG
+in	IN
+web	NN
+search	NN
+.	.
+
+In	IN
+WWW	NNP
+,	,
+2010	CD
+.	.
+
+
+-LSB-	-LRB-
+10	CD
+-RSB-	-RRB-
+A.	NN
+Griths	NNP
+,	,
+H.	NNP
+C.	NNP
+Luckhurst	NNP
+,	,
+and	CC
+P.	NNP
+Willett	NNP
+.	.
+
+Using	VBG
+
+
+interdocument	NN
+similarity	NN
+information	NN
+in	IN
+document	NN
+retrieval	NN
+
+
+systems	NNS
+.	.
+
+Journal	NNP
+of	IN
+the	DT
+American	NNP
+Society	NNP
+for	IN
+Information	NNP
+
+
+Sciences	NNPS
+,	,
+37	CD
+-LRB-	-LRB-
+1	CD
+-RRB-	-RRB-
+:3	CD
+â	NN
+$	$
+``	``
+11	CD
+,	,
+1986	CD
+.	.
+
+
+-LSB-	-LRB-
+11	CD
+-RSB-	-RRB-
+R.	NNP
+V.	NNP
+S.	NNP
+H.	NNP
+Halpin	NNP
+H	NN
+.	.
+
+The	DT
+complex	NN
+dynamics	NNS
+of	IN
+
+
+collaborative	JJ
+tagging	NN
+.	.
+
+WWW	NNP
+,	,
+2007	CD
+.	.
+
+
+-LSB-	-LRB-
+12	CD
+-RSB-	-RRB-
+M.	NNP
+A.	NNP
+Hearst	NNP
+and	CC
+J.	NNP
+O.	NNP
+Pedersen	NNP
+.	.
+
+Reexamining	VBG
+the	DT
+cluster	NN
+
+
+hypothesis	NN
+:	:
+scatter/gather	NN
+on	IN
+retrieval	NN
+results	NNS
+.	.
+
+In	IN
+SIGIR	NN
+,	,
+
+
+1996	CD
+.	.
+
+
+-LSB-	-LRB-
+13	CD
+-RSB-	-RRB-
+A.	NN
+Iskold	NNP
+.	.
+
+Overview	NN
+of	IN
+clustering	NN
+and	CC
+clusty	JJ
+search	NN
+engine	NN
+.	.
+
+
+www.readwriteweb.com/archives/overview	NN
+of	IN
+clu.php	NN
+,	,
+2007	CD
+.	.
+
+-LSB-	-LRB-
+14	CD
+-RSB-	-RRB-
+A.	NN
+K.	NNP
+Jain	NNP
+and	CC
+R.	NNP
+C.	NNP
+Dubes	NNP
+.	.
+
+Algorithms	NNS
+for	IN
+clustering	NN
+
+
+data	NNS
+.	.
+
+Prentice-Hall	NNP
+,	,
+1988	CD
+.	.
+
+
+-LSB-	-LRB-
+15	CD
+-RSB-	-RRB-
+X.	NNP
+Ji	NNP
+and	CC
+W.	NNP
+Xu	NNP
+.	.
+
+Document	NNP
+clustering	NN
+with	IN
+prior	JJ
+
+
+knowledge	NN
+.	.
+
+In	IN
+SIGIR	NN
+,	,
+2006	CD
+.	.
+
+
+-LSB-	-LRB-
+16	CD
+-RSB-	-RRB-
+M.	NNP
+Kaki	NNP
+.	.
+
+Findex	NNP
+:	:
+search	NN
+result	VBP
+categories	NNS
+help	VB
+users	NNS
+whenÂ	VB
+¨	CD
+
+
+document	NN
+ranking	JJ
+fails	VBZ
+.	.
+
+In	IN
+CHI	NNP
+,	,
+2005	CD
+.	.
+
+
+-LSB-	-LRB-
+17	CD
+-RSB-	-RRB-
+A.	NN
+Kale	NNP
+,	,
+T.	NNP
+Burris	NNP
+,	,
+B.	NNP
+Shah	NNP
+,	,
+T.	NNP
+L.	NNP
+P.	NNP
+Venkatesan	NNP
+,	,
+
+
+L.	NNP
+Velusamy	NNP
+,	,
+M.	NNP
+Gupta	NNP
+,	,
+and	CC
+M.	NNP
+Degerattu	NNP
+.	.
+
+icollaborate	NN
+:	:
+
+
+harvesting	VBG
+value	NN
+from	IN
+enterprise	NN
+web	NN
+usage	NN
+.	.
+
+In	IN
+SIGIR	NN
+,	,
+2010	CD
+.	.
+
+-LSB-	-LRB-
+18	CD
+-RSB-	-RRB-
+L.	NNP
+Kaufman	NNP
+and	CC
+P.	NNP
+Rousseeuw	NNP
+.	.
+
+Finding	VBG
+groups	NNS
+in	IN
+data	NNS
+:	:
+an	DT
+
+
+introduction	NN
+to	TO
+cluster	NN
+analysis	NN
+.	.
+
+John	NNP
+Wiley	NNP
+&	CC
+Sons	NNP
+,	,
+1990	CD
+.	.
+
+-LSB-	-LRB-
+19	CD
+-RSB-	-RRB-
+J.	NNP
+Koren	NNP
+,	,
+Y.	NNP
+Zhang	NNP
+,	,
+and	CC
+X.	NNP
+Liu	NNP
+.	.
+
+Personalized	VBN
+interactive	JJ
+
+
+faceted	JJ
+search	NN
+.	.
+
+In	IN
+WWW	NNP
+,	,
+2008	CD
+.	.
+
+
+-LSB-	-LRB-
+20	CD
+-RSB-	-RRB-
+K.	NNP
+Kummamuru	NNP
+,	,
+R.	NNP
+Lotlikar	NNP
+,	,
+S.	NNP
+Roy	NNP
+,	,
+K.	NNP
+Singal	NNP
+,	,
+and	CC
+
+
+R.	NNP
+Krishnapuram	NNP
+.	.
+
+A	DT
+hierarchical	JJ
+monothetic	JJ
+document	NN
+
+
+clustering	NN
+algorithm	NN
+for	IN
+summarization	NN
+and	CC
+browsing	VBG
+
+
+search	NN
+results	NNS
+.	.
+
+In	IN
+WWW	NNP
+,	,
+2004	CD
+.	.
+
+
+-LSB-	-LRB-
+21	CD
+-RSB-	-RRB-
+J.	NNP
+Lee	NNP
+,	,
+S.-w	NNP
+.	.
+
+Hwang	NNP
+,	,
+Z.	NNP
+Nie	NNP
+,	,
+and	CC
+J.-R	NN
+.	.
+
+Wen	NNP
+.	.
+
+Query	JJ
+result	NN
+
+
+clustering	NN
+for	IN
+object-level	JJ
+search	NN
+.	.
+
+In	IN
+KDD	NNP
+,	,
+2009	CD
+.	.
+
+
+-LSB-	-LRB-
+22	CD
+-RSB-	-RRB-
+J.	NNP
+MacQueen	NNP
+.	.
+
+Some	DT
+methods	NNS
+for	IN
+classiï	NN
+¬	CD
+cation	NN
+and	CC
+analysis	NN
+
+
+of	IN
+multivariate	JJ
+observations	NNS
+.	.
+
+In	IN
+5th	JJ
+Berkeley	NNP
+Symposium	NNP
+on	IN
+
+
+mathematics	NNS
+,	,
+Statistics	NNPS
+and	CC
+Probability	NNP
+,	,
+1967	CD
+.	.
+
+
+-LSB-	-LRB-
+23	CD
+-RSB-	-RRB-
+C.	NNP
+D.	NNP
+Manning	NNP
+,	,
+P.	NNP
+Raghavan	NNP
+,	,
+and	CC
+H.	NNP
+Schtze	NNP
+.	.
+
+Introduction	NN
+
+
+to	TO
+Information	NNP
+Retrieval	NNP
+.	.
+
+Cambridge	NNP
+University	NNP
+Press	NNP
+,	,
+
+
+2008	CD
+.	.
+
+
+-LSB-	-LRB-
+24	CD
+-RSB-	-RRB-
+S.	NNP
+Osinski	NNP
+and	CC
+D.	NNP
+Weiss	NNP
+.	.
+
+A	DT
+concept-driven	JJ
+algorithm	NN
+for	IN
+
+
+clustering	NN
+search	NN
+results	NNS
+.	.
+
+IEEE	NNP
+Intelligent	NNP
+Systems	NNPS
+,	,
+
+
+20	CD
+-LRB-	-LRB-
+3	CD
+-RRB-	-RRB-
+:48	CD
+â	NN
+$	$
+``	``
+54	CD
+,	,
+2005	CD
+.	.
+
+
+-LSB-	-LRB-
+25	CD
+-RSB-	-RRB-
+P.	NNP
+Pirolli	NNP
+,	,
+P.	NNP
+Schank	NNP
+,	,
+M.	NNP
+Hearst	NNP
+,	,
+and	CC
+C.	NNP
+Diehl	NNP
+.	.
+
+
+Scatter/gather	NN
+browsing	VBG
+communicates	VBZ
+the	DT
+topic	NN
+structure	NN
+
+
+of	IN
+a	DT
+very	RB
+large	JJ
+text	NN
+collection	NN
+.	.
+
+In	IN
+CHI	NNP
+,	,
+1996	CD
+.	.
+
+
+-LSB-	-LRB-
+26	CD
+-RSB-	-RRB-
+C.	NNP
+J.	NNP
+V.	NNP
+Rijsbergen	NNP
+.	.
+
+Information	NNP
+Retrieval	NNP
+.	.
+
+
+Butterworth-Heinemann	NNP
+,	,
+Newton	NNP
+,	,
+MA	NNP
+,	,
+USA	NNP
+,	,
+1979	CD
+.	.
+
+-LSB-	-LRB-
+27	CD
+-RSB-	-RRB-
+D.	NNP
+E.	NNP
+Rose	NNP
+and	CC
+D.	NNP
+Levinson	NNP
+.	.
+
+Understanding	VBG
+user	NN
+goals	NNS
+in	IN
+
+
+web	NN
+search	NN
+.	.
+
+In	IN
+WWW	NNP
+,	,
+2004	CD
+.	.
+
+
+-LSB-	-LRB-
+28	CD
+-RSB-	-RRB-
+G.	NNP
+Salton	NNP
+.	.
+
+The	DT
+SMART	NNP
+Retrieval	NNP
+System	NNP
+.	.
+
+Prentice-Hall	NNP
+,	,
+
+
+1971	CD
+.	.
+
+
+-LSB-	-LRB-
+29	CD
+-RSB-	-RRB-
+E.	NNP
+Sandhaus	NNP
+.	.
+
+The	DT
+New	NNP
+York	NNP
+Times	NNP
+Annotated	NNP
+Corpus	NNP
+.	.
+
+
+Linguistic	NNP
+Data	NNP
+Consortium	NNP
+,	,
+Philadelphia	NNP
+,	,
+2008	CD
+.	.
+
+
+-LSB-	-LRB-
+30	CD
+-RSB-	-RRB-
+A.	NN
+Tombros	NNP
+,	,
+R.	NNP
+Villa	NNP
+,	,
+and	CC
+C.	NNP
+J.	NNP
+Van	NNP
+Rijsbergen	NNP
+.	.
+
+The	DT
+
+
+eectiveness	NN
+of	IN
+query-speciï	NN
+¬	CD
+c	NN
+hierarchic	JJ
+clustering	NN
+in	IN
+
+
+information	NN
+retrieval	NN
+.	.
+
+Inf	NNP
+.	.
+
+Process	VB
+.	.
+
+Manage.	NNP
+,	,
+38	CD
+-LRB-	-LRB-
+4	CD
+-RRB-	-RRB-
+:559	CD
+â	NN
+$	$
+``	``
+582	CD
+,	,
+
+
+2002	CD
+.	.
+
+
+-LSB-	-LRB-
+31	CD
+-RSB-	-RRB-
+K.	NNP
+Wagsta	NNP
+,	,
+C.	NNP
+Cardie	NNP
+,	,
+S.	NNP
+Rogers	NNP
+,	,
+and	CC
+S.	NNP
+Schr	NNP
+Â	NNP
+¨	CD
+odl	NN
+.	.
+
+
+Constrained	VBN
+k-means	JJ
+clustering	NN
+with	IN
+background	NN
+
+
+knowledge	NN
+.	.
+
+In	IN
+ICML	NN
+,	,
+2001	CD
+.	.
+
+
+-LSB-	-LRB-
+32	CD
+-RSB-	-RRB-
+X.	NNP
+Wang	NNP
+and	CC
+C.	NNP
+Zhai	NNP
+.	.
+
+Learn	VB
+from	IN
+web	NN
+search	NN
+logs	NNS
+to	TO
+
+
+organize	VB
+search	NN
+results	NNS
+.	.
+
+In	IN
+SIGIR	NN
+,	,
+2007	CD
+.	.
+
+
+-LSB-	-LRB-
+33	CD
+-RSB-	-RRB-
+S.	NNP
+Xu	NNP
+,	,
+S.	NNP
+Bao	NNP
+,	,
+B.	NNP
+Fei	NNP
+,	,
+Z.	NNP
+Su	NNP
+,	,
+and	CC
+Y.	NNP
+Yu	NNP
+.	.
+
+Exploring	VBG
+
+
+folksonomy	NN
+for	IN
+personalized	JJ
+search	NN
+.	.
+
+SIGIR	NNP
+,	,
+pages	NNS
+155â	VBP
+$	$
+``	``
+162	CD
+,	,
+
+
+2008	CD
+.	.
+
+
+-LSB-	-LRB-
+34	CD
+-RSB-	-RRB-
+O.	NNP
+Zamir	NNP
+and	CC
+O.	NNP
+Etzioni	NNP
+.	.
+
+Web	NN
+document	NN
+clustering	NN
+:	:
+a	DT
+
+
+feasibility	NN
+demonstration	NN
+.	.
+
+In	IN
+SIGIR	NN
+,	,
+1998	CD
+.	.
+
+
+-LSB-	-LRB-
+35	CD
+-RSB-	-RRB-
+O.	NNP
+Zamir	NNP
+and	CC
+O.	NNP
+Etzioni	NNP
+.	.
+
+Grouper	NNP
+:	:
+a	DT
+dynamic	JJ
+clustering	NN
+
+
+interface	NN
+to	TO
+web	NN
+search	NN
+results	NNS
+.	.
+
+In	IN
+WWW	NNP
+,	,
+1999	CD
+.	.
+
+
+-LSB-	-LRB-
+36	CD
+-RSB-	-RRB-
+H.-J	NN
+.	.
+
+Zeng	NNP
+,	,
+Q.-C	NNP
+.	.
+
+He	PRP
+,	,
+Z.	NNP
+Chen	NNP
+,	,
+W.-Y	NNP
+.	.
+
+Ma	NNP
+,	,
+and	CC
+J.	NNP
+Ma	NNP
+.	.
+
+
+Learning	VBG
+to	TO
+cluster	VB
+web	NN
+search	NN
+results	NNS
+.	.
+
+In	IN
+SIGIR	NN
+,	,
+2004	CD
+.	.
+
+
+582	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+10	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+

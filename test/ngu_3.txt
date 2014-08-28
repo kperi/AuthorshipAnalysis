@@ -1,0 +1,19449 @@
+Scalable	JJ
+Semantic	NNP
+Brokering	NNP
+over	IN
+Dynamic	NNP
+Heterogeneous	JJ
+
+
+Data	NNS
+Sources	NNS
+in	IN
+InfoSleuth	NNP
+
+
+TM	NN
+
+
+Marian	NNP
+Nodine	NNP
+,	,
+Anne	NNP
+Hee	NNP
+Hiong	NNP
+Ngu	NNP
+
+
+Anthony	NNP
+Cassandra	NNP
+,	,
+William	NNP
+Bohrer	NNP
+
+
+Microelectronics	NNS
+and	CC
+Computer	NNP
+Technology	NNP
+Consortium	NNP
+-LRB-	-LRB-
+MCC	NNP
+-RRB-	-RRB-
+
+
+April	NNP
+20	CD
+,	,
+2001	CD
+
+
+Abstract	JJ
+
+
+InfoSleuth	NNP
+is	VBZ
+an	DT
+agent-based	JJ
+system	NN
+for	IN
+information	NN
+discovery	NN
+and	CC
+retrieval	NN
+in	IN
+a	DT
+dynamic	JJ
+,	,
+open	JJ
+envi	NNS
+-	:
+ronment	NN
+.	.
+
+Brokering	VBG
+in	IN
+InfoSleuth	NNP
+is	VBZ
+a	DT
+match-making	NN
+process	NN
+,	,
+recommending	VBG
+agents	NNS
+that	WDT
+provide	VBP
+services	NNS
+to	TO
+agents	NNS
+requesting	VBG
+services	NNS
+.	.
+
+This	DT
+paper	NN
+discusses	VBZ
+InfoSleuthâ	NNP
+$	$
+™	CD
+s	NNS
+distributed	VBN
+multibroker	JJ
+design	NN
+and	CC
+im	NN
+-	:
+plementation	NN
+.	.
+
+InfoSleuthâ	NNP
+$	$
+™	CD
+s	NNS
+brokering	VBG
+function	NN
+combines	NNS
+reasoning	NN
+over	IN
+both	CC
+the	DT
+syntax	NN
+and	CC
+semantics	NNS
+of	IN
+agents	NNS
+in	IN
+the	DT
+domain	NN
+.	.
+
+This	DT
+means	VBZ
+the	DT
+broker	NN
+must	MD
+reason	VB
+over	IN
+explicitly	RB
+advertised	VBN
+information	NN
+about	IN
+agent	NN
+capabilities	NNS
+to	TO
+determine	VB
+which	WDT
+agent	NN
+can	MD
+best	JJS
+provide	VBP
+the	DT
+requested	VBN
+services	NNS
+.	.
+
+Robustness	NNP
+and	CC
+scal	JJ
+-	:
+ability	NN
+issues	NNS
+dictate	VBP
+that	IN
+brokering	VBG
+must	MD
+be	VB
+distributable	JJ
+across	IN
+collaborating	VBG
+agents	NNS
+.	.
+
+Our	PRP$
+multibroker	JJ
+design	NN
+is	VBZ
+a	DT
+peer-to-peer	JJ
+system	NN
+that	WDT
+requires	VBZ
+brokers	NNS
+to	TO
+advertise	VB
+to	TO
+and	CC
+receive	VB
+advertisements	NNS
+from	IN
+other	JJ
+brokers	NNS
+.	.
+
+Brokers	NNS
+collaborate	VBP
+during	IN
+matchmaking	NN
+to	TO
+give	VB
+a	DT
+collective	JJ
+response	NN
+to	TO
+requests	NNS
+initiated	VBN
+by	IN
+non-broker	JJ
+agents	NNS
+.	.
+
+This	DT
+results	VBZ
+in	IN
+a	DT
+robust	JJ
+,	,
+scalable	JJ
+brokering	VBG
+system	NN
+.	.
+
+
+Keywords	NNS
+:	:
+Multibrokering	NN
+,	,
+Semantic	NNP
+Matching	NNP
+,	,
+Facilitation	NNP
+,	,
+Multiagents	NNP
+,	,
+Information	NNP
+Agents	NNPS
+,	,
+Heteroge	NNP
+-	:
+neous	JJ
+Systems	NNPS
+
+
+1	CD
+Introduction	NN
+
+
+Distributed	VBN
+architectures	NNS
+partition	NN
+the	DT
+execution	NN
+of	IN
+tasks	NNS
+over	IN
+processes	NNS
+spread	VBN
+out	RB
+over	IN
+a	DT
+computer	NN
+network	NN
+.	.
+
+
+A	DT
+particular	JJ
+process	NN
+passes	VBZ
+off	RP
+some	DT
+subtask	NN
+to	TO
+another	DT
+process	NN
+either	CC
+by	IN
+sending	VBG
+it	PRP
+a	DT
+message	NN
+and	CC
+waiting	VBG
+
+
+for	IN
+the	DT
+response	NN
+,	,
+or	CC
+via	IN
+a	DT
+remote	JJ
+procedure	NN
+or	CC
+method	NN
+call	NN
+.	.
+
+The	DT
+brokering	VBG
+function	NN
+in	IN
+a	DT
+distributed	VBN
+system	NN
+
+
+matches	NNS
+a	DT
+request	NN
+for	IN
+a	DT
+speciï	NN
+¬	NN
+c	NN
+service	NN
+with	IN
+a	DT
+remote	JJ
+process	NN
+that	WDT
+can	MD
+perform	VB
+that	IN
+service	NN
+,	,
+based	VBN
+on	IN
+
+
+some	DT
+subtaskâ	JJ
+$	$
+™	CD
+s	NNS
+need	VBP
+for	IN
+that	DT
+service	NN
+.	.
+
+Both	DT
+distributed	VBN
+object	NN
+systems	NNS
+and	CC
+agent	NN
+systems	NNS
+require	VBP
+the	DT
+use	NN
+of	IN
+
+
+the	DT
+brokering	VBG
+function	NN
+.	.
+
+A	DT
+broker	NN
+or	CC
+matchmaker	NN
+is	VBZ
+a	DT
+process	NN
+that	WDT
+implements	VBZ
+and	CC
+executes	VBZ
+the	DT
+brokering	VBG
+
+
+function	NN
+.	.
+
+In	IN
+a	DT
+brokered	JJ
+system	NN
+,	,
+agents	NNS
+advertise	VBP
+themselves	PRP
+to	TO
+a	DT
+broker	NN
+,	,
+then	RB
+the	DT
+broker	NN
+responds	VBZ
+to	TO
+queries	NNS
+
+
+about	IN
+agents	NNS
+.	.
+
+
+In	IN
+this	DT
+paper	NN
+,	,
+we	PRP
+examine	VBP
+brokering	VBG
+from	IN
+the	DT
+perspective	NN
+of	IN
+tailoring	VBG
+it	PRP
+to	TO
+add	VB
+semantic	JJ
+richness	NN
+,	,
+ro	NN
+-	:
+
+
+bustness	NN
+,	,
+scalability	NN
+,	,
+and	CC
+ï	NN
+¬	VBP
+‚	CD
+exibility	NN
+to	TO
+either	CC
+an	DT
+agent	NN
+community	NN
+or	CC
+a	DT
+distributed	VBN
+object	NN
+system	NN
+.	.
+
+Syntactic	JJ
+
+
+brokering	VBG
+uses	VBZ
+the	DT
+structure	NN
+or	CC
+format	NN
+of	IN
+a	DT
+task	NN
+speciï	NN
+¬	CD
+cation	NN
+to	TO
+match	VB
+a	DT
+requester	NN
+with	IN
+a	DT
+service	NN
+provider	NN
+,	,
+
+
+matching	VBG
+requests	NNS
+to	TO
+object	VB
+interfaces	NNS
+or	CC
+query/scripting	VBG
+languages	NNS
+to	TO
+decide	VB
+which	WDT
+service	NN
+providers	NNS
+to	TO
+
+
+currently	RB
+at	IN
+Telcordia	NNP
+Austin	NNP
+Research	NNP
+Center	NNP
+,	,
+email:nodine@research.telcordia.com	NNP
+currently	RB
+at	IN
+Telcordia	NNP
+Austin	NNP
+Research	NNP
+Center	NNP
+,	,
+email:angu@research.telcordia.com	NNP
+Currently	NNP
+at	IN
+Tower-J	NNP
+,	,
+email:arc@cassandra.org	NN
+
+
+Currently	RB
+at	IN
+Athens	NNP
+Group	NNP
+
+
+1	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+1	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+recommend	VB
+.	.
+
+For	IN
+example	NN
+,	,
+â	VB
+$	$
+œmyRelationalQueryAgentâ	JJ
+$	$
+may	MD
+advertise	VB
+that	IN
+it	PRP
+takes	VBZ
+its	PRP$
+input	NN
+according	VBG
+to	TO
+
+
+SQL	NN
+2.0	CD
+syntax	NN
+.	.
+
+Any	DT
+request	NN
+for	IN
+SQL	NN
+2.0	CD
+query	NN
+processing	NN
+could	MD
+then	RB
+be	VB
+directed	VBN
+to	TO
+this	DT
+process	NN
+.	.
+
+
+In	IN
+a	DT
+distributed	VBN
+object	NN
+architecture	NN
+such	JJ
+as	IN
+CORBA	NNP
+-LRB-	-LRB-
+Common	NNP
+Object	NNP
+Request	NNP
+Broker	NNP
+Architecture	NNP
+-RRB-	-RRB-
+,	,
+a	DT
+
+
+process	NN
+can	MD
+run	VB
+a	DT
+remote	JJ
+method	NN
+by	IN
+ï	NN
+¬	CD
+rst	NN
+accessing	VBG
+a	DT
+broker	NN
+-LRB-	-LRB-
+e.g.	FW
+,	,
+a	DT
+CORBA	NNP
+ORB	NN
+-RRB-	-RRB-
+to	TO
+locate	VB
+remote	JJ
+objects	NNS
+
+
+that	IN
+conform	VB
+to	TO
+a	DT
+speciï	NN
+¬	NN
+c	NN
+type	NN
+or	CC
+method	NN
+call	NN
+interface	NN
+.	.
+
+One	CD
+basic	JJ
+assumption	NN
+that	IN
+these	DT
+systems	NNS
+make	VBP
+is	VBZ
+
+
+that	IN
+the	DT
+deï	NN
+¬	NN
+nition	NN
+of	IN
+the	DT
+procedure	NN
+or	CC
+method	NN
+interface	NN
+uniquely	RB
+deï	JJ
+¬	NN
+nes	VBZ
+its	PRP$
+semantics	NNS
+.	.
+
+That	DT
+is	VBZ
+,	,
+ORBs	NNS
+do	VBP
+not	RB
+
+
+check	NN
+to	TO
+see	VB
+if	IN
+the	DT
+local	JJ
+implementation	NN
+actually	RB
+does	VBZ
+what	WP
+the	DT
+caller	NN
+intended	VBN
+.	.
+
+By	IN
+this	DT
+deï	NN
+¬	NN
+nition	NN
+,	,
+CORBA	NNP
+
+
+currently	RB
+provides	VBZ
+syntactic	JJ
+brokering	VBG
+services	NNS
+.	.
+
+
+Agent	NNP
+systems	NNS
+,	,
+like	IN
+distributed	VBN
+object	NN
+systems	NNS
+,	,
+offer	VBP
+the	DT
+ability	NN
+to	TO
+partition	NN
+the	DT
+execution	NN
+of	IN
+a	DT
+task	NN
+
+
+over	IN
+several	JJ
+processes	NNS
+distributed	VBN
+across	IN
+a	DT
+network	NN
+.	.
+
+Within	IN
+the	DT
+agent	NN
+community	NN
+,	,
+agent	NN
+communication	NN
+
+
+languages	NNS
+such	JJ
+as	IN
+KQML	NN
+deï	NN
+¬	CD
+ne	NN
+a	DT
+set	NN
+of	IN
+performatives	NNS
+that	WDT
+effectively	RB
+represent	VBP
+an	DT
+ontology	NN
+that	WDT
+agents	NNS
+
+
+can	MD
+use	VB
+to	TO
+advertise	VB
+their	PRP$
+capabilities	NNS
+.	.
+
+This	DT
+approach	NN
+reduces	VBZ
+the	DT
+ability	NN
+to	TO
+describe	VB
+agent	NN
+semantics	NNS
+in	IN
+
+
+terms	NNS
+of	IN
+the	DT
+interface	NN
+to	TO
+an	DT
+agent	NN
+,	,
+and	CC
+thus	RB
+also	RB
+implements	VBZ
+syntactic	JJ
+brokering	NN
+.	.
+
+Unfortunately	RB
+,	,
+within	IN
+an	DT
+
+
+open	JJ
+agent-based	JJ
+system	NN
+there	EX
+may	MD
+be	VB
+situations	NNS
+where	WRB
+agents	NNS
+present	VBP
+the	DT
+same	JJ
+interfaces	NNS
+,	,
+but	CC
+implement	VBP
+
+
+different	JJ
+functions	NNS
+.	.
+
+Moreover	RB
+,	,
+interactions	NNS
+between	IN
+agents	NNS
+often	RB
+take	VBP
+a	DT
+more	RBR
+complex	JJ
+form	NN
+than	IN
+remote	JJ
+
+
+procedure	NN
+calls	NNS
+,	,
+encompassing	VBG
+a	DT
+series	NN
+of	IN
+method/message	NN
+exchanges	NNS
+or	CC
+conversations	NNS
+.	.
+
+
+The	DT
+InfoSleuth	NNP
+agent	NN
+system	NN
+-LSB-	-LRB-
+2	CD
+,	,
+6	CD
+,	,
+16	CD
+-RSB-	-RRB-
+adds	VBZ
+semantic	JJ
+brokering	VBG
+functions	NNS
+to	TO
+complement	VB
+the	DT
+syntactic	NN
+
+
+brokering	VBG
+process	NN
+.	.
+
+Semantic	JJ
+brokering	NN
+uses	VBZ
+the	DT
+intended	JJ
+operation	NN
+and	CC
+accessed	VBN
+information	NN
+of	IN
+the	DT
+request	NN
+
+
+to	TO
+match	VB
+it	PRP
+with	IN
+the	DT
+meaning	NN
+of	IN
+the	DT
+offered	VBN
+services	NNS
+of	IN
+the	DT
+providing	VBG
+agent	NN
+.	.
+
+Semantic	JJ
+brokering	NN
+allows	VBZ
+a	DT
+
+
+broker	NN
+to	TO
+recommend	VB
+services	NNS
+based	VBN
+on	IN
+the	DT
+semantics	NNS
+that	WDT
+deï	VBP
+¬	CD
+ne	NN
+the	DT
+sub-task	NN
+.	.
+
+For	IN
+example	NN
+,	,
+â	VB
+$	$
+œmyRelation	JJ
+-	:
+
+
+alQueryAgentâ	NNP
+$	$
+might	MD
+advertise	VB
+or	CC
+register	VB
+with	IN
+the	DT
+broker	NN
+that	IN
+it	PRP
+has	VBZ
+the	DT
+capability	NN
+to	TO
+do	VB
+query	NN
+processing	NN
+
+
+of	IN
+relational	JJ
+algebra	NN
+queries	NNS
+,	,
+but	CC
+it	PRP
+can	MD
+not	RB
+do	VB
+any	DT
+statistical	JJ
+aggregation	NN
+within	IN
+those	DT
+queries	NNS
+.	.
+
+Any	DT
+time	NN
+
+
+some	DT
+other	JJ
+agent	NN
+requires	VBZ
+a	DT
+query	NN
+to	TO
+be	VB
+run	VBN
+over	IN
+some	DT
+known	JJ
+set	NN
+of	IN
+relational	JJ
+data	NNS
+,	,
+and	CC
+the	DT
+query	NN
+ï	NN
+¬	CD
+ts	NNS
+those	DT
+
+
+constraints	NNS
+,	,
+â	VB
+$	$
+œmyRelationalQueryAgentâ	JJ
+$	$
+could	MD
+be	VB
+tapped	VBN
+to	TO
+do	VB
+the	DT
+job	NN
+.	.
+
+One	CD
+could	MD
+also	RB
+envision	VB
+brokering	VBG
+
+
+over	IN
+other	JJ
+aspects	NNS
+of	IN
+agents	NNS
+;	:
+such	JJ
+as	IN
+agent	NN
+load	NN
+or	CC
+perceived	VBN
+accuracy	NN
+of	IN
+results	NNS
+.	.
+
+
+A	DT
+distributed	VBN
+agents	NNS
+or	CC
+object	NN
+system	NN
+must	MD
+be	VB
+able	JJ
+to	TO
+scale	NN
+to	TO
+support	VB
+many	JJ
+agents/objects	NNS
+in	IN
+order	NN
+to	TO
+be	VB
+
+
+useful	JJ
+.	.
+
+We	PRP
+considered	VBD
+several	JJ
+aspects	NNS
+with	IN
+respect	NN
+to	TO
+scalability	NN
+in	IN
+the	DT
+InfoSleuth	NNP
+brokering	VBG
+system	NN
+.	.
+
+First	RB
+,	,
+
+
+the	DT
+reasoning	NN
+engine	NN
+within	IN
+each	DT
+broker	NN
+must	MD
+be	VB
+able	JJ
+to	TO
+provide	VB
+a	DT
+fairly	RB
+comprehensive	JJ
+reasoning	NN
+service	NN
+
+
+while	IN
+remaining	VBG
+fast	RB
+,	,
+with	IN
+respect	NN
+to	TO
+the	DT
+number	NN
+of	IN
+agents	NNS
+being	VBG
+reasoned	VBN
+over	IN
+.	.
+
+This	DT
+motivated	JJ
+us	PRP
+to	TO
+move	VB
+
+
+to	TO
+an	DT
+approach	NN
+that	WDT
+allowed	VBD
+for	IN
+adequate	JJ
+speciï	NN
+¬	NN
+cation	NN
+of	IN
+agent	NN
+semantics	NNS
+,	,
+without	IN
+relying	VBG
+on	IN
+the	DT
+need	NN
+to	TO
+
+
+reason	NN
+over	IN
+logical	JJ
+speciï	NN
+¬	CD
+cations	NNS
+of	IN
+those	DT
+semantics	NNS
+.	.
+
+Our	PRP$
+approach	NN
+is	VBZ
+based	VBN
+on	IN
+simple	JJ
+constraint-based	JJ
+
+
+reasoning	NN
+,	,
+and	CC
+operates	VBZ
+efï	NN
+¬	NN
+ciently	RB
+.	.
+
+
+We	PRP
+have	VBP
+also	RB
+designed	VBN
+the	DT
+brokering	VBG
+service	NN
+so	IN
+that	IN
+it	PRP
+could	MD
+be	VB
+distributed	VBN
+among	IN
+multiple	JJ
+brokers	NNS
+.	.
+
+
+Brokering	VBG
+could	MD
+be	VB
+provided	VBN
+by	IN
+a	DT
+single	JJ
+process	NN
+or	CC
+agent	NN
+that	WDT
+saves	VBZ
+all	DT
+agent	NN
+advertisements	NNS
+in	IN
+a	DT
+single	JJ
+
+
+repository	NN
+,	,
+and	CC
+processes	VBZ
+all	DT
+requests	NNS
+for	IN
+services	NNS
+.	.
+
+In	IN
+our	PRP$
+experience	NN
+,	,
+this	DT
+architecture	NN
+works	VBZ
+well	RB
+for	IN
+agent	NN
+
+
+systems	NNS
+with	IN
+a	DT
+few	JJ
+dozens	NNS
+agents	NNS
+.	.
+
+However	RB
+,	,
+the	DT
+broker	NN
+then	RB
+represents	VBZ
+a	DT
+single	JJ
+point	NN
+of	IN
+failure	NN
+and	CC
+a	DT
+limit	NN
+
+
+2	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+2	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+to	TO
+scalability	NN
+.	.
+
+A	DT
+alternative	JJ
+approach	NN
+would	MD
+be	VB
+replicated	VBN
+brokers	NNS
+,	,
+which	WDT
+allow	VBP
+multiple	JJ
+copies	NNS
+of	IN
+the	DT
+same	JJ
+
+
+broker	NN
+to	TO
+exist	VB
+in	IN
+the	DT
+agent	NN
+system	NN
+.	.
+
+This	DT
+eliminates	VBZ
+the	DT
+single	JJ
+point	NN
+of	IN
+failure	NN
+,	,
+and	CC
+allows	VBZ
+the	DT
+queries	NNS
+to	TO
+
+
+be	VB
+distributed	VBN
+across	IN
+the	DT
+replicas	NNS
+,	,
+but	CC
+does	VBZ
+not	RB
+eliminate	VB
+the	DT
+issue	NN
+of	IN
+having	VBG
+many	JJ
+agents	NNS
+advertising	NN
+,	,
+and	CC
+
+
+having	VBG
+to	TO
+manage	VB
+those	DT
+advertisements	NNS
+.	.
+
+
+In	IN
+InfoSleuth	NNP
+,	,
+we	PRP
+implemented	VBD
+a	DT
+distributed	VBN
+multibrokering	VBG
+approach	NN
+where	WRB
+many	JJ
+brokers	NNS
+collaborate	VBP
+
+
+to	TO
+provide	VB
+brokering	VBG
+services	NNS
+.	.
+
+In	IN
+the	DT
+distributed	VBN
+multibrokered	JJ
+system	NN
+,	,
+many	JJ
+broker	NN
+agents	NNS
+collectively	RB
+
+
+maintain	VB
+the	DT
+information	NN
+about	IN
+agents	NNS
+in	IN
+the	DT
+system	NN
+.	.
+
+Each	DT
+agent	NN
+in	IN
+the	DT
+system	NN
+must	MD
+be	VB
+known	VBN
+to	TO
+at	IN
+least	JJS
+
+
+one	CD
+broker	NN
+,	,
+and	CC
+a	DT
+given	VBN
+agent	NN
+may	MD
+advertise	VB
+its	PRP$
+capabilities	NNS
+to	TO
+one	CD
+or	CC
+more	JJR
+brokers	NNS
+,	,
+depending	VBG
+on	IN
+the	DT
+level	NN
+
+
+of	IN
+reliability	NN
+it	PRP
+requires	VBZ
+.	.
+
+When	WRB
+a	DT
+broker	NN
+receives	VBZ
+a	DT
+query	NN
+for	IN
+services	NNS
+,	,
+it	PRP
+not	RB
+only	RB
+searches	NNS
+for	IN
+matches	NNS
+within	IN
+
+
+its	PRP$
+own	JJ
+repository	NN
+,	,
+but	CC
+also	RB
+propagates	VBZ
+the	DT
+query	NN
+to	TO
+other	JJ
+relevant	JJ
+brokers	NNS
+,	,
+and	CC
+collects	VBZ
+the	DT
+results	NNS
+together	RB
+
+
+before	IN
+returning	VBG
+them	PRP
+to	TO
+the	DT
+agent	NN
+that	WDT
+sent	VBD
+the	DT
+query	NN
+.	.
+
+This	DT
+approach	NN
+is	VBZ
+both	CC
+robust	JJ
+and	CC
+scalable	JJ
+.	.
+
+
+The	DT
+remainder	NN
+of	IN
+this	DT
+paper	NN
+is	VBZ
+organized	VBN
+as	IN
+follows	VBZ
+.	.
+
+In	IN
+Section	NN
+2	CD
+,	,
+we	PRP
+brieï	VBP
+¬	CD
+‚	CD
+y	NN
+review	NN
+InfoSleuth	NNP
+,	,
+our	PRP$
+
+
+agent-based	JJ
+information	NN
+discovery	NN
+and	CC
+retrieval	NN
+system	NN
+where	WRB
+multibrokering	NN
+is	VBZ
+a	DT
+core	NN
+function	NN
+.	.
+
+In	IN
+Section	NN
+
+
+3	CD
+,	,
+we	PRP
+discuss	VBP
+the	DT
+nature	NN
+of	IN
+the	DT
+brokering	VBG
+process	NN
+that	WDT
+matches	VBZ
+a	DT
+service	NN
+requester	NN
+with	IN
+a	DT
+service	NN
+provider	NN
+,	,
+
+
+and	CC
+present	VB
+the	DT
+ontologies	NNS
+for	IN
+describing	VBG
+agent	NN
+capabilities	NNS
+.	.
+
+Section	NN
+4	CD
+describes	VBZ
+the	DT
+original	JJ
+,	,
+single-broker	JJ
+
+
+implementation	NN
+of	IN
+InfoSleuth	NNP
+and	CC
+its	PRP$
+reasoning	NN
+engine	NN
+.	.
+
+Section	NN
+5	CD
+describes	VBZ
+important	JJ
+multibrokering	VBG
+prin	NN
+-	:
+
+
+ciples	NNS
+and	CC
+how	WRB
+they	PRP
+are	VBP
+implemented	VBN
+in	IN
+InfoSleuth	NNP
+.	.
+
+In	IN
+Section	NN
+6	CD
+,	,
+we	PRP
+discuss	VBP
+the	DT
+experiments	NNS
+that	IN
+we	PRP
+
+
+conducted	VBN
+to	TO
+conï	VB
+¬	NN
+rm	NN
+the	DT
+robustness	NN
+and	CC
+the	DT
+scalability	NN
+of	IN
+our	PRP$
+multibrokering	VBG
+approach	NN
+.	.
+
+Finally	RB
+,	,
+we	PRP
+discuss	VBP
+
+
+related	JJ
+work	NN
+in	IN
+Section	NN
+7	CD
+and	CC
+conclude	VBP
+in	IN
+Section	NN
+8	CD
+.	.
+
+
+2	CD
+InfoSleuth	NNP
+
+
+The	DT
+InfoSleuth	NNP
+system	NN
+consists	VBZ
+of	IN
+a	DT
+set	NN
+of	IN
+collaborating	VBG
+agents	NNS
+that	WDT
+work	VBP
+together	RB
+for	IN
+information	NN
+discov	NN
+-	:
+
+
+ery	NN
+and	CC
+retrieval	NN
+in	IN
+a	DT
+dynamic	JJ
+environment	NN
+,	,
+where	WRB
+available	JJ
+information	NN
+and	CC
+resources	NNS
+change	VBP
+over	IN
+time	NN
+.	.
+
+
+Ontologies	NNS
+facilitate	VBP
+agent	NN
+communication	NN
+in	IN
+InfoSleuth	NNP
+by	IN
+providing	VBG
+a	DT
+common	JJ
+vocabulary	NN
+,	,
+lexicon	NN
+,	,
+or	CC
+
+
+domain	NN
+model	NN
+.	.
+
+An	DT
+ontology	NN
+represents	VBZ
+semantic	JJ
+concepts	NNS
+consistent	JJ
+across	IN
+all	PDT
+the	DT
+InfoSleuth	NNP
+agents	NNS
+,	,
+and	CC
+is	VBZ
+
+
+usually	RB
+deï	NN
+¬	CD
+ned	VBD
+independently	RB
+of	IN
+the	DT
+form	NN
+and	CC
+the	DT
+availability	NN
+of	IN
+actual	JJ
+data	NNS
+syntax	NN
+.	.
+
+This	DT
+is	VBZ
+different	JJ
+from	IN
+
+
+an	DT
+integrated	VBN
+global	JJ
+schema	NN
+in	IN
+a	DT
+multidatabase	JJ
+system	NN
+-LSB-	-LRB-
+19	CD
+-RSB-	-RRB-
+whose	WP$
+construction	NN
+is	VBZ
+completely	RB
+dependent	JJ
+on	IN
+
+
+the	DT
+local	JJ
+data	NNS
+.	.
+
+
+The	DT
+strengths	NNS
+of	IN
+InfoSleuth	NNP
+are	VBP
+that	IN
+it	PRP
+can	MD
+adapt	VB
+to	TO
+a	DT
+wide	JJ
+range	NN
+of	IN
+information	NN
+retrieval	NN
+and	CC
+analysis	NN
+
+
+tasks	NNS
+,	,
+and	CC
+that	IN
+it	PRP
+can	MD
+also	RB
+adapt	VB
+itself	PRP
+to	TO
+changes	NNS
+in	IN
+the	DT
+availability	NN
+and	CC
+capability	NN
+of	IN
+the	DT
+different	JJ
+agents	NNS
+in	IN
+
+
+a	DT
+given	VBN
+InfoSleuth	NNP
+community	NN
+.	.
+
+Some	DT
+of	IN
+the	DT
+types	NNS
+of	IN
+retrieval	NN
+and	CC
+analysis	NN
+tasks	NNS
+include	VBP
+:	:
+
+
+gathering	VBG
+information	NN
+via	IN
+complex	JJ
+queries	NNS
+from	IN
+a	DT
+changing	VBG
+set	NN
+of	IN
+databases	NNS
+and	CC
+semi-structured	JJ
+text	NN
+
+
+repositories	NNS
+distributed	VBN
+across	IN
+an	DT
+internet	NN
+,	,
+
+
+performing	VBG
+polling	NN
+and	CC
+notiï	NN
+¬	CD
+cation	NN
+for	IN
+monitoring	VBG
+changes	NNS
+in	IN
+data	NNS
+,	,
+
+
+3	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+3	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+analyzing	VBG
+gathered	VBN
+information	NN
+using	VBG
+statistical	JJ
+and	CC
+data	NNS
+mining	NN
+techniques	NNS
+and/or	CC
+logical	JJ
+inferenc	NN
+-	:
+
+
+ing	NN
+,	,
+and	CC
+
+
+noticing	VBG
+patterns	NNS
+in	IN
+how	WRB
+information	NN
+is	VBZ
+changing	VBG
+that	DT
+may	MD
+indicate	VB
+new	JJ
+trends	NNS
+or	CC
+problems	NNS
+.	.
+
+
+In	IN
+addition	NN
+to	TO
+offering	VBG
+such	PDT
+a	DT
+broad	JJ
+spectrum	NN
+of	IN
+information	NN
+services	NNS
+,	,
+InfoSleuth	NNP
+communities	NNS
+also	RB
+must	MD
+be	VB
+
+
+able	JJ
+to	TO
+adapt	VB
+to	TO
+changes	NNS
+in	IN
+their	PRP$
+composition	NN
+,	,
+including	VBG
+the	DT
+addition	NN
+,	,
+removal	NN
+,	,
+or	CC
+changing	VBG
+capabilities	NNS
+of	IN
+
+
+agents	NNS
+,	,
+users	NNS
+,	,
+and	CC
+resources	NNS
+.	.
+
+Much	JJ
+of	IN
+this	DT
+adaptability	NN
+is	VBZ
+accomplished	VBN
+by	IN
+the	DT
+use	NN
+of	IN
+semantic	JJ
+brokering	NN
+.	.
+
+
+Figure	NNP
+1	CD
+depicts	VBZ
+the	DT
+current	JJ
+InfoSleuth	NNP
+agent	NN
+architecture	NN
+.	.
+
+The	DT
+InfoSleuth	NNP
+agents	NNS
+are	VBP
+organized	VBN
+as	IN
+core	NN
+
+
+agents	NNS
+-LRB-	-LRB-
+those	DT
+within	IN
+the	DT
+cloud	NN
+-RRB-	-RRB-
+that	WDT
+provide	VBP
+basic	JJ
+information	NN
+subscription	NN
+,	,
+ï	NN
+¬	NN
+ltering	NN
+and	CC
+fusion	NN
+capabilities	NNS
+,	,
+
+
+resource	NN
+agents	NNS
+and	CC
+service	NN
+providers	NNS
+-LRB-	-LRB-
+those	DT
+to	TO
+the	DT
+right	NN
+of	IN
+the	DT
+cloud	NN
+-RRB-	-RRB-
+that	WDT
+serve	VBP
+as	IN
+interface	NN
+to	TO
+external	JJ
+
+
+information	NN
+sources	NNS
+,	,
+and	CC
+user	NN
+agents	NNS
+-LRB-	-LRB-
+those	DT
+to	TO
+the	DT
+left	NN
+of	IN
+the	DT
+cloud	NN
+-RRB-	-RRB-
+that	WDT
+act	VBP
+as	IN
+proxies	NNS
+for	IN
+individual	JJ
+users	NNS
+
+
+or	CC
+groups	NNS
+of	IN
+users	NNS
+.	.
+
+
+Request	NN
+
+
+Subscribe	NNP
+Service	NNP
+
+
+
+Agent	NNP
+
+
+Voice	NNP
+Request	NNP
+
+
+Broker	NNP
+
+
+Response	NN
+
+
+
+Portal	NN
+
+
+BrokerBroker	NNP
+
+
+Subscription	NN
+
+
+Agent	NNP
+
+
+AgentAgentAgent	NNP
+
+
+Agent	NNP
+
+
+Advertise	VB
+
+
+Response	NN
+
+
+Publish	VB
+
+
+Resource	NNP
+
+
+Agent	NNP
+
+
+Query	NNP
+Ontology	NNP
+
+
+Agent	NNP
+Agent	NNP
+
+
+Structured	VBN
+Databases	NNS
+
+
+Applet	NN
+
+
+Portal	JJ
+Agent	NNP
+
+
+Monitor	NNP
+Agent	NNP
+
+
+Resource	NNP
+Agent	NNP
+
+
+Request	NN
+
+
+Text	VB
+,	,
+Images	NNS
+,	,
+
+
+Video	NNP
+
+
+Mobile	NNP
+
+
+Response	NN
+
+
+Resource	NNP
+Agent	NNP
+
+
+â	RB
+$	$
+¦	CD
+.	.
+
+
+Information	NNP
+Services	NNP
+
+
+Ontology	NNP
+1	CD
+
+
+Ontology	NNP
+n	NN
+
+
+Figure	NNP
+1	CD
+:	:
+InfoSleuth	NNP
+:	:
+Dynamic	NNP
+and	CC
+Broker-based	JJ
+Agent	NNP
+Architecture	NNP
+
+
+In	IN
+a	DT
+given	VBN
+community	NN
+of	IN
+InfoSleuth	NNP
+agents	NNS
+,	,
+the	DT
+core	NN
+agents	NNS
+-LRB-	-LRB-
+e.g.	FW
+broker	NN
+agents	NNS
+,	,
+control	NN
+agents	NNS
+,	,
+sub	SYM
+-	:
+
+
+scription	NN
+agents	NNS
+,	,
+query	NN
+agents	NNS
+,	,
+ontology	JJ
+agents	NNS
+and	CC
+monitor	VB
+agents	NNS
+-RRB-	-RRB-
+work	VBP
+together	RB
+to	TO
+connect	VB
+users	NNS
+with	IN
+the	DT
+
+
+information	NN
+resources	NNS
+that	IN
+they	PRP
+need	VBP
+.	.
+
+These	DT
+agents	NNS
+service	NN
+requests	NNS
+over	IN
+a	DT
+set	NN
+of	IN
+common	JJ
+ontologies	NNS
+.	.
+
+
+Because	IN
+of	IN
+the	DT
+need	NN
+to	TO
+be	VB
+able	JJ
+to	TO
+adapt	VB
+to	TO
+the	DT
+changes	NNS
+in	IN
+available	JJ
+agents	NNS
+,	,
+InfoSleuth	NNP
+uses	VBZ
+a	DT
+sophisticated	JJ
+
+
+brokering	VBG
+process	NN
+to	TO
+match	VB
+agents	NNS
+to	TO
+different	JJ
+parts	NNS
+of	IN
+the	DT
+information	NN
+retrieval	NN
+and	CC
+analysis	NN
+tasks	NNS
+posed	VBN
+by	IN
+
+
+its	PRP$
+users	NNS
+.	.
+
+In	IN
+the	DT
+following	VBG
+section	NN
+,	,
+we	PRP
+discuss	VBP
+this	DT
+brokering	VBG
+process	NN
+and	CC
+indicate	VBP
+how	WRB
+it	PRP
+helps	VBZ
+to	TO
+enhance	VB
+
+
+the	DT
+ï	NN
+¬	CD
+‚	NN
+exibility	NN
+and	CC
+robustness	NN
+of	IN
+the	DT
+agent	NN
+community	NN
+.	.
+
+
+4	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+4	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+3	CD
+Brokering	VBG
+
+
+In	IN
+this	DT
+section	NN
+,	,
+we	PRP
+discuss	VBP
+how	WRB
+brokering	VBG
+is	VBZ
+implemented	VBN
+in	IN
+InfoSleuth	NNP
+.	.
+
+We	PRP
+begin	VBP
+by	IN
+describing	VBG
+the	DT
+broker	NN
+
+
+agents	NNS
+and	CC
+giving	VBG
+an	DT
+overview	NN
+of	IN
+the	DT
+brokering	VBG
+system	NN
+.	.
+
+We	PRP
+then	RB
+follow	VBP
+with	IN
+some	DT
+sections	NNS
+presenting	VBG
+
+
+details	NNS
+on	IN
+speciï	NN
+¬	CD
+c	NN
+aspects	NNS
+of	IN
+brokering	VBG
+,	,
+and	CC
+ï	NN
+¬	CD
+nish	JJ
+with	IN
+an	DT
+example	NN
+.	.
+
+
+3.1	CD
+Overview	NN
+of	IN
+the	DT
+Brokering	NNP
+System	NNP
+
+
+In	IN
+InfoSleuth	NNP
+,	,
+the	DT
+broker	NN
+agents	NNS
+play	VBP
+a	DT
+critical	JJ
+role	NN
+in	IN
+maintaining	VBG
+an	DT
+up-to-date	JJ
+repository	NN
+of	IN
+all	DT
+of	IN
+the	DT
+
+
+agents	NNS
+available	JJ
+for	IN
+access	NN
+within	IN
+an	DT
+agent	NN
+system	NN
+.	.
+
+Without	IN
+the	DT
+presence	NN
+of	IN
+brokers	NNS
+-LRB-	-LRB-
+or	CC
+other	JJ
+agents	NNS
+that	WDT
+
+
+have	VB
+similar	JJ
+capabilities	NNS
+-RRB-	-RRB-
+,	,
+an	DT
+agent	NN
+would	MD
+be	VB
+unable	JJ
+to	TO
+locate	VB
+new	JJ
+agents	NNS
+that	WDT
+could	MD
+provide	VB
+services	NNS
+to	TO
+
+
+it	PRP
+.	.
+
+This	DT
+locational	JJ
+task	NN
+is	VBZ
+critical	JJ
+either	CC
+in	IN
+the	DT
+case	NN
+where	WRB
+the	DT
+agent	NN
+knows	VBZ
+about	IN
+no	DT
+other	JJ
+agents	NNS
+that	WDT
+can	MD
+
+
+provide	VB
+a	DT
+needed	JJ
+service	NN
+or	CC
+in	IN
+the	DT
+case	NN
+where	WRB
+an	DT
+agent	NN
+is	VBZ
+looking	VBG
+for	IN
+all	DT
+agents	NNS
+that	WDT
+can	MD
+provide	VB
+a	DT
+service	NN
+.	.
+
+
+For	IN
+instance	NN
+,	,
+when	WRB
+the	DT
+agent	NN
+systemâ	NN
+$	$
+™	CD
+s	NNS
+purpose	NN
+is	VBZ
+to	TO
+provide	VB
+information	NN
+,	,
+the	DT
+broker	NN
+is	VBZ
+needed	VBN
+to	TO
+ensure	VB
+that	IN
+
+
+all	DT
+available	JJ
+agents	NNS
+that	WDT
+can	MD
+contribute	VB
+information	NN
+are	VBP
+located	JJ
+,	,
+even	RB
+in	IN
+a	DT
+system	NN
+where	WRB
+such	JJ
+agents	NNS
+may	MD
+
+
+come	VBN
+on	IN
+-	:
+and	CC
+off	IN
+-	:
+line	NN
+frequently	RB
+.	.
+
+
+Each	DT
+broker	NN
+agent	NN
+in	IN
+InfoSleuth	NNP
+maintains	VBZ
+a	DT
+knowledge	NN
+base	NN
+of	IN
+advertised	VBN
+information	NN
+about	IN
+other	JJ
+
+
+agents	NNS
+,	,
+and	CC
+uses	VBZ
+this	DT
+knowledge	NN
+to	TO
+match	VB
+agents	NNS
+with	IN
+requested	VBN
+services	NNS
+.	.
+
+For	IN
+instance	NN
+,	,
+a	DT
+number	NN
+of	IN
+different	JJ
+
+
+agents	NNS
+may	MD
+advertise	VB
+that	IN
+they	PRP
+can	MD
+answer	VB
+data	NNS
+requests	NNS
+in	IN
+SQL	NNP
+.	.
+
+However	RB
+,	,
+one	CD
+agent	NN
+may	MD
+advertise	VB
+that	IN
+it	PRP
+
+
+contains	VBZ
+a	DT
+wealth	NN
+of	IN
+information	NN
+about	IN
+the	DT
+healthcare	NN
+domain	NN
+,	,
+a	DT
+second	JJ
+agent	NN
+that	IN
+it	PRP
+is	VBZ
+familiar	JJ
+with	IN
+the	DT
+
+
+aerospace	NN
+industry	NN
+,	,
+and	CC
+a	DT
+third	JJ
+that	IN
+its	PRP$
+sole	JJ
+function	NN
+is	VBZ
+to	TO
+do	VB
+complex	JJ
+query	NN
+processing	NN
+to	TO
+assemble	VB
+related	JJ
+
+
+information	NN
+from	IN
+external	JJ
+sources	NNS
+.	.
+
+When	WRB
+an	DT
+agent	NN
+requests	NNS
+resources	NNS
+that	WDT
+can	MD
+process	VB
+SQL	NNP
+queries	NNS
+and	CC
+
+
+contain	VB
+healthcare	NN
+information	NN
+,	,
+the	DT
+brokersâ	NN
+$	$
+™	CD
+task	NN
+is	VBZ
+to	TO
+return	VB
+only	RB
+the	DT
+potentially	RB
+relevant	JJ
+resources	NNS
+,	,
+in	IN
+this	DT
+
+
+case	NN
+ruling	NN
+out	IN
+all	DT
+but	CC
+the	DT
+agents	NNS
+that	WDT
+have	VBP
+healthcare	NN
+information	NN
+.	.
+
+Another	DT
+important	JJ
+function	NN
+the	DT
+brokers	NNS
+
+
+provide	VB
+is	VBZ
+to	TO
+reason	NN
+over	IN
+the	DT
+constraints	NNS
+on	IN
+the	DT
+information	NN
+content	NN
+of	IN
+the	DT
+agent	NN
+.	.
+
+If	IN
+for	IN
+instance	NN
+,	,
+an	DT
+agent	NN
+
+
+has	VBZ
+advertised	VBN
+that	IN
+it	PRP
+knows	VBZ
+about	IN
+the	DT
+healthcare	NN
+domain	NN
+,	,
+it	PRP
+can	MD
+also	RB
+advertise	VB
+the	DT
+fact	NN
+that	IN
+its	PRP$
+subsection	NN
+of	IN
+
+
+that	IN
+domain	NN
+is	VBZ
+restricted	JJ
+to	TO
+podiatrists	NNS
+in	IN
+Dallas	NNP
+and	CC
+Houston	NNP
+.	.
+
+If	IN
+the	DT
+broker	NN
+receives	VBZ
+a	DT
+query	NN
+for	IN
+information	NN
+
+
+resources	NNS
+that	WDT
+do	VBP
+not	RB
+overlap	VB
+this	DT
+subsection	NN
+of	IN
+the	DT
+healthcare	NN
+domain	NN
+,	,
+it	PRP
+will	MD
+not	RB
+match	VB
+this	DT
+agent	NN
+to	TO
+the	DT
+
+
+query	NN
+.	.
+
+
+This	DT
+service	NN
+that	IN
+the	DT
+brokers	NNS
+provide	VBP
+is	VBZ
+called	VBN
+a	DT
+matching	JJ
+service	NN
+.	.
+
+The	DT
+matching	JJ
+service	NN
+requires	VBZ
+two	CD
+
+
+separate	JJ
+components	NNS
+.	.
+
+The	DT
+ï	NN
+¬	NN
+rst	NN
+is	VBZ
+to	TO
+maintain	VB
+a	DT
+repository	JJ
+containing	VBG
+current	JJ
+and	CC
+correct	JJ
+information	NN
+about	IN
+
+
+operational	JJ
+agents	NNS
+and	CC
+the	DT
+services	NNS
+that	IN
+they	PRP
+can	MD
+provide	VB
+,	,
+via	IN
+new	JJ
+and	CC
+updated	VBN
+agent	NN
+advertisements	NNS
+.	.
+
+The	DT
+
+
+second	JJ
+is	VBZ
+to	TO
+accept	VB
+queries	NNS
+and	CC
+to	TO
+match	VB
+them	PRP
+with	IN
+advertised	JJ
+agents	NNS
+represented	VBN
+in	IN
+the	DT
+repository	NN
+.	.
+
+
+3.2	CD
+Advertising	NN
+and	CC
+Querying	VBG
+Process	VB
+
+
+Advertising	NN
+and	CC
+querying	VBG
+in	IN
+InfoSleuth	NNP
+relies	VBZ
+on	IN
+the	DT
+use	NN
+of	IN
+capabilities	NNS
+speciï	NN
+¬	CD
+ed	VBD
+over	IN
+multiple	JJ
+,	,
+focused	VBD
+
+
+ontologies	NNS
+to	TO
+represent	VB
+both	CC
+advertisements	NNS
+and	CC
+queries	NNS
+to	TO
+the	DT
+broker	NN
+.	.
+
+These	DT
+focused	VBD
+ontologies	NNS
+repre	NN
+-	:
+
+
+sent	VBN
+various	JJ
+orthogonal	JJ
+aspects	NNS
+of	IN
+agent	NN
+capabilities	NNS
+.	.
+
+For	IN
+example	NN
+,	,
+there	EX
+are	VBP
+distinct	JJ
+focused	VBD
+ontologies	NNS
+
+
+5	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+5	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+advertising	VBG
+the	DT
+following	JJ
+types	NNS
+of	IN
+information	NN
+:	:
+
+
+1	LS
+.	.
+
+the	DT
+conversations	NNS
+used	VBN
+to	TO
+communicate	VB
+about	IN
+the	DT
+service	NN
+,	,
+e.g.	FW
+the	DT
+conversation	NN
+ontology	NN
+,	,
+
+
+2	LS
+.	.
+
+the	DT
+language	NN
+interface	NN
+to	TO
+the	DT
+service	NN
+,	,
+e.g.	FW
+the	DT
+sql	NN
+ontology	NN
+,	,
+
+
+3	LS
+.	.
+
+the	DT
+semantic	JJ
+description	NN
+of	IN
+the	DT
+service	NN
+,	,
+e.g.	FW
+the	DT
+query	NN
+processing	NN
+ontology	NN
+,	,
+and	CC
+
+
+4	LS
+.	.
+
+the	DT
+information	NN
+the	DT
+service	NN
+operates	VBZ
+over	RP
+,	,
+e.g.	FW
+the	DT
+healthcare	NN
+ontology	NN
+.	.
+
+
+Within	IN
+an	DT
+advertisement	NN
+or	CC
+query	NN
+,	,
+a	DT
+given	VBN
+capability	NN
+is	VBZ
+expressed	VBN
+over	IN
+some	DT
+set	NN
+of	IN
+focused	JJ
+ontologies	NNS
+
+
+pertinent	JJ
+to	TO
+that	DT
+capability	NN
+.	.
+
+Each	DT
+focused	VBD
+ontology	NN
+in	IN
+the	DT
+capability	NN
+is	VBZ
+further	JJ
+constrained	VBN
+to	TO
+represent	VB
+
+
+exactly	RB
+the	DT
+subset	NN
+of	IN
+that	DT
+ontology	NN
+that	WDT
+is	VBZ
+supported	VBN
+within	IN
+that	DT
+capability	NN
+.	.
+
+The	DT
+notion	NN
+of	IN
+focused	JJ
+ontologies	NNS
+
+
+and	CC
+their	PRP$
+use	NN
+in	IN
+advertising	NN
+and	CC
+querying	VBG
+is	VBZ
+explained	VBN
+further	RB
+in	IN
+Section	NN
+3.3	CD
+.	.
+
+
+A	DT
+broker	NN
+maintains	VBZ
+a	DT
+current	JJ
+and	CC
+correct	JJ
+repository	JJ
+containing	VBG
+information	NN
+about	IN
+operational	JJ
+agents	NNS
+via	IN
+
+
+the	DT
+use	NN
+of	IN
+agent	NN
+advertising	NN
+.	.
+
+When	WRB
+an	DT
+agent	NN
+comes	VBZ
+online	NN
+,	,
+it	PRP
+announces	VBZ
+itself	PRP
+to	TO
+one	CD
+or	CC
+more	JJR
+brokers	NNS
+by	IN
+
+
+advertising	VBG
+to	TO
+them	PRP
+,	,
+using	VBG
+the	DT
+terms	NNS
+and	CC
+vocabulary	NN
+described	VBN
+in	IN
+the	DT
+focused	JJ
+ontologies	NNS
+-LRB-	-LRB-
+see	VB
+Section	NNP
+3.3	CD
+-RRB-	-RRB-
+.	.
+
+
+This	DT
+is	VBZ
+shown	VBN
+in	IN
+Figure	NN
+2	CD
+.	.
+
+Each	DT
+broker	NN
+that	WDT
+received	VBD
+the	DT
+advertisement	NN
+stores	NNS
+all	DT
+of	IN
+the	DT
+advertised	JJ
+infor	NN
+-	:
+
+
+mation	NN
+about	IN
+each	DT
+agent	NN
+in	IN
+its	PRP$
+repository	NN
+.	.
+
+When	WRB
+an	DT
+agentâ	JJ
+$	$
+™	CD
+s	NNS
+set	VBN
+of	IN
+available	JJ
+capabilities	NNS
+changes	NNS
+,	,
+the	DT
+agent	NN
+
+
+may	MD
+re-advertise	VB
+to	TO
+each	DT
+broker	NN
+that	IN
+it	PRP
+sent	VBD
+the	DT
+original	JJ
+advertisement	NN
+to	TO
+,	,
+so	IN
+the	DT
+brokers	NNS
+can	MD
+update	VB
+the	DT
+
+
+information	NN
+in	IN
+their	PRP$
+repositories	NNS
+.	.
+
+
+Broker	NNP
+Repository	NNP
+
+
+1	CD
+
+
+2	CD
+
+
+advertise	VB
+
+
+BROKER	NN
+AGENT	NN
+
+
+put	VBN
+
+
+ADVERTISING	NNP
+
+
+AGENT	NN
+
+
+Figure	NN
+2	CD
+:	:
+Advertising	NNP
+to	TO
+the	DT
+broker	NN
+
+
+1	CD
+
+
+query	NN
+
+
+2	CD
+
+
+get	VB
+
+
+Broker	NNP
+Repository	NNP
+
+
+4	CD
+
+
+reply	NN
+
+
+QUERYING	VBG
+AGENT	NN
+
+
+BROKER	NN
+AGENT	NN
+
+
+3	CD
+
+
+results	NNS
+
+
+Figure	NNP
+3	CD
+:	:
+Querying	VBG
+the	DT
+broker	NN
+
+
+When	WRB
+an	DT
+agent	NN
+goes	VBZ
+ofï	NN
+¬	CD
+‚	CD
+ine	NN
+,	,
+it	PRP
+ï	VBD
+¬	CD
+rst	NN
+unregisters	NNS
+itself	PRP
+from	IN
+the	DT
+brokers	NNS
+it	PRP
+has	VBZ
+advertised	VBN
+to	TO
+.	.
+
+Also	RB
+,	,
+the	DT
+
+
+broker	NN
+periodically	RB
+pings	VBZ
+each	DT
+of	IN
+the	DT
+agents	NNS
+that	WDT
+have	VBP
+advertised	VBN
+to	TO
+it	PRP
+,	,
+to	TO
+discover	VB
+any	DT
+agents	NNS
+that	WDT
+have	VBP
+
+
+failed	VBN
+.	.
+
+The	DT
+broker	NN
+removes	VBZ
+from	IN
+its	PRP$
+repository	JJ
+all	DT
+information	NN
+about	IN
+agents	NNS
+that	WDT
+have	VBP
+failed	VBN
+to	TO
+respond	VB
+to	TO
+
+
+several	JJ
+pings	NNS
+or	CC
+have	VBP
+unregistered	JJ
+themselves	PRP
+.	.
+
+
+Brokers	NNS
+may	MD
+receive	VB
+queries	NNS
+from	IN
+agents	NNS
+that	WDT
+are	VBP
+looking	VBG
+for	IN
+other	JJ
+agents	NNS
+that	WDT
+can	MD
+provide	VB
+speciï	NN
+¬	NN
+c	NN
+
+
+services	NNS
+.	.
+
+A	DT
+query	NN
+is	VBZ
+represented	VBN
+as	IN
+an	DT
+individual	JJ
+capability	NN
+speciï	NN
+¬	CD
+ed	VBD
+over	IN
+some	DT
+set	NN
+of	IN
+focused	JJ
+ontologies	NNS
+.	.
+
+
+6	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+6	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+Broker	NNP
+Agent	NNP
+
+
+Portal	NN
+-LRB-	-LRB-
+user	NN
+``	``
+mhn	NN
+''	''
+
+
+Multiresource	NN
+query	NN
+processing	NN
+-LRB-	-LRB-
+SQL	NN
+-RRB-	-RRB-
+
+
+DB	NNP
+Resources	NNP
+-LRB-	-LRB-
+SQL	NNP
+,	,
+classes	NNS
+C2	NN
+,	,
+C3	NN
+-RRB-	-RRB-
+
+
+DB	NNP
+Resources	NNP
+-LRB-	-LRB-
+SQL	NNP
+,	,
+classes	NNS
+C1	NN
+,	,
+C2	NN
+-RRB-	-RRB-
+
+
+mhnâ	NN
+$	$
+™	CD
+s	NNS
+User	NN
+Agent	NNP
+
+
+MRQ	NNP
+Agent	NNP
+
+
+DB1	NN
+
+
+ResourceAgent	NNP
+
+
+DB2	NN
+Resource	NNP
+Agent	NNP
+
+
+Figure	NNP
+4	CD
+:	:
+Agents	NNS
+advertising	VBG
+to	TO
+the	DT
+broker	NN
+
+
+A	DT
+broker	NN
+agent	NN
+uses	VBZ
+a	DT
+special-purpose	JJ
+reasoning	NN
+engine	NN
+to	TO
+do	VB
+constraint-based	JJ
+reasoning	NN
+over	IN
+the	DT
+query	NN
+and	CC
+
+
+advertisements	NNS
+to	TO
+determine	VB
+which	WDT
+agent	NN
+advertisements	NNS
+match	VBP
+the	DT
+services	NNS
+requested	VBN
+in	IN
+the	DT
+query	NN
+.	.
+
+This	DT
+
+
+set	NN
+of	IN
+matching	VBG
+agents	NNS
+found	VBN
+by	IN
+the	DT
+reasoning	NN
+engine	NN
+may	MD
+be	VB
+combined	VBN
+with	IN
+those	DT
+of	IN
+other	JJ
+brokers	NNS
+,	,
+and	CC
+is	VBZ
+
+
+then	RB
+returned	VBN
+by	IN
+the	DT
+broker	NN
+to	TO
+the	DT
+requesting	VBG
+agent	NN
+.	.
+
+This	DT
+process	NN
+is	VBZ
+shown	VBN
+in	IN
+Figure	NNP
+3	CD
+.	.
+
+
+When	WRB
+a	DT
+given	VBN
+broker	NN
+agent	NN
+receives	VBZ
+a	DT
+query	NN
+,	,
+its	PRP$
+reasoning	NN
+engine	NN
+iterates	VBZ
+through	IN
+each	DT
+advertisement	NN
+in	IN
+
+
+its	PRP$
+repository	JJ
+,	,
+checking	VBG
+whether	IN
+the	DT
+query	NN
+capability	NN
+matches	VBZ
+one	CD
+of	IN
+the	DT
+capabilities	NNS
+in	IN
+the	DT
+advertisement	NN
+
+
+-LRB-	-LRB-
+see	VB
+Section	NN
+4	CD
+for	IN
+details	NNS
+-RRB-	-RRB-
+.	.
+
+If	IN
+there	EX
+is	VBZ
+a	DT
+match	NN
+,	,
+the	DT
+agent	NN
+that	WDT
+sent	VBD
+the	DT
+match	NN
+is	VBZ
+added	VBN
+to	TO
+the	DT
+list	NN
+of	IN
+agents	NNS
+
+
+that	WDT
+will	MD
+be	VB
+returned	VBN
+from	IN
+the	DT
+broker	NN
+.	.
+
+The	DT
+return	NN
+information	NN
+may	MD
+be	VB
+annotated	JJ
+with	IN
+additional	JJ
+information	NN
+
+
+about	IN
+the	DT
+nature	NN
+of	IN
+the	DT
+match	NN
+,	,
+as	IN
+requested	VBN
+by	IN
+the	DT
+agent	NN
+that	WDT
+sent	VBD
+the	DT
+query	NN
+.	.
+
+
+To	TO
+illustrate	VB
+this	DT
+,	,
+we	PRP
+will	MD
+show	VB
+how	WRB
+the	DT
+brokering	NN
+is	VBZ
+used	VBN
+to	TO
+process	VB
+a	DT
+simple	JJ
+query	NN
+over	IN
+multiple	JJ
+
+
+resources	NNS
+in	IN
+a	DT
+single	JJ
+broker	NN
+system	NN
+.	.
+
+As	IN
+each	DT
+agent	NN
+comes	VBZ
+online	NN
+,	,
+it	PRP
+advertises	VBZ
+its	PRP$
+capabilities	NNS
+as	IN
+shown	VBN
+in	IN
+
+
+Figure	NNP
+4	CD
+.	.
+
+Thus	RB
+,	,
+after	IN
+the	DT
+actions	NNS
+in	IN
+this	DT
+ï	NN
+¬	NN
+gure	NN
+,	,
+the	DT
+broker	NN
+has	VBZ
+a	DT
+repository	JJ
+containing	VBG
+four	CD
+advertisements	NNS
+,	,
+
+
+one	CD
+for	IN
+each	DT
+of	IN
+the	DT
+agents	NNS
+:	:
+Joeâ	NNP
+$	$
+™	CD
+s	NNS
+User	NN
+Agent	NNP
+,	,
+MRQ	NNP
+,	,
+DB1	NNP
+Resource	NNP
+and	CC
+DB2	NNP
+Resource	NNP
+.	.
+
+
+At	IN
+some	DT
+point	NN
+in	IN
+time	NN
+,	,
+user	NN
+Joe	NNP
+submits	VBZ
+the	DT
+SQL	NN
+query	NN
+select	JJ
+*	SYM
+from	IN
+C2	NN
+to	TO
+her	PRP$
+user	NN
+agent	NN
+.	.
+
+At	IN
+this	DT
+
+
+point	NN
+,	,
+Joeâ	NNP
+$	$
+™	CD
+s	NNS
+User	NN
+Agentmust	NN
+locate	VBP
+a	DT
+query	NN
+processing	NN
+agent	NN
+that	WDT
+can	MD
+assemble	VB
+all	DT
+of	IN
+the	DT
+information	NN
+that	WDT
+
+
+this	DT
+community	NN
+knows	VBZ
+about	IN
+class	NN
+C2	NN
+,	,
+as	IN
+shown	VBN
+in	IN
+Figure	NNP
+5	CD
+.	.
+
+In	IN
+this	DT
+ï	NN
+¬	NN
+gure	NN
+,	,
+Joeâ	NNP
+$	$
+™	CD
+s	NNS
+User	NN
+Agent	NNP
+forwards	RB
+a	DT
+
+
+query	NN
+to	TO
+the	DT
+broker	NN
+agent	NN
+asking	VBG
+for	IN
+the	DT
+multiresource	NN
+query	NN
+processing	NN
+agent	NN
+that	WDT
+can	MD
+accept	VB
+and	CC
+process	VB
+
+
+SQL	NN
+queries	NNS
+.	.
+
+The	DT
+broker	NN
+agent	NN
+replies	VBZ
+,	,
+stating	VBG
+that	IN
+MRQ	NNP
+ï	NN
+¬	CD
+ts	VBZ
+the	DT
+description	NN
+in	IN
+the	DT
+request	NN
+.	.
+
+The	DT
+user	NN
+agent	NN
+
+
+then	RB
+forwards	RB
+the	DT
+query	NN
+to	TO
+MRQ	NNP
+.	.
+
+Note	VB
+that	IN
+the	DT
+resource	NN
+agents	NNS
+are	VBP
+not	RB
+involved	VBN
+.	.
+
+
+When	WRB
+agent	NN
+MRQ	NN
+receives	VBZ
+the	DT
+query	NN
+from	IN
+the	DT
+user	NN
+agent	NN
+,	,
+it	PRP
+looks	VBZ
+at	IN
+the	DT
+query	NN
+to	TO
+determine	VB
+which	WDT
+
+
+classes	NNS
+are	VBP
+required	VBN
+to	TO
+answer	VB
+the	DT
+query	NN
+,	,
+and	CC
+discovers	VBZ
+that	IN
+it	PRP
+needs	VBZ
+to	TO
+look	VB
+for	IN
+class	NN
+C2	NN
+.	.
+
+It	PRP
+then	RB
+queries	VBZ
+the	DT
+
+
+broker	NN
+for	IN
+all	DT
+resource	NN
+agents	NNS
+that	WDT
+can	MD
+answer	VB
+an	DT
+SQL	NN
+query	NN
+involving	VBG
+class	NN
+C2	NN
+.	.
+
+This	DT
+is	VBZ
+shown	VBN
+in	IN
+Figure	NNP
+6	CD
+.	.
+
+
+The	DT
+broker	NN
+processes	VBZ
+the	DT
+query	NN
+and	CC
+returns	VBZ
+the	DT
+responses	NNS
+DB1	NN
+Resource	NNP
+,	,
+DB2	NNP
+Resource	NNP
+.	.
+
+MRQ	NN
+then	RB
+
+
+forwards	RB
+a	DT
+query	NN
+to	TO
+these	DT
+two	CD
+agents	NNS
+,	,
+receives	VBZ
+the	DT
+responses	NNS
+,	,
+assembles	VBZ
+the	DT
+result	NN
+,	,
+and	CC
+forwards	RB
+it	PRP
+back	RB
+
+
+to	TO
+Joeâ	NNP
+$	$
+™	CD
+s	NNS
+User	NN
+Agent	NNP
+.	.
+
+Note	VB
+that	IN
+if	IN
+the	DT
+original	JJ
+query	NN
+had	VBD
+been	VBN
+for	IN
+class	NN
+C3	NN
+,	,
+then	RB
+only	RB
+the	DT
+response	NN
+DB2	NN
+
+
+Resource	NNP
+would	MD
+have	VB
+been	VBN
+returned	VBN
+to	TO
+MRQ	JJ
+agent	NN
+.	.
+
+
+7	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+7	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+Broker	NNP
+Agent	NNP
+
+
+Who	WP
+has	VBZ
+Multiresource	NNP
+Query	NNP
+Processing	NNP
+-LRB-	-LRB-
+SQL	NNP
+-RRB-	-RRB-
+?	.
+
+
+MRQ	NNP
+Agent	NNP
+
+
+DB2	NN
+Resource	NNP
+Agent	NNP
+
+
+mhnâ	NN
+$	$
+™	CD
+s	NNS
+User	NN
+Agent	NNP
+
+
+Select	NNP
+*	SYM
+From	IN
+C2	NN
+
+
+MRQ	NNP
+Agent	NNP
+
+
+DB1	NN
+Resource	NNP
+Agent	NNP
+
+
+Figure	NNP
+5	CD
+:	:
+User	NN
+agent	NN
+querying	VBG
+the	DT
+broker	NN
+for	IN
+general-purpose	JJ
+SQL	NNP
+query	NN
+agents	NNS
+.	.
+
+Note	VB
+the	DT
+resource	NN
+agents	NNS
+are	VBP
+not	RB
+involved	VBN
+
+
+Broker	NNP
+Agent	NNP
+
+
+Who	WP
+has	VBZ
+resources	NNS
+for	IN
+class	NN
+C2	NN
+-LRB-	-LRB-
+SQL	NN
+-RRB-	-RRB-
+?	.
+
+
+DB1	NN
+Resource	NNP
+Agent	NNP
+and	CC
+DB2	NNP
+Resource	NNP
+Agent	NNP
+
+
+DB2	NN
+Resource	NNP
+Agent	NNP
+
+
+Select	NNP
+*	SYM
+From	IN
+C2	NN
+
+
+mhnâ	NN
+$	$
+™	CD
+s	NNS
+User	NN
+Agent	NNP
+
+
+MRQ	NNP
+Agent	NNP
+
+
+Select	NNP
+*	SYM
+From	IN
+C2	NN
+
+
+DB1	NN
+Resource	NNP
+Agent	NNP
+
+
+Figure	NNP
+6	CD
+:	:
+MRQ	JJ
+agent	NN
+querying	VBG
+the	DT
+broker	NN
+for	IN
+resource	NN
+agents	NNS
+.	.
+
+Note	VB
+that	DT
+user	NN
+agent	NN
+is	VBZ
+not	RB
+involved	VBN
+
+
+Let	VB
+us	PRP
+assume	VB
+for	IN
+the	DT
+moment	NN
+that	IN
+a	DT
+new	JJ
+agent	NN
+,	,
+MRQ2	NN
+,	,
+comes	VBZ
+online	NN
+and	CC
+advertises	VBZ
+to	TO
+the	DT
+broker	NN
+,	,
+
+
+stating	VBG
+that	IN
+it	PRP
+is	VBZ
+a	DT
+multiresource	NN
+query	NN
+agent	NN
+that	WDT
+has	VBZ
+SQL	NNP
+interface	NN
+and	CC
+specializes	VBZ
+in	IN
+queries	NNS
+over	IN
+the	DT
+class	NN
+
+
+C2.IfnowuserJoe	NN
+poses	VBZ
+the	DT
+same	JJ
+query	NN
+to	TO
+her	PRP$
+user	NN
+agent	NN
+,	,
+then	RB
+agent	NN
+MRQ2	NN
+would	MD
+be	VB
+recommended	VBN
+to	TO
+
+
+the	DT
+user	NN
+agent	NN
+because	IN
+it	PRP
+has	VBZ
+a	DT
+better	JJR
+semantic	JJ
+match	NN
+to	TO
+the	DT
+request	NN
+than	IN
+does	VBZ
+agent	NN
+MRQ	NN
+.	.
+
+
+3.3	CD
+Focused	VBN
+Ontologies	NNS
+and	CC
+Ontology	NNP
+Fragments	NNS
+
+
+For	IN
+an	DT
+open	JJ
+,	,
+heterogeneous	JJ
+agent-based	JJ
+system	NN
+to	TO
+be	VB
+functional	JJ
+,	,
+it	PRP
+is	VBZ
+not	RB
+enough	JJ
+to	TO
+deï	NN
+¬	CD
+ne	NN
+a	DT
+syntax	NN
+of	IN
+com	NN
+-	:
+
+
+munication	NN
+or	CC
+even	RB
+a	DT
+semantics	NNS
+of	IN
+the	DT
+types	NNS
+of	IN
+conversations	NNS
+that	WDT
+occur	VBP
+between	IN
+agents	NNS
+.	.
+
+The	DT
+information	NN
+
+
+that	IN
+the	DT
+agents	NNS
+exchange	NN
+must	MD
+also	RB
+be	VB
+semantically	RB
+consistent	JJ
+.	.
+
+The	DT
+ontology	NN
+must	MD
+have	VB
+enough	JJ
+concepts	NNS
+
+
+and	CC
+give	VB
+enough	JJ
+detail	NN
+to	TO
+allow	VB
+the	DT
+agents	NNS
+to	TO
+provide	VB
+useful	JJ
+information	NN
+,	,
+but	CC
+it	PRP
+can	MD
+not	RB
+provide	VB
+too	RB
+much	JJ
+
+
+semantic	JJ
+detail	NN
+,	,
+since	IN
+this	DT
+will	MD
+quickly	RB
+become	VB
+overwhelming	JJ
+in	IN
+terms	NNS
+of	IN
+labor	NN
+required	VBN
+to	TO
+create	VB
+the	DT
+repre	NN
+-	:
+
+
+sentations	NNS
+and	CC
+the	DT
+computational	JJ
+resources	NNS
+required	VBN
+to	TO
+communicate	VB
+and	CC
+reason	VB
+about	IN
+the	DT
+representations	NNS
+.	.
+
+
+When	WRB
+we	PRP
+consider	VBP
+how	WRB
+to	TO
+represent	VB
+the	DT
+ontological	JJ
+knowledge	NN
+,	,
+there	EX
+are	VBP
+basically	RB
+two	CD
+approaches	NNS
+.	.
+
+The	DT
+
+
+ï	NN
+¬	CD
+rst	NN
+is	VBZ
+to	TO
+incorporate	VB
+everything	NN
+into	IN
+a	DT
+single	JJ
+,	,
+very	RB
+large	JJ
+ontology	NN
+that	WDT
+encompasses	VBZ
+all	DT
+of	IN
+the	DT
+knowledge	NN
+that	WDT
+
+
+any	DT
+agents	NNS
+will	MD
+need	VB
+to	TO
+describe	VB
+their	PRP$
+capabilities	NNS
+.	.
+
+The	DT
+second	JJ
+is	VBZ
+to	TO
+allow	VB
+for	IN
+multiple	JJ
+,	,
+focused	VBD
+ontologies	NNS
+
+
+that	WDT
+can	MD
+be	VB
+composed	VBN
+together	RB
+.	.
+
+
+The	DT
+advantage	NN
+of	IN
+using	VBG
+a	DT
+single	JJ
+,	,
+large	JJ
+ontology	NN
+is	VBZ
+that	IN
+all	DT
+relationships	NNS
+among	IN
+different	JJ
+aspects	NNS
+of	IN
+an	DT
+
+
+8	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+8	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+agent	NN
+capability	NN
+can	MD
+be	VB
+represented	VBN
+within	IN
+advertisements	NNS
+and	CC
+queries	NNS
+.	.
+
+Thus	RB
+,	,
+the	DT
+reasoning	NN
+process	NN
+can	MD
+be	VB
+
+
+tailored	VBN
+to	TO
+operate	VB
+efï	NN
+¬	NN
+ciently	RB
+within	IN
+that	DT
+ontology	NN
+.	.
+
+When	WRB
+you	PRP
+consider	VBP
+the	DT
+implications	NNS
+of	IN
+a	DT
+uniï	JJ
+¬	NN
+ed	VBD
+ontol	NN
+-	:
+
+
+ogy	NN
+,	,
+however	RB
+,	,
+there	EX
+are	VBP
+deï	NN
+¬	NN
+nite	JJ
+disadvantages	NNS
+.	.
+
+For	IN
+instance	NN
+,	,
+if	IN
+agents	NNS
+can	MD
+subscribe	VB
+to	TO
+multiple	JJ
+information	NN
+
+
+domains	NNS
+,	,
+all	DT
+information	NN
+domains	NNS
+would	MD
+be	VB
+present	JJ
+in	IN
+the	DT
+ontology	NN
+.	.
+
+The	DT
+management	NN
+of	IN
+such	PDT
+an	DT
+ontology	NN
+
+
+would	MD
+become	VB
+very	RB
+difï	JJ
+¬	NN
+cult	NN
+,	,
+both	CC
+from	IN
+the	DT
+point	NN
+of	IN
+view	NN
+of	IN
+merging	VBG
+in	IN
+ontological	JJ
+concepts	NNS
+from	IN
+a	DT
+new	JJ
+
+
+domain	NN
+and	CC
+managing	VBG
+inter-domain	JJ
+relationships	NNS
+.	.
+
+
+Given	VBN
+that	IN
+expanding	VBG
+into	IN
+a	DT
+new	JJ
+domain	NN
+may	MD
+be	VB
+a	DT
+common	JJ
+operation	NN
+for	IN
+an	DT
+open	JJ
+agent-based	JJ
+system	NN
+,	,
+
+
+one	PRP
+could	MD
+also	RB
+envision	VB
+having	VBG
+a	DT
+single	JJ
+,	,
+large	JJ
+ontology	NN
+per	IN
+domain	NN
+.	.
+
+This	DT
+would	MD
+mean	VB
+,	,
+for	IN
+instance	NN
+,	,
+that	WDT
+
+
+concepts	NNS
+for	IN
+information	NN
+processing	NN
+-LRB-	-LRB-
+such	JJ
+as	IN
+subscription	NN
+capabilities	NNS
+-RRB-	-RRB-
+would	MD
+be	VB
+included	VBN
+along	IN
+with	IN
+con	NN
+-	:
+
+
+cepts	NNS
+for	IN
+the	DT
+speciï	NN
+¬	NN
+c	NN
+information	NN
+domain	NN
+.	.
+
+This	DT
+approach	NN
+,	,
+however	RB
+,	,
+would	MD
+force	VB
+the	DT
+copying	NN
+of	IN
+common	JJ
+
+
+service	NN
+concepts	NNS
+into	IN
+different	JJ
+information	NN
+domain	NN
+ontologies	NNS
+.	.
+
+
+Our	PRP$
+solution	NN
+,	,
+based	VBN
+on	IN
+the	DT
+notion	NN
+of	IN
+focused	JJ
+ontologies	NNS
+,	,
+segregates	VBZ
+the	DT
+ontological	JJ
+information	NN
+into	IN
+
+
+separate	JJ
+,	,
+orthogonal	JJ
+small	JJ
+ontologies	NNS
+.	.
+
+Each	DT
+of	IN
+these	DT
+focused	VBN
+ontologies	NNS
+consists	VBZ
+of	IN
+a	DT
+set	NN
+of	IN
+classes	NNS
+-LRB-	-LRB-
+pos	SYM
+-	:
+
+
+sibly	RB
+arranged	VBN
+in	IN
+one	CD
+or	CC
+more	JJR
+class	NN
+hierarchies	NNS
+-RRB-	-RRB-
+,	,
+class	NN
+attributes	NNS
+and	CC
+relationships	NNS
+among	IN
+classes	NNS
+.	.
+
+In	IN
+the	DT
+
+
+example	NN
+of	IN
+the	DT
+previous	JJ
+paragraph	NN
+,	,
+concepts	NNS
+relating	VBG
+to	TO
+subscription	NN
+would	MD
+be	VB
+in	IN
+one	CD
+focused	VBD
+ontology	NN
+and	CC
+
+
+information-domain-speciï	NN
+¬	CD
+c	NN
+concepts	NNS
+would	MD
+be	VB
+in	IN
+other	JJ
+ontologies	NNS
+.	.
+
+Table	NNP
+1	CD
+,	,
+for	IN
+instance	NN
+shows	VBZ
+a	DT
+simple	JJ
+
+
+service	NN
+ontology	NN
+for	IN
+subscription	NN
+and	CC
+query	NN
+services	NNS
+.	.
+
+
+ontology	JJ
+NAME	NN
+=	JJ
+â	NN
+$	$
+œservicesâ	JJ
+$	$
+VERSION	CD
+=	JJ
+â	NN
+$	$
+œ1	CD
+.0	CD
+â	NN
+$	$
+
+
+class	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+œsubscription	JJ
+queryâ	NN
+$	$
+
+
+slot	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+œcomputationâ	JJ
+$	$
+/	:
+slot	NN
+
+
+slot	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+œadaptabilityâ	JJ
+$	$
+/	:
+slot	NN
+
+
+slot	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+œresponse-typeâ	JJ
+$	$
+â	CD
+$	$
+/	:
+slot	NN
+
+
+/	:
+class	NN
+
+
+class	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+œqueryâ	JJ
+$	$
+
+
+slot	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+œcomputationâ	JJ
+$	$
+/	:
+slot	NN
+
+
+slot	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+œresponse-typeâ	JJ
+$	$
+/	:
+slot	NN
+
+
+/	:
+class	NN
+
+
+class	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+œdata-responseâ	JJ
+$	$
+
+
+slot	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+œdeliveryâ	JJ
+$	$
+/	:
+slot	NN
+
+
+slot	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+œlanguageâ	JJ
+$	$
+/	:
+slot	NN
+
+
+slot	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+œannotationsâ	JJ
+$	$
+/	:
+slot	NN
+
+
+/	:
+class	NN
+
+
+/	:
+ontology	NN
+
+
+Table	NNP
+1	CD
+:	:
+Simple	JJ
+service	NN
+ontology	NN
+for	IN
+subscriptions	NNS
+and	CC
+queries	NNS
+
+
+Agents	NNS
+would	MD
+represent	VB
+their	PRP$
+capabilities	NNS
+over	IN
+this	DT
+ontology	NN
+and	CC
+their	PRP$
+respective	JJ
+domain	NN
+ontologies	NNS
+.	.
+
+
+Unfortunately	RB
+,	,
+if	IN
+an	DT
+agent	NN
+implicitly	RB
+maintains	VBZ
+any	DT
+constraints	NNS
+among	IN
+the	DT
+terms	NNS
+in	IN
+the	DT
+focused	JJ
+ontology	NN
+
+
+that	IN
+it	PRP
+uses	VBZ
+to	TO
+describe	VB
+its	PRP$
+capabilities	NNS
+,	,
+these	DT
+may	MD
+not	RB
+be	VB
+representable	JJ
+explicitly	RB
+using	VBG
+this	DT
+methodology	NN
+.	.
+
+
+However	RB
+,	,
+our	PRP$
+experience	NN
+shows	VBZ
+that	IN
+functionality	NN
+and	CC
+information	NN
+concepts	NNS
+are	VBP
+often	RB
+partitioned	VBN
+,	,
+with	IN
+in	IN
+-	:
+
+
+formation	NN
+domain	NN
+ontologies	NNS
+already	RB
+existing	VBG
+,	,
+and	CC
+ontologies	NNS
+over	IN
+other	JJ
+knowledge	NN
+such	JJ
+as	IN
+communication	NN
+
+
+aspects	NNS
+or	CC
+services	NNS
+also	RB
+cleanly	RB
+factorable	JJ
+into	IN
+separate	JJ
+units	NNS
+.	.
+
+On	IN
+the	DT
+other	JJ
+hand	NN
+,	,
+one	CD
+clear	JJ
+advantage	NN
+of	IN
+
+
+this	DT
+approach	NN
+is	VBZ
+that	IN
+it	PRP
+is	VBZ
+well-suited	JJ
+to	TO
+open	VB
+environments	NNS
+,	,
+as	IN
+adding	VBG
+new	JJ
+focused	VBN
+ontologies	NNS
+to	TO
+the	DT
+agent	NN
+
+
+9	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+9	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+Any	DT
+Subset	NN
+of	IN
+-LCB-	-LRB-
+
+
+Ontology	NNP
+Fragment	NN
+1A	NN
+
+
+Capability	NN
+1	CD
+
+
+or	CC
+
+
+Ontology	NNP
+Fragment	NN
+1B	NN
+
+
+Capability	NN
+2	CD
+
+
+...	:
+
+
+...	:
+
+
+or	CC
+.	.
+.	.
+
+or	CC
+
+
+Ontology	NNP
+Fragment	NN
+1M	NN
+
+
+Capability	NN
+n	NN
+
+
+-RCB-	-RRB-
+
+
+Figure	NNP
+7	CD
+:	:
+Agent	NNP
+Capabilities	NNPS
+and	CC
+Advertisements	NNS
+
+
+system	NN
+is	VBZ
+straightforward	JJ
+.	.
+
+
+The	DT
+use	NN
+of	IN
+focused	JJ
+ontologies	NNS
+leads	VBZ
+us	PRP
+to	TO
+express	VB
+information	NN
+about	IN
+the	DT
+capabilities	NNS
+of	IN
+agents	NNS
+in	IN
+terms	NNS
+
+
+of	IN
+ontology	NN
+fragments	NNS
+.	.
+
+Each	DT
+ontology	JJ
+fragment	NN
+is	VBZ
+speciï	NN
+¬	CD
+ed	VBN
+against	IN
+a	DT
+single	JJ
+,	,
+focused	VBD
+ontology	NN
+;	:
+therefore	RB
+
+
+it	PRP
+is	VBZ
+tagged	VBN
+with	IN
+the	DT
+ontology	JJ
+name	NN
+and	CC
+version	NN
+against	IN
+which	WDT
+it	PRP
+is	VBZ
+speciï	JJ
+¬	NN
+ed	VBD
+.	.
+
+The	DT
+focused	JJ
+ontology	NN
+is	VBZ
+
+
+constrained	VBN
+within	IN
+the	DT
+fragment	NN
+to	TO
+contain	VB
+only	RB
+the	DT
+supported	VBN
+classes	NNS
+,	,
+slots	NNS
+,	,
+and	CC
+values	NNS
+of	IN
+slots	NNS
+.	.
+
+These	DT
+
+
+constraints	NNS
+encapsulate	VBP
+the	DT
+subset	NN
+of	IN
+the	DT
+focused	JJ
+ontology	NN
+that	WDT
+is	VBZ
+supported	VBN
+by	IN
+some	DT
+aspect	NN
+of	IN
+the	DT
+agentâ	JJ
+$	$
+™	CD
+s	NNS
+
+
+functionality	NN
+.	.
+
+
+3.4	CD
+Agent	NNP
+Capabilities	NNS
+,	,
+Advertisements	NNS
+and	CC
+Queries	NNS
+
+
+Agent	NNP
+capabilities	NNS
+in	IN
+InfoSleuth	NNP
+provide	VBP
+a	DT
+mechanism	NN
+for	IN
+agents	NNS
+to	TO
+advertise	VB
+their	PRP$
+abilities	NNS
+and	CC
+charac	NN
+-	:
+
+
+teristics	NNS
+to	TO
+a	DT
+broker	NN
+agent	NN
+,	,
+and	CC
+to	TO
+query	VB
+the	DT
+broker	NN
+for	IN
+sets	NNS
+of	IN
+agents	NNS
+meeting	VBG
+speciï	NN
+¬	NN
+c	NN
+criteria	NNS
+.	.
+
+An	DT
+agent	NN
+
+
+capability	NN
+can	MD
+then	RB
+be	VB
+deï	NN
+¬	NN
+ned	VBD
+as	IN
+a	DT
+conjunction	NN
+of	IN
+any	DT
+number	NN
+of	IN
+separate	JJ
+ontology	JJ
+fragments	NNS
+.	.
+
+We	PRP
+treat	VBP
+
+
+the	DT
+ontology	NN
+fragments	NNS
+orthogonally	RB
+,	,
+assuming	VBG
+that	IN
+the	DT
+concepts	NNS
+are	VBP
+independent	JJ
+.	.
+
+While	IN
+we	PRP
+recognize	VBP
+that	IN
+
+
+there	RB
+may	MD
+be	VB
+deeper	JJR
+semantic	JJ
+relationships	NNS
+between	IN
+the	DT
+ontology	NN
+fragments	NNS
+,	,
+we	PRP
+have	VBP
+chosen	VBN
+not	RB
+to	TO
+explic	JJ
+-	:
+
+
+itly	RB
+represent	VB
+these	DT
+relationships	NNS
+,	,
+as	IN
+this	DT
+would	MD
+add	VB
+a	DT
+signiï	NN
+¬	CD
+cant	JJ
+amount	NN
+of	IN
+complexity	NN
+to	TO
+the	DT
+capabilities	NNS
+
+
+and	CC
+the	DT
+reasoning	NN
+engine	NN
+.	.
+
+In	IN
+practice	NN
+,	,
+we	PRP
+have	VBP
+seen	VBN
+that	IN
+the	DT
+agents	NNS
+that	WDT
+use	VBP
+the	DT
+capabilities	NNS
+can	MD
+adequately	RB
+
+
+disambiguate	NN
+and	CC
+infer	VB
+these	DT
+relationships	NNS
+themselves	PRP
+.	.
+
+
+Note	VB
+that	IN
+our	PRP$
+composition	NN
+of	IN
+individual	JJ
+ontology	NN
+fragments	NNS
+into	IN
+capabilities	NNS
+is	VBZ
+a	DT
+very	RB
+general	JJ
+structure	NN
+
+
+that	WDT
+can	MD
+provide	VB
+us	PRP
+with	IN
+a	DT
+uniform	JJ
+view	NN
+of	IN
+information	NN
+and	CC
+services	NNS
+.	.
+
+This	DT
+makes	VBZ
+the	DT
+representation	NN
+and	CC
+
+
+reasoning	NN
+over	IN
+the	DT
+representation	NN
+extremely	RB
+general	JJ
+.	.
+
+In	IN
+practice	NN
+,	,
+we	PRP
+have	VBP
+used	VBN
+it	PRP
+successfully	RB
+not	RB
+only	RB
+for	IN
+
+
+agents	NNS
+that	WDT
+encapsulate	VBP
+information	NN
+sources	NNS
+,	,
+but	CC
+also	RB
+agents	NNS
+that	WDT
+encapsulate	VBP
+new	JJ
+and	CC
+legacy	NN
+services	NNS
+,	,
+core	NN
+
+
+agents	NNS
+such	JJ
+as	IN
+broker	NN
+agents	NNS
+,	,
+and	CC
+agents	NNS
+that	WDT
+enact	VBP
+simple	JJ
+workï	NN
+¬	NN
+‚	CD
+ows	NNS
+.	.
+
+
+An	DT
+agentâ	JJ
+$	$
+™	CD
+s	NNS
+advertisement	NN
+declares	VBZ
+its	PRP$
+capabilities	NNS
+to	TO
+a	DT
+broker	NN
+.	.
+
+An	DT
+advertisement	NN
+contains	VBZ
+one	CD
+or	CC
+more	JJR
+
+
+agent	NN
+capabilities	NNS
+.	.
+
+When	WRB
+more	JJR
+than	IN
+one	CD
+agent	NN
+capability	NN
+is	VBZ
+advertised	VBN
+,	,
+the	DT
+semantic	JJ
+interpretation	NN
+is	VBZ
+similar	JJ
+
+
+to	TO
+a	DT
+disjunction	NN
+:	:
+the	DT
+agent	NN
+is	VBZ
+capable	JJ
+of	IN
+any	DT
+one	CD
+of	IN
+the	DT
+advertised	JJ
+capabilities	NNS
+,	,
+and	CC
+each	DT
+capability	NN
+is	VBZ
+consid	JJ
+-	:
+
+
+ered	VBN
+independently	RB
+.	.
+
+This	DT
+is	VBZ
+shown	VBN
+in	IN
+Figure	NN
+7	CD
+.	.
+
+Within	IN
+the	DT
+ontology	NN
+fragments	NNS
+of	IN
+an	DT
+advertised	JJ
+capability	NN
+
+
+there	RB
+will	MD
+appear	VB
+one	CD
+or	CC
+more	JJR
+classes	NNS
+from	IN
+the	DT
+ontology	NN
+,	,
+meaning	VBG
+that	IN
+the	DT
+agent	NN
+supports	VBZ
+any	DT
+subset	NN
+of	IN
+
+
+10	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+10	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+Query	NNP
+Capability	NNP
+
+
+Ontology	NNP
+Fragment	NN
+1A	NN
+
+
+and	CC
+
+
+Ontology	NNP
+Fragment	NN
+1B	NN
+
+
+...	:
+
+
+and	CC
+
+
+...	:
+
+
+and	CC
+
+
+Ontology	NNP
+Fragment	NN
+1M	NN
+
+
+Figure	NNP
+8	CD
+:	:
+Agent	NNP
+Capabilities	NNPS
+and	CC
+Queries	NNPS
+
+
+those	DT
+advertised	VBN
+classes	NNS
+.	.
+
+An	DT
+advertised	JJ
+class	NN
+can	MD
+contain	VB
+one	CD
+or	CC
+more	JJR
+advertised	JJ
+slots	NNS
+and	CC
+,	,
+similar	JJ
+to	TO
+the	DT
+
+
+classes	NNS
+,	,
+this	DT
+means	VBZ
+the	DT
+agent	NN
+supporting	VBG
+any	DT
+subset	NN
+of	IN
+these	DT
+slots	NNS
+.	.
+
+Finally	RB
+,	,
+there	EX
+can	MD
+be	VB
+constraints	NNS
+on	IN
+an	DT
+
+
+advertised	VBN
+slot	NN
+,	,
+which	WDT
+represent	VBP
+the	DT
+range	NN
+of	IN
+values	NNS
+of	IN
+that	DT
+slot	NN
+that	WDT
+are	VBP
+present	JJ
+in	IN
+the	DT
+underlying	VBG
+data	NNS
+,	,
+where	WRB
+
+
+the	DT
+interpretation	NN
+is	VBZ
+either	CC
+a	DT
+disjunction	NN
+or	CC
+union	NN
+of	IN
+all	PDT
+the	DT
+constraints	NNS
+.	.
+
+The	DT
+slotâ	NN
+$	$
+™	CD
+s	NNS
+values	NNS
+are	VBP
+considered	VBN
+to	TO
+
+
+be	VB
+unconstrained	VBN
+when	WRB
+there	EX
+are	VBP
+no	DT
+advertised	JJ
+constraints	NNS
+.	.
+
+
+A	DT
+query	NN
+consists	VBZ
+of	IN
+a	DT
+single	JJ
+capability	NN
+,	,
+along	IN
+with	IN
+some	DT
+directions	NNS
+on	IN
+the	DT
+information	NN
+to	TO
+be	VB
+returned	VBN
+if	IN
+a	DT
+
+
+match	NN
+is	VBZ
+found	VBN
+.	.
+
+A	DT
+query	NN
+capability	NN
+is	VBZ
+a	DT
+conjunction	NN
+of	IN
+ontology	JJ
+fragments	NNS
+-LRB-	-LRB-
+see	VB
+Figure	NNP
+8	CD
+-RRB-	-RRB-
+,	,
+where	WRB
+each	DT
+frag	NN
+-	:
+
+
+ment	NN
+can	MD
+specify	VB
+one	CD
+or	CC
+more	JJR
+classes	NNS
+,	,
+slots	NNS
+from	IN
+each	DT
+class	NN
+and	CC
+constraints	NNS
+on	IN
+the	DT
+slots	NNS
+.	.
+
+However	RB
+,	,
+since	IN
+this	DT
+
+
+appears	VBZ
+in	IN
+the	DT
+context	NN
+of	IN
+asking	VBG
+a	DT
+question	NN
+,	,
+it	PRP
+will	MD
+have	VB
+slightly	RB
+different	JJ
+semantics	NNS
+in	IN
+the	DT
+reasoning	NN
+engine	NN
+.	.
+
+
+In	IN
+particular	JJ
+,	,
+for	IN
+a	DT
+query	NN
+capability	NN
+to	TO
+match	VB
+an	DT
+advertised	JJ
+capability	NN
+,	,
+the	DT
+query	NN
+classes	NNS
+must	MD
+be	VB
+a	DT
+subset	NN
+of	IN
+
+
+the	DT
+advertised	JJ
+classes	NNS
+-LRB-	-LRB-
+possibly	RB
+taking	VBG
+into	IN
+account	NN
+the	DT
+class-subclass	JJ
+hierarchy	NN
+-RRB-	-RRB-
+,	,
+and	CC
+the	DT
+constraints	NNS
+on	IN
+the	DT
+
+
+query	NN
+classes	NNS
+must	MD
+intersect	VB
+the	DT
+constraints	NNS
+on	IN
+the	DT
+advertised	JJ
+classes	NNS
+.	.
+
+
+3.5	CD
+Example	NN
+
+
+In	IN
+this	DT
+subsection	NN
+,	,
+we	PRP
+show	VBP
+examples	NNS
+of	IN
+advertisements	NNS
+and	CC
+queries	NNS
+in	IN
+XML	NN
+.	.
+
+The	DT
+tags	NNS
+used	VBN
+in	IN
+the	DT
+speciï	NN
+¬	SYM
+-	:
+
+
+cations	NNS
+are	VBP
+deï	NN
+¬	CD
+ned	VBN
+by	IN
+the	DT
+Document	NNP
+Type	NN
+Deï	NN
+¬	CD
+nitions	NNS
+-LRB-	-LRB-
+DTDs	NNS
+-RRB-	-RRB-
+as	IN
+shown	VBN
+in	IN
+Table	NNP
+2	CD
+.	.
+
+
+Advertisement	NN
+
+
+Table	NNP
+3	CD
+presents	VBZ
+an	DT
+example	NN
+of	IN
+an	DT
+advertisement	NN
+from	IN
+ResourceAgent5	NN
+as	IN
+generated	VBN
+
+
+in	IN
+the	DT
+InfoSleuth	NNP
+system	NN
+.	.
+
+Resource	NNP
+agents	NNS
+are	VBP
+the	DT
+back-end	JJ
+agents	NNS
+within	IN
+InfoSleuth	NNP
+that	WDT
+act	VBP
+as	IN
+proxies	NNS
+
+
+for	IN
+structured	JJ
+or	CC
+semi-structured	JJ
+repositories	NNS
+.	.
+
+The	DT
+locational	JJ
+information	NN
+is	VBZ
+advertised	VBN
+using	VBG
+infoSleuth	NN
+
+
+ontology	NN
+fragment	NN
+.	.
+
+It	PRP
+tells	VBZ
+the	DT
+broker	NN
+that	WDT
+ResourceAgent5	NN
+can	MD
+be	VB
+contacted	VBN
+at	IN
+port	NN
+4356	CD
+,	,
+on	IN
+the	DT
+host	NN
+
+
+machine	NN
+b1.mcc.com	NN
+.	.
+
+The	DT
+fragment	NN
+of	IN
+the	DT
+conversation	NN
+ontology	NN
+speciï	NN
+¬	CD
+es	NNS
+that	IN
+the	DT
+agent	NN
+accepts	VBZ
+con	NN
+-	:
+
+
+versations	NNS
+of	IN
+the	DT
+form	NN
+ask-all	NN
+and	CC
+ask-one	NN
+using	VBG
+the	DT
+language	NN
+KQML	NN
+.	.
+
+The	DT
+fragment	NN
+of	IN
+the	DT
+sql	NN
+ontology	NN
+
+
+speciï	NN
+¬	CD
+es	NNS
+that	IN
+it	PRP
+knows	VBZ
+how	WRB
+to	TO
+execute	VB
+queries	NNS
+speciï	NN
+¬	CD
+ed	VBN
+in	IN
+SQL	NN
+select-statement	NN
+.	.
+
+The	DT
+fragment	NN
+of	IN
+the	DT
+
+
+healthcare	NN
+ontology	NN
+speciï	NN
+¬	CD
+es	NNS
+that	IN
+it	PRP
+deals	VBZ
+with	IN
+diagnosis	NN
+and	CC
+patient	NN
+classes	NNS
+of	IN
+the	DT
+healthcare	NN
+domain	NN
+
+
+and	CC
+the	DT
+patient	NN
+data	NN
+is	VBZ
+restricted	JJ
+to	TO
+patients	NNS
+between	IN
+the	DT
+age	NN
+of	IN
+43	CD
+and	CC
+75	CD
+.	.
+
+The	DT
+fragment	NN
+of	IN
+the	DT
+service	NN
+
+
+ontology	NN
+consists	VBZ
+of	IN
+two	CD
+classes	NNS
+data-response	JJ
+and	CC
+query	NN
+.	.
+
+The	DT
+characterics	NNS
+of	IN
+data-response	JJ
+services	NNS
+
+
+11	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+11	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+!	.
+
+ELEMENT	NN
+message	NN
+-LRB-	-LRB-
+advertisement	NN
+query	NN
+.	.
+.	.
+-RRB-	-RRB-
+!	.
+
+ELEMENT	NN
+advertisement	NN
+-LRB-	-LRB-
+capability	NN
++	CC
+-RRB-	-RRB-
+
+
+!	.
+
+ELEMENT	NN
+query	NN
+-LRB-	-LRB-
+capability	NN
++	CC
+-RRB-	-RRB-
+
+
+!	.
+
+ELEMENT	NN
+capability	NN
+-LRB-	-LRB-
+ontology	NN
+fragment	NN
++	CC
+-RRB-	-RRB-
+!	.
+
+ATTLIST	NN
+capability	NN
+NAME	NN
+CDATA	JJ
+#REQUIRED	NN
+!	.
+
+ELEMENT	NN
+ontology	NN
+fragment	NN
+-LRB-	-LRB-
+class	NN
+*	NN
+-RRB-	-RRB-
+
+
+!	.
+
+ATTLIST	NN
+ontology	NN
+fragment	NN
+
+
+NAME	NN
+CDATA	JJ
+#REQUIRED	NN
+
+
+VERSION	NN
+CDATA	NN
+â	VBD
+$	$
+œ1	CD
+.0	CD
+â	NN
+$	$
+
+
+RETURN	NN
+CLASSES	NNS
+CDATA	JJ
+â	NN
+$	$
+œfalseâ	JJ
+$	$
+
+
+CLASS	NN
+SEMANTICS	NNS
+CDATA	JJ
+â	NN
+$	$
+œanyâ	JJ
+$	$
+
+
+!	.
+
+ELEMENT	NN
+class	NN
+-LRB-	-LRB-
+slot	NN
+*	SYM
+key	JJ
+*	SYM
+constraint	NN
+conjunct	NN
+?	.
+-RRB-	-RRB-
+!	.
+
+ATTLIST	NN
+class	NN
+
+
+NAME	NN
+CDATA	JJ
+#REQUIRED	NN
+
+
+QUERIED	VBN
+NAME	NN
+CDATA	JJ
+â	NN
+$	$
+œ	JJ
+â	NN
+$	$
+
+
+RETURNED	VBN
+SLOTs	NNS
+CDATA	JJ
+â	NN
+$	$
+œfalseâ	JJ
+$	$
+
+
+RETURNED	NNP
+KEYS	NNP
+CDATA	NNP
+â	VBD
+$	$
+œfalseâ	JJ
+$	$
+
+
+INFERENCE	NNP
+DEPTH	NNP
+CDATA	NNP
+â	VBD
+$	$
+œ-1â	CD
+$	$
+
+
+SLOT	NNP
+SEMANTICS	NNP
+CDATA	NNP
+â	VBD
+$	$
+œanyâ	JJ
+$	$
+
+
+!	.
+
+ELEMENT	NN
+slot	NN
+-LRB-	-LRB-
+set	NN
+constraint	NN
+interval	NN
+constraint	NN
+-RRB-	-RRB-
+*	SYM
+!	.
+
+ATTLIST	NN
+slot	NN
+
+
+NAME	NN
+CDATA	JJ
+#REQUIRED	NN
+
+
+RETURNED	VBD
+CONSTRAINTS	NNS
+CDATA	JJ
+â	NN
+$	$
+œfalseâ	JJ
+$	$
+
+
+VALUE	NN
+CDATA	NN
+â	VBD
+$	$
+œâ	CD
+$	$
+
+
+Table	NNP
+2	CD
+:	:
+Sample	VB
+DTD	NN
+for	IN
+advertisements	NNS
+and	CC
+queries	NNS
+
+
+are	VBP
+described	VBN
+by	IN
+its	PRP$
+slot	NN
+values	NNS
+.	.
+
+The	DT
+delivery	NN
+slot	NN
+value	NN
+speciï	NN
+¬	CD
+es	NNS
+that	WDT
+results	VBZ
+can	MD
+be	VB
+delivered	VBN
+ofï	NN
+¬	CD
+‚	CD
+ine	NN
+using	VBG
+
+
+http	NN
+,	,
+theannotations	NNS
+speciï	VBP
+¬	CD
+es	NNS
+that	WDT
+results	VBZ
+can	MD
+be	VB
+annotated	JJ
+with	IN
+additional	JJ
+information	NN
+such	JJ
+as	IN
+the	DT
+orig	NN
+-	:
+
+
+inating	VBG
+sources	NNS
+,	,
+and	CC
+the	DT
+language	NN
+speciï	NN
+¬	CD
+es	VBZ
+that	IN
+results	NNS
+are	VBP
+displayed	VBN
+in	IN
+relational	NN
+database	NN
+tabular	JJ
+form	NN
+.	.
+
+
+The	DT
+class	NN
+query	NN
+speciï	NN
+¬	CD
+es	NNS
+that	IN
+the	DT
+computation	NN
+ofthedataisdirect	NN
+-LRB-	-LRB-
+accessed	VBN
+locally	RB
+within	IN
+the	DT
+agent	NN
+-RRB-	-RRB-
+.	.
+
+
+The	DT
+slot	NN
+value	NN
+of	IN
+response-type	JJ
+is	VBZ
+ï	NN
+¬	CD
+rst-solution	NN
+which	WDT
+speciï	VBP
+¬	CD
+es	NNS
+that	IN
+the	DT
+agent	NN
+will	MD
+return	VB
+the	DT
+ï	NN
+¬	NN
+rst	NN
+solution	NN
+
+
+as	RB
+soon	RB
+as	IN
+it	PRP
+becomes	VBZ
+available	JJ
+.	.
+
+Upon	IN
+receipt	NN
+of	IN
+this	DT
+advertisement	NN
+,	,
+the	DT
+broker	NN
+parses	VBZ
+and	CC
+validates	VBZ
+the	DT
+
+
+advertisement	NN
+and	CC
+asserts	VBZ
+it	PRP
+in	IN
+its	PRP$
+repository	NN
+.	.
+
+
+Querying	VBG
+
+
+Table	NNP
+4	CD
+shows	VBZ
+the	DT
+content	NN
+of	IN
+a	DT
+query	NN
+to	TO
+the	DT
+broker	NN
+to	TO
+ï	VB
+¬	CD
+nd	NN
+which	WDT
+resource	NN
+agents	NNS
+can	MD
+answer	VB
+
+
+a	DT
+request	NN
+for	IN
+patients	NNS
+between	IN
+the	DT
+age	NN
+of	IN
+25	CD
+and	CC
+65	CD
+with	IN
+diagnosis	NN
+code	NN
+40w	NN
+.	.
+
+The	DT
+source	NN
+that	WDT
+can	MD
+
+
+provide	VB
+this	DT
+information	NN
+must	MD
+be	VB
+able	JJ
+to	TO
+accept	VB
+query	NN
+expressed	VBN
+in	IN
+sql	NN
+syntax	NN
+and	CC
+can	MD
+compute	VB
+the	DT
+answers	NNS
+
+
+to	TO
+the	DT
+query	NN
+locally	RB
+.	.
+
+
+A	DT
+query	NN
+is	VBZ
+speciï	NN
+¬	NN
+ed	VBD
+as	IN
+a	DT
+single	JJ
+capability	NN
+over	IN
+different	JJ
+ontology	NN
+fragments	NNS
+.	.
+
+A	DT
+query	NN
+needs	VBZ
+to	TO
+explicitly	RB
+
+
+specify	VB
+the	DT
+type	NN
+and	CC
+the	DT
+amount	NN
+of	IN
+information	NN
+to	TO
+be	VB
+returned	VBN
+.	.
+
+When	WRB
+attribute	VBP
+values	NNS
+RETURN	NNP
+SLOTS	NNS
+,	,
+
+
+RETURN	NN
+CLASSES	NNS
+,	,
+RETURN	NNP
+CONSTRAINTS	NNS
+and	CC
+RETURN	NNP
+KEYS	NNS
+are	VBP
+set	VBN
+to	TO
+the	DT
+value	NN
+true	JJ
+,	,
+these	DT
+
+
+respective	JJ
+information	NN
+in	IN
+an	DT
+ontology	JJ
+fragment	NN
+will	MD
+be	VB
+returned	VBN
+.	.
+
+A	DT
+query	NN
+also	RB
+speciï	VBP
+¬	CD
+es	VBZ
+the	DT
+semantic	JJ
+
+
+interpretation	NN
+of	IN
+the	DT
+class	NN
+and	CC
+slot	NN
+values	NNS
+of	IN
+each	DT
+ontology	NN
+fragment	NN
+using	VBG
+CLASS	NNS
+SEMANTICS	NNS
+and	CC
+
+
+SLOT	NN
+SEMANTICS	NNS
+respectively	RB
+.	.
+
+A	DT
+value	NN
+of	IN
+all	DT
+speciï	NN
+¬	CD
+es	NNS
+that	IN
+all	PDT
+the	DT
+queried	VBN
+classes	NNS
+or	CC
+slots	NNS
+have	VBP
+to	TO
+
+
+match	NN
+.	.
+
+A	DT
+value	NN
+of	IN
+any	DT
+speciï	NN
+¬	NN
+es	VBZ
+that	IN
+the	DT
+query	NN
+only	RB
+need	VBP
+to	TO
+match	VB
+any	DT
+one	CD
+of	IN
+the	DT
+slot	NN
+queried	VBD
+.	.
+
+
+The	DT
+details	NNS
+of	IN
+how	WRB
+the	DT
+matching	NN
+of	IN
+a	DT
+query	NN
+to	TO
+advertisments	NNS
+is	VBZ
+done	VBN
+are	VBP
+discussed	VBN
+in	IN
+section	NN
+4	CD
+.	.
+
+Note	VB
+
+
+12	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+12	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+advertisement	NN
+
+
+capability	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+ResourceAgent5Capâ	JJ
+$	$
+
+
+ontology	NN
+fragment	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+infosleuthâ	JJ
+$	$
+VERSION	CD
+=	JJ
+â	NN
+$	$
+1.0	CD
+â	NN
+$	$
+
+
+class	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+agentâ	JJ
+$	$
+
+
+slot	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+nameâ	JJ
+$	$
+VALUE	CD
+=	JJ
+â	NN
+$	$
+ResourceAgent5â	JJ
+$	$
+/	:
+slot	NN
+
+
+slot	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+hostâ	JJ
+$	$
+VALUE	CD
+=	JJ
+â	NN
+$	$
+b1.mcc.comâ	CD
+$	$
+/	:
+slot	NN
+
+
+slot	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+portâ	JJ
+$	$
+VALUE	CD
+=	JJ
+â	NN
+$	$
+4356â	CD
+$	$
+/	:
+slot	NN
+
+
+slot	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+typeâ	JJ
+$	$
+VALUE	CD
+=	JJ
+â	NN
+$	$
+resourceagentâ	JJ
+$	$
+/	:
+slot	NN
+
+
+/	:
+class	NN
+
+
+/	:
+ontology	NN
+fragment	NN
+
+
+ontology	NN
+fragment	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+conversationâ	JJ
+$	$
+VERSION	CD
+=	JJ
+â	NN
+$	$
+1.0	CD
+â	NN
+$	$
+
+
+class	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+conversationâ	JJ
+$	$
+
+
+slot	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+typeâ	JJ
+$	$
+
+
+set	VBN
+constraint	NN
+
+
+!	.
+
+-LSB-	-LRB-
+CDATA	JJ
+-LSB-	-LRB-
+â	JJ
+$	$
+ask-allâ	JJ
+$	$
+,	,
+â	VB
+$	$
+ask-oneâ	JJ
+$	$
+-RSB-	-RRB-
+-RSB-	-RRB-
+
+
+/	:
+set	VBN
+constraint	NN
+
+
+/	:
+slot	NN
+
+
+slot	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+nameâ	JJ
+$	$
+VALUE	CD
+=	JJ
+â	NN
+$	$
+kqmlâ	JJ
+$	$
+/	:
+slot	NN
+
+
+/	:
+class	NN
+
+
+/	:
+ontology	NN
+fragment	NN
+
+
+ontology	NN
+fragment	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+sqlâ	CD
+$	$
+VERSION	CD
+=	JJ
+â	NN
+$	$
+1.0	CD
+â	NN
+$	$
+
+
+class	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+select-statementâ	JJ
+$	$
+™	CD
+/	:
+class	NN
+
+
+/	:
+ontology	NN
+fragment	NN
+
+
+ontology	NN
+fragment	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+healthcareâ	JJ
+$	$
+VERSION	CD
+=	JJ
+â	NN
+$	$
+1.0	CD
+â	NN
+$	$
+
+
+class	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+diagnosisâ	JJ
+$	$
+
+
+slot	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+diagnosis-codeâ	JJ
+$	$
+/	:
+slot	NN
+
+
+/	:
+class	NN
+
+
+class	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+œpatientâ	JJ
+$	$
+
+
+slot	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+patient-ageâ	JJ
+$	$
+/	:
+slot	NN
+
+
+constraint	NN
+conjunct	NN
+
+
+set	VBN
+interval	NN
+
+
+MIN	NN
+VALUE	NN
+=	JJ
+â	NN
+$	$
+43â	CD
+$	$
+
+
+MAX	NNP
+VALUE	NNP
+=	JJ
+â	NN
+$	$
+75â	CD
+$	$
+
+
+/	:
+set	VBN
+interval	NN
+
+
+/	:
+constraint	NN
+conjunct	NN
+
+
+key	JJ
+NAME	NN
+=	JJ
+â	NN
+$	$
+patient-idâ	JJ
+$	$
+/	:
+key	JJ
+
+
+/	:
+class	NN
+
+
+/	:
+ontology	NN
+fragment	NN
+
+
+ontology	JJ
+fragment	NN
+Name	NN
+=	JJ
+â	NN
+$	$
+œserviceâ	JJ
+$	$
+VERSION	CD
+=	JJ
+â	NN
+$	$
+œ1	CD
+.0	CD
+â	NN
+$	$
+
+
+class	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+œdata-responseâ	JJ
+$	$
+
+
+slot	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+œlanguageâ	JJ
+$	$
+VALUE	CD
+=	JJ
+â	NN
+$	$
+œtuple-formatâ	JJ
+$	$
+/	:
+slot	NN
+
+
+slot	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+œdeliveryâ	JJ
+$	$
+VALUE	CD
+=	JJ
+â	NN
+$	$
+œhttpâ	JJ
+$	$
+/	:
+slot	NN
+
+
+slot	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+œannotationsâ	JJ
+$	$
+VALUE	CD
+=	JJ
+â	NN
+$	$
+œsource-taggingâ	JJ
+$	$
+
+
+/	:
+class	NN
+
+
+class	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+œqueryâ	JJ
+$	$
+
+
+slot	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+œcomputationâ	JJ
+$	$
+VALUE	CD
+=	JJ
+â	NN
+$	$
+œdirectâ	JJ
+$	$
+/	:
+slot	NN
+
+
+slot	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+œresponse-typeâ	JJ
+$	$
+VALUE	CD
+=	JJ
+â	NN
+$	$
+œï	CD
+¬	CD
+rst-solutionâ	JJ
+$	$
+
+
+/	:
+class	NN
+
+
+/	:
+ontology	NN
+fragment	NN
+
+
+/	:
+capability	NN
+
+
+/	:
+advertisment	NN
+
+
+/	:
+slot	NN
+
+
+/	:
+slot	NN
+
+
+Table	NNP
+3	CD
+:	:
+Advertisement	NN
+of	IN
+resourceAgent5	NN
+
+
+13	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+13	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+Resource	NNP
+Agent	NNP
+1	CD
+
+
+Resource	NNP
+Agent	NNP
+2	CD
+
+
+User	NN
+Agent	NNP
+
+
+User	NN
+Agent	NNP
+
+
+Resource	NNP
+Agent	NNP
+3	CD
+
+
+Broker	NNP
+
+
+Query	NNP
+Agent	NNP
+
+
+Resource	NNP
+Agent	NNP
+4	CD
+
+
+Resource	NNP
+Agent	NNP
+5	CD
+
+
+Resource	NNP
+Agent	NNP
+6	CD
+
+
+Resource	NNP
+Agent	NNP
+7	CD
+
+
+Resource	NNP
+Agent	NNP
+8	CD
+
+
+Figure	NNP
+9	CD
+:	:
+Single	JJ
+Broker	NNP
+Architecture	NNP
+
+
+that	IN
+the	DT
+reasoning	NN
+engine	NN
+would	MD
+match	VB
+the	DT
+agent	NN
+that	WDT
+advertised	VBD
+knowledge	NN
+about	IN
+patients	NNS
+between	IN
+43	CD
+
+
+and	CC
+75	CD
+-LRB-	-LRB-
+i.e.	FW
+,	,
+ResourceAgent5	NN
+-RRB-	-RRB-
+.	.
+
+
+4	CD
+Single	JJ
+Brokering	VBG
+
+
+4.1	CD
+Single	JJ
+Broker	NNP
+Architecture	NNP
+
+
+In	IN
+a	DT
+single	JJ
+broker	NN
+architecture	NN
+,	,
+the	DT
+broker	NN
+is	VBZ
+the	DT
+central	JJ
+repository	NN
+for	IN
+all	DT
+information	NN
+about	IN
+available	JJ
+agents	NNS
+
+
+and	CC
+resources	NNS
+in	IN
+the	DT
+system	NN
+.	.
+
+Rather	RB
+than	IN
+caching	VBG
+information	NN
+about	IN
+the	DT
+entire	JJ
+system	NN
+,	,
+when	WRB
+agents	NNS
+come	VBP
+
+
+online	NN
+they	PRP
+need	VBP
+only	RB
+know	VB
+the	DT
+possible	JJ
+locations	NNS
+of	IN
+the	DT
+broker	NN
+and	CC
+how	WRB
+to	TO
+query	VB
+it	PRP
+for	IN
+information	NN
+to	TO
+locate	VB
+
+
+other	JJ
+agents	NNS
+in	IN
+the	DT
+system	NN
+.	.
+
+Each	DT
+agent	NN
+then	RB
+advertises	VBZ
+itself	PRP
+to	TO
+the	DT
+broker	NN
+and	CC
+queries	VBZ
+the	DT
+broker	NN
+when	WRB
+it	PRP
+
+
+needs	NNS
+to	TO
+locate	VB
+other	JJ
+agents	NNS
+.	.
+
+The	DT
+single	JJ
+broker	NN
+architecture	NN
+and	CC
+its	PRP$
+relationship	NN
+to	TO
+the	DT
+InfoSleuth	NNP
+agents	NNS
+that	WDT
+
+
+advertise	VB
+and	CC
+query	VB
+to	TO
+it	PRP
+is	VBZ
+illustrated	VBN
+in	IN
+Figure	NNP
+9	CD
+.	.
+
+In	IN
+this	DT
+view	NN
+of	IN
+the	DT
+system	NN
+,	,
+there	EX
+are	VBP
+eight	CD
+resource	NN
+agents	NNS
+
+
+-LRB-	-LRB-
+Resource	NNP
+Agents	NNPS
+1-8	CD
+-RRB-	-RRB-
+advertised	VBD
+to	TO
+the	DT
+broker	NN
+,	,
+two	CD
+user	NN
+agents	NNS
+and	CC
+one	CD
+query	NN
+agent	NN
+.	.
+
+
+4.2	CD
+Broker	NNP
+Reasoning	NN
+Engine	NNP
+
+
+In	IN
+this	DT
+section	NN
+,	,
+we	PRP
+describe	VBP
+the	DT
+algorithms	NNS
+we	PRP
+use	VBP
+to	TO
+search	VB
+through	IN
+the	DT
+respository	NN
+and	CC
+check	NN
+for	IN
+matches	NNS
+
+
+between	IN
+advertisements	NNS
+and	CC
+queries	NNS
+.	.
+
+
+4.2.1	CD
+Iterating	VBG
+Through	IN
+the	DT
+Repository	NNP
+
+
+When	WRB
+a	DT
+broker	NN
+receives	VBZ
+a	DT
+query	NN
+,	,
+it	PRP
+must	MD
+determine	VB
+which	WDT
+of	IN
+its	PRP$
+advertisements	NNS
+match	VBP
+the	DT
+query	NN
+.	.
+
+This	DT
+is	VBZ
+
+
+done	VBN
+as	IN
+follows	VBZ
+:	:
+
+
+1	LS
+.	.
+
+Iterate	VB
+through	IN
+all	DT
+advertisements	NNS
+in	IN
+the	DT
+repository	NN
+,	,
+checking	VBG
+if	IN
+the	DT
+advertisement	NN
+matches	VBZ
+the	DT
+query	NN
+.	.
+
+
+2	LS
+.	.
+
+To	TO
+see	VB
+whether	IN
+an	DT
+advertisement	NN
+matches	VBZ
+the	DT
+query	NN
+,	,
+iterate	VB
+through	IN
+the	DT
+capabilities	NNS
+of	IN
+query	NN
+making	NN
+
+
+sure	JJ
+each	DT
+one	CD
+matches	VBZ
+one	CD
+of	IN
+the	DT
+capabilities	NNS
+of	IN
+the	DT
+advertisement	NN
+.	.
+
+The	DT
+algorithm	NN
+to	TO
+do	VB
+capability	NN
+
+
+matching	VBG
+is	VBZ
+described	VBN
+in	IN
+the	DT
+next	JJ
+section	NN
+.	.
+
+
+14	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+14	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+query	NN
+
+
+capability	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+œ	JJ
+generic	JJ
+query	NN
+capabilityâ	NN
+$	$
+
+
+ontology	NN
+fragment	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+infosleuthâ	JJ
+$	$
+RETURN	CD
+CLASSES	NN
+=	JJ
+â	NN
+$	$
+œfalseâ	JJ
+$	$
+
+
+class	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+œagentâ	JJ
+$	$
+RETURN	CD
+KEYS	NN
+=	JJ
+â	NN
+$	$
+œfalseâ	JJ
+$	$
+RETURN	CD
+SLOTS	NN
+=	JJ
+â	NN
+$	$
+œfalseâ	JJ
+$	$
+SLOT	CD
+SEMANTICS	NN
+=	JJ
+â	NN
+$	$
+œallâ	JJ
+$	$
+
+
+slot	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+œnameâ	JJ
+$	$
+RETURN	JJ
+CONSTRAINTS	NNS
+=	JJ
+â	NN
+$	$
+œtrueâ	JJ
+$	$
+/	:
+slot	NN
+
+
+slot	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+œhostâ	JJ
+$	$
+RETURN	JJ
+CONSTRAINTS	NNS
+=	JJ
+â	NN
+$	$
+œtrueâ	JJ
+$	$
+/	:
+slot	NN
+
+
+slot	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+œportâ	JJ
+$	$
+RETURN	JJ
+CONSTRAINTS	NNS
+=	JJ
+â	NN
+$	$
+œtrueâ	JJ
+$	$
+/	:
+slot	NN
+
+
+constraint	NN
+conjunct	NN
+
+
+constraint	NN
+disjunct	NN
+
+
+slot	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+œtypeâ	JJ
+$	$
+VALUE	CD
+=	JJ
+â	NN
+$	$
+œresourceagentâ	JJ
+$	$
+/	:
+slot	NN
+
+
+/	:
+constraint	NN
+disjunct	NN
+
+
+/	:
+constraint	NN
+conjunct	NN
+
+
+/	:
+class	NN
+
+
+/	:
+ontology	NN
+fragment	NN
+
+
+ontology	NN
+fragment	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+œsqlâ	JJ
+$	$
+RETURN	CD
+CLASSES	NN
+=	JJ
+â	NN
+$	$
+œfalseâ	JJ
+$	$
+
+
+/	:
+ontology	NN
+fragment	NN
+
+
+ontology	NN
+fragment	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+œhealthcareâ	JJ
+$	$
+RETURN	CD
+CLASSES	NN
+=	JJ
+â	NN
+$	$
+œtrueâ	JJ
+$	$
+CLASS	CD
+SEMANTICS	NN
+=	JJ
+â	NN
+$	$
+œanyâ	JJ
+$	$
+
+
+class	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+œpatientâ	JJ
+$	$
+RETURN	CD
+KEYS	NN
+=	JJ
+â	NN
+$	$
+œtrueâ	JJ
+$	$
+RETURN	CD
+SLOTS	NN
+=	JJ
+â	NN
+$	$
+œtrueâ	JJ
+$	$
+SLOT	CD
+SEMANTICS	NN
+=	JJ
+â	NN
+$	$
+œanyâ	JJ
+$	$
+
+
+constraint	NN
+conjunct	NN
+
+
+slot	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+œpatient-ageâ	JJ
+$	$
+RETURN	JJ
+CONSTRAINTS	NNS
+=	JJ
+â	NN
+$	$
+œtrueâ	JJ
+$	$
+
+
+set	VBN
+interval	NN
+
+
+MIN	NN
+VALUE	NN
+=	JJ
+â	NN
+$	$
+œ25â	CD
+$	$
+
+
+MAX	NNP
+VALUE	NNP
+=	JJ
+â	NN
+$	$
+œ65â	CD
+$	$
+
+
+/	:
+set	VBN
+interval	NN
+
+
+/	:
+constraint	NN
+conjunct	NN
+
+
+/	:
+class	NN
+
+
+class	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+œdiagnosisâ	JJ
+$	$
+RETURN	CD
+KEYS	NN
+=	JJ
+â	NN
+$	$
+œfalseâ	JJ
+$	$
+RETURN	CD
+SLOTS	NN
+=	JJ
+â	NN
+$	$
+œtrueâ	JJ
+$	$
+SLOT	CD
+SEMANTICS	NN
+=	JJ
+â	NN
+$	$
+œanyâ	JJ
+$	$
+
+
+constraint	NN
+conjunct	NN
+
+
+slot	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+œdiagnosis-codeâ	JJ
+$	$
+RETURN	JJ
+CONSTRAINTS	NNS
+=	JJ
+â	NN
+$	$
+œtrueâ	JJ
+$	$
+
+
+set	VBN
+constraint	NN
+
+
+!	.
+
+-LSB-	-LRB-
+CDATA	JJ
+-LSB-	-LRB-
+â	JJ
+$	$
+œ40wâ	CD
+$	$
+-RSB-	-RRB-
+-RSB-	-RRB-
+
+
+/	:
+set	VBN
+constraint	NN
+
+
+/	:
+constraint	NN
+conjunct	NN
+
+
+/	:
+class	NN
+
+
+/	:
+ontology	NN
+fragment	NN
+
+
+ontology	NN
+fragment	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+œservicesâ	JJ
+$	$
+RETURN	CD
+CLASSES	NN
+=	JJ
+â	NN
+$	$
+œfalseâ	JJ
+$	$
+
+
+class	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+œqueryâ	JJ
+$	$
+RETURN	CD
+KEYS	NN
+=	JJ
+â	NN
+$	$
+œfalseâ	JJ
+$	$
+RETURN	CD
+SLOTS	NN
+=	JJ
+â	NN
+$	$
+œfalseâ	JJ
+$	$
+SLOT	CD
+SEMANTICS	NN
+=	JJ
+â	NN
+$	$
+œallâ	JJ
+$	$
+
+
+slot	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+œcomputationâ	JJ
+$	$
+RETURN	JJ
+CONSTRAINTS	NNS
+=	JJ
+â	NN
+$	$
+œtrueâ	JJ
+$	$
+/	:
+slot	NN
+
+
+constraint	NN
+conjunct	NN
+
+
+constraint	NN
+disjunct	NN
+
+
+slot	NN
+NAME	NN
+=	JJ
+â	NN
+$	$
+œcomputationâ	JJ
+$	$
+VALUE	CD
+=	JJ
+â	NN
+$	$
+œdirectâ	JJ
+$	$
+/	:
+slot	NN
+
+
+/	:
+constraint	NN
+disjunct	NN
+
+
+/	:
+constraint	NN
+conjunct	NN
+
+
+/	:
+class	NN
+
+
+/	:
+ontology	NN
+fragment	NN
+
+
+capability	NN
+
+
+query	NN
+
+
+Table	NNP
+4	CD
+:	:
+Content	NN
+of	IN
+QueryAgent2	NN
+
+
+15	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+15	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+3	LS
+.	.
+
+If	IN
+all	PDT
+the	DT
+query	NN
+capabilities	NNS
+have	VBP
+a	DT
+match	NN
+,	,
+add	VB
+the	DT
+queried	VBN
+information	NN
+from	IN
+the	DT
+advertised	JJ
+capability	NN
+
+
+to	TO
+the	DT
+result	NN
+list	NN
+.	.
+
+
+4	LS
+.	.
+
+Once	RB
+all	DT
+capabilities	NNS
+have	VBP
+been	VBN
+checked	VBN
+,	,
+return	VB
+the	DT
+result	NN
+list	NN
+to	TO
+the	DT
+agent	NN
+that	WDT
+sent	VBD
+the	DT
+query	NN
+.	.
+
+
+Note	VB
+that	IN
+it	PRP
+is	VBZ
+possible	JJ
+for	IN
+more	JJR
+than	IN
+one	CD
+of	IN
+an	DT
+agentâ	JJ
+$	$
+™	CD
+s	NNS
+advertised	VBD
+capabilities	NNS
+to	TO
+match	VB
+the	DT
+query	NN
+.	.
+
+
+4.2.2	CD
+Matching	VBG
+an	DT
+Advertised	VBN
+Capability	NN
+to	TO
+a	DT
+Query	NNP
+Capability	NN
+
+
+Matching	VBG
+of	IN
+capabilities	NNS
+is	VBZ
+effected	VBN
+using	VBG
+a	DT
+top-down	JJ
+process	NN
+.	.
+
+
+Matching	VBG
+Queries	NNS
+with	IN
+Advertisements	NNS
+
+
+At	IN
+the	DT
+top-most	JJ
+level	NN
+,	,
+the	DT
+set	NN
+of	IN
+ontology	JJ
+fragments	NNS
+in	IN
+the	DT
+
+
+capability	NN
+of	IN
+a	DT
+query	NN
+is	VBZ
+interpreted	VBN
+as	IN
+a	DT
+conjunction	NN
+.	.
+
+An	DT
+advertised	JJ
+capability	NN
+matches	VBZ
+this	DT
+query	NN
+if	IN
+it	PRP
+
+
+has	VBZ
+advertised	VBN
+at	IN
+least	JJS
+all	PDT
+those	DT
+ontology	JJ
+fragments	NNS
+,	,
+and	CC
+each	DT
+of	IN
+the	DT
+individual	JJ
+queried	VBD
+fragments	NNS
+matches	NNS
+
+
+the	DT
+corresponding	JJ
+advertised	JJ
+fragments	NNS
+,	,
+where	WRB
+the	DT
+matching	VBG
+criteria	NNS
+is	VBZ
+discussed	VBN
+below	IN
+.	.
+
+Note	VB
+that	IN
+the	DT
+
+
+advertisement	NN
+can	MD
+contain	VB
+other	JJ
+ontology	JJ
+fragments	NNS
+that	WDT
+do	VBP
+not	RB
+appear	VB
+in	IN
+the	DT
+query	NN
+,	,
+but	CC
+all	PDT
+the	DT
+ones	NNS
+that	WDT
+do	VBP
+
+
+appear	VB
+in	IN
+the	DT
+query	NN
+must	MD
+have	VB
+a	DT
+matching	JJ
+fragment	NN
+in	IN
+a	DT
+particular	JJ
+advertised	JJ
+capability	NN
+.	.
+
+
+Matching	VBG
+Ontology	NNP
+Fragments	NNS
+
+
+First	RB
+,	,
+the	DT
+names	NNS
+of	IN
+the	DT
+ontologies	NNS
+these	DT
+fragments	NNS
+are	VBP
+associated	VBN
+with	IN
+
+
+must	MD
+be	VB
+identical	JJ
+.	.
+
+Next	RB
+,	,
+the	DT
+advertised	JJ
+classes	NNS
+must	MD
+match	VB
+the	DT
+queried	VBN
+classes	NNS
+,	,
+but	CC
+here	RB
+the	DT
+query	NN
+has	VBZ
+
+
+the	DT
+option	NN
+of	IN
+specifying	VBG
+the	DT
+set	NN
+of	IN
+classes	NNS
+as	IN
+either	CC
+a	DT
+conjunction	NN
+or	CC
+a	DT
+disjunction	NN
+by	IN
+setting	VBG
+CLASS	NN
+-	:
+
+
+SEMANTICS	NNS
+to	TO
+all	DT
+or	CC
+any	DT
+.	.
+
+For	IN
+a	DT
+conjunction	NN
+of	IN
+queried	VBN
+classes	NNS
+,	,
+the	DT
+advertised	JJ
+ontology	NN
+fragment	NN
+must	MD
+
+
+contain	VB
+at	IN
+least	JJS
+all	DT
+of	IN
+the	DT
+queried	VBN
+classes	NNS
+and	CC
+the	DT
+classes	NNS
+must	MD
+match	VB
+-LRB-	-LRB-
+the	DT
+matching	NN
+criteria	NNS
+is	VBZ
+deï	NN
+¬	NN
+ned	VBD
+below	IN
+-RRB-	-RRB-
+.	.
+
+
+Note	VB
+that	IN
+the	DT
+advertised	JJ
+ontology	NN
+fragment	NN
+may	MD
+have	VB
+more	RBR
+classes	NNS
+than	IN
+are	VBP
+queried	VBN
+.	.
+
+For	IN
+a	DT
+disjunction	NN
+of	IN
+
+
+classes	NNS
+,	,
+it	PRP
+is	VBZ
+enough	RB
+for	IN
+any	DT
+one	CD
+of	IN
+the	DT
+queried	VBN
+classes	NNS
+to	TO
+match	VB
+one	CD
+of	IN
+the	DT
+advertised	JJ
+classes	NNS
+.	.
+
+
+Matching	VBG
+Ontology	NNP
+Classes	NNS
+
+
+A	DT
+queried	VBD
+class	NN
+can	MD
+contain	VB
+one	CD
+or	CC
+more	JJR
+queried	VBD
+slots	NNS
+.	.
+
+As	IN
+with	IN
+classes	NNS
+
+
+within	IN
+an	DT
+ontology	JJ
+fragment	NN
+,	,
+a	DT
+queried	VBN
+class	NN
+has	VBZ
+the	DT
+option	NN
+of	IN
+querying	VBG
+on	IN
+a	DT
+conjunction	NN
+or	CC
+disjunction	NN
+
+
+of	IN
+slots	NNS
+by	IN
+setting	VBG
+SLOT-SEMANTICS	NN
+to	TO
+all	DT
+or	CC
+any	DT
+.	.
+
+A	DT
+conjunction	NN
+means	VBZ
+all	DT
+of	IN
+the	DT
+queried	VBN
+slots	NNS
+must	MD
+
+
+match	VB
+some	DT
+advertised	JJ
+slots	NNS
+.	.
+
+A	DT
+disjunction	NN
+means	VBZ
+that	IN
+at	IN
+least	JJS
+one	CD
+of	IN
+the	DT
+queried	VBN
+slots	NNS
+must	MD
+match	VB
+in	IN
+the	DT
+
+
+advertised	JJ
+class	NN
+.	.
+
+
+With	IN
+the	DT
+ontology	NN
+fragments	NNS
+,	,
+the	DT
+ï	NN
+¬	NN
+rst	NN
+criteria	NNS
+for	IN
+matching	VBG
+required	VBN
+the	DT
+clases	NNS
+to	TO
+have	VB
+the	DT
+same	JJ
+name	NN
+.	.
+
+
+However	RB
+,	,
+since	IN
+ontologies	NNS
+may	MD
+contain	VB
+class	NN
+hierarchies	NNS
+,	,
+matching	NN
+of	IN
+advertised	JJ
+and	CC
+queried	VBD
+class	NN
+names	NNS
+
+
+differs	VBZ
+.	.
+
+In	IN
+particular	JJ
+,	,
+class	NN
+names	NNS
+match	VBP
+if	IN
+either	CC
+they	PRP
+are	VBP
+identical	JJ
+or	CC
+the	DT
+advertised	JJ
+class	NN
+is	VBZ
+a	DT
+subclass	NN
+of	IN
+
+
+the	DT
+queried	VBN
+class	NN
+.	.
+
+
+In	IN
+a	DT
+queried	VBN
+capability	NN
+,	,
+every	DT
+class	NN
+speciï	NN
+¬	CD
+ed	VBD
+has	VBZ
+a	DT
+taxonomic	JJ
+inference	NN
+depth	NN
+to	TO
+help	VB
+bound	VBN
+the	DT
+sub	NN
+-	:
+
+
+class	NN
+traversal	NN
+in	IN
+the	DT
+reasoning	NN
+engine	NN
+.	.
+
+The	DT
+class	NN
+inferencing	NN
+is	VBZ
+always	RB
+from	IN
+the	DT
+queried	VBN
+class	NN
+to	TO
+its	PRP$
+sub	SYM
+-	:
+
+
+classes	NNS
+,	,
+since	IN
+matching	VBG
+on	IN
+super-classes	NNS
+could	MD
+result	VB
+in	IN
+agents	NNS
+whose	WP$
+data	NNS
+does	VBZ
+not	RB
+answer	VB
+the	DT
+query	NN
+being	VBG
+
+
+asked	VBN
+.	.
+
+The	DT
+inference	NN
+depth	NN
+represents	VBZ
+the	DT
+maximum	JJ
+number	NN
+of	IN
+class-subclass	JJ
+relationships	NNS
+to	TO
+traverse	VB
+
+
+16	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+16	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+while	IN
+checking	VBG
+if	IN
+an	DT
+advertised	JJ
+class	NN
+is	VBZ
+a	DT
+subclass	NN
+of	IN
+the	DT
+queried	VBN
+class	NN
+,	,
+where	WRB
+zero	CD
+means	VBZ
+that	IN
+the	DT
+adver	NN
+-	:
+
+
+tised	VBN
+and	CC
+queried	VBN
+class	NN
+names	NNS
+must	MD
+be	VB
+identical	JJ
+,	,
+inï	NN
+¬	CD
+nity	NN
+means	VBZ
+that	IN
+there	EX
+is	VBZ
+no	DT
+limit	NN
+,	,
+and	CC
+all	DT
+other	JJ
+values	NNS
+
+
+represent	VB
+some	DT
+ï	NN
+¬	NN
+nite	JJ
+limit	NN
+.	.
+
+
+Matching	VBG
+Ontology	NNP
+Slots	NNS
+
+
+For	IN
+a	DT
+query	NN
+slot	NN
+to	TO
+match	VB
+an	DT
+advertised	JJ
+slot	NN
+,	,
+it	PRP
+must	MD
+have	VB
+the	DT
+same	JJ
+name	NN
+and	CC
+
+
+there	RB
+must	MD
+be	VB
+a	DT
+non-empty	JJ
+intersection	NN
+between	IN
+the	DT
+queried	VBN
+and	CC
+advertised	VBN
+constraints	NNS
+.	.
+
+Both	CC
+the	DT
+advertised	VBN
+
+
+and	CC
+queried	VBD
+constraints	NNS
+represent	VB
+a	DT
+subset	NN
+of	IN
+all	PDT
+the	DT
+possible	JJ
+values	NNS
+a	DT
+slot	NN
+can	MD
+have	VB
+,	,
+so	IN
+a	DT
+slot	NN
+that	WDT
+matches	VBZ
+
+
+with	IN
+a	DT
+non-empty	JJ
+intersection	NN
+semantically	RB
+means	VBZ
+that	IN
+it	PRP
+is	VBZ
+at	IN
+least	JJS
+possible	JJ
+that	IN
+it	PRP
+will	MD
+have	VB
+relevant	JJ
+infor	NN
+-	:
+
+
+mation	NN
+or	CC
+services	NNS
+.	.
+
+
+5	CD
+Multibrokering	VBG
+
+
+Distributed	VBN
+multibrokering	VBG
+allows	VBZ
+the	DT
+matching	JJ
+process	NN
+to	TO
+be	VB
+distributed	VBN
+across	IN
+multiple	JJ
+collaborating	VBG
+bro	NN
+-	:
+
+
+kers	NNS
+,	,
+each	DT
+representing	VBG
+a	DT
+different	JJ
+set	NN
+of	IN
+agents	NNS
+.	.
+
+When	WRB
+a	DT
+broker	NN
+receives	VBZ
+a	DT
+request	NN
+for	IN
+an	DT
+agent	NN
+with	IN
+speciï	NN
+¬	CD
+c	NN
+
+
+capabilities	NNS
+,	,
+it	PRP
+looks	VBZ
+for	IN
+matches	NNS
+in	IN
+its	PRP$
+own	JJ
+repository	NN
+of	IN
+agent	NN
+information	NN
+and	CC
+may	MD
+also	RB
+query	VB
+other	JJ
+bro	NN
+-	:
+
+
+kers	NNS
+to	TO
+ï	VB
+¬	CD
+nd	NN
+external	JJ
+agents	NNS
+with	IN
+the	DT
+needed	VBN
+capabilities	NNS
+.	.
+
+In	IN
+this	DT
+section	NN
+,	,
+we	PRP
+present	VBP
+some	DT
+principles	NNS
+and	CC
+
+
+methodologies	NNS
+we	PRP
+have	VBP
+used	VBN
+in	IN
+building	VBG
+a	DT
+scalable	JJ
+multibroker	NN
+system	NN
+.	.
+
+
+5.1	CD
+Principles	NNS
+for	IN
+Scalable	JJ
+Multibrokering	VBG
+
+
+The	DT
+major	JJ
+goals	NNS
+of	IN
+multibrokering	VBG
+center	NN
+around	IN
+robustness	NN
+,	,
+ï	NN
+¬	CD
+‚	NN
+exibility	NN
+and	CC
+scalability	NN
+.	.
+
+Multibrokering	VBG
+
+
+allows	VBZ
+processing	NN
+load	NN
+to	TO
+be	VB
+more	RBR
+evenly	RB
+distributed	VBN
+around	IN
+the	DT
+system	NN
+,	,
+as	RB
+well	RB
+as	IN
+allowing	VBG
+the	DT
+parallel	NN
+
+
+development	NN
+of	IN
+more	JJR
+precise	JJ
+reasoning	NN
+over	IN
+narrower	JJR
+domains	NNS
+.	.
+
+The	DT
+following	VBG
+principles	NNS
+guided	VBD
+us	PRP
+in	IN
+the	DT
+
+
+development	NN
+of	IN
+InfoSleuth	NNP
+multibrokering	NN
+.	.
+
+
+Peer-to-peer	JJR
+Architecture	NNP
+
+
+We	PRP
+use	VBP
+a	DT
+peer-to-peer	JJ
+topology	NN
+for	IN
+inter-broker	JJ
+connectivity	NN
+.	.
+
+Peer-to-peer	NN
+
+
+brokering	VBG
+allows	VBZ
+brokers	NNS
+to	TO
+freely	RB
+advertise	VB
+and	CC
+unadvertise	VB
+themselves	PRP
+to	TO
+other	JJ
+brokers	NNS
+,	,
+so	RB
+entry	NN
+to	TO
+and	CC
+
+
+exit	NN
+from	IN
+the	DT
+group	NN
+of	IN
+brokers	NNS
+is	VBZ
+easy	JJ
+.	.
+
+Newly	RB
+advertised	VBN
+brokersâ	NN
+$	$
+™	CD
+data	NNS
+will	MD
+be	VB
+integrated	VBN
+into	IN
+each	DT
+new	JJ
+
+
+search	NN
+as	IN
+if	IN
+the	DT
+data	NNS
+had	VBD
+always	RB
+existed	VBN
+,	,
+and	CC
+brokers	NNS
+which	WDT
+have	VBP
+unadvertised	JJ
+themselves	PRP
+will	MD
+simply	RB
+cease	VB
+
+
+to	TO
+exist	VB
+so	RB
+far	RB
+as	IN
+the	DT
+rest	NN
+of	IN
+the	DT
+system	NN
+is	VBZ
+concerned	VBN
+.	.
+
+
+Peer-to-peer	JJR
+brokering	NN
+is	VBZ
+more	RBR
+scalable	JJ
+because	IN
+it	PRP
+allows	VBZ
+brokers	NNS
+to	TO
+freely	RB
+advertise	VB
+and	CC
+unadvertise	JJ
+
+
+themselves	PRP
+to	TO
+other	JJ
+brokers	NNS
+.	.
+
+More	RBR
+importantly	RB
+,	,
+this	DT
+topology	NN
+ensures	VBZ
+that	IN
+there	EX
+is	VBZ
+not	RB
+a	DT
+single	JJ
+point	NN
+of	IN
+
+
+failure	NN
+,	,
+as	RB
+would	MD
+be	VB
+found	VBN
+in	IN
+-LRB-	-LRB-
+say	NN
+-RRB-	-RRB-
+a	DT
+hierarchical	JJ
+brokering	VBG
+system	NN
+.	.
+
+The	DT
+only	JJ
+major	JJ
+disadvantage	NN
+of	IN
+a	DT
+
+
+peer-to-peer	JJ
+architecture	NN
+is	VBZ
+the	DT
+cost	NN
+of	IN
+inter-connection	NN
+.	.
+
+When	WRB
+the	DT
+number	NN
+of	IN
+brokers	NNS
+become	VBP
+very	RB
+large	JJ
+,	,
+
+
+the	DT
+connectivity	NN
+cost	NN
+could	MD
+be	VB
+signiï	JJ
+¬	NN
+cant	NN
+.	.
+
+However	RB
+,	,
+we	PRP
+may	MD
+be	VB
+able	JJ
+to	TO
+reduce	VB
+the	DT
+connectivity	NN
+cost	NN
+on	IN
+a	DT
+
+
+per-search	JJ
+basis	NN
+using	VBG
+known	JJ
+techniques	NNS
+from	IN
+graph	NN
+theory	NN
+.	.
+
+
+Non-broker	JJR
+agents	NNS
+must	MD
+advertise	VB
+
+
+Non-broker	JJR
+nagents	NNS
+must	MD
+advertise	VB
+their	PRP$
+capabilities	NNS
+to	TO
+at	IN
+least	JJS
+one	CD
+
+
+broker	NN
+.	.
+
+Robustness	NNP
+increases	VBZ
+if	IN
+agents	NNS
+advertise	VBP
+redundantly	RB
+to	TO
+several	JJ
+brokers	NNS
+.	.
+
+This	DT
+ensures	VBZ
+that	IN
+an	DT
+agent	NN
+
+
+17	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+17	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+is	VBZ
+still	RB
+available	JJ
+if	IN
+one	CD
+of	IN
+the	DT
+brokers	NNS
+it	PRP
+has	VBZ
+advertised	VBN
+to	TO
+goes	VBZ
+down	RB
+.	.
+
+In	IN
+theory	NN
+,	,
+it	PRP
+is	VBZ
+possible	JJ
+for	IN
+every	DT
+
+
+non-broker	JJ
+agent	NN
+to	TO
+connect	VB
+or	CC
+advertise	VB
+to	TO
+every	DT
+broker	NN
+in	IN
+the	DT
+system	NN
+.	.
+
+This	DT
+would	MD
+be	VB
+very	RB
+robust	JJ
+,	,
+but	CC
+is	VBZ
+
+
+impractical	JJ
+for	IN
+large	JJ
+numbers	NNS
+of	IN
+agents	NNS
+and	CC
+brokers	NNS
+.	.
+
+
+It	PRP
+is	VBZ
+the	DT
+agentsâ	JJ
+$	$
+™	CD
+responsibility	NN
+to	TO
+ensure	VB
+that	IN
+the	DT
+different	JJ
+copies	NNS
+of	IN
+their	PRP$
+advertisements	NNS
+are	VBP
+kept	VBN
+consis	NN
+-	:
+
+
+tent	NN
+in	IN
+all	PDT
+the	DT
+brokers	NNS
+to	TO
+which	WDT
+they	PRP
+advertise	VBP
+.	.
+
+This	DT
+shifts	VBZ
+the	DT
+responsibilities	NNS
+for	IN
+ensuring	VBG
+correctness	NN
+to	TO
+the	DT
+
+
+agents	NNS
+that	WDT
+know	VBP
+already	RB
+when	WRB
+advertisements	NNS
+are	VBP
+inconsistent	JJ
+.	.
+
+
+Brokers	NNS
+may	MD
+specialize	VB
+
+
+In	IN
+a	DT
+world	NN
+with	IN
+multiple	JJ
+systems	NNS
+and	CC
+brokers	NNS
+interoperating	VBG
+,	,
+brokers	NNS
+may	MD
+start	VB
+
+
+to	TO
+consolidate	VB
+advertisements	NNS
+about	IN
+related	JJ
+domains	NNS
+and	CC
+services	NNS
+.	.
+
+In	IN
+this	DT
+case	NN
+,	,
+an	DT
+agent	NN
+should	MD
+take	VB
+care	NN
+to	TO
+
+
+ensure	VB
+that	IN
+it	PRP
+advertises	VBZ
+to	TO
+the	DT
+brokers	NNS
+that	WDT
+best	RB
+represent	VBP
+its	PRP$
+interests	NNS
+.	.
+
+For	IN
+example	NN
+,	,
+if	IN
+a	DT
+food	NN
+supplier	NN
+agent	NN
+
+
+advertises	VBZ
+to	TO
+a	DT
+broker	NN
+that	WDT
+only	RB
+brokers	NNS
+healthcare	NN
+information	NN
+,	,
+the	DT
+broker	NN
+should	MD
+forward	RB
+it	PRP
+to	TO
+a	DT
+broker	NN
+that	WDT
+
+
+can	MD
+deal	VB
+with	IN
+food	NN
+suppliers	NNS
+.	.
+
+If	IN
+no	DT
+such	JJ
+broker	NN
+exists	VBZ
+,	,
+it	PRP
+may	MD
+reject	VB
+the	DT
+advertisement	NN
+.	.
+
+With	IN
+this	DT
+approach	NN
+,	,
+
+
+the	DT
+brokers	NNS
+will	MD
+need	VB
+metrics	NNS
+to	TO
+measure	VB
+how	WRB
+well	RB
+the	DT
+advertisement	NN
+ï	NN
+¬	CD
+ts	NNS
+within	IN
+the	DT
+brokerâ	NN
+$	$
+™	CD
+s	NNS
+advertised	VBD
+
+
+purpose	NN
+.	.
+
+When	WRB
+brokers	NNS
+specialize	VBP
+in	IN
+certain	JJ
+domains	NNS
+,	,
+it	PRP
+is	VBZ
+possible	JJ
+to	TO
+develop	VB
+optimized	VBN
+reasoning	NN
+over	IN
+a	DT
+
+
+narrower	JJR
+domain	NN
+and	CC
+hence	RB
+lead	VB
+to	TO
+better	JJR
+performance	NN
+when	WRB
+the	DT
+number	NN
+of	IN
+agents	NNS
+and	CC
+brokers	NNS
+becomes	VBZ
+
+
+very	RB
+large	JJ
+.	.
+
+To	TO
+prevent	VB
+the	DT
+possibility	NN
+of	IN
+all	DT
+brokers	NNS
+rejecting	VBG
+some	DT
+agent	NN
+whose	WP$
+advertisement	NN
+ï	NN
+¬	CD
+ts	NNS
+in	IN
+with	IN
+
+
+no	DT
+broker	NN
+,	,
+cooperating	VBG
+brokers	NNS
+should	MD
+contain	VB
+at	IN
+least	JJS
+one	CD
+general-purpose	JJ
+broker	NN
+for	IN
+queries	NNS
+not	RB
+covered	VBN
+
+
+by	IN
+the	DT
+specialized	VBN
+brokers	NNS
+.	.
+
+
+5.2	CD
+Collaborative	JJ
+Reasoning	NN
+
+
+In	IN
+a	DT
+multibroker	JJ
+environment	NN
+,	,
+a	DT
+broker	NN
+not	RB
+only	RB
+keeps	VBZ
+information	NN
+about	IN
+other	JJ
+agents	NNS
+in	IN
+its	PRP$
+repository	NN
+,	,
+it	PRP
+
+
+also	RB
+keeps	VBZ
+information	NN
+about	IN
+other	JJ
+brokers	NNS
+that	IN
+it	PRP
+knows	VBZ
+about	RB
+.	.
+
+Brokers	NNS
+are	VBP
+connected	VBN
+in	IN
+a	DT
+directed	VBN
+graph	NN
+
+
+structure	NN
+,	,
+with	IN
+the	DT
+nodes	NNS
+representing	VBG
+brokers	NNS
+and	CC
+the	DT
+arcs	NNS
+representing	VBG
+knowledge	NN
+of	IN
+other	JJ
+brokersâ	NN
+$	$
+™	CD
+current	JJ
+
+
+advertisements	NNS
+.	.
+
+Thus	RB
+if	IN
+Broker1	NN
+has	VBZ
+advertised	VBN
+itself	PRP
+to	TO
+Broker2	NN
+,	,
+there	EX
+is	VBZ
+an	DT
+arc	NN
+from	IN
+Broker2	NN
+to	TO
+Broker1	NN
+.	.
+
+
+The	DT
+connectivity	NN
+should	MD
+be	VB
+sufï	JJ
+¬	NN
+cient	NN
+to	TO
+ensure	VB
+that	IN
+each	DT
+broker	NN
+is	VBZ
+either	CC
+directly	RB
+or	CC
+indirectly	RB
+connected	JJ
+
+
+to	TO
+all	PDT
+the	DT
+other	JJ
+brokers	NNS
+in	IN
+the	DT
+system	NN
+-LRB-	-LRB-
+i.e.	FW
+no	DT
+disconnected	VBN
+sub-network	NN
+of	IN
+brokers	NNS
+-RRB-	-RRB-
+.	.
+
+Figure	NNP
+10	CD
+shows	NNS
+four	CD
+
+
+fully	RB
+interconnected	VBN
+brokers	NNS
+with	IN
+eight	CD
+resource	NN
+agents	NNS
+,	,
+and	CC
+some	DT
+user	NN
+and	CC
+query	NN
+processing	NN
+agents	NNS
+.	.
+
+
+Each	DT
+broker	NN
+maintains	VBZ
+,	,
+in	IN
+addition	NN
+to	TO
+its	PRP$
+repository	NN
+of	IN
+advertised	JJ
+agent	NN
+information	NN
+,	,
+a	DT
+reasoning	NN
+engine	NN
+
+
+that	IN
+matches	VBZ
+queries	NNS
+to	TO
+its	PRP$
+own	JJ
+set	NN
+of	IN
+agent	NN
+advertisements	NNS
+.	.
+
+This	DT
+reasoning	NN
+engine	NN
+may	MD
+also	RB
+match	VB
+broker	NN
+
+
+queries	NNS
+to	TO
+other	JJ
+brokers	NNS
+that	WDT
+may	MD
+contain	VB
+advertisements	NNS
+for	IN
+other	JJ
+agents	NNS
+that	WDT
+can	MD
+service	VB
+the	DT
+query	NN
+,	,
+thus	RB
+
+
+enabling	VBG
+a	DT
+broker	NN
+to	TO
+locate	VB
+other	JJ
+brokers	NNS
+thatï	NN
+¬	CD
+t	NN
+certain	JJ
+criteria	NNS
+.	.
+
+Each	DT
+broker	NN
+request	NN
+is	VBZ
+forwarded	VBN
+to	TO
+relevant	JJ
+
+
+other	JJ
+brokers	NNS
+,	,
+which	WDT
+then	RB
+may	MD
+propagate	VB
+the	DT
+requests	NNS
+further	RB
+.	.
+
+Searches	NNS
+are	VBP
+restricted	JJ
+internally	RB
+to	TO
+prevent	VB
+
+
+undesirable	JJ
+propagation	NN
+of	IN
+requests	NNS
+,	,
+e.g.	FW
+,	,
+cyclical	JJ
+propagation	NN
+and	CC
+prolonged	JJ
+search	NN
+in	IN
+a	DT
+very	RB
+large	JJ
+system	NN
+.	.
+
+
+The	DT
+response	NN
+to	TO
+the	DT
+broker	NN
+query	NN
+contains	VBZ
+the	DT
+union	NN
+of	IN
+all	DT
+brokersâ	JJ
+$	$
+™	CD
+responses	NNS
+.	.
+
+
+In	IN
+a	DT
+multibrokering	JJ
+environment	NN
+,	,
+there	EX
+is	VBZ
+also	RB
+the	DT
+question	NN
+of	IN
+when	WRB
+to	TO
+start	VB
+looking	VBG
+at	IN
+other	JJ
+brokers	NNS
+when	WRB
+
+
+processing	VBG
+a	DT
+brokering	VBG
+request	NN
+.	.
+
+Suppose	VB
+a	DT
+broker	NN
+gets	VBZ
+a	DT
+request	NN
+for	IN
+information	NN
+about	IN
+database	NN
+resources	NNS
+
+
+dealing	VBG
+with	IN
+the	DT
+healthcare	NN
+industry	NN
+in	IN
+Dallas	NNP
+,	,
+Texas	NNP
+,	,
+but	CC
+ï	NN
+¬	VBP
+nds	NNS
+that	IN
+it	PRP
+does	VBZ
+not	RB
+have	VB
+any	DT
+information	NN
+stored	VBD
+
+
+18	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+18	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+User	NN
+Agent	NNP
+
+
+Resource	NNP
+Agent	NNP
+1	CD
+
+
+User	NN
+Agent	NNP
+
+
+Resource	NNP
+Agent	NNP
+2	CD
+
+
+Broker	NNP
+1	CD
+
+
+Resource	NNP
+Agent	NNP
+3	CD
+
+
+Broker	NNP
+4	CD
+
+
+Broker	NNP
+2	CD
+
+
+Resource	NNP
+Agent	NNP
+4	CD
+
+
+Query	NNP
+Agent	NNP
+
+
+Broker	NNP
+3	CD
+
+
+Resource	NNP
+Agent	NNP
+5	CD
+
+
+Resource	NNP
+Agent	NNP
+6	CD
+
+
+Resource	NNP
+Agent	NNP
+7	CD
+
+
+Resource	NNP
+Agent	NNP
+8	CD
+
+
+Figure	NNP
+10	CD
+:	:
+Multibroker	JJ
+architecture	NN
+
+
+about	IN
+agents	NNS
+that	WDT
+would	MD
+meet	VB
+these	DT
+particular	JJ
+criteria	NNS
+.	.
+
+The	DT
+broker	NN
+then	RB
+initiates	VBZ
+an	DT
+inter-broker	JJ
+search	NN
+,	,
+
+
+guided	VBN
+by	IN
+the	DT
+nature	NN
+of	IN
+the	DT
+request	NN
+.	.
+
+Generally	RB
+,	,
+if	IN
+the	DT
+original	JJ
+query	NN
+was	VBD
+for	IN
+ï	NN
+¬	CD
+nding	NN
+one	CD
+agent	NN
+with	IN
+the	DT
+
+
+requested	VBN
+capability	NN
+,	,
+brokers	NNS
+are	VBP
+searched	VBN
+one-by-one	RB
+in	IN
+a	DT
+breadth-ï	JJ
+¬	NN
+rst	NN
+manner	NN
+until	IN
+a	DT
+match	NN
+is	VBZ
+found	VBN
+.	.
+
+If	IN
+
+
+the	DT
+original	JJ
+query	NN
+was	VBD
+for	IN
+ï	NN
+¬	CD
+nding	NN
+all	PDT
+the	DT
+agents	NNS
+with	IN
+the	DT
+requested	VBN
+capability	NN
+,	,
+the	DT
+brokers	NNS
+are	VBP
+searched	VBN
+in	IN
+
+
+parallel	NN
+until	IN
+all	DT
+accessible	JJ
+brokers	NNS
+have	VBP
+been	VBN
+queried	VBN
+,	,
+and	CC
+the	DT
+matches	NNS
+are	VBP
+assembled	VBN
+into	IN
+a	DT
+single	JJ
+response	NN
+.	.
+
+
+A	DT
+special	JJ
+property	NN
+,	,
+hop-count	NN
+,	,
+deï	NN
+¬	NN
+nes	VBZ
+how	WRB
+many	JJ
+hops	VBZ
+through	IN
+the	DT
+broker	NN
+digraph	NN
+should	MD
+be	VB
+traversed	VBN
+for	IN
+
+
+a	DT
+given	VBN
+query	NN
+before	IN
+the	DT
+brokers	NNS
+should	MD
+give	VB
+up	RP
+.	.
+
+The	DT
+search	NN
+mechanism	NN
+also	RB
+terminates	VBZ
+a	DT
+branch	NN
+of	IN
+the	DT
+
+
+search	NN
+once	RB
+a	DT
+broker	NN
+loop	NN
+has	VBZ
+been	VBN
+detected	VBN
+.	.
+
+
+As	IN
+shown	VBN
+in	IN
+Figure	NNP
+10	CD
+,	,
+when	WRB
+one	CD
+of	IN
+the	DT
+other	JJ
+brokers	NNS
+receives	VBZ
+the	DT
+request	NN
+from	IN
+Broker1	NN
+,	,
+each	DT
+of	IN
+
+
+these	DT
+brokers	NNS
+then	RB
+use	VBP
+the	DT
+same	JJ
+procedures	NNS
+as	RB
+were	VBD
+used	VBN
+by	IN
+Broker1	NN
+to	TO
+match	VB
+for	IN
+potential	JJ
+agents	NNS
+that	WDT
+can	MD
+
+
+provide	VB
+the	DT
+requested	VBN
+service	NN
+.	.
+
+Eventually	RB
+,	,
+the	DT
+other	JJ
+brokers	NNS
+return	VBP
+their	PRP$
+results	NNS
+toBroker1	NN
+,	,
+which	WDT
+combines	VBZ
+
+
+them	PRP
+with	IN
+its	PRP$
+own	JJ
+-LRB-	-LRB-
+possibly	RB
+empty	JJ
+-RRB-	-RRB-
+list	NN
+of	IN
+providing	VBG
+agents	NNS
+,	,
+eliminating	VBG
+duplicated	JJ
+entries	NNS
+.	.
+
+Broker1	NN
+then	RB
+
+
+returns	NNS
+the	DT
+combined	JJ
+list	NN
+to	TO
+the	DT
+requesting	VBG
+agent	NN
+.	.
+
+
+5.3	CD
+Integrating	VBG
+New	NNP
+Brokers	NNS
+
+
+New	NNP
+brokers	NNS
+make	VBP
+themselves	PRP
+known	VBN
+to	TO
+other	JJ
+brokers	NNS
+through	IN
+advertisements	NNS
+.	.
+
+Each	DT
+broker	NN
+is	VBZ
+conï	NN
+¬	NN
+gured	VBN
+
+
+with	IN
+either	CC
+a	DT
+list	NN
+of	IN
+other	JJ
+brokers	NNS
+,	,
+or	CC
+a	DT
+well	RB
+known	VBN
+port	NN
+,	,
+over	IN
+which	WDT
+it	PRP
+should	MD
+advertise	VB
+.	.
+
+By	IN
+default	NN
+a	DT
+broker	NN
+
+
+must	MD
+advertise	VB
+at	IN
+least	JJS
+its	PRP$
+locational	JJ
+information	NN
+.	.
+
+However	RB
+,	,
+brokers	NNS
+also	RB
+could	MD
+advertise	VB
+their	PRP$
+capabilities	NNS
+to	TO
+
+
+other	JJ
+brokers	NNS
+,	,
+who	WP
+could	MD
+then	RB
+reason	VB
+over	IN
+the	DT
+brokersâ	NN
+$	$
+™	CD
+capabilities	NNS
+during	IN
+an	DT
+inter-broker	JJ
+search	NN
+and	CC
+elim	NN
+-	:
+
+
+inate	JJ
+brokers	NNS
+that	WDT
+should	MD
+not	RB
+be	VB
+contacted	VBN
+,	,
+thus	RB
+improving	VBG
+the	DT
+processing	NN
+time	NN
+by	IN
+ruling	VBG
+out	RP
+unnecessary	JJ
+
+
+queries	NNS
+.	.
+
+This	DT
+feature	NN
+has	VBZ
+not	RB
+been	VBN
+well-tested	JJ
+.	.
+
+
+19	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+19	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+Each	DT
+non-broker	JJ
+agent	NN
+is	VBZ
+conï	NN
+¬	NN
+gured	VBN
+with	IN
+a	DT
+list	NN
+of	IN
+known	JJ
+brokers	NNS
+ordered	VBN
+by	IN
+preference	NN
+to	TO
+connect	VB
+
+
+to	TO
+on	IN
+startup	NN
+.	.
+
+This	DT
+known-broker-list	NN
+represents	VBZ
+its	PRP$
+initial	JJ
+entry	NN
+point	NN
+-LRB-	-LRB-
+s	NNS
+-RRB-	-RRB-
+into	IN
+the	DT
+brokering	VBG
+system	NN
+.	.
+
+Once	RB
+
+
+operational	JJ
+,	,
+the	DT
+agent	NN
+can	MD
+change	VB
+to	TO
+a	DT
+different	JJ
+broker	NN
+,	,
+even	RB
+one	CD
+that	WDT
+is	VBZ
+not	RB
+in	IN
+its	PRP$
+known	JJ
+broker	NN
+list	NN
+.	.
+
+To	TO
+do	VB
+
+
+this	DT
+,	,
+it	PRP
+sends	VBZ
+a	DT
+query	NN
+to	TO
+a	DT
+known	JJ
+broker	NN
+for	IN
+one	CD
+or	CC
+all	DT
+of	IN
+the	DT
+brokers	NNS
+that	WDT
+are	VBP
+available	JJ
+in	IN
+the	DT
+system	NN
+with	IN
+
+
+the	DT
+capabilities	NNS
+and	CC
+data	NNS
+domain	NN
+that	IN
+it	PRP
+is	VBZ
+interested	JJ
+in	IN
+.	.
+
+It	PRP
+then	RB
+picks	VBZ
+one	CD
+in	IN
+the	DT
+list	NN
+to	TO
+use	VB
+.	.
+
+Alternatively	RB
+,	,
+the	DT
+
+
+agent	NN
+might	MD
+use	VB
+a	DT
+known	JJ
+broker	NN
+and	CC
+keep	VB
+a	DT
+history	NN
+of	IN
+how	WRB
+this	DT
+broker	NN
+handles	VBZ
+its	PRP$
+request	NN
+.	.
+
+If	IN
+over	IN
+a	DT
+period	NN
+of	IN
+
+
+time	NN
+,	,
+the	DT
+system	NN
+discovers	VBZ
+that	IN
+the	DT
+known	JJ
+broker	NN
+always	RB
+forwards	RB
+the	DT
+request	NN
+to	TO
+a	DT
+different	JJ
+speciï	NN
+¬	NN
+cbroker	NN
+
+
+or	CC
+set	NN
+of	IN
+brokers	NNS
+,	,
+the	DT
+system	NN
+will	MD
+add	VB
+the	DT
+new	JJ
+brokers	NNS
+to	TO
+the	DT
+known	JJ
+broker	NN
+list	NN
+.	.
+
+
+5.4	CD
+Maintaining	VBG
+Connectivity	NN
+
+
+Redundant	JJ
+advertising	NN
+and	CC
+robust	JJ
+connectivity	NN
+are	VBP
+keys	NNS
+to	TO
+maintaining	VBG
+a	DT
+reliable	JJ
+network	NN
+of	IN
+brokers	NNS
+.	.
+
+The	DT
+
+
+redundant	JJ
+advertising	NN
+algorithm	NN
+works	VBZ
+to	TO
+ensure	VB
+that	IN
+the	DT
+number	NN
+of	IN
+outstanding	JJ
+advertisements	NNS
+is	VBZ
+main	JJ
+-	:
+
+
+tained	VBN
+at	IN
+a	DT
+conï	NN
+¬	NN
+gurable	JJ
+maximum	NN
+.	.
+
+The	DT
+robust	JJ
+connectivity	NN
+algorithm	NN
+works	VBZ
+to	TO
+ensure	VB
+that	IN
+,	,
+if	IN
+an	DT
+agent	NN
+has	VBZ
+
+
+advertised	VBN
+to	TO
+a	DT
+broker	NN
+,	,
+that	WDT
+broker	NN
+is	VBZ
+still	RB
+operational	JJ
+and	CC
+still	RB
+knows	VBZ
+about	IN
+the	DT
+agent	NN
+.	.
+
+These	DT
+algorithms	NNS
+
+
+work	NN
+in	IN
+tandem	JJ
+to	TO
+maintain	VB
+the	DT
+agent-broker	JJ
+connectivity	NN
+.	.
+
+
+Redundant	JJ
+Advertising	NN
+
+
+Redundant	JJ
+advertising	NN
+is	VBZ
+the	DT
+practice	NN
+of	IN
+agents	NNS
+and	CC
+brokers	NNS
+making	VBG
+identical	JJ
+
+
+advertisements	NNS
+of	IN
+their	PRP$
+services	NNS
+to	TO
+more	JJR
+than	IN
+one	CD
+broker	NN
+.	.
+
+Every	DT
+agent	NN
+or	CC
+broker	NN
+maintains	VBZ
+a	DT
+conï	NN
+¬	NN
+guration	NN
+
+
+parameter	NN
+deï	NN
+¬	CD
+ning	JJ
+how	WRB
+many	JJ
+brokers	NNS
+that	WDT
+agent	NN
+or	CC
+broker	NN
+should	MD
+advertise	VB
+to	TO
+.	.
+
+All	DT
+agents	NNS
+,	,
+including	VBG
+broker	NN
+
+
+agents	NNS
+,	,
+keep	VB
+track	NN
+of	IN
+two	CD
+lists	NNS
+of	IN
+brokers	NNS
+:	:
+a	DT
+list	NN
+of	IN
+brokers	NNS
+that	IN
+they	PRP
+know	VBP
+about	IN
+-LRB-	-LRB-
+known-broker-list	JJ
+-RRB-	-RRB-
+,	,
+and	CC
+a	DT
+
+
+list	NN
+of	IN
+brokers	NNS
+they	PRP
+have	VBP
+successfully	RB
+advertised	VBN
+to	TO
+-LRB-	-LRB-
+connected-broker-list	JJ
+-RRB-	-RRB-
+.	.
+
+
+The	DT
+advertisement	NN
+process	NN
+occurs	VBZ
+when	WRB
+an	DT
+agent	NN
+or	CC
+broker	NN
+comes	VBZ
+up	RP
+,	,
+and	CC
+periodically	RB
+thereafter	RB
+.	.
+
+The	DT
+
+
+agents	NNS
+are	VBP
+conï	NN
+¬	NN
+gured	VBN
+with	IN
+a	DT
+maximum	JJ
+number	NN
+of	IN
+brokers	NNS
+to	TO
+maintain	VB
+contact	NN
+with	IN
+at	IN
+a	DT
+given	VBN
+time	NN
+/	:
+ad	NN
+-	:
+
+
+vertisements	NNS
+outstanding	JJ
+at	IN
+a	DT
+given	VBN
+time	NN
+.	.
+
+Each	DT
+agent	NN
+or	CC
+broker	NN
+advertises	VBZ
+to	TO
+brokers	NNS
+on	IN
+the	DT
+known-broker	NN
+-	:
+
+
+list	NN
+but	CC
+not	RB
+on	IN
+the	DT
+connected-broker-list	NN
+,	,
+until	IN
+the	DT
+connected-broker-list	NN
+reaches	VBZ
+this	DT
+conï	NN
+¬	NN
+gured	VBD
+maximum	NN
+.	.
+
+
+When	WRB
+an	DT
+advertisement	NN
+is	VBZ
+successful	JJ
+,	,
+the	DT
+broker	NN
+that	WDT
+kept	VBD
+the	DT
+advertisement	NN
+is	VBZ
+added	VBN
+to	TO
+the	DT
+connected	JJ
+-	:
+
+
+broker-list	NN
+.	.
+
+Once	RB
+either	CC
+the	DT
+number	NN
+of	IN
+such	JJ
+connected	JJ
+brokers	NNS
+reaches	VBZ
+the	DT
+conï	NN
+¬	NN
+gured	VBD
+number	NN
+of	IN
+redundant	JJ
+
+
+advertisements	NNS
+or	CC
+all	DT
+known	VBN
+brokers	NNS
+have	VBP
+been	VBN
+tried	VBN
+,	,
+the	DT
+advertisement	NN
+process	NN
+stops	VBZ
+.	.
+
+This	DT
+process	NN
+is	VBZ
+
+
+repeated	VBN
+periodically	RB
+to	TO
+ensure	VB
+that	IN
+appropriate	JJ
+connectivity	NN
+is	VBZ
+maintained	VBN
+.	.
+
+If	IN
+at	IN
+the	DT
+end	NN
+of	IN
+a	DT
+given	VBN
+ad	NN
+-	:
+
+
+vertisement	NN
+period	NN
+the	DT
+agent	NN
+is	VBZ
+connected	VBN
+to	TO
+no	DT
+brokers	NNS
+,	,
+it	PRP
+will	MD
+enter	VB
+a	DT
+dormant	JJ
+state	NN
+,	,
+wait	VB
+until	IN
+the	DT
+next	JJ
+
+
+advertisement	NN
+period	NN
+,	,
+and	CC
+attempt	NN
+to	TO
+reconnect	VB
+.	.
+
+
+During	IN
+operation	NN
+,	,
+an	DT
+agent	NN
+may	MD
+also	RB
+discover	VB
+or	CC
+be	VB
+informed	VBN
+of	IN
+other	JJ
+brokers	NNS
+that	IN
+it	PRP
+deems	VBZ
+appropriate	JJ
+
+
+to	TO
+advertise	VB
+to	TO
+.	.
+
+In	IN
+this	DT
+case	NN
+,	,
+the	DT
+agent	NN
+adds	VBZ
+them	PRP
+to	TO
+its	PRP$
+known-broker-list	NN
+.	.
+
+
+Robust	JJ
+Connectivity	NN
+In	IN
+the	DT
+event	NN
+that	IN
+a	DT
+broker	NN
+should	MD
+unexpectedly	RB
+leave	VB
+the	DT
+agent	NN
+community	NN
+,	,
+it	PRP
+is	VBZ
+the	DT
+
+
+responsibility	NN
+of	IN
+each	DT
+agent	NN
+connected	VBN
+to	TO
+is	VBZ
+to	TO
+detect	VB
+that	IN
+the	DT
+broker	NN
+has	VBZ
+left	VBN
+and	CC
+re-initiate	VB
+the	DT
+advertising	NN
+
+
+process	NN
+.	.
+
+Agents	NNPS
+periodically	RB
+test	NN
+to	TO
+see	VB
+whether	IN
+all	DT
+of	IN
+the	DT
+brokers	NNS
+they	PRP
+have	VBP
+advertised	VBN
+to	TO
+still	RB
+know	VB
+about	IN
+
+
+20	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+20	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+them	PRP
+.	.
+
+At	IN
+some	DT
+-LRB-	-LRB-
+conï	NN
+¬	CD
+gurable	JJ
+-RRB-	-RRB-
+periodic	JJ
+interval	NN
+,	,
+agents	NNS
+cycle	NN
+through	IN
+the	DT
+connected-broker-list	NN
+,	,
+and	CC
+query	NN
+
+
+each	DT
+broker	NN
+in	IN
+turn	NN
+to	TO
+see	VB
+if	IN
+it	PRP
+still	RB
+knows	VBZ
+about	IN
+them	PRP
+.	.
+
+
+If	IN
+a	DT
+broker	NN
+has	VBZ
+gone	VBN
+ofï	NN
+¬	CD
+‚	CD
+ine	NN
+,	,
+either	CC
+the	DT
+agent	NN
+will	MD
+be	VB
+unable	JJ
+to	TO
+make	VB
+the	DT
+connection	NN
+to	TO
+the	DT
+broker	NN
+or	CC
+
+
+the	DT
+broker	NN
+will	MD
+fail	VB
+to	TO
+respond	VB
+.	.
+
+In	IN
+the	DT
+event	NN
+that	IN
+a	DT
+broker	NN
+is	VBZ
+alive	JJ
+but	CC
+does	VBZ
+not	RB
+have	VB
+information	NN
+about	IN
+the	DT
+
+
+agent	NN
+that	WDT
+is	VBZ
+doing	VBG
+the	DT
+querying	VBG
+,	,
+the	DT
+agent	NN
+will	MD
+receive	VB
+a	DT
+reply	NN
+containing	VBG
+no	DT
+matches	NNS
+from	IN
+the	DT
+broker	NN
+that	WDT
+
+
+it	PRP
+queried	VBD
+.	.
+
+In	IN
+either	DT
+case	NN
+,	,
+the	DT
+agent	NN
+will	MD
+remove	VB
+this	DT
+broker	NN
+from	IN
+its	PRP$
+connected-broker-list	NN
+.	.
+
+However	RB
+,	,
+as	IN
+
+
+long	RB
+as	IN
+the	DT
+agent	NN
+has	VBZ
+advertised	VBN
+redundantly	RB
+to	TO
+multiple	JJ
+brokers	NNS
+,	,
+it	PRP
+will	MD
+still	RB
+be	VB
+locatable	JJ
+via	IN
+the	DT
+remaining	VBG
+
+
+brokers	NNS
+that	IN
+it	PRP
+has	VBZ
+advertised	VBN
+to	TO
+.	.
+
+
+Once	RB
+an	DT
+agent	NN
+has	VBZ
+completed	VBN
+the	DT
+above	JJ
+polling	NN
+cycle	NN
+,	,
+having	VBG
+successfully	RB
+traversed	VBD
+its	PRP$
+connected	JJ
+-	:
+
+
+broker-list	NN
+,	,
+it	PRP
+checks	VBZ
+to	TO
+see	VB
+if	IN
+it	PRP
+needs	VBZ
+to	TO
+re-advertise	NN
+.	.
+
+This	DT
+will	MD
+occur	VB
+when	WRB
+the	DT
+connected-broker-list	NN
+is	VBZ
+
+
+shorter	JJR
+than	IN
+the	DT
+conï	NN
+¬	NN
+gured	VBD
+maximum	JJ
+number	NN
+of	IN
+redundant	JJ
+advertisements	NNS
+.	.
+
+If	IN
+this	DT
+is	VBZ
+so	RB
+,	,
+it	PRP
+re-initiates	VBZ
+the	DT
+
+
+advertisement	NN
+process	NN
+as	IN
+described	VBN
+in	IN
+the	DT
+previous	JJ
+section	NN
+.	.
+
+
+6	CD
+Experimental	JJ
+Results	NNS
+
+
+This	DT
+section	NN
+presents	VBZ
+two	CD
+types	NNS
+of	IN
+empirical	JJ
+evaluations	NNS
+of	IN
+InfoSleuthâ	NNP
+$	$
+™	CD
+s	NNS
+multi-brokering	JJ
+mechanisms	NNS
+.	.
+
+In	IN
+
+
+section	NN
+6.1	CD
+we	PRP
+present	VBP
+some	DT
+experiments	NNS
+done	VBN
+using	VBG
+the	DT
+InfoSleuth	NNP
+system	NN
+directly	RB
+.	.
+
+However	RB
+,	,
+because	IN
+
+
+running	VBG
+multiple	JJ
+,	,
+large-scale	JJ
+experiments	NNS
+with	IN
+InfoSleuth	NNP
+poses	VBZ
+some	DT
+difï	NN
+¬	RB
+culty	JJ
+,	,
+in	IN
+section	NN
+6.2	CD
+we	PRP
+discuss	VBP
+
+
+some	DT
+of	IN
+these	DT
+difï	NN
+¬	NN
+culties	NNS
+and	CC
+present	VB
+some	DT
+simulation-based	JJ
+results	NNS
+.	.
+
+
+6.1	CD
+Multibrokering	JJ
+behavior	NN
+in	IN
+InfoSleuth	NNP
+
+
+We	PRP
+performed	VBD
+a	DT
+set	NN
+of	IN
+experiments	NNS
+using	VBG
+the	DT
+InfoSleuth	NNP
+system	NN
+directly	RB
+to	TO
+determine	VB
+if	IN
+multibrokering	VBG
+was	VBD
+
+
+feasible	JJ
+and	CC
+if	IN
+specialization	NN
+helps	VBZ
+.	.
+
+We	PRP
+tested	VBD
+the	DT
+response	NN
+time	NN
+for	IN
+queries	NNS
+under	IN
+different	JJ
+conï	NN
+¬	NN
+gurations	NNS
+of	IN
+
+
+resource	NN
+agents	NNS
+,	,
+number	NN
+of	IN
+brokers	NNS
+,	,
+number	NN
+of	IN
+query	NN
+agents	NNS
+and	CC
+user	NN
+agents	NNS
+.	.
+
+Each	DT
+experiment	NN
+consisted	VBD
+of	IN
+
+
+issuing	VBG
+SQL	NNP
+queries	NNS
+-LRB-	-LRB-
+encapsulated	VBN
+in	IN
+KQML	NN
+messages	NNS
+-RRB-	-RRB-
+to	TO
+an	DT
+InfoSleuth	JJ
+agent	NN
+community	NN
+for	IN
+processing	NN
+,	,
+
+
+which	WDT
+induces	VBZ
+an	DT
+indirect	JJ
+load	NN
+on	IN
+the	DT
+brokering	VBG
+system	NN
+.	.
+
+The	DT
+response	NN
+time	NN
+is	VBZ
+the	DT
+total	JJ
+time	NN
+for	IN
+the	DT
+user	NN
+to	TO
+
+
+get	VB
+the	DT
+result	NN
+displayed	VBD
+on	IN
+the	DT
+screen	NN
+from	IN
+the	DT
+time	NN
+the	DT
+query	NN
+is	VBZ
+submitted	VBN
+.	.
+
+This	DT
+includes	VBZ
+CPU	NNP
+,	,
+disk	NN
+I/O	NN
+,	,
+
+
+communication	NN
+among	IN
+agents	NNS
+and	CC
+graphical	JJ
+display	NN
+of	IN
+results	NNS
+.	.
+
+
+Table	NNP
+5	CD
+:	:
+Experimental	JJ
+Query	NNP
+Streams	NNS
+
+
+name	NN
+
+
+SA	NNP
+-LRB-	-LRB-
+single	JJ
+agent	NN
+-RRB-	-RRB-
+
+
+DA	NN
+-LRB-	-LRB-
+double	JJ
+agent	NN
+-RRB-	-RRB-
+
+
+4A	NN
+-LRB-	-LRB-
+four	CD
+agent	NN
+-RRB-	-RRB-
+
+
+VF	NNP
+-LRB-	-LRB-
+vertical	JJ
+fragmentation	NN
+-RRB-	-RRB-
+CH	NN
+-LRB-	-LRB-
+class	NN
+hierarchy	NN
+-RRB-	-RRB-
+
+
+FH	NN
+-LRB-	-LRB-
+fragmentation	NN
+&	CC
+class	NN
+hierarchy	NN
+-RRB-	-RRB-
+
+
+#	#
+Resource	NNP
+Agents	NNPS
+
+
+1	CD
+
+
+2	CD
+
+
+4	CD
+
+
+4	CD
+
+
+4	CD
+
+
+4	CD
+
+
+The	DT
+types	NNS
+of	IN
+queries	NNS
+submitted	VBN
+are	VBP
+characterized	VBN
+in	IN
+Table	NNP
+5	CD
+,	,
+and	CC
+are	VBP
+representative	JJ
+of	IN
+the	DT
+majority	NN
+of	IN
+the	DT
+
+
+21	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+21	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+types	NNS
+of	IN
+queries	NNS
+that	WDT
+InfoSleuth	NNP
+currently	RB
+handles	VBZ
+.	.
+
+Their	PRP$
+precise	JJ
+meanings	NNS
+are	VBP
+:	:
+
+
+SA	NNP
+-	:
+single	JJ
+agent	NN
+,	,
+represents	VBZ
+the	DT
+set	NN
+of	IN
+queries	NNS
+which	WDT
+only	RB
+accesses	VBZ
+one	CD
+resource	NN
+agent	NN
+.	.
+
+
+DA	SYM
+-	:
+double	JJ
+agent	NN
+,	,
+represents	VBZ
+the	DT
+set	NN
+of	IN
+queries	NNS
+which	WDT
+accesses	VBZ
+two	CD
+different	JJ
+resource	NN
+agents	NNS
+.	.
+
+
+4A	SYM
+-	:
+four	CD
+agent	NN
+,	,
+represents	VBZ
+the	DT
+set	NN
+of	IN
+queries	NNS
+which	WDT
+accesses	VBZ
+four	CD
+different	JJ
+resource	NN
+agents	NNS
+.	.
+
+
+VF	NNP
+-	:
+vertical	JJ
+fragmentation	NN
+,	,
+represents	VBZ
+the	DT
+set	NN
+of	IN
+queries	NNS
+which	WDT
+accesses	VBZ
+four	CD
+different	JJ
+resource	NN
+agents	NNS
+
+
+and	CC
+reasons	NNS
+over	IN
+fragments	NNS
+of	IN
+entities	NNS
+from	IN
+different	JJ
+resources	NNS
+.	.
+
+
+CH	NN
+-	:
+class	NN
+hierarchy	NN
+,	,
+represents	VBZ
+the	DT
+set	NN
+of	IN
+queries	NNS
+which	WDT
+accesses	VBZ
+four	CD
+different	JJ
+resource	NN
+agents	NNS
+and	CC
+
+
+reasons	NNS
+over	IN
+class-subclass	JJ
+relationships	NNS
+.	.
+
+
+FH	NN
+-	:
+fragmentation	NN
+and	CC
+class	NN
+hierarchy	NN
+,	,
+represents	VBZ
+the	DT
+set	NN
+of	IN
+queries	NNS
+which	WDT
+accesses	VBZ
+four	CD
+different	JJ
+
+
+resource	NN
+agents	NNS
+and	CC
+reasons	NNS
+over	IN
+both	DT
+fragmentation	NN
+and	CC
+class	NN
+hierarchies	NNS
+.	.
+
+
+Table	NNP
+6	CD
+summarizes	VBZ
+the	DT
+different	JJ
+query	NN
+streams	NNS
+used	VBN
+for	IN
+the	DT
+different	JJ
+experiments	NNS
+.	.
+
+In	IN
+the	DT
+multibroker	JJ
+case	NN
+,	,
+
+
+each	DT
+broker	NN
+is	VBZ
+running	VBG
+on	IN
+a	DT
+different	JJ
+Sparc	NNP
+Ultra	NNP
+1	CD
+machine	NN
+.	.
+
+The	DT
+single-broker	JJ
+variant	NN
+of	IN
+each	DT
+experiment	NN
+
+
+has	VBZ
+all	PDT
+the	DT
+agents	NNS
+and	CC
+a	DT
+single	JJ
+broker	NN
+running	VBG
+on	IN
+a	DT
+single	JJ
+Sparc	NNP
+Ultra	NNP
+1	CD
+machine	NN
+.	.
+
+All	DT
+of	IN
+the	DT
+Sparc	NNP
+Ultra	NNP
+1	CD
+
+
+machines	NNS
+were	VBD
+running	VBG
+the	DT
+SunOS	NN
+2.5	CD
+operating	NN
+system	NN
+.	.
+
+
+Table	NNP
+6	CD
+:	:
+Experimental	JJ
+conï	NN
+¬	NN
+gurations	NNS
+
+
+Experiment	NN
+
+
+A	DT
+
+
+B	NN
+
+
+C	NN
+
+
+D	NN
+
+
+E	NN
+
+
+4A	NN
+
+
+DA	NN
+
+
+SA	NNP
+
+
+VF	NNP
+
+
+FH	NN
+
+
+CH	NN
+
+
+p	NN
+
+
+p	NN
+
+
+p	NN
+
+
+p	NN
+
+
+p	NN
+
+
+p	NN
+
+
+p	NN
+
+
+p	NN
+
+
+p	NN
+
+
+p	NN
+
+
+p	NN
+
+
+p	NN
+
+
+p	NN
+
+
+p	NN
+
+
+#Resource	NNP
+Agents	NNPS
+
+
+4	CD
+
+
+4	CD
+
+
+8	CD
+
+
+12	CD
+
+
+16	CD
+
+
+Each	DT
+experiment	NN
+is	VBZ
+repeated	VBN
+3	CD
+times	NNS
+.	.
+
+The	DT
+difference	NN
+between	IN
+different	JJ
+experiment	NN
+conï	NN
+¬	NN
+guration	NN
+is	VBZ
+in	IN
+the	DT
+
+
+number	NN
+of	IN
+resource	NN
+agents	NNS
+used	VBN
+and	CC
+the	DT
+type	NN
+and	CC
+number	NN
+of	IN
+query	NN
+streams	NNS
+used	VBN
+.	.
+
+Table	NNP
+7	CD
+shows	VBZ
+the	DT
+average	NN
+
+
+response	NN
+time	NN
+expressed	VBD
+as	IN
+a	DT
+ratio	NN
+of	IN
+multibroker/single	JJ
+broker	NN
+for	IN
+each	DT
+of	IN
+the	DT
+above	JJ
+type	NN
+of	IN
+experiment	NN
+.	.
+
+
+A	DT
+ratio	NN
+of	IN
+less	JJR
+than	IN
+1.0	CD
+,	,
+implies	VBZ
+improved	JJ
+performance	NN
+of	IN
+multibrokering	VBG
+over	IN
+single	JJ
+brokering	VBG
+under	IN
+that	DT
+
+
+type	NN
+of	IN
+query	NN
+stream	NN
+.	.
+
+
+Table	NNP
+7	CD
+:	:
+Experimental	JJ
+results	NNS
+
+
+Experiment	NN
+
+
+A	DT
+
+
+B	NN
+
+
+C	NN
+
+
+D	NN
+
+
+E	NN
+
+
+4A	NN
+1.00	CD
+1.04	CD
+1.12	CD
+0.98	CD
+0.3	CD
+
+
+DA	NN
+
+
+SA	NNP
+
+
+VF	NNP
+
+
+FH	NN
+
+
+CH	NN
+
+
+1.05	CD
+1.01	CD
+0.95	CD
+0.31	CD
+
+
+1.01	CD
+1.05	CD
+0.91	CD
+0.47	CD
+
+
+0.85	CD
+0.77	CD
+0.76	CD
+
+
+0.86	CD
+0.63	CD
+
+
+0.67	CD
+
+
+22	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+22	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+When	WRB
+the	DT
+system	NN
+is	VBZ
+underloaded	JJ
+-LRB-	-LRB-
+Conï	JJ
+¬	NN
+guration	NN
+in	IN
+experiment	NN
+A-C	NN
+-RRB-	-RRB-
+,	,
+the	DT
+response	NN
+time	NN
+for	IN
+queries	NNS
+is	VBZ
+
+
+slightly	RB
+better	RBR
+in	IN
+a	DT
+single	JJ
+broker	NN
+versus	CC
+a	DT
+multibroker	JJ
+system	NN
+-LRB-	-LRB-
+the	DT
+ratio	NN
+is	VBZ
+greater	JJR
+than	IN
+1.0	CD
+-RRB-	-RRB-
+.	.
+
+However	RB
+,	,
+the	DT
+
+
+difference	NN
+is	VBZ
+less	JJR
+than	IN
+0.1	CD
+in	IN
+most	JJS
+cases	NNS
+.	.
+
+Thus	RB
+we	PRP
+can	MD
+conclude	VB
+that	IN
+the	DT
+response	NN
+time	NN
+for	IN
+a	DT
+query	NN
+did	VBD
+
+
+not	RB
+degrade	VB
+with	IN
+using	VBG
+multibroker	NN
+.	.
+
+On	IN
+the	DT
+other	JJ
+hand	NN
+,	,
+when	WRB
+the	DT
+system	NN
+is	VBZ
+loaded	VBN
+-LRB-	-LRB-
+Experiment	NN
+D-E	NN
+-RRB-	-RRB-
+,	,
+the	DT
+
+
+response	NN
+time	NN
+in	IN
+multibroker	JJ
+systems	NNS
+is	VBZ
+better	RBR
+for	IN
+all	PDT
+the	DT
+queries	NNS
+.	.
+
+
+We	PRP
+also	RB
+conducted	VBD
+a	DT
+sixth	JJ
+experiment	NN
+-LRB-	-LRB-
+F	NN
+-RRB-	-RRB-
+to	TO
+check	VB
+the	DT
+effect	NN
+of	IN
+specialization	NN
+of	IN
+brokers	NNS
+in	IN
+a	DT
+multibroker	NN
+
+
+environment	NN
+.	.
+
+This	DT
+experiment	NN
+used	VBD
+the	DT
+same	JJ
+agents	NNS
+and	CC
+query	NN
+streams	NNS
+as	IN
+Experiment	NN
+E	NN
+,	,
+but	CC
+with	IN
+all	PDT
+the	DT
+
+
+resources	NNS
+associated	VBN
+with	IN
+a	DT
+given	VBN
+query	NN
+stream	NN
+-LRB-	-LRB-
+such	JJ
+as	IN
+the	DT
+type	NN
+of	IN
+resource	NN
+agents	NNS
+,	,
+the	DT
+query	NN
+agents	NNS
+and	CC
+
+
+the	DT
+user	NN
+agents	NNS
+-RRB-	-RRB-
+kept	VBD
+at	IN
+a	DT
+single	JJ
+broker	NN
+.	.
+
+Table	NNP
+8	CD
+shows	VBZ
+the	DT
+average	JJ
+response	NN
+time	NN
+expressed	VBD
+as	IN
+a	DT
+ratio	NN
+of	IN
+
+
+multibrokering	VBG
+with	IN
+specialization/multibrokering	VBG
+without	IN
+specialization	NN
+.	.
+
+
+Table	NNP
+8	CD
+:	:
+Experiment	NN
+F	NN
+Results	NNS
+
+
+Expt	JJ
+F	NN
+
+
+4A	NN
+0.86	CD
+
+
+DA	NNP
+0.86	CD
+
+
+SA	NNP
+0.87	CD
+
+
+VF	NNP
+0.74	CD
+
+
+FH	NN
+0.6	CD
+
+
+CH	NN
+0.29	CD
+
+
+This	DT
+experiment	NN
+shows	VBZ
+that	IN
+there	EX
+is	VBZ
+an	DT
+improvement	NN
+in	IN
+response	NN
+time	NN
+for	IN
+all	PDT
+the	DT
+above	JJ
+type	NN
+of	IN
+queries	NNS
+
+
+with	IN
+specialization	NN
+of	IN
+brokers	NNS
+-LRB-	-LRB-
+ratio	NN
+less	JJR
+than	IN
+1.0	CD
+-RRB-	-RRB-
+.	.
+
+Intuitively	RB
+,	,
+this	DT
+is	VBZ
+because	IN
+the	DT
+individual	JJ
+brokers	NNS
+reason	NN
+
+
+over	IN
+less	JJR
+information	NN
+,	,
+and	CC
+therefore	RB
+the	DT
+reasoning	NN
+is	VBZ
+more	RBR
+straightforward	JJ
+and	CC
+less	RBR
+costly	JJ
+.	.
+
+Moreover	RB
+,	,
+less	JJR
+
+
+inter-broker	NN
+communication	NN
+cost	NN
+is	VBZ
+incurred	VBN
+due	JJ
+to	TO
+specialization	NN
+.	.
+
+The	DT
+effect	NN
+of	IN
+inter	NN
+broker	NN
+communication	NN
+
+
+cost	NN
+is	VBZ
+discussed	VBN
+in	IN
+more	JJR
+details	NNS
+in	IN
+the	DT
+section	NN
+on	IN
+simulation-based	JJ
+experiments	NNS
+.	.
+
+
+6.2	CD
+Simulation-based	JJ
+Experiments	NNS
+
+
+There	EX
+are	VBP
+many	JJ
+obstacles	NNS
+involved	VBN
+with	IN
+running	VBG
+large	JJ
+scale	NN
+experiments	NNS
+using	VBG
+actual	JJ
+agent	NN
+applications	NNS
+,	,
+
+
+many	JJ
+of	IN
+which	WDT
+we	PRP
+experienced	VBD
+while	IN
+conducting	VBG
+the	DT
+experiments	NNS
+of	IN
+the	DT
+previous	JJ
+sub-section	NN
+.	.
+
+The	DT
+mecha	NN
+-	:
+
+
+nisms	NNS
+for	IN
+managing	VBG
+very	RB
+large	JJ
+numbers	NNS
+of	IN
+agents	NNS
+do	VBP
+not	RB
+exist	VB
+in	IN
+the	DT
+current	JJ
+InfoSleuth	NNP
+system	NN
+nor	CC
+do	VBP
+they	PRP
+
+
+exist	VB
+in	IN
+any	DT
+other	JJ
+agent	NN
+system	NN
+at	IN
+present	JJ
+.	.
+
+This	DT
+makes	VBZ
+the	DT
+set-up	NN
+,	,
+execution	NN
+,	,
+monitoring	NN
+and	CC
+result	VBP
+gath	NN
+-	:
+
+
+ering	VBG
+for	IN
+the	DT
+experiments	NNS
+extremely	RB
+difï	JJ
+¬	NN
+cult	NN
+,	,
+especially	RB
+as	IN
+the	DT
+number	NN
+of	IN
+agents	NNS
+to	TO
+be	VB
+managed	VBN
+increases	NNS
+.	.
+
+
+Additionally	RB
+,	,
+to	TO
+run	VB
+experiments	NNS
+with	IN
+hundreds	NNS
+of	IN
+agents	NNS
+requires	VBZ
+enough	JJ
+resources	NNS
+for	IN
+all	PDT
+the	DT
+agents	NNS
+to	TO
+
+
+run	NN
+;	:
+including	VBG
+both	DT
+hardware	NN
+and	CC
+time	NN
+.	.
+
+Furthermore	RB
+,	,
+if	IN
+these	DT
+are	VBP
+real	JJ
+agents	NNS
+,	,
+they	PRP
+will	MD
+each	DT
+need	VB
+to	TO
+be	VB
+
+
+conï	NN
+¬	NN
+gured	VBN
+,	,
+possibly	RB
+requiring	VBG
+fabricating	VBG
+enough	RB
+data	NNS
+for	IN
+all	PDT
+the	DT
+agents	NNS
+to	TO
+use	VB
+.	.
+
+Another	DT
+factor	NN
+in	IN
+trying	VBG
+to	TO
+
+
+evaluate	VB
+an	DT
+isolated	VBN
+portion	NN
+of	IN
+the	DT
+InfoSleuth	NNP
+system	NN
+,	,
+which	WDT
+is	VBZ
+a	DT
+complex	JJ
+prototype	NN
+,	,
+is	VBZ
+that	IN
+non-essential	JJ
+
+
+components	NNS
+with	IN
+less	JJR
+than	IN
+optimal	JJ
+implementations	NNS
+can	MD
+degrade	VB
+the	DT
+performance	NN
+to	TO
+the	DT
+point	NN
+where	WRB
+it	PRP
+
+
+masks	NNS
+the	DT
+true	JJ
+impact	NN
+of	IN
+the	DT
+system	NN
+characteristic	JJ
+being	VBG
+evaluated	VBN
+.	.
+
+Finally	RB
+and	CC
+more	RBR
+generally	RB
+,	,
+evaluation	NN
+
+
+of	IN
+agent	NN
+system	NN
+properties	NNS
+is	VBZ
+often	RB
+desired	VBN
+at	IN
+design-time	NN
+before	IN
+any	DT
+application	NN
+exists	VBZ
+.	.
+
+
+A	DT
+simulation-based	JJ
+approach	NN
+to	TO
+evaluating	VBG
+an	DT
+agent	NN
+system	NN
+overcomes	VBZ
+all	DT
+of	IN
+these	DT
+obstacles	NNS
+.	.
+
+A	DT
+simu	NN
+-	:
+
+
+lation	NN
+gives	VBZ
+complete	JJ
+control	NN
+over	IN
+all	DT
+of	IN
+the	DT
+agents	NNS
+;	:
+it	PRP
+doesnâ	VBD
+$	$
+™	CD
+t	NN
+need	NN
+to	TO
+run	VB
+in	IN
+real	JJ
+time	NN
+;	:
+each	DT
+agent	NN
+requires	VBZ
+
+
+far	RB
+fewer	JJR
+resources	NNS
+;	:
+there	EX
+is	VBZ
+no	DT
+need	NN
+for	IN
+real	JJ
+data	NNS
+;	:
+and	CC
+you	PRP
+can	MD
+model	VB
+only	RB
+the	DT
+relevant	JJ
+characteristics	NNS
+that	WDT
+
+
+23	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+23	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+affect	VB
+the	DT
+performance	NN
+of	IN
+the	DT
+system	NN
+,	,
+eliminating	VBG
+any	DT
+negative	JJ
+effects	NNS
+caused	VBN
+by	IN
+non-critical	JJ
+components	NNS
+.	.
+
+
+At	IN
+present	JJ
+,	,
+the	DT
+resource	NN
+constraints	NNS
+have	VBP
+made	VBN
+it	PRP
+very	RB
+difï	JJ
+¬	NN
+cult	NN
+to	TO
+run	VB
+controlled	JJ
+experiments	NNS
+in	IN
+the	DT
+ex	FW
+-	:
+
+
+isting	VBG
+InfoSleuth	NNP
+system	NN
+,	,
+especially	RB
+when	WRB
+there	EX
+are	VBP
+more	JJR
+than	IN
+a	DT
+few	JJ
+dozen	NN
+agents	NNS
+.	.
+
+Because	IN
+of	IN
+this	DT
+and	CC
+the	DT
+
+
+desire	NN
+to	TO
+demonstrate	VB
+that	IN
+multi-brokering	JJ
+is	VBZ
+robust	JJ
+and	CC
+can	MD
+scale	VB
+up	RP
+to	TO
+non-trivial	JJ
+numbers	NNS
+of	IN
+agents	NNS
+,	,
+we	PRP
+
+
+have	VB
+used	VBN
+a	DT
+simulation-based	JJ
+approach	NN
+for	IN
+evaluation	NN
+.	.
+
+The	DT
+agent	NN
+simulation	NN
+is	VBZ
+built	VBN
+upon	IN
+a	DT
+discrete-event	JJ
+
+
+simulator	NN
+,	,
+modeling	NN
+both	CC
+machine	NN
+characteristics	NNS
+and	CC
+network	NN
+connections	NNS
+.	.
+
+The	DT
+broker	NN
+behaviors	NNS
+were	VBD
+im	SYM
+-	:
+
+
+plemented	VBN
+to	TO
+closely	RB
+mimic	VB
+the	DT
+behaviors	NNS
+of	IN
+the	DT
+brokers	NNS
+in	IN
+the	DT
+actual	JJ
+InfoSleuth	NNP
+system	NN
+.	.
+
+Below	IN
+,	,
+we	PRP
+present	VBP
+
+
+a	DT
+broad	JJ
+overview	NN
+of	IN
+the	DT
+simulator	NN
+,	,
+since	IN
+space	NN
+constraints	NNS
+of	IN
+the	DT
+paper	NN
+prevents	VBZ
+a	DT
+more	RBR
+comprehensive	JJ
+
+
+description	NN
+.	.
+
+
+There	EX
+were	VBD
+fewer	JJR
+types	NNS
+of	IN
+agents	NNS
+used	VBN
+in	IN
+the	DT
+simulation	NN
+experiments	NNS
+than	IN
+were	VBD
+used	VBN
+in	IN
+the	DT
+InfoSleuth	NNP
+
+
+experiments	NNS
+.	.
+
+Since	IN
+we	PRP
+wanted	VBD
+to	TO
+focus	VB
+on	IN
+the	DT
+broker	NN
+characteristics	NNS
+,	,
+we	PRP
+limited	VBD
+the	DT
+types	NNS
+to	TO
+broker	NN
+,	,
+resource	NN
+
+
+and	CC
+query	NN
+agents	NNS
+.	.
+
+The	DT
+query	NN
+agents	NNS
+are	VBP
+simply	RB
+a	DT
+mechanism	NN
+for	IN
+putting	VBG
+a	DT
+load	NN
+on	IN
+the	DT
+brokers	NNS
+,	,
+while	IN
+the	DT
+
+
+resource	NN
+agents	NNS
+simply	RB
+deï	VBP
+¬	CD
+ned	VBD
+the	DT
+amount	NN
+and	CC
+type	NN
+of	IN
+information	NN
+the	DT
+brokers	NNS
+have	VBP
+to	TO
+reason	NN
+about	RB
+.	.
+
+The	DT
+
+
+focus	NN
+of	IN
+the	DT
+experiments	NNS
+is	VBZ
+on	IN
+the	DT
+performance	NN
+of	IN
+the	DT
+brokers	NNS
+under	IN
+various	JJ
+conï	NN
+¬	NN
+gurations	NNS
+.	.
+
+
+6.2.1	CD
+The	DT
+Simulator	NNP
+
+
+The	DT
+simulator	NN
+was	VBD
+built	VBN
+in-house	JJ
+at	IN
+MCC	NNP
+as	IN
+part	NN
+of	IN
+an	DT
+independent	JJ
+project	NN
+.	.
+
+Below	IN
+we	PRP
+provide	VBP
+a	DT
+brief	JJ
+de	FW
+-	:
+
+
+scription	NN
+of	IN
+the	DT
+simulator	NN
+as	IN
+space	NN
+requirements	NNS
+prohibit	VBP
+a	DT
+more	JJR
+detailed	JJ
+discussion	NN
+.	.
+
+The	DT
+main	JJ
+components	NNS
+
+
+of	IN
+the	DT
+simulator	NN
+are	VBP
+:	:
+
+
+processor	NN
+model	NN
+-	:
+each	DT
+agent	NN
+is	VBZ
+simulated	JJ
+to	TO
+run	VB
+on	IN
+its	PRP$
+own	JJ
+processor	NN
+and	CC
+the	DT
+speed	NN
+of	IN
+each	DT
+processor	NN
+
+
+is	VBZ
+set	VBN
+to	TO
+be	VB
+identical	JJ
+for	IN
+each	DT
+agent	NN
+.	.
+
+
+network	NN
+model	NN
+-	:
+all	DT
+inter-agent	JJ
+communication	NN
+is	VBZ
+modeled	VBN
+to	TO
+be	VB
+carried	VBN
+by	IN
+a	DT
+network	NN
+whose	WP$
+simu	NN
+-	:
+
+
+lated	JJ
+bandwidth	NN
+was	VBD
+set	VBN
+to	TO
+be	VB
+
+
+kilobytes	NNS
+per	IN
+second	JJ
+with	IN
+a	DT
+set-up	JJ
+latency	NN
+time	NN
+of	IN
+
+
+seconds	NNS
+per	IN
+
+
+message	NN
+.	.
+
+
+hardware	NN
+reliability	NN
+model	NN
+-	:
+for	IN
+the	DT
+experiments	NNS
+that	WDT
+test	VBP
+the	DT
+robustness	NN
+of	IN
+multibrokering	NN
+,	,
+both	CC
+
+
+individual	JJ
+processors	NNS
+and	CC
+network	NN
+connections	NNS
+have	VBP
+a	DT
+failure	NN
+model	NN
+that	WDT
+causes	VBZ
+them	PRP
+to	TO
+be	VB
+inoperable	JJ
+
+
+according	VBG
+to	TO
+an	DT
+exponential	JJ
+distribution	NN
+.	.
+
+
+common	JJ
+agent	NN
+model	NN
+-	:
+common	JJ
+to	TO
+all	PDT
+the	DT
+simulated	JJ
+agents	NNS
+is	VBZ
+a	DT
+parameter	NN
+specifying	VBG
+the	DT
+maximal	JJ
+
+
+amount	NN
+of	IN
+time	NN
+one	CD
+agent	NN
+will	MD
+wait	VB
+for	IN
+another	DT
+to	TO
+reply	VB
+,	,
+which	WDT
+was	VBD
+set	VBN
+to	TO
+
+
+seconds	NNS
+.	.
+
+
+resource	NN
+agent	NN
+model	NN
+-	:
+this	DT
+model	NN
+allows	VBZ
+simulation	NN
+of	IN
+different	JJ
+ontologies	NNS
+and	CC
+the	DT
+experiments	NNS
+
+
+were	VBD
+set	VBN
+up	RP
+so	RB
+that	IN
+for	IN
+any	DT
+single	JJ
+query	NN
+on	IN
+an	DT
+ontology	NN
+,	,
+there	EX
+would	MD
+be	VB
+4	CD
+resource	NN
+agents	NNS
+capable	JJ
+
+
+of	IN
+satisfying	VBG
+the	DT
+query	NN
+.	.
+
+In	IN
+addition	NN
+,	,
+there	EX
+are	VBP
+simulation	NN
+parameters	NNS
+that	WDT
+model	VBP
+the	DT
+complexity	NN
+and	CC
+
+
+coverage	NN
+of	IN
+the	DT
+query	NN
+as	RB
+well	RB
+as	IN
+the	DT
+amount	NN
+of	IN
+data	NNS
+that	IN
+the	DT
+resource	NN
+agent	NN
+was	VBD
+managing	VBG
+.	.
+
+
+24	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+24	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+query	NN
+agent	NN
+model	NN
+-	:
+query	NN
+agents	NNS
+generate	VBP
+the	DT
+load	NN
+on	IN
+the	DT
+system	NN
+according	VBG
+to	TO
+an	DT
+exponential	JJ
+
+
+distribution	NN
+,	,
+randomly	RB
+choosing	VBG
+a	DT
+broker	NN
+when	WRB
+it	PRP
+was	VBD
+connected	VBN
+to	TO
+multiple	JJ
+brokers	NNS
+.	.
+
+Queries	NNS
+are	VBP
+also	RB
+
+
+randomly	RB
+assigned	VBN
+parameters	NNS
+specifying	VBG
+its	PRP$
+complexity	NN
+,	,
+coverage	NN
+and	CC
+the	DT
+ontology	NN
+required	VBN
+.	.
+
+
+broker	NN
+agent	NN
+model	NN
+-	:
+parameters	NNS
+for	IN
+the	DT
+broker	NN
+agent	NN
+include	VBP
+the	DT
+speed	NN
+of	IN
+the	DT
+broker	NN
+reasoning	NN
+
+
+engine	NN
+and	CC
+the	DT
+size	NN
+of	IN
+the	DT
+resulting	VBG
+responses	NNS
+,	,
+both	DT
+of	IN
+which	WDT
+will	MD
+depend	VB
+on	IN
+the	DT
+number	NN
+and	CC
+sizes	NNS
+of	IN
+
+
+the	DT
+advertisements	NNS
+it	PRP
+is	VBZ
+maintaining	VBG
+.	.
+
+
+Multi-brokering	JJ
+
+
+The	DT
+multi-brokering	JJ
+behaviors	NNS
+in	IN
+the	DT
+simulator	NN
+were	VBD
+tailored	VBN
+to	TO
+mimic	VB
+those	DT
+of	IN
+the	DT
+
+
+InfoSleuth	NNP
+system	NN
+.	.
+
+In	IN
+particular	JJ
+,	,
+is	VBZ
+can	MD
+simulate	VB
+the	DT
+effects	NNS
+of	IN
+the	DT
+various	JJ
+interbroker	NN
+search	NN
+patterns	NNS
+.	.
+
+For	IN
+
+
+all	DT
+experiments	NNS
+here	RB
+,	,
+all	DT
+relevant	JJ
+brokers	NNS
+were	VBD
+searched	VBN
+.	.
+
+
+6.2.2	CD
+Simulation	NNP
+Results	NNS
+
+
+In	IN
+this	DT
+section	NN
+we	PRP
+present	VBP
+some	DT
+results	NNS
+from	IN
+our	PRP$
+simulation	NN
+experiments	NNS
+.	.
+
+First	RB
+we	PRP
+show	VBP
+the	DT
+inherent	JJ
+prob	NN
+-	:
+
+
+lems	NNS
+with	IN
+single	JJ
+broker	NN
+networks	NNS
+and	CC
+how	WRB
+broker	NN
+specialization	NN
+compares	VBZ
+to	TO
+a	DT
+system	NN
+where	WRB
+all	DT
+brokers	NNS
+
+
+are	VBP
+replicates	VBZ
+,	,
+maintaining	VBG
+complete	JJ
+knowledge	NN
+of	IN
+all	DT
+other	JJ
+agents	NNS
+.	.
+
+The	DT
+second	JJ
+set	NN
+of	IN
+experiments	NNS
+explores	VBZ
+
+
+the	DT
+scalability	NN
+of	IN
+a	DT
+multi-brokering	JJ
+system	NN
+with	IN
+the	DT
+behavioral	JJ
+characteristics	NNS
+of	IN
+the	DT
+InfoSleuth	NNP
+brokers	NNS
+.	.
+
+
+Multi-brokering	JJ
+imposes	VBZ
+extra	JJ
+overhead	NN
+due	JJ
+to	TO
+the	DT
+communication	NN
+between	IN
+the	DT
+brokers	NNS
+,	,
+and	CC
+we	PRP
+want	VBP
+to	TO
+
+
+ensure	VB
+that	IN
+as	IN
+the	DT
+number	NN
+of	IN
+agents	NNS
+in	IN
+the	DT
+system	NN
+increases	VBZ
+that	IN
+this	DT
+overhead	NN
+does	VBZ
+not	RB
+degrade	VB
+the	DT
+overall	JJ
+
+
+performance	NN
+.	.
+
+The	DT
+ï	NN
+¬	CD
+nal	JJ
+set	NN
+of	IN
+experiments	NNS
+demonstrates	VBZ
+how	WRB
+a	DT
+multi-brokering	JJ
+system	NN
+provides	VBZ
+robustness	NN
+.	.
+
+
+In	IN
+this	DT
+experiment	NN
+,	,
+individual	JJ
+broker	NN
+fails	VBZ
+using	VBG
+an	DT
+exponential	JJ
+distribution	NN
+with	IN
+varying	VBG
+means	NNS
+.	.
+
+
+Each	DT
+individual	JJ
+experiment	NN
+was	VBD
+the	DT
+simulation	NN
+of	IN
+
+
+hours	NNS
+of	IN
+system	NN
+execution	NN
+time	NN
+.	.
+
+Because	IN
+the	DT
+sim	NN
+-	:
+
+
+ulations	NNS
+are	VBP
+based	VBN
+upon	IN
+pseudo-random	NN
+inputs	NNS
+,	,
+we	PRP
+ran	VBD
+each	DT
+set	NN
+of	IN
+experiments	NNS
+
+
+times	NNS
+and	CC
+averaged	VBD
+the	DT
+
+
+results	NNS
+.	.
+
+This	DT
+helped	VBD
+ensure	VB
+that	IN
+we	PRP
+were	VBD
+not	RB
+reporting	VBG
+results	NNS
+from	IN
+a	DT
+particular	JJ
+anomalous	JJ
+pseudo-random	NN
+
+
+number	NN
+sequence	NN
+.	.
+
+
+Single	JJ
+versus	CC
+Multiple	JJ
+Brokers	NNS
+
+
+Our	PRP$
+ï	NN
+¬	CD
+rst	NN
+set	NN
+of	IN
+experiments	NNS
+were	VBD
+aimed	VBN
+at	IN
+demonstrating	VBG
+that	IN
+a	DT
+single	JJ
+
+
+broker	NN
+architecture	NN
+was	VBD
+inferior	JJ
+to	TO
+multiple	JJ
+broker	NN
+systems	NNS
+for	IN
+moderate	JJ
+to	TO
+high	JJ
+query	NN
+loads	NNS
+.	.
+
+In	IN
+this	DT
+ex	FW
+-	:
+
+
+periment	NN
+we	PRP
+used	VBD
+24	CD
+resource	NN
+agents	NNS
+and	CC
+vary	VBP
+the	DT
+mean	JJ
+time	NN
+between	IN
+queries	NNS
+from	IN
+5	CD
+to	TO
+30	CD
+seconds	NNS
+in	IN
+
+
+increments	NNS
+of	IN
+5	CD
+seconds	NNS
+.	.
+
+In	IN
+the	DT
+single	JJ
+brokering	VBG
+arrangement	NN
+all	DT
+24	CD
+resource	NN
+agents	NNS
+are	VBP
+in	IN
+a	DT
+single	JJ
+repos	NNS
+-	:
+
+
+itory	NN
+and	CC
+the	DT
+parameters	NNS
+of	IN
+the	DT
+experiment	NN
+dictate	VBP
+that	IN
+each	DT
+query	NN
+will	MD
+take	VB
+a	DT
+minimum	NN
+of	IN
+24	CD
+seconds	NNS
+to	TO
+
+
+process	NN
+.	.
+
+Thus	RB
+,	,
+only	RB
+when	WRB
+the	DT
+query	NN
+frequency	NN
+is	VBZ
+higher	JJR
+than	IN
+once	RB
+every	DT
+24	CD
+seconds	NNS
+does	VBZ
+the	DT
+single	JJ
+broker	NN
+-	:
+
+
+ing	NN
+scheme	NN
+begin	VB
+to	TO
+give	VB
+reasonable	JJ
+response	NN
+times	NNS
+.	.
+
+In	IN
+contrast	NN
+,	,
+the	DT
+two	CD
+multiple	JJ
+broker	NN
+architectures	NNS
+begin	VBP
+
+
+to	TO
+give	VB
+acceptable	JJ
+responses	NNS
+for	IN
+query	NN
+frequencies	NNS
+as	RB
+low	JJ
+as	IN
+every	DT
+10	CD
+seconds	NNS
+.	.
+
+The	DT
+two	CD
+types	NNS
+of	IN
+multiple	JJ
+
+
+broker	NN
+arrangements	NNS
+are	VBP
+explained	VBN
+and	CC
+contrasted	VBN
+in	IN
+the	DT
+subsequent	JJ
+paragraph	NN
+.	.
+
+
+Replication	NN
+versus	CC
+Specialization	NN
+
+
+One	CD
+of	IN
+the	DT
+multiple	JJ
+broker	NN
+arrangements	NNS
+used	VBN
+in	IN
+the	DT
+ï	NN
+¬	NN
+rst	NN
+experiment	NN
+
+
+consists	VBZ
+of	IN
+replicated	VBN
+brokers	NNS
+where	WRB
+there	EX
+are	VBP
+20	CD
+brokers	NNS
+,	,
+each	DT
+one	CD
+having	VBG
+identical	JJ
+copies	NNS
+of	IN
+all	DT
+24	CD
+resource	NN
+
+
+25	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+25	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+Replicated	VBN
+Specialized	NNP
+
+
+Ave.	NNP
+Broker	NNP
+Response	NNP
+Time	NNP
+-LRB-	-LRB-
+seconds	NNS
+-RRB-	-RRB-
+
+
+30	CD
+28	CD
+26	CD
+24	CD
+22	CD
+20	CD
+18	CD
+16	CD
+14	CD
+12	CD
+10	CD
+
+
+10	CD
+
+
+15	CD
+20	CD
+25	CD
+Mean	NN
+time	NN
+between	IN
+queries	NNS
+-LRB-	-LRB-
+seconds	NNS
+-RRB-	-RRB-
+
+
+30	CD
+
+
+Figure	NNP
+11	CD
+:	:
+Replicated	VBN
+brokering	VBG
+versus	CC
+specialized	VBN
+brokering	VBG
+with	IN
+
+
+brokers	NNS
+and	CC
+
+
+resource	NN
+agents	NNS
+.	.
+
+
+agentsâ	JJ
+$	$
+™	CD
+advertisements	NNS
+.	.
+
+Individually	RB
+,	,
+any	DT
+one	CD
+broker	NN
+will	MD
+still	RB
+require	VB
+24	CD
+seconds	NNS
+to	TO
+process	VB
+a	DT
+query	NN
+,	,
+but	CC
+
+
+since	IN
+there	EX
+are	VBP
+more	RBR
+brokers	NNS
+to	TO
+answer	VB
+queries	NNS
+,	,
+the	DT
+queries	NNS
+can	MD
+be	VB
+distributed	VBN
+among	IN
+the	DT
+brokers	NNS
+,	,
+allowing	VBG
+
+
+the	DT
+system	NN
+as	IN
+a	DT
+whole	JJ
+to	TO
+handle	VB
+a	DT
+higher	JJR
+frequency	NN
+of	IN
+queries	NNS
+.	.
+
+The	DT
+other	JJ
+multiple	JJ
+broker	NN
+scheme	NN
+has	VBZ
+each	DT
+
+
+broker	NN
+specializing	VBG
+in	IN
+certain	JJ
+advertisements	NNS
+which	WDT
+results	VBZ
+from	IN
+each	DT
+resource	NN
+agent	NN
+advertising	NN
+only	RB
+to	TO
+a	DT
+
+
+single	JJ
+broker	NN
+.	.
+
+In	IN
+this	DT
+arrangement	NN
+,	,
+every	DT
+broker	NN
+must	MD
+be	VB
+involved	VBN
+in	IN
+answering	VBG
+each	DT
+query	NN
+,	,
+since	IN
+there	EX
+is	VBZ
+
+
+no	DT
+single	JJ
+repository	NN
+of	IN
+all	PDT
+the	DT
+resource	NN
+agent	NN
+advertisements	NNS
+.	.
+
+Answering	VBG
+queries	NNS
+in	IN
+this	DT
+case	NN
+requires	VBZ
+the	DT
+
+
+brokers	NNS
+to	TO
+communicate	VB
+results	NNS
+with	IN
+each	DT
+other	JJ
+and	CC
+give	VB
+a	DT
+combined	JJ
+response	NN
+to	TO
+the	DT
+query	NN
+.	.
+
+
+For	IN
+both	CC
+the	DT
+replicated	VBN
+and	CC
+specialize	VB
+multiple	JJ
+brokering	VBG
+architectures	NNS
+,	,
+reasonable	JJ
+response	NN
+times	NNS
+can	MD
+
+
+be	VB
+attained	VBN
+with	IN
+query	NN
+frequencies	NNS
+as	IN
+high	JJ
+as	IN
+every	DT
+10	CD
+seconds	NNS
+;	:
+a	DT
+time	NN
+that	WDT
+is	VBZ
+not	RB
+achievable	JJ
+in	IN
+the	DT
+single	JJ
+
+
+broker	NN
+arrangement	NN
+,	,
+where	WRB
+the	DT
+theoretical	JJ
+minimum	NN
+is	VBZ
+being	VBG
+able	JJ
+to	TO
+handle	VB
+a	DT
+query	NN
+every	DT
+24	CD
+seconds	NNS
+and	CC
+
+
+the	DT
+experimental	JJ
+results	NNS
+show	VBP
+that	IN
+the	DT
+query	NN
+frequency	NN
+can	MD
+not	RB
+be	VB
+below	IN
+one	CD
+every	DT
+30	CD
+seconds	NNS
+.	.
+
+
+The	DT
+advantage	NN
+of	IN
+the	DT
+two	CD
+multibrokering	JJ
+conï	NN
+¬	NN
+gurations	NNS
+over	IN
+the	DT
+single	JJ
+brokering	VBG
+setup	NN
+is	VBZ
+clear	JJ
+,	,
+but	CC
+
+
+somewhat	RB
+less	JJR
+obvious	JJ
+is	VBZ
+the	DT
+whether	IN
+replication	NN
+or	CC
+specialization	NN
+of	IN
+brokers	NNS
+is	VBZ
+the	DT
+better	JJR
+solution	NN
+.	.
+
+Figure	NNP
+11	CD
+
+
+shows	VBZ
+the	DT
+comparison	NN
+between	IN
+the	DT
+two	CD
+multibrokering	VBG
+schemes	NNS
+for	IN
+mean	NN
+query	NN
+intervals	NNS
+of	IN
+10	CD
+seconds	NNS
+and	CC
+
+
+greater	JJR
+.	.
+
+Here	RB
+the	DT
+gains	NNS
+in	IN
+computing	VBG
+the	DT
+answers	NNS
+in	IN
+parallel	JJ
+across	IN
+multiple	JJ
+brokers	NNS
+outweighs	VBZ
+the	DT
+extra	JJ
+
+
+overhead	RB
+involved	VBN
+with	IN
+the	DT
+inter-broker	NN
+communication	NN
+.	.
+
+
+Figure	NNP
+12	CD
+shows	VBZ
+the	DT
+same	JJ
+experiments	NNS
+as	IN
+Figure	NNP
+11	CD
+except	IN
+that	DT
+here	RB
+there	EX
+are	VBP
+only	RB
+
+
+brokers	NNS
+in	IN
+the	DT
+
+
+system	NN
+,	,
+though	IN
+still	RB
+
+
+resource	NN
+agents	NNS
+.	.
+
+This	DT
+shows	VBZ
+that	IN
+even	RB
+with	IN
+a	DT
+higher	JJR
+resource-to-broker	NN
+ratio	NN
+,	,
+spe	NN
+-	:
+
+
+cialization	NN
+of	IN
+the	DT
+brokers	NNS
+helps	VBZ
+.	.
+
+
+Scalability	NN
+
+
+This	DT
+set	NN
+of	IN
+simulation-based	JJ
+experiments	NNS
+varies	VBZ
+the	DT
+number	NN
+of	IN
+agents	NNS
+in	IN
+the	DT
+system	NN
+,	,
+while	IN
+
+
+maintaining	VBG
+all	DT
+other	JJ
+system	NN
+parameters	NNS
+.	.
+
+We	PRP
+simulated	JJ
+systems	NNS
+with	IN
+the	DT
+following	VBG
+numbers	NNS
+of	IN
+resource	NN
+
+
+agents	NNS
+:	:
+
+
+,	,
+
+
+,	,
+
+
+,	,
+
+
+,	,
+
+
+,	,
+
+
+,	,
+
+
+,	,
+
+
+,	,
+and	CC
+
+
+.	.
+
+Since	IN
+our	PRP$
+focus	NN
+is	VBZ
+on	IN
+the	DT
+inter-agent	JJ
+communication	NN
+
+
+26	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+26	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+38	CD
+36	CD
+34	CD
+32	CD
+30	CD
+28	CD
+26	CD
+24	CD
+22	CD
+20	CD
+18	CD
+
+
+Replicated	VBN
+Specialized	NNP
+
+
+Ave.	NNP
+Broker	NNP
+Response	NNP
+Time	NNP
+-LRB-	-LRB-
+seconds	NNS
+-RRB-	-RRB-
+
+
+16	CD
+
+
+18	CD
+20	CD
+22	CD
+24	CD
+26	CD
+Mean	NN
+time	NN
+between	IN
+queries	NNS
+-LRB-	-LRB-
+seconds	NNS
+-RRB-	-RRB-
+
+
+28	CD
+
+
+30	CD
+
+
+Figure	NNP
+12	CD
+:	:
+Replicated	VBN
+brokering	VBG
+versus	CC
+specialized	VBN
+brokering	VBG
+with	IN
+
+
+brokers	NNS
+and	CC
+
+
+resource	NN
+agents	NNS
+.	.
+
+
+overhead	RB
+,	,
+we	PRP
+needed	VBD
+to	TO
+ensure	VB
+that	IN
+the	DT
+broker	NN
+agentsâ	NN
+$	$
+™	CD
+local	JJ
+computations	NNS
+remained	VBD
+the	DT
+same	JJ
+across	IN
+this	DT
+
+
+range	NN
+.	.
+
+Thus	RB
+,	,
+we	PRP
+deï	VBP
+¬	CD
+ned	VBD
+that	IN
+each	DT
+broker	NN
+would	MD
+,	,
+on	IN
+average	NN
+,	,
+have	VBP
+the	DT
+advertisements	NNS
+for	IN
+
+
+resources	NNS
+.	.
+
+
+Thus	RB
+the	DT
+number	NN
+of	IN
+brokers	NNS
+for	IN
+each	DT
+of	IN
+the	DT
+above	JJ
+resource	NN
+agent	NN
+sizes	NNS
+are	VBP
+,	,
+,	,
+,	,
+,	,
+,	,
+
+
+,	,
+
+
+,	,
+
+
+,	,
+and	CC
+
+
+respectively	RB
+.	.
+
+
+Each	DT
+resource	NN
+agentâ	IN
+$	$
+™	CD
+s	NNS
+advertisement	NN
+size	NN
+was	VBD
+set	VBN
+to	TO
+
+
+megabyte	NN
+and	CC
+the	DT
+processor	NN
+speed	NN
+and	CC
+broker	NN
+
+
+reasoning	NN
+engine	NN
+speeds	NNS
+were	VBD
+set	VBN
+to	TO
+require	VB
+one	CD
+second	NN
+of	IN
+processing	NN
+time	NN
+for	IN
+each	DT
+megabyte	NN
+of	IN
+advertise	VB
+-	:
+
+
+ments	NNS
+.	.
+
+Thus	RB
+,	,
+on	IN
+average	NN
+,	,
+a	DT
+broker	NN
+will	MD
+need	VB
+
+
+seconds	NNS
+to	TO
+compute	VB
+the	DT
+query	NN
+answer	NN
+based	VBN
+on	IN
+its	PRP$
+local	JJ
+
+
+advertisements	NNS
+.	.
+
+This	DT
+presents	VBZ
+a	DT
+theoretical	JJ
+lower	JJR
+bound	VBN
+on	IN
+the	DT
+response	NN
+time	NN
+in	IN
+the	DT
+multi-brokering	JJ
+system	NN
+.	.
+
+
+Note	VB
+that	IN
+if	IN
+you	PRP
+wanted	VBD
+to	TO
+have	VB
+multiple	JJ
+brokers	NNS
+each	DT
+with	IN
+identical	JJ
+copies	NNS
+of	IN
+all	DT
+advertisements	NNS
+,	,
+then	RB
+the	DT
+
+
+response	NN
+times	NNS
+would	MD
+deï	VB
+¬	CD
+nitely	RB
+not	RB
+scale	VB
+well	RB
+with	IN
+the	DT
+number	NN
+of	IN
+resource	NN
+agents	NNS
+,	,
+since	IN
+it	PRP
+will	MD
+take	VB
+each	DT
+
+
+broker	NN
+one	CD
+second	JJ
+per	IN
+resource	NN
+agent	NN
+to	TO
+answer	VB
+a	DT
+query	NN
+or	CC
+a	DT
+total	NN
+of	IN
+
+
+seconds	NNS
+for	IN
+the	DT
+largest	JJS
+case	NN
+we	PRP
+
+
+look	VB
+at	IN
+here	RB
+.	.
+
+
+The	DT
+metric	NN
+of	IN
+interest	NN
+here	RB
+is	VBZ
+the	DT
+average	JJ
+response	NN
+time	NN
+to	TO
+the	DT
+query	NN
+agent	NN
+from	IN
+the	DT
+brokers	NNS
+.	.
+
+Unlike	IN
+
+
+the	DT
+InfoSleuth	NNP
+experiments	NNS
+which	WDT
+had	VBD
+some	DT
+extra	JJ
+overhead	NN
+for	IN
+the	DT
+processing	NN
+and	CC
+rendering	NN
+of	IN
+the	DT
+result	NN
+,	,
+
+
+this	DT
+simulation	NN
+data	NNS
+is	VBZ
+purely	RB
+the	DT
+time	NN
+between	IN
+when	WRB
+the	DT
+query	NN
+is	VBZ
+issued	VBN
+to	TO
+the	DT
+broker	NN
+and	CC
+when	WRB
+the	DT
+reply	NN
+is	VBZ
+
+
+received	VBN
+from	IN
+the	DT
+broker	NN
+.	.
+
+
+Figure	NNP
+13	CD
+shows	VBZ
+the	DT
+results	NNS
+of	IN
+varying	VBG
+the	DT
+number	NN
+of	IN
+agents	NNS
+in	IN
+the	DT
+system	NN
+and	CC
+for	IN
+varying	VBG
+query	NN
+fre	NN
+-	:
+
+
+quencies	NNS
+-LRB-	-LRB-
+â	RB
+$	$
+œQFâ	JJ
+$	$
+is	VBZ
+the	DT
+mean	JJ
+time	NN
+between	IN
+queries	NNS
+.	.
+-RRB-	-RRB-
+
+If	IN
+the	DT
+overhead	NN
+of	IN
+communication	NN
+presented	VBD
+an	DT
+obstacle	NN
+
+
+to	TO
+scalability	NN
+,	,
+then	RB
+one	CD
+would	MD
+expect	VB
+the	DT
+response	NN
+times	NNS
+to	TO
+get	VB
+dramatically	RB
+worse	JJR
+as	IN
+the	DT
+number	NN
+of	IN
+agents	NNS
+
+
+-LRB-	-LRB-
+both	DT
+brokers	NNS
+and	CC
+resources	NNS
+-RRB-	-RRB-
+increased	VBN
+.	.
+
+However	RB
+,	,
+as	IN
+the	DT
+data	NNS
+in	IN
+Figure	NNP
+13	CD
+shows	NNS
+,	,
+the	DT
+response	NN
+times	NNS
+tend	VBP
+
+
+to	TO
+level	VB
+off	RP
+,	,
+and	CC
+certainly	RB
+do	VBP
+not	RB
+show	VB
+any	DT
+catastrophic	JJ
+behavior	NN
+.	.
+
+
+The	DT
+results	NNS
+of	IN
+this	DT
+experiment	NN
+shows	VBZ
+that	IN
+multi-brokering	JJ
+systems	NNS
+,	,
+despite	IN
+the	DT
+extra	JJ
+overhead	NN
+,	,
+do	VBP
+scale	NN
+
+
+up	RB
+nicely	RB
+.	.
+
+With	IN
+a	DT
+multi-brokering	JJ
+system	NN
+,	,
+the	DT
+gains	NNS
+achieved	VBN
+by	IN
+distributing	VBG
+the	DT
+query	NN
+processing	NN
+exceed	VBP
+
+
+27	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+27	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+55	CD
+
+
+50	CD
+
+
+45	CD
+
+
+QF	NN
+=	JJ
+40	CD
+QF	NN
+=	JJ
+50	CD
+QF	NN
+=	JJ
+60	CD
+QF	NN
+=	JJ
+70	CD
+QF	NN
+=	JJ
+80	CD
+QF	NN
+=	JJ
+90	CD
+
+
+40	CD
+
+
+35	CD
+
+
+30	CD
+
+
+25	CD
+
+
+Ave.	NNP
+Broker	NNP
+Response	NNP
+Time	NNP
+-LRB-	-LRB-
+seconds	NNS
+-RRB-	-RRB-
+
+
+50	CD
+
+
+100	CD
+150	CD
+Number	NN
+of	IN
+Resource	NNP
+Agents	NNPS
+
+
+200	CD
+
+
+Figure	NNP
+13	CD
+:	:
+Scalability	NN
+of	IN
+broker	NN
+specialization	NN
+across	IN
+a	DT
+range	NN
+of	IN
+number	NN
+of	IN
+resource	NN
+agents	NNS
+and	CC
+system	NN
+query	NN
+frequencies	NNS
+-LRB-	-LRB-
+QF	NN
+-RRB-	-RRB-
+.	.
+
+
+Failure	NN
+
+
+Mean	NN
+-LRB-	-LRB-
+secs	NNS
+.	.
+-RRB-	-RRB-
+
+1000000	CD
+
+
+3600	CD
+
+
+1800	CD
+
+
+900	CD
+
+
+1	CD
+99.56	CD
+%	NN
+77.64	CD
+%	NN
+37.50	CD
+%	NN
+34.05	CD
+%	NN
+
+
+Advertisement	NN
+Redundancy	NN
+
+
+-LRB-	-LRB-
+Number	NN
+of	IN
+Brokers	NNS
+-RRB-	-RRB-
+
+
+2	CD
+3	CD
+4	CD
+97.37	CD
+%	NN
+100.00	CD
+%	NN
+99.14	CD
+%	NN
+70.71	CD
+%	NN
+69.87	CD
+%	NN
+61.26	CD
+%	NN
+44.40	CD
+%	NN
+46.69	CD
+%	NN
+44.64	CD
+%	NN
+26.47	CD
+%	NN
+17.87	CD
+%	NN
+22.90	CD
+%	NN
+
+
+5	CD
+100.00	CD
+%	NN
+63.45	CD
+%	NN
+59.41	CD
+%	NN
+16.79	CD
+%	NN
+
+
+Table	NNP
+9	CD
+:	:
+Percentage	NN
+of	IN
+queries	NNS
+that	WDT
+brokers	NNS
+reply	VBP
+to	TO
+.	.
+
+
+the	DT
+overhead	JJ
+incurred	VBN
+as	IN
+the	DT
+number	NN
+of	IN
+agents	NNS
+in	IN
+the	DT
+system	NN
+increases	VBZ
+.	.
+
+
+Robustness	NNP
+
+
+In	IN
+this	DT
+set	NN
+of	IN
+experiments	NNS
+,	,
+we	PRP
+ï	VBP
+¬	CD
+xed	VBD
+the	DT
+number	NN
+of	IN
+brokers	NNS
+and	CC
+resources	NNS
+at	IN
+
+
+and	CC
+
+
+respec	NN
+-	:
+
+
+tively	RB
+.	.
+
+The	DT
+query	NN
+frequency	NN
+was	VBD
+ï	JJ
+¬	NN
+xed	VBD
+to	TO
+have	VB
+a	DT
+mean	NN
+query	NN
+time	NN
+of	IN
+once	RB
+every	DT
+
+
+seconds	NNS
+to	TO
+ensure	VB
+that	IN
+
+
+the	DT
+system	NN
+was	VBD
+operating	VBG
+in	IN
+a	DT
+range	NN
+that	WDT
+did	VBD
+not	RB
+saturate	VB
+it	PRP
+processing	VBG
+capabilities	NNS
+.	.
+
+The	DT
+parameters	NNS
+we	PRP
+vary	VBP
+
+
+are	VBP
+the	DT
+mean	JJ
+failure	NN
+time	NN
+of	IN
+the	DT
+brokers	NNS
+and	CC
+the	DT
+amount	NN
+of	IN
+redundancy	NN
+in	IN
+the	DT
+number	NN
+of	IN
+brokers	NNS
+that	WDT
+each	DT
+
+
+resource	NN
+agent	NN
+sends	VBZ
+their	PRP$
+advertised	VBN
+to	TO
+.	.
+
+The	DT
+mean	JJ
+failure	NN
+rates	NNS
+used	VBN
+are	VBP
+
+
+,	,
+
+
+,	,
+
+
+,	,
+and	CC
+
+
+seconds	NNS
+.	.
+
+We	PRP
+vary	VBP
+the	DT
+number	NN
+of	IN
+brokers	NNS
+each	DT
+agent	NN
+advertises	VBZ
+to	TO
+from	IN
+to	TO
+.	.
+
+
+Table	NNP
+9	CD
+shows	VBZ
+the	DT
+results	NNS
+for	IN
+the	DT
+number	NN
+of	IN
+replies	NNS
+from	IN
+the	DT
+broker	NN
+to	TO
+the	DT
+number	NN
+of	IN
+queries	NNS
+asked	VBD
+of	IN
+
+
+the	DT
+broker	NN
+-LRB-	-LRB-
+expressed	VBN
+as	IN
+a	DT
+percentage	NN
+-RRB-	-RRB-
+.	.
+
+Naturally	RB
+,	,
+as	IN
+the	DT
+failure	NN
+frequency	NN
+goes	VBZ
+up	RB
+,	,
+the	DT
+more	RBR
+likely	JJ
+we	PRP
+
+
+are	VBP
+to	TO
+contact	VB
+a	DT
+broker	NN
+that	WDT
+does	VBZ
+not	RB
+respond	VB
+.	.
+
+Aside	RB
+from	IN
+the	DT
+variation	NN
+due	JJ
+to	TO
+the	DT
+random	JJ
+nature	NN
+of	IN
+the	DT
+
+
+experiments	NNS
+,	,
+these	DT
+percentages	NNS
+should	MD
+be	VB
+independent	JJ
+of	IN
+the	DT
+redundancy	NN
+of	IN
+the	DT
+advertisements	NNS
+,	,
+since	IN
+it	PRP
+
+
+only	RB
+measures	VBZ
+whether	IN
+a	DT
+broker	NN
+replies	VBZ
+not	RB
+whether	IN
+it	PRP
+actually	RB
+located	JJ
+an	DT
+agent	NN
+to	TO
+satisfy	VB
+the	DT
+query	NN
+.	.
+
+
+The	DT
+robustness	NN
+of	IN
+the	DT
+system	NN
+is	VBZ
+evaluated	VBN
+by	IN
+looking	VBG
+at	IN
+only	RB
+those	DT
+queries	NNS
+for	IN
+which	WDT
+the	DT
+broker	NN
+re	SYM
+-	:
+
+
+sponded	VBN
+.	.
+
+In	IN
+these	DT
+cases	NNS
+we	PRP
+want	VBP
+look	NN
+at	IN
+the	DT
+quality	NN
+of	IN
+the	DT
+brokerâ	NN
+$	$
+™	CD
+s	NNS
+response	NN
+.	.
+
+In	IN
+this	DT
+particular	JJ
+experiment	NN
+
+
+28	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+28	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+Failure	NN
+
+
+Mean	NN
+-LRB-	-LRB-
+secs	NNS
+.	.
+-RRB-	-RRB-
+
+1000000	CD
+
+
+3600	CD
+
+
+1800	CD
+
+
+900	CD
+
+
+1	CD
+100.00	CD
+%	NN
+75.00	CD
+%	NN
+75.86	CD
+%	NN
+20.25	CD
+%	NN
+
+
+Advertisement	NN
+Redundancy	NN
+
+
+-LRB-	-LRB-
+Number	NN
+of	IN
+Brokers	NNS
+-RRB-	-RRB-
+
+
+2	CD
+3	CD
+4	CD
+100.00	CD
+%	NN
+100.00	CD
+%	NN
+100.00	CD
+%	NN
+92.90	CD
+%	NN
+92.22	CD
+%	NN
+97.42	CD
+%	NN
+85.44	CD
+%	NN
+95.58	CD
+%	NN
+100.00	CD
+%	NN
+76.19	CD
+%	NN
+69.05	CD
+%	NN
+86.67	CD
+%	NN
+
+
+5	CD
+100.00	CD
+%	NN
+100.00	CD
+%	NN
+100.00	CD
+%	NN
+100.00	CD
+%	NN
+
+
+Table	NNP
+10	CD
+:	:
+Robustness	NN
+experiments	NNS
+:	:
+percentage	NN
+of	IN
+queries	NNS
+successfully	RB
+answered	VBN
+.	.
+
+
+each	DT
+resource	NN
+has	VBZ
+a	DT
+unique	JJ
+data	NN
+domain	NN
+,	,
+so	RB
+there	EX
+is	VBZ
+exactly	RB
+one	CD
+agent	NN
+that	WDT
+should	MD
+match	VB
+each	DT
+query	NN
+.	.
+
+The	DT
+
+
+quantity	NN
+of	IN
+interest	NN
+is	VBZ
+the	DT
+number	NN
+of	IN
+resources	NNS
+queried	VBD
+versus	CC
+the	DT
+number	NN
+of	IN
+broker	NN
+replies	VBZ
+that	IN
+are	VBP
+received	VBN
+,	,
+
+
+since	IN
+this	DT
+is	VBZ
+directly	RB
+correlated	VBN
+to	TO
+the	DT
+number	NN
+of	IN
+times	NNS
+the	DT
+proper	JJ
+resource	NN
+agent	NN
+was	VBD
+located	VBN
+by	IN
+the	DT
+broker	NN
+
+
+network	NN
+.	.
+
+As	IN
+seen	VBN
+in	IN
+the	DT
+ï	NN
+¬	NN
+rst	NN
+row	NN
+of	IN
+Table	NNP
+10	CD
+,	,
+when	WRB
+the	DT
+brokers	NNS
+are	VBP
+very	RB
+unlikely	JJ
+to	TO
+fail	VB
+,	,
+the	DT
+number	NN
+of	IN
+
+
+resource	NN
+agents	NNS
+queried	VBD
+will	MD
+be	VB
+identical	JJ
+to	TO
+the	DT
+number	NN
+of	IN
+broker	NN
+replies	NNS
+-LRB-	-LRB-
+i.e.	FW
+,	,
+100	CD
+%	NN
+of	IN
+the	DT
+queries	NNS
+answered	VBN
+
+
+had	VBD
+found	VBN
+the	DT
+matching	VBG
+resource	NN
+agent	NN
+.	.
+-RRB-	-RRB-
+
+
+The	DT
+last	JJ
+column	NN
+shows	VBZ
+that	IN
+with	IN
+complete	JJ
+redundancy	NN
+,	,
+you	PRP
+can	MD
+alwaysï	VB
+¬	CD
+nd	VBD
+the	DT
+agent	NN
+if	IN
+you	PRP
+get	VBP
+a	DT
+reply	NN
+at	IN
+
+
+all	DT
+.	.
+
+In	IN
+this	DT
+case	NN
+,	,
+the	DT
+brokers	NNS
+have	VBP
+no	DT
+real	JJ
+reason	NN
+to	TO
+communicate	VB
+since	IN
+all	DT
+brokers	NNS
+know	VBP
+about	IN
+all	DT
+resources	NNS
+.	.
+
+
+However	RB
+,	,
+for	IN
+the	DT
+other	JJ
+cases	NNS
+where	WRB
+inter-broker	JJ
+communication	NN
+is	VBZ
+needed	VBN
+to	TO
+answer	VB
+the	DT
+queries	NNS
+,	,
+you	PRP
+can	MD
+
+
+see	VB
+the	DT
+deï	NN
+¬	NN
+nite	JJ
+trend	NN
+that	IN
+the	DT
+more	JJR
+redundancy	NN
+there	EX
+is	VBZ
+,	,
+the	DT
+more	RBR
+robust	JJ
+the	DT
+system	NN
+is	VBZ
+to	TO
+failures	NNS
+.	.
+
+
+7	CD
+Related	JJ
+Work	NN
+
+
+There	EX
+are	VBP
+several	JJ
+research	NN
+projects	NNS
+and	CC
+systems	NNS
+that	WDT
+address	VBP
+the	DT
+issue	NN
+of	IN
+integrating	VBG
+heterogeneous	JJ
+systems	NNS
+.	.
+
+
+These	DT
+systems	NNS
+rely	VBP
+on	IN
+some	DT
+form	NN
+of	IN
+brokering	VBG
+or	CC
+mediation	NN
+to	TO
+achieve	VB
+semantic	JJ
+integration	NN
+.	.
+
+We	PRP
+evalu	VBP
+-	:
+
+
+ate	VBD
+two	CD
+issues	NNS
+when	WRB
+comparing	VBG
+brokering	VBG
+in	IN
+InfoSleuth	NNP
+to	TO
+brokering	VBG
+in	IN
+other	JJ
+systems	NNS
+â	VBP
+$	$
+``	``
+moving	VBG
+beyond	IN
+
+
+syntactic	JJ
+brokering	NN
+and	CC
+using	VBG
+distributed	VBN
+multibrokering	VBG
+.	.
+
+
+The	DT
+CORBA	NNP
+Trading	NNP
+Object	NNP
+Service	NNP
+-LSB-	-LRB-
+18	CD
+-RSB-	-RRB-
+implements	VBZ
+multibrokering	VBG
+through	IN
+a	DT
+network	NN
+of	IN
+traders	NNS
+,	,
+
+
+and	CC
+also	RB
+provides	VBZ
+mechanisms	NNS
+for	IN
+incorporating	VBG
+some	DT
+semantic	JJ
+brokering	NN
+,	,
+however	RB
+,	,
+they	PRP
+have	VBP
+not	RB
+actually	RB
+
+
+incorporated	VBN
+any	DT
+reasoning	NN
+.	.
+
+In	IN
+fact	NN
+the	DT
+level	NN
+of	IN
+semantic	JJ
+brokering	NN
+is	VBZ
+equivalent	JJ
+to	TO
+the	DT
+look	NN
+up	IN
+of	IN
+yellow	JJ
+
+
+pages	NNS
+in	IN
+a	DT
+telephone	NN
+book	NN
+.	.
+
+The	DT
+knowledge	NN
+that	WDT
+can	MD
+be	VB
+expressed	VBN
+in	IN
+a	DT
+yellow	JJ
+page	NN
+is	VBZ
+a	DT
+structured	JJ
+list	NN
+of	IN
+
+
+properties	NNS
+.	.
+
+It	PRP
+is	VBZ
+not	RB
+possible	JJ
+to	TO
+describe	VB
+constraints	NNS
+such	JJ
+as	IN
+range	NN
+of	IN
+data	NNS
+involved	VBN
+,	,
+relationships	NNS
+between	IN
+
+
+input	NN
+and	CC
+output	NN
+,	,
+subsumption	NN
+relationships	NNS
+between	IN
+concepts	NNS
+,	,
+and	CC
+correctness	NN
+and	CC
+completeness	NN
+of	IN
+data	NNS
+.	.
+
+
+Additionally	RB
+,	,
+the	DT
+federation	NN
+of	IN
+traders	NNS
+is	VBZ
+always	RB
+formed	VBN
+statically	RB
+with	IN
+a	DT
+ï	NN
+¬	NN
+xed	VBD
+topology	NN
+.	.
+
+Only	RB
+recently	RB
+
+
+have	VB
+commercial	JJ
+implementations	NNS
+of	IN
+CORBA	NNP
+traders	NNS
+been	VBN
+available	JJ
+-LRB-	-LRB-
+e.g.	FW
+,	,
+-LSB-	-LRB-
+8	CD
+-RSB-	-RRB-
+-RRB-	-RRB-
+.	.
+
+No	DT
+information	NN
+is	VBZ
+available	JJ
+
+
+regarding	VBG
+the	DT
+scalability	NN
+and	CC
+robustness	NN
+of	IN
+any	DT
+of	IN
+the	DT
+CORBA	NNP
+traders	NNS
+.	.
+
+DISCO	NN
+-LSB-	-LRB-
+22	CD
+-RSB-	-RRB-
+uses	VBZ
+CORBA	NNP
+brokers	NNS
+
+
+to	TO
+do	VB
+their	PRP$
+brokering	NN
+.	.
+
+Syntactic	JJ
+brokering	VBG
+functions	NNS
+are	VBP
+sometimes	RB
+also	RB
+incorporated	VBN
+into	IN
+commercial	JJ
+agent	NN
+
+
+frameworks	NNS
+such	JJ
+as	IN
+Zeus	NN
+-LSB-	-LRB-
+17	CD
+-RSB-	-RRB-
+.	.
+
+
+Several	JJ
+information	NN
+retrieval	NN
+systems	NNS
+use	VBP
+semantic	JJ
+brokering	VBG
+with	IN
+respect	NN
+to	TO
+information	NN
+sources	NNS
+.	.
+
+These	DT
+
+
+29	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+29	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+systems	NNS
+include	VBP
+SIMS	NN
+-LSB-	-LRB-
+1	CD
+-RSB-	-RRB-
+,	,
+TSIMMIS	NN
+-LSB-	-LRB-
+15	CD
+-RSB-	-RRB-
+,	,
+InfoMaster	NNP
+-LSB-	-LRB-
+7	CD
+-RSB-	-RRB-
+and	CC
+Information	NN
+Manifold	NN
+-LSB-	-LRB-
+12	CD
+,	,
+13	CD
+-RSB-	-RRB-
+.	.
+
+They	PRP
+all	DT
+
+
+evolved	VBN
+from	IN
+research	NN
+in	IN
+multidatabases	NNS
+where	WRB
+a	DT
+canonical	JJ
+model	NN
+-LRB-	-LRB-
+global	JJ
+ontology	NN
+-RRB-	-RRB-
+is	VBZ
+used	VBN
+.	.
+
+The	DT
+way	NN
+these	DT
+
+
+systems	NNS
+work	VBP
+is	VBZ
+to	TO
+deï	NN
+¬	CD
+ne	NN
+a	DT
+common	JJ
+vocabulary	NN
+,	,
+or	CC
+ontology	NN
+,	,
+to	TO
+deï	VB
+¬	CD
+ne	NN
+the	DT
+objects	NNS
+in	IN
+their	PRP$
+information	NN
+
+
+domain	NN
+.	.
+
+Individual	JJ
+information	NN
+sources	NNS
+that	WDT
+contain	VBP
+these	DT
+objects	NNS
+then	RB
+describe	VBP
+constraints	NNS
+on	IN
+the	DT
+objects	NNS
+
+
+that	IN
+they	PRP
+can	MD
+provide	VB
+,	,
+in	IN
+terms	NNS
+of	IN
+this	DT
+common	JJ
+vocabulary	NN
+.	.
+
+The	DT
+broker	NN
+then	RB
+uses	VBZ
+these	DT
+constraints	NNS
+to	TO
+
+
+determine	VB
+how	WRB
+to	TO
+process	VB
+queries	NNS
+from	IN
+users	NNS
+that	WDT
+involve	VBP
+one	CD
+or	CC
+more	JJR
+of	IN
+these	DT
+resources	NNS
+.	.
+
+The	DT
+capabilities	NNS
+
+
+of	IN
+these	DT
+systems	NNS
+are	VBP
+similar	JJ
+to	TO
+InfoSleuthâ	NNP
+$	$
+™	CD
+s	NNS
+in	IN
+that	IN
+they	PRP
+reason	VBP
+over	IN
+the	DT
+information	NN
+content	NN
+of	IN
+the	DT
+agents	NNS
+
+
+and	CC
+constraints	NNS
+over	IN
+that	DT
+content	NN
+;	:
+however	RB
+,	,
+their	PRP$
+idea	NN
+of	IN
+a	DT
+service	NN
+ontology	NN
+only	RB
+encompasses	VBZ
+domain	NN
+
+
+information	NN
+and	CC
+not	RB
+any	DT
+other	JJ
+agent	NN
+capabilities	NNS
+.	.
+
+Thus	RB
+,	,
+these	DT
+systems	NNS
+implicitly	RB
+do	VBP
+syntactic	JJ
+brokering	NN
+
+
+when	WRB
+matching	VBG
+resources	NNS
+,	,
+as	IN
+they	PRP
+expect	VBP
+that	IN
+each	DT
+resource	NN
+supports	VBZ
+a	DT
+single	JJ
+underlying	VBG
+query	NN
+language	NN
+.	.
+
+
+The	DT
+SHADE	NN
+project	NN
+-LSB-	-LRB-
+14	CD
+,	,
+10	CD
+,	,
+11	CD
+-RSB-	-RRB-
+at	IN
+Lockheed	NNP
+Palo	NNP
+Alto	NNP
+Research	NNP
+Labs	NNPS
+extended	VBD
+the	DT
+notion	NN
+of	IN
+syntactic	NN
+
+
+brokering	VBG
+by	IN
+including	VBG
+information	NN
+about	IN
+services	NNS
+represented	VBN
+using	VBG
+KIF	NNP
+,	,
+a	DT
+knowledge	NN
+interchange	NN
+method	NN
+
+
+that	IN
+represents	VBZ
+ï	NN
+¬	CD
+rst-order	NN
+logic	NN
+expressions	NNS
+.	.
+
+Queries	NNS
+concerning	VBG
+agents	NNS
+were	VBD
+matched	VBN
+with	IN
+these	DT
+adver	NN
+-	:
+
+
+tisements	NNS
+using	VBG
+uniï	JJ
+¬	NN
+cation	NN
+.	.
+
+Additionally	RB
+,	,
+SHADE	NN
+provides	VBZ
+some	DT
+facility	NN
+to	TO
+broker	NN
+over	IN
+constraints	NNS
+on	IN
+the	DT
+
+
+values	NNS
+of	IN
+the	DT
+data	NNS
+,	,
+similar	JJ
+to	TO
+the	DT
+semantic	JJ
+brokering	NN
+over	IN
+data	NNS
+that	IN
+we	PRP
+have	VBP
+done	VBN
+in	IN
+InfoSleuth	NNP
+.	.
+
+However	RB
+,	,
+
+
+we	PRP
+have	VBP
+not	RB
+found	VBN
+a	DT
+clear	JJ
+description	NN
+of	IN
+how	WRB
+this	DT
+facility	NN
+works	VBZ
+.	.
+
+Since	IN
+SHADE	NN
+relies	VBZ
+on	IN
+a	DT
+shared	JJ
+ontol	NN
+-	:
+
+
+ogy	NN
+to	TO
+represent	VB
+data	NNS
+,	,
+they	PRP
+also	RB
+propose	VBP
+a	DT
+companion	NN
+matchmaker	NN
+named	VBN
+COINS	NNS
+that	WDT
+uses	VBZ
+TF/IDF	NN
+-LRB-	-LRB-
+term	NN
+
+
+frequency	NN
+/	:
+inverse	JJ
+document	NN
+frequency	NN
+-RRB-	-RRB-
+ï	NN
+¬	NN
+ltering	VBG
+to	TO
+match	VB
+document	NN
+characteristics	NNS
+to	TO
+free	JJ
+text	NN
+-LSB-	-LRB-
+11	CD
+-RSB-	-RRB-
+.	.
+
+
+The	DT
+LARKS	NNP
+matchmaking	NN
+system	NN
+-LSB-	-LRB-
+21	CD
+-RSB-	-RRB-
+in	IN
+RETSINA	NN
+-LSB-	-LRB-
+20	CD
+,	,
+4	CD
+,	,
+5	CD
+-RSB-	-RRB-
+,	,
+has	VBZ
+attempted	VBN
+to	TO
+address	VB
+the	DT
+issue	NN
+of	IN
+se	FW
+-	:
+
+
+mantic	JJ
+brokering	NN
+by	IN
+providing	VBG
+input-output	JJ
+descriptors	NNS
+and	CC
+term	NN
+frequency	NN
+measures	NNS
+to	TO
+determine	VB
+whether	IN
+
+
+or	CC
+not	RB
+a	DT
+semantic	JJ
+match	NN
+occurs	VBZ
+between	IN
+a	DT
+requested	VBN
+service	NN
+and	CC
+a	DT
+service	NN
+provider	NN
+.	.
+
+RETSINA	NNP
+matchmakers	NNS
+
+
+describe	VBP
+the	DT
+semantics	NNS
+of	IN
+their	PRP$
+offered	VBN
+services	NNS
+both	CC
+in	IN
+terms	NNS
+of	IN
+signatures	NNS
+-LRB-	-LRB-
+inputs	NNS
+and	CC
+outputs	NNS
+-RRB-	-RRB-
+,	,
+but	CC
+also	RB
+
+
+in	IN
+terms	NNS
+of	IN
+the	DT
+relationships	NNS
+between	IN
+the	DT
+inputs	NNS
+and	CC
+the	DT
+outputs	NNS
+.	.
+
+They	PRP
+also	RB
+use	VBP
+TF/IDF	NN
+techniques	NNS
+to	TO
+cate	VB
+-	:
+
+
+gorize	VB
+the	DT
+semantic	JJ
+relevance	NN
+of	IN
+a	DT
+query	NN
+to	TO
+an	DT
+advertisement	NN
+.	.
+
+The	DT
+term	NN
+frequency	NN
+measures	NNS
+are	VBP
+similar	JJ
+to	TO
+
+
+those	DT
+used	VBN
+in	IN
+COINS	NNS
+.	.
+
+The	DT
+matching	JJ
+process	NN
+in	IN
+RESTINA	NNP
+is	VBZ
+structured	VBN
+such	JJ
+that	IN
+users	NNS
+can	MD
+select	VB
+a	DT
+trade-off	NN
+
+
+between	IN
+performance	NN
+verses	NNS
+quality	NN
+of	IN
+matching	NN
+.	.
+
+
+In	IN
+addition	NN
+,	,
+there	EX
+are	VBP
+a	DT
+few	JJ
+general	JJ
+papers	NNS
+of	IN
+interest	NN
+on	IN
+brokering	VBG
+and	CC
+agent	NN
+architectures	NNS
+.	.
+
+These	DT
+
+
+include	VB
+a	DT
+second	JJ
+developed	JJ
+agent	NN
+framework	NN
+similar	JJ
+to	TO
+InfoSleuth	NNP
+and	CC
+its	PRP$
+approach	NN
+to	TO
+brokering	NN
+-LRB-	-LRB-
+though	IN
+
+
+different	JJ
+in	IN
+other	JJ
+aspects	NNS
+-RRB-	-RRB-
+in	IN
+-LSB-	-LRB-
+3	CD
+-RSB-	-RRB-
+and	CC
+some	DT
+general	JJ
+discussions	NNS
+in	IN
+information	NN
+agents	NNS
+-LSB-	-LRB-
+11	CD
+,	,
+9	CD
+-RSB-	-RRB-
+.	.
+
+
+8	CD
+Conclusions	NNS
+
+
+The	DT
+brokering	NN
+function	NN
+matches	VBZ
+speciï	NN
+¬	NN
+c	NN
+requests	NNS
+for	IN
+services	NNS
+with	IN
+providers	NNS
+that	WDT
+can	MD
+satisfy	VB
+those	DT
+requests	NNS
+.	.
+
+
+Syntactic	JJ
+brokering	NN
+does	VBZ
+this	DT
+match	NN
+based	VBN
+on	IN
+purely	RB
+syntactic	JJ
+characteristics	NNS
+of	IN
+the	DT
+requested	VBN
+service	NN
+such	JJ
+
+
+as	IN
+method	NN
+signatures	NNS
+,	,
+query	NN
+languages	NNS
+or	CC
+input	NN
+forms	NNS
+.	.
+
+Semantic	JJ
+brokering	VBG
+takes	VBZ
+into	IN
+account	NN
+the	DT
+nature	NN
+
+
+and	CC
+characteristics	NNS
+of	IN
+the	DT
+requested	VBN
+service	NN
+-	:
+what	WP
+functions	NNS
+do	VBP
+you	PRP
+want	VB
+to	TO
+perform	VB
+and	CC
+what	WP
+data	NNS
+do	VBP
+you	PRP
+
+
+want	VB
+to	TO
+access	NN
+.	.
+
+A	DT
+good	JJ
+brokering	NN
+system	NN
+,	,
+such	JJ
+as	IN
+InfoSleuthâ	NNP
+$	$
+™	CD
+s	NNS
+,	,
+should	MD
+go	VB
+beyond	IN
+syntactic	JJ
+brokering	NN
+.	.
+
+
+30	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+30	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+We	PRP
+described	VBD
+our	PRP$
+focused	VBN
+ontologies	NNS
+approach	NN
+,	,
+where	WRB
+agents	NNS
+can	MD
+specify	VB
+different	JJ
+aspects	NNS
+of	IN
+their	PRP$
+func	NN
+-	:
+
+
+tionality	NN
+using	VBG
+shared	VBN
+,	,
+specialized	VBN
+knowledge	NN
+.	.
+
+Advertising	NN
+and	CC
+querying	VBG
+is	VBZ
+done	VBN
+in	IN
+terms	NNS
+of	IN
+ontology	NN
+
+
+fragments	NNS
+expressed	VBN
+using	VBG
+XML	NN
+syntax	NN
+.	.
+
+This	DT
+enables	VBZ
+the	DT
+broker	NN
+to	TO
+both	CC
+access	NN
+stored	VBD
+information	NN
+gleaned	VBN
+
+
+from	IN
+agent	NN
+advertisements	NNS
+and	CC
+reason	NN
+over	IN
+that	DT
+information	NN
+when	WRB
+determining	VBG
+which	WDT
+agents	NNS
+provide	VBP
+a	DT
+set	NN
+
+
+of	IN
+requested	VBN
+services	NNS
+.	.
+
+
+A	DT
+single	JJ
+broker	NN
+can	MD
+accomplish	VB
+much	RB
+in	IN
+the	DT
+way	NN
+of	IN
+recommending	VBG
+resources	NNS
+and	CC
+assisting	VBG
+in	IN
+maintain	VBP
+-	:
+
+
+ing	VBG
+a	DT
+dynamic	JJ
+set	NN
+of	IN
+distributed	VBN
+computing	NN
+and	CC
+information	NN
+resources	NNS
+.	.
+
+However	RB
+,	,
+a	DT
+single	JJ
+broker	NN
+architecture	NN
+
+
+presents	VBZ
+a	DT
+barrier	NN
+to	TO
+scalability	NN
+and	CC
+robust	JJ
+operation	NN
+.	.
+
+We	PRP
+presented	VBD
+a	DT
+multibrokering	JJ
+peer-to-peer	NN
+architec	NN
+-	:
+
+
+ture	NN
+,	,
+where	WRB
+brokers	NNS
+maintain	VBP
+up-to-date	JJ
+information	NN
+about	IN
+other	JJ
+brokers	NNS
+as	RB
+well	RB
+as	IN
+other	JJ
+agents	NNS
+,	,
+couched	VBN
+in	IN
+
+
+terms	NNS
+of	IN
+a	DT
+broker	NN
+advertisements	NNS
+.	.
+
+We	PRP
+described	VBD
+how	WRB
+robust	JJ
+multibrokering	NN
+can	MD
+be	VB
+implemented	VBN
+,	,
+especially	RB
+
+
+in	IN
+terms	NNS
+of	IN
+how	WRB
+brokers	NNS
+discover	VBP
+other	JJ
+brokers	NNS
+and	CC
+how	WRB
+to	TO
+implement	VB
+inter-broker	JJ
+searches	NNS
+.	.
+
+We	PRP
+showed	VBD
+
+
+empirically	RB
+the	DT
+feasibility	NN
+of	IN
+multibrokering	NN
+,	,
+and	CC
+explored	VBD
+its	PRP$
+effectiveness	NN
+.	.
+
+Our	PRP$
+preliminary	JJ
+experiments	NNS
+
+
+were	VBD
+encouraging	VBG
+in	IN
+that	IN
+they	PRP
+showed	VBD
+the	DT
+feasibility	NN
+of	IN
+and	CC
+hinted	VBD
+at	IN
+the	DT
+scalability	NN
+of	IN
+the	DT
+multibrokering	VBG
+
+
+system	NN
+.	.
+
+The	DT
+distributed	VBN
+multibrokering	NN
+is	VBZ
+functional	JJ
+in	IN
+InfoSleuth	NNP
+and	CC
+has	VBZ
+been	VBN
+used	VBN
+successfully	RB
+in	IN
+EDEN	NNP
+
+
+project	NN
+-LSB-	-LRB-
+6	CD
+-RSB-	-RRB-
+and	CC
+Technology	NN
+Tracking	VBG
+project	NN
+-LSB-	-LRB-
+16	CD
+-RSB-	-RRB-
+.	.
+
+
+Because	IN
+it	PRP
+was	VBD
+impractical	JJ
+to	TO
+study	VB
+multibrokering	VBG
+in	IN
+very	RB
+large	JJ
+agent-based	JJ
+systems	NNS
+,	,
+we	PRP
+made	VBD
+use	NN
+of	IN
+
+
+an	DT
+agent	NN
+simulator	NN
+developed	VBN
+here	RB
+at	IN
+MCC	NN
+to	TO
+analyze	VB
+the	DT
+robustness	NN
+and	CC
+scalability	NN
+of	IN
+our	PRP$
+multibroker	NN
+-	:
+
+
+ing	VBG
+approach	NN
+as	IN
+the	DT
+agent	NN
+community	NN
+grows	VBZ
+in	IN
+size	NN
+.	.
+
+We	PRP
+analyzed	VBD
+the	DT
+scaling	NN
+behavior	NN
+of	IN
+our	PRP$
+specialized	VBN
+
+
+brokering	VBG
+approach	NN
+and	CC
+showed	VBD
+its	PRP$
+superior	JJ
+scalability	NN
+with	IN
+respect	NN
+to	TO
+replicated	VBN
+brokering	VBG
+systems	NNS
+.	.
+
+We	PRP
+
+
+experimented	VBN
+with	IN
+various	JJ
+topologies	NNS
+and	CC
+connectivity	NN
+properties	NNS
+of	IN
+the	DT
+brokers	NNS
+,	,
+enabling	VBG
+us	PRP
+to	TO
+determine	VB
+
+
+in	IN
+the	DT
+future	JJ
+what	WP
+the	DT
+most	RBS
+efï	JJ
+¬	NN
+cient	NN
+tradeoff	NN
+is	VBZ
+between	IN
+connectivity	NN
+and	CC
+brokering	VBG
+speed	NN
+and	CC
+robustness	NN
+.	.
+
+
+However	RB
+,	,
+we	PRP
+do	VBP
+recognize	VB
+the	DT
+drawbacks	NNS
+of	IN
+a	DT
+simulation-based	JJ
+approach	NN
+to	TO
+such	JJ
+experimentation	NN
+as	RB
+well	RB
+,	,
+
+
+including	VBG
+the	DT
+need	NN
+to	TO
+validate	VB
+the	DT
+behavior	NN
+of	IN
+the	DT
+simulator	NN
+against	IN
+the	DT
+real-life	JJ
+system	NN
+-LRB-	-LRB-
+whether	IN
+imple	NN
+-	:
+
+
+mented	JJ
+or	CC
+not	RB
+-RRB-	-RRB-
+,	,
+and	CC
+the	DT
+accuracy	NN
+of	IN
+the	DT
+settings	NNS
+of	IN
+the	DT
+myriad	JJ
+of	IN
+simulation	NN
+parameters	NNS
+such	JJ
+that	IN
+the	DT
+model	NN
+
+
+faithfully	RB
+represents	VBZ
+the	DT
+real-life	JJ
+components	NNS
+.	.
+
+Our	PRP$
+conï	NN
+¬	CD
+dence	NN
+in	IN
+our	PRP$
+simulator	NN
+and	CC
+our	PRP$
+conï	NN
+¬	NN
+guration	NN
+set	NN
+-	:
+
+
+tings	NNS
+should	MD
+continue	VB
+to	TO
+grow	VB
+as	IN
+we	PRP
+gain	VB
+more	RBR
+simulation	NN
+experience	NN
+.	.
+
+
+Acknowledgments	NNS
+
+
+The	DT
+authors	NNS
+would	MD
+like	VB
+to	TO
+acknowledge	VB
+the	DT
+members	NNS
+and	CC
+sponsors	NNS
+of	IN
+the	DT
+InfoSleuth	NNP
+group	NN
+for	IN
+their	PRP$
+help	NN
+
+
+in	IN
+the	DT
+brokering	VBG
+ideas	NNS
+presented	VBN
+in	IN
+this	DT
+paper	NN
+,	,
+including	VBG
+Amy	NNP
+Unruh	NNP
+,	,
+Gale	NNP
+Martin	NNP
+,	,
+Ray	NNP
+Shea	NNP
+and	CC
+Marek	NN
+
+
+Rusinkiewicz	NNP
+for	IN
+their	PRP$
+helpful	JJ
+comments	NNS
+on	IN
+the	DT
+text	NN
+.	.
+
+In	IN
+addition	NN
+,	,
+Damith	NNP
+Chandrasekara	NNP
+contributed	VBD
+sig	SYM
+-	:
+
+
+niï	NN
+¬	NN
+cantly	RB
+to	TO
+both	CC
+the	DT
+multibroker	JJ
+design	NN
+discussions	NNS
+and	CC
+the	DT
+implementation	NN
+.	.
+
+
+References	NNS
+
+
+-LSB-	-LRB-
+1	CD
+-RSB-	-RRB-
+Y.	NNP
+Arens	NNP
+,	,
+C.A.	NNP
+Knoblock	NNP
+,	,
+and	CC
+W.	NNP
+Shen	NNP
+.	.
+
+Query	NNP
+reformulation	NN
+for	IN
+dynamic	JJ
+information	NN
+integration	NN
+.	.
+
+
+Journal	NNP
+of	IN
+Intelligent	NNP
+Information	NNP
+Systems	NNP
+,	,
+6	CD
+-LRB-	-LRB-
+2	CD
+-RRB-	-RRB-
+,	,
+1996	CD
+.	.
+
+
+31	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+31	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+-LSB-	-LRB-
+2	CD
+-RSB-	-RRB-
+R.	NNP
+Bayardo	NNP
+and	CC
+et.al	NNP
+.	.
+
+InfoSleuth	NNP
+:	:
+Agent-based	JJ
+semantic	JJ
+integration	NN
+of	IN
+information	NN
+in	IN
+open	JJ
+and	CC
+dy	SYM
+-	:
+
+
+namic	JJ
+environments	NNS
+.	.
+
+In	IN
+Proc	NNP
+.	.
+
+ACM	NNP
+SIGMOD	NNP
+Intâ	NNP
+$	$
+™	CD
+l	NN
+Conference	NN
+on	IN
+Management	NN
+of	IN
+Data	NNS
+,	,
+1997	CD
+.	.
+
+
+-LSB-	-LRB-
+3	CD
+-RSB-	-RRB-
+D.	NNP
+Moran	NNP
+D.	NNP
+L.	NNP
+Martin	NNP
+,	,
+H.	NNP
+Oohama	NNP
+and	CC
+A.	NNP
+Cheyer	NNP
+.	.
+
+Information	NNP
+brokering	VBG
+in	IN
+an	DT
+agent	NN
+architecture	NN
+.	.
+
+In	IN
+
+
+Proc	NNP
+.	.
+
+Intâ	RB
+$	$
+™	CD
+l	NN
+Conference	NN
+on	IN
+the	DT
+Practical	NNP
+Application	NN
+of	IN
+Intelligent	NNP
+Agents	NNPS
+and	CC
+Multi-agent	JJ
+Technology	NN
+,	,
+
+
+1997	CD
+.	.
+
+
+-LSB-	-LRB-
+4	CD
+-RSB-	-RRB-
+K.	NNP
+Decker	NNP
+and	CC
+K.P.	NNP
+Sycara	NNP
+.	.
+
+Intelligent	JJ
+adaptive	JJ
+information	NN
+agents	NNS
+.	.
+
+Journal	NNP
+of	IN
+Intelligent	NNP
+Information	NNP
+
+
+Systems	NNPS
+,	,
+9	CD
+-LRB-	-LRB-
+3	CD
+-RRB-	-RRB-
+,	,
+1997	CD
+.	.
+
+
+-LSB-	-LRB-
+5	CD
+-RSB-	-RRB-
+K.	NNP
+Decker	NNP
+,	,
+M.	NNP
+Williamson	NNP
+,	,
+and	CC
+K.	NNP
+Sycara	NNP
+.	.
+
+Matchmaking	NN
+and	CC
+Brokering	NN
+.	.
+
+In	IN
+Proc	NNP
+.	.
+
+Intâ	RB
+$	$
+™	CD
+l	NN
+Conference	NN
+on	IN
+
+
+Multi-Agent	JJ
+Systems	NNPS
+,	,
+1996	CD
+.	.
+
+
+-LSB-	-LRB-
+6	CD
+-RSB-	-RRB-
+Jerry	NNP
+Fowler	NNP
+,	,
+Marian	NNP
+Nodine	NNP
+,	,
+Brad	NNP
+Perry	NNP
+,	,
+and	CC
+Bruce	NNP
+Bargmeyer	NNP
+.	.
+
+Agent-based	JJ
+semantic	JJ
+interoperabil	NN
+-	:
+
+
+ity	NN
+in	IN
+infosleuth	NN
+.	.
+
+Sigmod	NNP
+Record	NNP
+,	,
+28	CD
+-LRB-	-LRB-
+1	CD
+-RRB-	-RRB-
+:60	CD
+â	NN
+$	$
+``	``
+67	CD
+,	,
+March	NNP
+1999	CD
+.	.
+
+
+-LSB-	-LRB-
+7	CD
+-RSB-	-RRB-
+M.R.	NNP
+Genesereth	NNP
+,	,
+A.	NNP
+Keller	NNP
+,	,
+and	CC
+O.M.	NNP
+Duschka	NNP
+.	.
+
+Infomaster	NNP
+:	:
+An	DT
+Information	NN
+Integration	NN
+System	NN
+.	.
+
+In	IN
+
+
+Proc	NNP
+.	.
+
+ACM	NNP
+SIGMOD	NNP
+Intâ	NNP
+$	$
+™	CD
+l	NN
+Conference	NN
+on	IN
+Management	NN
+of	IN
+Data	NNS
+,	,
+1997	CD
+.	.
+
+
+-LSB-	-LRB-
+8	CD
+-RSB-	-RRB-
+IONA	NNP
+.	.
+
+White	NNP
+paper	NN
+on	IN
+orbix	NN
+trader	NN
+.	.
+
+Technical	NNP
+report	NN
+,	,
+IONA	NNP
+Technologies	NNPS
+,	,
+http://www.iona.com/	NN
+,	,
+
+
+1999	CD
+.	.
+
+
+-LSB-	-LRB-
+9	CD
+-RSB-	-RRB-
+L.	NNP
+Kerschberg	NNP
+.	.
+
+The	DT
+role	NN
+of	IN
+intelligent	JJ
+software	NN
+agents	NNS
+in	IN
+advanced	JJ
+information	NN
+systems	NNS
+.	.
+
+In	IN
+Proc	NNP
+.	.
+
+
+British	NNP
+National	NNP
+Conference	NNP
+on	IN
+Databases	NNPS
+,	,
+1997	CD
+.	.
+
+
+-LSB-	-LRB-
+10	CD
+-RSB-	-RRB-
+D.	NNP
+Kuokka	NNP
+and	CC
+L.	NNP
+Harada	NNP
+.	.
+
+On	IN
+using	VBG
+KQML	NN
+for	IN
+matchmaking	NN
+.	.
+
+In	IN
+ICMAS	NN
+,	,
+pages	NNS
+239â	VBP
+$	$
+``	``
+254	CD
+,	,
+1995	CD
+.	.
+
+
+-LSB-	-LRB-
+11	CD
+-RSB-	-RRB-
+D.	NNP
+Kuokka	NNP
+and	CC
+L.	NNP
+Harada	NNP
+.	.
+
+Integrating	VBG
+information	NN
+via	IN
+matchmaking	NN
+.	.
+
+Journal	NNP
+of	IN
+Intelligent	NNP
+Informa	NNP
+-	:
+
+
+tion	NN
+Systems	NNPS
+,	,
+6	CD
+-LRB-	-LRB-
+2	CD
+-RRB-	-RRB-
+,	,
+1996	CD
+.	.
+
+
+-LSB-	-LRB-
+12	CD
+-RSB-	-RRB-
+A.	NN
+Levy	NNP
+,	,
+D.	NNP
+Srivastava	NNP
+,	,
+and	CC
+T.	NNP
+Kirk	NNP
+.	.
+
+Data	NNS
+model	NN
+and	CC
+query	NN
+evaluation	NN
+in	IN
+global	JJ
+information	NN
+systems	NNS
+.	.
+
+
+Journal	NNP
+of	IN
+Intelligent	NNP
+Information	NNP
+Systems	NNP
+,	,
+5	CD
+-LRB-	-LRB-
+2	CD
+-RRB-	-RRB-
+,	,
+1995	CD
+.	.
+
+
+-LSB-	-LRB-
+13	CD
+-RSB-	-RRB-
+Alon	NNP
+Y.	NNP
+Levy	NNP
+,	,
+Anand	NNP
+Rajaraman	NNP
+,	,
+and	CC
+Joann	NNP
+J.	NNP
+Ordille	NNP
+.	.
+
+Querying	VBG
+heterogeneous	JJ
+information	NN
+sources	NNS
+
+
+using	VBG
+source	NN
+descriptions	NNS
+.	.
+
+In	IN
+Proc	NNP
+.	.
+
+Intâ	RB
+$	$
+™	CD
+l	NN
+Conference	NN
+on	IN
+Very	RB
+Large	JJ
+Data	NNS
+Bases	NNS
+,	,
+1996	CD
+.	.
+
+
+-LSB-	-LRB-
+14	CD
+-RSB-	-RRB-
+McGuire	NNP
+,	,
+Kuokka	NNP
+,	,
+Weber	NNP
+,	,
+Tenenbaum	NNP
+,	,
+Gruber	NNP
+,	,
+and	CC
+Olsen	NNP
+.	.
+
+SHADE	VB
+:	:
+Technology	NNP
+for	IN
+knowledge	NN
+-	:
+
+
+based	VBN
+collaborative	JJ
+engineering	NN
+.	.
+
+Journal	NNP
+of	IN
+Concurrent	JJ
+Engineering	NNP
+:	:
+Research	NNP
+and	CC
+Applications	NNS
+,	,
+
+
+1	CD
+-LRB-	-LRB-
+3	CD
+-RRB-	-RRB-
+,	,
+1993	CD
+.	.
+
+
+-LSB-	-LRB-
+15	CD
+-RSB-	-RRB-
+Garcia	NNP
+Molina	NNP
+and	CC
+et.al	NNP
+.	.
+
+The	DT
+TSIMMIS	NN
+approach	NN
+to	TO
+mediation	NN
+:	:
+Data	NNP
+models	NNS
+and	CC
+languages	NNS
+.	.
+
+Journal	NNP
+
+
+of	IN
+Intelligent	NNP
+Information	NNP
+Systems	NNP
+,	,
+8	CD
+-LRB-	-LRB-
+2	CD
+-RRB-	-RRB-
+,	,
+1997	CD
+.	.
+
+
+32	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+32	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+-LSB-	-LRB-
+16	CD
+-RSB-	-RRB-
+Marian	NNP
+Nodine	NNP
+,	,
+Jerry	NNP
+Fowler	NNP
+,	,
+Tomasz	NNP
+Ksiezyk	NNP
+,	,
+Brad	NNP
+Perry	NNP
+,	,
+Malcolm	NNP
+Taylor	NNP
+,	,
+and	CC
+Amy	NNP
+Unruh	NNP
+.	.
+
+Ac	SYM
+-	:
+
+
+tive	JJ
+information	NN
+gathering	NN
+in	IN
+InfoSleuth	NNP
+.	.
+
+International	NNP
+Journal	NNP
+of	IN
+Cooperative	NNP
+Information	NNP
+Systems	NNP
+,	,
+
+
+9	CD
+-LRB-	-LRB-
+1/2	CD
+-RRB-	-RRB-
+:3	CD
+â	NN
+$	$
+``	``
+28	CD
+,	,
+2000	CD
+.	.
+
+
+-LSB-	-LRB-
+17	CD
+-RSB-	-RRB-
+Hyacinth	NNP
+Nwana	NNP
+,	,
+Divine	NNP
+Ndumu	NNP
+,	,
+Lyndon	NNP
+Lee	NNP
+,	,
+and	CC
+Jaron	NNP
+Collis	NNP
+.	.
+
+ZEUS	NNS
+:	:
+A	DT
+tool-kit	NN
+for	IN
+building	VBG
+dis	SYM
+-	:
+
+
+tributed	VBN
+multi-agent	JJ
+systems	NNS
+.	.
+
+Applied	NNP
+Artiï	NNP
+¬	CD
+cal	JJ
+Intelligence	NNP
+Journal	NNP
+,	,
+13	CD
+-LRB-	-LRB-
+1	CD
+-RRB-	-RRB-
+:129	CD
+â	NN
+$	$
+``	``
+186	CD
+,	,
+1999	CD
+.	.
+
+
+-LSB-	-LRB-
+18	CD
+-RSB-	-RRB-
+OMG	NNP
+.	.
+
+OMG	NN
+trading	NN
+object	NN
+service	NN
+speciï	NN
+¬	CD
+cation	NN
+.	.
+
+Technical	NNP
+Report	NNP
+97-12-02	CD
+,	,
+Object	NNP
+Management	NNP
+
+
+Group	NNP
+,	,
+http://www.omg.org/corba	NN
+,	,
+1997	CD
+.	.
+
+
+-LSB-	-LRB-
+19	CD
+-RSB-	-RRB-
+Amit	NNP
+P.	NNP
+Sheth	NNP
+and	CC
+James	NNP
+A.	NNP
+Larson	NNP
+.	.
+
+Federated	NNP
+database	NN
+systems	NNS
+for	IN
+managing	VBG
+distributed	VBN
+,	,
+heteroge	NN
+-	:
+
+
+neous	JJ
+,	,
+and	CC
+autonomous	JJ
+databases	NNS
+.	.
+
+ACM	NNP
+Computing	NNP
+Surveys	NNS
+,	,
+22	CD
+-LRB-	-LRB-
+3	CD
+-RRB-	-RRB-
+:183	CD
+â	NN
+$	$
+``	``
+236	CD
+,	,
+September	NNP
+1990	CD
+.	.
+
+
+-LSB-	-LRB-
+20	CD
+-RSB-	-RRB-
+Katia	NNP
+Sycara	NNP
+,	,
+Matthias	NNP
+Klusch	NNP
+,	,
+Seth	NNP
+Widoff	NNP
+,	,
+and	CC
+Jianguo	NNP
+Lu	NNP
+.	.
+
+Dynamic	NNP
+service	NN
+matchmaking	NN
+among	IN
+
+
+agents	NNS
+in	IN
+open	JJ
+information	NN
+environments	NNS
+.	.
+
+SIGMOD	NNP
+Record	NNP
+,	,
+1999	CD
+.	.
+
+
+-LSB-	-LRB-
+21	CD
+-RSB-	-RRB-
+Katia	NNP
+Sycara	NNP
+,	,
+Jianguo	NNP
+Lu	NNP
+,	,
+Matthias	NNP
+Klusch	NNP
+,	,
+and	CC
+Seth	NNP
+Widoff	NNP
+.	.
+
+Matchmaking	NN
+among	IN
+heterogeneous	JJ
+
+
+agents	NNS
+on	IN
+the	DT
+internet	NN
+.	.
+
+In	IN
+Proceedings	NNP
+of	IN
+the	DT
+AAAI	NNP
+Spring	NNP
+Symposium	NNP
+on	IN
+Intelligent	NNP
+Agents	NNPS
+in	IN
+Cy	NNP
+-	:
+
+
+berspace	NN
+,	,
+1999	CD
+.	.
+
+
+-LSB-	-LRB-
+22	CD
+-RSB-	-RRB-
+A.	NN
+Tomasic	NNP
+,	,
+L.	NNP
+Raschid	NNP
+,	,
+and	CC
+P.	NNP
+Valduriez	NNP
+.	.
+
+Scaling	VBG
+heterogeneous	JJ
+databases	NNS
+and	CC
+the	DT
+design	NN
+of	IN
+DISCO	NNP
+.	.
+
+
+In	IN
+Proc	NNP
+.	.
+
+Intâ	RB
+$	$
+™	CD
+l	NN
+Conference	NN
+of	IN
+Distributed	VBN
+Computing	NNP
+Systems	NNPS
+,	,
+1996	CD
+.	.
+
+
+33	CD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+33	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+

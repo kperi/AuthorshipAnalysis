@@ -1,0 +1,3215 @@
+Chapter 9 
+
+
+
+Clustering High-Dimensional Data 
+
+
+
+Arthur Zimek 
+
+University of Alberta 
+
+Edmonton, Canada 
+
+zimek@ualberta.ca 
+
+
+
+9.1         Introduction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 201 
+
+9.2         The  “Curse of Dimensionality” . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   202 
+
+           9.2.1         Different Aspects of the  “Curse”  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      202 
+
+           Aspect 1: Optimization Problem . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    202 
+
+           Aspect 2: Concentration Effect of Lp -Norms          . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      203 
+
+           Aspect 3: Irrelevant Attributes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 204 
+
+           Aspect 4: Correlated Attributes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 204 
+
+           Aspect 5: Varying Relative Volume of an e-Hypersphere  . . . . . . . . . . . . . . . . . . . . . . . . . . . .                          205 
+
+           9.2.2         Consequences  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 206 
+
+9.3         Clustering Tasks in Subspaces of High-Dimensional Data                        . . . . . . . . . . . . . . . . . . . . . . . . . .      206 
+
+           9.3.1         Categories of Subspaces . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 206 
+
+                         9.3.1.1            Axis-Parallel Subspaces  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   206 
+
+                         9.3.1.2            Arbitrarily Oriented Subspaces      . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      207 
+
+                         9.3.1.3            Special Cases . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 207 
+
+           9.3.2         Search Spaces for the Clustering Problem           . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      207 
+
+9.4         Fundamental Algorithmic Ideas . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    208 
+
+           9.4.1         Clustering in Axis-Parallel Subspaces      . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      208 
+
+                         9.4.1.1            Cluster Model . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 208 
+
+                         9.4.1.2            Basic Techniques . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 208 
+
+                         9.4.1.3            Clustering Algorithms . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  210 
+
+           9.4.2         Clustering in Arbitrarily Oriented Subspaces             . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      215 
+
+                         9.4.2.1            Cluster Model . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 215 
+
+                         9.4.2.2            Basic Techniques and Example Algorithms                     . . . . . . . . . . . . . . . . . . .      216 
+
+9.5         Open Questions and Current Research Directions                . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      218 
+
+9.6         Conclusion . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 219 
+
+            Bibliography . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 220 
+
+
+
+9.1       Introduction 
+
+
+
+      The general de?nition of the task of clustering as to? nd a set of groups of similar objects within 
+
+a data set while keeping dissimilar objects separated in different groups or the group of noise is very 
+
+common. Although Estivill-Castro criticizes this de?nition for including a grouping criterion [47], 
+
+this criterion (similarity) is exactly what is in question among many different approaches. Especially 
+
+in high-dimensional data, the meaning and de?nition of similarity is right at the heart of the problem. 
+
+In many cases, the similarity of objects is assessed within subspaces, e.g., using a subset of the 
+
+
+
+                                                                                                                                                201 
+
+
+----------------------- Page 228-----------------------
+
+202                              Data Clustering: Algorithms and Applications 
+
+
+
+dimensions only, or a combination of (a subset of) the dimensions. These are the so-called subspace 
+
+clustering algorithms. Note that for different clusters within one and the same clustering solution 
+
+usually different subspaces are relevant. Therefore subspace clustering algorithms cannot be thought 
+
+of as variations of usual clustering algorithms using just a different de?nition of similarity. Instead, 
+
+the similarity measure and the clustering solution are usually derived simultaneously and depend on 
+
+each other. In this overview, we focus on these methods. The emerging ?eld of subspace clustering 
+
+is  still  raising  a  lot  of  open  questions.  Many  methods have  been  proposed, though, putting  the 
+
+emphasis on different aspects of the problem. 
+
+    While we give a concise overview on the problems,1 the problem settings, and types of solutions, 
+
+
+
+other overviews on the topic of subspace clustering can be found in the literature. The ?rst survey 
+
+to discuss the young ?eld was presented by Parsons et al. [114]. This survey earned the merits of 
+
+putting the community’s attention to the problem and sketching a couple of early algorithms. Later 
+
+on, however, the problem was studied in much more detail and categories of similar approaches have 
+
+been de?ned [90]. A short discussion of the fundamental problems and strategies has been provided 
+
+by Kr¨oger and Zimek [94]. Vidal focused on a speci?c subtype of the problem from the point of 
+
+view of machine learning and computer vision [128]. Assent gives an overview in the context of 
+
+high-dimensional data of different provenance, including time series and text documents [17]. Sim 
+
+et al. [122] discuss “enhanced” subspace clustering; i.e., they point out speci?c open problems in 
+
+the  ?eld  and  discuss  methods speci?cally  addressing those  problems.  Kriegel et  al.  [91]  give  a 
+
+concise overview and point to open questions as well. Some recent textbooks [73, 57] sketch some 
+
+example algorithms and cursorily touch on some problems. Recent experimental evaluation studies 
+
+have covered some selections of a speci?c subtype of subspace clustering, algorithms for clustering 
+
+in axis-parallel subspaces [104, 108]. 
+
+     As a book chapter, this survey is intended to give an overview on the fundamental problems 
+
+that  clustering is  confronted with  in  high-dimensional data  (associated with  the  infamous curse 
+
+of dimensionality —Section 9.2). Based on that, we sketch (Section 9.3) the basic problem setting 
+
+for  specialized  algorithms (known as subspace clustering, projected  clustering ,  and  the  like)  as 
+
+well as some fundamental algorithms (Section 9.4). Finally, we point to open questions and issues 
+
+of ongoing research in this area (Section 9.5), and we summarize and conclude the discussion in 
+
+Section 9.6. 
+
+
+
+9.2     The “Curse of Dimensionality” 
+
+
+
+9.2.1     Different Aspects of the “Curse” 
+
+
+
+     The  motivation of  specialized  solutions  for  analyzing  high-dimensional data  has  often  been 
+
+given with a general reference to the so-called curse of dimensionality. This general term relates to 
+
+a bundle of rather different problems. Some of these are elaborated in more detail in the literature 
+
+concerned with index structures [30]. Here, we highlight aspects of the problem that are often seen 
+
+in relation to subspace clustering although they are of different nature and importance [90, 91]. 
+
+
+
+Aspect 1: Optimization Problem 
+
+
+
+     Historically, the ?rst aspect has been described by Bellman [23], who coined the term “curse 
+
+of  dimensionality” in  the  context of  optimization problems. Clearly  the  dif?culty of  any  global 
+
+optimization approach increases exponentially with an increasing number of variables (dimensions). 
+
+
+
+   1This chapter is based on previously published surveys [90, 91] but it provides some updates as well as occasionally more 
+
+
+
+detailed explanations, and it rounds things off in a partly different way. 
+
+
+----------------------- Page 229-----------------------
+
+                                 Clustering High-Dimensional Data                                           203 
+
+
+
+This problem is particularly well known in the area of pattern recognition. At a general level, this 
+
+problem relates to the clustering problem. Seeking a clustering of a data set is assuming that the 
+
+data are generated by several functions (statistical processes). Hence, ideally, a clustering model 
+
+would enable the user to identify the functional dependencies resulting in the data set at hand and, 
+
+thus, to eventually ?nd new and interesting insights in the domain of the data set (i.e., models of the 
+
+statistical processes). Those functions are more complex when several attributes contribute to the 
+
+actual relationships. 
+
+
+
+Aspect 2: Concentration Effect of Lp -Norms 
+
+
+
+    The second aspect of the curse of dimensionality is the deterioration of expressiveness of the 
+
+most commonly used similarity measures, the Lp -norms, with increasing dimensionality. In their 
+
+general form, for x ,y ? Rd , Lp -norms are given as 
+
+
+
+                                                           
+
+                                                           
+
+                                                            d 
+
+                                                        p              p 
+
+                                      x -y         =          |x -y  |  .                                (9.1) 
+
+                                              p            ? i       i 
+
+                                                           i=1 
+
+
+
+The choice of p  is crucial in high-dimensional data according to several studies [27, 76, 11]. The 
+
+key result of Beyer et al. [27] states the following: if the ratio of the variance of the length of any 
+
+point vector x ? Rd    (denoted by  x ) to the length of the mean point vector (denoted by E [x ]) 
+
+
+
+converges to zero with increasing data dimensionality, then the proportional difference between the 
+
+farthest-point distance Dmax     and  the  closest-point distance Dmin     (the relative  contrast) vanishes. 
+
+Formally: 
+
+                           lim var      x      = 0      =?     Dmax -Dmin     ? 0.                       (9.2) 
+
+
+
+                           d ?8       E [x ]                        Dmin 
+
+
+
+The precondition has been described as being valid for a broad range of data distributions. Intu- 
+
+itively, the relative contrast of (Lp ) distances does diminish as the dimensionality increases. This 
+
+concentration effect of the distance measure reduces the utility of the measure for discrimination. 
+
+
+
+                                Distance Concentration and Clustering 
+
+
+
+      The distance-concentration effect means that far and close neighbors have similar distances, 
+
+  if they belong to the same distribution (and some mild conditions apply on the nature of the dis- 
+
+  tribution). As clustering is concerned with data from different distributions, the crucial question 
+
+  is whether these distributions are suf?ciently separated. In that case, distance concentration is 
+
+  not an issue for the separation of different clusters. 
+
+
+
+    The behavior of integer Lp -norms (i.e., p  ? N) in high-dimensional spaces has been studied by 
+
+Hinneburg et al. [76]. The authors showed by means of an analytic argument that L 1 and L2  are the 
+
+only integer norms useful for higher-dimensional spaces. In addition, they studied the use of projec- 
+
+tions for discrimination, the effectiveness of which depends on localized dissimilarity measures that 
+
+did not satisfy the symmetry and triangle inequality conditions of distance metrics. Fractional Lp 
+
+distance measures (with 0 < p  < 1) have been studied in a similar context by Aggarwal et al. [11]. 
+
+The authors observe that smaller values of p offer better results in higher-dimensional settings.2 
+
+
+
+    These studies are often quoted as a motivation of specialized approaches in high-dimensional 
+
+data. It should be noted, though, that all these studies generally assume that the complete data set 
+
+follow a single data distribution, subject to certain restrictions. When the data, instead, is actually 
+
+
+
+   2 The concentration of the cosine similarity has been studied by Radovanovi´c et al. [119]. 
+
+
+----------------------- Page 230-----------------------
+
+204                            Data Clustering: Algorithms and Applications 
+
+
+
+generated by a mixture of distributions, the concentration effect is not always observed. To notice 
+
+this is important here, as clustering is usually concerned with data generated by different distribu- 
+
+tions, ideally with one of the resulting clusters capturing one of the distributions. 
+
+    Distances between members of different distributions may not necessarily tend to the global 
+
+mean as the dimensionality increases. The fundamental differences between data following a single 
+
+distribution and data following several distributions are discussed in detail by Bennett et al. [25]. The 
+
+authors demonstrate that nearest-neighbor queries are both theoretically and practically meaningful 
+
+when the search is limited to objects from the same cluster (distribution) as the query point, and 
+
+other clusters (distributions) are well separated from the cluster in question. The key concept is that 
+
+of pairwise stability of clusters, which is said to hold whenever the mean distance between points of 
+
+different clusters dominates the mean distance between points belonging to the same cluster. When 
+
+the clusters are pairwise stable, for any point belonging to a given cluster, its nearest neighbors 
+
+tend to belong to the same cluster. Here, a nearest-neighbor query whose size is of the order of 
+
+the cluster size can be considered meaningful, whereas differentiation between nearest and farthest 
+
+neighbors within the same  cluster  may still be  meaningless. Overall, this aspect of  the curse  of 
+
+dimensionality is anything but well studied, as noted recently [54]. Nevertheless, this aspect should 
+
+be considered as a serious impediment for any data mining, indexing, or similarity search application 
+
+in  high-dimensional data. Recent studies discuss in  practical settings this aspect of  the curse  of 
+
+dimensionality and  highlight that  it  does not apply when  the  data  are  following different, well- 
+
+separated distributions [78, 26], since in that case the precondition does not hold. Hence, regarding 
+
+the separation of clusters, the following aspects are far more important in the scenario of subspace 
+
+clustering. 
+
+
+
+Aspect 3: Irrelevant Attributes 
+
+
+
+    A third aspect is often confused with the previous aspect but it is actually independent. In order to 
+
+?nd rules describing some occurring phenomena, in many domains a glut of data is collected where 
+
+single entities are described with many possibly related attributes. Among the features of a high- 
+
+dimensional data set, for any given query object, many attributes can be expected to be irrelevant to 
+
+describing that object. Irrelevant attributes can interfere with the performance of similarity queries 
+
+for that object. The relevance of certain attributes may differ for different groups of objects within 
+
+the same data set. Thus, since groups of data are de?ned by some of the available attributes only, 
+
+many irrelevant attributes may interfere with the efforts to ?nd these groups. Irrelevant attributes are 
+
+often also referred to as “noise.” 
+
+
+
+                 Distance Concentration, Clustering, and Relevance of Attributes 
+
+
+
+      There is an important interplay between Aspect 3 and Aspect 2, as many additional irrel- 
+
+  evant  attributes  (noisy  features)  can  obfuscate  the  separation  of  different distributions  in  the 
+
+  high-dimensional space. This has been studied in detail by Houle et al. [78]. Additional rele- 
+
+  vant attributes, i.e., attributes that carry information regarding the separation of different distri- 
+
+  butions are actually helpful rather than proving to be obstacles. In that case, more dimensions 
+
+  will actually make the clustering easier instead of more dif?cult! 
+
+
+
+Aspect 4: Correlated Attributes 
+
+
+
+    In a data set containing many attributes, there may be some correlations among subsets of at- 
+
+tributes. From the point of view of feature reduction, all but one of these attributes may be redun- 
+
+dant. However, from the point of view of a domain scientist who collected these attributes in the 
+
+?rst place, it may be an interesting new insight that there are so far unknown connections between 
+
+features [5]. As for the previous problem, this phenomenon may be differently relevant for different 
+
+
+----------------------- Page 231-----------------------
+
+                                  Clustering High-Dimensional Data                                            205 
+
+
+
+subgroups of a data set as correlations among attributes that are characteristic for a cluster will be 
+
+different for other clusters of the data set. 
+
+    With respect to spatial queries, the observation that the intrinsic dimensionality of a data set 
+
+usually is lower than the embedding dimensionality (based on interdependencies among attributes) 
+
+has often been attributed to overcoming the curse of dimensionality [48, 24, 113, 85]. Durrant and 
+
+Kab´an [45] show that the correlation between attributes is actually an important effect for avoiding 
+
+the concentration of distances. Correlated attributes will probably also result in an intrinsic dimen- 
+
+sionality that is considerably lower than the representational (embedding) dimensionality. This ef- 
+
+fect led to confronting the curse of dimensionality with the self-similarity blessing [85]. As opposed 
+
+to the conjecture of Beyer et al. [27] and Franc¸ois et al. [54], however, Durrant and Kab´an [45] 
+
+also show that a low intrinsic dimensionality alone does not suf?ce to avoid the concentration, but 
+
+essentially the correlation between attributes needs to be strong enough. Let us note that, actually, 
+
+different aspects such  as a  strong cluster-structure of  data [25]  and low intrinsic dimensionality 
+
+[85] may be merely symptoms for a strong, though possibly latent, correlation between attributes. 
+
+Durrant and Kab´an also identify irrelevant dimensions as the core of the problem of the curse. In 
+
+essence, the ratio between noise (e.g., irrelevant attributes or additive noise masking information 
+
+in relevant attributes) and (latent) correlation in the attributes of a dataset will determine whether 
+
+asking for the “nearest neighbor” is actually meaningful or not. 
+
+
+
+                       Intrinsic Dimensionality vs. Embedding Dimensionality 
+
+      An important implication of a strong correlation between several attributes is that the so- 
+
+  called intrinsic dimensionality of a data set can be considerably lower than the so-called embed- 
+
+  ding dimensionality, i.e., the number of features of the data set. In short, the intrinsic dimen- 
+
+  sionality (or expansion dimension), as opposed to the embedding dimensionality, describes how 
+
+  much space is actually used by the data. These concepts have been discussed, e.g., by Gupta et 
+
+  al. [65]. 
+
+      However, Aspects 1, 2, and 3 could still apply, depending on the number and nature of the 
+
+  remaining uncorrelated attributes. 
+
+
+
+Aspect 5: Varying Relative Volume of an e-Hypersphere 
+
+
+
+    The relative volume of an e-hypersphere (i.e., using the L2 -norm as query distance) as compared 
+
+to the volume of the data space varies extremely with the change of dimensionality. The data space is 
+
+usually seen as a hypercube. Hence, the possibly maximally occurring distance (along the diagonal) 
+
+is  growing  with  the  square  root  of  the  dimensionality. If  we  choose  e big  enough  to  cover  the 
+
+complete data space in one or two dimensions, slowly but steadily the corners of the data space 
+
+will grow beyond the range of the hypersphere. Figuratively speaking, we could imagine the high- 
+
+dimensional data space almost consisting of only corners. 
+
+    As a consequence, what may seem a reasonable value of efor a 3-dimensional query space may 
+
+in a 20-dimensional space be extremely unrealistic (i.e., the corresponding query is a priori unlikely 
+
+to contain any point at all) or, vice versa, choosing ebig enough to cover some reasonable volume in 
+
+a 20-dimensional space would engulf some 3-dimensional subspace completely. This is an effect to 
+
+keep in mind when designing subspace clustering algorithms. This effect (among others) has been 
+
+discussed in more detail, although with respect to outlier detection in high-dimensional data, by 
+
+Zimek et al. [142]. 
+
+
+----------------------- Page 232-----------------------
+
+206                            Data Clustering: Algorithms and Applications 
+
+
+
+9.2.2    Consequences 
+
+
+
+     The  third  and  fourth of  these  aspects  of  the  curse  of  dimensionality have  been  actually  the 
+
+main motivation for developing specialized methods for clustering in subspaces of potentially high- 
+
+dimensional data even though this was not always clearly recognized. The super?cial reference to 
+
+the second aspect that can often be found in the literature misses the point. But even so the proposed 
+
+ approaches, perhaps partly unintentionally, actually tackled mainly Aspect 3 and Aspect 4. 
+
+     For decades, research in statistics was concerned with the effect of irrelevant (noise) attributes 
+
+ (sometimes called masking variables [53]) on the performance of clustering algorithms [100, 52, 59, 
+
+ 127]. They discuss how to identify such noise attributes that do not contribute to the cluster structure 
+
+ at all. The clustering task should then concentrate on the remaining attributes only. In some cases, the 
+
+contribution of attributes may be weighted instead of a discrete decision (contributing or masking). 
+
+This view of the problem is obviously closely related to dimensionality reduction [66, 132]. 
+
+     The ?eld of subspace clustering as we sketch it here assumes a more complex view. The reason- 
+
+ing is that dimensionality reduction as a ?rst step prior to clustering is not always resolving these 
+
+issues since the correlation of attributes or the relevance vs. irrelevance of attributes is usually char- 
+
+ acteristic for some clusters but not for complete data sets. In other words, masking variables may be 
+
+masking certain clusters but may help to discover others. 
+
+     The phenomenon that different features or a different correlation of features may be relevant for 
+
+different clusters within a single clustering solution has been called local feature relevance or local 
+
+feature correlation  [90]. Feature selection or dimensionality reduction techniques are global in the 
+
+following sense: they generally compute only one subspace of the original data space in which the 
+
+clustering can then be performed. In contrast, the problem of local feature relevance or local fea- 
+
+ ture correlation describes the observation that multiple subspaces are needed because each cluster 
+
+may exist in a different subspace. The critical requirement for the design of subspace clustering 
+
+ algorithms is hence the integration of some heuristic for deriving the characteristic subspace for a 
+
+certain subgroup of a data set with some heuristic for ?nding a certain subgroup of a data set that 
+
+exhibits a suf?cient level of similarity in a certain subspace of the data space — obviously a circular 
+
+dependency of two subtasks (subspace determination vs. cluster assignment) already in the most 
+
+basic problem description. 
+
+     Aspect 5 is a problem whenever e-range queries of different dimensionality are compared, which 
+
+is done in many of the available algorithms. 
+
+
+
+9.3     Clustering Tasks in Subspaces of High-Dimensional Data 
+
+
+
+     For the design of speci?c clustering algorithms suitable for high-dimensional data all the aspects 
+
+of the curse of dimensionality, as sketched above, are relevant. However, motivating specialized 
+
+ approaches to clustering in subspaces are mainly the phenomena of irrelevant attributes (Aspect 3) 
+
+ and correlated attributes (Aspect 4). These two phenomena result in different types of subspaces 
+
+which pose different challenges to concrete algorithms. 
+
+
+
+9.3.1    Categories of Subspaces 
+
+
+
+9.3.1.1    Axis-Parallel Subspaces 
+
+
+
+     The distinction between relevant and irrelevant attributes generally assumes that the variance of 
+
+the occurring values for a relevant attribute over all points of the corresponding cluster is rather small 
+
+compared to the overall range of attribute values whereas the variance for irrelevant attributes within 
+
+
+----------------------- Page 233-----------------------
+
+                                     Clustering High-Dimensional Data                                                  207 
+
+
+
+a given cluster is high (or indistinguishable from the values of the same attribute for other clusters 
+
+or for background noise). For example, one could assume a relevant attribute for a given cluster 
+
+being normally distributed with a small standard deviation whereas irrelevant attribute values are 
+
+uniformly distributed over the complete data space. The geometrical intuition of these assumptions 
+
+relates to the points of a cluster being widely scattered in the direction of irrelevant axes while being 
+
+densely clustered along relevant attributes. When selecting the relevant attributes only (by projection 
+
+onto the corresponding subspace, i.e., the subspace spanned by these attributes), the cluster would 
+
+appear as a full-dimensional cluster in this subspace. In the full-dimensional space (including also 
+
+the irrelevant attributes) the cluster points form a hyperplane parallel to the irrelevant axes. Due to 
+
+this geometrical appearance, this type of cluster is addressed as an axis-parallel subspace cluster. 
+
+
+
+9.3.1.2     Arbitrarily Oriented Subspaces 
+
+
+
+     If two attributes ai  and aj    are linearly correlated for a set of points, the points will be scattered 
+
+along a hyperplane de?ned by some linear dependency between both attributes that corresponds to 
+
+the correlation. The subspace orthogonal to this hyperplane is then a subspace where the points clus- 
+
+ter densely irrespective of the variance of combined values of a               and a  . This subspace is arbitrarily 
+
+                                                                              i       j 
+
+oriented and hence the more general case compared to axis-parallel subspaces. 
+
+
+
+9.3.1.3     Special Cases 
+
+
+
+     While the aforementioned types of subspaces have a direct relationship to aspects of the curse 
+
+of dimensionality as discussed above, it should be noted that from the point of view of existing clus- 
+
+tering algorithms there are special types of subspaces. In fact, there is a large family of algorithms, 
+
+addressed as “bi-clustering,” “co-clustering,” “two-mode clustering,” or “pattern-based clustering” 
+
+[90, 99]. 
+
+     Considering the spatial intuition of subspaces for subspace clustering, these algorithms address 
+
+different kinds of subspaces such as very speci?c rotations only (e.g., points that form a cluster are 
+
+scattered along the bisecting line) or speci?c half-spaces (e.g., in some subspace, only points located 
+
+on one side of the bisecting line can form a cluster). Thus, the types of the subspaces considered by 
+
+these methods do not directly relate to the phenomena of the curse of dimensionality discussed here 
+
+but rather are the products of speci?c cluster models. 
+
+     As these clustering methods are predominantly used in biological data analysis, refer to Chapter 
+
+16 for an overview on this family of methods. The spatial intuition that comes with these cluster 
+
+models has been elaborated in detail by Kriegel et al. [90]. 
+
+
+
+9.3.2     Search Spaces for the Clustering Problem 
+
+
+
+     Recognizing the different categories of subspaces can guide us to recognize different categories 
+
+of subspace clustering algorithms. If we describe the problem in general as? nd clusters, where each 
+
+cluster can reside in a different subspace, it is obvious that the problem of ?nding the subspaces 
+
+containing clusters is in general intractable. The number of arbitrarily oriented subspaces is in?nite. 
+
+Even the number of axis-parallel subspaces is exponential in the number of dimensions (we can see 
+
+this as a result of the ?rst aspect of the curse of dimensionality). Also, since different subspaces 
+
+can  be  relevant for  different clusters,  global feature reduction is  not  a  solution. Aside  from the 
+
+search space for interesting subspaces, the search space for clustering solutions is also challenging, 
+
+as clustering in general is an NP-complete problem [125]. Even worse here: the search for clusters 
+
+and the search for subspaces are depending on each other. Neither is it a good solution to, ?rst, 
+
+?nd the subspaces and then ?nd the clusters in the subspaces, as this results in a quite redundant 
+
+set of clusters (we will discuss this problem of redundancy in more detail later). Nor is it a viable 
+
+approach to, ?rst, ?nd the clusters and then de?ne the subspace for each cluster. Hence the de?nition 
+
+of a cluster, that comes along with an algorithmic heuristic for clustering, and the heuristic to derive 
+
+
+----------------------- Page 234-----------------------
+
+208                            Data Clustering: Algorithms and Applications 
+
+
+
+a subspace for each cluster are closely related for each approach. Yet how this relationship is de?ned 
+
+in particular will be differing in the different approaches. 
+
+    Many heuristics and assumptions for ef?ciently solving the clustering problem have been dis- 
+
+cussed in the past decades. We will focus on the subspace search problem in this chapter. However, 
+
+for the sake of completeness, we should keep in mind the fact that the solutions discussed here also 
+
+rely on assumptions and heuristics that consider the clustering problem (i.e., whether, for example, 
+
+a partitioning or a density-based clustering paradigm is used or adapted). These assumptions and 
+
+heuristics are re?ected by the underlying clustering model that speci?es the meaning of clusters and 
+
+the algorithms to compute such clusters. One important aspect to describe the meaning of clusters 
+
+that has an impact on the subspace search problem is the choice of a certain distance or similar- 
+
+ity measure. Which data points are considered more similar than others and, thus, cluster together, 
+
+crucially depends on this choice. Some approaches are based on neighborhood in Euclidean space, 
+
+typically using an Lp -norm as distance measure. Others take into account a similar “behavior” of 
+
+attribute values over a certain range of attributes (often called “patterns”). But different approaches 
+
+also make use of the de?nition of similarity in different ways, based on different intuitions of the 
+
+meaning of a cluster and resulting in different cluster models. If we stay with the notion of Euclidean 
+
+distances (or, more general, Lp -norms), the selection of a subspace for a cluster will mean that sim- 
+
+ilarity of points is de?ned in different ways for different clusters. In the case of an axis-parallel 
+
+subspace, only a subset of the attributes is considered to compute the Lp -distance. For arbitrarily 
+
+oriented subspaces, correlations of attributes are considered and combinations thereof are computed 
+
+to de?ne a rotated subspace distance (such as some variant of a Mahalanobis distance). 
+
+
+
+9.4    Fundamental Algorithmic Ideas 
+
+
+
+    Different paradigms of clustering heuristics are discussed in other chapters. Here, we survey 
+
+some fundamental algorithmic ideas and example approaches according to the different heuristic 
+
+restrictions of the search space for subspaces. 
+
+
+
+9.4.1    Clustering in Axis-Parallel Subspaces 
+
+
+
+9.4.1.1   Cluster Model 
+
+
+
+    So far, most research in this ?eld mainly transferred the full-dimensional cluster models of dif- 
+
+ferent clustering techniques into some (or many)—more or less—interesting subspaces (i.e., subsets 
+
+of attributes) of a data space. Hence, there is no established “subspace cluster model” describing 
+
+axis-parallel subspace clusters concisely. Instead, there are only cluster models describing clusters 
+
+in a subspace as if the corresponding subspace were the full-dimensional data space. The ?rst sta- 
+
+tistically sound model for axis-parallel subspace clusters was proposed by Moise and Sander [101]. 
+
+It is based on the assumption (statistically speaking: hypothesis) that values of a relevant attribute 
+
+for a subspace cluster are not uniformly distributed over the complete attribute domain (i.e., the null 
+
+hypothesis is a uniform distribution of irrelevant attributes over the complete domain) and that this 
+
+hypothesis satis?es a statistical test. 
+
+
+
+9.4.1.2   Basic Techniques 
+
+
+
+    The number of possible axis-parallel subspaces where clusters could reside is exponential in the 
+
+dimensionality of the data space. Hence, the main task of research in the ?eld was the development 
+
+
+----------------------- Page 235-----------------------
+
+                                 Clustering High-Dimensional Data                                           209 
+
+
+
+of appropriate subspace search heuristics. Starting from the pioneering approaches to axis-parallel 
+
+subspace clustering, two opposite basic techniques for searching subspaces were pursued, namely, 
+
+top-down search [12] and bottom-up search [14]. 
+
+    Top-Down Subspace Search.             The rational of top-down approaches is to determine the sub- 
+
+space of a cluster starting from the full-dimensional space. This is usually done by determining 
+
+a subset of attributes for a given set of points—potential cluster members—such that the points 
+
+meet the given cluster criterion when projected onto this corresponding subspace. Obviously, the 
+
+dilemma is that for the determination of the subspace of a cluster, at least some cluster members 
+
+must be identi?ed. On the other hand, in order to determine cluster memberships, the subspace of 
+
+each cluster must be known. To escape this circular dependency, most of the top-down approaches 
+
+rely on a rather strict assumption, which has been called the locality assumption [90]. It is assumed 
+
+that the subspace of a cluster can be derived from the local neighborhood (in the full-dimensional 
+
+data space) of the (provisional) cluster center or the (provisional) cluster members. In other words, it 
+
+is assumed that even in the full-dimensional space, the subspace of each cluster can be learned from 
+
+the local neighborhood of cluster representatives or cluster members—an assumption that may make 
+
+sense if the dimensionality of the sought subspaces is not much smaller than the dimensionality of 
+
+the complete data space. 
+
+    Other top-down approaches that do not rely on the locality assumption use random sampling as 
+
+a heuristic in order to generate a set of potential cluster members. 
+
+    Bottom-Up Subspace  Search.             The  exponential search space  of  all  possible  subspaces of 
+
+a data space that needs to be traversed is equivalent to the search space of the frequent item-set 
+
+problem in market basket analysis in the area of transaction databases. For example, an item-set 
+
+may contain items A , B, C, etc. The key idea of the APRIORI algorithm [15] is to start with item- 
+
+sets (called “transactions”) of size 1 (containing a certain item, irrespective of other items possibly 
+
+also contained in the transaction) and exclude those larger item-sets from the search that cannot be 
+
+frequent anymore, given the knowledge of which smaller item-sets are frequent. For example, if a 
+
+1-item-set containing A is not frequent (i.e., we count such an item-set less than a given minimum 
+
+support threshold), all 2-item-sets, 3-item-sets, etc.,  containing A  (e.g.,  {A ,B}, {A ,C}, {A ,B ,C}) 
+
+cannot be frequent either (otherwise item-sets containing A would have been frequent as well) and 
+
+need not be tested for exceeding the minimum support threshold. Theoretically, the search space 
+
+remains exponential, yet practically the search is usually substantially accelerated. 
+
+    Transferring the item-set problem to subspace clustering, each attribute represents an item and 
+
+each subspace cluster is a transaction of the items representing the attributes that span the corre- 
+
+sponding subspace. Finding item-sets with frequency 1 then relates to ?nding all combinations of 
+
+attributes that constitute a subspace containing at least one cluster. This observation is the rationale 
+
+of many of the early bottom-up subspace clustering approaches. The subspaces that contain clus- 
+
+ters are determined starting from all 1-dimensional subspaces that accommodate at least one cluster 
+
+by employing a search strategy similar to frequent item-set mining algorithms. To apply any ef?- 
+
+cient frequent item-set mining algorithm, the cluster criterion must implement a downward closure 
+
+property (also called monotonicity property): 
+
+
+
+      If subspace S contains a cluster, then any subspace T  ? S must also contain a cluster. 
+
+
+
+    For pruning (i.e., excluding speci?c subspaces from consideration), the antimonotonic reverse 
+
+implication can be used. 
+
+
+
+      If a subspace T does not contain a cluster, then any superspace S ? T also cannot contain 
+
+      a cluster. 
+
+
+
+    Let us note that there are bottom-up algorithms that do not use an APRIORI-like subspace search 
+
+but instead apply other search heuristics. 
+
+
+----------------------- Page 236-----------------------
+
+210                               Data Clustering: Algorithms and Applications 
+
+
+
+     Applying an ef?cient subspace search strategy addresses Aspect 1 of the curse of dimensionality. 
+
+Selecting a subset of attributes as relevant corresponds to Aspect 3 of the curse of dimensionality. 
+
+Aspect 2 needs to be considered when adapting similarity measures to local neighborhoods and is 
+
+differently important in the different approaches. Aspect 5 is often the main problem for this kind 
+
+of approach since the monotonicity usually requires the same distance thresholds in subspaces of 
+
+different dimensionalities. 
+
+
+
+9.4.1.3    Clustering Algorithms 
+
+
+
+     The two basic techniques resulted initially in two “subspace” clustering paradigms that have 
+
+been named by the pioneers in this ?eld “subspace clustering” [14] and “projected clustering” [12]. 
+
+For the latter, a variant has emerged sometimes called “soft projected clustering” [82]. Many algo- 
+
+rithms, however, do not clearly ?t in one of these categories. We therefore list some examples as 
+
+“hybrid approaches.” 
+
+     Projected Clustering.          The objective of projected clustering is to ?nd a set of tuples (O ,D ), 
+
+                                                                                                                 i   i 
+
+where Oi is the set of objects belonging to cluster i and Di is the subset of attributes where the points 
+
+Oi  are “similar” according to a given cluster criterion. 
+
+     The approach introducing the task of “projected clustering” is PROCLUS [12], a k-medoid- 
+
+like clustering algorithm. PROCLUS randomly determines a set of potential cluster centers M  on 
+
+a sample of points ?rst. In the iterative cluster re?nement phase, for each of the k current medoids 
+
+the subspace is determined by minimizing the standard deviation of the distances of the points in 
+
+the neighborhood of the medoids to the corresponding medoid along each dimension. Points are 
+
+then assigned to the closest medoid considering the relevant subspace of each medoid. The clusters 
+
+are re?ned by replacing bad medoids with new medoids from M  as long as the clustering quality 
+
+increases.  A  postprocessing step  identi?es  noise  points that  are  too  far  away  from  their  closest 
+
+medoids. The algorithm always outputs a partition of the data points into k clusters (each represented 
+
+by its medoid) with corresponding subspaces and a (potentially empty) set of noise points. 
+
+     The k-medoid-style cluster model of PROCLUS tends to produce equally sized clusters that have 
+
+spherical shape in their corresponding subspaces. In addition, since the set M of possible medoids is 
+
+determined in a randomized procedure, different runs of PROCLUS with the same parametrization 
+
+usually result in different clusterings. 
+
+     Variations of PROCLUS are, for example, FINDIT [130] and SSPC [134]. FINDIT employs 
+
+additional heuristics to enhance ef?ciency and clustering accuracy. SSPC offers the capability of 
+
+further enhancing accuracy by using domain knowledge in the form of labeled objects and/or labeled 
+
+attributes. 
+
+     PreDeCon [31] applies the density-based traditional (full-dimensional) clustering algorithm DB- 
+
+SCAN [46] using a specialized distance measure that captures the subspace of each cluster. The 
+
+de?nition of this specialized subspace distance is based on the so-called subspace preference that is 
+
+assigned to each point p , representing the maximal-dimensional subspace in which p clusters best. 
+
+A dimension is considered to be relevant for the subspace preference of a point p  if the variance 
+
+of points in the Euclidean e-neighborhood of p is smaller than a user-de?ned threshold d. The spe- 
+
+cialized subspace distance between points is a weighted Euclidean distance where the dimensions 
+
+relevant for the subspace preference of a point are weighted by a constant ? 1 while the remaining 
+
+dimensions are weighted by 1. PreDeCon determines the number of clusters automatically, and han- 
+
+dles noise implicitly. In addition, its results are determinate and the clusters may exhibit any shape 
+
+and size in the corresponding subspace. However, PreDeCon requires the user to specify a number 
+
+of input parameters that are usually hard to guess. Especially e, the neighborhood radius, has rather 
+
+different meaning in a different dimensionality (cf. Aspect 5 of the curse of dimensionality) but is 
+
+used both for the ?rst guess of neighborhood (locality assumption) in the full-dimensional space as 
+
+well as for the adapted neighborhood in some lower-dimensional space. 
+
+
+----------------------- Page 237-----------------------
+
+                                 Clustering High-Dimensional Data                                          211 
+
+
+
+    CLTree [96] is a method that presents an interesting variation of the theme. The basic idea is 
+
+to assign a common class label to all existing points and to add additionally points uniformly dis- 
+
+tributed over the data space and labeled as a different class. Then a decision-tree is trained to separate 
+
+the two classes. As a consequence, the attributes are split independently, adaptively, and in a ?exi- 
+
+ble order of the attributes. However, selecting a split is based on the evaluation of information gain 
+
+which is rather costly. Furthermore, the density of the superimposed arti?cial data can be expected 
+
+to heavily in?uence the quality of the results. Since the distribution parameters of existing clusters 
+
+are unknown beforehand, ?nding a suitable parametrization seems rather hard. Another problem is 
+
+the merging of adjacent regions. A cluster can easily become separated if the corresponding bins do 
+
+not “touch” each other. 
+
+    Soft Projected Clustering.        There is a rich literature concerned with so-called soft projected 
+
+clustering [43, 55, 79, 82, 29, 42, 98]. These are usually optimization approaches derived from k- 
+
+means type clustering, learning some weight vector for the different weighting of attributes. There- 
+
+fore, weights wi  for attributes i = 1,...,d are introduced into the distance measure: 
+
+                                                         
+
+                                                         
+
+                                                          d 
+
+                                             w         p                 p 
+
+                                   (x -y)        =           w  · |x -y  |  .                            (9.3) 
+
+                                             p           ? i       i    i 
+
+                                                         i=1 
+
+
+
+Usually, in these approaches, all weights are restricted at least to the condition 
+
+
+
+                                              0 < wi  = 1,                                               (9.4) 
+
+
+
+i.e., to ensure the applicability of optimization techniques, no weight can become 0. In terms of 
+
+subspace clustering, this means that no attribute is truly omitted and, hence, the resulting clustering 
+
+resides in the full-dimensional, though skewed data space. The fact that the clustering is not truly 
+
+searched for in a projected space (i.e., no hard subspace is assigned to a speci?c cluster) is indicated 
+
+by the term soft. However, these approaches are often generally named “subspace clustering,” not 
+
+re?ecting the differences discussed here. Essentially, all these approaches can be seen as variants of 
+
+EM-clustering [40]. 
+
+    Geometrically, the effect of these approaches is just to allow the shape of clusters to become 
+
+axis-parallel ellipsoids instead of spheres. This does not necessarily account for relevance or irrel- 
+
+evance of different attributes. It seems more related to some sort of normalization of attributes per 
+
+cluster. 
+
+    An example for these methods is LAC (Locally Adaptive Clustering) [43], which starts with k 
+
+centroids and k sets of d weights (for d attributes). The algorithm proceeds to approximate a set of 
+
+k Gaussians by adapting the weights. 
+
+    COSA [55], another prominent example, does not derive a clustering but merely a similarity 
+
+matrix that can be used by an arbitrary clustering algorithm afterwards. The matrix contains weights 
+
+for each point specifying a subspace preference of the points similar to PreDeCon. The weights for a 
+
+point p are determined by starting with the Euclidean k-nearest neighbors of p and by computing the 
+
+average distance distribution of the k-nearest neighbors along each dimension. Roughly speaking, 
+
+the weight for a given attribute is computed as the ratio between the distances of the point p  to all 
+
+k-nearest neighbors of p in that attribute and the average distances of p to all k-nearest neighbors of 
+
+p in all attributes. Thus, the higher the variance of the k-nearest neighbors along an attribute is, the 
+
+higher is the weight that is assigned to that attribute. The weight, however, cannot become 0. As long 
+
+as the weight vectors still change, the k-nearest neighbors are again determined using the current 
+
+weights and the weights are recomputed. The number of neighbors k is an input parameter. Very 
+
+different from PreDeCon, the weights can have arbitrary values rather than only two ?xed values. In 
+
+addition, the weighting matrix is tested using several full-dimensional clustering algorithms rather 
+
+than integrating it into only one speci?c algorithm. Note that the effect of weight vectors is very 
+
+different in density-based approaches such as PreDeCon where the shape of clusters is not de?ned 
+
+beforehand. 
+
+
+----------------------- Page 238-----------------------
+
+212                            Data Clustering: Algorithms and Applications 
+
+
+
+    As we have seen, these approaches miss the complex interrelation of different problems in high- 
+
+dimensional data. For further references, the reader may therefore refer to some other examples 
+
+of recent work in this direction. Although the connections and differences to the algorithms as we 
+
+outline here are not made clear there, detailed sections on related work are suitable as introduction 
+
+to the history of “soft” projected clustering approaches provided in some papers specialized on this 
+
+direction [79, 29, 82]. 
+
+    Subspace Clustering.         Subspace clustering in a narrower sense pursues the goal of ?nding all 
+
+clusters in all subspaces of the entire feature space. This goal obviously is de?ned to correspond 
+
+to the bottom-up technique used by these approaches, based on some antimonotonic property of 
+
+clusters allowing the application of  the APRIORI  search heuristic. However, the relationship of 
+
+the de?nition of subspace clustering  (? nd all clusters in all subspaces) and the subspace search 
+
+strategy (bottom-up, applying an APRIORI-like heuristic) is historical and hence contingent rather 
+
+than essential. We consider the problem de?nition as guiding category, regardless of the algorith- 
+
+mic approach. Nevertheless, the majority of approaches actually consist of some adaptation of the 
+
+APRIORI search heuristic. 
+
+    The pioneer approach for ?nding all clusters in all subspaces coining the term “subspace clus- 
+
+tering” for this speci?c task has been CLIQUE [14], using a grid-based clustering notion. The data 
+
+space is partitioned by an axis-parallel grid into equi-sized units of width ?. Only units which contain 
+
+at least tpoints are considered as dense. A cluster is de?ned as a maximal set of adjacent dense units. 
+
+Since dense units satisfy the downward closure property, subspace clusters can be explored rather 
+
+ef?ciently in  a  bottom-up way. Starting with  all 1-dimensional dense units,  (k + 1)-dimensional 
+
+dense units are computed from the set of k-dimensional dense units in an APRIORI-like procedure. 
+
+If a (k + 1)-dimensional unit contains a projection onto a k-dimensional unit that is not dense, then 
+
+the  (k + 1)-dimensional unit cannot be dense either. Furthermore, a heuristic that is based on the 
+
+minimum description length principle is introduced to discard candidate units within less interest- 
+
+ing subspaces (i.e., subspaces that contain only a very small number of dense units). This way, the 
+
+ef?ciency of the algorithm is enhanced but at the cost of incomplete results (i.e., possibly some true 
+
+clusters are lost). 
+
+    There are some variants of CLIQUE; let us consider three well-known examples. The method 
+
+ENCLUS [34] also relies on a ?xed grid but searches for subspaces that potentially contain one or 
+
+more clusters rather than for dense units. Three quality criteria for subspaces are introduced, one 
+
+of them implements the downward closure property. The method MAFIA [111] uses an adaptive 
+
+grid. The generation of subspace clusters is similar to CLIQUE. Another variant of CLIQUE called 
+
+nCluster [97] allows overlapping windows of length das 1-dimensional units of the grid. 
+
+    In summary, all grid-based methods use a simple but rather ef?cient cluster model. The shape 
+
+of  each  resulting  cluster  corresponds to  a  polygon with  axis-parallel lines  in  the  corresponding 
+
+subspace. Obviously, the accuracy and the ef?ciency of CLIQUE and its variants primarily depend 
+
+on the granularity and the positioning of the grid. A higher grid granularity results in higher runtime- 
+
+requirements but will most likely produce more accurate results. 
+
+
+
+                            Projected Clustering vs. Subspace Clustering 
+
+
+
+      The distinction between the terms “projected clustering” and “subspace clustering” is not 
+
+  uniform in the literature but traditionally, dating back to the pioneering approaches CLIQUE and 
+
+  PROCLUS, the tasks are discerned as follows: 
+
+      Projected  clustering  aims at  a  partitioning of  the  data  set  where  each  data  point belongs 
+
+  to exactly one cluster, and each cluster is assigned a speci?c subset of attributes. Projected on 
+
+  these attributes, the cluster adheres to the clustering criterion as de?ned by the applied clustering 
+
+  algorithm. 
+
+
+----------------------- Page 239-----------------------
+
+                                Clustering High-Dimensional Data                                       213 
+
+
+
+      Subspace clustering  aims at ?nding all clusters in all  subspaces. As a consequence, each 
+
+  data point can belong to many clusters simultaneously (i.e., the clusters can substantially overlap 
+
+  in different subspaces). This approach usually results in very redundant clusters in the retrieved 
+
+  clustering. 
+
+      Many approaches proposed in the literature do not clearly ?t in one of these traditional cate- 
+
+  gories and the tendency of opinion in research is that more suitable problem descriptions should 
+
+  lie somewhere in between these archetypical categories, i.e., allowing for overlap of clusters, 
+
+  but restricting the redundancy of results. Eventually, what is a suitable clustering should not be 
+
+  de?ned by the algorithm but by the domain-speci?c requirements. 
+
+      Note that these categories are not (or only coincidentally in the early approaches) related to 
+
+  the categories of subspace search heuristics (top-down vs. bottom-up). 
+
+
+
+    SUBCLU [84] uses the DBSCAN cluster model of density-connected sets [46]. It is shown that 
+
+density-connected sets satisfy the downward closure property. This enables SUBCLU to search for 
+
+density-based clusters in subspaces in an APRIORI-like style. The resulting clusters may exhibit an 
+
+arbitrary shape and size in the corresponding subspaces. In fact, for each subspace SUBCLU com- 
+
+putes all clusters that would have been found by DBSCAN applied to that subspace only. Compared 
+
+to the grid-based approaches, SUBCLU achieves a better clustering quality but requires a higher 
+
+runtime. 
+
+    It has been observed that a global density threshold, as used by SUBCLU and the grid-based 
+
+approaches, leads to a bias toward a certain dimensionality (recall Aspect 5 of the curse of dimen- 
+
+sionality). On the one hand, a tighter threshold which is able to separate clusters from noise well 
+
+in low-dimensional subspaces tends to lose clusters in higher-dimensional subspaces. On the other 
+
+hand, a more relaxed threshold which is able to detect high-dimensional clusters will produce an 
+
+excessive amount of low-dimensional clusters. Motivated by this problem, the dimensionality un- 
+
+biased cluster model DUSC [18] (and some variants [19, 70, 105, 106]) has been proposed. DUSC 
+
+is based on a density measure that is adaptive to the dimensionality. As a major drawback, this ap- 
+
+proach is lacking of antimonotonic properties and, thus, pruning the search space is not possible. 
+
+A “weak density” is thus de?ned as a remedy, providing antimonotonic properties. This remedy, 
+
+however, introduces a global density threshold again, which renders the intended solution of the 
+
+motivating problem ineffective. As this example shows, the curse of dimensionality should always 
+
+be expected to keep haunting the researcher. 
+
+    The initial problem formulation for projected clustering, ? nding all clusters in all subspaces 
+
+[14], that was adopted in many papers afterwards, is rather questionable since the information gained 
+
+by retrieving such a huge set of clusters with high redundancy is not very useful. This description 
+
+of the objective of subspace clustering is based on a rather na¨ive use of the concept of frequent 
+
+item-sets in subspace clustering [129]. What constitutes a good subspace clustering result is de?ned 
+
+here apparently in close relationship to the design of the algorithm, i.e., the desired result appears to 
+
+be de?ned according to the expected result (as opposed to in accordance to what makes sense). The 
+
+tool “frequent item-set mining” was ?rst, and the problem of “?nding all clusters in all subspaces” 
+
+has apparently been de?ned in  order to  have some  new problem where the  tool can  be  applied 
+
+straightforwardly. The resulting clusters are usually highly redundant and, hence, to a major extend 
+
+useless. 
+
+    Therefore, subsequent methods often concentrated on possibilities of concisely restricting the 
+
+resulting set of clusters by somehow assessing and reducing the redundancy of clusters, for example, 
+
+to keep only clusters of highest dimensionality. Related approaches aim at reporting only the most 
+
+representatives of a couple of redundant subspace clusters [19, 70, 105]. A broader overview on 
+
+these issues in subspace clustering has been recently presented by Sim et al. [122]. 
+
+
+----------------------- Page 240-----------------------
+
+214                           Data Clustering: Algorithms and Applications 
+
+
+
+    Let us note that the statistical signi?cance of subspace clusters (as de?ned by Moise and Sander 
+
+[101]), is not an antimonotonic property and hence does in general not allow for APRIORI-like 
+
+bottom-up approaches ?nding only meaningful (i.e., signi?cant) clusters. 
+
+    Hybrid Approaches.         It is our impression that recently the majority of approaches do not stick 
+
+to the initial concepts any more, but pursue some hybrid approach [117, 133, 136, 87, 3, 103, 72]. In 
+
+general, the result is neither a clear partitioning without overlap nor an enumeration of all clusters 
+
+in all subspaces. Still the problem de?nition may remain unclear and each approach de?nes its own 
+
+goal. A fair comparison of the true merits of different algorithms thus remains dif?cult. 
+
+    DOC [117] uses a global density threshold to de?ne a subspace cluster by means of hypercubes 
+
+of ?xed side-length w containing at least apoints. A random search algorithm is proposed to com- 
+
+pute such subspace clusters from a starting seed of sampled points. A third parameter ßspeci?es the 
+
+balance between the number of points and the dimensionality of a cluster. This parameter affects 
+
+the dimensionality of the resulting clusters and, thus, DOC usually also has problems with subspace 
+
+clusters of signi?cantly different dimensionality. Due to the very simple clustering model, the clus- 
+
+ters may contain additional noise points (if w is too large) or not all points that naturally belong to 
+
+the cluster (if w is too small). One run of DOC may (with a certain probability) ?nd one subspace 
+
+cluster. If k clusters need to be identi?ed, DOC has to be applied at least k times. If the points as- 
+
+signed to the clusters found so far are excluded from subsequent runs, DOC can be considered as 
+
+a pure projected clustering algorithm because each point is uniquely assigned to one cluster or to 
+
+noise (if not assigned to a cluster). On the other hand, if the cluster points are not excluded from 
+
+subsequent runs, the resulting clusters of multiple runs may overlap. Usually, DOC cannot produce 
+
+all clusters in all subspaces. 
+
+    MINECLUS [135, 136] is based on an idea similar to DOC, but proposes a deterministic method 
+
+to ?nd an optimal projected cluster given a sample seed point. The authors transform the problem 
+
+into a frequent item-set mining problem and employ a modi?ed frequent pattern tree growth method. 
+
+Further heuristics are introduced to enhance ef?ciency and accuracy. 
+
+    HiSC [4] and the more advanced extension DiSH [3] follow a similar idea as PreDeCon but 
+
+use a hierarchical clustering model. This way, hierarchies of subspace clusters can be discovered 
+
+(i.e., the information that the subspace of a lower-dimensional cluster is composed of a subset of the 
+
+attributes of the subspace of a higher-dimensional cluster). The distance between points and clusters 
+
+re?ects the dimensionality of the subspace that is spanned by combining the corresponding subspace 
+
+of each cluster. As in COSA, the weighting of attributes is learned for each object, not for entire 
+
+clusters. The learning of weights, however, is based on single attributes, not on the entire feature 
+
+space. DiSH uses an algorithm that is inspired by the density-based hierarchical clustering algorithm 
+
+OPTICS [16]. However, DiSH extends the cluster ordering computed by OPTICS in order to ?nd 
+
+hierarchies of subspace clusters with multiple inclusions (a lower-dimensional subspace cluster may 
+
+be embedded in multiple higher-dimensional subspace clusters). 
+
+    HARP [133] is a hierarchical clustering algorithm similar to single-link clustering [126, 121] but 
+
+uses a specialized distance function between points and clusters or between clusters and clusters and 
+
+does not produce a hierarchy of subspace clusters. Starting with singleton clusters, HARP iteratively 
+
+merges clusters as long as the resulting cluster has a minimum number of relevant attributes. A 
+
+relevance score is introduced for attributes based on a threshold that starts at some harsh value and 
+
+is progressively decreased while clusters increase in size. By design, HARP has problems ?nding 
+
+low-dimensional clusters. The resulting dendrogram can be cut at any level in order to produce a 
+
+unique assignment of points to clusters. 
+
+    SCHISM [120] mines interesting subspaces rather than subspace clusters; thus, it is not exactly 
+
+a subspace clustering algorithm but solves a related problem: ?nd subspaces to look for clusters. It 
+
+employs a grid-like discretization of the database and applies a depth-?rst search with backtracking 
+
+to ?nd maximally interesting subspaces. 
+
+    FIRES [87] computes 1-dimensional clusters using any clustering technique the user is most 
+
+accustomed to in a ?rst step. These 1-dimensional clusters are then merged by applying a sort of 
+
+
+----------------------- Page 241-----------------------
+
+                                     Clustering High-Dimensional Data                                                  215 
+
+
+
+clustering of clusters. The similarity of clusters is de?ned by the number of intersecting points. 
+
+The resulting clusters represent hyper-rectangular approximations of the true subspace clusters. In 
+
+an optional postprocessing step, these approximations can be re?ned by applying any clustering 
+
+algorithm to the points included in the approximation projected onto the corresponding subspace. 
+
+Though using a bottom-up search strategy, FIRES is rather ef?cient because it does not employ a 
+
+worst-case exhaustive search procedure but a heuristic that is scaling polynomially in the dimen- 
+
+sionality of the data space. However, the user can expect to pay for this performance boost by a loss 
+
+of clustering accuracy. It cannot be speci?ed whether the subspace clusters produced by FIRES may 
+
+overlap or not, this partly depends on the clustering algorithms used in the intermediate steps of the 
+
+framework. In general, the clusters may overlap but usually FIRES will not produce all clusters in 
+
+all subspaces. 
+
+     P3C  [102,  103]  starts  with  1-dimensional  intervals  that  are  likely  to  approximate  higher- 
+
+dimensional subspace clusters. These intervals are merged using an APRIORI-like bottom-up search 
+
+strategy. The maximal-dimensional subspace cluster approximations resulting from this merging 
+
+procedure are reported as so-called cluster cores. In a re?nement step, the cluster cores are re?ned 
+
+by using an EM-like clustering procedure. Each cluster core is taken as one initial cluster for the 
+
+EM algorithm. Points are assigned to the closest cluster core using the Mahalanobis distance. The 
+
+?nal output of P3C is a matrix that records for each data point its probability of belonging to each 
+
+projected cluster. From this matrix, a disjoint partitioning of the data points into clusters can be 
+
+obtained by assigning each point to the cluster with the highest probability. If overlapping clusters 
+
+are allowed, each point can be assigned to all clusters with a probability larger than 1/k. P3C does 
+
+not produce all clusters in all subspaces as any APRIORI-style algorithm does but reports only the 
+
+results of the ?nal cluster computation step using EM. 
+
+     Moise and Sander [101] provided a ?rst attempt to formulate the search for statistically signif- 
+
+icant subspace clusters as an optimization problem. In addition, the authors proposed an iterative 
+
+algorithm called STATPC to search locally optimized solutions for this optimization problem. 
+
+     Interesting recent developments combine techniques from ensemble clustering [58] with ideas 
+
+from subspace clustering, resulting in “subspace clustering ensembles” [41] or “projective clustering 
+
+ensembles” [64, 63, 62]. 
+
+
+
+9.4.2     Clustering in Arbitrarily Oriented Subspaces 
+
+
+
+9.4.2.1     Cluster Model 
+
+
+
+     A model for correlation clusters, i.e., clusters residing in arbitrarily-oriented subspaces, can be 
+
+based  on a  linear  equation system  describing the  ?-dimensional hyperplane accommodating the 
+
+points of a correlation cluster  C ? Rd . This equation system will consist of d - ?equations for d 
+
+variables, and the af?nity, e.g. given by the mean point x              = (x¯1 ···x¯  )T of all cluster members: 
+
+                                                                      C             d 
+
+
+
+                 v        · (x -x¯  ) + v         · (x  -x¯  ) + ··· + v         · (x  -x¯  ) = 0 
+
+                  1(?+1)      1     1      2(?+1)     2     2            d (?+1)     d     d 
+
+                 v        · (x -x¯  ) + v         · (x  -x¯  ) + ··· + v         · (x  -x¯  ) = 0 
+
+                  1(?+2)      1     1      2(?+2)     2     2            d (?+2)     d     d 
+
+                                                          .                                                         (9.5) 
+
+                                                          . 
+
+                                                          . 
+
+                   v    · (x -x¯  )   +     v   · (x  -x¯  )   + ··· +    v    · (x  -x¯  )    = 0 
+
+                     1d    1     1           2d     2     2                 dd     d     d 
+
+
+
+where vi j is the value at row i, column j in the eigenvector matrix VC  derived (e.g., by principle com- 
+
+ponent analysis (PCA) [83]) from the covariance matrix of C . The ?rst ?eigenvectors (also called 
+
+strong eigenvectors) give the directions of high variance and span the hyperplane accommodating C . 
+
+The remaining d - ?weak eigenvectors span the perpendicular subspace. The corresponding linear 
+
+equation system can therefore also be given by 
+
+
+
+                                                 ˆ T             ˆ T 
+
+                                                 VC  ·x    =    VC  ·x C                                            (9.6) 
+
+
+----------------------- Page 242-----------------------
+
+216                            Data Clustering: Algorithms and Applications 
+
+
+
+                 ˆ T 
+
+The defect of VC    gives the number of free attributes, the remaining attributes may actually be in- 
+
+volved in linear dependencies. The equation system is by construction at least approximately ful- 
+
+?lled for all points x ? C and hence provides an approximate quantitative model for the cluster [5]. 
+
+The degree of allowed deviation of cluster members from the hyperplane and the method of assess- 
+
+ment differs from approach to approach. Hence, also in the area of arbitrarily-oriented clustering, 
+
+future research should consider re?ned and more concise models. 
+
+
+
+9.4.2.2    Basic Techniques and Example Algorithms 
+
+
+
+    Basic  techniques to  ?nd arbitrarily oriented subspaces accommodating clusters are  principle 
+
+component analysis (PCA) and the Hough-transform. The ?rst approach to this generalized pro- 
+
+jected clustering was the algorithm ORCLUS [13], using ideas similar to the axis-parallel approach 
+
+PROCLUS [12]. ORCLUS is a k-means–like approach, picking kc  > k seeds at ?rst, assigning the 
+
+data objects to these seeds according to a distance function that is based on an eigensystem of the 
+
+corresponding cluster assessing the distance along the weak eigenvectors only (i.e., the distance in 
+
+the projected subspace where the cluster objects exhibit high density). The eigensystem is iteratively 
+
+adapted to the current state of the updated cluster. The number kc  of clusters is reduced iteratively 
+
+by merging closest pairs of clusters until the user-speci?ed number k is reached. The closest pair of 
+
+clusters is the pair with the least average distance in the projected space (spanned by the weak eigen- 
+
+vectors) of the eigensystem of the merged clusters. Starting with a larger value for the parameter kc 
+
+increases the effectiveness, but also the runtime. 
+
+    In contrast to ORCLUS, the algorithm [32] is based on a density-based clustering paradigm [88]. 
+
+Thus, the number of clusters is not decided beforehand but clusters grow from a seed as long as a 
+
+density criterion is ful?lled. Otherwise, another seed is picked to start a new cluster. The density 
+
+criterion is a required minimal number of points within the neighborhood of a  point, where the 
+
+neighborhood is ascertained based on distance matrices computed from the eigensystems of two 
+
+points. The eigensystem of a point p is based on the covariance matrix of the e-neighborhood of p 
+
+in Euclidean space. A parameter ddiscerns large from small eigenvalues in the eigenvalue matrix 
+
+Ep ; then large eigenvalues are replaced by 1 and small eigenvalues by a value ? 1. Using the 
+
+adapted eigenvalue matrix Ep , a correlation similarity matrix for p is obtained by Vp  ·Ep  · VT . This 
+
+                                                                                                     p 
+
+matrix is then used to derive the distance of two points, q and p , w.r.t. p , as the general quadratic 
+
+form distance: 
+
+
+
+                                    (p - q)T  · Vp  ·Ep  · VT  · (p - q).                               (9.7) 
+
+                                                           p 
+
+
+
+Applying this measure symmetrically to q and choosing the maximum of both distances helps to 
+
+decide whether both points are connected by a similar correlation of attributes and, thus, are similar 
+
+and belong to each other’s correlation neighborhood. Regarding the choice of parameters, 4C suffers 
+
+from similar problems as PreDeCon, especially from the hard to guess neighborhood size ethat is 
+
+used in both the Euclidean full-dimensional neighborhood and the adapted subspace neighborhood 
+
+(recall Aspect 5 of the curse of dimensionality). 
+
+    As a hierarchical approach, HiCO [8] de?nes the distance between points according to their local 
+
+correlation dimensionality and subspace orientation and uses hierarchical density-based clustering 
+
+ [16] to derive a hierarchy of correlation clusters. 
+
+    COPAC [7] is based on ideas similar to 4C but disposes of some problems such as meaningless 
+
+similarity matrices due to sparse e-neighborhoods. Instead of the problematic e-range queries, CO- 
+
+PAC is using a ?xed number k of neighbors for the computation of local data characteristics—which 
+
+raises the question of how to choose a good value for k. However, at least choosing k > ?ensures a 
+
+meaningful de?nition of a ?-dimensional hyperplane. Essentially, choosing k large enough but not 
+
+larger than the expected minimum cluster size is a reasonable guideline. Thus, the point taken in 
+
+COPAC that choosing the neighborhood in terms of the number of points rather than their distance, 
+
+
+----------------------- Page 243-----------------------
+
+                               Clustering High-Dimensional Data                                       217 
+
+
+
+is worth considering. The main point in COPAC, however, is a considerable speed-up by partition- 
+
+ing the data set based on the observation that a correlation cluster should consist of points exhibiting 
+
+the same local correlation dimensionality (i.e., the same number of strong eigenvectors in the co- 
+
+variance matrix of the k nearest neighbors). Thus, the search for clusters involves only the points 
+
+with equal local correlation dimensionality. By creating one partition for each occurring correlation 
+
+dimensionality, the time complexity rapidly decreases on average by getting rid of a squared factor 
+
+d2  in a d-dimensional data set. 
+
+
+
+    Another related algorithm is ERiC [6], also deriving a local eigensystem for a point based on 
+
+the k nearest neighbors in Euclidean space. Here, the neighborhood criterion for two points in a 
+
+DBSCAN-like procedure is an approximate linear dependency and the af?ne distance of the corre- 
+
+lation hyperplanes as de?ned by the strong eigenvectors of each point. As in COPAC, the property 
+
+of clusters to consist of points exhibiting an equal local correlation dimensionality is exploited for 
+
+the sake of ef?ciency. Furthermore, the resulting set of clusters is also ordered hierarchically to 
+
+provide the user with a hierarchy of subspace clusters. In ?nding and correctly assigning complex 
+
+patterns of intersecting clusters, COPAC and ERiC improve considerably over ORCLUS and 4C. 
+
+    There are further examples of algorithms based on PCA [33, 95, 139, 20]. Some similar methods 
+
+can be found in the survey of Vidal [128]. Many of these methods based on PCA use the eigensystem 
+
+to adapt similarity measures in a soft way and, hence, can also be seen as variants of EM-clustering 
+
+[40] (as far as they employ the partitioning clustering paradigm). A general framework has been 
+
+proposed to increase the robustness of PCA-based correlation clustering algorithms [89]. 
+
+    The algorithm CASH [2, 1] is ?nding arbitrarily oriented subspace clusters by means of the 
+
+Hough-transform [77, 44]. The Hough-transform was originally designed to map the points from 
+
+a 2-dimensional data space (also called picture space) of Euclidean coordinates (e.g., pixels of an 
+
+image) into a parameter space. The parameter space represents all possible 1D lines in the original 
+
+2D data space. In principle, each point of the data space is mapped into an in?nite number of points 
+
+in the parameter space which is not materialized as an in?nite set but instead as a trigonometric 
+
+function in the parameter space. Each function in the parameter space represents all lines in the 
+
+picture space crossing the corresponding point in the data space. An intersection of two curves in 
+
+the parameter space indicates a line through the two corresponding points in the picture space. 
+
+    The objective of a clustering algorithm is to ?nd intersections of many curves in the parameter 
+
+space representing lines through many database objects. The key feature of the Hough-transform is 
+
+that the distance of the points in the original data space is not considered any more. Objects can be 
+
+identi?ed as associated to a common line even if they are far apart in the original feature space. As a 
+
+consequence, the Hough-transform is a promising candidate for developing a principle for subspace 
+
+analysis that does not require the locality assumption and, thus, enables a global subspace cluster- 
+
+ing approach. CASH [2, 1] follows a grid-based approach to identify dense regions in the parameter 
+
+space, successively attribute-wise dividing the space and counting the functions intersecting each of 
+
+the resulting hyperboxes. In a depth-?rst search, most promising paths in the search tree are searched 
+
+?rst. A hyperbox is divided along one axis if it contains enough functions to allow for dense child 
+
+boxes in turn. If a dense subspace is found, the algorithm is applied on the data set accounted for 
+
+by the corresponding hyperbox projected on the corresponding subspace. This recursive descent al- 
+
+lows for ?nding lower-dimensional subspace clusters and implicitly yields a hierarchy of arbitrarily 
+
+oriented subspaces and their accommodated clusters. However, if there are no correlation clusters in 
+
+the original data space and, hence, no dense regions in the parameter space (but still, the hyperboxes 
+
+remain dense enough to qualify as promising candidates), the complete search space is enumer- 
+
+ated resulting in a worst case time complexity exponential in d . Probably, some more sophisticated 
+
+heuristic may make this promising idea more practical for really high-dimensional data. 
+
+    The Hough-transform is an example of using a technique in analysis of high-dimensional data 
+
+that was originally developed in the context of image analysis (hence for 2-dimensional data). Other 
+
+examples are the usage of image-?lter techniques [35]. Occasionally, RANSAC [51] or other ran- 
+
+dom sampling techniques have been used [74, 75]. 
+
+
+----------------------- Page 244-----------------------
+
+218                           Data Clustering: Algorithms and Applications 
+
+
+
+    As mentioned, approaches to clustering in arbitrarily oriented subspaces are also known as “cor- 
+
+relation clustering” [32, 141]. It should be noted, though, that this term is ambiguously used also 
+
+for a completely different problem in machine learning where a partitioning of the data correlate as 
+
+much as possible with a pairwise similarity function f     learned from past data [22]. 
+
+
+
+9.5    Open Questions and Current Research Directions 
+
+
+
+    Some interesting  current research directions have  found attention  in  the  workshop series  on 
+
+“Discovering, Summarizing and Using Multiple Clusterings” (MultiClust) at KDD 2010 [50], at 
+
+ECML/PKDD 2011 [109], and at SDM 2012 [110]. Intriguingly, problems known in subspace clus- 
+
+tering meet similar problems in other areas such as ensemble clustering, alternative clustering, or 
+
+multiview clustering [93]. Such problems common to all of these areas are (i) how to treat diversity 
+
+of clustering solutions (are diverse clustering solutions to be uni?ed or to be presented individu- 
+
+ally?), (ii) how to effectively summarize and present diversity to a user of clustering algorithms, 
+
+(iii) how to treat redundancy of clusters, and (iv) how to assess similarity between multiple clus- 
+
+tering solutions. Also, relationships to frequent pattern mining, which was godfather at the origin 
+
+of subspace clustering, have been discussed from a more recent point of view on research in both 
+
+?elds [129]. 
+
+    As we have pointed out, redundancy of subspace cluster results is a problem inherited from the 
+
+bottom-up strategy of the very ?rst approaches, borrowed from frequent pattern mining. For current 
+
+research on subspace clustering, getting rid of too much redundancy is a major topic [19, 70, 105]. 
+
+Research on multiview clustering [28, 36, 80, 72] seems to approach the problem from the opposite 
+
+direction but eventually is  aiming at the same  issue,  seeking to allow some redundancy at least 
+
+in order to not exclude possibly interesting concepts although they might partially have a certain 
+
+overlap with other concepts. A related though distinct way of tackling the problem of redundancy 
+
+and distinctiveness of different clusters is to seek diverse clusterings by directly assessing a certain 
+
+notion of distance between different partitions (so-called alternative clustering approaches [60, 61, 
+
+21, 38, 118, 39, 37, 116]). 
+
+    A question related to the redundancy issue concerns the appropriate density level. This is a gen- 
+
+eral problem also in density-based clustering [88], but for clustering in subspaces, the problem is 
+
+aggravated. Setting a ?xed density threshold for an APRIORI-style subspace search is not appropri- 
+
+ate for all possible subspaces. Consider for example some CLIQUE-style grid approach: the volume 
+
+of a hypercube increases exponentially with the dimensionality; hence, the density decreases rapidly. 
+
+As a consequence, any chosen threshold introduces a bias to identify clusters of (up to) a certain 
+
+dimensionality. This observation motivates research on adaptive density thresholds [18, 106]. When 
+
+using Euclidean distance (L2), the appropriate choice of an e-range becomes extremely challenging 
+
+as well, not only for subspace, but also for projected clustering or arbitrarily oriented clustering, due 
+
+to the rather counter-intuitive behavior of the volume of the hypersphere with increasing dimensions 
+
+(which we discussed as Aspect 5 of the curse of dimensionality). Choosing the size of the neighbor- 
+
+hood in terms of objects rather than in terms of a radius (i.e., using k nearest neighbors instead of 
+
+an e-range query) has been advocated as a workaround for this problem [7], to solve at least certain 
+
+aspects such as having a well-de?ned (nonempty) set of objects for the density estimation or for the 
+
+estimation of spatial characteristics of the neighborhood. 
+
+    A rather unclear problem in arbitrarily oriented clustering is the signi?cance of arbitrarily ori- 
+
+ented clusters. (As discussed above, for axis-parallel subspace clustering at least some ?rst steps 
+
+have been taken [101].) Also for overlapping clusters, a common result in subspace clustering but 
+
+also in other domains, a proper evaluation procedure is not known. Different approaches to evalu- 
+
+
+----------------------- Page 245-----------------------
+
+                               Clustering High-Dimensional Data                                       219 
+
+
+
+ation have different weaknesses and all neglect certain requirements. This problem is sketched and 
+
+discussed in more detail by F¨arber et al. [49]. Only some preliminary ?rst steps toward improved 
+
+evaluation methodology can be found in the literature [115, 92, 69, 9]. 
+
+    As a consequence, a comprehensive study experimentally comparing the merits of a broad se- 
+
+lection of the different algorithms is still missing in the literature. There are only two preliminary 
+
+attempts to compare a certain selection of subspace clustering algorithms [104, 108], where the ap- 
+
+plied evaluation procedures are not entirely convincing. Some of the algorithms discussed in this 
+
+chapter are available in a uni?ed implementation in the ELKI3 framework [9]. 
+
+
+
+    Despite the unresolved issues in the basic techniques for real-valued feature vectors, there are 
+
+already attempts to generalize subspace clustering for applications to more complex data. So-called 
+
+3D data add a third component (e.g., time) to objects and attributes. This means, instead of a data 
+
+matrix, a  data  tensor of 3rd order is mined [140,  123,  81,  124].  While  3D data  applications do 
+
+have complete access to the third component (such as different points in time), applications to dy- 
+
+namic or stream data usually do not. These require a clustering algorithm to grasp the (subspace-) 
+
+clustering structure with a single scan of the stream (and possibly some postprocessing on a sum- 
+
+mary structure). There are also ?rst attempts to address subspace clustering in dynamic or stream 
+
+data [10, 138, 86, 112]. Other challenges are given when the data are not of (purely) numeric na- 
+
+ture but are, completely or partially, categorical  [137, 107], or when the data are uncertain [71]. 
+
+When some objects are labeled, this information can be used for semisupervised subspace clus- 
+
+tering [134, 131, 56]. Lately, some subspace clustering approaches can use additionally available 
+
+graph information simultaneously with the clustering process [68, 67]. A recent survey discusses 
+
+such problems and approaches as “enhanced subspace clustering” [122]. 
+
+
+
+9.6    Conclusion 
+
+
+
+    Research in data mining and related disciplines such as statistics, pattern recognition, machine 
+
+learning, and also  applied sciences (e.g., bioinformatics) has led  to a  large variety of clustering 
+
+techniques and also addressed the specialized problem of clustering high-dimensional data. New 
+
+approaches to that problem are proposed in numerous conferences and journals every year. However, 
+
+many researchers agree that there is no such thing as a general clustering technique suitable to all 
+
+problems and  universally applicable to  arbitrary data sets.  The  aim  of the  concrete task  of data 
+
+analysis in?uences the choice of the clustering algorithm and obviously also the interpretation of 
+
+the results of the clustering process. This is true for clustering in general, but even more so when 
+
+facing tasks involving high-dimensional data. 
+
+    In this chapter, in order to guide the readers to the literature most appropriate to the task they 
+
+are facing, we distinguished different problem settings, namely, axis-parallel subspace clustering 
+
+with the families of “subspace clustering” (in a narrower sense), “(soft) projected clustering,” and 
+
+an increasing number of “hybrid” approaches; as well as clustering in arbitrarily oriented subspaces 
+
+(also called “correlation clustering”). Among these ?elds, one can ?nd different problem settings 
+
+addressed by “bi-clustering” approaches. All these different families address different aspects of 
+
+the so-called “curse of dimensionality.” The curse of dimensionality, however, is nothing we could 
+
+resolve. There are different aspects of this “curse” and, usually, if one of these aspects is taken into 
+
+consideration by some approach, other aspects will keep haunting the researcher. 
+
+    Different approaches come with a different bias. The domain expert should decide which bias— 
+
+if any—is most meaningful in a given application. For example, it could be meaningful in a given 
+
+application to speci?cally search for axis-parallel subspace clusters. This means, in turn, the use of 
+
+
+
+   3http://elki.dbs.ifi.lmu.de/ 
+
+
+----------------------- Page 246-----------------------
+
+220                            Data Clustering: Algorithms and Applications 
+
+
+
+ algorithms (e.g., P3C or of “soft” projected clustering algorithms) is discouraged in such a scenario 
+
+or otherwise the results are to be closely inspected, since some approaches can possibly result in 
+
+ arbitrarily oriented clusters although the algorithms are designed to search for axis-parallel ones. 
+
+Hence, the choice of a clustering approach as adequate to the problem at hand should be based 
+
+on knowledge of the basic principles and heuristic restrictions upon which the particular cluster- 
+
+ing algorithm is based. Similarly, the interpretation of clustering results should be guided by the 
+
+knowledge of the kinds of patterns a particular algorithm can or cannot ?nd. 
+
+     The family of axis-parallel subspace and projected clustering algorithms assumes that data ob- 
+
+jects belonging to the same cluster are located near each other in Euclidean space but allows assess 
+
+to the corresponding distance of objects w.r.t. subsets of the attributes due to the problem of irrel- 
+
+evant attributes. Pattern-based approaches often disregard the assumption that a cluster consists of 
+
+objects that are near each other in the Euclidean space or some Euclidean subspace and, instead, 
+
+ aim at collecting objects following a similar behavioral pattern over a subset of attributes. These 
+
+patterns relate to simple positive correlations among the considered attributes. Correlation cluster- 
+
+ing algorithms generalize this approach to arbitrary complex positive or negative correlations but 
+
+often assume, again, a  certain density of the points in  Euclidean space, too. Finally, let us note 
+
+that the different notions of similarity employed by the different classes of algorithms usually can- 
+
+not be used interchangeably. Rather the algorithms of each class are more or less tailored to the 
+
+class-speci?c notions of similarity. The user should not ask: “Which is the best clustering algorithm 
+
+ever?” but rather: “Which clustering algorithm (with its assumptions and restrictions) is best suited 
+
+for my problem ?” With this chapter it was intended to give some useful guidelines to this end. 
+
+
+
+Bibliography 
+
+
+
+  [1]  E. Achtert, C. B¨ohm, J. David, P. Kr¨oger, and A. Zimek.  Global correlation clustering based 
+
+      on the Hough transform. Statistical Analysis and Data Mining, 1(3):111–127, 2008. 
+
+
+
+  [2]  E.  Achtert,  C.  B¨ohm,  J.  David,  P.  Kr¨oger, and  A.  Zimek.  Robust  clustering  in  arbitrarily 
+
+      oriented subspaces. In Proceedings of the 8th SIAM International Conference on Data Mining 
+
+      (SDM), Atlanta, GA, pages 763–774, 2008. 
+
+
+
+  [3]  E. Achtert, C. B¨ohm, H.-P. Kriegel, P. Kr¨oger, I. M¨uller-Gorman, and A. Zimek.           Detection 
+
+      and visualization of subspace cluster hierarchies.        In Proceedings of the 12th International 
+
+       Conference on Database Systems for Advanced Applications (DASFAA), Bangkok, Thailand, 
+
+      pages 152–163, 2007. 
+
+
+
+  [4]  E. Achtert, C.  B¨ohm, H.-P. Kriegel, P. Kr¨oger, I.  M¨uller-Gorman, and A.  Zimek.          Finding 
+
+      hierarchies of subspace clusters.     In Proceedings of the 10th European Conference on Prin- 
+
+      ciples and Practice of Knowledge Discovery in Databases (PKDD), Berlin, Germany, pages 
+
+      446–453, 2006. 
+
+
+
+  [5]  E. Achtert, C. B¨ohm, H.-P. Kriegel, P. Kr¨oger, and A. Zimek. Deriving quantitative models for 
+
+      correlation clusters. In Proceedings of the 12th ACM International Conference on Knowledge 
+
+      Discovery and Data Mining (SIGKDD), Philadelphia, PA, pages 4–13, 2006. 
+
+
+
+  [6]  E. Achtert, C. B¨ohm, H.-P. Kriegel, P. Kr¨oger, and A. Zimek. On exploring complex relation- 
+
+       ships of correlation clusters. In Proceedings of the 19th International Conference on Scienti? c 
+
+      and Statistical Database Management (SSDBM), Banff, Canada, page 7, 2007. 
+
+
+----------------------- Page 247-----------------------
+
+                               Clustering High-Dimensional Data                                      221 
+
+
+
+ [7]  E. Achtert, C. B¨ohm, H.-P. Kriegel, P. Kr¨oger, and A. Zimek.  Robust, complete, and ef?cient 
+
+      correlation clustering.  In Proceedings of  the  7th  SIAM International Conference  on  Data 
+
+     Mining (SDM), Minneapolis, MN, 2007. 
+
+
+
+ [8]  E. Achtert, C. B¨ohm, P. Kr¨oger, and A. Zimek.      Mining hierarchies of correlation clusters. 
+
+      In Proceedings of the 18th International Conference on Scienti? c and Statistical Database 
+
+     Management (SSDBM), Vienna, Austria, pages 119–128, 2006. 
+
+
+
+ [9]  E. Achtert, S. Goldhofer, H.-P. Kriegel, E. Schubert, and A. Zimek. Evaluation of clusterings— 
+
+     Metrics and visual support.     In Proceedings of the  28th International Conference on  Data 
+
+     Engineering (ICDE), Washington, DC, pages 1285–1288, 2012. 
+
+
+
+[10]  C. C. Aggarwal, J. Han, J. Wang, and P. S. Yu.  A framework for projected clustering of high 
+
+      dimensional data streams. In Proceedings of the 30th International Conference on Very Large 
+
+     Data Bases (VLDB), Toronto, Canada, pages 852–863, 2004. 
+
+
+
+[11]  C. C. Aggarwal, A. Hinneburg, and D. Keim.  On the surprising behavior of distance metrics 
+
+      in high dimensional space.  In Proceedings of the 8th International Conference on Database 
+
+      Theory (ICDT), London, UK, pages 420–434, 2001. 
+
+
+
+[12]  C. C. Aggarwal, C. M. Procopiuc, J. L. Wolf, P. S. Yu, and J. S. Park.        Fast algorithms for 
+
+     projected clustering. In Proceedings of the ACM International Conference on Management of 
+
+     Data (SIGMOD), Philadelphia, PA, pages 61–72, 1999. 
+
+
+
+[13]  C. C. Aggarwal and P. S. Yu. Finding generalized projected clusters in high dimensional space. 
+
+      In Proceedings of the ACM International Conference on Management of Data (SIGMOD), 
+
+      Dallas, TX, pages 70–81, 2000. 
+
+
+
+[14]  R. Agrawal, J. Gehrke, D. Gunopulos, and P. Raghavan.         Automatic subspace clustering of 
+
+     high dimensional data for data mining applications. In Proceedings of the ACM International 
+
+      Conference on Management of Data (SIGMOD), Seattle, WA, pages 94–105, 1998. 
+
+
+
+[15]  R. Agrawal and R. Srikant. Fast algorithms for mining association rules. In Proceedings of the 
+
+     20th International Conference on Very Large Data Bases (VLDB), Santiago de Chile, Chile, 
+
+     pages 487–499, 1994. 
+
+
+
+[16]  M. Ankerst, M. M. Breunig, H.-P. Kriegel, and J. Sander. OPTICS: Ordering points to identify 
+
+     the clustering structure. In Proceedings of the ACM International Conference on Management 
+
+      of Data (SIGMOD), Philadelphia, PA, pages 49–60, 1999. 
+
+
+
+[17]  I. Assent. Clustering high dimensional data.     Wiley Interdisciplinary Reviews: Data Mining 
+
+     and Knowledge Discovery, 2(4):340–350, 2012. 
+
+
+
+[18]  I.  Assent,  R.  Krieger,  E.  M¨uller,  and  T.  Seidl. DUSC:  Dimensionality unbiased  subspace 
+
+      clustering. In Proceedings of the 7th IEEE International Conference on Data Mining (ICDM), 
+
+      Omaha, NE, pages 409–414, 2007. 
+
+
+
+[19]  I. Assent, E. M¨uller, S. G¨unnemann, R. Krieger, and T. Seidl.    Less is more: Non-redundant 
+
+      subspace clustering. In MultiClust: 1st International Workshop on Discovering, Summarizing 
+
+     and Using Multiple Clusterings Held in Conjunction with KDD 2010, Washington, DC, 2010. 
+
+
+
+[20]  M. S. Aziz and C. K. Reddy. A robust seedless algorithm for correlation clustering. In Proceed- 
+
+      ings of the 14th Paci? c-Asia Conference on Knowledge Discovery and Data Mining (PAKDD), 
+
+      Hyderabad, India, pages 28–37, 2010. 
+
+
+----------------------- Page 248-----------------------
+
+222                          Data Clustering: Algorithms and Applications 
+
+
+
+[21]  E. Bae and J. Bailey. COALA: A novel approach for the extraction of an alternate clustering of 
+
+      high quality and high dissimilarity.  In Proceedings of the 6th IEEE International Conference 
+
+      on Data Mining (ICDM), Hong Kong, China, pages 53–62, 2006. 
+
+
+
+[22]  N. Bansal, A. Blum, and S. Chawla.      Correlation clustering.  Machine Learning, 56:89–113, 
+
+      2004. 
+
+
+
+[23]  R. Bellman. Adaptive Control Processes. A Guided Tour . Princeton University Press, 1961. 
+
+
+
+[24]  A. Belussi and C. Faloutsos.    Estimating the selectivity of spatial queries using the “correla- 
+
+      tion” fractal dimension.  In Proceedings of the 21st International Conference on Very Large 
+
+      Data Bases (VLDB), Zurich, Switzerland, pages 299–310, 1995. 
+
+
+
+[25]  K. P. Bennett, U. Fayyad, and D. Geiger.      Density-based indexing for approximate nearest- 
+
+      neighbor queries.   In Proceedings of the 5th ACM International Conference on Knowledge 
+
+      Discovery and Data Mining (SIGKDD), San Diego, CA, pages 233–243, 1999. 
+
+
+
+[26]  T. Bernecker, M. E. Houle, H.-P. Kriegel, P. Kr¨oger, M. Renz, E. Schubert, and A. Zimek. 
+
+      Quality of similarity rankings in time series.  In Proceedings of the 12th International Sympo- 
+
+      sium on Spatial and Temporal Databases (SSTD), Minneapolis, MN, pages 422–440, 2011. 
+
+
+
+[27]  K. Beyer, J. Goldstein, R. Ramakrishnan, and U. Shaft.       When is “nearest neighbor” mean- 
+
+      ingful?  In Proceedings of  the  7th  International Conference  on  Database  Theory  (ICDT), 
+
+      Jerusalem, Israel, pages 217–235, 1999. 
+
+
+
+[28]  S. Bickel and T. Scheffer. Multi-view clustering. In Proceedings of the 4th IEEE International 
+
+      Conference on Data Mining (ICDM), Brighton, UK, pages 19–26, 2004. 
+
+
+
+[29]  C. Bouveyron, S. Girard, and C. Schmid.  High-dimensional data clustering.  Computational 
+
+      Statistics and Data Analysis, 52:502–519, 2007. 
+
+
+
+[30]  C. B¨ohm, S. Berchtold, and D. A. Keim.  Searching in high-dimensional spaces: Index struc- 
+
+      tures  for  improving  the  performance of  multimedia  databases.    ACM  Computing  Surveys , 
+
+      33(3):322–373, 2001. 
+
+
+
+[31]  C.  B¨ohm, K.  Kailing, H.-P. Kriegel, and P.  Kr¨oger.  Density connected clustering with lo- 
+
+      cal subspace preferences.  In Proceedings of the 4th IEEE International Conference on Data 
+
+      Mining (ICDM), Brighton, UK, pages 27–34, 2004. 
+
+
+
+[32]  C. B¨ohm, K. Kailing, P. Kr¨oger, and A. Zimek.  Computing clusters of correlation connected 
+
+      objects.  In Proceedings of the ACM International Conference on Management of Data (SIG- 
+
+      MOD), Paris, France, pages 455–466, 2004. 
+
+
+
+[33]  K. Chakrabarti and S. Mehrotra. Local dimensionality reduction: A new approach to indexing 
+
+      high dimensional spaces.  In Proceedings of the 26th International Conference on Very Large 
+
+      Data Bases (VLDB), Cairo, Egypt, pages 89–100, 2000. 
+
+
+
+[34]  C. H. Cheng, A. W.-C. Fu, and Y. Zhang. Entropy-based subspace clustering for mining numer- 
+
+      ical data.  In Proceedings of the 5th ACM International Conference on Knowledge Discovery 
+
+      and Data Mining (SIGKDD), San Diego, CA, pages 84–93, 1999. 
+
+
+
+[35]  R. L. F. Cordeiro, A. J. M. Traina, C. Faloutsos, and C. Traina Jr. Finding clusters in subspaces 
+
+      of very large, multi-dimensional datasets. In Proceedings of the 26th International Conference 
+
+      on Data Engineering (ICDE), Long Beach, CA, pages 625–636, 2010. 
+
+
+----------------------- Page 249-----------------------
+
+                                 Clustering High-Dimensional Data                                           223 
+
+
+
+[36]  Y. Cui, X. Z. Fern, and J. G. Dy.  Non-redundant multi-view clustering via orthogonalization. 
+
+      In Proceedings of the 7th IEEE International Conference on Data Mining (ICDM), Omaha, 
+
+      NE, pages 133–142, 2007. 
+
+
+
+[37]  X. H. Dang and J. Bailey.  Generation of alternative clusterings using the CAMI approach. In 
+
+      Proceedings of the 10th SIAM International Conference on Data Mining (SDM), Columbus, 
+
+      OH, pages 118–129, 2010. 
+
+
+
+[38]  I. Davidson and Z. Qi.      Finding alternative clusterings using constraints.       In Proceedings of 
+
+      the 8th IEEE International Conference on Data Mining (ICDM), Pisa, Italy, pages 773–778, 
+
+      2008. 
+
+
+
+[39]  I. Davidson, S. S. Ravi, and L. Shamis.         A SAT-based framework for ef?cient constrained 
+
+      clustering. In Proceedings of the 10th SIAM International Conference on Data Mining (SDM), 
+
+      Columbus, OH, pages 94–105, 2010. 
+
+
+
+[40]  A. P. Dempster, N. M. Laird, and D. B. Rubin. Maximum likelihood from incomplete data via 
+
+      the EM algorithm. Journal of the Royal Statistical Society: Series B (Statistical Methodology), 
+
+      39(1):1–31, 1977. 
+
+
+
+[41]  C. Domeniconi.      Subspace clustering ensembles (invited talk).       In 3rd MultiClust Workshop: 
+
+      Discovering, Summarizing and Using Multiple Clusterings Held in Conjunction with SIAM 
+
+      Data Mining 2012, Anaheim, CA, 2012. 
+
+
+
+[42]  C. Domeniconi, D. Gunopulos, S. Ma, B. Yan, M. Al-Razgan, and D. Papadopoulos. Locally 
+
+      adaptive metrics for clustering high dimensional data. Data Mining and Knowledge Discovery, 
+
+      14(1):63–97, 2007. 
+
+
+
+[43]  C. Domeniconi, D. Papadopoulos, D. Gunopulos, and S.  Ma.                Subspace clustering of high 
+
+      dimensional data.  In Proceedings of the 4th SIAM International Conference on Data Mining 
+
+      (SDM), Lake Buena Vista, FL, pages 517–521, 2004. 
+
+
+
+[44]  R. O. Duda and P. E. Hart.       Use of the Hough transformation to detect lines and curves in 
+
+      pictures.  Communications of the ACM, 15(1):11–15, 1972. 
+
+
+
+[45]  R. J. Durrant and A. Kab´an.      When is “nearest neighbour” meaningful: A converse theorem 
+
+      and implications. Journal of Complexity, 25(4):385–397, 2009. 
+
+
+
+[46]  M.  Ester,  H.-P.  Kriegel, J.  Sander, and  X.  Xu.    A density-based algorithm for  discovering 
+
+      clusters in large spatial databases with noise.      In Proceedings of the 2nd ACM International 
+
+      Conference on Knowledge Discovery and Data Mining (KDD), Portland, OR, pages 226–231, 
+
+      1996. 
+
+
+
+[47]  V. Estivill-Castro.   Why so many clustering algorithms—A position paper.              ACM SIGKDD 
+
+      Explorations, 4(1):65–75, 2002. 
+
+
+
+[48]  C. Faloutsos and I. Kamel.  Beyond uniformity and independence: Analysis of R-trees using 
+
+      the concept of fractal dimension.       In Proceedings of the ACM International Conference on 
+
+      Management of Data (SIGMOD), Minneapolis, MN, pages 4–13, 1994. 
+
+
+
+[49]  I.  F¨arber,  S.  G¨unnemann,  H.-P.  Kriegel,  P.  Kr¨oger,  E.  M¨uller,  E.  Schubert,  T.  Seidl,  and 
+
+      A. Zimek.  On using class-labels in evaluation of clusterings.  In MultiClust: 1st International 
+
+      Workshop on Discovering, Summarizing and Using Multiple Clusterings Held in Conjunction 
+
+      with KDD 2010, Washington, DC, 2010. 
+
+
+----------------------- Page 250-----------------------
+
+224                             Data Clustering: Algorithms and Applications 
+
+
+
+[50]  X. Z. Fern, I. Davidson, and J. G. Dy.  MultiClust 2010: Discovering, summarizing and using 
+
+      multiple clusterings. ACM SIGKDD Explorations , 12(2):47–49, 2010. 
+
+
+
+[51]  M. A. Fischler and R. C. Bolles.         Random sample consensus: A paradigm for model ?tting 
+
+      with applications to image analysis and automated cartography. Communications of the ACM, 
+
+      24(6):381–395, 1981. 
+
+
+
+[52]  E. B. Fowlkes, R. Gnanadesikan, and J. R. Kettenring. Variable selection in clustering. Journal 
+
+      of Classi? cation, 5:205–228, 1988. 
+
+
+
+[53]  E.  B.  Fowlkes  and C.  L.  Mallows.       A  method for  comparing two  hierarchical clusterings. 
+
+      Journal of the American Statistical Association, 78(383):553–569, 1983. 
+
+
+
+[54]  D. Franc¸ois, V. Wertz, and M. Verleysen.          The concentration of fractional distances.        IEEE 
+
+      Transactions on Knowledge and Data Engineering, 19(7):873–886, 2007. 
+
+
+
+[55]  J. H. Friedman and J. J. Meulman.  Clustering objects on subsets of attributes. Journal of the 
+
+      Royal Statistical Society: Series B (Statistical Methodology), 66(4):825–849, 2004. 
+
+
+
+       ´ 
+
+[56]  E. Fromont, A. Prado, and C. Robardet. Constraint-based subspace clustering. In Proceedings 
+
+      of the 9th SIAM International Conference on Data Mining (SDM), Sparks, NV, pages 26–37, 
+
+      2009. 
+
+
+
+[57]  G. Gan, C. Ma, and J. Wu. Data Clustering. Theory, Algorithms, and Applications. Philadel- 
+
+      phia, PA: Society for Industrial and Applied Mathematics (SIAM), 2007. 
+
+
+
+[58]  J. Ghosh and A. Acharya.  Cluster ensembles.  Wiley Interdisciplinary Reviews: Data Mining 
+
+      and Knowledge Discovery, 1(4):305–315, 2011. 
+
+
+
+[59]  R. Gnanadesikan, J. R. Kettenring, and S. L. Tsao.           Weighting and selection of variables for 
+
+      cluster analysis. Journal of Classi? cation, 12(1):113–136, 1995. 
+
+
+
+[60]  D. Gondek and T. Hofmann.  Non-redundant clustering with conditional ensembles.  In Pro- 
+
+      ceedings of the 11th ACM International Conference on Knowledge Discovery and Data Mining 
+
+      (SIGKDD), Chicago, IL, pages 70–77, 2005. 
+
+
+
+[61]  D. Gondek and T. Hofmann.  Non-redundant data clustering.  In Proceedings of the 4th IEEE 
+
+      International Conference on Data Mining (ICDM), Brighton, UK, pages 75–82, 2004. 
+
+
+
+[62]  F.  Gullo, C.  Domeniconi, and A. Tagarelli.          Advancing data clustering via projective clus- 
+
+      tering ensembles.     In Proceedings of the 17th ACM International Conference on Knowledge 
+
+      Discovery and Data Mining (SIGKDD), San Diego, CA, pages 733–744, 2011. 
+
+
+
+[63]  F.  Gullo,  C.  Domeniconi, and  A.  Tagarelli.       Enhancing single-objective projective cluster- 
+
+      ing ensembles.     In Proceedings of the 10th IEEE International Conference on Data Mining 
+
+      (ICDM), Sydney, Australia, pages 833–838, 2010. 
+
+
+
+[64]  F. Gullo, C. Domeniconi, and A. Tagarelli. Projective clustering ensembles. In Proceedings of 
+
+      the 9th IEEE International Conference on Data Mining (ICDM), Miami, FL, pages 794–799, 
+
+      2009. 
+
+
+
+[65]  A. Gupta, R. Krauthgamer, and J. R. Lee.           Bounded geometries, fractals, and low-distortion 
+
+      embeddings. In Proceedings of the 44th Annual IEEE Symposium on Foundations of Computer 
+
+      Science (FOCS), Cambridge, MA, pages 534–543, 2003. 
+
+
+
+[66]  I.  Guyon  and  A.  Elisseeff.    An  introduction to  variable  and  feature  selection.      Journal of 
+
+      Machine Learning Research, 3:1157–1182, 2003. 
+
+
+----------------------- Page 251-----------------------
+
+                              Clustering High-Dimensional Data                                    225 
+
+
+
+[67]  S. G¨unnemann, B. Boden, and T. Seidl.     Finding density-based subspace clusters in graphs 
+
+     with feature vectors. Data Mining and Knowledge Discovery, 25(2):243–269, 2012. 
+
+
+
+[68]  S. G¨unnemann, I. F¨arber, B. Boden, and T. Seidl.  Subspace clustering meets dense subgraph 
+
+     mining: A synthesis of two paradigms. In Proceedings of the 10th IEEE International Confer- 
+
+     ence on Data Mining (ICDM), Sydney, Australia, pages 845–850, 2010. 
+
+
+
+[69]  S. G¨unnemann, I. F¨arber, E. M¨uller, I. Assent, and T. Seidl. External evaluation measures 
+
+     for subspace  clustering.  In Proceedings of the  20th  ACM Conference on  Information and 
+
+     Knowledge Management (CIKM), Glasgow, UK, pages 1363–1372, 2011. 
+
+
+
+[70]  S. G¨unnemann, I. F¨arber, E. M¨uller, and T. Seidl. ASCLU: Alternative subspace clustering. 
+
+     In MultiClust: 1st International Workshop on Discovering, Summarizing and Using Multiple 
+
+     Clusterings Held in Conjunction with KDD 2010, Washington, DC, 2010. 
+
+
+
+[71]  S. G¨unnemann, H. Kremer, and T. Seidl.  Subspace clustering for uncertain data.  In Proceed- 
+
+     ings of the 10th SIAM International Conference on Data Mining (SDM), Columbus, OH, pages 
+
+     385–396, 2010. 
+
+
+
+[72]  S. G¨unnemann, E. M¨uller, I. F¨arber, and T. Seidl. Detection of orthogonal concepts in sub- 
+
+     spaces of high dimensional data. In Proceedings of the 18th ACM Conference on Information 
+
+     and Knowledge Management (CIKM), Hong Kong, China, pages 1317–1326, 2009. 
+
+
+
+[73]  J. Han, M. Kamber, and J. Pei. Data Mining: Concepts and Techniques, 3rd edition.  Morgan 
+
+     Kaufmann, 2011. 
+
+
+
+[74]  R. Haralick and R. Harpaz. Linear manifold clustering. In Proceedings of the 4th International 
+
+     Conference on Machine Learning and Data Mining in Pattern Recognition (MLDM), Leipzig, 
+
+     Germany, pages 132–141, 2005. 
+
+
+
+[75]  R. Harpaz and R. Haralick. Mining subspace correlations. In Proceedings of the IEEE Sympo- 
+
+     sium on Computational Intelligence and Data Mining (CIDM), Honolulu, HI, pages 335–342, 
+
+     2007. 
+
+
+
+[76]  A. Hinneburg, C. C. Aggarwal, and D. A. Keim.  What is the nearest neighbor in high dimen- 
+
+     sional spaces? In Proceedings of the 26th International Conference on Very Large Data Bases 
+
+     (VLDB), Cairo, Egypt, pages 506–515, 2000. 
+
+
+
+[77]  P. V. C. Hough.  Methods and means for recognizing complex patterns.  U.S. Patent 3069654, 
+
+     December 18, 1962. 
+
+
+
+[78]  M. E. Houle, H.-P. Kriegel, P. Kr¨oger, E. Schubert, and A. Zimek.  Can shared-neighbor dis- 
+
+     tances defeat the  curse of dimensionality?    In Proceedings of the 22nd International Con- 
+
+     ference on Scienti? c and Statistical Database Management (SSDBM), Heidelberg, Germany, 
+
+     pages 482–500, 2010. 
+
+
+
+[79]  J. Z. Huang, M. K. Ng, H. Rong, and Z. Li.    Automated variable weighting in k-means type 
+
+     clustering. IEEE Transactions on Pattern Analysis and Machine Intelligence, 27(5):657–668, 
+
+     2005. 
+
+
+
+[80]  P. Jain, R. Meka, and I. S. Dhillon.  Simultaneous unsupervised learning of disparate cluster- 
+
+     ings. Statistical Analysis and Data Mining, 1(3):195–210, 2008. 
+
+
+
+[81]  L. Ji, K.-L. Tan, and A. K. H. Tung. Mining frequent closed cubes in 3D datasets. In Proceed- 
+
+     ings of the 32nd International Conference on Very Large Data Bases (VLDB), Seoul, Korea, 
+
+     pages 811–822, 2006. 
+
+
+----------------------- Page 252-----------------------
+
+226                             Data Clustering: Algorithms and Applications 
+
+
+
+[82]  L. Jing, M. K. Ng, and J. Z. Huang.         An entropy weighting k-means algorithm for subspace 
+
+      clustering of high-dimensional sparse data. IEEE Transactions on Knowledge and Data Engi- 
+
+      neering, 19(8):1026–1041, 2007. 
+
+
+
+[83]  I. T. Jolliffe. Principal Component Analysis. 2nd edition, Springer, 2002. 
+
+
+
+[84]  K. Kailing, H.-P. Kriegel, and P. Kr¨oger.         Density-connected subspace clustering for high- 
+
+      dimensional data.  In Proceedings of the 4th SIAM International Conference on Data Mining 
+
+      (SDM), Lake Buena Vista, FL, pages 246–257, 2004. 
+
+
+
+[85]  F. Korn, B.-U. Pagel, and C. Faloutsos. On the “dimensionality curse” and the “self-similarity 
+
+      blessing.” IEEE Transactions on Knowledge and Data Engineering, 13(1):96–111, 2001. 
+
+
+
+[86]  H.-P. Kriegel, P. Kr¨oger, I. Ntoutsi, and A. Zimek.          Density based subspace clustering over 
+
+      dynamic data. In Proceedings of the 23rd International Conference on Scienti? c and Statistical 
+
+      Database Management (SSDBM), Portland, OR, pages 387–404, 2011. 
+
+
+
+[87]  H.-P. Kriegel, P. Kr¨oger, M. Renz, and S. Wurst.  A generic framework for ef?cient subspace 
+
+      clustering of high-dimensional data. In Proceedings of the 5th IEEE International Conference 
+
+      on Data Mining (ICDM), Houston, TX, pages 250–257, 2005. 
+
+
+
+[88]  H.-P. Kriegel, P. Kr¨oger, J. Sander, and A. Zimek.  Density-based clustering.  Wiley Interdisci- 
+
+      plinary Reviews: Data Mining and Knowledge Discovery , 1(3):231–240, 2011. 
+
+
+
+[89]  H.-P. Kriegel, P.  Kr¨oger, E.  Schubert, and A. Zimek.          A general framework for increasing 
+
+      the robustness of PCA-based correlation clustering algorithms.              In Proceedings of the 20th 
+
+      International Conference on Scienti? c and Statistical Database Management (SSDBM), Hong 
+
+      Kong, China, pages 418–435, 2008. 
+
+
+
+[90]  H.-P. Kriegel, P. Kr¨oger, and A. Zimek.  Clustering high dimensional data: A survey on sub- 
+
+      space clustering, pattern-based clustering, and correlation clustering.           ACM Transactions on 
+
+      Knowledge Discovery from Data (TKDD), 3(1):1–58, 2009. 
+
+
+
+[91]  H.-P. Kriegel, P. Kr¨oger, and A. Zimek. Subspace clustering. Wiley Interdisciplinary Reviews: 
+
+      Data Mining and Knowledge Discovery, 2(4):351–364, 2012. 
+
+
+
+[92]  H.-P. Kriegel, E. Schubert, and A. Zimek.           Evaluation of multiple clustering solutions.          In 
+
+      2nd MultiClust Workshop: Discovering, Summarizing and Using Multiple Clusterings Held in 
+
+      Conjunction with ECML PKDD 2011, Athens, Greece, pages 55–66, 2011. 
+
+
+
+[93]  H.-P. Kriegel and A. Zimek.  Subspace clustering, ensemble clustering, alternative clustering, 
+
+      multiview clustering: What can we learn from each other?               In MultiClust: 1st International 
+
+      Workshop on Discovering, Summarizing and Using Multiple Clusterings Held in Conjunction 
+
+      with KDD 2010, Washington, DC, 2010. 
+
+
+
+                                                                                                  ¨ 
+
+[94]  P. Kr¨oger and A. Zimek.  Subspace clustering techniques.  In L. Liu and M. T. Ozsu, editors, 
+
+      Encyclopedia of Database Systems, pages 2873–2875. Springer, 2009. 
+
+
+
+[95]  J. Li, X. Huang, C. Selke, and J. Yong.          A fast algorithm for ?nding correlation clusters in 
+
+      noise data.  In Proceedings of the 11th Paci? c-Asia Conference on Knowledge Discovery and 
+
+      Data Mining (PAKDD), Nanjing, China, pages 639–647, 2007. 
+
+
+
+[96]  B. Liu, Y. Xia, and P. S. Yu.  Clustering through decision tree construction. In Proceedings of 
+
+      the 9th ACM Conference on Information and Knowledge Management (CIKM), Washington, 
+
+      DC, pages 20–29, 2000. 
+
+
+----------------------- Page 253-----------------------
+
+                               Clustering High-Dimensional Data                                      227 
+
+
+
+[97]  G. Liu, J. Li, K. Sim, and L. Wong.  Distance based subspace clustering with ?exible dimen- 
+
+      sion partitioning.  In Proceedings of the 23rd International Conference on Data Engineering 
+
+      (ICDE), Istanbul, Turkey, pages 1250–1254, 2007. 
+
+
+
+[98]  Y. Lu, S. Wang, S. Li, and C. Zhou.  Particle swarm optimizer for variable weighting in clus- 
+
+     tering high-dimensional data. Machine Learning, 82(1):43–70, 2010. 
+
+
+
+[99]  S.  C.  Madeira and  A.  L.  Oliveira. Biclustering algorithms for  biological data  analysis:  A 
+
+      survey.  IEEE/ACM Transactions on Computational Biology and Bioinformatics, 1(1):24–45, 
+
+      2004. 
+
+
+
+[100]  G. W. Milligan.    An examination of the effect of six types of error perturbation on ?fteen 
+
+      clustering algorithms. Psychometrika, 45(3):325–342, 1980. 
+
+
+
+[101]  G. Moise and J. Sander.    Finding non-redundant, statistically signi?cant regions in high di- 
+
+      mensional data: A novel approach to projected and subspace clustering. In Proceedings of the 
+
+      14th ACM International Conference on Knowledge Discovery and Data Mining (SIGKDD), 
+
+     Las Vegas, NV, pages 533–541, 2008. 
+
+
+
+[102]  G. Moise, J. Sander, and M. Ester. P3C: A robust projected clustering algorithm. In Proceed- 
+
+      ings of the 6th IEEE International Conference on Data Mining (ICDM), Hong Kong, China, 
+
+     pages 414–425, 2006. 
+
+
+
+[103]  G. Moise, J. Sander, and M. Ester.  Robust projected clustering. Knowledge and Information 
+
+      Systems (KAIS), 14(3):273–298, 2008. 
+
+
+
+[104]  G. Moise, A. Zimek, P. Kr¨oger, H.-P. Kriegel, and J. Sander.     Subspace and projected clus- 
+
+     tering: Experimental evaluation and analysis.      Knowledge and Information Systems (KAIS), 
+
+      21(3):299–326, 2009. 
+
+
+
+[105]  E. M¨uller, I. Assent, S. G¨unnemann, R. Krieger, and T. Seidl.  Relevant subspace clustering: 
+
+     Mining the most interesting non-redundant concepts in high dimensional data. In Proceedings 
+
+      of the 9th IEEE International Conference on Data Mining (ICDM), Miami, FL, pages 377– 
+
+      386, 2009. 
+
+
+
+[106]  E. M¨uller, I. Assent, R. Krieger, S. G¨unnemann, and T. Seidl.    DensEst: Density estimation 
+
+      for data mining in high dimensional spaces.      In Proceedings of the 9th SIAM International 
+
+      Conference on Data Mining (SDM), Sparks, NV, pages 173–184, 2009. 
+
+
+
+[107]  E. M¨uller, I. Assent, and T. Seidl.  HSM: heterogeneous subspace mining in high dimen- 
+
+      sional data.  In Proceedings of the 21st International Conference on Scienti? c and Statistical 
+
+     Database Management (SSDBM), New Orleans, LA, pages 497–516, 2009. 
+
+
+
+[108]  E. M¨uller, S. G¨unnemann, I. Assent, and T. Seidl.  Evaluating clustering in subspace projec- 
+
+     tions of high dimensional data.  In Proceedings of the 35th International Conference on Very 
+
+     Large Data Bases (VLDB), Lyon, France, pages 1270–1281, 2009. 
+
+
+
+[109]  E. M¨uller, S. G¨unnemann, I. Assent, and T. Seidl, editors. 2nd MultiClustWorkshop: Discov- 
+
+      ering, Summarizing and Using Multiple Clusterings, Held in Conjunction with ECML PKDD 
+
+     2011, Athens, Greece, 2011. 
+
+
+
+[110]  E. M¨uller, T. Seidl, S. Venkatasubramanian, and A. Zimek, editors. 3rd MultiClust Workshop: 
+
+     Discovering, Summarizing and Using Multiple Clusterings, Held in Conjunction with SIAM 
+
+     Data Mining 2012, Anaheim, CA, 2012. 
+
+
+----------------------- Page 254-----------------------
+
+228                         Data Clustering: Algorithms and Applications 
+
+
+
+[111]  H. S. Nagesh, S. Goil, and A. Choudhary.     Adaptive grids for clustering massive data sets. 
+
+     In Proceedings of the 1st SIAM International Conference on Data Mining (SDM),New York, 
+
+     N,Y., pages 1–17, 2001. 
+
+
+
+[112]  I.  Ntoutsi, A.  Zimek, T. Palpanas, P.  Kr¨oger, and H.-P. Kriegel. Density-based projected 
+
+     clustering over high dimensional data streams. In Proceedings of the 12th SIAM International 
+
+      Conference on Data Mining (SDM), Anaheim, CA, 2012. 
+
+
+
+[113]  B.-U. Pagel, F. Korn, and C. Faloutsos.    De?ating the dimensionality curse using multiple 
+
+     fractal dimensions. In Proceedings of the 16th International Conference on Data Engineering 
+
+      (ICDE), San Diego, CA, pages 589–598, 2000. 
+
+
+
+[114]  L. Parsons, E. Haque, and H. Liu.  Subspace clustering for high dimensional data: A review. 
+
+     ACM SIGKDD Explorations , 6(1):90–105, 2004. 
+
+
+
+[115]  A. Patrikainen and M. Meila. Comparing subspace clusterings. IEEE Transactions on Knowl- 
+
+      edge and Data Engineering, 18(7):902–916, 2006. 
+
+
+
+[116]  J. M. Phillips, P. Raman, and S. Venkatasubramanian. Generating a diverse set of high-quality 
+
+     clusterings. In 2nd MultiClust Workshop: Discovering, Summarizing and Using Multiple Clus- 
+
+      terings Held in Conjunction with ECML PKDD 2011, Athens, Greece, pages 80–91, 2011. 
+
+
+
+[117]  C. M. Procopiuc, M. Jones, P. K. Agarwal, and T. M. Murali.  A Monte Carlo algorithm for 
+
+     fast projective clustering.  In Proceedings of the ACM International Conference on Manage- 
+
+     ment of Data (SIGMOD), Madison, WI, pages 418–427, 2002. 
+
+
+
+[118]  Z. J. Qi and I. Davidson. A principled and ?exible framework for ?nding alternative cluster- 
+
+     ings. In Proceedings of the 15th ACM International Conference on Knowledge Discovery and 
+
+     Data Mining (SIGKDD), Paris, France, pages 717–726, 2009. 
+
+
+
+[119]  M. Radovanovi´c, A. Nanopoulos, and M. Ivanovi´c.  On the existence of obstinate results in 
+
+     vector space models.   In Proceedings of the 33rd International Conference on Research and 
+
+     Development in Information Retrieval (SIGIR), Geneva, Switzerland, pages 186–193, 2010. 
+
+
+
+[120]  K.  Sequeira  and  M.  J.  Zaki. SCHISM:  A  new approach to  interesting  subspace  mining. 
+
+     International Journal of Business Intelligence and Data Mining, 1(2):137–160, 2005. 
+
+
+
+[121]  R. Sibson.  SLINK: An optimally ef?cient algorithm for the single-link cluster method.  The 
+
+      Computer Journal, 16(1):30–34, 1973. 
+
+
+
+[122]  K. Sim, V. Gopalkrishnan, A. Zimek, and G. Cong. A survey on enhanced subspace cluster- 
+
+     ing. Data Mining and Knowledge Discovery, 26(2):332–397, 2013. 
+
+
+
+[123]  K. Sim, J. Li, V. Gopalkrishnan, and G. Liu.   Mining maximal quasi-bicliques to co-cluster 
+
+      stocks and ?nancial ratios for value investment. In Proceedings of the 6th IEEE International 
+
+      Conference on Data Mining (ICDM), Hong Kong, China, pages 1059–1063, 2006. 
+
+
+
+[124]  K.  Sim,  A. K.  Poernomo, and V.  Gopalkrishnan.    Mining actionable subspace clusters in 
+
+      sequential data. In Proceedings of the 10th SIAM International Conference on Data Mining 
+
+      (SDM), Columbus, OH, pages 442–453, 2010. 
+
+
+
+[125]  J. L. Slagle, C. L. Chang, and S. L. Heller.  A clustering and data-reorganization algorithm. 
+
+     IEEE Transactions on Systems, Man, and Cybernetics, 5(1):121–128, 1975. 
+
+
+
+[126]  P. H. A. Sneath. The application of computers to taxonomy. Journal of General Microbiology, 
+
+      17:201–226, 1957. 
+
+
+----------------------- Page 255-----------------------
+
+                               Clustering High-Dimensional Data                                      229 
+
+
+
+[127]  D. Steinley and M. J. Brusco.  Selection of variables in cluster analysis: An empirical com- 
+
+     parison of eight procedures. Psychometrika, 73(1):125–144, 2008. 
+
+
+
+[128]  R. Vidal. Subspace clustering. IEEE Signal Processing Magazine, 28(2):52–68, 2011. 
+
+
+
+[129]  J.  Vreeken and A.  Zimek.    When pattern met subspace cluster—A relationship story.          In 
+
+     2nd MultiClust Workshop: Discovering, Summarizing and Using Multiple Clusterings Held in 
+
+      Conjunction with ECML PKDD 2011, Athens, Greece, pages 7–18, 2011. 
+
+
+
+[130]  K.-G.  Woo,  J.-H.  Lee,  M.-H.  Kim,  and  Y.-J.  Lee.  FINDIT:  A  fast  and  intelligent  sub- 
+
+      space clustering algorithm using dimension voting.      Information and Software Technology, 
+
+     46(4):255–271, 2004. 
+
+
+
+[131]  B. Yan and C. Domeniconi.      Subspace metric ensembles for semi-supervised clustering of 
+
+     high dimensional data. In Proceedings of the 17th European Conference on Machine Learning 
+
+      (ECML), Berlin, Germany, pages 509–520, 2006. 
+
+
+
+[132]  L. Yang.   Distance-preserving dimensionality reduction.      Wiley Interdisciplinary Reviews: 
+
+     Data Mining and Knowledge Discovery, 1(5):369–380, 2011. 
+
+
+
+[133]  K. Y. Yip, D. W. Cheung, and M. K. Ng.  HARP: A practical projected clustering algorithm. 
+
+     IEEE Transactions on Knowledge and Data Engineering, 16(11):1387–1397, 2004. 
+
+
+
+[134]  K. Y. Yip, D. W. Cheung, and M. K. Ng. On discovery of extremely low-dimensional clusters 
+
+     using semi-supervised projected clustering.  In Proceedings of the 21st International Confer- 
+
+      ence on Data Engineering (ICDE), Tokyo, Japan, pages 329–340, 2005. 
+
+
+
+[135]  M. L. Yiu and N. Mamoulis.      Frequent-pattern based iterative projected clustering.  In Pro- 
+
+      ceedings of the 3rd IEEE International Conference on Data Mining (ICDM), Melbourne, FL, 
+
+     pages 689–692, 2003. 
+
+
+
+[136]  M. L. Yiu and N. Mamoulis. Iterative projected clustering by subspace mining. IEEE Trans- 
+
+     actions on Knowledge and Data Engineering, 17(2):176–189, 2005. 
+
+
+
+[137]  M. J. Zaki, M. Peters, I. Assent, and T. Seidl.   CLICKS: An effective algorithm for mining 
+
+      subspace clusters in categorical datasets. Data & Knowledge Engineering, 60(1):51–70, 2007. 
+
+
+
+[138]  Q. Zhang, J. Liu, and W. Wang. Incremental subspace clustering over multiple data streams. 
+
+      In Proceedings of the 7th IEEE International Conference on Data Mining (ICDM), Omaha, 
+
+     NE, pages 727–732, 2007. 
+
+
+
+[139]  X. Zhang, F. Pan, and W. Wang. CARE: ?nding local linear correlations in high dimensional 
+
+      data. In Proceedings of the 24th International Conference on Data Engineering (ICDE), Can- 
+
+      cun, Mexico, pages 130–139, 2008. 
+
+
+
+[140]  L. Zhao and M. J. Zaki. TRICLUSTER: An effective algorithm for mining coherent clusters 
+
+      in 3D microarray data.  In Proceedings of the ACM International Conference on Management 
+
+      of Data (SIGMOD), Baltimore, MD, pages 694–705, 2005. 
+
+
+
+[141]  A. Zimek. Correlation clustering. ACM SIGKDD Explorations , 11(1):53–54, 2009. 
+
+
+
+[142]  A. Zimek, E. Schubert, and H.-P. Kriegel.      A survey on unsupervised outlier detection in 
+
+     high-dimensional numerical data. Statistical Analysis and Data Mining, 5(5):363–387, 2012. 
+
+
+----------------------- Page 256-----------------------
+

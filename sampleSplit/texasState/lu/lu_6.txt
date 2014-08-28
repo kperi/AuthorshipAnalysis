@@ -1,0 +1,293 @@
+﻿SEMANTIC-SPATIAL MATCHING FOR IMAGE CLASSIFICATION 
+Yupeng Yan1 
+Xinmei Tian1 
+Linjun Yang2 
+Yijuan Lu3 Houqiang Li1 
+1 
+University of Science and Technology of China, Hefei Anhui, China 
+2Microsoft Corporation, One Microsoft Way, Redmond, WA, USA 
+3Texas State University, San Marcos, Texas, USA 
+yanyp@mail.ustc.edu.cn, {xinmei, lihq}@ustc.edu.cn, linjuny@microsoft.com, lu@txstate.edu 
+ABSTRACT 
+Spatial Pyramid Matching (SPM) has been proven a simple but effective extension to bag-of-visual-words image repre- sentation for spatial layout information compensation. SPM describes image in coarse-to-ﬁne scale by partitioning the im- age into blocks over multiple levels and the features extracted from each block are concatenated into a long vector represen- tation. Based on the assumption that images from the same class have similar spatial conﬁgurations, SPM matches the blocks from different images according to their spatial layout, by aligning all blocks from an image in a ﬁxed spatial order. However, target objects may appear at any location in the im- age with various backgrounds. Therefore, the ﬁxed spatial matching in SPM fails to match similar objects located dif- ferent locations. To solve this problem, we propose an effec- tive and efﬁcient block matching method, Semantic-Spatial Matching (SSM). In this method, not only the spatial layout but also the semantic content is considered for block match- ing. The experiments on two benchmark image classiﬁcation datasets demonstrate the effectiveness of SSM. 
+Index Terms— Spatial matching, image classiﬁcation, bag-of-visual-words, semantic space 
+1. INTRODUCTION 
+Visual representation of images plays a fundamental role in image classiﬁcation. In recent years, local feature represen- tation has shown its superiority due to its robustness to back- grounds, occlusions, etc. Bag-of-visual-words (BOVW) [1] model has been widely used for local feature image represen- tation and has demonstrated promising performance in many applications [2, 3, 4]. In BOVW, a visual codebook is con- structed ﬁrst by clustering a set of local descriptors, such as SIFT [5], extracted from a training image set. Then by quan- tizing all the local descriptors into the visual words in the 
+This work is supported in part by the NSFC 61201413, SRFDP 2100060003, the Fundamental Research Funds for the Central Universities No. WK2100060007 and No. WK2100100021 to Dr. Xinmei Tian, in part by the Texas State University Research Enhancement Program (REP), Army Research Ofﬁce grant W911NF-12-1-0057, and NSF CRI 1058724 to Dr. Yijuan Lu. 
+   
+ 
+Fig. 1. Illustration of 3-level SPM image representation. 
+codebook, each image can be represented as a histogram of the visual words count. 
+Although BOVW has shown its success and popularity, one big issue is that it represents an image as an orderless dis- tribution of local features, which ignores the spatial layout of local features completely. Therefore, many efforts have been made to capture the spatial information, for example, com- puting visual word correlation [6], conducting spatial pyra- mid matching (SPM) [3] and spatial pooling [7, 8], bundling visual words in MSER regions [9, 10], and identifying visual phrases [11, 12], etc. With the advantages of simplicity and efﬁciency, SPM has drawn a lot of attentions and has been widely applied in many applications. 
+SPM describes an image in coarse-to-ﬁne scale by parti- tioning the images into blocks over multiple levels and the features extracted from each block are concatenated into a long vector representation, as illustrated in Fig. 1. The under- line assumption is that images from the same class have sim- ilar spatial conﬁgurations. Based on this assumption, when the vectors from blocks are concatenated, they are aligned ac- cording to their spatial locations in the image. In other words, the blocks from different images are spatially matched. 
+The assumption in SPM maybe works in certain situation, for example, the scene classiﬁcation investigated in [3]. How- ever, it is not true for real Web images which have rich and complex content. Fig. 2 shows several sample images from 
+
+========1========
+
+Fig. 2. Sample images from the “potted plant” category in VOC Challenge 2011 dataset. It shows that the target “potted plant” may locate at various positions. In other words, they are not spatially matched between different images. 
+the “potted plant” category in the PASCAL VOC Challenge 2011 [13], which consists of images collected from Flickr. The target object “potted plant” may occur at any location in the image with various backgrounds. In this case, if we sim- ply apply SPM to concatenate the histograms from all blocks in a ﬁxed spatial order, false matching problem will arise. Here we take a toy example for further illustration. In Fig. 3, there are two images A and B, both containing four ob- jects. But these objects’ locations in A and B are different. For simplicity, we only take the Level 1 of SPM as an ex- ample. In SPM, the features extracted from four blocks are concatenated along a ﬁxed spatial space order (from upper- left to upper-right and from bottom-left to bottom-right). As shown in Fig. 3, we ﬁnd that although images A and B are very similar, their feature vectors derived from SPM are to- tally different. Obviously, such ﬁxed spatial space matching in SPM cannot match similar objects located in different lo- cations in images. 
+The major reason why SPM fails is that it doesn’t take the blocks’ content into consideration. Two blocks from different images should be matched mainly because they have simi- lar content (semantic matching), not just because they have same locations (upper-left, for example) in the images (spa- tial matching). Inspired by this, we propose a new match- ing method, Semantic-Spatial Matching (SSM), which con- siders not only the spatial layout, but also the blocks’ content information. To conduct the semantic matching efﬁciently, SSM constructs a uniﬁed semantic space and all blocks are mapped into this space for alignment. For spatial matching, the sophisticated SPM is directly applied. Then, the seman- tic matching and spatial matching are fused via linear kernel combination to derive SSM. SSM has the advantage of high efﬁciency, simple implementation, and robust to rotation, ﬂip- ping, translation variances. 
+The rest of this paper is organized as follows. In Section 2, the related works are brieﬂy introduced. SSM is described in Section 3. In Section 4, experimental results are reported, followed by the conclusion in Section 5. 
+  
+  
+ 
+ 
+  
+  
+ 
+Fig. 3. Illustration of spatial matching on images A and B. Images A and B have similar content, but the SPM feature vectors are dis- similar. 
+2. RELATED WORK 
+To recover the spatial information ignored in BoVW repre- sentation, many methods have been proposed. The popu- lar SPM [3] solves this problem by partitioning images into coarse-to-ﬁne sub-blocks and concatenating the histograms extracted from all blocks. In SPM, the images are partitioned into non-overlapped blocks with equal size. Cao et al. [8] proposed spatial-bag-of-features to extend SPM by introduc- ing two different ways for image partition. The ﬁrst one is linear ordered bag-of-features, in which image is partitioned into straps along a line with an arbitrary angle. The sec- ond one is circular ordered bag-of-features, in which a center point is given and then the image is evenly divided into sev- eral sectors with the same radian. By enumerating different line angles (ranging from 0◦ to 360◦) and center locations, a family of linear and circular ordered bag-of-features can be obtained. Spatial-bag-of-features still concatenates fea- tures from divided blocks/straps/sectors in a ﬁxed spatial or- der. The difference between SPM and spatial-bag-of-features is the way they partition the images. The additional problem of spatial-bag-of-feature is that it needs enumerating a huge number of possible line angles and center locations, there- fore resulting in an extremely high dimensional histogram representation for an image, which suffers from high com- putational cost in real-time application. Li et al. [7] also pro- posed several spatial pooling methods, includingspatial pyra- mid ring, reordered SPM, and relative SPM, dealing with the rotation, ﬂipping, and translation variance respectively. Spa- tial pyramid ring partitions the image into concentric rings on the polar coordinate, while relative SPM partitions the image in a similar way as SPM but adjusts the partitioning center along with the objects’ positions. In reordered SPM, the im- age is partitioned exactly the same as that in SPM, but the visual words are ordered based on their frequency in differ- ent regions. Again, those methods still belong to the spatial matching category, i.e., partitioning images into sub-regions in different ways and then concatenating their features in a ﬁxed spatial order. Xu et al. [14] proposed spatially aligned pyramid matching method for near duplicate image identiﬁ- 
+
+========2========
+
+cation. In this method, it partitions images into blocks and examines the optimal block matching between any two-image pair by using Earth Mover Distance [15]. This method lacks uniﬁed matching order for all images to derive a general vi- sual representation, and has the drawback of high computa- tional cost. 
+3. SEMANTIC-SPATIAL MATCHING 
+In spatial matching, each image is partitioned into a set of sub-regions (blocks/straps/sectors/rings). The key problem is how to match regions from different images correctly. One straightforward solution is to compare all regions from dif- ferent images pair-wisely and ﬁnd the best match via certain optimization criteria [14]. For example, the pair-wise region matching result of the toy example (Fig. 3) is given in Fig. 4. However, such pair-wise matching approach has the follow- ing drawbacks. First, it is time consuming since all regions need to be compared pair-wisely and a complex programming problem needs to be solved. Second, it lacks uniﬁed matching order, therefore suffering the problem that images cannot be represented by a common feature vector for further applica- tions. Third, the matching is not perfectly “one versus one”. For a region in one image, there may not exist any matched re- gion in other images, or may have multiple regions matched. It is not easy to deal with the “multiple versus multiple” re- gion matching problem. 
+To solve these problems, we propose a new matching method, named semantic matching (SM). In this method, we construct a uniﬁed semantic space and all regions are mapped into this space for alignment. This method is very easy for implementation and highly efﬁcient. 
+Semantic Space Construction: The key step in SM is the semantic space construction. We achieve this by cluster- ing all regions into groups, and each cluster center represents one semantic subspace. Speciﬁcally, given a set of images, each image is partitioned into sub-regions, as done in SPM. Let R = {r1,r2,···,rN}be the set of all regions obtained,D 
+where ri ∈R is the feature vector (region histogram) of the i-th region. We apply the K-means clustering algorithm to construct the semantic space by solving the following prob- lem, 
+N 
+minS (min||rk=1,···,K 
+i 
+− sk||2), (1) 
+i=1 
+where S ={s1,s2,···,sK}is the set of the K cluster centers obtained, which represents the semantic space. sk represents the k-th semantic subspace. 
+Semantic Matching: With the constructed semantic space S, each region can be assigned a semantic label by ﬁnd- ing its nearest neighbor in S. Regions from different images are deﬁned as matched if they have the same semantic label. Instead of conducting the pair-wise region matching via se- mantic labels, we can deﬁne a ﬁxed semantic order (for exam- ple s1 → s2 →,···,→ sK) and all regions from an image can be aligned according to this order. 
+ 
+  
+  
+ 
+  
+  
+Fig. 4. The ideal region matching between images A and B. 
+Mathematically, given an image I, it is ﬁrst partitioned 
+into M regions, RI ={r1,r2,···,rM}, where ri ∈RD is 
+the feature vector (region histogram) of the i-th region. Each 
+ri is mapped to a semantic subspace by ﬁnding its nearest 
+neighbor in S.Ifsk is the nearest neighbor ofri, we call the 
+semantic label ofri issk, denoted asri ∈sk. When all the re- 
+gions inRI have been assigned their corresponding semantic labels, these regions are aligned and their histograms are con- catenated in a ﬁxed semantic order (s1 →s2 →,···,→sK). 
+The ﬁnal concatenated representation of imageI is, 
+VI(SM)=[rTs 
+1, 
+rTs 
+2, 
+···,rTs 
+K 
+]T (2) 
+wherers 
+ 
+k 
+= 
+i,ri∈sk 
+ri is the sum of regions’ histograms 
+with the same semantic labelsk. If there is no region labeled 
+assk,rs 
+k 
+is a D-dimensional vector with all elements as 0. 
+SM ﬁrst classiﬁes the regions into different semantic classes via simple 1-NN, and then all regions are aligned in a ﬁxed semantic order. Since SM matches regions according to their semantic content information, it can handle the rotation, ﬂipping, and translation problem well. Besides, by control- ling the number of semantic labelsK,i.e. |S|, we can get 
+semantic spaces in different granularity. A small K leads to a 
+coarse partition of the semantic space, while a large K leads to 
+a ﬁne partitioned one. With this granularity control, SM has 
+strong tolerance to noise. For example, in our toy example, if 
+we set K =4, the resulting SM representation is the ideal case 
+as illustrated in Fig. 4. If we set K =3, the results are illus- 
+trated in Fig. 5. Here, the obtained semantic space S consists 
+of three semantic labels {“ring”, “cross”, and “arow”} since 
+the two similar “cross” objects are clustered into the same se- 
+mantic class. 
+Semantic-Spatial Matching: Spatial matching methods 
+[3, 7, 8] divide an image into a set of regions and align their 
+feature histograms along ﬁxed spatial order. Semantic match- 
+ing aligns regions from an image along a pre-deﬁned seman- 
+tic order. It is natural to combine these two complementary 
+models together and generate a Semantic-Spatial Matching 
+(SSM). Semantic matching can be combined with any spa- 
+
+========3========
+
+   
+ 
+ 
+  
+ 
+Fig. 5. Illustration of the Semantic Matching. 
+tial matching method [3, 7, 8]. Here we take SPM [3] as an example for its popularity. 
+For SPM and SM combination, the most straightforward way is to concatenate the SPM and SM feature vectors into a long one, 
+VI =[VI(SPM)T,VI(SM)T]T (3) where VI(SPM)is the feature vector derived from SPM. Due to the popularity of kernel based methods in classiﬁcation and in order to control the independent inﬂuence of SPM and SM, we adopt a general combination model, i.e., linear kernel combination, 
+KSSM(Ii,Ij)=αKSM(Ii,Ij)+(1− α)KSPM(Ii,Ij) (4) 
+where KSM(Ii,Ij)=K(VI 
+i(SM), 
+VI 
+j 
+(SM)), KSPM(Ii,Ij) = K(VI 
+i(SPM), 
+VI 
+j 
+(SPM)), and α ∈ [0,1] is the combina- tion coefﬁcient for controlling their effects. Various kernels (Linear, Radial Basis Function, Polynomial) can be adopted here. Eq.(3) is a special case when the linear kernel is adopted with certain α. 
+Space and Time Complexity Analysis: The semantic space construction in SSM is conducted via K-means clus- tering. It has the time complexity of O(LKND) and space complexity of O((N+K)D), where K is the number of clus- ters, L is number of iterations, N is the number of training regions, and D is the dimension of region’s feature vectors. It should be noted that the semantic space can be constructed ofﬂine and only needs to be learned once. For the online SM feature generation, the only computational cost is to ﬁnd the semantic label for each region, which is very fast (O(KD)). For the storage cost, once the semantic space is trained, we only need to record K clustering centers with space complex- ity of O(KD). Therefore, SSM extends SPM with very little additional computational and storage cost. 
+4. EXPERIMENTS 
+4.1. Experiments on VOC 2011 
+4.1.1. Experimental Setting 
+We conduct extensive experiments to test our proposed SSM method on two benchmark image classiﬁcation datasets. The ﬁrst testing dataset is VOC 2011 [13]. It contains 14961 
+ 
+ 
+    
+     
+ 
+ 
+ 
+ 
+   
+Fig. 6. Example images of the VOC2011 database. 
+Table 1. mAP comparison on VOC2011 
+Algorithm mAP(%) 
+BoVW 28.93 
+R-SPM 30.42 
+SPM 37.69 
+SSM 40.79 
+images from 20 categories and the average image size is 500×375. Fig. 6 shows some example images of this dataset. This dataset is quite challenging. It covers diverse object cat- egories and the images have very complex content, as shown in Fig. 2 of “potted plant”. 
+We follow the standard experiment setup for VOC2011, i.e., 5717 images for training and 5823 images for testing. For the local feature, scale-invariant feature transform (SIFT) [5] is extracted from each image on a dense grid. The codebook size is 600. We adopt the linear kernel SVM [3] due to its ef- ﬁciency. We train SVM [2, 16] classiﬁcation models for each category on the training set and report the classiﬁcation per- formance on the testing set in terms of the non-interpolated average precision (AP) [13, 17, 18, 19]. We compare the pro- posed model with spatial pyramid matching (SPM) [3] and recently proposed reordered SPM (R-SPM) [7]. 
+4.1.2. Experimental Results 
+The mAP, average of AP over all 20 categories, is reported in Table 1. It shows that both spatial matching methods, R- SPM and SPM, can improve the baseline BoVW to some ex- tent, that validates the advantage of taking spatial layout in- formation into consideration. The SSM method outperforms both R-SPM and SPM. It demonstrates the effectiveness of the combination of semantic and spatial information. We also investigate the effectiveness of SSM on each category. Fig. 7 shows the AP on each category as well as mAP. From Fig. 7, we can see that SSM performs the best on 19 categories, and only suffers a slight AP decrease from SPM in the category “Sheep”. Overall, it outperforms R-SPM and SPM stably. 
+In SSM, there are two important parameters, i.e., the com- bination coefﬁcient α and the semantic space size K.Wehave conducted a series of experiments to investigate the sensitiv- ity of SSM to them. The combination coefﬁcient α in Eq. (4) 
+
+========4========
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Fig. 7. The performance comparison of BoVW, R-SPM, SPM, and SSM on each object category. 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+           
+ 
+Fig. 8. The performance of SSM with different α. 
+controls the inﬂuence of SM and SPM, reﬂecting the impor- tance of semantic and spatial matching. In the special case, when α =0, SSM degrades to SPM, and when α =1, SSM degrades to SM. We vary α from 0 to 1 with interval 0.1, and the results are plotted in Fig. 8. It shows that SSM achieves the best performance at α =0.5which implies that semantic matching and spatial matching are equally important. 
+To investigate the effects of semantic space sizeK, i.e., the number of clusters in K-means for constructing the semantic space, we test various Ks, from 8 to 128, as shown in Fig. 9. As discussed in Section 3, K controls the granularity of the semantic space. When K is too small, the semantic space has low discriminative power of distinguishing different regions, causing regions with different content falling into the same semantic subspace. When K is too large, the semantic space is over-split and thus it has little robustness to noise, transla- tions or other variances. From the experiments, we ﬁnd that a moderate K =48is a good choice. 
+4.2. Experiments on 15 Scene 
+4.2.1. Experimental Setting 
+We also test our algorithm on the 15 Scene dataset [20, 21]. This dataset consists of 4485 images from ﬁfteen scene cat- egories, varying from bedroom and coast to store and moun- tain. The number of images in each category ranges from 200 to 400. The average image size is 300×250 pixels. Fig. 10 shows some example images of this dataset. 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+       
+  
+Fig. 9. The performance of SSM with different semantic space size K. 
+ 
+ 
+ 
+ 
+    
+ 
+ 
+      
+Fig. 10. Example images of the 15 Scene dataset 
+We follow the same experimental setting as in Lazebnik et al. [3] and Yang et al. [2]. We randomly select 100 images from each class for training and apply the linear kernel SVM for multi-class classiﬁcation. The codebook size is 400. The random sampling process is repeated 10 times, and the aver- age classiﬁcation rate and standard deviation are reported. 
+4.2.2. Experimental Results 
+The experimental results on 15 scene dataset are given in Ta- ble 2. Classiﬁcation rate shows the percentage of the im- ages which are correctly classiﬁed. It is found that both SPM and SSM outperform the baseline BoVW signiﬁcantly. Com- pared with SPM, SSM achieves limited classiﬁcation accu- racy improvement. This dataset has been well investigated in [3] and SPM is demonstrated working well on it, since the scene categories generally satisfy the similar spatial conﬁg- 
+
+========5========
+
+Table 2. Classiﬁcation rate (%) on 15 Scene 
+Algorithm Classiﬁcation Rate (%) 
+BoVW 43.51 ± 0.96 
+SPM 76.62 ± 0.78 
+SSM 77.02 ± 0.82 
+Table 3. Mean Average Precision (%) on 15 Scene 
+Algorithm mAP (%) 
+BoVW 32.75 ± 0.55 
+SPM 78.86 ± 0.53 
+SSM 80.11 ± 0.57 
+urations assumption. Even though, the combined SSM still outperforms SPM. It demonstrates that the semantic match- ing also makes important contribution in scene classiﬁcation. We further compare these state-of-the-arts in terms of AP on 15 scenes and report their mAPs in Table 3. We can ﬁnd that SSM achieves 1.25% AP improvement over SPM. 
+5. CONCLUSION 
+In this paper, we propose a new matching method, Semantic- Spatial Matching (SSM). SSM conducts region matching by considering both the spatial layout and the semantic content information. SSM has the advantage not only being robust to rotation, ﬂipping and other variances, but also simple and easy for implementation. Experiments on two benchmark datasets demonstrate its effectiveness in object and scene classiﬁca- tions. 
+6. REFERENCES 
+[1] J. Sivic and A. Zisserman, “Video google: a text re- 
+trieval approach to object matching in videos,” ICCV, 
+pp. 1470–1477, 2003. 
+[2] J. Yang, K. Yu, Y. Gong, and T. Huang, “Linear spatial 
+pyramid matching using sparse coding for image classi- 
+ﬁcation,” CVPR, pp. 1794–1801, 2009. 
+[3] S. Lazebnik, C. Schmid, and J. Ponce, “Beyond bags 
+of features: spatial pyramid matching for recognizing 
+natural scene categories,” CVPR, 2006. 
+[4] G. Csurka, J. Willamowski C.R. Dance, L. Fan, and 
+C. Bray, “Visual categorization with bags of keypoints,” 
+ECCV Workshop on SLCV, pp. 1–22, 2004. 
+[5] D.G. LOWE, “Distinctive image features from scale- 
+invariant keypoints,” IJCV, vol. 60, no. 2, pp. 91–110, 
+2004. 
+[6] S. Savarese, J. Winn, and A. Criminisi, “Discriminative 
+object class models of appearance and shape by corere- 
+lations,” CVPR, pp. 2033–2040, 2006. 
+[7] X. Li, Y. Song, Y. Lu, and Q. Tian, “Spatial pooling for 
+transformation invariant image representation,” ACM 
+Multimedia, pp. 1509–1512, 2011. 
+[8] Y. Cao, C. Wang, Z. Li, L. Zhang, and L. Zhang, 
+“Spatial-bag-of-features,” CVPR, 2010. 
+[9] Z. Wu, Q. Ke, M. Isard, and J. Sun, “Bundling features 
+for large-scale partial-duplicate web image search,” 
+CVPR, 2009. 
+[10] J. Matas, O. Chum, M. Urban, and T. Pajdla, “Robust 
+wide baseline stereo from maximally stable extremal re- 
+gions,” BMVC, 2002. 
+[11] S. Zhang, Q. Tian, G. Hua, Q. Huang, and S. Li, “De- 
+scriptive visual words and visual phrases for image ap- 
+plications,” ACM Multimedia, 2009. 
+[12] J. Yuan, Y. Wu, and M. Yang, “Discovery of collocation 
+patterns: from visual words to visual phrases,” CVPR, 
+pp. 1–8, 2007. 
+[13] M. Everingham, L. Van-Gool, C. Williams, J. Winn, and 
+A. Zisserman, “The Pascal Visual Object Classes Chal- 
+lenge 2011 (VOC2011) Results,” http://www.pascal- 
+network.org/challenges/VOC/voc2011/workshop/index.html. 
+[14] D. Xu, T.-J. Cham, S. Yan, and S.-F. Chang, “Near du- 
+plicate image identiﬁcation with spatially aligned pyra- 
+mid matching,” CVPR, 2008. 
+[15] Y. Rubner, C. Tomasi, and L.J. Guibas, “The earth 
+mover’s distance as a metric for image retrieval,” IJCV, 
+vol. 40, no. 2, pp. 99–121, 2000. 
+[16] Zheng-Jun Zha, Xian-Sheng Hua, Tao Mei, Jingdong 
+Wang, Guo-Jun Qi, and Zengfu Wang, “Joint multi- 
+label multi-instance learning for image classiﬁcation,” 
+CVPR, pp. 1–8, 2008. 
+[17] “Trecvid video retrieval evaluation,” 
+http://www.nlpir.nist.gov/projects/trecvid/. 
+[18] Meng Wang, Xian-Sheng Hua, Richang Hong, Jinhui 
+Tang, Guo-Jun Qi, and Yan Song, “Uniﬁed video anno- 
+tation via multigraph learning,” IEEE TCSVT, vol. 19, 
+no. 5, pp. 733–746, 2009. 
+[19] Jinhui Tang, Zheng-Jun Zha, Dacheng Tao, and Tat- 
+Seng Chua, “Semantic-gap-oriented active learning for 
+multilabel image annotation,” IEEE TIP, vol. 21, no. 4, 
+pp. 2354–2360, 2012. 
+[20] Li F.-F. and P. Pietro, “A bayesian hierachical model for 
+learning natural scene categories,” CVPR, 2005. 
+[21] A. Oliva and A. Torralba, “Modeling the shape of the 
+scene: a holistic representation of the spatial envelope,” 
+IJCV, vol. 42, no. 3, pp. 145–175, 2001. 
+
+========6========
+

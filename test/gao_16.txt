@@ -1,0 +1,2485 @@
+Parallel	JJ
+Learning	NNP
+to	TO
+Rank	NNP
+for	IN
+Information	NNP
+Retrieval	NNP
+
+
+Shuaiqiang	NNP
+Wangâ	NNP
+„	NNP
+Shandong	NNP
+University	NNP
+of	IN
+Finance	NNP
+,	,
+Jinan	NNP
+,	,
+China	NNP
+
+
+wangsq@sdï¬?.edu.cn	NN
+
+
+Ke	NNP
+Wang	NNP
+
+
+Simon	NNP
+Fraser	NNP
+University	NNP
+,	,
+Burnaby	NNP
+,	,
+BC	NNP
+,	,
+Canada	NNP
+
+
+wangk@cs.sfu.ca	NN
+
+
+ABSTRACT	NN
+
+
+Learning	VBG
+to	TO
+rank	VB
+represents	VBZ
+a	DT
+category	NN
+of	IN
+eï	NN
+¬	NN
+ective	JJ
+ranking	JJ
+methods	NNS
+for	IN
+information	NN
+retrieval	NN
+.	.
+
+While	IN
+the	DT
+primary	JJ
+con	NN
+-	:
+cern	NN
+of	IN
+existing	VBG
+research	NN
+has	VBZ
+been	VBN
+accuracy	NN
+,	,
+learning	VBG
+eâ	NN
+$	$
+``	``
+-	:
+ciency	NN
+is	VBZ
+becoming	VBG
+an	DT
+important	JJ
+issue	NN
+due	JJ
+to	TO
+the	DT
+unprece	NN
+-	:
+dented	JJ
+availability	NN
+of	IN
+large-scale	JJ
+training	NN
+data	NNS
+and	CC
+the	DT
+need	NN
+for	IN
+continuous	JJ
+update	VBP
+of	IN
+ranking	JJ
+functions	NNS
+.	.
+
+In	IN
+this	DT
+paper	NN
+,	,
+we	PRP
+investigate	VBP
+parallel	JJ
+learning	VBG
+to	TO
+rank	VB
+,	,
+targeting	VBG
+simultaneous	JJ
+improvement	NN
+in	IN
+accuracy	NN
+and	CC
+eâ	NN
+$	$
+``	``
+ciency	NN
+.	.
+
+
+Categories	NNS
+and	CC
+Subject	NNP
+Descriptors	NNPS
+:	:
+I.	NN
+2.6	CD
+-LSB-	-LRB-
+Artiï	NN
+¬	CD
+‚	CD
+cial	JJ
+Intelligence	NNP
+-RSB-	-RRB-
+:	:
+Learning	NNP
+;	:
+H.	NNP
+3.3	CD
+-LSB-	-LRB-
+Information	NNP
+Storage	NNP
+and	CC
+Re	NNP
+-	:
+trieval	NN
+-RSB-	-RRB-
+:	:
+Information	NNP
+Search	VB
+and	CC
+Retrieval	NNP
+
+
+General	NNP
+Terms	NNS
+:	:
+Algorithms	NNS
+,	,
+Performance	NNP
+.	.
+
+
+Keywords	NNS
+:	:
+Learning	NNP
+to	TO
+rank	VB
+,	,
+Parallel	JJ
+algorithms	NNS
+,	,
+Cooper	NNP
+-	:
+ative	JJ
+coevolution	NN
+,	,
+MapReduce	NNP
+,	,
+Information	NNP
+retrieval	NN
+.	.
+
+
+1	LS
+.	.
+
+INTRODUCTION	NN
+
+
+Learning	VBG
+to	TO
+rank	VB
+represents	VBZ
+a	DT
+category	NN
+of	IN
+eï	NN
+¬	NN
+ective	JJ
+rank	NN
+-	:
+ing	NN
+methods	NNS
+for	IN
+information	NN
+retrieval	NN
+-LRB-	-LRB-
+IR	NN
+-RRB-	-RRB-
+systems	NNS
+.	.
+
+Given	VBN
+training	NN
+data	NNS
+,	,
+in	IN
+the	DT
+form	NN
+of	IN
+a	DT
+set	NN
+of	IN
+queries	NNS
+each	DT
+associ	NN
+-	:
+ated	VBN
+with	IN
+a	DT
+list	NN
+of	IN
+search	NN
+results	VBZ
+labeled	VBN
+by	IN
+relevance	NN
+degree	NN
+,	,
+learning	VBG
+to	TO
+rank	VB
+returns	NNS
+a	DT
+ranking	JJ
+function	NN
+that	WDT
+can	MD
+be	VB
+used	VBN
+to	TO
+order	VB
+search	NN
+results	NNS
+for	IN
+future	JJ
+queries	NNS
+-LSB-	-LRB-
+7	CD
+-RSB-	-RRB-
+.	.
+
+
+While	IN
+learning	VBG
+accuracy	NN
+has	VBZ
+thus	RB
+far	RB
+been	VBN
+the	DT
+primary	JJ
+concern	NN
+,	,
+learning	VBG
+eâ	NN
+$	$
+``	``
+ciency	NN
+is	VBZ
+increasingly	RB
+a	DT
+crucial	JJ
+issue	NN
+-LSB-	-LRB-
+1	CD
+-RSB-	-RRB-
+.	.
+
+Due	JJ
+to	TO
+the	DT
+diversity	NN
+of	IN
+queries	NNS
+and	CC
+documents	NNS
+,	,
+learning	VBG
+to	TO
+rank	VB
+involves	VBZ
+increasingly	RB
+larger	JJR
+training	NN
+data	NNS
+with	IN
+many	JJ
+features	NNS
+.	.
+
+For	IN
+example	NN
+,	,
+the	DT
+CSearch	NNP
+dataset	NNP
+used	VBN
+in	IN
+List	NN
+-	:
+Net	JJ
+-LSB-	-LRB-
+1	CD
+-RSB-	-RRB-
+contains	VBZ
+Â	NNP
+''	''
+25	CD
+million	CD
+query-document	NN
+pairs	NNS
+with	IN
+600	CD
+features	NNS
+.	.
+
+In	IN
+addition	NN
+,	,
+due	JJ
+to	TO
+the	DT
+rapid	JJ
+growth	NN
+of	IN
+the	DT
+Web	NN
+,	,
+ranking	JJ
+functions	NNS
+need	VBP
+to	TO
+be	VB
+re-learned	JJ
+repeatedly	RB
+.	.
+
+Thus	RB
+,	,
+it	PRP
+is	VBZ
+important	JJ
+for	IN
+learning	VBG
+to	TO
+rank	VB
+to	TO
+achieve	VB
+high	JJ
+eâ	NN
+$	$
+``	``
+ciency	NN
+through	IN
+parallelization	NN
+while	IN
+maintaining	VBG
+accuracy	NN
+.	.
+
+
+Many	JJ
+learning	VBG
+to	TO
+rank	VB
+approaches	NNS
+have	VBP
+been	VBN
+proposed	VBN
+,	,
+e.g.	FW
+,	,
+ListNet	NNP
+-LSB-	-LRB-
+1	CD
+-RSB-	-RRB-
+,	,
+RankBoost	NN
+-LSB-	-LRB-
+4	CD
+-RSB-	-RRB-
+and	CC
+RankSVM	NN
+-LSB-	-LRB-
+6	CD
+-RSB-	-RRB-
+.	.
+
+How	WRB
+-	:
+ever	RB
+,	,
+these	DT
+studies	NNS
+were	VBD
+mainly	RB
+concerned	VBN
+with	IN
+accuracy	NN
+and	CC
+did	VBD
+not	RB
+seek	VB
+for	IN
+improvement	NN
+in	IN
+learning	VBG
+eâ	NN
+$	$
+``	``
+ciency	NN
+through	IN
+parallelization	NN
+.	.
+
+Many	JJ
+parallel	JJ
+machine	NN
+learning	VBG
+frameworks	NNS
+have	VBP
+been	VBN
+introduced	VBN
+,	,
+e.g.	FW
+,	,
+IBM	NNP
+Parallel	JJ
+Machine	NN
+Learning	NNP
+Toolbox	NNP
+-LRB-	-LRB-
+www.alphaworks.ibm.com/tech/pml/	NN
+-RRB-	-RRB-
+and	CC
+coop	NN
+-	:
+erative	JJ
+coevolution	NN
+-LRB-	-LRB-
+CC	NN
+-RRB-	-RRB-
+-LSB-	-LRB-
+9	CD
+-RSB-	-RRB-
+.	.
+
+However	RB
+,	,
+none	NN
+of	IN
+these	DT
+parallel	JJ
+â	NN
+„	CD
+This	DT
+work	NN
+was	VBD
+done	VBN
+while	IN
+the	DT
+ï	NN
+¬	CD
+‚	CD
+rst	NN
+author	NN
+was	VBD
+a	DT
+postdoc	NN
+-	:
+toral	JJ
+fellow	NN
+at	IN
+Texas	NNP
+State	NNP
+University	NNP
+.	.
+
+
+Copyright	NN
+is	VBZ
+held	VBN
+by	IN
+the	DT
+author/owner	NN
+-LRB-	-LRB-
+s	NNS
+-RRB-	-RRB-
+.	.
+
+SIGIRâ	VB
+$	$
+™	CD
+11	CD
+,	,
+July	NNP
+24â	CD
+$	$
+``	``
+28	CD
+,	,
+2011	CD
+,	,
+Beijing	NNP
+,	,
+China	NNP
+.	.
+
+ACM	NNP
+978-1-4503-0757-4	CD
+/	:
+11/07	CD
+.	.
+.	.
+
+
+Byron	NNP
+J.	NNP
+Gao	NNP
+
+
+Texas	NNP
+State	NNP
+University	NNP
+,	,
+San	NNP
+Marcos	NNP
+,	,
+TX	NNP
+,	,
+USA	NNP
+
+
+bgao@txstate.edu	NN
+
+
+Hady	NNP
+W.	NNP
+Lauw	NNP
+
+
+Institute	NNP
+for	IN
+Infocomm	NNP
+Research	NNP
+,	,
+Singapore	NNP
+
+
+hwlauw@i2r.a-star.edu.sg	NN
+
+
+machine	NN
+learning	NN
+methods	NNS
+have	VBP
+been	VBN
+applied	VBN
+to	TO
+learning	VBG
+to	TO
+rank	VB
+.	.
+
+
+In	IN
+this	DT
+paper	NN
+,	,
+we	PRP
+investigate	VBP
+parallel	JJ
+learning	VBG
+to	TO
+rank	VB
+for	IN
+information	NN
+retrieval	NN
+.	.
+
+In	IN
+particular	JJ
+,	,
+we	PRP
+propose	VBP
+CCRank	NN
+,	,
+an	DT
+CC-based	JJ
+parallel	NN
+learning	VBG
+to	TO
+rank	VB
+framework	NN
+targeting	VBG
+si	SYM
+-	:
+multaneous	JJ
+improvement	NN
+in	IN
+accuracy	NN
+and	CC
+eâ	NN
+$	$
+``	``
+ciency	NN
+.	.
+
+We	PRP
+also	RB
+discuss	VBP
+other	JJ
+ways	NNS
+of	IN
+achieving	VBG
+parallelization	NN
+for	IN
+learning	VBG
+to	TO
+rank	VB
+,	,
+such	JJ
+as	IN
+MapReduce	NN
+-LSB-	-LRB-
+3	CD
+-RSB-	-RRB-
+.	.
+
+
+2	LS
+.	.
+
+PARALLEL	NN
+LEARNING	NN
+TO	TO
+RANK	NN
+
+
+2.1	CD
+The	DT
+CCRank	NN
+Framework	NN
+
+
+Overview	NN
+.	.
+
+Evolutionary	JJ
+algorithms	NNS
+-LRB-	-LRB-
+EAs	NNS
+-RRB-	-RRB-
+are	VBP
+stochastic	JJ
+search	NN
+methods	NNS
+mimicking	VBG
+the	DT
+metaphor	NN
+of	IN
+natural	JJ
+biologi	NN
+-	:
+cal	JJ
+evolution	NN
+.	.
+
+They	PRP
+operate	VBP
+on	IN
+a	DT
+population	NN
+of	IN
+potential	JJ
+so	RB
+-	:
+lutions	NNS
+,	,
+called	VBN
+individuals	NNS
+,	,
+applying	VBG
+the	DT
+principle	NN
+of	IN
+survival	NN
+of	IN
+the	DT
+ï	NN
+¬	CD
+‚	NN
+ttest	NN
+to	TO
+produce	VB
+better	JJR
+and	CC
+better	JJR
+approximations	NNS
+to	TO
+the	DT
+optimal	JJ
+solution	NN
+.	.
+
+
+Cooperative	NNP
+coevolution	NN
+-LRB-	-LRB-
+CC	NN
+-RRB-	-RRB-
+is	VBZ
+a	DT
+framework	NN
+advanta	NN
+-	:
+geous	NN
+in	IN
+solving	VBG
+problems	NNS
+with	IN
+exceptionally	RB
+large	JJ
+search	NN
+space	NN
+and	CC
+complex	JJ
+structures	NNS
+-LSB-	-LRB-
+9	CD
+-RSB-	-RRB-
+.	.
+
+In	IN
+CC	NN
+,	,
+a	DT
+collection	NN
+of	IN
+EAs	NNS
+co-evolve	VBP
+simultaneously	RB
+,	,
+where	WRB
+the	DT
+EAs	NNS
+interact	VBP
+with	IN
+one	CD
+another	DT
+in	IN
+a	DT
+cooperative	JJ
+manner	NN
+.	.
+
+The	DT
+ï	NN
+¬	CD
+‚	NN
+tness	NN
+of	IN
+an	DT
+indi	NN
+-	:
+vidual	NN
+is	VBZ
+based	VBN
+on	IN
+how	WRB
+well	RB
+it	PRP
+cooperates	VBZ
+with	IN
+other	JJ
+interact	NN
+-	:
+ing	NN
+individuals	NNS
+.	.
+
+CC	NN
+follows	VBZ
+a	DT
+divide-and-conquer	JJ
+strategy	NN
+,	,
+decomposing	VBG
+a	DT
+problem	NN
+into	IN
+sub-problems	NNS
+and	CC
+combining	VBG
+sub-solutions	NNS
+in	IN
+the	DT
+end	NN
+to	TO
+form	VB
+a	DT
+complete	JJ
+solution	NN
+.	.
+
+The	DT
+nature	NN
+of	IN
+CC	NN
+allows	VBZ
+easy	JJ
+parallelization	NN
+.	.
+
+
+CCRank	NN
+adapts	NNS
+parallel	JJ
+CC	NN
+to	TO
+learning	VBG
+to	TO
+rank	VB
+.	.
+
+It	PRP
+starts	VBZ
+with	IN
+problem	NN
+decomposition	NN
+,	,
+followed	VBN
+by	IN
+a	DT
+parallel	JJ
+iterative	JJ
+coevolution	NN
+process	NN
+.	.
+
+At	IN
+the	DT
+end	NN
+of	IN
+each	DT
+generation	NN
+,	,
+parallel	JJ
+execution	NN
+is	VBZ
+suspended	VBN
+and	CC
+a	DT
+complete	JJ
+candidate	NN
+solution	NN
+is	VBZ
+produced	VBN
+by	IN
+combination	NN
+.	.
+
+CCRank	NN
+returns	VBZ
+the	DT
+best	JJS
+solution	NN
+selected	VBN
+from	IN
+all	DT
+the	DT
+candidates	NNS
+.	.
+
+
+Decomposition	NN
+and	CC
+combination	NN
+.	.
+
+Each	DT
+complete	JJ
+so	RB
+-	:
+lution	NN
+is	VBZ
+decomposed	VBN
+into	IN
+a	DT
+collection	NN
+of	IN
+individuals	NNS
+.	.
+
+Ini	SYM
+-	:
+tially	RB
+L	NN
+solutions	NNS
+are	VBP
+generated	VBN
+randomly	RB
+from	IN
+the	DT
+full	JJ
+fea	NN
+-	:
+ture	NN
+space	NN
+.	.
+
+Then	RB
+,	,
+each	DT
+solution	NN
+is	VBZ
+decomposed	VBN
+into	IN
+N	NN
+sub	SYM
+-	:
+individuals	NNS
+,	,
+resulting	VBG
+in	IN
+N	NN
+populations	NNS
+,	,
+each	DT
+having	VBG
+L	NN
+indi	NN
+-	:
+viduals	NNS
+.	.
+
+Each	DT
+population	NN
+will	MD
+be	VB
+assigned	VBN
+an	DT
+EA	NN
+to	TO
+evolve	VB
+.	.
+
+Combination	NN
+is	VBZ
+a	DT
+reverse	JJ
+process	NN
+of	IN
+decomposition	NN
+,	,
+which	WDT
+assemblies	NNS
+individuals	NNS
+into	IN
+a	DT
+complete	JJ
+solution	NN
+.	.
+
+
+Coevolution	NNP
+.	.
+
+Coevolution	NNP
+proceeds	VBZ
+iteratively	RB
+,	,
+where	WRB
+N	NN
+populations	NNS
+co-evolve	VBP
+in	IN
+parallel	NN
+from	IN
+generation	NN
+to	TO
+genera	NN
+-	:
+tion	NN
+.	.
+
+Each	DT
+population	NN
+Pj	NN
+maintains	VBZ
+a	DT
+collection	NN
+of	IN
+individ	NN
+-	:
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+1	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+Algorithm	NN
+1	CD
+:	:
+CCRank	NNP
+Framework	NNP
+
+
+Input	NN
+:	:
+Training	VBG
+set	VBN
+T	NN
+,	,
+number	NN
+of	IN
+generations	NNS
+G	NN
+,	,
+number	NN
+
+
+of	IN
+populations	NNS
+N	NN
+
+
+Output	NN
+:	:
+Ranking	NN
+function	NN
+f	SYM
+
+
+1	CD
+
+
+P	NN
+-LRB-	-LRB-
+0	CD
+-RRB-	-RRB-
+1	CD
+;	:
+:	:
+:	:
+:	:
+;	:
+N	NN
+Ë	NN
+†	CD
+Initialize	NNP
+-LRB-	-LRB-
+-RRB-	-RRB-
+/	:
+/	:
+decomposition	NN
+2	CD
+for	IN
+g	NN
+Ë	NN
+†	CD
+1	CD
+to	TO
+G	NNP
+do	VBP
+
+
+3	CD
+
+
+P	NN
+-LRB-	-LRB-
+g	NN
+-RRB-	-RRB-
+1	CD
+;	:
+:	:
+:	:
+:	:
+;	:
+N	NN
+Ë	NN
+†	CD
+Evolve	NN
+-LRB-	-LRB-
+P	NN
+-LRB-	-LRB-
+gÂ	NN
+¡	CD
+1	LS
+-RRB-	-RRB-
+1	CD
+;	:
+:	:
+:	:
+:	:
+;	:
+N	NN
+-RRB-	-RRB-
+/	:
+/	:
+coevolution	NN
+4	CD
+f	FW
+-LRB-	-LRB-
+g	NN
+-RRB-	-RRB-
+Ë	NN
+†	CD
+Combine	VB
+-LRB-	-LRB-
+w1	NN
+;	:
+:	:
+:	:
+:	:
+;	:
+N	NN
+-RRB-	-RRB-
+/	:
+/	:
+combination	NN
+5	CD
+C	NN
+Ë	NN
+†	CD
+C	NN
+-LSB-	-LRB-
+ff	NN
+-LRB-	-LRB-
+g	NN
+-RRB-	-RRB-
+g	NN
+
+
+uals	NNS
+and	CC
+a	DT
+winner	NN
+wj	NN
+,	,
+the	DT
+best	JJS
+individual	NN
+with	IN
+the	DT
+highest	JJS
+ï	NN
+¬	CD
+‚	NN
+tness	NN
+score	NN
+.	.
+
+Under	IN
+the	DT
+CC	NN
+framework	NN
+,	,
+ï	NN
+¬	CD
+‚	NN
+tness	NN
+of	IN
+individuals	NNS
+is	VBZ
+based	VBN
+on	IN
+how	WRB
+well	RB
+they	PRP
+cooperate	VBP
+with	IN
+other	JJ
+populations	NNS
+.	.
+
+First	RB
+,	,
+individual	JJ
+ij	NN
+from	IN
+Pj	NN
+and	CC
+winners	NNS
+of	IN
+other	JJ
+popula	NN
+-	:
+tions	NNS
+selected	VBN
+in	IN
+the	DT
+previous	JJ
+generation	NN
+are	VBP
+combined	VBN
+into	IN
+a	DT
+solution	NN
+.	.
+
+Then	RB
+,	,
+the	DT
+evaluation	NN
+measure	NN
+,	,
+e.g.	FW
+,	,
+MAP	NN
+,	,
+for	IN
+the	DT
+combined	JJ
+solution	NN
+is	VBZ
+calculated	VBN
+using	VBG
+the	DT
+training	NN
+data	NNS
+,	,
+and	CC
+the	DT
+resulting	VBG
+score	NN
+is	VBZ
+assigned	VBN
+to	TO
+ij	VB
+as	IN
+its	PRP$
+ï	NN
+¬	CD
+‚	NN
+tness	NN
+score	NN
+.	.
+
+
+Pseudocode	NN
+.	.
+
+Algorithm	NN
+1	CD
+summarizes	VBZ
+the	DT
+CCRank	NN
+frame	NN
+-	:
+work	NN
+.	.
+
+Line	NNP
+1	CD
+performs	VBZ
+initialization	NN
+.	.
+
+Lines	NNP
+2	CD
+-LCB-	-LRB-
+6	CD
+show	VBP
+the	DT
+entire	JJ
+evolution	NN
+process	NN
+from	IN
+generation	NN
+to	TO
+generation	NN
+.	.
+
+
+2.2	CD
+Discussion	NN
+
+
+Parallel	JJ
+learning	VBG
+to	TO
+rank	VB
+.	.
+
+It	PRP
+is	VBZ
+possible	JJ
+,	,
+but	CC
+non-trivial	JJ
+,	,
+to	TO
+adapt	VB
+parallel	JJ
+machine	NN
+learning	VBG
+algorithms	NNS
+to	TO
+learning	VBG
+to	TO
+rank	VB
+.	.
+
+Some	DT
+of	IN
+such	JJ
+algorithms	NNS
+are	VBP
+included	VBN
+in	IN
+IBM	NNP
+Parallel	JJ
+Machine	NN
+Learning	NNP
+Toolbox	NNP
+.	.
+
+In	IN
+addition	NN
+,	,
+Proximal	JJ
+SVM	NN
+-LSB-	-LRB-
+2	CD
+-RSB-	-RRB-
+and	CC
+Cascade	NNP
+SVM	NNP
+-LSB-	-LRB-
+5	CD
+-RSB-	-RRB-
+are	VBP
+recent	JJ
+parallel	NN
+SVMs	NNS
+that	WDT
+have	VBP
+demonstrated	VBN
+promising	JJ
+performance	NN
+.	.
+
+On	IN
+the	DT
+other	JJ
+hand	NN
+,	,
+MapReduce	NN
+-LSB-	-LRB-
+3	CD
+-RSB-	-RRB-
+provides	VBZ
+a	DT
+simple	JJ
+and	CC
+uniï	JJ
+¬	NN
+‚	CD
+ed	VBD
+parallel	NN
+frame	NN
+-	:
+work	NN
+that	WDT
+has	VBZ
+been	VBN
+widely	RB
+applied	VBN
+in	IN
+various	JJ
+domains	NNS
+.	.
+
+In	IN
+the	DT
+following	VBG
+we	PRP
+discuss	VBP
+how	WRB
+to	TO
+adapt	VB
+it	PRP
+to	TO
+learning	VBG
+to	TO
+rank	VB
+.	.
+
+
+Adapting	VBG
+MapReduce	NNP
+to	TO
+learning	VBG
+to	TO
+rank	VB
+.	.
+
+MapRe	NN
+-	:
+duce	NN
+-LSB-	-LRB-
+3	CD
+-RSB-	-RRB-
+is	VBZ
+based	VBN
+on	IN
+two	CD
+fundamental	JJ
+functions	NNS
+,	,
+Map	NN
+and	CC
+Reduce	VB
+.	.
+
+The	DT
+Map	NN
+function	NN
+takes	VBZ
+an	DT
+input	NN
+key/value	NN
+pair	NN
+and	CC
+produces	VBZ
+a	DT
+set	NN
+of	IN
+intermediate	JJ
+key/value	NN
+pairs	NNS
+.	.
+
+The	DT
+MapReduce	NNP
+library	NN
+groups	NNS
+together	RB
+all	DT
+intermediate	JJ
+values	NNS
+associated	VBN
+with	IN
+the	DT
+same	JJ
+intermediate	JJ
+key	NN
+and	CC
+passes	VBZ
+them	PRP
+to	TO
+the	DT
+Reduce	NN
+function	NN
+.	.
+
+The	DT
+Reduce	NN
+function	NN
+accepts	VBZ
+an	DT
+in	IN
+-	:
+termediate	JJ
+key	JJ
+and	CC
+a	DT
+list	NN
+of	IN
+intermediate	JJ
+values	NNS
+,	,
+and	CC
+merges	VBZ
+these	DT
+values	NNS
+to	TO
+form	VB
+a	DT
+value	NN
+for	IN
+the	DT
+same	JJ
+key	NN
+.	.
+
+
+To	TO
+adapt	VB
+MapReduce	NNP
+to	TO
+learning	VBG
+to	TO
+rank	VB
+,	,
+it	PRP
+is	VBZ
+desirable	JJ
+to	TO
+incorporate	VB
+many	JJ
+existing	VBG
+learning	VBG
+to	TO
+rank	VB
+algorithms	NNS
+.	.
+
+However	RB
+,	,
+since	IN
+MapReduce	NNP
+achieves	VBZ
+parallelism	NN
+by	IN
+dividing	VBG
+processes	NNS
+of	IN
+algorithms	NNS
+,	,
+it	PRP
+is	VBZ
+infeasible	JJ
+to	TO
+have	VB
+a	DT
+unifying	JJ
+framework	NN
+incorporating	VBG
+all	DT
+learning	VBG
+to	TO
+rank	VB
+algorithms	NNS
+that	WDT
+have	VBP
+diï	NN
+¬	NN
+erent	JJ
+processes	NNS
+.	.
+
+We	PRP
+propose	VBP
+an	DT
+framework	NN
+that	WDT
+is	VBZ
+able	JJ
+to	TO
+incorporate	VB
+an	DT
+important	JJ
+category	NN
+of	IN
+learning	VBG
+to	TO
+rank	VB
+algorithms	NNS
+by	IN
+identifying	VBG
+and	CC
+parallelizing	VBG
+some	DT
+common	JJ
+and	CC
+time-consuming	JJ
+operations	NNS
+.	.
+
+
+This	DT
+category	NN
+of	IN
+algorithms	NNS
+perform	VBP
+direct	JJ
+optimization	NN
+of	IN
+evaluation	NN
+measures	NNS
+.	.
+
+They	PRP
+use	VBP
+ranking	JJ
+measures	NNS
+such	JJ
+as	IN
+MAP	NN
+and	CC
+NDCG	NN
+,	,
+or	CC
+some	DT
+measure-based	JJ
+formulae	NNS
+,	,
+as	IN
+their	PRP$
+loss	NN
+functions	VBZ
+directly	RB
+.	.
+
+A	DT
+common	JJ
+,	,
+time-consuming	JJ
+,	,
+and	CC
+repeating	VBG
+key	JJ
+operation	NN
+for	IN
+these	DT
+algorithms	NNS
+is	VBZ
+evalua	NN
+-	:
+tion	NN
+of	IN
+loss	NN
+functions	NNS
+,	,
+which	WDT
+requires	VBZ
+ranking	NN
+of	IN
+all	DT
+associ	NNS
+-	:
+ated	JJ
+documents	NNS
+for	IN
+each	DT
+query	NN
+.	.
+
+We	PRP
+propose	VBP
+to	TO
+parallelize	VB
+this	DT
+operation	NN
+.	.
+
+In	IN
+particular	JJ
+,	,
+each	DT
+process	NN
+of	IN
+Map	NN
+evalu	NN
+-	:
+
+
+ates	IN
+the	DT
+ranking	JJ
+measure	NN
+mq	NN
+of	IN
+each	DT
+query	NN
+q	NN
+for	IN
+candidate	NN
+ranking	JJ
+function	NN
+f	FW
+,	,
+and	CC
+emits	VBZ
+the	DT
+key/value	JJ
+pair	NN
+-LRB-	-LRB-
+f	FW
+;	:
+mq	NN
+-RRB-	-RRB-
+to	TO
+Reduce	VB
+.	.
+
+Then	RB
+,	,
+each	DT
+process	NN
+of	IN
+Reduce	NNP
+calculates	VBZ
+the	DT
+value	NN
+m	NN
+of	IN
+the	DT
+loss	NN
+function	NN
+for	IN
+f	FW
+with	IN
+measures	NNS
+mq1	NN
+;	:
+:	:
+:	:
+:	:
+;	:
+mqjQj	NN
+of	IN
+each	DT
+query	NN
+from	IN
+diï	NN
+¬	CD
+erent	JJ
+Map	NN
+processes	NNS
+,	,
+and	CC
+emits	VBZ
+m.	NN
+
+
+3	LS
+.	.
+
+EXPERIMENTS	NNS
+
+
+We	PRP
+implemented	VBD
+CCRank	NN
+based	VBN
+on	IN
+RankIP	NN
+-LSB-	-LRB-
+8	CD
+-RSB-	-RRB-
+.	.
+
+N	NN
+=	JJ
+8	CD
+EAs	NNS
+are	VBP
+maintained	VBN
+,	,
+each	DT
+containing	VBG
+L	NN
+=	JJ
+70	CD
+individuals	NNS
+that	WDT
+co-evolve	VBP
+up	RP
+to	TO
+G	NN
+=	JJ
+30	CD
+generations	NNS
+.	.
+
+The	DT
+depth	NN
+of	IN
+the	DT
+complete	JJ
+solution	NN
+is	VBZ
+d	NN
+=	JJ
+8	CD
+.	.
+
+
+For	IN
+datasets	NNS
+,	,
+we	PRP
+used	VBD
+MQ2007	NN
+and	CC
+MQ2008	NN
+,	,
+a	DT
+collection	NN
+of	IN
+benchmarks	NNS
+released	VBN
+in	IN
+2009	CD
+by	IN
+Microsoft	NNP
+Research	NNP
+Asia	NNP
+-LRB-	-LRB-
+research.microsoft.com/en-us/um/beijing/projects/letor/	JJ
+-RRB-	-RRB-
+.	.
+
+For	IN
+comparison	NN
+partners	NNS
+,	,
+we	PRP
+used	VBD
+state-of-the-art	JJ
+algorithms	NNS
+AdaRank	NNP
+-LSB-	-LRB-
+10	CD
+-RSB-	-RRB-
+,	,
+RankBoost	NN
+-LSB-	-LRB-
+4	CD
+-RSB-	-RRB-
+,	,
+RankSVM	NN
+-LSB-	-LRB-
+6	CD
+-RSB-	-RRB-
+and	CC
+ListNet	NNP
+-LSB-	-LRB-
+1	CD
+-RSB-	-RRB-
+.	.
+
+
+We	PRP
+used	VBD
+the	DT
+Map	NN
+measure	NN
+for	IN
+accuracy	NN
+comparison	NN
+.	.
+
+For	IN
+MQ2007	NN
+,	,
+CCRank	NN
+and	CC
+RankBoost	NNP
+share	VBP
+the	DT
+best	JJS
+perfor	NN
+-	:
+mance	NN
+.	.
+
+For	IN
+MQ2008	NN
+,	,
+CCRank	NN
+outperformed	VBD
+all	DT
+other	JJ
+algo	NN
+-	:
+rithms	NNS
+,	,
+gaining	VBG
+1.13	CD
+%	NN
+,	,
+0.901	CD
+%	NN
+,	,
+2.60	CD
+%	NN
+and	CC
+0.901	CD
+%	NN
+respec	NN
+-	:
+tively	RB
+.	.
+
+Note	VB
+that	IN
+the	DT
+best	JJS
+and	CC
+worst	JJS
+performances	NNS
+from	IN
+those	DT
+comparison	NN
+partners	NNS
+diï	NN
+¬	CD
+er	NN
+by	IN
+merely	RB
+1.67	CD
+%	NN
+.	.
+
+
+To	TO
+demonstrate	VB
+the	DT
+gain	NN
+in	IN
+eâ	NN
+$	$
+``	``
+ciency	NN
+by	IN
+parallel	JJ
+evolution	NN
+,	,
+we	PRP
+extracted	VBD
+25	CD
+%	NN
+,	,
+50	CD
+%	NN
+,	,
+and	CC
+100	CD
+%	NN
+portions	NNS
+of	IN
+MQ2008	NN
+and	CC
+generated	VBD
+3	CD
+datasets	NNS
+,	,
+which	WDT
+have	VBP
+3,803	CD
+,	,
+7,606	CD
+,	,
+and	CC
+15,211	CD
+in	IN
+-	:
+stances	NNS
+respectively	RB
+.	.
+
+Then	RB
+we	PRP
+ran	VBD
+CCRank	NN
+on	IN
+these	DT
+datasets	NNS
+varying	VBG
+the	DT
+number	NN
+of	IN
+processors	NNS
+-LRB-	-LRB-
+1	CD
+,	,
+2	CD
+,	,
+4	CD
+,	,
+8	CD
+,	,
+and	CC
+16	CD
+-RRB-	-RRB-
+.	.
+
+
+From	IN
+the	DT
+execution	NN
+time	NN
+analysis	NN
+,	,
+we	PRP
+can	MD
+see	VB
+that	IN
+parallel	JJ
+evolution	NN
+leads	VBZ
+to	TO
+signiï	NN
+¬	CD
+‚	CD
+cant	JJ
+speed-up	NN
+in	IN
+CCRank	NN
+.	.
+
+Compar	NNP
+-	:
+ing	NN
+to	TO
+the	DT
+case	NN
+of	IN
+1	CD
+processor	NN
+,	,
+the	DT
+averaged	VBD
+relative	JJ
+speed-ups	NNS
+are	VBP
+173	CD
+%	NN
+,	,
+299	CD
+%	NN
+,	,
+486	CD
+%	NN
+,	,
+and	CC
+736	CD
+%	NN
+respectively	RB
+,	,
+for	IN
+the	DT
+cases	NNS
+of	IN
+2	CD
+,	,
+4	CD
+,	,
+8	CD
+,	,
+and	CC
+16	CD
+processors	NNS
+.	.
+
+
+4	LS
+.	.
+
+REFERENCES	NNS
+
+
+-LSB-	-LRB-
+1	CD
+-RSB-	-RRB-
+Z.	NNP
+Cao	NNP
+,	,
+T.	NNP
+Qin	NNP
+,	,
+T.-Y	NN
+.	.
+
+Liu	NNP
+,	,
+M.-F	NN
+.	.
+
+Tsai	NNP
+,	,
+and	CC
+H.	NNP
+Li	NNP
+.	.
+
+
+Learning	VBG
+to	TO
+rank	VB
+:	:
+from	IN
+pairwise	JJ
+approach	NN
+to	TO
+listwise	NN
+
+
+approach	NN
+.	.
+
+In	IN
+ICML	NN
+,	,
+2007	CD
+.	.
+
+
+-LSB-	-LRB-
+2	CD
+-RSB-	-RRB-
+R.	NNP
+Collobert	NNP
+,	,
+Y.	NNP
+Bengio	NNP
+,	,
+and	CC
+S.	NNP
+Bengio	NNP
+.	.
+
+A	DT
+parallel	NN
+
+
+mixture	NN
+of	IN
+svms	NNS
+for	IN
+very	RB
+large	JJ
+scale	NN
+problems	NNS
+.	.
+
+In	IN
+
+
+NIPS	NNS
+,	,
+2004	CD
+.	.
+
+
+-LSB-	-LRB-
+3	CD
+-RSB-	-RRB-
+J.	NNP
+Dean	NNP
+and	CC
+S.	NNP
+Ghemawat	NNP
+.	.
+
+MapReduce	NNP
+:	:
+Simpliï	NNP
+¬	CD
+‚	CD
+ed	VBD
+
+
+data	NNS
+processing	NN
+on	IN
+large	JJ
+clusters	NNS
+.	.
+
+In	IN
+OSDI	NNP
+,	,
+2004	CD
+.	.
+
+-LSB-	-LRB-
+4	LS
+-RSB-	-RRB-
+Y.	NNP
+Freund	NNP
+,	,
+R.	NNP
+Iyer	NNP
+,	,
+R.	NNP
+E.	NNP
+Schapire	NNP
+,	,
+and	CC
+Y.	NNP
+Singer	NNP
+.	.
+
+An	DT
+
+
+eâ	NN
+$	$
+``	``
+cient	NN
+boosting	VBG
+algorithm	NN
+for	IN
+combining	VBG
+preferences	NNS
+.	.
+
+
+J.	NNP
+Mach	NNP
+.	.
+
+Learning	NNP
+Res.	NNP
+,	,
+4	CD
+-LRB-	-LRB-
+1	CD
+-RRB-	-RRB-
+:933	CD
+-LCB-	-LRB-
+969	CD
+,	,
+2003	CD
+.	.
+
+-LSB-	-LRB-
+5	CD
+-RSB-	-RRB-
+H.	NNP
+P.	NNP
+Graf	NNP
+,	,
+E.	NNP
+Cosatto	NNP
+,	,
+L.	NNP
+Bottou	NNP
+,	,
+I.	NNP
+Durdanovic	NNP
+,	,
+and	CC
+
+
+V.	NNP
+Vapnik	NNP
+.	.
+
+Parallel	JJ
+support	NN
+vector	NN
+machines	NNS
+:	:
+The	DT
+
+
+cascade	NN
+SVM	NN
+.	.
+
+In	IN
+NIPS	NNP
+,	,
+2004	CD
+.	.
+
+
+-LSB-	-LRB-
+6	CD
+-RSB-	-RRB-
+T.	FW
+Joachims	FW
+.	.
+
+Optimizing	VBG
+search	NN
+engines	NNS
+using	VBG
+
+
+clickthrough	JJ
+data	NNS
+.	.
+
+In	IN
+KDD	NNP
+,	,
+2002	CD
+.	.
+
+
+-LSB-	-LRB-
+7	CD
+-RSB-	-RRB-
+T.-Y	NN
+.	.
+
+Liu	NNP
+.	.
+
+Learning	VBG
+to	TO
+rank	VB
+for	IN
+information	NN
+retrieval	NN
+.	.
+
+
+In	IN
+WWW	NNP
+,	,
+2009	CD
+.	.
+
+
+-LSB-	-LRB-
+8	CD
+-RSB-	-RRB-
+S.	NNP
+Wang	NNP
+,	,
+J.	NNP
+Ma	NNP
+,	,
+and	CC
+J.	NNP
+Liu	NNP
+.	.
+
+Learning	VBG
+to	TO
+rank	VB
+using	VBG
+
+
+evolutionary	JJ
+computation	NN
+:	:
+Immune	NNP
+programming	NN
+or	CC
+
+
+genetic	JJ
+programming	NN
+?	.
+
+In	IN
+CIKM	NNP
+,	,
+2009	CD
+.	.
+
+
+-LSB-	-LRB-
+9	CD
+-RSB-	-RRB-
+R.	NNP
+P.	NNP
+Wiegand	NNP
+.	.
+
+An	DT
+Analysis	NN
+of	IN
+Cooperative	NNP
+
+
+Coevolutionary	JJ
+Algorithms	NNS
+.	.
+
+PhD	NN
+thesis	NN
+,	,
+George	NNP
+Mason	NNP
+
+
+University	NNP
+,	,
+2004	CD
+.	.
+
+
+-LSB-	-LRB-
+10	CD
+-RSB-	-RRB-
+J.	NNP
+Xu	NNP
+and	CC
+H.	NNP
+Li	NNP
+.	.
+
+AdaRank	NNP
+:	:
+a	DT
+boosting	VBG
+algorithm	NN
+for	IN
+
+
+information	NN
+retrieval	NN
+.	.
+
+In	IN
+SIGIR	NN
+,	,
+2007	CD
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+2	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+

@@ -1,0 +1,12454 @@
+Enabling	VBG
+Fast	JJ
+Lazy	NNP
+Learning	NNP
+for	IN
+Data	NNP
+Streams	NNP
+
+
+Peng	NNP
+Zhang	NNP
+
+
+â	RB
+$	$
+,	,
+Byron	NNP
+J.	NNP
+Gao	NNP
+â	VBD
+$	$
+,	,
+Xingquan	NNP
+Zhu	NNP
+â	VB
+$	$
+¡	CD
+,	,
+and	CC
+Li	NNP
+Guo	NNP
+
+
+Institute	NNP
+of	IN
+Computing	NNP
+Technology	NNP
+,	,
+Chinese	NNP
+Academy	NNP
+of	IN
+Sciences	NNPS
+,	,
+Beijing	NNP
+,	,
+100190	CD
+,	,
+China	NNP
+â	VBD
+$	$
+
+
+Department	NNP
+of	IN
+Computer	NNP
+Science	NNP
+,	,
+Texas	NNP
+State	NNP
+University	NNP
+,	,
+San	NNP
+Marcos	NNP
+,	,
+TX	NNP
+,	,
+78666	CD
+,	,
+USA	NNP
+
+
+â	RB
+$	$
+¡	CD
+
+
+QCIS	NNP
+,	,
+Faculty	NNP
+of	IN
+Eng	NNP
+.	.
+
+&	CC
+IT	NNP
+,	,
+University	NNP
+of	IN
+Technology	NNP
+,	,
+Sydney	NNP
+,	,
+NSW	NNP
+2007	CD
+,	,
+Australia	NNP
+
+
+zhangpeng@ict.ac.cn,	NN
+bgao@txstate.edu,	NN
+xqzhu@it.uts.edu.au,	NN
+guoli@ict.ac.cn	NN
+
+
+Abstractâ	NNP
+$	$
+''	''
+Lazy	JJ
+learning	NN
+,	,
+such	JJ
+as	IN
+k-nearest	NN
+neighbor	NN
+learn	VBP
+-	:
+ing	NN
+,	,
+has	VBZ
+been	VBN
+widely	RB
+applied	VBN
+to	TO
+many	JJ
+applications	NNS
+.	.
+
+Known	VBN
+for	IN
+well	RB
+capturing	VBG
+data	NNS
+locality	NN
+,	,
+lazy	JJ
+learning	NN
+can	MD
+be	VB
+advantageous	JJ
+for	IN
+highly	RB
+dynamic	JJ
+and	CC
+complex	JJ
+learning	NN
+environments	NNS
+such	JJ
+as	IN
+data	NNS
+streams	NNS
+.	.
+
+Yet	CC
+its	PRP$
+high	JJ
+memory	NN
+consumption	NN
+and	CC
+low	JJ
+predic	JJ
+-	:
+tion	NN
+eï	NN
+¬	NN
+ƒciency	NN
+have	VBP
+made	VBN
+it	PRP
+less	RBR
+favorable	JJ
+for	IN
+stream	NN
+oriented	VBN
+applications	NNS
+.	.
+
+Speciï	NN
+¬	NN
+cally	RB
+,	,
+traditional	JJ
+lazy	JJ
+learning	NN
+stores	NNS
+all	PDT
+the	DT
+training	NN
+data	NNS
+and	CC
+the	DT
+inductive	JJ
+process	NN
+is	VBZ
+deferred	VBN
+until	IN
+a	DT
+query	NN
+appears	VBZ
+,	,
+whereas	IN
+in	IN
+stream	NN
+applications	NNS
+,	,
+data	NNS
+records	NNS
+ï	VBP
+¬	CD
+‚	CD
+ow	NN
+continuously	RB
+in	IN
+large	JJ
+volumes	NNS
+and	CC
+the	DT
+prediction	NN
+of	IN
+class	NN
+labels	NNS
+needs	VBZ
+to	TO
+be	VB
+made	VBN
+in	IN
+a	DT
+timely	JJ
+manner	NN
+.	.
+
+In	IN
+this	DT
+paper	NN
+,	,
+we	PRP
+provide	VBP
+a	DT
+systematic	JJ
+solution	NN
+that	WDT
+overcomes	VBZ
+the	DT
+memory	NN
+and	CC
+eï	NN
+¬	NN
+ƒciency	NN
+limitations	NNS
+and	CC
+enables	VBZ
+fast	JJ
+lazy	JJ
+learning	NN
+for	IN
+concept	NN
+drifting	VBG
+data	NNS
+streams	NNS
+.	.
+
+In	IN
+particular	JJ
+,	,
+we	PRP
+propose	VBP
+a	DT
+novel	JJ
+Lazy-tree	NN
+-LRB-	-LRB-
+L	NN
+-	:
+tree	NN
+for	IN
+short	JJ
+-RRB-	-RRB-
+indexing	NN
+structure	NN
+that	WDT
+dynamically	RB
+maintains	VBZ
+compact	JJ
+high-level	JJ
+summaries	NNS
+of	IN
+historical	JJ
+stream	NN
+records	NNS
+.	.
+
+L-trees	NNS
+are	VBP
+M-Tree	JJ
+-LSB-	-LRB-
+5	CD
+-RSB-	-RRB-
+like	IN
+,	,
+height-balanced	JJ
+,	,
+and	CC
+can	MD
+help	VB
+achieve	VB
+great	JJ
+memory	NN
+consumption	NN
+reduction	NN
+and	CC
+sub-linear	JJ
+time	NN
+complexity	NN
+for	IN
+prediction	NN
+.	.
+
+Moreover	RB
+,	,
+L-trees	NNS
+continuously	RB
+absorb	VB
+new	JJ
+stream	NN
+records	NNS
+and	CC
+discard	VB
+outdated	JJ
+ones	NNS
+,	,
+so	IN
+they	PRP
+can	MD
+naturally	RB
+adapt	VB
+to	TO
+the	DT
+dynamically	RB
+changing	VBG
+concepts	NNS
+in	IN
+data	NNS
+streams	NNS
+for	IN
+accurate	JJ
+prediction	NN
+.	.
+
+Extensive	JJ
+experiments	NNS
+on	IN
+real-world	JJ
+and	CC
+synthetic	JJ
+data	NNS
+streams	NNS
+demonstrate	VBP
+the	DT
+performance	NN
+of	IN
+our	PRP$
+approach	NN
+.	.
+
+
+Keywords-data	JJ
+stream	NN
+mining	NN
+,	,
+data	NNS
+stream	NN
+classiï	NN
+¬	CD
+cation	NN
+,	,
+Spatial	JJ
+indexing	NN
+,	,
+lazy	JJ
+learning	NN
+,	,
+concept	NN
+drifting	VBG
+.	.
+
+
+I.	NN
+INTRODUCTION	NNP
+
+
+Data	NNP
+stream	NN
+classiï	NN
+¬	CD
+cation	NN
+has	VBZ
+drawn	VBN
+increasing	VBG
+attention	NN
+from	IN
+the	DT
+data	NNS
+mining	NN
+community	NN
+in	IN
+recent	JJ
+years	NNS
+with	IN
+a	DT
+vast	JJ
+amount	NN
+of	IN
+real-world	JJ
+applications	NNS
+.	.
+
+For	IN
+example	NN
+,	,
+in	IN
+informa	NN
+-	:
+tion	NN
+security	NN
+,	,
+data	NNS
+stream	NN
+classiï	NN
+¬	CD
+cation	NN
+plays	VBZ
+an	DT
+important	JJ
+role	NN
+in	IN
+real-time	JJ
+intrusion	NN
+detection	NN
+,	,
+spam	NN
+detection	NN
+,	,
+and	CC
+malicious	JJ
+Web	NN
+page	NN
+detection	NN
+.	.
+
+In	IN
+these	DT
+applications	NNS
+,	,
+stream	NN
+data	NNS
+ï	VBP
+¬	CD
+‚	CD
+ow	NN
+continuously	RB
+and	CC
+rapidly	RB
+,	,
+and	CC
+the	DT
+ultimate	JJ
+goal	NN
+is	VBZ
+to	TO
+accurately	RB
+predict	VB
+the	DT
+class	NN
+label	NN
+of	IN
+each	DT
+incoming	JJ
+stream	NN
+record	NN
+in	IN
+a	DT
+timely	JJ
+manner	NN
+.	.
+
+
+Existing	VBG
+data	NNS
+stream	NN
+classiï	NN
+¬	CD
+cation	NN
+models	NNS
+,	,
+such	JJ
+as	IN
+incre	NN
+-	:
+mental	JJ
+learning	NN
+-LSB-	-LRB-
+8	CD
+-RSB-	-RRB-
+or	CC
+ensemble	NN
+learning	NN
+models	NNS
+-LSB-	-LRB-
+12	CD
+-RSB-	-RRB-
+,	,
+-LSB-	-LRB-
+10	CD
+-RSB-	-RRB-
+,	,
+-LSB-	-LRB-
+19	CD
+-RSB-	-RRB-
+,	,
+-LSB-	-LRB-
+20	CD
+-RSB-	-RRB-
+,	,
+-LSB-	-LRB-
+21	CD
+-RSB-	-RRB-
+,	,
+all	DT
+belong	VBP
+to	TO
+the	DT
+eager	JJ
+learning	NN
+category	NN
+-LSB-	-LRB-
+11	CD
+-RSB-	-RRB-
+.	.
+
+Being	VBG
+eager	JJ
+,	,
+the	DT
+training	NN
+data	NNS
+are	VBP
+greedily	RB
+compiled	VBN
+into	IN
+a	DT
+concise	JJ
+hypothesis	NN
+-LRB-	-LRB-
+model	NN
+-RRB-	-RRB-
+and	CC
+then	RB
+completely	RB
+discarded	VBN
+.	.
+
+Examples	NNS
+of	IN
+eager	JJ
+learning	NN
+methods	NNS
+include	VBP
+decision	NN
+trees	NNS
+,	,
+neural	JJ
+networks	NNS
+,	,
+and	CC
+naive	JJ
+Bayes	NNP
+classiï	NN
+¬	CD
+ers	NNPS
+.	.
+
+Obviously	RB
+,	,
+eager	JJ
+learning	NN
+methods	NNS
+have	VBP
+low	JJ
+memory	NN
+con	NN
+-	:
+
+
+b1	NN
+
+
+b1	NN
+
+
+b2	NN
+
+
+Time	NNP
+t1	NN
+
+
+Time	NNP
+t2	NN
+
+
+Time	NNP
+t3	NN
+
+
+Figure	NNP
+1	CD
+.	.
+
+
+Lazy	JJ
+learning	NN
+on	IN
+concept	NN
+drifting	VBG
+data	NNS
+streams	NNS
+.	.
+
+
+sumption	NN
+and	CC
+high	JJ
+predicting	VBG
+eï	NN
+¬	NN
+ƒciency	NN
+in	IN
+answering	VBG
+queries	NNS
+,	,
+which	WDT
+are	VBP
+crucial	JJ
+for	IN
+most	JJS
+data	NNS
+stream	NN
+applications	NNS
+.	.
+
+
+Lazy	JJ
+learning	NN
+-LSB-	-LRB-
+3	CD
+-RSB-	-RRB-
+,	,
+such	JJ
+as	IN
+k-Nearest	NN
+Neighbor	NN
+-LRB-	-LRB-
+kNN	NN
+-RRB-	-RRB-
+clas	NNS
+-	:
+siï	NN
+¬	CD
+ers	NNPS
+,	,
+represents	VBZ
+some	DT
+instance-based	JJ
+and	CC
+non-parametric	JJ
+learning	NN
+methods	NNS
+,	,
+where	WRB
+the	DT
+training	NN
+data	NNS
+are	VBP
+simply	RB
+stored	VBN
+in	IN
+memory	NN
+and	CC
+the	DT
+inductive	JJ
+process	NN
+is	VBZ
+deferred	VBN
+until	IN
+a	DT
+query	NN
+is	VBZ
+given	VBN
+.	.
+
+Compared	VBN
+to	TO
+eager	JJ
+methods	NNS
+,	,
+lazy	JJ
+learning	NN
+methods	NNS
+incur	VBP
+none	NN
+or	CC
+low	JJ
+computational	JJ
+costs	NNS
+during	IN
+training	NN
+but	CC
+much	RB
+higher	JJR
+costs	NNS
+in	IN
+answering	VBG
+queries	NNS
+also	RB
+with	IN
+greater	JJR
+storage	NN
+requirements	NNS
+,	,
+not	RB
+scaling	VBG
+well	RB
+to	TO
+large	JJ
+datasets	NNS
+.	.
+
+In	IN
+stream	NN
+applications	NNS
+,	,
+data	NNS
+streams	NNS
+come	VBP
+continuously	RB
+in	IN
+large	JJ
+volumes	NNS
+,	,
+making	VBG
+it	PRP
+impractical	JJ
+to	TO
+store	VB
+all	PDT
+the	DT
+training	NN
+records	NNS
+.	.
+
+In	IN
+addition	NN
+,	,
+stream	NN
+applications	NNS
+are	VBP
+time	NN
+-	:
+critical	JJ
+where	WRB
+class	NN
+prediction	NN
+needs	VBZ
+to	TO
+be	VB
+made	VBN
+in	IN
+a	DT
+timely	JJ
+manner	NN
+.	.
+
+Lazy	JJ
+learning	NN
+methods	NNS
+fall	VBP
+short	JJ
+in	IN
+meeting	VBG
+these	DT
+requirements	NNS
+and	CC
+have	VBP
+not	RB
+been	VBN
+considered	VBN
+for	IN
+data	NNS
+stream	NN
+classiï	NN
+¬	CD
+cation	NN
+.	.
+
+
+In	IN
+fact	NN
+,	,
+lazy	JJ
+learning	NN
+has	VBZ
+many	JJ
+characteristics	NNS
+that	WDT
+are	VBP
+promising	VBG
+for	IN
+data	NNS
+stream	NN
+classiï	NN
+¬	CD
+cation	NN
+.	.
+
+While	IN
+eager	JJ
+learn	VBP
+-	:
+ing	NN
+strives	VBZ
+to	TO
+learn	VB
+a	DT
+single	JJ
+global	JJ
+model	NN
+that	WDT
+is	VBZ
+good	JJ
+on	IN
+average	NN
+,	,
+lazy	JJ
+learning	VBG
+well	RB
+captures	VBZ
+locality	NN
+and	CC
+can	MD
+achieve	VB
+high	JJ
+accuracy	NN
+when	WRB
+the	DT
+learning	NN
+environment	NN
+is	VBZ
+complex	JJ
+and	CC
+dynamic	JJ
+.	.
+
+In	IN
+data	NNS
+stream	NN
+applications	NNS
+,	,
+stream	NN
+records	NNS
+can	MD
+not	RB
+be	VB
+fully	RB
+observed	VBN
+at	IN
+a	DT
+speciï	NN
+¬	NN
+c	NN
+time	NN
+stamp	NN
+and	CC
+it	PRP
+is	VBZ
+often	RB
+diï	JJ
+¬	NN
+ƒcult	NN
+to	TO
+construct	VB
+satisfactory	JJ
+global	JJ
+models	NNS
+based	VBN
+on	IN
+partially	RB
+observed	VBN
+training	NN
+data	NNS
+.	.
+
+This	DT
+diï	NN
+¬	NN
+ƒculty	NN
+is	VBZ
+further	JJ
+aggravated	VBN
+by	IN
+the	DT
+inherent	JJ
+concept	NN
+drifting	VBG
+problem	NN
+in	IN
+data	NNS
+streams	NNS
+,	,
+where	WRB
+the	DT
+underlying	VBG
+patterns	NNS
+irregularly	JJ
+change	NN
+over	IN
+time	NN
+resulting	VBG
+in	IN
+much	JJ
+complicated	JJ
+decision	NN
+boundary	NN
+.	.
+
+A	DT
+motivating	VBG
+example	NN
+is	VBZ
+shown	VBN
+in	IN
+Example	NN
+1	CD
+.	.
+
+
+Example	NN
+1	CD
+:	:
+Fig.	NN
+1	CD
+shows	VBZ
+a	DT
+typical	JJ
+scenario	NN
+for	IN
+classiï	NN
+¬	SYM
+-	:
+cation	NN
+in	IN
+dynamic	JJ
+data	NNS
+streams	NNS
+.	.
+
+During	IN
+the	DT
+three	CD
+continuous	JJ
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+1	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+time	NN
+stamps	NNS
+,	,
+the	DT
+classiï	NN
+¬	NN
+cation	NN
+boundary	NN
+-LRB-	-LRB-
+concept	NN
+-RRB-	-RRB-
+drifts	VBZ
+from	IN
+b1	NN
+at	IN
+time	NN
+t1	NN
+to	TO
+b2	NN
+at	IN
+time	NN
+t3	NN
+.	.
+
+We	PRP
+can	MD
+observe	VB
+that	IN
+before	RB
+and	CC
+after	IN
+the	DT
+concept	NN
+drifts	VBZ
+i.e.	FW
+,	,
+at	IN
+time	NN
+t1	NN
+and	CC
+time	NN
+t3	NN
+,	,
+both	CC
+eager	JJ
+and	CC
+lazy	JJ
+learning	NN
+methods	NNS
+can	MD
+perform	VB
+equally	RB
+well	RB
+given	VBN
+the	DT
+simplicity	NN
+of	IN
+the	DT
+linear	JJ
+classiï	NN
+¬	NN
+cation	NN
+boundaries	NNS
+.	.
+
+However	RB
+,	,
+when	WRB
+concept	NN
+drifting	VBG
+occurs	VBZ
+at	IN
+time	NN
+t2	NN
+,	,
+since	IN
+only	RB
+a	DT
+small	JJ
+portion	NN
+of	IN
+examples	NNS
+in	IN
+the	DT
+red	JJ
+circle	NN
+region	NN
+are	VBP
+observed	VBN
+-LRB-	-LRB-
+the	DT
+region	NN
+represents	VBZ
+emerging	VBG
+new	JJ
+concepts	NNS
+-RRB-	-RRB-
+,	,
+the	DT
+new	JJ
+boundary	NN
+b2	NN
+can	MD
+not	RB
+be	VB
+fully	RB
+constructed	VBN
+yet	RB
+.	.
+
+While	IN
+eager	JJ
+learners	NNS
+tend	VBP
+to	TO
+consider	VB
+the	DT
+examples	NNS
+in	IN
+the	DT
+red	JJ
+circle	NN
+as	IN
+noise	NN
+and	CC
+still	RB
+return	VB
+b1	NN
+as	IN
+the	DT
+decision	NN
+boundary	NN
+,	,
+lazy	JJ
+learners	NNS
+can	MD
+correctly	RB
+capture	VB
+partially	RB
+formed	VBN
+new	JJ
+concepts	NNS
+in	IN
+the	DT
+red	JJ
+circle	NN
+area	NN
+.	.
+
+
+Motivated	VBN
+by	IN
+the	DT
+above	JJ
+observations	NNS
+,	,
+the	DT
+goal	NN
+of	IN
+this	DT
+study	NN
+is	VBZ
+to	TO
+overcome	VB
+the	DT
+high	JJ
+memory	NN
+consumption	NN
+and	CC
+low	JJ
+predicting	VBG
+eï	NN
+¬	NN
+ƒciency	NN
+limitations	NNS
+and	CC
+enable	VB
+lazy	JJ
+learning	NN
+on	IN
+data	NNS
+streams	NNS
+.	.
+
+We	PRP
+expect	VBP
+that	IN
+the	DT
+study	NN
+can	MD
+unleash	VB
+the	DT
+potential	NN
+of	IN
+lazy	JJ
+learning	NN
+in	IN
+data	NNS
+stream	NN
+classiï	NN
+¬	CD
+cation	NN
+and	CC
+open	VB
+up	RP
+new	JJ
+possibilities	NNS
+for	IN
+tackling	VBG
+the	DT
+inherent	JJ
+problems	NNS
+and	CC
+challenges	NNS
+in	IN
+data	NNS
+stream	NN
+applications	NNS
+.	.
+
+In	IN
+particular	JJ
+,	,
+we	PRP
+propose	VBP
+a	DT
+novel	JJ
+Lazy-tree	NN
+-LRB-	-LRB-
+L-tree	NN
+for	IN
+short	JJ
+-RRB-	-RRB-
+indexing	NN
+structure	NN
+that	WDT
+dynamically	RB
+maintains	VBZ
+compact	JJ
+high-level	JJ
+summaries	NNS
+of	IN
+historical	JJ
+stream	NN
+records	NNS
+.	.
+
+L-tree	NN
+is	VBZ
+inspired	VBN
+by	IN
+M-tree	NN
+-LSB-	-LRB-
+5	CD
+-RSB-	-RRB-
+that	WDT
+has	VBZ
+been	VBN
+widely	RB
+used	VBN
+as	IN
+an	DT
+indexing	NN
+tool	NN
+in	IN
+metric	JJ
+spaces	NNS
+.	.
+
+When	WRB
+building	VBG
+an	DT
+L-tree	NN
+,	,
+historical	JJ
+stream	NN
+records	NNS
+are	VBP
+condensed	JJ
+into	IN
+compact	JJ
+high-level	JJ
+exemplars	NNS
+to	TO
+reduce	VB
+memory	NN
+consumption	NN
+.	.
+
+An	DT
+exemplar	NN
+is	VBZ
+a	DT
+sphere	NN
+of	IN
+certain	JJ
+size	NN
+generalizing	VBG
+one	CD
+or	CC
+more	JJR
+stream	NN
+examples	NNS
+.	.
+
+All	PDT
+the	DT
+exemplars	NNS
+are	VBP
+organized	VBN
+into	IN
+a	DT
+height-balanced	JJ
+L-tree	NN
+that	WDT
+can	MD
+help	VB
+achieve	VB
+sub-linear	JJ
+predicting	VBG
+time	NN
+.	.
+
+L-trees	NNS
+are	VBP
+associated	VBN
+with	IN
+three	CD
+key	JJ
+operations	NNS
+.	.
+
+The	DT
+search	NN
+operation	NN
+traverses	VBZ
+the	DT
+L-tree	NN
+to	TO
+retrieve	VB
+the	DT
+k-nearest	NN
+exemplars	NNS
+of	IN
+an	DT
+incoming	JJ
+stream	NN
+record	NN
+for	IN
+classiï	NN
+¬	CD
+cation	NN
+purposes	NNS
+.	.
+
+The	DT
+insertion	NN
+operation	NN
+adds	VBZ
+new	JJ
+stream	NN
+records	NNS
+into	IN
+some	DT
+exemplars	NNS
+in	IN
+the	DT
+L-tree	NN
+.	.
+
+The	DT
+deletion	NN
+operation	NN
+removes	VBZ
+outdated	JJ
+exemplars	NNS
+from	IN
+the	DT
+L-tree	NN
+.	.
+
+The	DT
+L-tree	JJ
+approach	NN
+achieves	VBZ
+a	DT
+logarithmic	JJ
+predicting	VBG
+time	NN
+with	IN
+bounded	VBN
+mem	SYM
+-	:
+ory	NN
+consumption	NN
+.	.
+
+It	PRP
+also	RB
+adapts	VBZ
+quickly	RB
+to	TO
+new	JJ
+trends	NNS
+and	CC
+patterns	NNS
+in	IN
+stream	NN
+data	NNS
+.	.
+
+
+This	DT
+paper	NN
+makes	VBZ
+the	DT
+following	VBG
+contributions	NNS
+:	:
+
+
+â	RB
+$	$
+cents	NNS
+We	PRP
+are	VBP
+the	DT
+ï	NN
+¬	NN
+rst	NN
+to	TO
+systematically	RB
+investigate	VB
+lazy	JJ
+learn	VBP
+-	:
+
+
+ing	VBG
+on	IN
+data	NNS
+streams	NNS
+.	.
+
+-LRB-	-LRB-
+Section	NN
+II	CD
+-RRB-	-RRB-
+
+
+â	RB
+$	$
+cents	NNS
+We	PRP
+propose	VBP
+a	DT
+compact	JJ
+high-level	JJ
+structure	NN
+exemplar	NN
+
+
+to	TO
+summarize	VB
+stream	NN
+examples	NNS
+and	CC
+reduce	VB
+memory	NN
+
+
+consumption	NN
+for	IN
+lazy	JJ
+learning	NN
+.	.
+
+-LRB-	-LRB-
+Section	NN
+III	CD
+-RRB-	-RRB-
+
+
+â	RB
+$	$
+cents	NNS
+We	PRP
+propose	VBP
+an	DT
+L-tree	JJ
+structure	NN
+to	TO
+organize	VB
+exemplars	NNS
+
+
+and	CC
+achieve	VB
+sub-linear	JJ
+time	NN
+for	IN
+prediction	NN
+.	.
+
+L-trees	NNS
+
+
+continuously	RB
+absorb	VB
+new	JJ
+stream	NN
+records	NNS
+and	CC
+discard	VB
+
+
+outdated	JJ
+ones	NNS
+,	,
+well	RB
+adapting	VBG
+to	TO
+drifting	VBG
+concepts	NNS
+and	CC
+
+
+result	NN
+in	IN
+accurate	JJ
+prediction	NN
+results	NNS
+.	.
+
+-LRB-	-LRB-
+Section	NN
+IV	CD
+-RRB-	-RRB-
+
+
+â	RB
+$	$
+cents	NNS
+We	PRP
+conduct	VBP
+extensive	JJ
+experiments	NNS
+on	IN
+real-world	JJ
+data	NNS
+
+
+streams	NNS
+and	CC
+demonstrate	VBP
+the	DT
+performance	NN
+gain	NN
+of	IN
+our	PRP$
+
+
+approach	NN
+compared	VBD
+to	TO
+benchmark	JJ
+methods	NNS
+.	.
+
+-LRB-	-LRB-
+Section	NN
+V	NN
+-RRB-	-RRB-
+
+
+II	NNP
+.	.
+
+PROBLEM	NN
+DESCRIPTION	NN
+
+
+We	PRP
+study	VBP
+the	DT
+problem	NN
+of	IN
+enabling	VBG
+lazy	JJ
+learning	NN
+on	IN
+data	NNS
+streams	NNS
+,	,
+for	IN
+which	WDT
+we	PRP
+focus	VBP
+on	IN
+signiï	NN
+¬	NN
+cantly	RB
+reducing	VBG
+memory	NN
+consumption	NN
+and	CC
+predicting	VBG
+time	NN
+so	IN
+that	IN
+the	DT
+critical	JJ
+requirements	NNS
+of	IN
+stream	NN
+applications	NNS
+can	MD
+be	VB
+satisï	JJ
+¬	NN
+ed	VBD
+.	.
+
+
+Consider	VB
+a	DT
+data	NN
+stream	NN
+S	NN
+consisting	VBG
+of	IN
+an	DT
+inï	NN
+¬	NN
+nite	FW
+se	FW
+-	:
+quence	NN
+of	IN
+records	NNS
+-LCB-	-LRB-
+s1	NN
+,	,
+Â	NN
+·	NN
+Â	NN
+·	CD
+Â	NN
+·	NN
+,	,
+si	NN
+,	,
+Â	NN
+·	NN
+Â	NN
+·	CD
+Â	NN
+·	NN
+-RCB-	-RRB-
+,	,
+where	WRB
+si	NN
+=	JJ
+-LRB-	-LRB-
+xi	NN
+,	,
+yi	NN
+-RRB-	-RRB-
+rep	NN
+-	:
+resents	VBZ
+a	DT
+record	NN
+arriving	VBG
+at	IN
+time	NN
+stamp	NN
+ti	NN
+.	.
+
+For	IN
+each	DT
+recordÏ	NN
+„	NN
+
+
+si	NN
+,	,
+xi	NN
+âˆˆ	NN
+R	NN
+represents	VBZ
+an	DT
+Ï	NN
+„	SYM
+-	:
+dimensional	JJ
+attribute	NN
+vector	NN
+,	,
+and	CC
+yi	NN
+âˆˆ	NN
+-LCB-	-LRB-
+c1	NN
+,	,
+Â	NN
+·	NN
+Â	NN
+·	CD
+Â	NN
+·	NN
+,	,
+cl	NN
+-RCB-	-RRB-
+represents	VBZ
+the	DT
+class	NN
+label	NN
+.	.
+
+Assume	VB
+that	IN
+the	DT
+current	JJ
+time	NN
+stamp	NN
+is	VBZ
+tn	NN
+,	,
+and	CC
+the	DT
+incoming	JJ
+record	NN
+is	VBZ
+denoted	VBN
+by	IN
+sn	NN
+=	JJ
+-LCB-	-LRB-
+xn	NN
+,	,
+yn	NN
+-RCB-	-RRB-
+with	IN
+unknown	JJ
+yn	NN
+.	.
+
+Our	PRP$
+learning	NN
+objective	NN
+is	VBZ
+to	TO
+accurately	RB
+predict	VB
+yn	NN
+as	IN
+fast	JJ
+as	IN
+possible	JJ
+.	.
+
+This	DT
+is	VBZ
+equivalent	JJ
+to	TO
+maximizing	VBG
+the	DT
+posterior	JJ
+probability	NN
+in	IN
+Eq	NN
+.	.
+
+-LRB-	-LRB-
+1	LS
+-RRB-	-RRB-
+with	IN
+maximum	NN
+eï	NN
+¬	NN
+ƒciency	NN
+.	.
+
+
+yn	NN
+=	JJ
+argmaxcâˆˆ	NN
+-LCB-	-LRB-
+c	NN
+
+
+1	CD
+,	,
+Â	NN
+·	NN
+Â	NN
+·	CD
+Â	NN
+·	NN
+,	,
+cl	NN
+-RCB-	-RRB-
+
+
+P	NN
+-LRB-	-LRB-
+c	NN
+|	CD
+xn	NN
+,	,
+s1	NN
+,	,
+Â	NN
+·	NN
+Â	NN
+·	CD
+Â	NN
+·	NN
+,	,
+sn	NN
+
+
+1	LS
+-RRB-	-RRB-
+-LRB-	-LRB-
+1	LS
+-RRB-	-RRB-
+
+
+Without	IN
+loss	NN
+of	IN
+generality	NN
+,	,
+we	PRP
+consider	VBP
+k-NN	NN
+as	IN
+the	DT
+underlying	VBG
+lazy	JJ
+learning	NN
+algorithm	NN
+.	.
+
+Then	RB
+,	,
+instead	RB
+of	IN
+using	VBG
+all	PDT
+the	DT
+-LRB-	-LRB-
+n	NN
+1	CD
+-RRB-	-RRB-
+stream	NN
+records	NNS
+to	TO
+predict	VB
+yn	NN
+,	,
+we	PRP
+use	VBP
+only	RB
+
+
+k	NN
+nearest	JJS
+neighbors	NNS
+,	,
+denoted	VBN
+by	IN
+-LCB-	-LRB-
+s	NNS
+
+
+1	CD
+,	,
+
+
+Â	NN
+·	CD
+Â	NN
+·	NN
+Â	NN
+·	NN
+,	,
+sk	NN
+-RCB-	-RRB-
+,	,
+from	IN
+all	PDT
+the	DT
+-LRB-	-LRB-
+n	NN
+1	CD
+-RRB-	-RRB-
+records	NNS
+for	IN
+prediction	NN
+.	.
+
+Note	VB
+that	DT
+k	NN
+-LRB-	-LRB-
+n	NN
+1	CD
+-RRB-	-RRB-
+,	,
+and	CC
+-LCB-	-LRB-
+s1	NN
+,	,
+Â	NN
+·	NN
+Â	NN
+·	CD
+Â	NN
+·	NN
+,	,
+sk	NN
+-RCB-	-RRB-
+âˆˆ	RB
+-LCB-	-LRB-
+s1	NN
+,	,
+Â	NN
+·	NN
+Â	NN
+·	CD
+Â	NN
+·	NN
+,	,
+sn	NN
+
+
+1	CD
+-RCB-	-RRB-
+.	.
+
+This	DT
+way	NN
+,	,
+the	DT
+posterior	JJ
+probability	NN
+in	IN
+Eq	NN
+.	.
+
+-LRB-	-LRB-
+1	LS
+-RRB-	-RRB-
+can	MD
+be	VB
+revised	VBN
+to	TO
+Eq	NN
+.	.
+
+-LRB-	-LRB-
+2	LS
+-RRB-	-RRB-
+,	,
+
+
+yn	NN
+=	JJ
+argmaxcâˆˆ	NN
+-LCB-	-LRB-
+c	NN
+
+
+1	CD
+,	,
+Â	NN
+·	NN
+Â	NN
+·	CD
+Â	NN
+·	NN
+,	,
+cl	NN
+-RCB-	-RRB-
+
+
+P	NN
+-LRB-	-LRB-
+c	NN
+,	,
+s	NNS
+
+
+
+1	CD
+,	,
+
+
+Â	NN
+·	CD
+Â	NN
+·	NN
+Â	NN
+·	NN
+,	,
+sk	NN
+|	CD
+xn	NN
+,	,
+s1	NN
+,	,
+Â	NN
+·	NN
+Â	NN
+·	CD
+Â	NN
+·	NN
+,	,
+sn	NN
+
+
+1	LS
+-RRB-	-RRB-
+-LRB-	-LRB-
+2	LS
+-RRB-	-RRB-
+
+
+Decomposing	VBG
+the	DT
+objective	JJ
+function	NN
+in	IN
+Eq	NN
+.	.
+
+-LRB-	-LRB-
+2	LS
+-RRB-	-RRB-
+into	IN
+two	CD
+continuous	JJ
+probability	NN
+estimations	NNS
+,	,
+we	PRP
+have	VBP
+Eq	NN
+.	.
+
+-LRB-	-LRB-
+3	LS
+-RRB-	-RRB-
+below	IN
+,	,
+
+
+P	NN
+-LRB-	-LRB-
+s1	NN
+,	,
+Â	NN
+·	NN
+Â	NN
+·	CD
+Â	NN
+·	NN
+,	,
+sk	NN
+|	CD
+xn	NN
+,	,
+s1	NN
+,	,
+Â	NN
+·	NN
+Â	NN
+·	CD
+Â	NN
+·	NN
+,	,
+sn	NN
+
+
+1	LS
+-RRB-	-RRB-
+P	NN
+-LRB-	-LRB-
+c	NN
+|	CD
+xn	NN
+,	,
+
+
+s1	NN
+,	,
+Â	NN
+·	NN
+Â	NN
+·	CD
+Â	NN
+·	NN
+,	,
+sk	NN
+,	,
+s1	NN
+,	,
+Â	NN
+·	NN
+Â	NN
+·	CD
+Â	NN
+·	NN
+,	,
+sn	NN
+
+
+1	LS
+-RRB-	-RRB-
+
+
+-LRB-	-LRB-
+3	LS
+-RRB-	-RRB-
+Since	IN
+-LCB-	-LRB-
+s1	NN
+,	,
+Â	NN
+·	NN
+Â	NN
+·	CD
+Â	NN
+·	NN
+,	,
+sk	NN
+-RCB-	-RRB-
+âˆ	NN
+©	CD
+-LCB-	-LRB-
+s1	NN
+,	,
+Â	NN
+·	NN
+Â	NN
+·	CD
+Â	NN
+·	NN
+,	,
+sn	NN
+
+
+1	CD
+-RCB-	-RRB-
+
+
+=	JJ
+-LCB-	-LRB-
+s1	NN
+,	,
+Â	NN
+·	NN
+Â	NN
+·	CD
+Â	NN
+·	NN
+,	,
+sk	NN
+-RCB-	-RRB-
+,	,
+Eq	NN
+.	.
+
+-LRB-	-LRB-
+3	LS
+-RRB-	-RRB-
+can	MD
+be	VB
+simpliï	NN
+¬	NN
+ed	VBD
+as	IN
+in	IN
+Eq	NN
+.	.
+
+-LRB-	-LRB-
+4	LS
+-RRB-	-RRB-
+,	,
+
+
+P	NN
+-LRB-	-LRB-
+s1	NN
+,	,
+Â	NN
+·	NN
+Â	NN
+·	CD
+Â	NN
+·	NN
+,	,
+sk	NN
+|	NN
+xt	NN
+,	,
+s1	NN
+,	,
+Â	NN
+·	NN
+Â	NN
+·	CD
+Â	NN
+·	NN
+,	,
+s	NNS
+
+
+t	NN
+
+
+1	LS
+-RRB-	-RRB-
+P	NN
+-LRB-	-LRB-
+c	NN
+|	NN
+xt	NN
+,	,
+
+
+s1	NN
+,	,
+Â	NN
+·	NN
+Â	NN
+·	CD
+Â	NN
+·	NN
+,	,
+sk	NN
+-RRB-	-RRB-
+-LRB-	-LRB-
+4	LS
+-RRB-	-RRB-
+
+
+From	IN
+Eq	NN
+.	.
+
+-LRB-	-LRB-
+4	LS
+-RRB-	-RRB-
+,	,
+it	PRP
+is	VBZ
+clear	JJ
+that	IN
+estimating	VBG
+Eq	NN
+.	.
+
+-LRB-	-LRB-
+1	LS
+-RRB-	-RRB-
+using	VBG
+k-NN	NN
+takes	VBZ
+two	CD
+steps	NNS
+.	.
+
+First	RB
+,	,
+estimating	VBG
+xtâ	NN
+$	$
+™	CD
+s	NNS
+k	NN
+neighbors	NNS
+-LCB-	-LRB-
+s1	NN
+,	,
+Â	NN
+·	NN
+Â	NN
+·	CD
+Â	NN
+·	NN
+,	,
+sk	NN
+-RCB-	-RRB-
+from	IN
+all	PDT
+the	DT
+historical	JJ
+stream	NN
+records	NNS
+-LCB-	-LRB-
+s1	NN
+,	,
+Â	NN
+·	NN
+Â	NN
+·	CD
+Â	NN
+·	NN
+,	,
+st	IN
+
+
+1	CD
+-RCB-	-RRB-
+.	.
+
+Second	RB
+,	,
+estimating	VBG
+xtâ	NN
+$	$
+™	CD
+s	NNS
+class	NN
+label	NN
+using	VBG
+all	PDT
+the	DT
+k	NN
+estimated	VBN
+neigh	SYM
+-	:
+bors	NNS
+.	.
+
+
+In	IN
+data	NNS
+stream	NN
+environment	NN
+,	,
+estimating	VBG
+these	DT
+two	CD
+proba	NN
+-	:
+bilities	NNS
+is	VBZ
+very	RB
+challenging	JJ
+because	IN
+of	IN
+the	DT
+memory	NN
+consump	NN
+-	:
+tion	NN
+and	CC
+predicting	VBG
+time	NN
+constraints	NNS
+.	.
+
+Speciï	NN
+¬	NN
+cally	RB
+,	,
+in	IN
+order	NN
+to	TO
+estimate	VB
+Eq	NN
+.	.
+
+-LRB-	-LRB-
+4	LS
+-RRB-	-RRB-
+,	,
+two	CD
+concerns	NNS
+need	VBP
+to	TO
+be	VB
+addressed	VBN
+:	:
+-LRB-	-LRB-
+1	LS
+-RRB-	-RRB-
+How	WRB
+to	TO
+estimate	VB
+P	NN
+-LRB-	-LRB-
+s1	NN
+,	,
+Â	NN
+·	NN
+Â	NN
+·	CD
+Â	NN
+·	NN
+,	,
+sk	NN
+|	CD
+xn	NN
+,	,
+s1	NN
+,	,
+Â	NN
+·	NN
+Â	NN
+·	CD
+Â	NN
+·	NN
+,	,
+sn	NN
+
+
+1	LS
+-RRB-	-RRB-
+in	IN
+a	DT
+bounded	VBN
+memory	NN
+space	NN
+.	.
+
+In	IN
+data	NNS
+streams	NNS
+,	,
+it	PRP
+is	VBZ
+impractical	JJ
+to	TO
+maintain	VB
+all	PDT
+the	DT
+-LRB-	-LRB-
+n	NN
+1	CD
+-RRB-	-RRB-
+records	NNS
+-LCB-	-LRB-
+s1	NN
+,	,
+Â	NN
+·	NN
+Â	NN
+·	CD
+Â	NN
+·	NN
+,	,
+sn	NN
+
+
+1	CD
+-RCB-	-RRB-
+
+
+for	IN
+estimation	NN
+.	.
+
+Thus	RB
+,	,
+a	DT
+memory-eï	JJ
+¬	NN
+ƒcient	JJ
+algorithm	NN
+needs	VBZ
+to	TO
+be	VB
+designed	VBN
+for	IN
+this	DT
+purpose	NN
+.	.
+
+
+-LRB-	-LRB-
+2	LS
+-RRB-	-RRB-
+How	WRB
+to	TO
+estimate	VB
+the	DT
+probability	NN
+P	NN
+-LRB-	-LRB-
+yn	NN
+|	CD
+xn	NN
+,	,
+s1	NN
+,	,
+Â	NN
+·	NN
+Â	NN
+·	CD
+Â	NN
+·	NN
+,	,
+sk	NN
+-RRB-	-RRB-
+as	IN
+fast	RB
+as	IN
+possible	JJ
+.	.
+
+Given	VBN
+xn	NN
+,	,
+ï	NN
+¬	NN
+nding	VBG
+its	PRP$
+k	NN
+nearest	JJS
+neighbors	NNS
+
+
+s	NNS
+
+
+1	CD
+,	,
+
+
+Â	NN
+·	CD
+Â	NN
+·	NN
+Â	NN
+·	NN
+,	,
+sk	NN
+typically	RB
+requires	VBZ
+a	DT
+linear	JJ
+scan	VB
+of	IN
+all	PDT
+the	DT
+-LRB-	-LRB-
+n	NN
+1	CD
+-RRB-	-RRB-
+records	NNS
+,	,
+corresponding	VBG
+to	TO
+an	DT
+O	NN
+-LRB-	-LRB-
+n	NN
+-RRB-	-RRB-
+time	NN
+complexity	NN
+,	,
+which	WDT
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+2	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+is	VBZ
+unacceptable	JJ
+for	IN
+stream	NN
+applications	NNS
+.	.
+
+Thus	RB
+,	,
+an	DT
+eï	NN
+¬	NN
+ƒcient	JJ
+search	NN
+algorithm	NN
+is	VBZ
+needed	VBN
+to	TO
+reduce	VB
+the	DT
+predicting	VBG
+time	NN
+to	TO
+a	DT
+sub-linear	JJ
+complexity	NN
+of	IN
+O	NN
+-LRB-	-LRB-
+log	NN
+-LRB-	-LRB-
+n	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+.	.
+
+
+In	IN
+the	DT
+following	VBG
+,	,
+we	PRP
+use	VBP
+Example	NN
+2	CD
+to	TO
+illustrate	VB
+the	DT
+streaming	NN
+lazy	JJ
+learning	NN
+problem	NN
+.	.
+
+
+5	CD
+
+
+4.5	CD
+
+
+4	CD
+
+
+3.5	CD
+
+
+x	NN
+
+
+D5	NN
+
+
+3	CD
+
+
+2.5	CD
+
+
+D4	NN
+
+
+2	CD
+
+
+D2	NN
+
+
+1.5	CD
+
+
+D3	NN
+
+
+1	CD
+
+
+0.5	CD
+
+
+D1	NN
+
+
+00	CD
+
+
+1	CD
+
+
+2	CD
+
+
+3	CD
+
+
+4	CD
+
+
+5	CD
+
+
+Figure	NN
+2	CD
+.	.
+
+An	DT
+illustration	NN
+of	IN
+Example	NN
+2	CD
+.	.
+
+
+Example	NN
+2	CD
+:	:
+Consider	VB
+a	DT
+data	NN
+stream	NN
+S	NN
+having	VBG
+three	CD
+classes	NNS
+-LCB-	-LRB-
+c1	NN
+,	,
+c2	NN
+,	,
+c3	NN
+-RCB-	-RRB-
+,	,
+and	CC
+each	DT
+stream	NN
+record	NN
+has	VBZ
+two	CD
+dimensions	NNS
+-LRB-	-LRB-
+Î	NN
+³	CD
+1	CD
+,	,
+Î	NN
+³	NN
+2	CD
+-RRB-	-RRB-
+,	,
+where	WRB
+Î	NN
+³	CD
+i	FW
+âˆˆ	FW
+R.	NNP
+Suppose	VB
+that	DT
+at	IN
+time	NN
+stamp	NN
+t500	CD
+,	,
+to	TO
+-	:
+tally	NN
+500	CD
+stream	NN
+records	NNS
+are	VBP
+observed	VBN
+as	IN
+shown	VBN
+in	IN
+Fig.	NN
+2	CD
+.	.
+
+For	IN
+simplicity	NN
+,	,
+we	PRP
+assume	VBP
+that	IN
+these	DT
+500	CD
+records	NNS
+are	VBP
+distributed	VBN
+uniformly	RB
+in	IN
+ï	NN
+¬	CD
+ve	NN
+clusters	NNS
+D1	NN
+,	,
+Â	NN
+·	NN
+Â	NN
+·	CD
+Â	NN
+·	NN
+,	,
+D5	NN
+,	,
+and	CC
+all	DT
+records	NNS
+in	IN
+a	DT
+cluster	NN
+Di	NNP
+-LRB-	-LRB-
+1	CD
+â	NN
+‰	CD
+$	$
+i	FW
+â	FW
+‰	FW
+$	$
+5	CD
+-RRB-	-RRB-
+share	VBP
+the	DT
+same	JJ
+class	NN
+label	NN
+,	,
+where	WRB
+class	NN
+c1	NN
+is	VBZ
+denoted	VBN
+by	IN
+the	DT
+symbol	NN
+â	VBD
+$	$
+œÂ	JJ
+·	NN
+â	VBD
+$	$
+,	,
+class	NN
+c2	NN
+is	VBZ
+denoted	VBN
+by	IN
+â	NN
+$	$
+œÃ	JJ
+--	:
+â	VB
+$	$
+,	,
+and	CC
+class	NN
+c3	NN
+is	VBZ
+denoted	VBN
+by	IN
+â	NN
+$	$
+œâ	CD
+$	$
+.	.
+
+The	DT
+classiï	NN
+¬	NN
+cation	NN
+objective	NN
+is	VBZ
+to	TO
+predict	VB
+the	DT
+class	NN
+label	NN
+of	IN
+the	DT
+next	JJ
+incoming	JJ
+record	NN
+-LRB-	-LRB-
+e.g.	FW
+,	,
+the	DT
+small	JJ
+red	JJ
+circle	NN
+x	NN
+=	JJ
+-LRB-	-LRB-
+2.2,3.5	CD
+-RRB-	-RRB-
+in	IN
+Fig.	NN
+2	CD
+-RRB-	-RRB-
+as	IN
+fast	RB
+as	IN
+possible	JJ
+.	.
+
+If	IN
+the	DT
+original	JJ
+k-NN	NN
+method	NN
+is	VBZ
+chosen	VBN
+as	IN
+the	DT
+solution	NN
+,	,
+we	PRP
+have	VBP
+to	TO
+maintain	VB
+all	PDT
+the	DT
+500	CD
+stream	NN
+records	NNS
+for	IN
+prediction	NN
+,	,
+which	WDT
+is	VBZ
+very	RB
+demanding	VBG
+for	IN
+memory	NN
+consumption	NN
+.	.
+
+Moreover	RB
+,	,
+even	RB
+if	IN
+memory	NN
+consumption	NN
+is	VBZ
+not	RB
+an	DT
+issue	NN
+,	,
+a	DT
+straightforward	JJ
+approach	NN
+for	IN
+comparing	VBG
+x	NN
+with	IN
+these	DT
+records	NNS
+would	MD
+take	VB
+500	CD
+comparisons	NNS
+,	,
+which	WDT
+is	VBZ
+ineï	NN
+¬	NN
+ƒcient	NN
+in	IN
+terms	NNS
+of	IN
+predicting	VBG
+time	NN
+.	.
+
+
+To	TO
+reduce	VB
+the	DT
+memory	NN
+consumption	NN
+and	CC
+improve	VB
+the	DT
+prediction	NN
+eï	NN
+¬	NN
+ƒciency	NN
+for	IN
+lazy	JJ
+learning	NN
+on	IN
+data	NNS
+streams	NNS
+,	,
+we	PRP
+ï	VBP
+¬	CD
+rst	JJ
+summarize	VB
+all	PDT
+the	DT
+historical	JJ
+training	NN
+examples	NNS
+into	IN
+compact	JJ
+exemplars	NNS
+,	,
+and	CC
+then	RB
+organize	VB
+these	DT
+exemplars	NNS
+as	IN
+leaf	NN
+nodes	NNS
+in	IN
+a	DT
+height-balanced	JJ
+L-Tree	NN
+structure	NN
+.	.
+
+In	IN
+doing	VBG
+so	RB
+,	,
+all	PDT
+the	DT
+historical	JJ
+stream	NN
+records	NNS
+can	MD
+be	VB
+condensed	JJ
+into	IN
+a	DT
+bounded	VBN
+memory	NN
+space	NN
+without	IN
+losing	VBG
+much	JJ
+information	NN
+,	,
+and	CC
+each	DT
+incoming	JJ
+record	NN
+can	MD
+be	VB
+eï	NN
+¬	NN
+ƒciently	RB
+estimated	VBN
+in	IN
+a	DT
+sub-linear	JJ
+time	NN
+complexity	NN
+by	IN
+traversing	VBG
+the	DT
+L-tree	NN
+.	.
+
+
+III	NNP
+.	.
+
+THE	DT
+EXEMPLAR	NN
+STRUCTURE	NN
+
+
+Instead	RB
+of	IN
+maintaining	VBG
+raw	JJ
+stream	NN
+records	NNS
+,	,
+we	PRP
+cluster	VBP
+them	PRP
+into	IN
+exemplars	NNS
+to	TO
+reduce	VB
+memory	NN
+consumption	NN
+.	.
+
+An	DT
+exemplar	NN
+is	VBZ
+a	DT
+sphere	NN
+generalizing	VBG
+one	CD
+or	CC
+multiple	JJ
+records	NNS
+.	.
+
+Though	IN
+inspired	VBN
+by	IN
+micro-clusters	NN
+-LSB-	-LRB-
+2	CD
+-RSB-	-RRB-
+,	,
+exemplars	NNS
+are	VBP
+diï	NN
+¬	CD
+$	$
+er	SYM
+-	:
+ent	NN
+and	CC
+more	JJR
+complex	NN
+in	IN
+that	IN
+they	PRP
+summarize	VBP
+labeled	VBN
+data	NNS
+.	.
+
+Formally	RB
+,	,
+exemplars	NNS
+are	VBP
+deï	NN
+¬	CD
+ned	VBD
+as	IN
+follows	VBZ
+.	.
+
+
+Deï	NN
+¬	CD
+nition	NN
+1	CD
+:	:
+1	CD
+.	.
+
+-LRB-	-LRB-
+exemplar	NN
+-RRB-	-RRB-
+An	DT
+exemplar	NN
+M	NN
+for	IN
+a	DT
+set	NN
+of	IN
+stream	NN
+records	NNS
+-LCB-	-LRB-
+s1	NN
+,	,
+Â	NN
+·	NN
+Â	NN
+·	CD
+Â	NN
+·	NN
+,	,
+su	FW
+-RCB-	-RRB-
+arriving	VBG
+at	IN
+time	NN
+stamps	NNS
+-LCB-	-LRB-
+t1	NN
+,	,
+Â	NN
+·	NN
+Â	NN
+·	CD
+Â	NN
+·	NN
+,	,
+tu	FW
+-RCB-	-RRB-
+is	VBZ
+a	DT
+-LRB-	-LRB-
+d	NN
++	CC
+l	NN
++	CC
+3	LS
+-RRB-	-RRB-
+-	:
+dimensional	JJ
+vector	NN
+as	IN
+in	IN
+Eq	NN
+.	.
+
+-LRB-	-LRB-
+5	LS
+-RRB-	-RRB-
+,	,
+
+
+M	NN
+=	JJ
+-LRB-	-LRB-
+X	NN
+,	,
+R	NN
+,	,
+C	NN
+,	,
+N	NN
+,	,
+T	NN
+-RRB-	-RRB-
+-LRB-	-LRB-
+5	CD
+-RRB-	-RRB-
+
+
+where	WRB
+X	NN
+is	VBZ
+a	DT
+d-dimensional	JJ
+vector	NN
+that	WDT
+representing	VBG
+the	DT
+center	NN
+,	,
+R	NN
+is	VBZ
+the	DT
+sample	NN
+variance	NN
+of	IN
+all	DT
+records	NNS
+in	IN
+M	NN
+,	,
+which	WDT
+is	VBZ
+also	RB
+the	DT
+covering	VBG
+radius	NN
+of	IN
+M	NN
+,	,
+C	NN
+=	JJ
+-LSB-	-LRB-
+P	NN
+-LRB-	-LRB-
+c1	NN
+|	CD
+M	NN
+-RRB-	-RRB-
+,	,
+Â	NN
+·	NN
+Â	NN
+·	CD
+Â	NN
+·	NN
+,	,
+P	NN
+-LRB-	-LRB-
+cl	NN
+|	CD
+M	NN
+-RRB-	-RRB-
+-RSB-	-RRB-
+is	VBZ
+an	DT
+l-dimensional	JJ
+vector	NN
+corresponding	VBG
+to	TO
+the	DT
+probability	NN
+of	IN
+M	NN
+having	VBG
+class	NN
+label	NN
+ci	NN
+-LRB-	-LRB-
+1	CD
+â	NN
+‰	CD
+$	$
+i	FW
+â	FW
+‰	FW
+$	$
+l	NN
+-RRB-	-RRB-
+,	,
+N	NN
+is	VBZ
+the	DT
+total	JJ
+number	NN
+of	IN
+records	NNS
+in	IN
+M	NN
+,	,
+and	CC
+T	NN
+represents	VBZ
+the	DT
+time	NN
+stamp	NN
+when	WRB
+M	NN
+was	VBD
+last	JJ
+updated	VBN
+.	.
+
+
+Exemplars	NNS
+have	VBP
+several	JJ
+intrinsic	JJ
+merits	NNS
+for	IN
+lazy	JJ
+learning	NN
+on	IN
+data	NNS
+streams	NNS
+.	.
+
+
+â	RB
+$	$
+cents	NNS
+Exemplars	NNS
+help	VBP
+summarize	VB
+huge	JJ
+volumes	NNS
+of	IN
+stream	NN
+
+
+data	NNS
+into	IN
+compact	JJ
+structures	NNS
+which	WDT
+well	RB
+ï	VBD
+¬	CD
+t	NN
+into	IN
+memory	NN
+.	.
+
+
+â	RB
+$	$
+cents	NNS
+Exemplars	NNPS
+well	RB
+represent	VBP
+the	DT
+historical	JJ
+data	NNS
+because	IN
+
+
+nearby	RB
+examples	NNS
+tend	VBP
+to	TO
+share	VB
+the	DT
+same	JJ
+class	NN
+label	NN
+and	CC
+
+
+can	MD
+be	VB
+grouped	VBN
+together	RB
+as	IN
+a	DT
+prediction	NN
+unit	NN
+.	.
+
+
+â	RB
+$	$
+cents	NNS
+Exemplars	NNS
+can	MD
+be	VB
+easily	RB
+updated	VBN
+.	.
+
+If	IN
+a	DT
+new	JJ
+example	NN
+x	NN
+is	VBZ
+
+
+absorbed	VBN
+into	IN
+M	NN
+,	,
+the	DT
+exemplar	NN
+center	NN
+and	CC
+radius	NN
+can	MD
+be	VB
+
+
+conveniently	RB
+updated	VBN
+using	VBG
+Eqs	NNS
+.	.
+
+-LRB-	-LRB-
+6	CD
+-RRB-	-RRB-
+and	CC
+-LRB-	-LRB-
+7	CD
+-RRB-	-RRB-
+respectively	RB
+,	,
+
+
+the	DT
+class	NN
+label	NN
+c	NN
+can	MD
+be	VB
+updated	VBN
+using	VBG
+Eq	NN
+.	.
+
+-LRB-	-LRB-
+8	CD
+-RRB-	-RRB-
+,	,
+and	CC
+the	DT
+
+
+time	NN
+stamp	NN
+T	NN
+can	MD
+be	VB
+updated	VBN
+to	TO
+the	DT
+current	JJ
+time	NN
+stamp	NN
+.	.
+
+
+Update	NNP
+center	NN
+X	NN
+and	CC
+radius	NN
+R.	NNP
+Assume	VB
+n	NN
+records	NNS
+-LCB-	-LRB-
+-LRB-	-LRB-
+x1	NN
+,	,
+y1	NN
+-RRB-	-RRB-
+,	,
+Â	NN
+·	NN
+Â	NN
+·	CD
+Â	NN
+·	NN
+,	,
+-LRB-	-LRB-
+xn	NN
+,	,
+yn	NN
+-RRB-	-RRB-
+-RCB-	-RRB-
+have	VBP
+been	VBN
+absorbed	VBN
+into	IN
+an	DT
+exemplar	NN
+M	NN
+.	.
+
+When	WRB
+a	DT
+new	JJ
+stream	NN
+record	NN
+x	CC
+arrives	VBZ
+,	,
+the	DT
+center	NN
+X	NN
+of	IN
+M	NN
+can	MD
+be	VB
+updated	VBN
+using	VBG
+Eq	NN
+.	.
+
+-LRB-	-LRB-
+6	CD
+-RRB-	-RRB-
+,	,
+
+
+n	NN
+
+
+X	NN
+â	SYM
+†	SYM
+
+
+1	CD
+
+
+xi	NN
++	CC
+x	NN
+-RRB-	-RRB-
+=	JJ
+
+
+n	NN
+
+
++	CC
+
+
+1	CD
+
+
+n	NN
++	CC
+1	CD
+-LRB-	-LRB-
+
+
+-LRB-	-LRB-
+6	CD
+-RRB-	-RRB-
+
+
+i	LS
+=	SYM
+1	CD
+
+
+n	NN
++	CC
+1c	NN
+n	NN
++	CC
+1x	NN
+,	,
+
+
+and	CC
+the	DT
+radius	NN
+R	NN
+of	IN
+M	NN
+can	MD
+be	VB
+updated	VBN
+using	VBG
+Eq	NN
+.	.
+
+-LRB-	-LRB-
+7	CD
+-RRB-	-RRB-
+,	,
+
+
+1	CD
+
+
+n	NN
+
+
+R	NN
+â	SYM
+†	SYM
+
+
+n	NN
+
+
+-LRB-	-LRB-
+-LRB-	-LRB-
+xi	NN
+X	NN
+-RRB-	-RRB-
+2	CD
++	CC
+-LRB-	-LRB-
+x	NN
+X	NN
+-RRB-	-RRB-
+2	LS
+-RRB-	-RRB-
+=	JJ
+
+
+n	NN
+1R	NN
++	CC
+1	CD
+
+
+i	LS
+=	SYM
+1	CD
+
+
+n	NN
+n	NN
+-LRB-	-LRB-
+x	NN
+
+
+X	NN
+-RRB-	-RRB-
+2	CD
+-LRB-	-LRB-
+7	CD
+-RRB-	-RRB-
+
+
+Update	NNP
+class	NN
+label	NN
+C.	NNP
+Assume	VB
+a	DT
+new	JJ
+record	NN
+arrives	VBZ
+with	IN
+a	DT
+class	NN
+label	NN
+cp	NN
+-LRB-	-LRB-
+1	CD
+â	NN
+‰	CD
+$	$
+p	NN
+â	NN
+‰	CD
+$	$
+l	NN
+-RRB-	-RRB-
+,	,
+then	RB
+the	DT
+class	NN
+label	NN
+vector	NN
+C	NN
+can	MD
+be	VB
+updated	VBN
+using	VBG
+Eq	NN
+.	.
+
+-LRB-	-LRB-
+8	CD
+-RRB-	-RRB-
+,	,
+
+
+C	NN
+â	JJ
+†	NN
+-LSB-	-LRB-
+nP	NN
+-LRB-	-LRB-
+c1	NN
+|	CD
+M	NN
+-RRB-	-RRB-
+,	,
+Â	NN
+·	NN
+Â	NN
+·	CD
+Â	NN
+·	NN
+,	,
+
+
+nP	NN
+-LRB-	-LRB-
+cp	NN
+|	CD
+M	NN
+-RRB-	-RRB-
++	CC
+1	CD
+nP	NN
+-LRB-	-LRB-
+cl	NN
+|	CD
+M	NN
+-RRB-	-RRB-
+
+
+n	NN
++	CC
+1	CD
+n	NN
++	CC
+1	CD
+
+
+Â	NN
+·	CD
+Â	NN
+·	NN
+Â	NN
+·	NN
+,	,
+
+
+n	NN
++	CC
+1	CD
+
+
+-RSB-	-RRB-
+-LRB-	-LRB-
+8	CD
+-RRB-	-RRB-
+Note	VBP
+that	IN
+for	IN
+each	DT
+class	NN
+
+
+ci	NN
+-LRB-	-LRB-
+1	CD
+â	NN
+‰	CD
+$	$
+i	FW
+â	FW
+‰	FW
+$	$
+l	NN
+-RRB-	-RRB-
+,	,
+P	NN
+-LRB-	-LRB-
+ci	NN
+|	CD
+M	NN
+-RRB-	-RRB-
+=	JJ
+1	CD
+
+
+n	NN
+
+
+n	NN
+j	NN
+=	JJ
+1	CD
+
+
+P	NN
+-LRB-	-LRB-
+ci	NN
+|	NN
+xj	NN
+-RRB-	-RRB-
+.	.
+
+Adding	VBG
+a	DT
+new	JJ
+x	NN
+with	IN
+label	NN
+cp	NN
+,	,
+we	PRP
+can	MD
+have	VB
+the	DT
+following	NN
+:	:
+
+
+-LRB-	-LRB-
+i	LS
+-RRB-	-RRB-
+for	IN
+each	DT
+j	NN
+p	NN
+,	,
+P	NN
+-LRB-	-LRB-
+cj	NN
+|	CD
+x	NN
+-RRB-	-RRB-
+=	JJ
+0	CD
+,	,
+and	CC
+P	NN
+-LRB-	-LRB-
+cj	NN
+|	CD
+M	NN
+âˆª	NN
+x	NN
+-RRB-	-RRB-
+=	JJ
+1	CD
+
+
+-LRB-	-LRB-
+n	NN
+
+
+n	NN
+
+
+n	NN
++1	CD
+i	FW
+=	JJ
+1	CD
+
+
+P	NN
+-LRB-	-LRB-
+cj	NN
+|	CD
+xi	NN
+-RRB-	-RRB-
++	CC
+P	NN
+-LRB-	-LRB-
+cj	NN
+|	CD
+x	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+=	JJ
+
+
+n	NN
++1	CD
+
+
+P	NN
+-LRB-	-LRB-
+cj	NN
+|	CD
+M	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+,	,
+
+
+-LRB-	-LRB-
+ii	LS
+-RRB-	-RRB-
+for	IN
+the	DT
+j	NN
+=	JJ
+p	NN
+,	,
+P	NN
+-LRB-	-LRB-
+cj	NN
+|	CD
+x	NN
+-RRB-	-RRB-
+=	JJ
+1	CD
+,	,
+P	NN
+-LRB-	-LRB-
+cj	NN
+|	CD
+M	NN
+âˆª	NN
+x	NN
+-RRB-	-RRB-
+=	JJ
+1	CD
+
+
+-LSB-	-LRB-
+ni	NN
+=	JJ
+1	CD
+P	NN
+-LRB-	-LRB-
+c	NN
++	CC
+P	NN
+-LRB-	-LRB-
+cj	NN
+|	CD
+x	NN
+-RRB-	-RRB-
+-RSB-	-RRB-
+=	SYM
+
+
+nj	NN
+|	CD
+xi	NN
+-RRB-	-RRB-
+
+
+n	NN
++1	CD
+
+
+P	NN
+-LRB-	-LRB-
+cj	NN
+|	CD
+M	NN
+-RRB-	-RRB-
++	CC
+
+
+1	CD
+
+
+n	NN
++1	CD
+n	NN
++1	CD
+.	.
+
+
+Algorithm	NN
+1	CD
+shows	VBZ
+the	DT
+procedure	NN
+of	IN
+constructing	VBG
+and	CC
+updating	VBG
+a	DT
+set	VBN
+E	NN
+of	IN
+exemplars	NNS
+on	IN
+data	NNS
+stream	NN
+S.	NNP
+Initially	RB
+,	,
+a	DT
+small	JJ
+portion	NN
+of	IN
+records	NNS
+S0	NN
+are	VBP
+read	VBN
+from	IN
+stream	NN
+S	NN
+,	,
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+3	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+Algorithm	NN
+1	CD
+:	:
+Create	VB
+and	CC
+maintain	VB
+exemplars	NNS
+.	.
+
+Input	NN
+:	:
+stream	NN
+S	NN
+,	,
+initial	JJ
+number	NN
+of	IN
+exemplars	NNS
+u	FW
+,	,
+maximum	NN
+
+
+radius	NN
+threshold	NN
+Î	NN
+³	NN
+,	,
+maximum	NN
+exemplar	NN
+threshold	NN
+N.	NNP
+Output	NN
+:	:
+A	DT
+set	NN
+of	IN
+exemplars	NNS
+E.	NNP
+
+
+/	:
+/	:
+initialize	VB
+E	NN
+;	:
+
+
+Read	VB
+a	DT
+small	JJ
+portion	NN
+S0	NN
+of	IN
+stream	NN
+records	NNS
+from	IN
+S	NN
+;	:
+E	NN
+â	NN
+†	CD
+K-Means	NNS
+-LRB-	-LRB-
+S0	NN
+,	,
+u	NN
+-RRB-	-RRB-
+;	:
+
+
+S	NN
+â	SYM
+†	CD
+S	NN
+\	CD
+S0	NN
+;	:
+
+
+/	:
+/	:
+update	VB
+E	NN
+;	:
+
+
+while	IN
+S	NN
+âˆ	NN
+...	:
+do	VB
+
+
+foreach	NN
+x	CC
+âˆˆ	NN
+S	NN
+do	VBP
+
+
+e	SYM
+â	FW
+†	FW
+S	NN
+earch	NN
+-LRB-	-LRB-
+E	NN
+,	,
+x	NN
+-RRB-	-RRB-
+;	:
+
+
+if	IN
+distance	NN
+-LRB-	-LRB-
+e	SYM
+,	,
+x	NN
+-RRB-	-RRB-
+>	JJR
+Î	NN
+³	NN
+then	RB
+
+
+e	SYM
+â	FW
+†	FW
+CreateExemplar	NN
+-LRB-	-LRB-
+x	NN
+,	,
+Î	NN
+³	NN
+0	CD
+-RRB-	-RRB-
+;	:
+
+
+if	IN
+|	CD
+E	NN
+|	NN
+=	JJ
+=	JJ
+N	NN
+then	RB
+/	:
+/	:
+reach	VB
+size	NN
+threshold	NN
+
+
+E	NN
+â	SYM
+†	CD
+Delete	VB
+-LRB-	-LRB-
+E	NN
+,	,
+eminT	NN
+-RRB-	-RRB-
+/	:
+/	:
+release	NN
+memory	NN
+
+
+E	NN
+â	SYM
+†	CD
+Insert	NN
+-LRB-	-LRB-
+E	NN
+,	,
+e	LS
+-RRB-	-RRB-
+;	:
+
+
+else	RB
+
+
+e	SYM
+â	FW
+†	FW
+update	VBP
+-LRB-	-LRB-
+e	LS
+,	,
+x	NN
+-RRB-	-RRB-
+;	:
+/	:
+/	:
+update	VB
+rules	NNS
+
+
+Output	NN
+E	NN
+;	:
+
+
+and	CC
+clustered	VBN
+into	IN
+u	NN
+clusters	NNS
+using	VBG
+K-Means	NNS
+,	,
+forming	VBG
+the	DT
+initial	JJ
+exemplar	NN
+set	VBN
+E.	NNP
+For	IN
+each	DT
+incoming	JJ
+stream	NN
+record	NN
+x	NN
+,	,
+its	PRP$
+nearest	JJS
+exemplar	NN
+e	SYM
+is	VBZ
+retrieved	VBN
+from	IN
+E	NN
+.	.
+
+If	IN
+the	DT
+distance	NN
+between	IN
+e	SYM
+and	CC
+x	NN
+is	VBZ
+larger	JJR
+than	IN
+the	DT
+given	VBN
+threshold	NN
+Î	NN
+³	NN
+,	,
+a	DT
+new	JJ
+exemplar	NN
+enew	NN
+will	MD
+be	VB
+created	VBN
+and	CC
+inserted	VBN
+into	IN
+E.	NNP
+Otherwise	RB
+,	,
+x	NN
+will	MD
+be	VB
+absorbed	VBN
+into	IN
+e	SYM
+using	VBG
+the	DT
+updating	VBG
+rules	NNS
+.	.
+
+
+For	IN
+better	JJR
+understanding	NN
+,	,
+we	PRP
+use	VBP
+Example	NNP
+3	CD
+to	TO
+illustrate	VB
+the	DT
+procedure	NN
+of	IN
+summarizing	VBG
+the	DT
+500	CD
+stream	NN
+records	NNS
+given	VBN
+in	IN
+Example	NN
+2	CD
+into	IN
+exemplars	NNS
+.	.
+
+
+Example	NN
+3	CD
+:	:
+The	DT
+500	CD
+stream	NN
+records	NNS
+can	MD
+be	VB
+summarized	VBN
+into	IN
+ï	NN
+¬	CD
+ve	NN
+exemplars	NNS
+-LCB-	-LRB-
+M1	NN
+,	,
+Â	NN
+·	NN
+Â	NN
+·	CD
+Â	NN
+·	NN
+,	,
+M5	NN
+-RCB-	-RRB-
+as	IN
+shown	VBN
+in	IN
+Fig.	NN
+3	CD
+.	.
+
+The	DT
+detailed	JJ
+information	NN
+of	IN
+the	DT
+ï	NN
+¬	CD
+ve	NN
+exemplars	NNS
+is	VBZ
+listed	VBN
+in	IN
+Table	NNP
+I.	NNP
+Compared	VBD
+to	TO
+preserving	VBG
+all	DT
+raw	JJ
+stream	NN
+records	NNS
+,	,
+the	DT
+exemplars	NNS
+consume	VBP
+only	RB
+1	CD
+%	NN
+of	IN
+the	DT
+memory	NN
+space	NN
+.	.
+
+
+Table	NNP
+I	PRP
+
+
+EXEMPLARS	NNP
+SUMMARIZED	VBD
+FROM	IN
+STREAM	NNP
+DATA	NNP
+IN	IN
+EXAMPLE	NNP
+2	CD
+.	.
+
+
+ID	NN
+M1	NN
+M2	NN
+M3	NN
+M4	NN
+M5	NN
+
+
+X	NN
+R	NN
+C	NN
+N	NN
+-LRB-	-LRB-
+1.5,1	CD
+-RRB-	-RRB-
+0.5	CD
+-LRB-	-LRB-
+1,0,0	CD
+-RRB-	-RRB-
+100	CD
+-LRB-	-LRB-
+1	CD
+,	,
+2.5	CD
+-RRB-	-RRB-
+0.5	CD
+-LRB-	-LRB-
+0,1,0	CD
+-RRB-	-RRB-
+100	CD
+-LRB-	-LRB-
+2.5	CD
+,	,
+2	CD
+-RRB-	-RRB-
+0.5	CD
+-LRB-	-LRB-
+0,0,1	CD
+-RRB-	-RRB-
+100	CD
+-LRB-	-LRB-
+4.5	CD
+,	,
+3	CD
+-RRB-	-RRB-
+0.5	CD
+-LRB-	-LRB-
+0,0,1	CD
+-RRB-	-RRB-
+100	CD
+-LRB-	-LRB-
+3	CD
+,	,
+4	CD
+-RRB-	-RRB-
+0.5	CD
+-LRB-	-LRB-
+0,1,0	CD
+-RRB-	-RRB-
+100	CD
+
+
+T	NN
+t100	CD
+t200	NN
+t300	NN
+t400	NN
+t500	CD
+
+
+From	IN
+Example	NNP
+3	CD
+,	,
+we	PRP
+can	MD
+also	RB
+observe	VB
+that	IN
+the	DT
+number	NN
+of	IN
+comparisons	NNS
+for	IN
+predicting	VBG
+a	DT
+testing	NN
+record	NN
+is	VBZ
+reduced	VBN
+from	IN
+500	CD
+to	TO
+only	RB
+5	CD
+.	.
+
+Formally	RB
+,	,
+by	IN
+using	VBG
+exemplars	NNS
+,	,
+the	DT
+estimate	NN
+function	NN
+in	IN
+Eq	NN
+.	.
+
+-LRB-	-LRB-
+4	LS
+-RRB-	-RRB-
+can	MD
+be	VB
+converted	VBN
+to	TO
+Eq	NN
+.	.
+
+-LRB-	-LRB-
+9	CD
+-RRB-	-RRB-
+,	,
+
+
+P	NN
+-LRB-	-LRB-
+M1	NN
+,	,
+Â	NN
+·	NN
+Â	NN
+·	CD
+Â	NN
+·	NN
+,	,
+Mk	NN
+|	CD
+xn	NN
+,	,
+M1	NN
+,	,
+Â	NN
+·	NN
+Â	NN
+·	CD
+Â	NN
+·	NN
+,	,
+M	NN
+
+
+n	NN
+
+
+1	LS
+-RRB-	-RRB-
+P	NN
+-LRB-	-LRB-
+c	NN
+|	CD
+xn	NN
+,	,
+
+
+M	NN
+
+
+1	CD
+,	,
+
+
+Â	NN
+·	CD
+Â	NN
+·	NN
+Â	NN
+·	NN
+,	,
+Mk	NN
+-RRB-	-RRB-
+
+
+-LRB-	-LRB-
+9	CD
+-RRB-	-RRB-
+where	WRB
+-LCB-	-LRB-
+M1	NN
+,	,
+Â	NN
+·	NN
+Â	NN
+·	CD
+Â	NN
+·	NN
+,	,
+Mn	NN
+
+
+1	CD
+-RCB-	-RRB-
+
+
+are	VBP
+exemplars	NNS
+,	,
+and	CC
+M1	NN
+,	,
+Â	NN
+·	NN
+Â	NN
+·	CD
+Â	NN
+·	NN
+,	,
+Mk	NN
+are	VBP
+xnâ	JJ
+$	$
+™	CD
+s	NNS
+k	NN
+nearest	JJS
+exemplars	NNS
+.	.
+
+
+5	CD
+
+
+4.5	CD
+
+
+4	CD
+
+
+M5	NN
+
+
+3.5	CD
+
+
+x	NN
+
+
+3	CD
+
+
+2.5	CD
+
+
+M4	NN
+
+
+2	CD
+
+
+M2	NN
+
+
+1.5	CD
+
+
+M3	NN
+
+
+1	CD
+
+
+0.5	CD
+
+
+M1	NN
+
+
+00	CD
+
+
+1	CD
+
+
+2	CD
+
+
+3	CD
+
+
+4	CD
+
+
+5	CD
+
+
+Figure	NNP
+3	CD
+.	.
+
+An	DT
+illustration	NN
+of	IN
+Example	NN
+3	CD
+.	.
+
+
+A	DT
+possible	JJ
+limitation	NN
+of	IN
+estimating	VBG
+Eq	NN
+.	.
+
+-LRB-	-LRB-
+9	CD
+-RRB-	-RRB-
+is	VBZ
+that	IN
+the	DT
+number	NN
+of	IN
+exemplars	NNS
+continuously	RB
+increases	VBZ
+with	IN
+time	NN
+,	,
+a	DT
+linear	JJ
+scan	VB
+of	IN
+all	DT
+exemplars	NNS
+for	IN
+prediction	NN
+is	VBZ
+still	RB
+ineï	JJ
+¬	NN
+ƒcient	NN
+for	IN
+time-critical	JJ
+stream	NN
+applications	NNS
+.	.
+
+This	DT
+motivates	VBZ
+our	PRP$
+height-balanced	JJ
+L-tree	NN
+structure	NN
+for	IN
+further	JJ
+improvement	NN
+of	IN
+predicting	VBG
+eï	NN
+¬	NN
+ƒciency	NN
+.	.
+
+
+IV	CD
+.	.
+
+L-TREE	JJ
+INDEXING	NN
+
+
+In	IN
+this	DT
+section	NN
+,	,
+we	PRP
+introduce	VBP
+the	DT
+L-tree	JJ
+structure	NN
+and	CC
+its	PRP$
+three	CD
+key	JJ
+operations	NNS
+:	:
+Search	VB
+,	,
+Insertion	NN
+,	,
+and	CC
+Deletion	NN
+.	.
+
+
+A	DT
+.	.
+
+The	DT
+L-Tree	NNP
+Structure	NN
+
+
+L-Trees	NNS
+extend	VBP
+M-Trees	JJ
+-LSB-	-LRB-
+5	CD
+-RSB-	-RRB-
+.	.
+
+While	IN
+M-trees	JJ
+index	NN
+objects	NNS
+in	IN
+metric	JJ
+spaces	NNS
+such	JJ
+as	IN
+voice	NN
+,	,
+video	NN
+,	,
+image	NN
+,	,
+text	NN
+,	,
+and	CC
+numerical	JJ
+data	NNS
+,	,
+L-trees	NNS
+are	VBP
+extended	VBN
+to	TO
+labeled	VBN
+data	NNS
+on	IN
+data	NNS
+streams	NNS
+,	,
+for	IN
+which	WDT
+additional	JJ
+information	NN
+needs	VBZ
+to	TO
+be	VB
+stored	VBN
+such	JJ
+as	IN
+class	NN
+labels	NNS
+and	CC
+time	NN
+stamps	NNS
+.	.
+
+L-trees	JJ
+index	NN
+exemplars	NNS
+that	WDT
+are	VBP
+spherical	JJ
+spatial	JJ
+objects	NNS
+.	.
+
+This	DT
+is	VBZ
+diï	NN
+¬	CD
+$	$
+erent	JJ
+from	IN
+other	JJ
+spatial	JJ
+indexing	NN
+structures	NNS
+such	JJ
+as	IN
+R-Trees	NNS
+and	CC
+R	NN
+*	SYM
+-	:
+Trees	NNP
+that	IN
+index	NN
+rectangular	JJ
+spatial	JJ
+objects	NNS
+.	.
+
+
+Time	NNP
+table	NN
+
+
+Tree	NN
+
+
+O1	NN
+
+
+Root	NN
+node	NN
+
+
+e1	NN
+
+
+e2	NN
+
+
+Routing	VBG
+node	NN
+
+
+Time	NNP
+pointer	NN
+
+
+O2	CD
+
+
+O3	NN
+
+
+t1	NN
+
+
+Leaf	NNP
+node	NN
+
+
+e3	NN
+
+
+e4	NN
+
+
+e5	NN
+
+
+e6	NN
+
+
+e7	NN
+
+
+t2	NN
+
+
+O4	NN
+
+
+O5	NN
+
+
+O6	NN
+
+
+O7	NN
+
+
+O8	NN
+
+
+t3	NN
+
+
+e8	NN
+
+
+e9	NN
+
+
+e10	NN
+
+
+e11	NN
+
+
+e12	NN
+
+
+e13	NN
+
+
+e14	NN
+
+
+e15	NN
+
+
+e16	NN
+
+
+e17	NN
+
+
+e18	NN
+
+
+e19	NN
+
+
+e20	NN
+
+
+e21	NN
+
+
+e22	NN
+
+
+t4	NN
+
+
+...	:
+
+
+Figure	NNP
+4	CD
+.	.
+
+An	DT
+illustration	NN
+of	IN
+the	DT
+L-tree	JJ
+structure	NN
+.	.
+
+
+An	DT
+L-Tree	JJ
+mainly	RB
+consists	VBZ
+of	IN
+two	CD
+components	NNS
+as	IN
+shown	VBN
+in	IN
+Fig.	NN
+4	CD
+:	:
+-LRB-	-LRB-
+1	LS
+-RRB-	-RRB-
+an	DT
+M-tree	NN
+like	IN
+structure	NN
+on	IN
+the	DT
+right-hand	JJ
+side	NN
+storing	VBG
+all	DT
+exemplars	NNS
+,	,
+and	CC
+-LRB-	-LRB-
+2	LS
+-RRB-	-RRB-
+a	DT
+table	NN
+structure	NN
+on	IN
+the	DT
+left	NN
+-	:
+hand	NN
+side	NN
+storing	VBG
+time	NN
+stamps	NNS
+of	IN
+all	PDT
+the	DT
+exemplars	NNS
+.	.
+
+The	DT
+two	CD
+structures	NNS
+are	VBP
+connected	VBN
+by	IN
+linking	VBG
+each	DT
+time	NN
+stamp	NN
+in	IN
+the	DT
+table	NN
+to	TO
+its	PRP$
+corresponding	JJ
+exemplar	NN
+in	IN
+the	DT
+tree	NN
+.	.
+
+
+The	DT
+tree	NN
+structure	NN
+consists	VBZ
+of	IN
+two	CD
+diï	NN
+¬	CD
+$	$
+erent	JJ
+types	NNS
+of	IN
+nodes	NNS
+:	:
+leaf	NN
+nodes	NNS
+and	CC
+routing	VBG
+nodes	NNS
+.	.
+
+The	DT
+root	NN
+node	NN
+can	MD
+be	VB
+considered	VBN
+as	IN
+a	DT
+special	JJ
+routing	VBG
+node	NN
+that	WDT
+has	VBZ
+no	DT
+parent	NN
+.	.
+
+A	DT
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+4	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+leaf	NN
+node	NN
+contains	VBZ
+a	DT
+batch	NN
+of	IN
+exemplars	NNS
+represented	VBN
+in	IN
+the	DT
+form	NN
+of	IN
+,	,
+
+
+-LRB-	-LRB-
+pointer	NN
+,	,
+distance	NN
+-RRB-	-RRB-
+,	,
+-LRB-	-LRB-
+10	CD
+-RRB-	-RRB-
+
+
+where	WRB
+pointer	NN
+references	NNS
+the	DT
+memory	NN
+location	NN
+of	IN
+an	DT
+exem	NN
+-	:
+plar	JJ
+,	,
+distance	NN
+indicates	VBZ
+the	DT
+distance	NN
+between	IN
+the	DT
+exemplar	NN
+and	CC
+its	PRP$
+parent	NN
+node	NN
+.	.
+
+On	IN
+the	DT
+other	JJ
+hand	NN
+,	,
+a	DT
+routing	VBG
+node	NN
+in	IN
+the	DT
+tree	NN
+structure	NN
+contains	VBZ
+entries	NNS
+in	IN
+the	DT
+form	NN
+of	IN
+,	,
+
+
+-LRB-	-LRB-
+Âµ	NN
+,	,
+r	NN
+,	,
+child	NN
+,	,
+distance	NN
+-RRB-	-RRB-
+,	,
+
+
+-LRB-	-LRB-
+11	CD
+-RRB-	-RRB-
+
+
+where	WRB
+Âµ	NN
+represents	VBZ
+the	DT
+center	NN
+of	IN
+the	DT
+covering	VBG
+space	NN
+,	,
+r	NN
+rep	NN
+-	:
+resents	VBZ
+the	DT
+covering	VBG
+radius	NN
+,	,
+child	NN
+is	VBZ
+a	DT
+pointer	NN
+that	WDT
+references	NNS
+its	PRP$
+child	NN
+node	NN
+,	,
+and	CC
+distance	NN
+denotes	VBZ
+the	DT
+distance	NN
+of	IN
+the	DT
+entry	NN
+to	TO
+its	PRP$
+parent	NN
+node	NN
+.	.
+
+Two	CD
+important	JJ
+parameters	NNS
+of	IN
+L-Trees	NNS
+are	VBP
+M	NN
+and	CC
+m	NN
+,	,
+which	WDT
+denote	VBP
+the	DT
+maximum	NN
+-LRB-	-LRB-
+M	NN
+-RRB-	-RRB-
+and	CC
+the	DT
+minimum	NN
+-LRB-	-LRB-
+m	NN
+-RRB-	-RRB-
+number	NN
+of	IN
+entries	NNS
+in	IN
+a	DT
+node	NN
+.	.
+
+
+Similar	JJ
+to	TO
+M-Trees	NNS
+,	,
+L-Trees	NNS
+have	VBP
+the	DT
+following	VBG
+properties	NNS
+:	:
+
+
+â	RB
+$	$
+cents	NNS
+Routing	VBG
+node	NN
+.	.
+
+A	DT
+routing	VBG
+node	NN
+has	VBZ
+between	IN
+m	NN
+and	CC
+M	NN
+
+
+number	NN
+of	IN
+entries	NNS
+unless	IN
+it	PRP
+is	VBZ
+the	DT
+root	NN
+.	.
+
+Each	DT
+entry	NN
+in	IN
+a	DT
+
+
+routing	VBG
+node	NN
+covers	VBZ
+the	DT
+tightest	JJS
+spatial	JJ
+area	NN
+of	IN
+its	PRP$
+child	NN
+
+
+nodes	NNS
+.	.
+
+
+â	RB
+$	$
+cents	NNS
+Leaf	NNP
+node	NN
+.	.
+
+A	DT
+Leaf	NN
+node	NN
+contains	VBZ
+between	IN
+m	NN
+and	CC
+M	NN
+
+
+number	NN
+of	IN
+exemplars	NNS
+unless	IN
+it	PRP
+is	VBZ
+the	DT
+root	NN
+node	NN
+,	,
+and	CC
+all	DT
+
+
+leaf	NN
+nodes	NNS
+are	VBP
+at	IN
+the	DT
+same	JJ
+level	NN
+.	.
+
+
+â	RB
+$	$
+cents	NNS
+Root	NN
+node	NN
+.	.
+
+The	DT
+root	NN
+node	NN
+is	VBZ
+a	DT
+special	JJ
+routing	VBG
+node	NN
+,	,
+
+
+which	WDT
+has	VBZ
+at	IN
+least	JJS
+two	CD
+entries	NNS
+unless	IN
+it	PRP
+is	VBZ
+a	DT
+leaf	NN
+.	.
+
+
+Example	NN
+4	CD
+:	:
+Fig.	NN
+5	CD
+illustrates	VBZ
+the	DT
+L-tree	JJ
+structure	NN
+for	IN
+the	DT
+exemplars	NNS
+in	IN
+Example	NNP
+3	CD
+.	.
+
+For	IN
+simplicity	NN
+,	,
+the	DT
+time	NN
+stamp	NN
+table	NN
+is	VBZ
+omitted	VBN
+.	.
+
+
+O1	NN
+
+
+Input	NN
+
+
+e1	NN
+:	:
+-LRB-	-LRB-
+1.67,1,83,1.47	CD
+,	,
+child	NN
+,	,
+^	NN
+-RRB-	-RRB-
+
+
+e2	NN
+:	:
+-LRB-	-LRB-
+3.75,3.50,1.45	CD
+,	,
+child	NN
+,	,
+^	NN
+-RRB-	-RRB-
+
+
+O2	CD
+
+
+O3	NN
+
+
+e3	NN
+:	:
+-LRB-	-LRB-
+M1	NN
+,0.85	CD
+-RRB-	-RRB-
+e4	NN
+:	:
+-LRB-	-LRB-
+M2	NN
+,0.94	CD
+-RRB-	-RRB-
+
+
+e5	NN
+:	:
+-LRB-	-LRB-
+M3	NN
+,0.85	CD
+-RRB-	-RRB-
+
+
+e6	NN
+:	:
+-LRB-	-LRB-
+M4	NN
+,0.90	CD
+-RRB-	-RRB-
+
+
+e7	NN
+:	:
+-LRB-	-LRB-
+M5	NN
+,0.90	CD
+-RRB-	-RRB-
+
+
+M1	NN
+
+
+M2	NN
+
+
+M3	NN
+
+
+M4	NN
+
+
+M5	NN
+
+
+Figure	NNP
+5	CD
+.	.
+
+L-tree	NN
+for	IN
+the	DT
+exemplars	NNS
+in	IN
+Example	NNP
+3	CD
+.	.
+
+
+B.	NNP
+Search	VB
+
+
+Each	DT
+time	NN
+a	DT
+new	JJ
+record	NN
+x	NN
+arrives	VBZ
+,	,
+a	DT
+search	NN
+operation	NN
+is	VBZ
+invoked	VBN
+to	TO
+calculate	VB
+the	DT
+class	NN
+label	NN
+for	IN
+x	NN
+.	.
+
+The	DT
+search	NN
+algorithm	NN
+ï	NN
+¬	CD
+rst	NN
+traverses	VBZ
+the	DT
+L-tree	NN
+to	TO
+ï	VB
+¬	CD
+nd	VBD
+its	PRP$
+k	NN
+nearest	JJS
+exemplars	NNS
+in	IN
+leaf	NN
+nodes	NNS
+.	.
+
+Then	RB
+it	PRP
+calculates	VBZ
+the	DT
+class	NN
+label	NN
+for	IN
+x	NN
+by	IN
+combining	VBG
+label	NN
+information	NN
+from	IN
+all	DT
+retrieved	VBN
+k	NN
+exemplars	NNS
+using	VBG
+a	DT
+majority	NN
+voting	NN
+scheme	NN
+.	.
+
+
+Compared	VBN
+to	TO
+a	DT
+linear	JJ
+scan	VB
+of	IN
+all	DT
+exemplars	NNS
+as	IN
+shown	VBN
+in	IN
+Algorithm	NN
+1	CD
+,	,
+organizing	VBG
+the	DT
+exemplars	NNS
+in	IN
+a	DT
+height-balanced	JJ
+tree	NN
+can	MD
+signiï	VB
+¬	CD
+cantly	RB
+reduce	VB
+the	DT
+search	NN
+time	NN
+cost	NN
+from	IN
+O	NN
+-LRB-	-LRB-
+N	NN
+-RRB-	-RRB-
+to	TO
+O	NN
+-LRB-	-LRB-
+log	NN
+-LRB-	-LRB-
+N	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+,	,
+where	WRB
+N	NN
+is	VBZ
+the	DT
+total	JJ
+number	NN
+of	IN
+exemplars	NNS
+in	IN
+the	DT
+L-tree	NN
+.	.
+
+Such	PDT
+a	DT
+search	NN
+method	NN
+can	MD
+be	VB
+further	RB
+improved	VBN
+by	IN
+using	VBG
+a	DT
+branch-and-bound	JJ
+technique	NN
+.	.
+
+
+The	DT
+bound	VBN
+b	NN
+is	VBZ
+deï	NN
+¬	NN
+ned	VBD
+as	IN
+follows	VBZ
+.	.
+
+Assume	VB
+that	IN
+the	DT
+search	NN
+algorithm	NN
+has	VBZ
+traversed	VBN
+u	NN
+routing	VBG
+entries	NNS
+-LCB-	-LRB-
+O1	NN
+,	,
+Â	NN
+·	NN
+Â	NN
+·	CD
+Â	NN
+·	NN
+,	,
+Ou	NN
+-RCB-	-RRB-
+-LRB-	-LRB-
+u	FW
+â	FW
+‰	FW
+¥	FW
+
+
+Algorithm	NN
+2	CD
+:	:
+Search	VB
+
+
+Input	NN
+:	:
+L-tree	JJ
+T	NN
+,	,
+incoming	JJ
+stream	NN
+record	NN
+x	NN
+,	,
+parameter	NN
+k.	NN
+Output	NN
+:	:
+xâ	VB
+$	$
+™	CD
+s	NNS
+class	NN
+label	NN
+yx	NN
+.	.
+
+
+Initialize	VB
+-LRB-	-LRB-
+Q	NNP
+-RRB-	-RRB-
+;	:
+/	:
+/	:
+priority	NN
+queue	NN
+Q	NNP
+Initialize	NNP
+-LRB-	-LRB-
+U	NNP
+-RRB-	-RRB-
+;	:
+/	:
+/	:
+array	NN
+contains	VBZ
+k	NN
+results	VBZ
+b	NN
+â	NN
+†	CD
+âˆž	NN
+;	:
+/	:
+/	:
+initialize	VB
+the	DT
+bounding	VBG
+value	NN
+foreach	NN
+entry	NN
+e	SYM
+âˆˆ	FW
+T	NN
+do	VBP
+/	:
+/	:
+traverse	VB
+root	NN
+node	NN
+
+
+d	NN
+â	SYM
+†	CD
+distance	NN
+-LRB-	-LRB-
+x	NN
+,	,
+e	LS
+-RRB-	-RRB-
+;	:
+
+
+if	IN
+d	NN
+<	JJR
+b	NN
+then	RB
+
+
+InQueue	NNP
+-LRB-	-LRB-
+Q	NNP
+,	,
+e	LS
+-RRB-	-RRB-
+/	:
+/	:
+Add	VB
+to	TO
+the	DT
+tail	NN
+of	IN
+Q	NNP
+
+
+b	NN
+â	SYM
+†	CD
+U	NNP
+pdateBound	NNP
+-LRB-	-LRB-
+b	NN
+,	,
+d	NN
+-RRB-	-RRB-
+;	:
+/	:
+/	:
+b	NN
+meets	VBZ
+Eq	NN
+.12	CD
+
+
+U	NNP
+â	NNP
+†	CD
+U	NNP
+pdateArrary	NNP
+-LRB-	-LRB-
+U	NNP
+,	,
+e	LS
+-RRB-	-RRB-
+;	:
+
+
+Q	NNP
+â	VBD
+†	CD
+PriorityS	NN
+ort	NN
+-LRB-	-LRB-
+Q	NNP
+-RRB-	-RRB-
+;	:
+/	:
+/	:
+keep	VB
+Q	NNP
+a	DT
+priority	NN
+queue	NN
+while	IN
+Q.head	NN
+Q.tail	NN
+do	VBP
+
+
+q	VB
+â	FW
+†	FW
+GetQueue	NN
+-LRB-	-LRB-
+Q	NNP
+-RRB-	-RRB-
+;	:
+/	:
+/	:
+get	VB
+the	DT
+head	NN
+of	IN
+Q	NNP
+
+
+O	NN
+â	SYM
+†	FW
+q.child	FW
+;	:
+
+
+foreach	NN
+entry	NN
+e	SYM
+âˆˆ	FW
+O	FW
+do	VBP
+
+
+if	IN
+|	CD
+e.distance	NN
+distance	NN
+-LRB-	-LRB-
+q	NN
+,	,
+x	NN
+-RRB-	-RRB-
+|	CD
+â	NN
+‰	CD
+$	$
+e.r	JJ
++	CC
+b	NN
+then	RB
+
+
+d	NN
+â	SYM
+†	CD
+distance	NN
+-LRB-	-LRB-
+e	SYM
+,	,
+x	NN
+-RRB-	-RRB-
+;	:
+
+
+if	IN
+d	NN
+<	JJR
+b	NN
+then	RB
+/	:
+/	:
+update	VB
+bound	VBN
+
+
+b	NN
+â	SYM
+†	CD
+updateBound	NN
+-LRB-	-LRB-
+b	NN
+,	,
+d	NN
+-RRB-	-RRB-
+;	:
+
+
+if	IN
+e	SYM
+is	VBZ
+in	IN
+routing	VBG
+node	NN
+then	RB
+
+
+InQueue	NNP
+-LRB-	-LRB-
+Q	NNP
+,	,
+e	LS
+-RRB-	-RRB-
+;	:
+
+
+else	RB
+
+
+U	NNP
+â	NNP
+†	CD
+U	NNP
+pdateArray	NNP
+-LRB-	-LRB-
+U	NNP
+,	,
+e	LS
+-RRB-	-RRB-
+;	:
+
+
+DeQueue	NN
+-LRB-	-LRB-
+Q.head	NN
+-RRB-	-RRB-
+;	:
+/	:
+/	:
+remove	VB
+the	DT
+head	NN
+of	IN
+Q	NNP
+
+
+Q	NNP
+â	VBD
+†	CD
+PriorityS	NN
+ort	NN
+-LRB-	-LRB-
+Q	NNP
+-RRB-	-RRB-
+;	:
+
+
+foreach	NN
+entry	NN
+e	SYM
+âˆˆ	FW
+U	NN
+do	VBP
+
+
+calculate	VB
+yx	NN
+using	VBG
+majority	NN
+voting	NN
+;	:
+
+
+Output	NN
+yx	NN
+;	:
+
+
+k	NN
+-RRB-	-RRB-
+,	,
+with	IN
+the	DT
+distance	NN
+between	IN
+each	DT
+Oi	NN
+and	CC
+x	NN
+represented	VBD
+as	IN
+d	NN
+=	JJ
+-LCB-	-LRB-
+d1	NN
+,	,
+Â	NN
+·	NN
+Â	NN
+·	CD
+Â	NN
+·	NN
+,	,
+du	NNP
+-RCB-	-RRB-
+.	.
+
+The	DT
+bound	VBN
+b	NN
+is	VBZ
+deï	NN
+¬	NN
+ned	VBD
+as	IN
+the	DT
+maximal	JJ
+distance	NN
+of	IN
+the	DT
+k	NN
+smallest	JJS
+distances	NNS
+in	IN
+d	NN
+=	JJ
+-LCB-	-LRB-
+d1	NN
+,	,
+Â	NN
+·	NN
+Â	NN
+·	CD
+Â	NN
+·	NN
+,	,
+du	NNP
+-RCB-	-RRB-
+as	IN
+in	IN
+Eq	NN
+.	.
+
+-LRB-	-LRB-
+12	CD
+-RRB-	-RRB-
+,	,
+
+
+b	NN
+=	JJ
+max	NN
+-LCB-	-LRB-
+mink	NN
+-LCB-	-LRB-
+d1	NN
+,	,
+Â	NN
+·	NN
+Â	NN
+·	CD
+Â	NN
+·	NN
+,	,
+du	NNP
+-RCB-	-RRB-
+-RCB-	-RRB-
+-LRB-	-LRB-
+12	CD
+-RRB-	-RRB-
+
+
+x	NN
+
+
+d	NN
+-LRB-	-LRB-
+ep	NN
+,	,
+x	NN
+-RRB-	-RRB-
+
+
+ep	NN
+
+
+ec.d	NN
+
+
+,	,
+d	NN
+-LRB-	-LRB-
+ec	NN
+
+
+x	NN
+-RRB-	-RRB-
+
+
+ec	NN
+.	.
+
+
+r	NN
+ec	SYM
+
+
+Figure	NNP
+6	CD
+.	.
+
+An	DT
+illustration	NN
+of	IN
+the	DT
+bound	VBN
+in	IN
+Eq	NN
+.	.
+
+-LRB-	-LRB-
+13	CD
+-RRB-	-RRB-
+.	.
+
+
+The	DT
+bound	VBN
+b	NN
+can	MD
+signiï	VB
+¬	CD
+cantly	RB
+reduce	VB
+the	DT
+search	NN
+cost	NN
+in	IN
+L-trees	NNS
+.	.
+
+For	IN
+example	NN
+,	,
+as	IN
+shown	VBN
+in	IN
+Fig.	NN
+6	CD
+,	,
+assume	VB
+that	IN
+the	DT
+current	JJ
+entry	NN
+is	VBZ
+ec	NN
+,	,
+and	CC
+ep	NN
+is	VBZ
+the	DT
+parent	NN
+entry	NN
+of	IN
+ec	NN
+.	.
+
+Then	RB
+,	,
+the	DT
+tree-pruning	NN
+bound	VBN
+is	VBZ
+|	CD
+d	NN
+-LRB-	-LRB-
+ec	NN
+,	,
+x	NN
+-RRB-	-RRB-
+ec.r	VBP
+|	CD
+>	JJR
+b	NN
+,	,
+which	WDT
+is	VBZ
+equivalent	JJ
+to	TO
+solving	VBG
+the	DT
+following	VBG
+Eq	NN
+.	.
+
+-LRB-	-LRB-
+13	CD
+-RRB-	-RRB-
+,	,
+
+
+|	NN
+d	NN
+-LRB-	-LRB-
+ep	NN
+,	,
+x	NN
+-RRB-	-RRB-
+
+
+ec.d	JJ
+|	NN
+>	JJR
+b	NN
++	CC
+ec.r	NN
+,	,
+
+
+-LRB-	-LRB-
+13	CD
+-RRB-	-RRB-
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+5	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+where	WRB
+d	NN
+-LRB-	-LRB-
+ep	NN
+,	,
+x	NN
+-RRB-	-RRB-
+denotes	VBZ
+the	DT
+distance	NN
+between	IN
+ep	NN
+and	CC
+x	NN
+,	,
+ec.d	NN
+is	VBZ
+the	DT
+distance	NN
+between	IN
+ec	NN
+and	CC
+ep	NN
+,	,
+ec.r	NN
+is	VBZ
+ecâ	JJ
+$	$
+™	CD
+s	NNS
+covering	VBG
+radius	NN
+,	,
+and	CC
+b	NN
+is	VBZ
+the	DT
+bound	VBN
+.	.
+
+Obviously	RB
+,	,
+all	PDT
+the	DT
+above	JJ
+distances	NNS
+are	VBP
+pre-computed	JJ
+,	,
+and	CC
+Eq	NN
+.	.
+
+-LRB-	-LRB-
+13	CD
+-RRB-	-RRB-
+can	MD
+be	VB
+easily	RB
+estimated	VBN
+.	.
+
+
+Algorithm	NN
+2	CD
+contains	VBZ
+detailed	JJ
+procedures	NNS
+of	IN
+the	DT
+branch	NN
+-	:
+and-bound	JJ
+search	NN
+.	.
+
+A	DT
+priority	NN
+queue	NN
+Q	NNP
+is	VBZ
+used	VBN
+to	TO
+perform	VB
+breath-ï	JJ
+¬	NN
+rst	NN
+search	NN
+.	.
+
+In	IN
+addition	NN
+,	,
+an	DT
+array	NN
+U	NN
+is	VBZ
+used	VBN
+to	TO
+preserve	VB
+all	PDT
+the	DT
+k	NN
+results	VBZ
+.	.
+
+The	DT
+main	JJ
+purpose	NN
+of	IN
+the	DT
+algorithm	NN
+is	VBZ
+to	TO
+re	VB
+-	:
+trieve	NN
+the	DT
+k	NN
+results	VBZ
+using	VBG
+minimized	VBN
+number	NN
+of	IN
+comparisons	NNS
+by	IN
+making	VBG
+full	JJ
+use	NN
+of	IN
+the	DT
+bound	VBN
+b.	NN
+For	IN
+each	DT
+routing	VBG
+entry	NN
+Oi	NN
+,	,
+if	IN
+and	CC
+only	RB
+if	IN
+the	DT
+pruning	NN
+condition	NN
+in	IN
+Eq	NN
+.	.
+
+-LRB-	-LRB-
+13	CD
+-RRB-	-RRB-
+is	VBZ
+satisï	JJ
+¬	NN
+ed	VBD
+,	,
+the	DT
+node	NN
+will	MD
+be	VB
+traversed	VBN
+.	.
+
+The	DT
+function	NN
+U	NNP
+pdateArrary	NNP
+-LRB-	-LRB-
+U	NNP
+,	,
+e	LS
+-RRB-	-RRB-
+guarantees	NNS
+that	IN
+the	DT
+array	NN
+U	NNP
+always	RB
+contains	VBZ
+the	DT
+k	NN
+results	VBZ
+by	IN
+continuously	RB
+removing	VBG
+the	DT
+unsatisï	JJ
+¬	NN
+ed	VBD
+ones	NNS
+.	.
+
+
+5	CD
+
+
+4.5	CD
+
+
+4	CD
+
+
+e7	NN
+
+
+3.5	CD
+
+
+x	NN
+
+
+-LRB-	-LRB-
+4	LS
+-RRB-	-RRB-
+
+
+-LRB-	-LRB-
+3	LS
+-RRB-	-RRB-
+
+
+-LRB-	-LRB-
+2	LS
+-RRB-	-RRB-
+
+
+e2	NN
+
+
+3	CD
+
+
+-LRB-	-LRB-
+1	LS
+-RRB-	-RRB-
+
+
+e6	NN
+
+
+2.5	CD
+
+
+2	CD
+
+
+e4	NN
+
+
+ee11	NN
+
+
+1.5	CD
+
+
+e5	NN
+
+
+1	CD
+
+
+e3	NN
+
+
+0.5	CD
+
+
+00	CD
+
+
+1	CD
+
+
+2	CD
+
+
+3	CD
+
+
+4	CD
+
+
+5	CD
+
+
+Figure	NNP
+7	CD
+.	.
+
+An	DT
+illustration	NN
+of	IN
+search	NN
+in	IN
+Example	NNP
+4	CD
+.	.
+
+
+Example	NN
+5	CD
+:	:
+Consider	VB
+an	DT
+incoming	JJ
+testing	NN
+record	NN
+x	NN
+=	JJ
+-LRB-	-LRB-
+2.2,3.5	CD
+-RRB-	-RRB-
+,	,
+we	PRP
+need	VBP
+to	TO
+traverse	VB
+the	DT
+L-tree	NN
+in	IN
+Fig.	NNP
+5	CD
+to	TO
+predict	VB
+its	PRP$
+class	NN
+label	NN
+.	.
+
+Assume	VB
+the	DT
+parameter	NN
+k	NN
+is	VBZ
+set	VBN
+to	TO
+1	CD
+.	.
+
+The	DT
+search	NN
+algorithm	NN
+initially	RB
+pushes	VBZ
+entries	NNS
+e1	NN
+and	CC
+e2	NN
+in	IN
+query	NN
+Q.	NNP
+Then	RB
+,	,
+it	PRP
+calculates	VBZ
+the	DT
+distance	NN
+d	NN
+-LRB-	-LRB-
+x	NN
+,	,
+e1	NN
+-RRB-	-RRB-
+=	JJ
+1.75	CD
+and	CC
+d	NN
+-LRB-	-LRB-
+x	NN
+,	,
+e2	NN
+-RRB-	-RRB-
+=	JJ
+1.55	CD
+,	,
+and	CC
+updates	NNS
+the	DT
+bound	VBN
+b	NN
+to	TO
+the	DT
+smaller	JJR
+one	CD
+of	IN
+1.55	CD
+and	CC
+traverses	VBZ
+along	IN
+e2	NN
+.	.
+
+Next	RB
+,	,
+it	PRP
+sequentially	RB
+compares	VBZ
+x	NN
+with	IN
+entries	NNS
+e6	NN
+and	CC
+e7	NN
+in	IN
+the	DT
+leaf	NN
+node	NN
+O3	NN
+and	CC
+obtains	VBZ
+d	NN
+-LRB-	-LRB-
+x	NN
+,	,
+e6	NN
+-RRB-	-RRB-
+=	JJ
+2.55	CD
+and	CC
+d	NN
+-LRB-	-LRB-
+x	NN
+,	,
+e7	NN
+-RRB-	-RRB-
+=	JJ
+0.94	CD
+.	.
+
+Thus	RB
+,	,
+e7	NN
+is	VBZ
+taken	VBN
+as	IN
+the	DT
+1-nearest	JJ
+neighbor	NN
+,	,
+and	CC
+the	DT
+class	NN
+label	NN
+yx	NN
+is	VBZ
+set	VBN
+to	TO
+c2	NN
+.	.
+
+The	DT
+comparison	NN
+path	NN
+is	VBZ
+shown	VBN
+in	IN
+Fig.	NN
+7	CD
+.	.
+
+In	IN
+this	DT
+example	NN
+,	,
+the	DT
+search	NN
+would	MD
+involve	VB
+four	CD
+comparisons	NNS
+in	IN
+the	DT
+worst	JJS
+case	NN
+.	.
+
+Compared	VBN
+to	TO
+the	DT
+linear	JJ
+scan	VB
+that	IN
+requires	VBZ
+ï	NN
+¬	CD
+ve	NN
+comparisons	NNS
+,	,
+L-tree	NN
+achieves	VBZ
+20	CD
+%	NN
+improvement	NN
+in	IN
+the	DT
+worst	JJS
+case	NN
+.	.
+
+
+C.	NNP
+Insertion	NN
+
+
+Insertion	NN
+operations	NNS
+are	VBP
+used	VBN
+to	TO
+absorb	VB
+new	JJ
+stream	NN
+records	NNS
+into	IN
+L-trees	NNS
+,	,
+so	RB
+that	IN
+they	PRP
+can	MD
+quickly	RB
+adapt	VB
+to	TO
+new	JJ
+trends	NNS
+and	CC
+patterns	NNS
+in	IN
+data	NNS
+streams	NNS
+.	.
+
+
+Algorithm	NN
+3	CD
+lists	NNS
+detailed	JJ
+procedures	NNS
+of	IN
+the	DT
+insertion	NN
+operation	NN
+.	.
+
+For	IN
+each	DT
+incoming	JJ
+record	NN
+x	NN
+,	,
+a	DT
+search	NN
+algorithm	NN
+is	VBZ
+invoked	VBN
+to	TO
+ï	VB
+¬	CD
+nd	VBD
+its	PRP$
+nearest	JJS
+leaf	NN
+node	NN
+O	NN
+.	.
+
+When	WRB
+inserting	VBG
+x	NN
+in	IN
+the	DT
+retrieved	VBN
+leaf	NN
+node	NN
+O	NN
+,	,
+three	CD
+diï	NN
+¬	CD
+$	$
+erent	JJ
+situations	NNS
+need	VBP
+to	TO
+be	VB
+considered	VBN
+:	:
+
+
+Algorithm	NN
+3	CD
+:	:
+Insertion	NN
+
+
+Input	NN
+:	:
+L-tree	JJ
+T	NN
+,	,
+record	NN
+x	NN
+,	,
+parameters	NNS
+m	NN
+,	,
+M.	NNP
+Output	NN
+:	:
+Updated	VBN
+L-tree	JJ
+T.	NNP
+
+
+O	NN
+â	SYM
+†	CD
+S	NN
+earchLea	NN
+f	FW
+-LRB-	-LRB-
+x	NN
+,	,
+T	NN
+-RRB-	-RRB-
+;	:
+
+
+if	IN
+d	NN
+-LRB-	-LRB-
+x	NN
+,	,
+e	LS
+-RRB-	-RRB-
+<	JJR
+e.r	CD
+then	RB
+
+
+e	SYM
+â	FW
+†	FW
+e	SYM
+âˆª	FW
+x	CC
+;	:
+
+
+T	NN
+â	SYM
+†	CD
+ad	NN
+justTree	NN
+-LRB-	-LRB-
+T	NN
+,	,
+e	LS
+-RRB-	-RRB-
+;	:
+
+
+/	:
+/	:
+Case	NNP
+1	CD
+.	.
+
+
+else	RB
+
+
+enew	FW
+â	FW
+†	FW
+CreateEntry	NN
+-LRB-	-LRB-
+x	NN
+-RRB-	-RRB-
+;	:
+
+
+if	IN
+O.entries	NNS
+-LRB-	-LRB-
+-RRB-	-RRB-
+<	JJR
+m	NN
+then	RB
+
+
+O	NN
+â	SYM
+†	CD
+O	NN
+âˆª	NN
+enew	NN
+;	:
+
+
+T	NN
+â	SYM
+†	CD
+ad	NN
+justTree	NN
+-LRB-	-LRB-
+T	NN
+,	,
+O	NN
+-RRB-	-RRB-
+;	:
+
+
+else	RB
+
+
+<	JJR
+O1	CD
+,	,
+O2	CD
+>	JJR
+â	NN
+†	CD
+S	NN
+plit	NN
+-LRB-	-LRB-
+O	NN
+,	,
+enew	NN
+-RRB-	-RRB-
+;	:
+
+
+T	NN
+â	SYM
+†	CD
+ad	NN
+justTree	NN
+-LRB-	-LRB-
+T	NN
+,	,
+O1	NN
+,	,
+O2	CD
+-RRB-	-RRB-
+;	:
+
+
+/	:
+/	:
+Case	NN
+2	CD
+.	.
+
+
+/	:
+/	:
+Case	NNP
+3	CD
+.	.
+
+
+Output	NN
+T	NN
+;	:
+
+
+â	RB
+$	$
+cents	NNS
+x	CC
+can	MD
+be	VB
+absorbed	VBN
+in	IN
+one	CD
+of	IN
+the	DT
+entries	NNS
+e	SYM
+âˆˆ	FW
+O	FW
+.	.
+
+This	DT
+is	VBZ
+
+
+the	DT
+ideal	JJ
+situation	NN
+,	,
+and	CC
+the	DT
+algorithm	NN
+updates	NNS
+the	DT
+leaf	NN
+
+
+node	NN
+deï	NN
+¬	CD
+ned	VBD
+in	IN
+Eq	NN
+.	.
+
+-LRB-	-LRB-
+1	LS
+-RRB-	-RRB-
+according	VBG
+to	TO
+updating	VBG
+rules	NNS
+.	.
+
+
+â	RB
+$	$
+cents	NNS
+x	CC
+can	MD
+not	RB
+be	VB
+absorbed	VBN
+in	IN
+any	DT
+entry	NN
+,	,
+and	CC
+the	DT
+leaf	NN
+node	NN
+O	NN
+
+
+is	VBZ
+not	RB
+full	JJ
+.	.
+
+In	IN
+this	DT
+case	NN
+,	,
+a	DT
+new	JJ
+entry	NN
+enew	NN
+is	VBZ
+generated	VBN
+
+
+and	CC
+inserted	VBN
+into	IN
+the	DT
+leaf	NN
+node	NN
+O.	NNP
+
+
+â	RB
+$	$
+cents	NNS
+x	CC
+can	MD
+not	RB
+be	VB
+absorbed	VBN
+in	IN
+any	DT
+entry	NN
+,	,
+and	CC
+the	DT
+leaf	NN
+node	NN
+
+
+O	NN
+is	VBZ
+full	JJ
+.	.
+
+In	IN
+this	DT
+case	NN
+,	,
+a	DT
+new	JJ
+entry	NN
+enew	NN
+is	VBZ
+generated	VBN
+,	,
+
+
+and	CC
+then	RB
+a	DT
+node	NN
+splitting	NN
+operation	NN
+is	VBZ
+invoked	VBN
+to	TO
+obtain	VB
+
+
+spare	JJ
+room	NN
+for	IN
+insertion	NN
+.	.
+
+
+Node	NN
+splitting	NN
+is	VBZ
+the	DT
+most	RBS
+critical	JJ
+step	NN
+in	IN
+the	DT
+insertion	NN
+operation	NN
+.	.
+
+Similar	JJ
+to	TO
+M-trees	NNS
+,	,
+a	DT
+basic	JJ
+principle	NN
+in	IN
+splitting	NN
+is	VBZ
+that	IN
+the	DT
+split	NN
+leaf	NN
+nodes	NNS
+should	MD
+have	VB
+the	DT
+minimized	VBN
+spatial	JJ
+expansion	NN
+.	.
+
+This	DT
+is	VBZ
+equivalent	JJ
+to	TO
+minimizing	VBG
+Eq	NN
+.	.
+
+-LRB-	-LRB-
+14	CD
+-RRB-	-RRB-
+,	,
+
+
+<	JJR
+O1	CD
+,	,
+O2	CD
+>	JJR
+=	JJ
+argmin	NN
+<	JJR
+X	NN
+,	,
+Y	NN
+>	JJR
+|	CD
+X	NN
+,	,
+YâˆˆOâˆªe	NN
+
+
+new	JJ
+
+
+-LRB-	-LRB-
+X.r	NN
++	CC
+Y.r	NN
+-RRB-	-RRB-
+,	,
+
+
+-LRB-	-LRB-
+14	CD
+-RRB-	-RRB-
+
+
+where	WRB
+X	NN
+and	CC
+Y	NN
+are	VBP
+variables	NNS
+,	,
+and	CC
+O1	NN
+and	CC
+O2	CD
+are	VBP
+the	DT
+new	JJ
+leaf	NN
+nodes	NNS
+containing	VBG
+enew	NN
+and	CC
+all	DT
+entries	NNS
+in	IN
+O.	NNP
+Obviously	RB
+,	,
+solving	VBG
+Eq	NN
+.	.
+
+14	CD
+requires	VBZ
+examining	VBG
+all	DT
+possible	JJ
+combinations	NNS
+of	IN
+all	DT
+entries	NNS
+in	IN
+O	NN
+âˆª	NN
+enew	NN
+,	,
+which	WDT
+is	VBZ
+very	RB
+diï	JJ
+¬	NN
+ƒcult	NN
+especially	RB
+when	WRB
+M	NN
+is	VBZ
+large	JJ
+.	.
+
+Alternatively	RB
+,	,
+a	DT
+greedy	JJ
+heuristic	NN
+would	MD
+ï	VB
+¬	CD
+rst	NN
+randomly	RB
+select	JJ
+two	CD
+entries	NNS
+in	IN
+O	NN
+âˆª	NN
+enew	NN
+that	WDT
+has	VBZ
+the	DT
+largest	JJS
+distance	NN
+,	,
+and	CC
+then	RB
+cluster	VB
+all	PDT
+the	DT
+remaining	VBG
+M	NN
+1	CD
+entries	NNS
+in	IN
+O	NN
+âˆª	NN
+enew	NN
+into	IN
+the	DT
+given	VBN
+two	CD
+groups	NNS
+.	.
+
+
+O1	NN
+
+
+Input	NN
+
+
+e1	NN
+:	:
+-LRB-	-LRB-
+1.67,1,83,1.47	CD
+,	,
+child	NN
+,	,
+^	NN
+-RRB-	-RRB-
+
+
+e2	NN
+:	:
+-LRB-	-LRB-
+3.75,3.50,1.66	CD
+,	,
+child	NN
+,	,
+^	NN
+-RRB-	-RRB-
+
+
+O2	CD
+
+
+O3	NN
+
+
+e3	NN
+:	:
+-LRB-	-LRB-
+m1	NN
+,0.85	CD
+-RRB-	-RRB-
+e4	NN
+:	:
+-LRB-	-LRB-
+m2	NN
+,0.94	CD
+-RRB-	-RRB-
+e5	NN
+:	:
+-LRB-	-LRB-
+m3	NN
+,0.85	CD
+-RRB-	-RRB-
+
+
+e6	NN
+:	:
+-LRB-	-LRB-
+m4	NN
+,0.90	CD
+-RRB-	-RRB-
+e7	NN
+:	:
+-LRB-	-LRB-
+m5	NN
+,0.90	CD
+-RRB-	-RRB-
+e8	NN
+:	:
+-LRB-	-LRB-
+m6	NN
+,1.55	CD
+-RRB-	-RRB-
+
+
+m1	NN
+
+
+m2	NN
+
+
+m3	NN
+
+
+m4	NN
+
+
+m5	NN
+
+
+m6	NN
+
+
+Figure	NNP
+8	CD
+.	.
+
+An	DT
+illustration	NN
+of	IN
+L-tree	NN
+in	IN
+Example	NNP
+3	CD
+after	IN
+inserting	VBG
+a	DT
+new	JJ
+stream	NN
+record	NN
+x.	IN
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+6	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+5	CD
+
+
+4.5	CD
+
+
+4	CD
+
+
+e8	NN
+
+
+3.5	CD
+
+
+e7	NN
+
+
+e2	NN
+
+
+3	CD
+
+
+2.5	CD
+
+
+e6	NN
+
+
+2	CD
+
+
+e4	NN
+
+
+1.5	CD
+
+
+ee11	NN
+
+
+e5	NN
+
+
+1	CD
+
+
+0.5	CD
+
+
+e3	NN
+
+
+Î	NN
+''	''
+e	SYM
+
+
+2	LS
+.	.
+
+r	NN
+
+
+00	CD
+
+
+1	CD
+
+
+2	CD
+
+
+3	CD
+
+
+4	CD
+
+
+5	CD
+
+
+Figure	NNP
+9	CD
+.	.
+
+An	DT
+illustration	NN
+of	IN
+insertion	NN
+in	IN
+Example	NNP
+4	CD
+.	.
+
+
+Example	NN
+6	CD
+:	:
+Consider	VB
+inserting	VBG
+x	NN
+=	JJ
+-LRB-	-LRB-
+2.2,3.5	CD
+-RRB-	-RRB-
+into	IN
+the	DT
+L	NN
+-	:
+tree	NN
+in	IN
+Example	NNP
+3	CD
+.	.
+
+First	NNP
+of	IN
+all	DT
+,	,
+the	DT
+search	NN
+algorithm	NN
+locates	VBZ
+entry	NN
+e7	NN
+in	IN
+the	DT
+leaf	NN
+node	NN
+O3	NN
+as	IN
+the	DT
+target	NN
+node	NN
+.	.
+
+Then	RB
+,	,
+it	PRP
+examines	VBZ
+the	DT
+distance	NN
+between	IN
+x	NN
+and	CC
+e7	NN
+,	,
+which	WDT
+equals	VBZ
+to	TO
+0.94	CD
+and	CC
+is	VBZ
+larger	JJR
+than	IN
+the	DT
+covering	VBG
+radius	NN
+of	IN
+e7	NN
+.	.
+
+Thus	RB
+,	,
+a	DT
+new	JJ
+entry	NN
+e8	NN
+is	VBZ
+generated	VBN
+containing	VBG
+a	DT
+new	JJ
+exemplar	NN
+M6	NN
+as	IN
+follows	VBZ
+:	:
+M6.X	NN
+=	JJ
+-LRB-	-LRB-
+2.2,3.5	CD
+-RRB-	-RRB-
+,	,
+M6.R	NN
+=	JJ
+0.1	CD
+,	,
+M6.C	NN
+=	JJ
+-LRB-	-LRB-
+0,1,0	CD
+-RRB-	-RRB-
+,	,
+M6.N	NN
+=	JJ
+1	CD
+,	,
+and	CC
+M6.T	NN
+=	JJ
+t501	NN
+.	.
+
+Since	IN
+the	DT
+leaf	NN
+node	NN
+O	NN
+has	VBZ
+only	RB
+two	CD
+entries	NNS
+,	,
+which	WDT
+is	VBZ
+less	JJR
+than	IN
+its	PRP$
+capacity	NN
+M	NN
+=	JJ
+3	CD
+,	,
+then	RB
+e8	NN
+is	VBZ
+inserted	VBN
+into	IN
+O	NN
+directly	RB
+.	.
+
+In	IN
+addition	NN
+,	,
+the	DT
+covering	VBG
+space	NN
+of	IN
+entry	NN
+e2	NN
+in	IN
+the	DT
+parent	NN
+node	NN
+is	VBZ
+enlarged	JJ
+to	TO
+e2.r	NN
+=	JJ
+1.66	CD
+.	.
+
+The	DT
+updated	VBN
+L-tree	NN
+structure	NN
+is	VBZ
+shown	VBN
+in	IN
+Fig.	NN
+8	CD
+and	CC
+Fig.	NNP
+9	CD
+.	.
+
+
+D.	NNP
+Deletion	NN
+
+
+The	DT
+deletion	NN
+operation	NN
+discards	VBZ
+outdated	JJ
+exemplars	NNS
+when	WRB
+the	DT
+L-tree	NN
+reaches	VBZ
+its	PRP$
+capacity	NN
+.	.
+
+For	IN
+example	NN
+,	,
+if	IN
+the	DT
+largest	JJS
+tree	NN
+size	NN
+is	VBZ
+set	VBN
+to	TO
+four	CD
+in	IN
+Example	NNP
+4	CD
+,	,
+e3	NN
+will	MD
+be	VB
+discarded	VBN
+from	IN
+the	DT
+L-tree	NN
+when	WRB
+e8	NN
+is	VBZ
+generated	VBN
+,	,
+this	DT
+is	VBZ
+because	IN
+e3	NN
+has	VBZ
+the	DT
+earliest	JJS
+time	NN
+stamp	NN
+t100	NN
+,	,
+which	WDT
+means	VBZ
+it	PRP
+has	VBZ
+not	RB
+been	VBN
+updated	VBN
+for	IN
+a	DT
+long	JJ
+time	NN
+,	,
+and	CC
+is	VBZ
+possibly	RB
+outdated	VBN
+.	.
+
+
+The	DT
+detailed	JJ
+procedures	NNS
+of	IN
+the	DT
+deletion	NN
+operation	NN
+are	VBP
+shown	VBN
+in	IN
+Algorithm	NNP
+4	CD
+.	.
+
+First	NNP
+of	IN
+all	DT
+,	,
+the	DT
+outdated	JJ
+entry	NN
+in	IN
+a	DT
+leaf	NN
+node	NN
+is	VBZ
+discovered	VBN
+by	IN
+scanning	VBG
+the	DT
+time	NN
+table	NN
+,	,
+and	CC
+deleted	VBN
+from	IN
+the	DT
+L-tree	NN
+.	.
+
+After	IN
+the	DT
+deletion	NN
+,	,
+there	EX
+are	VBP
+two	CD
+diï	NN
+¬	CD
+$	$
+erent	JJ
+situations	NNS
+.	.
+
+
+â	RB
+$	$
+cents	NNS
+The	DT
+number	NN
+of	IN
+entries	NNS
+in	IN
+the	DT
+leaf	NN
+node	NN
+is	VBZ
+larger	JJR
+than	IN
+m	NN
+.	.
+
+In	IN
+this	DT
+case	NN
+,	,
+the	DT
+algorithm	NN
+iteratively	RB
+adjusts	VBZ
+the	DT
+covering	VBG
+radius	NN
+r	NN
+of	IN
+its	PRP$
+parent	NN
+entries	NNS
+,	,
+making	VBG
+these	DT
+nodes	NNS
+to	TO
+be	VB
+more	RBR
+compact	JJ
+.	.
+
+
+â	RB
+$	$
+cents	NNS
+The	DT
+number	NN
+of	IN
+entries	NNS
+in	IN
+the	DT
+leaf	NN
+node	NN
+is	VBZ
+smaller	JJR
+than	IN
+m	NN
+.	.
+
+In	IN
+this	DT
+case	NN
+,	,
+a	DT
+delete-then-insert	JJ
+method	NN
+will	MD
+be	VB
+used	VBN
+.	.
+
+Similar	JJ
+methods	NNS
+are	VBP
+commonly	RB
+used	VBN
+in	IN
+spatial	JJ
+indexing	NN
+structures	NNS
+.	.
+
+It	PRP
+ï	VBD
+¬	CD
+rst	NN
+iteratively	RB
+deletes	VBZ
+node	NN
+-LRB-	-LRB-
+s	NNS
+-RRB-	-RRB-
+having	VBG
+entries	NNS
+less	JJR
+than	IN
+m	NN
+,	,
+and	CC
+re-inserts	NNS
+their	PRP$
+entries	NNS
+into	IN
+the	DT
+tree	NN
+using	VBG
+the	DT
+insertion	NN
+operation	NN
+in	IN
+Algorithm	NNP
+3	CD
+.	.
+
+This	DT
+method	NN
+is	VBZ
+advantageous	JJ
+in	IN
+that	DT
+:	:
+-LRB-	-LRB-
+1	LS
+-RRB-	-RRB-
+It	PRP
+is	VBZ
+easy	JJ
+to	TO
+implement	VB
+.	.
+
+-LRB-	-LRB-
+2	LS
+-RRB-	-RRB-
+Re-insertion	NN
+will	MD
+incrementally	RB
+reï	VB
+¬	NN
+ne	NN
+the	DT
+spatial	JJ
+structure	NN
+of	IN
+the	DT
+tree	NN
+.	.
+
+
+Algorithm	NN
+4	CD
+:	:
+Deletion	NN
+
+
+Input	NN
+:	:
+L-tree	JJ
+T	NN
+,	,
+parameters	NNS
+m	NN
+,	,
+M.	NN
+
+
+Output	NN
+:	:
+Updated	VBN
+L-Tree	NNP
+T.	NNP
+
+
+/	:
+/	:
+locate	VB
+a	DT
+leaf	NN
+node	NN
+from	IN
+the	DT
+time	NN
+table	NN
+;	:
+
+
+pointer	NN
+â	SYM
+†	CD
+Locate	VB
+-LRB-	-LRB-
+Time	NNP
+table	NN
+-RRB-	-RRB-
+;	:
+
+
+O	NN
+â	SYM
+†	CD
+delete	VBP
+-LRB-	-LRB-
+T	NN
+,	,
+pointer	NN
+-RRB-	-RRB-
+;	:
+
+
+/	:
+/	:
+iterative	JJ
+deletions	NNS
+;	:
+
+
+if	IN
+O	NN
+is	VBZ
+root	NN
+then	RB
+
+
+if	IN
+O.entries	NNS
+-LRB-	-LRB-
+-RRB-	-RRB-
+=	JJ
+=	JJ
+1	CD
+then	RB
+/	:
+/	:
+the	DT
+root	NN
+node	NN
+
+
+T	NN
+â	SYM
+†	CD
+O.child	NN
+;	:
+
+
+delete	VB
+-LRB-	-LRB-
+O	NN
+-RRB-	-RRB-
+;	:
+
+
+else	RB
+/	:
+/	:
+non-root	JJ
+nodes	NNS
+
+
+if	IN
+O.numberO	NN
+f	FW
+Entries	NNS
+-LRB-	-LRB-
+-RRB-	-RRB-
+<	JJR
+m	NN
+then	RB
+
+
+foreach	NN
+entry	NN
+e	SYM
+âˆˆ	FW
+O	FW
+do	VBP
+
+
+delete	VB
+-LRB-	-LRB-
+e	LS
+,	,
+O	NN
+-RRB-	-RRB-
+;	:
+
+
+T	NN
+â	SYM
+†	CD
+insert	NN
+-LRB-	-LRB-
+e	SYM
+,	,
+O	NN
+-RRB-	-RRB-
+;	:
+
+
+Output	NN
+T	NN
+;	:
+
+
+V.	NNP
+EXPERIMENTS	NNS
+
+
+In	IN
+this	DT
+section	NN
+,	,
+we	PRP
+present	VBP
+extensive	JJ
+experiments	NNS
+on	IN
+benchmark	JJ
+datasets	NNS
+to	TO
+validate	VB
+the	DT
+performance	NN
+of	IN
+L-trees	NNS
+with	IN
+respect	NN
+to	TO
+time	NN
+eï	NN
+¬	NN
+ƒciency	NN
+for	IN
+prediction	NN
+,	,
+memory	NN
+consumption	NN
+,	,
+and	CC
+predicting	VBG
+accuracy	NN
+.	.
+
+All	DT
+experiments	NNS
+are	VBP
+implemented	VBN
+in	IN
+Java	NNP
+on	IN
+a	DT
+Microsoft	NNP
+XP	NN
+machine	NN
+with	IN
+3GHz	NN
+CPU	NN
+and	CC
+2GB	NN
+memory	NN
+.	.
+
+
+A.	NN
+Experimental	JJ
+Settings	NNS
+
+
+Benchmark	NNP
+data	NNS
+sets	NNS
+.	.
+
+Twelve	CD
+data	NNS
+sets	NNS
+from	IN
+the	DT
+UCI	NNP
+data	NNS
+repository	JJ
+-LSB-	-LRB-
+4	CD
+-RSB-	-RRB-
+and	CC
+stream	NN
+data	NNS
+mining	NN
+repository	JJ
+-LSB-	-LRB-
+22	CD
+-RSB-	-RRB-
+are	VBP
+used	VBN
+in	IN
+our	PRP$
+experiments	NNS
+.	.
+
+Table	NNP
+II	NNP
+lists	VBZ
+the	DT
+basic	JJ
+information	NN
+of	IN
+the	DT
+data	NNS
+sets	NNS
+.	.
+
+Due	JJ
+to	TO
+the	DT
+page	NN
+limit	NN
+,	,
+please	VB
+refer	VB
+to	TO
+-LSB-	-LRB-
+4	CD
+-RSB-	-RRB-
+,	,
+-LSB-	-LRB-
+22	CD
+-RSB-	-RRB-
+for	IN
+detailed	JJ
+descriptions	NNS
+.	.
+
+The	DT
+synthetic	JJ
+data	NNS
+stream	NN
+contains	VBZ
+a	DT
+gradually	RB
+changing	VBG
+concept	NN
+-LRB-	-LRB-
+decision	NN
+boundary	NN
+-RRB-	-RRB-
+deï	NN
+¬	CD
+ned	VBN
+by	IN
+Eq	NN
+.	.
+
+-LRB-	-LRB-
+15	CD
+-RRB-	-RRB-
+:	:
+
+
+Ï	NN
+„	SYM
+
+
+1	CD
+
+
+g	NN
+-LRB-	-LRB-
+x	NN
+-RRB-	-RRB-
+=	JJ
+ai	VBP
+Â	NN
+·	NN
+
+
+-LRB-	-LRB-
+xi	NN
++	CC
+xi	NN
++1	NN
+-RRB-	-RRB-
+
+
+i	LS
+=	SYM
+1	CD
+
+
+xi	NN
+
+
+-LRB-	-LRB-
+15	CD
+-RRB-	-RRB-
+where	WRB
+ai	VBP
+controls	NNS
+the	DT
+shape	NN
+of	IN
+the	DT
+decision	NN
+surface	NN
+and	CC
+g	NN
+-LRB-	-LRB-
+x	NN
+-RRB-	-RRB-
+determines	VBZ
+the	DT
+class	NN
+label	NN
+of	IN
+each	DT
+record	NN
+x.	NNP
+Concept	NNP
+drifting	VBG
+can	MD
+be	VB
+controlled	VBN
+by	IN
+adjusting	VBG
+ai	VBP
+to	TO
+ai	VB
++	CC
+Î	NNP
+±	CD
+h	NN
+after	IN
+generating	VBG
+D	NN
+records	NNS
+,	,
+where	WRB
+Î	NNP
+±	CD
+deï	NN
+¬	NN
+nes	VBZ
+the	DT
+direction	NN
+of	IN
+change	NN
+and	CC
+h	NN
+âˆˆ	NN
+-LSB-	-LRB-
+0,1	CD
+-RSB-	-RRB-
+deï	NN
+¬	CD
+nes	VBZ
+the	DT
+magnitude	NN
+of	IN
+change	NN
+.	.
+
+Î	NN
+±	NN
+=	JJ
+1	CD
+with	IN
+probability	NN
+of	IN
+Ï	NNP
+.	.
+
+In	IN
+our	PRP$
+experiments	NNS
+,	,
+we	PRP
+set	VBD
+Ï	NN
+=	JJ
+0.2	CD
+,	,
+h	NN
+=	JJ
+0.1	CD
+,	,
+D	NN
+=	JJ
+2000	CD
+,	,
+Ï	NN
+„	NN
+=	JJ
+3	CD
+,	,
+and	CC
+generate	VBP
+105	CD
+stream	NN
+records	NNS
+from	IN
+ï	NN
+¬	CD
+ve	NN
+classes	NNS
+.	.
+
+Parameter	NN
+m	NN
+,	,
+if	IN
+not	RB
+specially	RB
+mentioned	VBN
+,	,
+is	VBZ
+set	VBN
+to	TO
+1	CD
+.	.
+
+
+Benchmark	NN
+methods	NNS
+.	.
+
+For	IN
+comparison	NN
+purposes	NNS
+,	,
+we	PRP
+imple	VBP
+-	:
+mented	JJ
+two	CD
+lazy	JJ
+learning	NN
+and	CC
+two	CD
+eager	JJ
+learning	VBG
+models	NNS
+.	.
+
+-LRB-	-LRB-
+1	LS
+-RRB-	-RRB-
+Global	JJ
+k-NN	NN
+.	.
+
+This	DT
+is	VBZ
+the	DT
+traditional	JJ
+k-NN	NN
+method	NN
+that	WDT
+maintains	VBZ
+all	DT
+historical	JJ
+stream	NN
+records	NNS
+for	IN
+prediction	NN
+.	.
+
+-LRB-	-LRB-
+2	LS
+-RRB-	-RRB-
+Local	JJ
+k-NN	NN
+.	.
+
+In	IN
+this	DT
+method	NN
+,	,
+only	RB
+a	DT
+small	JJ
+portion	NN
+of	IN
+the	DT
+most	RBS
+recent	JJ
+stream	NN
+records	NNS
+are	VBP
+preserved	VBN
+for	IN
+prediction	NN
+.	.
+
+Com	NNP
+-	:
+pared	VBD
+to	TO
+our	PRP$
+method	NN
+,	,
+this	DT
+method	NN
+simply	RB
+uses	VBZ
+a	DT
+linear	JJ
+scan	VB
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+7	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+Table	NNP
+II	NNP
+REAL-WORLD	NNP
+DATA	NNP
+SETS	VBZ
+
+
+Name	VB
+
+
+Records	NNP
+Attr	NNP
+.	.
+
+clas	NNS
+.	.
+
+
+Sensor	NN
+KDDCUP99	NN
+Powersupply	NNP
+Waveform	NNP
+halloï	NN
+¬	CD
+$	$
+ame	JJ
+kr-vs-kp	JJ
+sick	JJ
+hypothyroid	JJ
+mushroom	NN
+splice	NN
+nursery	NN
+musk	NN
+
+
+2.0	CD
+Ã	NN
+--	:
+106	CD
+4.9	CD
+Ã	NN
+--	:
+105	CD
+2.9	CD
+Ã	NN
+--	:
+104	CD
+5.0	CD
+Ã	NN
+--	:
+103	CD
+1.3	CD
+Ã	NN
+--	:
+103	CD
+3.1	CD
+Ã	NN
+--	:
+103	CD
+3.7	CD
+Ã	NN
+--	:
+103	CD
+3.7	CD
+Ã	NN
+--	:
+103	CD
+8.1	CD
+Ã	NN
+--	:
+103	CD
+3.1	CD
+Ã	NN
+--	:
+103	CD
+1.2	CD
+Ã	NN
+--	:
+104	CD
+6.5	CD
+Ã	NN
+--	:
+103	CD
+
+
+5	CD
+54	CD
+41	CD
+23	CD
+2	CD
+24	CD
+40	CD
+3	CD
+17	CD
+3	CD
+37	CD
+2	CD
+30	CD
+2	CD
+30	CD
+4	CD
+23	CD
+2	CD
+61	CD
+3	CD
+9	CD
+5	CD
+167	CD
+2	CD
+
+
+Parameters	NNS
+local	JJ
+M	NN
+Î	NN
+³	CD
+2000	CD
+200	CD
+5	CD
+1000	CD
+100	CD
+3	CD
+1000	CD
+100	CD
+4	CD
+100	CD
+30	CD
+6	CD
+10	CD
+5	CD
+1	CD
+20	CD
+5	CD
+1	CD
+25	CD
+5	CD
+3	CD
+20	CD
+4	CD
+1	CD
+50	CD
+10	CD
+1	CD
+50	CD
+10	CD
+1	CD
+40	CD
+10	CD
+1	CD
+40	CD
+10	CD
+1	CD
+
+
+to	TO
+retrieve	VB
+the	DT
+k	NN
+nearest	JJS
+neighbors	NNS
+.	.
+
+-LRB-	-LRB-
+3	LS
+-RRB-	-RRB-
+Incremental	JJ
+Decision	NN
+Tree	NN
+.	.
+
+This	DT
+method	NN
+belongs	VBZ
+to	TO
+the	DT
+eager	JJ
+learning	NN
+category	NN
+.	.
+
+It	PRP
+is	VBZ
+based	VBN
+on	IN
+the	DT
+method	NN
+proposed	VBN
+in	IN
+-LSB-	-LRB-
+8	CD
+-RSB-	-RRB-
+.	.
+
+The	DT
+source	NN
+code	NN
+can	MD
+be	VB
+downloaded	VBN
+from	IN
+www.cs.washington.edu/dm/vfml/	JJ
+.	.
+
+-LRB-	-LRB-
+4	LS
+-RRB-	-RRB-
+Incremental	JJ
+Naive	JJ
+Bayes	NNS
+.	.
+
+This	DT
+is	VBZ
+another	DT
+standard	JJ
+eager	JJ
+learning	NN
+model	NN
+.	.
+
+
+Measures	NNS
+.	.
+
+We	PRP
+use	VBP
+three	CD
+measures	NNS
+in	IN
+our	PRP$
+experiments	NNS
+.	.
+
+-LRB-	-LRB-
+1	LS
+-RRB-	-RRB-
+Predicting	VBG
+time	NN
+.	.
+
+By	IN
+using	VBG
+a	DT
+height-balanced	JJ
+tree	NN
+to	TO
+index	NN
+all	DT
+exemplars	NNS
+,	,
+L-trees	NNS
+are	VBP
+expected	VBN
+to	TO
+achieve	VB
+lower	JJR
+computa	NN
+-	:
+tional	JJ
+costs	NNS
+than	IN
+other	JJ
+two	CD
+lazy	JJ
+learning	VBG
+models	NNS
+.	.
+
+-LRB-	-LRB-
+2	LS
+-RRB-	-RRB-
+Memory	NN
+consumption	NN
+.	.
+
+L-trees	NNS
+are	VBP
+expected	VBN
+to	TO
+consume	VB
+much	RB
+less	JJR
+memory	NN
+space	NN
+than	IN
+Global	JJ
+k-NN	NN
+.	.
+
+-LRB-	-LRB-
+3	LS
+-RRB-	-RRB-
+Predicting	VBG
+accuracy	NN
+.	.
+
+L-trees	NNS
+are	VBP
+expected	VBN
+to	TO
+achieve	VB
+similar	JJ
+predicting	VBG
+accuracy	NN
+to	TO
+Global	JJ
+k-NN	NN
+,	,
+and	CC
+better	JJR
+accuracy	NN
+than	IN
+Local	JJ
+k-NN	NN
+.	.
+
+
+B.	NNP
+Parameter	NNP
+Study	NNP
+on	IN
+Synthetic	NNP
+Data	NNP
+Streams	NNP
+
+
+Parameter	NN
+Î	NN
+³	NN
+.	.
+
+This	DT
+parameter	NN
+denotes	VBZ
+the	DT
+maximum	NN
+radius	NN
+threshold	NN
+of	IN
+exemplars	NNS
+in	IN
+an	DT
+L-tree	NN
+.	.
+
+Fig.	NN
+10	CD
+shows	VBZ
+the	DT
+predicting	VBG
+time	NN
+and	CC
+predicting	VBG
+accuracy	NN
+w.r.t.	NN
+diï	NN
+¬	CD
+$	$
+erent	JJ
+Î	NN
+³	NN
+values	NNS
+.	.
+
+From	IN
+the	DT
+results	NNS
+we	PRP
+can	MD
+observe	VB
+that	IN
+both	CC
+the	DT
+predicting	VBG
+time	NN
+and	CC
+predicting	VBG
+accuracy	NN
+decreases	VBZ
+with	IN
+in	IN
+-	:
+creasing	VBG
+Î	NN
+³	NN
+.	.
+
+This	DT
+is	VBZ
+because	IN
+the	DT
+larger	JJR
+Î	NN
+³	NN
+,	,
+the	DT
+fewer	JJR
+exemplars	NNS
+that	WDT
+are	VBP
+generated	VBN
+.	.
+
+As	IN
+a	DT
+result	NN
+,	,
+both	CC
+the	DT
+predicting	VBG
+time	NN
+and	CC
+memory	NN
+consumption	NN
+are	VBP
+reduced	VBN
+.	.
+
+On	IN
+the	DT
+other	JJ
+hand	NN
+,	,
+generalizing	VBG
+stream	NN
+records	NNS
+into	IN
+fewer	JJR
+exemplars	NNS
+leads	VBZ
+to	TO
+more	JJR
+information	NN
+loss	NN
+and	CC
+reduced	VBD
+predicting	VBG
+accuracy	NN
+.	.
+
+
+3.5	CD
+
+
+1	CD
+
+
+predicting	VBG
+efficiency	NN
+memory	NN
+consumption	NN
+
+
+3	CD
+
+
+0.9	CD
+
+
+2.5	CD
+
+
+0.8	CD
+
+
+2	CD
+
+
+0.7	CD
+
+
+Accuracy	NN
+
+
+Memory	NN
+-LRB-	-LRB-
+kb	NN
+-RRB-	-RRB-
+
+
+1.5	CD
+
+
+0.6	CD
+
+
+1	CD
+
+
+0.5	CD
+
+
+0.511	CD
+
+
+22	CD
+
+
+33	CD
+
+
+44	CD
+
+
+55	CD
+
+
+66	CD
+
+
+77	CD
+
+
+88	CD
+
+
+99	CD
+
+
+0.41010	CD
+
+
+Î	NN
+³	SYM
+
+
+Figure	NNP
+10	CD
+.	.
+
+Comparisons	NNS
+with	IN
+respect	NN
+to	TO
+diï	NN
+¬	CD
+$	$
+erent	JJ
+Î	NN
+³	NN
+values	NNS
+.	.
+
+M	NN
+=	JJ
+10	CD
+.	.
+
+
+4	CD
+
+
+10	CD
+
+
+memory	NN
+consumption	NN
+predicting	VBG
+efficiency	NN
+
+
+3.5	CD
+
+
+8	CD
+
+
+3	CD
+
+
+6	CD
+
+
+2.5	CD
+
+
+4	CD
+
+
+Time	NNP
+-LRB-	-LRB-
+ms	NNS
+-RRB-	-RRB-
+
+
+Memory	NN
+-LRB-	-LRB-
+kb	NN
+-RRB-	-RRB-
+
+
+2	CD
+
+
+2	CD
+
+
+1.51	CD
+
+
+2	CD
+
+
+5	CD
+
+
+10	CD
+M	NN
+
+
+20	CD
+
+
+50	CD
+
+
+0100	CD
+
+
+Figure	NNP
+11	CD
+.	.
+
+Comparisons	NNS
+with	IN
+respect	NN
+to	TO
+diï	NN
+¬	CD
+$	$
+erent	JJ
+M	NN
+values	NNS
+.	.
+
+Î	NN
+³	NN
+=	JJ
+0.1	CD
+
+
+Parameter	NN
+M	NN
+.	.
+
+This	DT
+parameter	NN
+denotes	VBZ
+the	DT
+maximum	NN
+num	SYM
+-	:
+ber	NN
+of	IN
+entries	NNS
+in	IN
+each	DT
+node	NN
+of	IN
+an	DT
+L-tree	NN
+.	.
+
+Fig.	NN
+11	CD
+shows	VBZ
+the	DT
+predicting	VBG
+time	NN
+and	CC
+memory	NN
+consumption	NN
+with	IN
+respect	NN
+to	TO
+diï	NN
+¬	CD
+$	$
+erent	JJ
+M	NN
+values	NNS
+.	.
+
+From	IN
+the	DT
+results	NNS
+we	PRP
+have	VBP
+the	DT
+following	VBG
+observations	NNS
+.	.
+
+When	WRB
+M	NN
+increases	VBZ
+at	IN
+the	DT
+very	RB
+early	JJ
+stage	NN
+,	,
+both	CC
+the	DT
+predicting	VBG
+time	NN
+and	CC
+memory	NN
+consumption	NN
+decrease	NN
+signiï	NN
+¬	NN
+cantly	RB
+.	.
+
+After	IN
+that	DT
+,	,
+the	DT
+beneï	NN
+¬	NN
+t	NN
+becomes	VBZ
+marginal	JJ
+and	CC
+then	RB
+turns	VBZ
+negative	JJ
+with	IN
+increasing	VBG
+M	NN
+.	.
+
+This	DT
+is	VBZ
+because	IN
+increasing	VBG
+M	NN
+at	IN
+an	DT
+early	JJ
+stage	NN
+reduces	VBZ
+the	DT
+number	NN
+of	IN
+routing	VBG
+nodes	NNS
+and	CC
+leaf	NN
+nodes	NNS
+.	.
+
+As	IN
+a	DT
+result	NN
+,	,
+the	DT
+k-nearest	JJ
+neighbors	NNS
+of	IN
+an	DT
+incoming	JJ
+query	NN
+are	VBP
+likely	JJ
+to	TO
+be	VB
+stored	VBN
+in	IN
+the	DT
+same	JJ
+node	NN
+,	,
+leading	VBG
+to	TO
+reduced	VBN
+search	NN
+and	CC
+storage	NN
+costs	NNS
+.	.
+
+However	RB
+,	,
+when	WRB
+M	NN
+continues	VBZ
+to	TO
+increase	VB
+,	,
+exemplars	NNS
+that	WDT
+slightly	RB
+overlap	VBP
+with	IN
+each	DT
+other	JJ
+will	MD
+be	VB
+mistakenly	RB
+stored	VBN
+in	IN
+the	DT
+same	JJ
+node	NN
+,	,
+leading	VBG
+to	TO
+extra	JJ
+comparisons	NNS
+on	IN
+each	DT
+node	NN
+and	CC
+increased	VBD
+search	NN
+time	NN
+.	.
+
+Therefore	RB
+,	,
+a	DT
+desirable	JJ
+M	NN
+value	NN
+should	MD
+neither	RB
+be	VB
+too	RB
+large	JJ
+nor	CC
+too	RB
+small	JJ
+.	.
+
+
+C.	NNP
+Performance	NNP
+Study	NNP
+on	IN
+Real-world	JJ
+and	CC
+Synthetic	JJ
+Data	NNS
+Streams	NNS
+
+
+1.05	CD
+
+
+1	CD
+
+
+0.95	CD
+
+
+0.9	CD
+
+
+Accuracy	NN
+
+
+0.85	CD
+
+
+0.8	CD
+
+
+Lazy	JJ
+learning	NN
+adapts	NNS
+faster	RBR
+to	TO
+concept	NN
+drifting	VBG
+
+
+0.75	CD
+
+
+Incremental	JJ
+decision	NN
+tree	NN
+Incremental	JJ
+NaiveBayes	NNS
+Lâˆ	NN
+'	''
+tree	NN
+based	VBN
+lazy	JJ
+learning	NN
+
+
+0.70	CD
+
+
+5	CD
+
+
+10	CD
+
+
+15	CD
+
+
+20	CD
+Chunk	NNP
+ID	NNP
+
+
+25	CD
+
+
+30	CD
+
+
+35	CD
+
+
+40	CD
+
+
+Figure	NNP
+12	CD
+.	.
+
+Comparisons	NNS
+between	IN
+eager	JJ
+and	CC
+lazy	JJ
+learning	NN
+models	NNS
+on	IN
+40	CD
+continuous	JJ
+data	NNS
+chunks	NNS
+.	.
+
+
+Table	NNP
+III	NNP
+presents	VBZ
+the	DT
+comparison	NN
+results	VBZ
+between	IN
+three	CD
+lazy	JJ
+learning	VBG
+models	NNS
+.	.
+
+The	DT
+parameter	NN
+k	NN
+is	VBZ
+set	VBN
+to	TO
+3	CD
+,	,
+other	JJ
+parameters	NNS
+are	VBP
+listed	VBN
+in	IN
+Table	NNP
+II	NNP
+.	.
+
+From	IN
+the	DT
+results	NNS
+we	PRP
+can	MD
+conclude	VB
+that	IN
+:	:
+-LRB-	-LRB-
+1	LS
+-RRB-	-RRB-
+Compared	VBN
+to	TO
+Global	JJ
+k-NN	NN
+,	,
+L-tree	NN
+is	VBZ
+more	RBR
+eï	JJ
+¬	NN
+ƒcient	NN
+with	IN
+respect	NN
+to	TO
+predicting	VBG
+time	NN
+and	CC
+memory	NN
+consumption	NN
+,	,
+and	CC
+can	MD
+achieve	VB
+similar	JJ
+predicting	VBG
+accuracy	NN
+.	.
+
+This	DT
+is	VBZ
+because	IN
+L-trees	NNS
+condense	VBP
+historical	JJ
+stream	NN
+records	NNS
+into	IN
+compact	JJ
+exemplars	NNS
+and	CC
+indexes	NNS
+them	PRP
+into	IN
+a	DT
+high	JJ
+-	:
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+8	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+Table	NNP
+III	NNP
+
+
+COMPARISONS	NNS
+AMONG	IN
+DIFFERENT	JJ
+k-NN	JJ
+ALGORITHMS	NNS
+
+
+Data	NNS
+
+
+kddcup99	NN
+sensor	NN
+powersupply	RB
+Waveform	JJ
+halloï	NN
+¬	CD
+$	$
+ame	JJ
+kr-vs-kp	JJ
+sick	JJ
+hypothyroid	JJ
+mushroom	NN
+splice	NN
+nursery	NN
+musk	NN
+
+
+Global	JJ
+k-NN	NN
+
+
+memory	NN
+-LRB-	-LRB-
+kb	NN
+-RRB-	-RRB-
+time	NN
+-LRB-	-LRB-
+ms	NN
+-RRB-	-RRB-
+accuracy	NN
+
+
+26500	CD
+9489.00	CD
+0.9906	CD
+
+
+11345	CD
+12235.00	CD
+0.7000	CD
+
+
+166.77	CD
+8653.00	CD
+0.7340	CD
+
+
+27.7	CD
+311.00	CD
+0.7436	CD
+
+
+67.0	CD
+3429.00	CD
+0.9049	CD
+
+
+159.8	CD
+16831.00	CD
+0.9942	CD
+
+
+188.6	CD
+28849.00	CD
+0.8864	CD
+
+
+188.6	CD
+26637.00	CD
+0.8562	CD
+
+
+406.2	CD
+273467.00	CD
+0.8701	CD
+
+
+159.5	CD
+21873.00	CD
+0.9975	CD
+
+
+648.0	CD
+975151.00	CD
+0.9174	CD
+
+
+329.9	CD
+398602.00	CD
+0.9993	CD
+
+
+memory	NN
+-LRB-	-LRB-
+kb	NN
+-RRB-	-RRB-
+time	NN
+-LRB-	-LRB-
+ms	NN
+-RRB-	-RRB-
+accuracy	NN
+
+
+104.00	CD
+277.00	CD
+0.9731	CD
+
+
+20	CD
+143.00	CD
+0.6201	CD
+
+
+100	CD
+124.00	CD
+0.6680	CD
+
+
+10.0	CD
+30.00	CD
+0.7255	CD
+
+
+10	CD
+1.68	CD
+0.8735	CD
+
+
+20	CD
+63.00	CD
+0.9991	CD
+
+
+25	CD
+94.00	CD
+0.8864	CD
+
+
+20	CD
+30.00	CD
+0.8562	CD
+
+
+50	CD
+330.00	CD
+0.8570	CD
+
+
+50	CD
+109.00	CD
+0.9915	CD
+
+
+40	CD
+234.00	CD
+0.9029	CD
+
+
+40	CD
+673.00	CD
+0.9998	CD
+
+
+balanced	JJ
+tree	NN
+structure	NN
+.	.
+
+In	IN
+doing	VBG
+so	RB
+,	,
+the	DT
+memory	NN
+cost	NN
+and	CC
+predicting	VBG
+time	NN
+can	MD
+be	VB
+signiï	JJ
+¬	NN
+cantly	RB
+reduced	VBD
+without	IN
+losing	VBG
+much	JJ
+useful	JJ
+information	NN
+for	IN
+prediction	NN
+.	.
+
+-LRB-	-LRB-
+2	LS
+-RRB-	-RRB-
+Compared	VBN
+to	TO
+Local	JJ
+k-NN	NN
+,	,
+L-tree	NN
+can	MD
+achieve	VB
+better	JJR
+predicting	VBG
+accuracy	NN
+and	CC
+eï	NN
+¬	NN
+ƒciency	NN
+given	VBN
+the	DT
+same	JJ
+memory	NN
+consumption	NN
+.	.
+
+This	DT
+is	VBZ
+because	IN
+L-tree	JJ
+maintains	VBZ
+more	JJR
+information	NN
+for	IN
+prediction	NN
+than	IN
+local	JJ
+k-NN	NN
+.	.
+
+In	IN
+addition	NN
+,	,
+by	IN
+using	VBG
+a	DT
+high-balanced	JJ
+tree	NN
+structure	NN
+,	,
+L-tree	NN
+can	MD
+achieve	VB
+better	JJR
+predicting	VBG
+eï	NN
+¬	NN
+ƒciency	NN
+.	.
+
+
+Table	NNP
+IV	NNP
+and	CC
+Fig.	NNP
+12	CD
+show	VBP
+the	DT
+comparisons	NNS
+between	IN
+L-tree	NN
+,	,
+incremental	JJ
+Decision	NN
+Tree	NN
+,	,
+and	CC
+incremental	JJ
+Naive	JJ
+Bayes	NNS
+learning	VBG
+models	NNS
+.	.
+
+From	IN
+the	DT
+results	NNS
+we	PRP
+can	MD
+observe	VB
+that	DT
+:	:
+-LRB-	-LRB-
+1	LS
+-RRB-	-RRB-
+In	IN
+terms	NNS
+of	IN
+time	NN
+cost	NN
+,	,
+L-tree	NN
+incurs	VBZ
+no	DT
+training	NN
+time	NN
+but	CC
+more	JJR
+predicting	VBG
+time	NN
+.	.
+
+By	IN
+combining	VBG
+training	NN
+and	CC
+predicting	VBG
+time	NN
+together	RB
+,	,
+we	PRP
+can	MD
+see	VB
+that	IN
+L-tree	NN
+is	VBZ
+even	RB
+more	RBR
+eï	JJ
+¬	NN
+ƒcient	NN
+than	IN
+the	DT
+two	CD
+eager	JJ
+learning	VBG
+models	NNS
+.	.
+
+-LRB-	-LRB-
+2	LS
+-RRB-	-RRB-
+In	IN
+terms	NNS
+of	IN
+predicting	VBG
+accuracy	NN
+,	,
+L-tree	JJ
+performed	VBN
+similarly	RB
+to	TO
+the	DT
+eager	JJ
+learning	NN
+models	NNS
+on	IN
+the	DT
+static	JJ
+data	NNS
+sets	NNS
+.	.
+
+L	NN
+-	:
+tree	NN
+did	VBD
+not	RB
+show	VB
+advantage	NN
+over	IN
+eager	JJ
+models	NNS
+in	IN
+these	DT
+experiments	NNS
+because	IN
+the	DT
+datasets	NNS
+did	VBD
+not	RB
+exhibit	VB
+signiï	NN
+¬	NN
+cant	JJ
+concept	NN
+drifting	VBG
+.	.
+
+As	IN
+shown	VBN
+in	IN
+Fig.	NNP
+12	CD
+,	,
+on	IN
+the	DT
+synthetic	JJ
+data	NNS
+streams	NNS
+that	WDT
+exhibit	VBP
+signiï	NN
+¬	CD
+cant	JJ
+concept	NN
+drifting	VBG
+and	CC
+complex	JJ
+decision	NN
+boundaries	NNS
+,	,
+L-tree	JJ
+outperformed	VBD
+the	DT
+eager	JJ
+learning	NN
+models	NNS
+because	IN
+it	PRP
+adapts	VBZ
+faster	JJR
+to	TO
+the	DT
+drifting	VBG
+concepts	NNS
+in	IN
+data	NNS
+streams	NNS
+.	.
+
+
+In	IN
+summary	NN
+,	,
+the	DT
+proposed	VBN
+L-tree	NN
+approach	NN
+enables	VBZ
+fast	JJ
+lazy	JJ
+learning	NN
+on	IN
+data	NNS
+streams	NNS
+by	IN
+signiï	NN
+¬	NN
+cantly	RB
+reducing	VBG
+pre	JJ
+-	:
+dicting	NN
+time	NN
+and	CC
+memory	NN
+consumption	NN
+.	.
+
+Moreover	RB
+,	,
+compared	VBN
+to	TO
+eager	JJ
+learners	NNS
+,	,
+lazy	JJ
+learning	NN
+can	MD
+achieve	VB
+better	JJR
+predicting	VBG
+accuracy	NN
+for	IN
+concept	NN
+drifting	VBG
+data	NNS
+streams	NNS
+.	.
+
+
+VI	NNP
+.	.
+
+RELATED	JJ
+WORK	VBP
+
+
+Eager	JJ
+learning	NN
+and	CC
+lazy	JJ
+learning	NN
+.	.
+
+Decision	NN
+trees	NNS
+-LSB-	-LRB-
+13	CD
+-RSB-	-RRB-
+are	VBP
+typical	JJ
+eager	JJ
+learners	NNS
+and	CC
+k-nearest	NN
+neighbor	NN
+-LRB-	-LRB-
+knn	NN
+-RRB-	-RRB-
+classiï	NN
+¬	CD
+ers	NNPS
+-LSB-	-LRB-
+7	CD
+-RSB-	-RRB-
+exemplify	VB
+the	DT
+simplest	JJS
+form	NN
+of	IN
+lazy	JJ
+learners	NNS
+.	.
+
+The	DT
+distinguishing	JJ
+characteristics	NNS
+of	IN
+eager	JJ
+and	CC
+lazy	JJ
+learners	NNS
+were	VBD
+identiï	NN
+¬	CD
+ed	VBN
+in	IN
+-LSB-	-LRB-
+3	CD
+-RSB-	-RRB-
+.	.
+
+Eager	JJ
+learners	NNS
+are	VBP
+model-based	JJ
+and	CC
+parametric	JJ
+,	,
+where	WRB
+the	DT
+training	NN
+data	NNS
+are	VBP
+greedily	RB
+compiled	VBN
+into	IN
+a	DT
+concise	JJ
+hypothesis	NN
+-LRB-	-LRB-
+model	NN
+-RRB-	-RRB-
+and	CC
+then	RB
+completely	RB
+dis	SYM
+-	:
+carded	VBN
+.	.
+
+Lazy	JJ
+learners	NNS
+are	VBP
+instance-based	JJ
+and	CC
+non-parametric	JJ
+,	,
+
+
+Local	JJ
+k-NN	NN
+
+
+L-tree	JJ
+k-NN	NN
+memory	NN
+-LRB-	-LRB-
+kb	NN
+-RRB-	-RRB-
+time	NN
+-LRB-	-LRB-
+ms	NN
+-RRB-	-RRB-
+accuracy	NN
+
+
+91	CD
+65.53	CD
+0.9902	CD
+
+
+91	CD
+52.68	CD
+0.6903	CD
+
+
+91	CD
+22.68	CD
+0.7135	CD
+
+
+9.7	CD
+8.00	CD
+0.7391	CD
+
+
+9	CD
+0.30	CD
+0.8928	CD
+
+
+17	CD
+12.00	CD
+0.9991	CD
+
+
+21	CD
+29.00	CD
+0.8864	CD
+
+
+16	CD
+2.50	CD
+0.8562	CD
+
+
+46	CD
+22.27	CD
+0.8663	CD
+
+
+46	CD
+20.09	CD
+0.9918	CD
+
+
+37	CD
+18.90	CD
+0.9489	CD
+
+
+37	CD
+26.99	CD
+0.9998	CD
+
+
+where	WRB
+the	DT
+training	NN
+data	NNS
+are	VBP
+simply	RB
+stored	VBN
+in	IN
+memory	NN
+and	CC
+the	DT
+inductive	JJ
+process	NN
+is	VBZ
+deferred	VBN
+until	IN
+a	DT
+query	NN
+is	VBZ
+given	VBN
+.	.
+
+Obvi	SYM
+-	:
+ously	RB
+,	,
+lazy	JJ
+learners	NNS
+incur	VBP
+lower	JJR
+computational	JJ
+costs	NNS
+during	IN
+training	NN
+but	CC
+much	RB
+higher	JJR
+costs	NNS
+in	IN
+answering	VBG
+queries	NNS
+also	RB
+with	IN
+greater	JJR
+storage	NN
+requirements	NNS
+,	,
+not	RB
+scaling	VBG
+well	RB
+to	TO
+large	JJ
+datasets	NNS
+.	.
+
+However	RB
+,	,
+by	IN
+retraining	VBG
+all	PDT
+the	DT
+training	NN
+data	NNS
+,	,
+lazy	JJ
+learners	NNS
+do	VBP
+not	RB
+lose	VB
+information	NN
+in	IN
+the	DT
+training	NN
+data	NNS
+,	,
+which	WDT
+make	VBP
+them	PRP
+capable	JJ
+of	IN
+quickly	RB
+adapting	VBG
+to	TO
+the	DT
+chancing	VBG
+data	NNS
+distributions	NNS
+in	IN
+dynamic	JJ
+learning	NN
+environments	NNS
+,	,
+such	JJ
+as	IN
+data	NNS
+streams	NNS
+.	.
+
+On	IN
+the	DT
+other	JJ
+hand	NN
+,	,
+for	IN
+lazy	JJ
+learning	NN
+,	,
+a	DT
+prediction	NN
+model	NN
+is	VBZ
+built	VBN
+for	IN
+each	DT
+individual	JJ
+test	NN
+record	NN
+.	.
+
+As	IN
+a	DT
+result	NN
+,	,
+the	DT
+decision	NN
+is	VBZ
+customized	VBN
+according	VBG
+to	TO
+the	DT
+data	NNS
+characteristics	NNS
+of	IN
+each	DT
+test	NN
+record	NN
+.	.
+
+In	IN
+concept	NN
+drifting	VBG
+environments	NNS
+,	,
+if	IN
+data	NNS
+distributions	NNS
+or	CC
+concepts	NNS
+drift	VBP
+rapidly	RB
+,	,
+lazy	JJ
+learning	NN
+has	VBZ
+the	DT
+advantage	NN
+of	IN
+relying	VBG
+on	IN
+the	DT
+loci	NNS
+of	IN
+each	DT
+test	NN
+example	NN
+to	TO
+derive	VB
+decision	NN
+models	NNS
+and	CC
+outperform	JJ
+global	JJ
+models	NNS
+.	.
+
+Data	NNP
+stream	NN
+classiï	NN
+¬	CD
+cation	NN
+.	.
+
+Data	NNP
+stream	NN
+classiï	NN
+¬	CD
+cation	NN
+-LSB-	-LRB-
+1	CD
+-RSB-	-RRB-
+has	VBZ
+vast	JJ
+real-world	JJ
+applications	NNS
+,	,
+which	WDT
+are	VBP
+usually	RB
+time	NN
+-	:
+critical	JJ
+and	CC
+require	VBP
+fast	JJ
+predictions	NNS
+.	.
+
+Many	JJ
+sophisticated	JJ
+learning	NN
+methods	NNS
+have	VBP
+been	VBN
+proposed	VBN
+,	,
+such	JJ
+as	IN
+incremental	JJ
+learning	NN
+-LSB-	-LRB-
+8	CD
+-RSB-	-RRB-
+and	CC
+ensemble	NN
+learning	NN
+-LSB-	-LRB-
+12	CD
+-RSB-	-RRB-
+.	.
+
+These	DT
+methods	NNS
+be	VB
+-	:
+long	RB
+to	TO
+the	DT
+eager	JJ
+learning	NN
+category	NN
+,	,
+which	WDT
+aims	VBZ
+at	IN
+building	VBG
+a	DT
+global	JJ
+model	NN
+from	IN
+historical	JJ
+stream	NN
+data	NNS
+for	IN
+prediction	NN
+.	.
+
+Our	PRP$
+work	NN
+diï	NN
+¬	CD
+$	$
+ers	NNPS
+from	IN
+existing	VBG
+approaches	NNS
+in	IN
+that	DT
+we	PRP
+propose	VBP
+and	CC
+study	VBP
+lazy	JJ
+learning	NN
+for	IN
+data	NNS
+stream	NN
+classiï	NN
+¬	CD
+cation	NN
+.	.
+
+K-NN	NN
+query	NN
+on	IN
+data	NNS
+streams	NNS
+.	.
+
+A	DT
+number	NN
+of	IN
+k-NN	NN
+query	NN
+methods	NNS
+on	IN
+data	NNS
+streams	NNS
+have	VBP
+been	VBN
+proposed	VBN
+with	IN
+focus	NN
+on	IN
+various	JJ
+types	NNS
+of	IN
+data	NNS
+,	,
+such	JJ
+as	IN
+relational	JJ
+data	NNS
+,	,
+uncertain	JJ
+data	NNS
+,	,
+semi-structured	JJ
+data	NNS
+,	,
+spatial	JJ
+data	NNS
+,	,
+fuzzy	JJ
+data	NNS
+,	,
+and	CC
+time	NN
+series	NN
+data	NNS
+-LSB-	-LRB-
+18	CD
+-RSB-	-RRB-
+,	,
+-LSB-	-LRB-
+16	CD
+-RSB-	-RRB-
+.	.
+
+Our	PRP$
+work	NN
+diï	NN
+¬	CD
+$	$
+ers	NNPS
+from	IN
+theirs	PRP
+in	IN
+two	CD
+ways	NNS
+.	.
+
+First	RB
+,	,
+we	PRP
+query	VBP
+data	NNS
+streams	NNS
+for	IN
+classiï	NN
+¬	CD
+cation	NN
+purposes	NNS
+while	IN
+they	PRP
+do	VBP
+not	RB
+.	.
+
+Second	RB
+,	,
+existing	VBG
+k-NN	NN
+query	NN
+methods	NNS
+on	IN
+data	NNS
+streams	NNS
+use	VBP
+a	DT
+sliding	VBG
+window	NN
+to	TO
+reduce	VB
+the	DT
+query	NN
+space	NN
+for	IN
+eï	NN
+¬	NN
+ƒciency	NN
+,	,
+which	WDT
+can	MD
+be	VB
+considered	VBN
+as	IN
+local	JJ
+k-NN	NN
+.	.
+
+In	IN
+contrast	NN
+,	,
+we	PRP
+maintain	VBP
+high-level	JJ
+compact	JJ
+summaries	NNS
+of	IN
+stream	NN
+records	NNS
+,	,
+which	WDT
+is	VBZ
+an	DT
+approximation	NN
+of	IN
+global	JJ
+k-NN	NN
+on	IN
+data	NNS
+streams	NNS
+.	.
+
+
+Indexing	NN
+techniques	NNS
+on	IN
+databases	NNS
+.	.
+
+k-NN	NN
+query	NN
+on	IN
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+9	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+Table	NNP
+IV	CD
+
+
+COMPARISONS	NNS
+AMONG	IN
+DIFFERENT	JJ
+LEARNING	VBG
+ALGORITHMS	NNS
+
+
+Data	NNS
+
+
+kddcup99	NN
+sensor	NN
+powersupply	RB
+Waveform	JJ
+halloï	NN
+¬	CD
+$	$
+ame	JJ
+kr-vs-kp	JJ
+sick	JJ
+hypothyroid	JJ
+mushroom	NN
+splice	NN
+nursery	NN
+musk	NN
+
+
+L-tree	JJ
+k-NN	NN
+train	NN
+-LRB-	-LRB-
+ms	NN
+-RRB-	-RRB-
+test	NN
+-LRB-	-LRB-
+ms	NN
+-RRB-	-RRB-
+accuracy	NN
+
+
+0	CD
+65.53	CD
+0.9902	CD
+
+
+0	CD
+52.68	CD
+0.6903	CD
+
+
+0	CD
+22.68	CD
+0.7135	CD
+
+
+0	CD
+8.00	CD
+0.7391	CD
+
+
+0	CD
+0.30	CD
+0.8928	CD
+
+
+0	CD
+12.00	CD
+0.9991	CD
+
+
+0	CD
+29.00	CD
+0.8864	CD
+
+
+0	CD
+2.50	CD
+0.8562	CD
+
+
+0	CD
+22.27	CD
+0.8663	CD
+
+
+0	CD
+20.09	CD
+0.9918	CD
+
+
+0	CD
+18.90	CD
+0.9489	CD
+
+
+0	CD
+26.99	CD
+0.9998	CD
+
+
+train	NN
+-LRB-	-LRB-
+ms	NN
+-RRB-	-RRB-
+test	NN
+-LRB-	-LRB-
+ms	NN
+-RRB-	-RRB-
+accuracy	NN
+1550.00	CD
+320.00	CD
+0.9961	CD
+1420.00	CD
+460.00	CD
+0.6631	CD
+800.00	CD
+0.00	CD
+0.7116	CD
+529.00	CD
+0.00	CD
+0.6855	CD
+46.00	CD
+0.00	CD
+
+
+16.00	CD
+0.00	CD
+0.9080	CD
+111.00	CD
+15.00	CD
+0.8812	CD
+123.00	CD
+16.00	CD
+
+
+219.00	CD
+16.00	CD
+
+
+76.00	CD
+15.00	CD
+0.9093	CD
+341.00	CD
+47.00	CD
+0.9410	CD
+62.00	CD
+47.00	CD
+0.9105	CD
+
+
+databases	NNS
+has	VBZ
+been	VBN
+extensively	RB
+studied	VBN
+in	IN
+the	DT
+databases	NNS
+community	NN
+.	.
+
+Many	JJ
+eï	NN
+¬	NN
+ƒcient	JJ
+indexing	NN
+and	CC
+hashing	VBG
+techniques	NNS
+have	VBP
+been	VBN
+proposed	VBN
+to	TO
+partition	NN
+the	DT
+query	NN
+space	NN
+and	CC
+achieve	VB
+O	NN
+-LRB-	-LRB-
+log	NN
+-LRB-	-LRB-
+N	NN
+-RRB-	-RRB-
+-RRB-	-RRB-
+query	NN
+time	NN
+.	.
+
+Examples	NNS
+of	IN
+such	JJ
+techniques	NNS
+include	VBP
+k-d	JJ
+tree	NN
+-LSB-	-LRB-
+14	CD
+-RSB-	-RRB-
+,	,
+vp-tree	JJ
+-LSB-	-LRB-
+17	CD
+-RSB-	-RRB-
+,	,
+to	TO
+name	VB
+a	DT
+few	JJ
+.	.
+
+Our	PRP$
+work	NN
+diï	NN
+¬	CD
+$	$
+ers	NNPS
+from	IN
+theirs	PRP
+in	IN
+that	IN
+we	PRP
+index	NN
+dynamically	RB
+changing	VBG
+data	NNS
+streams	NNS
+while	IN
+they	PRP
+index	NN
+static	JJ
+data	NNS
+.	.
+
+
+Data	NNP
+stream	NN
+summarization	NN
+.	.
+
+In	IN
+order	NN
+to	TO
+query	NN
+or	CC
+mine	NN
+stream	NN
+data	NNS
+,	,
+many	JJ
+synopsis	NN
+structures	NNS
+-LSB-	-LRB-
+6	CD
+-RSB-	-RRB-
+exist	VBP
+to	TO
+transform	VB
+large	JJ
+volume	NN
+stream	NN
+data	NNS
+into	IN
+memory-economic	JJ
+compact	JJ
+summaries	NNS
+that	WDT
+can	MD
+be	VB
+rapidly	RB
+updated	VBN
+as	IN
+the	DT
+stream	NN
+records	NNS
+arrive	VBP
+.	.
+
+Typical	JJ
+synopses	NNS
+include	VBP
+sampling	NN
+techniques	NNS
+and	CC
+sketching	VBG
+methods	NNS
+.	.
+
+Our	PRP$
+work	NN
+diï	NN
+¬	CD
+$	$
+ers	NNPS
+from	IN
+theirs	PRP
+in	IN
+that	IN
+we	PRP
+summarize	VBP
+labeled	VBN
+data	NNS
+for	IN
+classiï	NN
+¬	CD
+cation	NN
+purposes	NNS
+.	.
+
+
+VII	NN
+.	.
+
+CONCLUSIONS	NNS
+
+
+Lazy	JJ
+learning	NN
+can	MD
+be	VB
+advantageous	JJ
+in	IN
+dynamic	JJ
+and	CC
+com	NN
+-	:
+plex	IN
+learning	VBG
+environments	NNS
+such	JJ
+as	IN
+data	NNS
+streams	NNS
+.	.
+
+However	RB
+,	,
+due	JJ
+to	TO
+its	PRP$
+high	JJ
+memory	NN
+consumption	NN
+and	CC
+low	JJ
+eï	NN
+¬	NN
+ƒciency	NN
+for	IN
+prediction	NN
+,	,
+lazy	JJ
+learning	NN
+is	VBZ
+not	RB
+favorable	JJ
+for	IN
+stream	NN
+applications	NNS
+where	WRB
+rapid	JJ
+predictions	NNS
+are	VBP
+essential	JJ
+.	.
+
+To	TO
+over	IN
+-	:
+come	VB
+these	DT
+limitations	NNS
+and	CC
+enable	VBP
+fast	JJ
+lazy	JJ
+learning	NN
+for	IN
+data	NNS
+streams	NNS
+,	,
+we	PRP
+proposed	VBD
+a	DT
+novel	JJ
+Lazy-tree	JJ
+indexing	NN
+structure	NN
+that	WDT
+dynamically	RB
+maintains	VBZ
+compact	JJ
+summaries	NNS
+of	IN
+historical	JJ
+stream	NN
+records	NNS
+to	TO
+facilitate	VB
+accurate	JJ
+and	CC
+fast	JJ
+predictions	NNS
+.	.
+
+Experiments	NNS
+and	CC
+comparisons	NNS
+demonstrated	VBD
+the	DT
+performance	NN
+gain	NN
+-LRB-	-LRB-
+in	IN
+terms	NNS
+of	IN
+memory	NN
+consumption	NN
+,	,
+time	NN
+eï	NN
+¬	NN
+ƒciency	NN
+for	IN
+prediction	NN
+,	,
+and	CC
+classiï	NN
+¬	CD
+cation	NN
+accuracies	NNS
+-RRB-	-RRB-
+on	IN
+both	DT
+synthetic	JJ
+and	CC
+real-world	JJ
+data	NNS
+streams	NNS
+.	.
+
+
+There	EX
+are	VBP
+many	JJ
+interesting	JJ
+topics	NNS
+for	IN
+future	JJ
+work	NN
+.	.
+
+For	IN
+ex	FW
+-	:
+ample	JJ
+,	,
+sophisticated	JJ
+class-aware	JJ
+summarization	NN
+techniques	NNS
+-LSB-	-LRB-
+9	CD
+-RSB-	-RRB-
+can	MD
+be	VB
+used	VBN
+to	TO
+generate	VB
+exemplars	NNS
+.	.
+
+As	IN
+another	DT
+example	NN
+,	,
+the	DT
+temporal	JJ
+dimension	NN
+can	MD
+be	VB
+included	VBN
+in	IN
+the	DT
+distance	NN
+computation	NN
+for	IN
+nearest	JJS
+neighbors	NNS
+,	,
+and	CC
+various	JJ
+weighting	NN
+schemes	NNS
+can	MD
+also	RB
+be	VB
+investigated	VBN
+beyond	IN
+the	DT
+basic	JJ
+majority	NN
+voting	NN
+.	.
+
+Last	JJ
+but	CC
+not	RB
+least	JJS
+,	,
+we	PRP
+hope	VBP
+our	PRP$
+study	NN
+can	MD
+help	VB
+unleash	VB
+the	DT
+potential	NN
+of	IN
+lazy	JJ
+learning	NN
+in	IN
+data	NNS
+stream	NN
+classiï	NN
+¬	SYM
+-	:
+cation	NN
+and	CC
+open	VB
+up	RP
+new	JJ
+possibilities	NNS
+for	IN
+tackling	VBG
+the	DT
+inherent	JJ
+problems	NNS
+and	CC
+challenges	NNS
+in	IN
+data	NNS
+stream	NN
+applications	NNS
+.	.
+
+
+Decision	NN
+Tree	NN
+
+
+0.9154	CD
+
+
+0.8907	CD
+0.8969	CD
+
+
+Naive	JJ
+Bayes	NNS
+train	NN
+-LRB-	-LRB-
+ms	NN
+-RRB-	-RRB-
+test	NN
+-LRB-	-LRB-
+ms	NN
+-RRB-	-RRB-
+accuracy	NN
+1210.00	CD
+1126.00	CD
+0.9860	CD
+0.00	CD
+3410.00	CD
+0.7020	CD
+0.00	CD
+147.00	CD
+0.7129	CD
+80.00	CD
+107.00	CD
+0.7609	CD
+0.00	CD
+32.00	CD
+0.8525	CD
+16.00	CD
+31.00	CD
+0.8174	CD
+31.00	CD
+110.00	CD
+0.8376	CD
+0.00	CD
+78.00	CD
+0.8575	CD
+62.00	CD
+47.00	CD
+0.8846	CD
+61.00	CD
+31.00	CD
+0.9451	CD
+95.00	CD
+125.00	CD
+0.8523	CD
+1248.00	CD
+1096.00	CD
+0.8235	CD
+
+
+VIII	CD
+.	.
+
+ACKNOWLEDGEMENTS	NNS
+
+
+This	DT
+research	NN
+was	VBD
+supported	VBN
+by	IN
+the	DT
+National	NNP
+Science	NNP
+Foundation	NNP
+of	IN
+China	NNP
+-LRB-	-LRB-
+NSFC	NNP
+-RRB-	-RRB-
+Grant	NNP
+-LRB-	-LRB-
+61003167	CD
+-RRB-	-RRB-
+,	,
+Basic	NNP
+Research	NNP
+Program	NNP
+of	IN
+China	NNP
+973	CD
+Grant	NNP
+-LRB-	-LRB-
+2007CB311100	NN
+-RRB-	-RRB-
+,	,
+National	NNP
+High	NNP
+Technology	NNP
+Research	NNP
+and	CC
+Development	NNP
+Pro-	NNP
+gram	NN
+of	IN
+China	NNP
+863	CD
+Grant	NNP
+-LRB-	-LRB-
+2011AA010705	NNP
+-RRB-	-RRB-
+,	,
+Texas	NNP
+Norman	NNP
+Hackerman	NNP
+Advanced	NNP
+Research	NNP
+Program	NNP
+Grant	NNP
+-LRB-	-LRB-
+003656	CD
+-	:
+0035-2009	CD
+-RRB-	-RRB-
+,	,
+and	CC
+Australian	NNP
+Research	NNP
+Council	NNP
+-LRB-	-LRB-
+ARC	NNP
+-RRB-	-RRB-
+Future	NNP
+Fellowship	NNP
+Grant	NNP
+-LRB-	-LRB-
+FT100100971	NN
+-RRB-	-RRB-
+.	.
+
+
+REFERENCES	NNS
+
+
+-LSB-	-LRB-
+1	LS
+-RSB-	-RRB-
+C.	FW
+Aggarwal	NNP
+.	.
+
+Data	NNS
+Streams	NNS
+:	:
+Models	NNS
+and	CC
+Algorithms	NNS
+.	.
+
+Springer	NNP
+,	,
+2007	CD
+.	.
+
+-LSB-	-LRB-
+2	CD
+-RSB-	-RRB-
+C.	NNP
+Aggarwal	NNP
+,	,
+J.	NNP
+Han	NNP
+,	,
+J.	NNP
+Wang	NNP
+,	,
+and	CC
+P.	NNP
+Yu	NNP
+.	.
+
+A	DT
+framework	NN
+for	IN
+clustering	NN
+evolving	VBG
+
+
+data	NNS
+streams	NNS
+.	.
+
+In	IN
+Proc	NNP
+.	.
+
+of	IN
+VLDB	NNP
+2003	CD
+.	.
+
+
+-LSB-	-LRB-
+3	CD
+-RSB-	-RRB-
+D.	NNP
+Aha	NNP
+.	.
+
+Lazy	JJ
+learning	NN
+.	.
+
+Artif	FW
+.	.
+
+Intell	NNP
+.	.
+
+Rev.	NNP
+,	,
+7:7	CD
+â	NN
+$	$
+``	``
+10	CD
+,	,
+1997	CD
+.	.
+
+
+-LSB-	-LRB-
+4	LS
+-RSB-	-RRB-
+A.	NN
+Asuncion	NNP
+and	CC
+D.	NNP
+Newman	NNP
+.	.
+
+UCI	NNP
+Machine	NNP
+Learning	NNP
+Repository	NNP
+.	.
+
+Irvine	NNP
+,	,
+CA	NNP
+,	,
+
+
+2007	CD
+.	.
+
+
+-LSB-	-LRB-
+5	CD
+-RSB-	-RRB-
+P.	NNP
+Ciaccia	NNP
+,	,
+M.	NNP
+Patella	NNP
+,	,
+and	CC
+P.	NNP
+Zezula	NNP
+.	.
+
+M-tree	NN
+an	DT
+eï	NN
+¬	NN
+ƒcient	JJ
+access	NN
+method	NN
+for	IN
+
+
+similarity	NN
+search	NN
+in	IN
+metric	JJ
+spaces	NNS
+.	.
+
+In	IN
+Proc	NNP
+.	.
+
+of	IN
+VLDB	NNP
+1997	CD
+.	.
+
+
+-LSB-	-LRB-
+6	CD
+-RSB-	-RRB-
+G.	NNP
+Cormode	NNP
+and	CC
+S.	NNP
+Muthukrishnan	NNP
+.	.
+
+Summarizing	VBG
+and	CC
+mining	VBG
+skewed	JJ
+data	NNS
+
+
+streams	NNS
+.	.
+
+In	IN
+Proc	NNP
+.	.
+
+of	IN
+SDM	NNP
+2005	CD
+.	.
+
+
+-LSB-	-LRB-
+7	CD
+-RSB-	-RRB-
+B.	NNP
+Dasarathy	NNP
+.	.
+
+Nearest	JJS
+neighbor	NN
+-LRB-	-LRB-
+nn	NN
+-RRB-	-RRB-
+norms	NNS
+:	:
+Nn	NN
+pattern	NN
+classiï	NN
+¬	CD
+cation	NN
+techniques	NNS
+.	.
+
+
+IEEE	NNP
+Computer	NNP
+Society	NNP
+Press	NNP
+,	,
+1991	CD
+.	.
+
+
+-LSB-	-LRB-
+8	CD
+-RSB-	-RRB-
+P.	NNP
+Domingos	NNP
+and	CC
+G.	NNP
+Hulten	NNP
+.	.
+
+Mining	NN
+high-speed	JJ
+data	NNS
+streams	NNS
+.	.
+
+In	IN
+Proc	NNP
+.	.
+
+of	IN
+KDD	NNP
+
+
+2000	CD
+.	.
+
+
+-LSB-	-LRB-
+9	CD
+-RSB-	-RRB-
+B.	NNP
+Gao	NNP
+and	CC
+M.	NNP
+Ester	NNP
+.	.
+
+Turning	VBG
+clusters	NNS
+into	IN
+patterns	NNS
+:	:
+Rectangle-based	JJ
+discrimi	NN
+-	:
+
+
+native	JJ
+data	NNS
+description	NN
+.	.
+
+In	IN
+Proc	NNP
+.	.
+
+of	IN
+ICDM	NNP
+2006	CD
+.	.
+
+
+-LSB-	-LRB-
+10	CD
+-RSB-	-RRB-
+J.	NNP
+Gao	NNP
+,	,
+W.	NNP
+Fan	NNP
+,	,
+and	CC
+J.	NNP
+Han	NNP
+.	.
+
+On	IN
+appropriate	JJ
+assumptions	NNS
+to	TO
+mine	JJ
+data	NNS
+streams	NNS
+:	:
+
+
+analysis	NN
+and	CC
+practice	NN
+.	.
+
+In	IN
+Proc	NNP
+.	.
+
+of	IN
+ICDM	NNP
+2007	CD
+.	.
+
+
+-LSB-	-LRB-
+11	CD
+-RSB-	-RRB-
+I.	NNP
+Hendrickx	NNP
+.	.
+
+Hybrid	NN
+algorithms	NNS
+with	IN
+instant-based	JJ
+classiï	NN
+¬	NN
+cation	NN
+.	.
+
+In	IN
+Proc	NNP
+.	.
+
+of	IN
+
+
+ECML	NNP
+PKDD	NNP
+2005	CD
+.	.
+
+
+-LSB-	-LRB-
+12	CD
+-RSB-	-RRB-
+H.Wang	NNP
+,	,
+W.	NNP
+Fan	NNP
+,	,
+P.	NNP
+Yu	NNP
+,	,
+and	CC
+J.	NNP
+Han	NNP
+.	.
+
+Mining	NN
+concept-drifting	JJ
+data	NNS
+streams	NNS
+using	VBG
+
+
+ensemble	NN
+classiï	NN
+¬	CD
+ers	NNPS
+.	.
+
+In	IN
+Proc	NNP
+.	.
+
+of	IN
+KDD	NNP
+2003	CD
+.	.
+
+
+-LSB-	-LRB-
+13	CD
+-RSB-	-RRB-
+R.	NNP
+O.	NNP
+L.	NNP
+Breiman	NNP
+,	,
+J.H.	NNP
+Friedman	NNP
+and	CC
+C.	NNP
+Stone	NNP
+.	.
+
+Classiï	NNP
+¬	CD
+cation	NN
+and	CC
+regression	NN
+
+
+trees	NNS
+.	.
+
+Belmont	NNP
+,	,
+CA	NNP
+:	:
+Wadsworth	NNP
+International	NNP
+Group	NNP
+,	,
+1984	CD
+.	.
+
+
+-LSB-	-LRB-
+14	CD
+-RSB-	-RRB-
+D.	NNP
+Lee	NNP
+and	CC
+C.	NNP
+Wong	NNP
+.	.
+
+Worst-case	JJ
+analysis	NN
+for	IN
+region	NN
+and	CC
+partial	JJ
+region	NN
+
+
+searches	NNS
+in	IN
+multidimensional	JJ
+binary	JJ
+search	NN
+trees	NNS
+and	CC
+balanced	JJ
+quad	NN
+trees	NNS
+.	.
+
+Acta	NNP
+
+
+Informatica	NNP
+,	,
+1977	CD
+.	.
+
+
+-LSB-	-LRB-
+15	CD
+-RSB-	-RRB-
+A.	NN
+Tsymbal	NNP
+.	.
+
+The	DT
+problem	NN
+of	IN
+concept	NN
+drift	NN
+:	:
+Deï	NN
+¬	NN
+nitions	NNS
+and	CC
+related	JJ
+work	NN
+.	.
+
+2004	CD
+.	.
+
+-LSB-	-LRB-
+16	CD
+-RSB-	-RRB-
+D.	NNP
+P.	NNP
+Y.	NNP
+Tao	NNP
+and	CC
+Q.	NNP
+Shen	NNP
+.	.
+
+Continuous	JJ
+nearest	JJS
+neighbor	NN
+search	NN
+.	.
+
+In	IN
+Proc	NNP
+.	.
+
+of	IN
+
+
+VLDB	NNP
+2002	CD
+.	.
+
+
+-LSB-	-LRB-
+17	CD
+-RSB-	-RRB-
+P.	NNP
+Yianilos	NNP
+.	.
+
+Data	NNS
+structures	NNS
+and	CC
+algorithms	NNS
+for	IN
+nearest	JJS
+neighbor	NN
+search	NN
+in	IN
+general	JJ
+
+
+metric	JJ
+spaces	NNS
+.	.
+
+In	IN
+Proc	NNP
+.	.
+
+of	IN
+ACM-SIAM	NNP
+Symposium	NNP
+on	IN
+Discrete	NNP
+algorithms	NNS
+,	,
+1993	CD
+.	.
+
+-LSB-	-LRB-
+18	CD
+-RSB-	-RRB-
+K.	NNP
+Zhang	NNP
+,	,
+P.	NNP
+Fung	NNP
+,	,
+and	CC
+X.	NNP
+Zhou	NNP
+.	.
+
+K-nearest	JJ
+neighbor	NN
+search	NN
+for	IN
+fuzzy	JJ
+objects	NNS
+.	.
+
+
+In	IN
+Proc	NNP
+.	.
+
+of	IN
+SIGMOD	NNP
+2010	CD
+.	.
+
+
+-LSB-	-LRB-
+19	CD
+-RSB-	-RRB-
+P.	NNP
+Zhang	NNP
+,	,
+X.	NNP
+Zhu	NNP
+,	,
+J.	NNP
+Tan	NNP
+,	,
+and	CC
+L.	NNP
+Guo	NNP
+.	.
+
+Classiï	NNP
+¬	CD
+er	NN
+and	CC
+cluster	NN
+ensembles	NNS
+for	IN
+
+
+mining	NN
+concept	NN
+drifting	VBG
+data	NNS
+streams	NNS
+.	.
+
+In	IN
+Proc	NNP
+.	.
+
+of	IN
+IEEE	NNP
+ICDM	NNP
+2010	CD
+.	.
+
+-LSB-	-LRB-
+20	CD
+-RSB-	-RRB-
+P.	NNP
+Zhang	NNP
+,	,
+X.	NNP
+Zhu	NNP
+,	,
+Y.	NNP
+Shi	NNP
+,	,
+L.	NNP
+Guo	NNP
+,	,
+and	CC
+X.	NNP
+Wu	NNP
+.	.
+
+Robust	JJ
+Ensemble	NNP
+Learning	NNP
+for	IN
+
+
+Mining	NN
+Noisy	NNP
+Data	NNP
+Streams	NNP
+.	.
+
+Decision	NN
+Support	NN
+Systems	NNPS
+,	,
+Vol	NNP
+.50	CD
+-LRB-	-LRB-
+2	CD
+-RRB-	-RRB-
+,	,
+2011	CD
+.	.
+
+-LSB-	-LRB-
+21	CD
+-RSB-	-RRB-
+P.	NNP
+Zhang	NNP
+,	,
+J.	NNP
+Li	NNP
+,	,
+P.	NNP
+Wang	NNP
+,	,
+B.	NNP
+Gao	NNP
+,	,
+X.	NNP
+Zhu	NNP
+,	,
+and	CC
+L.	NNP
+Guo	NNP
+.	.
+
+Enabling	VBG
+Fast	JJ
+Prediction	NN
+
+
+for	IN
+Ensemble	NNP
+Models	NNS
+on	IN
+Data	NNS
+Streams	NNS
+.	.
+
+In	IN
+Proc	NNP
+.	.
+
+of	IN
+KDD	NNP
+2011	CD
+.	.
+
+
+-LSB-	-LRB-
+22	CD
+-RSB-	-RRB-
+X.	NNP
+Zhu	NNP
+.	.
+
+Stream	NNP
+data	NNS
+mining	NN
+repository	NN
+.	.
+
+Available	JJ
+online	NN
+:	:
+http://cse.fau.edu/	NN
+
+
+âˆ	NN
+1/4	CD
+xqzhu/stream	NN
+.	.
+
+html	NN
+,	,
+2010	CD
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+10	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+

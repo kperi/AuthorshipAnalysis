@@ -1,0 +1,618 @@
+﻿Joint Cluster Analysis of Attribute Data and Relationship Data: 
+the Connected k-Center Problem 
+Martin Ester, Rong Ge, Byron J. Gao, Zengjian Hu, Boaz Ben-Moshe School of Computing Science, Simon Fraser University, Canada, V5A 1S6 
+{ester, rge, bgao, zhu, benmoshe}@cs.sfu.ca 
+Abstract 
+Attribute data and relationship data are two principle types of data, representing the intrinsic and extrinsic properties of entities. While attribute data has been the main source of data for cluster analysis, relation- ship data such as social networks or metabolic networks are becoming increasingly available. It is also common to observe both data types carry orthogonal informa- tion such as in market segmentation and community identi?cation, which calls for a joint cluster analysis of both data types so as to achieve more accurate results. For this purpose, we introduce the novel Connected k- Center problem, taking into account attribute data as well as relationship data. We analyze the complexity of this problem and prove its NP-completeness. We also present a constant factor approximation algorithm, based on which we further design NetScan, a heuristic algorithm that is e?cient for large, real databases. Our experimental evaluation demonstrates the meaningful- ness and accuracy of the NetScan results. 
+1 Introduction 
+Entities can be described by two principal types of data: attribute data and relationship data. Attribute data describe intrinsic characteristics of entities whereas relationship data represent extrinsic in?uences among entities. By entities we mean corporeal or intangible objects of study interest that have distinctions, such as humans, organizations, products, or events. An entity holds endogenous properties and at the same time bears relations to other entities. 
+While attribute data continue to be the standard and dominant data source in data analysis applications, more and more relationship data are becoming available due to computerized automation of data probing, collec- tion, and compiling procedures. Among them, to name a few, are acquaintance and collaboration networks as social networks, and ecological, neural and metabolic networks as biological networks. Consequently, network analysis [26, 23, 27] has been gaining popularity in the study of marketing, community identi?cation, epidemi- 
+ology, molecular biology and so on. 
+The two types of data, attribute data and relation- ship data, can be more or less related. A certain re- lation between entity A and B may imply some com- mon attributes they share; on the other hand, similar attributes of A and B may suggest a relation of some kind between them with high probability. If the de- pendency between attribute data and relationship data is high enough such that one can be soundly deducted from or closely approximated by the other, a separate analysis on either is su?cient. For example, the classical facility location problem [24] only manipulates locations (attributes) since the Euclidean distance between A and B can be used to well approximate their reachability via route connections (relationships). 
+On the other hand, often relationship data contains information that is independent from the attributes of entities. For example, two persons may share many characteristics in common but they never get to know each other; or in contrast, even with totally di?erent demographics, they may happen to become good ac- quaintances. Due to rapid technological advances, the mobility and communication of humans have tremen- dously improved. As a consequence, the formation of social networks is slipping the leash of con?ning at- tributes. The small world phenomenon, as a consensus observation, has received voluminous cross-discipline at- tention [19]. 
+The unprecedented availability of relationship data carrying important additional information beyond at- tribute data calls for joint analysis of both. Cluster analysis, one of the major tools in exploratory data anal- ysis, has been investigated for decades in multiple dis- ciplines such as statistics, machine learning, algorithm, and data mining. Varied clustering problems have been studied driven by numerous applications including pat- tern recognition, information retrieval, market segmen- tation and gene expression pro?le analysis, and emerg- ing applications continue to inspire novel cluster models with new algorithmic challenges. The task of clustering is to group entities into clusters that exhibit internal co- 
+Downloaded 07/10/14 to 147.26.103.71. Redistribution subject to SIAM license or copyright; see http://www.siam.org/journals/ojsa.php 
+
+========1========
+
+hesion and external isolation. Given both attribute data and relationship data, it is intuitive to require clusters to be cohesive (within clusters) and distinctive (between clusters) in both ways. 
+As a new clustering model taking into account at- tribute and relationship data, we introduce and study the Connected k-Center (CkC) problem; i.e., the k- Center problem with the constraint of internal connect- edness. The internal connectedness constraint requires that any two entities in a cluster are connected by an internal path, i.e., a path via entities only from the same cluster. The k-Center problem, as a classical clustering problem, has been intensively studied in the algorithms community from a theoretical perspective. The problem is to determine k cluster heads (centers) such that the maximum distance of any entity to its closest cluster head, the radius of the cluster, is minimized. 
+Motivating applications: The CkC problem can be motivated by market segmentation, community identi- ?cation, and many other applications such as document clustering, epidemic control, and gene expression pro?le analysis. In the following, we further discuss the ?rst two applications. 
+Market segmentation divides a market into distinct customer groups with homogeneous needs, such that ?rms can target groups e?ectively and allocate resources e?ciently, as customers in the same segment are likely to respond similarly to a given marketing strategy. Tra- ditional segmentation methods were based on attribute data only such as demographics (age, sex, ethnicity, in- come, education, religion and etc.) and psychographic pro?les (lifestyle, personality, motives and etc.). Re- cently, social networks have become more and more im- portant in marketing [16]. Ideas and behaviors are con- tagious. The relations in networks are channels and con- duits through which resources ?ow [16]. Customers can hardly hear companies but they listen to their friends; customers are skeptical but they trust their friends [27]. By word-of-mouth propagation, a group of customers with similar attributes have much more chances to be- come like-minded. Depending on the nature of the market, social relations can even become vital in form- ing segments, and purchasing intentions or decisions may rely on customer-to-customer contacts to di?use throughout a segment, for example, for cautious clients of risky cosmetic surgery or parsimonious purchasers of complicated scienti?c instruments. The CkC problem naturally models such scenarios: a customer is assigned to a market segment only if he has similar purchasing preferences (attributes) to the segment representative (cluster center) and can be reached by propagation from customers of similar interest in the segment. 
+Community identi?cation is one of the major so- cial network analysis tasks, and graph-based cluster- ing methods have been the standard tool for this pur- pose [26]. In this application, clustering has generally been performed on relationship (network) data solely. Yet it is intuitive [23, 13] that attribute data can im- pact community formation in a signi?cant manner. For example, given a scienti?c collaboration network, scien- tists can be separated into di?erent research communi- ties such that community members are not only con- nected (e.g., by co-author relationships) but also share similar research interests. Such information on research interests can be automatically extracted from home- pages and used as attribute data for the CkC prob- lem. As a natural assumption, a community should be at least internally connected with possibly more con- straints on the intensity of connectivity. Note that most graph-based clustering methods used for commu- nity identi?cation in network analysis also return some connected components. 
+Contributions and outline: This paper makes the following contributions: 
+1. We advocate joint cluster analysis of attribute data and relationship data, introduce the novel CkC clustering problem. 
+2. We analyze the complexity of the CkC clustering problem, prove its NP-completeness and present a corresponding 3-approximation algorithm. 
+3. Based on principles derived from the approximation algorithm, we propose a heuristic algorithm NetScan that e?ciently computes a “good” clustering solution. 4. We report results of our experimental evaluation, demonstrating the meaningfulness of the clustering results and the scalability of the NetScan algorithm. 
+The rest of the paper is organized as follows. Re- lated work is reviewed in Section 2. Section 3 introduces the CkC clustering problem and analyzes its complex- ity. In Section 4, we present an approximation algo- rithm for the proposed clustering problem. To provide more scalability, we also present an e?cient heuristic algorithm in Section 5. We report experimental results in Section 6 and conclude the paper in Section 7. 
+Downloaded 07/10/14 to 147.26.103.71. Redistribution subject to SIAM license or copyright; see http://www.siam.org/journals/ojsa.php 
+2 Related Work 
+Theoretical approaches to cluster analysis usually for- mulate clustering as optimization problems, for which rigorous complexity studies are performed and polyno- mial approximation algorithms are provided. Depend- ing on the optimization objective, many clustering prob- lems and their variants have been investigated, such as the k-center and k-median problems for facility lo- 
+
+========2========
+
+Downloaded 07/10/14 to 147.26.103.71. Redistribution subject to SIAM license or copyright; see http://www.siam.org/journals/ojsa.php 
+cation [24], the min-diameter problem [7], and so on. In the areas of statistics, machine learning, and data mining, clustering research emphasizes more on real life applications and development of e?cient and scalable algorithms. Clustering algorithms can be roughly cate- gorized [12] into partitioning methods such as k-means [20], k-medoids [19], and CLARANS [22], hierarchical methods such as AGNES and DIANA [19], and density- based methods such as DBSCAN [10] and OPTICS [1]. The above methods generally take into account only at- tribute data. 
+We also summarize some theoretical results on the k-center problem that are related to our theoretical analysis. It is well known that both the k-center and Euclidean k-center problem is NP-Complete for d = 2 when k is part of the input [21]. Besides, in the case of d = 1, the Euclidean k-center problem is polynomially solvable using dynamic programming techniques. Meanwhile, when d = 2, if k is treated as a constant, the k-center problem can also be easily solved by enumerating all the k centers. However, as we will see in section 3, the CkC problem remains NP- Complete even for k = 2 and d = 1. Hence in this sense, the CkC problem is harder than Euclidean k-center. 
+Recently, the increasing availability of relationship data stimulated research on network analysis [26, 23, 13]. Clustering methods for network analysis are mostly graph-based, separating sparsely connected dense sub- graphs from each other as seen in [6]. A good graph clustering should exhibit few between-cluster edges and many within-cluster edges. Graph clustering methods can be applied to data that is originally network data as well as to similarity graphs representing a similarity matrix, i.e., derived from the original attribute data. A similarity graph can be a complete graph as in agglom- erative hierarchical clustering algorithms of single-link, complete link, or average link [17]; or incomplete retain- ing those edges whose corresponding similarity is above a threshold [11, 14]. CHAMELEON [18] generates edges between a vertex and its k nearest neighbors, which can be considered as relative thresholding. Note that none of the above methods simultaneously considers attribute and relationship data that represent independent infor- mation. 
+Finally, our research is also related to the emerging areas of constraint-based clustering and semi-supervised clustering. Early research in this direction allowed the user to guide the clustering algorithm by constraining cluster properties such as size or aggregate attribute val- ues [25]. More recently, several frameworks have been introduced that represent available domain knowledge in the form of pairwise “must-links” and “cannot-links”. Objects connected by a must-link are supposed to be- 
+long to the same cluster; those with a cannot-link should be assigned to di?erent clusters. [3] proposes a proba- bilistic framework based on Hidden Markov Random Fields, incorporating supervision into k-clustering al- gorithms. [8] also considers additional minimum sepa- ration and minimum connectivity constraints, but they are ultimately translated into must-link and cannot-link constraints. A k-means like algorithm is presented us- ing a novel distance function which penalizes violations of both kinds of constraints. The above two papers are similar to our research in the sense that they also adopt a k-clustering (partitioning) approach under the frame- work of constraint-based clustering. Nevertheless, in semi-supervised clustering, links represent speci?c con- straints on attribute data. They are provided by the user to capture some background knowledge. In our study, links represent relationship data. They are not constraints themselves, but data on which di?erent con- straints can be enforced; e.g., “internally connected” as in this paper. 
+3 Problem De?nition and Complexity Analysis In this section, we introduce the Connected k-Center problem and analyze its complexity. 
+3.1 Preliminaries and problem de?nition. At- tribute data can be represented as an n × m entity- attribute matrix. Based on a chosen similarity mea- sure, pairwise similarities can be calculated to obtain an n × n entity-entity similarity matrix. Sometimes, simi- larity matrixes are transformed into graphic representa- tions, called similarity graphs, with entities as vertices and pairwise similarities, possibly thresholded, as edge weights. Relationship data are usually modeled by net- works comprised of nodes and links, which we call entity networks. In this paper, we concentrate on symmetric binary relations, thereby entity networks can be nat- urally represented as simple graphs with edges (links) as dichotomous variables indicating the presence or ab- sence of a relation of interest such as acquaintance, col- laboration, or transmission of information or diseases. Entity networks can as well be represented by adjacency matrices or incident matrices as graphs in general. 
+Nodes in an entity network do not have meaningful locations. With attribute data available, attributes for each entity can be represented as a coordinate vector and assigned to the corresponding node, resulting in what we call an “informative graph”. Informative graphs, with both attribute data and relationship data embedded, are used as input for our Connected k-Center problem to perform joint cluster analysis. 
+For low dimensional (attribute) data, informative graphs can be directly visualized. For higher dimen- 
+
+========3========
+
+sional data, multidimensional scaling techniques can be invoked to provide such a graphical visualization. These visualizations can intuitively demonstrate the depen- dency and orthogonality of attribute data and relation- ship data. In the former case, the visualizations exhibit relatively short edges only, as shown in Figure 1 (a); in the latter case, the visualizations exhibit randomness in terms of edge length, as shown in Figure 1 (b). 
+(a) dependency 
+(b) orthogonality 
+Figure 1: Attribute data and relationship data. 
+In this paper, the terms “vertex” and “node” are used interchangeably, so are “edge” and “link”. In the following sections, “graph” will refer to “informative graph” since we always consider two data types simul- taneously. 
+Now we introduce the decision version of the CkC(Connected k-Center) problem, for constant k = 2 and d = 1, where d is the dimensionality. 
+Definition 3.1. (CkC problem) Given k as the num- ber of centers, a radius constraint r ? R+, a dis- tance function || · || and a graph G = (V, E) where every node in V is associated with a coordinate vector w : V ? Rd. Decide whether there exist disjoint par- titions {V1, . . . , Vk} of V , i. e. , V = V1 ? . . . ? Vk and ?1 = i < j = k, Vi n Vj = f, which satisfy the following two conditions: 
+1. The induced subgraphs G[V1], . . . , G[Vk] are con- 
+nected. (internal connectedness constraint) 2. ?1 = i = k, there exists a center node ci ? Vi, 
+such that ?v ? Vi, ||w(v)  w(ci)|| = r. (radius 
+constraint) 
+3.2 Complexity analysis. Due to the similarity of the CkC problem to the traditional k-center problem, it is natural to ask the following question. How much has the traditional k-center problem been changed in terms of hardness after attaching a constraint of internal connectedness? To answer this question, we analyze the complexity of the CkC problem. 
+The formal analysis is rather technical, we precede it with an intuitive explanation. We say a solution (or partitioning) is legal, if all the k partitions (or clusters) are disjoint and the corresponding induced subgraphs are connected. Since k is ?xed as a constant, a naive al- gorithm would enumerate all combinations of k centers, and for each combination, assign remaining nodes to the centers such that both the radius constraint and the in- ternal connectedness constraint are satis?ed. However, we note that there may exist some “articulation” node v which itself can connect to two or more centers within radius r, and v is critical (the only choice) to connect some other nodes to their corresponding centers. In a legal partitioning, every articulation node must be as- signed to a unique center. If there are many such artic- ulation nodes, it is di?cult to assign each of them to the right center in order to maintain the linkages for others. Therefore the naive algorithm may fail to determine the speci?ed clustering. Hence, intuitively the CkC prob- lem is hard even for a constant k. In the following, we prove a hardness result for the CkC problem, by a re- duction from 3CNF-SAT. For completeness, we de?ne the 3CNF-SAT problem as follows: 
+Definition 3.2. (3CNF-SAT) Given a set U = {u1, . . . , un} of variables, let C = C1 ? C2 ? . . . ? Cm be an instance of 3CNF-SAT. Each Ci contains three literals 
+Ci = l1i ? l2i ? l3i, 
+where each literal lxi , x = 1,2,3, is a variable or negated variable. Decide whether there is a truth assignment of U which satis?es every clauses of C. 
+Intuitively, the problem is to check whether the in- put graph can be divided into k connected components, such that every component is a cluster with radius less than or equal to r, i. e. , in each cluster, there exists a center node c and all the remaining nodes are within distance r to c. 
+We assume the given graph is connected which is reasonable for many application scenarios, such as social networks which are normally considered to be connected. Even if the entire graph is not connected, the problem can be applied to its di?erent connected components. 
+Theorem 3.1. For any k = 2 and d = 1, the CkC problem is NP-Complete. 
+Downloaded 07/10/14 to 147.26.103.71. Redistribution subject to SIAM license or copyright; see http://www.siam.org/journals/ojsa.php 
+Proof. We only show the case for k = 2 and d = 1, the same proof can be easily extended to larger k and d. First we prove C2C is in NP. We can nondeterministically guess a partitioning of a graph G and pick a node as center from each partition. For each partition, we can deterministically check if it is valid by traversing the corresponding subgraph to verify both the connectedness and radius constraints. 
+Next, we perform a reduction from 3CNF-SAT to show the NP-hardness. Denote L = {u1,u1,. . . , un,un} to be the set of literals. For any 3CNF-SAT instance 
+
+========4========
+
+C = C1 ? C2 ? ... ? Cm, we construct an instance of C2C f(I) = (G, w, r), where G = (V, E) is a graph, w : V ? R is a function which assigns a coordinate vector to each node, r ? R+ is the radius constraint, by the following procedure: 
+a1 
+b1 
+a2 
+b2 
+... 
+an 
+bn 
+C...1 Cm 
+u1 
+u1 
+u2 
+u2... 
+un 
+un 
+1. First, we create a set of nodes V = P?L?C?A?B. 
+P = {p0, p1} where p0, p1 are two center nodes; L, 
+C are the sets of literals and clauses respectively; 
+A = {a1, . . . , an} and B = {b1, . . . , bn} are two 
+sets of nodes introduced only for the purpose of 
+reduction. In the following, we shall refer to the 
+cluster including node p0 (or p1) as V0 (or V1, resp.). 
+p0 
+p1 
+Figure 2: The constructed graph G. 
+0 
+r 
+2r 3r 
+4r 
+b1 ... 
+p0 
+u   , u 1 
+_ 
+1 ... u   , un 
+_ 
+n 
+p1 
+a...1 
+C...1 
+2. Next, we link the nodes created in step 1. First, we 
+connect p0 and p1 with every node in L. Second, 
+for every literal l ? L and clause Ci ? C, we link 
+l and Ci if l ? Ci. Finally, ?i ? {1,2, . . . , n}, we 
+link each of ai and bi with each of ui and ui. Refer 
+to Figure 2 for a visualization of graph G. Note 
+that every node in A, B, C can only connect to the 
+center nodes p0 and p1 via some node in L, hence 
+the nodes in L are articulation nodes. 
+Now, we assign each node in V a carefully chosen 
+coordinate such that each node of A, B, C is within 
+distance r to one unique center node p0 or p1. Note 
+in order to have a legal partitioning, every articula- 
+tion node in L must be assigned to an appropriate 
+center (cluster). For the reduction, we associate a 
+truth value (true or false) to each cluster; accord- 
+ingly, the allocations of these articulation nodes can 
+then be transferred back to a truth assignment for 
+the input 3CNF-SAT instance I. Besides, we need 
+to guarantee that the truth assignment we get for 
+I is proper, i.e., ?i ? {1,2, . . . , n}, node ui and ui 
+belong to di?erent clusters. Node sets A and B are 
+two gadgets introduced for this purpose. 
+bn 
+an 
+Cm 
+Figure 3: Deployment of nodes on the line. 
+“?”: If f(I) = (G, w, r) has a legal partitioning, we can have the following simple observations: 
+Observation 3.1. 
+1. Both p0 and p1 must be selected as centers, other- 
+wise some node can not be reached within r. 2. For the same reason, each node in A and C must 
+be assigned to cluster V1 and each node in B must 
+be assigned to V0. 
+3. For any i ? {1, . . . , n}, node ui and ui can not be 
+in the same cluster. If node ui and ui are both 
+assigned to cluster V0 (or V1), some node in A (or 
+B) is not able to connect to p1 (or p0). 
+4. For each clause Ci ? C, there must be at least one 
+literal assigned to cluster V1; otherwise Ci will be 
+disconnected from p1. 
+3. Finally, we simply set an arbitrary positive value 
+to r and assign each node v ? V a coordinate as 
+follows: 
+?? 
+?? 
+0, if v ? B; 
+?? 
+r, if v = p0; 
+w(v) = 
+? 
+2r, if v ? L; 
+??? 
+? 
+3r, if v = p1; 
+4r, if v ? A ? C. 
+We construct a satisfying assignment for I as fol- lows. For each variable ui ? U, if ui is assigned to V1, set ui to be true, otherwise false. Note by Observa- tion 3.1.3, ui and ui are always assigned with di?erent values, hence the assignment is proper. Moreover, the assignment satis?es I since, by Observation 3.1.4, all the clauses are satis?ed. 
+“?”: If I is satis?able, we construct a partitioning {V0, V1} as follows. 
+V0 = B ? {p0} ? {li ? L|li = false}, V1 = V \ V0. 
+Figure 3 illustrates the deployment of nodes on the line. 
+It is easy to verify that the above solution is valid since every node in V is within distance r from one center node, p0 or p1. 
+Downloaded 07/10/14 to 147.26.103.71. Redistribution subject to SIAM license or copyright; see http://www.siam.org/journals/ojsa.php 
+Clearly the above reduction is polynomial. Next, we show that I is satis?able if and only if f(I) = (G, w, r) has a legal partitioning. 
+Finally, we note that the above proof can be easily extended to bigger k and d. When k > 2, one can always 
+
+========5========
+
+add k  2 isolated nodes (hence each of them must be a center) to graph G and apply the same reduction; when d > 1, one can simply add d  1 dimensions with identical value to the coordinate vector w. 
+The internal connectedness constraint poses new challenges to the traditional k-center problem. Table 1 compares the hardness of these two problems in di?erent settings. 
+k is a constant k is an input, d = 1 k is an input, d > 1 
+Traditional k Center Polynomial Solvable Polynomial Solvable 
+NP-complete 
+CkC NP-complete NP-complete NP-complete 
+Table 1: Complexity results. 
+actually be used to solve the 3CNF-SAT problem. The reduction is similar to the proof of Theorem 3.1. First, for a given 3CNF-SAT instance I, we construct a C2C instance f(I) = (G, w, r) by the same procedure as in the proof of Theorem 3.1. Later, we invoke Algorithm A on the input (G, w, r). 
+Since the coordinates of all nodes are multiples of r, the optimal radius must also be a multiple of r. Hence, if Algorithm A returns a solution smaller than 2r, the optimal radius must be r. By the same argument as in the proof of Theorem 3.1, I is satis?able. Otherwise if Algorithm A returns a solution bigger than or equal to 2r, since Algorithm A is guaranteed to ?nd a solution within (2  o)r, the optimal radius is at least 2r and consequently I is not satis?able. Hence, unless P = NP, the min-CkC problem can not be approximated within 2  o. 
+Remarks: 
+1. Theorem 3.1 also implies that the following sub- 
+problem is NP-hard: Given a set of k centers, as- 
+sign each node to one particular center to obtain k 
+clusters which are all internally connected and the 
+maximum cluster radius is minimized. 
+2. Similar to the CkC problem, one can de?ne the 
+connected k-median and k-means problems. In 
+fact, the proof of Theorem 3.1 can be extended to 
+these problems to show their NP-Completeness. 
+L  e the optimal radius of the above min- et opt b 
+CkC problem. In the following we propose a polynomial algorithm which is guaranteed to ?nd a solution within 3opt. To prove this result, ?rst we remove the constraint of min-CkC that each point must belong to exactly one of the clusters, and de?ne a relaxed problem which we will refer to as min-CkC': 
+4 Approximation Algorithm 
+In this section we consider the min-CkC problem, the corresponding optimization version of CkC and present an approximation algorithm. 
+Definition 4.2. (min-CkC' problem) Given k as the number of clusters, a distance function ||·||, and a graph G = (V, E) where every node in V is associated with a coordinate vector w : V ? Rd. Find the minimum radius constraint r ? R+, such that there exist node sets V1, . . . , Vk ? V , V = V1?. . .?Vk, which satisfy the internal connectedness constraint and radius constraint de?ned in De?nition 3.1. 
+Definition 4.1. (min-CkC problem) Given k as the number of centers, a distance function ||·||, and a graph G = (V, E) where every node in V is associated with a coordinate vector w : V ? Rd. Find the minimum radius r ? R+, such that there exist disjoint partitions {V1, . . . , Vk} of V , i. e. , V = V1 ? . . . ? Vk and ?1 = i < j = k, Vi n Vj = f, which satisfy the internal connectedness constraint and radius constraint de?ned in De?nition 3.1. 
+We ?rst propose a polynomial procedure to solve the min-CkC' problem. Let opt' be the optimal radius of min-CkC'. Clearly opt' = opt since opt is also a feasible solution of min-CkC'. Next we present a procedure to transfer the optimal solution of min-CkC' to a solution of min-CkC with radius at most 3opt'. Combining the two procedures we obtain an algorithm for min-CkC with approximation ratio 3. 
+In the following we prove an inapproximability result for the min-CkC problem, which can be viewed as a corollary of Theorem 3.1. 
+4.1 Solving the min-CkC' problem. To solve the min-CkC' problem, we need the following notion of reachability: 
+Theorem 4.1. For any k = 2, o > 0, the min-CkC problem is not approximable within 2  o unless P = NP. 
+Proof. We only study the case for k = 2. We show, if there is a polynomial algorithm A which is guaranteed to ?nd a feasible solution within (2  o)opt, it can 
+Definition 4.3. Given a graph G = (V, E), for u, v ? V , v is reachable from u (w.r.t. r) if there exists a path u ? s1 ? . . . ? sk ? v, such that s1, . . . , sk ? V , (si, si+1) ? E and ?1 = i = k, ||w(u)  w(si)|| = r. 
+Downloaded 07/10/14 to 147.26.103.71. Redistribution subject to SIAM license or copyright; see http://www.siam.org/journals/ojsa.php 
+Intuitively, v is reachable from u w.r.t. r, if and only if v can be included in the cluster with center u 
+
+========6========
+
+Algorithm 1 A polynomial algorithm for the min- CkC' problem. 
+1: Calculate all pairwise distances of V and store those 
+distance values in set D; 
+2: Sort D in decreasing order; 
+3: for every value d ? D do 
+4: Enumerate all possible k centers; 
+5: for every set of k centers {c1, . . . , ck} ? V do 6: Perform BFS from each center ci and mark all 
+nodes which are reachable from ci w.r.t. d; 7: if all vertices are marked then 
+8: Return d and k clusters; 
+9: end if 
+10: end for 
+11: end for 
+cluster Vi for 1 = i = k. For each iteration 1 = i = k,' 
+line 3 allocates nodes in V 
+i 
+which have not been assigned to any previous clusters V1, . . . , Vi-1 to Vi. Afterwards,' there may still be some unassigned nodes in V 
+i 
+. In line 5, we allocate the unassigned nodes to one of the clusters V1, . . . , Vi-1 from which they are reachable w.r.t. r. 
+vp 
+V1 
+V ’2 
+v’p 
+V ’1 
+c2 
+c1 
+V2 
+and radius r. Clearly it can be decided in polynomial time by performing a breadth ?rst search (BFS) for node v from node u. Based on this, we propose a simple algorithm, Algorithm 1, to solve the min-CkC' problem. Runtime complexity: Note |D| = 
+n 
+2 
+and we enumerate all possible k centers, hence the search space is polynomial, i.e., nk+2. Besides, BFS takes time at most O(n2). Thus Algorithm 1 must terminate in O(nk+4) steps. 
+V 
+3 c3 
+V ’3 
+Figure 4: Demonstration of Algorithm 2. 
+4.2 Back to the min-CkC problem. Let sol' = {V 
+' ' 
+1, . . . , V k} 
+be the clustering found by Algorithm 1 where V 
+' 
+i 
+? V . Note V 
+' ' 
+1, . . . , V k 
+may not be disjoint. We propose the following procedure (Algorithm 2) to determine k disjoint clusters for the min-CkC problem, denoted by sol = {V1, . . . , Vk}. Let c1, . . . , ck be the centers of V1, . . . , Vk. Note that c1, . . . , ck are also the' 
+centers of V 
+' 
+1, . . . , V k. 
+Algorithm 2 is illustrated in Figure 4. The circles with dashed lines represent three initial clusters (with overlapping) V 
+' ' 
+1, V 2 
+and V 
+' 
+3 
+generated by Algorithm 1. Applying Algorithm 2, we obtain three new clusters V1, V2 and V3 that are disjoint (The center nodes do not move). 
+Lemma 4.1. Algorithm 2 is guaranteed to ?nd a solu- tion of the min-CkC problem with maximum radius at most 3opt'. 
+Algorithm 2 3-approximation algorithm for the min- CkC problem. 
+1  rom 1 to : for i f k do 
+2: Vi = f, ci ? c'i; 
+3: Add all nodes reachable w.r.t. r from ci in 
+G[V 
+' 
+i 
+\ ?i-1j=1Vj] to Vi (by performing a BFS from 
+ci in G[V 
+' i-1 
+i 
+\ ? 
+j=1Vj]); 
+ 
+4: for every node v ? ?i-1 
+j=1Vj 
+n V 
+' 
+i 
+do 
+5: Add all nodes reachable w.r.t. r from v in G[V 
+' 
+i 
+] 
+to the cluster of v (by performing a breadth ?rst 
+search from v in G[V 
+' 
+i 
+]); 
+6: end for 
+7: end for 
+8: Output clusters V1, . . . , Vk; 
+Downloaded 07/10/14 to 147.26.103.71. Redistribution subject to SIAM license or copyright; see http://www.siam.org/journals/ojsa.php 
+Algorithm 2 assigns every node in V to a unique 
+Proof. First we show that Algorithm 2 assigns every node u ? V to a unique cluster. There are two cases. In case 1, u can be reached via a path from the center node ci without having any node previously assigned to V1, . . . , Vi-1 on the path; then, u is assigned to Vi in line 3 of Algorithm 2. In case 2, u is connected to ci viai-1 
+some node v ? ? 
+j=1Vj; then, in line 5 of Algorithm 2, u is assigned to the cluster that v belongs to. 
+Next, we bound the maximum radius of a node u to the corresponding center node. In case 1, since u is assigned to Vi, the distance between u and ci is at most' 
+opt . In case 2, observe that the maximum distance between u and v is at most 2opt' due to the triangle inequality and the fact that u and v were in the same set V 
+' 
+i 
+. Besides, we observe that the distance between v and its corresponding center node cj is at most opt'. Therefore, again by the triangle inequality, the distance between u and its corresponding center node is at most 3opt'. 
+
+========7========
+
+Theorem 4.2. Combining algorithm 1 and 2 gives a polynomial 3-approximation algorithm for the min-CkC problem. 
+Remark: Note the approximation results rely on the triangle inequality; thus, to make the approximation results valid, the distance function for min-CkC has to be metric. However, for the NP-completeness proof, the distance function can be non-metric. 
+5 Heuristic Algorithm 
+The complexity analysis has demonstrated the hardness of the CkC problem. Moreover, Theorem 3.1 implies that even the assignment step alone, i.e., given k centers ?nding the optimal assignment of the remaining nodes to minimize the radius, is NP-hard. While providing an algorithm with guaranteed performance is important theoretically, the expensive enumeration operation prevents it from being practical in large datasets. In this section, we propose NetScan, an e?cient heuristic algorithm. 
+NetScan follows a three-step approach, which starts by picking k centers randomly, then assigns nodes to the best center and re?nes the clustering results iteratively. 
+starts from cluster centers with respect to an initial ra- dius threshold R0. Nodes are tested and assigned to the ?rst cluster where their distances to the center are no larger than the current radius threshold Ri. If all the centers have been processed with Ri and not all nodes have been assigned, the assignment is resumed in the next radius increment round with a larger radius threshold Ri+1. The pseudo code of step II is provided in Algorithm 3, and more detailed aspects of NetScan are discussed later. A running example is illustrated in Figure 5 with the assignment sequence given in Table 2. 
+• Step I: Randomly pick k initial cluster centers. 
+• Step II: Assign all nodes to clusters by traversing the input graph. 
+• Step III: Recalculate cluster centers. 
+The algorithm repeats steps II and III until no change of the cluster centers occurs or a certain number of iterations have been performed. In step III, ?nding the optimal center from a group of n nodes requires O(n2) time. To make it more scalable for large datasets, we select the node closest to the mean of the cluster as the new center. Typically, the mean provides a reasonably good approximation for the center. 
+The three steps look similar to the k-means algo- rithm. However, the complexity analysis tells us that given k centers, ?nding an optimal assignment requires a search through an exponential space, which is unaccept- able in practice. Thus, the major challenge of NetScan is ?nding a good membership assignment, i.e., step II. 
+From the design principle of the approximation al- gorithm, we observe that the BFS-based approach pro- vides an e?cient way to generate clusters without vi- olating the internal connectedness constraint. Inspired by this observation, we start the membership assign- ment from the center. Neighboring nodes (directly con- nected by an edge of the graph) of already assigned nodes are gradually absorbed to the cluster. The search 
+Algorithm 3 Step II of NetScan. 
+1: Empty working queue Q; 
+2: for every center cj of cluster Cj do 
+3: Append all unassigned neighbors of cj to Q; 4: while Q is not empty do 
+5: Pop the ?rst element q from Q; 
+6: if ||q  cj|| = Ri then 
+7: if q is a potential articulation node then 8: Invoke the look-ahead routine to decide the 
+membership for q. If q should be assigned 
+to Cj, append q’s unassigned neighbors to 
+Q; otherwise, only assign q to the right 
+cluster without appending q’s neighbors to 
+Q; 
+9: else 
+10: Assign q to Cj and append q’s unassigned 
+neighbors to Q; 
+11: end if 
+12: end if 
+13: end while 
+14: end for 
+15: if all nodes are assigned to some Cj then 16: Stop; 
+17: else 
+18: Increase Ri and goto 1; 
+19: end if 
+H 
+C 
+H 
+C 
+A 
+A 
+G 
+B 
+G 
+B 
+I 
+E 
+I 
+E 
+R0 
+F 
+R1 
+F 
+Cluster 1 
+Cluster 2 
+Cluster 1 
+Cluster 2 
+(a) w.r.t.  
+R0 
+(b) w.r.t.  R1 
+Figure 5: NetScan demonstration. 
+Downloaded 07/10/14 to 147.26.103.71. Redistribution subject to SIAM license or copyright; see http://www.siam.org/journals/ojsa.php 
+Why gradually increment Ri? The radius threshold Ri plays an important role in minimizing the maximum 
+
+========8========
+
+R0 R1 
+Cluster 1 
+{G} {G, H, I} 
+Cluster 2 
+{E, F} {E, F, A, B, C} 
+Table 2: Node assignment w.r.t. R0 and R1. 
+Cluster 1 
+Cluster 2 
+c1 
+c 
+a 
+b 
+Ri 
+c2 
+Rj 
+Figure 6: Radius increment. 
+Figure 7: Runtime. 
+radius of resulting clusters. Figure 6 demonstrates an example where a larger radius threshold Rj allows node a to be assigned to cluster 1, leading to a larger radius of cluster 1. Instead, if we have a smaller radius threshold Ri, this case is avoided because a can only be assigned to cluster 2. From the point of view of minimizing the maximum radius, we want the increment of Ri to be as small as possible. However, a too small increment of Ri may lead to the case that no additional node can be assigned for many radii, which may greatly increase the runtime. As a trade-o?, we propose the increment to be the average pairwise distance of nodes. 
+w.r.t. Ri. Similar to the concept of articulation nodes introduced in Section 3, we call these nodes potential articulation nodes in NetScan. We assign potential articulation nodes not only based on their distances to the di?erent cluster centers, but also their neighborhood situations. For example, in Figure 5 (b), A is a potential articulation node and its assignment a?ects the assignment of its neighbors B and C. If node A is assigned to cluster 1, both B and C have to be assigned to cluster 1, resulting in a larger radius compared to assigning all three nodes to cluster 2. 
+Whether a node is an articulation node depends on two factors: 1) the node has neighbors who have been assigned membership and those neighbors are from more than one cluster, e.g., Ci, Cj. 2) the node is within Ri distance from both centers of Ci and Cj. 
+We propose the following look-ahead approach for the cluster assignment of potential articulation nodes. For the sake of e?ciency, for each articulation node, we only check its unassigned neighbors (if any) which have a degree of 1, the unary neighbors. The membership assignment decision is made mainly based on the unary neighbors. An articulation node is assigned to its closest center unless the node has a direct unary neighbor which is closer to other centers. In the case that more than one unary neighbors exist, the cluster center leading to the smallest radius increase is chosen. Our algorithm could bene?t from looking into indirect neighbors as well. However, this would signi?cantly increase the runtime without guaranteed quality improvement. 
+How to choose Ri? Algorithm 2 shows that the nodes located in the overlapping area of two clusters w.r.t. a given radius constraint are the source of the di?culty in the assignment. Thus, to start with, we choose R0 to be half of the smallest distance among all pairs of cluster centers. This chosen R0 does not create overlap that introduces any ambiguity in the node assignments, thus reducing the problem size. 
+Most likely the initial radius threshold R0 can not make all nodes assigned. We need to increase the radius threshold to allow the BFS continue until all nodes are assigned. The radius threshold Ri+1 is chosen as Ri+D where D is the average pairwise distance of nodes. This choice of Ri+1 makes it likely that at least some further nodes can be assigned in the next round to each of the cluster. D can be obtained e?ciently by drawing a small set of samples and calculating the average distance of the samples. 
+How to assign nodes to clusters? Most nodes are assigned based solely on their distance to the cluster centers. Special attention; however, needs to be paid to those nodes in the overlap area of two or more clusters 
+Postprocessing to eliminate outliers: As in the tra- ditional k-center problem, the CkC problem faces the same challenge of “outliers”, which may cause signi?- cant increase in radius of the resulting clusters. In many applications such as market segmentation, giving up few customers to meet most customers’ preference is accept- able. Hence, we propose an optional step, which utilizes a graphical approach to eliminate “outliers” from the so- lution of the CkC problem. Every node remembers the radius threshold (called assignment radius) at which it is assigned. We sort all nodes by their assignment ra- dius and ?lter out the node (and its following nodes) which causes a sudden increase of the radius. The “cut- o?” point can be determined from the assignment radius chart, either by manual inspection or automatic detec- tion. Figure 8 illustrates an example where part (a) shows an input graph and part (b) depicts its corre- sponding assignment radius chart. In this case, only f would be removed as an outlier. 
+Downloaded 07/10/14 to 147.26.103.71. Redistribution subject to SIAM license or copyright; see http://www.siam.org/journals/ojsa.php 
+Runtime complexity: In each iteration of step II and III, the NetScan algorithm generates k clusters 
+
+========9========
+
+d 
+r0 
+a b 
+c 
+e 
+f 
+r0 
+k   = 2 (a) 
+a  b  c  d  e  f 
+(b) 
+extracted from the DBLP [4] coauthorship network. We applied the NetScan algorithm to identify communities from this dataset in an unsupervised manner. The rel- atively small size of the dataset allowed us to manually determine a professor’s true community (cluster label) from his/her lab a?liation and professional activities. These true labels were then compared to the labels de- termined by our algorithm. 
+Avrim Blum 
+Theory Databases 
+Figure 8: Outlier identi?cation. 
+Prabhakar Raghavan 
+Rajeev Motwani 
+one by one. During membership assignment of each cluster, the nodes sharing edges with the assigned nodes of that cluster are considered. The distances between these nodes and the cluster center are calculated. Thus, the overall runtime complexity is bounded by the total number of nodes being visited. For the purpose of minimizing the maximum radius, NetScan gradually increases the radius threshold Ri. Let D represent the amount of radius increment, the total number of radius increases in one iteration is a constant, 
+diam 
+, where diam is the longest distance among all pairs of nodes. 
+D 
+In the worst case, every edge is visited k times for each Ri, hence the total number of node visits in an iterationdiam 
+is O(k|E| ), where |E| is the total number of edges. As in the kD-means algorithm, we assume the NetScan algorithm converges in t iterations. Hence, the worst case runtime complexity of NetScan is O(tk|E|diamD ). 
+However in each iteration, we only need to consider those edges connecting to the nodes in the frontier. The worst case rarely happens, in which all the edges are connected to the frontier nodes. For example, the dashed edges in Figure 7 do not have to be considered in the next radius increment round. In the ?gure, the frontier nodes are dashed. In real cases, the number of edges visited in one iteration can be reasonably assumed to be O(|E|). 
+Ronald Fagin 
+Christos H.  Papadimitriou 
+Jon Kleinberg 
+Rajeev Rastogi 
+Jeffery D. Ullman 
+Johannes Gehrke 
+Figure 9: NetScan on real data. 
+6 Experimental Results 
+In this section, we demonstrate the meaningfulness of our CkC clustering model on a small real dataset and show the e?ciency of the NetScan algorithm using synthetic datasets. 
+We used the Cosine Distance as the distance mea- sure for the attributes, a standard measure for text data. We ran NetScan for the Connected k-Center problem and a known heuristic algorithm (Greedy k- center) [15] for the traditional k-center problem, both with k = 3. Table 3 reports the clustering results av- eraged over 20 runs for both algorithms, recording the number of correctly identi?ed professors for each com- munity together with the overall accuracy. To calculate the accuracy, we associated each of the three communi- ties with one of the clusters such that the best overall accuracy was achieved. Compared to Greedy k-center, NetScan signi?cantly improved the accuracy from 54% to 72%. Note that we perform unsupervised learning, which accounts for the relatively low accuracy of both algorithms compared to supervised classi?cation algo- rithms. 
+6.1 Real dataset. The real dataset includes 50 pro- fessors from three major computer science communities: theory, databases and machine learning. The attributes of each professor were collected from his/her homepage representing the keyword frequencies of his/her research interests. The relationship data is a connected subgraph 
+Communities 
+Theory 
+Databases Machine Learning 
+Total 
+Accuracy 
+Size 20 20 10 50 
+Greedy k-center 
+11 
+12 
+4 
+27 
+54% 
+NetScan 
+14 
+15 
+7 
+36 72% 
+Table 3: Comparison of NetScan and Greedy k-center. 
+Downloaded 07/10/14 to 147.26.103.71. Redistribution subject to SIAM license or copyright; see http://www.siam.org/journals/ojsa.php 
+The main reason why NetScan signi?cantly outper- 
+
+========10========
+
+ 320 
+ 620 
+"Erdos-Renyi-Model" "Power-Law-Model" 
+ 260 
+"Erdos-Renyi-Model" "Power-Law-Model" 
+ 300 
+"Erdos-Renyi-Model" "Power-Law-Model" 
+"Greedy k-Center" 
+ 280 
+ 240 
+ 600 
+ 260 
+ 220 
+ 580 
+ 240 
+ 200 
+ 220 
+ 560 
+ 180 
+ 200 
+ 180 
+ 160 
+ 540 
+Runtime in millisecond 
+Runtime in millisecond 
+Maximum Radius (R) 
+ 160 
+ 140 
+ 520 
+ 140 
+ 120 
+ 120 
+ 100 
+ 500 
+ 100 
+ 4 
+ 5 
+ 6 
+ 7 
+ 8 Average Degree (k=4) 
+ 9 
+ 10 
+ 11 
+ 12 
+ 2 
+ 2.5 
+ 3 
+ 3.5  4  4.5 
+k (average degree = 4) 
+ 5 
+ 5.5 
+ 6 
+ 4 
+ 5 
+ 6 
+ 7 
+ 8 Average degree (k = 3) 
+ 9 
+ 10 
+ 11 
+ 12 
+Figure 10: NetScan on synthetic data. (a) runtime vs. average degree. (b) runtime vs. k. (c) maximum radius vs. average degree. 
+forms Greedy k-center is that both relationship and at- tribute data make contributions in the clustering pro- cess, and considering only one data type can mislead the clustering algorithm. For example, Jon Kleinberg lists interests in Clustering, Indexing and Data Mining, also Discrete Optimization and Network Algorithms. From this attribute information, it seems reasonable to iden- tify him as a researcher in databases. Nevertheless, after taking his coauthorship information into consideration, NetScan clustered him into the theory community (see Figure 9), which is a better match for his overall re- search pro?le. On the other hand, Je?ery D. Ullman has broad coauthorship connections, which alone cannot be used to con?dently identify his community membership. However, he claims his research interest in databases ex- clusively, and NetScan clustered him into the database community as expected. 
+6.2 Synthetic datasets. Due to the lack of publicly available databases with both attribute and relationship data, we used synthetic data for the e?ciency evalua- tion. Based on the complexity analysis in Section 5, the runtime is directly related to the number of edges instead of the number of nodes, thus we can ?x the number of nodes and vary the degree of each node to evaluate the e?ciency of NetScan. We took the UCI PIMA dataset [5], which is also used in [8] to evalu- ate the quality of k-means algorithm. Since the PIMA dataset contains only numeric attribute data, we auto- matically generated relationship data based on two ran- dom graph models, Erd¨os-R´enyi model [9] and Power- law graph model [2]. In the Erd¨os-R´enyi model, every pair of nodes is connected with the same probability. In the Power-law graph model, used to model internet structure, there are many nodes with few edges and only a few nodes with a large number of neighbors. All the experiments were conducted on an Intel Celeron 1.6G processor with 512M RAM running the Window XP op- 
+erating system. 
+We study the e?ect of average number of edges on runtime. Figure 10 (a) shows the results on the average runtime over 50 restarts for both models. The average degree was set from 4 since with smaller degree the data generator often failed to generate a connected network. Although the worst case runtime complexity analysis of the NetScan algorithm demonstrates that the runtime is related to k, |E| and the number of iterations, our results shows that the runtime is far from proportional to both k and |E| on average. 
+We also evaluate the e?ect of k on runtime, which is shown in Figure 10 (b). As we expected, the increase of k does not cause a proportional increase in the runtime. 
+In addition, it is interesting to evaluate how the input graph is related to the maximum radius R of the clustering results. Intuitively, the more edges exist in the graph, the smaller R would be. The traditional k- center problem can be considered as a special case of the CkC problem with a complete input graph. The optimal R for traditional k-center is smaller than the optimal R for CkC. The results in Figure 10 (c) show that R decreases with the increase of average degree. 
+Downloaded 07/10/14 to 147.26.103.71. Redistribution subject to SIAM license or copyright; see http://www.siam.org/journals/ojsa.php 
+7 Conclusion 
+Existing cluster analysis methods are either targeting attribute data or relationship data. However, in sce- narios where these two data types contain orthogonal information, a joint cluster analysis of both promises to achieve more accurate results. In this paper, we in- troduced the novel Connected k-Center problem, which takes into account attribute data as well as relationship data. We proved the NP-completeness of this problem and presented a corresponding 3-approximation algo- rithm. To improve the scalability, we also developed an e?cient heuristic algorithm NetScan. Our experi- mental evaluation using a real dataset for community identi?cation demonstrated the meaningfulness of the 
+
+========11========
+
+NetScan results and the accuracy gain compared to the classical k-center clustering algorithm. Tests on syn- thetic datasets showed the e?ciency of our algorithm. 
+Under the framework of joint cluster analysis of attribute data and relationship data, the CkC prob- lem can be extended in many ways. Firstly, to better model real applications with varied requirement sub- tleties, more practical clustering criteria (such as k- means) can be considered other than the k-center cri- terion, which allowed us to provide theoretical analysis in this paper. Secondly, similarly motivated, the inter- nal connectedness constraint can as well be replaced by speci?cations on any property or combination of prop- erties of graphs; e.g., length of paths, degree of vertices, and connectivity etc. Thirdly, the relations can be non- binary and the edges can be weighted to indicate the degree of relationship; e.g., friendship can go from inti- mate and close to just nodding acquaintanceship. Also, the relations can be non-symmetric; e.g., citation rela- tions between documents. Finally, we believe that with the increasing availability of attribute data and rela- tionship data, data analysis in general, not only cluster analysis, will bene?t from the combined consideration of both data types. 
+Acknowledgement 
+We would like to thank Dr. Binay Bhattacharya and Dr. Petra Berenbrink for the valuable discussions in the early stage of this study. 
+References 
+[1] M. Ankerst, M. M. Breunig, H.-P. Kriegel, and 
+J. Sander. Optics: ordering points to identify the clus- 
+tering structure. In SIGMOD, 1999. 
+[2] A.-L. Barab´asi and R. Albert. Emergence of scaling in 
+random networks. Science, 286:509–512, 1999. [3] S. Basu, M. Bilenko, and R. Mooney. A probabilistic 
+framework for semi-supervised clustering. In KDD, 
+2004. 
+[4] C. S. Bibliography. DBLP. http://www.informatik.uni- 
+trier.de/ ley/db/index.html. 2005. 
+[5] C. Blake and C. Merz. UCI repository of machine 
+learning databases., 1998. 
+[6] U. Brandes, M. Gaertler, and D. Wagner. Experiments 
+on graph clustering algorithms. In 11th Europ. Symp. 
+Algorithms, pages 568–579, 2003. 
+[7] P. Brucker. On the complexity of clustering problems, 
+in Optimization and Operations Research. Springer- 
+Verlag, 1977. 
+[8] I. Davidson and S. S. Ravi. Clustering with constraints: 
+Feasibility issues and the k-means algorithm. In SDM, 
+2005. 
+[9] P. Erdos and A. R´enyi. On the evolution of random 
+graphs. Publ. Math. Inst. Hungar. Acad. Sci., 5:17–61, 
+1960. 
+[10] M. Ester, H.-P. Kriegel, J. Sander, and X. Xu. A 
+density-based algorithm for discovering clusters in large 
+spatial databases with noise. In KDD, pages 226–231, 
+1996. 
+[11] S. Guha, R. Rastogi, and K. Shim. Rock: a robust 
+clustering algorithm for categorical attributes. In 
+ICDE, 1999. 
+[12] J. Han and M. Kamber. Data mining: concepts and 
+techniques. Morgan Kaufmann, 2001. 
+[13] R. A. Hanneman and M. Riddle. Introduction to social 
+network methods. http://faculty.ucr.edu/ hanneman/, 
+2005. 
+[14] E. Hartuv and R. Shamir. A clustering algorithm based 
+on graph connectivity. Information Processing Letters, 
+76:175–181, 2000. 
+[15] D. S. Hochbaum and D. B. Shmoys. A best possible 
+heuristic for the k-center problem. Mathematics of 
+Operations Research, 10:180–184, 1985. 
+[16] D. Iacobucci. Networks in marketing. Sage Publica- 
+tions, 1996. 
+[17] A. Jain and R. Dubes. Algorithms for clustering data. 
+Prentice Hall, 1988. 
+[18] G. Karypis, E. Han, and V. Kumar. Chameleon: A 
+hierarchical clustering algorithm using dynamic mod- 
+eling. IEEE COMPUTER, 32:68–75, 1999. 
+[19] L. Kaufman and P. Rousseeuw. Finding groups in data: 
+an introduction to cluster analysis. John Wiley & Sons, 
+1990. 
+[20] J. MacQueen. Some methods for classi?cation and 
+analysis of multivariate observations. In 5th Berkeley 
+Symp. Math. Statist. prob., pages 281–297, 1967. [21] N. Megiddo and K. J. Supowit. On the complexity of 
+some common geometric location problems. SIAM J. 
+Comput., 13(1):182–196, 1984. 
+[22] R. Ng and J. Han. E?cient and e?ective clustering 
+methods for spatial data mining. In VLDB, 1994. [23] J. Scott. Social Network Analysis: A handbook. Sage, 
+London, 2000. 
+[24] C. Toregas, R. Swan, C. Revelle, and L. Bergman. The 
+location of emergency service facilities. Oper. Res., 
+19:1363–1373, 1971. 
+[25] A. K. H. Tung, R. T. Ng, L. V. S. Lakshmanan, and 
+J. Han. Constraint-based clustering in large databases. 
+In ICDT, pages 405–419, 2001. 
+[26] S. Wasserman and K. Faust. Social Network Analysis. 
+Cambridge Univ. Press, 1994. 
+[27] C. Webster and P. Morrison. Network analysis in 
+marketing. Australasian Marketing Journal, 12(2):8– 
+18, 2004. 
+Downloaded 07/10/14 to 147.26.103.71. Redistribution subject to SIAM license or copyright; see http://www.siam.org/journals/ojsa.php 
+
+========12========
+

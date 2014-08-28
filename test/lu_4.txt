@@ -1,0 +1,4403 @@
+LEARNING	VBG
+IMAGE	NNP
+SALIENCY	NNP
+FROM	NNP
+HUMAN	NNP
+TOUCH	NNP
+BEHAVIORS	NNS
+
+
+Shaomin	NNP
+F	NN
+ang1	NN
+,	,
+Yijuan	JJ
+Lu1	NN
+,	,
+Xinmei	NNP
+T	NN
+ian2	NN
+
+
+1Department	NN
+of	IN
+Computer	NNP
+Science	NNP
+,	,
+Texas	NNP
+State	NNP
+University-San	NNP
+Marcos	NNP
+,	,
+
+
+fs	NN
+f5	NN
+,	,
+lug@txstate.edu	NN
+
+
+2University	NN
+of	IN
+Science	NN
+and	CC
+Technology	NN
+of	IN
+China	NNP
+,	,
+xinmei@ustc.edu.cn	NN
+
+
+ABSTRACT	NN
+
+
+The	DT
+concept	NN
+of	IN
+touch	NN
+saliency	NN
+was	VBD
+recently	RB
+introduced	VBN
+to	TO
+gen	SYM
+-	:
+erate	JJ
+image	NN
+saliency	NN
+maps	VBZ
+based	VBN
+on	IN
+human	JJ
+simple	JJ
+zoom	NN
+be	VB
+-	:
+havior	NN
+on	IN
+touch	NN
+devices	NNS
+.	.
+
+However	RB
+,	,
+when	WRB
+browsing	VBG
+images	NNS
+on	IN
+touch	NN
+screen	NN
+,	,
+users	NNS
+tend	VBP
+to	TO
+apply	VB
+a	DT
+variety	NN
+of	IN
+touch	NN
+behav	NN
+-	:
+iors	NNS
+such	JJ
+as	IN
+pinch	NN
+zoom	NN
+,	,
+tap	NN
+,	,
+double	JJ
+tap	NN
+zoom	NN
+,	,
+and	CC
+scroll	NN
+.	.
+
+Do	VB
+these	DT
+different	JJ
+behaviors	NNS
+correspond	VBP
+to	TO
+different	JJ
+human	JJ
+atten	NN
+-	:
+tions	NNS
+?	.
+
+Which	WDT
+behaviors	NNS
+are	VBP
+highly	RB
+correlated	VBN
+with	IN
+human	JJ
+eye	NN
+ï	NN
+¬	CD
+xation	NN
+?	.
+
+How	WRB
+to	TO
+learn	VB
+a	DT
+good	JJ
+image	NN
+saliency	NN
+map	NN
+from	IN
+var	SYM
+-	:
+ious/multiple	NN
+human	JJ
+behaviors	NNS
+?	.
+
+In	IN
+this	DT
+work	NN
+,	,
+we	PRP
+design	VBP
+and	CC
+conduct	VBP
+a	DT
+series	NN
+of	IN
+studies	NNS
+to	TO
+address	VB
+these	DT
+open	JJ
+questions	NNS
+.	.
+
+We	PRP
+also	RB
+propose	VBP
+a	DT
+novel	JJ
+touch	NN
+saliency	NN
+learning	VBG
+approach	NN
+to	TO
+derive	VB
+a	DT
+good	JJ
+image	NN
+saliency	NN
+map	NN
+from	IN
+a	DT
+variety	NN
+of	IN
+human	JJ
+touch	NN
+behaviors	NNS
+by	IN
+using	VBG
+machine	NN
+learning	NN
+algorithm	NN
+.	.
+
+The	DT
+experimental	JJ
+results	NNS
+demonstrate	VBP
+the	DT
+validity	NN
+of	IN
+our	PRP$
+study	NN
+and	CC
+the	DT
+potential	JJ
+and	CC
+effectiveness	NN
+of	IN
+the	DT
+proposed	VBN
+approach	NN
+.	.
+
+
+Index	NNP
+Termsâ	NNP
+$	$
+''	''
+Touch	VB
+saliency	NN
+,	,
+visual	JJ
+saliency	NN
+,	,
+touch	NN
+be	VB
+-	:
+haviors	NNS
+.	.
+
+
+1	LS
+.	.
+
+INTRODUCTION	NN
+
+
+Visual	JJ
+attention	NN
+refers	VBZ
+to	TO
+selective	JJ
+concentration	NN
+on	IN
+meaning	NN
+-	:
+ful	JJ
+region	NN
+of	IN
+a	DT
+scene	NN
+-LSB-	-LRB-
+1	CD
+-RSB-	-RRB-
+.	.
+
+A	DT
+visual	JJ
+saliency	NN
+map	NN
+displays	VBZ
+the	DT
+spotlights	NNS
+of	IN
+the	DT
+concentrations	NNS
+.	.
+
+Visual	JJ
+attention	NN
+learning	NN
+is	VBZ
+widely	RB
+applied	VBN
+in	IN
+image	NN
+compression	NN
+-LSB-	-LRB-
+2	CD
+-RSB-	-RRB-
+,	,
+image	NN
+segmenta	NN
+-	:
+tion	NN
+-LSB-	-LRB-
+3	CD
+-RSB-	-RRB-
+,	,
+image	NN
+retargeting	NN
+-LSB-	-LRB-
+4	CD
+-RSB-	-RRB-
+,	,
+and	CC
+information	NN
+retrieval	NN
+-LSB-	-LRB-
+1	CD
+-RSB-	-RRB-
+.	.
+
+
+In	IN
+the	DT
+traditional	JJ
+visual	JJ
+attention	NN
+study	NN
+,	,
+usersâ	JJ
+$	$
+™	CD
+eye	NN
+ï	NN
+¬	VBP
+xa	SYM
+-	:
+tion	NN
+data	NNS
+are	VBP
+required	VBN
+and	CC
+the	DT
+eye	NN
+tracking	NN
+device	NN
+is	VBZ
+the	DT
+only	JJ
+equipment	NN
+to	TO
+collect	VB
+the	DT
+data	NNS
+.	.
+
+Although	IN
+eye	NN
+tracking	NN
+has	VBZ
+been	VBN
+developed	VBN
+for	IN
+years	NNS
+,	,
+it	PRP
+is	VBZ
+not	RB
+widely	RB
+popularized	VBN
+due	JJ
+to	TO
+three	CD
+major	JJ
+reasons	NNS
+:	:
+1	LS
+-RRB-	-RRB-
+high	JJ
+cost	NN
+;	:
+2	LS
+-RRB-	-RRB-
+complicated	JJ
+operation	NN
+,	,
+which	WDT
+requires	VBZ
+non-trivial	JJ
+calibration	NN
+,	,
+validation	NN
+,	,
+and	CC
+chin	NN
+-	:
+and-forehead-rest	NN
+for	IN
+stabilization	NN
+;	:
+3	LS
+-RRB-	-RRB-
+low	JJ
+mobility	NN
+-LRB-	-LRB-
+not	RB
+easy	JJ
+to	TO
+carry	VB
+it	PRP
+everywhere	RB
+due	JJ
+to	TO
+considerable	JJ
+size	NN
+and	CC
+weight	NN
+-RRB-	-RRB-
+.	.
+
+
+Recently	RB
+,	,
+with	IN
+the	DT
+popularity	NN
+of	IN
+touch	NN
+screen	NN
+phones	NNS
+,	,
+tablets	NNS
+and	CC
+laptops	NNS
+,	,
+more	JJR
+and	CC
+more	JJR
+people	NNS
+rely	VBP
+on	IN
+them	PRP
+for	IN
+daily	JJ
+image	NN
+or	CC
+video	NN
+browsing	NN
+,	,
+sharing	VBG
+,	,
+and	CC
+surï	NN
+¬	CD
+ng	NN
+.	.
+
+When	WRB
+using	VBG
+a	DT
+limited	JJ
+size	NN
+of	IN
+touch	NN
+screen	NN
+for	IN
+image	NN
+browsing	NN
+,	,
+users	NNS
+tend	VBP
+to	TO
+tap	VB
+,	,
+pinch	VB
+zoom	NN
+,	,
+double	JJ
+tap	NN
+zoom	NN
+,	,
+and	CC
+scroll	NN
+to	TO
+have	VB
+a	DT
+closer	RBR
+view	NN
+of	IN
+a	DT
+particular	JJ
+region	NN
+of	IN
+interest	NN
+.	.
+
+These	DT
+touch	NN
+be	VB
+-	:
+haviors	NNS
+may	MD
+indicate	VB
+user	NN
+interests	NNS
+on	IN
+certain	JJ
+regions	NNS
+of	IN
+a	DT
+im	NN
+-	:
+age	NN
+,	,
+and	CC
+perhaps	RB
+capture	VB
+similar	JJ
+information	NN
+as	IN
+eye	NN
+ï	NN
+¬	CD
+xations	NNS
+
+
+in	IN
+visual	JJ
+attention	NN
+study	NN
+.	.
+
+A	DT
+recent	JJ
+study	NN
+-LSB-	-LRB-
+5	CD
+-RSB-	-RRB-
+called	VBN
+â	RB
+$	$
+Touch	JJ
+Saliencyâ	NNP
+$	$
+investigated	VBN
+generating	VBG
+saliency	NN
+maps	NNS
+based	VBN
+solely	RB
+on	IN
+simple	JJ
+zoom	NN
+behavior	NN
+.	.
+
+Many	JJ
+interesting	JJ
+questions	NNS
+natu	SYM
+-	:
+rally	NN
+arise	VB
+:	:
+1	LS
+-RRB-	-RRB-
+Do	VBP
+different	JJ
+touch	NN
+behaviors	NNS
+-LRB-	-LRB-
+tap	NN
+,	,
+pinch	VB
+zoom	NN
+,	,
+double	JJ
+tap	NN
+zoom	NN
+,	,
+scroll	NN
+etc.	NN
+-RRB-	-RRB-
+correspond	VBP
+to	TO
+different	JJ
+human	JJ
+attentions	NNS
+?	.
+
+2	LS
+-RRB-	-RRB-
+Which	WDT
+behaviors	NNS
+are	VBP
+more	RBR
+correlated	VBN
+with	IN
+hu	SYM
+-	:
+man	NN
+eye	NN
+ï	NN
+¬	CD
+xation	NN
+?	.
+
+3	LS
+-RRB-	-RRB-
+How	WRB
+to	TO
+learn	VB
+a	DT
+good	JJ
+image	NN
+saliency	NN
+map	NN
+from	IN
+various/multiple	NN
+human	JJ
+touch	NN
+behaviors	NNS
+?	.
+
+
+To	TO
+address	VB
+these	DT
+questions	NNS
+,	,
+we	PRP
+design	VBP
+and	CC
+conduct	VBP
+a	DT
+series	NN
+of	IN
+studies	NNS
+with	IN
+the	DT
+conventional	JJ
+eye-ï	NN
+¬	NN
+xation	NN
+based	VBN
+saliency	NN
+served	VBD
+as	IN
+ground	NN
+truth	NN
+.	.
+
+An	DT
+image	NN
+browsing	VBG
+app	NN
+is	VBZ
+designed	VBN
+on	IN
+a	DT
+touch	NN
+mobile	JJ
+phone	NN
+to	TO
+collect	VB
+usersâ	JJ
+$	$
+™	CD
+touch	NN
+behavior	NN
+data	NNS
+.	.
+
+A	DT
+novel	JJ
+touch	NN
+saliency	NN
+learning	VBG
+approach	NN
+is	VBZ
+also	RB
+proposed	VBN
+to	TO
+derive	VB
+a	DT
+good	JJ
+image	NN
+saliency	NN
+map	NN
+from	IN
+a	DT
+variety	NN
+of	IN
+human	JJ
+touch	NN
+behaviors	NNS
+.	.
+
+During	IN
+the	DT
+process	NN
+of	IN
+building	VBG
+a	DT
+supervised	JJ
+learning	NN
+model	NN
+,	,
+the	DT
+weights	NNS
+of	IN
+different	JJ
+human	JJ
+touch	NN
+behav	NN
+-	:
+iors	NNS
+are	VBP
+learned	VBN
+,	,
+which	WDT
+indicate	VBP
+the	DT
+different	JJ
+contributions	NNS
+of	IN
+these	DT
+behaviors	NNS
+to	TO
+the	DT
+image	NN
+saliency	NN
+information	NN
+.	.
+
+The	DT
+exper	NN
+-	:
+imental	JJ
+results	NNS
+demonstrate	VBP
+the	DT
+validity	NN
+of	IN
+our	PRP$
+study	NN
+and	CC
+the	DT
+potential	JJ
+and	CC
+effectiveness	NN
+of	IN
+the	DT
+proposed	VBN
+approach	NN
+.	.
+
+
+Compared	VBN
+with	IN
+eye-tracking	NN
+devices	NNS
+,	,
+touch	NN
+devices	NNS
+are	VBP
+much	RB
+more	RBR
+popular	JJ
+,	,
+cheaper	JJR
+and	CC
+also	RB
+easier	JJR
+to	TO
+operate	VB
+and	CC
+carry	VB
+.	.
+
+The	DT
+users	NNS
+ï	VBP
+¬	CD
+nger	JJ
+behaviors	NNS
+are	VBP
+much	RB
+easier	JJR
+to	TO
+be	VB
+recorded	VBN
+than	IN
+eye-movements	NNS
+.	.
+
+Therefore	RB
+,	,
+touch	NN
+saliency	NN
+can	MD
+be	VB
+easily	RB
+obtained	VBN
+and	CC
+it	PRP
+will	MD
+deï	VB
+¬	CD
+nitely	RB
+have	VBP
+wide	JJ
+applica	NN
+-	:
+tions	NNS
+in	IN
+image	NN
+compression	NN
+,	,
+image	NN
+segmentation	NN
+,	,
+and	CC
+image	NN
+retargeting	NN
+etc.	NN
+in	IN
+the	DT
+near	JJ
+future	NN
+.	.
+
+
+The	DT
+main	JJ
+contributions	NNS
+introduced	VBN
+in	IN
+this	DT
+paper	NN
+are	VBP
+sum	NN
+-	:
+marized	VBN
+as	IN
+follows	VBZ
+:	:
+1	LS
+-RRB-	-RRB-
+We	PRP
+quantitatively	RB
+study	NN
+and	CC
+analyze	VBP
+human	JJ
+attention	NN
+from	IN
+a	DT
+variety	NN
+of	IN
+touch	NN
+behaviors	NNS
+in	IN
+this	DT
+pa	NN
+-	:
+per	IN
+,	,
+and	CC
+then	RB
+propose	VBP
+a	DT
+set	NN
+of	IN
+valuable	JJ
+features	NNS
+from	IN
+the	DT
+touch	NN
+information	NN
+.	.
+
+2	LS
+-RRB-	-RRB-
+We	PRP
+propose	VBP
+to	TO
+utilize	VB
+a	DT
+supervised	JJ
+learning	NN
+method	NN
+to	TO
+automatically	RB
+learn	VB
+the	DT
+correlation	NN
+between	IN
+differ	VBP
+-	:
+ent	JJ
+touch	NN
+behaviors	NNS
+and	CC
+human	JJ
+eye	NN
+ï	NN
+¬	CD
+xations	NNS
+,	,
+and	CC
+then	RB
+to	TO
+de	FW
+-	:
+rive	VB
+a	DT
+good	JJ
+image	NN
+saliency	NN
+map	NN
+from	IN
+a	DT
+variety	NN
+of	IN
+touch	NN
+behav	NN
+-	:
+iors	NNS
+.	.
+
+3	LS
+-RRB-	-RRB-
+Our	PRP$
+work	NN
+will	MD
+guide	VB
+the	DT
+research	NN
+in	IN
+touch	NN
+saliency	NN
+ability	NN
+estimation	NN
+and	CC
+opens	VBZ
+broad	JJ
+research	NN
+possibility	NN
+for	IN
+touch-based	JJ
+visual	JJ
+attention	NN
+learning	NN
+.	.
+
+
+2	LS
+.	.
+
+RELATED	JJ
+WORK	VBP
+
+
+Xie	NNP
+et	FW
+al.	FW
+-LSB-	-LRB-
+6	CD
+-RSB-	-RRB-
+made	VBD
+the	DT
+ï	NN
+¬	NN
+rst	NN
+attempt	NN
+to	TO
+extract	NN
+user	NN
+attention	NN
+by	IN
+analyzing	VBG
+the	DT
+touch	NN
+information	NN
+on	IN
+images	NNS
+in	IN
+2005	CD
+.	.
+
+They	PRP
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+1	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+collected	VBN
+data	NNS
+from	IN
+10	CD
+subjects	NNS
+on	IN
+26	CD
+images	NNS
+.	.
+
+Several	JJ
+at	IN
+-	:
+tributes	NNS
+are	VBP
+considered	VBN
+in	IN
+the	DT
+users	NNS
+attention	NN
+learning	VBG
+includ	NN
+-	:
+ing	NN
+region	NN
+of	IN
+interest	NN
+,	,
+minimal	JJ
+allowable	JJ
+spatial	JJ
+area	NN
+of	IN
+the	DT
+attention	NN
+,	,
+minimal	JJ
+duration	NN
+of	IN
+the	DT
+attention	NN
+etc.	NN
+.	.
+
+This	DT
+study	NN
+demonstrates	VBZ
+that	IN
+users	NNS
+attention	NN
+can	MD
+be	VB
+easily	RB
+obtained	VBN
+from	IN
+touch	NN
+behaviors	NNS
+.	.
+
+However	RB
+,	,
+its	PRP$
+performance	NN
+is	VBZ
+not	RB
+quantita	NN
+-	:
+tively	RB
+evaluated	VBN
+.	.
+
+Therefore	RB
+,	,
+its	PRP$
+validity	NN
+is	VBZ
+unknown	JJ
+.	.
+
+
+In	IN
+2012	CD
+,	,
+Xu	NNP
+et	FW
+al.	FW
+-LSB-	-LRB-
+5	CD
+-RSB-	-RRB-
+introduced	VBD
+a	DT
+new	JJ
+concept	NN
+of	IN
+touch	NN
+saliency	NN
+,	,
+which	WDT
+is	VBZ
+to	TO
+generate	VB
+image	NN
+saliency	NN
+maps	VBZ
+based	VBN
+on	IN
+a	DT
+human	JJ
+simple	JJ
+zoom	NN
+behavior	NN
+.	.
+
+In	IN
+their	PRP$
+data	NNS
+collection	NN
+,	,
+16	CD
+par	NN
+-	:
+ticipants	NNS
+freely	RB
+viewed	VBD
+440	CD
+images	NNS
+in	IN
+NUSEF	NN
+database	NN
+-LSB-	-LRB-
+3	CD
+-RSB-	-RRB-
+on	IN
+a	DT
+touch-screen	JJ
+mobile	JJ
+device	NN
+.	.
+
+The	DT
+center	NN
+point	NN
+of	IN
+the	DT
+screen	NN
+is	VBZ
+treated	VBN
+as	IN
+the	DT
+ï	NN
+¬	NN
+xation	NN
+point	NN
+and	CC
+the	DT
+zoom	NN
+scale	NN
+is	VBZ
+used	VBN
+as	IN
+Gaussian	JJ
+ï	NN
+¬	NN
+lter	NN
+parameters	NNS
+to	TO
+generate	VB
+the	DT
+touch	NN
+saliency	NN
+map	NN
+.	.
+
+This	DT
+study	NN
+shows	VBZ
+that	IN
+touch	NN
+saliency	NN
+map	NN
+and	CC
+visual	JJ
+saliency	NN
+map	NN
+are	VBP
+highly	RB
+correlated	VBN
+with	IN
+each	DT
+other	JJ
+in	IN
+an	DT
+image	NN
+brows	VBZ
+-	:
+ing	NN
+task	NN
+.	.
+
+However	RB
+,	,
+in	IN
+this	DT
+work	NN
+,	,
+the	DT
+image	NN
+pixel	NN
+of	IN
+center	NN
+point	NN
+of	IN
+the	DT
+screen	NN
+is	VBZ
+selected	VBN
+as	IN
+the	DT
+ï	NN
+¬	NN
+xation	NN
+point	NN
+,	,
+which	WDT
+al	NNP
+-	:
+ways	NNS
+causes	VBZ
+some	DT
+bias	NN
+in	IN
+the	DT
+saliency	NN
+map	NN
+learning	NN
+.	.
+
+It	PRP
+is	VBZ
+observed	VBN
+that	IN
+when	WRB
+the	DT
+image	NN
+is	VBZ
+zoomed	VBN
+in	IN
+,	,
+the	DT
+users	NNS
+do	VBP
+not	RB
+always	RB
+adjust	VBP
+the	DT
+most	RBS
+salient	JJ
+area	NN
+to	TO
+the	DT
+center	NN
+of	IN
+the	DT
+screen	NN
+.	.
+
+
+In	IN
+our	PRP$
+preliminary	JJ
+study	NN
+,	,
+we	PRP
+observe	VBP
+that	IN
+when	WRB
+browsing	VBG
+images	NNS
+on	IN
+the	DT
+limited	JJ
+size	NN
+touch	NN
+screen	NN
+,	,
+users	NNS
+tend	VBP
+to	TO
+apply	VB
+a	DT
+variety	NN
+of	IN
+touch	NN
+behaviors	NNS
+,	,
+such	JJ
+as	IN
+tap	NN
+,	,
+pinch	VB
+zoom	NN
+,	,
+double	JJ
+tap	NN
+zoom	NN
+,	,
+and	CC
+scroll	NN
+to	TO
+ï	VB
+¬	CD
+nd	VBD
+a	DT
+particular	JJ
+region	NN
+of	IN
+interest	NN
+and	CC
+look	VB
+them	PRP
+closer	RBR
+.	.
+
+What	WDT
+correlations	NNS
+between	IN
+these	DT
+different	JJ
+behaviors	NNS
+and	CC
+human	JJ
+attention	NN
+are	VBP
+,	,
+whether	IN
+they	PRP
+contribute	VBP
+equally	RB
+to	TO
+the	DT
+human	JJ
+eye	NN
+ï	NN
+¬	CD
+xation	NN
+,	,
+and	CC
+how	WRB
+to	TO
+learn	VB
+good	JJ
+image	NN
+saliency	NN
+maps	NNS
+from	IN
+multiple	JJ
+touch	NN
+behaviors	NNS
+have	VBP
+not	RB
+been	VBN
+explored	VBN
+in	IN
+the	DT
+existing	VBG
+works	NNS
+.	.
+
+To	TO
+our	PRP$
+best	JJS
+knowledge	NN
+,	,
+this	DT
+is	VBZ
+the	DT
+ï	NN
+¬	NN
+rst	NN
+attempt	NN
+that	WDT
+conducts	VBZ
+a	DT
+series	NN
+of	IN
+studies	NNS
+to	TO
+ex	FW
+-	:
+plore	NN
+these	DT
+questions	NNS
+.	.
+
+
+3	LS
+.	.
+
+IMAGE	NN
+SALIENCY	NN
+LEARNING	VBG
+FROM	IN
+TOUCH	NN
+
+
+BEHAVIORS	NNS
+
+
+3.1	CD
+.	.
+
+Touch	VB
+Behaviors	NNP
+Data	NNP
+Collection	NNP
+
+
+In	IN
+order	NN
+to	TO
+collect	VB
+user	NN
+touch	NN
+behavior	NN
+data	NNS
+,	,
+we	PRP
+develop	VBP
+an	DT
+image	NN
+browsing	VBG
+interface	NN
+on	IN
+a	DT
+multi-touch	JJ
+mobile	JJ
+phone	NN
+.	.
+
+The	DT
+interface	NN
+is	VBZ
+designed	VBN
+as	IN
+same	JJ
+as	IN
+most	RBS
+popular	JJ
+image	NN
+browsers	NNS
+which	WDT
+support	VBP
+tap	NN
+,	,
+pinch	VB
+zoom	NN
+,	,
+double	JJ
+tap	NN
+zoom	NN
+,	,
+scroll	NN
+,	,
+etc.	FW
+.	.
+
+
+The	DT
+same	JJ
+data	NN
+set	NN
+NUSEF	NN
+-LSB-	-LRB-
+3	CD
+-RSB-	-RRB-
+used	VBN
+in	IN
+the	DT
+work	NN
+-LSB-	-LRB-
+5	CD
+-RSB-	-RRB-
+is	VBZ
+chosen	VBN
+in	IN
+our	PRP$
+study	NN
+by	IN
+considering	VBG
+its	PRP$
+two	CD
+unique	JJ
+at	IN
+-	:
+tributes	NNS
+.	.
+
+First	RB
+,	,
+this	DT
+data	NN
+set	NN
+contains	VBZ
+446	CD
+images	NNS
+-LRB-	-LRB-
+size	NN
+is	VBZ
+around	IN
+1024x768	CD
+pixels	NNS
+-RRB-	-RRB-
+and	CC
+corresponding	JJ
+ground	NN
+truth	NN
+eye	NN
+ï	NN
+¬	CD
+xation	NN
+data	NNS
+acquired	VBN
+from	IN
+an	DT
+eye-tracking	NN
+device	NN
+with	IN
+a	DT
+pool	NN
+of	IN
+75	CD
+subjects	NNS
+.	.
+
+Second	RB
+,	,
+the	DT
+images	NNS
+in	IN
+this	DT
+dataset	NN
+are	VBP
+man	NN
+-	:
+ually	RB
+collected	VBN
+from	IN
+Flickr	NNP
+,	,
+Photo.net	NNP
+,	,
+Google	NNP
+Images	NNPS
+and	CC
+IAPS	NNP
+,	,
+and	CC
+they	PRP
+are	VBP
+representative	JJ
+of	IN
+various	JJ
+semantic	JJ
+con	NN
+-	:
+cepts	NNS
+,	,
+scales	NNS
+,	,
+orientations	NNS
+and	CC
+illuminations	NNS
+-LSB-	-LRB-
+3	CD
+-RSB-	-RRB-
+.	.
+
+
+15	CD
+users	NNS
+-LRB-	-LRB-
+4	CD
+females	NNS
+,	,
+11	CD
+males	NNS
+-RRB-	-RRB-
+with	IN
+the	DT
+age	NN
+between	IN
+24	CD
+and	CC
+33	CD
+-LRB-	-LRB-
+=	JJ
+26:6	CD
+,	,
+=	JJ
+2:75	CD
+-RRB-	-RRB-
+participated	VBD
+our	PRP$
+user	NN
+study	NN
+.	.
+
+Each	DT
+participant	NN
+freely	RB
+viewed	VBD
+all	PDT
+the	DT
+446	CD
+images	NNS
+on	IN
+
+
+the	DT
+Samsung	NNP
+Galaxy	NNP
+S3	NN
+Android	NN
+phone	NN
+-LRB-	-LRB-
+4.8	CD
+inch	NN
+HD	NN
+Super	NNP
+AMOLED	NNP
+display	VBP
+with	IN
+1280x720	NN
+pixels	NNS
+-RRB-	-RRB-
+.	.
+
+Each	DT
+user	NN
+can	MD
+use	VB
+any	DT
+touch	NN
+behavior	NN
+to	TO
+move	VB
+to	TO
+a	DT
+particular	JJ
+region	NN
+of	IN
+interest	NN
+.	.
+
+During	IN
+the	DT
+image	NN
+browsing	VBG
+process	NN
+,	,
+each	DT
+image	NN
+is	VBZ
+displayed	VBN
+for	IN
+12	CD
+seconds	NNS
+,	,
+a	DT
+black	JJ
+screen	NN
+is	VBZ
+shown	VBN
+for	IN
+2	CD
+seconds	NNS
+between	IN
+any	DT
+two	CD
+consecutive	JJ
+images	NNS
+to	TO
+avoid	VB
+interference	NN
+.	.
+
+For	IN
+every	DT
+user	NN
+,	,
+all	DT
+images	NNS
+are	VBP
+displayed	VBN
+in	IN
+a	DT
+random	JJ
+order	NN
+.	.
+
+Thus	RB
+,	,
+the	DT
+display	NN
+orders	NNS
+may	MD
+be	VB
+different	JJ
+for	IN
+each	DT
+participant	NN
+to	TO
+avoid	VB
+bias	NN
+.	.
+
+The	DT
+program	NN
+keeps	VBZ
+recording	VBG
+the	DT
+touch	NN
+behavior	NN
+type	NN
+,	,
+center	NN
+pixel	NN
+coordinates	VBZ
+of	IN
+the	DT
+pinch	NN
+zoom	NN
+,	,
+double	JJ
+tap	NN
+coor	NN
+-	:
+dinates	NNS
+,	,
+pixel	NN
+coordinates	VBZ
+of	IN
+center	NN
+point	NN
+of	IN
+the	DT
+screen	NN
+,	,
+scroll	NN
+target	NN
+position	NN
+,	,
+tap	NN
+point	NN
+coordinates	VBZ
+,	,
+and	CC
+etc.	NN
+.	.
+
+
+3.2	CD
+.	.
+
+Touch	VB
+Behaviors	NNP
+Features	NNS
+
+
+In	IN
+order	NN
+to	TO
+learn	VB
+the	DT
+relationship	NN
+between	IN
+different	JJ
+touch	NN
+be	VB
+-	:
+haviors	NNS
+and	CC
+the	DT
+human	JJ
+attention	NN
+on	IN
+the	DT
+images	NNS
+,	,
+we	PRP
+analyze	VBP
+all	PDT
+the	DT
+touch	NN
+behaviors	NNS
+data	NNS
+collected	VBN
+from	IN
+the	DT
+user	NN
+study	NN
+and	CC
+propose	VBP
+the	DT
+following	VBG
+ï	NN
+¬	CD
+ve	NN
+features	NNS
+that	WDT
+may	MD
+indicate	VB
+humans	NNS
+interest	NN
+and	CC
+attention	NN
+on	IN
+certain	JJ
+regions	NNS
+of	IN
+the	DT
+image	NN
+.	.
+
+
+Tap	NN
+-LRB-	-LRB-
+T	NN
+-RRB-	-RRB-
+:	:
+Image	NN
+pixel	NN
+coordinates	VBZ
+of	IN
+the	DT
+tap	NN
+point	NN
+.	.
+
+
+Pinch-zoom-in	NN
+-LRB-	-LRB-
+P	NN
+-RRB-	-RRB-
+:	:
+Image	NN
+pixel	NN
+coordinates	VBZ
+of	IN
+the	DT
+cen	NN
+-	:
+
+
+ter	NN
+point	NN
+between	IN
+two	CD
+ï	NN
+¬	CD
+ngers	NNS
+after	IN
+zoom	NN
+in	IN
+.	.
+
+
+Scroll	NN
+-LRB-	-LRB-
+S	NN
+-RRB-	-RRB-
+:	:
+Image	NN
+pixel	NN
+coordinates	VBZ
+of	IN
+the	DT
+scrolling	VBG
+
+
+point	NN
+after	IN
+zoom	NN
+in	IN
+.	.
+
+
+Double-tap-zoom-in	NN
+-LRB-	-LRB-
+D	NN
+-RRB-	-RRB-
+:	:
+Image	NN
+pixel	NN
+coordinates	VBZ
+of	IN
+
+
+the	DT
+double-tap	JJ
+point	NN
+and	CC
+the	DT
+zoom	NN
+scales	NNS
+of	IN
+the	DT
+double	JJ
+-	:
+
+
+tap	NN
+zoom	NN
+in/out	NN
+on	IN
+images	NNS
+.	.
+
+
+Center	NNP
+-LRB-	-LRB-
+C	NNP
+-RRB-	-RRB-
+:	:
+Image	NN
+pixel	NN
+coordinates	VBZ
+of	IN
+the	DT
+center	NN
+point	NN
+
+
+of	IN
+the	DT
+touch	NN
+screen	NN
+after	IN
+zoom	NN
+in	IN
+.	.
+
+
+3.3	CD
+.	.
+
+Touch	VB
+Saliency	NNP
+Learning	NNP
+
+
+Different	JJ
+from	IN
+previous	JJ
+touch	NN
+saliency	NN
+generation	NN
+methods	NNS
+,	,
+a	DT
+novel	JJ
+learning	NN
+based	VBN
+approach	NN
+is	VBZ
+proposed	VBN
+to	TO
+generate	VB
+image	NN
+saliency	NN
+maps	NNS
+from	IN
+the	DT
+touch	NN
+behaviors	NNS
+data	NNS
+.	.
+
+
+Let	VB
+R	NN
+=	JJ
+fI1	NN
+,	,
+I2	NN
+,	,
+I3	NN
+,	,
+...	:
+,	,
+Img	NNP
+be	VB
+a	DT
+set	NN
+of	IN
+training	NN
+im	NN
+-	:
+ages	NNS
+.	.
+
+We	PRP
+divided	VBD
+an	DT
+image	NN
+Ik1	NN
+into	IN
+a	DT
+by	IN
+b	NN
+grids	NNS
+,	,
+GI	NN
+
+
+k	NN
+
+
+=	JJ
+fg	NN
+
+
+I	PRP
+
+
+;	:
+g2	NN
+;	:
+g3	NN
+;	:
+:	:
+:	:
+:	:
+;	:
+gab	NN
+g	NN
+,	,
+where	WRB
+gjI	NN
+=	JJ
+
+
+k	NN
+
+
+I	PRP
+
+
+k	NN
+
+
+I	PRP
+
+
+k	NN
+
+
+I	PRP
+
+
+k	NN
+k	NN
+
+
+-LRB-	-LRB-
+gI	NN
+
+
+Tj	NN
+;	:
+gPj	NN
+
+
+;	:
+g	NN
+
+
+Sj	NN
+
+
+;	:
+gI	NN
+
+
+Dj	NN
+Cj	NN
+
+
+I	PRP
+
+
+;	:
+g	NN
+-RRB-	-RRB-
+2	CD
+R	NN
+
+
+5	CD
+
+
+is	VBZ
+a	DT
+touch	NN
+feature	NN
+vector	NN
+extracted	VBN
+from	IN
+the	DT
+
+
+k	NN
+k	NN
+
+
+I	PRP
+
+
+k	NN
+k	NN
+
+
+I	PRP
+
+
+j-th	JJ
+grid	NN
+.	.
+
+The	DT
+value	NN
+of	IN
+these	DT
+ï	NN
+¬	CD
+ve	NN
+touch	NN
+
+
+k	NN
+
+
+behavior	NN
+features	NNS
+gT	NN
+
+
+j	NN
+
+
+;	:
+gP	NN
+
+
+j	NN
+
+
+I	PRP
+I	PRP
+
+
+;	:
+gS	NN
+
+
+j	NN
+
+
+;	:
+gD	NN
+
+
+j	NN
+
+
+;	:
+gC	NN
+
+
+j	NN
+
+
+are	VBP
+calculated	VBN
+by	IN
+counting	VBG
+the	DT
+number	NN
+of	IN
+occurrences	NNS
+the	DT
+corresponding	JJ
+
+
+k	NN
+k	NN
+
+
+I	PRP
+
+
+k	NN
+
+
+I	PRP
+
+
+k	NN
+
+
+I	PRP
+
+
+k	NN
+
+
+behavior	NN
+happens	VBZ
+in	IN
+the	DT
+j-th	JJ
+grid	NN
+of	IN
+image	NN
+Ik	NN
+.	.
+
+For	IN
+example	NN
+,	,
+if	IN
+10	CD
+tap	NN
+points	NNS
+are	VBP
+found	VBN
+in	IN
+the	DT
+j-th	JJ
+grid	NN
+of	IN
+image	NN
+Ik	NN
+,	,
+itsT	NN
+
+
+corresponding	JJ
+value	NN
+gI	NN
+
+
+j	NN
+
+
+is	VBZ
+10	CD
+.	.
+
+Obvioursly	NNP
+,	,
+the	DT
+more	RBR
+frequent	JJ
+the	DT
+touch	NN
+behaviors	NNS
+happen	VB
+in	IN
+one	CD
+grid	NN
+,	,
+the	DT
+more	RBR
+attentions	NNS
+
+
+k	NN
+
+
+are	VBP
+given	VBN
+to	TO
+that	DT
+grid	NN
+by	IN
+users	NNS
+.	.
+
+
+Since	IN
+eye	NN
+ï	NN
+¬	CD
+xation	NN
+maps	NNS
+acquired	VBN
+from	IN
+the	DT
+eye-tracking	NN
+device	NN
+reï	NN
+¬	CD
+‚	CD
+ect	NN
+real	JJ
+visual	JJ
+attention	NN
+information	NN
+,	,
+they	PRP
+are	VBP
+used	VBN
+as	IN
+the	DT
+ground	NN
+truth	NN
+for	IN
+our	PRP$
+learning	VBG
+algorithm	NN
+.	.
+
+The	DT
+eye	NN
+ï	NN
+¬	CD
+x	NN
+-	:
+ation	NN
+map	NN
+is	VBZ
+a	DT
+grayscale	NN
+image	NN
+and	CC
+each	DT
+pixels	NNS
+value	NN
+ranges	VBZ
+from	IN
+0	CD
+to	TO
+255	CD
+.	.
+
+The	DT
+higher	JJR
+the	DT
+value	NN
+is	VBZ
+,	,
+the	DT
+more	RBR
+salient	JJ
+that	IN
+pixel	NN
+is	VBZ
+.	.
+
+Each	DT
+eye	NN
+ï	NN
+¬	CD
+xation	NN
+map	NN
+is	VBZ
+also	RB
+divided	VBN
+into	IN
+a	DT
+by	IN
+b	NN
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+2	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+Fig.	NN
+1	CD
+:	:
+Saliency	NNP
+Maps	NNPS
+.	.
+
+From	IN
+left	VBN
+to	TO
+right	NN
+:	:
+a	DT
+-RRB-	-RRB-
+original	JJ
+image	NN
+,	,
+b	NN
+-RRB-	-RRB-
+NUSEF	NN
+eye	NN
+ï	NN
+¬	CD
+xation	NN
+map	NN
+,	,
+c	NN
+-RRB-	-RRB-
+our	PRP$
+touch	NN
+saliency	NN
+map	NN
+-LRB-	-LRB-
+gird	NN
+size	NN
+:	:
+image	NN
+width	NN
+x	CC
+image	NN
+height	NN
+-RRB-	-RRB-
+,	,
+d	NN
+-RRB-	-RRB-
+Center	NNP
+saliency	NN
+map	NN
+,	,
+e	LS
+-RRB-	-RRB-
+Itti	NN
+saliency	NN
+map	NN
+,	,
+f	LS
+-RRB-	-RRB-
+Signature	NN
+saliency	NN
+map	NN
+,	,
+g	NN
+-RRB-	-RRB-
+AIM	NN
+saliency	NN
+map	NN
+,	,
+h	NN
+-RRB-	-RRB-
+
+
+GBVS	NN
+saliency	NN
+map	NN
+.	.
+
+
+grids	NNS
+.	.
+
+The	DT
+target	NN
+real	JJ
+visual	JJ
+attention	NN
+value	NN
+of	IN
+the	DT
+j-th	JJ
+grid	NN
+in	IN
+image	NN
+Ik	NN
+:	:
+tjI	NN
+is	VBZ
+approximated	VBN
+as	IN
+the	DT
+average	NN
+of	IN
+all	PDT
+the	DT
+pixel	NN
+values	NNS
+in	IN
+the	DT
+
+
+k	NN
+
+
+j-th	JJ
+grid	NN
+.	.
+
+Apparently	RB
+,	,
+if	IN
+more	JJR
+pixels	NNS
+in	IN
+one	CD
+grid	NN
+has	VBZ
+high	JJ
+value	NN
+,	,
+it	PRP
+indicates	VBZ
+that	IN
+grid	NN
+attarcts	NNS
+a	DT
+lot	NN
+of	IN
+attention	NN
+.	.
+
+
+Since	IN
+different	JJ
+touch	NN
+behaviors	NNS
+may	MD
+contribute	VB
+differently	RB
+to	TO
+the	DT
+touch	NN
+saliency	NN
+value	NN
+of	IN
+each	DT
+grid	NN
+,	,
+we	PRP
+propose	VBP
+to	TO
+use	VB
+linear	JJ
+regression	NN
+model	NN
+to	TO
+generate	VB
+the	DT
+touch	NN
+saliency	NN
+value	NN
+for	IN
+the	DT
+j-th	JJ
+grid	NN
+in	IN
+image	NN
+Ik	NN
+in	IN
+a	DT
+linear	JJ
+function	NN
+:	:
+
+
+h	NN
+-LRB-	-LRB-
+gj	NN
+
+
+Ik	NN
+
+
+-RRB-	-RRB-
+=	JJ
+w	NN
+
+
+D	NN
+
+
+j	NN
+
+
+Cj	NN
+
+
+0	CD
++	CC
+w	NN
+T	NN
+gTj	NN
++	CC
+w	NN
+
+
+Ik	NN
+
+
+P	NN
+gPj	NN
++	CC
+w	NN
+
+
+Ik	NN
+
+
+S	NN
+gSj	NN
+
+
+I	PRP
+
+
++	CC
+wk	NN
+Dg	NN
+
+
+I	PRP
+
+
++	CC
+wk	NN
+Cg	NN
+
+
+Ik	NN
+
+
+-LRB-	-LRB-
+1	LS
+-RRB-	-RRB-
+wT	NN
+,	,
+wP	NN
+,	,
+wS	NN
+,	,
+wD	NN
+and	CC
+wC	NN
+are	VBP
+the	DT
+corresponding	JJ
+weights	NNS
+of	IN
+the	DT
+ï	NN
+¬	CD
+ve	NN
+features	NNS
+,	,
+which	WDT
+implicitly	RB
+indicate	VBP
+correlation	NN
+be	VB
+-	:
+tween	NN
+each	DT
+behavior	NN
+and	CC
+touch	NN
+saliency	NN
+value	NN
+h	NN
+-LRB-	-LRB-
+gjI	NN
+-RRB-	-RRB-
+.	.
+
+
+The	DT
+touch	NN
+saliency	NN
+learning	NN
+problem	NN
+is	VBZ
+formulated	VBN
+as	IN
+a	DT
+
+
+k	NN
+
+
+linear	JJ
+regression	NN
+algorithm	NN
+,	,
+which	WDT
+learns	VBZ
+the	DT
+weight	NN
+of	IN
+each	DT
+behavior	NN
+by	IN
+solving	VBG
+the	DT
+following	VBG
+minimization	NN
+function	NN
+:	:
+
+
+Xm	NNP
+Xab	NNP
+
+
+
+min	NN
+h	NN
+-LRB-	-LRB-
+gjI	NN
+-RRB-	-RRB-
+tjI	NN
+-LRB-	-LRB-
+2	CD
+-RRB-	-RRB-
+
+
+k	NN
+k	NN
+
+
+k	NN
+=	JJ
+1	CD
+j	NN
+=	JJ
+1	CD
+
+
+The	DT
+learning	NN
+framework	NN
+is	VBZ
+shown	VBN
+in	IN
+Fig.	NN
+2	CD
+,	,
+it	PRP
+contains	VBZ
+two	CD
+stages	NNS
+:	:
+training	NN
+and	CC
+testing	NN
+.	.
+
+During	IN
+the	DT
+training	NN
+stage	NN
+,	,
+the	DT
+weight	NN
+of	IN
+each	DT
+behavior	NN
+can	MD
+be	VB
+learned	VBN
+by	IN
+solving	VBG
+function	NN
+-LRB-	-LRB-
+2	CD
+-RRB-	-RRB-
+,	,
+and	CC
+indicates	VBZ
+how	WRB
+many	JJ
+contributions	NNS
+each	DT
+touch	NN
+behav	NN
+-	:
+ior	NN
+makes	VBZ
+to	TO
+the	DT
+touch	NN
+saliency	NN
+value	NN
+.	.
+
+In	IN
+the	DT
+testing	NN
+stage	NN
+,	,
+given	VBN
+collected	VBN
+touch	RB
+behavior	NN
+data	NNS
+of	IN
+a	DT
+new	JJ
+image	NN
+,	,
+its	PRP$
+touch	NN
+saliency	NN
+map	NN
+can	MD
+be	VB
+predicted	VBN
+with	IN
+the	DT
+learned	VBN
+weights	NNS
+based	VBN
+on	IN
+formula	NN
+-LRB-	-LRB-
+1	CD
+-RRB-	-RRB-
+.	.
+
+Above	IN
+all	DT
+,	,
+the	DT
+proposed	VBN
+learning	NN
+based	VBN
+ap	SYM
+-	:
+proach	NN
+can	MD
+successfully	RB
+explore	VB
+the	DT
+correlation	NN
+between	IN
+each	DT
+touch	NN
+behavior	NN
+feature	NN
+and	CC
+human	JJ
+attention	NN
+.	.
+
+This	DT
+thus	RB
+leads	VBZ
+to	TO
+a	DT
+good	JJ
+saliency	NN
+map	NN
+from	IN
+those	DT
+touch	NN
+behaviors	NNS
+.	.
+
+
+Fig.	NN
+2	CD
+:	:
+Touch	NNP
+Saliency	NNP
+Learning	NNP
+Framework	NNP
+.	.
+
+
+4	LS
+.	.
+
+EXPERIMENTS	NNS
+
+
+In	IN
+our	PRP$
+experiments	NNS
+,	,
+the	DT
+NUSEF	NN
+dataset	NN
+is	VBZ
+divided	VBN
+into	IN
+a	DT
+train	NN
+-	:
+ing	NN
+set	NN
+-LRB-	-LRB-
+396	CD
+images	NNS
+-RRB-	-RRB-
+and	CC
+a	DT
+testing	NN
+set	NN
+-LRB-	-LRB-
+50	CD
+images	NNS
+-RRB-	-RRB-
+.	.
+
+After	IN
+tran	NN
+-	:
+ing	VBG
+the	DT
+model	NN
+on	IN
+the	DT
+collected	VBN
+training	NN
+data	NNS
+,	,
+the	DT
+weights	NNS
+of	IN
+features	NNS
+wT	NNP
+,	,
+wP	NNP
+,	,
+wS	NN
+,	,
+wD	NN
+and	CC
+wC	NN
+are	VBP
+learned	VBN
+,	,
+whose	WP$
+approx	RB
+-	:
+imate	JJ
+average	JJ
+values	NNS
+are	VBP
+28	CD
+%	NN
+,	,
+14	CD
+%	NN
+,	,
+20	CD
+%	NN
+,	,
+10	CD
+%	NN
+,	,
+and	CC
+28	CD
+%	NN
+re	SYM
+-	:
+spectively	RB
+.	.
+
+These	DT
+learned	VBD
+weights	NNS
+show	VBP
+that	IN
+all	PDT
+the	DT
+features	NNS
+contribute	VBP
+to	TO
+the	DT
+touch	NN
+saliency	NN
+,	,
+but	CC
+in	IN
+the	DT
+different	JJ
+degree	NN
+.	.
+
+Center	NNP
+point	NN
+of	IN
+screen	NN
+and	CC
+the	DT
+tap	NN
+behavior	NN
+are	VBP
+the	DT
+most	RBS
+im	SYM
+-	:
+portant	JJ
+ones	NNS
+.	.
+
+Scrolling	VBG
+is	VBZ
+the	DT
+third	JJ
+important	JJ
+touch	NN
+behavior	NN
+.	.
+
+Pinch-zoom	NN
+and	CC
+Double-tap-zoom	NN
+make	VBP
+less	JJR
+contribution	NN
+to	TO
+the	DT
+visual	JJ
+attention	NN
+information	NN
+.	.
+
+The	DT
+weights	NNS
+of	IN
+Pinch-zoom	NN
+and	CC
+Double-tap-zoom	NN
+are	VBP
+similar	JJ
+.	.
+
+This	DT
+makes	VBZ
+sense	NN
+as	IN
+both	DT
+behaviors	NNS
+are	VBP
+used	VBN
+to	TO
+zoom	VB
+in	IN
+images	NNS
+.	.
+
+
+In	IN
+order	NN
+to	TO
+evaluate	VB
+the	DT
+performance	NN
+of	IN
+our	PRP$
+touch	NN
+saliency	NN
+learning	VBG
+from	IN
+multiple	JJ
+touch	NN
+behaviors	NNS
+algorithm	NN
+-LRB-	-LRB-
+TSMB	NN
+-RRB-	-RRB-
+,	,
+we	PRP
+utilize	VBP
+two	CD
+popular	JJ
+saliency	NN
+performance	NN
+evaluation	NN
+met	VBD
+-	:
+rics	NNS
+:	:
+AUC	NN
+-LRB-	-LRB-
+Area	NN
+under	IN
+Curve	NN
+-RRB-	-RRB-
+score	NN
+and	CC
+CC	NN
+-LRB-	-LRB-
+Correlation	NN
+Co	NNP
+-	:
+efï	NN
+¬	NN
+cients	NNS
+-RRB-	-RRB-
+.	.
+
+A	DT
+good	JJ
+saliency	NN
+map	NN
+should	MD
+have	VB
+both	DT
+high	JJ
+AUC	NN
+score	NN
+-LRB-	-LRB-
+maximum	NN
+value	NN
+is	VBZ
+1	LS
+-RRB-	-RRB-
+and	CC
+CC	NN
+score	NN
+-LRB-	-LRB-
+maximum	NN
+value	NN
+is	VBZ
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+3	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+Table	NNP
+1	CD
+:	:
+AUC	NN
+and	CC
+CC	NN
+comparison	NN
+results	NNS
+.	.
+
+
+1	LS
+-RRB-	-RRB-
+.	.
+
+In	IN
+addition	NN
+,	,
+we	PRP
+compare	VBP
+the	DT
+performance	NN
+of	IN
+our	PRP$
+approach	NN
+with	IN
+other	JJ
+ï	NN
+¬	CD
+ve	VBP
+state-of-the-arts	JJ
+methods	NNS
+on	IN
+the	DT
+NUSEF	NNP
+data	NN
+set	NN
+.	.
+
+These	DT
+ï	VBP
+¬	CD
+ve	JJ
+state-of-the-arts	NNS
+include	VBP
+four	CD
+visual	JJ
+saliency	NN
+map	NN
+generation	NN
+methods	NNS
+,	,
+which	WDT
+derive	VBP
+saliency	NN
+maps	NNS
+based	VBN
+on	IN
+image	NN
+visual	JJ
+content	NN
+information	NN
+-LRB-	-LRB-
+Itti	NNP
+Model	NNP
+-LRB-	-LRB-
+Itti	NNP
+-RRB-	-RRB-
+-LSB-	-LRB-
+7	CD
+-RSB-	-RRB-
+,	,
+Graph	NNP
+Based	VBD
+Visual	NNP
+Saliency	NNP
+-LRB-	-LRB-
+GBVS	NNP
+-RRB-	-RRB-
+-LSB-	-LRB-
+8	CD
+-RSB-	-RRB-
+,	,
+Attention	NN
+via	IN
+In	IN
+-	:
+formation	NN
+Maximization	NN
+-LRB-	-LRB-
+AIM	NN
+-RRB-	-RRB-
+-LSB-	-LRB-
+9	CD
+-RSB-	-RRB-
+,	,
+Image	NN
+Signature	NN
+model	NN
+-LRB-	-LRB-
+Sign	NN
+.	.
+-RRB-	-RRB-
+
+-LSB-	-LRB-
+10	CD
+-RSB-	-RRB-
+-RRB-	-RRB-
+,	,
+and	CC
+one	CD
+touch	NN
+saliency	NN
+generation	NN
+approach	NN
+-LRB-	-LRB-
+center-based	JJ
+touch	NN
+saliency	NN
+map	NN
+-LRB-	-LRB-
+Center	NN
+-RRB-	-RRB-
+-LSB-	-LRB-
+5	CD
+-RSB-	-RRB-
+-RRB-	-RRB-
+.	.
+
+Fig.	NN
+1	CD
+shows	VBZ
+the	DT
+generated	VBN
+saliency	NN
+maps	NNS
+of	IN
+these	DT
+methods	NNS
+.	.
+
+
+In	IN
+our	PRP$
+approach	NN
+,	,
+different	JJ
+numbers	NNS
+of	IN
+grids	NNS
+are	VBP
+tested	VBN
+,	,
+which	WDT
+range	VBP
+from	IN
+10x10	NN
+,	,
+14x14	NN
+,	,
+18x18	NN
+,	,
+22x22	NN
+,	,
+26x26	NN
+,	,
+30x30	NN
+,	,
+40x40	NN
+,	,
+50x50	NN
+,	,
+60x60	NN
+to	TO
+image	NN
+width	NN
+x	CC
+image	NN
+height	NN
+.	.
+
+In	IN
+the	DT
+case	NN
+of	IN
+image	NN
+width	NN
+x	CC
+image	NN
+height	NN
+-LRB-	-LRB-
+WxH	NN
+-RRB-	-RRB-
+,	,
+every	DT
+recorded	VBN
+pixel	NN
+in	IN
+the	DT
+image	NN
+is	VBZ
+chosen	VBN
+as	IN
+one	CD
+grid	NN
+,	,
+the	DT
+mild	JJ
+outliers	NNS
+are	VBP
+removed	VBN
+using	VBG
+the	DT
+quartile	NN
+method	NN
+-LRB-	-LRB-
+lower	JJR
+quartile	NN
+=	JJ
+0th	JJ
+percentile	NN
+,	,
+higher	JJR
+quartile	NN
+=	JJ
+75th	JJ
+percentile	NN
+-RRB-	-RRB-
+for	IN
+scroll	NN
+and	CC
+tap	NN
+features	NNS
+,	,
+since	IN
+most	JJS
+users	NNS
+tend	VB
+to	TO
+continiously	JJ
+scroll	NN
+and	CC
+accidentally	RB
+tap	VB
+the	DT
+image	NN
+on	IN
+the	DT
+screen	NN
+.	.
+
+
+The	DT
+AUC	NN
+and	CC
+CC	NN
+comparison	NN
+result	NN
+is	VBZ
+listed	VBN
+in	IN
+Table	NNP
+1	CD
+.	.
+
+From	IN
+the	DT
+results	NNS
+,	,
+it	PRP
+can	MD
+be	VB
+observed	VBN
+that	IN
+:	:
+1	LS
+-RRB-	-RRB-
+our	PRP$
+touch	NN
+saliency	NN
+learning	VBG
+algorithm	NN
+TSMB	NN
+outperforms	VBZ
+the	DT
+state-of	JJ
+-	:
+the-art	JJ
+touch	NN
+saliency	NN
+learning	NN
+method	NN
+-LRB-	-LRB-
+Center	NN
+-RRB-	-RRB-
+.	.
+
+The	DT
+AUC	NN
+value	NN
+has	VBZ
+been	VBN
+improved	VBN
+from	IN
+0.73	CD
+to	TO
+0.80	CD
+and	CC
+CC	NN
+value	NN
+is	VBZ
+also	RB
+improved	VBN
+from	IN
+0.44	CD
+to	TO
+0.46	CD
+.	.
+
+The	DT
+major	JJ
+reason	NN
+is	VBZ
+that	IN
+the	DT
+center-based	JJ
+method	NN
+only	RB
+considers	VBZ
+zoom	NN
+behavior	NN
+.	.
+
+Ac	SYM
+-	:
+tually	RB
+,	,
+it	PRP
+is	VBZ
+found	VBN
+out	RP
+in	IN
+our	PRP$
+study	NN
+that	IN
+all	PDT
+the	DT
+touch	NN
+behaviors	NNS
+contribute	VBP
+to	TO
+the	DT
+human	JJ
+attention	NN
+.	.
+
+Tap	NN
+and	CC
+scroll	NN
+behaviors	NNS
+even	RB
+make	VBP
+more	JJR
+contributions	NNS
+than	IN
+zoom	NN
+does	VBZ
+;	:
+2	LS
+-RRB-	-RRB-
+The	DT
+touch	NN
+saliency	NN
+map	NN
+generated	VBN
+by	IN
+our	PRP$
+algorithm	NN
+has	VBZ
+better	JJR
+accuracy	NN
+than	IN
+the	DT
+saliency	NN
+map	NN
+derived	VBN
+by	IN
+many	JJ
+complex	NN
+and	CC
+expen	NN
+-	:
+sive	JJ
+visual-based	JJ
+approaches	NNS
+.	.
+
+Although	IN
+multiple	JJ
+touch	NN
+be	VB
+-	:
+haviors	NNS
+may	MD
+involve	VB
+noise	NN
+,	,
+the	DT
+generated	VBN
+touch	NN
+saliency	NN
+map	NN
+still	RB
+has	VBZ
+high	JJ
+quality	NN
+and	CC
+the	DT
+touch	NN
+saliency	NN
+learning	VBG
+approach	NN
+is	VBZ
+much	JJ
+cheaper	JJR
+,	,
+faster	RBR
+,	,
+and	CC
+more	RBR
+efï	JJ
+¬	NN
+cient	NN
+than	IN
+visual-based	JJ
+approaches	NNS
+;	:
+3	LS
+-RRB-	-RRB-
+As	IN
+the	DT
+number	NN
+of	IN
+grids	NNS
+increases	NNS
+-LRB-	-LRB-
+the	DT
+grid	NN
+size	NN
+decreases	VBZ
+-RRB-	-RRB-
+,	,
+the	DT
+accuracy	NN
+of	IN
+the	DT
+learned	VBN
+saliency	NN
+map	NN
+also	RB
+increases	VBZ
+.	.
+
+Even	RB
+if	IN
+the	DT
+image	NN
+is	VBZ
+roughly	RB
+divided	VBN
+into	IN
+10x10	NN
+grids	NNS
+,	,
+the	DT
+performance	NN
+is	VBZ
+still	RB
+very	RB
+good	JJ
+.	.
+
+Therefore	RB
+,	,
+users	NNS
+can	MD
+freely	RB
+choose	VB
+the	DT
+best	JJS
+number	NN
+of	IN
+grids	NNS
+based	VBN
+on	IN
+their	PRP$
+appli	NN
+-	:
+cation	NN
+needs	NNS
+.	.
+
+If	IN
+the	DT
+application	NN
+has	VBZ
+high	JJ
+requirement	NN
+on	IN
+the	DT
+execution	NN
+time	NN
+,	,
+10x10	NN
+is	VBZ
+a	DT
+good	JJ
+choice	NN
+.	.
+
+If	IN
+the	DT
+accuracy	NN
+is	VBZ
+the	DT
+ï	NN
+¬	NN
+rst	NN
+priority	NN
+of	IN
+the	DT
+application	NN
+,	,
+WxH	NN
+should	MD
+be	VB
+chosen	VBN
+.	.
+
+
+5	CD
+.	.
+
+CONCLUSIONS	NNS
+
+
+In	IN
+this	DT
+work	NN
+,	,
+we	PRP
+conduct	VBP
+a	DT
+quantitative	JJ
+and	CC
+qualitative	JJ
+study	NN
+of	IN
+touch	NN
+saliency	NN
+learning	VBG
+from	IN
+a	DT
+variety	NN
+of	IN
+human	JJ
+touch	NN
+be	VB
+-	:
+
+
+haviors	NNS
+.	.
+
+It	PRP
+is	VBZ
+learned	VBN
+that	IN
+different	JJ
+touch	NN
+behaviors	NNS
+make	VBP
+different	JJ
+contributions	NNS
+to	TO
+human	JJ
+attentions	NNS
+and	CC
+considering	VBG
+more	JJR
+touch	NN
+behaviors	NNS
+usually	RB
+leads	VBZ
+to	TO
+a	DT
+better	JJR
+touch	NN
+saliency	NN
+map	NN
+.	.
+
+The	DT
+experimental	JJ
+results	NNS
+demonstrate	VBP
+the	DT
+proposed	VBN
+touch	NN
+saliency	NN
+learning	VBG
+approach	NN
+can	MD
+automatically	RB
+generate	VB
+a	DT
+good	JJ
+saliency	NN
+map	NN
+from	IN
+multiple	JJ
+human	JJ
+touch	NN
+behaviors	NNS
+.	.
+
+Therefore	RB
+,	,
+our	PRP$
+approach	NN
+will	MD
+have	VB
+wide	JJ
+application	NN
+potentials	NNS
+where	WRB
+eye	NN
+tracking	NN
+is	VBZ
+utilized	VBN
+.	.
+
+In	IN
+the	DT
+future	NN
+,	,
+we	PRP
+will	MD
+further	RB
+improve	VB
+the	DT
+touch	NN
+saliency	NN
+performance	NN
+by	IN
+applying	VBG
+different	JJ
+learning	NN
+algorithms	NNS
+such	JJ
+as	IN
+classiï	NN
+¬	CD
+cation	NN
+algorithms	NNS
+.	.
+
+
+6	CD
+.	.
+
+ACKNOWLEDGEMENT	NN
+
+
+This	DT
+work	NN
+is	VBZ
+in	IN
+part	NN
+supported	VBN
+by	IN
+the	DT
+Texas	NNP
+State	NNP
+Univer	NNP
+-	:
+sity	NN
+Research	NN
+Enhancement	NN
+Program	NN
+-LRB-	-LRB-
+REP	NN
+-RRB-	-RRB-
+,	,
+Army	NNP
+Research	NNP
+Ofï	NNP
+¬	CD
+ce	NN
+grant	NN
+W911NF-12-1-0057	NN
+,	,
+and	CC
+NSF	NNP
+CRI	NNP
+1058724	CD
+to	TO
+Dr.	NNP
+Yijuan	NNP
+Lu	NNP
+and	CC
+in	IN
+part	NN
+supported	VBN
+by	IN
+the	DT
+NSFC	NNP
+61201413	CD
+,	,
+SRFDP2100060003	NN
+,	,
+the	DT
+Fundamental	JJ
+Research	NN
+Funds	NNS
+for	IN
+the	DT
+Central	NNP
+Universities	NNS
+No	UH
+.	.
+
+WK2100060007	NN
+and	CC
+No	DT
+.	.
+
+WK2100100021	NN
+to	TO
+Dr.	NNP
+Xinmei	NNP
+Tian	NNP
+.	.
+
+
+7	CD
+.	.
+
+REFERENCES	NNS
+
+
+-LSB-	-LRB-
+1	CD
+-RSB-	-RRB-
+O.	NNP
+Marques	NNP
+,	,
+L.	NNP
+Mayron	NNP
+,	,
+G.	NNP
+Borba	NNP
+,	,
+and	CC
+H.	NNP
+Gamba	NNP
+,	,
+â	VBD
+$	$
+œUsing	JJ
+
+
+visual	JJ
+attention	NN
+to	TO
+extract	NN
+regions	NNS
+of	IN
+interest	NN
+in	IN
+the	DT
+context	NN
+of	IN
+
+
+image	NN
+retrieval	NN
+,	,
+â	VB
+$	$
+2006	CD
+,	,
+ACM-SE	NN
+44	CD
+,	,
+pp.	FW
+638â	FW
+$	$
+``	``
+643	CD
+.	.
+
+-LSB-	-LRB-
+2	CD
+-RSB-	-RRB-
+S.	NNP
+X.	NNP
+Yu	NNP
+and	CC
+D.	NNP
+A.	NNP
+Lisin	NNP
+,	,
+â	VBD
+$	$
+œImage	JJ
+compression	NN
+based	VBN
+on	IN
+visual	JJ
+
+
+saliency	NN
+at	IN
+individual	JJ
+scales	NNS
+,	,
+â	VB
+$	$
+ISVC	CD
+â	NN
+$	$
+™	CD
+09	CD
+,	,
+pp.	FW
+157â	FW
+$	$
+``	``
+166	CD
+.	.
+
+-LSB-	-LRB-
+3	CD
+-RSB-	-RRB-
+S.	NNP
+Ramanathan	NNP
+,	,
+H.	NNP
+Katti	NNP
+,	,
+N.	NNP
+Sebe	NNP
+,	,
+M.	NNP
+Kankanhalli	NNP
+,	,
+and	CC
+T.	NNP
+-	:
+
+
+S.	NNP
+Chua	NNP
+,	,
+â	VBD
+$	$
+œAn	JJ
+eye	NN
+ï	NN
+¬	CD
+xation	NN
+database	NN
+for	IN
+saliency	NN
+detection	NN
+in	IN
+
+
+images	NNS
+,	,
+â	VB
+$	$
+ECCVâ	JJ
+$	$
+™	CD
+10	CD
+,	,
+pp.	FW
+30â	FW
+$	$
+``	``
+43	CD
+.	.
+
+
+-LSB-	-LRB-
+4	CD
+-RSB-	-RRB-
+V.	NNP
+Setlur	NNP
+,	,
+S.	NNP
+Takagi	NNP
+,	,
+R.	NNP
+Raskar	NNP
+,	,
+M.	NNP
+Gleicher	NNP
+,	,
+and	CC
+B.	NNP
+Gooch	NNP
+,	,
+
+
+â	RB
+$	$
+œAutomatic	JJ
+image	NN
+retargeting	NN
+,	,
+â	VB
+$	$
+MUM	JJ
+â	NN
+$	$
+™	CD
+05	CD
+,	,
+pp.	FW
+59â	FW
+$	$
+``	``
+68	CD
+.	.
+
+-LSB-	-LRB-
+5	CD
+-RSB-	-RRB-
+M.	NNP
+Xu	NNP
+,	,
+B.	NNP
+Ni	NNP
+,	,
+J.	NNP
+Dong	NNP
+,	,
+Z.	NNP
+Huang	NNP
+,	,
+M.	NNP
+Wang	NNP
+,	,
+and	CC
+S.	NNP
+Yan	NNP
+,	,
+â	VBD
+$	$
+œTouch	JJ
+
+
+saliency	NN
+,	,
+â	VB
+$	$
+ACM	JJ
+MMâ	NN
+$	$
+™	CD
+12	CD
+,	,
+pp.	FW
+1041â	FW
+$	$
+``	``
+1044	CD
+.	.
+
+
+-LSB-	-LRB-
+6	CD
+-RSB-	-RRB-
+X.	NNP
+Xie	NNP
+,	,
+H.	NNP
+Liu	NNP
+,	,
+S.	NNP
+Goumaz	NNP
+,	,
+and	CC
+W.-Y	NN
+.	.
+
+Ma	NNP
+,	,
+â	VBD
+$	$
+œLearning	JJ
+user	NN
+in	IN
+-	:
+
+
+terest	NN
+for	IN
+image	NN
+browsing	VBG
+on	IN
+small-form-factor	JJ
+devices	NNS
+,	,
+â	VB
+$	$
+CHI	CD
+
+
+â	RB
+$	$
+™	CD
+05	CD
+,	,
+pp.	FW
+671â	FW
+$	$
+``	``
+680	CD
+.	.
+
+
+-LSB-	-LRB-
+7	CD
+-RSB-	-RRB-
+L.	NNP
+Itti	NNP
+,	,
+C.	NNP
+Koch	NNP
+,	,
+and	CC
+E.	NNP
+Niebur	NNP
+,	,
+â	VBD
+$	$
+œA	JJ
+model	NN
+of	IN
+saliency-based	JJ
+
+
+visual	JJ
+attention	NN
+for	IN
+rapid	JJ
+scene	NN
+analysis	NN
+,	,
+â	VB
+$	$
+TPAMIâ	JJ
+$	$
+™	CD
+98	CD
+,	,
+vol	NN
+.	.
+
+20	CD
+,	,
+
+
+no.	RB
+11	CD
+,	,
+pp.	FW
+1254â	FW
+$	$
+``	``
+1259	CD
+.	.
+
+
+-LSB-	-LRB-
+8	CD
+-RSB-	-RRB-
+J.	NNP
+Harel	NNP
+,	,
+C.	NNP
+Koch	NNP
+,	,
+and	CC
+P.	NNP
+Perona	NNP
+,	,
+â	VBD
+$	$
+œGraph-based	JJ
+visual	JJ
+
+
+saliency	NN
+,	,
+â	VB
+$	$
+NIPS	CD
+â	RB
+$	$
+™	CD
+06	CD
+,	,
+pp.	FW
+545â	FW
+$	$
+``	``
+552	CD
+.	.
+
+
+-LSB-	-LRB-
+9	CD
+-RSB-	-RRB-
+N.	NNP
+Bruce	NNP
+and	CC
+J.	NNP
+Tsotsos	NNP
+,	,
+â	VBD
+$	$
+œSaliency	JJ
+based	VBN
+on	IN
+information	NN
+max	NN
+-	:
+
+
+imization	NN
+,	,
+â	VB
+$	$
+NIPSâ	JJ
+$	$
+™	CD
+06	CD
+,	,
+pp.	FW
+155â	FW
+$	$
+``	``
+162	CD
+.	.
+
+
+-LSB-	-LRB-
+10	CD
+-RSB-	-RRB-
+X.	NNP
+Hou	NNP
+,	,
+J.	NNP
+Harel	NNP
+,	,
+and	CC
+C.	NNP
+Koch	NNP
+,	,
+â	VBD
+$	$
+œImage	JJ
+signature	NN
+:	:
+Highlighting	VBG
+
+
+sparse	JJ
+salient	JJ
+regions	NNS
+,	,
+â	VB
+$	$
+TPAMIâ	JJ
+$	$
+™	CD
+12	CD
+,	,
+vol	NN
+.	.
+
+34	CD
+,	,
+no.	RB
+1	CD
+,	,
+pp.	FW
+194â	FW
+$	$
+``	``
+201	CD
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+4	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+

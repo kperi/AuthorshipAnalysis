@@ -1,0 +1,621 @@
+﻿SIFT Match Veriﬁcation by Geometric Coding for Large-Scale Partial-Duplicate Web Image Search 
+WENGANG ZHOU and HOUQIANG LI, University of Science and Technology of China YIJUAN LU, Texas State University 
+QI TIAN, University of Texas at San Antonio 
+Most large-scale image retrieval systems are based on the bag-of-visual-words model. However, the traditional bag-of-visual- words model does not capture the geometric context among local features in images well, which plays an important role in image retrieval. In order to fully explore geometric context of all visual words in images, efﬁcient global geometric veriﬁcation methods have been attracting lots of attention. Unfortunately, current existing methods on global geometric veriﬁcation are either computationally expensive to ensure real-time response, or cannot handle rotation well. To solve the preceding problems, in this article, we propose a novel geometric coding algorithm, to encode the spatial context among local features for large- scale partial-duplicate Web image retrieval. Our geometric coding consists of geometric square coding and geometric fan coding, which describe the spatial relationships of SIFT features into three geo-maps for global veriﬁcation to remove geometrically inconsistent SIFT matches. Our approach is not only computationally efﬁcient, but also effective in detecting partial-duplicate images with rotation, scale changes, partial-occlusion, and background clutter. 
+Experiments in partial-duplicate Web image search, using two datasets with one million Web images as distractors, reveal that our approach outperforms the baseline bag-of-visual-words approach even following a RANSAC veriﬁcation in mean av- erage precision. Besides, our approach achieves comparable performance to other state-of-the-art global geometric veriﬁcation methods, for example, spatial coding scheme, but is more computationally efﬁcient. 
+4 
+Categories and Subject Descriptors: I.2.10 [Vision and Scene Understanding] VISION 
+General Terms: Algorithms, Experimentation, Veriﬁcation 
+Additional Key Words and Phrases: Image retrieval, partial duplicate, large scale, rotation-invariant, geometric square coding, geometric fan coding 
+ACM Reference Format: 
+Zhou, W., Li, H., Lu, Y., and Tian, Q. 2013. SIFT match veriﬁcation by geometric coding for large-scale partial-duplicate Web image search. ACM Trans. Multimedia Comput. Commun. Appl. 9, 1, Article 4 (February 2013), 18 pages. 
+DOI = 10.1145/2422956.2422960 http://doi.acm.org/10.1145/2422956.2422960 
+This work is supported in part by the Fundamental Research Funds for the Central Universities of China (WK2100230003) to H. Li, in part by Research Enhancement Program (REP), start-up funding from the Texas State University and DoD HBCU/MI grant W911NF-12-1-0057 to Y. Lu, and in part by NSF IIS-1052851, Faculty Research Awards by Google FXPAL, NEC Labora- tories of America, and ARO grant W911BF-12-1-0057 to Q. Tian. 
+Authors’ addresses: W. Zhou, H. Li, Department of EEIS, University of Science and Technology of China, Hefei 230027, P. R. China; Y. Lu, Department of Computer Science, Texas State University at San Marcos, TX 78666; Q. Tian (corresponding author), Department of Computer Science, University of Texas at San Antonio, TX 78249; email: qitian@cs.utsa.edu. Permission to make digital or hard copies of part or all of this work for personal or classroom use is granted without fee provided that copies are not made or distributed for proﬁt or commercial advantage and that copies show this notice on the ﬁrst page or initial screen of a display along with the full citation. Copyrights for components of this work owned by others than ACM must be honored. Abstracting with credit is permitted. To copy otherwise, to republish, to post on servers, to redistribute to lists, or to use any component of this work in other works requires prior speciﬁc permission and/or a fee. Permissions may be requested from Publications Dept., ACM, Inc., 2 Penn Plaza, Suite 701, New York, NY 10121-0701 USA, fax +1 (212) 869-0481, or permissions@acm.org. 
+c 2013 ACM 1551-6857/2013/02-ART4 $15.00 
+DOI 10.1145/2422956.2422960 http://doi.acm.org/10.1145/2422956.2422960 
+ACM Transactions on Multimedia Computing, Communications and Applications, Vol. 9, No. 1, Article 4, Publication date: February 2013. 
+
+========1========
+
+4:2 
+• 
+W. Zhou et al. 
+1. INTRODUCTION 
+As more and more people become users of Tineye [2008] and Google Similar Image Search [2009], partial-duplicate image search has been attracting more and more attention in recent years. Partial- duplicate images are those images, part of which are usually cropped from the same original image, that are edited with modiﬁcation in color, scale, rotation, partial occlusion, etc. Figure 1 illustrates some instances of partial-duplicate images from the Web. From these examples, we can ﬁnd that they are partial duplicates of the original image with different appearances but still sharing some dupli- cated patches. 
+The task of partial-duplicate Web image search is to ﬁnd all the partial-duplicate versions of a given query from a large Web image database. Partial-duplicate image search can be widely used in many applications, such as image/video copyright violation detection, ﬁnding out where an image comes from or how it is being used, duplicate image annotation, etc. Besides, it can also facilitate many multimedia applications, such as semantic concept inference [Tang 2009] and image annotation [Tang 2010]. 
+Most of the state-of-the-art approaches in large-scale image retrieval rely on the bag-of-visual-words model [Sivic and Zisserman 2003]. It quantizes local features [Lowe 2004] extracted from images to visual words and indexes images via inverted ﬁle structure. Although the bag-of-visual-words model makes it possible to represent, index, and retrieve images like documents, it suffers from visual word ambiguity and feature quantization error. Those unavoidable problems greatly decrease retrieval pre- cision and recall, since different features may be quantized to the same visual word, causing many false local matches between images. 
+To tackle these problems, many geometric veriﬁcation [Chum et al. 2009; Jegou et al. 2008; Philbin et al. 2007; Sivic and Zisserman 2003; Wu et al. 2009; Zhou et al. 2010] approaches have been proposed in recent few years to address the negative inﬂuence of these false matches to improve retrieval perfor- mance. Many of them are local geometric veriﬁcation approaches, such as spatially nearest neighbors [Sivic and Zisserman 2003], geometric min-hashing [Chum et al. 2009], and bundled feature [Wu et al. 2009]. Since these approaches only can verify spatial consistency of features within some local areas in images, they will fail if there is geometry inconsistency among local areas. Therefore, global geometric veriﬁcation methods are demanded. 
+RANSAC [Fischler and Bolles 1981] is the most popular method for global geometric veriﬁcation. It can fully estimate the transformation model between images and then detect spatially inconsistent pairs. However, due to the high computational cost, usually it is only applied to some top-ranked image results, which is not sufﬁcient for good recall in large-scale image retrieval. To address such a problem, spatial coding [Zhou et al. 2010] is proposed to efﬁciently check spatial consistency globally. It uses spatial maps to record the spatial relationship of all matched feature pairs. But spatial coding is very sensitive to rotation due to the intrinsic limitation of the spatial map. Although it can weakly handle rotated images by trying a set of predeﬁned angles on the query image, much more time cost will be introduced to retrieve freely rotated duplicate images. 
+In this article, we propose a novel geometric coding scheme for global spatial veriﬁcation of SIFT matches, which is both efﬁcient and effective for partial-duplicate image search. We select the SIFT feature [Lowe 2004] for image representation and make full use of SIFT properties. Generally, a SIFT feature is characterized with several property values: a 128D descriptor, a 1D dominant orien- tation (ranging for −π to π), a 1D characteristic scale, and the (x, y) coordinates of the key point. In our approach, a SIFT descriptor is used based on the bag-of-visual-words model, while the orientation, scale, and key point position are all exploited to build our geometric coding maps. In image search, local matches are ﬁrst discovered through feature quantization. To verify the SIFT matches of two im- ages, we use Geometric Square Coding (GSC) and Geometric Fan Coding (GFC) to encode the relative 
+ACM Transactions on Multimedia Computing, Communications and Applications, Vol. 9, No. 1, Article 4, Publication date: February 2013. 
+
+========2========
+
+SIFT Match Veriﬁcation by Geometric Coding for Large-Scale Partial-Duplicate Search 
+• 
+4:3 
+Fig. 1. Examples of partial-duplicate Web images. Top: KFC logo; bottom: Beijing 2008 Olympic logo. The partially duplicated patches in the top row are highlighted with red bounding box. 
+spatial positions of local features in images. Then through spatial veriﬁcation based on three geometric maps, the false matches of SIFT features can be removed effectively and efﬁciently, resulting in better accuracy. 
+The rest of the article is organized as follows. Section 2 reviews the related work. Section 3 discusses our approach in details. Experimental results are provided in Section 4. Finally, we draw the conclusion in Section 5. 
+2. RELATED WORK 
+In recent years, large-scale image retrieval [Chum et al. 2007a, 2007b; Jegou et al. 2008; Nister and Stewenius 2006; Philbin et al. 2007; Wu et al. 2009; Zhang et al. 2009, 2010, 2011] with local features has been signiﬁcantly advanced based on the bag-of-visual-words model [Sivic and Zisserman 2003]. The major contribution of the bag-of-visual-words model is that it can achieve scalability for large-scale image retrieval by quantizing local features to visual words. Popular local features include SIFT [Lowe 2004], SURF [Bay et al. 2006], MSER [Matas et al. 2002], and so on. Local feature quantization not only makes image representation compact, but also makes it possible to index images with inverted ﬁle structure, which greatly reduces the number of candidate images for comparison. 
+However, local feature quantization reduces the discriminative power of local descriptors. Different descriptors may be quantized to the same visual word and cannot be distinguished from each other. On the other hand, with visual word ambiguity, descriptors from local patches of different semantics may also be very similar to each other. Such quantization error and visual word ambiguity will cause many false matches of local features between images and therefore decrease retrieval precision and recall. To reduce the quantization error, two kinds of approaches have been proposed recently. The ﬁrst one is to improve the discriminative power of local features. Soft quantization [Philbin et al. 2008; Jegou et al. 2007] and Hamming embedding [Jegou et al. 2008] are two representative works. Soft quanti- zation quantizes a SIFT descriptor to multiple visual words. Hamming embedding enriches the visual word with compact information from its original local descriptor with Hamming codes. 
+The second category of approaches focus on utilizing geometric information in images to improve retrieval precision. These approaches can be summarized into preprocessing or postprocessing ap- proaches. Inspired by shape context [Belongie et al. 2002; Oliva and Torralba 2001], the motivation of preprocessing approaches is to encode spatial context of local features into image representation. In Hoang et al. [2010], a new image content representation scheme is proposed to describe the spa- tial layout with triangular relationships of visual entities for scene retrieval. In Gao et al. [2010], a spatial-bag-of-features scheme is used to encode geometric information of objects within an image. It 
+ACM Transactions on Multimedia Computing, Communications and Applications, Vol. 9, No. 1, Article 4, Publication date: February 2013. 
+
+========3========
+
+4:4 
+• 
+W. Zhou et al. 
+projects local features of an image to different directions to generate an ordered bag-of-features for im- age search. However, with the large amount of local features in images, it is hard for the preprocessing approaches to fully encode various spatial relationships. It makes image representation very com- plex and increases image matching time. In Zhang et al. [2011], a Geometry-preserving Visual Phrase (GVP) is proposed to encode the spatial information of local features, including both co-occurrences and the local and long-range spatial layouts of visual words. With little increase in memory usage and computational time, retrieval accuracy improvement is witnessed. However, GVP only captures the translation invariance. Although its extension to scale and rotation invariance can be achieved by in- creasing dimension of the offset space, more memory usage and runtime will be incurred. In Wang et al. [2011], the statistics in the local neighborhood of an invariant feature is used as its spatial context to enhance the discriminative power of the visual word. 
+The postprocessing approaches try to avoid these problems. They do not change the image represen- tation and image matching scheme. Instead, after obtaining the local matches between images, they use geometric consistency to ﬁlter those false matches. Since the number of matched features is much smaller than the number of features in the image, postprocessing approaches can be very efﬁcient. The locally spatial consistency of some spatially nearest neighbors is used in Sivic and Zisserman [2003] to suppress false visual-word matches. However, the nearest-neighbors’ spatial consistency only imposes very loose geometric constraints and may be sensitive to the image noise from background clutter. In Jegou et al. [2008], Weak Geometric Consistency (WGC) is used to ﬁlter false local matches. A constraint is imposed that correct local matches should exhibit similar characteristic scale and rota- tion changes. Therefore, histograms of characteristic scale and dominant orientation differences have obvious peaks, which are used to identify false local matches with orientation or scale differences far from those peaks. In Zhao et al. [2010], WGC is enhanced by including translation information. An additional assumption is made that the correct matches follow consistent translation transformation. Bundled feature [Wu et al. 2009] assembles features in local MSER [Matas et al. 2002] regions to increase the discriminative power of local features. The local geometric consistency is measured by projecting feature positions along horizontal and vertical directions in local MSER regions. However, when an image suffers from rotation changes, such projection will yield a different local geometric rep- resentation and cause incorrect geometric measurement. Geometric min-hashing [Chum et al. 2009] constructs repeatable hash keys with loosely local geometric information for more discriminative-break description. 
+All of the preceding postprocessing approaches only verify spatial consistency of features within local areas instead of the entire image plane. Although computationally efﬁcient, they cannot capture the spatial relationship between all features, which makes it hard to detect all false matches and hence obtains limited precision improvement. 
+To capture geometric relationships of all features in the entire image, a global geometric veriﬁcation method such as RANSAC [Chum et al. 2004; Fischler and Bolles 1981; Philbin et al. 2007] is often used for this task. It randomly samples a subset of matching feature pairs many times to estimate an optimal transformation model. RANSAC can greatly improve retrieval precision. However, it is computationally expensive. In practice, it is usually applied on the subset of the top-ranked candidate images, which may not be sufﬁcient to achieve good recall in large-scale image retrieval systems. In the content-based image search system VisualSEEk [Smith and Chang 1996], 2D strings [Chang et al. 1987] are adopted to represent images with multiple color regions for comparison. 2D strings represent an image as a symbolic projection along the x and y directions. Then, the image retrieval problem is converted to a problem of 2D sequence matching. 
+The spatial coding approach [Zhou et al. 2010] is another global geometric veriﬁcation method pro- posed to remove false matches based on spatial maps. The problem of spatial coding is that it requires 
+ACM Transactions on Multimedia Computing, Communications and Applications, Vol. 9, No. 1, Article 4, Publication date: February 2013. 
+
+========4========
+
+SIFT Match Veriﬁcation by Geometric Coding for Large-Scale Partial-Duplicate Search 
+• 
+4:5 
+Visual  Codebook 
+Database  Index 
+Geometric Coding 
+Query  Image 
+Features  Extrac 
+Feature  Quanaon 
+Look up  Index 
+Geometric  Square Coding 
+Geometric  Fan Coding 
+Spa Veriﬁcaon 
+Search  Results 
+Fig. 2. Our image search framework. 
+that the duplicated patches in the query and the matched image share the same or very similar spa- tial conﬁguration and cannot handle rotation very efﬁciently. Although weak rotation invariance can be achieved by rotating the query image with some predeﬁned angles [Zhou et al. 2010], in practice, it will be time consuming to enumerate all possible rotation angles to search freely rotated target images. 
+In this article, our motivation is to design an efﬁcient global geometric veriﬁcation scheme, which can achieve both rotation and scale invariance, and is not sensitive to background clutter. We propose two coding schemes, that is, geometric square coding and geometric fan coding, to strictly describe the geometric context of local features for global spatial veriﬁcation. Our approach can efﬁciently and effectively address images with arbitrary rotation changes. 
+3. OUR APPROACH 
+Based on the bag-of-visual-words model, the framework of our large-scale partial-duplicate image search system is illustrated in Figure 2. Our main contribution lies in geometric coding and spatial ver- iﬁcation, as highlighted with red bounding box. In our approach, we adopt SIFT feature [Lowe 2004] for image representation. In Section 3.1, we apply the SIFT descriptor for vector quantization. In Section 3.2, the key point location, orientation, and scale of the SIFT feature are exploited for geomet- ric coding maps generation. In Section 3.3, we explain how to perform spatial veriﬁcation with those geometric coding maps. More details of the framework are discussed in Section 4.1. 
+3.1 Feature Quantization 
+We index images on a large scale with an inverted index ﬁle structure for retrieval. Before index- ing, SIFT features are quantized to visual words based on the bag-of-visual-words model [Sivic and Zisserman 2003]. A quantizer is deﬁned to map a SIFT descriptor to a visual word. The quantizer can be generated by clustering a sample set of SIFT descriptors and the resulting cluster centroids are regarded as visual words. During the quantization stage, a novel feature will be assigned to the index of the closest visual words. In our implementation, we use the hierarchical visual vocabulary tree ap- proach [Nister and Stewenius 2006] for visual vocabulary generation and feature quantization. With feature quantization, any two features from two different images quantized to the same visual word will be considered as a local match across two images. 
+3.2 Geometric Coding 
+The spatial context among local features of an image is critical in identifying duplicate image patches. After SIFT quantization, SIFT matches between two images can be obtained. However, due to quan- tization error and visual word ambiguity, the matching results are usually polluted by some false matches. Generally, geometric veriﬁcation can be adopted to reﬁne the matching results by discovering the transformation and ﬁltering false positives [Philbin et al. 2007]. Since full geometric 
+ACM Transactions on Multimedia Computing, Communications and Applications, Vol. 9, No. 1, Article 4, Publication date: February 2013. 
+
+========5========
+
+4:6 
+• 
+W. Zhou et al. 
+4 
+4 
+4 
+4 
+4 
+4 
+3 
+3 
+3 
+3 
+3 
+3 
+2 
+2 
+2 
+2 
+2 
+2 
+1 
+1 
+1 
+5 
+5 
+5 
+5 5 5 1 1 1 
+(a)          (b)             (c)           (d)        (e)        (f) 
+Fig. 3. Illustration of image plane division with the key point of feature 2 as reference point. (a) Five SIFT features in image; (b) key point of feature 2 displayed as vector indicating scale, orientation, and location (red arrow); (c) image plane division with lines and square (green dashed lines) with the key point of feature 2 as reference point; (d) image plane rotation from (c); (e) and (f): image subdivisions from (d). 
+veriﬁcation with RANSAC [Chum et al. 2004; Fischler and Bolles 1981] is computationally expen- sive, it is only used as a postprocessing stage to process initially top-ranked candidate images. A more efﬁcient scheme to encode the spatial relationships of visual words is desired. With such motivation, we propose the geometric coding scheme. 
+The key idea of geometric coding is to encode the geometric context of local SIFT features for spatial consistency veriﬁcation. Our geometric coding is composed of two types of coding strategies, that is, geometric square coding and geometric fan coding. The difference between the two strategies lies in the way the image plane is divided according to an invariant reference feature. Before encoding, the image plane has to be divided with a certain criterion that can address both rotation invariance and scale invariance. We design the criterion via the intrinsic invariance merit of the SIFT feature. Figure 3 gives a toy example of image plane division with the key point of feature 2 as reference point. Figure 3(b) illustrates an arrow originated from the key point of feature 2, which corresponds to a vector indicating the characteristic scale and dominant orientation of the SIFT feature. Using the key point of feature 2 as origin and direction of the arrow as the major direction, two lines horizontal and vertical to the arrow of feature 2 can be drawn. Besides, centered at the same key point, a square is also drawn along these two lines, as shown in Figure 3(c). The side length of the square is propor- tional to the characteristic scale of feature 2. For comparison convenience, we rotate all features to align the red arrow to be horizontal, as shown in Figure 3(d). After that, the image plane division with two coordinate axial lines and a square can be decomposed into two kinds of subdivisions, as shown in Figure 3(e) and (f), which will be used for geometric square coding and geometric fan coding, respec- tively. The details are discussed in the following two subsections. 
+3.2.1 Geometric Square Coding. Geometric Square Coding (GSC) encodes the geometric context in the axial direction of reference features. In GSC, with each SIFT feature as reference origin, the image plane is divided by squares. A square coding map, called S-map, is constructed by checking whether other features are inside or outside of the square. 
+To achieve rotation-invariant representation, before checking relative position, we adjust the loca- tion of each SIFT feature according to the SIFT orientation of the reference feature. For instance, given an image I with M features { fi(xi, yi)},(i = 1,2,...,M), with feature fi(xi,yi) as reference point, the(i) 
+adjusted position fj (x(i)j ,y(i)j )of fj(xj,yj) is formulated as 
+ (i) 
+xj 
+cos(φ  
+i) 
+yj 
+(i) 
+= 
+−sin(φi) 
+· 
+x 
+ 
+j 
+sin(φi) cos(φi) y 
+,1 ≤ i, j ≤ M,j (1) 
+where φi is a rotation angle equal to the SIFT orientation of the reference feature fi. 
+ACM Transactions on Multimedia Computing, Communications and Applications, Vol. 9, No. 1, Article 4, Publication date: February 2013. 
+
+========6========
+
+SIFT Match Veriﬁcation by Geometric Coding for Large-Scale Partial-Duplicate Search 
+• 
+4:7 
+S-map describes whether other features are inside or outside of a square deﬁned by the reference feature. For image I, its S-map is deﬁned as 
+    
+Smap(i, j) = 
+1 ifmax x(i)j − x(i) 
+i 
+, y(i)j − y(i)i  < si, 
+(2) 
+0 otherwise 
+where si is a half-side-length proportional to the SIFT scale of feature fi : si = α · scli, α is a constant. The impact of α will be studied in the experiment in Section 4.2.2. 
+To describe the relative positions more strictly, we advance to general squared maps. For each fea- ture, n concentric squares are drawn, with an equally incremental step of the half-side-length on the image plane. Then, the image plane is divided into (n+1) nonoverlapping regions. Correspondingly, ac- cording to the image plane division, a generalized geo-map should encode the relative spatial positions of feature pairs. The general S-map is deﬁned as GS 
+  
+max x(i)j 
+ 
+ 
+− x(i) ,y(i)j − y(i)i  
+GS(i, j) = 
+i 
+si 
+, (3) where si isthesameasthatinEq.(2). 
+Intuitively, we can also select a ring or circle for image plane division. In such a case, there is no need to adjust the coordinates of local features. We deﬁne the corresponding geometric map as GR 
+i,j 
+GR(i, j) = 
+d 
+si 
+, (4) 
+where 
+x denotes the nearest integer less than or equal to x, di,j = (xi − xj)2 + (yi − yj)2, si = α ·scli, scli is the scale parameter of SIFT feature vi, α is a constant. 
+From the previous discussion, it can be seen that GS and GR are two kinds of geometric coding maps based on different strategies of image plan division. Although similar results can be expected with GS and GR, square in GSC ﬁts the image shape (i.e., rectangle) better than circles or rings. In our experiments, we selected the GS deﬁned in Eq. (3) instead of GRfor geometric veriﬁcation. 
+3.2.2 Geometric Fan Coding. Geometric square coding only considers the relative spatial position in radial direction, and ignores the constraints along horizontal and vertical direction. To overcome this drawback, we propose a Geometric Fan Coding (GFC) scheme. In geometric fan coding, we take each SIFT feature as reference point and divide the image plane into some regular fan regions. Then two fan coding maps, that is, H-map and V-map, are constructed by checking which fan region other features fall into. 
+Our Geometric Fan Coding (GFC) is inspired by the spatial coding scheme [Zhou et al. 2010]. The key difference is that, key point locations are ﬁrst adjusted as in Figure 3 before comparing the rela- tive spatial positions. With each SIFT feature as reference point, other SIFT key points’ locations are rotated counterclockwise by the SIFT orientation angle of the reference feature. The motivation is to achieve rotation invariance, without the strong constraints that the duplicated patches in two compar- ison images share the same or very similar spatial conﬁguration, as imposed in Zhou et al. [2010]. 
+Geometric fan coding encodes the relative spatial positions between each pair of features in an im- age. Based on the adjusted new positions of SIFT feature in Eq. (1), two binary geometric maps, called H-map and V-map, are generated. H-map and V-map describe the relative spatial positions between each feature pair along the horizontal and vertical directions, respectively. They are formulated as follows. 
+ 
+Hmap(i, j) = 
+0ifx(i)j ≤ x(i)i 
+1ifxj 
+(i)> 
+x(i)i 
+(5) 
+ACM Transactions on Multimedia Computing, Communications and Applications, Vol. 9, No. 1, Article 4, Publication date: February 2013. 
+
+========7========
+
+4:8 
+• 
+W. Zhou et al. 
+Vmap(i, j) = 
+0ifyi 
+j 
+≤ yii 1ifyij > yii 
+(6) 
+The geometric maps can be interpreted as follows. In row i, feature fi is selected as the reference point, and the image plane is decomposed into four quadrants along horizontal and vertical directions. H-map and V-map then show which quadrant other features fall into. 
+In fact, the representation of geometric context among local features with H-map and V-map is still too weak. We can put forward the geometric fan coding to more general formulations, so as to impose stricter geometric constraints. The image plane can be divided into 4 · r parts, with each quadrant evenly divided into r fan regions. Accordingly, two general fan coding maps GH and GV are required to encode the relative spatial positions of all SIFT features in an image. 
+For a division of image plane into 4 · r parts, we decompose the division into r independent subdivi- sions, each uniformly dividing the image plane into four quadrants. Each subdivision is then encoded independently and their combination leads to the ﬁnal fan coding maps. In each subdivision, to encode the spatial context of all features by the left-right and below-above comparison, we just need to rotate all the feature coordinates and the division lines counterclockwise, until the two division lines become horizontal and vertical, respectively. 
+The general fan coding maps GH and GV are both 3D and deﬁned as follows. Specially, with feature fi as reference, the location of feature fj is rotated counterclockwise by θ(k)i = 
+k·π 
+2·r 
++ φi degree (k = 0,1,...,r − 1) according to the image origin point, yielding the new location fj 
+(i,k)(x(i,k) 
+j 
+,y(i,k)j )as, 
+ (i,k) 
+xj 
+cos(θ(k)    
+yj 
+(i,k) 
+= 
+i 
+) −sin(θ(k)i ) 
+sin(θi ) 
+· 
+x 
+j 
+(k)) cos(θ(k) 
+y 
+.j (7) 
+i 
+Here φi is the SIFT orientation angle of fi, as used in Eq. (1). Then GH and GV are formulated as 
+ 
+(i,k)≤ 
+GH(i, j,k) = 
+0ifxj x(i,k)i 
+1ifxj 
+(i,k)> 
+x(i,k), 
+(8) 
+i 
+ 
+GV(i, j,k) = 
+0ify(i,k)j ≤ y(i,k)i 1ifyj 
+(i,k)> 
+y(i,k).i 
+(9) 
+In geometric fan coding, the factor r controls the strictness of geometric constraints and will affect veriﬁcation performance. We will study its impact in Section 4.2.3. 
+From the preceding discussion, it can be seen that both geometric square coding and geometric fan coding can be efﬁciently performed. However, it will take considerable memory to store the whole geometric maps of all features in an image. Fortunately, that is not necessary at all. Instead, we only need keep the orientation, scale, and x- and y-coordinate of each SIFT feature, respectively. When checking the feature matching of two images, we just need geometric clues of these SIFT matches, which will be employed to generate geometric maps for spatial veriﬁcation in real time. Since the SIFT matches are often only a small set of the whole feature set of an image, the corresponding memory cost on these geometric coding maps is relatively low. The details are discussed in the next section. 
+3.3 Spatial Veriﬁcation 
+Since the focused problem is partial-duplicate image retrieval, there is an underlying assumption that the target image and the query image share some duplicated patches, or in other words, share some local features with consistent geometry. Due to the unavoidable quantization error and visual word 
+ACM Transactions on Multimedia Computing, Communications and Applications, Vol. 9, No. 1, Article 4, Publication date: February 2013. 
+
+========8========
+
+SIFT Match Veriﬁcation by Geometric Coding for Large-Scale Partial-Duplicate Search 
+• 
+4:9 
+ambiguity, there always exist some false SIFT matches, which will degrade image similarity measure- ment. To more accurately deﬁne the similarity between images, spatial veriﬁcation with geometric coding can be used to remove such false matches. 
+Denote that a query image Iq and a matched image Im are found to share N matching pairs of local features. Then the geo-maps of these matched features for both Iq and Im can be generated and denoted as (GSq,GHq,GVq)and(GSm,GHm,GVm) by Eq. (3), Eq. (8), and Eq. (9), respectively. After that, we can compare these geometric maps to remove false matches as follows. 
+Since the general geometric fan coding maps are binary, for efﬁcient comparison, we perform a logical Exclusive-OR (XOR) operation on GHq and GHm, GVq and GVm, respectively. 
+VH(i, j,k) = GHq(i, j,k) ⊕ GHm(i, j,k) (10) 
+VV(i, j,k) = GVq(i, j,k) ⊕ GVm(i, j,k) (11) 
+Ideally, if all N matched pairs are true, VH and VV will be zero for all their entries. If some false matches exist, the entries of these false matches on GHq and GHm may be inconsistent, and so are those on GVq and GVm. Those inconsistencies will cause the corresponding exclusive-OR result of VH and VV to be 1. We deﬁne the inconsistency from geometric fan coding as follows. 
+FH(i, j) = 
+r 
+∪ VH(i, j,k) (12)k=1 
+FV(i, j) = 
+r 
+∪ VV(i, j,k) (13)k=1 
+The inconsistency from geometric square coding is deﬁned as 
+ GS 
+FS(i, j) = 
+q(i, 
+j) − GSm(i, j). 
+(14) 
+Consequently, by checking FH, FV,andFS, the false matches can be identiﬁed and removed. Denote 
+1ifF 
+T(i, j) = 
+S(i, 
+j)>τand FH(i,j) + FV(i,j) >β, 
+0 otherwise 
+(15) 
+where β and τ are constant integers. When τ or β is greater than zero, T in Eq. (15) can tolerate some drifting error of relative positions of local features. The impact of τ and β will be studied in the later experiments in Section 4.2.2 and Section 4.2.3, respectively. 
+Ideally, if all matched pairs are true positives, the entries in T will be all zeroes. If false matches ex- ist, the entries of those false matches on those coding maps may be inconsistent. Those inconsistencies will cause the corresponding entries in T to be 1. We can iteratively remove such match that causes the most inconsistency, until all remain matches are consistent with each other. 
+When two images contain multiple partial-duplicated objects and each object has different changes in scale or orientation, the preceding manipulation will only discover the dominant duplicated objects with the largest number of local matches. However, the extension to identify multiple partial-duplicate objects is straightforward. To address this issue, we can ﬁrst ﬁnd those matches corresponding to the dominant duplicated object and then focus on the sub-geo-maps of the remaining matches. Those matches corresponding to the second dominant object can be identiﬁed in a similar way. Such an oper- ation can be performed iteratively, until all partial-duplicate objects are discovered. 
+Figure 4 shows two instances of the spatial veriﬁcation with geometric coding on a relevant image pair and an irrelevant image pair. Initially, both image pairs have many matches of local features. For the upper “Apollo” example, after spatial veriﬁcation via geometric coding, 9 false matches are iden- tiﬁed and removed, while 12 true matches are satisfactorily kept. For the second instance, although 
+ACM Transactions on Multimedia Computing, Communications and Applications, Vol. 9, No. 1, Article 4, Publication date: February 2013. 
+
+========9========
+
+4:10 
+• 
+W. Zhou et al. 
+Fig. 4. An illustration of spatial veriﬁcation with geometric coding on a relevant pair (ﬁrst row) and an irrelevant pair (second row). (left column): Initial matches after quantization; (middle column): False matches detected by spatial veriﬁcation; (right column): True matches that pass the spatial veriﬁcation. (Best viewed in color PDF) 
+they are irrelevant in content, 17 SIFT matches still exist after quantization. However, by spatial ver- iﬁcation, only one pair of matches is kept. With those false matches removed, the similarity between images can be more accurately deﬁned and that will beneﬁt retrieval accuracy. The philosophy behind the effectiveness of our geometric veriﬁcation approach is that the probability of two irrelevant images sharing many spatially consistent visual words is very low. 
+4. EXPERIMENTS 
+4.1 Experiment Setup 
+Dataset. Our basic dataset contains one million images crawled from the Web. Two ground-truth datasets, that is, DupImage dataset [2011] and Copydays dataset [2008], are used for evaluation, re- spectively. The descriptions of these two datasets are given in the following. 
+(1) DupImage dataset. DupImage dataset contains 1104 manually labeled partial-duplicate Web im- 
+ages of 33 groups collected from the Web. Images in each group are partial duplicates of each other. 
+Some typical examples are shown in Figure 1, Figure 4, and Figure 11. These ground-truth im- 
+ages are open to the public with the link: http://www.cs.utsa.edu/∼wzhou/data/DupGroundTruth 
+Dataset.tgz. 
+(2) Copydays dataset. There are 3369 images in the Copydays dataset generated from 175 original 
+images. Each original image is subjected to three kinds of artiﬁcial attacks: “JPEG”, “cropping” 
+and “strong”. The cropped images suffer from 10% to 80% of the image surface removed. In “JPEG” 
+attacks, each image is scaled to 1/16 (pixels) with nine different JPEG quality factors. Images from 
+the third attacks of “strong” are obtained by printing and scanning, blurring, painting, rotating, 
+and so on. In summary, for each original image, there are nine cropped images, nine JPEG attached 
+images, and 2 to 6 images with “strong” attacks. 
+Local features. We use the standard SIFT feature [Lowe 2004] for image representation. Key points are detected with the Difference-of-Gaussian (DoG) detector, and a 128-dimensional orientation his- togram (SIFT descriptor), together with scale and dominant orientation, is extracted to describe the local patch around the key points. Before feature extraction, large images are scaled to no larger than 400 × 400. 
+Since the ground-truth images do not exhibit diverse rotation changes, it will be insufﬁcient to demonstrate the rotation-invariant capability of our geometric coding approach. To address this issue, 
+ACM Transactions on Multimedia Computing, Communications and Applications, Vol. 9, No. 1, Article 4, Publication date: February 2013. 
+
+========10========
+
+SIFT Match Veriﬁcation by Geometric Coding for Large-Scale Partial-Duplicate Search 
+• 
+4:11 
+Fig. 5. Inverted ﬁle structure for index. 
+instead, for each query image, we randomly generate an angle ranging from −π to π, and rotate the query image counterclockwise by the angle. Since the descriptor and scale in the SIFT feature are invariant to rotation change, we just need to modify the orientation, and x-andy-coordinates of each SIFT feature accordingly in each query image for testing. 
+Indexing. We use an inverted ﬁle structure to index images. As illustrated in Figure 5, each visual word is followed by a list of indexed features that are quantized to the visual word. Each indexed feature records the ID of the image where the visual word appears. Besides, as discussed in Section 3.2, for each indexed feature, we also need keep its SIFT orientation, scale, and the x- and y- coordinate, which will be used for generating geometric coding maps for retrieval. 
+Evaluation and retrieval. To evaluate the performance with respect to the size of dataset, we build several smaller datasets by sampling the basic one-million dataset. For the DupImage dataset, 100 representative query images are selected from the ground-truth dataset for evaluation comparison. For the Copydays dataset, all original and attacked images are used as queries for evaluation compar- ison. We adopt mean Average Precision (mAP) [Philbin et al. 2007] to evaluate the performance of all approaches. 
+In retrieval, each visual word in the query image casts a vote for its matched images. Instead of se- lecting the tf-idf weight [Sivic and Zisserman 2003; Nister and Stewenius 2006] to distinguish different matched features, we simply count the number of SIFT matches that pass our spatial veriﬁcation. Im- age similarity is formulated as the number of true matches, with a term to distinguish images with the same amount of true matches by their feature amount. 
+4.2 Impact of Parameters 
+The performance of our approach is related with ﬁve parameters: visual codebook size, α and τ in GSC, and r and β in GFC. In the following, we will study their impacts with the DupImage dataset and select the optimal values. 
+4.2.1 Visual Codebook Size. Visual codebook size reﬂects the space partition degree of the SIFT descriptor. The larger the visual codebook, the ﬁner the high-dimensional descriptor space is divided. We test three different sizes of visual codebooks on the 1M image database. The result is shown in Table I. 
+ACM Transactions on Multimedia Computing, Communications and Applications, Vol. 9, No. 1, Article 4, Publication date: February 2013. 
+
+========11========
+
+4:12 
+• 
+W. Zhou et al. 
+Table I. Mean Average Precision (mAP) and Average Time 
+Cost per Query to Each Visual Codebook 
+Codebook size 130K 500K 1M 
+mAP 0.554 0.544 0.540 
+Time cost (s) 3.53 0.64 0.16 
+0.55 
+0.125 
+0.5 
+0.12 
+0.45 
+0.4 
+0.115 
+τ  = 0 τ  = 1 τ  = 2 τ  = 3 τ  = 4 τ  = 5 
+0.35 
+0.11 
+mAP 
+0.3 
+0.25 
+0.2 
+τ  = 0 τ  = 1 τ  = 2 τ  = 3 τ  = 4 τ  = 5 
+0.105 
+0.10 
+average time cost per query (second) 
+0.0951 
+3 5 7 9 
+11 13 15 17 19 α α 
+(a)    (b) 
+11 
+13 
+15 
+17 
+19 
+1 
+3 
+5 
+7 
+9 
+Fig. 6. Performance comparison of geometric fan coding with different α and τ on the one-million image dataset. (Best viewed in color PDF) 
+From Table I, it can be observed that when the size of descriptor visual codebook increases from 130K to 500K, the mAP drops a little while the time cost per query decreases sharply. When using a smaller codebook, similar features will be more likely to be quantized to the same visual word, which helps to gain improvement in accuracy. Although more false local matches will be incurred, they can be effectively discovered and removed by our geometric veriﬁcation. To make a trade-off in mAP and time cost, we select the 1M visual codebook, which is used in the later experiments. 
+4.2.2 Impact of α and τ. In geometric square coding, the factor α and τ work together to cast geometric consistency constraints on the relative spatial positions between each pair of SIFT features. We also need evaluate their joint impact on retrieval performance so as to select the optimal values. 
+We test the performance of our geometric square coding using different values of α and τ on the 1M dataset, without geometric fan coding constraints. Intuitively, smaller α value deﬁnes stricter spatial relationships. However, it suffers from the scale detection error in the SIFT feature. Similarly, the parameter τ also tunes the strictness of spatial constraints. Small values of τ will help tolerate digital errors in estimating the scale of features during detection. When τ increases, the imposed constraint will become loose and more noisy matches will be found. 
+As shown in Figure 6(a), with the increasing of α, the mAP performance ﬁrst increases, and then gradually drops after reaching its maximum. Since the computational complexity of the geometric square coding map is independent of α and τ, the time cost should be similar with different α and τ,as demonstrated in Figure 6(b). Considering both mAP and average time cost, we select α = 5andτ = 2. 
+4.2.3 Impact of r and β. In geometric fan coding, the factor r determines the division degree of the image plane, while the factor β tunes the strictness of geometric consistency veriﬁcation. In fact, 
+ACM Transactions on Multimedia Computing, Communications and Applications, Vol. 9, No. 1, Article 4, Publication date: February 2013. 
+
+========12========
+
+SIFT Match Veriﬁcation by Geometric Coding for Large-Scale Partial-Duplicate Search 
+• 
+4:13 
+0.5 
+0.49 
+r = 3 
+0.15 
+0.48 
+r = 1 r = 2 r = 3 r = 4 r = 5 
+0.16 
+r = 1 
+r = 2 
+r = 4 
+r = 5 
+0.14 
+0.47 
+0.13 
+0.46 
+0.12 
+mAP 
+0.45 
+0.11 
+0.44 
+0.43 
+0.1 
+average time cost per query (second) 
+0.42 
+0.09 
+0.410 
+1 
+2 
+3 β (a) 
+4 
+5 
+6 
+0.080 
+1 
+2 
+3 β (b)  
+4 
+5 
+6 
+Fig. 7. Performance comparison of geometric fan coding with different r and β on the one-million image dataset. (a) mAP; (b) average time cost per query. The best result is achieved with r = 4andβ = 2. (Best viewed in color PDF) 
+r and β work interactively to impose geometric constraints on the relative spatial positions among local matches. Therefore, we need to evaluate the impact of them together on retrieval performance. 
+We test the performance of our geometric fan coding using different values of r and β on the 1M dataset, without geometric squaring coding constraints. The mAP performance and time cost are il- lustrated in Figure 7. Intuitively, larger values of r and β cast stricter geometric constraint and better performance is expected. However, due to the unavoidable detection errors of the SIFT key point po- sition and SIFT orientation, a strong geometric constraint will be subjected to the drifting error from relatively spatial positions, resulting in low accuracy, as shown in Figure 7(a). For time cost, large r will introduce more computation in the fan coding maps, and increase the required time cost, as shown in Figure 7(b). Considering both mAP and time cost, the best trade-off is made when r = 4andβ = 2. 
+4.3 Evaluation on DupImage Dataset 
+Three approaches are considered for comparison. The parameters of those comparison approaches are tuned based on the suggestion in the corresponding papers. The ﬁrst one is the bag-of-visual- words approach with visual vocabulary tree [Nister and Stewenius 2006], denoted as the “baseline” approach. A visual vocabulary of 1M visual words is adopted. In fact, for the baseline, different sizes of visual codebooks have been tested and the 1M visual codebook is found to generate the best overall performance. The second one is reranking via geometric veriﬁcation, which is based on the estimation of an afﬁne transformation by a variant of RANSAC [Chum et al. 2004] as used in Philbin et al. [2007]. We call this method “RANSAC”. In the experiment, all candidate images with no less than three local matches are involved in the RANSAC-based reranking. 
+The third one is Spatial Coding (SC) [Zhou et al. 2010], which generates spatial maps for spatial veriﬁcation. Since spatial coding requires that the duplicated patches in different images share the same or very similar spatial conﬁguration, it cannot directly deal with images with rotation changes. As discussed in Zhou et al. [2010], it can achieve rotation invariance by merging the results of a set of new queries, which are obtained by evenly rotating the query image with a few predeﬁned angles k·π 
+m 
+, k = 0,1,...,m− 1, where m denotes the rotation times. For example, if m = 8, the query image will be rotated in 8 angles: 
+0·π 
+8 
+, 
+1·π 
+8 
+,...,7·π8 and therefore generate 7 more new query images for further 
+ACM Transactions on Multimedia Computing, Communications and Applications, Vol. 9, No. 1, Article 4, Publication date: February 2013. 
+
+========13========
+
+4:14 
+• 
+W. Zhou et al. 
+1.5 
+0.55 
+0.5 
+0.45 
+1 
+0.4 
+0.35 
+mAP 
+0.3 
+0.25 
+0.5 
+0.2 
+0.15 
+average time cost per query (second) 
+0.1 
+0.050 
+20 
+40 
+00 
+60 80 100 120 20 40 60 80 100 120 
+rotation times rotation times 
+(a) (b)  
+Fig. 8. Performance of spatial coding with different rotation times: (a) mean average precision; (b) average time cost per query. 
+duplicate image search. We test spatial coding on the one-million image dataset with a 1M visual codebook on different values of m. As shown in Figure 8, when the rotation times increase, its mAP ﬁrst increases sharply and then keeps stable, while the time cost increases proportionally. When m= 60, it reaches the peak MAP. Considering both accuracy and time cost of spatial coding, in the comparison, we select the rotation times of 8, 30, and 60, and denote the corresponding spatial coding approach as “SC(8)”, “SC(30)”, and “SC(60)”, respectively. SC(8) has similar time cost to our Geometric Coding (GC) approach while SC(30) achieves similar mAP performance to our approach. “SC(60)” achieves the best mAP performance with the least rotation times. It can be noted that there is a small gap in mAP between “SC(60)” and GC. “SC(60)” performs slightly better than GC, which is mainly due to the fact that the orientation detection suffers from trivial errors in SIFT extraction. In our geometric coding approach, the orientation detection error will be propagated when local features’ coordinates are adjusted by the reference feature’s orientation value with Eqs. (1) and (7). Nevertheless, in the spatial coding approach, this error is attenuated through soft quantization in orientation space [Zhou et al. 2010]. 
+We perform the experiments on a server with 2.4 GHz CPU and 8GB memory. Figure 9 illustrates the mAP performance of the comparison algorithms and our Geometric Coding (GC) approach. Figure 10 shows the average time cost per query of all six approaches. The time cost of SIFT feature extraction is not included in all algorithms. Compared with the baseline, our approach is more time consuming, since it is involved with geometric coding and veriﬁcation. It takes the baseline 0.095 second to perform one image query on average, while for our approach the average query time cost is 0.155 second, 0.06 second more than the baseline. However, our approach increases the mAP from 0.37 to 0.54, an 46% improvement over the baseline. 
+Our approach is more efﬁcient than SC(8), SC(30), SC(60), and reranking with RANSAC. SC(8) takes comparable time cost with GC, but its mAP is much worse than our approach and even worse than the baseline. Our approach also achieves comparable mAP to spatial coding with 30 rotation times (SC(30)), However, the average time cost per query of SC(30) is 2.8 times that of our approach. Since SC(30) is involved with 29 more rotated new queries to gain similar mAP to GC, more time cost is introduced. When the rotation times increase to 60, the mAP of SC(60) reaches 0.548, with a slight improvement over our GC approach (0.540) but with much higher time cost. The computational time of SC(60) is 0.785 second per query, which is ﬁve times that of GC. The reason that GC achieves a little 
+ACM Transactions on Multimedia Computing, Communications and Applications, Vol. 9, No. 1, Article 4, Publication date: February 2013. 
+
+========14========
+
+SIFT Match Veriﬁcation by Geometric Coding for Large-Scale Partial-Duplicate Search 
+• 
+4:15 
+0.7 
+0.65 
+0.6 
+SC(60) SC(30) GC RANSAC baseline SC(8) 
+0.55 
+mAP 
+0.5 
+0.45 
+0.4 
+0.3550K 
+200K 
+500K 
+1M 
+database size 
+Fig. 9. Comparison of mAP for different methods on the 1M database. (Best viewed in color PDF) 
+1.2 
+1.052 
+1 
+0.785 
+0.8 
+0.6 
+0.438 
+0.4 
+0.2 
+0.095 
+0.162 
+0.155 
+averate time cost per query (second) 
+0 
+baseline RANSAC SC(60) SC(30) SC(8) GC 
+Fig. 10. The average time cost of the comparison methods and our Geometric Coding (GC) approach. 
+lower mAP than SC(60) is that the orientation detection error from SIFT extraction is propagated to the coordinate adjustment in Eq. (1) and Eq. (7). RANSAC is the most time-consuming approach, due to the afﬁne estimation from many random samplings. It costs 1.052 seconds on average per query, which is 6.7 times more than our approach. However, it is notable that our approach achieves even better mAP performance than the “RANSAC” method. This is because that “RANSAC” only makes use of the coordinate information, while our approach fully exploits geometric clues including the scale, orientation, and spatial position. Therefore, our approach is more powerful in distinguishing those geometric inconsistent matches. 
+Figure 11 illustrates some sample results using our geometric coding approach on the one-million image dataset. It can be observed that the retrieved results are not only diverse but also contain large changes in color, scale, rotation, signiﬁcant occlusion, etc. 
+4.4 Evaluation on Copydays Dataset 
+With the parameters selected in Section 4.2, we also compare our approaches with the other algorithms on the Copydays dataset with four different sizes of distracting images, that is, 100K, 200K, 500K, and 1M. The mAP results are given in Table II. Since there are four categories each with different number of images, we list the mAP respectively. As can be seen, this dataset is relatively easier than 
+ACM Transactions on Multimedia Computing, Communications and Applications, Vol. 9, No. 1, Article 4, Publication date: February 2013. 
+
+========15========
+
+4:16 
+• 
+W. Zhou et al. 
+Fig. 11. Sample results on the one-million image dataset. Query images are shown on the left of the arrow in each row, and highly ranked returned images (selected from those before the ﬁrst false positive) are shown on the right. 
+Table II. Comparison of All Methods in Accuracy of Queries from Four Parts of The Copydays 
+Dataset on Four Different Sizes of Database (100K, 200K, 500K, and 1M) 
+Original 
+JPEG 
+Cropping 
+Strong 
+100K 200K 500K 1M 100K 200K 500K 1M 100K 200K 500K 1M 100K 200K 500K 1M 
+Baseline 0.9588 0.9565 0.9533 0.9505 0.8894 0.8844 0.8767 0.8705 0.9184 0.9132 0.9060 0.9005 0.7575 0.7470 0.7332 0.7236 
+RANSAC 0.9588 0.9578 0.9560 0.9545 0.8949 0.8918 0.8875 0.8842 0.9244 0.9218 0.9179 0.9152 0.7858 0.7803 0.7729 0.7677 
+SC(60) 0.9636 0.9626 0.9614 0.9602 0.9154 0.9132 0.9099 0.9072 0.9352 0.9334 0.9309 0.9287 0.8078 0.8033 0.7976 0.7932 
+SC(30) 0.9626 0.9617 0.9603 0.9592 0.9141 0.9116 0.9081 0.9051 0.9343 0.9325 0.9298 0.9277 0.8056 0.8008 0.7947 0.7899 
+SC(8) 0.7992 0.7912 0.7819 0.7755 0.7445 0.7360 0.7260 0.7187 0.7543 0.7461 0.7363 0.7295 0.6323 0.6240 0.6140 0.6074 
+GC 0.9594 0.9586 0.9574 0.9566 0.9103 0.9078 0.9042 0.9015 0.9308 0.9292 0.9266 0.9246 0.7926 0.7876 0.7817 0.7769 
+Approach 
+Average time cost (second) 
+Table III. Comparison of All Methods in Average Time Cost on Copydays Images on an 
+One-Million Image Dataset 
+RANSAC 
+Baseline 0.139 
+6.693 
+SC(60) 1.286 
+SC(30) 0.605 
+SC(8) 0.324 
+GC 0.283 
+the aforesaid DupImage dataset and the mAP values of all approaches are relatively higher. Among the four categories, the best results are from queries with original image, while the worst results are obtained with queries from “strong” attacked images. The average time cost per query of all approaches is shown in Table III. The time cost of SIFT feature extraction is not included. 
+Compared with the baseline, our approach is more time consuming. It takes the baseline 0.139 second to perform one image query on average, while for our approach the average query time cost is 0.283 second, about twice the time cost of the baseline. However, for each category of the ground-truth images, our approach achieves better mAP performance over the baseline. 
+ACM Transactions on Multimedia Computing, Communications and Applications, Vol. 9, No. 1, Article 4, Publication date: February 2013. 
+
+========16========
+
+SIFT Match Veriﬁcation by Geometric Coding for Large-Scale Partial-Duplicate Search 
+• 
+4:17 
+Similar to the results in Section 4.3, our approach is more efﬁcient than SC(8), SC(30), SC(60), and reranking with RANSAC. SC(8) takes even more time cost than GC, but its mAP is much worse than our approach and even worse than the baseline. Our approach also achieves comparable mAP to SC(30), However, the average time cost per query of SC(30) is about twice of our approach. The mAP of SC(60) is higher on all four categories of images over our GC approach, but with much higher time cost. RANSAC is the most time-consuming approach. It costs 6.693 seconds on average per query, which is 22.6 times more than our approach. Also, our approach achieves better mAP performance than the “RANSAC” method. 
+5. CONCLUSION 
+In this article, we propose a novel geometric coding scheme for SIFT match veriﬁcation in large-scale partial-duplicate image search. The geometric coding consists of geometric square coding and geomet- ric fan coding. It efﬁciently encodes the global geometric context of local features in an image and effectively discovers false feature matches between images. Our approach can effectively detect du- plicate images with rotation, scale change, occlusion, and background clutter with low computational cost. Experiments on two million-scale datasets reveal that our approach outperforms the baseline even following a RANSAC veriﬁcation. Besides, our approach also attains comparable performance with the spatial coding scheme, but takes much less time. 
+Our geometric fan coding is inspired by the spatial coding scheme [Zhou et al. 2010]. The key differ- ence is that, key point locations are ﬁrst adjusted by SIFT orientation and the generated coding maps are invariant to rotation changes. Our GFC can adaptively achieve rotation invariance, which cannot be well addressed by spatial coding. Besides, the spatial veriﬁcation is performed in a soft manner to tolerate drifting error of relative positions of local features. 
+Our geometric coding scheme aims to discover Web images sharing duplicated patches. With high accuracy and efﬁciency, our approach is effective for large-scale partial-duplicate image retrieval. How- ever, when searching general objects where distinctive SIFT features are not repeatable, it may not perform well. 
+REFERENCES 
+BAY,H.,TUYTELAARS,T.,GOOL, L. V. 2006. SURF: Speeded up robust features. In Proceedings of the 9th European Conference on 
+Computer Vision (ECCV’06). 404–417. 
+BELONGIE,S.,MALIK,J.,AND PUZICHA, J. 2002. Shape matching and object recognition using shape context. IEEE Trans. Pattern 
+Anal. Mach. Intell. 24, 4, 509–522. 
+CHANG,S.-K.,SHI,Q.Y.,AND YAN, C. Y. 1987. Iconic indexing by 2-D strings. IEEE Trans. Pattern Anal. Mach. Intell. 9, 3, 
+413–428. 
+CHUM,O.,PHILBIN,J.,SIVIC,J.,ISARD,M.,AND ZISSERMAN, A. 2007a. Total recall: Automatic query expansion with a generative 
+feature model for object retrieval. In Proceedings of the IEEE 11th International Conference on Computer Vision. 1–8. CHUM,O.,PHILBIN,J.,ISARD,M.,AND ZISSERMAN, A. 2007b. Scalable near identical image and shot detection. In Proceedings of 
+the 6th ACM international Conference on Image and Video Retrieval. ACM, 1–8. 
+CHUM,O.,PERDOCH,M.,AND MATAS, J. 2009. Geometric minhashing: Finding a (thick) needle in a haystack. In Proceedings of 
+the IEEE Conference on Computer Vision and Pattern Recognition. 17–24. 
+CHUM,O.,MATAS,J.,AND OBDRZALEK, S. 2004. Enhancing RANSAC by generalized model optimization. In Proceedings of the 
+Asian Conference on Computer Vision. 812–817. 
+COPYDAYS, 2008. http://lear.inrialpes.fr/∼jegou/data.php 
+DUPIMAGE, 2011. http://www.cs.utsa.edu/∼wzhou/data/DupGroundTruthDataset.tgz 
+FISCHLER,M.A.AND BOLLES, R. C. 1981. Random sample consensus: A paradigm for model ﬁtting with applications to image 
+analysis and automated cartography. Comm. ACM. 24, 6, 381–395. 
+GAO,Y.,WANG,C.,LI,Z.,ZHANG,L.,AND ZHANG, L. 2010. Spatial-Bag-of-Features. In Proceedings of the IEEE Conference on 
+Computer Vision and Pattern Recognition. 3352–3359. 
+ACM Transactions on Multimedia Computing, Communications and Applications, Vol. 9, No. 1, Article 4, Publication date: February 2013. 
+
+========17========
+
+4:18 
+• 
+W. Zhou et al. 
+GOOGLE SIMILAR IMAGE SEARCH, 2009. http://similar-images.googlelabs.com/ 
+HOANG,N.V.,GOUET-BRUNET,V.,RUKOZ,M.,AND MANOURIER, M. 2010. Embedding spatial information into image content 
+description for scene retrieval. Pattern Recogn. 43, 9, 3003–3012. 
+JEGOU,H.,DOUZE,M.,AND SCHMID, C. 2008. Hamming embedding and weak geometric consistency for large scale image search. 
+In Proceedings of the 10th European Conference on Computer Vision. 304–317. 
+JEGOU,H.,HARZALLAH,H.,AND SCHMID, C. 2007. A contextual dissimilarity measure for accurate and efﬁcient image search. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. 1–8. 
+LOWE, D. 2004. Distinctive image features from scale-invariant key points. Int. J. Comput. Vis. 60, 2, 91–110. 
+MATAS,J.,CHUM,O.,URBAN,M.,AND PAJDLA, T. 2002. Robust wide baseline stereo from maximally stable extremal regions. In 
+Proceedings of the British Machine Vision Conference. 384–393. 
+NISTER,D.AND STEWENIUS, H. 2006. Scalable recognition with a vocabulary tree. In Proceedings of the IEEE Conference on 
+Computer Vision and Pattern Recognition. 2161–2168. 
+OLIVA,A.,AND TORRALBA, A. 2001. Modeling the shape of the scene: A holistic representation of the spatial envelope. Int. J. 
+Comput. Vision 42, 3, 145–175. 
+PHILBIN,J.,CHUM,O.,ISARD,M.,SIVIC,J.,AND ZISSERMAN, A. 2007. Object retrieval with large vocabularies and fast spatial 
+matching. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. 1–8. 
+PHILBIN,J.,CHUM,O.,ISARD,M.,SIVIC,J.,AND ZISSERMAN, A. 2008. Lost in quantization: Improving particular object retrieval in 
+large scale image databases. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. 1–8. SIVIC,J.AND ZISSERMAN, A. 2003. Video google: A text retrieval approach to object matching in videos. In Proceedings of the 
+International Conference on Computer Vision. 1470–1477. 
+SMITH,J.R.AND CHANG S.-F. 1996. VisualSEEk: A fully automated content-based image query system. In Proceedings of the 4th 
+ACM International Conference on Multimedia. 87–98. 
+TANG,J.,YAN,S.,HONG,R.,QI,G.-J.,AND CHUA T.-S. 2009 Inferring semantic concepts from community-contributed images and 
+noisy tags. In Proceedings of the ACM International Conference on Multimedia. 
+TANG,J.,LI,H.,QI,G.-J.,AND CHUA T.-S. 2010. Image annotation by graph-based inference with integrated multiple/single 
+instance representations. IEEE Trans. Multimedia 12, 2, 131–141. 
+TINEYE, 2008. http://www. Tineye.com 
+WANG,X.,YANG,M.,COUR,T.,ZHU,S.,YU,K.,AND HAN, T. X. 2011. Contextual weighting for vocabulary tree based image 
+retrieval. In Proceedings of the International Conference on Computer Vision. 
+WU,Z.,KE,Q.,ISARD,M.,AND SUN, J. 2009. Bundling features for large scale partial-duplicate web image search. In Proceedings 
+of the IEEE Conference on Computer Vision and Pattern Recognition. 25–32. 
+ZHANG,S.,TIAN,Q.,HUA,G.,HUANG,Q.,AND LI, S. 2009. Descriptive visual words and visual phrases for image applications. In 
+Proceedings of the ACM International Conference on Multimedia. 75–84. 
+ZHANG,S.,HUANG,Q.,HUA,G.,JIANG,S.,GAO,W.,AND TIAN, Q. 2010. Building contextual visual vocabulary for large-scale image 
+applications. In Proceedings of the ACM International Conference on Multimedia. 501–510. 
+ZHANG,Y.,JIA,Z.,AND CHEN, T. 2011. Image retrieval with geometry-preserving visual phrases. In Proceedings of the IEEE 
+Conference on Computer Vision and Pattern Recognition. 809–816. 
+ZHAO,W.-L.,WU,X.,AND NGO, C.-W. 2010. On the annotation of web videos by efﬁcient near-duplicate search. IEEE Trans. 
+Multimedia 12, 5, 448–461. 
+ZHOU,W.,LU,Y.,LI,H.,SONG,Y.,AND TIAN, Q. 2010. Spatial coding for large scale partial-duplicate web image search. In 
+Proceedings of the ACM International Conference on Multimedia. 511–520. 
+ZHOU,W.,LI,H.,LU,Y.,AND TIAN, Q. 2011. Large scale image search with geometric coding. In Proceedings of the ACM Interna- 
+tional Conference on Multimedia. 
+Received September 2011; revised January 2012; accepted March 2012 
+ACM Transactions on Multimedia Computing, Communications and Applications, Vol. 9, No. 1, Article 4, Publication date: February 2013. 
+
+========18========
+

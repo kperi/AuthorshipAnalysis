@@ -1,0 +1,20746 @@
+Multimedia	NNP
+Tools	NNP
+and	CC
+Applications	NNS
+,	,
+5	CD
+,	,
+275	CD
+??	NN
+-LRB-	-LRB-
+1997	CD
+-RRB-	-RRB-
+c	NN
+
+
+1997	CD
+Kluwer	NNP
+Academic	NNP
+Publishers	NNPS
+,	,
+Boston	NNP
+.	.
+
+Manufactured	VBN
+in	IN
+The	DT
+Netherlands	NNPS
+.	.
+
+
+Modeling	NN
+and	CC
+Retrieval	NN
+of	IN
+Moving	VBG
+Objects	NNS
+
+
+anne@cse.unsw.edu.au	NNP
+School	NNP
+of	IN
+Computer	NNP
+Science	NNP
+and	CC
+Engineering	NNP
+,	,
+University	NNP
+of	IN
+New	NNP
+South	NNP
+WalesSydney	NNP
+2052	CD
+,	,
+NSW	NNP
+,	,
+Australia	NNP
+
+
+Received	VBN
+November	NNP
+25	CD
+,	,
+1997	CD
+;	:
+Revised	VBN
+March	NNP
+30	CD
+,	,
+1998	CD
+Editor	NNP
+:	:
+XXXX	NNP
+
+
+Abstract	JJ
+.	.
+
+This	DT
+paper	NN
+presents	VBZ
+a	DT
+symbolic	JJ
+formalism	NN
+for	IN
+modeling	NN
+and	CC
+retrieving	VBG
+video	NN
+data	NNS
+via	IN
+the	DT
+moving	VBG
+objects	NNS
+contained	VBN
+in	IN
+the	DT
+video	NN
+images	NNS
+.	.
+
+The	DT
+model	NN
+integrates	VBZ
+the	DT
+representations	NNS
+of	IN
+individual	JJ
+moving	VBG
+objects	NNS
+in	IN
+a	DT
+scene	NN
+with	IN
+the	DT
+time-varying	JJ
+relationships	NNS
+between	IN
+them	PRP
+by	IN
+incorporating	VBG
+both	CC
+the	DT
+notions	NNS
+of	IN
+object	NN
+tracks	NNS
+and	CC
+temporal	JJ
+sequences	NNS
+of	IN
+PIRs	NNS
+-LRB-	-LRB-
+projection	NN
+interval	NN
+relationships	NNS
+-RRB-	-RRB-
+.	.
+
+The	DT
+model	NN
+is	VBZ
+supported	VBN
+by	IN
+a	DT
+set	NN
+of	IN
+operations	NNS
+which	WDT
+form	VBP
+the	DT
+basis	NN
+of	IN
+a	DT
+moving	VBG
+object	NN
+algebra	NN
+.	.
+
+This	DT
+algebra	NN
+allows	VBZ
+one	CD
+to	TO
+retrieve	VB
+scenes	NNS
+and	CC
+information	NN
+from	IN
+scenes	NNS
+by	IN
+specifying	VBG
+both	CC
+spatial	JJ
+and	CC
+temporal	JJ
+properties	NNS
+of	IN
+the	DT
+objects	NNS
+involved	VBN
+.	.
+
+It	PRP
+also	RB
+provides	VBZ
+operations	NNS
+to	TO
+create	VB
+new	JJ
+scenes	NNS
+from	IN
+existing	VBG
+ones	NNS
+.	.
+
+A	DT
+prototype	NN
+implementation	NN
+is	VBZ
+described	VBN
+which	WDT
+allows	VBZ
+queries	NNS
+to	TO
+be	VB
+speciï	JJ
+¬	NN
+ed	VBD
+either	CC
+via	IN
+an	DT
+animation	NN
+sketch	NN
+or	CC
+using	VBG
+the	DT
+moving	VBG
+object	NN
+algebra	NN
+.	.
+
+
+Keywords	NNS
+:	:
+Multimedia	NNP
+Retrieval	NNP
+,	,
+Moving	VBG
+objects	NNS
+Model	NNP
+,	,
+Content-based	JJ
+image	NN
+retrieval	NN
+,	,
+Symbolic	JJ
+video	NN
+model	NN
+
+
+1	LS
+.	.
+
+Introduction	NN
+
+
+In	IN
+recent	JJ
+years	NNS
+,	,
+we	PRP
+have	VBP
+witnessed	VBN
+a	DT
+rapid	JJ
+growth	NN
+of	IN
+multimedia	NNS
+applications	NNS
+in	IN
+ï	NN
+¬	CD
+elds	NNS
+such	JJ
+as	IN
+entertainment	NN
+,	,
+education	NN
+and	CC
+training	NN
+.	.
+
+The	DT
+growth	NN
+has	VBZ
+been	VBN
+intensiï	JJ
+¬	NN
+ed	VBN
+by	IN
+the	DT
+rapid	JJ
+development	NN
+of	IN
+computer	NN
+technology	NN
+,	,
+especially	RB
+powerful	JJ
+workstations	NNS
+and	CC
+high	JJ
+capacity	NN
+digital	JJ
+storage	NN
+systems	NNS
+-LRB-	-LRB-
+e.g.	FW
+optical	JJ
+discs	NNS
+-RRB-	-RRB-
+and	CC
+the	DT
+rapid	JJ
+reduction	NN
+in	IN
+the	DT
+cost	NN
+of	IN
+these	DT
+devices	NNS
+.	.
+
+On	IN
+the	DT
+other	JJ
+hand	NN
+,	,
+the	DT
+software	NN
+that	WDT
+manages	VBZ
+multimedia	NNS
+data	NNS
+is	VBZ
+still	RB
+far	RB
+from	IN
+satisfactory	JJ
+.	.
+
+Early	RB
+multimedia	NNS
+software	NN
+concentrated	VBD
+primarily	RB
+on	IN
+the	DT
+presentation	NN
+of	IN
+mul	NN
+-	:
+timedia	NN
+data	NNS
+,	,
+dealing	VBG
+with	IN
+such	JJ
+issues	NNS
+as	IN
+synchronization	NN
+of	IN
+different	JJ
+media	NNS
+streams	NNS
+.	.
+
+More	RBR
+important	JJ
+in	IN
+the	DT
+long	JJ
+term	NN
+,	,
+however	RB
+,	,
+will	MD
+be	VB
+software	NN
+that	WDT
+provides	VBZ
+efï	NN
+¬	NN
+cient	JJ
+storage	NN
+and	CC
+retrieval	NN
+of	IN
+multimedia	NNS
+data	NNS
+,	,
+especially	RB
+content-based	JJ
+retrieval	NN
+.	.
+
+The	DT
+problem	NN
+of	IN
+developing	VBG
+such	JJ
+software	NN
+has	VBZ
+been	VBN
+attracting	VBG
+much	JJ
+attention	NN
+in	IN
+recent	JJ
+years	NNS
+-LSB-	-LRB-
+5	CD
+,	,
+15	CD
+,	,
+2	CD
+-RSB-	-RRB-
+.	.
+
+
+Image-based	JJ
+multimedia	NNS
+data	NNS
+can	MD
+be	VB
+treated	VBN
+in	IN
+many	JJ
+different	JJ
+ways	NNS
+.	.
+
+One	CD
+approach	NN
+is	VBZ
+to	TO
+consider	VB
+visual	JJ
+properties	NNS
+of	IN
+images	NNS
+such	JJ
+as	IN
+colour	NN
+,	,
+texture	NN
+,	,
+shape	NN
+,	,
+and	CC
+so	RB
+on	IN
+.	.
+
+This	DT
+allows	VBZ
+us	PRP
+to	TO
+ask	VB
+queries	NNS
+such	JJ
+as	IN
+â	JJ
+$	$
+œFind	JJ
+all	DT
+images	NNS
+that	WDT
+are	VBP
+mainly	RB
+red	JJ
+in	IN
+colorâ	JJ
+$	$
+or	CC
+â	VB
+$	$
+œFind	JJ
+all	DT
+images	NNS
+which	WDT
+have	VBP
+a	DT
+mix	NN
+of	IN
+colors	NNS
+similar	JJ
+to	TO
+this	DT
+example	NN
+imageâ	NN
+$	$
+.	.
+
+The	DT
+â	JJ
+$	$
+œvisual-featuresâ	JJ
+$	$
+approach	NN
+has	VBZ
+been	VBN
+actively	RB
+pursued	VBN
+for	IN
+some	DT
+time	NN
+and	CC
+has	VBZ
+yielded	VBN
+some	DT
+useful	JJ
+systems	NNS
+-LRB-	-LRB-
+e.g.	FW
+QBIC	FW
+-LSB-	-LRB-
+11	CD
+-RSB-	-RRB-
+-RRB-	-RRB-
+.	.
+
+
+Another	DT
+approach	NN
+is	VBZ
+to	TO
+consider	VB
+the	DT
+semantic	JJ
+composition	NN
+of	IN
+images	NNS
+in	IN
+terms	NNS
+of	IN
+the	DT
+individual	JJ
+objects	NNS
+contained	VBN
+in	IN
+them	PRP
+and	CC
+the	DT
+spatial	JJ
+relationships	NNS
+among	IN
+these	DT
+objects	NNS
+.	.
+
+This	DT
+would	MD
+enable	VB
+us	PRP
+to	TO
+ask	VB
+queries	NNS
+such	JJ
+as	IN
+â	JJ
+$	$
+œFind	JJ
+images	NNS
+that	WDT
+show	VBP
+a	DT
+red	JJ
+apple	NN
+on	IN
+a	DT
+tableâ	NN
+$	$
+or	CC
+â	VB
+$	$
+œFind	JJ
+images	NNS
+that	WDT
+show	VBP
+a	DT
+river	NN
+running	VBG
+beneath	IN
+a	DT
+rough	JJ
+stone	NN
+bridgeâ	NN
+$	$
+.	.
+
+Note	VB
+that	IN
+these	DT
+queries	NNS
+incorporate	VB
+visual	JJ
+properties	NNS
+as	RB
+well	RB
+as	IN
+spatial	JJ
+relationships	NNS
+between	IN
+objects	NNS
+.	.
+
+The	DT
+preceding	VBG
+examples	NNS
+deal	VBP
+with	IN
+static	JJ
+image	NN
+data	NNS
+-LRB-	-LRB-
+e.g.	FW
+photographs	NNS
+,	,
+drawings	NNS
+-RRB-	-RRB-
+where	WRB
+the	DT
+main	JJ
+relationships	NNS
+among	IN
+objects	NNS
+are	VBP
+spatial	JJ
+.	.
+
+In	IN
+dynamic	JJ
+image	NN
+data	NNS
+-LRB-	-LRB-
+e.g.	FW
+video	NN
+,	,
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+1	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+276	CD
+
+
+animation	NN
+-RRB-	-RRB-
+the	DT
+relationships	NNS
+include	VBP
+not	RB
+only	RB
+spatial	JJ
+,	,
+but	CC
+also	RB
+temporal	JJ
+and	CC
+spatiotemporal	JJ
+ones	NNS
+.	.
+
+For	IN
+video	NN
+retrieval	NN
+,	,
+we	PRP
+would	MD
+like	VB
+to	TO
+be	VB
+able	JJ
+to	TO
+ask	VB
+queries	NNS
+such	JJ
+as	IN
+â	JJ
+$	$
+œFind	JJ
+a	DT
+scene	NN
+where	WRB
+an	DT
+apple	NN
+rolls	NNS
+along	IN
+the	DT
+top	NN
+of	IN
+a	DT
+table	NN
+and	CC
+falls	VBZ
+off	RP
+to	TO
+land	VB
+beside	IN
+itâ	NN
+$	$
+or	CC
+â	VB
+$	$
+œFind	JJ
+a	DT
+scene	NN
+where	WRB
+a	DT
+man	NN
+in	IN
+a	DT
+blue	JJ
+suit	NN
+enters	VBZ
+a	DT
+wood-panelled	JJ
+room	NN
+from	IN
+the	DT
+leftâ	NN
+$	$
+.	.
+
+A	DT
+data	NN
+model	NN
+that	WDT
+captures	VBZ
+the	DT
+relationships	NNS
+among	IN
+moving	VBG
+objects	NNS
+will	MD
+allow	VB
+such	JJ
+queries	NNS
+to	TO
+be	VB
+formulated	VBN
+and	CC
+answered	VBN
+,	,
+and	CC
+thus	RB
+provide	VBP
+a	DT
+basis	NN
+for	IN
+content-based	JJ
+video	NN
+retrieval	NN
+.	.
+
+
+Video	NNP
+retrieval	NN
+systems	NNS
+are	VBP
+a	DT
+very	RB
+important	JJ
+application	NN
+for	IN
+multimedia	NNS
+database	NN
+tech	NN
+-	:
+nology	NN
+.	.
+
+So	RB
+far	RB
+,	,
+however	RB
+,	,
+most	RBS
+video	JJ
+retrieval	NN
+systems	NNS
+have	VBP
+used	VBN
+textual	JJ
+annotations	NNS
+as	IN
+the	DT
+basis	NN
+for	IN
+retrieval	NN
+-LSB-	-LRB-
+14	CD
+,	,
+26	CD
+-RSB-	-RRB-
+.	.
+
+The	DT
+problems	NNS
+with	IN
+using	VBG
+unstructured	JJ
+or	CC
+semi-structured	JJ
+text	NN
+for	IN
+retrieval	NN
+are	VBP
+well-known	JJ
+.	.
+
+There	EX
+has	VBZ
+also	RB
+been	VBN
+some	DT
+work	NN
+on	IN
+video	NN
+retrieval	NN
+using	VBG
+simple	JJ
+visual	JJ
+features	NNS
+-LRB-	-LRB-
+for	IN
+example	NN
+-LSB-	-LRB-
+32	CD
+-RSB-	-RRB-
+-RRB-	-RRB-
+.	.
+
+The	DT
+current	JJ
+state-of-the-art	JJ
+in	IN
+video	NN
+retrieval	NN
+is	VBZ
+reported	VBN
+in	IN
+-LSB-	-LRB-
+31	CD
+,	,
+2	CD
+-RSB-	-RRB-
+.	.
+
+
+Since	IN
+video	NN
+retrieval	NN
+based	VBN
+on	IN
+moving	VBG
+objects	NNS
+requires	VBZ
+the	DT
+manipulation	NN
+of	IN
+large	JJ
+vol	SYM
+-	:
+umes	NNS
+of	IN
+both	DT
+spatial	JJ
+and	CC
+temporal	JJ
+information	NN
+,	,
+one	NN
+might	MD
+expect	VB
+some	DT
+help	NN
+from	IN
+the	DT
+substantial	JJ
+body	NN
+of	IN
+research	NN
+in	IN
+spatial	JJ
+databases	NNS
+-LSB-	-LRB-
+13	CD
+,	,
+27	CD
+-RSB-	-RRB-
+and	CC
+temporal	JJ
+databases	NNS
+-LSB-	-LRB-
+16	CD
+-RSB-	-RRB-
+.	.
+
+However	RB
+,	,
+research	NN
+on	IN
+the	DT
+integration	NN
+of	IN
+space	NN
+and	CC
+time	NN
+in	IN
+the	DT
+database	NN
+area	NN
+is	VBZ
+still	RB
+in	IN
+its	PRP$
+infancy	NN
+-LSB-	-LRB-
+3	CD
+-RSB-	-RRB-
+,	,
+and	CC
+a	DT
+recent	JJ
+survey	NN
+on	IN
+spatiotemporal	JJ
+databases	NNS
+-LSB-	-LRB-
+1	CD
+-RSB-	-RRB-
+does	VBZ
+not	RB
+show	VB
+much	JJ
+de	IN
+-	:
+velopment	NN
+.	.
+
+Consequently	RB
+,	,
+there	EX
+has	VBZ
+been	VBN
+little	JJ
+work	NN
+done	VBN
+on	IN
+content-based	JJ
+video	NN
+retrieval	NN
+using	VBG
+spatiotemporal	JJ
+features	NNS
+-LRB-	-LRB-
+in	IN
+particular	JJ
+,	,
+spatiotemporal	JJ
+relationships	NNS
+-RRB-	-RRB-
+-LSB-	-LRB-
+18	CD
+-RSB-	-RRB-
+.	.
+
+A	DT
+model	NN
+for	IN
+moving	VBG
+objects	NNS
+must	MD
+be	VB
+able	JJ
+to	TO
+deal	VB
+with	IN
+both	CC
+the	DT
+movement	NN
+of	IN
+individual	JJ
+objects	NNS
+and	CC
+with	IN
+the	DT
+dynamically	RB
+changing	VBG
+relationships	NNS
+among	IN
+objects	NNS
+.	.
+
+To	TO
+achieve	VB
+this	DT
+objective	NN
+,	,
+we	PRP
+propose	VBP
+a	DT
+graph-based	JJ
+symbolic	JJ
+model	NN
+.	.
+
+Each	DT
+node	NN
+of	IN
+the	DT
+graph	NN
+contains	VBZ
+a	DT
+description	NN
+of	IN
+one	CD
+particular	JJ
+object	NN
+and	CC
+its	PRP$
+movement	NN
+-LRB-	-LRB-
+if	IN
+any	DT
+-RRB-	-RRB-
+.	.
+
+Each	DT
+edge	NN
+in	IN
+the	DT
+graph	NN
+is	VBZ
+labeled	VBN
+with	IN
+the	DT
+temporal	JJ
+sequence	NN
+of	IN
+relationships	NNS
+between	IN
+the	DT
+objects	NNS
+in	IN
+the	DT
+end-point	NN
+nodes	NNS
+.	.
+
+Each	DT
+scene	NN
+in	IN
+a	DT
+video	NN
+is	VBZ
+described	VBN
+by	IN
+a	DT
+single	JJ
+graph	NN
+,	,
+where	WRB
+there	EX
+is	VBZ
+one	CD
+node	NN
+for	IN
+each	DT
+object	NN
+of	IN
+interest	NN
+in	IN
+the	DT
+scene	NN
+,	,
+and	CC
+every	DT
+pair	NN
+of	IN
+objects	NNS
+has	VBZ
+an	DT
+edge	NN
+describing	VBG
+the	DT
+time-varying	JJ
+relationship	NN
+between	IN
+them	PRP
+.	.
+
+
+The	DT
+remainder	NN
+of	IN
+this	DT
+paper	NN
+is	VBZ
+organized	VBN
+as	IN
+follows	VBZ
+.	.
+
+In	IN
+the	DT
+following	VBG
+sub-section	NN
+,	,
+we	PRP
+brieï	VBP
+¬	CD
+‚	CD
+y	NN
+review	NN
+the	DT
+2D-PIR	NN
+model	NN
+for	IN
+spatial	JJ
+relationships	NNS
+between	IN
+static	JJ
+objects	NNS
+which	WDT
+forms	VBZ
+the	DT
+basis	NN
+for	IN
+our	PRP$
+moving	VBG
+objects	NNS
+model	NN
+.	.
+
+Section	NN
+2	CD
+discusses	VBZ
+in	IN
+detail	NN
+the	DT
+data	NNS
+model	NN
+for	IN
+moving	VBG
+objects	NNS
+.	.
+
+Section	NN
+3	CD
+presents	VBZ
+an	DT
+algebra	NN
+for	IN
+moving	VBG
+objects	NNS
+.	.
+
+Section	NN
+4	CD
+demonstrates	VBZ
+retrieval	NN
+of	IN
+video	NN
+via	IN
+moving	VBG
+objects	NNS
+using	VBG
+the	DT
+proposed	VBN
+algebra	NN
+in	IN
+speciï	NN
+¬	CD
+c	NN
+applications	NNS
+.	.
+
+Section	NN
+5	CD
+discusses	VBZ
+similarity	NN
+based	VBN
+retrieval	NN
+and	CC
+how	WRB
+we	PRP
+derive	VBP
+the	DT
+similarity	NN
+matrices	NNS
+.	.
+
+Section	NN
+6	CD
+describes	VBZ
+our	PRP$
+prototype	NN
+system	NN
+for	IN
+moving	VBG
+object	NN
+retrieval	NN
+.	.
+
+Section	NN
+7	CD
+compares	VBZ
+our	PRP$
+system	NN
+with	IN
+related	JJ
+systems	NNS
+.	.
+
+Finally	RB
+,	,
+in	IN
+Section	NN
+8	CD
+we	PRP
+present	VBP
+our	PRP$
+conclusions	NNS
+.	.
+
+While	IN
+this	DT
+paper	NN
+is	VBZ
+intended	VBN
+to	TO
+be	VB
+largely	RB
+self-contained	JJ
+,	,
+interested	JJ
+readers	NNS
+may	MD
+wish	VB
+to	TO
+investigate	VB
+further	JJ
+details	NNS
+of	IN
+the	DT
+2D-PIR	NN
+model	NN
+in	IN
+-LSB-	-LRB-
+23	CD
+-RSB-	-RRB-
+and	CC
+the	DT
+experimental	JJ
+work	NN
+in	IN
+-LSB-	-LRB-
+24	CD
+-RSB-	-RRB-
+as	RB
+well	RB
+as	IN
+-LSB-	-LRB-
+20	CD
+-RSB-	-RRB-
+.	.
+
+
+1.1	CD
+.	.
+
+A	DT
+Static	JJ
+Object	NNP
+Data	NNP
+Model	NNP
+-LRB-	-LRB-
+2D-PIR	NN
+-RRB-	-RRB-
+
+
+As	IN
+we	PRP
+noted	VBD
+above	RB
+,	,
+one	CD
+useful	JJ
+view	NN
+of	IN
+an	DT
+image	NN
+is	VBZ
+as	IN
+a	DT
+set	NN
+of	IN
+objects	NNS
+with	IN
+associated	VBN
+spatial	JJ
+relationships	NNS
+.	.
+
+In	IN
+this	DT
+section	NN
+we	PRP
+develop	VBP
+a	DT
+model	NN
+for	IN
+describing	VBG
+static	JJ
+images	NNS
+according	VBG
+to	TO
+this	DT
+view	NN
+.	.
+
+We	PRP
+use	VBP
+this	DT
+model	NN
+as	IN
+the	DT
+basis	NN
+for	IN
+building	VBG
+our	PRP$
+model	NN
+for	IN
+moving	VBG
+objects	NNS
+in	IN
+subsequent	JJ
+sections	NNS
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+2	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+277	CD
+
+
+The	DT
+ï	NN
+¬	NN
+rst	NN
+step	NN
+in	IN
+developing	VBG
+a	DT
+representation	NN
+for	IN
+an	DT
+image	NN
+is	VBZ
+to	TO
+identify	VB
+the	DT
+individual	JJ
+objects	NNS
+.	.
+
+In	IN
+this	DT
+paper	NN
+,	,
+to	TO
+keep	VB
+the	DT
+presentation	NN
+simple	NN
+,	,
+we	PRP
+assume	VBP
+that	IN
+each	DT
+object	NN
+is	VBZ
+identiï	NN
+¬	CD
+ed	VBN
+by	IN
+a	DT
+unique	JJ
+name	NN
+,	,
+and	CC
+we	PRP
+use	VBP
+use	NN
+exact	JJ
+matching	NN
+on	IN
+these	DT
+names	NNS
+in	IN
+answering	VBG
+queries	NNS
+.	.
+
+However	RB
+,	,
+our	PRP$
+model	NN
+is	VBZ
+not	RB
+dependent	JJ
+on	IN
+the	DT
+method	NN
+of	IN
+matching	VBG
+objects	NNS
+and	CC
+would	MD
+adapt	VB
+well	RB
+to	TO
+a	DT
+more	RBR
+realistic	JJ
+scenario	NN
+where	WRB
+objects	NNS
+were	VBD
+identiï	NN
+¬	CD
+ed	VBN
+by	IN
+a	DT
+collection	NN
+of	IN
+semantic	JJ
+and/or	CC
+visual	JJ
+properties	NNS
+-LRB-	-LRB-
+such	JJ
+as	IN
+text	NN
+description	NN
+,	,
+visual	JJ
+features	NNS
+,	,
+or	CC
+even	RB
+an	DT
+iconic	JJ
+image	NN
+-RRB-	-RRB-
+and	CC
+similarity	NN
+matching	NN
+was	VBD
+used	VBN
+to	TO
+match	VB
+objects	NNS
+in	IN
+answering	VBG
+queries	NNS
+.	.
+
+An	DT
+object	NN
+in	IN
+an	DT
+image	NN
+occupies	VBZ
+a	DT
+region	NN
+of	IN
+space	NN
+that	WDT
+can	MD
+be	VB
+deï	NN
+¬	NN
+ned	VBN
+by	IN
+a	DT
+set	NN
+of	IN
+points	NNS
+-LRB-	-LRB-
+pointset	NN
+-RRB-	-RRB-
+.	.
+
+Given	VBN
+the	DT
+pointsets	NNS
+for	IN
+two	CD
+objects	NNS
+,	,
+we	PRP
+can	MD
+compute	VB
+a	DT
+topological	JJ
+relationship	NN
+between	IN
+them	PRP
+.	.
+
+Given	VBN
+the	DT
+pointset	NN
+of	IN
+a	DT
+single	JJ
+object	NN
+,	,
+we	PRP
+can	MD
+compute	VB
+its	PRP$
+projections	NNS
+on	IN
+each	DT
+of	IN
+the	DT
+axes	NNS
+.	.
+
+With	IN
+just	RB
+this	DT
+information	NN
+,	,
+we	PRP
+can	MD
+construct	VB
+a	DT
+useful	JJ
+representation	NN
+of	IN
+the	DT
+spatial	JJ
+relationships	NNS
+among	IN
+objects	NNS
+in	IN
+an	DT
+image	NN
+.	.
+
+
+A	DT
+2-Dimensional	JJ
+Projection	NNP
+Interval	NNP
+Relationship	NN
+-LRB-	-LRB-
+2D-PIR	NN
+-RRB-	-RRB-
+is	VBZ
+a	DT
+symbolic	JJ
+representation	NN
+of	IN
+the	DT
+directional	JJ
+and	CC
+topological	JJ
+relationships	NNS
+between	IN
+two	CD
+objects	NNS
+in	IN
+a	DT
+picture	NN
+which	WDT
+adapts	VBZ
+three	CD
+existing	VBG
+representation	NN
+formalisms	NNS
+-LRB-	-LRB-
+Allenâ	NNP
+$	$
+™	CD
+s	NNS
+temporal	JJ
+intervals	NNS
+-LSB-	-LRB-
+4	CD
+-RSB-	-RRB-
+,	,
+Chang	NNP
+et	FW
+al.	FW
+â	FW
+$	$
+™	CD
+s	NNS
+2D-strings	JJ
+-LSB-	-LRB-
+8	CD
+-RSB-	-RRB-
+and	CC
+topological	JJ
+relationships	NNS
+-LSB-	-LRB-
+10	CD
+-RSB-	-RRB-
+-RRB-	-RRB-
+.	.
+
+2D-PIR	NN
+uses	VBZ
+the	DT
+projection	NN
+concept	NN
+from	IN
+the	DT
+2D-string	JJ
+representation	NN
+but	CC
+differs	VBZ
+from	IN
+2D-strings	NNS
+in	IN
+using	VBG
+Allenâ	NNP
+$	$
+™	CD
+s	NNS
+interval	JJ
+relationships	NNS
+over	IN
+the	DT
+projections	NNS
+of	IN
+objects	NNS
+along	IN
+the	DT
+
+
+and	CC
+
+
+axes	NNS
+,	,
+rather	RB
+than	IN
+Changâ	NNP
+$	$
+™	CD
+s	NNS
+
+
+where	WRB
+is	VBZ
+the	DT
+topological	JJ
+relationship	NN
+
+
+relationships	NNS
+.	.
+
+
+A	DT
+2D-PIR	NN
+between	IN
+two	CD
+objects	NNS
+is	VBZ
+a	DT
+triple	JJ
+between	IN
+the	DT
+objects	NNS
+and	CC
+and	CC
+of	IN
+is	VBZ
+the	DT
+set	NN
+
+
+are	VBP
+the	DT
+interval	JJ
+relationships	NNS
+between	IN
+them	PRP
+.	.
+
+The	DT
+domain	NN
+
+
+meets	VBZ
+,	,
+contains	VBZ
+,	,
+inside	RB
+,	,
+overlaps	VBZ
+,	,
+covers	VBZ
+,	,
+equal	JJ
+,	,
+covered	VBN
+by	IN
+.	.
+
+The	DT
+domain	NN
+for	IN
+
+
+the	DT
+set	NN
+
+
+denoting	VBG
+the	DT
+topological	JJ
+relationships	NNS
+disjoint	NN
+,	,
+
+
+and	CC
+is	VBZ
+
+
+denoting	VBG
+the	DT
+interval	NN
+relationships	NNS
+before	RB
+,	,
+
+
+equal	JJ
+,	,
+meets	VBZ
+,	,
+overlaps	VBZ
+,	,
+during	IN
+,	,
+start	VB
+,	,
+ï	VB
+¬	CD
+nish	JJ
+,	,
+after	IN
+,	,
+meet-inverse	NN
+,	,
+overlap-inverse	NN
+,	,
+during	IN
+-	:
+
+
+inverse	JJ
+,	,
+start-inverse	JJ
+,	,
+ï	NN
+¬	CD
+nish-inverse	JJ
+.	.
+
+Note	VB
+that	IN
+the	DT
+-	:
+axis	NN
+,	,
+and	CC
+
+
+represents	VBZ
+the	DT
+interval	NN
+relationship	NN
+along	IN
+
+
+represents	VBZ
+the	DT
+interval	NN
+relationship	NN
+along	IN
+the	DT
+-	:
+axis	NN
+.	.
+
+
+In	IN
+the	DT
+2D-PIR	NN
+scheme	NN
+,	,
+an	DT
+image	NN
+is	VBZ
+represented	VBN
+by	IN
+a	DT
+graph	NN
+,	,
+where	WRB
+each	DT
+node	NN
+in	IN
+the	DT
+graph	NN
+is	VBZ
+associated	VBN
+with	IN
+an	DT
+object	NN
+and	CC
+each	DT
+edge	NN
+in	IN
+the	DT
+graph	NN
+indicates	VBZ
+the	DT
+spatial	JJ
+relationship	NN
+between	IN
+the	DT
+two	CD
+objects	NNS
+in	IN
+the	DT
+end-point	NN
+nodes	NNS
+.	.
+
+Every	DT
+object	NN
+in	IN
+the	DT
+image	NN
+has	VBZ
+an	DT
+associated	JJ
+node	NN
+,	,
+and	CC
+there	EX
+is	VBZ
+a	DT
+single	JJ
+directed	JJ
+edge	NN
+between	IN
+every	DT
+pair	NN
+of	IN
+nodes	NNS
+.	.
+
+We	PRP
+denote	VBP
+the	DT
+2D-PIR	NN
+
+
+between	IN
+two	CD
+objects	NNS
+
+
+and	CC
+
+
+by	IN
+
+
+.	.
+
+Note	VB
+that	DT
+
+
+is	VBZ
+different	JJ
+to	TO
+
+
+.	.
+
+
+Figure	NNP
+1	CD
+shows	VBZ
+an	DT
+example	NN
+image	NN
+and	CC
+its	PRP$
+corresponding	JJ
+2D-PIR	NN
+graph	NN
+.	.
+
+In	IN
+this	DT
+ï	NN
+¬	NN
+gure	NN
+,	,
+the	DT
+spatial	JJ
+relationships	NNS
+encoded	VBN
+in	IN
+2D-PIR	NN
+are	VBP
+:	:
+
+
+and	CC
+.	.
+
+the	DT
+individual	JJ
+components	NNS
+of	IN
+Consider	VB
+the	DT
+ï	NN
+¬	NN
+rst	NN
+of	IN
+these	DT
+2D-PIRs	NNS
+,	,
+
+
+,	,
+i.e.	FW
+
+
+,	,
+
+
+is	VBZ
+formed	VBN
+simply	RB
+by	IN
+taking	VBG
+the	DT
+inverses	NNS
+of	IN
+
+
+.	.
+
+
+.	.
+
+The	DT
+two	CD
+â	JJ
+$	$
+™	CD
+s	NNS
+indicate	VBP
+that	IN
+
+
+the	DT
+projection	NN
+of	IN
+A	DT
+encloses	VBZ
+the	DT
+projection	NN
+of	IN
+B	NN
+on	IN
+both	DT
+of	IN
+the	DT
+axes	NNS
+.	.
+
+This	DT
+would	MD
+normally	RB
+suggest	VB
+that	IN
+A	DT
+completely	RB
+contains	VBZ
+B	NN
+,	,
+but	CC
+the	DT
+topological	JJ
+relationship	NN
+tells	VBZ
+us	PRP
+that	IN
+they	PRP
+are	VBP
+disjoint	NN
+.	.
+
+From	IN
+this	DT
+,	,
+we	PRP
+can	MD
+that	WDT
+infer	VBP
+A	DT
+partially	RB
+surrounds	VBZ
+B	NN
+.	.
+
+This	DT
+suggests	VBZ
+that	IN
+2D-PIRs	NNS
+give	VBP
+a	DT
+good	JJ
+insight	NN
+into	IN
+the	DT
+structure	NN
+of	IN
+an	DT
+image	NN
+from	IN
+a	DT
+very	RB
+compact	JJ
+representation	NN
+.	.
+
+In	IN
+summary	NN
+,	,
+2D-PIR	NN
+allows	VBZ
+us	PRP
+to	TO
+concisely	RB
+express	VB
+various	JJ
+important	JJ
+spatial	JJ
+relationships	NNS
+in	IN
+images	NNS
+,	,
+and	CC
+provides	VBZ
+an	DT
+effective	JJ
+basis	NN
+for	IN
+image	NN
+indexing	NN
+and	CC
+retrieval	NN
+.	.
+
+An	DT
+important	JJ
+aspect	NN
+of	IN
+2D-PIR	NN
+is	VBZ
+that	IN
+all	DT
+of	IN
+the	DT
+information	NN
+for	IN
+the	DT
+graph	NN
+representation	NN
+can	MD
+be	VB
+computed	VBN
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+3	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+278	CD
+
+
+y	NN
+
+
+AB	NNP
+
+
+A	DT
+
+
+B	NN
+
+
+C	NN
+
+
+C	NN
+
+
+B	NN
+
+
+A	DT
+
+
+C	NN
+
+
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+
+
+A	DT
+
+
+-LRB-	-LRB-
+dt	NN
+,	,
+di	FW
+,	,
+di	FW
+-RRB-	-RRB-
+
+
+-LRB-	-LRB-
+o	NN
+,	,
+d	NN
+,	,
+oi	NN
+-RRB-	-RRB-
+
+
+B	NN
+
+
+C	NN
+
+
+-LRB-	-LRB-
+dt	NN
+,	,
+d	NN
+,	,
+>	JJR
+-RRB-	-RRB-
+
+
+x	NN
+
+
+-LRB-	-LRB-
+b	NN
+-RRB-	-RRB-
+
+
+Figure	NNP
+1	CD
+.	.
+
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+Example	NN
+image	NN
+with	IN
+projections	NNS
+,	,
+-LRB-	-LRB-
+b	LS
+-RRB-	-RRB-
+2D-PIR	NN
+representation	NN
+
+
+automatically	RB
+once	RB
+the	DT
+objects	NNS
+in	IN
+the	DT
+image	NN
+have	VBP
+been	VBN
+identiï	JJ
+¬	NN
+ed	VBD
+.	.
+
+A	DT
+detailed	JJ
+description	NN
+of	IN
+
+
+2D-PIR	NN
+may	MD
+be	VB
+found	VBN
+in	IN
+-LSB-	-LRB-
+23	CD
+-RSB-	-RRB-
+.	.
+
+
+2	LS
+.	.
+
+A	DT
+Moving	VBG
+Object	NNP
+Data	NNP
+Model	NNP
+
+
+In	IN
+the	DT
+previous	JJ
+section	NN
+,	,
+we	PRP
+described	VBD
+a	DT
+model	NN
+for	IN
+static	JJ
+images	NNS
+based	VBN
+on	IN
+the	DT
+notion	NN
+of	IN
+2D-PIRs	JJ
+-LSB-	-LRB-
+21	CD
+,	,
+22	CD
+-RSB-	-RRB-
+.	.
+
+In	IN
+this	DT
+section	NN
+,	,
+we	PRP
+show	VBP
+that	IN
+a	DT
+modest	JJ
+extension	NN
+to	TO
+this	DT
+model	NN
+allows	VBZ
+us	PRP
+
+
+to	TO
+represent	VB
+and	CC
+manipulate	VB
+video	NN
+data	NNS
+.	.
+
+
+time	NN
+values	VBZ
+a	DT
+time	NN
+interval	JJ
+The	DT
+function	NN
+
+
+The	DT
+obvious	JJ
+difference	NN
+between	IN
+static	JJ
+images	NNS
+and	CC
+video	NN
+is	VBZ
+the	DT
+introduction	NN
+of	IN
+a	DT
+time	NN
+dimension	NN
+.	.
+
+In	IN
+our	PRP$
+work	NN
+,	,
+we	PRP
+assume	VBP
+that	IN
+video	NN
+data	NNS
+can	MD
+be	VB
+treated	VBN
+as	IN
+a	DT
+sequence	NN
+of	IN
+static	JJ
+images	NNS
+-LRB-	-LRB-
+called	VBN
+frames	NNS
+-RRB-	-RRB-
+captured	VBN
+at	IN
+successive	JJ
+points	NNS
+in	IN
+time	NN
+.	.
+
+The	DT
+time	NN
+between	IN
+successive	JJ
+frames	NNS
+will	MD
+typically	RB
+be	VB
+quite	RB
+small	JJ
+-LRB-	-LRB-
+less	JJR
+than	IN
+0.1	CD
+seconds	NNS
+-RRB-	-RRB-
+and	CC
+so	RB
+a	DT
+video	JJ
+scene	NN
+will	MD
+generally	RB
+be	VB
+made	VBN
+up	RP
+of	IN
+hundreds	NNS
+or	CC
+thousands	NNS
+of	IN
+images	NNS
+.	.
+
+A	DT
+complete	JJ
+video	NN
+work	NN
+,	,
+such	JJ
+as	IN
+a	DT
+movie	NN
+,	,
+consists	VBZ
+of	IN
+hundreds	NNS
+or	CC
+thousands	NNS
+of	IN
+scenes	NNS
+.	.
+
+
+A	DT
+central	JJ
+notion	NN
+is	VBZ
+our	PRP$
+model	NN
+is	VBZ
+a	DT
+time	NN
+interval	NN
+,	,
+which	WDT
+is	VBZ
+deï	NN
+¬	NN
+ned	VBD
+simply	RB
+as	IN
+a	DT
+pair	NN
+of	IN
+
+
+denoting	VBG
+the	DT
+start	NN
+-LRB-	-LRB-
+-RRB-	-RRB-
+and	CC
+ï	NN
+¬	CD
+nish	JJ
+-LRB-	-LRB-
+-RRB-	-RRB-
+time-points	NNS
+of	IN
+the	DT
+interval	NN
+.	.
+
+For	IN
+
+
+,	,
+the	DT
+notation	NN
+
+
+refers	VBZ
+to	TO
+
+
+and	CC
+
+
+refers	VBZ
+to	TO
+
+
+.	.
+
+
+-LRB-	-LRB-
+that	DT
+is	VBZ
+
+
+gives	VBZ
+the	DT
+total	JJ
+length	NN
+of	IN
+an	DT
+interval	NN
+
+
+-RRB-	-RRB-
+.	.
+
+The	DT
+â	JJ
+$	$
+œ	JJ
+â	NN
+$	$
+operator	NN
+concatenates	NNS
+time	NN
+intervals	NNS
+as	IN
+follows	VBZ
+:	:
+if	IN
+
+
+and	CC
+
+
+,	,
+then	RB
+
+
+.	.
+
+
+In	IN
+dealing	VBG
+with	IN
+video	NN
+data	NNS
+,	,
+we	PRP
+measure	VBP
+the	DT
+time	NN
+within	IN
+a	DT
+scene	NN
+relative	JJ
+to	TO
+the	DT
+time	NN
+that	IN
+the	DT
+ï	NN
+¬	NN
+rst	NN
+frame	NN
+in	IN
+the	DT
+scene	NN
+was	VBD
+captured	VBN
+,	,
+so	IN
+that	IN
+
+
+entire	JJ
+scene	NN
+
+
+by	IN
+
+
+,	,
+which	WDT
+implies	VBZ
+that	IN
+
+
+.	.
+
+We	PRP
+denote	VBP
+the	DT
+time	NN
+interval	NN
+for	IN
+an	DT
+.	.
+
+In	IN
+a	DT
+video	NN
+database	NN
+,	,
+we	PRP
+may	MD
+also	RB
+store	VB
+
+
+the	DT
+absolute	JJ
+time	NN
+at	IN
+which	WDT
+the	DT
+scene	NN
+was	VBD
+ï	JJ
+¬	NN
+lmed	VBD
+.	.
+
+
+As	IN
+noted	VBN
+above	IN
+,	,
+a	DT
+stationary	JJ
+object	NN
+can	MD
+be	VB
+deï	NN
+¬	NN
+ned	VBN
+by	IN
+a	DT
+pointset	NN
+.	.
+
+We	PRP
+can	MD
+use	VB
+a	DT
+single	JJ
+focus	NN
+point	NN
+on	IN
+the	DT
+object	NN
+as	IN
+a	DT
+basis	NN
+for	IN
+describing	VBG
+its	PRP$
+movement	NN
+.	.
+
+The	DT
+focus	NN
+point	NN
+could	MD
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+4	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+279	CD
+
+
+be	VB
+deï	NN
+¬	NN
+ned	VBD
+automatically	RB
+-LRB-	-LRB-
+e.g.	FW
+by	IN
+computing	VBG
+the	DT
+centroid	NN
+of	IN
+the	DT
+pointset	NN
+-RRB-	-RRB-
+or	CC
+could	MD
+be	VB
+determined	VBN
+manually	RB
+-LRB-	-LRB-
+e.g.	FW
+by	IN
+a	DT
+user	NN
+tracking	VBG
+the	DT
+motion	NN
+with	IN
+a	DT
+pointing	VBG
+device	NN
+-RRB-	-RRB-
+.	.
+
+Note	VB
+that	IN
+we	PRP
+assume	VBP
+that	IN
+the	DT
+object	NN
+is	VBZ
+â	JJ
+$	$
+œreasonablyâ	JJ
+$	$
+rigid	JJ
+-LRB-	-LRB-
+that	WDT
+is	VBZ
+,	,
+the	DT
+object	NN
+remains	VBZ
+as	IN
+a	DT
+single	JJ
+connected	JJ
+pointset	NN
+throughout	IN
+its	PRP$
+motion	NN
+-RRB-	-RRB-
+.	.
+
+We	PRP
+also	RB
+assume	VBP
+that	IN
+we	PRP
+are	VBP
+primarily	RB
+interested	JJ
+
+
+in	IN
+the	DT
+translational	JJ
+motion	NN
+of	IN
+the	DT
+object	NN
+.	.
+
+
+,	,
+where	WRB
+the	DT
+
+
+â	RB
+$	$
+™	CD
+s	NNS
+are	VBP
+the	DT
+
+
+The	DT
+motion	NN
+of	IN
+a	DT
+moving	VBG
+object	NN
+can	MD
+be	VB
+described	VBN
+by	IN
+an	DT
+ordered	VBN
+sequence	NN
+of	IN
+spatiotemporal	JJ
+points	NNS
+.	.
+
+Each	DT
+spatiotemporal	JJ
+point	NN
+is	VBZ
+of	IN
+the	DT
+form	NN
+
+
+-	:
+dimensional	JJ
+spatial	JJ
+coordinates	VBZ
+of	IN
+the	DT
+focus	NN
+point	NN
+,	,
+and	CC
+is	VBZ
+a	DT
+temporal	JJ
+coordinate	NN
+.	.
+
+Thus	RB
+,	,
+for	IN
+example	NN
+,	,
+the	DT
+spatiotemporal	JJ
+points	NNS
+for	IN
+a	DT
+two-dimensional	JJ
+moving	VBG
+object	NN
+are	VBP
+of	IN
+the	DT
+
+
+form	NN
+,	,
+and	CC
+the	DT
+sequence	NN
+the	DT
+positions	NNS
+of	IN
+the	DT
+focus	NN
+point	NN
+at	IN
+times	NNS
+
+
+,	,
+which	WDT
+gives	VBZ
+,	,
+describes	VBZ
+the	DT
+objectâ	NN
+$	$
+™	CD
+s	NNS
+movement	NN
+.	.
+
+
+We	PRP
+call	VBP
+this	DT
+the	DT
+point	NN
+representation	NN
+of	IN
+the	DT
+objectâ	NN
+$	$
+™	CD
+s	NNS
+motion	NN
+.	.
+
+
+Retrieval	NN
+of	IN
+moving	VBG
+objects	NNS
+based	VBN
+on	IN
+their	PRP$
+point	NN
+representation	NN
+is	VBZ
+not	RB
+feasible	JJ
+since	IN
+we	PRP
+would	MD
+have	VB
+to	TO
+consider	VB
+all	DT
+of	IN
+the	DT
+-LRB-	-LRB-
+large	JJ
+number	NN
+of	IN
+-RRB-	-RRB-
+spatiotemporal	JJ
+points	NNS
+associated	VBN
+with	IN
+each	DT
+object	NN
+over	IN
+every	DT
+scene	NN
+.	.
+
+To	TO
+overcome	VB
+this	DT
+problem	NN
+we	PRP
+use	VBP
+a	DT
+compact	JJ
+representation	NN
+of	IN
+object	NN
+motion	NN
+based	VBN
+on	IN
+symbolic	JJ
+direction	NN
+and	CC
+distance	NN
+,	,
+which	WDT
+is	VBZ
+more	RBR
+efï	JJ
+¬	NN
+cient	NN
+to	TO
+store	NN
+,	,
+
+
+retrieve	VB
+and	CC
+process	VB
+.	.
+
+
+can	MD
+be	VB
+characterized	VBN
+by	IN
+a	DT
+triple	JJ
+the	DT
+-LRB-	-LRB-
+focus	NN
+point	NN
+of	IN
+the	DT
+-RRB-	-RRB-
+object	NN
+during	IN
+during	IN
+.	.
+
+The	DT
+domain	NN
+of	IN
+
+
+If	IN
+we	PRP
+consider	VBP
+an	DT
+object	NN
+moving	VBG
+in	IN
+a	DT
+constant	JJ
+direction	NN
+over	IN
+some	DT
+interval	NN
+its	PRP$
+movement	NN
+
+
+where	WRB
+
+
+and	CC
+
+
+is	VBZ
+the	DT
+-LRB-	-LRB-
+Euclidean	JJ
+-RRB-	-RRB-
+distance	NN
+travelled	VBN
+by	IN
+is	VBZ
+the	DT
+direction	NN
+of	IN
+the	DT
+objectâ	NN
+$	$
+™	CD
+s	NNS
+movement	NN
+
+
+is	VBZ
+the	DT
+real	JJ
+numbers	NNS
+,	,
+while	IN
+the	DT
+domain	NN
+of	IN
+is	VBZ
+the	DT
+set	NN
+of	IN
+possible	JJ
+directions	NNS
+.	.
+
+Directions	NNS
+could	MD
+be	VB
+measured	VBN
+in	IN
+angular	JJ
+units	NNS
+if	IN
+ï	NN
+¬	CD
+ne-grained	JJ
+representation	NN
+of	IN
+direction	NN
+is	VBZ
+required	VBN
+;	:
+in	IN
+our	PRP$
+work	NN
+,	,
+we	PRP
+have	VBP
+chosen	VBN
+to	TO
+work	VB
+with	IN
+the	DT
+eight-direction	JJ
+domain	NN
+typically	RB
+used	VBN
+in	IN
+the	DT
+image	NN
+analysis	NN
+and	CC
+retrieval	NN
+literature	NN
+-LRB-	-LRB-
+see	VB
+Figure	NNP
+2	LS
+-RRB-	-RRB-
+.	.
+
+
+To	TO
+model	VB
+complex	JJ
+object	NN
+movement	NN
+,	,
+we	PRP
+break	VBP
+the	DT
+motion	NN
+down	RB
+into	IN
+a	DT
+temporal	JJ
+sequence	NN
+of	IN
+iso-directional	JJ
+time	NN
+intervals	NNS
+-LRB-	-LRB-
+in	IN
+other	JJ
+words	NNS
+,	,
+a	DT
+sequence	NN
+of	IN
+linear	JJ
+movements	NNS
+-RRB-	-RRB-
+.	.
+
+Under	IN
+this	DT
+scheme	NN
+,	,
+the	DT
+track	NN
+of	IN
+a	DT
+moving	VBG
+object	NN
+from	IN
+time	NN
+
+
+where	WRB
+
+
+,	,
+
+
+to	TO
+
+
+is	VBZ
+represented	VBN
+as	IN
+a	DT
+sequence	NN
+
+
+,	,
+
+
+and	CC
+so	RB
+on	IN
+.	.
+
+If	IN
+an	DT
+
+
+object	NN
+does	VBZ
+not	RB
+move	VB
+at	IN
+all	DT
+,	,
+we	PRP
+associate	VBP
+an	DT
+empty	JJ
+track	NN
+with	IN
+it	PRP
+.	.
+
+If	IN
+an	DT
+object	NN
+moves	VBZ
+in	IN
+a	DT
+simple	JJ
+fashion	NN
+-LRB-	-LRB-
+e.g.	FW
+in	IN
+a	DT
+straight	JJ
+line	NN
+-RRB-	-RRB-
+,	,
+its	PRP$
+track	NN
+will	MD
+be	VB
+very	RB
+short	JJ
+.	.
+
+If	IN
+an	DT
+object	NN
+moves	VBZ
+in	IN
+a	DT
+complex	JJ
+non-linear	JJ
+fashion	NN
+,	,
+its	PRP$
+track	NN
+may	MD
+be	VB
+quite	RB
+long	JJ
+-LRB-	-LRB-
+up	RB
+to	TO
+the	DT
+number	NN
+of	IN
+time	NN
+quanta	NN
+making	VBG
+up	RP
+the	DT
+whole	JJ
+scene	NN
+-RRB-	-RRB-
+.	.
+
+At	IN
+reasonably	RB
+coarse	JJ
+direction	NN
+granularity	NN
+-LRB-	-LRB-
+such	JJ
+as	IN
+our	PRP$
+eight	CD
+-	:
+direction	NN
+one	CD
+-RRB-	-RRB-
+object	VBP
+tracks	NNS
+tend	VB
+to	TO
+be	VB
+considerably	RB
+shorter	JJR
+than	IN
+the	DT
+point	NN
+representation	NN
+of	IN
+
+
+object	NN
+movement	NN
+.	.
+
+
+where	WRB
+
+
+is	VBZ
+its	PRP$
+track	NN
+.	.
+
+
+Using	VBG
+these	DT
+ideas	NNS
+,	,
+a	DT
+moving	VBG
+object	NN
+is	VBZ
+modeled	VBN
+as	IN
+an	DT
+object	NN
+descriptor	NN
+
+
+is	VBZ
+the	DT
+unique	JJ
+name	NN
+-LRB-	-LRB-
+identiï	NN
+¬	CD
+er	NN
+-RRB-	-RRB-
+of	IN
+the	DT
+object	NN
+and	CC
+
+
+Being	VBG
+able	JJ
+to	TO
+model	NN
+individual	JJ
+moving	VBG
+objects	NNS
+is	VBZ
+quite	RB
+useful	JJ
+from	IN
+a	DT
+querying	VBG
+perspective	NN
+-LRB-	-LRB-
+for	IN
+example	NN
+,	,
+we	PRP
+can	MD
+ask	VB
+queries	NNS
+about	IN
+certain	JJ
+kinds	NNS
+of	IN
+object	NN
+trajectories	NNS
+-RRB-	-RRB-
+.	.
+
+However	RB
+,	,
+a	DT
+more	RBR
+expressive	JJ
+and	CC
+useful	JJ
+model	NN
+would	MD
+also	RB
+consider	VB
+the	DT
+dynamically	RB
+changing	VBG
+relationships	NNS
+between	IN
+objects	NNS
+in	IN
+a	DT
+scene	NN
+.	.
+
+To	TO
+achieve	VB
+this	DT
+more	JJR
+expressive	JJ
+model	NN
+,	,
+we	PRP
+extend	VBP
+our	PRP$
+model	NN
+of	IN
+static	JJ
+images	NNS
+-LRB-	-LRB-
+2D-PIR	NN
+graphs	NNS
+-RRB-	-RRB-
+described	VBN
+in	IN
+section	NN
+1.1	CD
+.	.
+
+Basing	VBG
+the	DT
+new	JJ
+model	NN
+on	IN
+2D-PIR	NN
+is	VBZ
+useful	JJ
+from	IN
+two	CD
+perspectives	NNS
+:	:
+ï	NN
+¬	CD
+rst	NN
+,	,
+it	PRP
+provides	VBZ
+a	DT
+uniï	JJ
+¬	NN
+ed	VBD
+model	NN
+for	IN
+static	JJ
+and	CC
+dynamic	JJ
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+5	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+280	CD
+
+
+4	CD
+
+
+5	CD
+
+
+6	CD
+
+
+Figure	NN
+2	CD
+.	.
+
+Directions	NNS
+
+
+3	CD
+
+
+2	CD
+
+
+1	CD
+
+
+8	CD
+
+
+7	CD
+
+
+image	NN
+data	NNS
+;	:
+second	JJ
+,	,
+it	PRP
+provides	VBZ
+an	DT
+easy	JJ
+way	NN
+to	TO
+integrate	VB
+individual	JJ
+motion	NN
+and	CC
+dynamic	NN
+
+
+relationships	NNS
+.	.
+
+
+A	DT
+spatiotemporal	JJ
+relationship	NN
+-LRB-	-LRB-
+or	CC
+
+
+the	DT
+form	NN
+
+
+2D-PIR	JJ
+spatial	JJ
+relationship	NN
+,	,
+and	CC
+
+
+-	:
+relationships	NNS
+by	IN
+4-tuples	NNS
+of	IN
+
+
+-	:
+relationship	NN
+-RRB-	-RRB-
+is	VBZ
+a	DT
+spatial	JJ
+relationship	NN
+that	WDT
+holds	VBZ
+between	IN
+two	CD
+objects	NNS
+over	IN
+a	DT
+speciï	NN
+¬	CD
+ed	VBD
+interval	NN
+.	.
+
+We	PRP
+denote	VBP
+
+
+,	,
+where	WRB
+the	DT
+ï	NN
+¬	CD
+rst	NN
+three	CD
+components	NNS
+are	VBP
+the	DT
+standard	JJ
+components	NNS
+of	IN
+a	DT
+
+
+is	VBZ
+a	DT
+time	NN
+interval	NN
+over	IN
+which	WDT
+the	DT
+relationship	NN
+holds	VBZ
+.	.
+
+We	PRP
+then	RB
+model	VBP
+the	DT
+dynamic	JJ
+relationship	NN
+between	IN
+two	CD
+objects	NNS
+as	IN
+a	DT
+sequence	NN
+of	IN
+
+
+over	IN
+successive	JJ
+intervals	NNS
+during	IN
+a	DT
+scene	NN
+.	.
+
+That	DT
+is	VBZ
+,	,
+we	PRP
+use	VBP
+a	DT
+sequence	NN
+of	IN
+the	DT
+form	NN
+:	:
+
+
+where	WRB
+the	DT
+and	CC
+the	DT
+
+
+are	VBP
+topological	JJ
+relationships	NNS
+,	,
+the	DT
+are	VBP
+time	NN
+intervals	NNS
+such	JJ
+that	IN
+
+
+-	:
+relationships	NNS
+
+
+and	CC
+
+
+are	VBP
+interval	JJ
+projection	NN
+relationships	NNS
+
+
+for	IN
+.	.
+
+We	PRP
+
+
+and	CC
+,	,
+the	DT
+expression	NN
+relationship	NN
+.	.
+
+
+use	VB
+the	DT
+terminology	NN
+TS-2D-PIR	NN
+for	IN
+these	DT
+temporal	JJ
+sequences	NNS
+of	IN
+2D-PIRs	NNS
+.	.
+
+For	IN
+two	CD
+objects	NNS
+
+
+denotes	VBZ
+TS-2D-PIR	NN
+describing	VBG
+their	PRP$
+spatiotemporal	NN
+
+
+A	DT
+moving	VBG
+object	NN
+model	NN
+for	IN
+a	DT
+scene	NN
+is	VBZ
+deï	NN
+¬	NN
+ned	VBD
+in	IN
+a	DT
+similar	JJ
+manner	NN
+to	TO
+the	DT
+2D-PIR	NN
+model	NN
+for	IN
+static	JJ
+images	NNS
+,	,
+and	CC
+is	VBZ
+an	DT
+integration	NN
+of	IN
+tracks	NNS
+and	CC
+TS-2D-PIRs	NNS
+.	.
+
+A	DT
+scene	NN
+is	VBZ
+represented	VBN
+by	IN
+a	DT
+graph	NN
+,	,
+where	WRB
+each	DT
+node	NN
+of	IN
+the	DT
+graph	NN
+contains	VBZ
+an	DT
+object	NN
+descriptor	NN
+-LRB-	-LRB-
+the	DT
+objectâ	NN
+$	$
+™	CD
+s	NNS
+name	NN
+and	CC
+its	PRP$
+track	NN
+-RRB-	-RRB-
+and	CC
+each	DT
+edge	NN
+is	VBZ
+labeled	VBN
+with	IN
+the	DT
+TS-2D-PIR	NN
+for	IN
+the	DT
+objects	NNS
+in	IN
+its	PRP$
+end-point	NN
+
+
+nodes	NNS
+.	.
+
+
+where	WRB
+is	VBZ
+a	DT
+ï	NN
+¬	NN
+nite	NN
+
+
+is	VBZ
+a	DT
+set	NN
+of	IN
+edges	NNS
+
+
+Deï	NN
+¬	CD
+nition	NN
+1	CD
+.	.
+
+A	DT
+scene	NN
+graph	NN
+is	VBZ
+a	DT
+connected	JJ
+labeled	JJ
+digraph	NN
+
+
+non-empty	JJ
+set	NN
+of	IN
+object	NN
+descriptors	NNS
+for	IN
+the	DT
+objects	NNS
+in	IN
+the	DT
+scene	NN
+and	CC
+
+
+labeled	VBN
+by	IN
+a	DT
+sequence	NN
+of	IN
+spatiotemporal	JJ
+relationships	NNS
+-LRB-	-LRB-
+-	:
+relationships	NNS
+-RRB-	-RRB-
+between	IN
+pairs	NNS
+of	IN
+
+
+objects	NNS
+.	.
+
+
+Note	VB
+that	IN
+,	,
+in	IN
+order	NN
+to	TO
+simplify	VB
+our	PRP$
+diagrams	NNS
+,	,
+we	PRP
+show	VBP
+the	DT
+track	NN
+for	IN
+each	DT
+object	NN
+as	IN
+a	DT
+label	NN
+on	IN
+a	DT
+circular	JJ
+edge	NN
+leading	VBG
+from	IN
+the	DT
+objectâ	NN
+$	$
+™	CD
+s	NNS
+node	NN
+to	TO
+itself	PRP
+,	,
+rather	RB
+than	IN
+trying	VBG
+to	TO
+ï	VB
+¬	NN
+t	NN
+it	PRP
+into	IN
+the	DT
+
+
+node	NN
+.	.
+
+
+Figure	NNP
+3	CD
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+shows	VBZ
+a	DT
+scene	NN
+containing	VBG
+a	DT
+single	JJ
+moving	VBG
+object	NN
+-LRB-	-LRB-
+A	NN
+-RRB-	-RRB-
+.	.
+
+The	DT
+object	NN
+descriptor	NN
+
+
+for	IN
+A	DT
+is	VBZ
+:	:
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+6	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+where	WRB
+
+
+281	CD
+
+
+-LRB-	-LRB-
+for	IN
+
+
+is	VBZ
+the	DT
+distance	NN
+travelled	VBD
+in	IN
+the	DT
+corresponding	JJ
+direction	NN
+over	IN
+interval	NN
+-RRB-	-RRB-
+.	.
+
+Figure	NNP
+3	CD
+-LRB-	-LRB-
+b	NN
+-RRB-	-RRB-
+is	VBZ
+the	DT
+-LRB-	-LRB-
+very	RB
+simple	JJ
+-RRB-	-RRB-
+graph	NN
+correspondingto	NN
+the	DT
+scene	NN
+of	IN
+Figure	NNP
+3	CD
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+.	.
+
+
+AA	NN
+
+
+A	DT
+
+
+A	DT
+
+
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+
+
+A	DT
+
+
+-LSB-	-LRB-
+-LRB-	-LRB-
+d	NN
+1,4	CD
+,	,
+I	PRP
+1	LS
+-RRB-	-RRB-
+,	,
+-LRB-	-LRB-
+d	NN
+2,3	CD
+,	,
+I	PRP
+2	LS
+-RRB-	-RRB-
+,	,
+-LRB-	-LRB-
+d	NN
+3,1	CD
+,	,
+I	PRP
+3	LS
+-RRB-	-RRB-
+,	,
+-LRB-	-LRB-
+d	NN
+4,2	CD
+,	,
+I	PRP
+4	LS
+-RRB-	-RRB-
+-RSB-	-RRB-
+
+
+A	DT
+
+
+-LRB-	-LRB-
+b	NN
+-RRB-	-RRB-
+
+
+Figure	NNP
+3	CD
+.	.
+
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+A	DT
+moving	VBG
+object	NN
+,	,
+-LRB-	-LRB-
+b	LS
+-RRB-	-RRB-
+Corresponding	VBG
+scene	NN
+graph	NN
+
+
+that	IN
+during	IN
+interval	NN
+
+
+tuple	NN
+in	IN
+the	DT
+sequence	NN
+
+
+in	IN
+the	DT
+TS-2D-PIR	NN
+indicates	VBZ
+
+
+Figure	NNP
+4	CD
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+shows	VBZ
+a	DT
+scene	NN
+where	WRB
+objects	NNS
+A	DT
+and	CC
+B	NN
+move	NN
+towards	IN
+each	DT
+other	JJ
+until	IN
+ï	NN
+¬	CD
+nally	RB
+object	NN
+A	NN
+is	VBZ
+inside	IN
+object	NN
+B.	NNP
+Figure	NNP
+4	CD
+-LRB-	-LRB-
+b	NN
+-RRB-	-RRB-
+is	VBZ
+the	DT
+corresponding	JJ
+scene	NN
+graph	NN
+of	IN
+Figure	NNP
+4	CD
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+.	.
+
+The	DT
+edge	NN
+between	IN
+A	DT
+and	CC
+B	NN
+describes	VBZ
+the	DT
+changing	VBG
+spatial	JJ
+relationship	NN
+between	IN
+the	DT
+two	CD
+objects	NNS
+over	IN
+time	NN
+via	IN
+a	DT
+TS-2D-PIR	NN
+.	.
+
+Theï	NNP
+¬	CD
+rst	NN
+tuple	NN
+
+
+:	:
+A	DT
+and	CC
+B	NN
+are	VBP
+disjoint	NN
+,	,
+they	PRP
+are	VBP
+at	IN
+roughly	RB
+the	DT
+same	JJ
+location	NN
+on	IN
+the	DT
+-	:
+axis	NN
+,	,
+and	CC
+B	NN
+is	VBZ
+higher	JJR
+A	DT
+on	IN
+the	DT
+-	:
+axis	NN
+-LRB-	-LRB-
+in	IN
+other	JJ
+words	NNS
+,	,
+B	NN
+is	VBZ
+directly	RB
+above	IN
+A	NN
+-RRB-	-RRB-
+.	.
+
+The	DT
+ï	NN
+¬	CD
+nal	NN
+
+
+indicates	VBZ
+that	IN
+,	,
+near	IN
+the	DT
+end	NN
+of	IN
+the	DT
+scene	NN
+,	,
+object	NN
+A	NN
+is	VBZ
+inside	IN
+object	NN
+B	NN
+.	.
+
+The	DT
+loops	NNS
+on	IN
+nodes	NNS
+A	DT
+and	CC
+B	NN
+give	VBP
+the	DT
+tracks	NNS
+of	IN
+the	DT
+two	CD
+objects	NNS
+.	.
+
+The	DT
+track	NN
+
+
+indicates	VBZ
+that	IN
+A	DT
+moves	NNS
+north	RB
+for	IN
+a	DT
+distance	NN
+
+
+the	DT
+track	NN
+for	IN
+B	NN
+indicates	VBZ
+that	IN
+it	PRP
+moves	VBZ
+south	RB
+for	IN
+a	DT
+distance	NN
+
+
+interval	NN
+.	.
+
+Note	VB
+that	DT
+
+
+3	LS
+.	.
+
+An	DT
+Algebra	NNP
+for	IN
+Moving	VBG
+Objects	NNS
+
+
+,	,
+while	IN
+
+
+over	IN
+the	DT
+course	NN
+of	IN
+the	DT
+scene	NN
+;	:
+over	IN
+a	DT
+slightly	RB
+shorter	JJR
+time	NN
+
+
+.	.
+
+
+In	IN
+this	DT
+section	NN
+we	PRP
+deï	VBP
+¬	CD
+ne	NN
+a	DT
+collection	NN
+of	IN
+operations	NNS
+on	IN
+scene	NN
+graphs	NNS
+.	.
+
+These	DT
+operations	NNS
+are	VBP
+analogous	JJ
+to	TO
+the	DT
+operations	NNS
+of	IN
+relational	JJ
+algebra	NN
+in	IN
+providing	VBG
+a	DT
+framework	NN
+for	IN
+expressing	VBG
+
+
+queries	NNS
+and	CC
+the	DT
+structure	NN
+of	IN
+query	NN
+results	NNS
+.	.
+
+
+,	,
+where	WRB
+
+
+is	VBZ
+an	DT
+operation	NN
+-LRB-	-LRB-
+message	NN
+-RRB-	-RRB-
+and	CC
+
+
+notation	NN
+,	,
+
+
+are	VBP
+the	DT
+argument	NN
+-LRB-	-LRB-
+s	NNS
+-RRB-	-RRB-
+of	IN
+
+
+In	IN
+describing	VBG
+the	DT
+operations	NNS
+of	IN
+the	DT
+algebra	NN
+,	,
+we	PRP
+use	VBP
+the	DT
+object-oriented	JJ
+message	NN
+passing	VBG
+
+
+is	VBZ
+an	DT
+object	NN
+,	,
+
+
+.	.
+
+In	IN
+this	DT
+context	NN
+,	,
+â	VB
+$	$
+œobjectsâ	JJ
+$	$
+can	MD
+be	VB
+scenes	NNS
+,	,
+sets	NNS
+of	IN
+scenes	NNS
+,	,
+moving	VBG
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+7	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+282	CD
+
+
+B	NN
+
+
+B	NN
+
+
+B	NN
+
+
+B	NN
+
+
+B	NN
+
+
+A	DT
+
+
+A	DT
+
+
+A	DT
+
+
+A	DT
+
+
+A	DT
+
+
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+
+
+-LSB-	-LRB-
+-LRB-	-LRB-
+dj	NN
+,	,
+d	NN
+,	,
+,	,
+I	PRP
+1	LS
+-RRB-	-RRB-
+,	,
+-LRB-	-LRB-
+to	TO
+,	,
+d	NN
+,	,
+m	NN
+,	,
+I	PRP
+2	LS
+-RRB-	-RRB-
+,	,
+-LRB-	-LRB-
+ov	NN
+,	,
+d	NN
+,	,
+o	NN
+,	,
+I	PRP
+3	LS
+-RRB-	-RRB-
+,	,
+-LRB-	-LRB-
+cb	NN
+,	,
+d	NN
+,	,
+s	NNS
+,	,
+I	PRP
+4	LS
+-RRB-	-RRB-
+,	,
+-LRB-	-LRB-
+in	IN
+,	,
+d	NN
+,	,
+d	NN
+,	,
+I	PRP
+5	LS
+-RRB-	-RRB-
+-RSB-	-RRB-
+
+
+A	DT
+
+
+B	NN
+
+
+-LSB-	-LRB-
+-LRB-	-LRB-
+d	NN
+a	DT
+,3	NN
+,	,
+I	PRP
+a	DT
+-RRB-	-RRB-
+-RSB-	-RRB-
+
+
+-LSB-	-LRB-
+-LRB-	-LRB-
+d	NN
+b	NN
+,7	CD
+,	,
+I	PRP
+b	LS
+-RRB-	-RRB-
+-RSB-	-RRB-
+
+
+-LRB-	-LRB-
+b	NN
+-RRB-	-RRB-
+
+
+Figure	NNP
+4	CD
+.	.
+
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+Two	CD
+moving	VBG
+objects	NNS
+-LRB-	-LRB-
+b	NN
+-RRB-	-RRB-
+Corresponding	VBG
+scene	NN
+graph	NN
+
+
+object	NN
+descriptors	NNS
+,	,
+2D-PIRs	NNS
+,	,
+TS-2D-PIRs	NNS
+,	,
+and	CC
+so	RB
+on	IN
+.	.
+
+We	PRP
+use	VBP
+the	DT
+term	NN
+â	RB
+$	$
+œdatabase	JJ
+objectsâ	NN
+$	$
+to	TO
+describe	VB
+such	JJ
+objects	NNS
+to	TO
+distinguish	VB
+them	PRP
+from	IN
+the	DT
+moving	VBG
+objects	NNS
+within	IN
+the	DT
+video	NN
+.	.
+
+We	PRP
+make	VBP
+heavy	JJ
+use	NN
+of	IN
+operator	NN
+overloading	NN
+in	IN
+deï	NN
+¬	CD
+ning	JJ
+our	PRP$
+operations	NNS
+,	,
+and	CC
+also	RB
+assume	VB
+that	IN
+many	JJ
+operators	NNS
+can	MD
+be	VB
+invoked	VBN
+by	IN
+either	CC
+a	DT
+single	JJ
+database	NN
+object	NN
+or	CC
+a	DT
+set	NN
+of	IN
+database	NN
+objects	NNS
+.	.
+
+In	IN
+the	DT
+latter	JJ
+case	NN
+,	,
+the	DT
+operator	NN
+is	VBZ
+applied	VBN
+to	TO
+each	DT
+object	NN
+in	IN
+the	DT
+set	NN
+.	.
+
+
+In	IN
+order	NN
+to	TO
+describe	VB
+the	DT
+semantics	NNS
+of	IN
+moving	VBG
+object	NN
+operations	NNS
+,	,
+we	PRP
+need	VBP
+some	DT
+additional	JJ
+operations	NNS
+for	IN
+extracting	VBG
+the	DT
+components	NNS
+of	IN
+scene	NN
+graphs	NNS
+.	.
+
+If	IN
+is	VBZ
+a	DT
+scene	NN
+graph	NN
+as	IN
+deï	NN
+¬	CD
+ned	VBD
+above	RB
+,	,
+then	RB
+-LRB-	-LRB-
+or	CC
+,	,
+by	IN
+overloading	VBG
+,	,
+-RRB-	-RRB-
+is	VBZ
+the	DT
+set	NN
+of	IN
+object	NN
+names	NNS
+in	IN
+the	DT
+scene	NN
+.	.
+
+
+In	IN
+order	NN
+to	TO
+conform	VB
+to	TO
+our	PRP$
+object-oriented	JJ
+notation	NN
+,	,
+we	PRP
+re-deï	VBP
+¬	CD
+ne	NN
+the	DT
+so	RB
+that	IN
+,	,
+for	IN
+an	DT
+interval	NN
+,	,
+returns	VBZ
+the	DT
+length	NN
+
+
+operator	NN
+of	IN
+the	DT
+interval	NN
+.	.
+
+
+The	DT
+projection	NN
+and	CC
+overlay	NN
+operations	NNS
+return	VBP
+a	DT
+single	JJ
+scene	NN
+.	.
+
+The	DT
+selection	NN
+operation	NN
+returns	VBZ
+a	DT
+scene	NN
+or	CC
+a	DT
+set	NN
+of	IN
+scenes	NNS
+.	.
+
+The	DT
+extraction	NN
+operations	NNS
+return	VBP
+either	CC
+sequences	NNS
+of	IN
+2D-PIR	NN
+relationships	NNS
+,	,
+sequences	NNS
+of	IN
+pairs	NNS
+,	,
+or	CC
+sequences	NNS
+of	IN
+time	NN
+intervals	NNS
+.	.
+
+Finally	RB
+,	,
+the	DT
+spatial	JJ
+matching	NN
+operation	NN
+is	VBZ
+a	DT
+special	JJ
+type	NN
+of	IN
+string	NN
+matching	NN
+operation	NN
+which	WDT
+returns	VBZ
+a	DT
+boolean	JJ
+value	NN
+.	.
+
+Operations	NNP
+can	MD
+be	VB
+combined	VBN
+using	VBG
+standard	JJ
+function	NN
+composition	NN
+,	,
+wherever	WRB
+the	DT
+output	NN
+of	IN
+the	DT
+ï	NN
+¬	NN
+rst	NN
+operation	NN
+is	VBZ
+appropriate	JJ
+as	IN
+an	DT
+input	NN
+to	TO
+the	DT
+second	JJ
+operation	NN
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+8	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+3.1	CD
+.	.
+
+Projection	NN
+-LRB-	-LRB-
+-RRB-	-RRB-
+
+
+283	CD
+
+
+The	DT
+projection	NN
+operations	NNS
+create	VBP
+a	DT
+new	JJ
+scene	NN
+based	VBN
+on	IN
+an	DT
+existing	JJ
+scene	NN
+.	.
+
+The	DT
+new	JJ
+scene	NN
+
+
+is	VBZ
+a	DT
+â	JJ
+$	$
+œsubsetâ	JJ
+$	$
+of	IN
+the	DT
+original	JJ
+scene	NN
+.	.
+
+Let	VB
+the	DT
+names	NNS
+of	IN
+objects	NNS
+in	IN
+-LRB-	-LRB-
+i.e.	FW
+
+
+be	VB
+a	DT
+scene	NN
+and	CC
+
+
+be	VB
+
+
+-RRB-	-RRB-
+.	.
+
+
+from	IN
+scene	NN
+
+
+is	VBZ
+a	DT
+scene	NN
+containing	VBG
+nodes	NNS
+and	CC
+object	NN
+
+
+Deï	NN
+¬	CD
+nition	NN
+2	CD
+.	.
+
+Object	VB
+projection	NN
+:	:
+The	DT
+object	NN
+projection	NN
+of	IN
+objects	NNS
+where	WRB
+and	CC
+.	.
+
+That	DT
+is	VBZ
+,	,
+descriptors	NNS
+for	IN
+
+
+in	IN
+.	.
+
+
+is	VBZ
+a	DT
+subgraph	NN
+of	IN
+
+
+and	CC
+edges	VBZ
+with	IN
+associated	VBN
+TS-2D-PIR	NN
+for	IN
+each	DT
+pair	NN
+of	IN
+objects	NNS
+
+
+Figure	NNP
+5	CD
+illustrates	VBZ
+this	DT
+operation	NN
+.	.
+
+The	DT
+projection	NN
+of	IN
+scene	NN
+
+
+the	DT
+scene	NN
+
+
+containing	VBG
+only	RB
+objects	NNS
+b	NN
+and	CC
+C.	NN
+
+
+d	NN
+
+
+b	NN
+
+
+C	NN
+
+
+S	NN
+
+
+b	NN
+
+
+A	DT
+
+
+d	NN
+
+
+S	NN
+
+
+Figure	NNP
+5	CD
+.	.
+
+Projection	NNP
+:	:
+
+
+on	IN
+objects	NNS
+b	NN
+and	CC
+C	NN
+creates	VBZ
+
+
+b	NN
+
+
+Î	NN
+-LRB-	-LRB-
+b	NN
+,	,
+C	NN
+-RRB-	-RRB-
+
+
+C	NN
+
+
+b	NN
+
+
+T	NN
+
+
+This	DT
+operation	NN
+is	VBZ
+needed	VBN
+if	IN
+a	DT
+user	NN
+wants	VBZ
+to	TO
+isolate	VB
+a	DT
+subset	NN
+of	IN
+the	DT
+objects	NNS
+for	IN
+a	DT
+speciï	NN
+¬	NN
+c	NN
+purpose	NN
+,	,
+such	JJ
+as	IN
+to	TO
+observe	VB
+their	PRP$
+trajectories	NNS
+,	,
+or	CC
+to	TO
+observe	VB
+how	WRB
+subsets	NNS
+of	IN
+objects	NNS
+are	VBP
+related	VBN
+in	IN
+a	DT
+scene	NN
+.	.
+
+Sometimes	RB
+it	PRP
+is	VBZ
+useful	JJ
+to	TO
+isolate	VB
+objects	NNS
+over	IN
+only	JJ
+part	NN
+of	IN
+a	DT
+scene	NN
+.	.
+
+To	TO
+do	VB
+this	DT
+,	,
+the	DT
+following	VBG
+projection	NN
+operation	NN
+,	,
+called	VBN
+spatiotemporal	JJ
+projection	NN
+,	,
+is	VBZ
+provided	VBN
+.	.
+
+
+Deï	NN
+¬	CD
+nition	NN
+3	CD
+.	.
+
+Spatiotemporal	JJ
+projection	NN
+:	:
+The	DT
+spatiotemporal	JJ
+projection	NN
+of	IN
+a	DT
+scene	NN
+
+
+is	VBZ
+an	DT
+object	NN
+projection	NN
+of	IN
+
+
+on	IN
+objects	NNS
+
+
+over	IN
+interval	NN
+.	.
+
+The	DT
+result	NN
+of	IN
+this	DT
+projection	NN
+is	VBZ
+a	DT
+new	JJ
+scene	NN
+containing	VBG
+objects	NNS
+and	CC
+their	PRP$
+relationships	NNS
+during	IN
+interval	NN
+.	.
+
+Formally	RB
+,	,
+
+
+where	WRB
+
+
+is	VBZ
+the	DT
+set	NN
+of	IN
+object	NN
+descriptors	NNS
+for	IN
+
+
+is	VBZ
+a	DT
+connected	JJ
+labelled	JJ
+digraph	NN
+
+
+and	CC
+over	IN
+interval	NN
+.	.
+
+
+is	VBZ
+set	VBN
+of	IN
+spatiotemporal	JJ
+relationships	NNS
+among	IN
+
+
+Figure	NNP
+6	CD
+illustrates	VBZ
+a	DT
+spatiotemporal	JJ
+projection	NN
+of	IN
+the	DT
+scene	NN
+
+
+Note	VB
+that	DT
+for	IN
+a	DT
+scene	NN
+
+
+,	,
+
+
+simple	JJ
+temporal	JJ
+projection	NN
+-RRB-	-RRB-
+;	:
+we	PRP
+use	VBP
+the	DT
+notation	NN
+
+
+on	IN
+objects	NNS
+b	NN
+and	CC
+d.	NN
+yields	NNS
+a	DT
+segment	NN
+of	IN
+the	DT
+scene	NN
+-LRB-	-LRB-
+i.e.	FW
+a	DT
+
+
+to	TO
+indicate	VB
+this	DT
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+9	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+284	CD
+
+
+d	NN
+
+
+b	NN
+
+
+b	NN
+
+
+C	NN
+
+
+S	NN
+Î	NN
+-LRB-	-LRB-
+b	NN
+,	,
+d	NN
+,	,
+I	PRP
+-RRB-	-RRB-
+
+
+d	NN
+
+
+b	NN
+
+
+b	NN
+
+
+A	DT
+
+
+d	NN
+
+
+d	NN
+
+
+S	NN
+
+
+T	NN
+
+
+Figure	NNP
+6	CD
+.	.
+
+Spatiotemporal	JJ
+projection	NN
+:	:
+
+
+3.2	CD
+.	.
+
+Selection	NN
+-LRB-	-LRB-
+-RRB-	-RRB-
+
+
+The	DT
+selection	NN
+operation	NN
+ï	NN
+¬	CD
+nds	VBZ
+a	DT
+set	NN
+of	IN
+scenes	NNS
+that	WDT
+satisfy	VBP
+a	DT
+given	VBN
+predicate	NN
+from	IN
+a	DT
+database	NN
+of	IN
+scenes	NNS
+.	.
+
+Let	VB
+and	CC
+be	VB
+variables	NNS
+denoting	VBG
+sets	NNS
+of	IN
+scenes	NNS
+and	CC
+be	VB
+a	DT
+variable	JJ
+denoting	VBG
+a	DT
+predicate	NN
+on	IN
+some	DT
+kind	NN
+of	IN
+database	NN
+object	NN
+.	.
+
+
+Deï	NN
+¬	CD
+nition	NN
+4	CD
+.	.
+
+Selection	NN
+:	:
+
+
+The	DT
+selection	NN
+operation	NN
+on	IN
+a	DT
+scene	NN
+collection	NN
+under	IN
+predicate	NN
+is	VBZ
+a	DT
+set	NN
+of	IN
+scenes	NNS
+such	JJ
+that	IN
+and	CC
+.	.
+
+The	DT
+variable	JJ
+ranges	NNS
+over	IN
+the	DT
+set	NN
+,	,
+and	CC
+will	MD
+often	RB
+be	VB
+used	VBN
+as	IN
+-LRB-	-LRB-
+part	NN
+of	IN
+-RRB-	-RRB-
+an	DT
+argument	NN
+to	TO
+the	DT
+predicate	NN
+.	.
+
+The	DT
+â	JJ
+$	$
+œ	CD
+:	:
+â	VB
+$	$
+is	VBZ
+used	VBN
+to	TO
+bind	VB
+the	DT
+iteration	NN
+variable	NN
+-LRB-	-LRB-
+-RRB-	-RRB-
+to	TO
+the	DT
+scene	NN
+set	NN
+-LRB-	-LRB-
+-RRB-	-RRB-
+.	.
+
+
+Predicates	NNS
+used	VBN
+in	IN
+selection	NN
+can	MD
+include	VB
+such	JJ
+operations	NNS
+as	IN
+:	:
+testing	NN
+whether	IN
+particular	JJ
+objects	NNS
+appear	VBP
+in	IN
+a	DT
+scene	NN
+and	CC
+similarity	NN
+comparisons	NNS
+based	VBN
+on	IN
+trajectories	NNS
+or	CC
+spatiotemporal	JJ
+relationships	NNS
+-LRB-	-LRB-
+both	CC
+the	DT
+spatial	JJ
+part	NN
+and	CC
+temporal	JJ
+part	NN
+-RRB-	-RRB-
+.	.
+
+We	PRP
+describe	VBP
+some	DT
+of	IN
+the	DT
+more	JJR
+useful	JJ
+predicates	NNS
+in	IN
+section	NN
+3.6	CD
+.	.
+
+
+3.3	CD
+.	.
+
+Overlay	NN
+-LRB-	-LRB-
+-RRB-	-RRB-
+
+
+The	DT
+overlay	NN
+operation	NN
+combines	VBZ
+two	CD
+different	JJ
+scenes	NNS
+to	TO
+form	VB
+a	DT
+new	JJ
+scene	NN
+.	.
+
+Let	VB
+and	CC
+be	VB
+two	CD
+scenes	NNS
+and	CC
+be	VB
+a	DT
+time	NN
+delay	NN
+such	JJ
+that	IN
+
+
+.	.
+
+
+Deï	NN
+¬	CD
+nition	NN
+5	CD
+.	.
+
+Overlay	NN
+:	:
+
+
+The	DT
+overlay	NN
+of	IN
+scene	NN
+on	IN
+scene	NN
+is	VBZ
+a	DT
+new	JJ
+scene	NN
+where	WRB
+
+
+and	CC
+is	VBZ
+a	DT
+set	NN
+of	IN
+relationships	NNS
+among	IN
+.	.
+
+The	DT
+objects	NNS
+from	IN
+do	VBP
+not	RB
+appear	VB
+in	IN
+the	DT
+result	NN
+scene	NN
+until	IN
+time	NN
+interval	NN
+has	VBZ
+elapsed	VBN
+-LRB-	-LRB-
+i.e.	FW
+all	DT
+interval	JJ
+values	NNS
+in	IN
+are	VBP
+offset	VBN
+by	IN
+-RRB-	-RRB-
+.	.
+
+
+Note	VB
+that	DT
+is	VBZ
+used	VBN
+to	TO
+synchronise	VB
+between	IN
+and	CC
+.	.
+
+If	IN
+then	RB
+and	CC
+start	VB
+at	IN
+the	DT
+same	JJ
+time	NN
+and	CC
+we	PRP
+used	VBD
+the	DT
+shorthand	NN
+to	TO
+denote	VB
+their	PRP$
+overlay	NN
+.	.
+
+
+Overlay	NN
+is	VBZ
+a	DT
+powerful	JJ
+operation	NN
+that	WDT
+can	MD
+be	VB
+used	VBN
+to	TO
+layer	NN
+scenes	NNS
+to	TO
+build	VB
+up	RP
+a	DT
+complex	NN
+scenes	NNS
+from	IN
+existing	VBG
+ones	NNS
+.	.
+
+It	PRP
+can	MD
+also	RB
+be	VB
+used	VBN
+effectively	RB
+in	IN
+conjunction	NN
+with	IN
+projection	NN
+to	TO
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+10	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+285	CD
+
+
+create	VB
+a	DT
+variety	NN
+of	IN
+scene	NN
+effects	NNS
+.	.
+
+This	DT
+is	VBZ
+particularly	RB
+useful	JJ
+in	IN
+animation	NN
+or	CC
+video	NN
+systems	NNS
+.	.
+
+Figure	NNP
+7	CD
+illustrates	VBZ
+the	DT
+overlay	NN
+operation	NN
+.	.
+
+
+A	DT
+
+
+A	DT
+
+
+AA	NN
+
+
+b	NN
+
+
+d	NN
+
+
+b	NN
+
+
+d	NN
+
+
+C	NN
+
+
+C	NN
+
+
+b	NN
+
+
+d	NN
+
+
+d	NN
+
+
+b	NN
+
+
+STS	NN
+â	SYM
+„	FW
+¦	FW
+Î	FW
+$	$
+
+
+Figure	NNP
+7	CD
+.	.
+
+Overlay	NN
+:	:
+
+
+3.4	CD
+.	.
+
+Spatial	JJ
+extraction	NN
+-LRB-	-LRB-
+-RRB-	-RRB-
+
+
+The	DT
+spatial	JJ
+extraction	NN
+operations	NNS
+project	NN
+spatial	JJ
+information	NN
+from	IN
+a	DT
+scene	NN
+graph	NN
+,	,
+ï	NN
+¬	NN
+ltering	VBG
+out	RP
+associated	VBN
+temporal	JJ
+information	NN
+.	.
+
+There	EX
+are	VBP
+two	CD
+variants	NNS
+:	:
+one	CD
+produces	VBZ
+a	DT
+sequence	NN
+of	IN
+pairs	NNS
+showing	VBG
+the	DT
+trajectory	NN
+of	IN
+a	DT
+single	JJ
+object	NN
+;	:
+the	DT
+other	JJ
+produces	VBZ
+a	DT
+sequence	NN
+of	IN
+2D-PIR	NN
+relationships	NNS
+showing	VBG
+the	DT
+spatial	JJ
+relationships	NNS
+between	IN
+two	CD
+objects	NNS
+over	IN
+the	DT
+course	NN
+of	IN
+a	DT
+scene	NN
+.	.
+
+
+Deï	NN
+¬	CD
+nition	NN
+6	CD
+.	.
+
+Trajectory	JJ
+extraction	NN
+:	:
+
+
+If	IN
+is	VBZ
+a	DT
+scene	NN
+containing	VBG
+an	DT
+object	NN
+descriptor	NN
+
+
+then	RB
+the	DT
+trajectory	NN
+extraction	NN
+of	IN
+object	NN
+is	VBZ
+the	DT
+sequence	NN
+
+
+,	,
+
+
+.	.
+
+
+Deï	NN
+¬	CD
+nition	NN
+7	CD
+.	.
+
+2D-PIR	NN
+extraction	NN
+:	:
+
+
+If	IN
+is	VBZ
+a	DT
+scene	NN
+containing	VBG
+,	,
+then	RB
+
+
+-LRB-	-LRB-
+i.e.	FW
+the	DT
+sequence	NN
+of	IN
+spatiotemporal	JJ
+relationships	NNS
+between	IN
+
+
+is	VBZ
+
+
+and	CC
+
+
+-RRB-	-RRB-
+.	.
+
+
+If	IN
+is	VBZ
+a	DT
+set	NN
+of	IN
+scenes	NNS
+then	RB
+will	MD
+iterate	VB
+through	IN
+applying	VBG
+spatial	JJ
+extraction	NN
+on	IN
+each	DT
+scene	NN
+resulting	VBG
+in	IN
+a	DT
+set	NN
+of	IN
+spatial	JJ
+components	NNS
+of	IN
+a	DT
+spatiotemporal	JJ
+relationship	NN
+between	IN
+and	CC
+.	.
+
+
+Consider	VB
+,	,
+for	IN
+example	NN
+,	,
+applying	VBG
+spatial	JJ
+extraction	NN
+to	TO
+the	DT
+scene	NN
+in	IN
+ï	NN
+¬	CD
+gure	NN
+4	CD
+.	.
+
+returns	NNS
+the	DT
+2D-PIR	NN
+sequence	NN
+,	,
+that	WDT
+is	VBZ
+,	,
+the	DT
+label	NN
+for	IN
+the	DT
+edge	NN
+between	IN
+objects	NNS
+and	CC
+with	IN
+the	DT
+interval	JJ
+component	NN
+removed	VBN
+from	IN
+each	DT
+list	NN
+element	NN
+.	.
+
+returns	NNS
+,	,
+the	DT
+trajectory	NN
+for	IN
+.	.
+
+
+3.5	CD
+.	.
+
+Temporal	JJ
+extraction	NN
+-LRB-	-LRB-
+-RRB-	-RRB-
+
+
+The	DT
+temporal	JJ
+extraction	NN
+operation	NN
+gives	VBZ
+the	DT
+time	NN
+interval	JJ
+component	NN
+of	IN
+a	DT
+spatiotemporal	JJ
+relationship	NN
+between	IN
+objects	NNS
+.	.
+
+In	IN
+other	JJ
+words	NNS
+,	,
+it	PRP
+allows	VBZ
+us	PRP
+to	TO
+determine	VB
+over	IN
+what	WP
+period	NN
+a	DT
+particular	JJ
+sequence	NN
+of	IN
+2D-PIR	JJ
+spatial	JJ
+relationships	NNS
+holds	VBZ
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+11	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+286	CD
+
+
+Let	VB
+and	CC
+relationships	NNS
+:	:
+
+
+be	VB
+objects	NNS
+in	IN
+scene	NN
+
+
+and	CC
+
+
+Deï	NN
+¬	CD
+nition	NN
+8	CD
+.	.
+
+Temporal	JJ
+extraction	NN
+:	:
+The	DT
+temporal	JJ
+extraction	NN
+of	IN
+a	DT
+scene	NN
+is	VBZ
+a	DT
+subsequence	NN
+
+
+is	VBZ
+an	DT
+interval	NN
+
+
+interval	JJ
+value	NN
+
+
+is	VBZ
+returned	VBN
+.	.
+
+If	IN
+
+
+be	VB
+a	DT
+sequence	NN
+of	IN
+2D-PIR	JJ
+spatial	JJ
+
+
+such	JJ
+that	IN
+there	EX
+
+
+in	IN
+
+
+in	IN
+.	.
+
+
+will	MD
+iterate	VB
+through	IN
+
+
+,	,
+
+
+If	IN
+there	EX
+is	VBZ
+no	DT
+interval	NN
+satisfying	VBG
+the	DT
+sequence	NN
+of	IN
+spatial	JJ
+relationships	NNS
+,	,
+then	RB
+the	DT
+distinguished	VBN
+
+
+is	VBZ
+a	DT
+set	NN
+of	IN
+scenes	NNS
+then	RB
+
+
+applying	VBG
+temporal	JJ
+extraction	NN
+on	IN
+each	DT
+scene	NN
+resulting	VBG
+in	IN
+a	DT
+set	NN
+of	IN
+intervals	NNS
+.	.
+
+Any	DT
+
+
+intervals	NNS
+will	MD
+be	VB
+excluded	VBN
+from	IN
+this	DT
+set	NN
+.	.
+
+
+Note	VB
+that	IN
+the	DT
+sequence	NN
+of	IN
+spatial	JJ
+relationships	NNS
+can	MD
+be	VB
+speciï	JJ
+¬	NN
+ed	VBD
+using	VBG
+a	DT
+shorthand	NN
+notation	NN
+
+
+and	CC
+
+
+that	WDT
+will	MD
+be	VB
+described	VBN
+in	IN
+Section	NN
+3.7	CD
+.	.
+
+If	IN
+return	NN
+the	DT
+interval	NN
+during	IN
+which	WDT
+both	CC
+object	NN
+is	VBZ
+speciï	NN
+¬	NN
+ed	VBD
+-LRB-	-LRB-
+i.e.	FW
+
+
+present	JJ
+in	IN
+the	DT
+scene	NN
+.	.
+
+
+-RRB-	-RRB-
+,	,
+the	DT
+result	NN
+will	MD
+be	VB
+the	DT
+time	NN
+interval	NN
+during	IN
+which	WDT
+
+
+is	VBZ
+omitted	VBN
+-LRB-	-LRB-
+i.e.	FW
+-RRB-	-RRB-
+,	,
+the	DT
+operation	NN
+will	MD
+
+
+are	VBP
+present	JJ
+in	IN
+the	DT
+scene	NN
+.	.
+
+If	IN
+only	RB
+a	DT
+single	JJ
+
+
+is	VBZ
+
+
+Consider	VB
+,	,
+for	IN
+example	NN
+,	,
+applying	VBG
+temporal	JJ
+extraction	NN
+to	TO
+the	DT
+scene	NN
+in	IN
+Figure	NNP
+4	CD
+.	.
+
+
+returns	NNS
+the	DT
+interval	NN
+
+
+both	DT
+objects	NNS
+appear	VBP
+throughout	IN
+the	DT
+scene	NN
+.	.
+
+
+3.6	CD
+.	.
+
+Predicates	NNS
+
+
+.	.
+
+
+returns	NNS
+
+
+since	IN
+
+
+Because	IN
+video	NN
+scenes	NNS
+are	VBP
+complex	JJ
+entities	NNS
+,	,
+there	EX
+are	VBP
+many	JJ
+possible	JJ
+tests	NNS
+that	IN
+we	PRP
+might	MD
+wish	VB
+to	TO
+make	VB
+on	IN
+their	PRP$
+contents	NNS
+.	.
+
+In	IN
+this	DT
+subsection	NN
+,	,
+we	PRP
+present	VBP
+a	DT
+number	NN
+of	IN
+the	DT
+more	RBR
+useful	JJ
+simple	JJ
+predicates	NNS
+.	.
+
+In	IN
+the	DT
+next	JJ
+subsection	NN
+,	,
+we	PRP
+consider	VBP
+the	DT
+more	JJR
+complex	JJ
+test	NN
+operation	NN
+of	IN
+
+
+spatial	JJ
+matching	NN
+.	.
+
+
+Testing	VBG
+for	IN
+the	DT
+existence	NN
+of	IN
+objects	NNS
+in	IN
+a	DT
+scene	NN
+is	VBZ
+handled	VBN
+by	IN
+the	DT
+
+
+be	VB
+object	NN
+names	NNS
+and	CC
+.	.
+
+For	IN
+a	DT
+single	JJ
+object	NN
+,	,
+
+
+be	VB
+a	DT
+scene	NN
+.	.
+
+Then	RB
+
+
+is	VBZ
+shorthand	NN
+for	IN
+
+
+operation	NN
+is	VBZ
+also	RB
+deï	NN
+¬	CD
+ned	VBD
+on	IN
+sets	NNS
+of	IN
+scenes	NNS
+and	CC
+returns	NNS
+
+
+in	IN
+the	DT
+set	NN
+contains	VBZ
+the	DT
+speciï	NN
+¬	NN
+ed	VBD
+objects	NNS
+.	.
+
+
+predicate	NN
+.	.
+
+Let	VB
+
+
+is	VBZ
+true	JJ
+iff	NN
+
+
+.	.
+
+The	DT
+if	IN
+any	DT
+of	IN
+the	DT
+scenes	NNS
+
+
+We	PRP
+use	VBP
+Allenâ	NNP
+$	$
+™	CD
+s	NNS
+interval-based	JJ
+relationships	NNS
+-LSB-	-LRB-
+4	CD
+-RSB-	-RRB-
+to	TO
+construct	VB
+predicates	NNS
+involving	VBG
+temporal	JJ
+relationships	NNS
+between	IN
+events	NNS
+.	.
+
+For	IN
+example	NN
+,	,
+in	IN
+the	DT
+query	NN
+â	VBD
+$	$
+œï	JJ
+¬	NN
+nd	VBD
+a	DT
+scene	NN
+where	WRB
+A	DT
+enters	VBZ
+B	NN
+while	IN
+C	NN
+passes	VBZ
+Bâ	NNP
+$	$
+,	,
+a	DT
+temporal	JJ
+operationduring	NN
+is	VBZ
+needed	VBN
+to	TO
+test	VB
+the	DT
+temporal	JJ
+relationships	NNS
+
+
+between	IN
+â	JJ
+$	$
+œentersâ	JJ
+$	$
+and	CC
+â	VB
+$	$
+œpassesâ	JJ
+$	$
+.	.
+
+
+Possibly	RB
+the	DT
+most	RBS
+interesting	JJ
+test	NN
+operation	NN
+for	IN
+video	NN
+data	NNS
+is	VBZ
+similarity	NN
+scene	NN
+comparison	NN
+-LRB-	-LRB-
+-RRB-	-RRB-
+.	.
+
+This	DT
+allows	VBZ
+us	PRP
+to	TO
+pose	VB
+queries	NNS
+such	JJ
+as	IN
+:	:
+â	VB
+$	$
+œFind	JJ
+scenes	NNS
+that	WDT
+contain	VBP
+an	DT
+object	NN
+whose	WP$
+trajectory	NN
+is	VBZ
+similar	JJ
+to	TO
+the	DT
+trajectory	NN
+drawn	VBN
+in	IN
+a	DT
+windowâ	NN
+$	$
+.	.
+
+Similarity	NN
+measures	NNS
+normally	RB
+return	VB
+real	JJ
+number	NN
+values	NNS
+;	:
+these	DT
+can	MD
+be	VB
+converted	VBN
+into	IN
+boolean	JJ
+values	NNS
+for	IN
+use	NN
+in	IN
+test	NN
+
+
+predicates	NNS
+by	IN
+applying	VBG
+a	DT
+threshold	NN
+.	.
+
+If	IN
+objects	NNS
+and	CC
+and	CC
+
+
+is	VBZ
+a	DT
+similarity	NN
+-LRB-	-LRB-
+distance	NN
+-RRB-	-RRB-
+measure	NN
+on	IN
+two	CD
+
+
+.	.
+
+
+-	:
+relationships	NNS
+and	CC
+scenes	NNS
+
+
+is	VBZ
+a	DT
+threshold	NN
+,	,
+then	RB
+we	PRP
+can	MD
+deï	VB
+¬	CD
+ne	NN
+
+
+We	PRP
+discuss	VBP
+in	IN
+detail	NN
+how	WRB
+to	TO
+measure	VB
+similarity	NN
+for	IN
+trajectories	NNS
+,	,
+
+
+in	IN
+section	NN
+5.3	CD
+.	.
+
+In	IN
+our	PRP$
+later	JJ
+use	NN
+of	IN
+the	DT
+operator	NN
+,	,
+we	PRP
+assume	VBP
+that	IN
+the	DT
+similarity	NN
+is	VBZ
+evaluated	VBN
+in	IN
+the	DT
+context	NN
+of	IN
+a	DT
+globally	RB
+speciï	NN
+¬	CD
+ed	VBD
+threshold	NN
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+12	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+3.7	CD
+.	.
+
+Spatial	JJ
+matching	NN
+-LRB-	-LRB-
+-RRB-	-RRB-
+
+
+287	CD
+
+
+The	DT
+spatial	JJ
+matching	NN
+operation	NN
+is	VBZ
+used	VBN
+to	TO
+compare	VB
+sequences	NNS
+of	IN
+2D-PIR	JJ
+spatial	JJ
+relation	NN
+-	:
+
+
+ships	NNS
+.	.
+
+
+Deï	NN
+¬	CD
+nition	NN
+9	CD
+.	.
+
+Spatial	JJ
+match	NN
+:	:
+
+
+Let	VB
+be	VB
+a	DT
+2D-PIR	NN
+sequence	NN
+of	IN
+the	DT
+form	NN
+
+
+be	VB
+a	DT
+2D-PIR	NN
+pattern	NN
+-LRB-	-LRB-
+see	VB
+below	IN
+-RRB-	-RRB-
+and	CC
+let	VB
+is	VBZ
+true	JJ
+if	IN
+
+
+and	CC
+false	JJ
+otherwise	RB
+.	.
+
+
+A	DT
+2D-PIR	JJ
+pattern	NN
+can	MD
+be	VB
+:	:
+
+
+a	DT
+normal	JJ
+2D-PIR	NN
+sequence	NN
+of	IN
+the	DT
+form	NN
+
+
+it	PRP
+can	MD
+have	VB
+any	DT
+of	IN
+the	DT
+
+
+,	,
+
+
+or	CC
+
+
+replaced	VBN
+by	IN
+â	NN
+$	$
+œ?â	CD
+$	$
+-LRB-	-LRB-
+the	DT
+â	NN
+$	$
+œdonâ	JJ
+$	$
+™	CD
+t	NN
+careâ	NN
+$	$
+symbol	NN
+-RRB-	-RRB-
+
+
+,	,
+let	VB
+
+
+be	VB
+the	DT
+set	NN
+of	IN
+all	DT
+subsequences	NNS
+of	IN
+.	.
+
+
+,	,
+
+
+or	CC
+it	PRP
+can	MD
+have	VB
+â	RB
+$	$
+œ	CD
+.	.
+.	.
+
+â	RB
+$	$
+-LRB-	-LRB-
+the	DT
+â	NN
+$	$
+œany	JJ
+sequenceâ	NN
+$	$
+symbol	NN
+-RRB-	-RRB-
+interposed	VBN
+between	IN
+any	DT
+pair	NN
+of	IN
+2D-PIR	NN
+
+
+triples	NNS
+.	.
+
+
+If	IN
+
+
+is	VBZ
+a	DT
+2D-PIR	JJ
+sequence	NN
+and	CC
+
+
+is	VBZ
+a	DT
+2D-PIR	JJ
+pattern	NN
+,	,
+then	RB
+
+
+is	VBZ
+deï	NN
+¬	NN
+ned	VBD
+as	IN
+:	:
+
+
+a	DT
+
+
+,	,
+
+
+or	CC
+
+
+value	NN
+in	IN
+
+
+matches	VBZ
+the	DT
+same	JJ
+value	NN
+in	IN
+the	DT
+corresponding	JJ
+position	NN
+in	IN
+
+
+a	DT
+â	JJ
+$	$
+œ?â	CD
+$	$
+in	IN
+
+
+matches	NNS
+any	DT
+value	NN
+in	IN
+the	DT
+corresponding	JJ
+position	NN
+in	IN
+
+
+a	DT
+â	JJ
+$	$
+œ	CD
+.	.
+.	.
+
+â	RB
+$	$
+in	IN
+
+
+sequence	NN
+,	,
+the	DT
+shortest	JJS
+is	VBZ
+chosen	VBN
+.	.
+
+
+matches	NNS
+any	DT
+2D-PIR	NN
+sequence	NN
+in	IN
+
+
+;	:
+if	IN
+a	DT
+â	JJ
+$	$
+œ	CD
+.	.
+.	.
+
+â	RB
+$	$
+can	MD
+match	VB
+more	JJR
+than	IN
+one	CD
+
+
+enters	VBZ
+ob	SYM
+-	:
+
+
+.	.
+
+
+ject	NN
+
+
+We	PRP
+require	VBP
+that	DT
+is	VBZ
+initially	RB
+to	TO
+the	DT
+left	NN
+-LRB-	-LRB-
+its	PRP$
+initial	JJ
+vertical	JJ
+position	NN
+.	.
+
+The	DT
+event	NN
+â	VBD
+$	$
+œobject	JJ
+pattern	NN
+:	:
+
+
+as	IN
+it	PRP
+is	VBZ
+outside	JJ
+
+
+We	PRP
+illustrate	VBP
+the	DT
+use	NN
+of	IN
+2D-PIR	NN
+patterns	NNS
+on	IN
+some	DT
+examples	NNS
+.	.
+
+The	DT
+event	NN
+â	VBD
+$	$
+œobject	JJ
+
+
+from	IN
+the	DT
+leftâ	NN
+$	$
+can	MD
+be	VB
+represented	VBN
+by	IN
+the	DT
+pattern	NN
+:	:
+
+
+on	IN
+the	DT
+-	:
+axis	NN
+-RRB-	-RRB-
+of	IN
+
+
+.	.
+
+We	PRP
+can	MD
+abbreviate	VB
+this	DT
+further	JJ
+by	IN
+noting	VBG
+that	IN
+if	IN
+ï	NN
+¬	CD
+nishes	NNS
+inside	RB
+,	,
+it	PRP
+must	MD
+have	VB
+touched	VBN
+and	CC
+overlapped	VBD
+
+
+be	VB
+:	:
+.	.
+
+The	DT
+event	NN
+â	VBD
+$	$
+œobject	JJ
+represented	VBN
+by	IN
+the	DT
+pattern	NN
+:	:
+
+
+,	,
+eventually	RB
+appears	VBZ
+inside	IN
+it	PRP
+,	,
+and	CC
+ï	NN
+¬	CD
+nally	RB
+appears	VBZ
+outside	IN
+
+
+3.8	CD
+.	.
+
+Complexity	NN
+of	IN
+operations	NNS
+
+
+,	,
+but	CC
+we	PRP
+donâ	VBP
+$	$
+™	CD
+t	NN
+care	NN
+about	IN
+enters	VBZ
+object	NN
+â	VB
+$	$
+can	MD
+be	VB
+captured	VBN
+by	IN
+the	DT
+.	.
+
+We	PRP
+donâ	VBP
+$	$
+™	CD
+t	NN
+care	NN
+where	WRB
+starts	VBZ
+,	,
+as	RB
+long	RB
+
+
+starts	NNS
+outside	IN
+and	CC
+
+
+.	.
+
+Thus	RB
+an	DT
+equivalent	JJ
+pattern	NN
+would	MD
+enters	VBZ
+and	CC
+then	RB
+leaves	VBZ
+againâ	JJ
+$	$
+can	MD
+be	VB
+
+
+.	.
+
+In	IN
+other	JJ
+words	NNS
+,	,
+starts	VBZ
+outside	IN
+
+
+again	RB
+.	.
+
+
+The	DT
+complexity	NN
+of	IN
+the	DT
+various	JJ
+operations	NNS
+depends	VBZ
+primarily	RB
+which	WDT
+parts	NNS
+of	IN
+the	DT
+database	NN
+they	PRP
+act	VBP
+on	IN
+.	.
+
+For	IN
+example	NN
+,	,
+the	DT
+project	NN
+and	CC
+extract	NN
+operators	NNS
+act	VBP
+on	IN
+individual	JJ
+scenes	NNS
+,	,
+so	IN
+the	DT
+cost	NN
+will	MD
+be	VB
+related	VBN
+to	TO
+the	DT
+complexity	NN
+of	IN
+the	DT
+scene	NN
+not	RB
+to	TO
+the	DT
+total	JJ
+size	NN
+of	IN
+the	DT
+database	NN
+.	.
+
+In	IN
+fact	NN
+,	,
+the	DT
+only	JJ
+operation	NN
+whose	WP$
+complexity	NN
+is	VBZ
+determined	VBN
+by	IN
+the	DT
+size	NN
+of	IN
+the	DT
+database	NN
+isselect	NN
+.	.
+
+If	IN
+not	RB
+supported	VBN
+by	IN
+indexing	NN
+-LRB-	-LRB-
+which	WDT
+is	VBZ
+the	DT
+current	JJ
+state	NN
+of	IN
+our	PRP$
+system	NN
+-RRB-	-RRB-
+,	,
+select	JJ
+requires	VBZ
+time	NN
+proportional	JJ
+to	TO
+the	DT
+number	NN
+of	IN
+scenes	NNS
+stored	VBN
+in	IN
+the	DT
+database	NN
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+13	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+288	CD
+
+
+The	DT
+project	NN
+andspatial	JJ
+extract	NN
+operations	NNS
+take	VBP
+object	NN
+identiï	NN
+¬	CD
+ers	NNPS
+and	CC
+produce	VBP
+information	NN
+associated	VBN
+with	IN
+these	DT
+objects	NNS
+.	.
+
+The	DT
+complexity	NN
+of	IN
+this	DT
+depends	VBZ
+on	IN
+how	WRB
+easy	JJ
+it	PRP
+is	VBZ
+to	TO
+ï	VB
+¬	CD
+nd	VBD
+the	DT
+objects	NNS
+within	IN
+the	DT
+scene	NN
+graph	NN
+.	.
+
+If	IN
+we	PRP
+assume	VBP
+that	IN
+scene	NN
+graphs	NNS
+are	VBP
+implemented	VBN
+efï	NN
+¬	NN
+ciently	RB
+-LRB-	-LRB-
+e.g.	FW
+with	IN
+hashing	VBG
+on	IN
+object	NN
+names	NNS
+-RRB-	-RRB-
+,	,
+then	RB
+the	DT
+complexity	NN
+of	IN
+locating	VBG
+the	DT
+objects	NNS
+and	CC
+their	PRP$
+associated	VBN
+information	NN
+will	MD
+be	VB
+.	.
+
+
+The	DT
+temporal	JJ
+extract	NN
+operation	NN
+takes	VBZ
+an	DT
+object	NN
+pair	NN
+and	CC
+a	DT
+2D-PIR	NN
+pattern	NN
+and	CC
+matches	VBZ
+the	DT
+pattern	NN
+with	IN
+the	DT
+TS-2D-PIR	NN
+for	IN
+the	DT
+object	NN
+pair	NN
+.	.
+
+As	IN
+above	RB
+,	,
+we	PRP
+assume	VBP
+that	IN
+it	PRP
+is	VBZ
+simple	JJ
+to	TO
+ï	VB
+¬	CD
+nd	VBD
+the	DT
+TS-2D-PIR	NN
+,	,
+so	IN
+the	DT
+major	JJ
+cost	NN
+of	IN
+this	DT
+operation	NN
+comes	VBZ
+from	IN
+the	DT
+matching	VBG
+operation	NN
+.	.
+
+If	IN
+the	DT
+length	NN
+of	IN
+the	DT
+TS-2D-PIR	NN
+is	VBZ
+and	CC
+the	DT
+length	NN
+of	IN
+the	DT
+pattern	NN
+is	VBZ
+,	,
+then	RB
+the	DT
+cost	NN
+of	IN
+matching	VBG
+will	MD
+be	VB
+.	.
+
+
+The	DT
+costs	NNS
+of	IN
+topological	JJ
+and	CC
+interval	JJ
+comparisons	NNS
+are	VBP
+trivial	JJ
+,	,
+since	IN
+these	DT
+relationships	NNS
+involve	VBP
+very	RB
+simple	JJ
+data	NNS
+structures	NNS
+,	,
+and	CC
+are	VBP
+generally	RB
+pre-computed	JJ
+and	CC
+stored	VBN
+in	IN
+the	DT
+database	NN
+.	.
+
+The	DT
+costs	NNS
+of	IN
+scene	NN
+and	CC
+trajectory	NN
+similarity	NN
+comparison	NN
+are	VBP
+considerably	RB
+higher	JJR
+,	,
+and	CC
+will	MD
+be	VB
+discussed	VBN
+in	IN
+Section	NN
+5	CD
+.	.
+
+
+4	LS
+.	.
+
+Applications	NNS
+of	IN
+Moving	VBG
+Object	NNP
+Algebra	NNP
+
+
+In	IN
+this	DT
+Section	NN
+we	PRP
+demonstrate	VBP
+the	DT
+power	NN
+of	IN
+our	PRP$
+moving	VBG
+object	NN
+algebra	NN
+by	IN
+showing	VBG
+how	WRB
+it	PRP
+can	MD
+be	VB
+used	VBN
+to	TO
+answer	VB
+complex	JJ
+spatiotemporal	JJ
+queries	NNS
+for	IN
+a	DT
+number	NN
+of	IN
+speciï	NN
+¬	CD
+c	NN
+applications	NNS
+.	.
+
+We	PRP
+assume	VBP
+that	IN
+we	PRP
+have	VBP
+available	JJ
+an	DT
+unlimited	JJ
+supply	NN
+of	IN
+variable	JJ
+names	NNS
+to	TO
+identify	VB
+objects	NNS
+,	,
+scenes	NNS
+and	CC
+sets	NNS
+of	IN
+scenes	NNS
+-LRB-	-LRB-
+databases	NNS
+-RRB-	-RRB-
+,	,
+and	CC
+we	PRP
+make	VBP
+use	NN
+of	IN
+an	DT
+is	VBZ
+operator	NN
+to	TO
+associate	VB
+names	NNS
+to	TO
+expressions	NNS
+of	IN
+arbitrary	JJ
+types	NNS
+.	.
+
+We	PRP
+also	RB
+assume	VBP
+that	IN
+standard	JJ
+quantiï	NN
+¬	NN
+cation	NN
+operations	NNS
+-LRB-	-LRB-
+,	,
+-RRB-	-RRB-
+are	VBP
+available	JJ
+as	IN
+predicates	NNS
+with	IN
+implicit	JJ
+iteration	NN
+that	WDT
+allows	VBZ
+them	PRP
+to	TO
+bind	VB
+the	DT
+values	NNS
+of	IN
+the	DT
+quantiï	NN
+¬	CD
+ed	VBD
+variables	NNS
+to	TO
+appropriate	JJ
+database	NN
+objects	NNS
+,	,
+one	CD
+at	IN
+a	DT
+time	NN
+.	.
+
+
+4.1	CD
+.	.
+
+Animal	NNP
+Movement	NNP
+Querying	NNP
+System	NNP
+
+
+The	DT
+Animal	NNP
+Movement	NNP
+Querying	NNP
+System	NNP
+tracks	VBZ
+the	DT
+movement	NN
+of	IN
+animals	NNS
+using	VBG
+a	DT
+Global	JJ
+Positioning	NNP
+System	NNP
+-LRB-	-LRB-
+GPS	NNP
+-RRB-	-RRB-
+device	NN
+attached	VBN
+to	TO
+each	DT
+animal	NN
+.	.
+
+The	DT
+system	NN
+could	MD
+be	VB
+used	VBN
+,	,
+for	IN
+example	NN
+,	,
+to	TO
+study	VB
+the	DT
+movement	NN
+of	IN
+cattle	NNS
+in	IN
+a	DT
+large	JJ
+farming	NN
+area	NN
+or	CC
+to	TO
+study	VB
+the	DT
+migration	NN
+pattern	NN
+of	IN
+a	DT
+certain	JJ
+animal	NN
+group	NN
+-LRB-	-LRB-
+such	JJ
+as	IN
+elephants	NNS
+,	,
+birds	NNS
+,	,
+etc.	FW
+-RRB-	-RRB-
+.	.
+
+
+Our	PRP$
+data	NNS
+model	NN
+is	VBZ
+ideally	RB
+suited	VBN
+to	TO
+this	DT
+kind	NN
+of	IN
+application	NN
+because	IN
+all	DT
+of	IN
+the	DT
+objects	NNS
+in	IN
+the	DT
+system	NN
+are	VBP
+readily	RB
+identiï	JJ
+¬	NN
+ed	VBD
+and	CC
+easy	JJ
+to	TO
+track	VB
+automatically	RB
+.	.
+
+The	DT
+GPS	NNP
+could	MD
+be	VB
+used	VBN
+to	TO
+obtain	VB
+time	NN
+series	NN
+data	NNS
+on	IN
+the	DT
+moving	VBG
+objects	NNS
+;	:
+for	IN
+example	NN
+,	,
+hourly	JJ
+reports	NNS
+on	IN
+the	DT
+position	NN
+of	IN
+each	DT
+animal	NN
+.	.
+
+The	DT
+area	NN
+of	IN
+interest	NN
+can	MD
+be	VB
+divided	VBN
+into	IN
+a	DT
+set	NN
+of	IN
+regions	NNS
+-LRB-	-LRB-
+static	JJ
+objects	NNS
+-RRB-	-RRB-
+through	IN
+which	WDT
+animals	NNS
+can	MD
+move	VB
+.	.
+
+From	IN
+such	JJ
+data	NNS
+,	,
+it	PRP
+is	VBZ
+straightforward	JJ
+to	TO
+automatically	RB
+compute	VB
+the	DT
+scene	NN
+graphs	NNS
+-LRB-	-LRB-
+tracks	NNS
+and	CC
+-	:
+relationships	NNS
+-RRB-	-RRB-
+.	.
+
+Note	VB
+that	IN
+we	PRP
+assume	VBP
+that	IN
+the	DT
+map	NN
+regions	NNS
+are	VBP
+oriented	VBN
+such	JJ
+that	IN
+the	DT
+-	:
+axis	NN
+interval	NN
+relationships	NNS
+â	VBP
+$	$
+œ	JJ
+â	NN
+$	$
+and	CC
+â	VB
+$	$
+œ	JJ
+â	NN
+$	$
+correspond	VBP
+to	TO
+west	NN
+and	CC
+east	JJ
+and	CC
+the	DT
+-	:
+axis	NN
+interval	NN
+relationships	NNS
+â	VBP
+$	$
+œ	JJ
+â	NN
+$	$
+and	CC
+â	VB
+$	$
+œ	JJ
+â	NN
+$	$
+correspond	VBP
+to	TO
+north	RB
+and	CC
+south	RB
+respectively	RB
+.	.
+
+
+Using	VBG
+this	DT
+system	NN
+,	,
+biologists	NNS
+might	MD
+wish	VB
+to	TO
+pose	VB
+queries	NNS
+such	JJ
+as	IN
+â	JJ
+$	$
+œShow	JJ
+the	DT
+migration	NN
+path	NN
+of	IN
+a	DT
+particular	JJ
+animalâ	NN
+$	$
+or	CC
+â	VB
+$	$
+œFind	JJ
+animals	NNS
+that	WDT
+stay	VBP
+in	IN
+a	DT
+particular	JJ
+region	NN
+longer	JJR
+than	IN
+a	DT
+certain	JJ
+timeâ	JJ
+$	$
+-LRB-	-LRB-
+an	DT
+indication	NN
+that	IN
+the	DT
+animals	NNS
+might	MD
+breed	VB
+in	IN
+this	DT
+region	NN
+-RRB-	-RRB-
+.	.
+
+
+Assume	VB
+that	IN
+the	DT
+animal	JJ
+migration	NN
+is	VBZ
+supplied	VBN
+as	IN
+a	DT
+sequence	NN
+of	IN
+high-magniï	JJ
+¬	NN
+cationsatellite	NN
+photographs	NNS
+of	IN
+the	DT
+region	NN
+under	IN
+study	NN
+and	CC
+that	IN
+the	DT
+GPS	NNP
+information	NN
+allows	VBZ
+us	PRP
+to	TO
+extract	NN
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+14	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+289	CD
+
+
+tracks	NNS
+automatically	RB
+from	IN
+this	DT
+video	NN
+data	NNS
+.	.
+
+The	DT
+data	NNS
+is	VBZ
+recorded	VBN
+as	IN
+a	DT
+collection	NN
+of	IN
+spatiotem	NN
+-	:
+poral	JJ
+data	NNS
+in	IN
+a	DT
+database	NN
+called	VBN
+.	.
+
+This	DT
+database	NN
+would	MD
+contain	VB
+scene-graphs	NNS
+for	IN
+each	DT
+of	IN
+the	DT
+periods	NNS
+under	IN
+study	NN
+-LRB-	-LRB-
+the	DT
+scenes	NNS
+in	IN
+this	DT
+video	NN
+data	NNS
+-RRB-	-RRB-
+,	,
+along	IN
+with	IN
+the	DT
+actual	JJ
+video	NN
+sequences	NNS
+showing	VBG
+animal	JJ
+movement	NN
+.	.
+
+
+We	PRP
+illustrate	VBP
+how	WRB
+ï	NN
+¬	CD
+ve	FW
+representative	JJ
+queries	NNS
+can	MD
+be	VB
+answered	VBN
+on	IN
+this	DT
+database	NN
+using	VBG
+moving	VBG
+object	NN
+algebra	NN
+.	.
+
+It	PRP
+is	VBZ
+also	RB
+possible	JJ
+-LRB-	-LRB-
+and	CC
+more	RBR
+appropriate	JJ
+-RRB-	-RRB-
+to	TO
+specify	VB
+some	DT
+of	IN
+these	DT
+queries	NNS
+via	IN
+a	DT
+sketch-based	JJ
+query	NN
+facility	NN
+.	.
+
+Such	PDT
+a	DT
+facility	NN
+is	VBZ
+available	JJ
+in	IN
+our	PRP$
+system	NN
+,	,
+and	CC
+we	PRP
+discuss	VBP
+this	DT
+in	IN
+the	DT
+video	NN
+retrieval	NN
+example	NN
+.	.
+
+
+Q1	NN
+.	.
+
+Give	VB
+me	PRP
+the	DT
+migration	NN
+path	NN
+of	IN
+a	DT
+speciï	NN
+¬	NN
+c	NN
+animal	NN
+named	VBN
+.	.
+
+
+The	DT
+answer	NN
+to	TO
+this	DT
+query	NN
+is	VBZ
+a	DT
+trajectory	NN
+which	WDT
+can	MD
+be	VB
+displayed	VBN
+graphically	RB
+.	.
+
+If	IN
+we	PRP
+know	VBP
+the	DT
+name	NN
+of	IN
+the	DT
+particular	JJ
+scene	NN
+showing	VBG
+the	DT
+migration	NN
+ofthis	NN
+animal	NN
+-LRB-	-LRB-
+say	VB
+
+
+then	RB
+the	DT
+query	NN
+can	MD
+be	VB
+expressed	VBN
+as	IN
+follows	VBZ
+:	:
+
+
+-RRB-	-RRB-
+,	,
+
+
+Recall	VB
+that	IN
+the	DT
+operator	NN
+returns	NNS
+precisely	RB
+the	DT
+trajectory	NN
+information	NN
+required	VBN
+to	TO
+answer	VB
+this	DT
+query	NN
+.	.
+
+
+If	IN
+we	PRP
+do	VBP
+not	RB
+know	VB
+the	DT
+name	NN
+of	IN
+the	DT
+scene	NN
+,	,
+then	RB
+we	PRP
+must	MD
+use	VB
+selection	NN
+toï	NN
+¬	CD
+rst	NN
+ï	NN
+¬	CD
+nd	VBD
+the	DT
+scene	NN
+and	CC
+then	RB
+extract	VB
+the	DT
+animalâ	NN
+$	$
+™	CD
+s	NNS
+trajectory	NN
+.	.
+
+In	IN
+this	DT
+case	NN
+the	DT
+query	NN
+can	MD
+be	VB
+expressed	VBN
+as	IN
+:	:
+
+
+Note	VB
+the	DT
+use	NN
+of	IN
+the	DT
+iteration	NN
+variable	NN
+,	,
+which	WDT
+will	MD
+be	VB
+bound	VBN
+successively	RB
+to	TO
+each	DT
+scene	NN
+in	IN
+the	DT
+database	NN
+.	.
+
+We	PRP
+assume	VBP
+here	RB
+that	IN
+there	EX
+is	VBZ
+only	RB
+one	CD
+matching	VBG
+scene	NN
+that	WDT
+shows	VBZ
+the	DT
+migration	NN
+.	.
+
+If	IN
+there	EX
+were	VBD
+multiple	JJ
+scenes	NNS
+containing	VBG
+,	,
+the	DT
+operator	NN
+would	MD
+extract	VB
+trajectories	NNS
+for	IN
+each	DT
+of	IN
+them	PRP
+.	.
+
+
+Q2	NN
+.	.
+
+How	WRB
+long	RB
+is	VBZ
+animal	JJ
+inside	IN
+region	NN
+?	.
+
+
+The	DT
+answer	NN
+to	TO
+this	DT
+query	NN
+is	VBZ
+a	DT
+time	NN
+value	NN
+,	,
+the	DT
+length	NN
+of	IN
+the	DT
+interval	NN
+over	IN
+which	WDT
+the	DT
+relationship	NN
+
+
+holds	VBZ
+.	.
+
+The	DT
+query	NN
+can	MD
+be	VB
+expressed	VBN
+as	IN
+:	:
+
+
+is	VBZ
+
+
+First	RB
+,	,
+we	PRP
+need	VBP
+to	TO
+ï	VB
+¬	CD
+nd	VBD
+the	DT
+scene	NN
+where	WRB
+animal	NN
+is	VBZ
+inside	IN
+region	NN
+-LRB-	-LRB-
+once	RB
+again	RB
+,	,
+we	PRP
+assume	VBP
+that	DT
+will	MD
+give	VB
+us	PRP
+one	CD
+single	JJ
+scene	NN
+rather	RB
+than	IN
+a	DT
+set	NN
+of	IN
+scenes	NNS
+-RRB-	-RRB-
+.	.
+
+Note	VB
+that	IN
+there	EX
+is	VBZ
+no	DT
+operation	NN
+to	TO
+directly	RB
+test	VB
+whether	IN
+two	CD
+objects	NNS
+have	VBP
+a	DT
+speciï	NN
+¬	CD
+ed	VBD
+relationship	NN
+at	IN
+some	DT
+stage	NN
+during	IN
+a	DT
+scene	NN
+.	.
+
+We	PRP
+achieve	VBP
+this	DT
+by	IN
+ï	NN
+¬	CD
+rst	NN
+attempting	VBG
+to	TO
+extract	VB
+the	DT
+temporal	JJ
+interval	NN
+-LRB-	-LRB-
+via	IN
+-RRB-	-RRB-
+over	IN
+which	WDT
+the	DT
+relationship	NN
+holds	VBZ
+,	,
+and	CC
+then	RB
+testing	NN
+that	IN
+the	DT
+extraction	NN
+produced	VBD
+a	DT
+real	JJ
+interval	NN
+rather	RB
+than	IN
+.	.
+
+We	PRP
+associate	VBP
+the	DT
+matching	JJ
+scene	NN
+with	IN
+the	DT
+variable	NN
+.	.
+
+Next	RB
+,	,
+we	PRP
+extract	VBP
+the	DT
+interval	NN
+during	IN
+which	WDT
+animal	NN
+is	VBZ
+inside	RB
+and	CC
+compute	VB
+its	PRP$
+duration	NN
+.	.
+
+
+Q3	NN
+.	.
+
+Find	VB
+scenes	NNS
+where	WRB
+animal	NN
+enters	VBZ
+region	NN
+from	IN
+the	DT
+west	JJ
+side	NN
+and	CC
+leaves	VBZ
+from	IN
+the	DT
+north	JJ
+side	NN
+.	.
+
+
+The	DT
+result	NN
+of	IN
+this	DT
+query	NN
+is	VBZ
+a	DT
+set	NN
+of	IN
+scenes	NNS
+where	WRB
+each	DT
+scene	NN
+contains	VBZ
+a	DT
+particular	JJ
+kind	NN
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+15	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+290	CD
+
+
+of	IN
+movement	NN
+.	.
+
+We	PRP
+describe	VBP
+the	DT
+movement	NN
+via	IN
+a	DT
+2D-PIR	NN
+pattern	NN
+and	CC
+use	VB
+the	DT
+trajectory	NN
+matching	NN
+operator	NN
+-LRB-	-LRB-
+-RRB-	-RRB-
+to	TO
+determine	VB
+which	WDT
+scenes	NNS
+contain	VBP
+such	JJ
+movement	NN
+.	.
+
+
+is	VBZ
+
+
+is	VBZ
+
+
+First	RB
+we	PRP
+deï	VBP
+¬	CD
+ne	NN
+the	DT
+spatiotemporal	JJ
+sequence	NN
+that	WDT
+represents	VBZ
+the	DT
+event	NN
+of	IN
+â	JJ
+$	$
+œentering	CD
+a	DT
+region	NN
+from	IN
+the	DT
+left	NN
+-LRB-	-LRB-
+west	NN
+-RRB-	-RRB-
+â	RB
+$	$
+and	CC
+â	VB
+$	$
+œleaving	JJ
+by	IN
+the	DT
+top	NN
+-LRB-	-LRB-
+north	NN
+-RRB-	-RRB-
+â	RB
+$	$
+.	.
+
+We	PRP
+then	RB
+use	VBP
+that	IN
+sequence	NN
+with	IN
+the	DT
+operator	NN
+to	TO
+match	VB
+sequences	NNS
+relating	VBG
+animal	NN
+and	CC
+region	NN
+-LRB-	-LRB-
+which	WDT
+are	VBP
+extracted	VBN
+using	VBG
+-RRB-	-RRB-
+.	.
+
+Note	VB
+that	IN
+the	DT
+2D-PIR	NN
+pattern	NN
+is	VBZ
+reasonably	RB
+complex	JJ
+to	TO
+specify	VB
+;	:
+it	PRP
+would	MD
+be	VB
+better	RBR
+for	IN
+users	NNS
+to	TO
+be	VB
+able	JJ
+to	TO
+draw	VB
+the	DT
+movement	NN
+.	.
+
+This	DT
+facility	NN
+is	VBZ
+supported	VBN
+by	IN
+our	PRP$
+prototype	NN
+system	NN
+,	,
+and	CC
+we	PRP
+give	VBP
+examples	NNS
+of	IN
+its	PRP$
+use	NN
+in	IN
+Section	NN
+4.3	CD
+.	.
+
+
+Q4	NN
+.	.
+
+Find	VB
+scenes	NNS
+where	WRB
+some	DT
+animal	NN
+passes	VBZ
+through	IN
+region	NN
+.	.
+
+
+This	DT
+query	NN
+is	VBZ
+similar	JJ
+to	TO
+Q3	NN
+,	,
+except	IN
+that	IN
+the	DT
+direction	NN
+from	IN
+which	WDT
+enters	VBZ
+and	CC
+the	DT
+direction	NN
+exits	NNS
+are	VBP
+ignored	VBN
+.	.
+
+The	DT
+result	NN
+is	VBZ
+a	DT
+list	NN
+of	IN
+scenes	NNS
+from	IN
+where	WRB
+there	EX
+is	VBZ
+at	IN
+least	JJS
+one	CD
+object	NN
+that	WDT
+satisï	VBP
+¬	CD
+es	VBZ
+the	DT
+spatiotemporal	JJ
+relationship	NN
+â	VBD
+$	$
+œpasses	JJ
+throughâ	NN
+$	$
+.	.
+
+The	DT
+query	NN
+is	VBZ
+expressed	VBN
+as	IN
+:	:
+
+
+For	IN
+each	DT
+animal	NN
+,	,
+the	DT
+query	NN
+ï	NN
+¬	CD
+rst	NN
+extracts	NNS
+the	DT
+2D-PIR	NN
+sequence	NN
+-LRB-	-LRB-
+via	IN
+-RRB-	-RRB-
+giving	VBG
+the	DT
+spatial	JJ
+relationship	NN
+between	IN
+the	DT
+animal	NN
+and	CC
+region	NN
+.	.
+
+It	PRP
+then	RB
+compares	VBZ
+this	DT
+-LRB-	-LRB-
+using	VBG
+-RRB-	-RRB-
+tothe	NN
+2D-PIR	NN
+pattern	NN
+describing	VBG
+the	DT
+â	NN
+$	$
+œpasses	JJ
+throughâ	NN
+$	$
+relation	NN
+-LRB-	-LRB-
+essentially	RB
+â	RB
+$	$
+œoutside	JJ
+,	,
+then	RB
+inside	RB
+,	,
+then	RB
+outside	IN
+againâ	JJ
+$	$
+-RRB-	-RRB-
+.	.
+
+If	IN
+any	DT
+of	IN
+the	DT
+animals	NNS
+tested	VBN
+satisfy	VBP
+the	DT
+condition	NN
+,	,
+then	RB
+the	DT
+existential	JJ
+quantiï	NN
+¬	CD
+er	NN
+returns	VBZ
+a	DT
+true	JJ
+result	NN
+to	TO
+trigger	VB
+the	DT
+selection	NN
+of	IN
+that	DT
+scene	NN
+.	.
+
+
+4.2	CD
+.	.
+
+Animation	NN
+Database	NN
+
+
+The	DT
+following	VBG
+examples	NNS
+show	VBP
+how	WRB
+we	PRP
+can	MD
+create	VB
+a	DT
+new	JJ
+scene	NN
+by	IN
+using	VBG
+theobject	JJ
+projection	NN
+and	CC
+overlay	NN
+operations	NNS
+on	IN
+a	DT
+set	NN
+of	IN
+existing	VBG
+scenes	NNS
+.	.
+
+Let	VB
+us	PRP
+imagine	VB
+we	PRP
+have	VBP
+a	DT
+database	NN
+of	IN
+animated	JJ
+scenes	NNS
+.	.
+
+In	IN
+the	DT
+database	NN
+we	PRP
+have	VBP
+a	DT
+scene	NN
+-LRB-	-LRB-
+-RRB-	-RRB-
+containing	VBG
+several	JJ
+mice	NNS
+and	CC
+two	CD
+cats	NNS
+,	,
+where	WRB
+one	CD
+of	IN
+the	DT
+cats	NNS
+is	VBZ
+catching	VBG
+a	DT
+mouse	NN
+.	.
+
+We	PRP
+also	RB
+have	VBP
+a	DT
+scene	NN
+-LRB-	-LRB-
+called	VBN
+
+
+-RRB-	-RRB-
+that	WDT
+contains	VBZ
+several	JJ
+dogs	NNS
+running	VBG
+towards	IN
+a	DT
+pond	NN
+and	CC
+then	RB
+drinking	NN
+from	IN
+the	DT
+pond	NN
+.	.
+
+We	PRP
+want	VBP
+to	TO
+create	VB
+a	DT
+new	JJ
+scene	NN
+that	WDT
+tells	VBZ
+the	DT
+story	NN
+â	VBD
+$	$
+œa	JJ
+cat	NN
+catches	VBZ
+a	DT
+mouse	NN
+while	IN
+a	DT
+dog	NN
+runs	VBZ
+to	TO
+a	DT
+pond	NN
+and	CC
+drinks	NNS
+water	NN
+from	IN
+itâ	FW
+$	$
+.	.
+
+
+In	IN
+the	DT
+ï	NN
+¬	NN
+rst	NN
+scene	NN
+we	PRP
+are	VBP
+interested	JJ
+only	RB
+in	IN
+a	DT
+cat	NN
+called	VBN
+which	WDT
+is	VBZ
+catching	VBG
+a	DT
+mouse	NN
+called	VBN
+.	.
+
+The	DT
+following	VBG
+expression	NN
+extracts	NNS
+the	DT
+portion	NN
+of	IN
+the	DT
+scene	NN
+that	WDT
+contains	VBZ
+the	DT
+â	JJ
+$	$
+œcat	JJ
+catches	NNS
+mouseâ	VBP
+$	$
+part	NN
+of	IN
+our	PRP$
+story	NN
+:	:
+
+
+is	VBZ
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+16	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+291	CD
+
+
+In	IN
+the	DT
+second	JJ
+clip	NN
+we	PRP
+are	VBP
+interested	JJ
+only	RB
+in	IN
+a	DT
+particular	JJ
+dog	NN
+called	VBD
+that	DT
+is	VBZ
+running	VBG
+towards	IN
+the	DT
+and	CC
+then	RB
+drinking	NN
+.	.
+
+Here	RB
+is	VBZ
+the	DT
+expression	NN
+that	WDT
+extracts	VBZ
+the	DT
+scene	NN
+containing	VBG
+â	NN
+$	$
+œa	JJ
+dog	NN
+running	VBG
+to	TO
+a	DT
+pond	NN
+and	CC
+then	RB
+drinking	NN
+from	IN
+itâ	FW
+$	$
+:	:
+
+
+is	VBZ
+
+
+To	TO
+create	VB
+the	DT
+new	JJ
+scene	NN
+,	,
+we	PRP
+simply	RB
+use	VB
+the	DT
+overlay	NN
+operator	NN
+on	IN
+the	DT
+two	CD
+extracted	VBN
+scenes	NNS
+:	:
+
+
+Now	RB
+,	,
+suppose	VBP
+that	IN
+we	PRP
+are	VBP
+no	RB
+longer	RB
+interested	JJ
+in	IN
+the	DT
+dog	NN
+running	VBG
+,	,
+and	CC
+only	RB
+want	VBP
+to	TO
+see	VB
+it	PRP
+drinking	VBG
+for	IN
+the	DT
+later	JJ
+part	NN
+of	IN
+the	DT
+chase	NN
+.	.
+
+If	IN
+both	DT
+clips	NNS
+were	VBD
+60	CD
+seconds	NNS
+long	RB
+,	,
+and	CC
+we	PRP
+knew	VBD
+that	IN
+the	DT
+drinking	NN
+sequence	NN
+occupied	VBD
+the	DT
+last	JJ
+30	CD
+seconds	NNS
+of	IN
+the	DT
+scene	NN
+,	,
+we	PRP
+could	MD
+produce	VB
+the	DT
+new	JJ
+scene	NN
+via	IN
+:	:
+
+
+is	VBZ
+
+
+4.3	CD
+.	.
+
+Video	NNP
+Retrieval	NNP
+System	NNP
+
+
+This	DT
+example	NN
+shows	VBZ
+the	DT
+use	NN
+,	,
+in	IN
+a	DT
+video	NN
+retrieval	NN
+application	NN
+,	,
+of	IN
+the	DT
+scene	NN
+similarity	NN
+compar	NN
+-	:
+ison	NN
+operator	NN
+-LRB-	-LRB-
+-RRB-	-RRB-
+mentioned	VBN
+in	IN
+Section	NN
+3.6	CD
+.	.
+
+This	DT
+example	NN
+also	RB
+demonstrates	VBZ
+the	DT
+necessity	NN
+of	IN
+a	DT
+sketch-based	JJ
+query	NN
+facility	NN
+for	IN
+moving	VBG
+objects	NNS
+.	.
+
+The	DT
+example	NN
+queries	NNS
+assume	VBP
+that	IN
+we	PRP
+have	VBP
+a	DT
+collection	NN
+of	IN
+video	NN
+scenes	NNS
+and	CC
+their	PRP$
+corresponding	JJ
+scene	NN
+graphs	NNS
+stored	VBN
+in	IN
+a	DT
+database	NN
+called	VBN
+.	.
+
+
+Q1	NN
+.	.
+
+Find	VB
+scenes	NNS
+that	WDT
+contain	VBP
+an	DT
+object	NN
+whose	WP$
+movement	NN
+is	VBZ
+similar	JJ
+to	TO
+the	DT
+movement	NN
+of	IN
+object	NN
+in	IN
+scene	NN
+.	.
+
+
+This	DT
+query	NN
+can	MD
+be	VB
+answered	VBN
+by	IN
+comparing	VBG
+the	DT
+similarity	NN
+of	IN
+the	DT
+trajectory	NN
+of	IN
+object	NN
+in	IN
+
+
+with	IN
+the	DT
+trajectory	NN
+of	IN
+any	DT
+object	NN
+from	IN
+the	DT
+scenes	NNS
+stored	VBN
+in	IN
+.	.
+
+The	DT
+query	NN
+can	MD
+be	VB
+expressed	VBN
+as	IN
+:	:
+
+
+This	DT
+works	VBZ
+by	IN
+ï	NN
+¬	CD
+rst	NN
+extracting	VBG
+â	RB
+$	$
+™	CD
+s	NNS
+trajectory	NN
+from	IN
+-LRB-	-LRB-
+-RRB-	-RRB-
+,	,
+then	RB
+applying	VBG
+the	DT
+similarity	NN
+test	NN
+-LRB-	-LRB-
+-RRB-	-RRB-
+to	TO
+all	DT
+of	IN
+the	DT
+scenes	NNS
+in	IN
+.	.
+
+Note	VB
+that	IN
+the	DT
+test	NN
+performs	VBZ
+a	DT
+-LRB-	-LRB-
+thresholded	VBN
+-RRB-	-RRB-
+trajectory	NN
+similarity	NN
+comparison	NN
+between	IN
+object	NN
+and	CC
+each	DT
+of	IN
+the	DT
+objects	NNS
+in	IN
+each	DT
+of	IN
+the	DT
+scenes	NNS
+.	.
+
+If	IN
+any	DT
+of	IN
+the	DT
+objects	NNS
+in	IN
+some	DT
+scene	NN
+has	VBZ
+a	DT
+trajectory	NN
+that	WDT
+is	VBZ
+similar	JJ
+to	TO
+â	VB
+$	$
+™	CD
+s	NNS
+trajectory	NN
+,	,
+then	RB
+scene	NN
+will	MD
+be	VB
+retrieved	VBN
+.	.
+
+
+Q2	NN
+.	.
+
+Find	VB
+scenes	NNS
+that	WDT
+contain	VBP
+a	DT
+person	NN
+moving	VBG
+like	IN
+the	DT
+trajectory	NN
+drawn	VBN
+in	IN
+a	DT
+window	NN
+.	.
+
+The	DT
+trajectory	NN
+sketched	VBD
+in	IN
+the	DT
+window	NN
+is	VBZ
+ï	NN
+¬	NN
+rst	NN
+converted	VBD
+into	IN
+a	DT
+sequence	NN
+of	IN
+pairs	NNS
+called	VBN
+.	.
+
+To	TO
+answer	VB
+the	DT
+query	NN
+,	,
+we	PRP
+need	VBP
+to	TO
+compare	VB
+this	DT
+trajectory	NN
+to	TO
+the	DT
+spatial	JJ
+projection	NN
+of	IN
+the	DT
+person	NN
+objects	NNS
+in	IN
+each	DT
+of	IN
+the	DT
+scenes	NNS
+in	IN
+the	DT
+database	NN
+.	.
+
+The	DT
+query	NN
+can	MD
+be	VB
+speciï	JJ
+¬	NN
+ed	VBD
+as	IN
+follows	VBZ
+:	:
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+17	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+292	CD
+
+
+The	DT
+quantiï	NN
+¬	CD
+er	NN
+-LRB-	-LRB-
+-RRB-	-RRB-
+involves	VBZ
+an	DT
+implicit	JJ
+iteration	NN
+over	IN
+the	DT
+objects	NNS
+in	IN
+each	DT
+scene	NN
+.	.
+
+For	IN
+each	DT
+object	NN
+,	,
+we	PRP
+extract	VBP
+its	PRP$
+trajectory	NN
+-LRB-	-LRB-
+-RRB-	-RRB-
+and	CC
+then	RB
+compare	VB
+-LRB-	-LRB-
+-RRB-	-RRB-
+it	PRP
+with	IN
+the	DT
+trajectory	NN
+-LRB-	-LRB-
+-RRB-	-RRB-
+sketched	VBD
+
+
+will	MD
+be	VB
+retrieved	VBN
+if	IN
+it	PRP
+contains	VBZ
+an	DT
+object	NN
+whose	WP$
+trajectory	NN
+is	VBZ
+similar	JJ
+to	TO
+.	.
+
+Once	RB
+again	RB
+,	,
+we	PRP
+assume	VBP
+that	IN
+the	DT
+trajectory	NN
+similarity	NN
+match	NN
+is	VBZ
+conducted	VBN
+using	VBG
+
+
+in	IN
+the	DT
+window	NN
+.	.
+
+A	DT
+scene	NN
+
+
+a	DT
+global	JJ
+threshold	NN
+value	NN
+.	.
+
+
+Q3	NN
+.	.
+
+Find	VB
+scenes	NNS
+that	WDT
+show	VBP
+a	DT
+racing	NN
+car	NN
+Figure	NN
+8	CD
+.	.
+
+
+B	NN
+
+
+X	NN
+
+
+A	DT
+
+
+Figure	NNP
+8	CD
+.	.
+
+Car	NN
+
+
+overtakes	NN
+
+
+,	,
+
+
+,	,
+
+
+and	CC
+
+
+between	IN
+car	NN
+
+
+overtaking	VBG
+a	DT
+group	NN
+of	IN
+other	JJ
+cars	NNS
+as	IN
+shown	VBN
+in	IN
+
+
+D	NN
+
+
+X	NN
+
+
+C	NN
+
+
+-	:
+relationships	NNS
+
+
+Consider	VB
+the	DT
+task	NN
+of	IN
+devising	VBG
+a	DT
+set	NN
+of	IN
+2D-PIR	NN
+patterns	NNS
+to	TO
+describe	VB
+the	DT
+
+
+and	CC
+all	DT
+of	IN
+the	DT
+other	JJ
+cars	NNS
+.	.
+
+It	PRP
+would	MD
+simply	RB
+be	VB
+too	RB
+tedious	JJ
+to	TO
+make	VB
+the	DT
+query	NN
+feasible	JJ
+.	.
+
+However	RB
+,	,
+given	VBN
+the	DT
+sketch	NN
+in	IN
+the	DT
+ï	NN
+¬	NN
+gure	NN
+,	,
+it	PRP
+would	MD
+be	VB
+quite	RB
+straightforward	JJ
+to	TO
+automatically	RB
+produce	VB
+a	DT
+scene	NN
+graph	NN
+to	TO
+model	VB
+this	DT
+situation	NN
+.	.
+
+This	DT
+scene	NN
+graph	NN
+-LRB-	-LRB-
+which	WDT
+we	PRP
+
+
+-RRB-	-RRB-
+forms	VBZ
+the	DT
+basis	NN
+for	IN
+the	DT
+query	NN
+.	.
+
+Answering	VBG
+the	DT
+query	NN
+is	VBZ
+then	RB
+simply	RB
+a	DT
+matter	NN
+of	IN
+using	VBG
+scene	NN
+graph	NN
+similarity	NN
+matching	VBG
+to	TO
+ï	VB
+¬	CD
+nd	VBD
+the	DT
+appropriate	JJ
+scenes	NNS
+in	IN
+
+
+denote	VB
+by	IN
+the	DT
+name	NN
+
+
+the	DT
+video	NN
+:	:
+
+
+This	DT
+approach	NN
+also	RB
+extends	VBZ
+naturally	RB
+to	TO
+the	DT
+kind	NN
+of	IN
+similarity-by-example	JJ
+retrieval	NN
+that	WDT
+is	VBZ
+currently	RB
+available	JJ
+for	IN
+static	JJ
+images	NNS
+in	IN
+systems	NNS
+such	JJ
+as	IN
+QBIC	NN
+-LSB-	-LRB-
+11	CD
+-RSB-	-RRB-
+.	.
+
+If	IN
+we	PRP
+already	RB
+have	VBP
+
+
+access	NN
+to	TO
+a	DT
+particular	JJ
+scene	NN
+
+
+in	IN
+our	PRP$
+
+
+,	,
+we	PRP
+can	MD
+request	VB
+the	DT
+system	NN
+to	TO
+ï	VB
+¬	CD
+nd	NN
+
+
+similar	JJ
+scenes	NNS
+simply	RB
+by	IN
+performing	VBG
+similarity	NN
+matching	NN
+in	IN
+the	DT
+same	JJ
+manner	NN
+as	IN
+above	JJ
+:	:
+
+
+We	PRP
+discuss	VBP
+the	DT
+process	NN
+of	IN
+scene	NN
+similarity	NN
+matching	NN
+in	IN
+more	RBR
+detail	NN
+in	IN
+Section	NN
+5	CD
+.	.
+
+
+Q4	NN
+.	.
+
+Find	VB
+a	DT
+scene	NN
+in	IN
+which	WDT
+object	NN
+same	JJ
+region	NN
+.	.
+
+
+enters	VBZ
+region	NN
+
+
+while	IN
+object	NN
+
+
+departs	NNS
+from	IN
+the	DT
+
+
+This	DT
+query	NN
+is	VBZ
+different	JJ
+from	IN
+the	DT
+previous	JJ
+queries	NNS
+since	IN
+we	PRP
+need	VBP
+to	TO
+consider	VB
+the	DT
+temporal	JJ
+
+
+relation	NN
+between	IN
+two	CD
+events	NNS
+-LRB-	-LRB-
+â	RB
+$	$
+œ	JJ
+entering	VBG
+looking	VBG
+at	IN
+this	DT
+is	VBZ
+that	IN
+the	DT
+time	NN
+interval	NN
+when	WRB
+â	RB
+$	$
+œ	CD
+when	WRB
+â	RB
+$	$
+œ	JJ
+leaves	NNS
+
+
+â	RB
+$	$
+.	.
+
+This	DT
+can	MD
+be	VB
+expressed	VBN
+as	IN
+follows	VBZ
+:	:
+
+
+â	RB
+$	$
+and	CC
+â	VB
+$	$
+œ	JJ
+departing	VBG
+from	IN
+â	FW
+$	$
+-RRB-	-RRB-
+.	.
+
+Another	DT
+way	NN
+of	IN
+
+
+enters	VBZ
+â	RB
+$	$
+must	MD
+overlap	VB
+with	IN
+the	DT
+interval	NN
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+18	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+293	CD
+
+
+is	VBZ
+
+
+is	VBZ
+
+
+The	DT
+ï	NN
+¬	NN
+rst	NN
+step	NN
+in	IN
+answering	VBG
+this	DT
+query	NN
+is	VBZ
+to	TO
+determine	VB
+the	DT
+intervals	NNS
+in	IN
+each	DT
+scene	NN
+that	WDT
+correspond	VBP
+to	TO
+â	VB
+$	$
+œ	CD
+enters	VBZ
+â	RB
+$	$
+and	CC
+â	VB
+$	$
+œ	JJ
+leaves	NNS
+â	VBP
+$	$
+.	.
+
+This	DT
+is	VBZ
+accomplished	VBN
+via	IN
+the	DT
+temporal	JJ
+extraction	NN
+operator	NN
+-LRB-	-LRB-
+-RRB-	-RRB-
+.	.
+
+Note	VB
+that	IN
+if	IN
+either	DT
+event	NN
+doesnot	NN
+occur	VBP
+in	IN
+a	DT
+scene	NN
+,	,
+the	DT
+value	NN
+will	MD
+be	VB
+returned	VBN
+.	.
+
+The	DT
+intervals	NNS
+are	VBP
+then	RB
+checked	VBN
+for	IN
+any	DT
+overlap	VBP
+via	IN
+the	DT
+interval	NN
+operator	NN
+.	.
+
+If	IN
+either	DT
+of	IN
+the	DT
+intervals	NNS
+is	VBZ
+or	CC
+if	IN
+there	EX
+is	VBZ
+no	DT
+overlap	VBP
+,	,
+then	RB
+the	DT
+test	NN
+will	MD
+fail	VB
+and	CC
+the	DT
+scene	NN
+will	MD
+not	RB
+be	VB
+selected	VBN
+.	.
+
+
+5	CD
+.	.
+
+Scene	NN
+Retrieval	NN
+
+
+In	IN
+the	DT
+previous	JJ
+section	NN
+,	,
+we	PRP
+showed	VBD
+that	IN
+one	CD
+of	IN
+the	DT
+most	RBS
+useful	JJ
+kinds	NNS
+of	IN
+video	NN
+retrieval	NN
+operations	NNS
+was	VBD
+similarity	NN
+comparison	NN
+against	IN
+either	CC
+a	DT
+sketch	NN
+or	CC
+an	DT
+existing	JJ
+scene	NN
+.	.
+
+Since	IN
+scenes	NNS
+are	VBP
+represented	VBN
+by	IN
+scene	NN
+graphs	NNS
+in	IN
+our	PRP$
+system	NN
+,	,
+this	DT
+similarity	NN
+comparison	NN
+will	MD
+actually	RB
+be	VB
+carried	VBN
+out	RP
+by	IN
+measuring	VBG
+the	DT
+similarity	NN
+between	IN
+scene	NN
+graphs	NNS
+.	.
+
+The	DT
+process	NN
+of	IN
+answering	VBG
+a	DT
+query	NN
+begins	VBZ
+with	IN
+a	DT
+query	JJ
+scene	NN
+graph	NN
+-LRB-	-LRB-
+for	IN
+a	DT
+query	NN
+based	VBN
+on	IN
+a	DT
+sketch	NN
+we	PRP
+must	MD
+ï	VB
+¬	CD
+rst	JJ
+construct	NN
+the	DT
+scene	NN
+graph	NN
+;	:
+for	IN
+a	DT
+query	NN
+against	IN
+an	DT
+existing	VBG
+video	NN
+scene	NN
+,	,
+we	PRP
+assume	VBP
+that	IN
+the	DT
+scene	NN
+graph	NN
+is	VBZ
+already	RB
+stored	VBN
+in	IN
+the	DT
+database	NN
+-RRB-	-RRB-
+.	.
+
+To	TO
+produce	VB
+the	DT
+answer	NN
+to	TO
+the	DT
+query	NN
+,	,
+the	DT
+system	NN
+computes	VBZ
+the	DT
+similarity	NN
+between	IN
+the	DT
+query	NN
+graph	NN
+and	CC
+the	DT
+stored	VBN
+graph	NN
+for	IN
+each	DT
+scene	NN
+in	IN
+the	DT
+database	NN
+,	,
+and	CC
+accepts	VBZ
+those	DT
+queries	NNS
+for	IN
+which	WDT
+the	DT
+similarity	NN
+exceeds	VBZ
+a	DT
+globally	RB
+speciï	NN
+¬	CD
+ed	VBD
+threshold	NN
+.	.
+
+In	IN
+this	DT
+section	NN
+,	,
+we	PRP
+describe	VBP
+the	DT
+process	NN
+of	IN
+scene	NN
+graph	NN
+construction	NN
+and	CC
+deï	NN
+¬	CD
+ne	NN
+the	DT
+scene	NN
+graph	NN
+similarity	NN
+measure	NN
+.	.
+
+
+5.1	CD
+.	.
+
+Scene	NN
+graph	NN
+construction	NN
+
+
+The	DT
+input	NN
+to	TO
+the	DT
+scene	NN
+graph	NN
+construction	NN
+process	NN
+is	VBZ
+a	DT
+video	JJ
+scene	NN
+that	WDT
+has	VBZ
+been	VBN
+pre	JJ
+-	:
+processed	VBN
+to	TO
+identify	VB
+all	DT
+objects	NNS
+,	,
+note	VBP
+their	PRP$
+pointsets	NNS
+and	CC
+track	VBP
+their	PRP$
+movement	NN
+-LRB-	-LRB-
+we	PRP
+noted	VBD
+above	IN
+that	IN
+this	DT
+would	MD
+require	VB
+manual	JJ
+assistance	NN
+-RRB-	-RRB-
+.	.
+
+The	DT
+output	NN
+from	IN
+this	DT
+process	NN
+is	VBZ
+,	,
+naturally	RB
+,	,
+a	DT
+scene	NN
+graph	NN
+-LRB-	-LRB-
+the	DT
+structure	NN
+of	IN
+which	WDT
+was	VBD
+described	VBN
+in	IN
+Section	NN
+2	CD
+-RRB-	-RRB-
+.	.
+
+
+Note	VB
+that	IN
+the	DT
+scene	NN
+graph	NN
+stores	NNS
+only	RB
+one	CD
+of	IN
+the	DT
+two	CD
+possible	JJ
+TS-2D-PIRs	NNS
+for	IN
+each	DT
+pair	NN
+of	IN
+objects	NNS
+-LRB-	-LRB-
+i.e.	FW
+it	PRP
+stores	NNS
+either	CC
+or	CC
+-RRB-	-RRB-
+.	.
+
+Which	WDT
+of	IN
+these	DT
+is	VBZ
+actually	RB
+stored	VBN
+is	VBZ
+determined	VBN
+by	IN
+using	VBG
+an	DT
+ordering	VBG
+on	IN
+the	DT
+objects	NNS
+-LRB-	-LRB-
+for	IN
+example	NN
+,	,
+order	NN
+based	VBN
+on	IN
+unique	JJ
+identifying	VBG
+name	NN
+or	CC
+based	VBN
+on	IN
+left-to-right	NN
+,	,
+bottom-to-top	JJ
+position	NN
+in	IN
+the	DT
+ï	NN
+¬	NN
+rst	NN
+image	NN
+of	IN
+a	DT
+scene	NN
+-RRB-	-RRB-
+;	:
+the	DT
+ordering	VBG
+is	VBZ
+used	VBN
+on	IN
+line	NN
+-LRB-	-LRB-
+12	CD
+-RRB-	-RRB-
+of	IN
+the	DT
+algorithm	NN
+below	IN
+.	.
+
+The	DT
+scene	NN
+graph	NN
+only	RB
+contains	VBZ
+if	IN
+according	VBG
+to	TO
+this	DT
+ordering	VBG
+.	.
+
+The	DT
+following	VBG
+algorithm	NN
+describes	VBZ
+the	DT
+scene	NN
+graph	NN
+construction	NN
+process	NN
+.	.
+
+
+Algorithm	NN
+:	:
+scene	NN
+graph	NN
+construction	NN
+
+
+Input	NN
+:	:
+A	DT
+pre-processed	JJ
+video	NN
+scene	NN
+-LRB-	-LRB-
+objects	NNS
+are	VBP
+identiï	NN
+¬	CD
+ed	VBD
+,	,
+
+
+object	NN
+positions	NNS
+,	,
+pointsets	NNS
+and	CC
+projections	NNS
+are	VBP
+available	JJ
+for	IN
+each	DT
+frame	NN
+-RRB-	-RRB-
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+19	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+294	CD
+
+
+Output	NN
+:	:
+A	DT
+scene	NN
+graph	NN
+representing	VBG
+the	DT
+scene	NN
+
+
+begin	VB
+
+
+-LRB-	-LRB-
+1	LS
+-RRB-	-RRB-
+=	JJ
+;	:
+=	JJ
+;	:
+
+
+-LRB-	-LRB-
+2	LS
+-RRB-	-RRB-
+for	IN
+each	DT
+frame	NN
+do	VBP
+
+
+-LRB-	-LRB-
+3	LS
+-RRB-	-RRB-
+=	JJ
+time	NN
+of	IN
+frame	NN
+relative	JJ
+to	TO
+start	VB
+of	IN
+scene	NN
+
+
+-LRB-	-LRB-
+4	LS
+-RRB-	-RRB-
+for	IN
+each	DT
+object	NN
+in	IN
+do	VBP
+
+
+-LRB-	-LRB-
+5	LS
+-RRB-	-RRB-
+if	IN
+is	VBZ
+not	RB
+already	RB
+in	IN
+then	RB
+
+
+-LRB-	-LRB-
+6	CD
+-RRB-	-RRB-
+include	VBP
+new	JJ
+object	NN
+descriptor	NN
+in	IN
+
+
+-LRB-	-LRB-
+7	CD
+-RRB-	-RRB-
+else	RB
+
+
+-LRB-	-LRB-
+8	CD
+-RRB-	-RRB-
+compute	VBP
+from	IN
+and	CC
+positions	NNS
+-LRB-	-LRB-
+9	CD
+-RRB-	-RRB-
+append	VBP
+to	TO
+track	VB
+for	IN
+
+
+-LRB-	-LRB-
+10	CD
+-RRB-	-RRB-
+endif	NN
+
+
+-LRB-	-LRB-
+11	CD
+-RRB-	-RRB-
+save	IN
+position	NN
+as	IN
+
+
+-LRB-	-LRB-
+12	CD
+-RRB-	-RRB-
+for	IN
+each	DT
+object	NN
+greater	JJR
+than	IN
+in	IN
+do	VBP
+
+
+-LRB-	-LRB-
+13	CD
+-RRB-	-RRB-
+compute	VBP
+
+
+-LRB-	-LRB-
+14	CD
+-RRB-	-RRB-
+if	IN
+there	EX
+is	VBZ
+no	DT
+edge	NN
+for	IN
+in	IN
+then	RB
+
+
+-LRB-	-LRB-
+15	CD
+-RRB-	-RRB-
+include	VBP
+new	JJ
+edge	NN
+in	IN
+
+
+-LRB-	-LRB-
+16	CD
+-RRB-	-RRB-
+save	VBP
+as	IN
+
+
+-LRB-	-LRB-
+17	CD
+-RRB-	-RRB-
+set	VBN
+time	NN
+for	IN
+to	TO
+
+
+-LRB-	-LRB-
+18	CD
+-RRB-	-RRB-
+else	RB
+
+
+-LRB-	-LRB-
+19	CD
+-RRB-	-RRB-
+if	IN
+is	VBZ
+the	DT
+last	JJ
+frame	NN
+or	CC
+
+
+is	VBZ
+different	JJ
+to	TO
+-LRB-	-LRB-
+20	CD
+-RRB-	-RRB-
+compute	VBP
+based	VBN
+on	IN
+
+
+and	CC
+interval	NN
+from	IN
+until	IN
+-LRB-	-LRB-
+21	CD
+-RRB-	-RRB-
+append	VBP
+to	TO
+TS-2D-PIR	NN
+for	IN
+edge	NN
+-LRB-	-LRB-
+22	CD
+-RRB-	-RRB-
+save	VBP
+as	IN
+
+
+-LRB-	-LRB-
+23	CD
+-RRB-	-RRB-
+set	VBN
+time	NN
+for	IN
+to	TO
+
+
+-LRB-	-LRB-
+24	CD
+-RRB-	-RRB-
+endif	NN
+
+
+-LRB-	-LRB-
+25	CD
+-RRB-	-RRB-
+endif	NN
+
+
+-LRB-	-LRB-
+26	CD
+-RRB-	-RRB-
+endfor	NN
+
+
+-LRB-	-LRB-
+27	CD
+-RRB-	-RRB-
+endfor	NN
+
+
+-LRB-	-LRB-
+28	CD
+-RRB-	-RRB-
+endfor	NN
+
+
+end	NN
+.	.
+
+
+then	RB
+
+
+This	DT
+algorithm	NN
+has	VBZ
+two	CD
+potential	JJ
+problems	NNS
+:	:
+it	PRP
+may	MD
+have	VB
+to	TO
+deal	VB
+with	IN
+a	DT
+very	RB
+large	JJ
+number	NN
+of	IN
+frames	NNS
+for	IN
+even	RB
+a	DT
+relatively	RB
+short	JJ
+scene	NN
+,	,
+and	CC
+it	PRP
+may	MD
+produce	VB
+long	JJ
+trajectories	NNS
+and	CC
+-	:
+relationships	NNS
+-LRB-	-LRB-
+if	IN
+object	NN
+movement	NN
+is	VBZ
+complex	JJ
+-RRB-	-RRB-
+.	.
+
+We	PRP
+propose	VBP
+the	DT
+notion	NN
+of	IN
+key	JJ
+frames	NNS
+as	IN
+a	DT
+way	NN
+of	IN
+addressing	VBG
+these	DT
+two	CD
+problems	NNS
+.	.
+
+
+The	DT
+idea	NN
+behind	IN
+key	JJ
+frames	NNS
+is	VBZ
+that	IN
+the	DT
+algorithm	NN
+does	VBZ
+not	RB
+need	VB
+to	TO
+examine	VB
+every	DT
+frame	NN
+in	IN
+the	DT
+scene	NN
+.	.
+
+This	DT
+reduces	VBZ
+the	DT
+number	NN
+of	IN
+frame	NN
+computations	NNS
+-LRB-	-LRB-
+i.e.	FW
+iterations	NNS
+of	IN
+the	DT
+loop	NN
+at	IN
+statement	NN
+-LRB-	-LRB-
+2	CD
+-RRB-	-RRB-
+-RRB-	-RRB-
+,	,
+and	CC
+reduces	VBZ
+the	DT
+length	NN
+of	IN
+trajectories	NNS
+and	CC
+-	:
+relationships	NNS
+.	.
+
+Of	IN
+course	NN
+,	,
+this	DT
+comes	VBZ
+at	IN
+a	DT
+cost	NN
+:	:
+scenes	NNS
+may	MD
+no	RB
+longer	RB
+be	VB
+represented	VBN
+as	IN
+accurately	RB
+as	IN
+previously	RB
+,	,
+since	IN
+some	DT
+object	NN
+motion	NN
+and	CC
+hence	RB
+some	DT
+elements	NNS
+in	IN
+the	DT
+-	:
+relationships	NNS
+may	MD
+be	VB
+omitted	VBN
+.	.
+
+This	DT
+would	MD
+certainly	RB
+be	VB
+true	JJ
+if	IN
+key	JJ
+frames	NNS
+were	VBD
+implemented	VBN
+simply	RB
+by	IN
+using	VBG
+every	DT
+frame	NN
+in	IN
+the	DT
+scene	NN
+,	,
+but	CC
+our	PRP$
+approach	NN
+uses	VBZ
+various	JJ
+rules	NNS
+to	TO
+do	VB
+better	JJR
+than	IN
+this	DT
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+20	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+295	CD
+
+
+frame	NN
+-LRB-	-LRB-
+where	WRB
+
+
+is	VBZ
+a	DT
+small	JJ
+constant	JJ
+,	,
+
+
+The	DT
+ï	NN
+¬	NN
+rst	NN
+and	CC
+last	JJ
+frames	NNS
+of	IN
+a	DT
+scene	NN
+are	VBP
+always	RB
+chosen	VBN
+as	IN
+key	JJ
+frames	NNS
+.	.
+
+An	DT
+initial	JJ
+set	NN
+of	IN
+key	JJ
+frames	NNS
+can	MD
+be	VB
+built	VBN
+by	IN
+simply	RB
+choosing	VBG
+every	DT
+
+
+such	JJ
+as	IN
+30	CD
+-RRB-	-RRB-
+.	.
+
+Other	JJ
+frames	NNS
+can	MD
+be	VB
+added	VBN
+to	TO
+this	DT
+set	NN
+based	VBN
+on	IN
+â	NN
+$	$
+œsigniï	JJ
+¬	NN
+cant	JJ
+changesâ	NN
+$	$
+in	IN
+the	DT
+scene	NN
+,	,
+as	IN
+determined	VBN
+by	IN
+various	JJ
+heuristics	NNS
+.	.
+
+For	IN
+example	NN
+,	,
+frames	NNS
+in	IN
+which	WDT
+moving	VBG
+objects	NNS
+ï	VBP
+¬	CD
+rst	NN
+appear	VBP
+in	IN
+or	CC
+disappear	VB
+from	IN
+the	DT
+scene	NN
+are	VBP
+chosen	VBN
+as	IN
+key	JJ
+frames	NNS
+.	.
+
+If	IN
+an	DT
+object	NN
+appears	VBZ
+
+
+,	,
+then	RB
+intermediate	JJ
+frames	NNS
+such	JJ
+as	IN
+
+
+etc.	FW
+are	VBP
+also	RB
+chosen	VBN
+.	.
+
+Once	RB
+a	DT
+set	NN
+of	IN
+key	JJ
+frames	NNS
+is	VBZ
+available	JJ
+,	,
+it	PRP
+is	VBZ
+used	VBN
+in	IN
+statement	NN
+-LRB-	-LRB-
+2	CD
+-RRB-	-RRB-
+of	IN
+the	DT
+above	JJ
+algorithm	NN
+instead	RB
+of	IN
+iterating	VBG
+over	IN
+the	DT
+entire	JJ
+scene	NN
+.	.
+
+
+in	IN
+frame	NN
+and	CC
+disappears	VBZ
+in	IN
+frame	NN
+
+
+and	CC
+
+
+,	,
+
+
+5.2	CD
+.	.
+
+Topological	JJ
+and	CC
+interval	JJ
+relationship	NN
+neighbourhood	NN
+graphs	NNS
+
+
+Topological	JJ
+and	CC
+interval	JJ
+relationship	NN
+neighbourhood	NN
+graphs	NNS
+provide	VBP
+a	DT
+way	NN
+of	IN
+describing	VBG
+changes	NNS
+in	IN
+the	DT
+spatial	JJ
+and	CC
+topological	JJ
+relationships	NNS
+between	IN
+moving	VBG
+objects	NNS
+.	.
+
+They	PRP
+form	VBP
+the	DT
+basis	NN
+of	IN
+mechanisms	NNS
+to	TO
+reason	NN
+about	IN
+these	DT
+changes	NNS
+;	:
+for	IN
+example	NN
+,	,
+to	TO
+infer	VB
+intermediate	JJ
+spatial	JJ
+relationships	NNS
+if	IN
+we	PRP
+know	VBP
+only	RB
+the	DT
+starting	VBG
+and	CC
+ï	NN
+¬	CD
+nishing	JJ
+relationships	NNS
+.	.
+
+They	PRP
+also	RB
+provide	VBP
+the	DT
+basis	NN
+for	IN
+the	DT
+distance	NN
+measures	NNS
+used	VBN
+in	IN
+scene	NN
+similarity	NN
+matching	NN
+.	.
+
+
+and	CC
+
+
+which	WDT
+aredisjoint	NN
+-LRB-	-LRB-
+i.e.	FW
+
+
+Consider	VB
+two	CD
+moving	VBG
+objects	NNS
+
+
+5.2.1	NN
+.	.
+
+Topological	JJ
+relationship	NN
+neighbourhood	NN
+graph	NN
+
+
+-RRB-	-RRB-
+.	.
+
+If	IN
+we	PRP
+monitor	VBP
+the	DT
+topological	JJ
+relationship	NN
+between	IN
+these	DT
+two	CD
+objects	NNS
+over	IN
+time	NN
+,	,
+it	PRP
+must	MD
+either	RB
+remain	VB
+as	IN
+disjoint	NN
+-LRB-	-LRB-
+if	IN
+the	DT
+objects	NNS
+never	RB
+approach	VBP
+each	DT
+other	JJ
+-RRB-	-RRB-
+or	CC
+become	VB
+touches	NNS
+-LRB-	-LRB-
+if	IN
+they	PRP
+move	VBP
+together	RB
+-RRB-	-RRB-
+.	.
+
+Note	VB
+that	DT
+
+
+immediate	JJ
+successor	NN
+relationship	NN
+to	TO
+through	IN
+space	NN
+-RRB-	-RRB-
+.	.
+
+
+if	IN
+
+
+and	CC
+
+
+is	VBZ
+the	DT
+only	JJ
+possible	JJ
+move	NN
+â	RB
+$	$
+œnormallyâ	JJ
+$	$
+-LRB-	-LRB-
+i.e.	FW
+they	PRP
+do	VBP
+not	RB
+jump	VB
+
+
+can	MD
+
+
+Deï	NN
+¬	CD
+nition	NN
+10	CD
+.	.
+
+Topological	JJ
+neighbours	NNS
+Topological	JJ
+relationships	NNS
+and	CC
+be	VB
+directly	RB
+transformed	VBN
+into	IN
+
+
+between	IN
+two	CD
+spatial	JJ
+objects	NNS
+are	VBP
+neighbours	NNS
+if	IN
+by	IN
+continuously	RB
+moving	VBG
+the	DT
+objects	NNS
+.	.
+
+
+In	IN
+order	NN
+to	TO
+use	VB
+the	DT
+notion	NN
+of	IN
+topological	JJ
+neighbours	NNS
+,	,
+we	PRP
+need	VBP
+to	TO
+construct	VB
+aneighbourhood	NN
+graph	NN
+,	,
+that	WDT
+shows	VBZ
+the	DT
+neighbourhood	NN
+property	NN
+over	IN
+all	DT
+of	IN
+the	DT
+topological	JJ
+relationships	NNS
+.	.
+
+We	PRP
+derive	VBP
+this	DT
+graph	NN
+by	IN
+considering	VBG
+three	CD
+scenarios	NNS
+for	IN
+two	CD
+objects	NNS
+
+
+Figure	NNP
+9	CD
+.	.
+
+
+Each	DT
+scenario	NN
+begins	VBZ
+with	IN
+
+
+and	CC
+
+
+,	,
+as	IN
+shown	VBN
+in	IN
+
+
+and	CC
+the	DT
+objects	NNS
+move	VBP
+towards	IN
+each	DT
+other	JJ
+.	.
+
+We	PRP
+observe	VBP
+the	DT
+following	VBG
+sequences	NNS
+of	IN
+topological	JJ
+relationships	NNS
+for	IN
+these	DT
+cases	NNS
+:	:
+
+
+1	LS
+.	.
+
+disjoint	NN
+,	,
+touches	NNS
+,	,
+overlaps	VBZ
+,	,
+covers	VBZ
+,	,
+contains	VBZ
+,	,
+covers	VBZ
+,	,
+overlaps	VBZ
+,	,
+touches	NNS
+,	,
+disjoint	NN
+
+
+2	LS
+.	.
+
+disjoint	NN
+,	,
+touches	NNS
+,	,
+overlaps	VBZ
+,	,
+equals	VBZ
+,	,
+overlaps	VBZ
+,	,
+touches	NNS
+,	,
+disjoint	NN
+
+
+3	LS
+.	.
+
+disjoint	NN
+,	,
+touches	NNS
+,	,
+overlaps	VBZ
+,	,
+covers	VBZ
+,	,
+inside	RB
+,	,
+coveredBy	NN
+,	,
+overlaps	VBZ
+,	,
+touches	NNS
+,	,
+disjoint	NN
+
+
+Whenever	NNP
+two	CD
+relationships	NNS
+are	VBP
+adjacent	JJ
+in	IN
+any	DT
+of	IN
+these	DT
+sequences	NNS
+,	,
+they	PRP
+are	VBP
+topological	JJ
+neighbours	NNS
+.	.
+
+Note	VB
+that	IN
+we	PRP
+do	VBP
+not	RB
+need	VB
+to	TO
+consider	VB
+any	DT
+other	JJ
+cases	NNS
+,	,
+such	JJ
+as	IN
+two	CD
+objects	NNS
+passing	VBG
+and	CC
+overlapping	VBG
+,	,
+since	IN
+they	PRP
+lead	VBP
+to	TO
+a	DT
+shorter	JJR
+sequence	NN
+of	IN
+topological	JJ
+relationships	NNS
+,	,
+
+
+with	IN
+no	DT
+additional	JJ
+neighbours	NNS
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+21	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+296	CD
+
+
+A	DT
+
+
+A	DT
+
+
+A	DT
+
+
+A	DT
+
+
+B	NN
+
+
+B	NN
+
+
+AB	NNP
+
+
+BBBABABABA	NNS
+
+
+Case	NNP
+1	CD
+:	:
+
+
+is	VBZ
+larger	JJR
+than	IN
+
+
+.	.
+
+
+AB	NNP
+ABAB	NNP
+BAAB	NN
+B	NN
+A	NN
+AB	NNP
+
+
+Case	NN
+2	CD
+:	:
+
+
+is	VBZ
+the	DT
+same	JJ
+size	NN
+as	IN
+
+
+.	.
+
+
+A	DT
+
+
+B	NN
+
+
+A	DT
+
+
+B	NN
+
+
+B	NN
+B	NN
+
+
+AAB	NNP
+AB	NNP
+AA	NNP
+BBA	NNP
+B	NN
+
+
+A	DT
+
+
+Case	NNP
+3	CD
+:	:
+
+
+is	VBZ
+smaller	JJR
+than	IN
+
+
+.	.
+
+
+Figure	NNP
+9	CD
+.	.
+
+Scenarios	NNS
+for	IN
+topological	JJ
+relationship	NN
+neighbours	NNS
+
+
+Using	VBG
+this	DT
+information	NN
+,	,
+we	PRP
+can	MD
+build	VB
+a	DT
+graph	NN
+where	WRB
+the	DT
+nodes	NNS
+are	VBP
+topologicalrelationships	NNS
+and	CC
+an	DT
+edge	NN
+between	IN
+relationships	NNS
+and	CC
+indicates	VBZ
+that	IN
+they	PRP
+are	VBP
+neighbours	NNS
+.	.
+
+This	DT
+is	VBZ
+the	DT
+topological	JJ
+relationship	NN
+neighbourhood	NN
+graph	NN
+and	CC
+is	VBZ
+shown	VBN
+in	IN
+Figure	NNP
+10	CD
+.	.
+
+
+disjoint	NN
+-LRB-	-LRB-
+dt	NN
+-RRB-	-RRB-
+
+
+touches	NNS
+-LRB-	-LRB-
+to	TO
+-RRB-	-RRB-
+
+
+overlaps	VBZ
+-LRB-	-LRB-
+ov	NN
+-RRB-	-RRB-
+
+
+covers	NNS
+-LRB-	-LRB-
+co	NN
+-RRB-	-RRB-
+
+
+coveredBy	NN
+-LRB-	-LRB-
+cb	NN
+-RRB-	-RRB-
+
+
+equals	VBZ
+-LRB-	-LRB-
+eq	NN
+-RRB-	-RRB-
+
+
+contains	VBZ
+-LRB-	-LRB-
+ct	NN
+-RRB-	-RRB-
+inside	IN
+-LRB-	-LRB-
+in	IN
+-RRB-	-RRB-
+
+
+Figure	NNP
+10	CD
+.	.
+
+Topological	JJ
+relationship	NN
+neighbourhood	NN
+graph	NN
+
+
+5.2.2	NN
+.	.
+
+Interval	NNP
+relationship	NN
+neighbourhood	NN
+graph	NN
+In	IN
+the	DT
+previous	JJ
+section	NN
+,	,
+we	PRP
+consid	VBD
+-	:
+ered	VBD
+the	DT
+changing	VBG
+topological	JJ
+relationships	NNS
+between	IN
+two	CD
+moving	VBG
+objects	NNS
+.	.
+
+The	DT
+same	JJ
+kind	NN
+of	IN
+analysis	NN
+can	MD
+be	VB
+applied	VBN
+to	TO
+the	DT
+interval	NN
+relationships	NNS
+on	IN
+the	DT
+projections	NNS
+of	IN
+the	DT
+objects	NNS
+on	IN
+the	DT
+axes	NNS
+.	.
+
+For	IN
+example	NN
+,	,
+if	IN
+an	DT
+object	NN
+starts	VBZ
+left	NN
+of	IN
+-LRB-	-LRB-
+-RRB-	-RRB-
+object	NN
+and	CC
+the	DT
+two	CD
+objects	NNS
+move	VBP
+towards	IN
+each	DT
+other	JJ
+,	,
+the	DT
+intervals	NNS
+will	MD
+eventually	RB
+meet	VB
+,	,
+overlap	VB
+,	,
+and	CC
+might	MD
+ultimately	RB
+be	VB
+to	TO
+the	DT
+right	NN
+of	IN
+-LRB-	-LRB-
+-RRB-	-RRB-
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+22	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+297	CD
+
+
+Deï	NN
+¬	CD
+nition	NN
+11	CD
+.	.
+
+Interval	JJ
+neighbours	NNS
+
+
+Interval	NNP
+relationships	NNS
+and	CC
+between	IN
+two	CD
+spatial	JJ
+objects	NNS
+are	VBP
+neighbours	NNS
+if	IN
+directly	RB
+transformed	VBN
+into	IN
+by	IN
+continuously	RB
+moving	VBG
+the	DT
+objects	NNS
+.	.
+
+
+can	MD
+be	VB
+
+
+We	PRP
+derive	VBP
+the	DT
+interval	NN
+relationship	NN
+neighbourhood	NN
+graph	NN
+following	VBG
+the	DT
+approach	NN
+for	IN
+B-neighbours	NNS
+in	IN
+Freksa	NN
+-LSB-	-LRB-
+12	CD
+-RSB-	-RRB-
+.	.
+
+Figure	NNP
+11	CD
+shows	VBZ
+the	DT
+derived	VBN
+graph	NN
+.	.
+
+
+fi	NN
+
+
+di	FW
+
+
+si	FW
+
+
+<	JJR
+m	NN
+o	NN
+
+
+=	JJ
+
+
+oi	NN
+mi	NN
+
+
+>	JJR
+
+
+sdf	NN
+
+
+Figure	NNP
+11	CD
+.	.
+
+Interval	NNP
+relationship	NN
+neighbourhood	NN
+graph	NN
+
+
+5.3	CD
+.	.
+
+Similarity	NN
+functions	NNS
+for	IN
+scene	NN
+matching	NN
+
+
+In	IN
+order	NN
+to	TO
+perform	VB
+scene	NN
+similarity	NN
+matching	NN
+,	,
+we	PRP
+need	VBP
+to	TO
+have	VB
+available	JJ
+a	DT
+measure	NN
+of	IN
+the	DT
+â	NN
+$	$
+œdistanceâ	JJ
+$	$
+between	IN
+pairs	NNS
+of	IN
+scenes	NNS
+.	.
+
+This	DT
+distance	NN
+measure	NN
+should	MD
+be	VB
+based	VBN
+on	IN
+the	DT
+stored	VBN
+information	NN
+about	IN
+scenes	NNS
+,	,
+that	DT
+is	VBZ
+,	,
+on	IN
+the	DT
+contents	NNS
+of	IN
+their	PRP$
+scene	NN
+graphs	NNS
+.	.
+
+Since	IN
+scene	NN
+graphs	NNS
+contain	VBP
+two	CD
+different	JJ
+kinds	NNS
+of	IN
+elements	NNS
+-LRB-	-LRB-
+object	NN
+descriptors	NNS
+and	CC
+-	:
+relationships	NNS
+-RRB-	-RRB-
+,	,
+our	PRP$
+approach	NN
+is	VBZ
+to	TO
+develop	VB
+distance	NN
+measures	NNS
+for	IN
+each	DT
+element	NN
+type	NN
+and	CC
+then	RB
+combine	VBP
+the	DT
+distances	NNS
+for	IN
+corresponding	JJ
+element	NN
+pairs	NNS
+to	TO
+form	VB
+the	DT
+overall	JJ
+scene	NN
+distance	NN
+measure	NN
+.	.
+
+In	IN
+developing	VBG
+these	DT
+distance	NN
+measures	NNS
+,	,
+we	PRP
+do	VBP
+not	RB
+require	VB
+a	DT
+notion	NN
+of	IN
+â	JJ
+$	$
+œobject	JJ
+similarityâ	NN
+$	$
+.	.
+
+We	PRP
+either	RB
+use	VBP
+equality	NN
+against	IN
+an	DT
+object	NN
+speciï	NN
+¬	CD
+ed	VBN
+in	IN
+the	DT
+query	NN
+,	,
+or	CC
+,	,
+if	IN
+we	PRP
+are	VBP
+using	VBG
+quantiï	NN
+¬	CD
+ers	NNPS
+,	,
+we	PRP
+simply	RB
+bind	VBP
+the	DT
+variable	JJ
+to	TO
+all	DT
+available	JJ
+objects	NNS
+.	.
+
+For	IN
+example	NN
+,	,
+if	IN
+we	PRP
+take	VBP
+a	DT
+query	NN
+such	JJ
+as	IN
+â	JJ
+$	$
+œï	JJ
+¬	NN
+nd	NN
+scenes	NNS
+containing	VBG
+an	DT
+object	NN
+that	WDT
+moves	VBZ
+like	IN
+object	NN
+in	IN
+scene	NN
+â	VBP
+$	$
+,	,
+we	PRP
+are	VBP
+not	RB
+interested	JJ
+in	IN
+the	DT
+identity	NN
+of	IN
+any	DT
+matching	VBG
+object	NN
+,	,
+but	CC
+simply	RB
+on	IN
+whether	IN
+the	DT
+object	NN
+has	VBZ
+a	DT
+track	NN
+that	WDT
+is	VBZ
+similar	JJ
+to	TO
+â	VB
+$	$
+™	CD
+s	NNS
+track	NN
+.	.
+
+In	IN
+general	JJ
+,	,
+object	NN
+identity	NN
+tells	VBZ
+us	PRP
+which	WDT
+distance	VBP
+measures	NNS
+we	PRP
+need	VBP
+to	TO
+compute	VB
+and	CC
+the	DT
+distance	NN
+computations	NNS
+themselves	PRP
+are	VBP
+independent	JJ
+of	IN
+the	DT
+identity	NN
+of	IN
+the	DT
+objects	NNS
+involved	VBN
+.	.
+
+
+5.3.1	NN
+.	.
+
+Trajectory	NN
+similarity	NN
+In	IN
+considering	VBG
+whether	IN
+two	CD
+objects	NNS
+move	VBP
+in	IN
+a	DT
+similar	JJ
+man	NN
+-	:
+ner	NN
+,	,
+the	DT
+relevant	JJ
+information	NN
+that	IN
+we	PRP
+have	VBP
+available	JJ
+in	IN
+the	DT
+scene	NN
+graph	NN
+is	VBZ
+the	DT
+track	NN
+of	IN
+each	DT
+object	NN
+.	.
+
+Recall	VB
+that	DT
+tracks	NNS
+contain	VBP
+interval	JJ
+information	NN
+which	WDT
+indicates	VBZ
+the	DT
+period	NN
+over	IN
+which	WDT
+a	DT
+movement	NN
+occurs	VBZ
+-LRB-	-LRB-
+relative	JJ
+to	TO
+the	DT
+beginning	NN
+of	IN
+the	DT
+scene	NN
+-RRB-	-RRB-
+.	.
+
+In	IN
+comparing	VBG
+movement	NN
+similarity	NN
+,	,
+we	PRP
+are	VBP
+not	RB
+generally	RB
+concerned	VBN
+with	IN
+when	WRB
+the	DT
+movement	NN
+occurs	VBZ
+but	CC
+rather	RB
+on	IN
+whether	IN
+there	EX
+is	VBZ
+a	DT
+similar	JJ
+sequence	NN
+of	IN
+movements	NNS
+in	IN
+the	DT
+track	NN
+.	.
+
+Thus	RB
+,	,
+we	PRP
+base	VBP
+the	DT
+object	NN
+movement	NN
+similarity	NN
+measure	NN
+on	IN
+trajectories	NNS
+rather	RB
+than	IN
+tracks	NNS
+.	.
+
+
+The	DT
+key	JJ
+idea	NN
+in	IN
+measuring	VBG
+â	RB
+$	$
+œmovement	JJ
+similarityâ	NN
+$	$
+is	VBZ
+to	TO
+measure	VB
+the	DT
+distance	NN
+between	IN
+two	CD
+trajectories	NNS
+.	.
+
+Since	IN
+a	DT
+trajectory	NN
+is	VBZ
+modelled	VBN
+as	IN
+a	DT
+sequence	NN
+of	IN
+distance-direction	JJ
+pairs	NNS
+,	,
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+23	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+298	CD
+
+
+i.e.	FW
+,	,
+
+
+Let	VB
+between	IN
+example	NN
+
+
+,	,
+the	DT
+distance	NN
+between	IN
+two	CD
+trajectories	NNS
+is	VBZ
+determined	VBN
+by	IN
+the	DT
+distances	NNS
+among	IN
+the	DT
+corresponding	JJ
+elements	NNS
+of	IN
+the	DT
+trajectories	NNS
+.	.
+
+
+be	VB
+two	CD
+directions	NNS
+-LRB-	-LRB-
+refer	VB
+to	TO
+ï	VB
+¬	CD
+gure	NN
+2	CD
+for	IN
+the	DT
+eight	CD
+directions	NNS
+-RRB-	-RRB-
+.	.
+
+The	DT
+distance	NN
+
+
+,	,
+isdeï	NN
+¬	CD
+ned	VBN
+by	IN
+a	DT
+minimum	JJ
+angle	NN
+betweenand.For	NN
+
+
+and	CC
+
+
+and	CC
+
+
+,	,
+
+
+and	CC
+
+
+and	CC
+
+
+.	.
+
+
+We	PRP
+wish	VBP
+to	TO
+convert	VB
+this	DT
+distance	NN
+measure	NN
+into	IN
+a	DT
+normalised	JJ
+similarity	NN
+measure	NN
+where	WRB
+a	DT
+value	NN
+of	IN
+0	CD
+means	NNS
+â	VBP
+$	$
+œtotally	JJ
+dissimilarâ	NN
+$	$
+and	CC
+100	CD
+indicates	VBZ
+â	RB
+$	$
+œidenticalâ	JJ
+$	$
+.	.
+
+Let	VB
+us	PRP
+denote	VB
+the	DT
+
+
+maximum	NN
+distance	NN
+between	IN
+two	CD
+directions	NNS
+by	IN
+as	IN
+above	RB
+,	,
+clearly	RB
+
+
+thus	RB
+deï	NN
+¬	CD
+ned	VBD
+as	IN
+:	:
+
+
+-RRB-	-RRB-
+.	.
+
+The	DT
+similarity	NN
+-LRB-	-LRB-
+-RRB-	-RRB-
+between	IN
+two	CD
+directions	NNS
+
+
+Let	VB
+and	CC
+between	IN
+
+
+be	VB
+two	CD
+distance-direction	JJ
+pairs	NNS
+and	CC
+is	VBZ
+deï	NN
+¬	NN
+ned	VBN
+by	IN
+:	:
+
+
+and	CC
+
+
+-LRB-	-LRB-
+if	IN
+we	PRP
+measure	VB
+angles	NNS
+in	IN
+degrees	NNS
+,	,
+
+
+and	CC
+is	VBZ
+
+
+and	CC
+
+
+.	.
+
+The	DT
+similarity	NN
+-LRB-	-LRB-
+-RRB-	-RRB-
+
+
+Let	VB
+tories	NNS
+,	,
+and	CC
+let	VB
+Assume	VB
+that	IN
+that	DT
+
+
+and	CC
+
+
+denote	VB
+the	DT
+ï	NN
+¬	NN
+rst	NN
+and	CC
+last	JJ
+elements	NNS
+of	IN
+a	DT
+trajectory	NN
+
+
+and	CC
+that	DT
+.	.
+
+its	PRP$
+last	JJ
+element	NN
+.	.
+
+
+contains	VBZ
+substrings	NNS
+
+
+be	VB
+two	CD
+trajec	JJ
+-	:
+
+
+.	.
+
+
+such	JJ
+
+
+We	PRP
+compute	VBP
+the	DT
+similarity	NN
+of	IN
+the	DT
+two	CD
+sequences	NNS
+by	IN
+considering	VBG
+all	DT
+possible	JJ
+sequence	NN
+â	NN
+$	$
+œalignmentsâ	JJ
+$	$
+.	.
+
+There	EX
+are	VBP
+three	CD
+cases	NNS
+to	TO
+consider	VB
+:	:
+ï	NN
+¬	CD
+rst	NN
+,	,
+
+
+and	CC
+lies	VBZ
+between	IN
+coincides	VBZ
+with	IN
+or	CC
+follows	VBZ
+third	JJ
+,	,
+if	IN
+follows	VBZ
+.	.
+
+
+and	CC
+
+
+lies	NNS
+between	IN
+
+
+if	IN
+
+
+;	:
+second	NN
+,	,
+if	IN
+precedes	VBZ
+or	CC
+coincides	VBZ
+with	IN
+
+
+and	CC
+and	CC
+
+
+precedes	VBZ
+
+
+and	CC
+
+
+;	:
+
+
+The	DT
+similarity	NN
+for	IN
+each	DT
+of	IN
+these	DT
+cases	NNS
+is	VBZ
+computed	VBN
+slightly	RB
+differently	RB
+,	,
+depending	VBG
+on	IN
+which	WDT
+elements	NNS
+of	IN
+the	DT
+trajectory	NN
+sequences	NNS
+are	VBP
+actually	RB
+considered	VBN
+in	IN
+the	DT
+computation	NN
+.	.
+
+If	IN
+
+
+and	CC
+computed	VBN
+as	IN
+follows	VBZ
+:	:
+For	IN
+
+
+,	,
+and	CC
+
+
+:	:
+
+
+For	IN
+
+
+:	:
+
+
+For	IN
+
+
+:	:
+
+
+is	VBZ
+the	DT
+iteration	NN
+variable	NN
+,	,
+the	DT
+three	CD
+cases	NNS
+are	VBP
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+24	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+299	CD
+
+
+The	DT
+similarity	NN
+-LRB-	-LRB-
+-RRB-	-RRB-
+between	IN
+two	CD
+trajectories	NNS
+is	VBZ
+then	RB
+deï	NN
+¬	CD
+ned	VBD
+as	IN
+:	:
+
+
+An	DT
+exception	NN
+is	VBZ
+that	IN
+if	IN
+both	DT
+and	CC
+are	VBP
+straight	JJ
+lines	NNS
+then	RB
+the	DT
+similarity	NN
+between	IN
+
+
+is	VBZ
+equal	JJ
+to	TO
+.	.
+
+
+One	CD
+important	JJ
+property	NN
+of	IN
+this	DT
+deï	NN
+¬	NN
+nition	NN
+is	VBZ
+elaborated	VBN
+by	IN
+the	DT
+following	VBG
+theorem	NN
+:	:
+
+
+and	CC
+
+
+is	VBZ
+scale	NN
+invariant	JJ
+.	.
+
+
+Proof	NNP
+:	:
+Let	VB
+and	CC
+be	VB
+two	CD
+trajectories	NNS
+where	WRB
+is	VBZ
+created	VBN
+by	IN
+scaling	VBG
+down	RP
+multiplying	VBG
+all	DT
+distances	NNS
+in	IN
+by	IN
+a	DT
+factor	NN
+in	IN
+-RRB-	-RRB-
+.	.
+
+Let	VB
+be	VB
+
+
+and	CC
+be	VB
+.	.
+
+will	MD
+be	VB
+maximum	JJ
+for	IN
+in	IN
+.	.
+
+
+-LRB-	-LRB-
+i.e.	FW
+
+
+since	IN
+
+
+.	.
+
+
+since	IN
+
+
+since	IN
+
+
+-LRB-	-LRB-
+
+
+is	VBZ
+smaller	JJR
+in	IN
+scale	NN
+as	IN
+compared	VBN
+to	TO
+
+
+-RRB-	-RRB-
+
+
+which	WDT
+means	VBZ
+
+
+.	.
+
+
+5.3.2	NN
+.	.
+
+TS-2D-PIR	NN
+similarity	NN
+In	IN
+the	DT
+previous	JJ
+subsection	NN
+,	,
+we	PRP
+described	VBD
+how	WRB
+to	TO
+measure	VB
+the	DT
+similarity	NN
+of	IN
+the	DT
+movements	NNS
+of	IN
+two	CD
+objects	NNS
+.	.
+
+Video	NNP
+data	NNS
+,	,
+however	RB
+,	,
+typically	RB
+contains	VBZ
+multiple	JJ
+objects	NNS
+in	IN
+a	DT
+scene	NN
+and	CC
+so	RB
+to	TO
+measure	VB
+scene	NN
+similarity	NN
+we	PRP
+also	RB
+need	VBP
+to	TO
+take	VB
+account	NN
+of	IN
+the	DT
+interactions	NNS
+among	IN
+objects	NNS
+.	.
+
+To	TO
+measure	VB
+the	DT
+similarity	NN
+of	IN
+two	CD
+collections	NNS
+of	IN
+mov	NN
+-	:
+ing	NN
+objects	NNS
+,	,
+we	PRP
+need	VBP
+to	TO
+measure	VB
+the	DT
+similarity	NN
+between	IN
+their	PRP$
+corresponding	JJ
+TS-2D-PIRs	NNS
+.	.
+
+However	RB
+,	,
+for	IN
+the	DT
+same	JJ
+reasons	NNS
+mentioned	VBN
+above	IN
+for	IN
+trajectory	NN
+similarity	NN
+,	,
+we	PRP
+need	VBP
+only	RB
+to	TO
+consider	VB
+the	DT
+spatial	JJ
+components	NNS
+of	IN
+TS-2D-PIR	NN
+-LRB-	-LRB-
+i.e.	FW
+the	DT
+2D-PIR	NN
+sequence	NN
+-RRB-	-RRB-
+.	.
+
+
+The	DT
+degree	NN
+of	IN
+similarity	NN
+between	IN
+2D-PIR	JJ
+relationships	NNS
+,	,
+is	VBZ
+dependent	JJ
+on	IN
+the	DT
+degree	NN
+of	IN
+similarity	NN
+between	IN
+components	NNS
+of	IN
+2D-PIRs	NNS
+.	.
+
+For	IN
+example	NN
+,	,
+the	DT
+degree	NN
+of	IN
+similarity	NN
+between	IN
+
+
+and	CC
+is	VBZ
+dependent	JJ
+on	IN
+the	DT
+degree	NN
+of	IN
+similarity	NN
+between	IN
+and	CC
+,	,
+and	CC
+,	,
+and	CC
+and	CC
+.	.
+
+As	IN
+a	DT
+result	NN
+,	,
+it	PRP
+is	VBZ
+necessary	JJ
+to	TO
+construct	VB
+similarity	NN
+metrics	NNS
+for	IN
+both	DT
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+25	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+300	CD
+
+
+topological	JJ
+relationships	NNS
+-LRB-	-LRB-
+-RRB-	-RRB-
+and	CC
+interval	NN
+relationships	NNS
+-LRB-	-LRB-
+and	CC
+-RRB-	-RRB-
+.	.
+
+These	DT
+similarity	NN
+metrics	NNS
+are	VBP
+based	VBN
+on	IN
+distances	NNS
+within	IN
+the	DT
+neigbourhood	NN
+graphs	NNS
+deï	NN
+¬	CD
+ned	VBD
+in	IN
+Section	NN
+5.2	CD
+;	:
+the	DT
+details	NNS
+of	IN
+the	DT
+derivation	NN
+of	IN
+distance	NN
+metrics	NNS
+table	NN
+for	IN
+2D-PIRs	NNS
+is	VBZ
+given	VBN
+in	IN
+-LSB-	-LRB-
+23	CD
+-RSB-	-RRB-
+.	.
+
+This	DT
+measure	NN
+has	VBZ
+a	DT
+minimum	JJ
+value	NN
+of	IN
+0	CD
+-LRB-	-LRB-
+for	IN
+identical	JJ
+2D-PIRs	NNS
+-RRB-	-RRB-
+up	RB
+to	TO
+a	DT
+maximum	NN
+distance	NN
+of	IN
+20.785	CD
+.	.
+
+Based	VBN
+on	IN
+distance	NN
+measure	NN
+for	IN
+topological	JJ
+and	CC
+interval	JJ
+relationships	NNS
+,	,
+the	DT
+distance	NN
+between	IN
+two	CD
+2D-PIR	NN
+relationships	NNS
+,	,
+,	,
+is	VBZ
+deï	NN
+¬	NN
+ned	VBD
+using	VBG
+the	DT
+following	VBG
+Euclidean	JJ
+distance	NN
+formula	NN
+:	:
+
+
+However	RB
+,	,
+our	PRP$
+objective	NN
+is	VBZ
+to	TO
+measure	VB
+similiarity	NN
+between	IN
+two	CD
+pictures	NNS
+in	IN
+term	NN
+of	IN
+.	.
+
+This	DT
+implies	VBZ
+deriving	VBG
+from	IN
+the	DT
+Euclidean	JJ
+distance	NN
+formula	NN
+.	.
+
+As	IN
+before	RB
+,	,
+we	PRP
+use	VBP
+a	DT
+normalized	VBN
+measure	NN
+with	IN
+values	NNS
+in	IN
+the	DT
+range	NN
+-LRB-	-LRB-
+0	CD
+means	NNS
+â	VBP
+$	$
+œtotally	JJ
+dissimilarâ	NN
+$	$
+,	,
+100	CD
+means	NNS
+â	VBP
+$	$
+œiden	JJ
+-	:
+ticalâ	NN
+$	$
+-RRB-	-RRB-
+.	.
+
+The	DT
+similarity	NN
+between	IN
+two	CD
+2D-PIR	NN
+relationships	NNS
+,	,
+and	CC
+is	VBZ
+deï	NN
+¬	NN
+ned	VBD
+using	VBG
+the	DT
+formula	NN
+:	:
+
+
+
+Based	VBN
+on	IN
+this	DT
+,	,
+we	PRP
+can	MD
+deï	VB
+¬	CD
+ne	NN
+a	DT
+similarity	NN
+measure	NN
+for	IN
+2D-PIR	NN
+sequences	NNS
+.	.
+
+Let	VB
+
+
+and	CC
+
+
+be	VB
+the	DT
+spatial	JJ
+components	NNS
+of	IN
+-	:
+relationships	NNS
+-LRB-	-LRB-
+i.e.	FW
+2D-PIR	JJ
+sequences	NNS
+-RRB-	-RRB-
+.	.
+
+The	DT
+similarity	NN
+between	IN
+and	CC
+any	DT
+is	VBZ
+deï	NN
+¬	NN
+ned	VBD
+as	IN
+:	:
+
+
+5.3.3	NN
+.	.
+
+Scene	NN
+Similarity	NN
+Having	VBG
+deï	NN
+¬	CD
+ned	VBD
+the	DT
+similarity	NN
+between	IN
+trajectories	NNS
+of	IN
+moving	VBG
+objects	NNS
+and	CC
+the	DT
+similarity	NN
+between	IN
+spatiotemporal	JJ
+relationships	NNS
+of	IN
+multiple	JJ
+moving	VBG
+objects	NNS
+,	,
+we	PRP
+can	MD
+now	RB
+deï	VB
+¬	CD
+ne	NN
+similarity	NN
+between	IN
+scenes	NNS
+-LRB-	-LRB-
+or	CC
+,	,
+more	RBR
+strictly	RB
+,	,
+between	IN
+scene	NN
+graphs	NNS
+-RRB-	-RRB-
+.	.
+
+Let	VB
+and	CC
+be	VB
+two	CD
+scene	NN
+graphs	NNS
+.	.
+
+Let	VB
+
+
+be	VB
+the	DT
+set	NN
+of	IN
+objects	NNS
+common	JJ
+to	TO
+both	DT
+scenes	NNS
+.	.
+
+Let	VB
+be	VB
+the	DT
+trajectories	NNS
+of	IN
+all	DT
+of	IN
+the	DT
+common	JJ
+objects	NNS
+in	IN
+,	,
+and	CC
+be	VB
+the	DT
+trajectories	NNS
+of	IN
+these	DT
+objects	NNS
+in	IN
+.	.
+
+Let	VB
+and	CC
+
+
+be	VB
+the	DT
+sets	NNS
+of	IN
+2D-PIR	NN
+sequences	NNS
+for	IN
+the	DT
+two	CD
+scenes	NNS
+.	.
+
+The	DT
+distance	NN
+between	IN
+and	CC
+is	VBZ
+then	RB
+computed	VBN
+as	IN
+a	DT
+weighted	JJ
+sum	NN
+of	IN
+the	DT
+trajectory	NN
+distances	NNS
+and	CC
+-	:
+relationship	NN
+distances	NNS
+on	IN
+the	DT
+common	JJ
+objects	NNS
+:	:
+
+
+where	WRB
+and	CC
+components	NNS
+.	.
+
+
+are	VBP
+weights	NNS
+indicating	VBG
+the	DT
+relative	JJ
+importance	NN
+of	IN
+the	DT
+trajectory	NN
+and	CC
+spatial	JJ
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+26	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+301	CD
+
+
+The	DT
+scene	NN
+similarity	NN
+measure	NN
+is	VBZ
+deï	NN
+¬	NN
+ned	VBD
+in	IN
+terms	NNS
+of	IN
+this	DT
+distance	NN
+measure	NN
+,	,
+normalized	VBD
+into	IN
+as	IN
+before	RB
+.	.
+
+In	IN
+this	DT
+case	NN
+,	,
+however	RB
+,	,
+the	DT
+value	NN
+of	IN
+the	DT
+maximum	NN
+distance	NN
+depends	VBZ
+on	IN
+the	DT
+number	NN
+of	IN
+terms	NNS
+in	IN
+the	DT
+summation	NN
+.	.
+
+Let	VB
+us	PRP
+denote	VB
+the	DT
+number	NN
+of	IN
+common	JJ
+objects	NNS
+by	IN
+
+
+and	CC
+the	DT
+number	NN
+of	IN
+-	:
+relationships	NNS
+by	IN
+,	,
+and	CC
+denote	VB
+the	DT
+maximum	JJ
+scene	NN
+distance	NN
+in	IN
+terms	NNS
+of	IN
+these	DT
+by	IN
+.	.
+
+Thus	RB
+,	,
+the	DT
+similarity	NN
+between	IN
+two	CD
+scenes	NNS
+and	CC
+is	VBZ
+deï	NN
+¬	NN
+ned	VBD
+as	IN
+:	:
+
+
+5.4	CD
+.	.
+
+Complexity	NN
+of	IN
+scene	NN
+matching	NN
+
+
+The	DT
+computation	NN
+of	IN
+scene	NN
+distance	NN
+involves	VBZ
+two	CD
+summations	NNS
+over	IN
+the	DT
+set	NN
+of	IN
+common	JJ
+objects	NNS
+.	.
+
+Let	VB
+us	PRP
+denote	VB
+the	DT
+size	NN
+of	IN
+this	DT
+set	VBN
+as	IN
+,	,
+where	WRB
+will	MD
+typically	RB
+be	VB
+of	IN
+the	DT
+same	JJ
+order	NN
+as	IN
+the	DT
+size	NN
+of	IN
+the	DT
+object	NN
+sets	VBZ
+for	IN
+each	DT
+individual	JJ
+scene	NN
+.	.
+
+Each	DT
+component	NN
+in	IN
+the	DT
+ï	NN
+¬	NN
+rst	NN
+summation	NN
+-LRB-	-LRB-
+over	IN
+the	DT
+objects	NNS
+-RRB-	-RRB-
+requires	VBZ
+a	DT
+trajectory	JJ
+distance	NN
+calculation	NN
+;	:
+the	DT
+cost	NN
+of	IN
+this	DT
+is	VBZ
+proportional	JJ
+to	TO
+the	DT
+product	NN
+of	IN
+the	DT
+lengths	NNS
+of	IN
+the	DT
+individual	JJ
+trajectories	NNS
+.	.
+
+The	DT
+second	JJ
+summation	NN
+is	VBZ
+over	IN
+all	DT
+pairs	NNS
+of	IN
+common	JJ
+objects	NNS
+in	IN
+the	DT
+scene	NN
+-LRB-	-LRB-
+which	WDT
+requires	VBZ
+terms	NNS
+-RRB-	-RRB-
+.	.
+
+Each	DT
+component	NN
+in	IN
+this	DT
+summation	NN
+requires	VBZ
+a	DT
+2D-PIR	JJ
+sequence	NN
+distance	NN
+calculation	NN
+;	:
+the	DT
+cost	NN
+of	IN
+this	DT
+is	VBZ
+proportional	JJ
+to	TO
+the	DT
+length	NN
+of	IN
+the	DT
+-	:
+relationship	NN
+sequence	NN
+in	IN
+each	DT
+scene	NN
+.	.
+
+If	IN
+denotes	VBZ
+the	DT
+average	JJ
+trajectory	NN
+length	NN
+,	,
+and	CC
+is	VBZ
+the	DT
+average	JJ
+length	NN
+of	IN
+the	DT
+-	:
+relationship	NN
+sequences	NNS
+,	,
+then	RB
+the	DT
+time	NN
+taken	VBN
+for	IN
+the	DT
+similarity	NN
+calculation	NN
+is	VBZ
+.	.
+
+
+6	CD
+.	.
+
+A	DT
+Prototype	NNP
+Video	NNP
+Retrieval	NNP
+System	NNP
+
+
+The	DT
+architecture	NN
+for	IN
+our	PRP$
+prototype	NN
+video	NN
+retrieval	NN
+system	NN
+is	VBZ
+shown	VBN
+in	IN
+Figure	NNP
+12	CD
+.	.
+
+The	DT
+system	NN
+consists	VBZ
+of	IN
+seven	CD
+major	JJ
+components	NNS
+:	:
+user	NN
+interface	NN
+,	,
+scene	NN
+identiï	NN
+¬	CD
+cation	NN
+,	,
+query	JJ
+interpreter	NN
+,	,
+scene	NN
+graph	NN
+builder	NN
+,	,
+insertion	NN
+engine	NN
+,	,
+retrieval	NN
+engine	NN
+and	CC
+scene	NN
+database	NN
+.	.
+
+Note	VB
+that	IN
+the	DT
+query	NN
+interpreter	NN
+is	VBZ
+essentially	RB
+just	RB
+a	DT
+parser	NN
+for	IN
+text-based	JJ
+queries	NNS
+-LRB-	-LRB-
+like	IN
+those	DT
+in	IN
+Section	NN
+4	CD
+-RRB-	-RRB-
+.	.
+
+
+6.1	CD
+.	.
+
+User	NN
+interface	NN
+
+
+The	DT
+user	NN
+interface	NN
+is	VBZ
+used	VBN
+to	TO
+formulate	VB
+queries	NNS
+and	CC
+to	TO
+generate	VB
+scene	NN
+representations	NNS
+either	CC
+via	IN
+development	NN
+of	IN
+an	DT
+animation	NN
+or	CC
+through	IN
+manual	NN
+mark-up	NN
+of	IN
+objects	NNS
+on	IN
+a	DT
+real	JJ
+video	NN
+,	,
+followed	VBN
+by	IN
+automatic	JJ
+TS-2D-PIR	NN
+generation	NN
+.	.
+
+
+In	IN
+creating	VBG
+an	DT
+animation	NN
+,	,
+a	DT
+user	NN
+draws	VBZ
+objects	NNS
+and	CC
+their	PRP$
+trajectories	NNS
+,	,
+plays	VBZ
+the	DT
+animation	NN
+-LRB-	-LRB-
+to	TO
+generate	VB
+-	:
+relationships	NNS
+between	IN
+objects	NNS
+-RRB-	-RRB-
+;	:
+the	DT
+system	NN
+then	RB
+generates	VBZ
+a	DT
+scene	NN
+graph	NN
+and	CC
+stores	NNS
+it	PRP
+in	IN
+the	DT
+database	NN
+.	.
+
+The	DT
+current	JJ
+prototype	NN
+treats	VBZ
+every	DT
+moving	VBG
+object	NN
+as	IN
+having	VBG
+equal	JJ
+constant	JJ
+speed	NN
+.	.
+
+Our	PRP$
+model	NN
+is	VBZ
+,	,
+of	IN
+course	NN
+,	,
+capable	JJ
+of	IN
+dealing	VBG
+with	IN
+objects	NNS
+moving	VBG
+at	IN
+different	JJ
+and	CC
+non-uniform	JJ
+speeds	NNS
+,	,
+but	CC
+this	DT
+type	NN
+of	IN
+object	NN
+movement	NN
+is	VBZ
+sufï	JJ
+¬	NN
+cient	NN
+to	TO
+enable	VB
+us	PRP
+to	TO
+conduct	VB
+our	PRP$
+experiments	NNS
+.	.
+
+
+In	IN
+creating	VBG
+a	DT
+scene	NN
+graph	NN
+from	IN
+a	DT
+video	NN
+source	NN
+,	,
+the	DT
+system	NN
+interacts	VBZ
+with	IN
+a	DT
+user	NN
+to	TO
+identify	VB
+and	CC
+track	VB
+objects	NNS
+in	IN
+the	DT
+scene	NN
+.	.
+
+This	DT
+feature	NN
+is	VBZ
+not	RB
+implemented	VBN
+in	IN
+the	DT
+current	JJ
+prototype	NN
+,	,
+although	IN
+most	JJS
+of	IN
+the	DT
+functionality	NN
+is	VBZ
+available	JJ
+in	IN
+our	PRP$
+static	JJ
+image	NN
+retrieval	NN
+system	NN
+-LSB-	-LRB-
+24	CD
+-RSB-	-RRB-
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+27	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+302	CD
+
+
+Graphical	NNP
+User	NN
+Interface	NNP
+
+
+video/animation	NN
+
+
+animation	NN
+clip	NN
+
+
+text	NN
+query	NN
+micon	NN
+query	NN
+
+
+sketch	NN
+query	NN
+
+
+Scene	NN
+Identifier	NNP
+Query	NNP
+Interpreter	NNP
+
+
+scene	NN
+
+
+results	NNS
+
+
+Scene	NN
+Graph	NN
+Builder	NN
+
+
+scene	NN
+graph	NN
+scene	NN
+graph	NN
+
+
+Insertion	NN
+Engine	NNP
+Retrieval	NNP
+Engine	NNP
+
+
+SCENE	NN
+DATABASE	NN
+
+
+Scene	NN
+Repository	NNP
+Micon	NNP
+RepositoryScene	NNP
+Graph	NNP
+Repository	NNP
+
+
+Figure	NNP
+12	CD
+.	.
+
+Architecture	NNP
+of	IN
+Prototype	NNP
+Video	NNP
+Retrieval	NNP
+System	NNP
+
+
+A	DT
+user	NN
+has	VBZ
+two	CD
+options	NNS
+in	IN
+formulating	VBG
+queries	NNS
+:	:
+posing	VBG
+a	DT
+query	NN
+using	VBG
+a	DT
+query	NN
+language	NN
+-LRB-	-LRB-
+text-based	JJ
+-RRB-	-RRB-
+or	CC
+posing	VBG
+a	DT
+query	NN
+using	VBG
+a	DT
+graphical	JJ
+query	NN
+language	NN
+-LRB-	-LRB-
+sketch-based	JJ
+-RRB-	-RRB-
+.	.
+
+With	IN
+the	DT
+graphical	JJ
+query	NN
+language	NN
+,	,
+the	DT
+user	NN
+may	MD
+pose	VB
+either	CC
+trajectory-similarity	JJ
+queries	NNS
+or	CC
+scene-similarity	JJ
+queries	NNS
+.	.
+
+For	IN
+trajectory-similarity	NN
+queries	NNS
+,	,
+the	DT
+trajectory	NN
+is	VBZ
+sketched	VBN
+in	IN
+a	DT
+window	NN
+and	CC
+the	DT
+system	NN
+ï	NN
+¬	CD
+nds	NNS
+scenes	NNS
+containing	VBG
+objects	NNS
+moving	VBG
+with	IN
+a	DT
+similar	JJ
+trajectory	NN
+.	.
+
+For	IN
+scene-similarity	JJ
+queries	NNS
+,	,
+either	CC
+the	DT
+entire	JJ
+scene	NN
+is	VBZ
+sketched	VBN
+-LRB-	-LRB-
+as	IN
+if	IN
+creating	VBG
+an	DT
+animation	NN
+-RRB-	-RRB-
+or	CC
+a	DT
+known	JJ
+scene	NN
+is	VBZ
+identiï	NN
+¬	NN
+ed	VBD
+to	TO
+be	VB
+used	VBN
+as	IN
+the	DT
+basis	NN
+for	IN
+the	DT
+similarity	NN
+matching	NN
+.	.
+
+
+6.2	CD
+.	.
+
+Scene	NN
+identiï	NN
+¬	CD
+cation	NN
+
+
+â	RB
+$	$
+œReal	JJ
+worldâ	NN
+$	$
+video	JJ
+sources	NNS
+such	JJ
+as	IN
+movies	NNS
+consist	VBP
+of	IN
+a	DT
+sequence	NN
+of	IN
+scenes	NNS
+.	.
+
+A	DT
+scene	NN
+-LRB-	-LRB-
+or	CC
+clip	NN
+-RRB-	-RRB-
+is	VBZ
+a	DT
+-LRB-	-LRB-
+typically	RB
+short	JJ
+-RRB-	-RRB-
+sequence	NN
+of	IN
+video	NN
+data	NNS
+shot	NN
+for	IN
+a	DT
+continuous	JJ
+period	NN
+using	VBG
+a	DT
+single	JJ
+camera	NN
+-LRB-	-LRB-
+some	DT
+other	JJ
+video	NN
+retrieval	NN
+workers	NNS
+call	VBP
+this	DT
+a	DT
+shot	NN
+-RRB-	-RRB-
+.	.
+
+Each	DT
+scene	NN
+contains	VBZ
+a	DT
+number	NN
+of	IN
+-LRB-	-LRB-
+possibly	RB
+-RRB-	-RRB-
+moving	VBG
+objects	NNS
+and	CC
+consists	VBZ
+of	IN
+a	DT
+sequence	NN
+of	IN
+frames	NNS
+-LRB-	-LRB-
+static	JJ
+images	NNS
+-RRB-	-RRB-
+.	.
+
+Since	IN
+it	PRP
+is	VBZ
+not	RB
+generally	RB
+useful	JJ
+to	TO
+return	VB
+an	DT
+entire	JJ
+movie	NN
+as	IN
+the	DT
+answer	NN
+to	TO
+a	DT
+query	NN
+,	,
+our	PRP$
+retrieval	NN
+system	NN
+deals	VBZ
+with	IN
+all	DT
+video	NN
+data	NNS
+at	IN
+the	DT
+scene	NN
+level	NN
+.	.
+
+In	IN
+our	PRP$
+system	NN
+,	,
+scenes	NNS
+are	VBP
+accessed	VBN
+primarily	RB
+by	IN
+their	PRP$
+representation	NN
+as	IN
+scene	NN
+graphs	NNS
+through	IN
+scene-similarity	NN
+queries	NNS
+.	.
+
+However	RB
+,	,
+a	DT
+name	NN
+may	MD
+also	RB
+be	VB
+associated	VBN
+with	IN
+a	DT
+scene	NN
+for	IN
+use	NN
+in	IN
+retrieval	NN
+-LRB-	-LRB-
+e.g.	FW
+in	IN
+Section	NN
+4.2	CD
+-RRB-	-RRB-
+.	.
+
+One	CD
+problem	NN
+with	IN
+treating	VBG
+video	NN
+data	NNS
+as	IN
+scenes	NNS
+is	VBZ
+that	IN
+the	DT
+data	NNS
+is	VBZ
+supplied	VBN
+as	IN
+a	DT
+continuous	JJ
+sequence	NN
+of	IN
+images	NNS
+,	,
+with	IN
+no	DT
+separation	NN
+between	IN
+scenes	NNS
+.	.
+
+One	CD
+approach	NN
+to	TO
+scene	NN
+separation	NN
+is	VBZ
+to	TO
+use	VB
+manual	JJ
+methods	NNS
+,	,
+but	CC
+this	DT
+approach	NN
+is	VBZ
+clearly	RB
+not	RB
+practical	JJ
+for	IN
+large	JJ
+video	NN
+databases	NNS
+.	.
+
+A	DT
+second	JJ
+approach	NN
+is	VBZ
+to	TO
+employ	VB
+an	DT
+existing	VBG
+method	NN
+to	TO
+automatically	RB
+determine	VB
+scene	NN
+boundaries	NNS
+.	.
+
+Some	DT
+successful	JJ
+techniques	NNS
+for	IN
+this	DT
+problem	NN
+have	VBP
+been	VBN
+developed	VBN
+over	IN
+the	DT
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+28	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+303	CD
+
+
+last	JJ
+few	JJ
+years	NNS
+based	VBN
+on	IN
+ideas	NNS
+such	JJ
+as	IN
+adjacent	JJ
+frame	NN
+colour	NN
+similarity	NN
+-LSB-	-LRB-
+28	CD
+,	,
+19	CD
+,	,
+25	CD
+-RSB-	-RRB-
+.	.
+
+A	DT
+good	JJ
+survey	NN
+of	IN
+these	DT
+methods	NNS
+can	MD
+be	VB
+found	VBN
+in	IN
+-LSB-	-LRB-
+7	CD
+-RSB-	-RRB-
+.	.
+
+
+The	DT
+current	JJ
+prototype	NN
+assumes	VBZ
+that	IN
+scene	NN
+identiï	NN
+¬	CD
+cation	NN
+has	VBZ
+already	RB
+been	VBN
+done	VBN
+,	,
+which	WDT
+is	VBZ
+trivial	JJ
+for	IN
+user-supplied	JJ
+animations	NNS
+where	WRB
+each	DT
+animation	NN
+corresponds	VBZ
+to	TO
+a	DT
+single	JJ
+scene	NN
+.	.
+
+
+6.3	CD
+.	.
+
+Scene	NN
+graph	NN
+builder	NN
+
+
+The	DT
+major	JJ
+task	NN
+of	IN
+the	DT
+scene	NN
+graph	NN
+builder	NN
+is	VBZ
+to	TO
+transform	VB
+a	DT
+video	NN
+or	CC
+animation	NN
+scene	NN
+into	IN
+a	DT
+scene	NN
+graph	NN
+as	IN
+described	VBN
+in	IN
+Section	NN
+5.1	CD
+.	.
+
+In	IN
+building	VBG
+a	DT
+scene	NN
+graph	NN
+from	IN
+a	DT
+sequence	NN
+of	IN
+frames	NNS
+,	,
+the	DT
+graph	NN
+builder	NN
+is	VBZ
+aided	VBN
+by	IN
+an	DT
+image	NN
+processing	NN
+module	NN
+and	CC
+the	DT
+user	NN
+in	IN
+identifying	VBG
+objects	NNS
+in	IN
+the	DT
+scene	NN
+.	.
+
+While	IN
+this	DT
+feature	NN
+is	VBZ
+not	RB
+implemented	VBN
+in	IN
+the	DT
+current	JJ
+prototype	NN
+,	,
+we	PRP
+provide	VBP
+a	DT
+brief	JJ
+explanation	NN
+here	RB
+of	IN
+how	WRB
+it	PRP
+can	MD
+be	VB
+achieved	VBN
+.	.
+
+
+The	DT
+image	NN
+processing	NN
+module	NN
+will	MD
+identify	VB
+objects	NNS
+contained	VBN
+in	IN
+the	DT
+scene	NN
+starting	VBG
+from	IN
+the	DT
+ï	NN
+¬	NN
+rst	NN
+frame	NN
+.	.
+
+This	DT
+identiï	NN
+¬	NN
+cation	NN
+process	NN
+is	VBZ
+a	DT
+non-trivial	JJ
+problem	NN
+and	CC
+a	DT
+fully	RB
+automatic	JJ
+approach	NN
+is	VBZ
+not	RB
+feasible	JJ
+using	VBG
+current	JJ
+technology	NN
+,	,
+except	IN
+in	IN
+speciï	NN
+¬	CD
+c	NN
+domains	NNS
+such	JJ
+as	IN
+video	NN
+surveillance	NN
+.	.
+
+Our	PRP$
+approach	NN
+requires	VBZ
+manual	JJ
+intervention	NN
+in	IN
+segmenting	VBG
+and	CC
+naming	VBG
+objects	NNS
+in	IN
+frames	NNS
+.	.
+
+The	DT
+user	NN
+is	VBZ
+not	RB
+required	VBN
+to	TO
+segment	NN
+every	DT
+frame	NN
+,	,
+since	IN
+we	PRP
+only	RB
+consider	VBP
+a	DT
+subset	NN
+of	IN
+the	DT
+frames	NNS
+-LRB-	-LRB-
+the	DT
+key	NN
+frames	NNS
+-RRB-	-RRB-
+.	.
+
+
+In	IN
+the	DT
+current	JJ
+prototype	NN
+,	,
+a	DT
+user	NN
+can	MD
+create	VB
+an	DT
+animation	NN
+clip	NN
+and	CC
+then	RB
+send	VB
+this	DT
+clip	NN
+to	TO
+the	DT
+transformer	NN
+to	TO
+create	VB
+its	PRP$
+corresponding	JJ
+scene	NN
+graph	NN
+.	.
+
+Since	IN
+the	DT
+objects	NNS
+are	VBP
+generated	VBN
+by	IN
+the	DT
+animation	NN
+software	NN
+,	,
+they	PRP
+can	MD
+be	VB
+automatically	RB
+identiï	JJ
+¬	NN
+ed	VBD
+and	CC
+the	DT
+TS-2D-PIR	NN
+representation	NN
+for	IN
+the	DT
+animation	NN
+can	MD
+be	VB
+generated	VBN
+completely	RB
+automatically	RB
+.	.
+
+
+6.4	CD
+.	.
+
+Insertion	NN
+engine	NN
+
+
+The	DT
+insertion	NN
+engine	NN
+is	VBZ
+responsible	JJ
+for	IN
+storing	VBG
+videos	NNS
+and	CC
+scene	NN
+graphs	NNS
+in	IN
+the	DT
+ï	NN
+¬	CD
+le	DT
+system	NN
+.	.
+
+While	IN
+it	PRP
+is	VBZ
+possible	JJ
+to	TO
+store	VB
+entire	JJ
+videos	NNS
+-LRB-	-LRB-
+in	IN
+a	DT
+format	NN
+such	JJ
+as	IN
+MPEG	NN
+-RRB-	-RRB-
+,	,
+it	PRP
+is	VBZ
+more	RBR
+likely	JJ
+that	IN
+the	DT
+system	NN
+in	IN
+future	NN
+will	MD
+simply	RB
+store	VB
+references	NNS
+-LRB-	-LRB-
+e.g.	FW
+URLs	NNS
+-RRB-	-RRB-
+to	TO
+the	DT
+original	JJ
+video	NN
+sources	NNS
+.	.
+
+The	DT
+current	JJ
+prototype	NN
+only	RB
+stores	NNS
+user-generated	JJ
+animations	NNS
+,	,
+and	CC
+these	DT
+are	VBP
+actually	RB
+stored	VBN
+as	IN
+sequences	NNS
+of	IN
+operations	NNS
+that	WDT
+can	MD
+recreate	VB
+the	DT
+animation	NN
+through	IN
+the	DT
+GUI	NNP
+.	.
+
+
+Scene	NN
+graphs	NNS
+are	VBP
+stored	VBN
+simply	RB
+as	IN
+binary	JJ
+data	NNS
+structures	NNS
+.	.
+
+In	IN
+future	JJ
+versions	NNS
+of	IN
+the	DT
+system	NN
+,	,
+we	PRP
+plan	VBP
+to	TO
+incorporate	VB
+indexing	NN
+capabilities	NNS
+to	TO
+enable	VB
+faster	JJR
+retrieval	NN
+and	CC
+better	JJR
+ï	NN
+¬	NN
+ltering	NN
+of	IN
+scenes	NNS
+.	.
+
+One	CD
+type	NN
+of	IN
+indexing	NN
+that	WDT
+could	MD
+be	VB
+very	RB
+simply	RB
+implemented	VBN
+,	,
+would	MD
+be	VB
+to	TO
+build	VB
+signatures	NNS
+indicating	VBG
+which	WDT
+objects	NNS
+were	VBD
+present	JJ
+in	IN
+each	DT
+scene	NN
+.	.
+
+This	DT
+could	MD
+be	VB
+used	VBN
+to	TO
+ï	VB
+¬	NN
+lter	NN
+out	IN
+irrelevant	JJ
+scenes	NNS
+and	CC
+save	VB
+on	IN
+scene	NN
+similarity	NN
+computations	NNS
+for	IN
+queries	NNS
+where	WRB
+we	PRP
+require	VBP
+a	DT
+match	NN
+on	IN
+a	DT
+speciï	NN
+¬	NN
+ed	VBD
+set	NN
+of	IN
+objects	NNS
+.	.
+
+
+6.5	CD
+.	.
+
+Retrieval	NN
+engine	NN
+
+
+Retrieval	NN
+of	IN
+scenes	NNS
+from	IN
+a	DT
+scene	NN
+database	NN
+can	MD
+be	VB
+performed	VBN
+via	IN
+trajectory-based	JJ
+,	,
+scene	NN
+-	:
+based	VBN
+or	CC
+text-based	JJ
+methods	NNS
+.	.
+
+For	IN
+all	DT
+similarity-based	JJ
+queries	NNS
+,	,
+the	DT
+system	NN
+will	MD
+make	VB
+use	NN
+of	IN
+a	DT
+threshold	NN
+value	NN
+that	WDT
+is	VBZ
+either	DT
+speciï	NN
+¬	CD
+ed	VBN
+by	IN
+the	DT
+user	NN
+before	IN
+the	DT
+query	NN
+is	VBZ
+run	VBN
+or	CC
+is	VBZ
+a	DT
+default	NN
+value	NN
+chosen	VBN
+to	TO
+yield	VB
+â	RB
+$	$
+œreasonableâ	JJ
+$	$
+precision	NN
+and	CC
+recall	NN
+over	IN
+a	DT
+range	NN
+of	IN
+queries	NNS
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+29	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+304	CD
+
+
+Trajectory-based	JJ
+queries	NNS
+are	VBP
+initiated	VBN
+by	IN
+drawing	VBG
+a	DT
+trajectory	NN
+in	IN
+a	DT
+window	NN
+.	.
+
+The	DT
+system	NN
+will	MD
+ï	VB
+¬	CD
+nd	JJ
+scenes	NNS
+from	IN
+the	DT
+scene	NN
+database	NN
+that	WDT
+contain	VBP
+an	DT
+object	NN
+whose	WP$
+trajectory	NN
+is	VBZ
+similar	JJ
+to	TO
+the	DT
+user-sketched	JJ
+trajectory	NN
+.	.
+
+The	DT
+system	NN
+also	RB
+allows	VBZ
+the	DT
+user	NN
+to	TO
+specify	VB
+a	DT
+name	NN
+for	IN
+the	DT
+moving	VBG
+object	NN
+;	:
+the	DT
+query	NN
+will	MD
+then	RB
+match	VB
+only	RB
+scenes	NNS
+that	WDT
+contain	VBP
+the	DT
+speciï	NN
+¬	CD
+ed	VBD
+object	NN
+moving	VBG
+with	IN
+the	DT
+given	VBN
+trajectory	NN
+.	.
+
+
+A	DT
+scene-based	JJ
+query	NN
+can	MD
+be	VB
+posed	VBN
+either	CC
+by	IN
+a	DT
+scene	NN
+name	NN
+or	CC
+by	IN
+an	DT
+animated	JJ
+scene	NN
+.	.
+
+To	TO
+retrieve	VB
+scenes	NNS
+similar	JJ
+to	TO
+an	DT
+existing	JJ
+scene	NN
+,	,
+the	DT
+user	NN
+must	MD
+specify	VB
+the	DT
+name	NN
+of	IN
+the	DT
+existing	VBG
+scene	NN
+.	.
+
+For	IN
+retrieval	NN
+based	VBN
+on	IN
+an	DT
+animated	JJ
+scene	NN
+,	,
+the	DT
+user	NN
+ï	NN
+¬	CD
+rst	NN
+creates	VBZ
+the	DT
+animation	NN
+as	IN
+speciï	NN
+¬	CD
+ed	VBD
+above	IN
+for	IN
+animation	NN
+insertion	NN
+.	.
+
+The	DT
+system	NN
+then	RB
+plays	VBZ
+the	DT
+animation	NN
+to	TO
+set	VB
+up	RP
+the	DT
+scene	NN
+graph	NN
+,	,
+and	CC
+sends	VBZ
+the	DT
+scene	NN
+graph	NN
+to	TO
+the	DT
+retrieval	NN
+engine	NN
+where	WRB
+scene-similarity	NN
+matching	NN
+is	VBZ
+performed	VBN
+.	.
+
+
+The	DT
+system	NN
+also	RB
+supports	VBZ
+a	DT
+simple	JJ
+text-based	JJ
+query	NN
+language	NN
+to	TO
+retrieve	VB
+scenes	NNS
+.	.
+
+This	DT
+type	NN
+of	IN
+query	NN
+speciï	NN
+¬	CD
+cation	NN
+is	VBZ
+based	VBN
+on	IN
+the	DT
+moving	VBG
+object	NN
+algebra	NN
+described	VBN
+in	IN
+Section	NN
+3	CD
+and	CC
+is	VBZ
+similar	JJ
+to	TO
+the	DT
+query	NN
+speciï	NN
+¬	CD
+cation	NN
+used	VBN
+in	IN
+traditional	JJ
+database	NN
+systems	NNS
+.	.
+
+
+The	DT
+user	NN
+is	VBZ
+not	RB
+only	RB
+able	JJ
+to	TO
+retrieve	VB
+scenes	NNS
+from	IN
+the	DT
+database	NN
+,	,
+but	CC
+can	MD
+also	RB
+create	VB
+new	JJ
+scenes	NNS
+based	VBN
+on	IN
+existing	VBG
+scenes	NNS
+by	IN
+using	VBG
+the	DT
+projectionandoverlay	NN
+operations	NNS
+.	.
+
+The	DT
+easiest	JJS
+way	NN
+to	TO
+create	VB
+a	DT
+new	JJ
+scene	NN
+is	VBZ
+via	IN
+the	DT
+query	NN
+language	NN
+.	.
+
+However	RB
+,	,
+the	DT
+GUI	NNP
+also	RB
+provide	VBP
+facilities	NNS
+to	TO
+build	VB
+new	JJ
+animated	JJ
+scenes	NNS
+from	IN
+existing	VBG
+ones	NNS
+.	.
+
+
+6.6	CD
+.	.
+
+Scene	NN
+database	NN
+
+
+The	DT
+scene	NN
+database	NN
+is	VBZ
+partitioned	VBN
+into	IN
+three	CD
+repositories	NNS
+:	:
+video/animation	NN
+clips	NNS
+,	,
+scene	NN
+graphs	NNS
+and	CC
+motion	NN
+icons	NNS
+-LRB-	-LRB-
+micons	NNS
+-RRB-	-RRB-
+.	.
+
+In	IN
+the	DT
+ï	NN
+¬	NN
+rst	NN
+,	,
+we	PRP
+store	VBP
+either	CC
+original	JJ
+video/animation	NN
+clips	NNS
+or	CC
+references	NNS
+-LRB-	-LRB-
+URLs	NNS
+-RRB-	-RRB-
+to	TO
+the	DT
+original	JJ
+clips	NNS
+.	.
+
+The	DT
+micons	NNS
+provide	VBP
+summaries	NNS
+of	IN
+the	DT
+actual	JJ
+clips	NNS
+and	CC
+are	VBP
+stored	VBN
+locally	RB
+since	IN
+they	PRP
+may	MD
+be	VB
+presented	VBN
+to	TO
+the	DT
+user	NN
+in	IN
+the	DT
+ï	NN
+¬	NN
+rst	NN
+stage	NN
+of	IN
+the	DT
+retrieval	NN
+process	NN
+.	.
+
+Scene	NN
+graphs	NNS
+also	RB
+are	VBP
+stored	VBN
+locally	RB
+,	,
+since	IN
+they	PRP
+are	VBP
+central	JJ
+to	TO
+the	DT
+image	NN
+retrieval	NN
+process	NN
+.	.
+
+Each	DT
+stored	VBN
+scene	NN
+graph	NN
+contains	VBZ
+:	:
+
+
+pointers	NNS
+to	TO
+the	DT
+original	JJ
+video	NN
+and	CC
+iconic	JJ
+versions	NNS
+of	IN
+the	DT
+scene	NN
+
+
+a	DT
+set	NN
+of	IN
+descriptors	NNS
+for	IN
+the	DT
+objects	NNS
+in	IN
+the	DT
+scene	NN
+
+
+a	DT
+set	NN
+of	IN
+spatiotemporal	JJ
+relationships	NNS
+among	IN
+the	DT
+objects	NNS
+.	.
+
+
+7	CD
+.	.
+
+Comparison	NN
+with	IN
+Other	JJ
+Models	NNS
+
+
+Spatiotemporal	JJ
+information	NN
+,	,
+especially	RB
+information	NN
+that	WDT
+deals	VBZ
+with	IN
+moving	VBG
+objects	NNS
+is	VBZ
+a	DT
+new	JJ
+topic	NN
+in	IN
+the	DT
+database	NN
+area	NN
+.	.
+
+Our	PRP$
+work	NN
+is	VBZ
+one	CD
+of	IN
+the	DT
+pioneering	JJ
+efforts	NNS
+in	IN
+the	DT
+area	NN
+of	IN
+spatiotemporal	JJ
+information	NN
+and	CC
+moving	VBG
+objects	NNS
+.	.
+
+To	TO
+complete	VB
+our	PRP$
+discussion	NN
+on	IN
+this	DT
+topic	NN
+,	,
+we	PRP
+compare	VBP
+our	PRP$
+model	NN
+with	IN
+related	JJ
+work	NN
+by	IN
+Lee	NNP
+-LSB-	-LRB-
+17	CD
+-RSB-	-RRB-
+,	,
+Dimitrova	NN
+-LSB-	-LRB-
+9	CD
+-RSB-	-RRB-
+,	,
+Bimbo	NNP
+-LSB-	-LRB-
+6	CD
+-RSB-	-RRB-
+,	,
+Shearer	NN
+-LSB-	-LRB-
+29	CD
+-RSB-	-RRB-
+,	,
+and	CC
+Sistla	NN
+-LSB-	-LRB-
+30	CD
+-RSB-	-RRB-
+.	.
+
+One	CD
+point	NN
+worth	JJ
+noting	VBG
+at	IN
+the	DT
+outset	NN
+is	VBZ
+that	IN
+our	PRP$
+model	NN
+is	VBZ
+unique	JJ
+in	IN
+its	PRP$
+support	NN
+of	IN
+operations	NNS
+for	IN
+constructing	VBG
+new	JJ
+scenes	NNS
+from	IN
+existing	VBG
+ones	NNS
+via	IN
+the	DT
+projection	NN
+and	CC
+overlay	NN
+operations	NNS
+;	:
+none	NN
+of	IN
+the	DT
+other	JJ
+approaches	NNS
+support	VBP
+this	DT
+.	.
+
+
+In	IN
+Leeâ	NNP
+$	$
+™	CD
+s	NNS
+model	NN
+-LSB-	-LRB-
+17	CD
+-RSB-	-RRB-
+,	,
+the	DT
+basic	JJ
+unit	NN
+of	IN
+data	NNS
+is	VBZ
+a	DT
+â	JJ
+$	$
+œvideo	JJ
+recordâ	NN
+$	$
+,	,
+which	WDT
+is	VBZ
+comparable	JJ
+to	TO
+our	PRP$
+basic	JJ
+unit	NN
+of	IN
+a	DT
+â	JJ
+$	$
+œsceneâ	JJ
+$	$
+.	.
+
+Retrieval	NN
+is	VBZ
+based	VBN
+on	IN
+video	NN
+records	NNS
+.	.
+
+In	IN
+Leeâ	NNP
+$	$
+™	CD
+s	NNS
+model	NN
+,	,
+a	DT
+query	NN
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+30	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+305	CD
+
+
+can	MD
+be	VB
+posed	VBN
+based	VBN
+on	IN
+video	NN
+record	NN
+identiï	NN
+¬	CD
+ers	NNPS
+,	,
+objects	NNS
+in	IN
+a	DT
+video	NN
+record	NN
+,	,
+tracks	NNS
+or	CC
+some	DT
+combination	NN
+of	IN
+these	DT
+.	.
+
+
+Leeâ	NNP
+$	$
+™	CD
+s	NNS
+deï	NN
+¬	CD
+nition	NN
+of	IN
+â	JJ
+$	$
+œtrackâ	JJ
+$	$
+is	VBZ
+more	RBR
+like	IN
+our	PRP$
+notion	NN
+of	IN
+â	JJ
+$	$
+œtrajectoryâ	JJ
+$	$
+,	,
+since	IN
+it	PRP
+does	VBZ
+not	RB
+contain	VB
+temporal	JJ
+information	NN
+.	.
+
+However	RB
+,	,
+Leeâ	NNP
+$	$
+™	CD
+s	NNS
+track	VBP
+notion	NN
+is	VBZ
+richer	JJR
+than	IN
+our	PRP$
+trajectory	NN
+,	,
+since	IN
+it	PRP
+considers	VBZ
+four	CD
+classes	NNS
+of	IN
+motion	NN
+,	,
+taking	VBG
+into	IN
+account	NN
+the	DT
+translation	NN
+and	CC
+rotation	NN
+of	IN
+objects	NNS
+as	RB
+well	RB
+as	IN
+camera	NN
+motion	NN
+.	.
+
+The	DT
+disadvantage	NN
+of	IN
+Leeâ	NNP
+$	$
+™	CD
+s	NNS
+rich	JJ
+motion	NN
+modelling	NN
+is	VBZ
+that	IN
+track-based	JJ
+queries	NNS
+are	VBP
+difï	JJ
+¬	NN
+cult	NN
+to	TO
+specify	VB
+.	.
+
+In	IN
+contrast	NN
+,	,
+queries	NNS
+on	IN
+trajectories	NNS
+in	IN
+our	PRP$
+model	NN
+are	VBP
+very	RB
+simple	JJ
+;	:
+a	DT
+user	NN
+need	MD
+only	RB
+draw	VB
+a	DT
+trajectory	NN
+in	IN
+a	DT
+window	NN
+and	CC
+the	DT
+system	NN
+can	MD
+automatically	RB
+produce	VB
+a	DT
+trajectory	NN
+to	TO
+use	VB
+in	IN
+a	DT
+query	NN
+.	.
+
+In	IN
+addition	NN
+,	,
+we	PRP
+deï	VBP
+¬	CD
+ne	NN
+a	DT
+similarity	NN
+measure	NN
+for	IN
+retrieval	NN
+on	IN
+trajectories	NNS
+,	,
+which	WDT
+is	VBZ
+lacking	VBG
+in	IN
+Leeâ	NNP
+$	$
+™	CD
+s	NNS
+model	NN
+.	.
+
+
+Our	PRP$
+data	NNS
+model	NN
+is	VBZ
+more	RBR
+expressive	JJ
+than	IN
+Leeâ	JJ
+$	$
+™	CD
+s	NNS
+in	IN
+a	DT
+number	NN
+of	IN
+important	JJ
+areas	NNS
+.	.
+
+Since	IN
+our	PRP$
+tracks	NNS
+contain	VBP
+temporal	JJ
+as	RB
+well	RB
+as	IN
+spatial	JJ
+data	NNS
+,	,
+it	PRP
+is	VBZ
+possible	JJ
+to	TO
+ask	VB
+queries	NNS
+such	JJ
+as	IN
+â	JJ
+$	$
+œhow	JJ
+long	JJ
+is	VBZ
+an	DT
+object	NN
+moving	VBG
+in	IN
+a	DT
+certain	JJ
+directionâ	NN
+$	$
+under	IN
+our	PRP$
+model	NN
+.	.
+
+Also	RB
+,	,
+our	PRP$
+model	NN
+addresses	NNS
+spatiotemporal	JJ
+relationships	NNS
+among	IN
+objects	NNS
+in	IN
+a	DT
+scene	NN
+,	,
+so	IN
+it	PRP
+is	VBZ
+possible	JJ
+to	TO
+ask	VB
+queries	NNS
+about	IN
+how	WRB
+objects	NNS
+relate	VBP
+to	TO
+other	JJ
+objects	NNS
+during	IN
+motion	NN
+.	.
+
+
+Dimitrovaâ	NNP
+$	$
+™	CD
+s	NNS
+model	NN
+for	IN
+moving	VBG
+objects	NNS
+-LSB-	-LRB-
+9	CD
+-RSB-	-RRB-
+combines	VBZ
+object	NN
+attributes	NNS
+such	JJ
+as	IN
+name	NN
+,	,
+type	NN
+and	CC
+shape	NN
+of	IN
+objects	NNS
+with	IN
+trajectories	NNS
+and	CC
+object	NN
+movement	NN
+.	.
+
+Even	RB
+though	IN
+our	PRP$
+model	NN
+does	VBZ
+not	RB
+speciï	JJ
+¬	NN
+cally	RB
+mention	VB
+object	NN
+attributes	NNS
+,	,
+these	DT
+could	MD
+be	VB
+included	VBN
+in	IN
+a	DT
+straightforward	JJ
+manner	NN
+.	.
+
+A	DT
+query	NN
+language	NN
+,	,
+called	VBN
+EVA	NNP
+,	,
+and	CC
+its	PRP$
+visual	JJ
+counterpart	NN
+,	,
+VEVA	NN
+,	,
+are	VBP
+provided	VBN
+for	IN
+video	NN
+clip	NN
+retrieval	NN
+.	.
+
+This	DT
+model	NN
+is	VBZ
+comparable	JJ
+to	TO
+ours	PRP
+only	RB
+in	IN
+its	PRP$
+ability	NN
+to	TO
+query	NN
+based	VBN
+on	IN
+an	DT
+object	NN
+trajectory	NN
+.	.
+
+
+A	DT
+trajectory	NN
+in	IN
+Dimitrovaâ	NNP
+$	$
+™	CD
+s	NNS
+model	NN
+is	VBZ
+represented	VBN
+by	IN
+a	DT
+chain	NN
+code	NN
+,	,
+which	WDT
+is	VBZ
+similar	JJ
+to	TO
+our	PRP$
+trajectory	NN
+but	CC
+with	IN
+distances	NNS
+removed	VBN
+-LRB-	-LRB-
+in	IN
+other	JJ
+words	NNS
+,	,
+a	DT
+sequence	NN
+of	IN
+directions	NNS
+-RRB-	-RRB-
+.	.
+
+Dimitrovaâ	NNP
+$	$
+™	CD
+s	NNS
+model	NN
+supports	VBZ
+both	CC
+exact-match	NN
+and	CC
+similarity-match	NN
+queries	NNS
+on	IN
+the	DT
+chain	NN
+-	:
+codes	NNS
+describing	VBG
+an	DT
+objectâ	NN
+$	$
+™	CD
+s	NNS
+motion	NN
+.	.
+
+Dimitrovaâ	NNP
+$	$
+™	CD
+s	NNS
+model	NN
+does	VBZ
+not	RB
+support	VB
+any	DT
+notion	NN
+of	IN
+spatiotemporal	JJ
+relationships	NNS
+,	,
+so	RB
+that	IN
+one	PRP
+can	MD
+not	RB
+ask	VB
+queries	NNS
+regarding	VBG
+the	DT
+relations	NNS
+among	IN
+the	DT
+objects	NNS
+in	IN
+a	DT
+scene	NN
+.	.
+
+
+Bimbo	NNP
+-LSB-	-LRB-
+6	CD
+-RSB-	-RRB-
+provides	VBZ
+an	DT
+interesting	JJ
+model	NN
+for	IN
+moving	VBG
+objects	NNS
+using	VBG
+spatiotemporal	JJ
+logic	NN
+.	.
+
+The	DT
+logic	NN
+is	VBZ
+an	DT
+extension	NN
+of	IN
+temporal	JJ
+logic	NN
+,	,
+with	IN
+the	DT
+operator	NN
+until	IN
+as	IN
+the	DT
+main	JJ
+operator	NN
+.	.
+
+Bimboâ	NNP
+$	$
+™	CD
+s	NNS
+model	NN
+does	VBZ
+not	RB
+include	VB
+tracks	NNS
+or	CC
+trajectories	NNS
+,	,
+and	CC
+so	RB
+can	MD
+not	RB
+answer	VB
+the	DT
+important	JJ
+class	NN
+of	IN
+queries	NNS
+based	VBN
+on	IN
+these	DT
+notions	NNS
+.	.
+
+
+Bimboâ	NNP
+$	$
+™	CD
+s	NNS
+spatiotemporal	JJ
+logic	NN
+is	VBZ
+comparable	JJ
+to	TO
+our	PRP$
+spatiotemporal	JJ
+relationship	NN
+model	NN
+,	,
+with	IN
+the	DT
+main	JJ
+difference	NN
+being	VBG
+that	IN
+he	PRP
+uses	VBZ
+a	DT
+logic	NN
+approach	NN
+and	CC
+we	PRP
+use	VBP
+an	DT
+algebraic	JJ
+approach	NN
+.	.
+
+However	RB
+,	,
+queries	NNS
+involving	VBG
+spatiotemporal	JJ
+relationships	NNS
+can	MD
+be	VB
+formulated	VBN
+and	CC
+answered	VBN
+under	IN
+both	DT
+schemes	NNS
+.	.
+
+Bimboâ	NNP
+$	$
+™	CD
+s	NNS
+model	NN
+,	,
+however	RB
+,	,
+treats	VBZ
+moving	VBG
+objects	NNS
+as	IN
+points	NNS
+-LRB-	-LRB-
+in	IN
+our	PRP$
+model	NN
+they	PRP
+are	VBP
+pointsets	NNS
+-RRB-	-RRB-
+,	,
+and	CC
+so	RB
+can	MD
+not	RB
+deal	VB
+with	IN
+queries	NNS
+related	VBN
+to	TO
+duration	NN
+,	,
+overlapping	VBG
+and	CC
+containment	NN
+.	.
+
+
+In	IN
+Bimboâ	NNP
+$	$
+™	CD
+s	NNS
+model	NN
+,	,
+a	DT
+scene	NN
+is	VBZ
+represented	VBN
+by	IN
+spatiotemporal	JJ
+logic	NN
+assertions	NNS
+,	,
+while	IN
+our	PRP$
+model	NN
+represents	VBZ
+scenes	NNS
+as	IN
+symbolic	JJ
+graphs	NNS
+.	.
+
+In	IN
+retrieving	VBG
+similar	JJ
+scenes	NNS
+,	,
+Bimbo	NNP
+compares	VBZ
+the	DT
+spatiotemporal	JJ
+logic	NN
+representation	NN
+of	IN
+a	DT
+query	JJ
+scene	NN
+with	IN
+the	DT
+spatiotemporal	JJ
+logic	NN
+representation	NN
+of	IN
+scenes	NNS
+in	IN
+a	DT
+database	NN
+using	VBG
+exact	JJ
+match	NN
+.	.
+
+Our	PRP$
+model	NN
+,	,
+on	IN
+the	DT
+other	JJ
+hand	NN
+,	,
+provides	VBZ
+both	CC
+exact	JJ
+and	CC
+similarity	NN
+matching	NN
+for	IN
+scenes	NNS
+.	.
+
+
+The	DT
+spatiotemporal	JJ
+logic	NN
+representation	NN
+of	IN
+a	DT
+scene	NN
+is	VBZ
+very	RB
+complex	JJ
+,	,
+and	CC
+it	PRP
+is	VBZ
+virtually	RB
+impossible	JJ
+to	TO
+use	VB
+the	DT
+spatiotemporal	JJ
+logic	NN
+directly	RB
+in	IN
+specifying	VBG
+scene	NN
+queries	NNS
+.	.
+
+Therefore	RB
+,	,
+a	DT
+visual	JJ
+query	NN
+editor	NN
+is	VBZ
+provided	VBN
+which	WDT
+will	MD
+translate	VB
+the	DT
+visual	JJ
+query	NN
+to	TO
+a	DT
+corresponding	JJ
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+31	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+306	CD
+
+
+spatiotemporal	JJ
+logic	NN
+query	NN
+.	.
+
+In	IN
+such	PDT
+a	DT
+system	NN
+,	,
+is	VBZ
+not	RB
+clear	JJ
+how	WRB
+a	DT
+query	NN
+like	IN
+â	JJ
+$	$
+œï	JJ
+¬	NN
+nd	VBD
+a	DT
+scene	NN
+where	WRB
+two	CD
+objects	NNS
+and	CC
+enter	VB
+region	NN
+and	CC
+where	WRB
+enters	VBZ
+before	IN
+does	VBZ
+and	CC
+where	WRB
+ï	NN
+¬	CD
+nally	RB
+and	CC
+collide	VB
+inside	IN
+â	JJ
+$	$
+can	MD
+be	VB
+supported	VBN
+.	.
+
+Such	JJ
+queries	NNS
+,	,
+as	IN
+noted	VBN
+above	IN
+,	,
+are	VBP
+relatively	RB
+simply	RB
+specify	VB
+in	IN
+our	PRP$
+data	NNS
+model	NN
+.	.
+
+
+Shearer	NN
+-LSB-	-LRB-
+29	CD
+-RSB-	-RRB-
+proposed	VBD
+a	DT
+model	NN
+that	WDT
+extends	VBZ
+2D	NN
+B-strings	NNS
+for	IN
+moving	VBG
+objects	NNS
+.	.
+
+2D	NN
+B	NN
+-	:
+strings	NNS
+can	MD
+represent	VB
+both	DT
+directional	JJ
+and	CC
+topological	JJ
+relationships	NNS
+.	.
+
+However	RB
+,	,
+Shearerâ	NNP
+$	$
+™	CD
+s	NNS
+scheme	NN
+can	MD
+only	RB
+model	VB
+topological	JJ
+relationships	NNS
+on	IN
+rectangular	JJ
+objects	NNS
+-LRB-	-LRB-
+or	CC
+on	IN
+the	DT
+bounding	VBG
+rectangle	NN
+of	IN
+complex	JJ
+objects	NNS
+-RRB-	-RRB-
+.	.
+
+This	DT
+model	NN
+can	MD
+only	RB
+be	VB
+used	VBN
+for	IN
+scene	NN
+matching	NN
+,	,
+and	CC
+has	VBZ
+limited	VBN
+support	NN
+for	IN
+similarity	NN
+matching	NN
+on	IN
+scenes	NNS
+-LRB-	-LRB-
+only	RB
+three	CD
+types	NNS
+of	IN
+matching	NN
+-RRB-	-RRB-
+.	.
+
+Shearerâ	NNP
+$	$
+™	CD
+s	NNS
+model	NN
+is	VBZ
+considerably	RB
+less	JJR
+expressive	JJ
+than	IN
+ours	JJ
+since	IN
+it	PRP
+provides	VBZ
+no	DT
+support	NN
+for	IN
+modelling	VBG
+either	CC
+spatiotemporal	JJ
+relationships	NNS
+between	IN
+objects	NNS
+or	CC
+the	DT
+trajectories	NNS
+of	IN
+individual	JJ
+objects	NNS
+.	.
+
+
+A	DT
+new	JJ
+model	NN
+for	IN
+moving	VBG
+objects	NNS
+called	VBN
+MOST	JJS
+-LRB-	-LRB-
+Moving	VBG
+Objects	NNS
+Spatio-Temporal	JJ
+-RRB-	-RRB-
+has	VBZ
+been	VBN
+proposed	VBN
+by	IN
+Sistla	NN
+-LSB-	-LRB-
+30	CD
+-RSB-	-RRB-
+.	.
+
+This	DT
+model	NN
+tackles	VBZ
+the	DT
+problem	NN
+more	RBR
+from	IN
+a	DT
+database	NN
+perspective	NN
+and	CC
+attempts	VBZ
+to	TO
+devise	VB
+an	DT
+approach	NN
+to	TO
+handling	VBG
+rapidly	RB
+changing	VBG
+â	RB
+$	$
+œdataâ	JJ
+$	$
+such	JJ
+as	IN
+the	DT
+position	NN
+of	IN
+an	DT
+object	NN
+.	.
+
+Rather	RB
+than	IN
+representing	VBG
+a	DT
+moving	VBG
+object	NN
+as	IN
+a	DT
+single	JJ
+database	NN
+record	NN
+that	WDT
+is	VBZ
+constantly	RB
+being	VBG
+updated	VBN
+,	,
+or	CC
+by	IN
+a	DT
+set	NN
+of	IN
+records	NNS
+,	,
+it	PRP
+stores	VBZ
+the	DT
+moving	VBG
+object	NN
+as	IN
+a	DT
+record	NN
+with	IN
+static	JJ
+information	NN
+and	CC
+a	DT
+function	NN
+to	TO
+compute	VB
+the	DT
+objectâ	NN
+$	$
+™	CD
+s	NNS
+location	NN
+at	IN
+any	DT
+speciï	NN
+¬	NN
+ed	VBD
+time	NN
+.	.
+
+Whether	IN
+this	DT
+approach	NN
+would	MD
+be	VB
+useful	JJ
+for	IN
+representing	VBG
+video	NN
+data	NNS
+would	MD
+depend	VB
+on	IN
+how	WRB
+easy	JJ
+it	PRP
+was	VBD
+to	TO
+develop	VB
+the	DT
+movement	NN
+functions	NNS
+for	IN
+the	DT
+objects	NNS
+in	IN
+a	DT
+scene	NN
+.	.
+
+This	DT
+does	VBZ
+not	RB
+seem	VB
+like	IN
+a	DT
+trivial	JJ
+task	NN
+.	.
+
+
+MOST	JJS
+has	VBZ
+a	DT
+comparable	JJ
+concept	NN
+to	TO
+our	PRP$
+spatiotemporal	JJ
+relationship	NN
+called	VBD
+a	DT
+â	JJ
+$	$
+œdatabase	JJ
+historyâ	NN
+$	$
+.	.
+
+However	RB
+,	,
+the	DT
+representation	NN
+of	IN
+database	NN
+history	NN
+is	VBZ
+not	RB
+formally	RB
+deï	NN
+¬	CD
+ned	VBD
+,	,
+leaving	VBG
+it	PRP
+open	JJ
+to	TO
+question	VB
+whether	IN
+it	PRP
+can	MD
+handle	VB
+spatiotemporal	JJ
+queries	NNS
+such	JJ
+as	IN
+those	DT
+described	VBN
+above	IN
+.	.
+
+A	DT
+query	NN
+in	IN
+MOST	JJS
+is	VBZ
+like	IN
+other	JJ
+traditional	JJ
+database	NN
+queries	NNS
+-LRB-	-LRB-
+MOST	JJS
+uses	VBZ
+an	DT
+SQL	NN
+-	:
+like	IN
+syntax	NN
+-RRB-	-RRB-
+enriched	JJ
+with	IN
+spatial	JJ
+operations	NNS
+and	CC
+temporal	JJ
+logic	NN
+operators	NNS
+such	JJ
+as	IN
+the	DT
+until	IN
+operator	NN
+.	.
+
+There	EX
+is	VBZ
+no	DT
+deï	NN
+¬	NN
+nition	NN
+of	IN
+scene	NN
+similarity	NN
+retrieval	NN
+.	.
+
+
+In	IN
+summary	NN
+,	,
+our	PRP$
+model	NN
+has	VBZ
+a	DT
+number	NN
+of	IN
+unique	JJ
+features	NNS
+,	,
+including	VBG
+:	:
+the	DT
+combination	NN
+of	IN
+tracks	NNS
+and	CC
+spatiotemporal	JJ
+relationships	NNS
+into	IN
+a	DT
+single	JJ
+framework	NN
+,	,
+the	DT
+ability	NN
+to	TO
+create	VB
+a	DT
+new	JJ
+scene	NN
+based	VBN
+on	IN
+existing	VBG
+scenes	NNS
+using	VBG
+the	DT
+projection	NN
+and	CC
+overlay	NN
+operations	NNS
+,	,
+and	CC
+support	NN
+for	IN
+exact	JJ
+as	RB
+well	RB
+as	IN
+similarity	NN
+retrieval	NN
+.	.
+
+Table	NNP
+0	CD
+summarizes	VBZ
+the	DT
+above	JJ
+comparison	NN
+.	.
+
+
+8	CD
+.	.
+
+Conclusion	NN
+
+
+A	DT
+novel	JJ
+graph	NN
+structure	NN
+has	VBZ
+been	VBN
+used	VBN
+successfully	RB
+to	TO
+represent	VB
+dynamic	JJ
+multimedia	NNS
+data	NNS
+.	.
+
+This	DT
+graph	NN
+structure	NN
+,	,
+with	IN
+nodes	NNS
+being	VBG
+objects	NNS
+and	CC
+edges	NNS
+being	VBG
+relationships	NNS
+-LRB-	-LRB-
+spatiotemporal	JJ
+relationships	NNS
+-RRB-	-RRB-
+abstracts	NNS
+away	RB
+many	JJ
+details	NNS
+from	IN
+an	DT
+actual	JJ
+moving	VBG
+picture	NN
+At	IN
+the	DT
+same	JJ
+time	NN
+,	,
+it	PRP
+retains	VBZ
+a	DT
+detailed	JJ
+summary	NN
+of	IN
+spatial	JJ
+or	CC
+spatiotemporal	JJ
+relationships	NNS
+among	IN
+objects	NNS
+.	.
+
+A	DT
+moving	VBG
+object	NN
+is	VBZ
+modelled	VBN
+as	IN
+a	DT
+pair	NN
+-LRB-	-LRB-
+symbol	NN
+,	,
+track	NN
+-RRB-	-RRB-
+-LRB-	-LRB-
+called	VBN
+an	DT
+object	NN
+descriptor	NN
+-RRB-	-RRB-
+.	.
+
+The	DT
+symbol	NN
+uniquely	RB
+identiï	JJ
+¬	NN
+es	VBZ
+the	DT
+object	NN
+and	CC
+the	DT
+track	NN
+describes	VBZ
+how	WRB
+the	DT
+object	NN
+moves	NNS
+.	.
+
+A	DT
+scene	NN
+is	VBZ
+modeled	VBN
+as	IN
+a	DT
+graph	NN
+where	WRB
+the	DT
+nodes	NNS
+contain	VBP
+object	NN
+descriptors	NNS
+,	,
+and	CC
+the	DT
+edges	NNS
+are	VBP
+labeled	VBN
+by	IN
+spatiotemporal	JJ
+relationships	NNS
+-LRB-	-LRB-
+based	VBN
+on	IN
+our	PRP$
+2D-PIR	NN
+model	NN
+-RRB-	-RRB-
+.	.
+
+
+The	DT
+moving	VBG
+object	NN
+model	NN
+is	VBZ
+equipped	VBN
+with	IN
+several	JJ
+operations	NNS
+on	IN
+moving	VBG
+objects	NNS
+and	CC
+scenes	NNS
+which	WDT
+are	VBP
+useful	JJ
+,	,
+not	RB
+only	RB
+for	IN
+retrieving	VBG
+moving	VBG
+objects	NNS
+in	IN
+a	DT
+scene	NN
+database	NN
+,	,
+but	CC
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+32	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+307	CD
+
+
+ned	VBD
+both	DT
+
+
+ï	NN
+¬	SYM
+
+
+Ours	NNP
+
+
+Graph-based	JJ
+
+
+called	VBN
+symbolic	JJ
+
+
+scene	NN
+
+
+Each	DT
+moving	VBG
+
+
+object	NN
+has	VBZ
+a	DT
+
+
+track	NN
+which	WDT
+is	VBZ
+
+
+represented	VBN
+as	IN
+
+
+triplet	NN
+:	:
+distance	NN
+
+
+travelled	VBN
+,	,
+direc	NN
+-	:
+
+
+tion	NN
+and	CC
+time	NN
+
+
+interval	NN
+.	.
+
+
+Yes	UH
+,	,
+spatiotempo	NN
+-	:
+
+
+ral	NN
+relationships	NNS
+
+
+are	VBP
+de	IN
+
+
+for	IN
+individual	JJ
+and	CC
+
+
+multiple	JJ
+moving	VBG
+
+
+objects	NNS
+.	.
+
+
+Yes	UH
+
+
+Yes	UH
+
+
+Yes	UH
+
+
+Yes	UH
+
+
+Sistla	NNP
+
+
+Moving	VBG
+
+
+object	NN
+spa	SYM
+-	:
+
+
+tiotemporal	NN
+
+
+-LRB-	-LRB-
+MOST	JJS
+-RRB-	-RRB-
+
+
+No	DT
+
+
+Yes	UH
+
+
+No	DT
+
+
+Yes	UH
+
+
+No	DT
+
+
+No	DT
+
+
+Shearer	NNP
+
+
+2D	NN
+B-string	NN
+
+
+No	DT
+
+
+No	DT
+
+
+No	DT
+
+
+No	DT
+
+
+Yes	UH
+,	,
+partial	JJ
+
+
+similarity	NN
+
+
+matching	VBG
+
+
+No	DT
+
+
+Bimbo	NNP
+
+
+Spatiotemporal	JJ
+
+
+logic	NN
+
+
+No	DT
+
+
+Yes	UH
+,	,
+in	IN
+the	DT
+
+
+form	NN
+of	IN
+spa	NN
+-	:
+
+
+tiotemporal	NN
+
+
+logic	NN
+
+
+No	DT
+
+
+Yes	UH
+,	,
+ex	FW
+-	:
+
+
+pressed	VBN
+by	IN
+
+
+spatiotempo	NN
+-	:
+
+
+ral	NN
+logic	NN
+.	.
+
+
+No	DT
+
+
+No	DT
+
+
+-LRB-	-LRB-
+A	DT
+
+
+Dimitrova	NNP
+
+
+ned	VBN
+.	.
+
+
+Object-oriented	JJ
+
+
+video	NN
+is	VBZ
+a	DT
+composite	JJ
+
+
+object	NN
+of	IN
+triplet	NN
+:	:
+ob	SYM
+-	:
+
+
+ject	NN
+representation	NN
+,	,
+
+
+motion	NN
+represen	NN
+-	:
+
+
+tation	NN
+and	CC
+video	NN
+
+
+ID	NN
+-RRB-	-RRB-
+
+
+Each	DT
+moving	VBG
+object	NN
+
+
+has	VBZ
+a	DT
+trajectory	NN
+and	CC
+
+
+a	DT
+corresponding	JJ
+mo	NN
+-	:
+
+
+tion	NN
+description	NN
+.	.
+
+No	DT
+
+
+time	NN
+associated	VBN
+with	IN
+
+
+a	DT
+trajectory	NN
+.	.
+
+
+No	DT
+
+
+Query	NNP
+based	VBN
+on	IN
+tra	NN
+-	:
+
+
+jectory	NN
+is	VBZ
+supported	VBN
+.	.
+
+
+Similarity	NN
+matching	NN
+
+
+on	IN
+trajectory	NN
+is	VBZ
+al	NNP
+-	:
+
+
+lowed	JJ
+but	CC
+the	DT
+similar	JJ
+-	:
+
+
+ity	NN
+measure	NN
+is	VBZ
+not	RB
+de	IN
+-	:
+
+
+ï	NN
+¬	SYM
+
+
+No	DT
+
+
+No	DT
+
+
+No	DT
+
+
+-LRB-	-LRB-
+a	DT
+
+
+ed	VBN
+manually	RB
+.	.
+
+
+Lee	NNP
+
+
+ï	NN
+¬	SYM
+
+
+nition	NN
+of	IN
+sim	NN
+-	:
+
+
+ï	NN
+¬	SYM
+
+
+ned	VBN
+.	.
+
+A	DT
+track	NN
+
+
+ï	NN
+¬	SYM
+
+
+Video	NNP
+record	NN
+
+
+record	NN
+contains	VBZ
+clip	NN
+,	,
+
+
+text	NN
+annotation	NN
+and	CC
+
+
+track	NN
+record	NN
+-RRB-	-RRB-
+
+
+A	DT
+notion	NN
+of	IN
+track	NN
+is	VBZ
+
+
+de	IN
+
+
+is	VBZ
+a	DT
+combination	NN
+of	IN
+
+
+translation	NN
+and	CC
+rota	NN
+-	:
+
+
+tion	NN
+motions	NNS
+of	IN
+a	DT
+ob	NN
+-	:
+
+
+ject	NN
+.	.
+
+No	DT
+time	NN
+associ	NN
+-	:
+
+
+ated	VBN
+with	IN
+a	DT
+track	NN
+.	.
+
+
+No	DT
+
+
+Query	NNP
+by	IN
+a	DT
+track	NN
+
+
+is	VBZ
+speci	NN
+
+
+No	DT
+de	FW
+
+
+ilarity	NN
+on	IN
+tracks	NNS
+.	.
+
+
+No	DT
+
+
+No	DT
+
+
+No	DT
+
+
+Comparison	NN
+of	IN
+our	PRP$
+moving	VBG
+objects	NNS
+model	NN
+with	IN
+related	JJ
+models	NNS
+
+
+Features	NNS
+
+
+Data	NNS
+model	NN
+
+
+Motion	NNP
+rep	NN
+-	:
+
+
+resentation	NN
+
+
+Spatiotemporal	JJ
+
+
+relationships	NNS
+
+
+Query	NNP
+based	VBN
+
+
+on	IN
+trajectory	NN
+
+
+Query	NNP
+based	VBN
+
+
+on	IN
+spa	NN
+-	:
+
+
+tiotemporal	NN
+
+
+relationships	NNS
+
+
+Scene	NN
+sim	SYM
+-	:
+
+
+ilarity	NN
+re	SYM
+-	:
+
+
+trieval	NN
+
+
+Creation	NN
+of	IN
+
+
+new	JJ
+scenes	NNS
+
+
+Table	NNP
+0	CD
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+33	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+308	CD
+
+
+also	RB
+for	IN
+constructing	VBG
+new	JJ
+scenes	NNS
+from	IN
+existing	VBG
+ones	NNS
+.	.
+
+We	PRP
+illustrated	VBD
+in	IN
+speciï	NN
+¬	CD
+c	NN
+applications	NNS
+how	WRB
+to	TO
+retrieve	VB
+moving	VBG
+object	NN
+-LRB-	-LRB-
+s	NNS
+-RRB-	-RRB-
+stored	VBN
+in	IN
+a	DT
+database	NN
+and	CC
+create	VB
+new	JJ
+scenes	NNS
+from	IN
+existing	VBG
+ones	NNS
+using	VBG
+the	DT
+available	JJ
+operations	NNS
+.	.
+
+
+A	DT
+scene	NN
+graph	NN
+is	VBZ
+constructed	VBN
+from	IN
+a	DT
+sequence	NN
+of	IN
+images	NNS
+using	VBG
+a	DT
+simple	JJ
+,	,
+efï	NN
+¬	NN
+cient	NN
+method	NN
+.	.
+
+The	DT
+construction	NN
+leads	VBZ
+to	TO
+a	DT
+graph	NN
+structure	NN
+for	IN
+which	WDT
+an	DT
+efï	NN
+¬	NN
+cient	JJ
+scene-matching	JJ
+algorithm	NN
+has	VBZ
+been	VBN
+developed	VBN
+.	.
+
+Scene	NN
+retrieval	NN
+can	MD
+be	VB
+based	VBN
+on	IN
+exact	JJ
+scene	NN
+matching	VBG
+or	CC
+similarity	NN
+scene	NN
+matching	NN
+.	.
+
+We	PRP
+deï	VBP
+¬	CD
+ne	NN
+similarity	NN
+measures	NNS
+on	IN
+trajectories	NNS
+and	CC
+on	IN
+sequences	NNS
+of	IN
+2D-PIR	NN
+.	.
+
+For	IN
+scene	NN
+similarity	NN
+,	,
+we	PRP
+integrate	VBP
+trajectory	NN
+similarity	NN
+and	CC
+sequence	NN
+similarity	NN
+.	.
+
+We	PRP
+have	VBP
+implemented	VBN
+a	DT
+prototype	NN
+moving	VBG
+object	NN
+retrieval	NN
+system	NN
+.	.
+
+The	DT
+system	NN
+supports	VBZ
+sketch-based	JJ
+queries	NNS
+-LRB-	-LRB-
+graphical	JJ
+queries	NNS
+-RRB-	-RRB-
+and	CC
+a	DT
+symbolic	JJ
+query	NN
+language	NN
+.	.
+
+We	PRP
+consider	VBP
+both	DT
+kinds	NNS
+of	IN
+queries	NNS
+to	TO
+be	VB
+necessary	JJ
+to	TO
+effectively	RB
+handle	VB
+a	DT
+wide	JJ
+range	NN
+of	IN
+user	NN
+queries	NNS
+.	.
+
+We	PRP
+have	VBP
+compared	VBN
+our	PRP$
+model	NN
+with	IN
+several	JJ
+related	JJ
+models	NNS
+and	CC
+found	VBD
+that	IN
+it	PRP
+provides	VBZ
+more	RBR
+features	NNS
+:	:
+it	PRP
+supports	VBZ
+both	DT
+trajectories	NNS
+and	CC
+spatiotemporal	JJ
+relationships	NNS
+;	:
+it	PRP
+supports	VBZ
+approximate	JJ
+and	CC
+exact	JJ
+match	NN
+queries	NNS
+;	:
+it	PRP
+allows	VBZ
+the	DT
+generation	NN
+of	IN
+new	JJ
+scenes	NNS
+from	IN
+existing	VBG
+scenes	NNS
+.	.
+
+The	DT
+latter	JJ
+feature	NN
+is	VBZ
+unique	JJ
+to	TO
+our	PRP$
+model	NN
+.	.
+
+
+In	IN
+summary	NN
+,	,
+the	DT
+major	JJ
+contribution	NN
+of	IN
+this	DT
+paper	NN
+is	VBZ
+a	DT
+model	NN
+for	IN
+dynamic	JJ
+multimedia	NNS
+data	NNS
+.	.
+
+Based	VBN
+on	IN
+this	DT
+model	NN
+we	PRP
+develop	VBP
+formal	JJ
+similarity	NN
+measures	NNS
+on	IN
+trajectories	NNS
+,	,
+spatiotemporal	JJ
+relationships	NNS
+and	CC
+scenes	NNS
+so	IN
+that	IN
+similarity	NN
+retrieval	NN
+on	IN
+dynamic	JJ
+multimedia	NNS
+data	NNS
+can	MD
+be	VB
+conducted	VBN
+according	VBG
+to	TO
+user	NN
+needs	NNS
+.	.
+
+A	DT
+set	NN
+of	IN
+powerful	JJ
+operations	NNS
+on	IN
+moving	VBG
+objects	NNS
+are	VBP
+derived	VBN
+from	IN
+the	DT
+model	NN
+.	.
+
+We	PRP
+have	VBP
+shown	VBN
+how	WRB
+to	TO
+apply	VB
+these	DT
+operations	NNS
+for	IN
+asking	VBG
+queries	NNS
+about	IN
+moving	VBG
+objects	NNS
+in	IN
+a	DT
+number	NN
+of	IN
+useful	JJ
+applications	NNS
+.	.
+
+
+At	IN
+present	JJ
+,	,
+our	PRP$
+work	NN
+supports	VBZ
+only	RB
+translational	JJ
+motion	NN
+and	CC
+assumes	VBZ
+that	IN
+the	DT
+moving	VBG
+objects	NNS
+are	VBP
+reasonably	RB
+rigid	JJ
+.	.
+
+Hence	RB
+,	,
+complex	JJ
+motions	NNS
+such	JJ
+as	IN
+dust-storms	NNS
+or	CC
+tornadoes	NNS
+or	CC
+exploding	VBG
+objects	NNS
+can	MD
+not	RB
+be	VB
+represented	VBN
+.	.
+
+Nor	CC
+do	VB
+we	PRP
+currently	RB
+support	VBP
+rotation	NN
+and	CC
+scaling	NN
+of	IN
+images	NNS
+.	.
+
+Also	RB
+,	,
+our	PRP$
+work	NN
+depends	VBZ
+on	IN
+being	VBG
+able	JJ
+to	TO
+identify	VB
+scenes	NNS
+in	IN
+videos	NNS
+,	,
+identify	VBP
+the	DT
+objects	NNS
+in	IN
+each	DT
+image	NN
+in	IN
+a	DT
+scene	NN
+,	,
+and	CC
+track	VBP
+the	DT
+motion	NN
+of	IN
+objects	NNS
+over	IN
+a	DT
+temporal	JJ
+sequence	NN
+of	IN
+images	NNS
+.	.
+
+The	DT
+ï	NN
+¬	NN
+rst	NN
+of	IN
+these	DT
+tasks	NNS
+is	VBZ
+currently	RB
+the	DT
+subject	NN
+of	IN
+much	JJ
+work	NN
+,	,
+and	CC
+some	DT
+reasonable	JJ
+results	NNS
+are	VBP
+emerging	VBG
+-LRB-	-LRB-
+e.g.	FW
+-LSB-	-LRB-
+7	CD
+-RSB-	-RRB-
+-RRB-	-RRB-
+.	.
+
+The	DT
+other	JJ
+two	CD
+tasks	NNS
+can	MD
+not	RB
+be	VB
+accomplished	VBN
+automatically	RB
+at	IN
+present	JJ
+;	:
+although	IN
+semi-automatic	JJ
+methods	NNS
+are	VBP
+available	JJ
+for	IN
+object	NN
+segmentation	NN
+and	CC
+tracking	NN
+-LRB-	-LRB-
+e.g.	FW
+-LSB-	-LRB-
+9	CD
+-RSB-	-RRB-
+-RRB-	-RRB-
+.	.
+
+
+Future	JJ
+work	NN
+in	IN
+this	DT
+area	NN
+includes	VBZ
+investigating	VBG
+the	DT
+completeness	NN
+of	IN
+our	PRP$
+proposed	VBN
+oper	SYM
+-	:
+ations	NNS
+and	CC
+developing	VBG
+efï	NN
+¬	NN
+cient	NN
+query	NN
+processing	NN
+schemes	NNS
+.	.
+
+Another	DT
+interesting	JJ
+and	CC
+chal	JJ
+-	:
+lenging	NN
+aspect	NN
+for	IN
+future	JJ
+work	NN
+is	VBZ
+the	DT
+development	NN
+of	IN
+indexing	NN
+for	IN
+scenes	NNS
+to	TO
+improve	VB
+the	DT
+efï	NN
+¬	NN
+ciency	NN
+of	IN
+retrieval	NN
+.	.
+
+
+Acknowledgments	NNS
+
+
+We	PRP
+would	MD
+like	VB
+to	TO
+thank	VB
+the	DT
+annomymous	JJ
+referees	NNS
+for	IN
+the	DT
+very	RB
+helpful	JJ
+comments	NNS
+.	.
+
+
+Notes	NNS
+
+
+1	LS
+.	.
+
+Information	NNP
+Systems	NNP
+Group	NNP
+,	,
+Department	NNP
+of	IN
+Agroindustrial	NNP
+Technology	NNP
+,	,
+Bogor	NNP
+Agricultural	NNP
+University	NNP
+,	,
+
+
+Indonesia	NNP
+
+
+2	LS
+.	.
+
+INFORMATION	NN
+SYSTEMS	NNS
+GROUP	NNP
+,	,
+DEPARTMENT	NNP
+OF	IN
+AGROINDUSTRIAL	NNP
+TECHNOLOGY	NNP
+,	,
+BOGOR	NNP
+
+
+AGRICULTURAL	JJ
+UNIVERSITY	NN
+,	,
+INDONESIA	NNP
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+34	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+309	CD
+
+
+3	LS
+.	.
+
+INFORMATION	NN
+SYSTEMS	NNS
+GROUP	NNP
+,	,
+DEPARTMENT	NNP
+OF	IN
+AGROINDUSTRIAL	NNP
+TECHNOLOGY	NNP
+,	,
+BOGOR	NNP
+
+
+AGRICULTURAL	JJ
+UNIVERSITY	NN
+,	,
+INDONESIA	NNP
+
+
+4	LS
+.	.
+
+On	IN
+a	DT
+related	JJ
+point	NN
+,	,
+in	IN
+order	NN
+to	TO
+implement	VB
+our	PRP$
+model	NN
+,	,
+we	PRP
+assume	VBP
+that	IN
+some	DT
+mechanism	NN
+exists	VBZ
+to	TO
+identify	VB
+and	CC
+
+
+track	VB
+the	DT
+movement	NN
+of	IN
+individual	JJ
+objects	NNS
+in	IN
+a	DT
+picture	NN
+.	.
+
+While	IN
+this	DT
+process	NN
+can	MD
+not	RB
+currently	RB
+be	VB
+fully	RB
+automated	VBN
+,	,
+
+
+we	PRP
+assume	VBP
+that	IN
+image	NN
+processing	NN
+methods	NNS
+will	MD
+eventually	RB
+produce	VB
+an	DT
+automatic	JJ
+solution	NN
+.	.
+
+For	IN
+the	DT
+present	JJ
+,	,
+
+
+we	PRP
+can	MD
+use	VB
+existing	VBG
+semi-automatic	JJ
+techniques	NNS
+for	IN
+the	DT
+extraction	NN
+of	IN
+objects	NNS
+from	IN
+images	NNS
+and	CC
+the	DT
+tracking	NN
+of	IN
+
+
+object	NN
+movement	NN
+.	.
+
+
+5	CD
+.	.
+
+In	IN
+this	DT
+paper	NN
+,	,
+we	PRP
+concern	VBP
+ourselves	PRP
+primarily	RB
+with	IN
+2-dimensional	JJ
+scenes	NNS
+from	IN
+video	NN
+.	.
+
+In	IN
+fact	NN
+,	,
+our	PRP$
+model	NN
+
+
+extends	VBZ
+quite	RB
+naturally	RB
+to	TO
+3-dimensional	JJ
+image	NN
+data	NNS
+,	,
+or	CC
+indeed	RB
+-	:
+dimensional	JJ
+data	NNS
+.	.
+
+
+6	CD
+.	.
+
+We	PRP
+use	VBP
+the	DT
+term	NN
+â	RB
+$	$
+œsceneâ	JJ
+$	$
+to	TO
+denote	VB
+a	DT
+sequence	NN
+of	IN
+images	NNS
+from	IN
+a	DT
+single	JJ
+camera	NN
+over	IN
+a	DT
+contiguous	JJ
+time	NN
+period	NN
+.	.
+
+
+Other	JJ
+video	NN
+retrieval	NN
+work	NN
+uses	VBZ
+the	DT
+term	NN
+â	RB
+$	$
+œshotâ	JJ
+$	$
+to	TO
+apply	VB
+to	TO
+such	PDT
+a	DT
+sequence	NN
+.	.
+
+
+7	CD
+.	.
+
+This	DT
+is	VBZ
+not	RB
+unreasonable	JJ
+,	,
+given	VBN
+that	IN
+a	DT
+video	NN
+can	MD
+be	VB
+regarded	VBN
+as	IN
+a	DT
+sequence	NN
+of	IN
+still	RB
+images	NNS
+separated	VBN
+by	IN
+very	RB
+
+
+small	JJ
+time	NN
+intervals	NNS
+,	,
+and	CC
+we	PRP
+do	VBP
+not	RB
+actually	RB
+know	VB
+the	DT
+motion	NN
+of	IN
+objects	NNS
+in	IN
+between	IN
+the	DT
+two	CD
+image	NN
+instants	NNS
+.	.
+
+8	CD
+.	.
+
+Assume	VB
+that	IN
+the	DT
+repeated	VBN
+component	NN
+in	IN
+the	DT
+patterns	NNS
+will	MD
+be	VB
+elided	VBN
+by	IN
+the	DT
+concatenation	NN
+-LRB-	-LRB-
+-RRB-	-RRB-
+
+
+operation	NN
+.	.
+
+
+9	CD
+.	.
+
+We	PRP
+would	MD
+need	VB
+to	TO
+consider	VB
+all	DT
+objects	NNS
+if	IN
+no	DT
+semantic	JJ
+information	NN
+about	IN
+objects	NNS
+were	VBD
+available	JJ
+.	.
+
+
+References	NNS
+
+
+1	LS
+.	.
+
+T.	NNP
+Abraham	NNP
+and	CC
+J.F.	NNP
+Roddick	NNP
+.	.
+
+Survey	NN
+of	IN
+spatio-temporal	JJ
+databases	NNS
+.	.
+
+Technical	NNP
+Report	NNP
+CS-96-011	NNP
+,	,
+Advanced	NNP
+
+
+Computing	NNP
+Research	NNP
+Centre	NNP
+,	,
+School	NNP
+of	IN
+Computer	NNP
+and	CC
+Information	NNP
+Science	NNP
+,	,
+The	NNP
+University	NNP
+of	IN
+South	NNP
+
+
+Australia	NNP
+,	,
+December	NNP
+1996	CD
+.	.
+
+
+2	LS
+.	.
+
+ACM	NNP
+.	.
+
+Special	JJ
+feature	NN
+on	IN
+visual	JJ
+information	NN
+management	NN
+.	.
+
+Communications	NNPS
+of	IN
+the	DT
+ACM	NNP
+,	,
+40	CD
+-LRB-	-LRB-
+12	CD
+-RRB-	-RRB-
+,	,
+December	NNP
+
+
+1997	CD
+.	.
+
+
+3	LS
+.	.
+
+K.	NNP
+K.	NNP
+Al-Taha	NNP
+,	,
+R.	NNP
+T.	NNP
+Snodgrass	NNP
+,	,
+and	CC
+M.	NNP
+D.	NNP
+Soo	NNP
+.	.
+
+Bibliography	NN
+on	IN
+spatiotemporal	JJ
+databases	NNS
+.	.
+
+ACM	JJ
+SIGMOD	NN
+
+
+Record	NNP
+,	,
+22	CD
+-LRB-	-LRB-
+1	CD
+-RRB-	-RRB-
+:59	CD
+â	NN
+$	$
+``	``
+67	CD
+,	,
+March	NNP
+1993	CD
+.	.
+
+
+4	LS
+.	.
+
+J.	NNP
+F.	NNP
+Allen	NNP
+.	.
+
+Maintaining	VBG
+knowledge	NN
+about	IN
+temporal	JJ
+intervals	NNS
+.	.
+
+Communications	NNPS
+of	IN
+the	DT
+ACM	NNP
+,	,
+26	CD
+-LRB-	-LRB-
+11	CD
+-RRB-	-RRB-
+:832	CD
+â	NN
+$	$
+``	``
+843	CD
+,	,
+
+
+November	NNP
+1983	CD
+.	.
+
+
+5	CD
+.	.
+
+E.	NNP
+Bertino	NNP
+,	,
+M.	NNP
+Damiani	NNP
+,	,
+and	CC
+P.	NNP
+Randi	NNP
+.	.
+
+Multimedia	NNP
+data	NNS
+handling	VBG
+in	IN
+a	DT
+knowledge	NN
+representation	NN
+system	NN
+.	.
+
+
+In	IN
+Future	NNP
+Database	NNP
+â	VBD
+$	$
+™	CD
+92	CD
+:	:
+Proceedings	NNP
+of	IN
+the	DT
+Second	JJ
+Far-East	NNP
+Workshop	NNP
+on	IN
+Future	NNP
+Database	NNP
+Systems	NNPS
+,	,
+
+
+volume	NN
+3	CD
+of	IN
+Advanced	NNP
+Database	NNP
+Research	NNP
+and	CC
+Development	NNP
+Series	NNP
+,	,
+pages	NNS
+133â	VBP
+$	$
+``	``
+141	CD
+,	,
+Kyoto	NNP
+,	,
+Japan	NNP
+,	,
+April	NNP
+
+
+1992	CD
+.	.
+
+World	NNP
+Scientiï	NNP
+¬	CD
+c.	IN
+
+
+6	CD
+.	.
+
+A.D.	NNP
+Bimbo	NNP
+,	,
+E.	NNP
+Vicario	NNP
+,	,
+and	CC
+D.	NNP
+Zingoni	NNP
+.	.
+
+Symbolic	JJ
+description	NN
+and	CC
+visual	JJ
+querying	NN
+of	IN
+image	NN
+sequences	NNS
+
+
+using	VBG
+spatio-temporal	JJ
+logic	NN
+.	.
+
+IEEE	NNP
+Transaction	NNP
+on	IN
+Knowledge	NNP
+and	CC
+Data	NNP
+Engineering	NNP
+,	,
+7	CD
+-LRB-	-LRB-
+4	CD
+-RRB-	-RRB-
+:609	CD
+â	NN
+$	$
+``	``
+621	CD
+,	,
+August	NNP
+
+
+1995	CD
+.	.
+
+
+7	CD
+.	.
+
+J.S.	NNP
+Boreczky	NNP
+and	CC
+L.A.	NNP
+Rowe	NNP
+.	.
+
+Comparison	NN
+of	IN
+video	NN
+shot	NN
+boundary	NN
+detection	NN
+techniques	NNS
+.	.
+
+In	IN
+Storage	NNP
+and	CC
+
+
+Retrieval	NN
+for	IN
+Image	NN
+and	CC
+Video	NNP
+Databases	NNP
+IV	CD
+,	,
+volume	NN
+2670	CD
+of	IN
+SPIE	NNP
+Proceedings	NNP
+,	,
+pages	NNS
+170â	VBP
+$	$
+``	``
+179	CD
+,	,
+San	NNP
+
+
+Diego/La	NNP
+Jolla	NNP
+,	,
+California	NNP
+,	,
+February	NNP
+1996	CD
+.	.
+
+The	DT
+International	NNP
+Society	NNP
+for	IN
+Optical	NNP
+Engineering	NNP
+.	.
+
+
+8	CD
+.	.
+
+S.	NNP
+K.	NNP
+Chang	NNP
+,	,
+Q.	NNP
+Y.	NNP
+Shi	NNP
+,	,
+and	CC
+C.	NNP
+W.	NNP
+Yan	NNP
+.	.
+
+Iconic	JJ
+indexing	NN
+by	IN
+2D	NN
+strings	NNS
+.	.
+
+IEEE	NNP
+Transactions	NNS
+on	IN
+Pattern	NN
+
+
+Recognition	NN
+and	CC
+Machine	NN
+Intelligent	JJ
+,	,
+PAMI-9	NN
+-LRB-	-LRB-
+3	CD
+-RRB-	-RRB-
+:413	CD
+â	NN
+$	$
+``	``
+428	CD
+,	,
+1987	CD
+.	.
+
+
+9	CD
+.	.
+
+N.	NNP
+Dimitrova	NNP
+and	CC
+F.	NNP
+Golshani	NNP
+.	.
+
+Motion	NNP
+recovery	NN
+for	IN
+video	NN
+content	NN
+classiï	NN
+¬	CD
+cation	NN
+.	.
+
+ACM	NNP
+Transactions	NNS
+on	IN
+
+
+Information	NNP
+Systems	NNP
+,	,
+13	CD
+-LRB-	-LRB-
+4	CD
+-RRB-	-RRB-
+:408	CD
+â	NN
+$	$
+``	``
+439	CD
+,	,
+October	NNP
+1995	CD
+.	.
+
+
+10	CD
+.	.
+
+M.	NNP
+J.	NNP
+Egenhofer	NNP
+.	.
+
+Point-set	JJ
+topological	JJ
+spatial	JJ
+relations	NNS
+.	.
+
+Int	NN
+.	.
+
+J.	NNP
+Geographical	NNP
+Information	NNP
+Systems	NNP
+,	,
+5	CD
+-LRB-	-LRB-
+2	CD
+-RRB-	-RRB-
+:161	CD
+â	NN
+$	$
+``	``
+
+
+174	CD
+,	,
+1991	CD
+.	.
+
+
+11	CD
+.	.
+
+M.	NNP
+Flickner	NNP
+,	,
+H.	NNP
+Sawhney	NNP
+,	,
+W.	NNP
+Niblack	NNP
+,	,
+J.	NNP
+Ashley	NNP
+,	,
+Q.	NNP
+Huang	NNP
+,	,
+B.	NNP
+Dom	NNP
+,	,
+M.	NNP
+Gorkani	NNP
+,	,
+J.	NNP
+Hafner	NNP
+,	,
+D.	NNP
+Lee	NNP
+,	,
+
+
+D.	NNP
+Petkovic	NNP
+,	,
+D.	NNP
+Steele	NNP
+,	,
+and	CC
+P.	NNP
+Yanker	NNP
+.	.
+
+Query	NNP
+by	IN
+image	NN
+and	CC
+video	NN
+content	NN
+:	:
+The	DT
+QBIC	NN
+system	NN
+.	.
+
+IEEE	NN
+
+
+Computer	NN
+,	,
+pages	NNS
+23â	VBP
+$	$
+``	``
+32	CD
+,	,
+September	NNP
+1995	CD
+.	.
+
+
+12	CD
+.	.
+
+C.	NNP
+Freksa	NNP
+.	.
+
+Temporal	JJ
+reasoning	NN
+based	VBN
+on	IN
+semi-intervals	NNS
+.	.
+
+Artiï	NNP
+¬	CD
+cial	JJ
+Intelligence	NNP
+,	,
+54	CD
+-LRB-	-LRB-
+1-2	CD
+-RRB-	-RRB-
+:199	CD
+â	NN
+$	$
+``	``
+227	CD
+,	,
+1992	CD
+.	.
+
+13	CD
+.	.
+
+O.	NNP
+Guenther	NNP
+and	CC
+A.	NNP
+Buchmann	NNP
+.	.
+
+Research	NNP
+issues	NNS
+in	IN
+spatial	JJ
+databases	NNS
+.	.
+
+ACM	NNP
+SIGMOD	NNP
+Record	NNP
+,	,
+19	CD
+-LRB-	-LRB-
+4	CD
+-RRB-	-RRB-
+:61	CD
+â	NN
+$	$
+``	``
+68	CD
+,	,
+
+
+December	NNP
+1990	CD
+.	.
+
+
+14	CD
+.	.
+
+R.	NNP
+Hjelsvold	NNP
+.	.
+
+Video	NNP
+information	NN
+contents	NNS
+and	CC
+architecture	NN
+.	.
+
+InAdvances	NNS
+in	IN
+Database	NNP
+Technology	NNP
+-	:
+EDBTâ	NN
+$	$
+™	CD
+94	CD
+.	.
+
+
+Fourth	JJ
+International	NNP
+Conference	NNP
+on	IN
+Extending	NNP
+Database	NNP
+Technology	NNP
+,	,
+volume	NN
+779	CD
+of	IN
+Lecture	NNP
+Notes	NNP
+In	IN
+
+
+Computer	NNP
+Science	NNP
+,	,
+pages	NNS
+259â	VBP
+$	$
+``	``
+272	CD
+.	.
+
+Springer-Verlag	NNP
+,	,
+Cambridge	NNP
+,	,
+U.K.	NNP
+,	,
+March	NNP
+1994	CD
+.	.
+
+
+15	CD
+.	.
+
+K.	NNP
+Kaneko	NNP
+,	,
+S.	NNP
+Kuroki	NNP
+,	,
+and	CC
+A.	NN
+Makinouchi	NNP
+.	.
+
+Design	NN
+of	IN
+3D	NN
+CG	NN
+data	NNS
+model	NN
+of	IN
+â	JJ
+$	$
+œmoveâ	JJ
+$	$
+animation	NN
+database	NN
+
+
+system	NN
+.	.
+
+In	IN
+Future	NNP
+Database	NNP
+â	VBD
+$	$
+™	CD
+92	CD
+:	:
+Proceedings	NNP
+of	IN
+the	DT
+Second	JJ
+Far-East	NNP
+Workshop	NNP
+on	IN
+Future	NNP
+Database	NNP
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+35	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+310	CD
+
+
+Systems	NNPS
+,	,
+volume	NN
+3	CD
+ofAdvanced	NNP
+Database	NNP
+Research	NNP
+and	CC
+Development	NNP
+Series	NNP
+,	,
+pages	NNS
+364â	VBP
+$	$
+``	``
+372	CD
+,	,
+Kyoto	NNP
+,	,
+Japan	NNP
+,	,
+
+
+April	NNP
+1992	CD
+.	.
+
+World	NNP
+Scientiï	NNP
+¬	CD
+c.	IN
+
+
+16	CD
+.	.
+
+N.	NNP
+Kline	NNP
+.	.
+
+An	DT
+update	VBP
+of	IN
+the	DT
+temporal	JJ
+database	NN
+bibliography	NN
+.	.
+
+Technical	NNP
+Report	NNP
+TEMPIS	NNP
+No.	NNP
+58	CD
+,	,
+Department	NNP
+
+
+of	IN
+Computer	NNP
+Science	NNP
+,	,
+The	NNP
+University	NNP
+of	IN
+Arizona	NNP
+,	,
+1993	CD
+.	.
+
+
+17	CD
+.	.
+
+S-Y	NN
+.	.
+
+Lee	NNP
+and	CC
+H-M	NNP
+.	.
+
+Kao	NNP
+.	.
+
+Video	NNP
+indexing	NN
+â	VBD
+$	$
+``	``
+an	DT
+approach	NN
+based	VBN
+on	IN
+moving	VBG
+object	NN
+and	CC
+track	NN
+.	.
+
+In	IN
+Storage	NNP
+
+
+and	CC
+Retrieval	NNP
+for	IN
+Image	NN
+and	CC
+Video	NNP
+Databases	NNP
+,	,
+volume	NN
+1908	CD
+of	IN
+SPIE	NNP
+Proceedings	NNP
+,	,
+pages	NNS
+25â	VBP
+$	$
+``	``
+36	CD
+.	.
+
+The	DT
+
+
+International	NNP
+Society	NNP
+for	IN
+Optical	NNP
+Engineering	NNP
+,	,
+February	NNP
+1993	CD
+.	.
+
+
+18	CD
+.	.
+
+K.	NNP
+Li	NNP
+,	,
+N.	NNP
+Badji	NNP
+,	,
+and	CC
+R.	NNP
+Laurini	NNP
+.	.
+
+Modeling	VBG
+moving	VBG
+objects	NNS
+in	IN
+spatiotemporal	JJ
+databases	NNS
+.	.
+
+Technical	NNP
+report	NN
+,	,
+
+
+Department	NNP
+of	IN
+Information	NNP
+and	CC
+Communication	NNP
+Engineering	NNP
+,	,
+KAIST	NNP
+,	,
+1992	CD
+.	.
+
+
+19	CD
+.	.
+
+H.	NNP
+Mo	NNP
+,	,
+S.	NNP
+Satoh	NNP
+,	,
+and	CC
+M.	NNP
+Sakauchi	NNP
+.	.
+
+A	DT
+study	NN
+of	IN
+image	NN
+recognition	NN
+using	VBG
+similarity	NN
+retrieval	NN
+.	.
+
+In	IN
+Visualâ	NNP
+$	$
+™	CD
+96	CD
+:	:
+
+
+First	NNP
+International	NNP
+Conference	NNP
+on	IN
+Visual	NNP
+Information	NNP
+Systems	NNP
+,	,
+pages	NNS
+136â	VBP
+$	$
+``	``
+151	CD
+,	,
+February	NNP
+1996	CD
+.	.
+
+20	CD
+.	.
+
+M.	NNP
+Nabil	NNP
+.	.
+
+Modelling	VBG
+and	CC
+Retrieving	VBG
+Multimedia	NNP
+Data	NNP
+Using	VBG
+Spatial	JJ
+and	CC
+Temporal	JJ
+Information	NN
+.	.
+
+PhD	NN
+thesis	NN
+,	,
+
+
+School	NNP
+of	IN
+Computer	NNP
+Science	NNP
+and	CC
+Engineering	NNP
+,	,
+The	NNP
+University	NNP
+of	IN
+New	NNP
+South	NNP
+Wales	NNP
+,	,
+1997	CD
+.	.
+
+
+21	CD
+.	.
+
+M.	NNP
+Nabil	NNP
+,	,
+A.	NNP
+H.	NNP
+H.	NNP
+Ngu	NNP
+,	,
+and	CC
+J.	NNP
+Shepherd	NNP
+.	.
+
+Modelling	VBG
+spatiotemporal	JJ
+relationships	NNS
+in	IN
+multimedia	NNS
+database	NN
+.	.
+
+
+In	IN
+IEEE	NNP
+Workshop	NNP
+in	IN
+Spatial	NNP
+and	CC
+Temporal	JJ
+Interaction	NN
+:	:
+Representation	NN
+and	CC
+Reasoning	NN
+,	,
+pages	NNS
+171â	VBP
+$	$
+``	``
+189	CD
+,	,
+
+
+Singapore	NNP
+,	,
+November	NNP
+1994	CD
+.	.
+
+
+22	CD
+.	.
+
+M.	NNP
+Nabil	NNP
+,	,
+A.	NNP
+H.	NNP
+H.	NNP
+Ngu	NNP
+,	,
+and	CC
+J.	NNP
+Shepherd	NNP
+.	.
+
+A	DT
+uniï	JJ
+¬	NN
+ed	VBD
+representation	NN
+of	IN
+spatial	JJ
+and	CC
+temporal	JJ
+information	NN
+in	IN
+
+
+multimedia	NNS
+database	NN
+.	.
+
+In	IN
+Proceedings	NNP
+of	IN
+The	DT
+Third	NNP
+International	NNP
+Conference	NNP
+on	IN
+Automation	NNP
+,	,
+Robotics	NNP
+and	CC
+
+
+Computer	NN
+Vision	NNP
+,	,
+pages	NNS
+374â	VBP
+$	$
+``	``
+378	CD
+,	,
+Singapore	NNP
+,	,
+November	NNP
+1994	CD
+.	.
+
+
+23	CD
+.	.
+
+M.	NNP
+Nabil	NNP
+,	,
+A.	NNP
+H.	NNP
+H.	NNP
+Ngu	NNP
+,	,
+and	CC
+J.	NNP
+Shepherd	NNP
+.	.
+
+Picture	NNP
+similarity	NN
+retrieval	NN
+using	VBG
+2d	JJ
+projection	NN
+interval	NN
+represen	NN
+-	:
+
+
+tation	NN
+.	.
+
+IEEE	NNP
+Transactions	NNS
+on	IN
+Knowledge	NN
+and	CC
+Data	NNP
+Engineering	NNP
+,	,
+8	CD
+-LRB-	-LRB-
+4	CD
+-RRB-	-RRB-
+:533	CD
+â	NN
+$	$
+``	``
+539	CD
+,	,
+1996	CD
+.	.
+
+
+24	CD
+.	.
+
+M.	NNP
+Nabil	NNP
+,	,
+J.	NNP
+Shepherd	NNP
+,	,
+and	CC
+A.	NN
+H.H.	NNP
+Ngu	NNP
+.	.
+
+An	DT
+image	NN
+retrieval	NN
+system	NN
+for	IN
+distributed	VBN
+environments	NNS
+.	.
+
+In	IN
+Eighth	NNP
+
+
+International	NNP
+Workshop	NNP
+on	IN
+Research	NNP
+Issues	NNP
+in	IN
+Data	NNP
+Engineering	NNP
+-LRB-	-LRB-
+RIDE98	NN
+-RRB-	-RRB-
+â	RB
+$	$
+``	``
+Continuous-Media	NNP
+Databases	NNP
+
+
+and	CC
+Applications	NNS
+,	,
+pages	NNS
+67â	VBP
+$	$
+``	``
+74	CD
+,	,
+Orlando	NNP
+,	,
+Florida	NNP
+,	,
+February	NNP
+1998	CD
+.	.
+
+
+25	CD
+.	.
+
+A.	NN
+Nagasaka	NNP
+and	CC
+Y.	NNP
+Tanaka	NNP
+.	.
+
+Automatic	NNP
+video	JJ
+indexing	NN
+and	CC
+full-video	NN
+search	NN
+for	IN
+object	NN
+appearances	NNS
+.	.
+
+In	IN
+
+
+Visual	JJ
+Database	NNP
+Systems	NNP
+II	NNP
+,	,
+pages	NNS
+113â	VBP
+$	$
+``	``
+127	CD
+.	.
+
+Elsevier	NNP
+Science	NNP
+Publishers	NNPS
+,	,
+1992	CD
+.	.
+
+
+26	CD
+.	.
+
+E.	NNP
+Oomoto	NNP
+and	CC
+K.	NNP
+Tanaka	NNP
+.	.
+
+OVID	NNP
+:	:
+Design	NN
+and	CC
+implementation	NN
+of	IN
+a	DT
+video-object	NN
+database	NN
+system	NN
+.	.
+
+IEEE	NN
+
+
+Transactions	NNS
+on	IN
+Knowledge	NN
+and	CC
+Data	NNP
+Engineering	NNP
+,	,
+5	CD
+-LRB-	-LRB-
+4	CD
+-RRB-	-RRB-
+:629	CD
+â	NN
+$	$
+``	``
+643	CD
+,	,
+August	NNP
+1994	CD
+.	.
+
+
+27	CD
+.	.
+
+H.	NNP
+Samet	NNP
+.	.
+
+The	DT
+Design	NN
+and	CC
+Analysis	NN
+of	IN
+Spatial	NNP
+Data	NNP
+Structures	NNPS
+.	.
+
+Addison-Wesley	NNP
+Publishing	NNP
+Co.	NNP
+,	,
+1990	CD
+.	.
+
+28	CD
+.	.
+
+S.Devadiga	NNP
+,	,
+D.A.	NNP
+Kosiba	NNP
+,	,
+U.	NNP
+Gargi	NNP
+,	,
+S.	NNP
+Oswld	NNP
+,	,
+and	CC
+R.	NNP
+Kasturi	NNP
+.	.
+
+A	DT
+semiaoutomatic	JJ
+video	NN
+database	NN
+system	NN
+.	.
+
+In	IN
+
+
+W.	NNP
+Niblack	NNP
+and	CC
+R.	NNP
+C.	NNP
+Jain	NNP
+,	,
+editors	NNS
+,	,
+Storage	NNP
+and	CC
+Retrieval	NNP
+for	IN
+Image	NN
+and	CC
+Video	NNP
+Databases	NNP
+III	NNP
+,	,
+volume	NN
+2420	CD
+
+
+of	IN
+SPIE	NNP
+Proceedings	NNP
+,	,
+pages	NNS
+262â	VBP
+$	$
+``	``
+267	CD
+.	.
+
+The	DT
+International	NNP
+Society	NNP
+for	IN
+Optical	NNP
+Engineering	NNP
+,	,
+February	NNP
+1995	CD
+.	.
+
+29	CD
+.	.
+
+K.	NNP
+Shearer	NNP
+,	,
+S.K.	NNP
+Vankatesh	NNP
+,	,
+and	CC
+D.	NNP
+Kieronska	NNP
+.	.
+
+The	DT
+visitors	NNS
+guide	NN
+:	:
+a	DT
+simple	JJ
+video	NN
+reuse	NN
+application	NN
+.	.
+
+
+Department	NNP
+of	IN
+Computer	NNP
+Science	NNP
+,	,
+Curtin	NNP
+University	NNP
+of	IN
+Technology	NNP
+,	,
+Australia	NNP
+,	,
+1996	CD
+.	.
+
+
+30	CD
+.	.
+
+A.P.	NNP
+Sistla	NNP
+,	,
+O.	NNP
+Wolfson	NNP
+,	,
+S.	NNP
+Chamberlain	NNP
+,	,
+and	CC
+S.	NNP
+Dao	NNP
+.	.
+
+Modeling	NN
+and	CC
+querying	VBG
+moving	VBG
+objects	NNS
+.	.
+
+InProceedings	NNS
+
+
+of	IN
+the	DT
+Thirteenth	NNP
+International	NNP
+Conference	NNP
+on	IN
+DataEngineering	NNP
+-LRB-	-LRB-
+ICDEâ	NNP
+$	$
+™	CD
+97	CD
+-RRB-	-RRB-
+,	,
+pages	NNS
+422â	VBP
+$	$
+``	``
+432	CD
+,	,
+Birmingham	NNP
+,	,
+
+
+U.K.	NNP
+,	,
+April	NNP
+1997	CD
+.	.
+
+
+31	CD
+.	.
+
+C.	NNP
+T.	NNP
+Yu	NNP
+and	CC
+W.	NNP
+Meng	NNP
+.	.
+
+Principles	NNS
+of	IN
+Database	NNP
+Query	NNP
+Processing	NNP
+for	IN
+Advanced	NNP
+Applications	NNS
+.	.
+
+Morgan	NNP
+
+
+Kaufmann	NNP
+Series	NNP
+in	IN
+Data	NNP
+Management	NNP
+Systems	NNP
+.	.
+
+Morgan	NNP
+Kaufmann	NNP
+Publishers	NNPS
+,	,
+1998	CD
+.	.
+
+
+32	CD
+.	.
+
+H.-J	NN
+.	.
+
+Zhang	NNP
+,	,
+S.	NNP
+W.	NNP
+Smoliar	NNP
+,	,
+and	CC
+J.	NNP
+H.	NNP
+Wu	NNP
+.	.
+
+Development	NN
+of	IN
+a	DT
+video	NN
+database	NN
+system	NN
+.	.
+
+In	IN
+Digital	NNP
+Libraries	NNPS
+:	:
+
+
+Current	JJ
+Issues	NNS
+,	,
+Digital	NNP
+Libraries	NNPS
+Workshop	NNP
+,	,
+volume	NN
+916	CD
+of	IN
+Lecture	NNP
+Notes	NNP
+in	IN
+Computer	NNP
+Science	NNP
+,	,
+pages	NNS
+
+
+253â	JJ
+$	$
+``	``
+264	CD
+.	.
+
+Springer-Verlag	NNP
+,	,
+May	NNP
+1994	CD
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+36	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+

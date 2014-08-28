@@ -1,0 +1,13423 @@
+Joint	NNP
+Cluster	NNP
+Analysis	NN
+of	IN
+Attribute	NNP
+Data	NNP
+and	CC
+Relationship	NN
+Data	NNS
+:	:
+
+
+the	DT
+Connected	VBN
+k-Center	NN
+Problem	NNP
+
+
+Martin	NNP
+Ester	NNP
+,	,
+Rong	NNP
+Ge	NNP
+,	,
+Byron	NNP
+J.	NNP
+Gao	NNP
+,	,
+Zengjian	NNP
+Hu	NNP
+,	,
+Boaz	NNP
+Ben-Moshe	NNP
+School	NNP
+of	IN
+Computing	NNP
+Science	NNP
+,	,
+Simon	NNP
+Fraser	NNP
+University	NNP
+,	,
+Canada	NNP
+,	,
+V5A	NN
+1S6	NN
+
+
+-LCB-	-LRB-
+ester	NN
+,	,
+rge	NN
+,	,
+bgao	NN
+,	,
+zhu	NN
+,	,
+benmoshe	NN
+-RCB-	-RRB-
+@cs	NNS
+.	.
+
+sfu.ca	NN
+
+
+Abstract	JJ
+
+
+Attribute	VB
+data	NNS
+and	CC
+relationship	NN
+data	NNS
+are	VBP
+two	CD
+principle	JJ
+types	NNS
+of	IN
+data	NNS
+,	,
+representing	VBG
+the	DT
+intrinsic	JJ
+and	CC
+extrinsic	JJ
+properties	NNS
+of	IN
+entities	NNS
+.	.
+
+While	IN
+attribute	NN
+data	NNS
+has	VBZ
+been	VBN
+the	DT
+main	JJ
+source	NN
+of	IN
+data	NNS
+for	IN
+cluster	NN
+analysis	NN
+,	,
+relation	NN
+-	:
+ship	NN
+data	NNS
+such	JJ
+as	IN
+social	JJ
+networks	NNS
+or	CC
+metabolic	JJ
+networks	NNS
+are	VBP
+becoming	VBG
+increasingly	RB
+available	JJ
+.	.
+
+It	PRP
+is	VBZ
+also	RB
+common	JJ
+to	TO
+observe	VB
+both	DT
+data	NNS
+types	NNS
+carry	VBP
+orthogonal	JJ
+informa	NN
+-	:
+tion	NN
+such	JJ
+as	IN
+in	IN
+market	NN
+segmentation	NN
+and	CC
+community	NN
+identiï	NN
+¬	CD
+cation	NN
+,	,
+which	WDT
+calls	VBZ
+for	IN
+a	DT
+joint	JJ
+cluster	NN
+analysis	NN
+of	IN
+both	DT
+data	NNS
+types	NNS
+so	RB
+as	IN
+to	TO
+achieve	VB
+more	JJR
+accurate	JJ
+results	NNS
+.	.
+
+For	IN
+this	DT
+purpose	NN
+,	,
+we	PRP
+introduce	VBP
+the	DT
+novel	JJ
+Connected	VBN
+k	NN
+-	:
+Center	NNP
+problem	NN
+,	,
+taking	VBG
+into	IN
+account	NN
+attribute	NN
+data	NNS
+as	RB
+well	RB
+as	IN
+relationship	NN
+data	NNS
+.	.
+
+We	PRP
+analyze	VBP
+the	DT
+complexity	NN
+of	IN
+this	DT
+problem	NN
+and	CC
+prove	VB
+its	PRP$
+NP-completeness	NN
+.	.
+
+We	PRP
+also	RB
+present	VBP
+a	DT
+constant	JJ
+factor	NN
+approximation	NN
+algorithm	NN
+,	,
+based	VBN
+on	IN
+which	WDT
+we	PRP
+further	RB
+design	VB
+NetScan	NNP
+,	,
+a	DT
+heuristic	NN
+algorithm	NN
+that	WDT
+is	VBZ
+eï	NN
+¬	NN
+ƒcient	NN
+for	IN
+large	JJ
+,	,
+real	JJ
+databases	NNS
+.	.
+
+Our	PRP$
+experimental	JJ
+evaluation	NN
+demonstrates	VBZ
+the	DT
+meaningful	JJ
+-	:
+ness	NN
+and	CC
+accuracy	NN
+of	IN
+the	DT
+NetScan	NNP
+results	NNS
+.	.
+
+
+1	CD
+Introduction	NN
+
+
+Entities	NNS
+can	MD
+be	VB
+described	VBN
+by	IN
+two	CD
+principal	JJ
+types	NNS
+of	IN
+data	NNS
+:	:
+attribute	NN
+data	NNS
+and	CC
+relationship	NN
+data	NNS
+.	.
+
+Attribute	VB
+data	NNS
+describe	VBP
+intrinsic	JJ
+characteristics	NNS
+of	IN
+entities	NNS
+whereas	IN
+relationship	NN
+data	NNS
+represent	VBP
+extrinsic	JJ
+inï	NN
+¬	CD
+‚	CD
+uences	NNS
+among	IN
+entities	NNS
+.	.
+
+By	IN
+entities	NNS
+we	PRP
+mean	VBP
+corporeal	JJ
+or	CC
+intangible	JJ
+objects	NNS
+of	IN
+study	NN
+interest	NN
+that	WDT
+have	VBP
+distinctions	NNS
+,	,
+such	JJ
+as	IN
+humans	NNS
+,	,
+organizations	NNS
+,	,
+products	NNS
+,	,
+or	CC
+events	NNS
+.	.
+
+An	DT
+entity	NN
+holds	VBZ
+endogenous	JJ
+properties	NNS
+and	CC
+at	IN
+the	DT
+same	JJ
+time	NN
+bears	VBZ
+relations	NNS
+to	TO
+other	JJ
+entities	NNS
+.	.
+
+
+While	IN
+attribute	NN
+data	NNS
+continue	VBP
+to	TO
+be	VB
+the	DT
+standard	NN
+and	CC
+dominant	JJ
+data	NNS
+source	NN
+in	IN
+data	NN
+analysis	NN
+applications	NNS
+,	,
+more	JJR
+and	CC
+more	JJR
+relationship	NN
+data	NNS
+are	VBP
+becoming	VBG
+available	JJ
+due	JJ
+to	TO
+computerized	JJ
+automation	NN
+of	IN
+data	NNS
+probing	VBG
+,	,
+collec	NN
+-	:
+tion	NN
+,	,
+and	CC
+compiling	VBG
+procedures	NNS
+.	.
+
+Among	IN
+them	PRP
+,	,
+to	TO
+name	VB
+a	DT
+few	JJ
+,	,
+are	VBP
+acquaintance	NN
+and	CC
+collaboration	NN
+networks	NNS
+as	IN
+social	JJ
+networks	NNS
+,	,
+and	CC
+ecological	JJ
+,	,
+neural	JJ
+and	CC
+metabolic	JJ
+networks	NNS
+as	IN
+biological	JJ
+networks	NNS
+.	.
+
+Consequently	RB
+,	,
+network	NN
+analysis	NN
+-LSB-	-LRB-
+26	CD
+,	,
+23	CD
+,	,
+27	CD
+-RSB-	-RRB-
+has	VBZ
+been	VBN
+gaining	VBG
+popularity	NN
+in	IN
+the	DT
+study	NN
+of	IN
+marketing	NN
+,	,
+community	NN
+identiï	NN
+¬	CD
+cation	NN
+,	,
+epidemi	NN
+-	:
+
+
+ology	NN
+,	,
+molecular	JJ
+biology	NN
+and	CC
+so	RB
+on	IN
+.	.
+
+
+The	DT
+two	CD
+types	NNS
+of	IN
+data	NNS
+,	,
+attribute	VBP
+data	NNS
+and	CC
+relation	NN
+-	:
+ship	NN
+data	NNS
+,	,
+can	MD
+be	VB
+more	RBR
+or	CC
+less	RBR
+related	JJ
+.	.
+
+A	DT
+certain	JJ
+re	SYM
+-	:
+lation	NN
+between	IN
+entity	NN
+A	NN
+and	CC
+B	NN
+may	MD
+imply	VB
+some	DT
+com	NN
+-	:
+mon	NN
+attributes	NNS
+they	PRP
+share	VBP
+;	:
+on	IN
+the	DT
+other	JJ
+hand	NN
+,	,
+similar	JJ
+attributes	NNS
+of	IN
+A	NN
+and	CC
+B	NN
+may	MD
+suggest	VB
+a	DT
+relation	NN
+of	IN
+some	DT
+kind	NN
+between	IN
+them	PRP
+with	IN
+high	JJ
+probability	NN
+.	.
+
+If	IN
+the	DT
+de	FW
+-	:
+pendency	NN
+between	IN
+attribute	NN
+data	NNS
+and	CC
+relationship	NN
+data	NNS
+is	VBZ
+high	JJ
+enough	RB
+such	JJ
+that	IN
+one	PRP
+can	MD
+be	VB
+soundly	RB
+deducted	VBN
+from	IN
+or	CC
+closely	RB
+approximated	VBN
+by	IN
+the	DT
+other	JJ
+,	,
+a	DT
+separate	JJ
+analysis	NN
+on	IN
+either	CC
+is	VBZ
+suï	NN
+¬	NN
+ƒcient	NN
+.	.
+
+For	IN
+example	NN
+,	,
+the	DT
+classical	JJ
+facility	NN
+location	NN
+problem	NN
+-LSB-	-LRB-
+24	CD
+-RSB-	-RRB-
+only	RB
+manipulates	VBZ
+locations	NNS
+-LRB-	-LRB-
+attributes	NNS
+-RRB-	-RRB-
+since	IN
+the	DT
+Euclidean	JJ
+distance	NN
+between	IN
+A	DT
+and	CC
+B	NN
+can	MD
+be	VB
+used	VBN
+to	TO
+well	RB
+approximate	JJ
+their	PRP$
+reachability	NN
+via	IN
+route	NN
+connections	NNS
+-LRB-	-LRB-
+relationships	NNS
+-RRB-	-RRB-
+.	.
+
+
+On	IN
+the	DT
+other	JJ
+hand	NN
+,	,
+often	RB
+relationship	NN
+data	NNS
+contains	VBZ
+information	NN
+that	WDT
+is	VBZ
+independent	JJ
+from	IN
+the	DT
+attributes	NNS
+of	IN
+entities	NNS
+.	.
+
+For	IN
+example	NN
+,	,
+two	CD
+persons	NNS
+may	MD
+share	VB
+many	JJ
+characteristics	NNS
+in	IN
+common	JJ
+but	CC
+they	PRP
+never	RB
+get	VBP
+to	TO
+know	VB
+each	DT
+other	JJ
+;	:
+or	CC
+in	IN
+contrast	NN
+,	,
+even	RB
+with	IN
+totally	RB
+diï	FW
+¬	FW
+$	$
+erent	JJ
+demographics	NNS
+,	,
+they	PRP
+may	MD
+happen	VB
+to	TO
+become	VB
+good	JJ
+ac	NN
+-	:
+quaintances	NNS
+.	.
+
+Due	JJ
+to	TO
+rapid	JJ
+technological	JJ
+advances	NNS
+,	,
+the	DT
+mobility	NN
+and	CC
+communication	NN
+of	IN
+humans	NNS
+have	VBP
+tremen	VBN
+-	:
+dously	RB
+improved	VBN
+.	.
+
+As	IN
+a	DT
+consequence	NN
+,	,
+the	DT
+formation	NN
+of	IN
+social	JJ
+networks	NNS
+is	VBZ
+slipping	VBG
+the	DT
+leash	NN
+of	IN
+conï	NN
+¬	CD
+ning	NN
+at	IN
+-	:
+tributes	NNS
+.	.
+
+The	DT
+small	JJ
+world	NN
+phenomenon	NN
+,	,
+as	IN
+a	DT
+consensus	NN
+observation	NN
+,	,
+has	VBZ
+received	VBN
+voluminous	JJ
+cross-discipline	NN
+at	IN
+-	:
+tention	NN
+-LSB-	-LRB-
+19	CD
+-RSB-	-RRB-
+.	.
+
+
+The	DT
+unprecedented	JJ
+availability	NN
+of	IN
+relationship	NN
+data	NNS
+carrying	VBG
+important	JJ
+additional	JJ
+information	NN
+beyond	IN
+at	IN
+-	:
+tribute	NN
+data	NNS
+calls	VBZ
+for	IN
+joint	JJ
+analysis	NN
+of	IN
+both	DT
+.	.
+
+Cluster	NN
+analysis	NN
+,	,
+one	CD
+of	IN
+the	DT
+major	JJ
+tools	NNS
+in	IN
+exploratory	JJ
+data	NNS
+anal	JJ
+-	:
+ysis	NN
+,	,
+has	VBZ
+been	VBN
+investigated	VBN
+for	IN
+decades	NNS
+in	IN
+multiple	JJ
+dis	NN
+-	:
+ciplines	NNS
+such	JJ
+as	IN
+statistics	NNS
+,	,
+machine	NN
+learning	NN
+,	,
+algorithm	NN
+,	,
+and	CC
+data	NNS
+mining	NN
+.	.
+
+Varied	VBN
+clustering	NN
+problems	NNS
+have	VBP
+been	VBN
+studied	VBN
+driven	VBN
+by	IN
+numerous	JJ
+applications	NNS
+including	VBG
+pat	NN
+-	:
+tern	NN
+recognition	NN
+,	,
+information	NN
+retrieval	NN
+,	,
+market	NN
+segmen	NN
+-	:
+tation	NN
+and	CC
+gene	NN
+expression	NN
+proï	NN
+¬	CD
+le	DT
+analysis	NN
+,	,
+and	CC
+emerg	NN
+-	:
+ing	NN
+applications	NNS
+continue	VBP
+to	TO
+inspire	VB
+novel	JJ
+cluster	NN
+models	NNS
+with	IN
+new	JJ
+algorithmic	JJ
+challenges	NNS
+.	.
+
+The	DT
+task	NN
+of	IN
+clustering	NN
+is	VBZ
+to	TO
+group	NN
+entities	NNS
+into	IN
+clusters	NNS
+that	WDT
+exhibit	VBP
+internal	JJ
+co	SYM
+-	:
+
+
+Downloaded	VBN
+07/10/14	CD
+to	TO
+147.26.103.71	CD
+.	.
+
+Redistribution	NN
+subject	NN
+to	TO
+SIAM	NNP
+license	NN
+or	CC
+copyright	NN
+;	:
+see	VB
+http://www.siam.org/journals/ojsa.php	NN
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+1	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+hesion	NN
+and	CC
+external	JJ
+isolation	NN
+.	.
+
+Given	VBN
+both	CC
+attribute	VBP
+data	NNS
+and	CC
+relationship	NN
+data	NNS
+,	,
+it	PRP
+is	VBZ
+intuitive	JJ
+to	TO
+require	VB
+clusters	NNS
+to	TO
+be	VB
+cohesive	JJ
+-LRB-	-LRB-
+within	IN
+clusters	NNS
+-RRB-	-RRB-
+and	CC
+distinctive	JJ
+-LRB-	-LRB-
+between	IN
+clusters	NNS
+-RRB-	-RRB-
+in	IN
+both	CC
+ways	NNS
+.	.
+
+
+As	IN
+a	DT
+new	JJ
+clustering	NN
+model	NN
+taking	VBG
+into	IN
+account	NN
+at	IN
+-	:
+tribute	NN
+and	CC
+relationship	NN
+data	NNS
+,	,
+we	PRP
+introduce	VBP
+and	CC
+study	VBP
+the	DT
+Connected	VBN
+k-Center	NN
+-LRB-	-LRB-
+CkC	NN
+-RRB-	-RRB-
+problem	NN
+;	:
+i.e.	FW
+,	,
+the	DT
+k	NN
+-	:
+Center	NNP
+problem	NN
+with	IN
+the	DT
+constraint	NN
+of	IN
+internal	JJ
+connect	VB
+-	:
+edness	NN
+.	.
+
+The	DT
+internal	JJ
+connectedness	NN
+constraint	NN
+requires	VBZ
+that	IN
+any	DT
+two	CD
+entities	NNS
+in	IN
+a	DT
+cluster	NN
+are	VBP
+connected	VBN
+by	IN
+an	DT
+internal	JJ
+path	NN
+,	,
+i.e.	FW
+,	,
+a	DT
+path	NN
+via	IN
+entities	NNS
+only	RB
+from	IN
+the	DT
+same	JJ
+cluster	NN
+.	.
+
+The	DT
+k-Center	NN
+problem	NN
+,	,
+as	IN
+a	DT
+classical	JJ
+clustering	NN
+problem	NN
+,	,
+has	VBZ
+been	VBN
+intensively	RB
+studied	VBN
+in	IN
+the	DT
+algorithms	NNS
+community	NN
+from	IN
+a	DT
+theoretical	JJ
+perspective	NN
+.	.
+
+The	DT
+problem	NN
+is	VBZ
+to	TO
+determine	VB
+k	NN
+cluster	NN
+heads	NNS
+-LRB-	-LRB-
+centers	NNS
+-RRB-	-RRB-
+such	JJ
+that	IN
+the	DT
+maximum	NN
+distance	NN
+of	IN
+any	DT
+entity	NN
+to	TO
+its	PRP$
+closest	JJS
+cluster	NN
+head	NN
+,	,
+the	DT
+radius	NN
+of	IN
+the	DT
+cluster	NN
+,	,
+is	VBZ
+minimized	VBN
+.	.
+
+
+Motivating	VBG
+applications	NNS
+:	:
+The	DT
+CkC	NN
+problem	NN
+can	MD
+be	VB
+motivated	VBN
+by	IN
+market	NN
+segmentation	NN
+,	,
+community	NN
+identi	NNS
+-	:
+ï	NN
+¬	CD
+cation	NN
+,	,
+and	CC
+many	JJ
+other	JJ
+applications	NNS
+such	JJ
+as	IN
+document	NN
+clustering	NN
+,	,
+epidemic	JJ
+control	NN
+,	,
+and	CC
+gene	NN
+expression	NN
+proï	NN
+¬	CD
+le	DT
+analysis	NN
+.	.
+
+In	IN
+the	DT
+following	VBG
+,	,
+we	PRP
+further	RB
+discuss	VBP
+the	DT
+ï	NN
+¬	CD
+rst	NN
+two	CD
+applications	NNS
+.	.
+
+
+Market	NN
+segmentation	NN
+divides	VBZ
+a	DT
+market	NN
+into	IN
+distinct	JJ
+customer	NN
+groups	NNS
+with	IN
+homogeneous	JJ
+needs	NNS
+,	,
+such	JJ
+that	IN
+ï	NN
+¬	CD
+rms	NNS
+can	MD
+target	VB
+groups	NNS
+eï	NN
+¬	CD
+$	$
+ectively	JJ
+and	CC
+allocate	VB
+resources	NNS
+eï	NN
+¬	NN
+ƒciently	RB
+,	,
+as	IN
+customers	NNS
+in	IN
+the	DT
+same	JJ
+segment	NN
+are	VBP
+likely	JJ
+to	TO
+respond	VB
+similarly	RB
+to	TO
+a	DT
+given	VBN
+marketing	NN
+strategy	NN
+.	.
+
+Tra	SYM
+-	:
+ditional	JJ
+segmentation	NN
+methods	NNS
+were	VBD
+based	VBN
+on	IN
+attribute	NN
+data	NNS
+only	RB
+such	JJ
+as	IN
+demographics	NNS
+-LRB-	-LRB-
+age	NN
+,	,
+sex	NN
+,	,
+ethnicity	NN
+,	,
+in	IN
+-	:
+come	VBN
+,	,
+education	NN
+,	,
+religion	NN
+and	CC
+etc.	NN
+-RRB-	-RRB-
+and	CC
+psychographic	JJ
+proï	NN
+¬	NN
+les	FW
+-LRB-	-LRB-
+lifestyle	NN
+,	,
+personality	NN
+,	,
+motives	NNS
+and	CC
+etc.	NN
+-RRB-	-RRB-
+.	.
+
+Re	NNP
+-	:
+cently	RB
+,	,
+social	JJ
+networks	NNS
+have	VBP
+become	VBN
+more	RBR
+and	CC
+more	RBR
+im	SYM
+-	:
+portant	NN
+in	IN
+marketing	NN
+-LSB-	-LRB-
+16	CD
+-RSB-	-RRB-
+.	.
+
+Ideas	NNS
+and	CC
+behaviors	NNS
+are	VBP
+con	JJ
+-	:
+tagious	NN
+.	.
+
+The	DT
+relations	NNS
+in	IN
+networks	NNS
+are	VBP
+channels	NNS
+and	CC
+con	NN
+-	:
+duits	NNS
+through	IN
+which	WDT
+resources	NNS
+ï	VBP
+¬	CD
+‚	CD
+ow	NN
+-LSB-	-LRB-
+16	CD
+-RSB-	-RRB-
+.	.
+
+Customers	NNS
+can	MD
+hardly	RB
+hear	VB
+companies	NNS
+but	CC
+they	PRP
+listen	VBP
+to	TO
+their	PRP$
+friends	NNS
+;	:
+customers	NNS
+are	VBP
+skeptical	JJ
+but	CC
+they	PRP
+trust	VBP
+their	PRP$
+friends	NNS
+-LSB-	-LRB-
+27	CD
+-RSB-	-RRB-
+.	.
+
+By	IN
+word-of-mouth	JJ
+propagation	NN
+,	,
+a	DT
+group	NN
+of	IN
+customers	NNS
+with	IN
+similar	JJ
+attributes	NNS
+have	VBP
+much	RB
+more	RBR
+chances	NNS
+to	TO
+be	VB
+-	:
+come	VB
+like-minded	JJ
+.	.
+
+Depending	VBG
+on	IN
+the	DT
+nature	NN
+of	IN
+the	DT
+market	NN
+,	,
+social	JJ
+relations	NNS
+can	MD
+even	RB
+become	VB
+vital	JJ
+in	IN
+form	NN
+-	:
+ing	NN
+segments	NNS
+,	,
+and	CC
+purchasing	VBG
+intentions	NNS
+or	CC
+decisions	NNS
+may	MD
+rely	VB
+on	IN
+customer-to-customer	NN
+contacts	NNS
+to	TO
+diï	VB
+¬	CD
+$	$
+use	VB
+throughout	IN
+a	DT
+segment	NN
+,	,
+for	IN
+example	NN
+,	,
+for	IN
+cautious	JJ
+clients	NNS
+of	IN
+risky	JJ
+cosmetic	NN
+surgery	NN
+or	CC
+parsimonious	JJ
+purchasers	NNS
+of	IN
+complicated	JJ
+scientiï	NN
+¬	NN
+c	NN
+instruments	NNS
+.	.
+
+The	DT
+CkC	NN
+problem	NN
+naturally	RB
+models	NNS
+such	JJ
+scenarios	NNS
+:	:
+a	DT
+customer	NN
+is	VBZ
+assigned	VBN
+to	TO
+a	DT
+market	NN
+segment	NN
+only	RB
+if	IN
+he	PRP
+has	VBZ
+similar	JJ
+purchasing	NN
+preferences	NNS
+-LRB-	-LRB-
+attributes	NNS
+-RRB-	-RRB-
+to	TO
+the	DT
+segment	NN
+representative	NN
+-LRB-	-LRB-
+cluster	NN
+center	NN
+-RRB-	-RRB-
+and	CC
+can	MD
+be	VB
+reached	VBN
+by	IN
+propagation	NN
+from	IN
+customers	NNS
+of	IN
+similar	JJ
+interest	NN
+in	IN
+the	DT
+segment	NN
+.	.
+
+
+Community	NNP
+identiï	NN
+¬	CD
+cation	NN
+is	VBZ
+one	CD
+of	IN
+the	DT
+major	JJ
+so	RB
+-	:
+cial	JJ
+network	NN
+analysis	NN
+tasks	NNS
+,	,
+and	CC
+graph-based	JJ
+cluster	NN
+-	:
+ing	NN
+methods	NNS
+have	VBP
+been	VBN
+the	DT
+standard	JJ
+tool	NN
+for	IN
+this	DT
+pur	NN
+-	:
+pose	VB
+-LSB-	-LRB-
+26	CD
+-RSB-	-RRB-
+.	.
+
+In	IN
+this	DT
+application	NN
+,	,
+clustering	NN
+has	VBZ
+generally	RB
+been	VBN
+performed	VBN
+on	IN
+relationship	NN
+-LRB-	-LRB-
+network	NN
+-RRB-	-RRB-
+data	NNS
+solely	RB
+.	.
+
+Yet	CC
+it	PRP
+is	VBZ
+intuitive	JJ
+-LSB-	-LRB-
+23	CD
+,	,
+13	CD
+-RSB-	-RRB-
+that	WDT
+attribute	VBP
+data	NNS
+can	MD
+im	SYM
+-	:
+pact	NN
+community	NN
+formation	NN
+in	IN
+a	DT
+signiï	NN
+¬	CD
+cant	JJ
+manner	NN
+.	.
+
+For	IN
+example	NN
+,	,
+given	VBN
+a	DT
+scientiï	NN
+¬	NN
+c	NN
+collaboration	NN
+network	NN
+,	,
+scien	NN
+-	:
+tists	NNS
+can	MD
+be	VB
+separated	VBN
+into	IN
+diï	NN
+¬	CD
+$	$
+erent	JJ
+research	NN
+communi	NNS
+-	:
+ties	NNS
+such	JJ
+that	IN
+community	NN
+members	NNS
+are	VBP
+not	RB
+only	RB
+con	JJ
+-	:
+nected	JJ
+-LRB-	-LRB-
+e.g.	FW
+,	,
+by	IN
+co-author	NN
+relationships	NNS
+-RRB-	-RRB-
+but	CC
+also	RB
+share	VBP
+similar	JJ
+research	NN
+interests	NNS
+.	.
+
+Such	JJ
+information	NN
+on	IN
+research	NN
+interests	NNS
+can	MD
+be	VB
+automatically	RB
+extracted	VBN
+from	IN
+home	NN
+-	:
+pages	NNS
+and	CC
+used	VBN
+as	IN
+attribute	NN
+data	NNS
+for	IN
+the	DT
+CkC	NN
+prob	NN
+-	:
+lem	NN
+.	.
+
+As	IN
+a	DT
+natural	JJ
+assumption	NN
+,	,
+a	DT
+community	NN
+should	MD
+be	VB
+at	IN
+least	JJS
+internally	RB
+connected	VBN
+with	IN
+possibly	RB
+more	JJR
+con	NN
+-	:
+straints	NNS
+on	IN
+the	DT
+intensity	NN
+of	IN
+connectivity	NN
+.	.
+
+Note	VB
+that	IN
+most	JJS
+graph-based	JJ
+clustering	NN
+methods	NNS
+used	VBN
+for	IN
+commu	NN
+-	:
+nity	NN
+identiï	NN
+¬	CD
+cation	NN
+in	IN
+network	NN
+analysis	NN
+also	RB
+return	VB
+some	DT
+connected	JJ
+components	NNS
+.	.
+
+
+Contributions	NNS
+and	CC
+outline	NN
+:	:
+This	DT
+paper	NN
+makes	VBZ
+the	DT
+following	VBG
+contributions	NNS
+:	:
+
+
+1	LS
+.	.
+
+We	PRP
+advocate	VBP
+joint	JJ
+cluster	NN
+analysis	NN
+of	IN
+attribute	NN
+data	NNS
+and	CC
+relationship	NN
+data	NNS
+,	,
+introduce	VB
+the	DT
+novel	JJ
+CkC	NN
+clustering	NN
+problem	NN
+.	.
+
+
+2	LS
+.	.
+
+We	PRP
+analyze	VBP
+the	DT
+complexity	NN
+of	IN
+the	DT
+CkC	NN
+clustering	NN
+problem	NN
+,	,
+prove	VB
+its	PRP$
+NP-completeness	NN
+and	CC
+present	VB
+a	DT
+corresponding	JJ
+3-approximation	NN
+algorithm	NN
+.	.
+
+
+3	LS
+.	.
+
+Based	VBN
+on	IN
+principles	NNS
+derived	VBN
+from	IN
+the	DT
+approximation	NN
+algorithm	NN
+,	,
+we	PRP
+propose	VBP
+a	DT
+heuristic	NN
+algorithm	NN
+NetScan	NNP
+that	IN
+eï	NN
+¬	NN
+ƒciently	RB
+computes	VBZ
+a	DT
+â	JJ
+$	$
+œgoodâ	JJ
+$	$
+clustering	NN
+solution	NN
+.	.
+
+4	LS
+.	.
+
+We	PRP
+report	VBP
+results	NNS
+of	IN
+our	PRP$
+experimental	JJ
+evaluation	NN
+,	,
+demonstrating	VBG
+the	DT
+meaningfulness	NN
+of	IN
+the	DT
+clustering	NN
+results	VBZ
+and	CC
+the	DT
+scalability	NN
+of	IN
+the	DT
+NetScan	NNP
+algorithm	NN
+.	.
+
+
+The	DT
+rest	NN
+of	IN
+the	DT
+paper	NN
+is	VBZ
+organized	VBN
+as	IN
+follows	VBZ
+.	.
+
+Re	NNP
+-	:
+lated	JJ
+work	NN
+is	VBZ
+reviewed	VBN
+in	IN
+Section	NN
+2	CD
+.	.
+
+Section	NN
+3	CD
+introduces	VBZ
+the	DT
+CkC	NN
+clustering	NN
+problem	NN
+and	CC
+analyzes	VBZ
+its	PRP$
+complex	NN
+-	:
+ity	NN
+.	.
+
+In	IN
+Section	NN
+4	CD
+,	,
+we	PRP
+present	VBP
+an	DT
+approximation	NN
+algo	NN
+-	:
+rithm	NN
+for	IN
+the	DT
+proposed	VBN
+clustering	NN
+problem	NN
+.	.
+
+To	TO
+provide	VB
+more	JJR
+scalability	NN
+,	,
+we	PRP
+also	RB
+present	VBP
+an	DT
+eï	NN
+¬	NN
+ƒcient	JJ
+heuristic	NN
+algorithm	NN
+in	IN
+Section	NN
+5	CD
+.	.
+
+We	PRP
+report	VBP
+experimental	JJ
+results	NNS
+in	IN
+Section	NN
+6	CD
+and	CC
+conclude	VBP
+the	DT
+paper	NN
+in	IN
+Section	NN
+7	CD
+.	.
+
+
+Downloaded	VBN
+07/10/14	CD
+to	TO
+147.26.103.71	CD
+.	.
+
+Redistribution	NN
+subject	NN
+to	TO
+SIAM	NNP
+license	NN
+or	CC
+copyright	NN
+;	:
+see	VB
+http://www.siam.org/journals/ojsa.php	NN
+
+
+2	CD
+Related	JJ
+Work	NN
+
+
+Theoretical	JJ
+approaches	NNS
+to	TO
+cluster	NN
+analysis	NN
+usually	RB
+for	IN
+-	:
+mulate	JJ
+clustering	NN
+as	IN
+optimization	NN
+problems	NNS
+,	,
+for	IN
+which	WDT
+rigorous	JJ
+complexity	NN
+studies	NNS
+are	VBP
+performed	VBN
+and	CC
+polyno	NN
+-	:
+mial	JJ
+approximation	NN
+algorithms	NNS
+are	VBP
+provided	VBN
+.	.
+
+Depend	NN
+-	:
+ing	NN
+on	IN
+the	DT
+optimization	NN
+objective	NN
+,	,
+many	JJ
+clustering	NN
+prob	NN
+-	:
+lems	NNS
+and	CC
+their	PRP$
+variants	NNS
+have	VBP
+been	VBN
+investigated	VBN
+,	,
+such	JJ
+as	IN
+the	DT
+k-center	NN
+and	CC
+k-median	JJ
+problems	NNS
+for	IN
+facility	NN
+lo	SYM
+-	:
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+2	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+Downloaded	VBN
+07/10/14	CD
+to	TO
+147.26.103.71	CD
+.	.
+
+Redistribution	NN
+subject	NN
+to	TO
+SIAM	NNP
+license	NN
+or	CC
+copyright	NN
+;	:
+see	VB
+http://www.siam.org/journals/ojsa.php	NN
+
+
+cation	NN
+-LSB-	-LRB-
+24	CD
+-RSB-	-RRB-
+,	,
+the	DT
+min-diameter	NN
+problem	NN
+-LSB-	-LRB-
+7	CD
+-RSB-	-RRB-
+,	,
+and	CC
+so	RB
+on	IN
+.	.
+
+In	IN
+the	DT
+areas	NNS
+of	IN
+statistics	NNS
+,	,
+machine	NN
+learning	NN
+,	,
+and	CC
+data	NNS
+mining	NN
+,	,
+clustering	NN
+research	NN
+emphasizes	VBZ
+more	RBR
+on	IN
+real	JJ
+life	NN
+applications	NNS
+and	CC
+development	NN
+of	IN
+eï	NN
+¬	NN
+ƒcient	NN
+and	CC
+scalable	JJ
+algorithms	NNS
+.	.
+
+Clustering	NN
+algorithms	NNS
+can	MD
+be	VB
+roughly	RB
+cate	NN
+-	:
+gorized	VBN
+-LSB-	-LRB-
+12	CD
+-RSB-	-RRB-
+into	IN
+partitioning	VBG
+methods	NNS
+such	JJ
+as	IN
+k-means	JJ
+-LSB-	-LRB-
+20	CD
+-RSB-	-RRB-
+,	,
+k-medoids	JJ
+-LSB-	-LRB-
+19	CD
+-RSB-	-RRB-
+,	,
+and	CC
+CLARANS	NN
+-LSB-	-LRB-
+22	CD
+-RSB-	-RRB-
+,	,
+hierarchical	JJ
+methods	NNS
+such	JJ
+as	IN
+AGNES	NNP
+and	CC
+DIANA	NNP
+-LSB-	-LRB-
+19	CD
+-RSB-	-RRB-
+,	,
+and	CC
+density	NN
+-	:
+based	VBN
+methods	NNS
+such	JJ
+as	IN
+DBSCAN	NN
+-LSB-	-LRB-
+10	CD
+-RSB-	-RRB-
+and	CC
+OPTICS	NN
+-LSB-	-LRB-
+1	CD
+-RSB-	-RRB-
+.	.
+
+The	DT
+above	JJ
+methods	NNS
+generally	RB
+take	VBP
+into	IN
+account	NN
+only	RB
+at	IN
+-	:
+tribute	NN
+data	NNS
+.	.
+
+
+We	PRP
+also	RB
+summarize	VBP
+some	DT
+theoretical	JJ
+results	NNS
+on	IN
+the	DT
+k-center	NN
+problem	NN
+that	WDT
+are	VBP
+related	JJ
+to	TO
+our	PRP$
+theoretical	JJ
+analysis	NN
+.	.
+
+It	PRP
+is	VBZ
+well	RB
+known	VBN
+that	IN
+both	CC
+the	DT
+k-center	NN
+and	CC
+Euclidean	JJ
+k-center	NN
+problem	NN
+is	VBZ
+NP-Complete	JJ
+for	IN
+d	NN
+â	NN
+‰	CD
+¥	NN
+2	CD
+when	WRB
+k	NN
+is	VBZ
+part	NN
+of	IN
+the	DT
+input	NN
+-LSB-	-LRB-
+21	CD
+-RSB-	-RRB-
+.	.
+
+Besides	IN
+,	,
+in	IN
+the	DT
+case	NN
+of	IN
+d	NN
+=	JJ
+1	CD
+,	,
+the	DT
+Euclidean	JJ
+k-center	NN
+problem	NN
+is	VBZ
+polynomially	RB
+solvable	JJ
+using	VBG
+dynamic	JJ
+programming	NN
+techniques	NNS
+.	.
+
+Meanwhile	RB
+,	,
+when	WRB
+d	NN
+â	NN
+‰	CD
+¥	NN
+2	CD
+,	,
+if	IN
+k	NN
+is	VBZ
+treated	VBN
+as	IN
+a	DT
+constant	JJ
+,	,
+the	DT
+k-center	NN
+problem	NN
+can	MD
+also	RB
+be	VB
+easily	RB
+solved	VBN
+by	IN
+enumerating	VBG
+all	PDT
+the	DT
+k	NN
+centers	NNS
+.	.
+
+However	RB
+,	,
+as	IN
+we	PRP
+will	MD
+see	VB
+in	IN
+section	NN
+3	CD
+,	,
+the	DT
+CkC	NN
+problem	NN
+remains	VBZ
+NP	SYM
+-	:
+Complete	JJ
+even	RB
+for	IN
+k	NN
+=	JJ
+2	CD
+and	CC
+d	NN
+=	JJ
+1	CD
+.	.
+
+Hence	RB
+in	IN
+this	DT
+sense	NN
+,	,
+the	DT
+CkC	NN
+problem	NN
+is	VBZ
+harder	JJR
+than	IN
+Euclidean	JJ
+k-center	NN
+.	.
+
+
+Recently	RB
+,	,
+the	DT
+increasing	VBG
+availability	NN
+of	IN
+relationship	NN
+data	NNS
+stimulated	VBD
+research	NN
+on	IN
+network	NN
+analysis	NN
+-LSB-	-LRB-
+26	CD
+,	,
+23	CD
+,	,
+13	CD
+-RSB-	-RRB-
+.	.
+
+Clustering	NN
+methods	NNS
+for	IN
+network	NN
+analysis	NN
+are	VBP
+mostly	RB
+graph-based	JJ
+,	,
+separating	VBG
+sparsely	RB
+connected	JJ
+dense	JJ
+sub	NN
+-	:
+graphs	NNS
+from	IN
+each	DT
+other	JJ
+as	IN
+seen	VBN
+in	IN
+-LSB-	-LRB-
+6	CD
+-RSB-	-RRB-
+.	.
+
+A	DT
+good	JJ
+graph	NN
+clustering	NN
+should	MD
+exhibit	VB
+few	JJ
+between-cluster	JJ
+edges	NNS
+and	CC
+many	JJ
+within-cluster	NN
+edges	NNS
+.	.
+
+Graph	NN
+clustering	NN
+methods	NNS
+can	MD
+be	VB
+applied	VBN
+to	TO
+data	NNS
+that	WDT
+is	VBZ
+originally	RB
+network	NN
+data	NNS
+as	RB
+well	RB
+as	IN
+to	TO
+similarity	NN
+graphs	NNS
+representing	VBG
+a	DT
+similarity	NN
+matrix	NN
+,	,
+i.e.	FW
+,	,
+derived	VBN
+from	IN
+the	DT
+original	JJ
+attribute	NN
+data	NNS
+.	.
+
+A	DT
+similarity	NN
+graph	NN
+can	MD
+be	VB
+a	DT
+complete	JJ
+graph	NN
+as	IN
+in	IN
+agglom	NN
+-	:
+erative	JJ
+hierarchical	JJ
+clustering	NN
+algorithms	NNS
+of	IN
+single-link	JJ
+,	,
+complete	JJ
+link	NN
+,	,
+or	CC
+average	JJ
+link	NN
+-LSB-	-LRB-
+17	CD
+-RSB-	-RRB-
+;	:
+or	CC
+incomplete	JJ
+retain	VBP
+-	:
+ing	VBG
+those	DT
+edges	NNS
+whose	WP$
+corresponding	JJ
+similarity	NN
+is	VBZ
+above	IN
+a	DT
+threshold	NN
+-LSB-	-LRB-
+11	CD
+,	,
+14	CD
+-RSB-	-RRB-
+.	.
+
+CHAMELEON	NN
+-LSB-	-LRB-
+18	CD
+-RSB-	-RRB-
+generates	VBZ
+edges	NNS
+between	IN
+a	DT
+vertex	NN
+and	CC
+its	PRP$
+k	NN
+nearest	JJS
+neighbors	NNS
+,	,
+which	WDT
+can	MD
+be	VB
+considered	VBN
+as	IN
+relative	JJ
+thresholding	NN
+.	.
+
+Note	VB
+that	DT
+none	NN
+of	IN
+the	DT
+above	JJ
+methods	NNS
+simultaneously	RB
+considers	VBZ
+attribute	NN
+and	CC
+relationship	NN
+data	NNS
+that	WDT
+represent	VBP
+independent	JJ
+infor	NN
+-	:
+mation	NN
+.	.
+
+
+Finally	RB
+,	,
+our	PRP$
+research	NN
+is	VBZ
+also	RB
+related	VBN
+to	TO
+the	DT
+emerging	VBG
+areas	NNS
+of	IN
+constraint-based	JJ
+clustering	NN
+and	CC
+semi-supervised	JJ
+clustering	NN
+.	.
+
+Early	RB
+research	NN
+in	IN
+this	DT
+direction	NN
+allowed	VBD
+the	DT
+user	NN
+to	TO
+guide	VB
+the	DT
+clustering	NN
+algorithm	NN
+by	IN
+constraining	VBG
+cluster	NN
+properties	NNS
+such	JJ
+as	IN
+size	NN
+or	CC
+aggregate	JJ
+attribute	NN
+val	NN
+-	:
+ues	NNS
+-LSB-	-LRB-
+25	CD
+-RSB-	-RRB-
+.	.
+
+More	RBR
+recently	RB
+,	,
+several	JJ
+frameworks	NNS
+have	VBP
+been	VBN
+introduced	VBN
+that	IN
+represent	VBP
+available	JJ
+domain	NN
+knowledge	NN
+in	IN
+the	DT
+form	NN
+of	IN
+pairwise	JJ
+â	NN
+$	$
+œmust-linksâ	JJ
+$	$
+and	CC
+â	VB
+$	$
+œcannot-linksâ	JJ
+$	$
+.	.
+
+Objects	NNS
+connected	VBN
+by	IN
+a	DT
+must-link	JJ
+are	VBP
+supposed	VBN
+to	TO
+be	VB
+-	:
+
+
+long	RB
+to	TO
+the	DT
+same	JJ
+cluster	NN
+;	:
+those	DT
+with	IN
+a	DT
+cannot-link	NN
+should	MD
+be	VB
+assigned	VBN
+to	TO
+diï	VB
+¬	CD
+$	$
+erent	JJ
+clusters	NNS
+.	.
+
+-LSB-	-LRB-
+3	CD
+-RSB-	-RRB-
+proposes	VBZ
+a	DT
+proba	NN
+-	:
+bilistic	JJ
+framework	NN
+based	VBN
+on	IN
+Hidden	NNP
+Markov	NNP
+Random	NNP
+Fields	NNP
+,	,
+incorporating	VBG
+supervision	NN
+into	IN
+k-clustering	NN
+al	NNP
+-	:
+gorithms	NNS
+.	.
+
+-LSB-	-LRB-
+8	CD
+-RSB-	-RRB-
+also	RB
+considers	VBZ
+additional	JJ
+minimum	NN
+sepa	NN
+-	:
+ration	NN
+and	CC
+minimum	NN
+connectivity	NN
+constraints	NNS
+,	,
+but	CC
+they	PRP
+are	VBP
+ultimately	RB
+translated	VBN
+into	IN
+must-link	JJ
+and	CC
+cannot-link	JJ
+constraints	NNS
+.	.
+
+A	DT
+k-means	NNS
+like	IN
+algorithm	NN
+is	VBZ
+presented	VBN
+us	PRP
+-	:
+ing	VBG
+a	DT
+novel	JJ
+distance	NN
+function	NN
+which	WDT
+penalizes	VBZ
+violations	NNS
+of	IN
+both	DT
+kinds	NNS
+of	IN
+constraints	NNS
+.	.
+
+The	DT
+above	IN
+two	CD
+papers	NNS
+are	VBP
+similar	JJ
+to	TO
+our	PRP$
+research	NN
+in	IN
+the	DT
+sense	NN
+that	IN
+they	PRP
+also	RB
+adopt	VB
+a	DT
+k-clustering	NN
+-LRB-	-LRB-
+partitioning	NN
+-RRB-	-RRB-
+approach	NN
+under	IN
+the	DT
+frame	NN
+-	:
+work	NN
+of	IN
+constraint-based	JJ
+clustering	NN
+.	.
+
+Nevertheless	RB
+,	,
+in	IN
+semi-supervised	JJ
+clustering	NN
+,	,
+links	NNS
+represent	VBP
+speciï	NN
+¬	NN
+c	NN
+con	NN
+-	:
+straints	NNS
+on	IN
+attribute	NN
+data	NNS
+.	.
+
+They	PRP
+are	VBP
+provided	VBN
+by	IN
+the	DT
+user	NN
+to	TO
+capture	VB
+some	DT
+background	NN
+knowledge	NN
+.	.
+
+In	IN
+our	PRP$
+study	NN
+,	,
+links	NNS
+represent	VBP
+relationship	NN
+data	NNS
+.	.
+
+They	PRP
+are	VBP
+not	RB
+constraints	NNS
+themselves	PRP
+,	,
+but	CC
+data	NNS
+on	IN
+which	WDT
+diï	NN
+¬	VBD
+$	$
+erent	JJ
+con	NN
+-	:
+straints	NNS
+can	MD
+be	VB
+enforced	VBN
+;	:
+e.g.	FW
+,	,
+â	VB
+$	$
+œinternally	JJ
+connectedâ	NN
+$	$
+as	IN
+in	IN
+this	DT
+paper	NN
+.	.
+
+
+3	CD
+Problem	NNP
+Deï	NNP
+¬	NN
+nition	NN
+and	CC
+Complexity	NNP
+Analysis	NN
+In	IN
+this	DT
+section	NN
+,	,
+we	PRP
+introduce	VBP
+the	DT
+Connected	VBN
+k-Center	NN
+problem	NN
+and	CC
+analyze	VB
+its	PRP$
+complexity	NN
+.	.
+
+
+3.1	CD
+Preliminaries	NNPS
+and	CC
+problem	NN
+deï	NN
+¬	CD
+nition	NN
+.	.
+
+At	IN
+-	:
+tribute	NN
+data	NNS
+can	MD
+be	VB
+represented	VBN
+as	IN
+an	DT
+n	NN
+Ã	NN
+--	:
+m	NN
+entity	NN
+-	:
+attribute	NN
+matrix	NN
+.	.
+
+Based	VBN
+on	IN
+a	DT
+chosen	VBN
+similarity	NN
+mea	NN
+-	:
+sure	JJ
+,	,
+pairwise	JJ
+similarities	NNS
+can	MD
+be	VB
+calculated	VBN
+to	TO
+obtain	VB
+an	DT
+n	NN
+Ã	NN
+--	:
+n	NN
+entity-entity	NN
+similarity	NN
+matrix	NN
+.	.
+
+Sometimes	RB
+,	,
+simi	SYM
+-	:
+larity	NN
+matrixes	NNS
+are	VBP
+transformed	VBN
+into	IN
+graphic	JJ
+representa	NN
+-	:
+tions	NNS
+,	,
+called	VBN
+similarity	NN
+graphs	NNS
+,	,
+with	IN
+entities	NNS
+as	IN
+vertices	NNS
+and	CC
+pairwise	JJ
+similarities	NNS
+,	,
+possibly	RB
+thresholded	VBN
+,	,
+as	IN
+edge	NN
+weights	NNS
+.	.
+
+Relationship	NN
+data	NNS
+are	VBP
+usually	RB
+modeled	VBN
+by	IN
+net	NN
+-	:
+works	VBZ
+comprised	VBN
+of	IN
+nodes	NNS
+and	CC
+links	NNS
+,	,
+which	WDT
+we	PRP
+call	VBP
+entity	NN
+networks	NNS
+.	.
+
+In	IN
+this	DT
+paper	NN
+,	,
+we	PRP
+concentrate	VBP
+on	IN
+symmetric	JJ
+binary	JJ
+relations	NNS
+,	,
+thereby	RB
+entity	NN
+networks	NNS
+can	MD
+be	VB
+nat	SYM
+-	:
+urally	RB
+represented	VBN
+as	IN
+simple	JJ
+graphs	NNS
+with	IN
+edges	NNS
+-LRB-	-LRB-
+links	NNS
+-RRB-	-RRB-
+as	IN
+dichotomous	JJ
+variables	NNS
+indicating	VBG
+the	DT
+presence	NN
+or	CC
+ab	SYM
+-	:
+sence	NN
+of	IN
+a	DT
+relation	NN
+of	IN
+interest	NN
+such	JJ
+as	IN
+acquaintance	NN
+,	,
+col	NN
+-	:
+laboration	NN
+,	,
+or	CC
+transmission	NN
+of	IN
+information	NN
+or	CC
+diseases	NNS
+.	.
+
+Entity	NN
+networks	NNS
+can	MD
+as	RB
+well	RB
+be	VB
+represented	VBN
+by	IN
+adjacency	NN
+matrices	NNS
+or	CC
+incident	NN
+matrices	NNS
+as	IN
+graphs	NNS
+in	IN
+general	JJ
+.	.
+
+
+Nodes	NNS
+in	IN
+an	DT
+entity	NN
+network	NN
+do	VBP
+not	RB
+have	VB
+meaningful	JJ
+locations	NNS
+.	.
+
+With	IN
+attribute	NN
+data	NNS
+available	JJ
+,	,
+attributes	VBZ
+for	IN
+each	DT
+entity	NN
+can	MD
+be	VB
+represented	VBN
+as	IN
+a	DT
+coordinate	JJ
+vector	NN
+and	CC
+assigned	VBN
+to	TO
+the	DT
+corresponding	JJ
+node	NN
+,	,
+resulting	VBG
+in	IN
+what	WP
+we	PRP
+call	VBP
+an	DT
+â	JJ
+$	$
+œinformative	JJ
+graphâ	NN
+$	$
+.	.
+
+Informative	JJ
+graphs	NNS
+,	,
+with	IN
+both	CC
+attribute	VBP
+data	NNS
+and	CC
+relationship	NN
+data	NNS
+embedded	JJ
+,	,
+are	VBP
+used	VBN
+as	IN
+input	NN
+for	IN
+our	PRP$
+Connected	VBN
+k-Center	NN
+problem	NN
+to	TO
+perform	VB
+joint	JJ
+cluster	NN
+analysis	NN
+.	.
+
+
+For	IN
+low	JJ
+dimensional	JJ
+-LRB-	-LRB-
+attribute	NN
+-RRB-	-RRB-
+data	NNS
+,	,
+informative	JJ
+graphs	NNS
+can	MD
+be	VB
+directly	RB
+visualized	VBN
+.	.
+
+For	IN
+higher	JJR
+dimen	NN
+-	:
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+3	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+sional	JJ
+data	NNS
+,	,
+multidimensional	JJ
+scaling	NN
+techniques	NNS
+can	MD
+be	VB
+invoked	VBN
+to	TO
+provide	VB
+such	JJ
+a	DT
+graphical	JJ
+visualization	NN
+.	.
+
+These	DT
+visualizations	NNS
+can	MD
+intuitively	RB
+demonstrate	VB
+the	DT
+depen	NN
+-	:
+dency	NN
+and	CC
+orthogonality	NN
+of	IN
+attribute	NN
+data	NNS
+and	CC
+relation	NN
+-	:
+ship	NN
+data	NNS
+.	.
+
+In	IN
+the	DT
+former	JJ
+case	NN
+,	,
+the	DT
+visualizations	NNS
+exhibit	VBP
+relatively	RB
+short	JJ
+edges	NNS
+only	RB
+,	,
+as	IN
+shown	VBN
+in	IN
+Figure	NNP
+1	CD
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+;	:
+in	IN
+the	DT
+latter	JJ
+case	NN
+,	,
+the	DT
+visualizations	NNS
+exhibit	VBP
+randomness	NN
+in	IN
+terms	NNS
+of	IN
+edge	NN
+length	NN
+,	,
+as	IN
+shown	VBN
+in	IN
+Figure	NNP
+1	CD
+-LRB-	-LRB-
+b	NN
+-RRB-	-RRB-
+.	.
+
+
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+dependency	NN
+
+
+-LRB-	-LRB-
+b	NN
+-RRB-	-RRB-
+orthogonality	NN
+
+
+Figure	NNP
+1	CD
+:	:
+Attribute	VB
+data	NNS
+and	CC
+relationship	NN
+data	NNS
+.	.
+
+
+In	IN
+this	DT
+paper	NN
+,	,
+the	DT
+terms	NNS
+â	VBP
+$	$
+œvertexâ	JJ
+$	$
+and	CC
+â	VB
+$	$
+œnodeâ	JJ
+$	$
+are	VBP
+used	VBN
+interchangeably	RB
+,	,
+so	RB
+are	VBP
+â	JJ
+$	$
+œedgeâ	JJ
+$	$
+and	CC
+â	VB
+$	$
+œlinkâ	JJ
+$	$
+.	.
+
+In	IN
+the	DT
+following	VBG
+sections	NNS
+,	,
+â	VB
+$	$
+œgraphâ	JJ
+$	$
+will	MD
+refer	VB
+to	TO
+â	VB
+$	$
+œinformative	JJ
+graphâ	NN
+$	$
+since	IN
+we	PRP
+always	RB
+consider	VBP
+two	CD
+data	NNS
+types	NNS
+simul	NN
+-	:
+taneously	RB
+.	.
+
+
+Now	RB
+we	PRP
+introduce	VB
+the	DT
+decision	NN
+version	NN
+of	IN
+the	DT
+CkC	NN
+-LRB-	-LRB-
+Connected	VBN
+k-Center	NN
+-RRB-	-RRB-
+problem	NN
+,	,
+for	IN
+constant	JJ
+k	NN
+â	NN
+‰	CD
+¥	NN
+2	CD
+and	CC
+d	NN
+â	NN
+‰	CD
+¥	NN
+1	CD
+,	,
+where	WRB
+d	NN
+is	VBZ
+the	DT
+dimensionality	NN
+.	.
+
+
+Definition	NN
+3.1	CD
+.	.
+
+-LRB-	-LRB-
+CkC	NN
+problem	NN
+-RRB-	-RRB-
+Given	VBN
+k	NN
+as	IN
+the	DT
+num	NN
+-	:
+ber	NN
+of	IN
+centers	NNS
+,	,
+a	DT
+radius	NN
+constraint	NN
+r	NN
+âˆˆ	NN
+R	NN
++	CC
+,	,
+a	DT
+dis	NN
+-	:
+tance	NN
+function	NN
+|	CD
+|	CD
+Â	NN
+·	CD
+|	CD
+|	NN
+and	CC
+a	DT
+graph	NN
+G	NN
+=	JJ
+-LRB-	-LRB-
+V	NN
+,	,
+E	NN
+-RRB-	-RRB-
+where	WRB
+every	DT
+node	NN
+in	IN
+V	NN
+is	VBZ
+associated	VBN
+with	IN
+a	DT
+coordinate	JJ
+vector	NN
+w	NN
+:	:
+V	NN
+â	NN
+†	NN
+'	''
+Rd.	NNP
+.	.
+
+Decide	VB
+whether	IN
+there	EX
+exist	VBP
+disjoint	JJ
+par	NN
+-	:
+titions	NNS
+-LCB-	-LRB-
+V1	NN
+,	,
+...	:
+,	,
+Vk	NN
+-RCB-	-RRB-
+of	IN
+V	NN
+,	,
+i.	NNP
+e.	NNP
+,	,
+V	NN
+=	JJ
+V1	NN
+âˆª	NN
+...	:
+âˆª	NN
+Vk	NN
+and	CC
+âˆ	VB
+$	$
+1	CD
+â	NN
+‰	CD
+$	$
+i	FW
+<	JJR
+j	NN
+â	NN
+‰	CD
+$	$
+k	NN
+,	,
+Vi	NNP
+âˆ	VBD
+©	CD
+Vj	NN
+=	JJ
+Ï	NN
+†	NN
+,	,
+which	WDT
+satisfy	VBP
+the	DT
+following	VBG
+two	CD
+conditions	NNS
+:	:
+
+
+1	LS
+.	.
+
+The	DT
+induced	VBN
+subgraphs	NNS
+G	NN
+-LSB-	-LRB-
+V1	NN
+-RSB-	-RRB-
+,	,
+...	:
+,	,
+G	NN
+-LSB-	-LRB-
+Vk	NN
+-RSB-	-RRB-
+are	VBP
+con	JJ
+-	:
+
+
+nected	JJ
+.	.
+
+-LRB-	-LRB-
+internal	JJ
+connectedness	NN
+constraint	NN
+-RRB-	-RRB-
+2	CD
+.	.
+
+âˆ	RB
+$	$
+1	CD
+â	NN
+‰	CD
+$	$
+i	FW
+â	FW
+‰	FW
+$	$
+k	NN
+,	,
+there	EX
+exists	VBZ
+a	DT
+center	NN
+node	NN
+ci	NN
+âˆˆ	NN
+Vi	NNP
+,	,
+
+
+such	JJ
+that	IN
+âˆ	RB
+$	$
+v	LS
+âˆˆ	FW
+Vi	FW
+,	,
+|	CD
+|	CD
+w	NN
+-LRB-	-LRB-
+v	LS
+-RRB-	-RRB-
+w	NN
+-LRB-	-LRB-
+ci	NN
+-RRB-	-RRB-
+|	CD
+|	CD
+â	NN
+‰	CD
+$	$
+r.	CD
+-LRB-	-LRB-
+radius	NN
+
+
+constraint	NN
+-RRB-	-RRB-
+
+
+3.2	CD
+Complexity	NN
+analysis	NN
+.	.
+
+Due	JJ
+to	TO
+the	DT
+similarity	NN
+of	IN
+the	DT
+CkC	NN
+problem	NN
+to	TO
+the	DT
+traditional	JJ
+k-center	NN
+problem	NN
+,	,
+it	PRP
+is	VBZ
+natural	JJ
+to	TO
+ask	VB
+the	DT
+following	VBG
+question	NN
+.	.
+
+How	WRB
+much	RB
+has	VBZ
+the	DT
+traditional	JJ
+k-center	NN
+problem	NN
+been	VBN
+changed	VBN
+in	IN
+terms	NNS
+of	IN
+hardness	NN
+after	IN
+attaching	VBG
+a	DT
+constraint	NN
+of	IN
+internal	JJ
+connectedness	NN
+?	.
+
+To	TO
+answer	VB
+this	DT
+question	NN
+,	,
+we	PRP
+analyze	VBP
+the	DT
+complexity	NN
+of	IN
+the	DT
+CkC	NN
+problem	NN
+.	.
+
+
+The	DT
+formal	JJ
+analysis	NN
+is	VBZ
+rather	RB
+technical	JJ
+,	,
+we	PRP
+precede	VBP
+it	PRP
+with	IN
+an	DT
+intuitive	JJ
+explanation	NN
+.	.
+
+We	PRP
+say	VBP
+a	DT
+solution	NN
+-LRB-	-LRB-
+or	CC
+partitioning	NN
+-RRB-	-RRB-
+is	VBZ
+legal	JJ
+,	,
+if	IN
+all	DT
+the	DT
+k	NN
+partitions	NNS
+-LRB-	-LRB-
+or	CC
+clusters	NNS
+-RRB-	-RRB-
+are	VBP
+disjoint	NN
+and	CC
+the	DT
+corresponding	JJ
+induced	JJ
+subgraphs	NNS
+are	VBP
+connected	VBN
+.	.
+
+Since	IN
+k	NN
+is	VBZ
+ï	NN
+¬	NN
+xed	VBD
+as	IN
+a	DT
+constant	JJ
+,	,
+a	DT
+naive	JJ
+al	NNP
+-	:
+gorithm	NN
+would	MD
+enumerate	VB
+all	DT
+combinations	NNS
+of	IN
+k	NN
+centers	NNS
+,	,
+and	CC
+for	IN
+each	DT
+combination	NN
+,	,
+assign	VBP
+remaining	VBG
+nodes	NNS
+to	TO
+the	DT
+centers	NNS
+such	JJ
+that	IN
+both	CC
+the	DT
+radius	NN
+constraint	NN
+and	CC
+the	DT
+in	NN
+-	:
+ternal	JJ
+connectedness	NN
+constraint	NN
+are	VBP
+satisï	JJ
+¬	NN
+ed	VBD
+.	.
+
+However	RB
+,	,
+we	PRP
+note	VBP
+that	IN
+there	EX
+may	MD
+exist	VB
+some	DT
+â	JJ
+$	$
+œarticulationâ	JJ
+$	$
+node	NN
+v	LS
+which	WDT
+itself	PRP
+can	MD
+connect	VB
+to	TO
+two	CD
+or	CC
+more	JJR
+centers	NNS
+within	IN
+radius	NN
+r	NN
+,	,
+and	CC
+v	LS
+is	VBZ
+critical	JJ
+-LRB-	-LRB-
+the	DT
+only	RB
+choice	NN
+-RRB-	-RRB-
+to	TO
+connect	VB
+some	DT
+other	JJ
+nodes	NNS
+to	TO
+their	PRP$
+corresponding	JJ
+centers	NNS
+.	.
+
+In	IN
+a	DT
+legal	JJ
+partitioning	NN
+,	,
+every	DT
+articulation	NN
+node	NN
+must	MD
+be	VB
+as	IN
+-	:
+signed	VBN
+to	TO
+a	DT
+unique	JJ
+center	NN
+.	.
+
+If	IN
+there	EX
+are	VBP
+many	JJ
+such	JJ
+artic	JJ
+-	:
+ulation	NN
+nodes	NNS
+,	,
+it	PRP
+is	VBZ
+diï	NN
+¬	NN
+ƒcult	NN
+to	TO
+assign	VB
+each	DT
+of	IN
+them	PRP
+to	TO
+the	DT
+right	JJ
+center	NN
+in	IN
+order	NN
+to	TO
+maintain	VB
+the	DT
+linkages	NNS
+for	IN
+others	NNS
+.	.
+
+Therefore	RB
+the	DT
+naive	JJ
+algorithm	NN
+may	MD
+fail	VB
+to	TO
+determine	VB
+the	DT
+speciï	NN
+¬	CD
+ed	VBD
+clustering	NN
+.	.
+
+Hence	RB
+,	,
+intuitively	RB
+the	DT
+CkC	NN
+prob	NN
+-	:
+lem	NN
+is	VBZ
+hard	RB
+even	RB
+for	IN
+a	DT
+constant	JJ
+k	NN
+.	.
+
+In	IN
+the	DT
+following	VBG
+,	,
+we	PRP
+prove	VBP
+a	DT
+hardness	NN
+result	NN
+for	IN
+the	DT
+CkC	NN
+problem	NN
+,	,
+by	IN
+a	DT
+re	NN
+-	:
+duction	NN
+from	IN
+3CNF-SAT	NN
+.	.
+
+For	IN
+completeness	NN
+,	,
+we	PRP
+deï	VBP
+¬	CD
+ne	NN
+the	DT
+3CNF-SAT	NN
+problem	NN
+as	IN
+follows	VBZ
+:	:
+
+
+Definition	NN
+3.2	CD
+.	.
+
+-LRB-	-LRB-
+3CNF-SAT	NN
+-RRB-	-RRB-
+Given	VBN
+a	DT
+set	NN
+U	NN
+=	JJ
+-LCB-	-LRB-
+u1	NN
+,	,
+...	:
+,	,
+un	NN
+-RCB-	-RRB-
+of	IN
+variables	NNS
+,	,
+let	VB
+C	NN
+=	JJ
+C1	NN
+âˆ	NN
+§	CD
+C2	NN
+âˆ	NN
+§	CD
+...	:
+âˆ	NN
+§	CD
+Cm	NN
+be	VB
+an	DT
+instance	NN
+of	IN
+3CNF-SAT	NN
+.	.
+
+Each	DT
+Ci	NN
+contains	VBZ
+three	CD
+literals	NNS
+
+
+Ci	NN
+=	SYM
+l1i	FW
+âˆ	FW
+¨	FW
+l2i	FW
+âˆ	FW
+¨	FW
+l3i	FW
+,	,
+
+
+where	WRB
+each	DT
+literal	JJ
+lxi	NN
+,	,
+x	NN
+=	JJ
+1,2,3	CD
+,	,
+is	VBZ
+a	DT
+variable	JJ
+or	CC
+negated	VBD
+variable	NN
+.	.
+
+Decide	VB
+whether	IN
+there	EX
+is	VBZ
+a	DT
+truth	NN
+assignment	NN
+of	IN
+U	NNP
+which	WDT
+satisï	VBP
+¬	CD
+es	NNS
+every	DT
+clauses	NNS
+of	IN
+C.	NNP
+
+
+Intuitively	RB
+,	,
+the	DT
+problem	NN
+is	VBZ
+to	TO
+check	VB
+whether	IN
+the	DT
+in	NN
+-	:
+put	VB
+graph	NN
+can	MD
+be	VB
+divided	VBN
+into	IN
+k	NN
+connected	JJ
+components	NNS
+,	,
+such	JJ
+that	IN
+every	DT
+component	NN
+is	VBZ
+a	DT
+cluster	NN
+with	IN
+radius	NN
+less	RBR
+than	IN
+or	CC
+equal	JJ
+to	TO
+r	NN
+,	,
+i.	NNP
+e.	NNP
+,	,
+in	IN
+each	DT
+cluster	NN
+,	,
+there	EX
+exists	VBZ
+a	DT
+center	NN
+node	NN
+c	NN
+and	CC
+all	PDT
+the	DT
+remaining	VBG
+nodes	NNS
+are	VBP
+within	IN
+distance	NN
+r	NN
+to	TO
+c.	VB
+
+
+We	PRP
+assume	VBP
+the	DT
+given	VBN
+graph	NN
+is	VBZ
+connected	VBN
+which	WDT
+is	VBZ
+reasonable	JJ
+for	IN
+many	JJ
+application	NN
+scenarios	NNS
+,	,
+such	JJ
+as	IN
+social	JJ
+networks	NNS
+which	WDT
+are	VBP
+normally	RB
+considered	VBN
+to	TO
+be	VB
+connected	VBN
+.	.
+
+Even	RB
+if	IN
+the	DT
+entire	JJ
+graph	NN
+is	VBZ
+not	RB
+connected	VBN
+,	,
+the	DT
+problem	NN
+can	MD
+be	VB
+applied	VBN
+to	TO
+its	PRP$
+diï	NN
+¬	CD
+$	$
+erent	JJ
+connected	JJ
+components	NNS
+.	.
+
+
+Theorem	NNP
+3.1	CD
+.	.
+
+For	IN
+any	DT
+k	NN
+â	NN
+‰	CD
+¥	NN
+2	CD
+and	CC
+d	NN
+â	NN
+‰	CD
+¥	NN
+1	CD
+,	,
+the	DT
+CkC	NN
+problem	NN
+is	VBZ
+NP-Complete	JJ
+.	.
+
+
+Downloaded	VBN
+07/10/14	CD
+to	TO
+147.26.103.71	CD
+.	.
+
+Redistribution	NN
+subject	NN
+to	TO
+SIAM	NNP
+license	NN
+or	CC
+copyright	NN
+;	:
+see	VB
+http://www.siam.org/journals/ojsa.php	NN
+
+
+Proof	NN
+.	.
+
+We	PRP
+only	RB
+show	VBP
+the	DT
+case	NN
+for	IN
+k	NN
+=	JJ
+2	CD
+and	CC
+d	NN
+=	JJ
+1	CD
+,	,
+the	DT
+same	JJ
+proof	NN
+can	MD
+be	VB
+easily	RB
+extended	VBN
+to	TO
+larger	JJR
+k	NN
+and	CC
+d.	NNP
+First	NNP
+we	PRP
+prove	VBP
+C2C	NN
+is	VBZ
+in	IN
+NP	NN
+.	.
+
+We	PRP
+can	MD
+nondeterministically	RB
+guess	VB
+a	DT
+partitioning	NN
+of	IN
+a	DT
+graph	NN
+G	NN
+and	CC
+pick	VB
+a	DT
+node	NN
+as	IN
+center	NN
+from	IN
+each	DT
+partition	NN
+.	.
+
+For	IN
+each	DT
+partition	NN
+,	,
+we	PRP
+can	MD
+deterministically	RB
+check	VB
+if	IN
+it	PRP
+is	VBZ
+valid	JJ
+by	IN
+traversing	VBG
+the	DT
+corresponding	JJ
+subgraph	NN
+to	TO
+verify	VB
+both	CC
+the	DT
+connectedness	NN
+and	CC
+radius	NN
+constraints	NNS
+.	.
+
+
+Next	RB
+,	,
+we	PRP
+perform	VBP
+a	DT
+reduction	NN
+from	IN
+3CNF-SAT	NN
+to	TO
+show	VB
+the	DT
+NP-hardness	NN
+.	.
+
+Denote	VB
+L	NN
+=	JJ
+-LCB-	-LRB-
+u1	NN
+,	,
+u1	NN
+,	,
+...	:
+,	,
+un	NN
+,	,
+un	NN
+-RCB-	-RRB-
+to	TO
+be	VB
+the	DT
+set	NN
+of	IN
+literals	NNS
+.	.
+
+For	IN
+any	DT
+3CNF-SAT	NN
+instance	NN
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+4	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+C	NN
+=	JJ
+C1	NN
+âˆ	NN
+§	CD
+C2	NN
+âˆ	NN
+§	CD
+...	:
+âˆ	JJ
+§	CD
+Cm	NN
+,	,
+we	PRP
+construct	VBP
+an	DT
+instance	NN
+of	IN
+C2C	NN
+f	FW
+-LRB-	-LRB-
+I	PRP
+-RRB-	-RRB-
+=	JJ
+-LRB-	-LRB-
+G	NN
+,	,
+w	NN
+,	,
+r	NN
+-RRB-	-RRB-
+,	,
+where	WRB
+G	NN
+=	JJ
+-LRB-	-LRB-
+V	NN
+,	,
+E	NN
+-RRB-	-RRB-
+is	VBZ
+a	DT
+graph	NN
+,	,
+w	NN
+:	:
+V	NN
+â	NN
+†	NN
+'	''
+R	NN
+is	VBZ
+a	DT
+function	NN
+which	WDT
+assigns	VBZ
+a	DT
+coordinate	JJ
+vector	NN
+to	TO
+each	DT
+node	NN
+,	,
+r	NN
+âˆˆ	NN
+R	NN
++	CC
+is	VBZ
+the	DT
+radius	NN
+constraint	NN
+,	,
+by	IN
+the	DT
+following	VBG
+procedure	NN
+:	:
+
+
+a1	NN
+
+
+b1	NN
+
+
+a2	NN
+
+
+b2	NN
+
+
+...	:
+
+
+an	DT
+
+
+bn	NN
+
+
+C.	NNP
+.	.
+
+.1	NN
+Cm	NN
+
+
+u1	NN
+
+
+u1	NN
+
+
+u2	NN
+
+
+u2	NN
+...	:
+
+
+un	NN
+
+
+un	NN
+
+
+1	LS
+.	.
+
+First	RB
+,	,
+we	PRP
+create	VBP
+a	DT
+set	NN
+of	IN
+nodes	NNS
+V	NN
+=	JJ
+PâˆªLâˆªCâˆªAâˆªB	NN
+.	.
+
+
+P	NN
+=	SYM
+-LCB-	-LRB-
+p0	NN
+,	,
+p1	NN
+-RCB-	-RRB-
+where	WRB
+p0	NN
+,	,
+p1	NN
+are	VBP
+two	CD
+center	JJ
+nodes	NNS
+;	:
+L	NN
+,	,
+
+
+C	NN
+are	VBP
+the	DT
+sets	NNS
+of	IN
+literals	NNS
+and	CC
+clauses	NNS
+respectively	RB
+;	:
+
+
+A	DT
+=	JJ
+-LCB-	-LRB-
+a1	NN
+,	,
+...	:
+,	,
+an	DT
+-RCB-	-RRB-
+and	CC
+B	NN
+=	JJ
+-LCB-	-LRB-
+b1	NN
+,	,
+...	:
+,	,
+bn	NN
+-RCB-	-RRB-
+are	VBP
+two	CD
+
+
+sets	NNS
+of	IN
+nodes	NNS
+introduced	VBN
+only	RB
+for	IN
+the	DT
+purpose	NN
+of	IN
+
+
+reduction	NN
+.	.
+
+In	IN
+the	DT
+following	VBG
+,	,
+we	PRP
+shall	MD
+refer	VB
+to	TO
+the	DT
+
+
+cluster	NN
+including	VBG
+node	NN
+p0	NN
+-LRB-	-LRB-
+or	CC
+p1	NN
+-RRB-	-RRB-
+as	IN
+V0	NN
+-LRB-	-LRB-
+or	CC
+V1	NN
+,	,
+resp	NN
+.	.
+-RRB-	-RRB-
+.	.
+
+
+p0	NN
+
+
+p1	NN
+
+
+Figure	NN
+2	CD
+:	:
+The	DT
+constructed	VBN
+graph	NN
+G.	NNP
+
+
+0	CD
+
+
+r	NN
+
+
+2r	JJ
+3r	NN
+
+
+4r	NN
+
+
+b1	NN
+...	:
+
+
+p0	NN
+
+
+u	NN
+,	,
+u	NN
+1	CD
+
+
+_	SYM
+
+
+1	CD
+...	:
+u	FW
+,	,
+un	NN
+
+
+_	SYM
+
+
+n	NN
+
+
+p1	NN
+
+
+a.	NN
+.	.
+
+.1	NN
+
+
+C.	NNP
+.	.
+
+.1	NN
+
+
+2	LS
+.	.
+
+Next	RB
+,	,
+we	PRP
+link	VBP
+the	DT
+nodes	NNS
+created	VBN
+in	IN
+step	NN
+1	CD
+.	.
+
+First	RB
+,	,
+we	PRP
+
+
+connect	VB
+p0	NN
+and	CC
+p1	NN
+with	IN
+every	DT
+node	NN
+in	IN
+L.	NNP
+Second	NNP
+,	,
+
+
+for	IN
+every	DT
+literal	JJ
+l	NN
+âˆˆ	NN
+L	NN
+and	CC
+clause	NN
+Ci	NN
+âˆˆ	NN
+C	NN
+,	,
+we	PRP
+link	VBP
+
+
+l	NN
+and	CC
+Ci	NN
+if	IN
+l	NN
+âˆˆ	NN
+Ci	NN
+.	.
+
+Finally	RB
+,	,
+âˆ	VB
+$	$
+i	FW
+âˆˆ	FW
+-LCB-	-LRB-
+1,2	CD
+,	,
+...	:
+,	,
+n	NN
+-RCB-	-RRB-
+,	,
+we	PRP
+
+
+link	NN
+each	DT
+of	IN
+ai	VBP
+and	CC
+bi	VBP
+with	IN
+each	DT
+of	IN
+ui	NN
+and	CC
+ui	NN
+.	.
+
+Refer	VB
+
+
+to	TO
+Figure	NNP
+2	CD
+for	IN
+a	DT
+visualization	NN
+of	IN
+graph	NN
+G.	NNP
+Note	VB
+
+
+that	IN
+every	DT
+node	NN
+in	IN
+A	NN
+,	,
+B	NN
+,	,
+C	NN
+can	MD
+only	RB
+connect	VB
+to	TO
+the	DT
+
+
+center	NN
+nodes	NNS
+p0	NN
+and	CC
+p1	NN
+via	IN
+some	DT
+node	NN
+in	IN
+L	NN
+,	,
+hence	RB
+
+
+the	DT
+nodes	NNS
+in	IN
+L	NN
+are	VBP
+articulation	NN
+nodes	NNS
+.	.
+
+
+Now	RB
+,	,
+we	PRP
+assign	VBP
+each	DT
+node	NN
+in	IN
+V	NN
+a	DT
+carefully	RB
+chosen	VBN
+
+
+coordinate	JJ
+such	JJ
+that	IN
+each	DT
+node	NN
+of	IN
+A	NN
+,	,
+B	NN
+,	,
+C	NN
+is	VBZ
+within	IN
+
+
+distance	NN
+r	NN
+to	TO
+one	CD
+unique	JJ
+center	NN
+node	NN
+p0	NN
+or	CC
+p1	NN
+.	.
+
+Note	VB
+
+
+in	IN
+order	NN
+to	TO
+have	VB
+a	DT
+legal	JJ
+partitioning	NN
+,	,
+every	DT
+articula	NN
+-	:
+
+
+tion	NN
+node	NN
+in	IN
+L	NN
+must	MD
+be	VB
+assigned	VBN
+to	TO
+an	DT
+appropriate	JJ
+
+
+center	NN
+-LRB-	-LRB-
+cluster	NN
+-RRB-	-RRB-
+.	.
+
+For	IN
+the	DT
+reduction	NN
+,	,
+we	PRP
+associate	VBP
+a	DT
+
+
+truth	NN
+value	NN
+-LRB-	-LRB-
+true	JJ
+or	CC
+false	JJ
+-RRB-	-RRB-
+to	TO
+each	DT
+cluster	NN
+;	:
+accord	NN
+-	:
+
+
+ingly	RB
+,	,
+the	DT
+allocations	NNS
+of	IN
+these	DT
+articulation	NN
+nodes	NNS
+can	MD
+
+
+then	RB
+be	VB
+transferred	VBN
+back	RB
+to	TO
+a	DT
+truth	NN
+assignment	NN
+for	IN
+
+
+the	DT
+input	NN
+3CNF-SAT	NN
+instance	NN
+I.	NN
+Besides	IN
+,	,
+we	PRP
+need	VBP
+
+
+to	TO
+guarantee	VB
+that	IN
+the	DT
+truth	NN
+assignment	NN
+we	PRP
+get	VBP
+for	IN
+
+
+I	PRP
+is	VBZ
+proper	JJ
+,	,
+i.e.	FW
+,	,
+âˆ	VB
+$	$
+i	FW
+âˆˆ	FW
+-LCB-	-LRB-
+1,2	CD
+,	,
+...	:
+,	,
+n	NN
+-RCB-	-RRB-
+,	,
+node	NN
+ui	NN
+and	CC
+ui	NN
+
+
+belong	VB
+to	TO
+diï	VB
+¬	CD
+$	$
+erent	JJ
+clusters	NNS
+.	.
+
+Node	VB
+sets	NNS
+A	DT
+and	CC
+B	NN
+are	VBP
+
+
+two	CD
+gadgets	NNS
+introduced	VBN
+for	IN
+this	DT
+purpose	NN
+.	.
+
+
+bn	NN
+
+
+an	DT
+
+
+Cm	NN
+
+
+Figure	NNP
+3	CD
+:	:
+Deployment	NN
+of	IN
+nodes	NNS
+on	IN
+the	DT
+line	NN
+.	.
+
+
+â	RB
+$	$
+œâ	JJ
+‡	NN
+â	NN
+$	$
+:	:
+If	IN
+f	FW
+-LRB-	-LRB-
+I	PRP
+-RRB-	-RRB-
+=	JJ
+-LRB-	-LRB-
+G	NN
+,	,
+w	NN
+,	,
+r	NN
+-RRB-	-RRB-
+has	VBZ
+a	DT
+legal	JJ
+partitioning	NN
+,	,
+we	PRP
+can	MD
+have	VB
+the	DT
+following	JJ
+simple	JJ
+observations	NNS
+:	:
+
+
+Observation	NN
+3.1	CD
+.	.
+
+
+1	LS
+.	.
+
+Both	DT
+p0	NN
+and	CC
+p1	NN
+must	MD
+be	VB
+selected	VBN
+as	IN
+centers	NNS
+,	,
+other	JJ
+-	:
+
+
+wise	JJ
+some	DT
+node	NN
+can	MD
+not	RB
+be	VB
+reached	VBN
+within	IN
+r.	NN
+2	CD
+.	.
+
+For	IN
+the	DT
+same	JJ
+reason	NN
+,	,
+each	DT
+node	NN
+in	IN
+A	DT
+and	CC
+C	NN
+must	MD
+
+
+be	VB
+assigned	VBN
+to	TO
+cluster	VB
+V1	NN
+and	CC
+each	DT
+node	NN
+in	IN
+B	NN
+must	MD
+
+
+be	VB
+assigned	VBN
+to	TO
+V0	NN
+.	.
+
+
+3	LS
+.	.
+
+For	IN
+any	DT
+i	FW
+âˆˆ	FW
+-LCB-	-LRB-
+1	CD
+,	,
+...	:
+,	,
+n	NN
+-RCB-	-RRB-
+,	,
+node	NN
+ui	NN
+and	CC
+ui	NN
+can	MD
+not	RB
+be	VB
+
+
+in	IN
+the	DT
+same	JJ
+cluster	NN
+.	.
+
+If	IN
+node	NN
+ui	NN
+and	CC
+ui	NN
+are	VBP
+both	DT
+
+
+assigned	VBN
+to	TO
+cluster	VB
+V0	NN
+-LRB-	-LRB-
+or	CC
+V1	NN
+-RRB-	-RRB-
+,	,
+some	DT
+node	NN
+in	IN
+A	NN
+-LRB-	-LRB-
+or	CC
+
+
+B	NN
+-RRB-	-RRB-
+is	VBZ
+not	RB
+able	JJ
+to	TO
+connect	VB
+to	TO
+p1	NN
+-LRB-	-LRB-
+or	CC
+p0	NN
+-RRB-	-RRB-
+.	.
+
+
+4	LS
+.	.
+
+For	IN
+each	DT
+clause	NN
+Ci	NN
+âˆˆ	NN
+C	NN
+,	,
+there	EX
+must	MD
+be	VB
+at	IN
+least	JJS
+one	CD
+
+
+literal	JJ
+assigned	VBN
+to	TO
+cluster	VB
+V1	NN
+;	:
+otherwise	RB
+Ci	NNP
+will	MD
+be	VB
+
+
+disconnected	VBN
+from	IN
+p1	NN
+.	.
+
+
+3	LS
+.	.
+
+Finally	RB
+,	,
+we	PRP
+simply	RB
+set	VBD
+an	DT
+arbitrary	JJ
+positive	JJ
+value	NN
+
+
+to	TO
+r	NN
+and	CC
+assign	VB
+each	DT
+node	NN
+v	LS
+âˆˆ	FW
+V	NN
+a	DT
+coordinate	JJ
+as	IN
+
+
+follows	VBZ
+:	:
+
+
+ï	NN
+#	#
+±	CD
+ï	NN
+#	#
+´	SYM
+
+
+ï	NN
+#	#
+´	CD
+ï	NN
+#	#
+´	SYM
+
+
+0	CD
+,	,
+if	IN
+v	LS
+âˆˆ	NN
+B	NN
+;	:
+
+
+ï	NN
+#	#
+´	CD
+ï	NN
+#	#
+²	SYM
+
+
+r	NN
+,	,
+if	IN
+v	LS
+=	JJ
+p0	NN
+;	:
+
+
+w	NN
+-LRB-	-LRB-
+v	LS
+-RRB-	-RRB-
+=	JJ
+
+
+ï	NN
+#	#
+´	SYM
+
+
+2r	NN
+,	,
+if	IN
+v	LS
+âˆˆ	FW
+L	NN
+;	:
+
+
+ï	NN
+#	#
+´	CD
+ï	NN
+#	#
+´	CD
+ï	NN
+#	#
+´	SYM
+
+
+ï	NN
+#	#
+³	SYM
+
+
+3r	NN
+,	,
+if	IN
+v	LS
+=	JJ
+p1	NN
+;	:
+
+
+4r	NN
+,	,
+if	IN
+v	LS
+âˆˆ	FW
+A	DT
+âˆª	JJ
+C.	NN
+
+
+We	PRP
+construct	VBP
+a	DT
+satisfying	JJ
+assignment	NN
+for	IN
+I	PRP
+as	IN
+fol	NN
+-	:
+lows	NNS
+.	.
+
+For	IN
+each	DT
+variable	JJ
+ui	NN
+âˆˆ	NN
+U	NN
+,	,
+if	IN
+ui	NN
+is	VBZ
+assigned	VBN
+to	TO
+V1	NN
+,	,
+set	VBN
+ui	NNS
+to	TO
+be	VB
+true	JJ
+,	,
+otherwise	RB
+false	JJ
+.	.
+
+Note	VB
+by	IN
+Observa	NNP
+-	:
+tion	NN
+3.1.3	CD
+,	,
+ui	NN
+and	CC
+ui	NN
+are	VBP
+always	RB
+assigned	VBN
+with	IN
+diï	NN
+¬	CD
+$	$
+erent	JJ
+values	NNS
+,	,
+hence	RB
+the	DT
+assignment	NN
+is	VBZ
+proper	JJ
+.	.
+
+Moreover	RB
+,	,
+the	DT
+assignment	NN
+satisï	NN
+¬	CD
+es	NNS
+I	PRP
+since	IN
+,	,
+by	IN
+Observation	NN
+3.1.4	CD
+,	,
+all	PDT
+the	DT
+clauses	NNS
+are	VBP
+satisï	JJ
+¬	NN
+ed	VBD
+.	.
+
+
+â	RB
+$	$
+œâ	JJ
+‡	NN
+'	''
+â	RB
+$	$
+:	:
+If	IN
+I	PRP
+is	VBZ
+satisï	JJ
+¬	NN
+able	JJ
+,	,
+we	PRP
+construct	VBP
+a	DT
+partitioning	VBG
+-LCB-	-LRB-
+V0	NN
+,	,
+V1	NN
+-RCB-	-RRB-
+as	IN
+follows	VBZ
+.	.
+
+
+V0	NN
+=	JJ
+B	NN
+âˆª	NN
+-LCB-	-LRB-
+p0	NN
+-RCB-	-RRB-
+âˆª	NN
+-LCB-	-LRB-
+li	NN
+âˆˆ	NN
+L	NN
+|	CD
+li	NN
+=	JJ
+false	JJ
+-RCB-	-RRB-
+,	,
+V1	NN
+=	JJ
+V	NN
+\	CD
+V0	NN
+.	.
+
+
+Figure	NNP
+3	CD
+illustrates	VBZ
+the	DT
+deployment	NN
+of	IN
+nodes	NNS
+on	IN
+the	DT
+line	NN
+.	.
+
+
+It	PRP
+is	VBZ
+easy	JJ
+to	TO
+verify	VB
+that	IN
+the	DT
+above	JJ
+solution	NN
+is	VBZ
+valid	JJ
+since	IN
+every	DT
+node	NN
+in	IN
+V	NN
+is	VBZ
+within	IN
+distance	NN
+r	NN
+from	IN
+one	CD
+center	NN
+node	NN
+,	,
+p0	NN
+or	CC
+p1	NN
+.	.
+
+
+Downloaded	VBN
+07/10/14	CD
+to	TO
+147.26.103.71	CD
+.	.
+
+Redistribution	NN
+subject	NN
+to	TO
+SIAM	NNP
+license	NN
+or	CC
+copyright	NN
+;	:
+see	VB
+http://www.siam.org/journals/ojsa.php	NN
+
+
+Clearly	RB
+the	DT
+above	JJ
+reduction	NN
+is	VBZ
+polynomial	JJ
+.	.
+
+Next	RB
+,	,
+we	PRP
+show	VBP
+that	IN
+I	PRP
+is	VBZ
+satisï	JJ
+¬	NN
+able	JJ
+if	IN
+and	CC
+only	RB
+if	IN
+f	FW
+-LRB-	-LRB-
+I	PRP
+-RRB-	-RRB-
+=	JJ
+-LRB-	-LRB-
+G	NN
+,	,
+w	NN
+,	,
+r	NN
+-RRB-	-RRB-
+has	VBZ
+a	DT
+legal	JJ
+partitioning	NN
+.	.
+
+
+Finally	RB
+,	,
+we	PRP
+note	VBP
+that	IN
+the	DT
+above	JJ
+proof	NN
+can	MD
+be	VB
+easily	RB
+extended	VBN
+to	TO
+bigger	JJR
+k	NN
+and	CC
+d	NN
+.	.
+
+When	WRB
+k	NN
+>	RBR
+2	CD
+,	,
+one	CD
+can	MD
+always	RB
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+5	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+add	VB
+k	NN
+2	CD
+isolated	VBN
+nodes	NNS
+-LRB-	-LRB-
+hence	RB
+each	DT
+of	IN
+them	PRP
+must	MD
+be	VB
+a	DT
+center	NN
+-RRB-	-RRB-
+to	TO
+graph	NN
+G	NN
+and	CC
+apply	VB
+the	DT
+same	JJ
+reduction	NN
+;	:
+when	WRB
+d	NN
+>	JJR
+1	CD
+,	,
+one	CD
+can	MD
+simply	RB
+add	VB
+d	NN
+1	CD
+dimensions	NNS
+with	IN
+identical	JJ
+value	NN
+to	TO
+the	DT
+coordinate	JJ
+vector	NN
+w.	IN
+
+
+The	DT
+internal	JJ
+connectedness	NN
+constraint	NN
+poses	VBZ
+new	JJ
+challenges	NNS
+to	TO
+the	DT
+traditional	JJ
+k-center	NN
+problem	NN
+.	.
+
+Table	NNP
+1	CD
+compares	VBZ
+the	DT
+hardness	NN
+of	IN
+these	DT
+two	CD
+problems	NNS
+in	IN
+diï	NN
+¬	CD
+$	$
+erent	JJ
+settings	NNS
+.	.
+
+
+k	NN
+is	VBZ
+a	DT
+constant	JJ
+k	NN
+is	VBZ
+an	DT
+input	NN
+,	,
+d	NN
+=	JJ
+1	CD
+k	NN
+is	VBZ
+an	DT
+input	NN
+,	,
+d	NN
+>	JJR
+1	CD
+
+
+Traditional	JJ
+k	NN
+Center	NNP
+Polynomial	NNP
+Solvable	NNP
+Polynomial	NNP
+Solvable	NNP
+
+
+NP-complete	JJ
+
+
+CkC	NN
+NP-complete	JJ
+NP-complete	JJ
+NP-complete	JJ
+
+
+Table	NNP
+1	CD
+:	:
+Complexity	NNP
+results	VBZ
+.	.
+
+
+actually	RB
+be	VB
+used	VBN
+to	TO
+solve	VB
+the	DT
+3CNF-SAT	NN
+problem	NN
+.	.
+
+The	DT
+reduction	NN
+is	VBZ
+similar	JJ
+to	TO
+the	DT
+proof	NN
+of	IN
+Theorem	NNP
+3.1	CD
+.	.
+
+First	RB
+,	,
+for	IN
+a	DT
+given	VBN
+3CNF-SAT	NN
+instance	NN
+I	PRP
+,	,
+we	PRP
+construct	VBP
+a	DT
+C2C	NN
+instance	NN
+f	FW
+-LRB-	-LRB-
+I	PRP
+-RRB-	-RRB-
+=	JJ
+-LRB-	-LRB-
+G	NN
+,	,
+w	NN
+,	,
+r	NN
+-RRB-	-RRB-
+by	IN
+the	DT
+same	JJ
+procedure	NN
+as	IN
+in	IN
+the	DT
+proof	NN
+of	IN
+Theorem	NNP
+3.1	CD
+.	.
+
+Later	RB
+,	,
+we	PRP
+invoke	VBP
+Algorithm	NN
+A	NN
+on	IN
+the	DT
+input	NN
+-LRB-	-LRB-
+G	NN
+,	,
+w	NN
+,	,
+r	NN
+-RRB-	-RRB-
+.	.
+
+
+Since	IN
+the	DT
+coordinates	VBZ
+of	IN
+all	DT
+nodes	NNS
+are	VBP
+multiples	NNS
+of	IN
+r	NN
+,	,
+the	DT
+optimal	JJ
+radius	NN
+must	MD
+also	RB
+be	VB
+a	DT
+multiple	JJ
+of	IN
+r.	NN
+Hence	RB
+,	,
+if	IN
+Algorithm	NNP
+A	NNP
+returns	VBZ
+a	DT
+solution	NN
+smaller	JJR
+than	IN
+2r	CD
+,	,
+the	DT
+optimal	JJ
+radius	NN
+must	MD
+be	VB
+r.	VBN
+By	IN
+the	DT
+same	JJ
+argument	NN
+as	IN
+in	IN
+the	DT
+proof	NN
+of	IN
+Theorem	NNP
+3.1	CD
+,	,
+I	PRP
+is	VBZ
+satisï	JJ
+¬	NN
+able	JJ
+.	.
+
+Otherwise	RB
+if	IN
+Algorithm	NN
+A	NN
+returns	VBZ
+a	DT
+solution	NN
+bigger	JJR
+than	IN
+or	CC
+equal	JJ
+to	TO
+2r	VB
+,	,
+since	IN
+Algorithm	NNP
+A	NNP
+is	VBZ
+guaranteed	VBN
+to	TO
+ï	VB
+¬	CD
+nd	VBD
+a	DT
+solution	NN
+within	IN
+-LRB-	-LRB-
+2	CD
+Ç	NN
+``	``
+-RRB-	-RRB-
+r	NN
+,	,
+the	DT
+optimal	JJ
+radius	NN
+is	VBZ
+at	IN
+least	JJS
+2r	NN
+and	CC
+consequently	RB
+I	PRP
+is	VBZ
+not	RB
+satisï	JJ
+¬	NN
+able	JJ
+.	.
+
+Hence	RB
+,	,
+unless	IN
+P	NN
+=	JJ
+NP	NN
+,	,
+the	DT
+min-CkC	NN
+problem	NN
+can	MD
+not	RB
+be	VB
+approximated	VBN
+within	IN
+2	CD
+Ç	NN
+``	``
+.	.
+
+
+Remarks	NNS
+:	:
+
+
+1	LS
+.	.
+
+Theorem	NNP
+3.1	CD
+also	RB
+implies	VBZ
+that	IN
+the	DT
+following	VBG
+sub	SYM
+-	:
+
+
+problem	NN
+is	VBZ
+NP-hard	NN
+:	:
+Given	VBN
+a	DT
+set	NN
+of	IN
+k	NN
+centers	NNS
+,	,
+as	IN
+-	:
+
+
+sign	VB
+each	DT
+node	NN
+to	TO
+one	CD
+particular	JJ
+center	NN
+to	TO
+obtain	VB
+k	NN
+
+
+clusters	NNS
+which	WDT
+are	VBP
+all	DT
+internally	RB
+connected	VBN
+and	CC
+the	DT
+
+
+maximum	NN
+cluster	NN
+radius	NN
+is	VBZ
+minimized	VBN
+.	.
+
+
+2	LS
+.	.
+
+Similar	JJ
+to	TO
+the	DT
+CkC	NN
+problem	NN
+,	,
+one	PRP
+can	MD
+deï	VB
+¬	CD
+ne	NN
+the	DT
+
+
+connected	JJ
+k-median	JJ
+and	CC
+k-means	JJ
+problems	NNS
+.	.
+
+In	IN
+
+
+fact	NN
+,	,
+the	DT
+proof	NN
+of	IN
+Theorem	NNP
+3.1	CD
+can	MD
+be	VB
+extended	VBN
+to	TO
+
+
+these	DT
+problems	NNS
+to	TO
+show	VB
+their	PRP$
+NP-Completeness	NN
+.	.
+
+
+L	NN
+e	SYM
+the	DT
+optimal	JJ
+radius	NN
+of	IN
+the	DT
+above	JJ
+min	NN
+-	:
+et	FW
+opt	VB
+b	NN
+
+
+CkC	NN
+problem	NN
+.	.
+
+In	IN
+the	DT
+following	VBG
+we	PRP
+propose	VBP
+a	DT
+polynomial	JJ
+algorithm	NN
+which	WDT
+is	VBZ
+guaranteed	VBN
+to	TO
+ï	VB
+¬	CD
+nd	VBD
+a	DT
+solution	NN
+within	IN
+3opt	CD
+.	.
+
+To	TO
+prove	VB
+this	DT
+result	NN
+,	,
+ï	NN
+¬	CD
+rst	NN
+we	PRP
+remove	VBP
+the	DT
+constraint	NN
+of	IN
+min-CkC	NN
+that	IN
+each	DT
+point	NN
+must	MD
+belong	VB
+to	TO
+exactly	RB
+one	CD
+of	IN
+the	DT
+clusters	NNS
+,	,
+and	CC
+deï	NN
+¬	CD
+ne	NN
+a	DT
+relaxed	VBN
+problem	NN
+which	WDT
+we	PRP
+will	MD
+refer	VB
+to	TO
+as	IN
+min-CkCâ	NN
+$	$
+²	CD
+:	:
+
+
+4	LS
+Approximation	NN
+Algorithm	NN
+
+
+In	IN
+this	DT
+section	NN
+we	PRP
+consider	VBP
+the	DT
+min-CkC	NN
+problem	NN
+,	,
+the	DT
+corresponding	JJ
+optimization	NN
+version	NN
+of	IN
+CkC	NN
+and	CC
+present	VB
+an	DT
+approximation	NN
+algorithm	NN
+.	.
+
+
+Definition	NN
+4.2	CD
+.	.
+
+-LRB-	-LRB-
+min-CkCâ	NN
+$	$
+²	CD
+problem	NN
+-RRB-	-RRB-
+Given	VBN
+k	NN
+as	IN
+the	DT
+number	NN
+of	IN
+clusters	NNS
+,	,
+a	DT
+distance	NN
+function	NN
+|	CD
+|	CD
+Â	NN
+·	CD
+|	CD
+|	NN
+,	,
+and	CC
+a	DT
+graph	NN
+G	NN
+=	JJ
+-LRB-	-LRB-
+V	NN
+,	,
+E	NN
+-RRB-	-RRB-
+where	WRB
+every	DT
+node	NN
+in	IN
+V	NN
+is	VBZ
+associated	VBN
+with	IN
+a	DT
+coordinate	JJ
+vector	NN
+w	NN
+:	:
+V	NN
+â	NN
+†	NN
+'	''
+Rd.	NNP
+.	.
+
+Find	VB
+the	DT
+minimum	JJ
+radius	NN
+constraint	NN
+r	NN
+âˆˆ	NN
+R	NN
++	CC
+,	,
+such	JJ
+that	IN
+there	EX
+exist	VBP
+node	NN
+sets	NNS
+V1	NN
+,	,
+...	:
+,	,
+Vk	NN
+âŠ	NN
+†	CD
+V	NN
+,	,
+V	NN
+=	JJ
+V1âˆª	NN
+...	:
+âˆªVk	NNP
+,	,
+which	WDT
+satisfy	VBP
+the	DT
+internal	JJ
+connectedness	NN
+constraint	NN
+and	CC
+radius	NN
+constraint	NN
+deï	NN
+¬	CD
+ned	VBD
+in	IN
+Deï	NN
+¬	CD
+nition	NN
+3.1	CD
+.	.
+
+
+Definition	NN
+4.1	CD
+.	.
+
+-LRB-	-LRB-
+min-CkC	NN
+problem	NN
+-RRB-	-RRB-
+Given	VBN
+k	NN
+as	IN
+the	DT
+number	NN
+of	IN
+centers	NNS
+,	,
+a	DT
+distance	NN
+function	NN
+|	CD
+|	CD
+Â	NN
+·	CD
+|	CD
+|	NN
+,	,
+and	CC
+a	DT
+graph	NN
+G	NN
+=	JJ
+-LRB-	-LRB-
+V	NN
+,	,
+E	NN
+-RRB-	-RRB-
+where	WRB
+every	DT
+node	NN
+in	IN
+V	NN
+is	VBZ
+associated	VBN
+with	IN
+a	DT
+coordinate	JJ
+vector	NN
+w	NN
+:	:
+V	NN
+â	NN
+†	NN
+'	''
+Rd.	NNP
+.	.
+
+Find	VB
+the	DT
+minimum	JJ
+radius	NN
+r	NN
+âˆˆ	NN
+R	NN
++	CC
+,	,
+such	JJ
+that	IN
+there	EX
+exist	VBP
+disjoint	NN
+partitions	NNS
+-LCB-	-LRB-
+V1	NN
+,	,
+...	:
+,	,
+Vk	NN
+-RCB-	-RRB-
+of	IN
+V	NN
+,	,
+i.	NNP
+e.	NNP
+,	,
+V	NN
+=	JJ
+V1	NN
+âˆª	NN
+...	:
+âˆª	NN
+Vk	NN
+and	CC
+âˆ	VB
+$	$
+1	CD
+â	NN
+‰	CD
+$	$
+i	FW
+<	JJR
+j	NN
+â	NN
+‰	CD
+$	$
+k	NN
+,	,
+Vi	NNP
+âˆ	VBD
+©	CD
+Vj	NN
+=	JJ
+Ï	NN
+†	NN
+,	,
+which	WDT
+satisfy	VBP
+the	DT
+internal	JJ
+connectedness	NN
+constraint	NN
+and	CC
+radius	NN
+constraint	NN
+deï	NN
+¬	CD
+ned	VBD
+in	IN
+Deï	NN
+¬	CD
+nition	NN
+3.1	CD
+.	.
+
+
+We	PRP
+ï	VBP
+¬	CD
+rst	JJ
+propose	VBP
+a	DT
+polynomial	JJ
+procedure	NN
+to	TO
+solve	VB
+the	DT
+min-CkCâ	NN
+$	$
+²	CD
+problem	NN
+.	.
+
+Let	VB
+optâ	JJ
+$	$
+²	CD
+be	VB
+the	DT
+optimal	JJ
+radius	NN
+of	IN
+min-CkCâ	JJ
+$	$
+²	CD
+.	.
+
+Clearly	RB
+optâ	JJ
+$	$
+²	CD
+â	NN
+‰	CD
+$	$
+opt	VB
+since	IN
+opt	VB
+is	VBZ
+also	RB
+a	DT
+feasible	JJ
+solution	NN
+of	IN
+min-CkCâ	JJ
+$	$
+²	CD
+.	.
+
+Next	IN
+we	PRP
+present	VBP
+a	DT
+procedure	NN
+to	TO
+transfer	VB
+the	DT
+optimal	JJ
+solution	NN
+of	IN
+min-CkCâ	JJ
+$	$
+²	CD
+to	TO
+a	DT
+solution	NN
+of	IN
+min-CkC	NN
+with	IN
+radius	NN
+at	IN
+most	JJS
+3optâ	JJ
+$	$
+²	CD
+.	.
+
+Combining	VBG
+the	DT
+two	CD
+procedures	NNS
+we	PRP
+obtain	VBP
+an	DT
+algorithm	NN
+for	IN
+min-CkC	NN
+with	IN
+approximation	NN
+ratio	NN
+3	CD
+.	.
+
+
+In	IN
+the	DT
+following	VBG
+we	PRP
+prove	VBP
+an	DT
+inapproximability	NN
+result	NN
+for	IN
+the	DT
+min-CkC	NN
+problem	NN
+,	,
+which	WDT
+can	MD
+be	VB
+viewed	VBN
+as	IN
+a	DT
+corollary	NN
+of	IN
+Theorem	NNP
+3.1	CD
+.	.
+
+
+4.1	CD
+Solving	VBG
+the	DT
+min-CkCâ	NN
+$	$
+²	CD
+problem	NN
+.	.
+
+To	TO
+solve	VB
+the	DT
+min-CkCâ	NN
+$	$
+²	CD
+problem	NN
+,	,
+we	PRP
+need	VBP
+the	DT
+following	VBG
+notion	NN
+of	IN
+reachability	NN
+:	:
+
+
+Theorem	NNP
+4.1	CD
+.	.
+
+For	IN
+any	DT
+k	NN
+â	NN
+‰	CD
+¥	NN
+2	CD
+,	,
+Ç	NNP
+``	``
+>	JJR
+0	CD
+,	,
+the	DT
+min-CkC	NN
+problem	NN
+is	VBZ
+not	RB
+approximable	JJ
+within	IN
+2	CD
+Ç	NN
+``	``
+unless	IN
+P	NN
+=	JJ
+NP	NN
+.	.
+
+
+Proof	NN
+.	.
+
+We	PRP
+only	RB
+study	VB
+the	DT
+case	NN
+for	IN
+k	NN
+=	JJ
+2	CD
+.	.
+
+We	PRP
+show	VBP
+,	,
+if	IN
+there	EX
+is	VBZ
+a	DT
+polynomial	JJ
+algorithm	NN
+A	NN
+which	WDT
+is	VBZ
+guaranteed	VBN
+to	TO
+ï	VB
+¬	CD
+nd	VBD
+a	DT
+feasible	JJ
+solution	NN
+within	IN
+-LRB-	-LRB-
+2	CD
+Ç	NN
+``	``
+-RRB-	-RRB-
+opt	VBP
+,	,
+it	PRP
+can	MD
+
+
+Definition	NN
+4.3	CD
+.	.
+
+Given	VBN
+a	DT
+graph	NN
+G	NN
+=	JJ
+-LRB-	-LRB-
+V	NN
+,	,
+E	NN
+-RRB-	-RRB-
+,	,
+for	IN
+u	NN
+,	,
+v	LS
+âˆˆ	FW
+V	NN
+,	,
+v	LS
+is	VBZ
+reachable	JJ
+from	IN
+u	FW
+-LRB-	-LRB-
+w.r.t.	FW
+r	NN
+-RRB-	-RRB-
+if	IN
+there	EX
+exists	VBZ
+a	DT
+path	NN
+u	FW
+â	FW
+†	FW
+'	''
+s1	NN
+â	NN
+†	NN
+'	''
+...	:
+â	JJ
+†	NN
+'	''
+sk	NN
+â	NN
+†	NN
+'	''
+v	LS
+,	,
+such	JJ
+that	IN
+s1	NN
+,	,
+...	:
+,	,
+sk	NN
+âˆˆ	NN
+V	NN
+,	,
+-LRB-	-LRB-
+si	FW
+,	,
+si	FW
++1	FW
+-RRB-	-RRB-
+âˆˆ	NN
+E	NN
+and	CC
+âˆ	VB
+$	$
+1	CD
+â	NN
+‰	CD
+$	$
+i	FW
+â	FW
+‰	FW
+$	$
+k	NN
+,	,
+|	CD
+|	CD
+w	NN
+-LRB-	-LRB-
+u	NN
+-RRB-	-RRB-
+w	NN
+-LRB-	-LRB-
+si	NN
+-RRB-	-RRB-
+|	CD
+|	CD
+â	NN
+‰	CD
+$	$
+r.	CD
+
+
+Downloaded	VBN
+07/10/14	CD
+to	TO
+147.26.103.71	CD
+.	.
+
+Redistribution	NN
+subject	NN
+to	TO
+SIAM	NNP
+license	NN
+or	CC
+copyright	NN
+;	:
+see	VB
+http://www.siam.org/journals/ojsa.php	NN
+
+
+Intuitively	RB
+,	,
+v	LS
+is	VBZ
+reachable	JJ
+from	IN
+u	FW
+w.r.t.	FW
+r	NN
+,	,
+if	IN
+and	CC
+only	RB
+if	IN
+v	LS
+can	MD
+be	VB
+included	VBN
+in	IN
+the	DT
+cluster	NN
+with	IN
+center	NN
+u	NN
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+6	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+Algorithm	NN
+1	CD
+A	DT
+polynomial	JJ
+algorithm	NN
+for	IN
+the	DT
+min	NN
+-	:
+CkCâ	NN
+$	$
+²	CD
+problem	NN
+.	.
+
+
+1	CD
+:	:
+Calculate	VB
+all	DT
+pairwise	JJ
+distances	NNS
+of	IN
+V	NN
+and	CC
+store	NN
+those	DT
+
+
+distance	NN
+values	NNS
+in	IN
+set	NN
+D	NN
+;	:
+
+
+2	CD
+:	:
+Sort	NN
+D	NN
+in	IN
+decreasing	VBG
+order	NN
+;	:
+
+
+3	CD
+:	:
+for	IN
+every	DT
+value	NN
+d	NN
+âˆˆ	NN
+D	NN
+do	VBP
+
+
+4	CD
+:	:
+Enumerate	VB
+all	DT
+possible	JJ
+k	NN
+centers	NNS
+;	:
+
+
+5	CD
+:	:
+for	IN
+every	DT
+set	NN
+of	IN
+k	NN
+centers	NNS
+-LCB-	-LRB-
+c1	NN
+,	,
+...	:
+,	,
+ck	NN
+-RCB-	-RRB-
+âŠ	NN
+†	CD
+V	NN
+do	VBP
+6	CD
+:	:
+Perform	VB
+BFS	NNS
+from	IN
+each	DT
+center	NN
+ci	NN
+and	CC
+mark	NN
+all	DT
+
+
+nodes	NNS
+which	WDT
+are	VBP
+reachable	JJ
+from	IN
+ci	FW
+w.r.t.	FW
+d	NN
+;	:
+7	CD
+:	:
+if	IN
+all	DT
+vertices	NNS
+are	VBP
+marked	JJ
+then	RB
+
+
+8	CD
+:	:
+Return	NN
+d	NN
+and	CC
+k	NN
+clusters	NNS
+;	:
+
+
+9	CD
+:	:
+end	VB
+if	IN
+
+
+10	CD
+:	:
+end	VB
+for	IN
+
+
+11	CD
+:	:
+end	VB
+for	IN
+
+
+cluster	NN
+Vi	NN
+for	IN
+1	CD
+â	NN
+‰	CD
+$	$
+i	FW
+â	FW
+‰	FW
+$	$
+k.	CD
+For	IN
+each	DT
+iteration	NN
+1	CD
+â	NN
+‰	CD
+$	$
+i	FW
+â	FW
+‰	FW
+$	$
+k	NN
+,	,
+â	VB
+$	$
+²	CD
+
+
+line	NN
+3	CD
+allocates	VBZ
+nodes	NNS
+in	IN
+V	NN
+
+
+i	LS
+
+
+which	WDT
+have	VBP
+not	RB
+been	VBN
+assigned	VBN
+to	TO
+any	DT
+previous	JJ
+clusters	NNS
+V1	NN
+,	,
+...	:
+,	,
+Viâˆ	NN
+'	''
+1	CD
+to	TO
+Vi	NNP
+.	.
+
+Afterwards	RB
+,	,
+â	VB
+$	$
+²	CD
+there	EX
+may	MD
+still	RB
+be	VB
+some	DT
+unassigned	JJ
+nodes	NNS
+in	IN
+V	NN
+
+
+i	LS
+
+
+.	.
+
+In	IN
+line	NN
+5	CD
+,	,
+we	PRP
+allocate	VBP
+the	DT
+unassigned	JJ
+nodes	NNS
+to	TO
+one	CD
+of	IN
+the	DT
+clusters	NNS
+V1	NN
+,	,
+...	:
+,	,
+Viâˆ	NN
+'	''
+1	CD
+from	IN
+which	WDT
+they	PRP
+are	VBP
+reachable	JJ
+w.r.t.	NN
+r.	NN
+
+
+vp	NN
+
+
+V1	NN
+
+
+V	NN
+â	VBD
+$	$
+™	CD
+2	CD
+
+
+vâ	NN
+$	$
+™	CD
+p	NN
+
+
+V	NN
+â	VBD
+$	$
+™	CD
+1	CD
+
+
+c2	NN
+
+
+c1	NN
+
+
+V2	NN
+
+
+and	CC
+radius	NN
+r.	NN
+Clearly	RB
+it	PRP
+can	MD
+be	VB
+decided	VBN
+in	IN
+polynomial	JJ
+time	NN
+by	IN
+performing	VBG
+a	DT
+breadth	NN
+ï	NN
+¬	CD
+rst	NN
+search	NN
+-LRB-	-LRB-
+BFS	NN
+-RRB-	-RRB-
+for	IN
+node	NN
+v	LS
+from	IN
+node	NN
+u.	NN
+Based	VBN
+on	IN
+this	DT
+,	,
+we	PRP
+propose	VBP
+a	DT
+simple	JJ
+algorithm	NN
+,	,
+Algorithm	NN
+1	CD
+,	,
+to	TO
+solve	VB
+the	DT
+min-CkCâ	NN
+$	$
+²	CD
+problem	NN
+.	.
+
+Runtime	NNP
+complexity	NN
+:	:
+Note	VB
+|	NN
+D	NN
+|	NN
+=	JJ
+
+
+n	NN
+
+
+2	CD
+
+
+and	CC
+we	PRP
+enumerate	VBP
+all	DT
+possible	JJ
+k	NN
+centers	NNS
+,	,
+hence	RB
+the	DT
+search	NN
+space	NN
+is	VBZ
+polynomial	JJ
+,	,
+i.e.	FW
+,	,
+nk	NN
++2	NN
+.	.
+
+Besides	IN
+,	,
+BFS	NN
+takes	VBZ
+time	NN
+at	IN
+most	JJS
+O	NN
+-LRB-	-LRB-
+n2	NN
+-RRB-	-RRB-
+.	.
+
+Thus	RB
+Algorithm	NN
+1	CD
+must	MD
+terminate	VB
+in	IN
+O	NN
+-LRB-	-LRB-
+nk	NN
++4	CD
+-RRB-	-RRB-
+steps	NNS
+.	.
+
+
+V	NN
+
+
+3	CD
+c3	NN
+
+
+V	NN
+â	VBD
+$	$
+™	CD
+3	CD
+
+
+Figure	NNP
+4	CD
+:	:
+Demonstration	NN
+of	IN
+Algorithm	NN
+2	CD
+.	.
+
+
+4.2	CD
+Back	RB
+to	TO
+the	DT
+min-CkC	NN
+problem	NN
+.	.
+
+Let	VB
+solâ	JJ
+$	$
+²	CD
+=	JJ
+-LCB-	-LRB-
+V	NN
+
+
+â	RB
+$	$
+²	CD
+â	NN
+$	$
+²	CD
+
+
+1	CD
+,	,
+...	:
+,	,
+V	NNP
+k	NN
+-RCB-	-RRB-
+
+
+be	VB
+the	DT
+clustering	NN
+found	VBN
+by	IN
+Algorithm	NN
+1	CD
+where	WRB
+V	NN
+
+
+â	RB
+$	$
+²	CD
+
+
+i	LS
+
+
+âŠ	NN
+†	CD
+V	NN
+.	.
+
+Note	VB
+V	NN
+
+
+â	RB
+$	$
+²	CD
+â	NN
+$	$
+²	CD
+
+
+1	CD
+,	,
+...	:
+,	,
+V	NNP
+k	NN
+
+
+may	MD
+not	RB
+be	VB
+disjoint	NN
+.	.
+
+We	PRP
+propose	VBP
+the	DT
+following	VBG
+procedure	NN
+-LRB-	-LRB-
+Algorithm	NN
+2	CD
+-RRB-	-RRB-
+to	TO
+determine	VB
+k	NN
+disjoint	NN
+clusters	NNS
+for	IN
+the	DT
+min-CkC	NN
+problem	NN
+,	,
+denoted	VBN
+by	IN
+sol	NN
+=	JJ
+-LCB-	-LRB-
+V1	NN
+,	,
+...	:
+,	,
+Vk	NN
+-RCB-	-RRB-
+.	.
+
+Let	VB
+c1	NN
+,	,
+...	:
+,	,
+ck	NN
+be	VB
+the	DT
+centers	NNS
+of	IN
+V1	NN
+,	,
+...	:
+,	,
+Vk	NN
+.	.
+
+Note	VB
+that	DT
+c1	NN
+,	,
+...	:
+,	,
+ck	NN
+are	VBP
+also	RB
+theâ	RB
+$	$
+²	CD
+
+
+centers	NNS
+of	IN
+V	NN
+
+
+â	RB
+$	$
+²	CD
+
+
+1	CD
+,	,
+...	:
+,	,
+V	NNP
+k.	IN
+
+
+Algorithm	NN
+2	CD
+is	VBZ
+illustrated	VBN
+in	IN
+Figure	NNP
+4	CD
+.	.
+
+The	DT
+circles	NNS
+with	IN
+dashed	VBN
+lines	NNS
+represent	VBP
+three	CD
+initial	JJ
+clusters	NNS
+-LRB-	-LRB-
+with	IN
+overlapping	VBG
+-RRB-	-RRB-
+V	NN
+
+
+â	RB
+$	$
+²	CD
+â	NN
+$	$
+²	CD
+
+
+1	CD
+,	,
+V	NN
+2	CD
+
+
+and	CC
+V	NN
+
+
+â	RB
+$	$
+²	CD
+
+
+3	CD
+
+
+generated	VBN
+by	IN
+Algorithm	NN
+1	CD
+.	.
+
+Applying	VBG
+Algorithm	NN
+2	CD
+,	,
+we	PRP
+obtain	VBP
+three	CD
+new	JJ
+clusters	NNS
+V1	NN
+,	,
+V2	NN
+and	CC
+V3	NN
+that	WDT
+are	VBP
+disjoint	NN
+-LRB-	-LRB-
+The	DT
+center	NN
+nodes	NNS
+do	VBP
+not	RB
+move	VB
+-RRB-	-RRB-
+.	.
+
+
+Lemma	NNP
+4.1	CD
+.	.
+
+Algorithm	NN
+2	CD
+is	VBZ
+guaranteed	VBN
+to	TO
+ï	VB
+¬	CD
+nd	VBD
+a	DT
+solu	NN
+-	:
+tion	NN
+of	IN
+the	DT
+min-CkC	NN
+problem	NN
+with	IN
+maximum	NN
+radius	NN
+at	IN
+most	JJS
+3optâ	JJ
+$	$
+²	CD
+.	.
+
+
+Algorithm	NN
+2	CD
+3-approximation	JJ
+algorithm	NN
+for	IN
+the	DT
+min	NN
+-	:
+CkC	NN
+problem	NN
+.	.
+
+
+1	CD
+rom	NN
+1	CD
+to	TO
+:	:
+for	IN
+i	FW
+f	FW
+k	NN
+do	VBP
+
+
+2	CD
+:	:
+Vi	NN
+=	JJ
+Ï	NN
+†	NN
+,	,
+ci	NN
+â	NN
+†	CD
+câ	NN
+$	$
+²	CD
+i	FW
+;	:
+
+
+3	CD
+:	:
+Add	VB
+all	DT
+nodes	NNS
+reachable	JJ
+w.r.t.	NN
+r	NN
+from	IN
+ci	NN
+in	IN
+
+
+G	NN
+-LSB-	-LRB-
+V	NN
+
+
+â	RB
+$	$
+²	CD
+
+
+i	LS
+
+
+\	NN
+âˆªiâˆ	NN
+'	''
+1j	NN
+=	JJ
+1Vj	NN
+-RSB-	-RRB-
+to	TO
+Vi	NNP
+-LRB-	-LRB-
+by	IN
+performing	VBG
+a	DT
+BFS	NN
+from	IN
+
+
+ci	NN
+in	IN
+G	NN
+-LSB-	-LRB-
+V	NN
+
+
+â	RB
+$	$
+²	CD
+iâˆ	NN
+'	''
+1	CD
+
+
+i	LS
+
+
+\	NN
+âˆª	SYM
+
+
+j	NN
+=	JJ
+1Vj	NN
+-RSB-	-RRB-
+-RRB-	-RRB-
+;	:
+
+
+
+4	CD
+:	:
+for	IN
+every	DT
+node	NN
+v	LS
+âˆˆ	FW
+âˆªiâˆ	FW
+'	''
+1	CD
+
+
+j	NN
+=	JJ
+1Vj	NN
+
+
+âˆ	NN
+©	CD
+V	NN
+
+
+â	RB
+$	$
+²	CD
+
+
+i	LS
+
+
+do	VB
+
+
+5	CD
+:	:
+Add	VB
+all	DT
+nodes	NNS
+reachable	JJ
+w.r.t.	NN
+r	NN
+from	IN
+v	LS
+in	IN
+G	NN
+-LSB-	-LRB-
+V	NN
+
+
+â	RB
+$	$
+²	CD
+
+
+i	LS
+
+
+-RSB-	-RRB-
+
+
+to	TO
+the	DT
+cluster	NN
+of	IN
+v	LS
+-LRB-	-LRB-
+by	IN
+performing	VBG
+a	DT
+breadth	NN
+ï	NN
+¬	CD
+rst	NN
+
+
+search	NN
+from	IN
+v	LS
+in	IN
+G	NN
+-LSB-	-LRB-
+V	NN
+
+
+â	RB
+$	$
+²	CD
+
+
+i	LS
+
+
+-RSB-	-RRB-
+-RRB-	-RRB-
+;	:
+
+
+6	CD
+:	:
+end	VB
+for	IN
+
+
+7	CD
+:	:
+end	VB
+for	IN
+
+
+8	CD
+:	:
+Output	NN
+clusters	NNS
+V1	NN
+,	,
+...	:
+,	,
+Vk	NN
+;	:
+
+
+Downloaded	VBN
+07/10/14	CD
+to	TO
+147.26.103.71	CD
+.	.
+
+Redistribution	NN
+subject	NN
+to	TO
+SIAM	NNP
+license	NN
+or	CC
+copyright	NN
+;	:
+see	VB
+http://www.siam.org/journals/ojsa.php	NN
+
+
+Algorithm	NN
+2	CD
+assigns	VBZ
+every	DT
+node	NN
+in	IN
+V	NN
+to	TO
+a	DT
+unique	JJ
+
+
+Proof	NN
+.	.
+
+First	RB
+we	PRP
+show	VBP
+that	IN
+Algorithm	NN
+2	CD
+assigns	VBZ
+every	DT
+node	NN
+u	FW
+âˆˆ	FW
+V	NN
+to	TO
+a	DT
+unique	JJ
+cluster	NN
+.	.
+
+There	EX
+are	VBP
+two	CD
+cases	NNS
+.	.
+
+In	IN
+case	NN
+1	CD
+,	,
+u	NN
+can	MD
+be	VB
+reached	VBN
+via	IN
+a	DT
+path	NN
+from	IN
+the	DT
+center	NN
+node	NN
+ci	NN
+without	IN
+having	VBG
+any	DT
+node	NN
+previously	RB
+assigned	VBN
+to	TO
+V1	NN
+,	,
+...	:
+,	,
+Viâˆ	NN
+'	''
+1	CD
+on	IN
+the	DT
+path	NN
+;	:
+then	RB
+,	,
+u	NN
+is	VBZ
+assigned	VBN
+to	TO
+Vi	NNP
+in	IN
+line	NN
+3	CD
+of	IN
+Algorithm	NN
+2	CD
+.	.
+
+In	IN
+case	NN
+2	CD
+,	,
+u	NN
+is	VBZ
+connected	VBN
+to	TO
+ci	VB
+viaiâˆ	NN
+'	''
+1	CD
+
+
+some	DT
+node	NN
+v	LS
+âˆˆ	FW
+âˆª	FW
+
+
+j	NN
+=	JJ
+1Vj	NN
+;	:
+then	RB
+,	,
+in	IN
+line	NN
+5	CD
+of	IN
+Algorithm	NN
+2	CD
+,	,
+u	NN
+is	VBZ
+assigned	VBN
+to	TO
+the	DT
+cluster	NN
+that	WDT
+v	LS
+belongs	VBZ
+to	TO
+.	.
+
+
+Next	RB
+,	,
+we	PRP
+bound	VBD
+the	DT
+maximum	NN
+radius	NN
+of	IN
+a	DT
+node	NN
+u	NN
+to	TO
+the	DT
+corresponding	JJ
+center	NN
+node	NN
+.	.
+
+In	IN
+case	NN
+1	CD
+,	,
+since	IN
+u	NN
+is	VBZ
+assigned	VBN
+to	TO
+Vi	NNP
+,	,
+the	DT
+distance	NN
+between	IN
+u	NN
+and	CC
+ci	NN
+is	VBZ
+at	IN
+mostâ	JJS
+$	$
+²	CD
+
+
+opt	VB
+.	.
+
+In	IN
+case	NN
+2	CD
+,	,
+observe	VBP
+that	IN
+the	DT
+maximum	NN
+distance	NN
+between	IN
+u	NN
+and	CC
+v	LS
+is	VBZ
+at	IN
+most	JJS
+2optâ	JJ
+$	$
+²	CD
+due	JJ
+to	TO
+the	DT
+triangle	NN
+inequality	NN
+and	CC
+the	DT
+fact	NN
+that	IN
+u	NN
+and	CC
+v	LS
+were	VBD
+in	IN
+the	DT
+same	JJ
+set	NN
+V	NN
+
+
+â	RB
+$	$
+²	CD
+
+
+i	LS
+
+
+.	.
+
+Besides	IN
+,	,
+we	PRP
+observe	VBP
+that	IN
+the	DT
+distance	NN
+between	IN
+v	LS
+and	CC
+its	PRP$
+corresponding	JJ
+center	NN
+node	NN
+cj	NN
+is	VBZ
+at	IN
+most	JJS
+optâ	JJ
+$	$
+²	CD
+.	.
+
+Therefore	RB
+,	,
+again	RB
+by	IN
+the	DT
+triangle	NN
+inequality	NN
+,	,
+the	DT
+distance	NN
+between	IN
+u	NN
+and	CC
+its	PRP$
+corresponding	JJ
+center	NN
+node	NN
+is	VBZ
+at	IN
+most	JJS
+3optâ	JJ
+$	$
+²	CD
+.	.
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+7	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+Theorem	NNP
+4.2	CD
+.	.
+
+Combining	VBG
+algorithm	NN
+1	CD
+and	CC
+2	CD
+gives	VBZ
+a	DT
+polynomial	JJ
+3-approximation	NN
+algorithm	NN
+for	IN
+the	DT
+min-CkC	NN
+problem	NN
+.	.
+
+
+Remark	NN
+:	:
+Note	VB
+the	DT
+approximation	NN
+results	VBZ
+rely	VB
+on	IN
+the	DT
+triangle	NN
+inequality	NN
+;	:
+thus	RB
+,	,
+to	TO
+make	VB
+the	DT
+approximation	NN
+results	VBZ
+valid	JJ
+,	,
+the	DT
+distance	NN
+function	NN
+for	IN
+min-CkC	NN
+has	VBZ
+to	TO
+be	VB
+metric	JJ
+.	.
+
+However	RB
+,	,
+for	IN
+the	DT
+NP-completeness	NN
+proof	NN
+,	,
+the	DT
+distance	NN
+function	NN
+can	MD
+be	VB
+non-metric	JJ
+.	.
+
+
+5	CD
+Heuristic	NNP
+Algorithm	NNP
+
+
+The	DT
+complexity	NN
+analysis	NN
+has	VBZ
+demonstrated	VBN
+the	DT
+hardness	NN
+of	IN
+the	DT
+CkC	NN
+problem	NN
+.	.
+
+Moreover	RB
+,	,
+Theorem	NNP
+3.1	CD
+implies	VBZ
+that	IN
+even	RB
+the	DT
+assignment	NN
+step	NN
+alone	RB
+,	,
+i.e.	FW
+,	,
+given	VBN
+k	NN
+centers	NNS
+ï	VBP
+¬	CD
+nding	VBG
+the	DT
+optimal	JJ
+assignment	NN
+of	IN
+the	DT
+remaining	VBG
+nodes	NNS
+to	TO
+minimize	VB
+the	DT
+radius	NN
+,	,
+is	VBZ
+NP-hard	NN
+.	.
+
+While	IN
+providing	VBG
+an	DT
+algorithm	NN
+with	IN
+guaranteed	VBN
+performance	NN
+is	VBZ
+important	JJ
+theoretically	RB
+,	,
+the	DT
+expensive	JJ
+enumeration	NN
+operation	NN
+prevents	VBZ
+it	PRP
+from	IN
+being	VBG
+practical	JJ
+in	IN
+large	JJ
+datasets	NNS
+.	.
+
+In	IN
+this	DT
+section	NN
+,	,
+we	PRP
+propose	VBP
+NetScan	NNP
+,	,
+an	DT
+eï	NN
+¬	NN
+ƒcient	JJ
+heuristic	NN
+algorithm	NN
+.	.
+
+
+NetScan	NNP
+follows	VBZ
+a	DT
+three-step	JJ
+approach	NN
+,	,
+which	WDT
+starts	VBZ
+by	IN
+picking	VBG
+k	NN
+centers	NNS
+randomly	RB
+,	,
+then	RB
+assigns	VBZ
+nodes	NNS
+to	TO
+the	DT
+best	JJS
+center	NN
+and	CC
+reï	NN
+¬	CD
+nes	VBZ
+the	DT
+clustering	NN
+results	VBZ
+iteratively	RB
+.	.
+
+
+starts	NNS
+from	IN
+cluster	NN
+centers	NNS
+with	IN
+respect	NN
+to	TO
+an	DT
+initial	JJ
+ra	NN
+-	:
+dius	NN
+threshold	NN
+R0	NN
+.	.
+
+Nodes	NNS
+are	VBP
+tested	VBN
+and	CC
+assigned	VBN
+to	TO
+the	DT
+ï	NN
+¬	NN
+rst	NN
+cluster	NN
+where	WRB
+their	PRP$
+distances	NNS
+to	TO
+the	DT
+center	NN
+are	VBP
+no	DT
+larger	JJR
+than	IN
+the	DT
+current	JJ
+radius	NN
+threshold	NN
+Ri	NNP
+.	.
+
+If	IN
+all	PDT
+the	DT
+centers	NNS
+have	VBP
+been	VBN
+processed	VBN
+with	IN
+Ri	NN
+and	CC
+not	RB
+all	DT
+nodes	NNS
+have	VBP
+been	VBN
+assigned	VBN
+,	,
+the	DT
+assignment	NN
+is	VBZ
+resumed	VBN
+in	IN
+the	DT
+next	JJ
+radius	NN
+increment	NN
+round	NN
+with	IN
+a	DT
+larger	JJR
+radius	NN
+threshold	NN
+Ri	NNP
++1	CD
+.	.
+
+The	DT
+pseudo	NN
+code	NN
+of	IN
+step	NN
+II	CD
+is	VBZ
+provided	VBN
+in	IN
+Algorithm	NNP
+3	CD
+,	,
+and	CC
+more	RBR
+detailed	JJ
+aspects	NNS
+of	IN
+NetScan	NNP
+are	VBP
+discussed	VBN
+later	RB
+.	.
+
+A	DT
+running	VBG
+example	NN
+is	VBZ
+illustrated	VBN
+in	IN
+Figure	NNP
+5	CD
+with	IN
+the	DT
+assignment	NN
+sequence	NN
+given	VBN
+in	IN
+Table	NNP
+2	CD
+.	.
+
+
+â	RB
+$	$
+cents	NNS
+Step	VBP
+I	PRP
+:	:
+Randomly	RB
+pick	VB
+k	NN
+initial	JJ
+cluster	NN
+centers	NNS
+.	.
+
+
+â	RB
+$	$
+cents	NNS
+Step	NN
+II	CD
+:	:
+Assign	VB
+all	DT
+nodes	NNS
+to	TO
+clusters	NNS
+by	IN
+traversing	VBG
+the	DT
+input	NN
+graph	NN
+.	.
+
+
+â	RB
+$	$
+cents	NNS
+Step	VBP
+III	CD
+:	:
+Recalculate	VB
+cluster	NN
+centers	NNS
+.	.
+
+
+The	DT
+algorithm	NN
+repeats	NNS
+steps	NNS
+II	CD
+and	CC
+III	CD
+until	IN
+no	DT
+change	NN
+of	IN
+the	DT
+cluster	NN
+centers	VBZ
+occurs	VBZ
+or	CC
+a	DT
+certain	JJ
+number	NN
+of	IN
+iterations	NNS
+have	VBP
+been	VBN
+performed	VBN
+.	.
+
+In	IN
+step	NN
+III	CD
+,	,
+ï	NN
+¬	NN
+nding	VBG
+the	DT
+optimal	JJ
+center	NN
+from	IN
+a	DT
+group	NN
+of	IN
+n	NN
+nodes	NNS
+requires	VBZ
+O	NN
+-LRB-	-LRB-
+n2	NN
+-RRB-	-RRB-
+time	NN
+.	.
+
+To	TO
+make	VB
+it	PRP
+more	RBR
+scalable	JJ
+for	IN
+large	JJ
+datasets	NNS
+,	,
+we	PRP
+select	VBP
+the	DT
+node	NN
+closest	JJS
+to	TO
+the	DT
+mean	NN
+of	IN
+the	DT
+cluster	NN
+as	IN
+the	DT
+new	JJ
+center	NN
+.	.
+
+Typically	RB
+,	,
+the	DT
+mean	NN
+provides	VBZ
+a	DT
+reasonably	RB
+good	JJ
+approximation	NN
+for	IN
+the	DT
+center	NN
+.	.
+
+
+The	DT
+three	CD
+steps	NNS
+look	VBP
+similar	JJ
+to	TO
+the	DT
+k-means	JJ
+algo	NN
+-	:
+rithm	NN
+.	.
+
+However	RB
+,	,
+the	DT
+complexity	NN
+analysis	NN
+tells	VBZ
+us	PRP
+that	IN
+given	VBN
+k	NN
+centers	NNS
+,	,
+ï	NN
+¬	NN
+nding	VBG
+an	DT
+optimal	JJ
+assignment	NN
+requires	VBZ
+a	DT
+search	NN
+through	IN
+an	DT
+exponential	JJ
+space	NN
+,	,
+which	WDT
+is	VBZ
+unaccept	JJ
+-	:
+able	JJ
+in	IN
+practice	NN
+.	.
+
+Thus	RB
+,	,
+the	DT
+major	JJ
+challenge	NN
+of	IN
+NetScan	NNP
+is	VBZ
+ï	JJ
+¬	NN
+nding	NN
+a	DT
+good	JJ
+membership	NN
+assignment	NN
+,	,
+i.e.	FW
+,	,
+step	NN
+II	CD
+.	.
+
+
+From	IN
+the	DT
+design	NN
+principle	NN
+of	IN
+the	DT
+approximation	NN
+al	NNP
+-	:
+gorithm	NN
+,	,
+we	PRP
+observe	VBP
+that	IN
+the	DT
+BFS-based	JJ
+approach	NN
+pro-	JJ
+vides	NNS
+an	DT
+eï	NN
+¬	NN
+ƒcient	JJ
+way	NN
+to	TO
+generate	VB
+clusters	NNS
+without	IN
+vi	LS
+-	:
+olating	VBG
+the	DT
+internal	JJ
+connectedness	NN
+constraint	NN
+.	.
+
+Inspired	VBN
+by	IN
+this	DT
+observation	NN
+,	,
+we	PRP
+start	VBP
+the	DT
+membership	NN
+assign	VB
+-	:
+ment	NN
+from	IN
+the	DT
+center	NN
+.	.
+
+Neighboring	VBG
+nodes	NNS
+-LRB-	-LRB-
+directly	RB
+con	JJ
+-	:
+nected	VBN
+by	IN
+an	DT
+edge	NN
+of	IN
+the	DT
+graph	NN
+-RRB-	-RRB-
+of	IN
+already	RB
+assigned	VBN
+nodes	NNS
+are	VBP
+gradually	RB
+absorbed	VBN
+to	TO
+the	DT
+cluster	NN
+.	.
+
+The	DT
+search	NN
+
+
+Algorithm	NN
+3	CD
+Step	NN
+II	CD
+of	IN
+NetScan	NNP
+.	.
+
+
+1	CD
+:	:
+Empty	JJ
+working	VBG
+queue	NN
+Q	NNP
+;	:
+
+
+2	CD
+:	:
+for	IN
+every	DT
+center	NN
+cj	NN
+of	IN
+cluster	NN
+Cj	NN
+do	VBP
+
+
+3	CD
+:	:
+Append	VB
+all	DT
+unassigned	JJ
+neighbors	NNS
+of	IN
+cj	NN
+to	TO
+Q	NNP
+;	:
+4	CD
+:	:
+while	IN
+Q	NNP
+is	VBZ
+not	RB
+empty	JJ
+do	VBP
+
+
+5	CD
+:	:
+Pop	VB
+the	DT
+ï	NN
+¬	NN
+rst	NN
+element	NN
+q	CD
+from	IN
+Q	NNP
+;	:
+
+
+6	CD
+:	:
+if	IN
+|	CD
+|	CD
+q	SYM
+cj	FW
+|	FW
+|	FW
+â	FW
+‰	FW
+$	$
+Ri	JJ
+then	RB
+
+
+7	CD
+:	:
+if	IN
+q	NN
+is	VBZ
+a	DT
+potential	JJ
+articulation	NN
+node	NN
+then	RB
+8	CD
+:	:
+Invoke	VB
+the	DT
+look-ahead	JJ
+routine	JJ
+to	TO
+decide	VB
+the	DT
+
+
+membership	NN
+for	IN
+q	NN
+.	.
+
+If	IN
+q	NN
+should	MD
+be	VB
+assigned	VBN
+
+
+to	TO
+Cj	NNP
+,	,
+append	VBP
+qâ	NN
+$	$
+™	CD
+s	NNS
+unassigned	JJ
+neighbors	NNS
+to	TO
+
+
+Q	NNP
+;	:
+otherwise	RB
+,	,
+only	RB
+assign	VBP
+q	NN
+to	TO
+the	DT
+right	NN
+
+
+cluster	NN
+without	IN
+appending	VBG
+qâ	NN
+$	$
+™	CD
+s	NNS
+neighbors	NNS
+to	TO
+
+
+Q	NNP
+;	:
+
+
+9	CD
+:	:
+else	RB
+
+
+10	CD
+:	:
+Assign	VB
+q	NN
+to	TO
+Cj	NN
+and	CC
+append	VBP
+qâ	NN
+$	$
+™	CD
+s	NNS
+unassigned	JJ
+
+
+neighbors	NNS
+to	TO
+Q	NNP
+;	:
+
+
+11	CD
+:	:
+end	VB
+if	IN
+
+
+12	CD
+:	:
+end	VB
+if	IN
+
+
+13	CD
+:	:
+end	NN
+while	IN
+
+
+14	CD
+:	:
+end	VB
+for	IN
+
+
+15	CD
+:	:
+if	IN
+all	DT
+nodes	NNS
+are	VBP
+assigned	VBN
+to	TO
+some	DT
+Cj	NN
+then	RB
+16	CD
+:	:
+Stop	VB
+;	:
+
+
+17	CD
+:	:
+else	RB
+
+
+18	CD
+:	:
+Increase	VB
+Ri	NN
+and	CC
+goto	NN
+1	CD
+;	:
+
+
+19	CD
+:	:
+end	VB
+if	IN
+
+
+H	NN
+
+
+C	NN
+
+
+H	NN
+
+
+C	NN
+
+
+A	DT
+
+
+A	DT
+
+
+G	NN
+
+
+B	NN
+
+
+G	NN
+
+
+B	NN
+
+
+I	PRP
+
+
+E	NN
+
+
+I	PRP
+
+
+E	NN
+
+
+R0	NN
+
+
+F	NN
+
+
+R1	NN
+
+
+F	NN
+
+
+Cluster	NN
+1	CD
+
+
+Cluster	NN
+2	CD
+
+
+Cluster	NN
+1	CD
+
+
+Cluster	NN
+2	CD
+
+
+-LRB-	-LRB-
+a	LS
+-RRB-	-RRB-
+w.r.t.	IN
+
+
+R0	NN
+
+
+-LRB-	-LRB-
+b	NN
+-RRB-	-RRB-
+w.r.t.	VBP
+R1	NN
+
+
+Figure	NNP
+5	CD
+:	:
+NetScan	NNP
+demonstration	NN
+.	.
+
+
+Downloaded	VBN
+07/10/14	CD
+to	TO
+147.26.103.71	CD
+.	.
+
+Redistribution	NN
+subject	NN
+to	TO
+SIAM	NNP
+license	NN
+or	CC
+copyright	NN
+;	:
+see	VB
+http://www.siam.org/journals/ojsa.php	NN
+
+
+Why	WRB
+gradually	RB
+increment	NN
+Ri	NNP
+?	.
+
+The	DT
+radius	NN
+threshold	NN
+Ri	NN
+plays	VBZ
+an	DT
+important	JJ
+role	NN
+in	IN
+minimizing	VBG
+the	DT
+maximum	NN
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+8	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+R0	NN
+R1	NN
+
+
+Cluster	NN
+1	CD
+
+
+-LCB-	-LRB-
+G	NN
+-RCB-	-RRB-
+-LCB-	-LRB-
+G	NN
+,	,
+H	NN
+,	,
+I	PRP
+-RCB-	-RRB-
+
+
+Cluster	NN
+2	CD
+
+
+-LCB-	-LRB-
+E	NN
+,	,
+F	NN
+-RCB-	-RRB-
+-LCB-	-LRB-
+E	NN
+,	,
+F	NN
+,	,
+A	NN
+,	,
+B	NN
+,	,
+C	NN
+-RCB-	-RRB-
+
+
+Table	NNP
+2	CD
+:	:
+Node	NNP
+assignment	NN
+w.r.t.	NN
+R0	NN
+and	CC
+R1	NN
+.	.
+
+
+Cluster	NN
+1	CD
+
+
+Cluster	NN
+2	CD
+
+
+c1	NN
+
+
+c	NN
+
+
+a	DT
+
+
+b	NN
+
+
+Ri	NNP
+
+
+c2	NN
+
+
+Rj	NN
+
+
+Figure	NNP
+6	CD
+:	:
+Radius	NNP
+increment	NN
+.	.
+
+
+Figure	NNP
+7	CD
+:	:
+Runtime	NNP
+.	.
+
+
+radius	NN
+of	IN
+resulting	VBG
+clusters	NNS
+.	.
+
+Figure	NNP
+6	CD
+demonstrates	VBZ
+an	DT
+example	NN
+where	WRB
+a	DT
+larger	JJR
+radius	NN
+threshold	NN
+Rj	NN
+allows	VBZ
+node	NN
+a	DT
+to	TO
+be	VB
+assigned	VBN
+to	TO
+cluster	VB
+1	CD
+,	,
+leading	VBG
+to	TO
+a	DT
+larger	JJR
+radius	NN
+of	IN
+cluster	NN
+1	CD
+.	.
+
+Instead	RB
+,	,
+if	IN
+we	PRP
+have	VBP
+a	DT
+smaller	JJR
+radius	NN
+threshold	NN
+Ri	NNP
+,	,
+this	DT
+case	NN
+is	VBZ
+avoided	VBN
+because	IN
+a	DT
+can	MD
+only	RB
+be	VB
+assigned	VBN
+to	TO
+cluster	VB
+2	CD
+.	.
+
+From	IN
+the	DT
+point	NN
+of	IN
+view	NN
+of	IN
+minimizing	VBG
+the	DT
+maximum	NN
+radius	NN
+,	,
+we	PRP
+want	VBP
+the	DT
+increment	NN
+of	IN
+Ri	NNP
+to	TO
+be	VB
+as	IN
+small	JJ
+as	IN
+possible	JJ
+.	.
+
+However	RB
+,	,
+a	DT
+too	RB
+small	JJ
+increment	NN
+of	IN
+Ri	NNP
+may	MD
+lead	VB
+to	TO
+the	DT
+case	NN
+that	IN
+no	DT
+additional	JJ
+node	NN
+can	MD
+be	VB
+assigned	VBN
+for	IN
+many	JJ
+radii	NNS
+,	,
+which	WDT
+may	MD
+greatly	RB
+increase	VB
+the	DT
+runtime	NN
+.	.
+
+As	IN
+a	DT
+trade-oï	NN
+¬	CD
+$	$
+,	,
+we	PRP
+propose	VBP
+the	DT
+increment	NN
+to	TO
+be	VB
+the	DT
+average	JJ
+pairwise	JJ
+distance	NN
+of	IN
+nodes	NNS
+.	.
+
+
+w.r.t.	NNP
+Ri	NNP
+.	.
+
+Similar	JJ
+to	TO
+the	DT
+concept	NN
+of	IN
+articulation	NN
+nodes	NNS
+introduced	VBN
+in	IN
+Section	NN
+3	CD
+,	,
+we	PRP
+call	VBP
+these	DT
+nodes	NNS
+potential	JJ
+articulation	NN
+nodes	NNS
+in	IN
+NetScan	NNP
+.	.
+
+We	PRP
+assign	VBP
+potential	JJ
+articulation	NN
+nodes	NNS
+not	RB
+only	RB
+based	VBN
+on	IN
+their	PRP$
+distances	NNS
+to	TO
+the	DT
+diï	NN
+¬	CD
+$	$
+erent	JJ
+cluster	NN
+centers	NNS
+,	,
+but	CC
+also	RB
+their	PRP$
+neighborhood	NN
+situations	NNS
+.	.
+
+For	IN
+example	NN
+,	,
+in	IN
+Figure	NNP
+5	CD
+-LRB-	-LRB-
+b	NN
+-RRB-	-RRB-
+,	,
+A	NN
+is	VBZ
+a	DT
+potential	JJ
+articulation	NN
+node	NN
+and	CC
+its	PRP$
+assignment	NN
+aï	NN
+¬	CD
+$	$
+ects	CD
+the	DT
+assignment	NN
+of	IN
+its	PRP$
+neighbors	NNS
+B	NN
+and	CC
+C	NN
+.	.
+
+If	IN
+node	NN
+A	NN
+is	VBZ
+assigned	VBN
+to	TO
+cluster	VB
+1	CD
+,	,
+both	CC
+B	NN
+and	CC
+C	NN
+have	VBP
+to	TO
+be	VB
+assigned	VBN
+to	TO
+cluster	VB
+1	CD
+,	,
+resulting	VBG
+in	IN
+a	DT
+larger	JJR
+radius	NN
+compared	VBN
+to	TO
+assigning	VBG
+all	DT
+three	CD
+nodes	NNS
+to	TO
+cluster	VB
+2	CD
+.	.
+
+
+Whether	IN
+a	DT
+node	NN
+is	VBZ
+an	DT
+articulation	NN
+node	NN
+depends	VBZ
+on	IN
+two	CD
+factors	NNS
+:	:
+1	LS
+-RRB-	-RRB-
+the	DT
+node	NN
+has	VBZ
+neighbors	NNS
+who	WP
+have	VBP
+been	VBN
+assigned	VBN
+membership	NN
+and	CC
+those	DT
+neighbors	NNS
+are	VBP
+from	IN
+more	JJR
+than	IN
+one	CD
+cluster	NN
+,	,
+e.g.	FW
+,	,
+Ci	NN
+,	,
+Cj	NN
+.	.
+
+2	LS
+-RRB-	-RRB-
+the	DT
+node	NN
+is	VBZ
+within	IN
+Ri	NNP
+distance	NN
+from	IN
+both	DT
+centers	NNS
+of	IN
+Ci	NN
+and	CC
+Cj	NN
+.	.
+
+
+We	PRP
+propose	VBP
+the	DT
+following	VBG
+look-ahead	JJ
+approach	NN
+for	IN
+the	DT
+cluster	NN
+assignment	NN
+of	IN
+potential	JJ
+articulation	NN
+nodes	NNS
+.	.
+
+For	IN
+the	DT
+sake	NN
+of	IN
+eï	NN
+¬	NN
+ƒciency	NN
+,	,
+for	IN
+each	DT
+articulation	NN
+node	NN
+,	,
+we	PRP
+only	RB
+check	VBP
+its	PRP$
+unassigned	JJ
+neighbors	NNS
+-LRB-	-LRB-
+if	IN
+any	DT
+-RRB-	-RRB-
+which	WDT
+have	VBP
+a	DT
+degree	NN
+of	IN
+1	CD
+,	,
+the	DT
+unary	JJ
+neighbors	NNS
+.	.
+
+The	DT
+membership	NN
+assignment	NN
+decision	NN
+is	VBZ
+made	VBN
+mainly	RB
+based	VBN
+on	IN
+the	DT
+unary	JJ
+neighbors	NNS
+.	.
+
+An	DT
+articulation	NN
+node	NN
+is	VBZ
+assigned	VBN
+to	TO
+its	PRP$
+closest	JJS
+center	NN
+unless	IN
+the	DT
+node	NN
+has	VBZ
+a	DT
+direct	JJ
+unary	JJ
+neighbor	NN
+which	WDT
+is	VBZ
+closer	RBR
+to	TO
+other	JJ
+centers	NNS
+.	.
+
+In	IN
+the	DT
+case	NN
+that	WDT
+more	JJR
+than	IN
+one	CD
+unary	JJ
+neighbors	NNS
+exist	VBP
+,	,
+the	DT
+cluster	NN
+center	NN
+leading	VBG
+to	TO
+the	DT
+smallest	JJS
+radius	NN
+increase	NN
+is	VBZ
+chosen	VBN
+.	.
+
+Our	PRP$
+algorithm	NN
+could	MD
+beneï	VB
+¬	CD
+t	NN
+from	IN
+looking	VBG
+into	IN
+indirect	JJ
+neighbors	NNS
+as	RB
+well	RB
+.	.
+
+However	RB
+,	,
+this	DT
+would	MD
+signiï	VB
+¬	CD
+cantly	JJ
+increase	NN
+the	DT
+runtime	NN
+without	IN
+guaranteed	VBN
+quality	NN
+improvement	NN
+.	.
+
+
+How	WRB
+to	TO
+choose	VB
+Ri	NNP
+?	.
+
+Algorithm	NN
+2	CD
+shows	VBZ
+that	IN
+the	DT
+nodes	NNS
+located	VBN
+in	IN
+the	DT
+overlapping	VBG
+area	NN
+of	IN
+two	CD
+clusters	NNS
+w.r.t.	VBP
+a	DT
+given	VBN
+radius	NN
+constraint	NN
+are	VBP
+the	DT
+source	NN
+of	IN
+the	DT
+diï	NN
+¬	NN
+ƒculty	NN
+in	IN
+the	DT
+assignment	NN
+.	.
+
+Thus	RB
+,	,
+to	TO
+start	VB
+with	IN
+,	,
+we	PRP
+choose	VBP
+R0	NN
+to	TO
+be	VB
+half	NN
+of	IN
+the	DT
+smallest	JJS
+distance	NN
+among	IN
+all	DT
+pairs	NNS
+of	IN
+cluster	NN
+centers	NNS
+.	.
+
+This	DT
+chosen	VBN
+R0	NN
+does	VBZ
+not	RB
+create	VB
+overlap	VBP
+that	IN
+introduces	VBZ
+any	DT
+ambiguity	NN
+in	IN
+the	DT
+node	NN
+assignments	NNS
+,	,
+thus	RB
+reducing	VBG
+the	DT
+problem	NN
+size	NN
+.	.
+
+
+Most	RBS
+likely	JJ
+the	DT
+initial	JJ
+radius	NN
+threshold	NN
+R0	NN
+can	MD
+not	RB
+make	VB
+all	DT
+nodes	NNS
+assigned	VBN
+.	.
+
+We	PRP
+need	VBP
+to	TO
+increase	VB
+the	DT
+radius	NN
+threshold	NN
+to	TO
+allow	VB
+the	DT
+BFS	NNP
+continue	VB
+until	IN
+all	DT
+nodes	NNS
+are	VBP
+assigned	VBN
+.	.
+
+The	DT
+radius	NN
+threshold	NN
+Ri	NNP
++1	CD
+is	VBZ
+chosen	VBN
+as	IN
+Ri	NN
++	CC
+D	NN
+where	WRB
+D	NN
+is	VBZ
+the	DT
+average	JJ
+pairwise	JJ
+distance	NN
+of	IN
+nodes	NNS
+.	.
+
+This	DT
+choice	NN
+of	IN
+Ri	NNP
++1	CD
+makes	VBZ
+it	PRP
+likely	JJ
+that	IN
+at	IN
+least	JJS
+some	DT
+further	JJ
+nodes	NNS
+can	MD
+be	VB
+assigned	VBN
+in	IN
+the	DT
+next	JJ
+round	NN
+to	TO
+each	DT
+of	IN
+the	DT
+cluster	NN
+.	.
+
+D	NN
+can	MD
+be	VB
+obtained	VBN
+eï	JJ
+¬	NN
+ƒciently	RB
+by	IN
+drawing	VBG
+a	DT
+small	JJ
+set	NN
+of	IN
+samples	NNS
+and	CC
+calculating	VBG
+the	DT
+average	JJ
+distance	NN
+of	IN
+the	DT
+samples	NNS
+.	.
+
+
+How	WRB
+to	TO
+assign	VB
+nodes	NNS
+to	TO
+clusters	NNS
+?	.
+
+Most	JJS
+nodes	NNS
+are	VBP
+assigned	VBN
+based	VBN
+solely	RB
+on	IN
+their	PRP$
+distance	NN
+to	TO
+the	DT
+cluster	NN
+centers	NNS
+.	.
+
+Special	JJ
+attention	NN
+;	:
+however	RB
+,	,
+needs	VBZ
+to	TO
+be	VB
+paid	VBN
+to	TO
+those	DT
+nodes	NNS
+in	IN
+the	DT
+overlap	VBP
+area	NN
+of	IN
+two	CD
+or	CC
+more	JJR
+clusters	NNS
+
+
+Postprocessing	VBG
+to	TO
+eliminate	VB
+outliers	NNS
+:	:
+As	IN
+in	IN
+the	DT
+tra	NN
+-	:
+ditional	JJ
+k-center	NN
+problem	NN
+,	,
+the	DT
+CkC	NN
+problem	NN
+faces	VBZ
+the	DT
+same	JJ
+challenge	NN
+of	IN
+â	JJ
+$	$
+œoutliersâ	JJ
+$	$
+,	,
+which	WDT
+may	MD
+cause	VB
+signiï	NN
+¬	SYM
+-	:
+cant	JJ
+increase	NN
+in	IN
+radius	NN
+of	IN
+the	DT
+resulting	VBG
+clusters	NNS
+.	.
+
+In	IN
+many	JJ
+applications	NNS
+such	JJ
+as	IN
+market	NN
+segmentation	NN
+,	,
+giving	VBG
+up	RP
+few	JJ
+customers	NNS
+to	TO
+meet	VB
+most	RBS
+customersâ	JJ
+$	$
+™	CD
+preference	NN
+is	VBZ
+accept	VB
+-	:
+able	JJ
+.	.
+
+Hence	RB
+,	,
+we	PRP
+propose	VBP
+an	DT
+optional	JJ
+step	NN
+,	,
+which	WDT
+utilizes	VBZ
+a	DT
+graphical	JJ
+approach	NN
+to	TO
+eliminate	VB
+â	JJ
+$	$
+œoutliersâ	JJ
+$	$
+from	IN
+the	DT
+so	RB
+-	:
+lution	NN
+of	IN
+the	DT
+CkC	NN
+problem	NN
+.	.
+
+Every	DT
+node	NN
+remembers	VBZ
+the	DT
+radius	NN
+threshold	NN
+-LRB-	-LRB-
+called	VBN
+assignment	NN
+radius	NN
+-RRB-	-RRB-
+at	IN
+which	WDT
+it	PRP
+is	VBZ
+assigned	VBN
+.	.
+
+We	PRP
+sort	VBP
+all	DT
+nodes	NNS
+by	IN
+their	PRP$
+assignment	NN
+ra	NN
+-	:
+dius	NN
+and	CC
+ï	NN
+¬	VBP
+lter	NN
+out	IN
+the	DT
+node	NN
+-LRB-	-LRB-
+and	CC
+its	PRP$
+following	VBG
+nodes	NNS
+-RRB-	-RRB-
+which	WDT
+causes	VBZ
+a	DT
+sudden	JJ
+increase	NN
+of	IN
+the	DT
+radius	NN
+.	.
+
+The	DT
+â	JJ
+$	$
+œcut	JJ
+-	:
+oï	NN
+¬	CD
+$	$
+â	CD
+$	$
+point	NN
+can	MD
+be	VB
+determined	VBN
+from	IN
+the	DT
+assignment	NN
+radius	NN
+chart	NN
+,	,
+either	CC
+by	IN
+manual	JJ
+inspection	NN
+or	CC
+automatic	JJ
+detec	NN
+-	:
+tion	NN
+.	.
+
+Figure	NNP
+8	CD
+illustrates	VBZ
+an	DT
+example	NN
+where	WRB
+part	NN
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+shows	VBZ
+an	DT
+input	NN
+graph	NN
+and	CC
+part	NN
+-LRB-	-LRB-
+b	NN
+-RRB-	-RRB-
+depicts	VBZ
+its	PRP$
+corre	NN
+-	:
+sponding	VBG
+assignment	NN
+radius	NN
+chart	NN
+.	.
+
+In	IN
+this	DT
+case	NN
+,	,
+only	RB
+f	LS
+would	MD
+be	VB
+removed	VBN
+as	IN
+an	DT
+outlier	NN
+.	.
+
+
+Downloaded	VBN
+07/10/14	CD
+to	TO
+147.26.103.71	CD
+.	.
+
+Redistribution	NN
+subject	NN
+to	TO
+SIAM	NNP
+license	NN
+or	CC
+copyright	NN
+;	:
+see	VB
+http://www.siam.org/journals/ojsa.php	NN
+
+
+Runtime	NNP
+complexity	NN
+:	:
+In	IN
+each	DT
+iteration	NN
+of	IN
+step	NN
+II	CD
+and	CC
+III	CD
+,	,
+the	DT
+NetScan	NNP
+algorithm	NN
+generates	VBZ
+k	NN
+clusters	NNS
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+9	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+d	NN
+
+
+r0	NN
+
+
+a	DT
+b	NN
+
+
+c	NN
+
+
+e	SYM
+
+
+f	SYM
+
+
+r0	NN
+
+
+k	NN
+=	JJ
+2	CD
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+
+
+a	DT
+b	NN
+c	NN
+d	NN
+e	SYM
+f	SYM
+
+
+-LRB-	-LRB-
+b	NN
+-RRB-	-RRB-
+
+
+extracted	VBN
+from	IN
+the	DT
+DBLP	NN
+-LSB-	-LRB-
+4	CD
+-RSB-	-RRB-
+coauthorship	NN
+network	NN
+.	.
+
+We	PRP
+applied	VBD
+the	DT
+NetScan	NNP
+algorithm	NN
+to	TO
+identify	VB
+communities	NNS
+from	IN
+this	DT
+dataset	NN
+in	IN
+an	DT
+unsupervised	JJ
+manner	NN
+.	.
+
+The	DT
+rel	NN
+-	:
+atively	RB
+small	JJ
+size	NN
+of	IN
+the	DT
+dataset	NN
+allowed	VBD
+us	PRP
+to	TO
+manually	RB
+determine	VB
+a	DT
+professorâ	NN
+$	$
+™	CD
+s	NNS
+true	JJ
+community	NN
+-LRB-	-LRB-
+cluster	NN
+label	NN
+-RRB-	-RRB-
+from	IN
+his/her	NN
+lab	NN
+aï	NN
+¬	NN
+ƒliation	NN
+and	CC
+professional	JJ
+activities	NNS
+.	.
+
+These	DT
+true	JJ
+labels	NNS
+were	VBD
+then	RB
+compared	VBN
+to	TO
+the	DT
+labels	NNS
+de	IN
+-	:
+termined	VBN
+by	IN
+our	PRP$
+algorithm	NN
+.	.
+
+
+Avrim	NNP
+Blum	NNP
+
+
+Theory	NNP
+Databases	NNS
+
+
+Figure	NNP
+8	CD
+:	:
+Outlier	NN
+identiï	NN
+¬	CD
+cation	NN
+.	.
+
+
+Prabhakar	NNP
+Raghavan	NNP
+
+
+Rajeev	NNP
+Motwani	NNP
+
+
+one	CD
+by	IN
+one	CD
+.	.
+
+During	IN
+membership	NN
+assignment	NN
+of	IN
+each	DT
+cluster	NN
+,	,
+the	DT
+nodes	NNS
+sharing	VBG
+edges	NNS
+with	IN
+the	DT
+assigned	VBN
+nodes	NNS
+of	IN
+that	DT
+cluster	NN
+are	VBP
+considered	VBN
+.	.
+
+The	DT
+distances	NNS
+between	IN
+these	DT
+nodes	NNS
+and	CC
+the	DT
+cluster	NN
+center	NN
+are	VBP
+calculated	VBN
+.	.
+
+Thus	RB
+,	,
+the	DT
+overall	JJ
+runtime	NN
+complexity	NN
+is	VBZ
+bounded	VBN
+by	IN
+the	DT
+total	JJ
+number	NN
+of	IN
+nodes	NNS
+being	VBG
+visited	VBN
+.	.
+
+For	IN
+the	DT
+purpose	NN
+of	IN
+minimizing	VBG
+the	DT
+maximum	NN
+radius	NN
+,	,
+NetScan	NNP
+gradually	RB
+increases	VBZ
+the	DT
+radius	NN
+threshold	NN
+Ri	NNP
+.	.
+
+Let	VB
+D	NNP
+represent	VB
+the	DT
+amount	NN
+of	IN
+radius	NN
+increment	NN
+,	,
+the	DT
+total	JJ
+number	NN
+of	IN
+radius	NN
+increases	NNS
+in	IN
+one	CD
+iteration	NN
+is	VBZ
+a	DT
+constant	JJ
+,	,
+
+
+diam	NN
+
+
+,	,
+where	WRB
+diam	NN
+is	VBZ
+the	DT
+longest	JJS
+distance	NN
+among	IN
+all	DT
+pairs	NNS
+of	IN
+nodes	NNS
+.	.
+
+
+D	NN
+
+
+In	IN
+the	DT
+worst	JJS
+case	NN
+,	,
+every	DT
+edge	NN
+is	VBZ
+visited	VBN
+k	NN
+times	NNS
+for	IN
+each	DT
+Ri	NNP
+,	,
+hence	RB
+the	DT
+total	JJ
+number	NN
+of	IN
+node	NN
+visits	NNS
+in	IN
+an	DT
+iterationdiam	NN
+
+
+is	VBZ
+O	NN
+-LRB-	-LRB-
+k	NN
+|	CD
+E	NN
+|	NN
+-RRB-	-RRB-
+,	,
+where	WRB
+|	NN
+E	NN
+|	CD
+is	VBZ
+the	DT
+total	JJ
+number	NN
+of	IN
+edges	NNS
+.	.
+
+As	IN
+in	IN
+the	DT
+kD-means	JJ
+algorithm	NN
+,	,
+we	PRP
+assume	VBP
+the	DT
+NetScan	NNP
+algorithm	NN
+converges	VBZ
+in	IN
+t	NN
+iterations	NNS
+.	.
+
+Hence	RB
+,	,
+the	DT
+worst	JJS
+case	NN
+runtime	NN
+complexity	NN
+of	IN
+NetScan	NNP
+is	VBZ
+O	NN
+-LRB-	-LRB-
+tk	NN
+|	CD
+E	NN
+|	CD
+diamD	NN
+-RRB-	-RRB-
+.	.
+
+
+However	RB
+in	IN
+each	DT
+iteration	NN
+,	,
+we	PRP
+only	RB
+need	VBP
+to	TO
+consider	VB
+those	DT
+edges	NNS
+connecting	VBG
+to	TO
+the	DT
+nodes	NNS
+in	IN
+the	DT
+frontier	NN
+.	.
+
+The	DT
+worst	JJS
+case	NN
+rarely	RB
+happens	VBZ
+,	,
+in	IN
+which	WDT
+all	PDT
+the	DT
+edges	NNS
+are	VBP
+connected	VBN
+to	TO
+the	DT
+frontier	NN
+nodes	NNS
+.	.
+
+For	IN
+example	NN
+,	,
+the	DT
+dashed	VBN
+edges	NNS
+in	IN
+Figure	NN
+7	CD
+do	VBP
+not	RB
+have	VB
+to	TO
+be	VB
+considered	VBN
+in	IN
+the	DT
+next	JJ
+radius	NN
+increment	NN
+round	NN
+.	.
+
+In	IN
+the	DT
+ï	NN
+¬	NN
+gure	NN
+,	,
+the	DT
+frontier	NN
+nodes	NNS
+are	VBP
+dashed	VBN
+.	.
+
+In	IN
+real	JJ
+cases	NNS
+,	,
+the	DT
+number	NN
+of	IN
+edges	NNS
+visited	VBN
+in	IN
+one	CD
+iteration	NN
+can	MD
+be	VB
+reasonably	RB
+assumed	VBN
+to	TO
+be	VB
+O	NN
+-LRB-	-LRB-
+|	CD
+E	NN
+|	NN
+-RRB-	-RRB-
+.	.
+
+
+Ronald	NNP
+Fagin	NNP
+
+
+Christos	NNP
+H.	NNP
+Papadimitriou	NNP
+
+
+Jon	NNP
+Kleinberg	NNP
+
+
+Rajeev	NNP
+Rastogi	NNP
+
+
+Jeffery	NNP
+D.	NNP
+Ullman	NNP
+
+
+Johannes	NNP
+Gehrke	NNP
+
+
+Figure	NNP
+9	CD
+:	:
+NetScan	NNP
+on	IN
+real	JJ
+data	NNS
+.	.
+
+
+6	CD
+Experimental	JJ
+Results	NNS
+
+
+In	IN
+this	DT
+section	NN
+,	,
+we	PRP
+demonstrate	VBP
+the	DT
+meaningfulness	NN
+of	IN
+our	PRP$
+CkC	NN
+clustering	NN
+model	NN
+on	IN
+a	DT
+small	JJ
+real	JJ
+dataset	NN
+and	CC
+show	VBP
+the	DT
+eï	NN
+¬	NN
+ƒciency	NN
+of	IN
+the	DT
+NetScan	NNP
+algorithm	NN
+using	VBG
+synthetic	JJ
+datasets	NNS
+.	.
+
+
+We	PRP
+used	VBD
+the	DT
+Cosine	NNP
+Distance	NNP
+as	IN
+the	DT
+distance	NN
+mea	NN
+-	:
+sure	JJ
+for	IN
+the	DT
+attributes	NNS
+,	,
+a	DT
+standard	JJ
+measure	NN
+for	IN
+text	NN
+data	NNS
+.	.
+
+We	PRP
+ran	VBD
+NetScan	NNP
+for	IN
+the	DT
+Connected	VBN
+k-Center	NN
+problem	NN
+and	CC
+a	DT
+known	JJ
+heuristic	NN
+algorithm	NN
+-LRB-	-LRB-
+Greedy	JJ
+k	NN
+-	:
+center	NN
+-RRB-	-RRB-
+-LSB-	-LRB-
+15	CD
+-RSB-	-RRB-
+for	IN
+the	DT
+traditional	JJ
+k-center	NN
+problem	NN
+,	,
+both	CC
+with	IN
+k	NN
+=	JJ
+3	CD
+.	.
+
+Table	NNP
+3	CD
+reports	VBZ
+the	DT
+clustering	NN
+results	VBZ
+av	SYM
+-	:
+eraged	JJ
+over	IN
+20	CD
+runs	NNS
+for	IN
+both	DT
+algorithms	NNS
+,	,
+recording	VBG
+the	DT
+number	NN
+of	IN
+correctly	RB
+identiï	NN
+¬	CD
+ed	NN
+professors	NNS
+for	IN
+each	DT
+com	NN
+-	:
+munity	NN
+together	RB
+with	IN
+the	DT
+overall	JJ
+accuracy	NN
+.	.
+
+To	TO
+calculate	VB
+the	DT
+accuracy	NN
+,	,
+we	PRP
+associated	VBD
+each	DT
+of	IN
+the	DT
+three	CD
+communi	NNS
+-	:
+ties	NNS
+with	IN
+one	CD
+of	IN
+the	DT
+clusters	NNS
+such	JJ
+that	IN
+the	DT
+best	JJS
+overall	JJ
+accuracy	NN
+was	VBD
+achieved	VBN
+.	.
+
+Compared	VBN
+to	TO
+Greedy	NNP
+k-center	NN
+,	,
+NetScan	NNP
+signiï	NN
+¬	NN
+cantly	RB
+improved	VBD
+the	DT
+accuracy	NN
+from	IN
+54	CD
+%	NN
+to	TO
+72	CD
+%	NN
+.	.
+
+Note	VB
+that	IN
+we	PRP
+perform	VBP
+unsupervised	JJ
+learning	NN
+,	,
+which	WDT
+accounts	VBZ
+for	IN
+the	DT
+relatively	RB
+low	JJ
+accuracy	NN
+of	IN
+both	DT
+algorithms	NNS
+compared	VBN
+to	TO
+supervised	JJ
+classiï	NN
+¬	NN
+cation	NN
+algo	NN
+-	:
+rithms	NNS
+.	.
+
+
+6.1	CD
+Real	JJ
+dataset	NN
+.	.
+
+The	DT
+real	JJ
+dataset	NN
+includes	VBZ
+50	CD
+pro-	JJ
+fessors	NNS
+from	IN
+three	CD
+major	JJ
+computer	NN
+science	NN
+communities	NNS
+:	:
+theory	NN
+,	,
+databases	NNS
+and	CC
+machine	NN
+learning	NN
+.	.
+
+The	DT
+attributes	NNS
+of	IN
+each	DT
+professor	NN
+were	VBD
+collected	VBN
+from	IN
+his/her	JJR
+homepage	NN
+representing	VBG
+the	DT
+keyword	JJ
+frequencies	NNS
+of	IN
+his/her	JJ
+research	NN
+interests	NNS
+.	.
+
+The	DT
+relationship	NN
+data	NNS
+is	VBZ
+a	DT
+connected	JJ
+subgraph	NN
+
+
+Communities	NNS
+
+
+Theory	NNP
+
+
+Databases	NNS
+Machine	NN
+Learning	NNP
+
+
+Total	JJ
+
+
+Accuracy	NN
+
+
+Size	NN
+20	CD
+20	CD
+10	CD
+50	CD
+
+
+Greedy	JJ
+k-center	NN
+
+
+11	CD
+
+
+12	CD
+
+
+4	CD
+
+
+27	CD
+
+
+54	CD
+%	NN
+
+
+NetScan	NNP
+
+
+14	CD
+
+
+15	CD
+
+
+7	CD
+
+
+36	CD
+72	CD
+%	NN
+
+
+Table	NNP
+3	CD
+:	:
+Comparison	NN
+of	IN
+NetScan	NNP
+and	CC
+Greedy	NNP
+k-center	NN
+.	.
+
+
+Downloaded	VBN
+07/10/14	CD
+to	TO
+147.26.103.71	CD
+.	.
+
+Redistribution	NN
+subject	NN
+to	TO
+SIAM	NNP
+license	NN
+or	CC
+copyright	NN
+;	:
+see	VB
+http://www.siam.org/journals/ojsa.php	NN
+
+
+The	DT
+main	JJ
+reason	NN
+why	WRB
+NetScan	NNP
+signiï	NN
+¬	NN
+cantly	RB
+outper	NN
+-	:
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+10	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+320	CD
+
+
+620	CD
+
+
+``	``
+Erdos-Renyi-Model	NNP
+''	''
+``	``
+Power-Law-Model	NNP
+''	''
+
+
+260	CD
+
+
+``	``
+Erdos-Renyi-Model	NNP
+''	''
+``	``
+Power-Law-Model	NNP
+''	''
+
+
+300	CD
+
+
+``	``
+Erdos-Renyi-Model	NNP
+''	''
+``	``
+Power-Law-Model	NNP
+''	''
+
+
+``	``
+Greedy	JJ
+k-Center	NN
+''	''
+
+
+280	CD
+
+
+240	CD
+
+
+600	CD
+
+
+260	CD
+
+
+220	CD
+
+
+580	CD
+
+
+240	CD
+
+
+200	CD
+
+
+220	CD
+
+
+560	CD
+
+
+180	CD
+
+
+200	CD
+
+
+180	CD
+
+
+160	CD
+
+
+540	CD
+
+
+Runtime	NNP
+in	IN
+millisecond	JJ
+
+
+Runtime	NNP
+in	IN
+millisecond	JJ
+
+
+Maximum	NNP
+Radius	NNP
+-LRB-	-LRB-
+R	NNP
+-RRB-	-RRB-
+
+
+160	CD
+
+
+140	CD
+
+
+520	CD
+
+
+140	CD
+
+
+120	CD
+
+
+120	CD
+
+
+100	CD
+
+
+500	CD
+
+
+100	CD
+
+
+4	CD
+
+
+5	CD
+
+
+6	CD
+
+
+7	CD
+
+
+8	CD
+Average	JJ
+Degree	NN
+-LRB-	-LRB-
+k	NN
+=	JJ
+4	CD
+-RRB-	-RRB-
+
+
+9	CD
+
+
+10	CD
+
+
+11	CD
+
+
+12	CD
+
+
+2	CD
+
+
+2.5	CD
+
+
+3	CD
+
+
+3.5	CD
+4	CD
+4.5	CD
+
+
+k	NN
+-LRB-	-LRB-
+average	JJ
+degree	NN
+=	JJ
+4	CD
+-RRB-	-RRB-
+
+
+5	CD
+
+
+5.5	CD
+
+
+6	CD
+
+
+4	CD
+
+
+5	CD
+
+
+6	CD
+
+
+7	CD
+
+
+8	CD
+Average	JJ
+degree	NN
+-LRB-	-LRB-
+k	NN
+=	JJ
+3	CD
+-RRB-	-RRB-
+
+
+9	CD
+
+
+10	CD
+
+
+11	CD
+
+
+12	CD
+
+
+Figure	NNP
+10	CD
+:	:
+NetScan	NNP
+on	IN
+synthetic	JJ
+data	NNS
+.	.
+
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+runtime	NN
+vs.	IN
+average	JJ
+degree	NN
+.	.
+
+-LRB-	-LRB-
+b	NN
+-RRB-	-RRB-
+runtime	NN
+vs.	CC
+k.	NN
+-LRB-	-LRB-
+c	NN
+-RRB-	-RRB-
+maximum	NN
+radius	VBZ
+vs.	CC
+average	JJ
+degree	NN
+.	.
+
+
+forms	NNS
+Greedy	JJ
+k-center	NN
+is	VBZ
+that	IN
+both	CC
+relationship	NN
+and	CC
+at	IN
+-	:
+tribute	NN
+data	NNS
+make	VBP
+contributions	NNS
+in	IN
+the	DT
+clustering	NN
+pro-	JJ
+cess	NN
+,	,
+and	CC
+considering	VBG
+only	RB
+one	CD
+data	NNS
+type	NN
+can	MD
+mislead	VB
+the	DT
+clustering	NN
+algorithm	NN
+.	.
+
+For	IN
+example	NN
+,	,
+Jon	NNP
+Kleinberg	NNP
+lists	VBZ
+interests	NNS
+in	IN
+Clustering	NN
+,	,
+Indexing	NN
+and	CC
+Data	NN
+Mining	NN
+,	,
+also	RB
+Discrete	NNP
+Optimization	NNP
+and	CC
+Network	NNP
+Algorithms	NNPS
+.	.
+
+From	IN
+this	DT
+attribute	NN
+information	NN
+,	,
+it	PRP
+seems	VBZ
+reasonable	JJ
+to	TO
+iden	VB
+-	:
+tify	NN
+him	PRP
+as	IN
+a	DT
+researcher	NN
+in	IN
+databases	NNS
+.	.
+
+Nevertheless	RB
+,	,
+after	IN
+taking	VBG
+his	PRP$
+coauthorship	NN
+information	NN
+into	IN
+consideration	NN
+,	,
+NetScan	NNP
+clustered	VBD
+him	PRP
+into	IN
+the	DT
+theory	NN
+community	NN
+-LRB-	-LRB-
+see	VB
+Figure	NNP
+9	CD
+-RRB-	-RRB-
+,	,
+which	WDT
+is	VBZ
+a	DT
+better	JJR
+match	NN
+for	IN
+his	PRP$
+overall	JJ
+re	SYM
+-	:
+search	NN
+proï	NN
+¬	CD
+le	DT
+.	.
+
+On	IN
+the	DT
+other	JJ
+hand	NN
+,	,
+Jeï	NN
+¬	CD
+$	$
+ery	JJ
+D.	NNP
+Ullman	NNP
+has	VBZ
+broad	JJ
+coauthorship	NN
+connections	NNS
+,	,
+which	WDT
+alone	RB
+can	MD
+not	RB
+be	VB
+used	VBN
+to	TO
+conï	VB
+¬	NN
+dently	RB
+identify	VB
+his	PRP$
+community	NN
+membership	NN
+.	.
+
+However	RB
+,	,
+he	PRP
+claims	VBZ
+his	PRP$
+research	NN
+interest	NN
+in	IN
+databases	NNS
+ex	FW
+-	:
+clusively	RB
+,	,
+and	CC
+NetScan	NNP
+clustered	VBD
+him	PRP
+into	IN
+the	DT
+database	NN
+community	NN
+as	IN
+expected	VBN
+.	.
+
+
+6.2	CD
+Synthetic	JJ
+datasets	NNS
+.	.
+
+Due	JJ
+to	TO
+the	DT
+lack	NN
+of	IN
+publicly	RB
+available	JJ
+databases	NNS
+with	IN
+both	DT
+attribute	NN
+and	CC
+relationship	NN
+data	NNS
+,	,
+we	PRP
+used	VBD
+synthetic	JJ
+data	NNS
+for	IN
+the	DT
+eï	NN
+¬	NN
+ƒciency	NN
+evalua	NN
+-	:
+tion	NN
+.	.
+
+Based	VBN
+on	IN
+the	DT
+complexity	NN
+analysis	NN
+in	IN
+Section	NN
+5	CD
+,	,
+the	DT
+runtime	NN
+is	VBZ
+directly	RB
+related	JJ
+to	TO
+the	DT
+number	NN
+of	IN
+edges	NNS
+instead	RB
+of	IN
+the	DT
+number	NN
+of	IN
+nodes	NNS
+,	,
+thus	RB
+we	PRP
+can	MD
+ï	VB
+¬	CD
+x	CC
+the	DT
+number	NN
+of	IN
+nodes	NNS
+and	CC
+vary	VBP
+the	DT
+degree	NN
+of	IN
+each	DT
+node	NN
+to	TO
+evaluate	VB
+the	DT
+eï	NN
+¬	NN
+ƒciency	NN
+of	IN
+NetScan	NNP
+.	.
+
+We	PRP
+took	VBD
+the	DT
+UCI	NNP
+PIMA	NNP
+dataset	NN
+-LSB-	-LRB-
+5	CD
+-RSB-	-RRB-
+,	,
+which	WDT
+is	VBZ
+also	RB
+used	VBN
+in	IN
+-LSB-	-LRB-
+8	CD
+-RSB-	-RRB-
+to	TO
+evalu	VB
+-	:
+ate	VBD
+the	DT
+quality	NN
+of	IN
+k-means	NNS
+algorithm	NN
+.	.
+
+Since	IN
+the	DT
+PIMA	NNP
+dataset	NN
+contains	VBZ
+only	RB
+numeric	JJ
+attribute	NN
+data	NNS
+,	,
+we	PRP
+auto	NN
+-	:
+matically	RB
+generated	VBN
+relationship	NN
+data	NNS
+based	VBN
+on	IN
+two	CD
+ran	VBD
+-	:
+dom	NN
+graph	NN
+models	NNS
+,	,
+ErdÂ	NN
+¨	CD
+os-RÂ	NN
+´	CD
+enyi	NN
+model	NN
+-LSB-	-LRB-
+9	CD
+-RSB-	-RRB-
+and	CC
+Power	NN
+-	:
+law	NN
+graph	NN
+model	NN
+-LSB-	-LRB-
+2	CD
+-RSB-	-RRB-
+.	.
+
+In	IN
+the	DT
+ErdÂ	NN
+¨	CD
+os-RÂ	NN
+´	CD
+enyi	NN
+model	NN
+,	,
+every	DT
+pair	NN
+of	IN
+nodes	NNS
+is	VBZ
+connected	VBN
+with	IN
+the	DT
+same	JJ
+probability	NN
+.	.
+
+In	IN
+the	DT
+Power-law	NN
+graph	NN
+model	NN
+,	,
+used	VBN
+to	TO
+model	NN
+internet	NN
+structure	NN
+,	,
+there	EX
+are	VBP
+many	JJ
+nodes	NNS
+with	IN
+few	JJ
+edges	NNS
+and	CC
+only	RB
+a	DT
+few	JJ
+nodes	NNS
+with	IN
+a	DT
+large	JJ
+number	NN
+of	IN
+neighbors	NNS
+.	.
+
+All	PDT
+the	DT
+experiments	NNS
+were	VBD
+conducted	VBN
+on	IN
+an	DT
+Intel	NNP
+Celeron	NNP
+1.6	CD
+G	NN
+processor	NN
+with	IN
+512M	NN
+RAM	NNP
+running	VBG
+the	DT
+Window	NNP
+XP	NN
+op	NN
+-	:
+
+
+erating	VBG
+system	NN
+.	.
+
+
+We	PRP
+study	VBP
+the	DT
+eï	NN
+¬	CD
+$	$
+ect	CD
+of	IN
+average	JJ
+number	NN
+of	IN
+edges	NNS
+on	IN
+runtime	NN
+.	.
+
+Figure	NNP
+10	CD
+-LRB-	-LRB-
+a	DT
+-RRB-	-RRB-
+shows	VBZ
+the	DT
+results	NNS
+on	IN
+the	DT
+average	JJ
+runtime	NN
+over	IN
+50	CD
+restarts	NNS
+for	IN
+both	DT
+models	NNS
+.	.
+
+The	DT
+average	JJ
+degree	NN
+was	VBD
+set	VBN
+from	IN
+4	CD
+since	IN
+with	IN
+smaller	JJR
+degree	NN
+the	DT
+data	NNS
+generator	NN
+often	RB
+failed	VBD
+to	TO
+generate	VB
+a	DT
+connected	JJ
+network	NN
+.	.
+
+Although	IN
+the	DT
+worst	JJS
+case	NN
+runtime	NN
+complexity	NN
+analysis	NN
+of	IN
+the	DT
+NetScan	NNP
+algorithm	NN
+demonstrates	VBZ
+that	IN
+the	DT
+runtime	NN
+is	VBZ
+related	VBN
+to	TO
+k	NN
+,	,
+|	CD
+E	NN
+|	NN
+and	CC
+the	DT
+number	NN
+of	IN
+iterations	NNS
+,	,
+our	PRP$
+results	NNS
+shows	VBZ
+that	IN
+the	DT
+runtime	NN
+is	VBZ
+far	RB
+from	IN
+proportional	JJ
+to	TO
+both	DT
+k	NN
+and	CC
+|	NN
+E	NN
+|	NN
+on	IN
+average	NN
+.	.
+
+
+We	PRP
+also	RB
+evaluate	VBP
+the	DT
+eï	NN
+¬	CD
+$	$
+ect	CD
+of	IN
+k	NN
+on	IN
+runtime	NN
+,	,
+which	WDT
+is	VBZ
+shown	VBN
+in	IN
+Figure	NNP
+10	CD
+-LRB-	-LRB-
+b	NN
+-RRB-	-RRB-
+.	.
+
+As	IN
+we	PRP
+expected	VBD
+,	,
+the	DT
+increase	NN
+of	IN
+k	NN
+does	VBZ
+not	RB
+cause	VB
+a	DT
+proportional	JJ
+increase	NN
+in	IN
+the	DT
+runtime	NN
+.	.
+
+
+In	IN
+addition	NN
+,	,
+it	PRP
+is	VBZ
+interesting	JJ
+to	TO
+evaluate	VB
+how	WRB
+the	DT
+input	NN
+graph	NN
+is	VBZ
+related	VBN
+to	TO
+the	DT
+maximum	NN
+radius	VBZ
+R	NN
+of	IN
+the	DT
+clustering	NN
+results	VBZ
+.	.
+
+Intuitively	RB
+,	,
+the	DT
+more	JJR
+edges	NNS
+exist	VBP
+in	IN
+the	DT
+graph	NN
+,	,
+the	DT
+smaller	JJR
+R	NN
+would	MD
+be	VB
+.	.
+
+The	DT
+traditional	JJ
+k	NN
+-	:
+center	NN
+problem	NN
+can	MD
+be	VB
+considered	VBN
+as	IN
+a	DT
+special	JJ
+case	NN
+of	IN
+the	DT
+CkC	NN
+problem	NN
+with	IN
+a	DT
+complete	JJ
+input	NN
+graph	NN
+.	.
+
+The	DT
+optimal	JJ
+R	NN
+for	IN
+traditional	JJ
+k-center	NN
+is	VBZ
+smaller	JJR
+than	IN
+the	DT
+optimal	JJ
+R	NN
+for	IN
+CkC	NN
+.	.
+
+The	DT
+results	NNS
+in	IN
+Figure	NNP
+10	CD
+-LRB-	-LRB-
+c	NN
+-RRB-	-RRB-
+show	VBP
+that	IN
+R	NN
+decreases	VBZ
+with	IN
+the	DT
+increase	NN
+of	IN
+average	JJ
+degree	NN
+.	.
+
+
+Downloaded	VBN
+07/10/14	CD
+to	TO
+147.26.103.71	CD
+.	.
+
+Redistribution	NN
+subject	NN
+to	TO
+SIAM	NNP
+license	NN
+or	CC
+copyright	NN
+;	:
+see	VB
+http://www.siam.org/journals/ojsa.php	NN
+
+
+7	CD
+Conclusion	NN
+
+
+Existing	VBG
+cluster	NN
+analysis	NN
+methods	NNS
+are	VBP
+either	RB
+targeting	VBG
+attribute	NN
+data	NNS
+or	CC
+relationship	NN
+data	NNS
+.	.
+
+However	RB
+,	,
+in	IN
+sce	NN
+-	:
+narios	NNS
+where	WRB
+these	DT
+two	CD
+data	NNS
+types	NNS
+contain	VBP
+orthogonal	JJ
+information	NN
+,	,
+a	DT
+joint	JJ
+cluster	NN
+analysis	NN
+of	IN
+both	CC
+promises	VBZ
+to	TO
+achieve	VB
+more	JJR
+accurate	JJ
+results	NNS
+.	.
+
+In	IN
+this	DT
+paper	NN
+,	,
+we	PRP
+in	IN
+-	:
+troduced	VBD
+the	DT
+novel	JJ
+Connected	VBN
+k-Center	NN
+problem	NN
+,	,
+which	WDT
+takes	VBZ
+into	IN
+account	NN
+attribute	NN
+data	NNS
+as	RB
+well	RB
+as	IN
+relationship	NN
+data	NNS
+.	.
+
+We	PRP
+proved	VBD
+the	DT
+NP-completeness	NN
+of	IN
+this	DT
+problem	NN
+and	CC
+presented	VBD
+a	DT
+corresponding	JJ
+3-approximation	NN
+algo	NN
+-	:
+rithm	NN
+.	.
+
+To	TO
+improve	VB
+the	DT
+scalability	NN
+,	,
+we	PRP
+also	RB
+developed	VBD
+an	DT
+eï	NN
+¬	NN
+ƒcient	JJ
+heuristic	NN
+algorithm	NN
+NetScan	NNP
+.	.
+
+Our	PRP$
+experi	NNS
+-	:
+mental	JJ
+evaluation	NN
+using	VBG
+a	DT
+real	JJ
+dataset	NN
+for	IN
+community	NN
+identiï	NN
+¬	CD
+cation	NN
+demonstrated	VBD
+the	DT
+meaningfulness	NN
+of	IN
+the	DT
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+11	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
+NetScan	NNP
+results	VBZ
+and	CC
+the	DT
+accuracy	NN
+gain	NN
+compared	VBN
+to	TO
+the	DT
+classical	JJ
+k-center	NN
+clustering	NN
+algorithm	NN
+.	.
+
+Tests	NNS
+on	IN
+syn	NN
+-	:
+thetic	JJ
+datasets	NNS
+showed	VBD
+the	DT
+eï	NN
+¬	NN
+ƒciency	NN
+of	IN
+our	PRP$
+algorithm	NN
+.	.
+
+
+Under	IN
+the	DT
+framework	NN
+of	IN
+joint	JJ
+cluster	NN
+analysis	NN
+of	IN
+attribute	NN
+data	NNS
+and	CC
+relationship	NN
+data	NNS
+,	,
+the	DT
+CkC	NN
+prob	NN
+-	:
+lem	NN
+can	MD
+be	VB
+extended	VBN
+in	IN
+many	JJ
+ways	NNS
+.	.
+
+Firstly	RB
+,	,
+to	TO
+better	JJR
+model	NN
+real	JJ
+applications	NNS
+with	IN
+varied	JJ
+requirement	NN
+sub	SYM
+-	:
+tleties	NNS
+,	,
+more	JJR
+practical	JJ
+clustering	NN
+criteria	NNS
+-LRB-	-LRB-
+such	JJ
+as	IN
+k	NN
+-	:
+means	NNS
+-RRB-	-RRB-
+can	MD
+be	VB
+considered	VBN
+other	JJ
+than	IN
+the	DT
+k-center	NN
+cri	NN
+-	:
+terion	NN
+,	,
+which	WDT
+allowed	VBD
+us	PRP
+to	TO
+provide	VB
+theoretical	JJ
+analysis	NN
+in	IN
+this	DT
+paper	NN
+.	.
+
+Secondly	RB
+,	,
+similarly	RB
+motivated	VBN
+,	,
+the	DT
+inter	NN
+-	:
+nal	JJ
+connectedness	NN
+constraint	NN
+can	MD
+as	RB
+well	RB
+be	VB
+replaced	VBN
+by	IN
+speciï	NN
+¬	CD
+cations	NNS
+on	IN
+any	DT
+property	NN
+or	CC
+combination	NN
+of	IN
+prop	VB
+-	:
+erties	NNS
+of	IN
+graphs	NNS
+;	:
+e.g.	FW
+,	,
+length	NN
+of	IN
+paths	NNS
+,	,
+degree	NN
+of	IN
+vertices	NNS
+,	,
+and	CC
+connectivity	NN
+etc.	NN
+.	.
+
+Thirdly	RB
+,	,
+the	DT
+relations	NNS
+can	MD
+be	VB
+non	JJ
+-	:
+binary	JJ
+and	CC
+the	DT
+edges	NNS
+can	MD
+be	VB
+weighted	VBN
+to	TO
+indicate	VB
+the	DT
+degree	NN
+of	IN
+relationship	NN
+;	:
+e.g.	FW
+,	,
+friendship	NN
+can	MD
+go	VB
+from	IN
+inti	NNS
+-	:
+mate	NN
+and	CC
+close	NN
+to	TO
+just	RB
+nodding	VBG
+acquaintanceship	NN
+.	.
+
+Also	RB
+,	,
+the	DT
+relations	NNS
+can	MD
+be	VB
+non-symmetric	JJ
+;	:
+e.g.	FW
+,	,
+citation	NN
+rela	NN
+-	:
+tions	NNS
+between	IN
+documents	NNS
+.	.
+
+Finally	RB
+,	,
+we	PRP
+believe	VBP
+that	IN
+with	IN
+the	DT
+increasing	VBG
+availability	NN
+of	IN
+attribute	NN
+data	NNS
+and	CC
+rela	NN
+-	:
+tionship	NN
+data	NNS
+,	,
+data	NN
+analysis	NN
+in	IN
+general	JJ
+,	,
+not	RB
+only	RB
+cluster	NN
+analysis	NN
+,	,
+will	MD
+beneï	VB
+¬	CD
+t	NN
+from	IN
+the	DT
+combined	JJ
+consideration	NN
+of	IN
+both	DT
+data	NNS
+types	NNS
+.	.
+
+
+Acknowledgement	NN
+
+
+We	PRP
+would	MD
+like	VB
+to	TO
+thank	VB
+Dr.	NNP
+Binay	NNP
+Bhattacharya	NNP
+and	CC
+Dr.	NNP
+Petra	NNP
+Berenbrink	NNP
+for	IN
+the	DT
+valuable	JJ
+discussions	NNS
+in	IN
+the	DT
+early	JJ
+stage	NN
+of	IN
+this	DT
+study	NN
+.	.
+
+
+References	NNS
+
+
+-LSB-	-LRB-
+1	CD
+-RSB-	-RRB-
+M.	NNP
+Ankerst	NNP
+,	,
+M.	NNP
+M.	NNP
+Breunig	NNP
+,	,
+H.-P	NN
+.	.
+
+Kriegel	NNP
+,	,
+and	CC
+
+
+J.	NNP
+Sander	NNP
+.	.
+
+Optics	NNS
+:	:
+ordering	VBG
+points	NNS
+to	TO
+identify	VB
+the	DT
+clus	NN
+-	:
+
+
+tering	VBG
+structure	NN
+.	.
+
+In	IN
+SIGMOD	NNP
+,	,
+1999	CD
+.	.
+
+
+-LSB-	-LRB-
+2	LS
+-RSB-	-RRB-
+A.-L	NN
+.	.
+
+BarabÂ	NN
+´	CD
+asi	NN
+and	CC
+R.	NNP
+Albert	NNP
+.	.
+
+Emergence	NN
+of	IN
+scaling	NN
+in	IN
+
+
+random	JJ
+networks	NNS
+.	.
+
+Science	NNP
+,	,
+286:509	CD
+â	NN
+$	$
+``	``
+512	CD
+,	,
+1999	CD
+.	.
+
+-LSB-	-LRB-
+3	CD
+-RSB-	-RRB-
+S.	NNP
+Basu	NNP
+,	,
+M.	NNP
+Bilenko	NNP
+,	,
+and	CC
+R.	NNP
+Mooney	NNP
+.	.
+
+A	DT
+probabilistic	JJ
+
+
+framework	NN
+for	IN
+semi-supervised	JJ
+clustering	NN
+.	.
+
+In	IN
+KDD	NNP
+,	,
+
+
+2004	CD
+.	.
+
+
+-LSB-	-LRB-
+4	CD
+-RSB-	-RRB-
+C.	NNP
+S.	NNP
+Bibliography	NNP
+.	.
+
+DBLP	NN
+.	.
+
+http://www.informatik.uni	SYM
+-	:
+
+
+trier.de	NN
+/	:
+ley/db/index	NN
+.	.
+
+html	NN
+.	.
+
+2005	CD
+.	.
+
+
+-LSB-	-LRB-
+5	CD
+-RSB-	-RRB-
+C.	NNP
+Blake	NNP
+and	CC
+C.	NNP
+Merz	NNP
+.	.
+
+UCI	NN
+repository	NN
+of	IN
+machine	NN
+
+
+learning	VBG
+databases.	NNP
+,	,
+1998	CD
+.	.
+
+
+-LSB-	-LRB-
+6	CD
+-RSB-	-RRB-
+U.	NNP
+Brandes	NNP
+,	,
+M.	NNP
+Gaertler	NNP
+,	,
+and	CC
+D.	NNP
+Wagner	NNP
+.	.
+
+Experiments	NNS
+
+
+on	IN
+graph	NN
+clustering	NN
+algorithms	NNS
+.	.
+
+In	IN
+11th	JJ
+Europ	NNP
+.	.
+
+Symp	NNP
+.	.
+
+
+Algorithms	NNS
+,	,
+pages	NNS
+568â	VBP
+$	$
+``	``
+579	CD
+,	,
+2003	CD
+.	.
+
+
+-LSB-	-LRB-
+7	CD
+-RSB-	-RRB-
+P.	NNP
+Brucker	NNP
+.	.
+
+On	IN
+the	DT
+complexity	NN
+of	IN
+clustering	NN
+problems	NNS
+,	,
+
+
+in	IN
+Optimization	NN
+and	CC
+Operations	NNP
+Research	NNP
+.	.
+
+Springer	NNP
+-	:
+
+
+Verlag	NNP
+,	,
+1977	CD
+.	.
+
+
+-LSB-	-LRB-
+8	CD
+-RSB-	-RRB-
+I.	NN
+Davidson	NNP
+and	CC
+S.	NNP
+S.	NNP
+Ravi	NNP
+.	.
+
+Clustering	VBG
+with	IN
+constraints	NNS
+:	:
+
+
+Feasibility	NN
+issues	NNS
+and	CC
+the	DT
+k-means	NNS
+algorithm	NN
+.	.
+
+In	IN
+SDM	NNP
+,	,
+
+
+2005	CD
+.	.
+
+
+-LSB-	-LRB-
+9	CD
+-RSB-	-RRB-
+P.	NNP
+Erdos	NNP
+and	CC
+A.	NNP
+RÂ	NNP
+´	NN
+enyi	NN
+.	.
+
+On	IN
+the	DT
+evolution	NN
+of	IN
+random	JJ
+
+
+graphs	NNS
+.	.
+
+Publ	NN
+.	.
+
+Math	NNP
+.	.
+
+Inst	NNP
+.	.
+
+Hungar	NNP
+.	.
+
+Acad	NNP
+.	.
+
+Sci.	NNP
+,	,
+5:17	CD
+â	NN
+$	$
+``	``
+61	CD
+,	,
+
+
+1960	CD
+.	.
+
+
+-LSB-	-LRB-
+10	CD
+-RSB-	-RRB-
+M.	NNP
+Ester	NNP
+,	,
+H.-P	NN
+.	.
+
+Kriegel	NNP
+,	,
+J.	NNP
+Sander	NNP
+,	,
+and	CC
+X.	NNP
+Xu	NNP
+.	.
+
+A	DT
+
+
+density-based	JJ
+algorithm	NN
+for	IN
+discovering	VBG
+clusters	NNS
+in	IN
+large	JJ
+
+
+spatial	JJ
+databases	NNS
+with	IN
+noise	NN
+.	.
+
+In	IN
+KDD	NNP
+,	,
+pages	NNS
+226â	VBP
+$	$
+``	``
+231	CD
+,	,
+
+
+1996	CD
+.	.
+
+
+-LSB-	-LRB-
+11	CD
+-RSB-	-RRB-
+S.	NNP
+Guha	NNP
+,	,
+R.	NNP
+Rastogi	NNP
+,	,
+and	CC
+K.	NNP
+Shim	NNP
+.	.
+
+Rock	NNP
+:	:
+a	DT
+robust	JJ
+
+
+clustering	NN
+algorithm	NN
+for	IN
+categorical	JJ
+attributes	NNS
+.	.
+
+In	IN
+
+
+ICDE	NN
+,	,
+1999	CD
+.	.
+
+
+-LSB-	-LRB-
+12	CD
+-RSB-	-RRB-
+J.	NNP
+Han	NNP
+and	CC
+M.	NNP
+Kamber	NNP
+.	.
+
+Data	NNS
+mining	NN
+:	:
+concepts	NNS
+and	CC
+
+
+techniques	NNS
+.	.
+
+Morgan	NNP
+Kaufmann	NNP
+,	,
+2001	CD
+.	.
+
+
+-LSB-	-LRB-
+13	CD
+-RSB-	-RRB-
+R.	NNP
+A.	NNP
+Hanneman	NNP
+and	CC
+M.	NNP
+Riddle	NNP
+.	.
+
+Introduction	NN
+to	TO
+social	JJ
+
+
+network	NN
+methods	NNS
+.	.
+
+http://faculty.ucr.edu/	NN
+hanneman	NN
+/	:
+,	,
+
+
+2005	CD
+.	.
+
+
+-LSB-	-LRB-
+14	CD
+-RSB-	-RRB-
+E.	NNP
+Hartuv	NNP
+and	CC
+R.	NNP
+Shamir	NNP
+.	.
+
+A	DT
+clustering	NN
+algorithm	NN
+based	VBN
+
+
+on	IN
+graph	NN
+connectivity	NN
+.	.
+
+Information	NNP
+Processing	NNP
+Letters	NNS
+,	,
+
+
+76:175	CD
+â	JJ
+$	$
+``	``
+181	CD
+,	,
+2000	CD
+.	.
+
+
+-LSB-	-LRB-
+15	CD
+-RSB-	-RRB-
+D.	NNP
+S.	NNP
+Hochbaum	NNP
+and	CC
+D.	NNP
+B.	NNP
+Shmoys	NNP
+.	.
+
+A	DT
+best	JJS
+possible	JJ
+
+
+heuristic	NN
+for	IN
+the	DT
+k-center	NN
+problem	NN
+.	.
+
+Mathematics	NN
+of	IN
+
+
+Operations	NNP
+Research	NNP
+,	,
+10:180	CD
+â	NN
+$	$
+``	``
+184	CD
+,	,
+1985	CD
+.	.
+
+
+-LSB-	-LRB-
+16	CD
+-RSB-	-RRB-
+D.	NNP
+Iacobucci	NNP
+.	.
+
+Networks	NNP
+in	IN
+marketing	NN
+.	.
+
+Sage	NN
+Publica	NN
+-	:
+
+
+tions	NNS
+,	,
+1996	CD
+.	.
+
+
+-LSB-	-LRB-
+17	CD
+-RSB-	-RRB-
+A.	NN
+Jain	NNP
+and	CC
+R.	NNP
+Dubes	NNP
+.	.
+
+Algorithms	NNS
+for	IN
+clustering	NN
+data	NNS
+.	.
+
+
+Prentice	NNP
+Hall	NNP
+,	,
+1988	CD
+.	.
+
+
+-LSB-	-LRB-
+18	CD
+-RSB-	-RRB-
+G.	NNP
+Karypis	NNP
+,	,
+E.	NNP
+Han	NNP
+,	,
+and	CC
+V.	NNP
+Kumar	NNP
+.	.
+
+Chameleon	NNP
+:	:
+A	NN
+
+
+hierarchical	JJ
+clustering	NN
+algorithm	NN
+using	VBG
+dynamic	JJ
+mod	NN
+-	:
+
+
+eling	NN
+.	.
+
+IEEE	NNP
+COMPUTER	NNP
+,	,
+32:68	CD
+â	NN
+$	$
+``	``
+75	CD
+,	,
+1999	CD
+.	.
+
+
+-LSB-	-LRB-
+19	CD
+-RSB-	-RRB-
+L.	NNP
+Kaufman	NNP
+and	CC
+P.	NNP
+Rousseeuw	NNP
+.	.
+
+Finding	VBG
+groups	NNS
+in	IN
+data	NNS
+:	:
+
+
+an	DT
+introduction	NN
+to	TO
+cluster	NN
+analysis	NN
+.	.
+
+John	NNP
+Wiley	NNP
+&	CC
+Sons	NNP
+,	,
+
+
+1990	CD
+.	.
+
+
+-LSB-	-LRB-
+20	CD
+-RSB-	-RRB-
+J.	NNP
+MacQueen	NNP
+.	.
+
+Some	DT
+methods	NNS
+for	IN
+classiï	NN
+¬	CD
+cation	NN
+and	CC
+
+
+analysis	NN
+of	IN
+multivariate	JJ
+observations	NNS
+.	.
+
+In	IN
+5th	JJ
+Berkeley	NNP
+
+
+Symp	NNP
+.	.
+
+Math	NNP
+.	.
+
+Statist	NNP
+.	.
+
+prob.	NN
+,	,
+pages	NNS
+281â	VBP
+$	$
+``	``
+297	CD
+,	,
+1967	CD
+.	.
+
+-LSB-	-LRB-
+21	CD
+-RSB-	-RRB-
+N.	NNP
+Megiddo	NNP
+and	CC
+K.	NNP
+J.	NNP
+Supowit	NNP
+.	.
+
+On	IN
+the	DT
+complexity	NN
+of	IN
+
+
+some	DT
+common	JJ
+geometric	JJ
+location	NN
+problems	NNS
+.	.
+
+SIAM	NNP
+J.	NNP
+
+
+Comput.	NNP
+,	,
+13	CD
+-LRB-	-LRB-
+1	CD
+-RRB-	-RRB-
+:182	CD
+â	NN
+$	$
+``	``
+196	CD
+,	,
+1984	CD
+.	.
+
+
+-LSB-	-LRB-
+22	CD
+-RSB-	-RRB-
+R.	NNP
+Ng	NNP
+and	CC
+J.	NNP
+Han	NNP
+.	.
+
+Eï	NN
+¬	CD
+ƒcient	NN
+and	CC
+eï	NN
+¬	CD
+$	$
+ective	JJ
+clustering	NN
+
+
+methods	NNS
+for	IN
+spatial	JJ
+data	NNS
+mining	NN
+.	.
+
+In	IN
+VLDB	NNP
+,	,
+1994	CD
+.	.
+
+-LSB-	-LRB-
+23	CD
+-RSB-	-RRB-
+J.	NNP
+Scott	NNP
+.	.
+
+Social	NNP
+Network	NNP
+Analysis	NN
+:	:
+A	DT
+handbook	NN
+.	.
+
+Sage	NN
+,	,
+
+
+London	NNP
+,	,
+2000	CD
+.	.
+
+
+-LSB-	-LRB-
+24	CD
+-RSB-	-RRB-
+C.	NNP
+Toregas	NNP
+,	,
+R.	NNP
+Swan	NN
+,	,
+C.	NNP
+Revelle	NNP
+,	,
+and	CC
+L.	NNP
+Bergman	NNP
+.	.
+
+The	DT
+
+
+location	NN
+of	IN
+emergency	NN
+service	NN
+facilities	NNS
+.	.
+
+Oper	NNP
+.	.
+
+Res.	NNP
+,	,
+
+
+19:1363	CD
+â	JJ
+$	$
+``	``
+1373	CD
+,	,
+1971	CD
+.	.
+
+
+-LSB-	-LRB-
+25	CD
+-RSB-	-RRB-
+A.	NN
+K.	NNP
+H.	NNP
+Tung	NNP
+,	,
+R.	NNP
+T.	NNP
+Ng	NNP
+,	,
+L.	NNP
+V.	NNP
+S.	NNP
+Lakshmanan	NNP
+,	,
+and	CC
+
+
+J.	NNP
+Han	NNP
+.	.
+
+Constraint-based	JJ
+clustering	NN
+in	IN
+large	JJ
+databases	NNS
+.	.
+
+
+In	IN
+ICDT	NN
+,	,
+pages	NNS
+405â	VBP
+$	$
+``	``
+419	CD
+,	,
+2001	CD
+.	.
+
+
+-LSB-	-LRB-
+26	CD
+-RSB-	-RRB-
+S.	NNP
+Wasserman	NNP
+and	CC
+K.	NNP
+Faust	NNP
+.	.
+
+Social	NNP
+Network	NNP
+Analysis	NN
+.	.
+
+
+Cambridge	NNP
+Univ.	NNP
+.	.
+
+Press	NNP
+,	,
+1994	CD
+.	.
+
+
+-LSB-	-LRB-
+27	CD
+-RSB-	-RRB-
+C.	NNP
+Webster	NNP
+and	CC
+P.	NNP
+Morrison	NNP
+.	.
+
+Network	NNP
+analysis	NN
+in	IN
+
+
+marketing	NN
+.	.
+
+Australasian	NNP
+Marketing	NNP
+Journal	NNP
+,	,
+12	CD
+-LRB-	-LRB-
+2	CD
+-RRB-	-RRB-
+:8	CD
+â	NN
+$	$
+``	``
+
+
+18	CD
+,	,
+2004	CD
+.	.
+
+
+Downloaded	VBN
+07/10/14	CD
+to	TO
+147.26.103.71	CD
+.	.
+
+Redistribution	NN
+subject	NN
+to	TO
+SIAM	NNP
+license	NN
+or	CC
+copyright	NN
+;	:
+see	VB
+http://www.siam.org/journals/ojsa.php	NN
+
+
+
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+12	CD
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+=	JJ
+
+
+
